@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "lib": ["es2020", "dom"],
+    "resolveJsonModule": true,
+    "module": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "noImplicitAny": true,
+    "paths": {
+      "@/*": [
+        "frontend/javascript/*"
+      ],
+      "~/*": [
+        "frontend/javascript/*"
+      ],
+        "*": ["node_modules/*"]
+    },
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "noEmit": true
+  },
+  "include": [
+    "frontend/javascript/**/*.ts",
+    "frontend/javascript/**/*.js",
+    "frontend/javascript/**/*.vue",
+    "frontend/javascript/**/*.tsx"
+  ],
+  "exclude": [
+  ],
+  "compileOnSave": false
+}

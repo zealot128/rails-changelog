@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{{ site.locale }}" data-theme="light">
+  <head>
+    {% render "head", metadata: site.metadata, title: resource.data.title %}
+  </head>
+  <body class="{{ resource.data.layout }} {{ resource.data.page_class }}">
+    {% render "navbar", metadata: site.metadata, resource: resource %}
+
+    <main class='container mx-auto py-5'>
+      {{ content }}
+    </main>
+
+    {% render "footer", metadata: site.metadata %}
+  </body>
+</html>
