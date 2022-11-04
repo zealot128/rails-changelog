@@ -32,7 +32,11 @@ class MergeFinder
   end
 
   def find
-    lines = repo.blame("./#{@changelog_file}", branch).lines.reject { |l| l.line['Please check ['] }
+    lines = repo.
+      blame("./#{@changelog_file}", branch).
+      lines.
+      reject { |l| l.line['Please check ['] }.
+      reject { |i| i.line[/^##|No changes/] }
     merges = lines.slice_before { |i| i.line[/^\*/] }
 
     merges.map do |merge|
