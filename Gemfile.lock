@@ -116,6 +116,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   bridgetown (~> 1.1.0)

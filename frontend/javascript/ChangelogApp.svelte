@@ -37,7 +37,7 @@
       {/each}
     </ul>
   </nav>
-  <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
+  <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 items-start">
     {#each selectedProjectChangelog as changelog}
       <ChangelogItem {changelog} />
     {/each}

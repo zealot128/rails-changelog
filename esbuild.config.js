@@ -24,8 +24,9 @@ const outputFolder = "output"
 // You can also support custom base_path deployments via changing `publicPath`.
 //
 // ```
-// const esbuildOptions = { publicPath: "/my_subfolder/_bridgetown/static" }
 // ```
-const esbuildOptions = {}
+//const esbuildOptions = {}
+
+const esbuildOptions = { publicPath: "/rails-changelog/_bridgetown/static" }
 
 build(outputFolder, esbuildOptions)
