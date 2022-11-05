@@ -1,0 +1,9 @@
+---
+layout: default
+---
+
+<% last_version, data = site.data.changes.to_a.last %>
+
+<h1 class='text-3xl text-center my-5'><%= last_version %></h1>
+
+<changelog-app data-seed="<%= data.to_json %>" />

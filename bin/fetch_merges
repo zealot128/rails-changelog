@@ -22,6 +22,8 @@ MergeItem = Struct.new(:message, :project, :date_merged, :author, :sha, :pr, :me
 
 $rails_checkout = './rails'
 
+main_name = '7-1-pre'
+
 class MergeFinder
   attr_reader :branch
 
@@ -36,7 +38,9 @@ class MergeFinder
       blame("./#{@changelog_file}", branch).
       lines.
       reject { |l| l.line['Please check ['] }.
-      reject { |i| i.line[/^##|No changes/] }
+      reject { |i| i.line[/^##|No changes/] }.
+      drop_while { |i| i.line.empty? }
+
     merges = lines.slice_before { |i| i.line[/^\*/] }
 
     merges.map do |merge|
@@ -111,6 +115,11 @@ Dir['rails/*/CHANGELOG.md'].each do |changelog|
       end
   merges += MergeFinder.new(changelog.sub('rails/', ''), b).find
 end
-fname = "src/_data/merges_#{branch}.json"
+
+if branch == 'main'
+  fname = "src/_data/changes/#{main_name}.json"
+else
+  fname = "src/_data/changes/#{branch.sub('-stable', '')}.json"
+end
 puts "Writing #{merges.length} merges to file: #{fname}"
 File.write(fname, JSON.pretty_generate(merges.map(&:to_h)))

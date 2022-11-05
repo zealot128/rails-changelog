@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+    Rails-Changelog
+    </title>
+
+    <meta name="description" content="<%= site.metadata.description %>" />
+
+    <link rel="stylesheet" href="<%= asset_path :css %>" />
+    <script src="<%= asset_path :js %>" defer></script>
+  </head>
+  <body class="<%= resource.data.layout %> <%= resource.data.page_class %>">
+    <header>
+      <div class="navbar bg-neutral text-neutral-content">
+        <div class='container mx-auto'>
+          <div class="flex-1">
+            <a class="btn btn-ghost normal-case text-xl" href='<%= url_for('/') %>'>Rails-Changelog</a>
+          </div>
+          <div class="flex-none">
+            <ul class="menu menu-horizontal p-0">
+              <% collections.versions.resources.each do |version| %>
+                <li class="menu-item">
+                  <a class="btn btn-ghost normal-case <%= page.relative_url == version.relative_url ? 'active' : '' %>" href='<%= version.relative_url %>'>
+                    <%= version.data['short'] %>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <main class='container mx-auto py-10'>
+      <%= yield %>
+    </main>
+
+    <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+      <nav>
+        <ul class='flex gap-2 text-base-content'>
+          <li><a href="<%= relative_url('/') %>">Home</a></li>
+          <li><a href="<%= relative_url('/about') %>">About</a></li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>

@@ -32,3 +32,4 @@ base_path: "/rails-changelog" # the subpath of your site, e.g. /blog. If you set
 # timezone: America/Los_Angeles
 # pagination:
 #   enabled: true
+

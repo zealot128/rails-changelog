@@ -25,5 +25,6 @@ end
 
 require "rubygems"
 require "bundler/setup"
+require 'pry'
 
 load Gem.bin_path("bridgetown-core", "bridgetown")
