@@ -46,6 +46,7 @@ GEM
     coderay (1.1.3)
     colorator (1.1.0)
     concurrent-ruby (1.1.10)
+    diff-lcs (1.5.0)
     erubi (1.11.0)
     faraday (1.10.2)
       faraday-em_http (~> 1.0)
@@ -73,6 +74,10 @@ GEM
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
     ffi (1.15.5)
+    grit (2.5.0)
+      diff-lcs (~> 1.1)
+      mime-types (~> 1.15)
+      posix-spawn (~> 0.3.6)
     hash_with_dot_access (1.2.0)
       activesupport (>= 5.0.0, < 8.0)
     i18n (1.12.0)
@@ -86,9 +91,11 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     method_source (1.0.0)
+    mime-types (1.25.1)
     minitest (5.16.3)
     multipart-post (2.2.3)
     nio4r (2.5.8)
+    posix-spawn (0.3.15)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -105,6 +112,7 @@ GEM
       rack
     rouge (3.30.0)
     ruby2_keywords (0.0.5)
+    rugged (1.5.0.1)
     serbea (1.0.1)
       activesupport (>= 6.0)
       erubi (>= 1.10)
@@ -125,8 +133,13 @@ PLATFORMS
 
 DEPENDENCIES
   bridgetown (~> 1.2.0.beta3)
+  grit
+  kramdown
+  kramdown-parser-gfm
   pry
   puma (~> 5.6)
+  rouge
+  rugged
 
 BUNDLED WITH
    2.1.4

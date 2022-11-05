@@ -14,3 +14,9 @@ gem "pry"
 # Puma is a Rack-compatible server used by Bridgetown
 # (you can optionally limit this to the "development" group)
 gem "puma", "~> 5.6"
+
+gem 'grit'
+gem 'kramdown'
+gem 'kramdown-parser-gfm'
+gem 'rugged'
+gem 'rouge'
