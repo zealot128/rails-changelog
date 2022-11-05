@@ -1210,16 +1210,6 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Base::Connection</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
-    "message": "",
-    "project": "guides",
-    "date_merged": 1631779990000,
-    "author": "Rafael Mendonça França",
-    "sha": "d177551c30e550a67fef76bfb612ac57abaec525",
-    "pr": "43225",
-    "merge_sha": "4bbdad500cc6438141c668d5d8b8ad2534a46b5b",
-    "html": "\n"
-  },
-  {
     "message": "*   Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.\n\n    *Jamis Buck*",
     "project": "actiontext",
     "date_merged": 1662488110000,
@@ -2418,15 +2408,5 @@
     "pr": "44244",
     "merge_sha": "bd41655d17ff85c3118a4c69d19bad47b6a2890f",
     "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
-  },
-  {
-    "message": "",
-    "project": "actionmailbox",
-    "date_merged": 1637195748000,
-    "author": "Rafael Mendonça França",
-    "sha": "d33c529c7fb6c20b5709ef37c1f2019f60eb87f8",
-    "pr": "43668",
-    "merge_sha": "a0e14a8bfebf5f4bd4b66d1d468c844ab3e9d704",
-    "html": "\n"
   }
 ]

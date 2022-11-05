@@ -4,7 +4,11 @@ class Versions < SiteBuilder
       site.data.changes.keys.each do |version|
         data = site.data.changes[version]
         add_resource :versions, version + ".html" do
-          ___({ version: version, json: data, short: version.gsub('-', '.') })
+          ___({
+            version: version,
+            json: data,
+            short: version.gsub('-', '.'),
+          })
           layout :version
           title "Rails Changelog for #{version.gsub('-', '.')}"
           output true

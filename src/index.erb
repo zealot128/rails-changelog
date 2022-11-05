@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<% last_version, data = site.data.changes.to_a.last %>
+<% last_version = collections.versions.resources.last %>
 
-<h1 class='text-3xl text-center my-5'><%= last_version %></h1>
+<h1 class='text-3xl text-center my-5'><%= last_version.data.short %></h1>
 
-<changelog-app data-seed="<%= data.to_json %>" />
+<changelog-app data-seed="<%= last_version.data.json.to_json %>" />

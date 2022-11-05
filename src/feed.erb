@@ -1,0 +1,26 @@
+---
+layout: nil
+permalink: /feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>Rails Changelog</title>
+<link>https://zealot128.github.io/rails-changelog</link>
+<description>Changelog for Rails</description>
+<atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
+<% collections.versions.resources.last.data.json.each do |version| %>
+  <item>
+    <title><%= version.project %>: <%= version.message.lines.first.to_s.sub(/^\* */, '') %></title>
+    <link>https://github.com/rails/rails/issues/<%= version.pr %></link>
+    <guid>https://github.com/rails/rails/issues/<%= version.pr %></guid>
+    <description><%= version.message %></description>
+    <pubDate><%= Time.at(version.date_merged / 1000).rfc822 %></pubDate>
+    <author><%= version.author %></author>
+    <content:encoded><![CDATA[<%= raw version.html %>]]></content:encoded>
+  </item>
+<% end %>
+</channel>
+</rss>
+
+

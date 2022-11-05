@@ -2,6 +2,8 @@
 layout: default
 ---
 
-<h1 class='text-3xl text-center my-5'><%= page.data.version %></h1>
+<h1 class='text-3xl text-center my-5'>
+  Changelogs for Ruby on Rails <%= page.data.short %>
+</h1>
 
 <changelog-app data-seed="<%= page.data.json.to_json %>" />
