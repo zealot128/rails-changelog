@@ -280,6 +280,16 @@
     "html": "<p>Make <code>Session#merge!</code> stringify keys.</p>\n\n<p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>\n\n<p><em>Drew Bragg</em></p>\n"
   },
   {
+    "message": "*   Ensure `ActiveSupport::Testing::Isolation::Forking` closes pipes\n\n    Previously, `Forking.run_in_isolation` opened two ends of a pipe. The fork\n    process closed the read end, wrote to it, and then terminated (which\n    presumably closed the file descriptors on its end). The parent process\n    closed the write end, read from it, and returned, never closing the read\n    end.\n\n    This resulted in an accumulation of open file descriptors, which could\n    cause errors if the limit is reached.\n\n    *Sam Bostock*",
+    "project": "activesupport",
+    "date_merged": 1667599521000,
+    "author": "Sam Bostock",
+    "sha": "1bd522037e2e6409fc62bcf1fa1e2d928eb6e926",
+    "pr": "45667",
+    "merge_sha": "eead039e704b790f3bcc7b1421eba53605cb5d3b",
+    "html": "<p>Ensure <code>ActiveSupport::Testing::Isolation::Forking</code> closes pipes</p>\n\n<p>Previously, <code>Forking.run_in_isolation</code> opened two ends of a pipe. The fork<br />\nprocess closed the read end, wrote to it, and then terminated (which<br />\npresumably closed the file descriptors on its end). The parent process<br />\nclosed the write end, read from it, and returned, never closing the read<br />\nend.</p>\n\n<p>This resulted in an accumulation of open file descriptors, which could<br />\ncause errors if the limit is reached.</p>\n\n<p><em>Sam Bostock</em></p>\n"
+  },
+  {
     "message": "*   Fix `Time#change` and `Time#advance` for times around the end of Daylight\n    Saving Time.\n\n    Previously, when `Time#change` or `Time#advance` constructed a time inside\n    the final stretch of Daylight Saving Time (DST), the non-DST offset would\n    always be chosen for local times:\n\n    ```ruby\n    # DST ended just before 2021-11-07 2:00:00 AM in US/Eastern.\n    ENV[\"TZ\"] = \"US/Eastern\"\n\n    time = Time.local(2021, 11, 07, 00, 59, 59) + 1\n    # => 2021-11-07 01:00:00 -0400\n    time.change(day: 07)\n    # => 2021-11-07 01:00:00 -0500\n    time.advance(seconds: 0)\n    # => 2021-11-07 01:00:00 -0500\n\n    time = Time.local(2021, 11, 06, 01, 00, 00)\n    # => 2021-11-06 01:00:00 -0400\n    time.change(day: 07)\n    # => 2021-11-07 01:00:00 -0500\n    time.advance(days: 1)\n    # => 2021-11-07 01:00:00 -0500\n    ```\n\n    And the DST offset would always be chosen for times with a `TimeZone`\n    object:\n\n    ```ruby\n    Time.zone = \"US/Eastern\"\n\n    time = Time.new(2021, 11, 07, 02, 00, 00, Time.zone) - 3600\n    # => 2021-11-07 01:00:00 -0500\n    time.change(day: 07)\n    # => 2021-11-07 01:00:00 -0400\n    time.advance(seconds: 0)\n    # => 2021-11-07 01:00:00 -0400\n\n    time = Time.new(2021, 11, 8, 01, 00, 00, Time.zone)\n    # => 2021-11-08 01:00:00 -0500\n    time.change(day: 07)\n    # => 2021-11-07 01:00:00 -0400\n    time.advance(days: -1)\n    # => 2021-11-07 01:00:00 -0400\n    ```\n\n    Now, `Time#change` and `Time#advance` will choose the offset that matches\n    the original time's offset when possible:\n\n    ```ruby\n    ENV[\"TZ\"] = \"US/Eastern\"\n\n    time = Time.local(2021, 11, 07, 00, 59, 59) + 1\n    # => 2021-11-07 01:00:00 -0400\n    time.change(day: 07)\n    # => 2021-11-07 01:00:00 -0400\n    time.advance(seconds: 0)\n    # => 2021-11-07 01:00:00 -0400\n\n    time = Time.local(2021, 11, 06, 01, 00, 00)\n    # => 2021-11-06 01:00:00 -0400\n    time.change(day: 07)\n    # => 2021-11-07 01:00:00 -0400\n    time.advance(days: 1)\n    # => 2021-11-07 01:00:00 -0400\n\n    Time.zone = \"US/Eastern\"\n\n    time = Time.new(2021, 11, 07, 02, 00, 00, Time.zone) - 3600\n    # => 2021-11-07 01:00:00 -0500\n    time.change(day: 07)\n    # => 2021-11-07 01:00:00 -0500\n    time.advance(seconds: 0)\n    # => 2021-11-07 01:00:00 -0500\n\n    time = Time.new(2021, 11, 8, 01, 00, 00, Time.zone)\n    # => 2021-11-08 01:00:00 -0500\n    time.change(day: 07)\n    # => 2021-11-07 01:00:00 -0500\n    time.advance(days: -1)\n    # => 2021-11-07 01:00:00 -0500\n    ```\n\n    *Kevin Hall*, *Takayoshi Nishida*, and *Jonathan Hefner*",
     "project": "activesupport",
     "date_merged": 1666645667000,
@@ -1228,6 +1238,16 @@
     "pr": "43706",
     "merge_sha": "327ba2d9796d1c630ede63bbc3bc9ebfc8f8740c",
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
+  },
+  {
+    "message": "*   Clear locking column on #dup\n\n    This change fixes not to duplicate locking_column like id and timestamps.\n\n    ```\n    car = Car.create!\n    car.touch\n    car.lock_version #=> 1\n    car.dup.lock_version #=> 0\n    ```\n\n    *Shouichi Kamiya*, *Seonggi Yang*, *Ryohei UEDA*",
+    "project": "activerecord",
+    "date_merged": 1667385350000,
+    "author": "Shouichi Kamiya",
+    "sha": "13d3fc9d323288b6db9294aedcc7eced02dd54f0",
+    "pr": "46243",
+    "merge_sha": "7db044f38594eb43e1d241cc82025155666cc6f1",
+    "html": "<p>Clear locking column on #dup</p>\n\n<p>This change fixes not to duplicate locking_column like id and timestamps.</p>\n\n<pre><code>car = Car.create!\ncar.touch\ncar.lock_version #=&gt; 1\ncar.dup.lock_version #=&gt; 0\n</code></pre>\n\n<p><em>Shouichi Kamiya</em>, <em>Seonggi Yang</em>, <em>Ryohei UEDA</em></p>\n"
   },
   {
     "message": "*   Invalidate transaction as early as possible\n\n    After rescuing a `TransactionRollbackError` exception Rails invalidates transactions earlier in the flow\n    allowing the framework to skip issuing the `ROLLBACK` statement in more cases.\n    Only affects adapters that have `savepoint_errors_invalidate_transactions?` configured as `true`,\n    which at this point is only applicable to the `mysql2` adapter.\n\n    *Nikita Vasilevsky*",
