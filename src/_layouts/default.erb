@@ -9,7 +9,7 @@
     </title>
 
     <meta name="description" content="<%= site.metadata.description %>" />
-    <link rel="alternate" type="application/rss+xml" title="Rails-Changelog" href="<%= url_for('/feed.xml') %>" />
+    <link rel="alternate" type="application/rss+xml" title="Rails-Changelog" href="<%= relative_url('/feed.xml') %>" />
 
     <link rel="stylesheet" href="<%= asset_path :css %>" />
     <script src="<%= asset_path :js %>" defer></script>
