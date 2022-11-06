@@ -35,7 +35,14 @@ class MergeFinder
       reject { |i| i.line[/^##|No changes/] }.
       drop_while { |i| i.line.empty? }
 
+    puts " Blame: #{lines.size} lines"
+    puts " Blame RAW"
+    puts repo.blame("./#{@changelog_file}", branch).lines.inspect
+
+
     merges = lines.slice_before { |i| i.line[/^\*/] }
+
+    puts " Merge-Candidates: #{merges.length}"
 
     merges.map do |merge|
       commit = merge.first.commit
