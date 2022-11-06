@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
