@@ -1,0 +1,23 @@
+name: Fetch new changelogs for main & deploy gh-pages
+
+on:
+  push:
+    branches:
+      - debug
+
+jobs:
+  fetch_merges:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Update rails
+        run: git submodule init && git submodule update && cd rails && git fetch
+      - name: bin/fetch_merges
+        run: bin/fetch_merges

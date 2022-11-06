@@ -37,8 +37,7 @@ class MergeFinder
 
     puts " Blame: #{lines.size} lines"
     puts " Blame RAW"
-    puts repo.blame("./#{@changelog_file}", branch).lines.map(&:line).inspect
-
+    puts repo.blame("./#{@changelog_file}", branch).lines.map { |i| [i.line, i.commit.sha] }
 
     merges = lines.slice_before { |i| i.line[/^\*/] }
 
