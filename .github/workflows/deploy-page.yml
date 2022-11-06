@@ -7,7 +7,8 @@ on:
     types:
       - completed
 
-  fetch_merges:
+jobs:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
