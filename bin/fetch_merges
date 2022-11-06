@@ -40,6 +40,7 @@ class MergeFinder
     merges.map do |merge|
       commit = merge.first.commit
       merge_commit = find_merge_commit(commit.sha)
+      next unless merge_commit
 
       MergeItem.new(
         message: message = merge.map(&:line).join("\n").force_encoding('UTF-8').strip,
@@ -51,7 +52,7 @@ class MergeFinder
         pr: merge_commit.message[/#(\d+)/, 1],
         date_merged: merge_commit.time.to_i * 1000
       )
-    end
+    end.compact
   end
 
   private
@@ -77,6 +78,10 @@ class MergeFinder
     ancestry_path = repo.git.log({}, ["#{sha}..#{branch}", '--merges', '--ancestry-path', '--oneline']).lines.map { |i| i.split.first }
     first_parent = repo.git.log({}, ["#{sha}..#{branch}", '--merges', '--first-parent', '--oneline']).lines.map { |i| i.split.first }
     merge_commit = (ancestry_path & first_parent).last
+    unless merge_commit
+      puts " skipping #{sha} - no merge commit found"
+      return nil
+    end
     rugged_repo.lookup(merge_commit)
   end
 
