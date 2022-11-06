@@ -39,6 +39,7 @@ class MergeFinder
 
     merges.map do |merge|
       commit = merge.first.commit
+      puts " processing #{merge.first.sha}"
       merge_commit = find_merge_commit(commit.sha)
       next unless merge_commit
 
@@ -100,10 +101,11 @@ if ARGV[0]
   branch = ARGV[0]
 else
   branch = 'main'
+  puts "Running on main, assuming #{main_name}"
 end
-puts "Fetching merges for branch '#{branch}'"
-puts "Rerun with #{__FILE__} <branch> to fetch merges for a different branch"
-puts "e.g. #{__FILE__} 7-0-stable"
+puts " Fetching merges for branch '#{branch}'"
+puts " Rerun with #{__FILE__} <branch> to fetch merges for a different branch"
+puts " e.g. #{__FILE__} 7-0-stable"
 
 Dir['rails/*/CHANGELOG.md'].each do |changelog|
   puts "processing #{changelog}"

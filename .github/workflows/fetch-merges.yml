@@ -21,8 +21,8 @@ jobs:
           bundler-cache: true
       - name: Update rails
         run: git submodule init && git submodule update && cd rails && git fetch
-      - name: bin/fetch_merges
-        run: bin/fetch_merges
+      # - name: bin/fetch_merges
+      #   run: bin/fetch_merges
 
       - name: Setup Node
         uses: actions/setup-node@v2
