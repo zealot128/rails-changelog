@@ -39,7 +39,7 @@ class MergeFinder
 
     merges.map do |merge|
       commit = merge.first.commit
-      puts " processing #{merge.first.sha}"
+      puts " processing #{merge.first.commit.inspect}"
       merge_commit = find_merge_commit(commit.sha)
       next unless merge_commit
 
