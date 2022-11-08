@@ -2,6 +2,7 @@
 export let changelog: ChangelogType;
 
 const prUrl = `https://github.com/rails/rails/issues/${changelog.pr}`;
+const commitUrl = `https://github.com/rails/rails/commit/${changelog.sha}`;
 
 // format date_merged as Date
 const dateMerged = new Date(changelog.date_merged);
@@ -19,9 +20,16 @@ const formattedDate = dateMerged.toLocaleDateString("en-US", {
       {@html changelog.html}
     </div>
     <div class='flex flex-row gap-1 justify-between items-center'>
+      <div class='flex gap-1'>
+      {#if changelog.pr}
       <a href={prUrl} target='_blank' rel='noopener noreferrer' class='btn btn-primary btn-outline btn-sm'>
         PR
       </a>
+      {/if}
+      <a href={commitUrl} target='_blank' rel='noopener noreferrer' class='btn btn-primary btn-outline btn-sm'>
+        Commit
+      </a>
+      </div>
       <span class='badge badge-neutral badge-md'>
         {changelog.project}
       </span>
