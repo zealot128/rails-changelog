@@ -21,7 +21,7 @@ main_name = YAML.load_file('bridgetown.config.yml')['rails_next']
 class MergeFinder
   attr_reader :branch
 
-  def initialize(changelog_file, branch = 'main')
+  def initialize(changelog_file, branch = 'origin/main')
     @branch = branch
     @changelog_file = changelog_file
     @gem = @changelog_file.split('/')[0]
@@ -116,7 +116,7 @@ puts " e.g. #{__FILE__} 7-0-stable"
 Dir['rails/*/CHANGELOG.md'].each do |changelog|
   puts "processing #{changelog}"
   b = if branch == 'main'
-        branch
+        "origin/main"
       else
         "origin/#{branch}"
       end
