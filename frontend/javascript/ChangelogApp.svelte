@@ -80,7 +80,7 @@
     </button>
   </div>
   <div class="grid grid-cols-1 items-start gap-10" class:grid-cols-1={gridStyle == "rows"} class:lg:grid-cols-2={gridStyle == "columns"}>
-    {#each selectedProjectChangelog as changelog (changelog.message)}
+    {#each selectedProjectChangelog as changelog (changelog.sha + changelog.message + changelog.project)}
       <ChangelogItem {changelog} />
     {/each}
   </div>
