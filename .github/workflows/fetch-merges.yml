@@ -19,7 +19,7 @@ jobs:
           bundler-cache: true
 
       - name: Update rails submodule
-        run: git submodule init && git submodule update && cd rails && git fetch
+        run: git submodule init && git submodule update && cd rails && git pull origin main
 
       - name: bin/fetch_merges
         run: bin/fetch_merges
