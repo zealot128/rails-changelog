@@ -2675,6 +2675,32 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add automatic filtering of encrypted attributes on inspect
+</title>
+    <link>https://github.com/rails/rails/issues/46453</link>
+    <guid>https://github.com/rails/rails/issues/46453</guid>
+    <description>*   Add automatic filtering of encrypted attributes on inspect
+
+    This feature is enabled by default but can be disabled with
+
+    ```ruby
+    config.active_record.encryption.add_to_filter_parameters = false
+    ```
+
+    *Hartley McGuire*</description>
+    <pubDate>Sat, 12 Nov 2022 21:57:04 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Add automatic filtering of encrypted attributes on inspect</p>
+
+<p>This feature is enabled by default but can be disabled with</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">encryption</span><span class="p">.</span><span class="nf">add_to_filter_parameters</span> <span class="o">=</span> <span class="kp">false</span>
+</code></pre></div></div>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Clear locking column on #dup
 </title>
     <link>https://github.com/rails/rails/issues/46243</link>
