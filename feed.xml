@@ -2675,6 +2675,36 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow unscoping of preload and eager_load associations
+</title>
+    <link>https://github.com/rails/rails/issues/45147</link>
+    <guid>https://github.com/rails/rails/issues/45147</guid>
+    <description>*   Allow unscoping of preload and eager_load associations
+
+    Added the ability to unscope preload and eager_load associations just like
+    includes, joins, etc. See ActiveRecord::QueryMethods::VALID_UNSCOPING_VALUES
+    for the full list of supported unscopable scopes.
+
+    ```ruby
+    query.unscope(:eager_load, :preload).group(:id).select(:id)
+    ```
+
+    *David Morehouse*</description>
+    <pubDate>Mon, 14 Nov 2022 23:32:37 +0000</pubDate>
+    <author>Dave Morehouse</author>
+    <content:encoded><![CDATA[<p>Allow unscoping of preload and eager_load associations</p>
+
+<p>Added the ability to unscope preload and eager_load associations just like<br />
+includes, joins, etc. See ActiveRecord::QueryMethods::VALID_UNSCOPING_VALUES<br />
+for the full list of supported unscopable scopes.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">query</span><span class="p">.</span><span class="nf">unscope</span><span class="p">(</span><span class="ss">:eager_load</span><span class="p">,</span> <span class="ss">:preload</span><span class="p">).</span><span class="nf">group</span><span class="p">(</span><span class="ss">:id</span><span class="p">).</span><span class="nf">select</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>David Morehouse</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add automatic filtering of encrypted attributes on inspect
 </title>
     <link>https://github.com/rails/rails/issues/46453</link>
