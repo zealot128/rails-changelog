@@ -2698,7 +2698,7 @@ is called.</p>
     config.active_record.raise_on_assign_to_attr_readonly = true
     ```
 
-    and will be enabled by default with `load_defaults 7.1`.
+    and will be enabled by default with `config.load_defaults 7.1`.
 
     *Alex Ghiculescu*, *Hartley McGuire*</description>
     <pubDate>Thu, 17 Nov 2022 19:28:35 +0000</pubDate>
@@ -2720,7 +2720,7 @@ is called.</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">raise_on_assign_to_attr_readonly</span> <span class="o">=</span> <span class="kp">true</span>
 </code></pre></div></div>
 
-<p>and will be enabled by default with <code>load_defaults 7.1</code>.</p>
+<p>and will be enabled by default with <code>config.load_defaults 7.1</code>.</p>
 
 <p><em>Alex Ghiculescu</em>, <em>Hartley McGuire</em></p>
 ]]></content:encoded>
