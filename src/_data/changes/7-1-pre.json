@@ -980,6 +980,26 @@
     "html": "<p>Allow testing <code>discard_on/retry_on ActiveJob::DeserializationError</code></p>\n\n<p>Previously in <code>perform_enqueued_jobs</code>, <code>deserialize_arguments_if_needed</code><br />\nwas called before calling <code>perform_now</code>. When a record no longer exists<br />\nand is serialized using GlobalID this led to raising<br />\nan <code>ActiveJob::DeserializationError</code> before reaching <code>perform_now</code> call.<br />\nThis behavior makes difficult testing the job <code>discard_on/retry_on</code> logic.</p>\n\n<p>Now <code>deserialize_arguments_if_needed</code> call is postponed to when <code>perform_now</code><br />\nis called.</p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">UpdateUserJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">discard_on</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">DeserializationError</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span>\n    <span class=\"c1\"># ...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"c1\"># In the test</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">destroy_all</span>\n<span class=\"n\">assert_nothing_raised</span> <span class=\"k\">do</span>\n  <span class=\"n\">perform_enqueued_jobs</span> <span class=\"ss\">only: </span><span class=\"no\">UpdateUserJob</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jacopo Beschi</em></p>\n"
   },
   {
+    "message": "*   Allow per attribute setting of YAML permitted classes (safe load) and unsafe load.\n\n    *Carlos Palhares*",
+    "project": "activerecord",
+    "date_merged": 1669228272000,
+    "author": "Carlos Palhares",
+    "sha": "e313fc5a4d8891149b8c7b1a66c882d22c22c348",
+    "pr": "45660",
+    "merge_sha": "4a075537dc0592753718b0f2d264ba56297ee4d3",
+    "html": "<p>Allow per attribute setting of YAML permitted classes (safe load) and unsafe load.</p>\n\n<p><em>Carlos Palhares</em></p>\n"
+  },
+  {
+    "message": "*   Add a build persistence method\n\n    Provides a wrapper for `new`, to provide feature parity with `create`s\n    ability to create multiple records from an array of hashes, using the\n    same notation as the `build` method on associations.\n\n    *Sean Denny*",
+    "project": "activerecord",
+    "date_merged": 1669222440000,
+    "author": "Sean Denny",
+    "sha": "313a379a0142088ba1aa12db1087f3e7abc5e04b",
+    "pr": "45696",
+    "merge_sha": "2434e201cf028bd37ff5e1aba52451d8d86a9d5b",
+    "html": "<p>Add a build persistence method</p>\n\n<p>Provides a wrapper for <code>new</code>, to provide feature parity with <code>create</code>s<br />\nability to create multiple records from an array of hashes, using the<br />\nsame notation as the <code>build</code> method on associations.</p>\n\n<p><em>Sean Denny</em></p>\n"
+  },
+  {
     "message": "*   Raise on assignment to readonly attributes\n\n    ```ruby\n    class Post < ActiveRecord::Base\n      attr_readonly :content\n    end\n    Post.create!(content: \"cannot be updated\")\n    post.content # \"cannot be updated\"\n    post.content = \"something else\" # => ActiveRecord::ReadonlyAttributeError\n    ```\n\n    Previously, assignment would succeed but silently not write to the database.\n\n    This behavior can be controlled by configuration:\n\n    ```ruby\n    config.active_record.raise_on_assign_to_attr_readonly = true\n    ```\n\n    and will be enabled by default with `config.load_defaults 7.1`.\n\n    *Alex Ghiculescu*, *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1668713315000,
