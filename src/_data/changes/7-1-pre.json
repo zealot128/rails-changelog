@@ -1,5 +1,25 @@
 [
   {
+    "message": "*   Add X-Forwarded-To addresses to recipients.\n\n    *Andrew Stewart*",
+    "project": "actionmailbox",
+    "date_merged": 1669161405000,
+    "author": "Andy Stewart",
+    "sha": "12867b1f325aa762e9823e2c549542ec62b3e59d",
+    "pr": "46552",
+    "merge_sha": "d42defd8c9f8d1c04fd3548c200dbd4f8ecb10a6",
+    "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
+  },
+  {
+    "message": "*   Add `after_routes_loaded` hook to `Rails::Railtie::Configuration` for\n    engines to add a hook to be called after application routes have been\n    loaded.\n\n    ```ruby\n    MyEngine.config.after_routes_loaded do\n      # code that must happen after routes have been loaded\n    end\n    ```\n\n    *Chris Salzberg*",
+    "project": "railties",
+    "date_merged": 1669148664000,
+    "author": "Chris Salzberg",
+    "sha": "64962266e38817e025de53234accc1e54ed2b32e",
+    "pr": "46545",
+    "merge_sha": "dbd9311c95f6384ff9a602904c603b64bf6ea79d",
+    "html": "<p>Add <code>after_routes_loaded</code> hook to <code>Rails::Railtie::Configuration</code> for<br />\nengines to add a hook to be called after application routes have been<br />\nloaded.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">MyEngine</span><span class=\"p\">.</span><span class=\"nf\">config</span><span class=\"p\">.</span><span class=\"nf\">after_routes_loaded</span> <span class=\"k\">do</span>\n  <span class=\"c1\"># code that must happen after routes have been loaded</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Chris Salzberg</em></p>\n"
+  },
+  {
     "message": "*   Send 303 See Other status code back for the destroy action on newly generated\n    scaffold controllers.\n\n    *Tony Drake*",
     "project": "railties",
     "date_merged": 1665767593000,
