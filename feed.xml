@@ -6,6 +6,51 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actionmailbox: Add X-Forwarded-To addresses to recipients.
+</title>
+    <link>https://github.com/rails/rails/issues/46552</link>
+    <guid>https://github.com/rails/rails/issues/46552</guid>
+    <description>*   Add X-Forwarded-To addresses to recipients.
+
+    *Andrew Stewart*</description>
+    <pubDate>Tue, 22 Nov 2022 23:56:45 +0000</pubDate>
+    <author>Andy Stewart</author>
+    <content:encoded><![CDATA[<p>Add X-Forwarded-To addresses to recipients.</p>
+
+<p><em>Andrew Stewart</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add `after_routes_loaded` hook to `Rails::Railtie::Configuration` for
+</title>
+    <link>https://github.com/rails/rails/issues/46545</link>
+    <guid>https://github.com/rails/rails/issues/46545</guid>
+    <description>*   Add `after_routes_loaded` hook to `Rails::Railtie::Configuration` for
+    engines to add a hook to be called after application routes have been
+    loaded.
+
+    ```ruby
+    MyEngine.config.after_routes_loaded do
+      # code that must happen after routes have been loaded
+    end
+    ```
+
+    *Chris Salzberg*</description>
+    <pubDate>Tue, 22 Nov 2022 20:24:24 +0000</pubDate>
+    <author>Chris Salzberg</author>
+    <content:encoded><![CDATA[<p>Add <code>after_routes_loaded</code> hook to <code>Rails::Railtie::Configuration</code> for<br />
+engines to add a hook to be called after application routes have been<br />
+loaded.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">MyEngine</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">after_routes_loaded</span> <span class="k">do</span>
+  <span class="c1"># code that must happen after routes have been loaded</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Chris Salzberg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Send 303 See Other status code back for the destroy action on newly generated
 </title>
     <link>https://github.com/rails/rails/issues/45383</link>
