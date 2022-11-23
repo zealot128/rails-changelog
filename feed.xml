@@ -2720,6 +2720,44 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow per attribute setting of YAML permitted classes (safe load) and unsafe load.
+</title>
+    <link>https://github.com/rails/rails/issues/45660</link>
+    <guid>https://github.com/rails/rails/issues/45660</guid>
+    <description>*   Allow per attribute setting of YAML permitted classes (safe load) and unsafe load.
+
+    *Carlos Palhares*</description>
+    <pubDate>Wed, 23 Nov 2022 18:31:12 +0000</pubDate>
+    <author>Carlos Palhares</author>
+    <content:encoded><![CDATA[<p>Allow per attribute setting of YAML permitted classes (safe load) and unsafe load.</p>
+
+<p><em>Carlos Palhares</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add a build persistence method
+</title>
+    <link>https://github.com/rails/rails/issues/45696</link>
+    <guid>https://github.com/rails/rails/issues/45696</guid>
+    <description>*   Add a build persistence method
+
+    Provides a wrapper for `new`, to provide feature parity with `create`s
+    ability to create multiple records from an array of hashes, using the
+    same notation as the `build` method on associations.
+
+    *Sean Denny*</description>
+    <pubDate>Wed, 23 Nov 2022 16:54:00 +0000</pubDate>
+    <author>Sean Denny</author>
+    <content:encoded><![CDATA[<p>Add a build persistence method</p>
+
+<p>Provides a wrapper for <code>new</code>, to provide feature parity with <code>create</code>s<br />
+ability to create multiple records from an array of hashes, using the<br />
+same notation as the <code>build</code> method on associations.</p>
+
+<p><em>Sean Denny</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Raise on assignment to readonly attributes
 </title>
     <link>https://github.com/rails/rails/issues/46105</link>
