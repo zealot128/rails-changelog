@@ -1,5 +1,75 @@
 [
   {
+    "message": "*   Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.\n\n    *Jamis Buck*",
+    "project": "actiontext",
+    "date_merged": 1662488110000,
+    "author": "Jamis Buck",
+    "sha": "c8ea92cf2714d940a39dc3700cd6fb21d21c08ea",
+    "pr": "45739",
+    "merge_sha": "01d345c4d6b9639a21b92482046e075ef195da92",
+    "html": "<p>Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.</p>\n\n<p><em>Jamis Buck</em></p>\n"
+  },
+  {
+    "message": "*   Fix an issue that caused the content layout to render multiple times when a\n    rich_text field was updated.\n\n    *Jacob Herrington*",
+    "project": "actiontext",
+    "date_merged": 1653232209000,
+    "author": "Jacob Herrington",
+    "sha": "5811097ece8b2f0dcab442f94f14043043e47edb",
+    "pr": "43706",
+    "merge_sha": "327ba2d9796d1c630ede63bbc3bc9ebfc8f8740c",
+    "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
+  },
+  {
+    "message": "*   The `connected()` callback can now take a `{reconnected}` parameter to differentiate\n    connections from reconnections.\n\n    ```js\n    import consumer from \"./consumer\"\n\n    consumer.subscriptions.create(\"ExampleChannel\", {\n      connected({reconnected}) {\n        if (reconnected) {\n          ...\n        } else {\n          ...\n        }\n      }\n    })\n    ```\n\n    *Mansa Keïta*",
+    "project": "actioncable",
+    "date_merged": 1663435717000,
+    "author": "Mansa Keïta",
+    "sha": "09152576d61e741b769e47bc09b46c71340064c7",
+    "pr": "46059",
+    "merge_sha": "e5288b2760aa21560413dfec3597d9a32c87ef9d",
+    "html": "<p>The <code>connected()</code> callback can now take a <code>{reconnected}</code> parameter to differentiate<br />\nconnections from reconnections.</p>\n\n<div class=\"language-js highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">import</span> <span class=\"nx\">consumer</span> <span class=\"k\">from</span> <span class=\"dl\">\"</span><span class=\"s2\">./consumer</span><span class=\"dl\">\"</span>\n\n<span class=\"nx\">consumer</span><span class=\"p\">.</span><span class=\"nx\">subscriptions</span><span class=\"p\">.</span><span class=\"nx\">create</span><span class=\"p\">(</span><span class=\"dl\">\"</span><span class=\"s2\">ExampleChannel</span><span class=\"dl\">\"</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n  <span class=\"nx\">connected</span><span class=\"p\">({</span><span class=\"nx\">reconnected</span><span class=\"p\">})</span> <span class=\"p\">{</span>\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"nx\">reconnected</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n      <span class=\"p\">...</span>\n    <span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n      <span class=\"p\">...</span>\n    <span class=\"p\">}</span>\n  <span class=\"p\">}</span>\n<span class=\"p\">})</span>\n</code></pre></div></div>\n\n<p><em>Mansa Keïta</em></p>\n"
+  },
+  {
+    "message": "*   The Redis adapter is now compatible with redis-rb 5.0\n\n    Compatibility with redis-rb 3.x was dropped.\n\n    *Jean Boussier*",
+    "project": "actioncable",
+    "date_merged": 1661156236000,
+    "author": "Jean Boussier",
+    "sha": "7587b7e99a8c52192a21c081bb029318104dd22b",
+    "pr": "45856",
+    "merge_sha": "1aac6f3bf43521cb51b45e85a19fa5f87a90acdf",
+    "html": "<p>The Redis adapter is now compatible with redis-rb 5.0</p>\n\n<p>Compatibility with redis-rb 3.x was dropped.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   The Action Cable server is now mounted with `anchor: true`.\n\n    This means that routes that also start with `/cable` will no longer clash with Action Cable.\n\n    *Alex Ghiculescu*",
+    "project": "actioncable",
+    "date_merged": 1656528254000,
+    "author": "Alex Ghiculescu",
+    "sha": "1ee984dfe4136767a907b25c30341f307198200c",
+    "pr": "45490",
+    "merge_sha": "8648ac791591aa3995d8997d128b0e249123a125",
+    "html": "<p>The Action Cable server is now mounted with <code>anchor: true</code>.</p>\n\n<p>This means that routes that also start with <code>/cable</code> will no longer clash with Action Cable.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
+    "message": "*   `ActionCable.server.remote_connections.where(...).disconnect` now sends `disconnect` message\n    before closing the connection with the reconnection strategy specified (defaults to `true`).\n\n    *Vladimir Dementyev*",
+    "project": "actioncable",
+    "date_merged": 1652730099000,
+    "author": "Jeremy Daer",
+    "sha": "df88a42e5fdfbb216242ee70c8b529034acf418d",
+    "pr": "45072",
+    "merge_sha": "712ecf774959588d435f035412a12d9f5f8a55df",
+    "html": "<p><code>ActionCable.server.remote_connections.where(...).disconnect</code> now sends <code>disconnect</code> message<br />\nbefore closing the connection with the reconnection strategy specified (defaults to <code>true</code>).</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
+  },
+  {
+    "message": "*   Added command callbacks to `ActionCable::Base::Connection`.\n\n    Now you can define `before_command`, `after_command`, and `around_command` to be invoked before, after or around any command received by a client respectively.\n\n    *Vladimir Dementyev*",
+    "project": "actioncable",
+    "date_merged": 1652730099000,
+    "author": "Vladimir Dementyev",
+    "sha": "5d6c1f64ea089a7d1c60e073d56e59c5c7552256",
+    "pr": "45072",
+    "merge_sha": "712ecf774959588d435f035412a12d9f5f8a55df",
+    "html": "<p>Added command callbacks to <code>ActionCable::Base::Connection</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
+  },
+  {
     "message": "*   Add X-Forwarded-To addresses to recipients.\n\n    *Andrew Stewart*",
     "project": "actionmailbox",
     "date_merged": 1669161405000,
@@ -350,54 +420,104 @@
     "html": "<p>Remove default <code>X-Download-Options</code> header</p>\n\n<p>This header is currently only used by Internet Explorer which<br />\nwill be discontinued in 2022 and since Rails 7 does not fully<br />\nsupport Internet Explorer this header should not be a default one.</p>\n\n<p><em>Harun Sabljaković</em></p>\n"
   },
   {
-    "message": "*   The `connected()` callback can now take a `{reconnected}` parameter to differentiate\n    connections from reconnections.\n\n    ```js\n    import consumer from \"./consumer\"\n\n    consumer.subscriptions.create(\"ExampleChannel\", {\n      connected({reconnected}) {\n        if (reconnected) {\n          ...\n        } else {\n          ...\n        }\n      }\n    })\n    ```\n\n    *Mansa Keïta*",
-    "project": "actioncable",
-    "date_merged": 1663435717000,
-    "author": "Mansa Keïta",
-    "sha": "09152576d61e741b769e47bc09b46c71340064c7",
-    "pr": "46059",
-    "merge_sha": "e5288b2760aa21560413dfec3597d9a32c87ef9d",
-    "html": "<p>The <code>connected()</code> callback can now take a <code>{reconnected}</code> parameter to differentiate<br />\nconnections from reconnections.</p>\n\n<div class=\"language-js highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">import</span> <span class=\"nx\">consumer</span> <span class=\"k\">from</span> <span class=\"dl\">\"</span><span class=\"s2\">./consumer</span><span class=\"dl\">\"</span>\n\n<span class=\"nx\">consumer</span><span class=\"p\">.</span><span class=\"nx\">subscriptions</span><span class=\"p\">.</span><span class=\"nx\">create</span><span class=\"p\">(</span><span class=\"dl\">\"</span><span class=\"s2\">ExampleChannel</span><span class=\"dl\">\"</span><span class=\"p\">,</span> <span class=\"p\">{</span>\n  <span class=\"nx\">connected</span><span class=\"p\">({</span><span class=\"nx\">reconnected</span><span class=\"p\">})</span> <span class=\"p\">{</span>\n    <span class=\"k\">if</span> <span class=\"p\">(</span><span class=\"nx\">reconnected</span><span class=\"p\">)</span> <span class=\"p\">{</span>\n      <span class=\"p\">...</span>\n    <span class=\"p\">}</span> <span class=\"k\">else</span> <span class=\"p\">{</span>\n      <span class=\"p\">...</span>\n    <span class=\"p\">}</span>\n  <span class=\"p\">}</span>\n<span class=\"p\">})</span>\n</code></pre></div></div>\n\n<p><em>Mansa Keïta</em></p>\n"
+    "message": "*   Add missing preview event to `ActiveStorage::LogSubscriber`\n\n    A `preview` event is being instrumented in `ActiveStorage::Previewer`.\n    However it was not added inside ActiveStorage's LogSubscriber class.\n\n    This will allow to have logs for when a preview happens\n    in the same fashion as all other ActiveStorage events such as\n    `upload` and `download` inside `Rails.logger`.\n\n    *Chedli Bourguiba*",
+    "project": "activestorage",
+    "date_merged": 1666432443000,
+    "author": "Chedli Bourguiba",
+    "sha": "0b8496fa7eca9e6e8f03f8f226a472a846458e63",
+    "pr": "46291",
+    "merge_sha": "e067745438c29fa553372bc5d1a1ca8717e2c457",
+    "html": "<p>Add missing preview event to <code>ActiveStorage::LogSubscriber</code></p>\n\n<p>A <code>preview</code> event is being instrumented in <code>ActiveStorage::Previewer</code>.<br />\nHowever it was not added inside ActiveStorage’s LogSubscriber class.</p>\n\n<p>This will allow to have logs for when a preview happens<br />\nin the same fashion as all other ActiveStorage events such as<br />\n<code>upload</code> and <code>download</code> inside <code>Rails.logger</code>.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
-    "message": "*   The Redis adapter is now compatible with redis-rb 5.0\n\n    Compatibility with redis-rb 3.x was dropped.\n\n    *Jean Boussier*",
-    "project": "actioncable",
-    "date_merged": 1661156236000,
-    "author": "Jean Boussier",
-    "sha": "7587b7e99a8c52192a21c081bb029318104dd22b",
-    "pr": "45856",
-    "merge_sha": "1aac6f3bf43521cb51b45e85a19fa5f87a90acdf",
-    "html": "<p>The Redis adapter is now compatible with redis-rb 5.0</p>\n\n<p>Compatibility with redis-rb 3.x was dropped.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+    "message": "*   Fix retrieving rotation value from FFmpeg on version 5.0+.\n\n    In FFmpeg version 5.0+ the rotation value has been removed from tags.\n    Instead the value can be found in side_data_list. Along with\n    this update it's possible to have values of -90, -270 to denote the video\n    has been rotated.\n\n    *Haroon Ahmed*",
+    "project": "activestorage",
+    "date_merged": 1664306220000,
+    "author": "Haroon Ahmed",
+    "sha": "206a826c8d231a331b30e27afa98d8eb1fe593f7",
+    "pr": "45837",
+    "merge_sha": "7de66704380281ead474c2e6723407b3d1246f77",
+    "html": "<p>Fix retrieving rotation value from FFmpeg on version 5.0+.</p>\n\n<p>In FFmpeg version 5.0+ the rotation value has been removed from tags.<br />\nInstead the value can be found in side_data_list. Along with<br />\nthis update it’s possible to have values of -90, -270 to denote the video<br />\nhas been rotated.</p>\n\n<p><em>Haroon Ahmed</em></p>\n"
   },
   {
-    "message": "*   The Action Cable server is now mounted with `anchor: true`.\n\n    This means that routes that also start with `/cable` will no longer clash with Action Cable.\n\n    *Alex Ghiculescu*",
-    "project": "actioncable",
-    "date_merged": 1656528254000,
-    "author": "Alex Ghiculescu",
-    "sha": "1ee984dfe4136767a907b25c30341f307198200c",
-    "pr": "45490",
-    "merge_sha": "8648ac791591aa3995d8997d128b0e249123a125",
-    "html": "<p>The Action Cable server is now mounted with <code>anchor: true</code>.</p>\n\n<p>This means that routes that also start with <code>/cable</code> will no longer clash with Action Cable.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+    "message": "*   Touch all corresponding model records after ActiveStorage::Blob is analyzed\n\n    This fixes a race condition where a record can be requested and have a cache entry built, before\n    the initial `analyze_later` completes, which will not be invalidated until something else\n    updates the record. This also invalidates cache entries when a blob is re-analyzed, which\n    is helpful if a bug is fixed in an analyzer or a new analyzer is added.\n\n    *Nate Matykiewicz*",
+    "project": "activestorage",
+    "date_merged": 1658853258000,
+    "author": "Nate Matykiewicz",
+    "sha": "294c2710620871a691e4ca5fefb5e5ace279195d",
+    "pr": "45579",
+    "merge_sha": "b01027fc2faf0f9c919152bdf0c4d5db56ea41fb",
+    "html": "<p>Touch all corresponding model records after ActiveStorage::Blob is analyzed</p>\n\n<p>This fixes a race condition where a record can be requested and have a cache entry built, before<br />\nthe initial <code>analyze_later</code> completes, which will not be invalidated until something else<br />\nupdates the record. This also invalidates cache entries when a blob is re-analyzed, which<br />\nis helpful if a bug is fixed in an analyzer or a new analyzer is added.</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
   },
   {
-    "message": "*   `ActionCable.server.remote_connections.where(...).disconnect` now sends `disconnect` message\n    before closing the connection with the reconnection strategy specified (defaults to `true`).\n\n    *Vladimir Dementyev*",
-    "project": "actioncable",
-    "date_merged": 1652730099000,
-    "author": "Jeremy Daer",
-    "sha": "df88a42e5fdfbb216242ee70c8b529034acf418d",
-    "pr": "45072",
-    "merge_sha": "712ecf774959588d435f035412a12d9f5f8a55df",
-    "html": "<p><code>ActionCable.server.remote_connections.where(...).disconnect</code> now sends <code>disconnect</code> message<br />\nbefore closing the connection with the reconnection strategy specified (defaults to <code>true</code>).</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
+    "message": "*   Add ability to use pre-defined variants when calling `preview` or\n    `representation` on an attachment.\n\n    ```ruby\n    class User < ActiveRecord::Base\n      has_one_attached :file do |attachable|\n        attachable.variant :thumb, resize_to_limit: [100, 100]\n      end\n    end\n\n    <%= image_tag user.file.representation(:thumb) %>\n    ```\n\n    *Richard Böhme*",
+    "project": "activestorage",
+    "date_merged": 1658245532000,
+    "author": "Richard Böhme",
+    "sha": "acf767dbd6fe95792caad72dc34a5054911acd6a",
+    "pr": "45098",
+    "merge_sha": "4ab6927b983a8d44585fb7ecb9f3cc7280b9deab",
+    "html": "<p>Add ability to use pre-defined variants when calling <code>preview</code> or<br />\n<code>representation</code> on an attachment.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">has_one_attached</span> <span class=\"ss\">:file</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">attachable</span><span class=\"o\">|</span>\n    <span class=\"n\">attachable</span><span class=\"p\">.</span><span class=\"nf\">variant</span> <span class=\"ss\">:thumb</span><span class=\"p\">,</span> <span class=\"ss\">resize_to_limit: </span><span class=\"p\">[</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">]</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"o\">&lt;</span><span class=\"sx\">%= image_tag user.file.representation(:thumb) %&gt;\n</span></code></pre></div></div>\n\n<p><em>Richard Böhme</em></p>\n"
   },
   {
-    "message": "*   Added command callbacks to `ActionCable::Base::Connection`.\n\n    Now you can define `before_command`, `after_command`, and `around_command` to be invoked before, after or around any command received by a client respectively.\n\n    *Vladimir Dementyev*",
-    "project": "actioncable",
-    "date_merged": 1652730099000,
-    "author": "Vladimir Dementyev",
-    "sha": "5d6c1f64ea089a7d1c60e073d56e59c5c7552256",
-    "pr": "45072",
-    "merge_sha": "712ecf774959588d435f035412a12d9f5f8a55df",
-    "html": "<p>Added command callbacks to <code>ActionCable::Base::Connection</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
+    "message": "*   Method `attach` always returns the attachments except when the record\n    is persisted, unchanged, and saving it fails, in which case it returns `nil`.\n\n    *Santiago Bartesaghi*",
+    "project": "activestorage",
+    "date_merged": 1655828898000,
+    "author": "Santiago Bartesaghi",
+    "sha": "7acdfcb12c6c83df1c401cd8d05678ffa91b6bd5",
+    "pr": "45397",
+    "merge_sha": "3ea99f53fafbcacfda58b11e2c0537fc043742f2",
+    "html": "<p>Method <code>attach</code> always returns the attachments except when the record<br />\nis persisted, unchanged, and saving it fails, in which case it returns <code>nil</code>.</p>\n\n<p><em>Santiago Bartesaghi</em></p>\n"
+  },
+  {
+    "message": "*   Fixes multiple `attach` calls within transaction not uploading files correctly.\n\n    In the following example, the code failed to upload all but the last file to the configured service.\n    ```ruby\n      ActiveRecord::Base.transaction do\n        user.attachments.attach({\n          content_type: \"text/plain\",\n          filename: \"dummy.txt\",\n          io: ::StringIO.new(\"dummy\"),\n        })\n        user.attachments.attach({\n          content_type: \"text/plain\",\n          filename: \"dummy2.txt\",\n          io: ::StringIO.new(\"dummy2\"),\n        })\n      end\n\n      assert_equal 2, user.attachments.count\n      assert user.attachments.first.service.exist?(user.attachments.first.key)  # Fails\n    ```\n\n    This was addressed by keeping track of the subchanges pending upload, and uploading them\n    once the transaction is committed.\n\n    Fixes #41661\n\n    *Santiago Bartesaghi*, *Bruno Vezoli*, *Juan Roig*, *Abhay Nikam*",
+    "project": "activestorage",
+    "date_merged": 1654592667000,
+    "author": "Santiago Bartesaghi",
+    "sha": "2895c6b9a22b856f2ba22e0866524162701886c1",
+    "pr": "45235",
+    "merge_sha": "d921f203c356a0d6902a3f75067f08993f4e33fa",
+    "html": "<p>Fixes multiple <code>attach</code> calls within transaction not uploading files correctly.</p>\n\n<p>In the following example, the code failed to upload all but the last file to the configured service.</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n    <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">attach</span><span class=\"p\">({</span>\n      <span class=\"ss\">content_type: </span><span class=\"s2\">\"text/plain\"</span><span class=\"p\">,</span>\n      <span class=\"ss\">filename: </span><span class=\"s2\">\"dummy.txt\"</span><span class=\"p\">,</span>\n      <span class=\"ss\">io: </span><span class=\"o\">::</span><span class=\"no\">StringIO</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"dummy\"</span><span class=\"p\">),</span>\n    <span class=\"p\">})</span>\n    <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">attach</span><span class=\"p\">({</span>\n      <span class=\"ss\">content_type: </span><span class=\"s2\">\"text/plain\"</span><span class=\"p\">,</span>\n      <span class=\"ss\">filename: </span><span class=\"s2\">\"dummy2.txt\"</span><span class=\"p\">,</span>\n      <span class=\"ss\">io: </span><span class=\"o\">::</span><span class=\"no\">StringIO</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"dummy2\"</span><span class=\"p\">),</span>\n    <span class=\"p\">})</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"n\">assert_equal</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">count</span>\n  <span class=\"n\">assert</span> <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">service</span><span class=\"p\">.</span><span class=\"nf\">exist?</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">key</span><span class=\"p\">)</span>  <span class=\"c1\"># Fails</span>\n</code></pre></div></div>\n\n<p>This was addressed by keeping track of the subchanges pending upload, and uploading them<br />\nonce the transaction is committed.</p>\n\n<p>Fixes #41661</p>\n\n<p><em>Santiago Bartesaghi</em>, <em>Bruno Vezoli</em>, <em>Juan Roig</em>, <em>Abhay Nikam</em></p>\n"
+  },
+  {
+    "message": "*   Raise an exception if `config.active_storage.service` is not set.\n\n    If Active Storage is configured and `config.active_storage.service` is not\n    set in the respective environment's configuration file, then an exception\n    is raised with a meaningful message when attempting to use Active Storage.\n\n    *Ghouse Mohamed*",
+    "project": "activestorage",
+    "date_merged": 1654019493000,
+    "author": "Ghouse Mohamed",
+    "sha": "06c83d93cf0ea28cda553830023717204eb77b9f",
+    "pr": "45224",
+    "merge_sha": "2d62fd01b65739dc0c2955c47afd40da68f146f6",
+    "html": "<p>Raise an exception if <code>config.active_storage.service</code> is not set.</p>\n\n<p>If Active Storage is configured and <code>config.active_storage.service</code> is not<br />\nset in the respective environment’s configuration file, then an exception<br />\nis raised with a meaningful message when attempting to use Active Storage.</p>\n\n<p><em>Ghouse Mohamed</em></p>\n"
+  },
+  {
+    "message": "*   Fixes proxy downloads of files over 5mb\n\n    Previously, trying to view and/or download files larger than 5mb stored in\n    services like S3 via proxy mode could return corrupted files at around\n    5.2mb or cause random halts in the download. Now,\n    `ActiveStorage::Blobs::ProxyController` correctly handles streaming these\n    larger files from the service to the client without any issues.\n\n    Fixes #44679\n\n    *Felipe Raul*",
+    "project": "activestorage",
+    "date_merged": 1654019493000,
+    "author": "Ghouse Mohamed",
+    "sha": "06c83d93cf0ea28cda553830023717204eb77b9f",
+    "pr": "45224",
+    "merge_sha": "2d62fd01b65739dc0c2955c47afd40da68f146f6",
+    "html": "<p>Fixes proxy downloads of files over 5mb</p>\n\n<p>Previously, trying to view and/or download files larger than 5mb stored in<br />\nservices like S3 via proxy mode could return corrupted files at around<br />\n5.2mb or cause random halts in the download. Now,<br />\n<code>ActiveStorage::Blobs::ProxyController</code> correctly handles streaming these<br />\nlarger files from the service to the client without any issues.</p>\n\n<p>Fixes #44679</p>\n\n<p><em>Felipe Raul</em></p>\n"
+  },
+  {
+    "message": "*   Saving attachment(s) to a record returns the blob/blobs object\n\n    Previously, saving attachments did not return the blob/blobs that\n    were attached. Now, saving attachments to a record with `#attach`\n    method returns the blob or array of blobs that were attached to\n    the record. If it fails to save the attachment(s), then it returns\n    `false`.\n\n    *Ghouse Mohamed*",
+    "project": "activestorage",
+    "date_merged": 1645823941000,
+    "author": "Ghouse Mohamed",
+    "sha": "fbfb6e6885e65f212771430a235359ee86654512",
+    "pr": "44439",
+    "merge_sha": "fb88db58d7ec1c1998d90d3fdadf819200786a7c",
+    "html": "<p>Saving attachment(s) to a record returns the blob/blobs object</p>\n\n<p>Previously, saving attachments did not return the blob/blobs that<br />\nwere attached. Now, saving attachments to a record with <code>#attach</code><br />\nmethod returns the blob or array of blobs that were attached to<br />\nthe record. If it fails to save the attachment(s), then it returns<br />\n<code>false</code>.</p>\n\n<p><em>Ghouse Mohamed</em></p>\n"
+  },
+  {
+    "message": "*   Don't stream responses in redirect mode\n\n    Previously, both redirect mode and proxy mode streamed their\n    responses which caused a new thread to be created, and could end\n    up leaking connections in the connection pool. But since redirect\n    mode doesn't actually send any data, it doesn't need to be\n    streamed.\n\n    *Luke Lau*",
+    "project": "activestorage",
+    "date_merged": 1643199285000,
+    "author": "Luke Lau",
+    "sha": "7e61f808c684b22b175271530a8bf3ced0815dfb",
+    "pr": "44244",
+    "merge_sha": "bd41655d17ff85c3118a4c69d19bad47b6a2890f",
+    "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
   },
   {
     "message": "*   Don't double log the `controller` or `action` when using `ActiveRecord::QueryLog`\n\n    Previously if you set `config.active_record.query_log_tags` to an array that included\n    `:controller` or `:action`, that item would get logged twice. This bug has been fixed.\n\n    *Alex Ghiculescu*",
@@ -680,304 +800,14 @@
     "html": "<p>Make <code>Session#merge!</code> stringify keys.</p>\n\n<p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>\n\n<p><em>Drew Bragg</em></p>\n"
   },
   {
-    "message": "*   Custom attribute types that inherit from Active Model built-in types and do\n    not override the `serialize` method will now benefit from an optimization\n    when serializing attribute values for the database.\n\n    For example, with a custom type like the following:\n\n    ```ruby\n    class DowncasedString < ActiveModel::Type::String\n      def cast(value)\n        super&.downcase\n      end\n    end\n\n    ActiveRecord::Type.register(:downcased_string, DowncasedString)\n\n    class User < ActiveRecord::Base\n      attribute :email, :downcased_string\n    end\n\n    user = User.new(email: \"FooBar@example.com\")\n    ```\n\n    Serializing the `email` attribute for the database will be roughly twice as\n    fast.  More expensive `cast` operations will likely see greater improvements.\n\n    *Jonathan Hefner*",
-    "project": "activemodel",
-    "date_merged": 1665956420000,
-    "author": "Jonathan Hefner",
-    "sha": "28ebf3c81c1cf083cc920822157d63e7b480ee93",
-    "pr": "46219",
-    "merge_sha": "c2c778152c047e45693b38fe5e0be3fe8ad0573e",
-    "html": "<p>Custom attribute types that inherit from Active Model built-in types and do<br />\nnot override the <code>serialize</code> method will now benefit from an optimization<br />\nwhen serializing attribute values for the database.</p>\n\n<p>For example, with a custom type like the following:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">DowncasedString</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Type</span><span class=\"o\">::</span><span class=\"no\">String</span>\n  <span class=\"k\">def</span> <span class=\"nf\">cast</span><span class=\"p\">(</span><span class=\"n\">value</span><span class=\"p\">)</span>\n    <span class=\"k\">super</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">downcase</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Type</span><span class=\"p\">.</span><span class=\"nf\">register</span><span class=\"p\">(</span><span class=\"ss\">:downcased_string</span><span class=\"p\">,</span> <span class=\"no\">DowncasedString</span><span class=\"p\">)</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:downcased_string</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"FooBar@example.com\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Serializing the <code>email</code> attribute for the database will be roughly twice as<br />\nfast.  More expensive <code>cast</code> operations will likely see greater improvements.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
-  },
-  {
-    "message": "*   `has_secure_password` now supports password challenges via a\n    `password_challenge` accessor and validation.\n\n    A password challenge is a safeguard to verify that the current user is\n    actually the password owner.  It can be used when changing sensitive model\n    fields, such as the password itself.  It is different than a password\n    confirmation, which is used to prevent password typos.\n\n    When `password_challenge` is set, the validation checks that the value's\n    digest matches the *currently persisted* `password_digest` (i.e.\n    `password_digest_was`).\n\n    This allows a password challenge to be done as part of a typical `update`\n    call, just like a password confirmation.  It also allows a password\n    challenge error to be handled in the same way as other validation errors.\n\n    For example, in the controller, instead of:\n\n    ```ruby\n    password_params = params.require(:password).permit(\n      :password_challenge,\n      :password,\n      :password_confirmation,\n    )\n\n    password_challenge = password_params.delete(:password_challenge)\n    @password_challenge_failed = !current_user.authenticate(password_challenge)\n\n    if !@password_challenge_failed && current_user.update(password_params)\n      # ...\n    end\n    ```\n\n    You can now write:\n\n    ```ruby\n    password_params = params.require(:password).permit(\n      :password_challenge,\n      :password,\n      :password_confirmation,\n    ).with_defaults(password_challenge: \"\")\n\n    if current_user.update(password_params)\n      # ...\n    end\n    ```\n\n    And, in the view, instead of checking `@password_challenge_failed`, you can\n    render an error for the `password_challenge` field just as you would for\n    other form fields, including utilizing `config.action_view.field_error_proc`.\n\n    *Jonathan Hefner*",
-    "project": "activemodel",
-    "date_merged": 1658812482000,
-    "author": "Jonathan Hefner",
-    "sha": "71c0c81b479db885d00f01b95824f01801296815",
-    "pr": "45662",
-    "merge_sha": "f34fbadc104b6a65c10a8c4e5eef18ffa339d6cb",
-    "html": "<p><code>has_secure_password</code> now supports password challenges via a<br />\n<code>password_challenge</code> accessor and validation.</p>\n\n<p>A password challenge is a safeguard to verify that the current user is<br />\nactually the password owner.  It can be used when changing sensitive model<br />\nfields, such as the password itself.  It is different than a password<br />\nconfirmation, which is used to prevent password typos.</p>\n\n<p>When <code>password_challenge</code> is set, the validation checks that the value’s<br />\ndigest matches the <em>currently persisted</em> <code>password_digest</code> (i.e.<br />\n<code>password_digest_was</code>).</p>\n\n<p>This allows a password challenge to be done as part of a typical <code>update</code><br />\ncall, just like a password confirmation.  It also allows a password<br />\nchallenge error to be handled in the same way as other validation errors.</p>\n\n<p>For example, in the controller, instead of:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">password_params</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:password</span><span class=\"p\">).</span><span class=\"nf\">permit</span><span class=\"p\">(</span>\n  <span class=\"ss\">:password_challenge</span><span class=\"p\">,</span>\n  <span class=\"ss\">:password</span><span class=\"p\">,</span>\n  <span class=\"ss\">:password_confirmation</span><span class=\"p\">,</span>\n<span class=\"p\">)</span>\n\n<span class=\"n\">password_challenge</span> <span class=\"o\">=</span> <span class=\"n\">password_params</span><span class=\"p\">.</span><span class=\"nf\">delete</span><span class=\"p\">(</span><span class=\"ss\">:password_challenge</span><span class=\"p\">)</span>\n<span class=\"vi\">@password_challenge_failed</span> <span class=\"o\">=</span> <span class=\"o\">!</span><span class=\"n\">current_user</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"n\">password_challenge</span><span class=\"p\">)</span>\n\n<span class=\"k\">if</span> <span class=\"o\">!</span><span class=\"vi\">@password_challenge_failed</span> <span class=\"o\">&amp;&amp;</span> <span class=\"n\">current_user</span><span class=\"p\">.</span><span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">password_params</span><span class=\"p\">)</span>\n  <span class=\"c1\"># ...</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>You can now write:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">password_params</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:password</span><span class=\"p\">).</span><span class=\"nf\">permit</span><span class=\"p\">(</span>\n  <span class=\"ss\">:password_challenge</span><span class=\"p\">,</span>\n  <span class=\"ss\">:password</span><span class=\"p\">,</span>\n  <span class=\"ss\">:password_confirmation</span><span class=\"p\">,</span>\n<span class=\"p\">).</span><span class=\"nf\">with_defaults</span><span class=\"p\">(</span><span class=\"ss\">password_challenge: </span><span class=\"s2\">\"\"</span><span class=\"p\">)</span>\n\n<span class=\"k\">if</span> <span class=\"n\">current_user</span><span class=\"p\">.</span><span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">password_params</span><span class=\"p\">)</span>\n  <span class=\"c1\"># ...</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>And, in the view, instead of checking <code>@password_challenge_failed</code>, you can<br />\nrender an error for the <code>password_challenge</code> field just as you would for<br />\nother form fields, including utilizing <code>config.action_view.field_error_proc</code>.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
-  },
-  {
-    "message": "*   Support infinite ranges for `LengthValidator`s `:in`/`:within` options\n\n    ```ruby\n    validates_length_of :first_name, in: ..30\n    ```\n\n    *fatkodima*",
-    "project": "activemodel",
-    "date_merged": 1653069920000,
-    "author": "fatkodima",
-    "sha": "91cd5cbc9316ecf558551da6b7dc5326b8a7a3ec",
-    "pr": "45138",
-    "merge_sha": "aa5e958f658f2a73c97bfbfe2ab988c8dd331433",
-    "html": "<p>Support infinite ranges for <code>LengthValidator</code>s <code>:in</code>/<code>:within</code> options</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_length_of</span> <span class=\"ss\">:first_name</span><span class=\"p\">,</span> <span class=\"ss\">in: </span><span class=\"o\">..</span><span class=\"mi\">30</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
-  },
-  {
-    "message": "*   Add support for beginless ranges to inclusivity/exclusivity validators:\n\n    ```ruby\n    validates_inclusion_of :birth_date, in: -> { (..Date.today) }\n    ```\n\n    *Bo Jeanes*",
-    "project": "activemodel",
-    "date_merged": 1653058494000,
-    "author": "Bo Jeanes",
-    "sha": "28e40a64059a0e134b20297d9b38499cfe24fccc",
-    "pr": "45123",
-    "merge_sha": "9868a26de4bc72d2ea593c2d97d4adfb2fd73ccd",
-    "html": "<p>Add support for beginless ranges to inclusivity/exclusivity validators:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_inclusion_of</span> <span class=\"ss\">:birth_date</span><span class=\"p\">,</span> <span class=\"ss\">in: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"p\">(</span><span class=\"o\">..</span><span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Bo Jeanes</em></p>\n"
-  },
-  {
-    "message": "*   Make validators accept lambdas without record argument\n\n    ```ruby\n    # Before\n    validates_comparison_of :birth_date, less_than_or_equal_to: ->(_record) { Date.today }\n\n    # After\n    validates_comparison_of :birth_date, less_than_or_equal_to: -> { Date.today }\n    ```\n\n    *fatkodima*",
-    "project": "activemodel",
-    "date_merged": 1652897327000,
-    "author": "fatkodima",
-    "sha": "00b269ec8d3f1bd80c36437e684e8c010a91a4d3",
-    "pr": "45118",
-    "merge_sha": "08555b9bd5f6e40dbecd75df2099a5f827c49fc0",
-    "html": "<p>Make validators accept lambdas without record argument</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">validates_comparison_of</span> <span class=\"ss\">:birth_date</span><span class=\"p\">,</span> <span class=\"ss\">less_than_or_equal_to: </span><span class=\"o\">-&gt;</span><span class=\"p\">(</span><span class=\"n\">_record</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span> <span class=\"p\">}</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">validates_comparison_of</span> <span class=\"ss\">:birth_date</span><span class=\"p\">,</span> <span class=\"ss\">less_than_or_equal_to: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
-  },
-  {
-    "message": "*   Fix casting long strings to `Date`, `Time` or `DateTime`\n\n    *fatkodima*",
-    "project": "activemodel",
-    "date_merged": 1652281410000,
-    "author": "fatkodima",
-    "sha": "0f4b030c44effaea67d6a3d3de5b8a1ae7429088",
-    "pr": "45005",
-    "merge_sha": "e1a9b3d861cd6d893541a4e6e14fb68f6891e846",
-    "html": "<p>Fix casting long strings to <code>Date</code>, <code>Time</code> or <code>DateTime</code></p>\n\n<p><em>fatkodima</em></p>\n"
-  },
-  {
-    "message": "*   Use different cache namespace for proxy calls\n\n    Models can currently have different attribute bodies for the same method\n    names, leading to conflicts. Adding a new namespace `:active_model_proxy`\n    fixes the issue.\n\n    *Chris Salzberg*",
-    "project": "activemodel",
-    "date_merged": 1643879431000,
-    "author": "Chris Salzberg",
-    "sha": "81519dec1add5ee5d93cc24239283ca56379eb9a",
-    "pr": "44322",
-    "merge_sha": "61cf029f8269fe4214c54dd911f62c335371e6e8",
-    "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
-  },
-  {
-    "message": "*   `check_box_tag` and `radio_button_tag` now accept `checked` as a keyword argument\n\n    This is to make the API more consistent with the `FormHelper` variants. You can now provide `checked` as a positional or keyword argument:\n\n    ```erb\n    = check_box_tag \"admin\", \"1\", false\n    = check_box_tag \"admin\", \"1\", checked: false\n\n    = radio_button_tag 'favorite_color', 'maroon', false\n    = radio_button_tag 'favorite_color', 'maroon', checked: false\n    ```\n\n    *Alex Ghiculescu*",
-    "project": "actionview",
-    "date_merged": 1666469985000,
-    "author": "Alex Ghiculescu",
-    "sha": "4fcac154f44eac36aaea48ae4ae2cf9d2b210d5e",
-    "pr": "45527",
-    "merge_sha": "cdb51080b1dabb5f0ecf5c9754d2b22842f366c7",
-    "html": "<p><code>check_box_tag</code> and <code>radio_button_tag</code> now accept <code>checked</code> as a keyword argument</p>\n\n<p>This is to make the API more consistent with the <code>FormHelper</code> variants. You can now provide <code>checked</code> as a positional or keyword argument:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>= check_box_tag \"admin\", \"1\", false\n= check_box_tag \"admin\", \"1\", checked: false\n\n= radio_button_tag 'favorite_color', 'maroon', false\n= radio_button_tag 'favorite_color', 'maroon', checked: false\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
-  },
-  {
-    "message": "*   Allow passing a class to `dom_id`.\n    You no longer need to call `new` when passing a class to `dom_id`.\n    This makes `dom_id` behave like `dom_class` in this regard.\n    Apart from saving a few keystrokes, it prevents Ruby from needing\n    to instantiate a whole new object just to generate a string.\n\n    Before:\n    ```ruby\n    dom_id(Post) # => NoMethodError: undefined method `to_key' for Post:Class\n    ```\n\n    After:\n    ```ruby\n    dom_id(Post) # => \"new_post\"\n    ```\n\n    *Goulven Champenois*",
-    "project": "actionview",
-    "date_merged": 1663700736000,
-    "author": "Goulven Champenois",
-    "sha": "f4f15c86a2702aaaa4dc63c775d1273384371dd1",
-    "pr": "46068",
-    "merge_sha": "d845a2464648f687e45dac7ce5f7f0cdd39d2e1e",
-    "html": "<p>Allow passing a class to <code>dom_id</code>.<br />\nYou no longer need to call <code>new</code> when passing a class to <code>dom_id</code>.<br />\nThis makes <code>dom_id</code> behave like <code>dom_class</code> in this regard.<br />\nApart from saving a few keystrokes, it prevents Ruby from needing<br />\nto instantiate a whole new object just to generate a string.</p>\n\n<p>Before:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">dom_id</span><span class=\"p\">(</span><span class=\"no\">Post</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; NoMethodError: undefined method `to_key' for Post:Class</span>\n</code></pre></div></div>\n\n<p>After:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">dom_id</span><span class=\"p\">(</span><span class=\"no\">Post</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"new_post\"</span>\n</code></pre></div></div>\n\n<p><em>Goulven Champenois</em></p>\n"
-  },
-  {
-    "message": "*   Report `:locals` as part of the data returned by ActionView render instrumentation.\n\n    Before:\n    ```ruby\n    {\n    identifier: \"/Users/adam/projects/notifications/app/views/posts/index.html.erb\",\n    layout: \"layouts/application\"\n    }\n    ```\n\n    After:\n    ```ruby\n    {\n    identifier: \"/Users/adam/projects/notifications/app/views/posts/index.html.erb\",\n    layout: \"layouts/application\",\n    locals: {foo: \"bar\"}\n    }\n    ```\n\n    *Aaron Gough*",
-    "project": "actionview",
-    "date_merged": 1662752742000,
-    "author": "Aaron Gough",
-    "sha": "b451ff098de2b6505a3eeecd3f39c25ec8336904",
-    "pr": "45977",
-    "merge_sha": "e29ca73db43ab9b1c8e49c20975fea127c638ed1",
-    "html": "<p>Report <code>:locals</code> as part of the data returned by ActionView render instrumentation.</p>\n\n<p>Before:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span>\n<span class=\"ss\">identifier: </span><span class=\"s2\">\"/Users/adam/projects/notifications/app/views/posts/index.html.erb\"</span><span class=\"p\">,</span>\n<span class=\"ss\">layout: </span><span class=\"s2\">\"layouts/application\"</span>\n<span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p>After:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span>\n<span class=\"ss\">identifier: </span><span class=\"s2\">\"/Users/adam/projects/notifications/app/views/posts/index.html.erb\"</span><span class=\"p\">,</span>\n<span class=\"ss\">layout: </span><span class=\"s2\">\"layouts/application\"</span><span class=\"p\">,</span>\n<span class=\"ss\">locals: </span><span class=\"p\">{</span><span class=\"ss\">foo: </span><span class=\"s2\">\"bar\"</span><span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Aaron Gough</em></p>\n"
-  },
-  {
-    "message": "*   Strip `break_sequence` at the end of `word_wrap`.\n\n    This fixes a bug where `word_wrap` didn't properly strip off break sequences that had printable characters.\n\n    For example, compare the outputs of this template:\n\n    ```erb\n    # <%= word_wrap(\"11 22\\n33 44\", line_width: 2, break_sequence: \"\\n# \") %>\n    ```\n\n    Before:\n\n    ```\n    # 11\n    # 22\n    #\n    # 33\n    # 44\n    #\n    ```\n\n    After:\n\n    ```\n    # 11\n    # 22\n    # 33\n    # 44\n    ```\n\n    *Max Chernyak*",
-    "project": "actionview",
-    "date_merged": 1662411769000,
-    "author": "Max Chernyak",
-    "sha": "fe554a3daf74d52f4b3f3d2cdb352ad0495049cc",
-    "pr": "45942",
-    "merge_sha": "23c3202de1c73b2b1fb43e917032f2471e8e5633",
-    "html": "<p>Strip <code>break_sequence</code> at the end of <code>word_wrap</code>.</p>\n\n<p>This fixes a bug where <code>word_wrap</code> didn’t properly strip off break sequences that had printable characters.</p>\n\n<p>For example, compare the outputs of this template:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code># <span class=\"cp\">&lt;%=</span> <span class=\"n\">word_wrap</span><span class=\"p\">(</span><span class=\"s2\">\"11 22</span><span class=\"se\">\\n</span><span class=\"s2\">33 44\"</span><span class=\"p\">,</span> <span class=\"ss\">line_width: </span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"ss\">break_sequence: </span><span class=\"s2\">\"</span><span class=\"se\">\\n</span><span class=\"s2\"># \"</span><span class=\"p\">)</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p>Before:</p>\n\n<pre><code># 11\n# 22\n#\n# 33\n# 44\n#\n</code></pre>\n\n<p>After:</p>\n\n<pre><code># 11\n# 22\n# 33\n# 44\n</code></pre>\n\n<p><em>Max Chernyak</em></p>\n"
-  },
-  {
-    "message": "*   Allow templates to set strict `locals`.\n\n    By default, templates will accept any `locals` as keyword arguments. To define what `locals` a template accepts, add a `locals` magic comment:\n\n    ```erb\n    <%# locals: (message:) -%>\n    <%= message %>\n    ```\n\n    Default values can also be provided:\n\n    ```erb\n    <%# locals: (message: \"Hello, world!\") -%>\n    <%= message %>\n    ```\n\n    Or `locals` can be disabled entirely:\n\n    ```erb\n    <%# locals: () %>\n    ```\n\n    *Joel Hawksley*",
-    "project": "actionview",
-    "date_merged": 1659422124000,
-    "author": "Joel Hawksley",
-    "sha": "b7908a62f9a640a004b71fb9d8c9d56549f09ccb",
-    "pr": "45727",
-    "merge_sha": "91b51e31cdc16a6aed9418f957660fcdac9eada6",
-    "html": "<p>Allow templates to set strict <code>locals</code>.</p>\n\n<p>By default, templates will accept any <code>locals</code> as keyword arguments. To define what <code>locals</code> a template accepts, add a <code>locals</code> magic comment:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c\">&lt;%# locals: (message:) -%&gt;</span>\n<span class=\"cp\">&lt;%=</span> <span class=\"n\">message</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p>Default values can also be provided:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c\">&lt;%# locals: (message: \"Hello, world!\") -%&gt;</span>\n<span class=\"cp\">&lt;%=</span> <span class=\"n\">message</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p>Or <code>locals</code> can be disabled entirely:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c\">&lt;%# locals: () %&gt;</span>\n</code></pre></div></div>\n\n<p><em>Joel Hawksley</em></p>\n"
-  },
-  {
-    "message": "*   Add `include_seconds` option for `datetime_local_field`\n\n    This allows to omit seconds part in the input field, by passing `include_seconds: false`\n\n    *Wojciech Wnętrzak*",
-    "project": "actionview",
-    "date_merged": 1657217784000,
-    "author": "Wojciech Wnętrzak",
-    "sha": "2dea9aebf2ce2e0f37c821a8d88f3caef549de7a",
-    "pr": "45188",
-    "merge_sha": "d525b7848b94ce6da35ff44d3e2d1f36fb2fe309",
-    "html": "<p>Add <code>include_seconds</code> option for <code>datetime_local_field</code></p>\n\n<p>This allows to omit seconds part in the input field, by passing <code>include_seconds: false</code></p>\n\n<p><em>Wojciech Wnętrzak</em></p>\n"
-  },
-  {
-    "message": "*   Guard against `ActionView::Helpers::FormTagHelper#field_name` calls with nil\n    `object_name` arguments. For example:\n\n    ```erb\n    <%= fields do |f| %>\n      <%= f.field_name :body %>\n    <% end %>\n    ```\n\n    *Sean Doyle*",
-    "project": "actionview",
-    "date_merged": 1655321007000,
-    "author": "Sean Doyle",
-    "sha": "8a0bc4aa902e36817abb48f28210b5f1b10c7618",
-    "pr": "45366",
-    "merge_sha": "bdc3e192bb9b7223963d79cf7a15967a88f4bf6f",
-    "html": "<p>Guard against <code>ActionView::Helpers::FormTagHelper#field_name</code> calls with nil<br />\n<code>object_name</code> arguments. For example:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"cp\">&lt;%=</span> <span class=\"n\">fields</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">f</span><span class=\"o\">|</span> <span class=\"cp\">%&gt;</span>\n  <span class=\"cp\">&lt;%=</span> <span class=\"n\">f</span><span class=\"p\">.</span><span class=\"nf\">field_name</span> <span class=\"ss\">:body</span> <span class=\"cp\">%&gt;</span>\n<span class=\"cp\">&lt;%</span> <span class=\"k\">end</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Strings returned from `strip_tags` are correctly tagged `html_safe?`\n\n    Because these strings contain no HTML elements and the basic entities are escaped, they are safe\n    to be included as-is as PCDATA in HTML content. Tagging them as html-safe avoids double-escaping\n    entities when being concatenated to a SafeBuffer during rendering.\n\n    Fixes [rails/rails-html-sanitizer#124](https://github.com/rails/rails-html-sanitizer/issues/124)\n\n    *Mike Dalessio*",
-    "project": "actionview",
-    "date_merged": 1654007157000,
-    "author": "Mike Dalessio",
-    "sha": "5f8f6764d8632c5b63635e6520278c3e80716fc7",
-    "pr": "45218",
-    "merge_sha": "55e143a398247387d734386716016928fca841a4",
-    "html": "<p>Strings returned from <code>strip_tags</code> are correctly tagged <code>html_safe?</code></p>\n\n<p>Because these strings contain no HTML elements and the basic entities are escaped, they are safe<br />\nto be included as-is as PCDATA in HTML content. Tagging them as html-safe avoids double-escaping<br />\nentities when being concatenated to a SafeBuffer during rendering.</p>\n\n<p>Fixes <a href=\"https://github.com/rails/rails-html-sanitizer/issues/124\">rails/rails-html-sanitizer#124</a></p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Move `convert_to_model` call from `form_for` into `form_with`\n\n    Now that `form_for` is implemented in terms of `form_with`, remove the\n    `convert_to_model` call from `form_for`.\n\n    *Sean Doyle*",
-    "project": "actionview",
-    "date_merged": 1653488685000,
-    "author": "Sean Doyle",
-    "sha": "980de46f543ab2c2b1a1a7caf494f3bf7885c82f",
-    "pr": "44468",
-    "merge_sha": "3404606378dd93344007d954ab326cc1e973c22a",
-    "html": "<p>Move <code>convert_to_model</code> call from <code>form_for</code> into <code>form_with</code></p>\n\n<p>Now that <code>form_for</code> is implemented in terms of <code>form_with</code>, remove the<br />\n<code>convert_to_model</code> call from <code>form_for</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Fix and add protections for XSS in `ActionView::Helpers` and `ERB::Util`.\n\n    Escape dangerous characters in names of tags and names of attributes in the\n    tag helpers, following the XML specification. Rename the option\n    `:escape_attributes` to `:escape`, to simplify by applying the option to the\n    whole tag.\n\n    *Álvaro Martín Fraguas*",
-    "project": "actionview",
-    "date_merged": 1651174760000,
-    "author": "Alvaro Martin Fraguas",
-    "sha": "649516ce0feb699ae06a8c5e81df75d460cc9a85",
-    "pr": "44973",
-    "merge_sha": "6ce8c03b53501ace1f0484dadcc245e830a0c840",
-    "html": "<p>Fix and add protections for XSS in <code>ActionView::Helpers</code> and <code>ERB::Util</code>.</p>\n\n<p>Escape dangerous characters in names of tags and names of attributes in the<br />\ntag helpers, following the XML specification. Rename the option<br />\n<code>:escape_attributes</code> to <code>:escape</code>, to simplify by applying the option to the<br />\nwhole tag.</p>\n\n<p><em>Álvaro Martín Fraguas</em></p>\n"
-  },
-  {
-    "message": "*   Extend audio_tag and video_tag to accept Active Storage attachments.\n\n    Now it's possible to write\n\n    ```ruby\n    audio_tag(user.audio_file)\n    video_tag(user.video_file)\n    ```\n\n    Instead of\n\n    ```ruby\n    audio_tag(polymorphic_path(user.audio_file))\n    video_tag(polymorphic_path(user.video_file))\n    ```\n\n    `image_tag` already supported that, so this follows the same pattern.\n\n    *Matheus Richard*",
-    "project": "actionview",
-    "date_merged": 1647244014000,
-    "author": "Matheus Richard",
-    "sha": "414394206a9637272a37d30a64dbf31ea6b477ac",
-    "pr": "44085",
-    "merge_sha": "c48d846518e77fbdcc3d411bc24cbeb2d90fd04e",
-    "html": "<p>Extend audio_tag and video_tag to accept Active Storage attachments.</p>\n\n<p>Now it’s possible to write</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">audio_tag</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">audio_file</span><span class=\"p\">)</span>\n<span class=\"n\">video_tag</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">video_file</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Instead of</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">audio_tag</span><span class=\"p\">(</span><span class=\"n\">polymorphic_path</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">audio_file</span><span class=\"p\">))</span>\n<span class=\"n\">video_tag</span><span class=\"p\">(</span><span class=\"n\">polymorphic_path</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">video_file</span><span class=\"p\">))</span>\n</code></pre></div></div>\n\n<p><code>image_tag</code> already supported that, so this follows the same pattern.</p>\n\n<p><em>Matheus Richard</em></p>\n"
-  },
-  {
-    "message": "*   Ensure models passed to `form_for` attempt to call `to_model`.\n\n    *Sean Doyle*",
-    "project": "actionview",
-    "date_merged": 1645132869000,
-    "author": "Sean Doyle",
-    "sha": "9dc083f95d15a883d0d51d24ce1eab7158db6a82",
-    "pr": "44328",
-    "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
-    "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Don't double log the `job` when using `ActiveRecord::QueryLog`\n\n    Previously if you set `config.active_record.query_log_tags` to an array that included\n    `:job`, the job name would get logged twice. This bug has been fixed.\n\n    *Alex Ghiculescu*",
-    "project": "activejob",
-    "date_merged": 1666480961000,
-    "author": "Alex Ghiculescu",
-    "sha": "f737b5ec1380963d2e354d25550e27ee3930831a",
-    "pr": "46279",
-    "merge_sha": "971fa17502deaf5d720a7bc0fdf8f258afb556b6",
-    "html": "<p>Don’t double log the <code>job</code> when using <code>ActiveRecord::QueryLog</code></p>\n\n<p>Previously if you set <code>config.active_record.query_log_tags</code> to an array that included<br />\n<code>:job</code>, the job name would get logged twice. This bug has been fixed.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
-  },
-  {
-    "message": "*   Add support for Sidekiq's transaction-aware client\n\n    *Jonathan del Strother*",
-    "project": "activejob",
-    "date_merged": 1663707843000,
-    "author": "Jonathan del Strother",
-    "sha": "b38992038f78731665c17a3ac06aada7bd9c1476",
-    "pr": "46080",
-    "merge_sha": "a168949736e06a938ab793004ea2c09e9df08711",
-    "html": "<p>Add support for Sidekiq’s transaction-aware client</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
-  },
-  {
-    "message": "*   Remove QueAdapter from Active Job.\n\n    After maintaining Active Job QueAdapter by Rails and Que side\n    to support Ruby 3 keyword arguments and options provided as top level keywords,\n    it is quite difficult to maintain it this way.\n\n    Active Job Que adapter can be included in the future version of que gem itself.\n\n    *Yasuo Honda*",
-    "project": "activejob",
-    "date_merged": 1663024693000,
-    "author": "Yasuo Honda",
-    "sha": "cb22eb2b3628de428171175063371155d70a136c",
-    "pr": "46005",
-    "merge_sha": "1f7676efa54a05628e98b657019133fa261b87cb",
-    "html": "<p>Remove QueAdapter from Active Job.</p>\n\n<p>After maintaining Active Job QueAdapter by Rails and Que side<br />\nto support Ruby 3 keyword arguments and options provided as top level keywords,<br />\nit is quite difficult to maintain it this way.</p>\n\n<p>Active Job Que adapter can be included in the future version of que gem itself.</p>\n\n<p><em>Yasuo Honda</em></p>\n"
-  },
-  {
-    "message": "*   Fix BigDecimal (de)serialization for adapters using JSON.\n\n    Previously, BigDecimal was listed as not needing a serializer.  However,\n    when used with an adapter storing the job arguments as JSON, it would get\n    serialized as a simple String, resulting in deserialization also producing\n    a String (instead of a BigDecimal).\n\n    By using a serializer, we ensure the round trip is safe.\n\n    To ensure applications using BigDecimal job arguments are not subject to\n    race conditions during deployment (where a replica running a version of\n    Rails without BigDecimalSerializer fails to deserialize an argument\n    serialized with it), `ActiveJob.use_big_decimal_serializer` is disabled by\n    default, and can be set to true in a following deployment..\n\n    *Sam Bostock*",
-    "project": "activejob",
-    "date_merged": 1658411908000,
-    "author": "Sam Bostock",
-    "sha": "bc1f3233384601fa8720ee164bced84ffbf3acf2",
-    "pr": "45618",
-    "merge_sha": "17fd2edafbe10d9294a52f3b7771cfe0c5348467",
-    "html": "<p>Fix BigDecimal (de)serialization for adapters using JSON.</p>\n\n<p>Previously, BigDecimal was listed as not needing a serializer.  However,<br />\nwhen used with an adapter storing the job arguments as JSON, it would get<br />\nserialized as a simple String, resulting in deserialization also producing<br />\na String (instead of a BigDecimal).</p>\n\n<p>By using a serializer, we ensure the round trip is safe.</p>\n\n<p>To ensure applications using BigDecimal job arguments are not subject to<br />\nrace conditions during deployment (where a replica running a version of<br />\nRails without BigDecimalSerializer fails to deserialize an argument<br />\nserialized with it), <code>ActiveJob.use_big_decimal_serializer</code> is disabled by<br />\ndefault, and can be set to true in a following deployment..</p>\n\n<p><em>Sam Bostock</em></p>\n"
-  },
-  {
-    "message": "*   Preserve full-precision `enqueued_at` timestamps for serialized jobs,\n    allowing more accurate reporting of how long a job spent waiting in the\n    queue before it was performed.\n\n    Retains IS08601 format compatibility.\n\n    *Jeremy Daer*",
-    "project": "activejob",
-    "date_merged": 1657717327000,
-    "author": "Jeremy Daer",
-    "sha": "8d9d8013caa88efa2514aa741eeaf673c7520415",
-    "pr": "45584",
-    "merge_sha": "05ae3faaf3779d53935ab983b75f2dc7c6dfb7fa",
-    "html": "<p>Preserve full-precision <code>enqueued_at</code> timestamps for serialized jobs,<br />\nallowing more accurate reporting of how long a job spent waiting in the<br />\nqueue before it was performed.</p>\n\n<p>Retains IS08601 format compatibility.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
-  },
-  {
-    "message": "*   Add `--parent` option to job generator to specify parent class of job.\n\n    Example:\n\n    `bin/rails g job process_payment --parent=payment_job` generates:\n\n    ```ruby\n    class ProcessPaymentJob < PaymentJob\n      # ...\n    end\n    ```\n\n    *Gannon McGibbon*",
-    "project": "activejob",
-    "date_merged": 1657227455000,
-    "author": "Gannon McGibbon",
-    "sha": "02444d9267e77f52bae4bf8035468e823ed0b0c9",
-    "pr": "45528",
-    "merge_sha": "e240daa6cc013b5a24fb692a8b82ce18dc44ad11",
-    "html": "<p>Add <code>--parent</code> option to job generator to specify parent class of job.</p>\n\n<p>Example:</p>\n\n<p><code>bin/rails g job process_payment --parent=payment_job</code> generates:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ProcessPaymentJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">PaymentJob</span>\n  <span class=\"c1\"># ...</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Add more detailed description to job generator.\n\n    *Gannon McGibbon*",
-    "project": "activejob",
-    "date_merged": 1655153632000,
-    "author": "Gannon McGibbon",
-    "sha": "5f57c7d35254a9a7edb2726b3e279c33a0c07f26",
-    "pr": "45327",
-    "merge_sha": "effe5040468d4d0b06a14ea8c91d2b444a984de3",
-    "html": "<p>Add more detailed description to job generator.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   `perform.active_job` notification payloads now include `:db_runtime`, which\n    is the total time (in ms) taken by database queries while performing a job.\n    This value can be used to better understand how a job's time is spent.\n\n    *Jonathan Hefner*",
-    "project": "activejob",
-    "date_merged": 1652989174000,
-    "author": "Jonathan Hefner",
-    "sha": "9574a39a7acf38453d08a31f56a9797c7e417e94",
-    "pr": "40058",
-    "merge_sha": "82b78af4b8537e8194be824ea6964cf9252d3e5b",
-    "html": "<p><code>perform.active_job</code> notification payloads now include <code>:db_runtime</code>, which<br />\nis the total time (in ms) taken by database queries while performing a job.<br />\nThis value can be used to better understand how a job’s time is spent.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
-  },
-  {
-    "message": "*   Update `ActiveJob::QueueAdapters::QueAdapter` to remove deprecation warning.\n\n    Remove a deprecation warning introduced in que 1.2 to prepare for changes in\n    que 2.0 necessary for Ruby 3 compatibility.\n\n    *Damir Zekic* and *Adis Hasovic*",
-    "project": "activejob",
-    "date_merged": 1661812120000,
-    "author": "Ryuta Kamizono",
-    "sha": "e0e64e9474b2738b3181e7c55499b47b1c5dbff4",
-    "pr": "45896",
-    "merge_sha": "9b6abb50b2c99fe4c5b1249367f790d30fc1e64d",
-    "html": "<p>Update <code>ActiveJob::QueueAdapters::QueAdapter</code> to remove deprecation warning.</p>\n\n<p>Remove a deprecation warning introduced in que 1.2 to prepare for changes in<br />\nque 2.0 necessary for Ruby 3 compatibility.</p>\n\n<p><em>Damir Zekic</em> and <em>Adis Hasovic</em></p>\n"
-  },
-  {
-    "message": "*   Add missing `bigdecimal` require in `ActiveJob::Arguments`\n\n    Could cause `uninitialized constant ActiveJob::Arguments::BigDecimal (NameError)`\n    when loading Active Job in isolation.\n\n    *Jean Boussier*",
-    "project": "activejob",
-    "date_merged": 1644656886000,
-    "author": "Jean Boussier",
-    "sha": "4ca5aff9f0a050d3be9e22c805d30acbb7253c63",
-    "pr": "44411",
-    "merge_sha": "bcc3a49ccc1178655f599fdeb8da55d1942f134b",
-    "html": "<p>Add missing <code>bigdecimal</code> require in <code>ActiveJob::Arguments</code></p>\n\n<p>Could cause <code>uninitialized constant ActiveJob::Arguments::BigDecimal (NameError)</code><br />\nwhen loading Active Job in isolation.</p>\n\n<p><em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Allow testing `discard_on/retry_on ActiveJob::DeserializationError`\n\n    Previously in `perform_enqueued_jobs`, `deserialize_arguments_if_needed`\n    was called before calling `perform_now`. When a record no longer exists\n    and is serialized using GlobalID this led to raising\n    an `ActiveJob::DeserializationError` before reaching `perform_now` call.\n    This behavior makes difficult testing the job `discard_on/retry_on` logic.\n\n    Now `deserialize_arguments_if_needed` call is postponed to when `perform_now`\n    is called.\n\n    Example:\n\n    ```ruby\n    class UpdateUserJob < ActiveJob::Base\n      discard_on ActiveJob::DeserializationError\n\n      def perform(user)\n        # ...\n      end\n    end\n\n    # In the test\n    User.destroy_all\n    assert_nothing_raised do\n      perform_enqueued_jobs only: UpdateUserJob\n    end\n    ```\n\n    *Jacopo Beschi*",
-    "project": "activejob",
-    "date_merged": 1641488011000,
-    "author": "Jacopo",
-    "sha": "20545fc820522f87665188bd91b6c679953fb5e2",
-    "pr": "43066",
-    "merge_sha": "6fb54c00e48d666ea9c07b82babc9a2874c999b8",
-    "html": "<p>Allow testing <code>discard_on/retry_on ActiveJob::DeserializationError</code></p>\n\n<p>Previously in <code>perform_enqueued_jobs</code>, <code>deserialize_arguments_if_needed</code><br />\nwas called before calling <code>perform_now</code>. When a record no longer exists<br />\nand is serialized using GlobalID this led to raising<br />\nan <code>ActiveJob::DeserializationError</code> before reaching <code>perform_now</code> call.<br />\nThis behavior makes difficult testing the job <code>discard_on/retry_on</code> logic.</p>\n\n<p>Now <code>deserialize_arguments_if_needed</code> call is postponed to when <code>perform_now</code><br />\nis called.</p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">UpdateUserJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">discard_on</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">DeserializationError</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span>\n    <span class=\"c1\"># ...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"c1\"># In the test</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">destroy_all</span>\n<span class=\"n\">assert_nothing_raised</span> <span class=\"k\">do</span>\n  <span class=\"n\">perform_enqueued_jobs</span> <span class=\"ss\">only: </span><span class=\"no\">UpdateUserJob</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jacopo Beschi</em></p>\n"
+    "message": "*   `has_one` and `belongs_to` associations now define a `reset_association` method\n    on the owner model (where `association` is the name of the association). This\n    method unloads the cached associate record, if any, and causes the next access\n    to query it from the database.\n\n    *George Claghorn*",
+    "project": "activerecord",
+    "date_merged": 1669235115000,
+    "author": "George Claghorn",
+    "sha": "725ee799712e551c1e5a1687036d9a0c18ad2fb8",
+    "pr": "46165",
+    "merge_sha": "e32e09228aff02c5c6662212b1c0c451d7f6a0e3",
+    "html": "<p><code>has_one</code> and <code>belongs_to</code> associations now define a <code>reset_association</code> method<br />\non the owner model (where <code>association</code> is the name of the association). This<br />\nmethod unloads the cached associate record, if any, and causes the next access<br />\nto query it from the database.</p>\n\n<p><em>George Claghorn</em></p>\n"
   },
   {
     "message": "*   Allow per attribute setting of YAML permitted classes (safe load) and unsafe load.\n\n    *Carlos Palhares*",
@@ -1980,144 +1810,74 @@
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
-    "message": "*   Added ability to download `.eml` file for the email preview.\n\n    *Igor Kasyanchuk*",
-    "project": "actionmailer",
-    "date_merged": 1662759599000,
-    "author": "Igor Kasyanchuk",
-    "sha": "9f0a064fde3c053c1436fe6c88279b287fe01cad",
-    "pr": "45987",
-    "merge_sha": "cbf4290f0e94579e7dcfaf02df0dcd327b2951c3",
-    "html": "<p>Added ability to download <code>.eml</code> file for the email preview.</p>\n\n<p><em>Igor Kasyanchuk</em></p>\n"
+    "message": "*   Custom attribute types that inherit from Active Model built-in types and do\n    not override the `serialize` method will now benefit from an optimization\n    when serializing attribute values for the database.\n\n    For example, with a custom type like the following:\n\n    ```ruby\n    class DowncasedString < ActiveModel::Type::String\n      def cast(value)\n        super&.downcase\n      end\n    end\n\n    ActiveRecord::Type.register(:downcased_string, DowncasedString)\n\n    class User < ActiveRecord::Base\n      attribute :email, :downcased_string\n    end\n\n    user = User.new(email: \"FooBar@example.com\")\n    ```\n\n    Serializing the `email` attribute for the database will be roughly twice as\n    fast.  More expensive `cast` operations will likely see greater improvements.\n\n    *Jonathan Hefner*",
+    "project": "activemodel",
+    "date_merged": 1665956420000,
+    "author": "Jonathan Hefner",
+    "sha": "28ebf3c81c1cf083cc920822157d63e7b480ee93",
+    "pr": "46219",
+    "merge_sha": "c2c778152c047e45693b38fe5e0be3fe8ad0573e",
+    "html": "<p>Custom attribute types that inherit from Active Model built-in types and do<br />\nnot override the <code>serialize</code> method will now benefit from an optimization<br />\nwhen serializing attribute values for the database.</p>\n\n<p>For example, with a custom type like the following:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">DowncasedString</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Type</span><span class=\"o\">::</span><span class=\"no\">String</span>\n  <span class=\"k\">def</span> <span class=\"nf\">cast</span><span class=\"p\">(</span><span class=\"n\">value</span><span class=\"p\">)</span>\n    <span class=\"k\">super</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">downcase</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Type</span><span class=\"p\">.</span><span class=\"nf\">register</span><span class=\"p\">(</span><span class=\"ss\">:downcased_string</span><span class=\"p\">,</span> <span class=\"no\">DowncasedString</span><span class=\"p\">)</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:downcased_string</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"FooBar@example.com\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Serializing the <code>email</code> attribute for the database will be roughly twice as<br />\nfast.  More expensive <code>cast</code> operations will likely see greater improvements.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
-    "message": "*   Support multiple preview paths for mailers.\n\n    Option `config.action_mailer.preview_path` is deprecated in favor of\n    `config.action_mailer.preview_paths`. Appending paths to this configuration option\n    will cause those paths to be used in the search for mailer previews.\n\n    *fatkodima*",
-    "project": "actionmailer",
-    "date_merged": 1660072818000,
+    "message": "*   `has_secure_password` now supports password challenges via a\n    `password_challenge` accessor and validation.\n\n    A password challenge is a safeguard to verify that the current user is\n    actually the password owner.  It can be used when changing sensitive model\n    fields, such as the password itself.  It is different than a password\n    confirmation, which is used to prevent password typos.\n\n    When `password_challenge` is set, the validation checks that the value's\n    digest matches the *currently persisted* `password_digest` (i.e.\n    `password_digest_was`).\n\n    This allows a password challenge to be done as part of a typical `update`\n    call, just like a password confirmation.  It also allows a password\n    challenge error to be handled in the same way as other validation errors.\n\n    For example, in the controller, instead of:\n\n    ```ruby\n    password_params = params.require(:password).permit(\n      :password_challenge,\n      :password,\n      :password_confirmation,\n    )\n\n    password_challenge = password_params.delete(:password_challenge)\n    @password_challenge_failed = !current_user.authenticate(password_challenge)\n\n    if !@password_challenge_failed && current_user.update(password_params)\n      # ...\n    end\n    ```\n\n    You can now write:\n\n    ```ruby\n    password_params = params.require(:password).permit(\n      :password_challenge,\n      :password,\n      :password_confirmation,\n    ).with_defaults(password_challenge: \"\")\n\n    if current_user.update(password_params)\n      # ...\n    end\n    ```\n\n    And, in the view, instead of checking `@password_challenge_failed`, you can\n    render an error for the `password_challenge` field just as you would for\n    other form fields, including utilizing `config.action_view.field_error_proc`.\n\n    *Jonathan Hefner*",
+    "project": "activemodel",
+    "date_merged": 1658812482000,
+    "author": "Jonathan Hefner",
+    "sha": "71c0c81b479db885d00f01b95824f01801296815",
+    "pr": "45662",
+    "merge_sha": "f34fbadc104b6a65c10a8c4e5eef18ffa339d6cb",
+    "html": "<p><code>has_secure_password</code> now supports password challenges via a<br />\n<code>password_challenge</code> accessor and validation.</p>\n\n<p>A password challenge is a safeguard to verify that the current user is<br />\nactually the password owner.  It can be used when changing sensitive model<br />\nfields, such as the password itself.  It is different than a password<br />\nconfirmation, which is used to prevent password typos.</p>\n\n<p>When <code>password_challenge</code> is set, the validation checks that the value’s<br />\ndigest matches the <em>currently persisted</em> <code>password_digest</code> (i.e.<br />\n<code>password_digest_was</code>).</p>\n\n<p>This allows a password challenge to be done as part of a typical <code>update</code><br />\ncall, just like a password confirmation.  It also allows a password<br />\nchallenge error to be handled in the same way as other validation errors.</p>\n\n<p>For example, in the controller, instead of:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">password_params</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:password</span><span class=\"p\">).</span><span class=\"nf\">permit</span><span class=\"p\">(</span>\n  <span class=\"ss\">:password_challenge</span><span class=\"p\">,</span>\n  <span class=\"ss\">:password</span><span class=\"p\">,</span>\n  <span class=\"ss\">:password_confirmation</span><span class=\"p\">,</span>\n<span class=\"p\">)</span>\n\n<span class=\"n\">password_challenge</span> <span class=\"o\">=</span> <span class=\"n\">password_params</span><span class=\"p\">.</span><span class=\"nf\">delete</span><span class=\"p\">(</span><span class=\"ss\">:password_challenge</span><span class=\"p\">)</span>\n<span class=\"vi\">@password_challenge_failed</span> <span class=\"o\">=</span> <span class=\"o\">!</span><span class=\"n\">current_user</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"n\">password_challenge</span><span class=\"p\">)</span>\n\n<span class=\"k\">if</span> <span class=\"o\">!</span><span class=\"vi\">@password_challenge_failed</span> <span class=\"o\">&amp;&amp;</span> <span class=\"n\">current_user</span><span class=\"p\">.</span><span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">password_params</span><span class=\"p\">)</span>\n  <span class=\"c1\"># ...</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>You can now write:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">password_params</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:password</span><span class=\"p\">).</span><span class=\"nf\">permit</span><span class=\"p\">(</span>\n  <span class=\"ss\">:password_challenge</span><span class=\"p\">,</span>\n  <span class=\"ss\">:password</span><span class=\"p\">,</span>\n  <span class=\"ss\">:password_confirmation</span><span class=\"p\">,</span>\n<span class=\"p\">).</span><span class=\"nf\">with_defaults</span><span class=\"p\">(</span><span class=\"ss\">password_challenge: </span><span class=\"s2\">\"\"</span><span class=\"p\">)</span>\n\n<span class=\"k\">if</span> <span class=\"n\">current_user</span><span class=\"p\">.</span><span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"n\">password_params</span><span class=\"p\">)</span>\n  <span class=\"c1\"># ...</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>And, in the view, instead of checking <code>@password_challenge_failed</code>, you can<br />\nrender an error for the <code>password_challenge</code> field just as you would for<br />\nother form fields, including utilizing <code>config.action_view.field_error_proc</code>.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Support infinite ranges for `LengthValidator`s `:in`/`:within` options\n\n    ```ruby\n    validates_length_of :first_name, in: ..30\n    ```\n\n    *fatkodima*",
+    "project": "activemodel",
+    "date_merged": 1653069920000,
     "author": "fatkodima",
-    "sha": "64ad045e472a60872e5547a381c3af896a546dfd",
-    "pr": "31595",
-    "merge_sha": "95066e5fbd617edeaa6b1d28a50f295145aee52d",
-    "html": "<p>Support multiple preview paths for mailers.</p>\n\n<p>Option <code>config.action_mailer.preview_path</code> is deprecated in favor of<br />\n<code>config.action_mailer.preview_paths</code>. Appending paths to this configuration option<br />\nwill cause those paths to be used in the search for mailer previews.</p>\n\n<p><em>fatkodima</em></p>\n"
+    "sha": "91cd5cbc9316ecf558551da6b7dc5326b8a7a3ec",
+    "pr": "45138",
+    "merge_sha": "aa5e958f658f2a73c97bfbfe2ab988c8dd331433",
+    "html": "<p>Support infinite ranges for <code>LengthValidator</code>s <code>:in</code>/<code>:within</code> options</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_length_of</span> <span class=\"ss\">:first_name</span><span class=\"p\">,</span> <span class=\"ss\">in: </span><span class=\"o\">..</span><span class=\"mi\">30</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
-    "message": "*   Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.\n\n    *Jamis Buck*",
-    "project": "actiontext",
-    "date_merged": 1662488110000,
-    "author": "Jamis Buck",
-    "sha": "c8ea92cf2714d940a39dc3700cd6fb21d21c08ea",
-    "pr": "45739",
-    "merge_sha": "01d345c4d6b9639a21b92482046e075ef195da92",
-    "html": "<p>Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.</p>\n\n<p><em>Jamis Buck</em></p>\n"
+    "message": "*   Add support for beginless ranges to inclusivity/exclusivity validators:\n\n    ```ruby\n    validates_inclusion_of :birth_date, in: -> { (..Date.today) }\n    ```\n\n    *Bo Jeanes*",
+    "project": "activemodel",
+    "date_merged": 1653058494000,
+    "author": "Bo Jeanes",
+    "sha": "28e40a64059a0e134b20297d9b38499cfe24fccc",
+    "pr": "45123",
+    "merge_sha": "9868a26de4bc72d2ea593c2d97d4adfb2fd73ccd",
+    "html": "<p>Add support for beginless ranges to inclusivity/exclusivity validators:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_inclusion_of</span> <span class=\"ss\">:birth_date</span><span class=\"p\">,</span> <span class=\"ss\">in: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"p\">(</span><span class=\"o\">..</span><span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Bo Jeanes</em></p>\n"
   },
   {
-    "message": "*   Fix an issue that caused the content layout to render multiple times when a\n    rich_text field was updated.\n\n    *Jacob Herrington*",
-    "project": "actiontext",
-    "date_merged": 1653232209000,
-    "author": "Jacob Herrington",
-    "sha": "5811097ece8b2f0dcab442f94f14043043e47edb",
-    "pr": "43706",
-    "merge_sha": "327ba2d9796d1c630ede63bbc3bc9ebfc8f8740c",
-    "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
+    "message": "*   Make validators accept lambdas without record argument\n\n    ```ruby\n    # Before\n    validates_comparison_of :birth_date, less_than_or_equal_to: ->(_record) { Date.today }\n\n    # After\n    validates_comparison_of :birth_date, less_than_or_equal_to: -> { Date.today }\n    ```\n\n    *fatkodima*",
+    "project": "activemodel",
+    "date_merged": 1652897327000,
+    "author": "fatkodima",
+    "sha": "00b269ec8d3f1bd80c36437e684e8c010a91a4d3",
+    "pr": "45118",
+    "merge_sha": "08555b9bd5f6e40dbecd75df2099a5f827c49fc0",
+    "html": "<p>Make validators accept lambdas without record argument</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">validates_comparison_of</span> <span class=\"ss\">:birth_date</span><span class=\"p\">,</span> <span class=\"ss\">less_than_or_equal_to: </span><span class=\"o\">-&gt;</span><span class=\"p\">(</span><span class=\"n\">_record</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span> <span class=\"p\">}</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">validates_comparison_of</span> <span class=\"ss\">:birth_date</span><span class=\"p\">,</span> <span class=\"ss\">less_than_or_equal_to: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
-    "message": "*   Add missing preview event to `ActiveStorage::LogSubscriber`\n\n    A `preview` event is being instrumented in `ActiveStorage::Previewer`.\n    However it was not added inside ActiveStorage's LogSubscriber class.\n\n    This will allow to have logs for when a preview happens\n    in the same fashion as all other ActiveStorage events such as\n    `upload` and `download` inside `Rails.logger`.\n\n    *Chedli Bourguiba*",
-    "project": "activestorage",
-    "date_merged": 1666432443000,
-    "author": "Chedli Bourguiba",
-    "sha": "0b8496fa7eca9e6e8f03f8f226a472a846458e63",
-    "pr": "46291",
-    "merge_sha": "e067745438c29fa553372bc5d1a1ca8717e2c457",
-    "html": "<p>Add missing preview event to <code>ActiveStorage::LogSubscriber</code></p>\n\n<p>A <code>preview</code> event is being instrumented in <code>ActiveStorage::Previewer</code>.<br />\nHowever it was not added inside ActiveStorage’s LogSubscriber class.</p>\n\n<p>This will allow to have logs for when a preview happens<br />\nin the same fashion as all other ActiveStorage events such as<br />\n<code>upload</code> and <code>download</code> inside <code>Rails.logger</code>.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+    "message": "*   Fix casting long strings to `Date`, `Time` or `DateTime`\n\n    *fatkodima*",
+    "project": "activemodel",
+    "date_merged": 1652281410000,
+    "author": "fatkodima",
+    "sha": "0f4b030c44effaea67d6a3d3de5b8a1ae7429088",
+    "pr": "45005",
+    "merge_sha": "e1a9b3d861cd6d893541a4e6e14fb68f6891e846",
+    "html": "<p>Fix casting long strings to <code>Date</code>, <code>Time</code> or <code>DateTime</code></p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
-    "message": "*   Fix retrieving rotation value from FFmpeg on version 5.0+.\n\n    In FFmpeg version 5.0+ the rotation value has been removed from tags.\n    Instead the value can be found in side_data_list. Along with\n    this update it's possible to have values of -90, -270 to denote the video\n    has been rotated.\n\n    *Haroon Ahmed*",
-    "project": "activestorage",
-    "date_merged": 1664306220000,
-    "author": "Haroon Ahmed",
-    "sha": "206a826c8d231a331b30e27afa98d8eb1fe593f7",
-    "pr": "45837",
-    "merge_sha": "7de66704380281ead474c2e6723407b3d1246f77",
-    "html": "<p>Fix retrieving rotation value from FFmpeg on version 5.0+.</p>\n\n<p>In FFmpeg version 5.0+ the rotation value has been removed from tags.<br />\nInstead the value can be found in side_data_list. Along with<br />\nthis update it’s possible to have values of -90, -270 to denote the video<br />\nhas been rotated.</p>\n\n<p><em>Haroon Ahmed</em></p>\n"
-  },
-  {
-    "message": "*   Touch all corresponding model records after ActiveStorage::Blob is analyzed\n\n    This fixes a race condition where a record can be requested and have a cache entry built, before\n    the initial `analyze_later` completes, which will not be invalidated until something else\n    updates the record. This also invalidates cache entries when a blob is re-analyzed, which\n    is helpful if a bug is fixed in an analyzer or a new analyzer is added.\n\n    *Nate Matykiewicz*",
-    "project": "activestorage",
-    "date_merged": 1658853258000,
-    "author": "Nate Matykiewicz",
-    "sha": "294c2710620871a691e4ca5fefb5e5ace279195d",
-    "pr": "45579",
-    "merge_sha": "b01027fc2faf0f9c919152bdf0c4d5db56ea41fb",
-    "html": "<p>Touch all corresponding model records after ActiveStorage::Blob is analyzed</p>\n\n<p>This fixes a race condition where a record can be requested and have a cache entry built, before<br />\nthe initial <code>analyze_later</code> completes, which will not be invalidated until something else<br />\nupdates the record. This also invalidates cache entries when a blob is re-analyzed, which<br />\nis helpful if a bug is fixed in an analyzer or a new analyzer is added.</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
-  },
-  {
-    "message": "*   Add ability to use pre-defined variants when calling `preview` or\n    `representation` on an attachment.\n\n    ```ruby\n    class User < ActiveRecord::Base\n      has_one_attached :file do |attachable|\n        attachable.variant :thumb, resize_to_limit: [100, 100]\n      end\n    end\n\n    <%= image_tag user.file.representation(:thumb) %>\n    ```\n\n    *Richard Böhme*",
-    "project": "activestorage",
-    "date_merged": 1658245532000,
-    "author": "Richard Böhme",
-    "sha": "acf767dbd6fe95792caad72dc34a5054911acd6a",
-    "pr": "45098",
-    "merge_sha": "4ab6927b983a8d44585fb7ecb9f3cc7280b9deab",
-    "html": "<p>Add ability to use pre-defined variants when calling <code>preview</code> or<br />\n<code>representation</code> on an attachment.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">has_one_attached</span> <span class=\"ss\">:file</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">attachable</span><span class=\"o\">|</span>\n    <span class=\"n\">attachable</span><span class=\"p\">.</span><span class=\"nf\">variant</span> <span class=\"ss\">:thumb</span><span class=\"p\">,</span> <span class=\"ss\">resize_to_limit: </span><span class=\"p\">[</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">]</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"o\">&lt;</span><span class=\"sx\">%= image_tag user.file.representation(:thumb) %&gt;\n</span></code></pre></div></div>\n\n<p><em>Richard Böhme</em></p>\n"
-  },
-  {
-    "message": "*   Method `attach` always returns the attachments except when the record\n    is persisted, unchanged, and saving it fails, in which case it returns `nil`.\n\n    *Santiago Bartesaghi*",
-    "project": "activestorage",
-    "date_merged": 1655828898000,
-    "author": "Santiago Bartesaghi",
-    "sha": "7acdfcb12c6c83df1c401cd8d05678ffa91b6bd5",
-    "pr": "45397",
-    "merge_sha": "3ea99f53fafbcacfda58b11e2c0537fc043742f2",
-    "html": "<p>Method <code>attach</code> always returns the attachments except when the record<br />\nis persisted, unchanged, and saving it fails, in which case it returns <code>nil</code>.</p>\n\n<p><em>Santiago Bartesaghi</em></p>\n"
-  },
-  {
-    "message": "*   Fixes multiple `attach` calls within transaction not uploading files correctly.\n\n    In the following example, the code failed to upload all but the last file to the configured service.\n    ```ruby\n      ActiveRecord::Base.transaction do\n        user.attachments.attach({\n          content_type: \"text/plain\",\n          filename: \"dummy.txt\",\n          io: ::StringIO.new(\"dummy\"),\n        })\n        user.attachments.attach({\n          content_type: \"text/plain\",\n          filename: \"dummy2.txt\",\n          io: ::StringIO.new(\"dummy2\"),\n        })\n      end\n\n      assert_equal 2, user.attachments.count\n      assert user.attachments.first.service.exist?(user.attachments.first.key)  # Fails\n    ```\n\n    This was addressed by keeping track of the subchanges pending upload, and uploading them\n    once the transaction is committed.\n\n    Fixes #41661\n\n    *Santiago Bartesaghi*, *Bruno Vezoli*, *Juan Roig*, *Abhay Nikam*",
-    "project": "activestorage",
-    "date_merged": 1654592667000,
-    "author": "Santiago Bartesaghi",
-    "sha": "2895c6b9a22b856f2ba22e0866524162701886c1",
-    "pr": "45235",
-    "merge_sha": "d921f203c356a0d6902a3f75067f08993f4e33fa",
-    "html": "<p>Fixes multiple <code>attach</code> calls within transaction not uploading files correctly.</p>\n\n<p>In the following example, the code failed to upload all but the last file to the configured service.</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n    <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">attach</span><span class=\"p\">({</span>\n      <span class=\"ss\">content_type: </span><span class=\"s2\">\"text/plain\"</span><span class=\"p\">,</span>\n      <span class=\"ss\">filename: </span><span class=\"s2\">\"dummy.txt\"</span><span class=\"p\">,</span>\n      <span class=\"ss\">io: </span><span class=\"o\">::</span><span class=\"no\">StringIO</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"dummy\"</span><span class=\"p\">),</span>\n    <span class=\"p\">})</span>\n    <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">attach</span><span class=\"p\">({</span>\n      <span class=\"ss\">content_type: </span><span class=\"s2\">\"text/plain\"</span><span class=\"p\">,</span>\n      <span class=\"ss\">filename: </span><span class=\"s2\">\"dummy2.txt\"</span><span class=\"p\">,</span>\n      <span class=\"ss\">io: </span><span class=\"o\">::</span><span class=\"no\">StringIO</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"dummy2\"</span><span class=\"p\">),</span>\n    <span class=\"p\">})</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"n\">assert_equal</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">count</span>\n  <span class=\"n\">assert</span> <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">service</span><span class=\"p\">.</span><span class=\"nf\">exist?</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">attachments</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">key</span><span class=\"p\">)</span>  <span class=\"c1\"># Fails</span>\n</code></pre></div></div>\n\n<p>This was addressed by keeping track of the subchanges pending upload, and uploading them<br />\nonce the transaction is committed.</p>\n\n<p>Fixes #41661</p>\n\n<p><em>Santiago Bartesaghi</em>, <em>Bruno Vezoli</em>, <em>Juan Roig</em>, <em>Abhay Nikam</em></p>\n"
-  },
-  {
-    "message": "*   Raise an exception if `config.active_storage.service` is not set.\n\n    If Active Storage is configured and `config.active_storage.service` is not\n    set in the respective environment's configuration file, then an exception\n    is raised with a meaningful message when attempting to use Active Storage.\n\n    *Ghouse Mohamed*",
-    "project": "activestorage",
-    "date_merged": 1654019493000,
-    "author": "Ghouse Mohamed",
-    "sha": "06c83d93cf0ea28cda553830023717204eb77b9f",
-    "pr": "45224",
-    "merge_sha": "2d62fd01b65739dc0c2955c47afd40da68f146f6",
-    "html": "<p>Raise an exception if <code>config.active_storage.service</code> is not set.</p>\n\n<p>If Active Storage is configured and <code>config.active_storage.service</code> is not<br />\nset in the respective environment’s configuration file, then an exception<br />\nis raised with a meaningful message when attempting to use Active Storage.</p>\n\n<p><em>Ghouse Mohamed</em></p>\n"
-  },
-  {
-    "message": "*   Fixes proxy downloads of files over 5mb\n\n    Previously, trying to view and/or download files larger than 5mb stored in\n    services like S3 via proxy mode could return corrupted files at around\n    5.2mb or cause random halts in the download. Now,\n    `ActiveStorage::Blobs::ProxyController` correctly handles streaming these\n    larger files from the service to the client without any issues.\n\n    Fixes #44679\n\n    *Felipe Raul*",
-    "project": "activestorage",
-    "date_merged": 1654019493000,
-    "author": "Ghouse Mohamed",
-    "sha": "06c83d93cf0ea28cda553830023717204eb77b9f",
-    "pr": "45224",
-    "merge_sha": "2d62fd01b65739dc0c2955c47afd40da68f146f6",
-    "html": "<p>Fixes proxy downloads of files over 5mb</p>\n\n<p>Previously, trying to view and/or download files larger than 5mb stored in<br />\nservices like S3 via proxy mode could return corrupted files at around<br />\n5.2mb or cause random halts in the download. Now,<br />\n<code>ActiveStorage::Blobs::ProxyController</code> correctly handles streaming these<br />\nlarger files from the service to the client without any issues.</p>\n\n<p>Fixes #44679</p>\n\n<p><em>Felipe Raul</em></p>\n"
-  },
-  {
-    "message": "*   Saving attachment(s) to a record returns the blob/blobs object\n\n    Previously, saving attachments did not return the blob/blobs that\n    were attached. Now, saving attachments to a record with `#attach`\n    method returns the blob or array of blobs that were attached to\n    the record. If it fails to save the attachment(s), then it returns\n    `false`.\n\n    *Ghouse Mohamed*",
-    "project": "activestorage",
-    "date_merged": 1645823941000,
-    "author": "Ghouse Mohamed",
-    "sha": "fbfb6e6885e65f212771430a235359ee86654512",
-    "pr": "44439",
-    "merge_sha": "fb88db58d7ec1c1998d90d3fdadf819200786a7c",
-    "html": "<p>Saving attachment(s) to a record returns the blob/blobs object</p>\n\n<p>Previously, saving attachments did not return the blob/blobs that<br />\nwere attached. Now, saving attachments to a record with <code>#attach</code><br />\nmethod returns the blob or array of blobs that were attached to<br />\nthe record. If it fails to save the attachment(s), then it returns<br />\n<code>false</code>.</p>\n\n<p><em>Ghouse Mohamed</em></p>\n"
-  },
-  {
-    "message": "*   Don't stream responses in redirect mode\n\n    Previously, both redirect mode and proxy mode streamed their\n    responses which caused a new thread to be created, and could end\n    up leaking connections in the connection pool. But since redirect\n    mode doesn't actually send any data, it doesn't need to be\n    streamed.\n\n    *Luke Lau*",
-    "project": "activestorage",
-    "date_merged": 1643199285000,
-    "author": "Luke Lau",
-    "sha": "7e61f808c684b22b175271530a8bf3ced0815dfb",
-    "pr": "44244",
-    "merge_sha": "bd41655d17ff85c3118a4c69d19bad47b6a2890f",
-    "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
+    "message": "*   Use different cache namespace for proxy calls\n\n    Models can currently have different attribute bodies for the same method\n    names, leading to conflicts. Adding a new namespace `:active_model_proxy`\n    fixes the issue.\n\n    *Chris Salzberg*",
+    "project": "activemodel",
+    "date_merged": 1643879431000,
+    "author": "Chris Salzberg",
+    "sha": "81519dec1add5ee5d93cc24239283ca56379eb9a",
+    "pr": "44322",
+    "merge_sha": "61cf029f8269fe4214c54dd911f62c335371e6e8",
+    "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
     "message": "*   `ActiveSupport::CurrentAttributes.resets` now accepts a method name\n\n    The block API is still the recommended approach, but now both APIs are supported:\n\n    ```ruby\n    class Current < ActiveSupport::CurrentAttributes\n      resets { Time.zone = nil }\n      resets :clear_time_zone\n    end\n    ```\n\n    *Alex Ghiculescu*",
@@ -2508,5 +2268,265 @@
     "pr": "43951",
     "merge_sha": "58c0b76982e3fbcb5642223effd9cce93947029e",
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Don't double log the `job` when using `ActiveRecord::QueryLog`\n\n    Previously if you set `config.active_record.query_log_tags` to an array that included\n    `:job`, the job name would get logged twice. This bug has been fixed.\n\n    *Alex Ghiculescu*",
+    "project": "activejob",
+    "date_merged": 1666480961000,
+    "author": "Alex Ghiculescu",
+    "sha": "f737b5ec1380963d2e354d25550e27ee3930831a",
+    "pr": "46279",
+    "merge_sha": "971fa17502deaf5d720a7bc0fdf8f258afb556b6",
+    "html": "<p>Don’t double log the <code>job</code> when using <code>ActiveRecord::QueryLog</code></p>\n\n<p>Previously if you set <code>config.active_record.query_log_tags</code> to an array that included<br />\n<code>:job</code>, the job name would get logged twice. This bug has been fixed.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
+    "message": "*   Add support for Sidekiq's transaction-aware client\n\n    *Jonathan del Strother*",
+    "project": "activejob",
+    "date_merged": 1663707843000,
+    "author": "Jonathan del Strother",
+    "sha": "b38992038f78731665c17a3ac06aada7bd9c1476",
+    "pr": "46080",
+    "merge_sha": "a168949736e06a938ab793004ea2c09e9df08711",
+    "html": "<p>Add support for Sidekiq’s transaction-aware client</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
+    "message": "*   Remove QueAdapter from Active Job.\n\n    After maintaining Active Job QueAdapter by Rails and Que side\n    to support Ruby 3 keyword arguments and options provided as top level keywords,\n    it is quite difficult to maintain it this way.\n\n    Active Job Que adapter can be included in the future version of que gem itself.\n\n    *Yasuo Honda*",
+    "project": "activejob",
+    "date_merged": 1663024693000,
+    "author": "Yasuo Honda",
+    "sha": "cb22eb2b3628de428171175063371155d70a136c",
+    "pr": "46005",
+    "merge_sha": "1f7676efa54a05628e98b657019133fa261b87cb",
+    "html": "<p>Remove QueAdapter from Active Job.</p>\n\n<p>After maintaining Active Job QueAdapter by Rails and Que side<br />\nto support Ruby 3 keyword arguments and options provided as top level keywords,<br />\nit is quite difficult to maintain it this way.</p>\n\n<p>Active Job Que adapter can be included in the future version of que gem itself.</p>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
+    "message": "*   Fix BigDecimal (de)serialization for adapters using JSON.\n\n    Previously, BigDecimal was listed as not needing a serializer.  However,\n    when used with an adapter storing the job arguments as JSON, it would get\n    serialized as a simple String, resulting in deserialization also producing\n    a String (instead of a BigDecimal).\n\n    By using a serializer, we ensure the round trip is safe.\n\n    To ensure applications using BigDecimal job arguments are not subject to\n    race conditions during deployment (where a replica running a version of\n    Rails without BigDecimalSerializer fails to deserialize an argument\n    serialized with it), `ActiveJob.use_big_decimal_serializer` is disabled by\n    default, and can be set to true in a following deployment..\n\n    *Sam Bostock*",
+    "project": "activejob",
+    "date_merged": 1658411908000,
+    "author": "Sam Bostock",
+    "sha": "bc1f3233384601fa8720ee164bced84ffbf3acf2",
+    "pr": "45618",
+    "merge_sha": "17fd2edafbe10d9294a52f3b7771cfe0c5348467",
+    "html": "<p>Fix BigDecimal (de)serialization for adapters using JSON.</p>\n\n<p>Previously, BigDecimal was listed as not needing a serializer.  However,<br />\nwhen used with an adapter storing the job arguments as JSON, it would get<br />\nserialized as a simple String, resulting in deserialization also producing<br />\na String (instead of a BigDecimal).</p>\n\n<p>By using a serializer, we ensure the round trip is safe.</p>\n\n<p>To ensure applications using BigDecimal job arguments are not subject to<br />\nrace conditions during deployment (where a replica running a version of<br />\nRails without BigDecimalSerializer fails to deserialize an argument<br />\nserialized with it), <code>ActiveJob.use_big_decimal_serializer</code> is disabled by<br />\ndefault, and can be set to true in a following deployment..</p>\n\n<p><em>Sam Bostock</em></p>\n"
+  },
+  {
+    "message": "*   Preserve full-precision `enqueued_at` timestamps for serialized jobs,\n    allowing more accurate reporting of how long a job spent waiting in the\n    queue before it was performed.\n\n    Retains IS08601 format compatibility.\n\n    *Jeremy Daer*",
+    "project": "activejob",
+    "date_merged": 1657717327000,
+    "author": "Jeremy Daer",
+    "sha": "8d9d8013caa88efa2514aa741eeaf673c7520415",
+    "pr": "45584",
+    "merge_sha": "05ae3faaf3779d53935ab983b75f2dc7c6dfb7fa",
+    "html": "<p>Preserve full-precision <code>enqueued_at</code> timestamps for serialized jobs,<br />\nallowing more accurate reporting of how long a job spent waiting in the<br />\nqueue before it was performed.</p>\n\n<p>Retains IS08601 format compatibility.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
+  },
+  {
+    "message": "*   Add `--parent` option to job generator to specify parent class of job.\n\n    Example:\n\n    `bin/rails g job process_payment --parent=payment_job` generates:\n\n    ```ruby\n    class ProcessPaymentJob < PaymentJob\n      # ...\n    end\n    ```\n\n    *Gannon McGibbon*",
+    "project": "activejob",
+    "date_merged": 1657227455000,
+    "author": "Gannon McGibbon",
+    "sha": "02444d9267e77f52bae4bf8035468e823ed0b0c9",
+    "pr": "45528",
+    "merge_sha": "e240daa6cc013b5a24fb692a8b82ce18dc44ad11",
+    "html": "<p>Add <code>--parent</code> option to job generator to specify parent class of job.</p>\n\n<p>Example:</p>\n\n<p><code>bin/rails g job process_payment --parent=payment_job</code> generates:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ProcessPaymentJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">PaymentJob</span>\n  <span class=\"c1\"># ...</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Add more detailed description to job generator.\n\n    *Gannon McGibbon*",
+    "project": "activejob",
+    "date_merged": 1655153632000,
+    "author": "Gannon McGibbon",
+    "sha": "5f57c7d35254a9a7edb2726b3e279c33a0c07f26",
+    "pr": "45327",
+    "merge_sha": "effe5040468d4d0b06a14ea8c91d2b444a984de3",
+    "html": "<p>Add more detailed description to job generator.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   `perform.active_job` notification payloads now include `:db_runtime`, which\n    is the total time (in ms) taken by database queries while performing a job.\n    This value can be used to better understand how a job's time is spent.\n\n    *Jonathan Hefner*",
+    "project": "activejob",
+    "date_merged": 1652989174000,
+    "author": "Jonathan Hefner",
+    "sha": "9574a39a7acf38453d08a31f56a9797c7e417e94",
+    "pr": "40058",
+    "merge_sha": "82b78af4b8537e8194be824ea6964cf9252d3e5b",
+    "html": "<p><code>perform.active_job</code> notification payloads now include <code>:db_runtime</code>, which<br />\nis the total time (in ms) taken by database queries while performing a job.<br />\nThis value can be used to better understand how a job’s time is spent.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Update `ActiveJob::QueueAdapters::QueAdapter` to remove deprecation warning.\n\n    Remove a deprecation warning introduced in que 1.2 to prepare for changes in\n    que 2.0 necessary for Ruby 3 compatibility.\n\n    *Damir Zekic* and *Adis Hasovic*",
+    "project": "activejob",
+    "date_merged": 1661812120000,
+    "author": "Ryuta Kamizono",
+    "sha": "e0e64e9474b2738b3181e7c55499b47b1c5dbff4",
+    "pr": "45896",
+    "merge_sha": "9b6abb50b2c99fe4c5b1249367f790d30fc1e64d",
+    "html": "<p>Update <code>ActiveJob::QueueAdapters::QueAdapter</code> to remove deprecation warning.</p>\n\n<p>Remove a deprecation warning introduced in que 1.2 to prepare for changes in<br />\nque 2.0 necessary for Ruby 3 compatibility.</p>\n\n<p><em>Damir Zekic</em> and <em>Adis Hasovic</em></p>\n"
+  },
+  {
+    "message": "*   Add missing `bigdecimal` require in `ActiveJob::Arguments`\n\n    Could cause `uninitialized constant ActiveJob::Arguments::BigDecimal (NameError)`\n    when loading Active Job in isolation.\n\n    *Jean Boussier*",
+    "project": "activejob",
+    "date_merged": 1644656886000,
+    "author": "Jean Boussier",
+    "sha": "4ca5aff9f0a050d3be9e22c805d30acbb7253c63",
+    "pr": "44411",
+    "merge_sha": "bcc3a49ccc1178655f599fdeb8da55d1942f134b",
+    "html": "<p>Add missing <code>bigdecimal</code> require in <code>ActiveJob::Arguments</code></p>\n\n<p>Could cause <code>uninitialized constant ActiveJob::Arguments::BigDecimal (NameError)</code><br />\nwhen loading Active Job in isolation.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Allow testing `discard_on/retry_on ActiveJob::DeserializationError`\n\n    Previously in `perform_enqueued_jobs`, `deserialize_arguments_if_needed`\n    was called before calling `perform_now`. When a record no longer exists\n    and is serialized using GlobalID this led to raising\n    an `ActiveJob::DeserializationError` before reaching `perform_now` call.\n    This behavior makes difficult testing the job `discard_on/retry_on` logic.\n\n    Now `deserialize_arguments_if_needed` call is postponed to when `perform_now`\n    is called.\n\n    Example:\n\n    ```ruby\n    class UpdateUserJob < ActiveJob::Base\n      discard_on ActiveJob::DeserializationError\n\n      def perform(user)\n        # ...\n      end\n    end\n\n    # In the test\n    User.destroy_all\n    assert_nothing_raised do\n      perform_enqueued_jobs only: UpdateUserJob\n    end\n    ```\n\n    *Jacopo Beschi*",
+    "project": "activejob",
+    "date_merged": 1641488011000,
+    "author": "Jacopo",
+    "sha": "20545fc820522f87665188bd91b6c679953fb5e2",
+    "pr": "43066",
+    "merge_sha": "6fb54c00e48d666ea9c07b82babc9a2874c999b8",
+    "html": "<p>Allow testing <code>discard_on/retry_on ActiveJob::DeserializationError</code></p>\n\n<p>Previously in <code>perform_enqueued_jobs</code>, <code>deserialize_arguments_if_needed</code><br />\nwas called before calling <code>perform_now</code>. When a record no longer exists<br />\nand is serialized using GlobalID this led to raising<br />\nan <code>ActiveJob::DeserializationError</code> before reaching <code>perform_now</code> call.<br />\nThis behavior makes difficult testing the job <code>discard_on/retry_on</code> logic.</p>\n\n<p>Now <code>deserialize_arguments_if_needed</code> call is postponed to when <code>perform_now</code><br />\nis called.</p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">UpdateUserJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">discard_on</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">DeserializationError</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span>\n    <span class=\"c1\"># ...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"c1\"># In the test</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">destroy_all</span>\n<span class=\"n\">assert_nothing_raised</span> <span class=\"k\">do</span>\n  <span class=\"n\">perform_enqueued_jobs</span> <span class=\"ss\">only: </span><span class=\"no\">UpdateUserJob</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jacopo Beschi</em></p>\n"
+  },
+  {
+    "message": "*   Choices of `select` can optionally contain html attributes as the last element\n    of the child arrays when using grouped/nested collections\n\n    ```erb\n    <%= form.select :foo, [[\"North America\", [[\"United States\",\"US\"],[\"Canada\",\"CA\"]], { disabled: \"disabled\" }]] %>\n    # => <select><optgroup label=\"North America\" disabled=\"disabled\"><option value=\"US\">United States</option><option value=\"CA\">Canada</option></optgroup></select>\n    ```\n\n    *Chris Gunther*",
+    "project": "actionview",
+    "date_merged": 1669233560000,
+    "author": "Rafael Mendonça França",
+    "sha": "db5a6ef624cc0dca6af6c53eb8b892c2005b4f4d",
+    "pr": "45119",
+    "merge_sha": "fba4a024ef63448d9549fcad83108bba03079e35",
+    "html": "<p>Choices of <code>select</code> can optionally contain html attributes as the last element<br />\nof the child arrays when using grouped/nested collections</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"cp\">&lt;%=</span> <span class=\"n\">form</span><span class=\"p\">.</span><span class=\"nf\">select</span> <span class=\"ss\">:foo</span><span class=\"p\">,</span> <span class=\"p\">[[</span><span class=\"s2\">\"North America\"</span><span class=\"p\">,</span> <span class=\"p\">[[</span><span class=\"s2\">\"United States\"</span><span class=\"p\">,</span><span class=\"s2\">\"US\"</span><span class=\"p\">],[</span><span class=\"s2\">\"Canada\"</span><span class=\"p\">,</span><span class=\"s2\">\"CA\"</span><span class=\"p\">]],</span> <span class=\"p\">{</span> <span class=\"ss\">disabled: </span><span class=\"s2\">\"disabled\"</span> <span class=\"p\">}]]</span> <span class=\"cp\">%&gt;</span>\n# =&gt; <span class=\"nt\">&lt;select&gt;&lt;optgroup</span> <span class=\"na\">label=</span><span class=\"s\">\"North America\"</span> <span class=\"na\">disabled=</span><span class=\"s\">\"disabled\"</span><span class=\"nt\">&gt;&lt;option</span> <span class=\"na\">value=</span><span class=\"s\">\"US\"</span><span class=\"nt\">&gt;</span>United States<span class=\"nt\">&lt;/option&gt;&lt;option</span> <span class=\"na\">value=</span><span class=\"s\">\"CA\"</span><span class=\"nt\">&gt;</span>Canada<span class=\"nt\">&lt;/option&gt;&lt;/optgroup&gt;&lt;/select&gt;</span>\n</code></pre></div></div>\n\n<p><em>Chris Gunther</em></p>\n"
+  },
+  {
+    "message": "*   `check_box_tag` and `radio_button_tag` now accept `checked` as a keyword argument\n\n    This is to make the API more consistent with the `FormHelper` variants. You can now\n    provide `checked` as a positional or keyword argument:\n\n    ```erb\n    = check_box_tag \"admin\", \"1\", false\n    = check_box_tag \"admin\", \"1\", checked: false\n\n    = radio_button_tag 'favorite_color', 'maroon', false\n    = radio_button_tag 'favorite_color', 'maroon', checked: false\n    ```\n\n    *Alex Ghiculescu*",
+    "project": "actionview",
+    "date_merged": 1666469985000,
+    "author": "Alex Ghiculescu",
+    "sha": "4fcac154f44eac36aaea48ae4ae2cf9d2b210d5e",
+    "pr": "45527",
+    "merge_sha": "cdb51080b1dabb5f0ecf5c9754d2b22842f366c7",
+    "html": "<p><code>check_box_tag</code> and <code>radio_button_tag</code> now accept <code>checked</code> as a keyword argument</p>\n\n<p>This is to make the API more consistent with the <code>FormHelper</code> variants. You can now<br />\nprovide <code>checked</code> as a positional or keyword argument:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>= check_box_tag \"admin\", \"1\", false\n= check_box_tag \"admin\", \"1\", checked: false\n\n= radio_button_tag 'favorite_color', 'maroon', false\n= radio_button_tag 'favorite_color', 'maroon', checked: false\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
+    "message": "*   Allow passing a class to `dom_id`.\n    You no longer need to call `new` when passing a class to `dom_id`.\n    This makes `dom_id` behave like `dom_class` in this regard.\n    Apart from saving a few keystrokes, it prevents Ruby from needing\n    to instantiate a whole new object just to generate a string.\n\n    Before:\n    ```ruby\n    dom_id(Post) # => NoMethodError: undefined method `to_key' for Post:Class\n    ```\n\n    After:\n    ```ruby\n    dom_id(Post) # => \"new_post\"\n    ```\n\n    *Goulven Champenois*",
+    "project": "actionview",
+    "date_merged": 1663700736000,
+    "author": "Goulven Champenois",
+    "sha": "f4f15c86a2702aaaa4dc63c775d1273384371dd1",
+    "pr": "46068",
+    "merge_sha": "d845a2464648f687e45dac7ce5f7f0cdd39d2e1e",
+    "html": "<p>Allow passing a class to <code>dom_id</code>.<br />\nYou no longer need to call <code>new</code> when passing a class to <code>dom_id</code>.<br />\nThis makes <code>dom_id</code> behave like <code>dom_class</code> in this regard.<br />\nApart from saving a few keystrokes, it prevents Ruby from needing<br />\nto instantiate a whole new object just to generate a string.</p>\n\n<p>Before:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">dom_id</span><span class=\"p\">(</span><span class=\"no\">Post</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; NoMethodError: undefined method `to_key' for Post:Class</span>\n</code></pre></div></div>\n\n<p>After:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">dom_id</span><span class=\"p\">(</span><span class=\"no\">Post</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"new_post\"</span>\n</code></pre></div></div>\n\n<p><em>Goulven Champenois</em></p>\n"
+  },
+  {
+    "message": "*   Report `:locals` as part of the data returned by ActionView render instrumentation.\n\n    Before:\n    ```ruby\n    {\n    identifier: \"/Users/adam/projects/notifications/app/views/posts/index.html.erb\",\n    layout: \"layouts/application\"\n    }\n    ```\n\n    After:\n    ```ruby\n    {\n    identifier: \"/Users/adam/projects/notifications/app/views/posts/index.html.erb\",\n    layout: \"layouts/application\",\n    locals: {foo: \"bar\"}\n    }\n    ```\n\n    *Aaron Gough*",
+    "project": "actionview",
+    "date_merged": 1662752742000,
+    "author": "Aaron Gough",
+    "sha": "b451ff098de2b6505a3eeecd3f39c25ec8336904",
+    "pr": "45977",
+    "merge_sha": "e29ca73db43ab9b1c8e49c20975fea127c638ed1",
+    "html": "<p>Report <code>:locals</code> as part of the data returned by ActionView render instrumentation.</p>\n\n<p>Before:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span>\n<span class=\"ss\">identifier: </span><span class=\"s2\">\"/Users/adam/projects/notifications/app/views/posts/index.html.erb\"</span><span class=\"p\">,</span>\n<span class=\"ss\">layout: </span><span class=\"s2\">\"layouts/application\"</span>\n<span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p>After:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span>\n<span class=\"ss\">identifier: </span><span class=\"s2\">\"/Users/adam/projects/notifications/app/views/posts/index.html.erb\"</span><span class=\"p\">,</span>\n<span class=\"ss\">layout: </span><span class=\"s2\">\"layouts/application\"</span><span class=\"p\">,</span>\n<span class=\"ss\">locals: </span><span class=\"p\">{</span><span class=\"ss\">foo: </span><span class=\"s2\">\"bar\"</span><span class=\"p\">}</span>\n<span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Aaron Gough</em></p>\n"
+  },
+  {
+    "message": "*   Strip `break_sequence` at the end of `word_wrap`.\n\n    This fixes a bug where `word_wrap` didn't properly strip off break sequences that had printable characters.\n\n    For example, compare the outputs of this template:\n\n    ```erb\n    # <%= word_wrap(\"11 22\\n33 44\", line_width: 2, break_sequence: \"\\n# \") %>\n    ```\n\n    Before:\n\n    ```\n    # 11\n    # 22\n    #\n    # 33\n    # 44\n    #\n    ```\n\n    After:\n\n    ```\n    # 11\n    # 22\n    # 33\n    # 44\n    ```\n\n    *Max Chernyak*",
+    "project": "actionview",
+    "date_merged": 1662411769000,
+    "author": "Max Chernyak",
+    "sha": "fe554a3daf74d52f4b3f3d2cdb352ad0495049cc",
+    "pr": "45942",
+    "merge_sha": "23c3202de1c73b2b1fb43e917032f2471e8e5633",
+    "html": "<p>Strip <code>break_sequence</code> at the end of <code>word_wrap</code>.</p>\n\n<p>This fixes a bug where <code>word_wrap</code> didn’t properly strip off break sequences that had printable characters.</p>\n\n<p>For example, compare the outputs of this template:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code># <span class=\"cp\">&lt;%=</span> <span class=\"n\">word_wrap</span><span class=\"p\">(</span><span class=\"s2\">\"11 22</span><span class=\"se\">\\n</span><span class=\"s2\">33 44\"</span><span class=\"p\">,</span> <span class=\"ss\">line_width: </span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"ss\">break_sequence: </span><span class=\"s2\">\"</span><span class=\"se\">\\n</span><span class=\"s2\"># \"</span><span class=\"p\">)</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p>Before:</p>\n\n<pre><code># 11\n# 22\n#\n# 33\n# 44\n#\n</code></pre>\n\n<p>After:</p>\n\n<pre><code># 11\n# 22\n# 33\n# 44\n</code></pre>\n\n<p><em>Max Chernyak</em></p>\n"
+  },
+  {
+    "message": "*   Allow templates to set strict `locals`.\n\n    By default, templates will accept any `locals` as keyword arguments. To define what `locals` a template accepts, add a `locals` magic comment:\n\n    ```erb\n    <%# locals: (message:) -%>\n    <%= message %>\n    ```\n\n    Default values can also be provided:\n\n    ```erb\n    <%# locals: (message: \"Hello, world!\") -%>\n    <%= message %>\n    ```\n\n    Or `locals` can be disabled entirely:\n\n    ```erb\n    <%# locals: () %>\n    ```\n\n    *Joel Hawksley*",
+    "project": "actionview",
+    "date_merged": 1659422124000,
+    "author": "Joel Hawksley",
+    "sha": "b7908a62f9a640a004b71fb9d8c9d56549f09ccb",
+    "pr": "45727",
+    "merge_sha": "91b51e31cdc16a6aed9418f957660fcdac9eada6",
+    "html": "<p>Allow templates to set strict <code>locals</code>.</p>\n\n<p>By default, templates will accept any <code>locals</code> as keyword arguments. To define what <code>locals</code> a template accepts, add a <code>locals</code> magic comment:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c\">&lt;%# locals: (message:) -%&gt;</span>\n<span class=\"cp\">&lt;%=</span> <span class=\"n\">message</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p>Default values can also be provided:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c\">&lt;%# locals: (message: \"Hello, world!\") -%&gt;</span>\n<span class=\"cp\">&lt;%=</span> <span class=\"n\">message</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p>Or <code>locals</code> can be disabled entirely:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c\">&lt;%# locals: () %&gt;</span>\n</code></pre></div></div>\n\n<p><em>Joel Hawksley</em></p>\n"
+  },
+  {
+    "message": "*   Add `include_seconds` option for `datetime_local_field`\n\n    This allows to omit seconds part in the input field, by passing `include_seconds: false`\n\n    *Wojciech Wnętrzak*",
+    "project": "actionview",
+    "date_merged": 1657217784000,
+    "author": "Wojciech Wnętrzak",
+    "sha": "2dea9aebf2ce2e0f37c821a8d88f3caef549de7a",
+    "pr": "45188",
+    "merge_sha": "d525b7848b94ce6da35ff44d3e2d1f36fb2fe309",
+    "html": "<p>Add <code>include_seconds</code> option for <code>datetime_local_field</code></p>\n\n<p>This allows to omit seconds part in the input field, by passing <code>include_seconds: false</code></p>\n\n<p><em>Wojciech Wnętrzak</em></p>\n"
+  },
+  {
+    "message": "*   Guard against `ActionView::Helpers::FormTagHelper#field_name` calls with nil\n    `object_name` arguments. For example:\n\n    ```erb\n    <%= fields do |f| %>\n      <%= f.field_name :body %>\n    <% end %>\n    ```\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1655321007000,
+    "author": "Sean Doyle",
+    "sha": "8a0bc4aa902e36817abb48f28210b5f1b10c7618",
+    "pr": "45366",
+    "merge_sha": "bdc3e192bb9b7223963d79cf7a15967a88f4bf6f",
+    "html": "<p>Guard against <code>ActionView::Helpers::FormTagHelper#field_name</code> calls with nil<br />\n<code>object_name</code> arguments. For example:</p>\n\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"cp\">&lt;%=</span> <span class=\"n\">fields</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">f</span><span class=\"o\">|</span> <span class=\"cp\">%&gt;</span>\n  <span class=\"cp\">&lt;%=</span> <span class=\"n\">f</span><span class=\"p\">.</span><span class=\"nf\">field_name</span> <span class=\"ss\">:body</span> <span class=\"cp\">%&gt;</span>\n<span class=\"cp\">&lt;%</span> <span class=\"k\">end</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Strings returned from `strip_tags` are correctly tagged `html_safe?`\n\n    Because these strings contain no HTML elements and the basic entities are escaped, they are safe\n    to be included as-is as PCDATA in HTML content. Tagging them as html-safe avoids double-escaping\n    entities when being concatenated to a SafeBuffer during rendering.\n\n    Fixes [rails/rails-html-sanitizer#124](https://github.com/rails/rails-html-sanitizer/issues/124)\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1654007157000,
+    "author": "Mike Dalessio",
+    "sha": "5f8f6764d8632c5b63635e6520278c3e80716fc7",
+    "pr": "45218",
+    "merge_sha": "55e143a398247387d734386716016928fca841a4",
+    "html": "<p>Strings returned from <code>strip_tags</code> are correctly tagged <code>html_safe?</code></p>\n\n<p>Because these strings contain no HTML elements and the basic entities are escaped, they are safe<br />\nto be included as-is as PCDATA in HTML content. Tagging them as html-safe avoids double-escaping<br />\nentities when being concatenated to a SafeBuffer during rendering.</p>\n\n<p>Fixes <a href=\"https://github.com/rails/rails-html-sanitizer/issues/124\">rails/rails-html-sanitizer#124</a></p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Move `convert_to_model` call from `form_for` into `form_with`\n\n    Now that `form_for` is implemented in terms of `form_with`, remove the\n    `convert_to_model` call from `form_for`.\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1653488685000,
+    "author": "Sean Doyle",
+    "sha": "980de46f543ab2c2b1a1a7caf494f3bf7885c82f",
+    "pr": "44468",
+    "merge_sha": "3404606378dd93344007d954ab326cc1e973c22a",
+    "html": "<p>Move <code>convert_to_model</code> call from <code>form_for</code> into <code>form_with</code></p>\n\n<p>Now that <code>form_for</code> is implemented in terms of <code>form_with</code>, remove the<br />\n<code>convert_to_model</code> call from <code>form_for</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Fix and add protections for XSS in `ActionView::Helpers` and `ERB::Util`.\n\n    Escape dangerous characters in names of tags and names of attributes in the\n    tag helpers, following the XML specification. Rename the option\n    `:escape_attributes` to `:escape`, to simplify by applying the option to the\n    whole tag.\n\n    *Álvaro Martín Fraguas*",
+    "project": "actionview",
+    "date_merged": 1651174760000,
+    "author": "Alvaro Martin Fraguas",
+    "sha": "649516ce0feb699ae06a8c5e81df75d460cc9a85",
+    "pr": "44973",
+    "merge_sha": "6ce8c03b53501ace1f0484dadcc245e830a0c840",
+    "html": "<p>Fix and add protections for XSS in <code>ActionView::Helpers</code> and <code>ERB::Util</code>.</p>\n\n<p>Escape dangerous characters in names of tags and names of attributes in the<br />\ntag helpers, following the XML specification. Rename the option<br />\n<code>:escape_attributes</code> to <code>:escape</code>, to simplify by applying the option to the<br />\nwhole tag.</p>\n\n<p><em>Álvaro Martín Fraguas</em></p>\n"
+  },
+  {
+    "message": "*   Extend audio_tag and video_tag to accept Active Storage attachments.\n\n    Now it's possible to write\n\n    ```ruby\n    audio_tag(user.audio_file)\n    video_tag(user.video_file)\n    ```\n\n    Instead of\n\n    ```ruby\n    audio_tag(polymorphic_path(user.audio_file))\n    video_tag(polymorphic_path(user.video_file))\n    ```\n\n    `image_tag` already supported that, so this follows the same pattern.\n\n    *Matheus Richard*",
+    "project": "actionview",
+    "date_merged": 1647244014000,
+    "author": "Matheus Richard",
+    "sha": "414394206a9637272a37d30a64dbf31ea6b477ac",
+    "pr": "44085",
+    "merge_sha": "c48d846518e77fbdcc3d411bc24cbeb2d90fd04e",
+    "html": "<p>Extend audio_tag and video_tag to accept Active Storage attachments.</p>\n\n<p>Now it’s possible to write</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">audio_tag</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">audio_file</span><span class=\"p\">)</span>\n<span class=\"n\">video_tag</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">video_file</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Instead of</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">audio_tag</span><span class=\"p\">(</span><span class=\"n\">polymorphic_path</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">audio_file</span><span class=\"p\">))</span>\n<span class=\"n\">video_tag</span><span class=\"p\">(</span><span class=\"n\">polymorphic_path</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">video_file</span><span class=\"p\">))</span>\n</code></pre></div></div>\n\n<p><code>image_tag</code> already supported that, so this follows the same pattern.</p>\n\n<p><em>Matheus Richard</em></p>\n"
+  },
+  {
+    "message": "*   Ensure models passed to `form_for` attempt to call `to_model`.\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1645132869000,
+    "author": "Sean Doyle",
+    "sha": "9dc083f95d15a883d0d51d24ce1eab7158db6a82",
+    "pr": "44328",
+    "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
+    "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Added ability to download `.eml` file for the email preview.\n\n    *Igor Kasyanchuk*",
+    "project": "actionmailer",
+    "date_merged": 1662759599000,
+    "author": "Igor Kasyanchuk",
+    "sha": "9f0a064fde3c053c1436fe6c88279b287fe01cad",
+    "pr": "45987",
+    "merge_sha": "cbf4290f0e94579e7dcfaf02df0dcd327b2951c3",
+    "html": "<p>Added ability to download <code>.eml</code> file for the email preview.</p>\n\n<p><em>Igor Kasyanchuk</em></p>\n"
+  },
+  {
+    "message": "*   Support multiple preview paths for mailers.\n\n    Option `config.action_mailer.preview_path` is deprecated in favor of\n    `config.action_mailer.preview_paths`. Appending paths to this configuration option\n    will cause those paths to be used in the search for mailer previews.\n\n    *fatkodima*",
+    "project": "actionmailer",
+    "date_merged": 1660072818000,
+    "author": "fatkodima",
+    "sha": "64ad045e472a60872e5547a381c3af896a546dfd",
+    "pr": "31595",
+    "merge_sha": "95066e5fbd617edeaa6b1d28a50f295145aee52d",
+    "html": "<p>Support multiple preview paths for mailers.</p>\n\n<p>Option <code>config.action_mailer.preview_path</code> is deprecated in favor of<br />\n<code>config.action_mailer.preview_paths</code>. Appending paths to this configuration option<br />\nwill cause those paths to be used in the search for mailer previews.</p>\n\n<p><em>fatkodima</em></p>\n"
   }
 ]
