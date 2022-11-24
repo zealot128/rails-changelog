@@ -6,6 +6,156 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actiontext: Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.
+</title>
+    <link>https://github.com/rails/rails/issues/45739</link>
+    <guid>https://github.com/rails/rails/issues/45739</guid>
+    <description>*   Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.
+
+    *Jamis Buck*</description>
+    <pubDate>Tue, 06 Sep 2022 18:15:10 +0000</pubDate>
+    <author>Jamis Buck</author>
+    <content:encoded><![CDATA[<p>Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.</p>
+
+<p><em>Jamis Buck</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Fix an issue that caused the content layout to render multiple times when a
+</title>
+    <link>https://github.com/rails/rails/issues/43706</link>
+    <guid>https://github.com/rails/rails/issues/43706</guid>
+    <description>*   Fix an issue that caused the content layout to render multiple times when a
+    rich_text field was updated.
+
+    *Jacob Herrington*</description>
+    <pubDate>Sun, 22 May 2022 15:10:09 +0000</pubDate>
+    <author>Jacob Herrington</author>
+    <content:encoded><![CDATA[<p>Fix an issue that caused the content layout to render multiple times when a<br />
+rich_text field was updated.</p>
+
+<p><em>Jacob Herrington</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actioncable: The `connected()` callback can now take a `{reconnected}` parameter to differentiate
+</title>
+    <link>https://github.com/rails/rails/issues/46059</link>
+    <guid>https://github.com/rails/rails/issues/46059</guid>
+    <description>*   The `connected()` callback can now take a `{reconnected}` parameter to differentiate
+    connections from reconnections.
+
+    ```js
+    import consumer from &quot;./consumer&quot;
+
+    consumer.subscriptions.create(&quot;ExampleChannel&quot;, {
+      connected({reconnected}) {
+        if (reconnected) {
+          ...
+        } else {
+          ...
+        }
+      }
+    })
+    ```
+
+    *Mansa Keïta*</description>
+    <pubDate>Sat, 17 Sep 2022 17:28:37 +0000</pubDate>
+    <author>Mansa Keïta</author>
+    <content:encoded><![CDATA[<p>The <code>connected()</code> callback can now take a <code>{reconnected}</code> parameter to differentiate<br />
+connections from reconnections.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">consumer</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./consumer</span><span class="dl">"</span>
+
+<span class="nx">consumer</span><span class="p">.</span><span class="nx">subscriptions</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">"</span><span class="s2">ExampleChannel</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">connected</span><span class="p">({</span><span class="nx">reconnected</span><span class="p">})</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">reconnected</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">...</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><em>Mansa Keïta</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actioncable: The Redis adapter is now compatible with redis-rb 5.0
+</title>
+    <link>https://github.com/rails/rails/issues/45856</link>
+    <guid>https://github.com/rails/rails/issues/45856</guid>
+    <description>*   The Redis adapter is now compatible with redis-rb 5.0
+
+    Compatibility with redis-rb 3.x was dropped.
+
+    *Jean Boussier*</description>
+    <pubDate>Mon, 22 Aug 2022 08:17:16 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>The Redis adapter is now compatible with redis-rb 5.0</p>
+
+<p>Compatibility with redis-rb 3.x was dropped.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actioncable: The Action Cable server is now mounted with `anchor: true`.
+</title>
+    <link>https://github.com/rails/rails/issues/45490</link>
+    <guid>https://github.com/rails/rails/issues/45490</guid>
+    <description>*   The Action Cable server is now mounted with `anchor: true`.
+
+    This means that routes that also start with `/cable` will no longer clash with Action Cable.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Wed, 29 Jun 2022 18:44:14 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p>The Action Cable server is now mounted with <code>anchor: true</code>.</p>
+
+<p>This means that routes that also start with <code>/cable</code> will no longer clash with Action Cable.</p>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actioncable: `ActionCable.server.remote_connections.where(...).disconnect` now sends `disconnect` message
+</title>
+    <link>https://github.com/rails/rails/issues/45072</link>
+    <guid>https://github.com/rails/rails/issues/45072</guid>
+    <description>*   `ActionCable.server.remote_connections.where(...).disconnect` now sends `disconnect` message
+    before closing the connection with the reconnection strategy specified (defaults to `true`).
+
+    *Vladimir Dementyev*</description>
+    <pubDate>Mon, 16 May 2022 19:41:39 +0000</pubDate>
+    <author>Jeremy Daer</author>
+    <content:encoded><![CDATA[<p><code>ActionCable.server.remote_connections.where(...).disconnect</code> now sends <code>disconnect</code> message<br />
+before closing the connection with the reconnection strategy specified (defaults to <code>true</code>).</p>
+
+<p><em>Vladimir Dementyev</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actioncable: Added command callbacks to `ActionCable::Base::Connection`.
+</title>
+    <link>https://github.com/rails/rails/issues/45072</link>
+    <guid>https://github.com/rails/rails/issues/45072</guid>
+    <description>*   Added command callbacks to `ActionCable::Base::Connection`.
+
+    Now you can define `before_command`, `after_command`, and `around_command` to be invoked before, after or around any command received by a client respectively.
+
+    *Vladimir Dementyev*</description>
+    <pubDate>Mon, 16 May 2022 19:41:39 +0000</pubDate>
+    <author>Vladimir Dementyev</author>
+    <content:encoded><![CDATA[<p>Added command callbacks to <code>ActionCable::Base::Connection</code>.</p>
+
+<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>
+
+<p><em>Vladimir Dementyev</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionmailbox: Add X-Forwarded-To addresses to recipients.
 </title>
     <link>https://github.com/rails/rails/issues/46552</link>
@@ -975,121 +1125,305 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: The `connected()` callback can now take a `{reconnected}` parameter to differentiate
+    <title>activestorage: Add missing preview event to `ActiveStorage::LogSubscriber`
 </title>
-    <link>https://github.com/rails/rails/issues/46059</link>
-    <guid>https://github.com/rails/rails/issues/46059</guid>
-    <description>*   The `connected()` callback can now take a `{reconnected}` parameter to differentiate
-    connections from reconnections.
+    <link>https://github.com/rails/rails/issues/46291</link>
+    <guid>https://github.com/rails/rails/issues/46291</guid>
+    <description>*   Add missing preview event to `ActiveStorage::LogSubscriber`
 
-    ```js
-    import consumer from &quot;./consumer&quot;
+    A `preview` event is being instrumented in `ActiveStorage::Previewer`.
+    However it was not added inside ActiveStorage&#39;s LogSubscriber class.
 
-    consumer.subscriptions.create(&quot;ExampleChannel&quot;, {
-      connected({reconnected}) {
-        if (reconnected) {
-          ...
-        } else {
-          ...
-        }
-      }
-    })
+    This will allow to have logs for when a preview happens
+    in the same fashion as all other ActiveStorage events such as
+    `upload` and `download` inside `Rails.logger`.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Sat, 22 Oct 2022 09:54:03 +0000</pubDate>
+    <author>Chedli Bourguiba</author>
+    <content:encoded><![CDATA[<p>Add missing preview event to <code>ActiveStorage::LogSubscriber</code></p>
+
+<p>A <code>preview</code> event is being instrumented in <code>ActiveStorage::Previewer</code>.<br />
+However it was not added inside ActiveStorage’s LogSubscriber class.</p>
+
+<p>This will allow to have logs for when a preview happens<br />
+in the same fashion as all other ActiveStorage events such as<br />
+<code>upload</code> and <code>download</code> inside <code>Rails.logger</code>.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Fix retrieving rotation value from FFmpeg on version 5.0+.
+</title>
+    <link>https://github.com/rails/rails/issues/45837</link>
+    <guid>https://github.com/rails/rails/issues/45837</guid>
+    <description>*   Fix retrieving rotation value from FFmpeg on version 5.0+.
+
+    In FFmpeg version 5.0+ the rotation value has been removed from tags.
+    Instead the value can be found in side_data_list. Along with
+    this update it&#39;s possible to have values of -90, -270 to denote the video
+    has been rotated.
+
+    *Haroon Ahmed*</description>
+    <pubDate>Tue, 27 Sep 2022 19:17:00 +0000</pubDate>
+    <author>Haroon Ahmed</author>
+    <content:encoded><![CDATA[<p>Fix retrieving rotation value from FFmpeg on version 5.0+.</p>
+
+<p>In FFmpeg version 5.0+ the rotation value has been removed from tags.<br />
+Instead the value can be found in side_data_list. Along with<br />
+this update it’s possible to have values of -90, -270 to denote the video<br />
+has been rotated.</p>
+
+<p><em>Haroon Ahmed</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Touch all corresponding model records after ActiveStorage::Blob is analyzed
+</title>
+    <link>https://github.com/rails/rails/issues/45579</link>
+    <guid>https://github.com/rails/rails/issues/45579</guid>
+    <description>*   Touch all corresponding model records after ActiveStorage::Blob is analyzed
+
+    This fixes a race condition where a record can be requested and have a cache entry built, before
+    the initial `analyze_later` completes, which will not be invalidated until something else
+    updates the record. This also invalidates cache entries when a blob is re-analyzed, which
+    is helpful if a bug is fixed in an analyzer or a new analyzer is added.
+
+    *Nate Matykiewicz*</description>
+    <pubDate>Tue, 26 Jul 2022 16:34:18 +0000</pubDate>
+    <author>Nate Matykiewicz</author>
+    <content:encoded><![CDATA[<p>Touch all corresponding model records after ActiveStorage::Blob is analyzed</p>
+
+<p>This fixes a race condition where a record can be requested and have a cache entry built, before<br />
+the initial <code>analyze_later</code> completes, which will not be invalidated until something else<br />
+updates the record. This also invalidates cache entries when a blob is re-analyzed, which<br />
+is helpful if a bug is fixed in an analyzer or a new analyzer is added.</p>
+
+<p><em>Nate Matykiewicz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Add ability to use pre-defined variants when calling `preview` or
+</title>
+    <link>https://github.com/rails/rails/issues/45098</link>
+    <guid>https://github.com/rails/rails/issues/45098</guid>
+    <description>*   Add ability to use pre-defined variants when calling `preview` or
+    `representation` on an attachment.
+
+    ```ruby
+    class User &lt; ActiveRecord::Base
+      has_one_attached :file do |attachable|
+        attachable.variant :thumb, resize_to_limit: [100, 100]
+      end
+    end
+
+    &lt;%= image_tag user.file.representation(:thumb) %&gt;
     ```
 
-    *Mansa Keïta*</description>
-    <pubDate>Sat, 17 Sep 2022 17:28:37 +0000</pubDate>
-    <author>Mansa Keïta</author>
-    <content:encoded><![CDATA[<p>The <code>connected()</code> callback can now take a <code>{reconnected}</code> parameter to differentiate<br />
-connections from reconnections.</p>
+    *Richard Böhme*</description>
+    <pubDate>Tue, 19 Jul 2022 15:45:32 +0000</pubDate>
+    <author>Richard Böhme</author>
+    <content:encoded><![CDATA[<p>Add ability to use pre-defined variants when calling <code>preview</code> or<br />
+<code>representation</code> on an attachment.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">consumer</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./consumer</span><span class="dl">"</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">has_one_attached</span> <span class="ss">:file</span> <span class="k">do</span> <span class="o">|</span><span class="n">attachable</span><span class="o">|</span>
+    <span class="n">attachable</span><span class="p">.</span><span class="nf">variant</span> <span class="ss">:thumb</span><span class="p">,</span> <span class="ss">resize_to_limit: </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-<span class="nx">consumer</span><span class="p">.</span><span class="nx">subscriptions</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">"</span><span class="s2">ExampleChannel</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">connected</span><span class="p">({</span><span class="nx">reconnected</span><span class="p">})</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">reconnected</span><span class="p">)</span> <span class="p">{</span>
-      <span class="p">...</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="p">...</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">})</span>
+<span class="o">&lt;</span><span class="sx">%= image_tag user.file.representation(:thumb) %&gt;
+</span></code></pre></div></div>
+
+<p><em>Richard Böhme</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Method `attach` always returns the attachments except when the record
+</title>
+    <link>https://github.com/rails/rails/issues/45397</link>
+    <guid>https://github.com/rails/rails/issues/45397</guid>
+    <description>*   Method `attach` always returns the attachments except when the record
+    is persisted, unchanged, and saving it fails, in which case it returns `nil`.
+
+    *Santiago Bartesaghi*</description>
+    <pubDate>Tue, 21 Jun 2022 16:28:18 +0000</pubDate>
+    <author>Santiago Bartesaghi</author>
+    <content:encoded><![CDATA[<p>Method <code>attach</code> always returns the attachments except when the record<br />
+is persisted, unchanged, and saving it fails, in which case it returns <code>nil</code>.</p>
+
+<p><em>Santiago Bartesaghi</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Fixes multiple `attach` calls within transaction not uploading files correctly.
+</title>
+    <link>https://github.com/rails/rails/issues/45235</link>
+    <guid>https://github.com/rails/rails/issues/45235</guid>
+    <description>*   Fixes multiple `attach` calls within transaction not uploading files correctly.
+
+    In the following example, the code failed to upload all but the last file to the configured service.
+    ```ruby
+      ActiveRecord::Base.transaction do
+        user.attachments.attach({
+          content_type: &quot;text/plain&quot;,
+          filename: &quot;dummy.txt&quot;,
+          io: ::StringIO.new(&quot;dummy&quot;),
+        })
+        user.attachments.attach({
+          content_type: &quot;text/plain&quot;,
+          filename: &quot;dummy2.txt&quot;,
+          io: ::StringIO.new(&quot;dummy2&quot;),
+        })
+      end
+
+      assert_equal 2, user.attachments.count
+      assert user.attachments.first.service.exist?(user.attachments.first.key)  # Fails
+    ```
+
+    This was addressed by keeping track of the subchanges pending upload, and uploading them
+    once the transaction is committed.
+
+    Fixes #41661
+
+    *Santiago Bartesaghi*, *Bruno Vezoli*, *Juan Roig*, *Abhay Nikam*</description>
+    <pubDate>Tue, 07 Jun 2022 09:04:27 +0000</pubDate>
+    <author>Santiago Bartesaghi</author>
+    <content:encoded><![CDATA[<p>Fixes multiple <code>attach</code> calls within transaction not uploading files correctly.</p>
+
+<p>In the following example, the code failed to upload all but the last file to the configured service.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+    <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">attach</span><span class="p">({</span>
+      <span class="ss">content_type: </span><span class="s2">"text/plain"</span><span class="p">,</span>
+      <span class="ss">filename: </span><span class="s2">"dummy.txt"</span><span class="p">,</span>
+      <span class="ss">io: </span><span class="o">::</span><span class="no">StringIO</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"dummy"</span><span class="p">),</span>
+    <span class="p">})</span>
+    <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">attach</span><span class="p">({</span>
+      <span class="ss">content_type: </span><span class="s2">"text/plain"</span><span class="p">,</span>
+      <span class="ss">filename: </span><span class="s2">"dummy2.txt"</span><span class="p">,</span>
+      <span class="ss">io: </span><span class="o">::</span><span class="no">StringIO</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"dummy2"</span><span class="p">),</span>
+    <span class="p">})</span>
+  <span class="k">end</span>
+
+  <span class="n">assert_equal</span> <span class="mi">2</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">count</span>
+  <span class="n">assert</span> <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">service</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">key</span><span class="p">)</span>  <span class="c1"># Fails</span>
 </code></pre></div></div>
 
-<p><em>Mansa Keïta</em></p>
+<p>This was addressed by keeping track of the subchanges pending upload, and uploading them<br />
+once the transaction is committed.</p>
+
+<p>Fixes #41661</p>
+
+<p><em>Santiago Bartesaghi</em>, <em>Bruno Vezoli</em>, <em>Juan Roig</em>, <em>Abhay Nikam</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: The Redis adapter is now compatible with redis-rb 5.0
+    <title>activestorage: Raise an exception if `config.active_storage.service` is not set.
 </title>
-    <link>https://github.com/rails/rails/issues/45856</link>
-    <guid>https://github.com/rails/rails/issues/45856</guid>
-    <description>*   The Redis adapter is now compatible with redis-rb 5.0
+    <link>https://github.com/rails/rails/issues/45224</link>
+    <guid>https://github.com/rails/rails/issues/45224</guid>
+    <description>*   Raise an exception if `config.active_storage.service` is not set.
 
-    Compatibility with redis-rb 3.x was dropped.
+    If Active Storage is configured and `config.active_storage.service` is not
+    set in the respective environment&#39;s configuration file, then an exception
+    is raised with a meaningful message when attempting to use Active Storage.
 
-    *Jean Boussier*</description>
-    <pubDate>Mon, 22 Aug 2022 08:17:16 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>The Redis adapter is now compatible with redis-rb 5.0</p>
+    *Ghouse Mohamed*</description>
+    <pubDate>Tue, 31 May 2022 17:51:33 +0000</pubDate>
+    <author>Ghouse Mohamed</author>
+    <content:encoded><![CDATA[<p>Raise an exception if <code>config.active_storage.service</code> is not set.</p>
 
-<p>Compatibility with redis-rb 3.x was dropped.</p>
+<p>If Active Storage is configured and <code>config.active_storage.service</code> is not<br />
+set in the respective environment’s configuration file, then an exception<br />
+is raised with a meaningful message when attempting to use Active Storage.</p>
 
-<p><em>Jean Boussier</em></p>
+<p><em>Ghouse Mohamed</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: The Action Cable server is now mounted with `anchor: true`.
+    <title>activestorage: Fixes proxy downloads of files over 5mb
 </title>
-    <link>https://github.com/rails/rails/issues/45490</link>
-    <guid>https://github.com/rails/rails/issues/45490</guid>
-    <description>*   The Action Cable server is now mounted with `anchor: true`.
+    <link>https://github.com/rails/rails/issues/45224</link>
+    <guid>https://github.com/rails/rails/issues/45224</guid>
+    <description>*   Fixes proxy downloads of files over 5mb
 
-    This means that routes that also start with `/cable` will no longer clash with Action Cable.
+    Previously, trying to view and/or download files larger than 5mb stored in
+    services like S3 via proxy mode could return corrupted files at around
+    5.2mb or cause random halts in the download. Now,
+    `ActiveStorage::Blobs::ProxyController` correctly handles streaming these
+    larger files from the service to the client without any issues.
 
-    *Alex Ghiculescu*</description>
-    <pubDate>Wed, 29 Jun 2022 18:44:14 +0000</pubDate>
-    <author>Alex Ghiculescu</author>
-    <content:encoded><![CDATA[<p>The Action Cable server is now mounted with <code>anchor: true</code>.</p>
+    Fixes #44679
 
-<p>This means that routes that also start with <code>/cable</code> will no longer clash with Action Cable.</p>
+    *Felipe Raul*</description>
+    <pubDate>Tue, 31 May 2022 17:51:33 +0000</pubDate>
+    <author>Ghouse Mohamed</author>
+    <content:encoded><![CDATA[<p>Fixes proxy downloads of files over 5mb</p>
 
-<p><em>Alex Ghiculescu</em></p>
+<p>Previously, trying to view and/or download files larger than 5mb stored in<br />
+services like S3 via proxy mode could return corrupted files at around<br />
+5.2mb or cause random halts in the download. Now,<br />
+<code>ActiveStorage::Blobs::ProxyController</code> correctly handles streaming these<br />
+larger files from the service to the client without any issues.</p>
+
+<p>Fixes #44679</p>
+
+<p><em>Felipe Raul</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: `ActionCable.server.remote_connections.where(...).disconnect` now sends `disconnect` message
+    <title>activestorage: Saving attachment(s) to a record returns the blob/blobs object
 </title>
-    <link>https://github.com/rails/rails/issues/45072</link>
-    <guid>https://github.com/rails/rails/issues/45072</guid>
-    <description>*   `ActionCable.server.remote_connections.where(...).disconnect` now sends `disconnect` message
-    before closing the connection with the reconnection strategy specified (defaults to `true`).
+    <link>https://github.com/rails/rails/issues/44439</link>
+    <guid>https://github.com/rails/rails/issues/44439</guid>
+    <description>*   Saving attachment(s) to a record returns the blob/blobs object
 
-    *Vladimir Dementyev*</description>
-    <pubDate>Mon, 16 May 2022 19:41:39 +0000</pubDate>
-    <author>Jeremy Daer</author>
-    <content:encoded><![CDATA[<p><code>ActionCable.server.remote_connections.where(...).disconnect</code> now sends <code>disconnect</code> message<br />
-before closing the connection with the reconnection strategy specified (defaults to <code>true</code>).</p>
+    Previously, saving attachments did not return the blob/blobs that
+    were attached. Now, saving attachments to a record with `#attach`
+    method returns the blob or array of blobs that were attached to
+    the record. If it fails to save the attachment(s), then it returns
+    `false`.
 
-<p><em>Vladimir Dementyev</em></p>
+    *Ghouse Mohamed*</description>
+    <pubDate>Fri, 25 Feb 2022 21:19:01 +0000</pubDate>
+    <author>Ghouse Mohamed</author>
+    <content:encoded><![CDATA[<p>Saving attachment(s) to a record returns the blob/blobs object</p>
+
+<p>Previously, saving attachments did not return the blob/blobs that<br />
+were attached. Now, saving attachments to a record with <code>#attach</code><br />
+method returns the blob or array of blobs that were attached to<br />
+the record. If it fails to save the attachment(s), then it returns<br />
+<code>false</code>.</p>
+
+<p><em>Ghouse Mohamed</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: Added command callbacks to `ActionCable::Base::Connection`.
+    <title>activestorage: Don&#39;t stream responses in redirect mode
 </title>
-    <link>https://github.com/rails/rails/issues/45072</link>
-    <guid>https://github.com/rails/rails/issues/45072</guid>
-    <description>*   Added command callbacks to `ActionCable::Base::Connection`.
+    <link>https://github.com/rails/rails/issues/44244</link>
+    <guid>https://github.com/rails/rails/issues/44244</guid>
+    <description>*   Don&#39;t stream responses in redirect mode
 
-    Now you can define `before_command`, `after_command`, and `around_command` to be invoked before, after or around any command received by a client respectively.
+    Previously, both redirect mode and proxy mode streamed their
+    responses which caused a new thread to be created, and could end
+    up leaking connections in the connection pool. But since redirect
+    mode doesn&#39;t actually send any data, it doesn&#39;t need to be
+    streamed.
 
-    *Vladimir Dementyev*</description>
-    <pubDate>Mon, 16 May 2022 19:41:39 +0000</pubDate>
-    <author>Vladimir Dementyev</author>
-    <content:encoded><![CDATA[<p>Added command callbacks to <code>ActionCable::Base::Connection</code>.</p>
+    *Luke Lau*</description>
+    <pubDate>Wed, 26 Jan 2022 12:14:45 +0000</pubDate>
+    <author>Luke Lau</author>
+    <content:encoded><![CDATA[<p>Don’t stream responses in redirect mode</p>
 
-<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>
+<p>Previously, both redirect mode and proxy mode streamed their<br />
+responses which caused a new thread to be created, and could end<br />
+up leaking connections in the connection pool. But since redirect<br />
+mode doesn’t actually send any data, it doesn’t need to be<br />
+streamed.</p>
 
-<p><em>Vladimir Dementyev</em></p>
+<p><em>Luke Lau</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -1710,1013 +2044,24 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
-    <title>activemodel: Custom attribute types that inherit from Active Model built-in types and do
+    <title>activerecord: `has_one` and `belongs_to` associations now define a `reset_association` method
 </title>
-    <link>https://github.com/rails/rails/issues/46219</link>
-    <guid>https://github.com/rails/rails/issues/46219</guid>
-    <description>*   Custom attribute types that inherit from Active Model built-in types and do
-    not override the `serialize` method will now benefit from an optimization
-    when serializing attribute values for the database.
-
-    For example, with a custom type like the following:
-
-    ```ruby
-    class DowncasedString &lt; ActiveModel::Type::String
-      def cast(value)
-        super&amp;.downcase
-      end
-    end
-
-    ActiveRecord::Type.register(:downcased_string, DowncasedString)
-
-    class User &lt; ActiveRecord::Base
-      attribute :email, :downcased_string
-    end
-
-    user = User.new(email: &quot;FooBar@example.com&quot;)
-    ```
-
-    Serializing the `email` attribute for the database will be roughly twice as
-    fast.  More expensive `cast` operations will likely see greater improvements.
-
-    *Jonathan Hefner*</description>
-    <pubDate>Sun, 16 Oct 2022 21:40:20 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Custom attribute types that inherit from Active Model built-in types and do<br />
-not override the <code>serialize</code> method will now benefit from an optimization<br />
-when serializing attribute values for the database.</p>
-
-<p>For example, with a custom type like the following:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DowncasedString</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Type</span><span class="o">::</span><span class="no">String</span>
-  <span class="k">def</span> <span class="nf">cast</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-    <span class="k">super</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">downcase</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Type</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="ss">:downcased_string</span><span class="p">,</span> <span class="no">DowncasedString</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-  <span class="n">attribute</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:downcased_string</span>
-<span class="k">end</span>
-
-<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">email: </span><span class="s2">"FooBar@example.com"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Serializing the <code>email</code> attribute for the database will be roughly twice as<br />
-fast.  More expensive <code>cast</code> operations will likely see greater improvements.</p>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: `has_secure_password` now supports password challenges via a
-</title>
-    <link>https://github.com/rails/rails/issues/45662</link>
-    <guid>https://github.com/rails/rails/issues/45662</guid>
-    <description>*   `has_secure_password` now supports password challenges via a
-    `password_challenge` accessor and validation.
-
-    A password challenge is a safeguard to verify that the current user is
-    actually the password owner.  It can be used when changing sensitive model
-    fields, such as the password itself.  It is different than a password
-    confirmation, which is used to prevent password typos.
-
-    When `password_challenge` is set, the validation checks that the value&#39;s
-    digest matches the *currently persisted* `password_digest` (i.e.
-    `password_digest_was`).
-
-    This allows a password challenge to be done as part of a typical `update`
-    call, just like a password confirmation.  It also allows a password
-    challenge error to be handled in the same way as other validation errors.
-
-    For example, in the controller, instead of:
-
-    ```ruby
-    password_params = params.require(:password).permit(
-      :password_challenge,
-      :password,
-      :password_confirmation,
-    )
-
-    password_challenge = password_params.delete(:password_challenge)
-    @password_challenge_failed = !current_user.authenticate(password_challenge)
-
-    if !@password_challenge_failed &amp;&amp; current_user.update(password_params)
-      # ...
-    end
-    ```
-
-    You can now write:
-
-    ```ruby
-    password_params = params.require(:password).permit(
-      :password_challenge,
-      :password,
-      :password_confirmation,
-    ).with_defaults(password_challenge: &quot;&quot;)
-
-    if current_user.update(password_params)
-      # ...
-    end
-    ```
-
-    And, in the view, instead of checking `@password_challenge_failed`, you can
-    render an error for the `password_challenge` field just as you would for
-    other form fields, including utilizing `config.action_view.field_error_proc`.
-
-    *Jonathan Hefner*</description>
-    <pubDate>Tue, 26 Jul 2022 05:14:42 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p><code>has_secure_password</code> now supports password challenges via a<br />
-<code>password_challenge</code> accessor and validation.</p>
-
-<p>A password challenge is a safeguard to verify that the current user is<br />
-actually the password owner.  It can be used when changing sensitive model<br />
-fields, such as the password itself.  It is different than a password<br />
-confirmation, which is used to prevent password typos.</p>
-
-<p>When <code>password_challenge</code> is set, the validation checks that the value’s<br />
-digest matches the <em>currently persisted</em> <code>password_digest</code> (i.e.<br />
-<code>password_digest_was</code>).</p>
-
-<p>This allows a password challenge to be done as part of a typical <code>update</code><br />
-call, just like a password confirmation.  It also allows a password<br />
-challenge error to be handled in the same way as other validation errors.</p>
-
-<p>For example, in the controller, instead of:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">password_params</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:password</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span>
-  <span class="ss">:password_challenge</span><span class="p">,</span>
-  <span class="ss">:password</span><span class="p">,</span>
-  <span class="ss">:password_confirmation</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">password_challenge</span> <span class="o">=</span> <span class="n">password_params</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="ss">:password_challenge</span><span class="p">)</span>
-<span class="vi">@password_challenge_failed</span> <span class="o">=</span> <span class="o">!</span><span class="n">current_user</span><span class="p">.</span><span class="nf">authenticate</span><span class="p">(</span><span class="n">password_challenge</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="o">!</span><span class="vi">@password_challenge_failed</span> <span class="o">&amp;&amp;</span> <span class="n">current_user</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">password_params</span><span class="p">)</span>
-  <span class="c1"># ...</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p>You can now write:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">password_params</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:password</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span>
-  <span class="ss">:password_challenge</span><span class="p">,</span>
-  <span class="ss">:password</span><span class="p">,</span>
-  <span class="ss">:password_confirmation</span><span class="p">,</span>
-<span class="p">).</span><span class="nf">with_defaults</span><span class="p">(</span><span class="ss">password_challenge: </span><span class="s2">""</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">current_user</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">password_params</span><span class="p">)</span>
-  <span class="c1"># ...</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p>And, in the view, instead of checking <code>@password_challenge_failed</code>, you can<br />
-render an error for the <code>password_challenge</code> field just as you would for<br />
-other form fields, including utilizing <code>config.action_view.field_error_proc</code>.</p>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Support infinite ranges for `LengthValidator`s `:in`/`:within` options
-</title>
-    <link>https://github.com/rails/rails/issues/45138</link>
-    <guid>https://github.com/rails/rails/issues/45138</guid>
-    <description>*   Support infinite ranges for `LengthValidator`s `:in`/`:within` options
-
-    ```ruby
-    validates_length_of :first_name, in: ..30
-    ```
-
-    *fatkodima*</description>
-    <pubDate>Fri, 20 May 2022 18:05:20 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Support infinite ranges for <code>LengthValidator</code>s <code>:in</code>/<code>:within</code> options</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validates_length_of</span> <span class="ss">:first_name</span><span class="p">,</span> <span class="ss">in: </span><span class="o">..</span><span class="mi">30</span>
-</code></pre></div></div>
-
-<p><em>fatkodima</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Add support for beginless ranges to inclusivity/exclusivity validators:
-</title>
-    <link>https://github.com/rails/rails/issues/45123</link>
-    <guid>https://github.com/rails/rails/issues/45123</guid>
-    <description>*   Add support for beginless ranges to inclusivity/exclusivity validators:
-
-    ```ruby
-    validates_inclusion_of :birth_date, in: -&gt; { (..Date.today) }
-    ```
-
-    *Bo Jeanes*</description>
-    <pubDate>Fri, 20 May 2022 14:54:54 +0000</pubDate>
-    <author>Bo Jeanes</author>
-    <content:encoded><![CDATA[<p>Add support for beginless ranges to inclusivity/exclusivity validators:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validates_inclusion_of</span> <span class="ss">:birth_date</span><span class="p">,</span> <span class="ss">in: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="p">(</span><span class="o">..</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">)</span> <span class="p">}</span>
-</code></pre></div></div>
-
-<p><em>Bo Jeanes</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Make validators accept lambdas without record argument
-</title>
-    <link>https://github.com/rails/rails/issues/45118</link>
-    <guid>https://github.com/rails/rails/issues/45118</guid>
-    <description>*   Make validators accept lambdas without record argument
-
-    ```ruby
-    # Before
-    validates_comparison_of :birth_date, less_than_or_equal_to: -&gt;(_record) { Date.today }
-
-    # After
-    validates_comparison_of :birth_date, less_than_or_equal_to: -&gt; { Date.today }
-    ```
-
-    *fatkodima*</description>
-    <pubDate>Wed, 18 May 2022 18:08:47 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Make validators accept lambdas without record argument</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
-<span class="n">validates_comparison_of</span> <span class="ss">:birth_date</span><span class="p">,</span> <span class="ss">less_than_or_equal_to: </span><span class="o">-&gt;</span><span class="p">(</span><span class="n">_record</span><span class="p">)</span> <span class="p">{</span> <span class="no">Date</span><span class="p">.</span><span class="nf">today</span> <span class="p">}</span>
-
-<span class="c1"># After</span>
-<span class="n">validates_comparison_of</span> <span class="ss">:birth_date</span><span class="p">,</span> <span class="ss">less_than_or_equal_to: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="no">Date</span><span class="p">.</span><span class="nf">today</span> <span class="p">}</span>
-</code></pre></div></div>
-
-<p><em>fatkodima</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Fix casting long strings to `Date`, `Time` or `DateTime`
-</title>
-    <link>https://github.com/rails/rails/issues/45005</link>
-    <guid>https://github.com/rails/rails/issues/45005</guid>
-    <description>*   Fix casting long strings to `Date`, `Time` or `DateTime`
-
-    *fatkodima*</description>
-    <pubDate>Wed, 11 May 2022 15:03:30 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Fix casting long strings to <code>Date</code>, <code>Time</code> or <code>DateTime</code></p>
-
-<p><em>fatkodima</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Use different cache namespace for proxy calls
-</title>
-    <link>https://github.com/rails/rails/issues/44322</link>
-    <guid>https://github.com/rails/rails/issues/44322</guid>
-    <description>*   Use different cache namespace for proxy calls
-
-    Models can currently have different attribute bodies for the same method
-    names, leading to conflicts. Adding a new namespace `:active_model_proxy`
-    fixes the issue.
-
-    *Chris Salzberg*</description>
-    <pubDate>Thu, 03 Feb 2022 09:10:31 +0000</pubDate>
-    <author>Chris Salzberg</author>
-    <content:encoded><![CDATA[<p>Use different cache namespace for proxy calls</p>
-
-<p>Models can currently have different attribute bodies for the same method<br />
-names, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />
-fixes the issue.</p>
-
-<p><em>Chris Salzberg</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: `check_box_tag` and `radio_button_tag` now accept `checked` as a keyword argument
-</title>
-    <link>https://github.com/rails/rails/issues/45527</link>
-    <guid>https://github.com/rails/rails/issues/45527</guid>
-    <description>*   `check_box_tag` and `radio_button_tag` now accept `checked` as a keyword argument
-
-    This is to make the API more consistent with the `FormHelper` variants. You can now provide `checked` as a positional or keyword argument:
-
-    ```erb
-    = check_box_tag &quot;admin&quot;, &quot;1&quot;, false
-    = check_box_tag &quot;admin&quot;, &quot;1&quot;, checked: false
-
-    = radio_button_tag &#39;favorite_color&#39;, &#39;maroon&#39;, false
-    = radio_button_tag &#39;favorite_color&#39;, &#39;maroon&#39;, checked: false
-    ```
-
-    *Alex Ghiculescu*</description>
-    <pubDate>Sat, 22 Oct 2022 20:19:45 +0000</pubDate>
-    <author>Alex Ghiculescu</author>
-    <content:encoded><![CDATA[<p><code>check_box_tag</code> and <code>radio_button_tag</code> now accept <code>checked</code> as a keyword argument</p>
-
-<p>This is to make the API more consistent with the <code>FormHelper</code> variants. You can now provide <code>checked</code> as a positional or keyword argument:</p>
-
-<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>= check_box_tag "admin", "1", false
-= check_box_tag "admin", "1", checked: false
-
-= radio_button_tag 'favorite_color', 'maroon', false
-= radio_button_tag 'favorite_color', 'maroon', checked: false
-</code></pre></div></div>
-
-<p><em>Alex Ghiculescu</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Allow passing a class to `dom_id`.
-</title>
-    <link>https://github.com/rails/rails/issues/46068</link>
-    <guid>https://github.com/rails/rails/issues/46068</guid>
-    <description>*   Allow passing a class to `dom_id`.
-    You no longer need to call `new` when passing a class to `dom_id`.
-    This makes `dom_id` behave like `dom_class` in this regard.
-    Apart from saving a few keystrokes, it prevents Ruby from needing
-    to instantiate a whole new object just to generate a string.
-
-    Before:
-    ```ruby
-    dom_id(Post) # =&gt; NoMethodError: undefined method `to_key&#39; for Post:Class
-    ```
-
-    After:
-    ```ruby
-    dom_id(Post) # =&gt; &quot;new_post&quot;
-    ```
-
-    *Goulven Champenois*</description>
-    <pubDate>Tue, 20 Sep 2022 19:05:36 +0000</pubDate>
-    <author>Goulven Champenois</author>
-    <content:encoded><![CDATA[<p>Allow passing a class to <code>dom_id</code>.<br />
-You no longer need to call <code>new</code> when passing a class to <code>dom_id</code>.<br />
-This makes <code>dom_id</code> behave like <code>dom_class</code> in this regard.<br />
-Apart from saving a few keystrokes, it prevents Ruby from needing<br />
-to instantiate a whole new object just to generate a string.</p>
-
-<p>Before:</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dom_id</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="c1"># =&gt; NoMethodError: undefined method `to_key' for Post:Class</span>
-</code></pre></div></div>
-
-<p>After:</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dom_id</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="c1"># =&gt; "new_post"</span>
-</code></pre></div></div>
-
-<p><em>Goulven Champenois</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Report `:locals` as part of the data returned by ActionView render instrumentation.
-</title>
-    <link>https://github.com/rails/rails/issues/45977</link>
-    <guid>https://github.com/rails/rails/issues/45977</guid>
-    <description>*   Report `:locals` as part of the data returned by ActionView render instrumentation.
-
-    Before:
-    ```ruby
-    {
-    identifier: &quot;/Users/adam/projects/notifications/app/views/posts/index.html.erb&quot;,
-    layout: &quot;layouts/application&quot;
-    }
-    ```
-
-    After:
-    ```ruby
-    {
-    identifier: &quot;/Users/adam/projects/notifications/app/views/posts/index.html.erb&quot;,
-    layout: &quot;layouts/application&quot;,
-    locals: {foo: &quot;bar&quot;}
-    }
-    ```
-
-    *Aaron Gough*</description>
-    <pubDate>Fri, 09 Sep 2022 19:45:42 +0000</pubDate>
-    <author>Aaron Gough</author>
-    <content:encoded><![CDATA[<p>Report <code>:locals</code> as part of the data returned by ActionView render instrumentation.</p>
-
-<p>Before:</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-<span class="ss">identifier: </span><span class="s2">"/Users/adam/projects/notifications/app/views/posts/index.html.erb"</span><span class="p">,</span>
-<span class="ss">layout: </span><span class="s2">"layouts/application"</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>After:</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-<span class="ss">identifier: </span><span class="s2">"/Users/adam/projects/notifications/app/views/posts/index.html.erb"</span><span class="p">,</span>
-<span class="ss">layout: </span><span class="s2">"layouts/application"</span><span class="p">,</span>
-<span class="ss">locals: </span><span class="p">{</span><span class="ss">foo: </span><span class="s2">"bar"</span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p><em>Aaron Gough</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Strip `break_sequence` at the end of `word_wrap`.
-</title>
-    <link>https://github.com/rails/rails/issues/45942</link>
-    <guid>https://github.com/rails/rails/issues/45942</guid>
-    <description>*   Strip `break_sequence` at the end of `word_wrap`.
-
-    This fixes a bug where `word_wrap` didn&#39;t properly strip off break sequences that had printable characters.
-
-    For example, compare the outputs of this template:
-
-    ```erb
-    # &lt;%= word_wrap(&quot;11 22\n33 44&quot;, line_width: 2, break_sequence: &quot;\n# &quot;) %&gt;
-    ```
-
-    Before:
-
-    ```
-    # 11
-    # 22
-    #
-    # 33
-    # 44
-    #
-    ```
-
-    After:
-
-    ```
-    # 11
-    # 22
-    # 33
-    # 44
-    ```
-
-    *Max Chernyak*</description>
-    <pubDate>Mon, 05 Sep 2022 21:02:49 +0000</pubDate>
-    <author>Max Chernyak</author>
-    <content:encoded><![CDATA[<p>Strip <code>break_sequence</code> at the end of <code>word_wrap</code>.</p>
-
-<p>This fixes a bug where <code>word_wrap</code> didn’t properly strip off break sequences that had printable characters.</p>
-
-<p>For example, compare the outputs of this template:</p>
-
-<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code># <span class="cp">&lt;%=</span> <span class="n">word_wrap</span><span class="p">(</span><span class="s2">"11 22</span><span class="se">\n</span><span class="s2">33 44"</span><span class="p">,</span> <span class="ss">line_width: </span><span class="mi">2</span><span class="p">,</span> <span class="ss">break_sequence: </span><span class="s2">"</span><span class="se">\n</span><span class="s2"># "</span><span class="p">)</span> <span class="cp">%&gt;</span>
-</code></pre></div></div>
-
-<p>Before:</p>
-
-<pre><code># 11
-# 22
-#
-# 33
-# 44
-#
-</code></pre>
-
-<p>After:</p>
-
-<pre><code># 11
-# 22
-# 33
-# 44
-</code></pre>
-
-<p><em>Max Chernyak</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Allow templates to set strict `locals`.
-</title>
-    <link>https://github.com/rails/rails/issues/45727</link>
-    <guid>https://github.com/rails/rails/issues/45727</guid>
-    <description>*   Allow templates to set strict `locals`.
-
-    By default, templates will accept any `locals` as keyword arguments. To define what `locals` a template accepts, add a `locals` magic comment:
-
-    ```erb
-    &lt;%# locals: (message:) -%&gt;
-    &lt;%= message %&gt;
-    ```
-
-    Default values can also be provided:
-
-    ```erb
-    &lt;%# locals: (message: &quot;Hello, world!&quot;) -%&gt;
-    &lt;%= message %&gt;
-    ```
-
-    Or `locals` can be disabled entirely:
-
-    ```erb
-    &lt;%# locals: () %&gt;
-    ```
-
-    *Joel Hawksley*</description>
-    <pubDate>Tue, 02 Aug 2022 06:35:24 +0000</pubDate>
-    <author>Joel Hawksley</author>
-    <content:encoded><![CDATA[<p>Allow templates to set strict <code>locals</code>.</p>
-
-<p>By default, templates will accept any <code>locals</code> as keyword arguments. To define what <code>locals</code> a template accepts, add a <code>locals</code> magic comment:</p>
-
-<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%# locals: (message:) -%&gt;</span>
-<span class="cp">&lt;%=</span> <span class="n">message</span> <span class="cp">%&gt;</span>
-</code></pre></div></div>
-
-<p>Default values can also be provided:</p>
-
-<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%# locals: (message: "Hello, world!") -%&gt;</span>
-<span class="cp">&lt;%=</span> <span class="n">message</span> <span class="cp">%&gt;</span>
-</code></pre></div></div>
-
-<p>Or <code>locals</code> can be disabled entirely:</p>
-
-<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%# locals: () %&gt;</span>
-</code></pre></div></div>
-
-<p><em>Joel Hawksley</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Add `include_seconds` option for `datetime_local_field`
-</title>
-    <link>https://github.com/rails/rails/issues/45188</link>
-    <guid>https://github.com/rails/rails/issues/45188</guid>
-    <description>*   Add `include_seconds` option for `datetime_local_field`
-
-    This allows to omit seconds part in the input field, by passing `include_seconds: false`
-
-    *Wojciech Wnętrzak*</description>
-    <pubDate>Thu, 07 Jul 2022 18:16:24 +0000</pubDate>
-    <author>Wojciech Wnętrzak</author>
-    <content:encoded><![CDATA[<p>Add <code>include_seconds</code> option for <code>datetime_local_field</code></p>
-
-<p>This allows to omit seconds part in the input field, by passing <code>include_seconds: false</code></p>
-
-<p><em>Wojciech Wnętrzak</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Guard against `ActionView::Helpers::FormTagHelper#field_name` calls with nil
-</title>
-    <link>https://github.com/rails/rails/issues/45366</link>
-    <guid>https://github.com/rails/rails/issues/45366</guid>
-    <description>*   Guard against `ActionView::Helpers::FormTagHelper#field_name` calls with nil
-    `object_name` arguments. For example:
-
-    ```erb
-    &lt;%= fields do |f| %&gt;
-      &lt;%= f.field_name :body %&gt;
-    &lt;% end %&gt;
-    ```
-
-    *Sean Doyle*</description>
-    <pubDate>Wed, 15 Jun 2022 19:23:27 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Guard against <code>ActionView::Helpers::FormTagHelper#field_name</code> calls with nil<br />
-<code>object_name</code> arguments. For example:</p>
-
-<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">fields</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span>
-  <span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">field_name</span> <span class="ss">:body</span> <span class="cp">%&gt;</span>
-<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
-</code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Strings returned from `strip_tags` are correctly tagged `html_safe?`
-</title>
-    <link>https://github.com/rails/rails/issues/45218</link>
-    <guid>https://github.com/rails/rails/issues/45218</guid>
-    <description>*   Strings returned from `strip_tags` are correctly tagged `html_safe?`
-
-    Because these strings contain no HTML elements and the basic entities are escaped, they are safe
-    to be included as-is as PCDATA in HTML content. Tagging them as html-safe avoids double-escaping
-    entities when being concatenated to a SafeBuffer during rendering.
-
-    Fixes [rails/rails-html-sanitizer#124](https://github.com/rails/rails-html-sanitizer/issues/124)
-
-    *Mike Dalessio*</description>
-    <pubDate>Tue, 31 May 2022 14:25:57 +0000</pubDate>
-    <author>Mike Dalessio</author>
-    <content:encoded><![CDATA[<p>Strings returned from <code>strip_tags</code> are correctly tagged <code>html_safe?</code></p>
-
-<p>Because these strings contain no HTML elements and the basic entities are escaped, they are safe<br />
-to be included as-is as PCDATA in HTML content. Tagging them as html-safe avoids double-escaping<br />
-entities when being concatenated to a SafeBuffer during rendering.</p>
-
-<p>Fixes <a href="https://github.com/rails/rails-html-sanitizer/issues/124">rails/rails-html-sanitizer#124</a></p>
-
-<p><em>Mike Dalessio</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Move `convert_to_model` call from `form_for` into `form_with`
-</title>
-    <link>https://github.com/rails/rails/issues/44468</link>
-    <guid>https://github.com/rails/rails/issues/44468</guid>
-    <description>*   Move `convert_to_model` call from `form_for` into `form_with`
-
-    Now that `form_for` is implemented in terms of `form_with`, remove the
-    `convert_to_model` call from `form_for`.
-
-    *Sean Doyle*</description>
-    <pubDate>Wed, 25 May 2022 14:24:45 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Move <code>convert_to_model</code> call from <code>form_for</code> into <code>form_with</code></p>
-
-<p>Now that <code>form_for</code> is implemented in terms of <code>form_with</code>, remove the<br />
-<code>convert_to_model</code> call from <code>form_for</code>.</p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Fix and add protections for XSS in `ActionView::Helpers` and `ERB::Util`.
-</title>
-    <link>https://github.com/rails/rails/issues/44973</link>
-    <guid>https://github.com/rails/rails/issues/44973</guid>
-    <description>*   Fix and add protections for XSS in `ActionView::Helpers` and `ERB::Util`.
-
-    Escape dangerous characters in names of tags and names of attributes in the
-    tag helpers, following the XML specification. Rename the option
-    `:escape_attributes` to `:escape`, to simplify by applying the option to the
-    whole tag.
-
-    *Álvaro Martín Fraguas*</description>
-    <pubDate>Thu, 28 Apr 2022 19:39:20 +0000</pubDate>
-    <author>Alvaro Martin Fraguas</author>
-    <content:encoded><![CDATA[<p>Fix and add protections for XSS in <code>ActionView::Helpers</code> and <code>ERB::Util</code>.</p>
-
-<p>Escape dangerous characters in names of tags and names of attributes in the<br />
-tag helpers, following the XML specification. Rename the option<br />
-<code>:escape_attributes</code> to <code>:escape</code>, to simplify by applying the option to the<br />
-whole tag.</p>
-
-<p><em>Álvaro Martín Fraguas</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Extend audio_tag and video_tag to accept Active Storage attachments.
-</title>
-    <link>https://github.com/rails/rails/issues/44085</link>
-    <guid>https://github.com/rails/rails/issues/44085</guid>
-    <description>*   Extend audio_tag and video_tag to accept Active Storage attachments.
-
-    Now it&#39;s possible to write
-
-    ```ruby
-    audio_tag(user.audio_file)
-    video_tag(user.video_file)
-    ```
-
-    Instead of
-
-    ```ruby
-    audio_tag(polymorphic_path(user.audio_file))
-    video_tag(polymorphic_path(user.video_file))
-    ```
-
-    `image_tag` already supported that, so this follows the same pattern.
-
-    *Matheus Richard*</description>
-    <pubDate>Mon, 14 Mar 2022 07:46:54 +0000</pubDate>
-    <author>Matheus Richard</author>
-    <content:encoded><![CDATA[<p>Extend audio_tag and video_tag to accept Active Storage attachments.</p>
-
-<p>Now it’s possible to write</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audio_tag</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">audio_file</span><span class="p">)</span>
-<span class="n">video_tag</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">video_file</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Instead of</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audio_tag</span><span class="p">(</span><span class="n">polymorphic_path</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">audio_file</span><span class="p">))</span>
-<span class="n">video_tag</span><span class="p">(</span><span class="n">polymorphic_path</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">video_file</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p><code>image_tag</code> already supported that, so this follows the same pattern.</p>
-
-<p><em>Matheus Richard</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Ensure models passed to `form_for` attempt to call `to_model`.
-</title>
-    <link>https://github.com/rails/rails/issues/44328</link>
-    <guid>https://github.com/rails/rails/issues/44328</guid>
-    <description>*   Ensure models passed to `form_for` attempt to call `to_model`.
-
-    *Sean Doyle*</description>
-    <pubDate>Thu, 17 Feb 2022 21:21:09 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Don&#39;t double log the `job` when using `ActiveRecord::QueryLog`
-</title>
-    <link>https://github.com/rails/rails/issues/46279</link>
-    <guid>https://github.com/rails/rails/issues/46279</guid>
-    <description>*   Don&#39;t double log the `job` when using `ActiveRecord::QueryLog`
-
-    Previously if you set `config.active_record.query_log_tags` to an array that included
-    `:job`, the job name would get logged twice. This bug has been fixed.
-
-    *Alex Ghiculescu*</description>
-    <pubDate>Sat, 22 Oct 2022 23:22:41 +0000</pubDate>
-    <author>Alex Ghiculescu</author>
-    <content:encoded><![CDATA[<p>Don’t double log the <code>job</code> when using <code>ActiveRecord::QueryLog</code></p>
-
-<p>Previously if you set <code>config.active_record.query_log_tags</code> to an array that included<br />
-<code>:job</code>, the job name would get logged twice. This bug has been fixed.</p>
-
-<p><em>Alex Ghiculescu</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Add support for Sidekiq&#39;s transaction-aware client
-</title>
-    <link>https://github.com/rails/rails/issues/46080</link>
-    <guid>https://github.com/rails/rails/issues/46080</guid>
-    <description>*   Add support for Sidekiq&#39;s transaction-aware client
-
-    *Jonathan del Strother*</description>
-    <pubDate>Tue, 20 Sep 2022 21:04:03 +0000</pubDate>
-    <author>Jonathan del Strother</author>
-    <content:encoded><![CDATA[<p>Add support for Sidekiq’s transaction-aware client</p>
-
-<p><em>Jonathan del Strother</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Remove QueAdapter from Active Job.
-</title>
-    <link>https://github.com/rails/rails/issues/46005</link>
-    <guid>https://github.com/rails/rails/issues/46005</guid>
-    <description>*   Remove QueAdapter from Active Job.
-
-    After maintaining Active Job QueAdapter by Rails and Que side
-    to support Ruby 3 keyword arguments and options provided as top level keywords,
-    it is quite difficult to maintain it this way.
-
-    Active Job Que adapter can be included in the future version of que gem itself.
-
-    *Yasuo Honda*</description>
-    <pubDate>Mon, 12 Sep 2022 23:18:13 +0000</pubDate>
-    <author>Yasuo Honda</author>
-    <content:encoded><![CDATA[<p>Remove QueAdapter from Active Job.</p>
-
-<p>After maintaining Active Job QueAdapter by Rails and Que side<br />
-to support Ruby 3 keyword arguments and options provided as top level keywords,<br />
-it is quite difficult to maintain it this way.</p>
-
-<p>Active Job Que adapter can be included in the future version of que gem itself.</p>
-
-<p><em>Yasuo Honda</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Fix BigDecimal (de)serialization for adapters using JSON.
-</title>
-    <link>https://github.com/rails/rails/issues/45618</link>
-    <guid>https://github.com/rails/rails/issues/45618</guid>
-    <description>*   Fix BigDecimal (de)serialization for adapters using JSON.
-
-    Previously, BigDecimal was listed as not needing a serializer.  However,
-    when used with an adapter storing the job arguments as JSON, it would get
-    serialized as a simple String, resulting in deserialization also producing
-    a String (instead of a BigDecimal).
-
-    By using a serializer, we ensure the round trip is safe.
-
-    To ensure applications using BigDecimal job arguments are not subject to
-    race conditions during deployment (where a replica running a version of
-    Rails without BigDecimalSerializer fails to deserialize an argument
-    serialized with it), `ActiveJob.use_big_decimal_serializer` is disabled by
-    default, and can be set to true in a following deployment..
-
-    *Sam Bostock*</description>
-    <pubDate>Thu, 21 Jul 2022 13:58:28 +0000</pubDate>
-    <author>Sam Bostock</author>
-    <content:encoded><![CDATA[<p>Fix BigDecimal (de)serialization for adapters using JSON.</p>
-
-<p>Previously, BigDecimal was listed as not needing a serializer.  However,<br />
-when used with an adapter storing the job arguments as JSON, it would get<br />
-serialized as a simple String, resulting in deserialization also producing<br />
-a String (instead of a BigDecimal).</p>
-
-<p>By using a serializer, we ensure the round trip is safe.</p>
-
-<p>To ensure applications using BigDecimal job arguments are not subject to<br />
-race conditions during deployment (where a replica running a version of<br />
-Rails without BigDecimalSerializer fails to deserialize an argument<br />
-serialized with it), <code>ActiveJob.use_big_decimal_serializer</code> is disabled by<br />
-default, and can be set to true in a following deployment..</p>
-
-<p><em>Sam Bostock</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Preserve full-precision `enqueued_at` timestamps for serialized jobs,
-</title>
-    <link>https://github.com/rails/rails/issues/45584</link>
-    <guid>https://github.com/rails/rails/issues/45584</guid>
-    <description>*   Preserve full-precision `enqueued_at` timestamps for serialized jobs,
-    allowing more accurate reporting of how long a job spent waiting in the
-    queue before it was performed.
-
-    Retains IS08601 format compatibility.
-
-    *Jeremy Daer*</description>
-    <pubDate>Wed, 13 Jul 2022 13:02:07 +0000</pubDate>
-    <author>Jeremy Daer</author>
-    <content:encoded><![CDATA[<p>Preserve full-precision <code>enqueued_at</code> timestamps for serialized jobs,<br />
-allowing more accurate reporting of how long a job spent waiting in the<br />
-queue before it was performed.</p>
-
-<p>Retains IS08601 format compatibility.</p>
-
-<p><em>Jeremy Daer</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Add `--parent` option to job generator to specify parent class of job.
-</title>
-    <link>https://github.com/rails/rails/issues/45528</link>
-    <guid>https://github.com/rails/rails/issues/45528</guid>
-    <description>*   Add `--parent` option to job generator to specify parent class of job.
-
-    Example:
-
-    `bin/rails g job process_payment --parent=payment_job` generates:
-
-    ```ruby
-    class ProcessPaymentJob &lt; PaymentJob
-      # ...
-    end
-    ```
-
-    *Gannon McGibbon*</description>
-    <pubDate>Thu, 07 Jul 2022 20:57:35 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Add <code>--parent</code> option to job generator to specify parent class of job.</p>
-
-<p>Example:</p>
-
-<p><code>bin/rails g job process_payment --parent=payment_job</code> generates:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ProcessPaymentJob</span> <span class="o">&lt;</span> <span class="no">PaymentJob</span>
-  <span class="c1"># ...</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Add more detailed description to job generator.
-</title>
-    <link>https://github.com/rails/rails/issues/45327</link>
-    <guid>https://github.com/rails/rails/issues/45327</guid>
-    <description>*   Add more detailed description to job generator.
-
-    *Gannon McGibbon*</description>
-    <pubDate>Mon, 13 Jun 2022 20:53:52 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Add more detailed description to job generator.</p>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: `perform.active_job` notification payloads now include `:db_runtime`, which
-</title>
-    <link>https://github.com/rails/rails/issues/40058</link>
-    <guid>https://github.com/rails/rails/issues/40058</guid>
-    <description>*   `perform.active_job` notification payloads now include `:db_runtime`, which
-    is the total time (in ms) taken by database queries while performing a job.
-    This value can be used to better understand how a job&#39;s time is spent.
-
-    *Jonathan Hefner*</description>
-    <pubDate>Thu, 19 May 2022 19:39:34 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p><code>perform.active_job</code> notification payloads now include <code>:db_runtime</code>, which<br />
-is the total time (in ms) taken by database queries while performing a job.<br />
-This value can be used to better understand how a job’s time is spent.</p>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Update `ActiveJob::QueueAdapters::QueAdapter` to remove deprecation warning.
-</title>
-    <link>https://github.com/rails/rails/issues/45896</link>
-    <guid>https://github.com/rails/rails/issues/45896</guid>
-    <description>*   Update `ActiveJob::QueueAdapters::QueAdapter` to remove deprecation warning.
-
-    Remove a deprecation warning introduced in que 1.2 to prepare for changes in
-    que 2.0 necessary for Ruby 3 compatibility.
-
-    *Damir Zekic* and *Adis Hasovic*</description>
-    <pubDate>Mon, 29 Aug 2022 22:28:40 +0000</pubDate>
-    <author>Ryuta Kamizono</author>
-    <content:encoded><![CDATA[<p>Update <code>ActiveJob::QueueAdapters::QueAdapter</code> to remove deprecation warning.</p>
-
-<p>Remove a deprecation warning introduced in que 1.2 to prepare for changes in<br />
-que 2.0 necessary for Ruby 3 compatibility.</p>
-
-<p><em>Damir Zekic</em> and <em>Adis Hasovic</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Add missing `bigdecimal` require in `ActiveJob::Arguments`
-</title>
-    <link>https://github.com/rails/rails/issues/44411</link>
-    <guid>https://github.com/rails/rails/issues/44411</guid>
-    <description>*   Add missing `bigdecimal` require in `ActiveJob::Arguments`
-
-    Could cause `uninitialized constant ActiveJob::Arguments::BigDecimal (NameError)`
-    when loading Active Job in isolation.
-
-    *Jean Boussier*</description>
-    <pubDate>Sat, 12 Feb 2022 09:08:06 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Add missing <code>bigdecimal</code> require in <code>ActiveJob::Arguments</code></p>
-
-<p>Could cause <code>uninitialized constant ActiveJob::Arguments::BigDecimal (NameError)</code><br />
-when loading Active Job in isolation.</p>
-
-<p><em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Allow testing `discard_on/retry_on ActiveJob::DeserializationError`
-</title>
-    <link>https://github.com/rails/rails/issues/43066</link>
-    <guid>https://github.com/rails/rails/issues/43066</guid>
-    <description>*   Allow testing `discard_on/retry_on ActiveJob::DeserializationError`
-
-    Previously in `perform_enqueued_jobs`, `deserialize_arguments_if_needed`
-    was called before calling `perform_now`. When a record no longer exists
-    and is serialized using GlobalID this led to raising
-    an `ActiveJob::DeserializationError` before reaching `perform_now` call.
-    This behavior makes difficult testing the job `discard_on/retry_on` logic.
-
-    Now `deserialize_arguments_if_needed` call is postponed to when `perform_now`
-    is called.
-
-    Example:
-
-    ```ruby
-    class UpdateUserJob &lt; ActiveJob::Base
-      discard_on ActiveJob::DeserializationError
-
-      def perform(user)
-        # ...
-      end
-    end
-
-    # In the test
-    User.destroy_all
-    assert_nothing_raised do
-      perform_enqueued_jobs only: UpdateUserJob
-    end
-    ```
-
-    *Jacopo Beschi*</description>
-    <pubDate>Thu, 06 Jan 2022 16:53:31 +0000</pubDate>
-    <author>Jacopo</author>
-    <content:encoded><![CDATA[<p>Allow testing <code>discard_on/retry_on ActiveJob::DeserializationError</code></p>
-
-<p>Previously in <code>perform_enqueued_jobs</code>, <code>deserialize_arguments_if_needed</code><br />
-was called before calling <code>perform_now</code>. When a record no longer exists<br />
-and is serialized using GlobalID this led to raising<br />
-an <code>ActiveJob::DeserializationError</code> before reaching <code>perform_now</code> call.<br />
-This behavior makes difficult testing the job <code>discard_on/retry_on</code> logic.</p>
-
-<p>Now <code>deserialize_arguments_if_needed</code> call is postponed to when <code>perform_now</code><br />
-is called.</p>
-
-<p>Example:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UpdateUserJob</span> <span class="o">&lt;</span> <span class="no">ActiveJob</span><span class="o">::</span><span class="no">Base</span>
-  <span class="n">discard_on</span> <span class="no">ActiveJob</span><span class="o">::</span><span class="no">DeserializationError</span>
-
-  <span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
-    <span class="c1"># ...</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># In the test</span>
-<span class="no">User</span><span class="p">.</span><span class="nf">destroy_all</span>
-<span class="n">assert_nothing_raised</span> <span class="k">do</span>
-  <span class="n">perform_enqueued_jobs</span> <span class="ss">only: </span><span class="no">UpdateUserJob</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>Jacopo Beschi</em></p>
+    <link>https://github.com/rails/rails/issues/46165</link>
+    <guid>https://github.com/rails/rails/issues/46165</guid>
+    <description>*   `has_one` and `belongs_to` associations now define a `reset_association` method
+    on the owner model (where `association` is the name of the association). This
+    method unloads the cached associate record, if any, and causes the next access
+    to query it from the database.
+
+    *George Claghorn*</description>
+    <pubDate>Wed, 23 Nov 2022 20:25:15 +0000</pubDate>
+    <author>George Claghorn</author>
+    <content:encoded><![CDATA[<p><code>has_one</code> and <code>belongs_to</code> associations now define a <code>reset_association</code> method<br />
+on the owner model (where <code>association</code> is the name of the association). This<br />
+method unloads the cached associate record, if any, and causes the next access<br />
+to query it from the database.</p>
+
+<p><em>George Claghorn</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -5526,375 +4871,286 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionmailer: Added ability to download `.eml` file for the email preview.
+    <title>activemodel: Custom attribute types that inherit from Active Model built-in types and do
 </title>
-    <link>https://github.com/rails/rails/issues/45987</link>
-    <guid>https://github.com/rails/rails/issues/45987</guid>
-    <description>*   Added ability to download `.eml` file for the email preview.
+    <link>https://github.com/rails/rails/issues/46219</link>
+    <guid>https://github.com/rails/rails/issues/46219</guid>
+    <description>*   Custom attribute types that inherit from Active Model built-in types and do
+    not override the `serialize` method will now benefit from an optimization
+    when serializing attribute values for the database.
 
-    *Igor Kasyanchuk*</description>
-    <pubDate>Fri, 09 Sep 2022 21:39:59 +0000</pubDate>
-    <author>Igor Kasyanchuk</author>
-    <content:encoded><![CDATA[<p>Added ability to download <code>.eml</code> file for the email preview.</p>
+    For example, with a custom type like the following:
 
-<p><em>Igor Kasyanchuk</em></p>
+    ```ruby
+    class DowncasedString &lt; ActiveModel::Type::String
+      def cast(value)
+        super&amp;.downcase
+      end
+    end
+
+    ActiveRecord::Type.register(:downcased_string, DowncasedString)
+
+    class User &lt; ActiveRecord::Base
+      attribute :email, :downcased_string
+    end
+
+    user = User.new(email: &quot;FooBar@example.com&quot;)
+    ```
+
+    Serializing the `email` attribute for the database will be roughly twice as
+    fast.  More expensive `cast` operations will likely see greater improvements.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Sun, 16 Oct 2022 21:40:20 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Custom attribute types that inherit from Active Model built-in types and do<br />
+not override the <code>serialize</code> method will now benefit from an optimization<br />
+when serializing attribute values for the database.</p>
+
+<p>For example, with a custom type like the following:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DowncasedString</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Type</span><span class="o">::</span><span class="no">String</span>
+  <span class="k">def</span> <span class="nf">cast</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">super</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">downcase</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Type</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="ss">:downcased_string</span><span class="p">,</span> <span class="no">DowncasedString</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">attribute</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:downcased_string</span>
+<span class="k">end</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">email: </span><span class="s2">"FooBar@example.com"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Serializing the <code>email</code> attribute for the database will be roughly twice as<br />
+fast.  More expensive <code>cast</code> operations will likely see greater improvements.</p>
+
+<p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionmailer: Support multiple preview paths for mailers.
+    <title>activemodel: `has_secure_password` now supports password challenges via a
 </title>
-    <link>https://github.com/rails/rails/issues/31595</link>
-    <guid>https://github.com/rails/rails/issues/31595</guid>
-    <description>*   Support multiple preview paths for mailers.
+    <link>https://github.com/rails/rails/issues/45662</link>
+    <guid>https://github.com/rails/rails/issues/45662</guid>
+    <description>*   `has_secure_password` now supports password challenges via a
+    `password_challenge` accessor and validation.
 
-    Option `config.action_mailer.preview_path` is deprecated in favor of
-    `config.action_mailer.preview_paths`. Appending paths to this configuration option
-    will cause those paths to be used in the search for mailer previews.
+    A password challenge is a safeguard to verify that the current user is
+    actually the password owner.  It can be used when changing sensitive model
+    fields, such as the password itself.  It is different than a password
+    confirmation, which is used to prevent password typos.
+
+    When `password_challenge` is set, the validation checks that the value&#39;s
+    digest matches the *currently persisted* `password_digest` (i.e.
+    `password_digest_was`).
+
+    This allows a password challenge to be done as part of a typical `update`
+    call, just like a password confirmation.  It also allows a password
+    challenge error to be handled in the same way as other validation errors.
+
+    For example, in the controller, instead of:
+
+    ```ruby
+    password_params = params.require(:password).permit(
+      :password_challenge,
+      :password,
+      :password_confirmation,
+    )
+
+    password_challenge = password_params.delete(:password_challenge)
+    @password_challenge_failed = !current_user.authenticate(password_challenge)
+
+    if !@password_challenge_failed &amp;&amp; current_user.update(password_params)
+      # ...
+    end
+    ```
+
+    You can now write:
+
+    ```ruby
+    password_params = params.require(:password).permit(
+      :password_challenge,
+      :password,
+      :password_confirmation,
+    ).with_defaults(password_challenge: &quot;&quot;)
+
+    if current_user.update(password_params)
+      # ...
+    end
+    ```
+
+    And, in the view, instead of checking `@password_challenge_failed`, you can
+    render an error for the `password_challenge` field just as you would for
+    other form fields, including utilizing `config.action_view.field_error_proc`.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Tue, 26 Jul 2022 05:14:42 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p><code>has_secure_password</code> now supports password challenges via a<br />
+<code>password_challenge</code> accessor and validation.</p>
+
+<p>A password challenge is a safeguard to verify that the current user is<br />
+actually the password owner.  It can be used when changing sensitive model<br />
+fields, such as the password itself.  It is different than a password<br />
+confirmation, which is used to prevent password typos.</p>
+
+<p>When <code>password_challenge</code> is set, the validation checks that the value’s<br />
+digest matches the <em>currently persisted</em> <code>password_digest</code> (i.e.<br />
+<code>password_digest_was</code>).</p>
+
+<p>This allows a password challenge to be done as part of a typical <code>update</code><br />
+call, just like a password confirmation.  It also allows a password<br />
+challenge error to be handled in the same way as other validation errors.</p>
+
+<p>For example, in the controller, instead of:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">password_params</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:password</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span>
+  <span class="ss">:password_challenge</span><span class="p">,</span>
+  <span class="ss">:password</span><span class="p">,</span>
+  <span class="ss">:password_confirmation</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">password_challenge</span> <span class="o">=</span> <span class="n">password_params</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="ss">:password_challenge</span><span class="p">)</span>
+<span class="vi">@password_challenge_failed</span> <span class="o">=</span> <span class="o">!</span><span class="n">current_user</span><span class="p">.</span><span class="nf">authenticate</span><span class="p">(</span><span class="n">password_challenge</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="o">!</span><span class="vi">@password_challenge_failed</span> <span class="o">&amp;&amp;</span> <span class="n">current_user</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">password_params</span><span class="p">)</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>You can now write:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">password_params</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:password</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span>
+  <span class="ss">:password_challenge</span><span class="p">,</span>
+  <span class="ss">:password</span><span class="p">,</span>
+  <span class="ss">:password_confirmation</span><span class="p">,</span>
+<span class="p">).</span><span class="nf">with_defaults</span><span class="p">(</span><span class="ss">password_challenge: </span><span class="s2">""</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">current_user</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">password_params</span><span class="p">)</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>And, in the view, instead of checking <code>@password_challenge_failed</code>, you can<br />
+render an error for the <code>password_challenge</code> field just as you would for<br />
+other form fields, including utilizing <code>config.action_view.field_error_proc</code>.</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Support infinite ranges for `LengthValidator`s `:in`/`:within` options
+</title>
+    <link>https://github.com/rails/rails/issues/45138</link>
+    <guid>https://github.com/rails/rails/issues/45138</guid>
+    <description>*   Support infinite ranges for `LengthValidator`s `:in`/`:within` options
+
+    ```ruby
+    validates_length_of :first_name, in: ..30
+    ```
 
     *fatkodima*</description>
-    <pubDate>Tue, 09 Aug 2022 19:20:18 +0000</pubDate>
+    <pubDate>Fri, 20 May 2022 18:05:20 +0000</pubDate>
     <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Support multiple preview paths for mailers.</p>
+    <content:encoded><![CDATA[<p>Support infinite ranges for <code>LengthValidator</code>s <code>:in</code>/<code>:within</code> options</p>
 
-<p>Option <code>config.action_mailer.preview_path</code> is deprecated in favor of<br />
-<code>config.action_mailer.preview_paths</code>. Appending paths to this configuration option<br />
-will cause those paths to be used in the search for mailer previews.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validates_length_of</span> <span class="ss">:first_name</span><span class="p">,</span> <span class="ss">in: </span><span class="o">..</span><span class="mi">30</span>
+</code></pre></div></div>
 
 <p><em>fatkodima</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actiontext: Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.
+    <title>activemodel: Add support for beginless ranges to inclusivity/exclusivity validators:
 </title>
-    <link>https://github.com/rails/rails/issues/45739</link>
-    <guid>https://github.com/rails/rails/issues/45739</guid>
-    <description>*   Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.
-
-    *Jamis Buck*</description>
-    <pubDate>Tue, 06 Sep 2022 18:15:10 +0000</pubDate>
-    <author>Jamis Buck</author>
-    <content:encoded><![CDATA[<p>Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.</p>
-
-<p><em>Jamis Buck</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Fix an issue that caused the content layout to render multiple times when a
-</title>
-    <link>https://github.com/rails/rails/issues/43706</link>
-    <guid>https://github.com/rails/rails/issues/43706</guid>
-    <description>*   Fix an issue that caused the content layout to render multiple times when a
-    rich_text field was updated.
-
-    *Jacob Herrington*</description>
-    <pubDate>Sun, 22 May 2022 15:10:09 +0000</pubDate>
-    <author>Jacob Herrington</author>
-    <content:encoded><![CDATA[<p>Fix an issue that caused the content layout to render multiple times when a<br />
-rich_text field was updated.</p>
-
-<p><em>Jacob Herrington</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Add missing preview event to `ActiveStorage::LogSubscriber`
-</title>
-    <link>https://github.com/rails/rails/issues/46291</link>
-    <guid>https://github.com/rails/rails/issues/46291</guid>
-    <description>*   Add missing preview event to `ActiveStorage::LogSubscriber`
-
-    A `preview` event is being instrumented in `ActiveStorage::Previewer`.
-    However it was not added inside ActiveStorage&#39;s LogSubscriber class.
-
-    This will allow to have logs for when a preview happens
-    in the same fashion as all other ActiveStorage events such as
-    `upload` and `download` inside `Rails.logger`.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Sat, 22 Oct 2022 09:54:03 +0000</pubDate>
-    <author>Chedli Bourguiba</author>
-    <content:encoded><![CDATA[<p>Add missing preview event to <code>ActiveStorage::LogSubscriber</code></p>
-
-<p>A <code>preview</code> event is being instrumented in <code>ActiveStorage::Previewer</code>.<br />
-However it was not added inside ActiveStorage’s LogSubscriber class.</p>
-
-<p>This will allow to have logs for when a preview happens<br />
-in the same fashion as all other ActiveStorage events such as<br />
-<code>upload</code> and <code>download</code> inside <code>Rails.logger</code>.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Fix retrieving rotation value from FFmpeg on version 5.0+.
-</title>
-    <link>https://github.com/rails/rails/issues/45837</link>
-    <guid>https://github.com/rails/rails/issues/45837</guid>
-    <description>*   Fix retrieving rotation value from FFmpeg on version 5.0+.
-
-    In FFmpeg version 5.0+ the rotation value has been removed from tags.
-    Instead the value can be found in side_data_list. Along with
-    this update it&#39;s possible to have values of -90, -270 to denote the video
-    has been rotated.
-
-    *Haroon Ahmed*</description>
-    <pubDate>Tue, 27 Sep 2022 19:17:00 +0000</pubDate>
-    <author>Haroon Ahmed</author>
-    <content:encoded><![CDATA[<p>Fix retrieving rotation value from FFmpeg on version 5.0+.</p>
-
-<p>In FFmpeg version 5.0+ the rotation value has been removed from tags.<br />
-Instead the value can be found in side_data_list. Along with<br />
-this update it’s possible to have values of -90, -270 to denote the video<br />
-has been rotated.</p>
-
-<p><em>Haroon Ahmed</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Touch all corresponding model records after ActiveStorage::Blob is analyzed
-</title>
-    <link>https://github.com/rails/rails/issues/45579</link>
-    <guid>https://github.com/rails/rails/issues/45579</guid>
-    <description>*   Touch all corresponding model records after ActiveStorage::Blob is analyzed
-
-    This fixes a race condition where a record can be requested and have a cache entry built, before
-    the initial `analyze_later` completes, which will not be invalidated until something else
-    updates the record. This also invalidates cache entries when a blob is re-analyzed, which
-    is helpful if a bug is fixed in an analyzer or a new analyzer is added.
-
-    *Nate Matykiewicz*</description>
-    <pubDate>Tue, 26 Jul 2022 16:34:18 +0000</pubDate>
-    <author>Nate Matykiewicz</author>
-    <content:encoded><![CDATA[<p>Touch all corresponding model records after ActiveStorage::Blob is analyzed</p>
-
-<p>This fixes a race condition where a record can be requested and have a cache entry built, before<br />
-the initial <code>analyze_later</code> completes, which will not be invalidated until something else<br />
-updates the record. This also invalidates cache entries when a blob is re-analyzed, which<br />
-is helpful if a bug is fixed in an analyzer or a new analyzer is added.</p>
-
-<p><em>Nate Matykiewicz</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Add ability to use pre-defined variants when calling `preview` or
-</title>
-    <link>https://github.com/rails/rails/issues/45098</link>
-    <guid>https://github.com/rails/rails/issues/45098</guid>
-    <description>*   Add ability to use pre-defined variants when calling `preview` or
-    `representation` on an attachment.
+    <link>https://github.com/rails/rails/issues/45123</link>
+    <guid>https://github.com/rails/rails/issues/45123</guid>
+    <description>*   Add support for beginless ranges to inclusivity/exclusivity validators:
 
     ```ruby
-    class User &lt; ActiveRecord::Base
-      has_one_attached :file do |attachable|
-        attachable.variant :thumb, resize_to_limit: [100, 100]
-      end
-    end
-
-    &lt;%= image_tag user.file.representation(:thumb) %&gt;
+    validates_inclusion_of :birth_date, in: -&gt; { (..Date.today) }
     ```
 
-    *Richard Böhme*</description>
-    <pubDate>Tue, 19 Jul 2022 15:45:32 +0000</pubDate>
-    <author>Richard Böhme</author>
-    <content:encoded><![CDATA[<p>Add ability to use pre-defined variants when calling <code>preview</code> or<br />
-<code>representation</code> on an attachment.</p>
+    *Bo Jeanes*</description>
+    <pubDate>Fri, 20 May 2022 14:54:54 +0000</pubDate>
+    <author>Bo Jeanes</author>
+    <content:encoded><![CDATA[<p>Add support for beginless ranges to inclusivity/exclusivity validators:</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-  <span class="n">has_one_attached</span> <span class="ss">:file</span> <span class="k">do</span> <span class="o">|</span><span class="n">attachable</span><span class="o">|</span>
-    <span class="n">attachable</span><span class="p">.</span><span class="nf">variant</span> <span class="ss">:thumb</span><span class="p">,</span> <span class="ss">resize_to_limit: </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="o">&lt;</span><span class="sx">%= image_tag user.file.representation(:thumb) %&gt;
-</span></code></pre></div></div>
-
-<p><em>Richard Böhme</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Method `attach` always returns the attachments except when the record
-</title>
-    <link>https://github.com/rails/rails/issues/45397</link>
-    <guid>https://github.com/rails/rails/issues/45397</guid>
-    <description>*   Method `attach` always returns the attachments except when the record
-    is persisted, unchanged, and saving it fails, in which case it returns `nil`.
-
-    *Santiago Bartesaghi*</description>
-    <pubDate>Tue, 21 Jun 2022 16:28:18 +0000</pubDate>
-    <author>Santiago Bartesaghi</author>
-    <content:encoded><![CDATA[<p>Method <code>attach</code> always returns the attachments except when the record<br />
-is persisted, unchanged, and saving it fails, in which case it returns <code>nil</code>.</p>
-
-<p><em>Santiago Bartesaghi</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Fixes multiple `attach` calls within transaction not uploading files correctly.
-</title>
-    <link>https://github.com/rails/rails/issues/45235</link>
-    <guid>https://github.com/rails/rails/issues/45235</guid>
-    <description>*   Fixes multiple `attach` calls within transaction not uploading files correctly.
-
-    In the following example, the code failed to upload all but the last file to the configured service.
-    ```ruby
-      ActiveRecord::Base.transaction do
-        user.attachments.attach({
-          content_type: &quot;text/plain&quot;,
-          filename: &quot;dummy.txt&quot;,
-          io: ::StringIO.new(&quot;dummy&quot;),
-        })
-        user.attachments.attach({
-          content_type: &quot;text/plain&quot;,
-          filename: &quot;dummy2.txt&quot;,
-          io: ::StringIO.new(&quot;dummy2&quot;),
-        })
-      end
-
-      assert_equal 2, user.attachments.count
-      assert user.attachments.first.service.exist?(user.attachments.first.key)  # Fails
-    ```
-
-    This was addressed by keeping track of the subchanges pending upload, and uploading them
-    once the transaction is committed.
-
-    Fixes #41661
-
-    *Santiago Bartesaghi*, *Bruno Vezoli*, *Juan Roig*, *Abhay Nikam*</description>
-    <pubDate>Tue, 07 Jun 2022 09:04:27 +0000</pubDate>
-    <author>Santiago Bartesaghi</author>
-    <content:encoded><![CDATA[<p>Fixes multiple <code>attach</code> calls within transaction not uploading files correctly.</p>
-
-<p>In the following example, the code failed to upload all but the last file to the configured service.</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
-    <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">attach</span><span class="p">({</span>
-      <span class="ss">content_type: </span><span class="s2">"text/plain"</span><span class="p">,</span>
-      <span class="ss">filename: </span><span class="s2">"dummy.txt"</span><span class="p">,</span>
-      <span class="ss">io: </span><span class="o">::</span><span class="no">StringIO</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"dummy"</span><span class="p">),</span>
-    <span class="p">})</span>
-    <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">attach</span><span class="p">({</span>
-      <span class="ss">content_type: </span><span class="s2">"text/plain"</span><span class="p">,</span>
-      <span class="ss">filename: </span><span class="s2">"dummy2.txt"</span><span class="p">,</span>
-      <span class="ss">io: </span><span class="o">::</span><span class="no">StringIO</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"dummy2"</span><span class="p">),</span>
-    <span class="p">})</span>
-  <span class="k">end</span>
-
-  <span class="n">assert_equal</span> <span class="mi">2</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">count</span>
-  <span class="n">assert</span> <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">service</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">key</span><span class="p">)</span>  <span class="c1"># Fails</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validates_inclusion_of</span> <span class="ss">:birth_date</span><span class="p">,</span> <span class="ss">in: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="p">(</span><span class="o">..</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">)</span> <span class="p">}</span>
 </code></pre></div></div>
 
-<p>This was addressed by keeping track of the subchanges pending upload, and uploading them<br />
-once the transaction is committed.</p>
-
-<p>Fixes #41661</p>
-
-<p><em>Santiago Bartesaghi</em>, <em>Bruno Vezoli</em>, <em>Juan Roig</em>, <em>Abhay Nikam</em></p>
+<p><em>Bo Jeanes</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activestorage: Raise an exception if `config.active_storage.service` is not set.
+    <title>activemodel: Make validators accept lambdas without record argument
 </title>
-    <link>https://github.com/rails/rails/issues/45224</link>
-    <guid>https://github.com/rails/rails/issues/45224</guid>
-    <description>*   Raise an exception if `config.active_storage.service` is not set.
+    <link>https://github.com/rails/rails/issues/45118</link>
+    <guid>https://github.com/rails/rails/issues/45118</guid>
+    <description>*   Make validators accept lambdas without record argument
 
-    If Active Storage is configured and `config.active_storage.service` is not
-    set in the respective environment&#39;s configuration file, then an exception
-    is raised with a meaningful message when attempting to use Active Storage.
+    ```ruby
+    # Before
+    validates_comparison_of :birth_date, less_than_or_equal_to: -&gt;(_record) { Date.today }
 
-    *Ghouse Mohamed*</description>
-    <pubDate>Tue, 31 May 2022 17:51:33 +0000</pubDate>
-    <author>Ghouse Mohamed</author>
-    <content:encoded><![CDATA[<p>Raise an exception if <code>config.active_storage.service</code> is not set.</p>
+    # After
+    validates_comparison_of :birth_date, less_than_or_equal_to: -&gt; { Date.today }
+    ```
 
-<p>If Active Storage is configured and <code>config.active_storage.service</code> is not<br />
-set in the respective environment’s configuration file, then an exception<br />
-is raised with a meaningful message when attempting to use Active Storage.</p>
+    *fatkodima*</description>
+    <pubDate>Wed, 18 May 2022 18:08:47 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Make validators accept lambdas without record argument</p>
 
-<p><em>Ghouse Mohamed</em></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">validates_comparison_of</span> <span class="ss">:birth_date</span><span class="p">,</span> <span class="ss">less_than_or_equal_to: </span><span class="o">-&gt;</span><span class="p">(</span><span class="n">_record</span><span class="p">)</span> <span class="p">{</span> <span class="no">Date</span><span class="p">.</span><span class="nf">today</span> <span class="p">}</span>
+
+<span class="c1"># After</span>
+<span class="n">validates_comparison_of</span> <span class="ss">:birth_date</span><span class="p">,</span> <span class="ss">less_than_or_equal_to: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="no">Date</span><span class="p">.</span><span class="nf">today</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>fatkodima</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activestorage: Fixes proxy downloads of files over 5mb
+    <title>activemodel: Fix casting long strings to `Date`, `Time` or `DateTime`
 </title>
-    <link>https://github.com/rails/rails/issues/45224</link>
-    <guid>https://github.com/rails/rails/issues/45224</guid>
-    <description>*   Fixes proxy downloads of files over 5mb
+    <link>https://github.com/rails/rails/issues/45005</link>
+    <guid>https://github.com/rails/rails/issues/45005</guid>
+    <description>*   Fix casting long strings to `Date`, `Time` or `DateTime`
 
-    Previously, trying to view and/or download files larger than 5mb stored in
-    services like S3 via proxy mode could return corrupted files at around
-    5.2mb or cause random halts in the download. Now,
-    `ActiveStorage::Blobs::ProxyController` correctly handles streaming these
-    larger files from the service to the client without any issues.
+    *fatkodima*</description>
+    <pubDate>Wed, 11 May 2022 15:03:30 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Fix casting long strings to <code>Date</code>, <code>Time</code> or <code>DateTime</code></p>
 
-    Fixes #44679
-
-    *Felipe Raul*</description>
-    <pubDate>Tue, 31 May 2022 17:51:33 +0000</pubDate>
-    <author>Ghouse Mohamed</author>
-    <content:encoded><![CDATA[<p>Fixes proxy downloads of files over 5mb</p>
-
-<p>Previously, trying to view and/or download files larger than 5mb stored in<br />
-services like S3 via proxy mode could return corrupted files at around<br />
-5.2mb or cause random halts in the download. Now,<br />
-<code>ActiveStorage::Blobs::ProxyController</code> correctly handles streaming these<br />
-larger files from the service to the client without any issues.</p>
-
-<p>Fixes #44679</p>
-
-<p><em>Felipe Raul</em></p>
+<p><em>fatkodima</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activestorage: Saving attachment(s) to a record returns the blob/blobs object
+    <title>activemodel: Use different cache namespace for proxy calls
 </title>
-    <link>https://github.com/rails/rails/issues/44439</link>
-    <guid>https://github.com/rails/rails/issues/44439</guid>
-    <description>*   Saving attachment(s) to a record returns the blob/blobs object
+    <link>https://github.com/rails/rails/issues/44322</link>
+    <guid>https://github.com/rails/rails/issues/44322</guid>
+    <description>*   Use different cache namespace for proxy calls
 
-    Previously, saving attachments did not return the blob/blobs that
-    were attached. Now, saving attachments to a record with `#attach`
-    method returns the blob or array of blobs that were attached to
-    the record. If it fails to save the attachment(s), then it returns
-    `false`.
+    Models can currently have different attribute bodies for the same method
+    names, leading to conflicts. Adding a new namespace `:active_model_proxy`
+    fixes the issue.
 
-    *Ghouse Mohamed*</description>
-    <pubDate>Fri, 25 Feb 2022 21:19:01 +0000</pubDate>
-    <author>Ghouse Mohamed</author>
-    <content:encoded><![CDATA[<p>Saving attachment(s) to a record returns the blob/blobs object</p>
+    *Chris Salzberg*</description>
+    <pubDate>Thu, 03 Feb 2022 09:10:31 +0000</pubDate>
+    <author>Chris Salzberg</author>
+    <content:encoded><![CDATA[<p>Use different cache namespace for proxy calls</p>
 
-<p>Previously, saving attachments did not return the blob/blobs that<br />
-were attached. Now, saving attachments to a record with <code>#attach</code><br />
-method returns the blob or array of blobs that were attached to<br />
-the record. If it fails to save the attachment(s), then it returns<br />
-<code>false</code>.</p>
+<p>Models can currently have different attribute bodies for the same method<br />
+names, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />
+fixes the issue.</p>
 
-<p><em>Ghouse Mohamed</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Don&#39;t stream responses in redirect mode
-</title>
-    <link>https://github.com/rails/rails/issues/44244</link>
-    <guid>https://github.com/rails/rails/issues/44244</guid>
-    <description>*   Don&#39;t stream responses in redirect mode
-
-    Previously, both redirect mode and proxy mode streamed their
-    responses which caused a new thread to be created, and could end
-    up leaking connections in the connection pool. But since redirect
-    mode doesn&#39;t actually send any data, it doesn&#39;t need to be
-    streamed.
-
-    *Luke Lau*</description>
-    <pubDate>Wed, 26 Jan 2022 12:14:45 +0000</pubDate>
-    <author>Luke Lau</author>
-    <content:encoded><![CDATA[<p>Don’t stream responses in redirect mode</p>
-
-<p>Previously, both redirect mode and proxy mode streamed their<br />
-responses which caused a new thread to be created, and could end<br />
-up leaking connections in the connection pool. But since redirect<br />
-mode doesn’t actually send any data, it doesn’t need to be<br />
-streamed.</p>
-
-<p><em>Luke Lau</em></p>
+<p><em>Chris Salzberg</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -7054,6 +6310,799 @@ if the path existed and was an empty directory or file.</p>
 but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 
 <p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Don&#39;t double log the `job` when using `ActiveRecord::QueryLog`
+</title>
+    <link>https://github.com/rails/rails/issues/46279</link>
+    <guid>https://github.com/rails/rails/issues/46279</guid>
+    <description>*   Don&#39;t double log the `job` when using `ActiveRecord::QueryLog`
+
+    Previously if you set `config.active_record.query_log_tags` to an array that included
+    `:job`, the job name would get logged twice. This bug has been fixed.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Sat, 22 Oct 2022 23:22:41 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p>Don’t double log the <code>job</code> when using <code>ActiveRecord::QueryLog</code></p>
+
+<p>Previously if you set <code>config.active_record.query_log_tags</code> to an array that included<br />
+<code>:job</code>, the job name would get logged twice. This bug has been fixed.</p>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Add support for Sidekiq&#39;s transaction-aware client
+</title>
+    <link>https://github.com/rails/rails/issues/46080</link>
+    <guid>https://github.com/rails/rails/issues/46080</guid>
+    <description>*   Add support for Sidekiq&#39;s transaction-aware client
+
+    *Jonathan del Strother*</description>
+    <pubDate>Tue, 20 Sep 2022 21:04:03 +0000</pubDate>
+    <author>Jonathan del Strother</author>
+    <content:encoded><![CDATA[<p>Add support for Sidekiq’s transaction-aware client</p>
+
+<p><em>Jonathan del Strother</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Remove QueAdapter from Active Job.
+</title>
+    <link>https://github.com/rails/rails/issues/46005</link>
+    <guid>https://github.com/rails/rails/issues/46005</guid>
+    <description>*   Remove QueAdapter from Active Job.
+
+    After maintaining Active Job QueAdapter by Rails and Que side
+    to support Ruby 3 keyword arguments and options provided as top level keywords,
+    it is quite difficult to maintain it this way.
+
+    Active Job Que adapter can be included in the future version of que gem itself.
+
+    *Yasuo Honda*</description>
+    <pubDate>Mon, 12 Sep 2022 23:18:13 +0000</pubDate>
+    <author>Yasuo Honda</author>
+    <content:encoded><![CDATA[<p>Remove QueAdapter from Active Job.</p>
+
+<p>After maintaining Active Job QueAdapter by Rails and Que side<br />
+to support Ruby 3 keyword arguments and options provided as top level keywords,<br />
+it is quite difficult to maintain it this way.</p>
+
+<p>Active Job Que adapter can be included in the future version of que gem itself.</p>
+
+<p><em>Yasuo Honda</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Fix BigDecimal (de)serialization for adapters using JSON.
+</title>
+    <link>https://github.com/rails/rails/issues/45618</link>
+    <guid>https://github.com/rails/rails/issues/45618</guid>
+    <description>*   Fix BigDecimal (de)serialization for adapters using JSON.
+
+    Previously, BigDecimal was listed as not needing a serializer.  However,
+    when used with an adapter storing the job arguments as JSON, it would get
+    serialized as a simple String, resulting in deserialization also producing
+    a String (instead of a BigDecimal).
+
+    By using a serializer, we ensure the round trip is safe.
+
+    To ensure applications using BigDecimal job arguments are not subject to
+    race conditions during deployment (where a replica running a version of
+    Rails without BigDecimalSerializer fails to deserialize an argument
+    serialized with it), `ActiveJob.use_big_decimal_serializer` is disabled by
+    default, and can be set to true in a following deployment..
+
+    *Sam Bostock*</description>
+    <pubDate>Thu, 21 Jul 2022 13:58:28 +0000</pubDate>
+    <author>Sam Bostock</author>
+    <content:encoded><![CDATA[<p>Fix BigDecimal (de)serialization for adapters using JSON.</p>
+
+<p>Previously, BigDecimal was listed as not needing a serializer.  However,<br />
+when used with an adapter storing the job arguments as JSON, it would get<br />
+serialized as a simple String, resulting in deserialization also producing<br />
+a String (instead of a BigDecimal).</p>
+
+<p>By using a serializer, we ensure the round trip is safe.</p>
+
+<p>To ensure applications using BigDecimal job arguments are not subject to<br />
+race conditions during deployment (where a replica running a version of<br />
+Rails without BigDecimalSerializer fails to deserialize an argument<br />
+serialized with it), <code>ActiveJob.use_big_decimal_serializer</code> is disabled by<br />
+default, and can be set to true in a following deployment..</p>
+
+<p><em>Sam Bostock</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Preserve full-precision `enqueued_at` timestamps for serialized jobs,
+</title>
+    <link>https://github.com/rails/rails/issues/45584</link>
+    <guid>https://github.com/rails/rails/issues/45584</guid>
+    <description>*   Preserve full-precision `enqueued_at` timestamps for serialized jobs,
+    allowing more accurate reporting of how long a job spent waiting in the
+    queue before it was performed.
+
+    Retains IS08601 format compatibility.
+
+    *Jeremy Daer*</description>
+    <pubDate>Wed, 13 Jul 2022 13:02:07 +0000</pubDate>
+    <author>Jeremy Daer</author>
+    <content:encoded><![CDATA[<p>Preserve full-precision <code>enqueued_at</code> timestamps for serialized jobs,<br />
+allowing more accurate reporting of how long a job spent waiting in the<br />
+queue before it was performed.</p>
+
+<p>Retains IS08601 format compatibility.</p>
+
+<p><em>Jeremy Daer</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Add `--parent` option to job generator to specify parent class of job.
+</title>
+    <link>https://github.com/rails/rails/issues/45528</link>
+    <guid>https://github.com/rails/rails/issues/45528</guid>
+    <description>*   Add `--parent` option to job generator to specify parent class of job.
+
+    Example:
+
+    `bin/rails g job process_payment --parent=payment_job` generates:
+
+    ```ruby
+    class ProcessPaymentJob &lt; PaymentJob
+      # ...
+    end
+    ```
+
+    *Gannon McGibbon*</description>
+    <pubDate>Thu, 07 Jul 2022 20:57:35 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Add <code>--parent</code> option to job generator to specify parent class of job.</p>
+
+<p>Example:</p>
+
+<p><code>bin/rails g job process_payment --parent=payment_job</code> generates:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ProcessPaymentJob</span> <span class="o">&lt;</span> <span class="no">PaymentJob</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Add more detailed description to job generator.
+</title>
+    <link>https://github.com/rails/rails/issues/45327</link>
+    <guid>https://github.com/rails/rails/issues/45327</guid>
+    <description>*   Add more detailed description to job generator.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Mon, 13 Jun 2022 20:53:52 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Add more detailed description to job generator.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: `perform.active_job` notification payloads now include `:db_runtime`, which
+</title>
+    <link>https://github.com/rails/rails/issues/40058</link>
+    <guid>https://github.com/rails/rails/issues/40058</guid>
+    <description>*   `perform.active_job` notification payloads now include `:db_runtime`, which
+    is the total time (in ms) taken by database queries while performing a job.
+    This value can be used to better understand how a job&#39;s time is spent.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Thu, 19 May 2022 19:39:34 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p><code>perform.active_job</code> notification payloads now include <code>:db_runtime</code>, which<br />
+is the total time (in ms) taken by database queries while performing a job.<br />
+This value can be used to better understand how a job’s time is spent.</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Update `ActiveJob::QueueAdapters::QueAdapter` to remove deprecation warning.
+</title>
+    <link>https://github.com/rails/rails/issues/45896</link>
+    <guid>https://github.com/rails/rails/issues/45896</guid>
+    <description>*   Update `ActiveJob::QueueAdapters::QueAdapter` to remove deprecation warning.
+
+    Remove a deprecation warning introduced in que 1.2 to prepare for changes in
+    que 2.0 necessary for Ruby 3 compatibility.
+
+    *Damir Zekic* and *Adis Hasovic*</description>
+    <pubDate>Mon, 29 Aug 2022 22:28:40 +0000</pubDate>
+    <author>Ryuta Kamizono</author>
+    <content:encoded><![CDATA[<p>Update <code>ActiveJob::QueueAdapters::QueAdapter</code> to remove deprecation warning.</p>
+
+<p>Remove a deprecation warning introduced in que 1.2 to prepare for changes in<br />
+que 2.0 necessary for Ruby 3 compatibility.</p>
+
+<p><em>Damir Zekic</em> and <em>Adis Hasovic</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Add missing `bigdecimal` require in `ActiveJob::Arguments`
+</title>
+    <link>https://github.com/rails/rails/issues/44411</link>
+    <guid>https://github.com/rails/rails/issues/44411</guid>
+    <description>*   Add missing `bigdecimal` require in `ActiveJob::Arguments`
+
+    Could cause `uninitialized constant ActiveJob::Arguments::BigDecimal (NameError)`
+    when loading Active Job in isolation.
+
+    *Jean Boussier*</description>
+    <pubDate>Sat, 12 Feb 2022 09:08:06 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add missing <code>bigdecimal</code> require in <code>ActiveJob::Arguments</code></p>
+
+<p>Could cause <code>uninitialized constant ActiveJob::Arguments::BigDecimal (NameError)</code><br />
+when loading Active Job in isolation.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Allow testing `discard_on/retry_on ActiveJob::DeserializationError`
+</title>
+    <link>https://github.com/rails/rails/issues/43066</link>
+    <guid>https://github.com/rails/rails/issues/43066</guid>
+    <description>*   Allow testing `discard_on/retry_on ActiveJob::DeserializationError`
+
+    Previously in `perform_enqueued_jobs`, `deserialize_arguments_if_needed`
+    was called before calling `perform_now`. When a record no longer exists
+    and is serialized using GlobalID this led to raising
+    an `ActiveJob::DeserializationError` before reaching `perform_now` call.
+    This behavior makes difficult testing the job `discard_on/retry_on` logic.
+
+    Now `deserialize_arguments_if_needed` call is postponed to when `perform_now`
+    is called.
+
+    Example:
+
+    ```ruby
+    class UpdateUserJob &lt; ActiveJob::Base
+      discard_on ActiveJob::DeserializationError
+
+      def perform(user)
+        # ...
+      end
+    end
+
+    # In the test
+    User.destroy_all
+    assert_nothing_raised do
+      perform_enqueued_jobs only: UpdateUserJob
+    end
+    ```
+
+    *Jacopo Beschi*</description>
+    <pubDate>Thu, 06 Jan 2022 16:53:31 +0000</pubDate>
+    <author>Jacopo</author>
+    <content:encoded><![CDATA[<p>Allow testing <code>discard_on/retry_on ActiveJob::DeserializationError</code></p>
+
+<p>Previously in <code>perform_enqueued_jobs</code>, <code>deserialize_arguments_if_needed</code><br />
+was called before calling <code>perform_now</code>. When a record no longer exists<br />
+and is serialized using GlobalID this led to raising<br />
+an <code>ActiveJob::DeserializationError</code> before reaching <code>perform_now</code> call.<br />
+This behavior makes difficult testing the job <code>discard_on/retry_on</code> logic.</p>
+
+<p>Now <code>deserialize_arguments_if_needed</code> call is postponed to when <code>perform_now</code><br />
+is called.</p>
+
+<p>Example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UpdateUserJob</span> <span class="o">&lt;</span> <span class="no">ActiveJob</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">discard_on</span> <span class="no">ActiveJob</span><span class="o">::</span><span class="no">DeserializationError</span>
+
+  <span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># In the test</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">destroy_all</span>
+<span class="n">assert_nothing_raised</span> <span class="k">do</span>
+  <span class="n">perform_enqueued_jobs</span> <span class="ss">only: </span><span class="no">UpdateUserJob</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Jacopo Beschi</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Choices of `select` can optionally contain html attributes as the last element
+</title>
+    <link>https://github.com/rails/rails/issues/45119</link>
+    <guid>https://github.com/rails/rails/issues/45119</guid>
+    <description>*   Choices of `select` can optionally contain html attributes as the last element
+    of the child arrays when using grouped/nested collections
+
+    ```erb
+    &lt;%= form.select :foo, [[&quot;North America&quot;, [[&quot;United States&quot;,&quot;US&quot;],[&quot;Canada&quot;,&quot;CA&quot;]], { disabled: &quot;disabled&quot; }]] %&gt;
+    # =&gt; &lt;select&gt;&lt;optgroup label=&quot;North America&quot; disabled=&quot;disabled&quot;&gt;&lt;option value=&quot;US&quot;&gt;United States&lt;/option&gt;&lt;option value=&quot;CA&quot;&gt;Canada&lt;/option&gt;&lt;/optgroup&gt;&lt;/select&gt;
+    ```
+
+    *Chris Gunther*</description>
+    <pubDate>Wed, 23 Nov 2022 19:59:20 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Choices of <code>select</code> can optionally contain html attributes as the last element<br />
+of the child arrays when using grouped/nested collections</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">select</span> <span class="ss">:foo</span><span class="p">,</span> <span class="p">[[</span><span class="s2">"North America"</span><span class="p">,</span> <span class="p">[[</span><span class="s2">"United States"</span><span class="p">,</span><span class="s2">"US"</span><span class="p">],[</span><span class="s2">"Canada"</span><span class="p">,</span><span class="s2">"CA"</span><span class="p">]],</span> <span class="p">{</span> <span class="ss">disabled: </span><span class="s2">"disabled"</span> <span class="p">}]]</span> <span class="cp">%&gt;</span>
+# =&gt; <span class="nt">&lt;select&gt;&lt;optgroup</span> <span class="na">label=</span><span class="s">"North America"</span> <span class="na">disabled=</span><span class="s">"disabled"</span><span class="nt">&gt;&lt;option</span> <span class="na">value=</span><span class="s">"US"</span><span class="nt">&gt;</span>United States<span class="nt">&lt;/option&gt;&lt;option</span> <span class="na">value=</span><span class="s">"CA"</span><span class="nt">&gt;</span>Canada<span class="nt">&lt;/option&gt;&lt;/optgroup&gt;&lt;/select&gt;</span>
+</code></pre></div></div>
+
+<p><em>Chris Gunther</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: `check_box_tag` and `radio_button_tag` now accept `checked` as a keyword argument
+</title>
+    <link>https://github.com/rails/rails/issues/45527</link>
+    <guid>https://github.com/rails/rails/issues/45527</guid>
+    <description>*   `check_box_tag` and `radio_button_tag` now accept `checked` as a keyword argument
+
+    This is to make the API more consistent with the `FormHelper` variants. You can now
+    provide `checked` as a positional or keyword argument:
+
+    ```erb
+    = check_box_tag &quot;admin&quot;, &quot;1&quot;, false
+    = check_box_tag &quot;admin&quot;, &quot;1&quot;, checked: false
+
+    = radio_button_tag &#39;favorite_color&#39;, &#39;maroon&#39;, false
+    = radio_button_tag &#39;favorite_color&#39;, &#39;maroon&#39;, checked: false
+    ```
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Sat, 22 Oct 2022 20:19:45 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p><code>check_box_tag</code> and <code>radio_button_tag</code> now accept <code>checked</code> as a keyword argument</p>
+
+<p>This is to make the API more consistent with the <code>FormHelper</code> variants. You can now<br />
+provide <code>checked</code> as a positional or keyword argument:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>= check_box_tag "admin", "1", false
+= check_box_tag "admin", "1", checked: false
+
+= radio_button_tag 'favorite_color', 'maroon', false
+= radio_button_tag 'favorite_color', 'maroon', checked: false
+</code></pre></div></div>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Allow passing a class to `dom_id`.
+</title>
+    <link>https://github.com/rails/rails/issues/46068</link>
+    <guid>https://github.com/rails/rails/issues/46068</guid>
+    <description>*   Allow passing a class to `dom_id`.
+    You no longer need to call `new` when passing a class to `dom_id`.
+    This makes `dom_id` behave like `dom_class` in this regard.
+    Apart from saving a few keystrokes, it prevents Ruby from needing
+    to instantiate a whole new object just to generate a string.
+
+    Before:
+    ```ruby
+    dom_id(Post) # =&gt; NoMethodError: undefined method `to_key&#39; for Post:Class
+    ```
+
+    After:
+    ```ruby
+    dom_id(Post) # =&gt; &quot;new_post&quot;
+    ```
+
+    *Goulven Champenois*</description>
+    <pubDate>Tue, 20 Sep 2022 19:05:36 +0000</pubDate>
+    <author>Goulven Champenois</author>
+    <content:encoded><![CDATA[<p>Allow passing a class to <code>dom_id</code>.<br />
+You no longer need to call <code>new</code> when passing a class to <code>dom_id</code>.<br />
+This makes <code>dom_id</code> behave like <code>dom_class</code> in this regard.<br />
+Apart from saving a few keystrokes, it prevents Ruby from needing<br />
+to instantiate a whole new object just to generate a string.</p>
+
+<p>Before:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dom_id</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="c1"># =&gt; NoMethodError: undefined method `to_key' for Post:Class</span>
+</code></pre></div></div>
+
+<p>After:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dom_id</span><span class="p">(</span><span class="no">Post</span><span class="p">)</span> <span class="c1"># =&gt; "new_post"</span>
+</code></pre></div></div>
+
+<p><em>Goulven Champenois</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Report `:locals` as part of the data returned by ActionView render instrumentation.
+</title>
+    <link>https://github.com/rails/rails/issues/45977</link>
+    <guid>https://github.com/rails/rails/issues/45977</guid>
+    <description>*   Report `:locals` as part of the data returned by ActionView render instrumentation.
+
+    Before:
+    ```ruby
+    {
+    identifier: &quot;/Users/adam/projects/notifications/app/views/posts/index.html.erb&quot;,
+    layout: &quot;layouts/application&quot;
+    }
+    ```
+
+    After:
+    ```ruby
+    {
+    identifier: &quot;/Users/adam/projects/notifications/app/views/posts/index.html.erb&quot;,
+    layout: &quot;layouts/application&quot;,
+    locals: {foo: &quot;bar&quot;}
+    }
+    ```
+
+    *Aaron Gough*</description>
+    <pubDate>Fri, 09 Sep 2022 19:45:42 +0000</pubDate>
+    <author>Aaron Gough</author>
+    <content:encoded><![CDATA[<p>Report <code>:locals</code> as part of the data returned by ActionView render instrumentation.</p>
+
+<p>Before:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+<span class="ss">identifier: </span><span class="s2">"/Users/adam/projects/notifications/app/views/posts/index.html.erb"</span><span class="p">,</span>
+<span class="ss">layout: </span><span class="s2">"layouts/application"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>After:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+<span class="ss">identifier: </span><span class="s2">"/Users/adam/projects/notifications/app/views/posts/index.html.erb"</span><span class="p">,</span>
+<span class="ss">layout: </span><span class="s2">"layouts/application"</span><span class="p">,</span>
+<span class="ss">locals: </span><span class="p">{</span><span class="ss">foo: </span><span class="s2">"bar"</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Aaron Gough</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Strip `break_sequence` at the end of `word_wrap`.
+</title>
+    <link>https://github.com/rails/rails/issues/45942</link>
+    <guid>https://github.com/rails/rails/issues/45942</guid>
+    <description>*   Strip `break_sequence` at the end of `word_wrap`.
+
+    This fixes a bug where `word_wrap` didn&#39;t properly strip off break sequences that had printable characters.
+
+    For example, compare the outputs of this template:
+
+    ```erb
+    # &lt;%= word_wrap(&quot;11 22\n33 44&quot;, line_width: 2, break_sequence: &quot;\n# &quot;) %&gt;
+    ```
+
+    Before:
+
+    ```
+    # 11
+    # 22
+    #
+    # 33
+    # 44
+    #
+    ```
+
+    After:
+
+    ```
+    # 11
+    # 22
+    # 33
+    # 44
+    ```
+
+    *Max Chernyak*</description>
+    <pubDate>Mon, 05 Sep 2022 21:02:49 +0000</pubDate>
+    <author>Max Chernyak</author>
+    <content:encoded><![CDATA[<p>Strip <code>break_sequence</code> at the end of <code>word_wrap</code>.</p>
+
+<p>This fixes a bug where <code>word_wrap</code> didn’t properly strip off break sequences that had printable characters.</p>
+
+<p>For example, compare the outputs of this template:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code># <span class="cp">&lt;%=</span> <span class="n">word_wrap</span><span class="p">(</span><span class="s2">"11 22</span><span class="se">\n</span><span class="s2">33 44"</span><span class="p">,</span> <span class="ss">line_width: </span><span class="mi">2</span><span class="p">,</span> <span class="ss">break_sequence: </span><span class="s2">"</span><span class="se">\n</span><span class="s2"># "</span><span class="p">)</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+
+<p>Before:</p>
+
+<pre><code># 11
+# 22
+#
+# 33
+# 44
+#
+</code></pre>
+
+<p>After:</p>
+
+<pre><code># 11
+# 22
+# 33
+# 44
+</code></pre>
+
+<p><em>Max Chernyak</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Allow templates to set strict `locals`.
+</title>
+    <link>https://github.com/rails/rails/issues/45727</link>
+    <guid>https://github.com/rails/rails/issues/45727</guid>
+    <description>*   Allow templates to set strict `locals`.
+
+    By default, templates will accept any `locals` as keyword arguments. To define what `locals` a template accepts, add a `locals` magic comment:
+
+    ```erb
+    &lt;%# locals: (message:) -%&gt;
+    &lt;%= message %&gt;
+    ```
+
+    Default values can also be provided:
+
+    ```erb
+    &lt;%# locals: (message: &quot;Hello, world!&quot;) -%&gt;
+    &lt;%= message %&gt;
+    ```
+
+    Or `locals` can be disabled entirely:
+
+    ```erb
+    &lt;%# locals: () %&gt;
+    ```
+
+    *Joel Hawksley*</description>
+    <pubDate>Tue, 02 Aug 2022 06:35:24 +0000</pubDate>
+    <author>Joel Hawksley</author>
+    <content:encoded><![CDATA[<p>Allow templates to set strict <code>locals</code>.</p>
+
+<p>By default, templates will accept any <code>locals</code> as keyword arguments. To define what <code>locals</code> a template accepts, add a <code>locals</code> magic comment:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%# locals: (message:) -%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="n">message</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+
+<p>Default values can also be provided:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%# locals: (message: "Hello, world!") -%&gt;</span>
+<span class="cp">&lt;%=</span> <span class="n">message</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+
+<p>Or <code>locals</code> can be disabled entirely:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;%# locals: () %&gt;</span>
+</code></pre></div></div>
+
+<p><em>Joel Hawksley</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Add `include_seconds` option for `datetime_local_field`
+</title>
+    <link>https://github.com/rails/rails/issues/45188</link>
+    <guid>https://github.com/rails/rails/issues/45188</guid>
+    <description>*   Add `include_seconds` option for `datetime_local_field`
+
+    This allows to omit seconds part in the input field, by passing `include_seconds: false`
+
+    *Wojciech Wnętrzak*</description>
+    <pubDate>Thu, 07 Jul 2022 18:16:24 +0000</pubDate>
+    <author>Wojciech Wnętrzak</author>
+    <content:encoded><![CDATA[<p>Add <code>include_seconds</code> option for <code>datetime_local_field</code></p>
+
+<p>This allows to omit seconds part in the input field, by passing <code>include_seconds: false</code></p>
+
+<p><em>Wojciech Wnętrzak</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Guard against `ActionView::Helpers::FormTagHelper#field_name` calls with nil
+</title>
+    <link>https://github.com/rails/rails/issues/45366</link>
+    <guid>https://github.com/rails/rails/issues/45366</guid>
+    <description>*   Guard against `ActionView::Helpers::FormTagHelper#field_name` calls with nil
+    `object_name` arguments. For example:
+
+    ```erb
+    &lt;%= fields do |f| %&gt;
+      &lt;%= f.field_name :body %&gt;
+    &lt;% end %&gt;
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 15 Jun 2022 19:23:27 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Guard against <code>ActionView::Helpers::FormTagHelper#field_name</code> calls with nil<br />
+<code>object_name</code> arguments. For example:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">fields</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">field_name</span> <span class="ss">:body</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Strings returned from `strip_tags` are correctly tagged `html_safe?`
+</title>
+    <link>https://github.com/rails/rails/issues/45218</link>
+    <guid>https://github.com/rails/rails/issues/45218</guid>
+    <description>*   Strings returned from `strip_tags` are correctly tagged `html_safe?`
+
+    Because these strings contain no HTML elements and the basic entities are escaped, they are safe
+    to be included as-is as PCDATA in HTML content. Tagging them as html-safe avoids double-escaping
+    entities when being concatenated to a SafeBuffer during rendering.
+
+    Fixes [rails/rails-html-sanitizer#124](https://github.com/rails/rails-html-sanitizer/issues/124)
+
+    *Mike Dalessio*</description>
+    <pubDate>Tue, 31 May 2022 14:25:57 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Strings returned from <code>strip_tags</code> are correctly tagged <code>html_safe?</code></p>
+
+<p>Because these strings contain no HTML elements and the basic entities are escaped, they are safe<br />
+to be included as-is as PCDATA in HTML content. Tagging them as html-safe avoids double-escaping<br />
+entities when being concatenated to a SafeBuffer during rendering.</p>
+
+<p>Fixes <a href="https://github.com/rails/rails-html-sanitizer/issues/124">rails/rails-html-sanitizer#124</a></p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Move `convert_to_model` call from `form_for` into `form_with`
+</title>
+    <link>https://github.com/rails/rails/issues/44468</link>
+    <guid>https://github.com/rails/rails/issues/44468</guid>
+    <description>*   Move `convert_to_model` call from `form_for` into `form_with`
+
+    Now that `form_for` is implemented in terms of `form_with`, remove the
+    `convert_to_model` call from `form_for`.
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 25 May 2022 14:24:45 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Move <code>convert_to_model</code> call from <code>form_for</code> into <code>form_with</code></p>
+
+<p>Now that <code>form_for</code> is implemented in terms of <code>form_with</code>, remove the<br />
+<code>convert_to_model</code> call from <code>form_for</code>.</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix and add protections for XSS in `ActionView::Helpers` and `ERB::Util`.
+</title>
+    <link>https://github.com/rails/rails/issues/44973</link>
+    <guid>https://github.com/rails/rails/issues/44973</guid>
+    <description>*   Fix and add protections for XSS in `ActionView::Helpers` and `ERB::Util`.
+
+    Escape dangerous characters in names of tags and names of attributes in the
+    tag helpers, following the XML specification. Rename the option
+    `:escape_attributes` to `:escape`, to simplify by applying the option to the
+    whole tag.
+
+    *Álvaro Martín Fraguas*</description>
+    <pubDate>Thu, 28 Apr 2022 19:39:20 +0000</pubDate>
+    <author>Alvaro Martin Fraguas</author>
+    <content:encoded><![CDATA[<p>Fix and add protections for XSS in <code>ActionView::Helpers</code> and <code>ERB::Util</code>.</p>
+
+<p>Escape dangerous characters in names of tags and names of attributes in the<br />
+tag helpers, following the XML specification. Rename the option<br />
+<code>:escape_attributes</code> to <code>:escape</code>, to simplify by applying the option to the<br />
+whole tag.</p>
+
+<p><em>Álvaro Martín Fraguas</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Extend audio_tag and video_tag to accept Active Storage attachments.
+</title>
+    <link>https://github.com/rails/rails/issues/44085</link>
+    <guid>https://github.com/rails/rails/issues/44085</guid>
+    <description>*   Extend audio_tag and video_tag to accept Active Storage attachments.
+
+    Now it&#39;s possible to write
+
+    ```ruby
+    audio_tag(user.audio_file)
+    video_tag(user.video_file)
+    ```
+
+    Instead of
+
+    ```ruby
+    audio_tag(polymorphic_path(user.audio_file))
+    video_tag(polymorphic_path(user.video_file))
+    ```
+
+    `image_tag` already supported that, so this follows the same pattern.
+
+    *Matheus Richard*</description>
+    <pubDate>Mon, 14 Mar 2022 07:46:54 +0000</pubDate>
+    <author>Matheus Richard</author>
+    <content:encoded><![CDATA[<p>Extend audio_tag and video_tag to accept Active Storage attachments.</p>
+
+<p>Now it’s possible to write</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audio_tag</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">audio_file</span><span class="p">)</span>
+<span class="n">video_tag</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">video_file</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Instead of</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audio_tag</span><span class="p">(</span><span class="n">polymorphic_path</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">audio_file</span><span class="p">))</span>
+<span class="n">video_tag</span><span class="p">(</span><span class="n">polymorphic_path</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">video_file</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><code>image_tag</code> already supported that, so this follows the same pattern.</p>
+
+<p><em>Matheus Richard</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Ensure models passed to `form_for` attempt to call `to_model`.
+</title>
+    <link>https://github.com/rails/rails/issues/44328</link>
+    <guid>https://github.com/rails/rails/issues/44328</guid>
+    <description>*   Ensure models passed to `form_for` attempt to call `to_model`.
+
+    *Sean Doyle*</description>
+    <pubDate>Thu, 17 Feb 2022 21:21:09 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Added ability to download `.eml` file for the email preview.
+</title>
+    <link>https://github.com/rails/rails/issues/45987</link>
+    <guid>https://github.com/rails/rails/issues/45987</guid>
+    <description>*   Added ability to download `.eml` file for the email preview.
+
+    *Igor Kasyanchuk*</description>
+    <pubDate>Fri, 09 Sep 2022 21:39:59 +0000</pubDate>
+    <author>Igor Kasyanchuk</author>
+    <content:encoded><![CDATA[<p>Added ability to download <code>.eml</code> file for the email preview.</p>
+
+<p><em>Igor Kasyanchuk</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Support multiple preview paths for mailers.
+</title>
+    <link>https://github.com/rails/rails/issues/31595</link>
+    <guid>https://github.com/rails/rails/issues/31595</guid>
+    <description>*   Support multiple preview paths for mailers.
+
+    Option `config.action_mailer.preview_path` is deprecated in favor of
+    `config.action_mailer.preview_paths`. Appending paths to this configuration option
+    will cause those paths to be used in the search for mailer previews.
+
+    *fatkodima*</description>
+    <pubDate>Tue, 09 Aug 2022 19:20:18 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Support multiple preview paths for mailers.</p>
+
+<p>Option <code>config.action_mailer.preview_path</code> is deprecated in favor of<br />
+<code>config.action_mailer.preview_paths</code>. Appending paths to this configuration option<br />
+will cause those paths to be used in the search for mailer previews.</p>
+
+<p><em>fatkodima</em></p>
 ]]></content:encoded>
   </item>
 </channel>
