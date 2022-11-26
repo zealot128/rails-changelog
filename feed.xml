@@ -1469,6 +1469,21 @@ streamed.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Add details of cookie name and size to `CookieOverflow` exception.
+</title>
+    <link>https://github.com/rails/rails/issues/46570</link>
+    <guid>https://github.com/rails/rails/issues/46570</guid>
+    <description>*   Add details of cookie name and size to `CookieOverflow` exception.
+
+    *Andy Waite*</description>
+    <pubDate>Sat, 26 Nov 2022 08:56:02 +0000</pubDate>
+    <author>Andy Waite</author>
+    <content:encoded><![CDATA[<p>Add details of cookie name and size to <code>CookieOverflow</code> exception.</p>
+
+<p><em>Andy Waite</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Don&#39;t double log the `controller` or `action` when using `ActiveRecord::QueryLog`
 </title>
     <link>https://github.com/rails/rails/issues/46279</link>
@@ -2175,7 +2190,7 @@ comparison.</p>
     config.active_record.belongs_to_required_validates_foreign_key = false
     ```
 
-    and will be disabled by default with `load_defaults 7.1`.
+    and will be disabled by default with `config.load_defaults 7.1`.
 
     *fatkodima*</description>
     <pubDate>Thu, 24 Nov 2022 11:22:36 +0000</pubDate>
@@ -2193,7 +2208,7 @@ this approach. To avoid this problem, you need to use a foreign key.</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">belongs_to_required_validates_foreign_key</span> <span class="o">=</span> <span class="kp">false</span>
 </code></pre></div></div>
 
-<p>and will be disabled by default with <code>load_defaults 7.1</code>.</p>
+<p>and will be disabled by default with <code>config.load_defaults 7.1</code>.</p>
 
 <p><em>fatkodima</em></p>
 ]]></content:encoded>
