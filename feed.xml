@@ -2101,6 +2101,25 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Do not write additional new lines when dumping sql migration versions
+</title>
+    <link>https://github.com/rails/rails/issues/46454</link>
+    <guid>https://github.com/rails/rails/issues/46454</guid>
+    <description>*   Do not write additional new lines when dumping sql migration versions
+
+    This change updates the `insert_versions_sql` function so that the database insert string containing the current database migration versions does not end with two additional new lines.
+
+    *Misha Schwartz*</description>
+    <pubDate>Mon, 28 Nov 2022 19:21:57 +0000</pubDate>
+    <author>mishaschwartz</author>
+    <content:encoded><![CDATA[<p>Do not write additional new lines when dumping sql migration versions</p>
+
+<p>This change updates the <code>insert_versions_sql</code> function so that the database insert string containing the current database migration versions does not end with two additional new lines.</p>
+
+<p><em>Misha Schwartz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix `composed_of` value freezing and duplication.
 </title>
     <link>https://github.com/rails/rails/issues/46377</link>
@@ -5038,6 +5057,23 @@ time regardless of whether a user with a matching email is found:</p>
 </code></pre></div></div>
 
 <p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Raise `NoMethodError` in `ActiveModel::Type::Value#as_json` to avoid unpredictable
+</title>
+    <link>https://github.com/rails/rails/issues/46535</link>
+    <guid>https://github.com/rails/rails/issues/46535</guid>
+    <description>*   Raise `NoMethodError` in `ActiveModel::Type::Value#as_json` to avoid unpredictable
+    results.
+
+    *Vasiliy Ermolovich*</description>
+    <pubDate>Mon, 28 Nov 2022 19:54:22 +0000</pubDate>
+    <author>Vasiliy Ermolovich</author>
+    <content:encoded><![CDATA[<p>Raise <code>NoMethodError</code> in <code>ActiveModel::Type::Value#as_json</code> to avoid unpredictable<br />
+results.</p>
+
+<p><em>Vasiliy Ermolovich</em></p>
 ]]></content:encoded>
   </item>
   <item>
