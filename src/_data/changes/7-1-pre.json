@@ -830,6 +830,16 @@
     "html": "<p>Make <code>Session#merge!</code> stringify keys.</p>\n\n<p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>\n\n<p><em>Drew Bragg</em></p>\n"
   },
   {
+    "message": "*   Do not write additional new lines when dumping sql migration versions\n\n    This change updates the `insert_versions_sql` function so that the database insert string containing the current database migration versions does not end with two additional new lines.\n\n    *Misha Schwartz*",
+    "project": "activerecord",
+    "date_merged": 1669663317000,
+    "author": "mishaschwartz",
+    "sha": "691dbf09974ba914e537b80bb99853941907c221",
+    "pr": "46454",
+    "merge_sha": "53c42483a865d9c833bdb7e21ab82b00c84ac924",
+    "html": "<p>Do not write additional new lines when dumping sql migration versions</p>\n\n<p>This change updates the <code>insert_versions_sql</code> function so that the database insert string containing the current database migration versions does not end with two additional new lines.</p>\n\n<p><em>Misha Schwartz</em></p>\n"
+  },
+  {
     "message": "*   Fix `composed_of` value freezing and duplication.\n\n    Previously composite values exhibited two confusing behaviors:\n\n    - When reading a compositve value it'd _NOT_ be frozen, allowing it to get out of sync with its underlying database\n      columns.\n    - When writing a compositve value the argument would be frozen, potentially confusing the caller.\n\n    Currently, composite values instantiated based on database columns are frozen (addressing the first issue) and\n    assigned compositve values are duplicated and the duplicate is frozen (addressing the second issue).\n\n    *Greg Navis*",
     "project": "activerecord",
     "date_merged": 1669394915000,
@@ -1878,6 +1888,16 @@
     "pr": "43880",
     "merge_sha": "5e75674196376b5e46e68419e004886379a31f6c",
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Raise `NoMethodError` in `ActiveModel::Type::Value#as_json` to avoid unpredictable\n    results.\n\n    *Vasiliy Ermolovich*",
+    "project": "activemodel",
+    "date_merged": 1669665262000,
+    "author": "Vasiliy Ermolovich",
+    "sha": "433bd5995db00156fa2942a6043944ae7510ca1c",
+    "pr": "46535",
+    "merge_sha": "5df0f0da7cd682e491933337dcfee937fa34dc3c",
+    "html": "<p>Raise <code>NoMethodError</code> in <code>ActiveModel::Type::Value#as_json</code> to avoid unpredictable<br />\nresults.</p>\n\n<p><em>Vasiliy Ermolovich</em></p>\n"
   },
   {
     "message": "*   Custom attribute types that inherit from Active Model built-in types and do\n    not override the `serialize` method will now benefit from an optimization\n    when serializing attribute values for the database.\n\n    For example, with a custom type like the following:\n\n    ```ruby\n    class DowncasedString < ActiveModel::Type::String\n      def cast(value)\n        super&.downcase\n      end\n    end\n\n    ActiveRecord::Type.register(:downcased_string, DowncasedString)\n\n    class User < ActiveRecord::Base\n      attribute :email, :downcased_string\n    end\n\n    user = User.new(email: \"FooBar@example.com\")\n    ```\n\n    Serializing the `email` attribute for the database will be roughly twice as\n    fast.  More expensive `cast` operations will likely see greater improvements.\n\n    *Jonathan Hefner*",
