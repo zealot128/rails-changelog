@@ -830,6 +830,16 @@
     "html": "<p>Make <code>Session#merge!</code> stringify keys.</p>\n\n<p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>\n\n<p><em>Drew Bragg</em></p>\n"
   },
   {
+    "message": "*   Extract `#sync_timezone_changes` method in AbstractMysqlAdapter to enable subclasses\n    to sync database timezone changes without overriding `#raw_execute`.\n\n    *Adrianna Chang*, *Paarth Madan*",
+    "project": "activerecord",
+    "date_merged": 1669749793000,
+    "author": "Adrianna Chang",
+    "sha": "dc8c0865722e8b3192d4ff4658f4b6c74a40040c",
+    "pr": "46604",
+    "merge_sha": "ea2e3cccf988621fe14cba64e75c2affe344a5df",
+    "html": "<p>Extract <code>#sync_timezone_changes</code> method in AbstractMysqlAdapter to enable subclasses<br />\nto sync database timezone changes without overriding <code>#raw_execute</code>.</p>\n\n<p><em>Adrianna Chang</em>, <em>Paarth Madan</em></p>\n"
+  },
+  {
     "message": "*   Do not write additional new lines when dumping sql migration versions\n\n    This change updates the `insert_versions_sql` function so that the database insert string containing the current database migration versions does not end with two additional new lines.\n\n    *Misha Schwartz*",
     "project": "activerecord",
     "date_merged": 1669663317000,
