@@ -2101,6 +2101,23 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Extract `#sync_timezone_changes` method in AbstractMysqlAdapter to enable subclasses
+</title>
+    <link>https://github.com/rails/rails/issues/46604</link>
+    <guid>https://github.com/rails/rails/issues/46604</guid>
+    <description>*   Extract `#sync_timezone_changes` method in AbstractMysqlAdapter to enable subclasses
+    to sync database timezone changes without overriding `#raw_execute`.
+
+    *Adrianna Chang*, *Paarth Madan*</description>
+    <pubDate>Tue, 29 Nov 2022 19:23:13 +0000</pubDate>
+    <author>Adrianna Chang</author>
+    <content:encoded><![CDATA[<p>Extract <code>#sync_timezone_changes</code> method in AbstractMysqlAdapter to enable subclasses<br />
+to sync database timezone changes without overriding <code>#raw_execute</code>.</p>
+
+<p><em>Adrianna Chang</em>, <em>Paarth Madan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Do not write additional new lines when dumping sql migration versions
 </title>
     <link>https://github.com/rails/rails/issues/46454</link>
