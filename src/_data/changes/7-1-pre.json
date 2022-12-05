@@ -2360,14 +2360,14 @@
     "html": "<p>Add details of cookie name and size to <code>CookieOverflow</code> exception.</p>\n\n<p><em>Andy Waite</em></p>\n"
   },
   {
-    "message": "*   Don't double log the `controller` or `action` when using `ActiveRecord::QueryLog`\n\n    Previously if you set `config.active_record.query_log_tags` to an array that included\n    `:controller` or `:action`, that item would get logged twice. This bug has been fixed.\n\n    *Alex Ghiculescu*",
+    "message": "*   Don't double log the `controller`, `action`, or `namespaced_controller` when using `ActiveRecord::QueryLog`\n\n    Previously if you set `config.active_record.query_log_tags` to an array that included\n    `:controller`, `:namespaced_controller`, or `:action`, that item would get logged twice.\n    This bug has been fixed.\n\n    *Alex Ghiculescu*",
     "project": "actionpack",
-    "date_merged": 1666480961000,
+    "date_merged": 1670237938000,
     "author": "Alex Ghiculescu",
-    "sha": "f737b5ec1380963d2e354d25550e27ee3930831a",
-    "pr": "46279",
-    "merge_sha": "971fa17502deaf5d720a7bc0fdf8f258afb556b6",
-    "html": "<p>Don’t double log the <code>controller</code> or <code>action</code> when using <code>ActiveRecord::QueryLog</code></p>\n\n<p>Previously if you set <code>config.active_record.query_log_tags</code> to an array that included<br />\n<code>:controller</code> or <code>:action</code>, that item would get logged twice. This bug has been fixed.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+    "sha": "03394484a6869a4fe7a0add5f8e4507d3fda3e05",
+    "pr": "46642",
+    "merge_sha": "9361b70ca7efc1846b5ef99dea65a0605d0d54ab",
+    "html": "<p>Don’t double log the <code>controller</code>, <code>action</code>, or <code>namespaced_controller</code> when using <code>ActiveRecord::QueryLog</code></p>\n\n<p>Previously if you set <code>config.active_record.query_log_tags</code> to an array that included<br />\n<code>:controller</code>, <code>:namespaced_controller</code>, or <code>:action</code>, that item would get logged twice.<br />\nThis bug has been fixed.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
   },
   {
     "message": "*   Add the following permissions policy directives: `hid`, `idle-detection`, `screen-wake-lock`,\n    `serial`, `sync-xhr`, `web-share`.\n\n    *Guillaume Cabanel*",
