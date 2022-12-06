@@ -1093,6 +1093,25 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Rails console now disables `IRB`&#39;s autocompletion feature in production by default.
+</title>
+    <link>https://github.com/rails/rails/issues/46656</link>
+    <guid>https://github.com/rails/rails/issues/46656</guid>
+    <description>*   Rails console now disables `IRB`&#39;s autocompletion feature in production by default.
+
+    Setting `IRB_USE_AUTOCOMPLETE=true` can override this default.
+
+    *Stan Lo*</description>
+    <pubDate>Tue, 06 Dec 2022 15:44:35 +0000</pubDate>
+    <author>Stan Lo</author>
+    <content:encoded><![CDATA[<p>Rails console now disables <code>IRB</code>’s autocompletion feature in production by default.</p>
+
+<p>Setting <code>IRB_USE_AUTOCOMPLETE=true</code> can override this default.</p>
+
+<p><em>Stan Lo</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add `config.precompile_filter_parameters`, which enables precompilation of
 </title>
     <link>https://github.com/rails/rails/issues/46452</link>
