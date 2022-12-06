@@ -380,6 +380,16 @@
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
   },
   {
+    "message": "*   Rails console now disables `IRB`'s autocompletion feature in production by default.\n\n    Setting `IRB_USE_AUTOCOMPLETE=true` can override this default.\n\n    *Stan Lo*",
+    "project": "railties",
+    "date_merged": 1670341475000,
+    "author": "Stan Lo",
+    "sha": "de716b0adb4b6a059129386d54b804858d2fb108",
+    "pr": "46656",
+    "merge_sha": "ba2a660584ebbec8b21ad5e5c4c1fc0da77867bd",
+    "html": "<p>Rails console now disables <code>IRB</code>’s autocompletion feature in production by default.</p>\n\n<p>Setting <code>IRB_USE_AUTOCOMPLETE=true</code> can override this default.</p>\n\n<p><em>Stan Lo</em></p>\n"
+  },
+  {
     "message": "*   Add `config.precompile_filter_parameters`, which enables precompilation of\n    `config.filter_parameters` using `ActiveSupport::ParameterFilter.precompile_filters`.\n    Precompilation can improve filtering performance, depending on the quantity\n    and types of filters.\n\n    `config.precompile_filter_parameters` defaults to `true` for\n    `config.load_defaults 7.1` and above.\n\n    *Jonathan Hefner*",
     "project": "railties",
     "date_merged": 1669314627000,
