@@ -1061,6 +1061,36 @@ streamed.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Focus rich-text editor after calling `fill_in_rich_text_area`
+</title>
+    <link>https://github.com/rails/rails/issues/46249</link>
+    <guid>https://github.com/rails/rails/issues/46249</guid>
+    <description>*   Focus rich-text editor after calling `fill_in_rich_text_area`
+
+    *Sean Doyle*</description>
+    <pubDate>Fri, 09 Dec 2022 15:08:26 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Focus rich-text editor after calling <code>fill_in_rich_text_area</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Support `strict_loading:` option for `has_rich_text` declaration
+</title>
+    <link>https://github.com/rails/rails/issues/46271</link>
+    <guid>https://github.com/rails/rails/issues/46271</guid>
+    <description>*   Support `strict_loading:` option for `has_rich_text` declaration
+
+    *Sean Doyle*</description>
+    <pubDate>Fri, 09 Dec 2022 13:44:07 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Support <code>strict_loading:</code> option for <code>has_rich_text</code> declaration</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.
 </title>
     <link>https://github.com/rails/rails/issues/45739</link>
@@ -3699,6 +3729,44 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Return only unique ids from ActiveRecord::Calculations#ids
+</title>
+    <link>https://github.com/rails/rails/issues/46503</link>
+    <guid>https://github.com/rails/rails/issues/46503</guid>
+    <description>*   Return only unique ids from ActiveRecord::Calculations#ids
+
+    Updated ActiveRecord::Calculations#ids to only return the unique ids of the base model
+    when using eager_load, preload and includes.
+
+    ```ruby
+    Post.find_by(id: 1).comments.count
+    # =&gt; 5
+    Post.includes(:comments).where(id: 1).pluck(:id)
+    # =&gt; [1, 1, 1, 1, 1]
+    Post.includes(:comments).where(id: 1).ids
+    # =&gt; [1]
+    ```
+
+    *Joshua Young*</description>
+    <pubDate>Fri, 09 Dec 2022 11:41:32 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Return only unique ids from ActiveRecord::Calculations#ids</p>
+
+<p>Updated ActiveRecord::Calculations#ids to only return the unique ids of the base model<br />
+when using eager_load, preload and includes.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">id: </span><span class="mi">1</span><span class="p">).</span><span class="nf">comments</span><span class="p">.</span><span class="nf">count</span>
+<span class="c1"># =&gt; 5</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">includes</span><span class="p">(</span><span class="ss">:comments</span><span class="p">).</span><span class="nf">where</span><span class="p">(</span><span class="ss">id: </span><span class="mi">1</span><span class="p">).</span><span class="nf">pluck</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>
+<span class="c1"># =&gt; [1, 1, 1, 1, 1]</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">includes</span><span class="p">(</span><span class="ss">:comments</span><span class="p">).</span><span class="nf">where</span><span class="p">(</span><span class="ss">id: </span><span class="mi">1</span><span class="p">).</span><span class="nf">ids</span>
+<span class="c1"># =&gt; [1]</span>
+</code></pre></div></div>
+
+<p><em>Joshua Young</em></p>
 ]]></content:encoded>
   </item>
   <item>
