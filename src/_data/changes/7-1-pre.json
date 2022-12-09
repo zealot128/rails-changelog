@@ -360,6 +360,26 @@
     "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
   },
   {
+    "message": "*   Focus rich-text editor after calling `fill_in_rich_text_area`\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1670598506000,
+    "author": "Sean Doyle",
+    "sha": "67a4ac6c5651a00e613de298631d460116bba38c",
+    "pr": "46249",
+    "merge_sha": "263efecc64eb991302ea482ba4ac8f37cae27520",
+    "html": "<p>Focus rich-text editor after calling <code>fill_in_rich_text_area</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Support `strict_loading:` option for `has_rich_text` declaration\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1670593447000,
+    "author": "Sean Doyle",
+    "sha": "4a743b9e0a98a5e45d83c124c5ecf13ce470d063",
+    "pr": "46271",
+    "merge_sha": "f002536a5d46dd57650640c1ce944d161f5ec97d",
+    "html": "<p>Support <code>strict_loading:</code> option for <code>has_rich_text</code> declaration</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Update ContentAttachment so that it can encapsulate arbitrary HTML content in a document.\n\n    *Jamis Buck*",
     "project": "actiontext",
     "date_merged": 1662488110000,
@@ -1258,6 +1278,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Return only unique ids from ActiveRecord::Calculations#ids\n\n    Updated ActiveRecord::Calculations#ids to only return the unique ids of the base model\n    when using eager_load, preload and includes.\n\n    ```ruby\n    Post.find_by(id: 1).comments.count\n    # => 5\n    Post.includes(:comments).where(id: 1).pluck(:id)\n    # => [1, 1, 1, 1, 1]\n    Post.includes(:comments).where(id: 1).ids\n    # => [1]\n    ```\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1670586092000,
+    "author": "Joshua Young",
+    "sha": "8fd336927a5d7519adac4361c47aa09a295bfe3d",
+    "pr": "46503",
+    "merge_sha": "4435b7afe3bf3f2d0f2f3b77aedd44d93219be18",
+    "html": "<p>Return only unique ids from ActiveRecord::Calculations#ids</p>\n\n<p>Updated ActiveRecord::Calculations#ids to only return the unique ids of the base model<br />\nwhen using eager_load, preload and includes.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">id: </span><span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">comments</span><span class=\"p\">.</span><span class=\"nf\">count</span>\n<span class=\"c1\"># =&gt; 5</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">includes</span><span class=\"p\">(</span><span class=\"ss\">:comments</span><span class=\"p\">).</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"ss\">id: </span><span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">pluck</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">)</span>\n<span class=\"c1\"># =&gt; [1, 1, 1, 1, 1]</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">includes</span><span class=\"p\">(</span><span class=\"ss\">:comments</span><span class=\"p\">).</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"ss\">id: </span><span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">ids</span>\n<span class=\"c1\"># =&gt; [1]</span>\n</code></pre></div></div>\n\n<p><em>Joshua Young</em></p>\n"
   },
   {
     "message": "*   Stop using `LOWER()` for case-insensitive queries on `citext` columns\n\n    Previously, `LOWER()` was added for e.g. uniqueness validations with\n    `case_sensitive: false`.\n    It wasn't mentioned in the documentation that the index without `LOWER()`\n    wouldn't be used in this case.\n\n    *Phil Pirozhkov*",
