@@ -400,6 +400,16 @@
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
   },
   {
+    "message": "*   Always generate the storage/ directory with rails new to ensure there's a stable place to\n    put permanent files, and a single mount point for containers to map. Then default sqlite3 databases\n    to live there instead of db/, which is only meant for configuration, not data.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1670863751000,
+    "author": "Alex Ghiculescu",
+    "sha": "28ecaf6dbaabfc852ddf6cbf1749c631c7a4f294",
+    "pr": "46701",
+    "merge_sha": "8f777e32259928694b4a2422851f6990491874d2",
+    "html": "<p>Always generate the storage/ directory with rails new to ensure there’s a stable place to<br />\nput permanent files, and a single mount point for containers to map. Then default sqlite3 databases<br />\nto live there instead of db/, which is only meant for configuration, not data.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Rails console now disables `IRB`'s autocompletion feature in production by default.\n\n    Setting `IRB_USE_AUTOCOMPLETE=true` can override this default.\n\n    *Stan Lo*",
     "project": "railties",
     "date_merged": 1670341475000,
@@ -1148,6 +1158,16 @@
     "pr": "43951",
     "merge_sha": "58c0b76982e3fbcb5642223effd9cce93947029e",
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Datatime form helpers (`time_field`, `date_field`, `datetime_field`, `week_field`, `month_field`) now accept an instance of Time/Date/DateTime as `:value` option.\n\n    Before:\n    ```erb\n    <%= form.datetime_field :written_at, value: Time.current.strftime(\"%Y-%m-%dT%T\") %>\n    ```\n\n    After:\n    ```erb\n    <%= form.datetime_field :written_at, value: Time.current %>\n    ```\n\n    *Andrey Samsonov*",
+    "project": "actionview",
+    "date_merged": 1670868383000,
+    "author": "Andrey Samsonov",
+    "sha": "c20b629f527493e886f7c5787bf34d70642158dc",
+    "pr": "46678",
+    "merge_sha": "a1367da11dbe1fb9984c7e90b1bb9dab96977948",
+    "html": "<p>Datatime form helpers (<code>time_field</code>, <code>date_field</code>, <code>datetime_field</code>, <code>week_field</code>, <code>month_field</code>) now accept an instance of Time/Date/DateTime as <code>:value</code> option.</p>\n\n<p>Before:</p>\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"cp\">&lt;%=</span> <span class=\"n\">form</span><span class=\"p\">.</span><span class=\"nf\">datetime_field</span> <span class=\"ss\">:written_at</span><span class=\"p\">,</span> <span class=\"ss\">value: </span><span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">current</span><span class=\"p\">.</span><span class=\"nf\">strftime</span><span class=\"p\">(</span><span class=\"s2\">\"%Y-%m-%dT%T\"</span><span class=\"p\">)</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p>After:</p>\n<div class=\"language-erb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"cp\">&lt;%=</span> <span class=\"n\">form</span><span class=\"p\">.</span><span class=\"nf\">datetime_field</span> <span class=\"ss\">:written_at</span><span class=\"p\">,</span> <span class=\"ss\">value: </span><span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">current</span> <span class=\"cp\">%&gt;</span>\n</code></pre></div></div>\n\n<p><em>Andrey Samsonov</em></p>\n"
   },
   {
     "message": "*   Choices of `select` can optionally contain html attributes as the last element\n    of the child arrays when using grouped/nested collections\n\n    ```erb\n    <%= form.select :foo, [[\"North America\", [[\"United States\",\"US\"],[\"Canada\",\"CA\"]], { disabled: \"disabled\" }]] %>\n    # => <select><optgroup label=\"North America\" disabled=\"disabled\"><option value=\"US\">United States</option><option value=\"CA\">Canada</option></optgroup></select>\n    ```\n\n    *Chris Gunther*",
@@ -1910,14 +1930,14 @@
     "html": "<p>Introduce strategy pattern for executing migrations.</p>\n\n<p>By default, migrations will use a strategy object that delegates the method<br />\nto the connection adapter. Consumers can implement custom strategy objects<br />\nto change how their migrations run.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
   },
   {
-    "message": "*   Add adapter option disallowing foreign keys\n\n    This adds a new option to be added to `database.yml` which enables skipping\n    foreign key constraints usage even if the underlying database supports them.\n\n    Usage:\n    ```yaml\n    development:\n        <<: *default\n        database: db/development.sqlite3\n        foreign_keys: false\n    ```\n\n    *Paulo Barros*",
+    "message": "*   Add adapter option disallowing foreign keys\n\n    This adds a new option to be added to `database.yml` which enables skipping\n    foreign key constraints usage even if the underlying database supports them.\n\n    Usage:\n    ```yaml\n    development:\n        <<: *default\n        database: storage/development.sqlite3\n        foreign_keys: false\n    ```\n\n    *Paulo Barros*",
     "project": "activerecord",
     "date_merged": 1655717443000,
     "author": "Paulo Barros",
     "sha": "db82002f2bfb89072ea26bd04aedad26fd527571",
     "pr": "45301",
     "merge_sha": "65f135aac6d1c6669b2bd67109fca04200352b1c",
-    "html": "<p>Add adapter option disallowing foreign keys</p>\n\n<p>This adds a new option to be added to <code>database.yml</code> which enables skipping<br />\nforeign key constraints usage even if the underlying database supports them.</p>\n\n<p>Usage:</p>\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n    <span class=\"na\">&lt;&lt;</span><span class=\"pi\">:</span> <span class=\"nv\">*default</span>\n    <span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">db/development.sqlite3</span>\n    <span class=\"na\">foreign_keys</span><span class=\"pi\">:</span> <span class=\"no\">false</span>\n</code></pre></div></div>\n\n<p><em>Paulo Barros</em></p>\n"
+    "html": "<p>Add adapter option disallowing foreign keys</p>\n\n<p>This adds a new option to be added to <code>database.yml</code> which enables skipping<br />\nforeign key constraints usage even if the underlying database supports them.</p>\n\n<p>Usage:</p>\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n    <span class=\"na\">&lt;&lt;</span><span class=\"pi\">:</span> <span class=\"nv\">*default</span>\n    <span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">storage/development.sqlite3</span>\n    <span class=\"na\">foreign_keys</span><span class=\"pi\">:</span> <span class=\"no\">false</span>\n</code></pre></div></div>\n\n<p><em>Paulo Barros</em></p>\n"
   },
   {
     "message": "*   Add configurable deprecation warning for singular associations\n\n    This adds a deprecation warning when using the plural name of a singular associations in `where`.\n    It is possible to opt into the new more performant behavior with `config.active_record.allow_deprecated_singular_associations_name = false`\n\n    *Adam Hess*",
