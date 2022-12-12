@@ -1123,6 +1123,25 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Always generate the storage/ directory with rails new to ensure there&#39;s a stable place to
+</title>
+    <link>https://github.com/rails/rails/issues/46701</link>
+    <guid>https://github.com/rails/rails/issues/46701</guid>
+    <description>*   Always generate the storage/ directory with rails new to ensure there&#39;s a stable place to
+    put permanent files, and a single mount point for containers to map. Then default sqlite3 databases
+    to live there instead of db/, which is only meant for configuration, not data.
+
+    *DHH*</description>
+    <pubDate>Mon, 12 Dec 2022 16:49:11 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p>Always generate the storage/ directory with rails new to ensure there’s a stable place to<br />
+put permanent files, and a single mount point for containers to map. Then default sqlite3 databases<br />
+to live there instead of db/, which is only meant for configuration, not data.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Rails console now disables `IRB`&#39;s autocompletion feature in production by default.
 </title>
     <link>https://github.com/rails/rails/issues/46656</link>
@@ -3279,6 +3298,39 @@ if the path existed and was an empty directory or file.</p>
 but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 
 <p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Datatime form helpers (`time_field`, `date_field`, `datetime_field`, `week_field`, `month_field`) now accept an instance of Time/Date/DateTime as `:value` option.
+</title>
+    <link>https://github.com/rails/rails/issues/46678</link>
+    <guid>https://github.com/rails/rails/issues/46678</guid>
+    <description>*   Datatime form helpers (`time_field`, `date_field`, `datetime_field`, `week_field`, `month_field`) now accept an instance of Time/Date/DateTime as `:value` option.
+
+    Before:
+    ```erb
+    &lt;%= form.datetime_field :written_at, value: Time.current.strftime(&quot;%Y-%m-%dT%T&quot;) %&gt;
+    ```
+
+    After:
+    ```erb
+    &lt;%= form.datetime_field :written_at, value: Time.current %&gt;
+    ```
+
+    *Andrey Samsonov*</description>
+    <pubDate>Mon, 12 Dec 2022 18:06:23 +0000</pubDate>
+    <author>Andrey Samsonov</author>
+    <content:encoded><![CDATA[<p>Datatime form helpers (<code>time_field</code>, <code>date_field</code>, <code>datetime_field</code>, <code>week_field</code>, <code>month_field</code>) now accept an instance of Time/Date/DateTime as <code>:value</code> option.</p>
+
+<p>Before:</p>
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">datetime_field</span> <span class="ss">:written_at</span><span class="p">,</span> <span class="ss">value: </span><span class="no">Time</span><span class="p">.</span><span class="nf">current</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-%dT%T"</span><span class="p">)</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+
+<p>After:</p>
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">datetime_field</span> <span class="ss">:written_at</span><span class="p">,</span> <span class="ss">value: </span><span class="no">Time</span><span class="p">.</span><span class="nf">current</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+
+<p><em>Andrey Samsonov</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -5542,7 +5594,7 @@ to change how their migrations run.</p>
     ```yaml
     development:
         &lt;&lt;: *default
-        database: db/development.sqlite3
+        database: storage/development.sqlite3
         foreign_keys: false
     ```
 
@@ -5557,7 +5609,7 @@ foreign key constraints usage even if the underlying database supports them.</p>
 <p>Usage:</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">development</span><span class="pi">:</span>
     <span class="na">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*default</span>
-    <span class="na">database</span><span class="pi">:</span> <span class="s">db/development.sqlite3</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">storage/development.sqlite3</span>
     <span class="na">foreign_keys</span><span class="pi">:</span> <span class="no">false</span>
 </code></pre></div></div>
 
