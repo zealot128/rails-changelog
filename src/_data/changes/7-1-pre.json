@@ -770,6 +770,16 @@
     "html": "<p>Remove default <code>X-Download-Options</code> header</p>\n\n<p>This header is currently only used by Internet Explorer which<br />\nwill be discontinued in 2022 and since Rails 7 does not fully<br />\nsupport Internet Explorer this header should not be a default one.</p>\n\n<p><em>Harun Sabljaković</em></p>\n"
   },
   {
+    "message": "*   `ActiveSupport::Testing::TimeHelpers` now accepts named `with_usec` argument\n    to `freeze_time`, `travel`, and `travel_to` methods. Passing true prevents\n    truncating the destination time with `change(usec: 0)`.\n\n    *KevSlashNull*, and *serprex*",
+    "project": "activesupport",
+    "date_merged": 1671032468000,
+    "author": "Philip Dubé",
+    "sha": "499e9dc7374a842ba9cf9011eb15c80fc0b6db59",
+    "pr": "46663",
+    "merge_sha": "810343abe1e8f548188df312d991fe6d6790038e",
+    "html": "<p><code>ActiveSupport::Testing::TimeHelpers</code> now accepts named <code>with_usec</code> argument<br />\nto <code>freeze_time</code>, <code>travel</code>, and <code>travel_to</code> methods. Passing true prevents<br />\ntruncating the destination time with <code>change(usec: 0)</code>.</p>\n\n<p><em>KevSlashNull</em>, and <em>serprex</em></p>\n"
+  },
+  {
     "message": "*   `ActiveSupport::CurrentAttributes.resets` now accepts a method name\n\n    The block API is still the recommended approach, but now both APIs are supported:\n\n    ```ruby\n    class Current < ActiveSupport::CurrentAttributes\n      resets { Time.zone = nil }\n      resets :clear_time_zone\n    end\n    ```\n\n    *Alex Ghiculescu*",
     "project": "activesupport",
     "date_merged": 1668725670000,
