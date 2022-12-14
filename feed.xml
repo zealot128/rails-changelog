@@ -2142,6 +2142,25 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: `ActiveSupport::Testing::TimeHelpers` now accepts named `with_usec` argument
+</title>
+    <link>https://github.com/rails/rails/issues/46663</link>
+    <guid>https://github.com/rails/rails/issues/46663</guid>
+    <description>*   `ActiveSupport::Testing::TimeHelpers` now accepts named `with_usec` argument
+    to `freeze_time`, `travel`, and `travel_to` methods. Passing true prevents
+    truncating the destination time with `change(usec: 0)`.
+
+    *KevSlashNull*, and *serprex*</description>
+    <pubDate>Wed, 14 Dec 2022 15:41:08 +0000</pubDate>
+    <author>Philip Dubé</author>
+    <content:encoded><![CDATA[<p><code>ActiveSupport::Testing::TimeHelpers</code> now accepts named <code>with_usec</code> argument<br />
+to <code>freeze_time</code>, <code>travel</code>, and <code>travel_to</code> methods. Passing true prevents<br />
+truncating the destination time with <code>change(usec: 0)</code>.</p>
+
+<p><em>KevSlashNull</em>, and <em>serprex</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `ActiveSupport::CurrentAttributes.resets` now accepts a method name
 </title>
     <link>https://github.com/rails/rails/issues/45698</link>
