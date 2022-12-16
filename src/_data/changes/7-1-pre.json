@@ -2240,6 +2240,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Action Text attachment URLs rendered in a background job (a la Turbo\n    Streams) now use `Rails.application.default_url_options` and\n    `Rails.application.config.force_ssl` instead of `http://example.org`.\n\n    *Jonathan Hefner*",
+    "project": "actiontext",
+    "date_merged": 1671144302000,
+    "author": "Jonathan Hefner",
+    "sha": "93038baad70d477f6cbb06fa9d48c8e429fb192f",
+    "pr": "46649",
+    "merge_sha": "12c0c0a4c17249c24eb0c1892f5d2093fe6ca073",
+    "html": "<p>Action Text attachment URLs rendered in a background job (a la Turbo<br />\nStreams) now use <code>Rails.application.default_url_options</code> and<br />\n<code>Rails.application.config.force_ssl</code> instead of <code>http://example.org</code>.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
     "message": "*   Focus rich-text editor after calling `fill_in_rich_text_area`\n\n    *Sean Doyle*",
     "project": "actiontext",
     "date_merged": 1670598506000,
@@ -2278,6 +2288,16 @@
     "pr": "43706",
     "merge_sha": "327ba2d9796d1c630ede63bbc3bc9ebfc8f8740c",
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
+  },
+  {
+    "message": "*   When a host is not specified for an `ActionController::Renderer`'s env,\n    the host and related options will now be derived from the routes'\n    `default_url_options` and `ActionDispatch::Http::URL.secure_protocol`.\n\n    This means that for an application with a configuration like:\n\n      ```ruby\n      Rails.application.default_url_options = { host: \"rubyonrails.org\" }\n      Rails.application.config.force_ssl = true\n      ```\n\n    rendering a URL like:\n\n      ```ruby\n      ApplicationController.renderer.render inline: \"<%= blog_url %>\"\n      ```\n\n    will now return `\"https://rubyonrails.org/blog\"` instead of\n    `\"http://example.org/blog\"`.\n\n    *Jonathan Hefner*",
+    "project": "actionpack",
+    "date_merged": 1671144302000,
+    "author": "Jonathan Hefner",
+    "sha": "93038baad70d477f6cbb06fa9d48c8e429fb192f",
+    "pr": "46649",
+    "merge_sha": "12c0c0a4c17249c24eb0c1892f5d2093fe6ca073",
+    "html": "<p>When a host is not specified for an <code>ActionController::Renderer</code>’s env,<br />\nthe host and related options will now be derived from the routes’<br />\n<code>default_url_options</code> and <code>ActionDispatch::Http::URL.secure_protocol</code>.</p>\n\n<p>This means that for an application with a configuration like:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">application</span><span class=\"p\">.</span><span class=\"nf\">default_url_options</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"ss\">host: </span><span class=\"s2\">\"rubyonrails.org\"</span> <span class=\"p\">}</span>\n  <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">application</span><span class=\"p\">.</span><span class=\"nf\">config</span><span class=\"p\">.</span><span class=\"nf\">force_ssl</span> <span class=\"o\">=</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p>rendering a URL like:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"no\">ApplicationController</span><span class=\"p\">.</span><span class=\"nf\">renderer</span><span class=\"p\">.</span><span class=\"nf\">render</span> <span class=\"ss\">inline: </span><span class=\"s2\">\"&lt;%= blog_url %&gt;\"</span>\n</code></pre></div></div>\n\n<p>will now return <code>\"https://rubyonrails.org/blog\"</code> instead of<br />\n<code>\"http://example.org/blog\"</code>.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
     "message": "*   Add details of cookie name and size to `CookieOverflow` exception.\n\n    *Andy Waite*",
