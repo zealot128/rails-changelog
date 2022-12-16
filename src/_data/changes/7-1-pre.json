@@ -1470,6 +1470,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Base::Connection</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Show descriptions for all commands in Rails help\n\n    When calling `rails help` most commands missed their description. We now\n    show the same descriptions as shown in `rails -T`.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1671183306000,
+    "author": "Petrik",
+    "sha": "f52b1ccd0d637cfb9911ddf3b118b7e2c5ad5b49",
+    "pr": "46163",
+    "merge_sha": "768a2c69c678c689407072e6638e74819e490f87",
+    "html": "<p>Show descriptions for all commands in Rails help</p>\n\n<p>When calling <code>rails help</code> most commands missed their description. We now<br />\nshow the same descriptions as shown in <code>rails -T</code>.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Always generate the storage/ directory with rails new to ensure there's a stable place to\n    put permanent files, and a single mount point for containers to map. Then default sqlite3 databases\n    to live there instead of db/, which is only meant for configuration, not data.\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1670863751000,
