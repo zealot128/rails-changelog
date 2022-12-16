@@ -4153,6 +4153,27 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Show descriptions for all commands in Rails help
+</title>
+    <link>https://github.com/rails/rails/issues/46163</link>
+    <guid>https://github.com/rails/rails/issues/46163</guid>
+    <description>*   Show descriptions for all commands in Rails help
+
+    When calling `rails help` most commands missed their description. We now
+    show the same descriptions as shown in `rails -T`.
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 16 Dec 2022 09:35:06 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Show descriptions for all commands in Rails help</p>
+
+<p>When calling <code>rails help</code> most commands missed their description. We now<br />
+show the same descriptions as shown in <code>rails -T</code>.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Always generate the storage/ directory with rails new to ensure there&#39;s a stable place to
 </title>
     <link>https://github.com/rails/rails/issues/46701</link>
