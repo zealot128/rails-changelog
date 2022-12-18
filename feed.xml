@@ -4153,6 +4153,36 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add ENV[&quot;SECRET_KEY_BASE_DUMMY&quot;] for starting production environment with a generated secret base key,
+</title>
+    <link>https://github.com/rails/rails/issues/46763</link>
+    <guid>https://github.com/rails/rails/issues/46763</guid>
+    <description>*   Add ENV[&quot;SECRET_KEY_BASE_DUMMY&quot;] for starting production environment with a generated secret base key,
+    which can be used to run tasks like `assets:precompile` without making the RAILS_MASTER_KEY available
+    to the build process.
+
+    Dockerfile layer example:
+
+    ```
+    RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+    ```
+
+    *DHH*</description>
+    <pubDate>Sun, 18 Dec 2022 03:22:50 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add ENV[“SECRET_KEY_BASE_DUMMY”] for starting production environment with a generated secret base key,<br />
+which can be used to run tasks like <code>assets:precompile</code> without making the RAILS_MASTER_KEY available<br />
+to the build process.</p>
+
+<p>Dockerfile layer example:</p>
+
+<pre><code>RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+</code></pre>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Show descriptions for all commands in Rails help
 </title>
     <link>https://github.com/rails/rails/issues/46163</link>
