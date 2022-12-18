@@ -1470,6 +1470,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Base::Connection</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Add ENV[\"SECRET_KEY_BASE_DUMMY\"] for starting production environment with a generated secret base key,\n    which can be used to run tasks like `assets:precompile` without making the RAILS_MASTER_KEY available\n    to the build process.\n\n    Dockerfile layer example:\n\n    ```\n    RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile\n    ```\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1671333770000,
+    "author": "David Heinemeier Hansson",
+    "sha": "a3e392f65614a744ca0f2b509301538e2a28bb95",
+    "pr": "46763",
+    "merge_sha": "974de71036e2154e026d081f5bcd815734ca5bc7",
+    "html": "<p>Add ENV[“SECRET_KEY_BASE_DUMMY”] for starting production environment with a generated secret base key,<br />\nwhich can be used to run tasks like <code>assets:precompile</code> without making the RAILS_MASTER_KEY available<br />\nto the build process.</p>\n\n<p>Dockerfile layer example:</p>\n\n<pre><code>RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile\n</code></pre>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Show descriptions for all commands in Rails help\n\n    When calling `rails help` most commands missed their description. We now\n    show the same descriptions as shown in `rails -T`.\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1671183306000,
