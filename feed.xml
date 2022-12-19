@@ -4153,6 +4153,66 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.
+</title>
+    <link>https://github.com/rails/rails/issues/46771</link>
+    <guid>https://github.com/rails/rails/issues/46771</guid>
+    <description>*   Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.
+    These files can be skipped with `--skip-docker`. They&#39;re intended as a starting point for
+    a production deploy of the application. Not intended for development (see Docked Rails for that).
+
+    Example:
+
+    ```
+    docker build -t app .
+    docker volume create app-storage
+    docker run --rm -it -v app-storage:/rails/storage -p 3000:3000 --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app
+    ```
+
+    You can also start a console or a runner from this image:
+
+    ```
+    docker run --rm -it -v app-storage:/rails/storage --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app console
+    ```
+
+    To create a multi-platform image on Apple Silicon to deploy on AMD or Intel and push to Docker Hub for user/app:
+
+    ```
+    docker login -u &lt;user&gt;
+    docker buildx create --use
+    docker buildx build --push --platform=linux/amd64,linux/arm64 -t &lt;user/image&gt; .
+    ```
+
+    *DHH*</description>
+    <pubDate>Mon, 19 Dec 2022 18:32:01 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.<br />
+These files can be skipped with <code>--skip-docker</code>. They’re intended as a starting point for<br />
+a production deploy of the application. Not intended for development (see Docked Rails for that).</p>
+
+<p>Example:</p>
+
+<pre><code>docker build -t app .
+docker volume create app-storage
+docker run --rm -it -v app-storage:/rails/storage -p 3000:3000 --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app
+</code></pre>
+
+<p>You can also start a console or a runner from this image:</p>
+
+<pre><code>docker run --rm -it -v app-storage:/rails/storage --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app console
+</code></pre>
+
+<p>To create a multi-platform image on Apple Silicon to deploy on AMD or Intel and push to Docker Hub for user/app:</p>
+
+<pre><code>docker login -u &lt;user&gt;
+docker buildx create --use
+docker buildx build --push --platform=linux/amd64,linux/arm64 -t &lt;user/image&gt; .
+</code></pre>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add ENV[&quot;SECRET_KEY_BASE_DUMMY&quot;] for starting production environment with a generated secret base key,
 </title>
     <link>https://github.com/rails/rails/issues/46763</link>
