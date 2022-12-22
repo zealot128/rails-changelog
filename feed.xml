@@ -623,6 +623,23 @@ streamed.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: `ActiveRecord::Relation`’s `#any?`, `#none?`, and `#one?` methods take an optional pattern
+</title>
+    <link>https://github.com/rails/rails/issues/46791</link>
+    <guid>https://github.com/rails/rails/issues/46791</guid>
+    <description>*   `ActiveRecord::Relation`’s `#any?`, `#none?`, and `#one?` methods take an optional pattern
+    argument, more closely matching their `Enumerable` equivalents.
+
+    *George Claghorn*</description>
+    <pubDate>Thu, 22 Dec 2022 08:01:00 +0000</pubDate>
+    <author>George Claghorn</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Relation</code>’s <code>#any?</code>, <code>#none?</code>, and <code>#one?</code> methods take an optional pattern<br />
+argument, more closely matching their <code>Enumerable</code> equivalents.</p>
+
+<p><em>George Claghorn</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add `ActiveRecord::Base::normalizes` to declare attribute normalizations.
 </title>
     <link>https://github.com/rails/rails/issues/43945</link>
@@ -6531,6 +6548,21 @@ if the path existed and was an empty directory or file.</p>
 but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 
 <p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Apply `field_error_proc` to `rich_text_area` form fields.
+</title>
+    <link>https://github.com/rails/rails/issues/44786</link>
+    <guid>https://github.com/rails/rails/issues/44786</guid>
+    <description>*   Apply `field_error_proc` to `rich_text_area` form fields.
+
+    *Kaíque Kandy Koga*</description>
+    <pubDate>Thu, 22 Dec 2022 18:27:52 +0000</pubDate>
+    <author>Kaíque Kandy Koga</author>
+    <content:encoded><![CDATA[<p>Apply <code>field_error_proc</code> to <code>rich_text_area</code> form fields.</p>
+
+<p><em>Kaíque Kandy Koga</em></p>
 ]]></content:encoded>
   </item>
   <item>
