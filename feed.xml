@@ -623,6 +623,64 @@ streamed.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add `ActiveRecord::Base::normalizes` to declare attribute normalizations.
+</title>
+    <link>https://github.com/rails/rails/issues/43945</link>
+    <guid>https://github.com/rails/rails/issues/43945</guid>
+    <description>*   Add `ActiveRecord::Base::normalizes` to declare attribute normalizations.
+
+    A normalization is applied when the attribute is assigned or updated, and
+    the normalized value will be persisted to the database.  The normalization
+    is also applied to the corresponding keyword argument of finder methods.
+    This allows a record to be created and later queried using unnormalized
+    values.  For example:
+
+      ```ruby
+      class User &lt; ActiveRecord::Base
+        normalizes :email, with: -&gt; email { email.strip.downcase }
+      end
+
+      user = User.create(email: &quot; CRUISE-CONTROL@EXAMPLE.COM\n&quot;)
+      user.email                  # =&gt; &quot;cruise-control@example.com&quot;
+
+      user = User.find_by(email: &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;)
+      user.email                  # =&gt; &quot;cruise-control@example.com&quot;
+      user.email_before_type_cast # =&gt; &quot;cruise-control@example.com&quot;
+
+      User.exists?(email: &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;)         # =&gt; true
+      User.exists?([&quot;email = ?&quot;, &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;]) # =&gt; false
+      ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Wed, 21 Dec 2022 20:07:55 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Add <code>ActiveRecord::Base::normalizes</code> to declare attribute normalizations.</p>
+
+<p>A normalization is applied when the attribute is assigned or updated, and<br />
+the normalized value will be persisted to the database.  The normalization<br />
+is also applied to the corresponding keyword argument of finder methods.<br />
+This allows a record to be created and later queried using unnormalized<br />
+values.  For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+    <span class="n">normalizes</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">with: </span><span class="o">-&gt;</span> <span class="n">email</span> <span class="p">{</span> <span class="n">email</span><span class="p">.</span><span class="nf">strip</span><span class="p">.</span><span class="nf">downcase</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">email: </span><span class="s2">" CRUISE-CONTROL@EXAMPLE.COM</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">email</span>                  <span class="c1"># =&gt; "cruise-control@example.com"</span>
+
+  <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">email: </span><span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">)</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">email</span>                  <span class="c1"># =&gt; "cruise-control@example.com"</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">email_before_type_cast</span> <span class="c1"># =&gt; "cruise-control@example.com"</span>
+
+  <span class="no">User</span><span class="p">.</span><span class="nf">exists?</span><span class="p">(</span><span class="ss">email: </span><span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">)</span>         <span class="c1"># =&gt; true</span>
+  <span class="no">User</span><span class="p">.</span><span class="nf">exists?</span><span class="p">([</span><span class="s2">"email = ?"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">])</span> <span class="c1"># =&gt; false</span>
+</code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Hide changes to before_committed! callback behaviour behind flag.
 </title>
     <link>https://github.com/rails/rails/issues/46739</link>
@@ -5280,6 +5338,21 @@ will be discontinued in 2022 and since Rails 7 does not fully<br />
 support Internet Explorer this header should not be a default one.</p>
 
 <p><em>Harun Sabljaković</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add `Rails.env.local?` shorthand for `Rails.env.development? || Rails.env.test?`.
+</title>
+    <link>https://github.com/rails/rails/issues/43945</link>
+    <guid>https://github.com/rails/rails/issues/43945</guid>
+    <description>*   Add `Rails.env.local?` shorthand for `Rails.env.development? || Rails.env.test?`.
+
+    *DHH*</description>
+    <pubDate>Wed, 21 Dec 2022 20:07:55 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add <code>Rails.env.local?</code> shorthand for <code>Rails.env.development? || Rails.env.test?</code>.</p>
+
+<p><em>DHH</em></p>
 ]]></content:encoded>
   </item>
   <item>
