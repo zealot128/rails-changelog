@@ -190,6 +190,16 @@
     "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
   },
   {
+    "message": "*   `ActiveRecord::Relation`’s `#any?`, `#none?`, and `#one?` methods take an optional pattern\n    argument, more closely matching their `Enumerable` equivalents.\n\n    *George Claghorn*",
+    "project": "activerecord",
+    "date_merged": 1671696060000,
+    "author": "George Claghorn",
+    "sha": "827ae3c449d002ea1b569b931945d940f2b61939",
+    "pr": "46791",
+    "merge_sha": "ac541a6c3f943ee5cbaebecee3b9eda9075e984d",
+    "html": "<p><code>ActiveRecord::Relation</code>’s <code>#any?</code>, <code>#none?</code>, and <code>#one?</code> methods take an optional pattern<br />\nargument, more closely matching their <code>Enumerable</code> equivalents.</p>\n\n<p><em>George Claghorn</em></p>\n"
+  },
+  {
     "message": "*   Add `ActiveRecord::Base::normalizes` to declare attribute normalizations.\n\n    A normalization is applied when the attribute is assigned or updated, and\n    the normalized value will be persisted to the database.  The normalization\n    is also applied to the corresponding keyword argument of finder methods.\n    This allows a record to be created and later queried using unnormalized\n    values.  For example:\n\n      ```ruby\n      class User < ActiveRecord::Base\n        normalizes :email, with: -> email { email.strip.downcase }\n      end\n\n      user = User.create(email: \" CRUISE-CONTROL@EXAMPLE.COM\\n\")\n      user.email                  # => \"cruise-control@example.com\"\n\n      user = User.find_by(email: \"\\tCRUISE-CONTROL@EXAMPLE.COM \")\n      user.email                  # => \"cruise-control@example.com\"\n      user.email_before_type_cast # => \"cruise-control@example.com\"\n\n      User.exists?(email: \"\\tCRUISE-CONTROL@EXAMPLE.COM \")         # => true\n      User.exists?([\"email = ?\", \"\\tCRUISE-CONTROL@EXAMPLE.COM \"]) # => false\n      ```\n\n    *Jonathan Hefner*",
     "project": "activerecord",
     "date_merged": 1671653275000,
@@ -2288,6 +2298,16 @@
     "pr": "43951",
     "merge_sha": "58c0b76982e3fbcb5642223effd9cce93947029e",
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Apply `field_error_proc` to `rich_text_area` form fields.\n\n    *Kaíque Kandy Koga*",
+    "project": "actiontext",
+    "date_merged": 1671733672000,
+    "author": "Kaíque Kandy Koga",
+    "sha": "0dc71acf3981834f9a88061d98483ab13369d24b",
+    "pr": "44786",
+    "merge_sha": "95fb5b4bc1dd8b0c103564030f1a4abe9a11cee9",
+    "html": "<p>Apply <code>field_error_proc</code> to <code>rich_text_area</code> form fields.</p>\n\n<p><em>Kaíque Kandy Koga</em></p>\n"
   },
   {
     "message": "*   Action Text attachment URLs rendered in a background job (a la Turbo\n    Streams) now use `Rails.application.default_url_options` and\n    `Rails.application.config.force_ssl` instead of `http://example.org`.\n\n    *Jonathan Hefner*",
