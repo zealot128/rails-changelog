@@ -190,6 +190,16 @@
     "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
   },
   {
+    "message": "*   Add `ActiveRecord::Base::normalizes` to declare attribute normalizations.\n\n    A normalization is applied when the attribute is assigned or updated, and\n    the normalized value will be persisted to the database.  The normalization\n    is also applied to the corresponding keyword argument of finder methods.\n    This allows a record to be created and later queried using unnormalized\n    values.  For example:\n\n      ```ruby\n      class User < ActiveRecord::Base\n        normalizes :email, with: -> email { email.strip.downcase }\n      end\n\n      user = User.create(email: \" CRUISE-CONTROL@EXAMPLE.COM\\n\")\n      user.email                  # => \"cruise-control@example.com\"\n\n      user = User.find_by(email: \"\\tCRUISE-CONTROL@EXAMPLE.COM \")\n      user.email                  # => \"cruise-control@example.com\"\n      user.email_before_type_cast # => \"cruise-control@example.com\"\n\n      User.exists?(email: \"\\tCRUISE-CONTROL@EXAMPLE.COM \")         # => true\n      User.exists?([\"email = ?\", \"\\tCRUISE-CONTROL@EXAMPLE.COM \"]) # => false\n      ```\n\n    *Jonathan Hefner*",
+    "project": "activerecord",
+    "date_merged": 1671653275000,
+    "author": "Jonathan Hefner",
+    "sha": "d4c31bd8497a4f8c7ed44607076da6d54420f57a",
+    "pr": "43945",
+    "merge_sha": "52146dee06de7535339c2550434eb3dfd1b7115c",
+    "html": "<p>Add <code>ActiveRecord::Base::normalizes</code> to declare attribute normalizations.</p>\n\n<p>A normalization is applied when the attribute is assigned or updated, and<br />\nthe normalized value will be persisted to the database.  The normalization<br />\nis also applied to the corresponding keyword argument of finder methods.<br />\nThis allows a record to be created and later queried using unnormalized<br />\nvalues.  For example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n    <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n  <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span>                  <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n\n  <span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"</span><span class=\"se\">\\t</span><span class=\"s2\">CRUISE-CONTROL@EXAMPLE.COM \"</span><span class=\"p\">)</span>\n  <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span>                  <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n  <span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email_before_type_cast</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n\n  <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">exists?</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"</span><span class=\"se\">\\t</span><span class=\"s2\">CRUISE-CONTROL@EXAMPLE.COM \"</span><span class=\"p\">)</span>         <span class=\"c1\"># =&gt; true</span>\n  <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">exists?</span><span class=\"p\">([</span><span class=\"s2\">\"email = ?\"</span><span class=\"p\">,</span> <span class=\"s2\">\"</span><span class=\"se\">\\t</span><span class=\"s2\">CRUISE-CONTROL@EXAMPLE.COM \"</span><span class=\"p\">])</span> <span class=\"c1\"># =&gt; false</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
     "message": "*   Hide changes to before_committed! callback behaviour behind flag.\n\n    In #46525, behavior around before_committed! callbacks was changed so that callbacks\n    would run on every enrolled record in a transaction, not just the first copy of a record.\n    This change in behavior is now controlled by a configuration option,\n    `config.active_record.before_committed_on_all_records`. It will be enabled by default on Rails 7.1.\n\n    *Adrianna Chang*",
     "project": "activerecord",
     "date_merged": 1671124155000,
@@ -1868,6 +1878,16 @@
     "pr": "43968",
     "merge_sha": "9188b49883d8931d576964879aed32b34012cf8c",
     "html": "<p>Remove default <code>X-Download-Options</code> header</p>\n\n<p>This header is currently only used by Internet Explorer which<br />\nwill be discontinued in 2022 and since Rails 7 does not fully<br />\nsupport Internet Explorer this header should not be a default one.</p>\n\n<p><em>Harun Sabljaković</em></p>\n"
+  },
+  {
+    "message": "*   Add `Rails.env.local?` shorthand for `Rails.env.development? || Rails.env.test?`.\n\n    *DHH*",
+    "project": "activesupport",
+    "date_merged": 1671653275000,
+    "author": "David Heinemeier Hansson",
+    "sha": "47eaf8881c049495ca414496a23127e5952d59f0",
+    "pr": "43945",
+    "merge_sha": "52146dee06de7535339c2550434eb3dfd1b7115c",
+    "html": "<p>Add <code>Rails.env.local?</code> shorthand for <code>Rails.env.development? || Rails.env.test?</code>.</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
     "message": "*   `ActiveSupport::Testing::TimeHelpers` now accepts named `with_usec` argument\n    to `freeze_time`, `travel`, and `travel_to` methods. Passing true prevents\n    truncating the destination time with `change(usec: 0)`.\n\n    *KevSlashNull*, and *serprex*",
