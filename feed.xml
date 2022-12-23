@@ -6647,6 +6647,21 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Allow cookie options[:domain] to accept a proc to set the cookie domain on a more flexible per-request basis
+</title>
+    <link>https://github.com/rails/rails/issues/46726</link>
+    <guid>https://github.com/rails/rails/issues/46726</guid>
+    <description>*   Allow cookie options[:domain] to accept a proc to set the cookie domain on a more flexible per-request basis
+
+    *RobL*</description>
+    <pubDate>Thu, 22 Dec 2022 20:52:53 +0000</pubDate>
+    <author>RobL</author>
+    <content:encoded><![CDATA[<p>Allow cookie options[:domain] to accept a proc to set the cookie domain on a more flexible per-request basis</p>
+
+<p><em>RobL</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: When a host is not specified for an `ActionController::Renderer`&#39;s env,
 </title>
     <link>https://github.com/rails/rails/issues/46649</link>
