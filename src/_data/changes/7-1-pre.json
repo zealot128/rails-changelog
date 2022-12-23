@@ -2360,6 +2360,16 @@
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
   },
   {
+    "message": "*   Allow cookie options[:domain] to accept a proc to set the cookie domain on a more flexible per-request basis\n\n    *RobL*",
+    "project": "actionpack",
+    "date_merged": 1671742373000,
+    "author": "RobL",
+    "sha": "83da2e93839a6a67e0daf18c62acf11e2691abb0",
+    "pr": "46726",
+    "merge_sha": "9589ef330ceacf660da318fe5fcbd44f3e5f507e",
+    "html": "<p>Allow cookie options[:domain] to accept a proc to set the cookie domain on a more flexible per-request basis</p>\n\n<p><em>RobL</em></p>\n"
+  },
+  {
     "message": "*   When a host is not specified for an `ActionController::Renderer`'s env,\n    the host and related options will now be derived from the routes'\n    `default_url_options` and `ActionDispatch::Http::URL.secure_protocol`.\n\n    This means that for an application with a configuration like:\n\n      ```ruby\n      Rails.application.default_url_options = { host: \"rubyonrails.org\" }\n      Rails.application.config.force_ssl = true\n      ```\n\n    rendering a URL like:\n\n      ```ruby\n      ApplicationController.renderer.render inline: \"<%= blog_url %>\"\n      ```\n\n    will now return `\"https://rubyonrails.org/blog\"` instead of\n    `\"http://example.org/blog\"`.\n\n    *Jonathan Hefner*",
     "project": "actionpack",
     "date_merged": 1671144302000,
