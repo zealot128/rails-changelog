@@ -2320,16 +2320,6 @@
     "html": "<p>Action Text attachment URLs rendered in a background job (a la Turbo<br />\nStreams) now use <code>Rails.application.default_url_options</code> and<br />\n<code>Rails.application.config.force_ssl</code> instead of <code>http://example.org</code>.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
-    "message": "*   Focus rich-text editor after calling `fill_in_rich_text_area`\n\n    *Sean Doyle*",
-    "project": "actiontext",
-    "date_merged": 1670598506000,
-    "author": "Sean Doyle",
-    "sha": "67a4ac6c5651a00e613de298631d460116bba38c",
-    "pr": "46249",
-    "merge_sha": "263efecc64eb991302ea482ba4ac8f37cae27520",
-    "html": "<p>Focus rich-text editor after calling <code>fill_in_rich_text_area</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
     "message": "*   Support `strict_loading:` option for `has_rich_text` declaration\n\n    *Sean Doyle*",
     "project": "actiontext",
     "date_merged": 1670593447000,
