@@ -6585,21 +6585,6 @@ Streams) now use <code>Rails.application.default_url_options</code> and<br />
 ]]></content:encoded>
   </item>
   <item>
-    <title>actiontext: Focus rich-text editor after calling `fill_in_rich_text_area`
-</title>
-    <link>https://github.com/rails/rails/issues/46249</link>
-    <guid>https://github.com/rails/rails/issues/46249</guid>
-    <description>*   Focus rich-text editor after calling `fill_in_rich_text_area`
-
-    *Sean Doyle*</description>
-    <pubDate>Fri, 09 Dec 2022 15:08:26 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Focus rich-text editor after calling <code>fill_in_rich_text_area</code></p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>actiontext: Support `strict_loading:` option for `has_rich_text` declaration
 </title>
     <link>https://github.com/rails/rails/issues/46271</link>
