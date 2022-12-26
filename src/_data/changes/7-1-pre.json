@@ -1480,16 +1480,6 @@
     "html": "<p><code>ActionCable.server.remote_connections.where(...).disconnect</code> now sends <code>disconnect</code> message<br />\nbefore closing the connection with the reconnection strategy specified (defaults to <code>true</code>).</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
-    "message": "*   Added command callbacks to `ActionCable::Base::Connection`.\n\n    Now you can define `before_command`, `after_command`, and `around_command` to be invoked before, after or around any command received by a client respectively.\n\n    *Vladimir Dementyev*",
-    "project": "actioncable",
-    "date_merged": 1652730099000,
-    "author": "Vladimir Dementyev",
-    "sha": "5d6c1f64ea089a7d1c60e073d56e59c5c7552256",
-    "pr": "45072",
-    "merge_sha": "712ecf774959588d435f035412a12d9f5f8a55df",
-    "html": "<p>Added command callbacks to <code>ActionCable::Base::Connection</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
-  },
-  {
     "message": "*   Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.\n    These files can be skipped with `--skip-docker`. They're intended as a starting point for\n    a production deploy of the application. Not intended for development (see Docked Rails for that).\n\n    Example:\n\n    ```\n    docker build -t app .\n    docker volume create app-storage\n    docker run --rm -it -v app-storage:/rails/storage -p 3000:3000 --env RAILS_MASTER_KEY=<see config/master.key> app\n    ```\n\n    You can also start a console or a runner from this image:\n\n    ```\n    docker run --rm -it -v app-storage:/rails/storage --env RAILS_MASTER_KEY=<see config/master.key> app console\n    ```\n\n    To create a multi-platform image on Apple Silicon to deploy on AMD or Intel and push to Docker Hub for user/app:\n\n    ```\n    docker login -u <user>\n    docker buildx create --use\n    docker buildx build --push --platform=linux/amd64,linux/arm64 -t <user/image> .\n    ```\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1671474721000,
