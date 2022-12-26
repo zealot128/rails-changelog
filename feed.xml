@@ -4209,25 +4209,6 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: Added command callbacks to `ActionCable::Base::Connection`.
-</title>
-    <link>https://github.com/rails/rails/issues/45072</link>
-    <guid>https://github.com/rails/rails/issues/45072</guid>
-    <description>*   Added command callbacks to `ActionCable::Base::Connection`.
-
-    Now you can define `before_command`, `after_command`, and `around_command` to be invoked before, after or around any command received by a client respectively.
-
-    *Vladimir Dementyev*</description>
-    <pubDate>Mon, 16 May 2022 19:41:39 +0000</pubDate>
-    <author>Vladimir Dementyev</author>
-    <content:encoded><![CDATA[<p>Added command callbacks to <code>ActionCable::Base::Connection</code>.</p>
-
-<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>
-
-<p><em>Vladimir Dementyev</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>railties: Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.
 </title>
     <link>https://github.com/rails/rails/issues/46771</link>
