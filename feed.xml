@@ -4209,6 +4209,40 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>actioncable: Added command callbacks to `ActionCable::Connection::Base`.
+</title>
+    <link>https://github.com/rails/rails/issues/46829</link>
+    <guid>https://github.com/rails/rails/issues/46829</guid>
+    <description>*   Added command callbacks to `ActionCable::Connection::Base`.
+
+    Now you can define `before_command`, `after_command`, and `around_command` to be invoked before, after or around any command received by a client respectively.
+
+    *Vladimir Dementyev*</description>
+    <pubDate>Mon, 26 Dec 2022 21:03:40 +0000</pubDate>
+    <author>Akira Matsuda</author>
+    <content:encoded><![CDATA[<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>
+
+<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>
+
+<p><em>Vladimir Dementyev</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Bump `required_rubygems_version` to 3.3.13 or higher
+</title>
+    <link>https://github.com/rails/rails/issues/46817</link>
+    <guid>https://github.com/rails/rails/issues/46817</guid>
+    <description>*   Bump `required_rubygems_version` to 3.3.13 or higher
+
+    *Yasuo Honda*</description>
+    <pubDate>Mon, 26 Dec 2022 23:56:30 +0000</pubDate>
+    <author>Yasuo Honda</author>
+    <content:encoded><![CDATA[<p>Bump <code>required_rubygems_version</code> to 3.3.13 or higher</p>
+
+<p><em>Yasuo Honda</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.
 </title>
     <link>https://github.com/rails/rails/issues/46771</link>
