@@ -1480,6 +1480,26 @@
     "html": "<p><code>ActionCable.server.remote_connections.where(...).disconnect</code> now sends <code>disconnect</code> message<br />\nbefore closing the connection with the reconnection strategy specified (defaults to <code>true</code>).</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Added command callbacks to `ActionCable::Connection::Base`.\n\n    Now you can define `before_command`, `after_command`, and `around_command` to be invoked before, after or around any command received by a client respectively.\n\n    *Vladimir Dementyev*",
+    "project": "actioncable",
+    "date_merged": 1672088620000,
+    "author": "Akira Matsuda",
+    "sha": "4732c91d14c12aa36452fa2bddfc9a4e9d0121b0",
+    "pr": "46829",
+    "merge_sha": "85bc6ca9d2c0768796bbd6e496b2b3206853127f",
+    "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
+  },
+  {
+    "message": "*   Bump `required_rubygems_version` to 3.3.13 or higher\n\n    *Yasuo Honda*",
+    "project": "railties",
+    "date_merged": 1672098990000,
+    "author": "Yasuo Honda",
+    "sha": "3aa32f2176389d563deff0c799198378666d9f17",
+    "pr": "46817",
+    "merge_sha": "c14b8c7323e84ebd0f8646c5ecc242e6256278b7",
+    "html": "<p>Bump <code>required_rubygems_version</code> to 3.3.13 or higher</p>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
     "message": "*   Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.\n    These files can be skipped with `--skip-docker`. They're intended as a starting point for\n    a production deploy of the application. Not intended for development (see Docked Rails for that).\n\n    Example:\n\n    ```\n    docker build -t app .\n    docker volume create app-storage\n    docker run --rm -it -v app-storage:/rails/storage -p 3000:3000 --env RAILS_MASTER_KEY=<see config/master.key> app\n    ```\n\n    You can also start a console or a runner from this image:\n\n    ```\n    docker run --rm -it -v app-storage:/rails/storage --env RAILS_MASTER_KEY=<see config/master.key> app console\n    ```\n\n    To create a multi-platform image on Apple Silicon to deploy on AMD or Intel and push to Docker Hub for user/app:\n\n    ```\n    docker login -u <user>\n    docker buildx create --use\n    docker buildx build --push --platform=linux/amd64,linux/arm64 -t <user/image> .\n    ```\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1671474721000,
