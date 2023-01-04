@@ -5373,6 +5373,49 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Add ability to match exception messages to `assert_raises` assertion
+</title>
+    <link>https://github.com/rails/rails/issues/46611</link>
+    <guid>https://github.com/rails/rails/issues/46611</guid>
+    <description>*   Add ability to match exception messages to `assert_raises` assertion
+
+    Instead of this
+    ```ruby
+    error = assert_raises(ArgumentError) do
+      perform_service(param: &#39;exception&#39;)
+    end
+    assert_match(/incorrect param/i, error.message)
+    ```
+
+    you can now write this
+    ```ruby
+    assert_raises(ArgumentError, match: /incorrect param/i) do
+      perform_service(param: &#39;exception&#39;)
+    end
+    ```
+
+    *fatkodima*</description>
+    <pubDate>Tue, 03 Jan 2023 19:50:19 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Add ability to match exception messages to <code>assert_raises</code> assertion</p>
+
+<p>Instead of this</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">error</span> <span class="o">=</span> <span class="n">assert_raises</span><span class="p">(</span><span class="no">ArgumentError</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">perform_service</span><span class="p">(</span><span class="ss">param: </span><span class="s1">'exception'</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">assert_match</span><span class="p">(</span><span class="sr">/incorrect param/i</span><span class="p">,</span> <span class="n">error</span><span class="p">.</span><span class="nf">message</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>you can now write this</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_raises</span><span class="p">(</span><span class="no">ArgumentError</span><span class="p">,</span> <span class="ss">match: </span><span class="sr">/incorrect param/i</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">perform_service</span><span class="p">(</span><span class="ss">param: </span><span class="s1">'exception'</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Add `Rails.env.local?` shorthand for `Rails.env.development? || Rails.env.test?`.
 </title>
     <link>https://github.com/rails/rails/issues/43945</link>
@@ -6644,6 +6687,29 @@ Streams) now use <code>Rails.application.default_url_options</code> and<br />
 rich_text field was updated.</p>
 
 <p><em>Jacob Herrington</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Allow raising an error when a callback&#39;s only/unless symbols aren&#39;t existing methods.
+</title>
+    <link>https://github.com/rails/rails/issues/46877</link>
+    <guid>https://github.com/rails/rails/issues/46877</guid>
+    <description>*   Allow raising an error when a callback&#39;s only/unless symbols aren&#39;t existing methods.
+
+    When `before_action :callback, only: :action_name` is declared on a controller that doesn&#39;t respond to `action_name`, raise an exception at request time. This is a safety measure to ensure that typos or forgetfulness don&#39;t prevent a crucial callback from being run when it should.
+
+    For new applications, raising an error for undefined actions is turned on by default. If you do not want to opt-in to this behavior set `config.action_pack.raise_on_missing_callback_actions` to `false` in your application configuration. See #43487 for more details.
+
+    *Jess Bees*</description>
+    <pubDate>Tue, 03 Jan 2023 19:10:00 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Allow raising an error when a callback’s only/unless symbols aren’t existing methods.</p>
+
+<p>When <code>before_action :callback, only: :action_name</code> is declared on a controller that doesn’t respond to <code>action_name</code>, raise an exception at request time. This is a safety measure to ensure that typos or forgetfulness don’t prevent a crucial callback from being run when it should.</p>
+
+<p>For new applications, raising an error for undefined actions is turned on by default. If you do not want to opt-in to this behavior set <code>config.action_pack.raise_on_missing_callback_actions</code> to <code>false</code> in your application configuration. See #43487 for more details.</p>
+
+<p><em>Jess Bees</em></p>
 ]]></content:encoded>
   </item>
   <item>
