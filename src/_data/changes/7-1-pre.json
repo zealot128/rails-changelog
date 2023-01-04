@@ -1900,6 +1900,16 @@
     "html": "<p>Remove default <code>X-Download-Options</code> header</p>\n\n<p>This header is currently only used by Internet Explorer which<br />\nwill be discontinued in 2022 and since Rails 7 does not fully<br />\nsupport Internet Explorer this header should not be a default one.</p>\n\n<p><em>Harun Sabljaković</em></p>\n"
   },
   {
+    "message": "*   Add ability to match exception messages to `assert_raises` assertion\n\n    Instead of this\n    ```ruby\n    error = assert_raises(ArgumentError) do\n      perform_service(param: 'exception')\n    end\n    assert_match(/incorrect param/i, error.message)\n    ```\n\n    you can now write this\n    ```ruby\n    assert_raises(ArgumentError, match: /incorrect param/i) do\n      perform_service(param: 'exception')\n    end\n    ```\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1672775419000,
+    "author": "fatkodima",
+    "sha": "767ecc41313e071cb7efc89dedaaca0d16f9a684",
+    "pr": "46611",
+    "merge_sha": "c70a8f75d7a41212cbe358b2a0122a28321b040d",
+    "html": "<p>Add ability to match exception messages to <code>assert_raises</code> assertion</p>\n\n<p>Instead of this</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">error</span> <span class=\"o\">=</span> <span class=\"n\">assert_raises</span><span class=\"p\">(</span><span class=\"no\">ArgumentError</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"n\">perform_service</span><span class=\"p\">(</span><span class=\"ss\">param: </span><span class=\"s1\">'exception'</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n<span class=\"n\">assert_match</span><span class=\"p\">(</span><span class=\"sr\">/incorrect param/i</span><span class=\"p\">,</span> <span class=\"n\">error</span><span class=\"p\">.</span><span class=\"nf\">message</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>you can now write this</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_raises</span><span class=\"p\">(</span><span class=\"no\">ArgumentError</span><span class=\"p\">,</span> <span class=\"ss\">match: </span><span class=\"sr\">/incorrect param/i</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"n\">perform_service</span><span class=\"p\">(</span><span class=\"ss\">param: </span><span class=\"s1\">'exception'</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Add `Rails.env.local?` shorthand for `Rails.env.development? || Rails.env.test?`.\n\n    *DHH*",
     "project": "activesupport",
     "date_merged": 1671653275000,
@@ -2358,6 +2368,16 @@
     "pr": "43706",
     "merge_sha": "327ba2d9796d1c630ede63bbc3bc9ebfc8f8740c",
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
+  },
+  {
+    "message": "*   Allow raising an error when a callback's only/unless symbols aren't existing methods.\n\n    When `before_action :callback, only: :action_name` is declared on a controller that doesn't respond to `action_name`, raise an exception at request time. This is a safety measure to ensure that typos or forgetfulness don't prevent a crucial callback from being run when it should.\n\n    For new applications, raising an error for undefined actions is turned on by default. If you do not want to opt-in to this behavior set `config.action_pack.raise_on_missing_callback_actions` to `false` in your application configuration. See #43487 for more details.\n\n    *Jess Bees*",
+    "project": "actionpack",
+    "date_merged": 1672773000000,
+    "author": "eileencodes",
+    "sha": "04e1a0d2e195d8cd5831c6ca953393b784bbfee9",
+    "pr": "46877",
+    "merge_sha": "60163900a99dc47694f469eef6dc8bdd5349c402",
+    "html": "<p>Allow raising an error when a callback’s only/unless symbols aren’t existing methods.</p>\n\n<p>When <code>before_action :callback, only: :action_name</code> is declared on a controller that doesn’t respond to <code>action_name</code>, raise an exception at request time. This is a safety measure to ensure that typos or forgetfulness don’t prevent a crucial callback from being run when it should.</p>\n\n<p>For new applications, raising an error for undefined actions is turned on by default. If you do not want to opt-in to this behavior set <code>config.action_pack.raise_on_missing_callback_actions</code> to <code>false</code> in your application configuration. See #43487 for more details.</p>\n\n<p><em>Jess Bees</em></p>\n"
   },
   {
     "message": "*   Allow cookie options[:domain] to accept a proc to set the cookie domain on a more flexible per-request basis\n\n    *RobL*",
