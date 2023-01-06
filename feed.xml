@@ -6690,6 +6690,21 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Only use HostAuthorization middleware if `config.hosts` is not empty
+</title>
+    <link>https://github.com/rails/rails/issues/46903</link>
+    <guid>https://github.com/rails/rails/issues/46903</guid>
+    <description>*   Only use HostAuthorization middleware if `config.hosts` is not empty
+
+    *Hartley McGuire*</description>
+    <pubDate>Thu, 05 Jan 2023 22:51:14 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Only use HostAuthorization middleware if <code>config.hosts</code> is not empty</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Allow raising an error when a callback&#39;s only/unless symbols aren&#39;t existing methods.
 </title>
     <link>https://github.com/rails/rails/issues/46877</link>
