@@ -2370,6 +2370,16 @@
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
   },
   {
+    "message": "*   Only use HostAuthorization middleware if `config.hosts` is not empty\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1672959074000,
+    "author": "Hartley McGuire",
+    "sha": "eef4e755e095f8985c0534726bdfd080faaae969",
+    "pr": "46903",
+    "merge_sha": "ec782106553202e7cf2aeff7cbbce94d85b75635",
+    "html": "<p>Only use HostAuthorization middleware if <code>config.hosts</code> is not empty</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Allow raising an error when a callback's only/unless symbols aren't existing methods.\n\n    When `before_action :callback, only: :action_name` is declared on a controller that doesn't respond to `action_name`, raise an exception at request time. This is a safety measure to ensure that typos or forgetfulness don't prevent a crucial callback from being run when it should.\n\n    For new applications, raising an error for undefined actions is turned on by default. If you do not want to opt-in to this behavior set `config.action_pack.raise_on_missing_callback_actions` to `false` in your application configuration. See #43487 for more details.\n\n    *Jess Bees*",
     "project": "actionpack",
     "date_merged": 1672773000000,
