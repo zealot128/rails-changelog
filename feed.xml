@@ -4228,6 +4228,72 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Raise an exception when a `before_action`&#39;s &quot;only&quot; or &quot;except&quot; filter
+</title>
+    <link>https://github.com/rails/rails/issues/46190</link>
+    <guid>https://github.com/rails/rails/issues/46190</guid>
+    <description>*   Raise an exception when a `before_action`&#39;s &quot;only&quot; or &quot;except&quot; filter
+    options reference an action that doesn&#39;t exist. This will be enabled by
+    default but can be overridden via config.
+
+    ```
+    # config/environments/production.rb
+    config.action_controller.raise_on_missing_callback_actions = false
+    ```
+
+    *Jess Bees*</description>
+    <pubDate>Sat, 07 Jan 2023 08:38:35 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Raise an exception when a <code>before_action</code>’s “only” or “except” filter<br />
+options reference an action that doesn’t exist. This will be enabled by<br />
+default but can be overridden via config.</p>
+
+<pre><code># config/environments/production.rb
+config.action_controller.raise_on_missing_callback_actions = false
+</code></pre>
+
+<p><em>Jess Bees</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Use physical processor count as the default Puma worker count in production.
+</title>
+    <link>https://github.com/rails/rails/issues/46190</link>
+    <guid>https://github.com/rails/rails/issues/46190</guid>
+    <description>*   Use physical processor count as the default Puma worker count in production.
+    This can be overridden by setting `ENV[&quot;WEB_CONCURRENCY&quot;]` or editing the
+    generated &quot;config/puma.rb&quot; directly.
+
+    *DHH*</description>
+    <pubDate>Sat, 07 Jan 2023 08:38:35 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Use physical processor count as the default Puma worker count in production.<br />
+This can be overridden by setting <code>ENV["WEB_CONCURRENCY"]</code> or editing the<br />
+generated “config/puma.rb” directly.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Bump `required_rubygems_version` from 1.8.11 to 3.3.13 or higher in order to
+</title>
+    <link>https://github.com/rails/rails/issues/46190</link>
+    <guid>https://github.com/rails/rails/issues/46190</guid>
+    <description>*   Bump `required_rubygems_version` from 1.8.11 to 3.3.13 or higher in order to
+    support pre-release versions of Ruby when generating a new Rails app
+    Gemfile.
+
+    *Yasuo Honda*</description>
+    <pubDate>Sat, 07 Jan 2023 08:38:35 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Bump <code>required_rubygems_version</code> from 1.8.11 to 3.3.13 or higher in order to<br />
+support pre-release versions of Ruby when generating a new Rails app<br />
+Gemfile.</p>
+
+<p><em>Yasuo Honda</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.
 </title>
     <link>https://github.com/rails/rails/issues/46771</link>
@@ -5355,6 +5421,55 @@ will be discontinued in 2022 and since Rails 7 does not fully<br />
 support Internet Explorer this header should not be a default one.</p>
 
 <p><em>Harun Sabljaković</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: `assert_difference` message now includes what changed.
+</title>
+    <link>https://github.com/rails/rails/issues/46863</link>
+    <guid>https://github.com/rails/rails/issues/46863</guid>
+    <description>*   `assert_difference` message now includes what changed.
+
+    This makes it easier to debug non-obvious failures.
+
+    Before:
+
+    ```
+    &quot;User.count&quot; didn&#39;t change by 32.
+    Expected: 1611
+      Actual: 1579
+    ```
+
+    After:
+
+    ```
+    &quot;User.count&quot; didn&#39;t change by 32, but by 0.
+    Expected: 1611
+      Actual: 1579
+    ```
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Sat, 07 Jan 2023 18:14:15 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p><code>assert_difference</code> message now includes what changed.</p>
+
+<p>This makes it easier to debug non-obvious failures.</p>
+
+<p>Before:</p>
+
+<pre><code>"User.count" didn't change by 32.
+Expected: 1611
+  Actual: 1579
+</code></pre>
+
+<p>After:</p>
+
+<pre><code>"User.count" didn't change by 32, but by 0.
+Expected: 1611
+  Actual: 1579
+</code></pre>
+
+<p><em>Alex Ghiculescu</em></p>
 ]]></content:encoded>
   </item>
   <item>
