@@ -4228,21 +4228,6 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Bump `required_rubygems_version` to 3.3.13 or higher
-</title>
-    <link>https://github.com/rails/rails/issues/46817</link>
-    <guid>https://github.com/rails/rails/issues/46817</guid>
-    <description>*   Bump `required_rubygems_version` to 3.3.13 or higher
-
-    *Yasuo Honda*</description>
-    <pubDate>Mon, 26 Dec 2022 23:56:30 +0000</pubDate>
-    <author>Yasuo Honda</author>
-    <content:encoded><![CDATA[<p>Bump <code>required_rubygems_version</code> to 3.3.13 or higher</p>
-
-<p><em>Yasuo Honda</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>railties: Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.
 </title>
     <link>https://github.com/rails/rails/issues/46771</link>
