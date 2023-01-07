@@ -1490,6 +1490,36 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Raise an exception when a `before_action`'s \"only\" or \"except\" filter\n    options reference an action that doesn't exist. This will be enabled by\n    default but can be overridden via config.\n\n    ```\n    # config/environments/production.rb\n    config.action_controller.raise_on_missing_callback_actions = false\n    ```\n\n    *Jess Bees*",
+    "project": "railties",
+    "date_merged": 1673080715000,
+    "author": "zzak",
+    "sha": "78507d8352487361b574489b57d7ad62a4f44b46",
+    "pr": "46190",
+    "merge_sha": "6494c8707fbb61ad8d7b42d1fdc08372f5a26234",
+    "html": "<p>Raise an exception when a <code>before_action</code>’s “only” or “except” filter<br />\noptions reference an action that doesn’t exist. This will be enabled by<br />\ndefault but can be overridden via config.</p>\n\n<pre><code># config/environments/production.rb\nconfig.action_controller.raise_on_missing_callback_actions = false\n</code></pre>\n\n<p><em>Jess Bees</em></p>\n"
+  },
+  {
+    "message": "*   Use physical processor count as the default Puma worker count in production.\n    This can be overridden by setting `ENV[\"WEB_CONCURRENCY\"]` or editing the\n    generated \"config/puma.rb\" directly.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1673080715000,
+    "author": "zzak",
+    "sha": "911b3a468c80cd8fc1c623dfab8e910b9f0e152e",
+    "pr": "46190",
+    "merge_sha": "6494c8707fbb61ad8d7b42d1fdc08372f5a26234",
+    "html": "<p>Use physical processor count as the default Puma worker count in production.<br />\nThis can be overridden by setting <code>ENV[\"WEB_CONCURRENCY\"]</code> or editing the<br />\ngenerated “config/puma.rb” directly.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Bump `required_rubygems_version` from 1.8.11 to 3.3.13 or higher in order to\n    support pre-release versions of Ruby when generating a new Rails app\n    Gemfile.\n\n    *Yasuo Honda*",
+    "project": "railties",
+    "date_merged": 1673080715000,
+    "author": "zzak",
+    "sha": "4d245e0d564e06d5de4a366a5d1726c5706ae4a7",
+    "pr": "46190",
+    "merge_sha": "6494c8707fbb61ad8d7b42d1fdc08372f5a26234",
+    "html": "<p>Bump <code>required_rubygems_version</code> from 1.8.11 to 3.3.13 or higher in order to<br />\nsupport pre-release versions of Ruby when generating a new Rails app<br />\nGemfile.</p>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
     "message": "*   Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.\n    These files can be skipped with `--skip-docker`. They're intended as a starting point for\n    a production deploy of the application. Not intended for development (see Docked Rails for that).\n\n    Example:\n\n    ```\n    docker build -t app .\n    docker volume create app-storage\n    docker run --rm -it -v app-storage:/rails/storage -p 3000:3000 --env RAILS_MASTER_KEY=<see config/master.key> app\n    ```\n\n    You can also start a console or a runner from this image:\n\n    ```\n    docker run --rm -it -v app-storage:/rails/storage --env RAILS_MASTER_KEY=<see config/master.key> app console\n    ```\n\n    To create a multi-platform image on Apple Silicon to deploy on AMD or Intel and push to Docker Hub for user/app:\n\n    ```\n    docker login -u <user>\n    docker buildx create --use\n    docker buildx build --push --platform=linux/amd64,linux/arm64 -t <user/image> .\n    ```\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1671474721000,
@@ -1888,6 +1918,16 @@
     "pr": "43968",
     "merge_sha": "9188b49883d8931d576964879aed32b34012cf8c",
     "html": "<p>Remove default <code>X-Download-Options</code> header</p>\n\n<p>This header is currently only used by Internet Explorer which<br />\nwill be discontinued in 2022 and since Rails 7 does not fully<br />\nsupport Internet Explorer this header should not be a default one.</p>\n\n<p><em>Harun Sabljaković</em></p>\n"
+  },
+  {
+    "message": "*   `assert_difference` message now includes what changed.\n\n    This makes it easier to debug non-obvious failures.\n\n    Before:\n\n    ```\n    \"User.count\" didn't change by 32.\n    Expected: 1611\n      Actual: 1579\n    ```\n\n    After:\n\n    ```\n    \"User.count\" didn't change by 32, but by 0.\n    Expected: 1611\n      Actual: 1579\n    ```\n\n    *Alex Ghiculescu*",
+    "project": "activesupport",
+    "date_merged": 1673115255000,
+    "author": "Alex Ghiculescu",
+    "sha": "293349c959c05de69879f9de666dd871ab65dbee",
+    "pr": "46863",
+    "merge_sha": "05acc18d7331c12107b8ea0b99278ad6a3f8bfa1",
+    "html": "<p><code>assert_difference</code> message now includes what changed.</p>\n\n<p>This makes it easier to debug non-obvious failures.</p>\n\n<p>Before:</p>\n\n<pre><code>\"User.count\" didn't change by 32.\nExpected: 1611\n  Actual: 1579\n</code></pre>\n\n<p>After:</p>\n\n<pre><code>\"User.count\" didn't change by 32, but by 0.\nExpected: 1611\n  Actual: 1579\n</code></pre>\n\n<p><em>Alex Ghiculescu</em></p>\n"
   },
   {
     "message": "*   Add ability to match exception messages to `assert_raises` assertion\n\n    Instead of this\n    ```ruby\n    error = assert_raises(ArgumentError) do\n      perform_service(param: 'exception')\n    end\n    assert_match(/incorrect param/i, error.message)\n    ```\n\n    you can now write this\n    ```ruby\n    assert_raises(ArgumentError, match: /incorrect param/i) do\n      perform_service(param: 'exception')\n    end\n    ```\n\n    *fatkodima*",
