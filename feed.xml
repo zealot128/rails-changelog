@@ -4228,6 +4228,21 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Only use HostAuthorization middleware if `config.hosts` is not empty
+</title>
+    <link>https://github.com/rails/rails/issues/46927</link>
+    <guid>https://github.com/rails/rails/issues/46927</guid>
+    <description>*   Only use HostAuthorization middleware if `config.hosts` is not empty
+
+    *Hartley McGuire*</description>
+    <pubDate>Mon, 09 Jan 2023 06:11:45 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Only use HostAuthorization middleware if <code>config.hosts</code> is not empty</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Raise an exception when a `before_action`&#39;s &quot;only&quot; or &quot;except&quot; filter
 </title>
     <link>https://github.com/rails/rails/issues/46190</link>
