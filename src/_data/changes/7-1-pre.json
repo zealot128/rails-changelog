@@ -1930,6 +1930,16 @@
     "html": "<p>Remove default <code>X-Download-Options</code> header</p>\n\n<p>This header is currently only used by Internet Explorer which<br />\nwill be discontinued in 2022 and since Rails 7 does not fully<br />\nsupport Internet Explorer this header should not be a default one.</p>\n\n<p><em>Harun Sabljaković</em></p>\n"
   },
   {
+    "message": "*   Add .node-version files for Rails apps that use Node.js\n\n    Node version managers that make use of this file:\n      https://github.com/shadowspawn/node-version-usage#node-version-file-usage\n\n    The generated Dockerfile will use the same node version.\n\n    *Sam Ruby*",
+    "project": "railties",
+    "date_merged": 1673282613000,
+    "author": "Sam Ruby",
+    "sha": "ecc7491bc567a0a9484756855b686c3a68b9d9c6",
+    "pr": "46931",
+    "merge_sha": "bf8e426cf86eee0d11140532fa94169621a8b2ea",
+    "html": "<p>Add .node-version files for Rails apps that use Node.js</p>\n\n<p>Node version managers that make use of this file:<br />\n  https://github.com/shadowspawn/node-version-usage#node-version-file-usage</p>\n\n<p>The generated Dockerfile will use the same node version.</p>\n\n<p><em>Sam Ruby</em></p>\n"
+  },
+  {
     "message": "*   `assert_difference` message now includes what changed.\n\n    This makes it easier to debug non-obvious failures.\n\n    Before:\n\n    ```\n    \"User.count\" didn't change by 32.\n    Expected: 1611\n      Actual: 1579\n    ```\n\n    After:\n\n    ```\n    \"User.count\" didn't change by 32, but by 0.\n    Expected: 1611\n      Actual: 1579\n    ```\n\n    *Alex Ghiculescu*",
     "project": "activesupport",
     "date_merged": 1673115255000,
