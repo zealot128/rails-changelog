@@ -5439,6 +5439,31 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add .node-version files for Rails apps that use Node.js
+</title>
+    <link>https://github.com/rails/rails/issues/46931</link>
+    <guid>https://github.com/rails/rails/issues/46931</guid>
+    <description>*   Add .node-version files for Rails apps that use Node.js
+
+    Node version managers that make use of this file:
+      https://github.com/shadowspawn/node-version-usage#node-version-file-usage
+
+    The generated Dockerfile will use the same node version.
+
+    *Sam Ruby*</description>
+    <pubDate>Mon, 09 Jan 2023 16:43:33 +0000</pubDate>
+    <author>Sam Ruby</author>
+    <content:encoded><![CDATA[<p>Add .node-version files for Rails apps that use Node.js</p>
+
+<p>Node version managers that make use of this file:<br />
+  https://github.com/shadowspawn/node-version-usage#node-version-file-usage</p>
+
+<p>The generated Dockerfile will use the same node version.</p>
+
+<p><em>Sam Ruby</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `assert_difference` message now includes what changed.
 </title>
     <link>https://github.com/rails/rails/issues/46863</link>
