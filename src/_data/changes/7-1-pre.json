@@ -190,6 +190,16 @@
     "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
   },
   {
+    "message": "*   PostgreSQL adapter method `enable_extension` now allows parameter to be `[schema_name.]<extension_name>`\n    if the extension must be installed on another schema.\n\n    Example: `enable_extension('heroku_ext.hstore')`\n\n    *Leonardo Luarte*",
+    "project": "activerecord",
+    "date_merged": 1673328529000,
+    "author": "Leonardo Luarte González",
+    "sha": "7e95d3e65367e2277c598e21656534ab06087d39",
+    "pr": "46894",
+    "merge_sha": "dcdd67162993046a6f3e62a25b7cdfda08afb180",
+    "html": "<p>PostgreSQL adapter method <code>enable_extension</code> now allows parameter to be <code>[schema_name.]&lt;extension_name&gt;</code><br />\nif the extension must be installed on another schema.</p>\n\n<p>Example: <code>enable_extension('heroku_ext.hstore')</code></p>\n\n<p><em>Leonardo Luarte</em></p>\n"
+  },
+  {
     "message": "*   `ActiveRecord::Relation`’s `#any?`, `#none?`, and `#one?` methods take an optional pattern\n    argument, more closely matching their `Enumerable` equivalents.\n\n    *George Claghorn*",
     "project": "activerecord",
     "date_merged": 1671696060000,
