@@ -623,6 +623,27 @@ streamed.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: PostgreSQL adapter method `enable_extension` now allows parameter to be `[schema_name.]&lt;extension_name&gt;`
+</title>
+    <link>https://github.com/rails/rails/issues/46894</link>
+    <guid>https://github.com/rails/rails/issues/46894</guid>
+    <description>*   PostgreSQL adapter method `enable_extension` now allows parameter to be `[schema_name.]&lt;extension_name&gt;`
+    if the extension must be installed on another schema.
+
+    Example: `enable_extension(&#39;heroku_ext.hstore&#39;)`
+
+    *Leonardo Luarte*</description>
+    <pubDate>Tue, 10 Jan 2023 05:28:49 +0000</pubDate>
+    <author>Leonardo Luarte González</author>
+    <content:encoded><![CDATA[<p>PostgreSQL adapter method <code>enable_extension</code> now allows parameter to be <code>[schema_name.]&lt;extension_name&gt;</code><br />
+if the extension must be installed on another schema.</p>
+
+<p>Example: <code>enable_extension('heroku_ext.hstore')</code></p>
+
+<p><em>Leonardo Luarte</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `ActiveRecord::Relation`’s `#any?`, `#none?`, and `#one?` methods take an optional pattern
 </title>
     <link>https://github.com/rails/rails/issues/46791</link>
