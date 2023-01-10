@@ -1,5 +1,7 @@
 <script lang="ts">
   import ChangelogItem from "./ChangelogItem.svelte"
+  import debounce from "./debounce"
+
   export let seed: ChangelogType[]
 
   let projects: Record<string, ChangelogType[]> = {}
@@ -16,9 +18,32 @@
   let selectedProject: string | null = null
 
   let selectedProjectChangelog: ChangelogType[] = []
-  $: selectedProjectChangelog = selectedProject ? projects[selectedProject] : Object.values(projects).flat().sort((a, b) => new Date(b.date_merged).getTime() - new Date(a.date_merged).getTime())
+  let filteredItems: ChangelogType[] = []
+
+  $: selectedProjectChangelog = selectedProject
+    ? projects[selectedProject]
+    : Object.values(projects)
+        .flat()
+        .sort((a, b) => new Date(b.date_merged).getTime() - new Date(a.date_merged).getTime())
+
 
   let gridStyle = "columns" as "columns" | "rows"
+
+  let query = ""
+  const filter = (query: string, projects: ChangelogType[]) => {
+    if (query.length === 0) {
+      filteredItems = projects
+    }
+    const regex = new RegExp(query, "i")
+    filteredItems = projects.filter(
+      (item) => item.message.match(regex)
+    )
+  }
+  const debouncedFilter = debounce(filter, 500)
+  $: {
+    debouncedFilter(query, selectedProjectChangelog)
+  }
+
 </script>
 
 <div>
@@ -50,6 +75,7 @@
     </ul>
   </nav>
   <div class="mb-3 flex justify-end gap-2">
+    <input type="text" placeholder="Search" bind:value={query} class="input input-bordered" />
     <button
       class="btn-ghost btn-sm btn"
       class:btn-active={gridStyle === "columns"}
@@ -80,7 +106,7 @@
     </button>
   </div>
   <div class="grid grid-cols-1 items-start gap-10" class:grid-cols-1={gridStyle == "rows"} class:lg:grid-cols-2={gridStyle == "columns"}>
-    {#each selectedProjectChangelog as changelog (changelog.sha + changelog.message + changelog.project)}
+    {#each filteredItems as changelog (changelog.sha + changelog.message + changelog.project)}
       <ChangelogItem {changelog} />
     {/each}
   </div>
