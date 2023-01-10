@@ -36,7 +36,7 @@
     }
     const regex = new RegExp(query, "i")
     filteredItems = projects.filter(
-      (item) => item.message.match(regex)
+      (item) => item.message.match(regex) || item.author.match(regex)
     )
   }
   const debouncedFilter = debounce(filter, 500)
