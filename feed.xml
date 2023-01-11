@@ -4379,7 +4379,7 @@ Gemfile.</p>
     docker buildx build --push --platform=linux/amd64,linux/arm64 -t &lt;user/image&gt; .
     ```
 
-    *DHH*</description>
+    *DHH, Sam Ruby*</description>
     <pubDate>Mon, 19 Dec 2022 18:32:01 +0000</pubDate>
     <author>David Heinemeier Hansson</author>
     <content:encoded><![CDATA[<p>Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.<br />
@@ -4405,7 +4405,7 @@ docker buildx create --use
 docker buildx build --push --platform=linux/amd64,linux/arm64 -t &lt;user/image&gt; .
 </code></pre>
 
-<p><em>DHH</em></p>
+<p><em>DHH, Sam Ruby</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -5501,6 +5501,23 @@ support Internet Explorer this header should not be a default one.</p>
 <p>The generated Dockerfile will use the same node version.</p>
 
 <p><em>Sam Ruby</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: `HashWithIndifferentAccess#transform_keys` now takes a Hash argument, just
+</title>
+    <link>https://github.com/rails/rails/issues/46846</link>
+    <guid>https://github.com/rails/rails/issues/46846</guid>
+    <description>*   `HashWithIndifferentAccess#transform_keys` now takes a Hash argument, just
+    as Ruby&#39;s `Hash#transform_keys` does.
+
+    *Akira Matsuda*</description>
+    <pubDate>Wed, 11 Jan 2023 18:33:47 +0000</pubDate>
+    <author>Akira Matsuda</author>
+    <content:encoded><![CDATA[<p><code>HashWithIndifferentAccess#transform_keys</code> now takes a Hash argument, just<br />
+as Ruby’s <code>Hash#transform_keys</code> does.</p>
+
+<p><em>Akira Matsuda</em></p>
 ]]></content:encoded>
   </item>
   <item>
