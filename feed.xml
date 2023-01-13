@@ -326,6 +326,43 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Show relevant commands when calling help
+</title>
+    <link>https://github.com/rails/rails/issues/46164</link>
+    <guid>https://github.com/rails/rails/issues/46164</guid>
+    <description>*   Show relevant commands when calling help
+
+    When running `rails -h` or just `rails` outside a Rails application,
+    Rails outputs all options for running the `rails new` command. This can be
+    confusing to users when they probably want to see the common Rails commands.
+
+    Instead, we should always show the common commands when running `rails -h`
+    inside or outside a Rails application.
+
+    As the relevant commands inside a Rails application differ from the
+    commands outside an application, the help USAGE file has been split to
+    show the most relevant commands for the context.
+
+    *Petrik de Heus*</description>
+    <pubDate>Thu, 12 Jan 2023 21:24:54 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Show relevant commands when calling help</p>
+
+<p>When running <code>rails -h</code> or just <code>rails</code> outside a Rails application,<br />
+Rails outputs all options for running the <code>rails new</code> command. This can be<br />
+confusing to users when they probably want to see the common Rails commands.</p>
+
+<p>Instead, we should always show the common commands when running <code>rails -h</code><br />
+inside or outside a Rails application.</p>
+
+<p>As the relevant commands inside a Rails application differ from the<br />
+commands outside an application, the help USAGE file has been split to<br />
+show the most relevant commands for the context.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add Rails::HealthController#show and map it to /up for newly generated applications.
 </title>
     <link>https://github.com/rails/rails/issues/46936</link>
