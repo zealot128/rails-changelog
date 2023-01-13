@@ -120,6 +120,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Show relevant commands when calling help\n\n    When running `rails -h` or just `rails` outside a Rails application,\n    Rails outputs all options for running the `rails new` command. This can be\n    confusing to users when they probably want to see the common Rails commands.\n\n    Instead, we should always show the common commands when running `rails -h`\n    inside or outside a Rails application.\n\n    As the relevant commands inside a Rails application differ from the\n    commands outside an application, the help USAGE file has been split to\n    show the most relevant commands for the context.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1673558694000,
+    "author": "Petrik",
+    "sha": "9a6d380cf263acd21aecd7931486f9a3afadda4e",
+    "pr": "46164",
+    "merge_sha": "6aaf185884275de67b4cbd852def955108bb3fd3",
+    "html": "<p>Show relevant commands when calling help</p>\n\n<p>When running <code>rails -h</code> or just <code>rails</code> outside a Rails application,<br />\nRails outputs all options for running the <code>rails new</code> command. This can be<br />\nconfusing to users when they probably want to see the common Rails commands.</p>\n\n<p>Instead, we should always show the common commands when running <code>rails -h</code><br />\ninside or outside a Rails application.</p>\n\n<p>As the relevant commands inside a Rails application differ from the<br />\ncommands outside an application, the help USAGE file has been split to<br />\nshow the most relevant commands for the context.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Add Rails::HealthController#show and map it to /up for newly generated applications.\n    Load balancers and uptime monitors all need a basic endpoint to tell whether the app is up.\n    This is a good starting point that'll work in many situations.\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1673349732000,
