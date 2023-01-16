@@ -120,6 +120,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Add descriptions for non-Rake commands when running `rails -h`.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1673891603000,
+    "author": "Petrik",
+    "sha": "9d06541ae0bfb5434ad67517bf0f7caa05b460f7",
+    "pr": "46997",
+    "merge_sha": "20cd6a824d13db7cc6fa231210e124a180c1a770",
+    "html": "<p>Add descriptions for non-Rake commands when running <code>rails -h</code>.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Show relevant commands when calling help\n\n    When running `rails -h` or just `rails` outside a Rails application,\n    Rails outputs all options for running the `rails new` command. This can be\n    confusing to users when they probably want to see the common Rails commands.\n\n    Instead, we should always show the common commands when running `rails -h`\n    inside or outside a Rails application.\n\n    As the relevant commands inside a Rails application differ from the\n    commands outside an application, the help USAGE file has been split to\n    show the most relevant commands for the context.\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1673558694000,
@@ -588,6 +598,16 @@
     "pr": "46794",
     "merge_sha": "bf8e426cf86eee0d11140532fa94169621a8b2ea",
     "html": "<p>Add .node-version files for Rails apps that use Node.js</p>\n\n<p>Node version managers that make use of this file:<br />\n  https://github.com/shadowspawn/node-version-usage#node-version-file-usage</p>\n\n<p>The generated Dockerfile will use the same node version.</p>\n\n<p><em>Sam Ruby</em></p>\n"
+  },
+  {
+    "message": "*   Add `#regroup` query method as a short-hand for `.unscope(:group).group(fields)`\n\n    Example:\n\n    ```ruby\n    Post.group(:title).regroup(:author)\n    # SELECT `posts`.`*` FROM `posts` GROUP BY `posts`.`author`\n    ```\n\n    *Danielius Visockas*",
+    "project": "activerecord",
+    "date_merged": 1673888962000,
+    "author": "Danielius",
+    "sha": "cfc01448320a001e66b5b5cc2f0974b8b66cf4bf",
+    "pr": "47010",
+    "merge_sha": "f519d71a9fa5b18a7b0ec36d84fda094ff7f4c35",
+    "html": "<p>Add <code>#regroup</code> query method as a short-hand for <code>.unscope(:group).group(fields)</code></p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">group</span><span class=\"p\">(</span><span class=\"ss\">:title</span><span class=\"p\">).</span><span class=\"nf\">regroup</span><span class=\"p\">(</span><span class=\"ss\">:author</span><span class=\"p\">)</span>\n<span class=\"c1\"># SELECT `posts`.`*` FROM `posts` GROUP BY `posts`.`author`</span>\n</code></pre></div></div>\n\n<p><em>Danielius Visockas</em></p>\n"
   },
   {
     "message": "*   PostgreSQL adapter method `enable_extension` now allows parameter to be `[schema_name.]<extension_name>`\n    if the extension must be installed on another schema.\n\n    Example: `enable_extension('heroku_ext.hstore')`\n\n    *Leonardo Luarte*",
@@ -1928,6 +1948,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::CurrentAttributes` now raises if a restricted attribute name is used.\n\n    Attributes such as `set` and `reset` cannot be used as they clash with the\n    `CurrentAttributes` public API.\n\n    *Alex Ghiculescu*",
+    "project": "activesupport",
+    "date_merged": 1673863835000,
+    "author": "Alex Ghiculescu",
+    "sha": "1284df528649d3b8cb6c5ad9c34e645e43e4e505",
+    "pr": "47017",
+    "merge_sha": "f1b1ad6d7e43a7fd9e3d3eef90e25d3b9c56222c",
+    "html": "<p><code>ActiveSupport::CurrentAttributes</code> now raises if a restricted attribute name is used.</p>\n\n<p>Attributes such as <code>set</code> and <code>reset</code> cannot be used as they clash with the<br />\n<code>CurrentAttributes</code> public API.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
   },
   {
     "message": "*   `HashWithIndifferentAccess#transform_keys` now takes a Hash argument, just\n    as Ruby's `Hash#transform_keys` does.\n\n    *Akira Matsuda*",
