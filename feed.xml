@@ -326,6 +326,21 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add descriptions for non-Rake commands when running `rails -h`.
+</title>
+    <link>https://github.com/rails/rails/issues/46997</link>
+    <guid>https://github.com/rails/rails/issues/46997</guid>
+    <description>*   Add descriptions for non-Rake commands when running `rails -h`.
+
+    *Petrik de Heus*</description>
+    <pubDate>Mon, 16 Jan 2023 17:53:23 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Add descriptions for non-Rake commands when running <code>rails -h</code>.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Show relevant commands when calling help
 </title>
     <link>https://github.com/rails/rails/issues/46164</link>
@@ -1615,6 +1630,34 @@ support Internet Explorer this header should not be a default one.</p>
 <p>The generated Dockerfile will use the same node version.</p>
 
 <p><em>Sam Ruby</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `#regroup` query method as a short-hand for `.unscope(:group).group(fields)`
+</title>
+    <link>https://github.com/rails/rails/issues/47010</link>
+    <guid>https://github.com/rails/rails/issues/47010</guid>
+    <description>*   Add `#regroup` query method as a short-hand for `.unscope(:group).group(fields)`
+
+    Example:
+
+    ```ruby
+    Post.group(:title).regroup(:author)
+    # SELECT `posts`.`*` FROM `posts` GROUP BY `posts`.`author`
+    ```
+
+    *Danielius Visockas*</description>
+    <pubDate>Mon, 16 Jan 2023 17:09:22 +0000</pubDate>
+    <author>Danielius</author>
+    <content:encoded><![CDATA[<p>Add <code>#regroup</code> query method as a short-hand for <code>.unscope(:group).group(fields)</code></p>
+
+<p>Example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="ss">:title</span><span class="p">).</span><span class="nf">regroup</span><span class="p">(</span><span class="ss">:author</span><span class="p">)</span>
+<span class="c1"># SELECT `posts`.`*` FROM `posts` GROUP BY `posts`.`author`</span>
+</code></pre></div></div>
+
+<p><em>Danielius Visockas</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -5408,6 +5451,27 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: `ActiveSupport::CurrentAttributes` now raises if a restricted attribute name is used.
+</title>
+    <link>https://github.com/rails/rails/issues/47017</link>
+    <guid>https://github.com/rails/rails/issues/47017</guid>
+    <description>*   `ActiveSupport::CurrentAttributes` now raises if a restricted attribute name is used.
+
+    Attributes such as `set` and `reset` cannot be used as they clash with the
+    `CurrentAttributes` public API.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Mon, 16 Jan 2023 10:10:35 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p><code>ActiveSupport::CurrentAttributes</code> now raises if a restricted attribute name is used.</p>
+
+<p>Attributes such as <code>set</code> and <code>reset</code> cannot be used as they clash with the<br />
+<code>CurrentAttributes</code> public API.</p>
+
+<p><em>Alex Ghiculescu</em></p>
 ]]></content:encoded>
   </item>
   <item>
