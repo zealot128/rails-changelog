@@ -2410,6 +2410,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   `assert_emails` now returns the emails that were sent.\n\n    This makes it easier to do further analysis on those emails:\n\n    ```ruby\n    def test_emails_more_thoroughly\n      email = assert_emails 1 do\n        ContactMailer.welcome.deliver_now\n      end\n      assert_email \"Hi there\", email.subject\n\n      emails = assert_emails 2 do\n        ContactMailer.welcome.deliver_now\n        ContactMailer.welcome.deliver_later\n      end\n      assert_email \"Hi there\", emails.first.subject\n    end\n    ```\n\n    *Alex Ghiculescu*",
+    "project": "actionmailer",
+    "date_merged": 1673899534000,
+    "author": "Alex Ghiculescu",
+    "sha": "a3724cdd20dc06f4db2b35246323e39bb6652541",
+    "pr": "47025",
+    "merge_sha": "eac9145d6529ed0d0d8de6c7bc79ecfcba1e1647",
+    "html": "<p><code>assert_emails</code> now returns the emails that were sent.</p>\n\n<p>This makes it easier to do further analysis on those emails:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">def</span> <span class=\"nf\">test_emails_more_thoroughly</span>\n  <span class=\"n\">email</span> <span class=\"o\">=</span> <span class=\"n\">assert_emails</span> <span class=\"mi\">1</span> <span class=\"k\">do</span>\n    <span class=\"no\">ContactMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">.</span><span class=\"nf\">deliver_now</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_email</span> <span class=\"s2\">\"Hi there\"</span><span class=\"p\">,</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">subject</span>\n\n  <span class=\"n\">emails</span> <span class=\"o\">=</span> <span class=\"n\">assert_emails</span> <span class=\"mi\">2</span> <span class=\"k\">do</span>\n    <span class=\"no\">ContactMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">.</span><span class=\"nf\">deliver_now</span>\n    <span class=\"no\">ContactMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">.</span><span class=\"nf\">deliver_later</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_email</span> <span class=\"s2\">\"Hi there\"</span><span class=\"p\">,</span> <span class=\"n\">emails</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">subject</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   Added ability to download `.eml` file for the email preview.\n\n    *Igor Kasyanchuk*",
     "project": "actionmailer",
     "date_merged": 1662759599000,
