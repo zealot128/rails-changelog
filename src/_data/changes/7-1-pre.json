@@ -600,6 +600,16 @@
     "html": "<p>Add .node-version files for Rails apps that use Node.js</p>\n\n<p>Node version managers that make use of this file:<br />\n  https://github.com/shadowspawn/node-version-usage#node-version-file-usage</p>\n\n<p>The generated Dockerfile will use the same node version.</p>\n\n<p><em>Sam Ruby</em></p>\n"
   },
   {
+    "message": "*   Allow SQL warnings to be reported.\n\n    Active Record configs can be set to enable SQL warning reporting.\n\n    ```ruby\n    # Configure action to take when SQL query produces warning\n    config.active_record.db_warnings_action = :raise\n\n    # Configure allowlist of warnings that should always be ignored\n    config.active_record.db_warnings_ignore = [\n      /Invalid utf8mb4 character string/,\n      \"An exact warning message\",\n    ]\n    ```\n\n    This is supported for the MySQL and PostgreSQL adapters.\n\n    *Adrianna Chang*, *Paarth Madan*",
+    "project": "activerecord",
+    "date_merged": 1674026453000,
+    "author": "Adrianna Chang",
+    "sha": "56c56853245b880436b188197218fd6d8551e2fd",
+    "pr": "46690",
+    "merge_sha": "fc04ad8ce0f828d1b4bea45c807fef19e4784862",
+    "html": "<p>Allow SQL warnings to be reported.</p>\n\n<p>Active Record configs can be set to enable SQL warning reporting.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Configure action to take when SQL query produces warning</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">db_warnings_action</span> <span class=\"o\">=</span> <span class=\"ss\">:raise</span>\n\n<span class=\"c1\"># Configure allowlist of warnings that should always be ignored</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">db_warnings_ignore</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n  <span class=\"sr\">/Invalid utf8mb4 character string/</span><span class=\"p\">,</span>\n  <span class=\"s2\">\"An exact warning message\"</span><span class=\"p\">,</span>\n<span class=\"p\">]</span>\n</code></pre></div></div>\n\n<p>This is supported for the MySQL and PostgreSQL adapters.</p>\n\n<p><em>Adrianna Chang</em>, <em>Paarth Madan</em></p>\n"
+  },
+  {
     "message": "*   Add `#regroup` query method as a short-hand for `.unscope(:group).group(fields)`\n\n    Example:\n\n    ```ruby\n    Post.group(:title).regroup(:author)\n    # SELECT `posts`.`*` FROM `posts` GROUP BY `posts`.`author`\n    ```\n\n    *Danielius Visockas*",
     "project": "activerecord",
     "date_merged": 1673888962000,
