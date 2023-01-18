@@ -1633,6 +1633,50 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow SQL warnings to be reported.
+</title>
+    <link>https://github.com/rails/rails/issues/46690</link>
+    <guid>https://github.com/rails/rails/issues/46690</guid>
+    <description>*   Allow SQL warnings to be reported.
+
+    Active Record configs can be set to enable SQL warning reporting.
+
+    ```ruby
+    # Configure action to take when SQL query produces warning
+    config.active_record.db_warnings_action = :raise
+
+    # Configure allowlist of warnings that should always be ignored
+    config.active_record.db_warnings_ignore = [
+      /Invalid utf8mb4 character string/,
+      &quot;An exact warning message&quot;,
+    ]
+    ```
+
+    This is supported for the MySQL and PostgreSQL adapters.
+
+    *Adrianna Chang*, *Paarth Madan*</description>
+    <pubDate>Wed, 18 Jan 2023 07:20:53 +0000</pubDate>
+    <author>Adrianna Chang</author>
+    <content:encoded><![CDATA[<p>Allow SQL warnings to be reported.</p>
+
+<p>Active Record configs can be set to enable SQL warning reporting.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Configure action to take when SQL query produces warning</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">db_warnings_action</span> <span class="o">=</span> <span class="ss">:raise</span>
+
+<span class="c1"># Configure allowlist of warnings that should always be ignored</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">db_warnings_ignore</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="sr">/Invalid utf8mb4 character string/</span><span class="p">,</span>
+  <span class="s2">"An exact warning message"</span><span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>This is supported for the MySQL and PostgreSQL adapters.</p>
+
+<p><em>Adrianna Chang</em>, <em>Paarth Madan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add `#regroup` query method as a short-hand for `.unscope(:group).group(fields)`
 </title>
     <link>https://github.com/rails/rails/issues/47010</link>
