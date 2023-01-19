@@ -600,6 +600,16 @@
     "html": "<p>Add .node-version files for Rails apps that use Node.js</p>\n\n<p>Node version managers that make use of this file:<br />\n  https://github.com/shadowspawn/node-version-usage#node-version-file-usage</p>\n\n<p>The generated Dockerfile will use the same node version.</p>\n\n<p><em>Sam Ruby</em></p>\n"
   },
   {
+    "message": "*   `ActiveRecord::Base#signed_id` raises if called on a new record\n\n    Previously it would return an ID that was not usable, since it was based on `id = nil`.\n\n    *Alex Ghiculescu*",
+    "project": "activerecord",
+    "date_merged": 1674073784000,
+    "author": "Alex Ghiculescu",
+    "sha": "d0921663471b722a34ce8da96ce5b8b7b31bd965",
+    "pr": "47027",
+    "merge_sha": "3290a20935bfb0b562624fff9342d90081902b55",
+    "html": "<p><code>ActiveRecord::Base#signed_id</code> raises if called on a new record</p>\n\n<p>Previously it would return an ID that was not usable, since it was based on <code>id = nil</code>.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   Allow SQL warnings to be reported.\n\n    Active Record configs can be set to enable SQL warning reporting.\n\n    ```ruby\n    # Configure action to take when SQL query produces warning\n    config.active_record.db_warnings_action = :raise\n\n    # Configure allowlist of warnings that should always be ignored\n    config.active_record.db_warnings_ignore = [\n      /Invalid utf8mb4 character string/,\n      \"An exact warning message\",\n    ]\n    ```\n\n    This is supported for the MySQL and PostgreSQL adapters.\n\n    *Adrianna Chang*, *Paarth Madan*",
     "project": "activerecord",
     "date_merged": 1674026453000,
