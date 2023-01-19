@@ -1633,6 +1633,25 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: `ActiveRecord::Base#signed_id` raises if called on a new record
+</title>
+    <link>https://github.com/rails/rails/issues/47027</link>
+    <guid>https://github.com/rails/rails/issues/47027</guid>
+    <description>*   `ActiveRecord::Base#signed_id` raises if called on a new record
+
+    Previously it would return an ID that was not usable, since it was based on `id = nil`.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Wed, 18 Jan 2023 20:29:44 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Base#signed_id</code> raises if called on a new record</p>
+
+<p>Previously it would return an ID that was not usable, since it was based on <code>id = nil</code>.</p>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow SQL warnings to be reported.
 </title>
     <link>https://github.com/rails/rails/issues/46690</link>
