@@ -3857,6 +3857,25 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionmailbox: Fixed ingress controllers&#39; ability to accept emails that contain no UTF-8 encoded parts.
+</title>
+    <link>https://github.com/rails/rails/issues/46300</link>
+    <guid>https://github.com/rails/rails/issues/46300</guid>
+    <description>*   Fixed ingress controllers&#39; ability to accept emails that contain no UTF-8 encoded parts.
+
+    Fixes #46297.
+
+    *Jan Honza Sterba*</description>
+    <pubDate>Fri, 20 Jan 2023 22:31:21 +0000</pubDate>
+    <author>Jan Sterba</author>
+    <content:encoded><![CDATA[<p>Fixed ingress controllers’ ability to accept emails that contain no UTF-8 encoded parts.</p>
+
+<p>Fixes #46297.</p>
+
+<p><em>Jan Honza Sterba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionmailbox: Add X-Forwarded-To addresses to recipients.
 </title>
     <link>https://github.com/rails/rails/issues/46552</link>
