@@ -1430,6 +1430,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Fixed ingress controllers' ability to accept emails that contain no UTF-8 encoded parts.\n\n    Fixes #46297.\n\n    *Jan Honza Sterba*",
+    "project": "actionmailbox",
+    "date_merged": 1674395639000,
+    "author": "Petrik de Heus",
+    "sha": "c20998c00d0240cdc3eed8525eeb68409692b130",
+    "pr": "46300",
+    "merge_sha": "d75fdd1c2f6002d62e5ecf65dda2942065f071f0",
+    "html": "<p>Fixed ingress controllers’ ability to accept emails that contain no UTF-8 encoded parts.</p>\n\n<p>Fixes #46297.</p>\n\n<p><em>Jan Honza Sterba</em></p>\n"
+  },
+  {
     "message": "*   Add X-Forwarded-To addresses to recipients.\n\n    *Andrew Stewart*",
     "project": "actionmailbox",
     "date_merged": 1669161405000,
