@@ -2484,6 +2484,33 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: `config.i18n.raise_on_missing_translations = true` now raises on any missing translation.
+</title>
+    <link>https://github.com/rails/rails/issues/47105</link>
+    <guid>https://github.com/rails/rails/issues/47105</guid>
+    <description>*   `config.i18n.raise_on_missing_translations = true` now raises on any missing translation.
+
+    Previously it would only raise when called in a view or controller. Now it will raise
+    anytime `I18n.t` is provided an unrecognised key.
+
+    If you do not want this behaviour, you can customise the i18n exception handler. See the
+    upgrading guide or i18n guide for more information.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Mon, 23 Jan 2023 19:10:50 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p><code>config.i18n.raise_on_missing_translations = true</code> now raises on any missing translation.</p>
+
+<p>Previously it would only raise when called in a view or controller. Now it will raise<br />
+anytime <code>I18n.t</code> is provided an unrecognised key.</p>
+
+<p>If you do not want this behaviour, you can customise the i18n exception handler. See the<br />
+upgrading guide or i18n guide for more information.</p>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `ActiveSupport::CurrentAttributes` now raises if a restricted attribute name is used.
 </title>
     <link>https://github.com/rails/rails/issues/47017</link>
@@ -4188,6 +4215,21 @@ names, leading to conflicts. Adding a new namespace <code>:active_model_proxy</c
 fixes the issue.</p>
 
 <p><em>Chris Salzberg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Update bundled Trix version from `1.3.1` to `2.0.4`.
+</title>
+    <link>https://github.com/rails/rails/issues/46447</link>
+    <guid>https://github.com/rails/rails/issues/46447</guid>
+    <description>*   Update bundled Trix version from `1.3.1` to `2.0.4`.
+
+    *Sean Doyle*</description>
+    <pubDate>Mon, 23 Jan 2023 19:04:10 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Update bundled Trix version from <code>1.3.1</code> to <code>2.0.4</code>.</p>
+
+<p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -8394,6 +8436,21 @@ whole tag.</p>
     <pubDate>Thu, 17 Feb 2022 21:21:09 +0000</pubDate>
     <author>Sean Doyle</author>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Default `ActionMailer::Parameterized#params` to an empty `Hash`
+</title>
+    <link>https://github.com/rails/rails/issues/47101</link>
+    <guid>https://github.com/rails/rails/issues/47101</guid>
+    <description>*   Default `ActionMailer::Parameterized#params` to an empty `Hash`
+
+    *Sean Doyle*</description>
+    <pubDate>Mon, 23 Jan 2023 19:22:32 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Default <code>ActionMailer::Parameterized#params</code> to an empty <code>Hash</code></p>
 
 <p><em>Sean Doyle</em></p>
 ]]></content:encoded>
