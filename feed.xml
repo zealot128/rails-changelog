@@ -4619,6 +4619,36 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: `ActiveRecord::Relation#explain` now accepts options.
+</title>
+    <link>https://github.com/rails/rails/issues/47043</link>
+    <guid>https://github.com/rails/rails/issues/47043</guid>
+    <description>*   `ActiveRecord::Relation#explain` now accepts options.
+
+    For databases and adapters which support them (currently PostgreSQL
+    and MySQL), options can be passed to `explain` to provide more
+    detailed query plan analysis:
+
+    ```ruby
+    Customer.where(id: 1).joins(:orders).explain(:analyze, :verbose)
+    ```
+
+    *Reid Lynch*</description>
+    <pubDate>Tue, 24 Jan 2023 16:57:53 +0000</pubDate>
+    <author>Reid Lynch</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Relation#explain</code> now accepts options.</p>
+
+<p>For databases and adapters which support them (currently PostgreSQL<br />
+and MySQL), options can be passed to <code>explain</code> to provide more<br />
+detailed query plan analysis:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Customer</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">id: </span><span class="mi">1</span><span class="p">).</span><span class="nf">joins</span><span class="p">(</span><span class="ss">:orders</span><span class="p">).</span><span class="nf">explain</span><span class="p">(</span><span class="ss">:analyze</span><span class="p">,</span> <span class="ss">:verbose</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Reid Lynch</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Multiple `Arel::Nodes::SqlLiteral` nodes can now be added together to
 </title>
     <link>https://github.com/rails/rails/issues/46948</link>
