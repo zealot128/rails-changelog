@@ -970,6 +970,16 @@
     "html": "<p>Add .node-version files for Rails apps that use Node.js</p>\n\n<p>Node version managers that make use of this file:<br />\n  https://github.com/shadowspawn/node-version-usage#node-version-file-usage</p>\n\n<p>The generated Dockerfile will use the same node version.</p>\n\n<p><em>Sam Ruby</em></p>\n"
   },
   {
+    "message": "*   `config.i18n.raise_on_missing_translations = true` now raises on any missing translation.\n\n    Previously it would only raise when called in a view or controller. Now it will raise\n    anytime `I18n.t` is provided an unrecognised key.\n\n    If you do not want this behaviour, you can customise the i18n exception handler. See the\n    upgrading guide or i18n guide for more information.\n\n    *Alex Ghiculescu*",
+    "project": "activesupport",
+    "date_merged": 1674501050000,
+    "author": "Alex Ghiculescu",
+    "sha": "e18c23fc2b5a3a35af0b177396f0f63b653e27de",
+    "pr": "47105",
+    "merge_sha": "4af571c22d39cb727260856410f7dc2dee46bc9f",
+    "html": "<p><code>config.i18n.raise_on_missing_translations = true</code> now raises on any missing translation.</p>\n\n<p>Previously it would only raise when called in a view or controller. Now it will raise<br />\nanytime <code>I18n.t</code> is provided an unrecognised key.</p>\n\n<p>If you do not want this behaviour, you can customise the i18n exception handler. See the<br />\nupgrading guide or i18n guide for more information.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   `ActiveSupport::CurrentAttributes` now raises if a restricted attribute name is used.\n\n    Attributes such as `set` and `reset` cannot be used as they clash with the\n    `CurrentAttributes` public API.\n\n    *Alex Ghiculescu*",
     "project": "activesupport",
     "date_merged": 1673863835000,
@@ -1528,6 +1538,16 @@
     "pr": "44322",
     "merge_sha": "61cf029f8269fe4214c54dd911f62c335371e6e8",
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
+  },
+  {
+    "message": "*   Update bundled Trix version from `1.3.1` to `2.0.4`.\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1674500650000,
+    "author": "Sean Doyle",
+    "sha": "fab1b522cd11696c7330028fcc7bf25a8a109f5f",
+    "pr": "46447",
+    "merge_sha": "372977c59285003192e3283d1c41006675d6dae8",
+    "html": "<p>Update bundled Trix version from <code>1.3.1</code> to <code>2.0.4</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Apply `field_error_proc` to `rich_text_area` form fields.\n\n    *Kaíque Kandy Koga*",
@@ -3018,6 +3038,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Default `ActionMailer::Parameterized#params` to an empty `Hash`\n\n    *Sean Doyle*",
+    "project": "actionmailer",
+    "date_merged": 1674501752000,
+    "author": "Sean Doyle",
+    "sha": "6fea9a09f255fb0e20b7e8a096de688721c3cbe3",
+    "pr": "47101",
+    "merge_sha": "b308a9946dc728cbad80310c11c25bc6f86e6d6f",
+    "html": "<p>Default <code>ActionMailer::Parameterized#params</code> to an empty <code>Hash</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   `assert_emails` now returns the emails that were sent.\n\n    This makes it easier to do further analysis on those emails:\n\n    ```ruby\n    def test_emails_more_thoroughly\n      email = assert_emails 1 do\n        ContactMailer.welcome.deliver_now\n      end\n      assert_email \"Hi there\", email.subject\n\n      emails = assert_emails 2 do\n        ContactMailer.welcome.deliver_now\n        ContactMailer.welcome.deliver_later\n      end\n      assert_email \"Hi there\", emails.first.subject\n    end\n    ```\n\n    *Alex Ghiculescu*",
