@@ -60,6 +60,26 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Add HTTP::Request#route_uri_pattern that returns URI pattern of matched route.\n\n    *Joel Hawksley*, *Kate Higa*",
+    "project": "actionpack",
+    "date_merged": 1674685367000,
+    "author": "Joel Hawksley",
+    "sha": "2fc46f95a5fcc6e80c080cc2a6fd6e48bc75115f",
+    "pr": "47129",
+    "merge_sha": "2cf8740e156ec8619f751d8c24bc1f12667d5958",
+    "html": "<p>Add HTTP::Request#route_uri_pattern that returns URI pattern of matched route.</p>\n\n<p><em>Joel Hawksley</em>, <em>Kate Higa</em></p>\n"
+  },
+  {
+    "message": "*   Add `ActionDispatch::AssumeSSL` middleware that can be turned on via `config.assume_ssl`.\n    It makes the application believe that all requests are arring over SSL. This is useful\n    when proxying through a load balancer that terminates SSL, the forwarded request will appear\n    as though its HTTP instead of HTTPS to the application. This makes redirects and cookie\n    security target HTTP instead of HTTPS. This middleware makes the server assume that the\n    proxy already terminated SSL, and that the request really is HTTPS.\n\n    *DHH*",
+    "project": "actionpack",
+    "date_merged": 1674677598000,
+    "author": "David Heinemeier Hansson",
+    "sha": "1da6f8c68eacf280a36b23cae99b7c3d1e548078",
+    "pr": "47139",
+    "merge_sha": "1b44989521fe0ef274d85f24af6c5d6e69ac8463",
+    "html": "<p>Add <code>ActionDispatch::AssumeSSL</code> middleware that can be turned on via <code>config.assume_ssl</code>.<br />\nIt makes the application believe that all requests are arring over SSL. This is useful<br />\nwhen proxying through a load balancer that terminates SSL, the forwarded request will appear<br />\nas though its HTTP instead of HTTPS to the application. This makes redirects and cookie<br />\nsecurity target HTTP instead of HTTPS. This middleware makes the server assume that the<br />\nproxy already terminated SSL, and that the request really is HTTPS.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Only use HostAuthorization middleware if `config.hosts` is not empty\n\n    *Hartley McGuire*",
     "project": "actionpack",
     "date_merged": 1672959074000,
@@ -488,6 +508,16 @@
     "pr": "44244",
     "merge_sha": "bd41655d17ff85c3118a4c69d19bad47b6a2890f",
     "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
+  },
+  {
+    "message": "*   Credentials commands (e.g. `bin/rails credentials:edit`) now respect\n    `config.credentials.content_path` and `config.credentials.key_path` when set\n    in `config/application.rb`.\n\n    Before:\n\n      * `bin/rails credentials:edit` ignored `RAILS_ENV`, and would always edit\n        `config/credentials.yml.enc`.\n\n      * `bin/rails credentials:edit --environment foo` would create and edit\n        `config/credentials/foo.yml.enc`.\n\n      * If `config.credentials.content_path` or `config.credentials.key_path`\n        was set, `bin/rails credentials:edit` could not be used to edit the\n        credentials.  Editing credentials required using `bin/rails\n        encrypted:edit path/to/credentials --key path/to/key`.\n\n    After:\n\n      * `bin/rails credentials:edit` will edit the credentials file that the app\n        would load for the current `RAILS_ENV`.\n\n      * `bin/rails credentials:edit` respects `config.credentials.content_path`\n        and `config.credentials.key_path` when set in `config/application.rb`.\n        Using `RAILS_ENV`, environment-specific paths can be set, such as:\n\n          ```ruby\n          # config/application.rb\n          module MyCoolApp\n            class Application < Rails::Application\n              config.credentials.content_path = \"my_credentials/#{Rails.env}.yml.enc\"\n\n              config.credentials.key_path = \"path/to/production.key\" if Rails.env.production?\n            end\n          end\n          ```\n\n      * `bin/rails credentials:edit --environment foo` will create and edit\n        `config/credentials/foo.yml.enc` _if_ `config.credentials.content_path`\n        has not been set for the `foo` environment.  Ultimately, it will edit\n        the credentials file that the app would load for the `foo` environment.\n\n    *Jonathan Hefner*",
+    "project": "railties",
+    "date_merged": 1674685671000,
+    "author": "Jonathan Hefner",
+    "sha": "1068945b8fc9324c795224ca8e16c45d9ff15f10",
+    "pr": "47107",
+    "merge_sha": "bcc1eb727b368aab7b83077643e7681ef63619ea",
+    "html": "<p>Credentials commands (e.g. <code>bin/rails credentials:edit</code>) now respect<br />\n<code>config.credentials.content_path</code> and <code>config.credentials.key_path</code> when set<br />\nin <code>config/application.rb</code>.</p>\n\n<p>Before:</p>\n\n<ul>\n  <li>\n    <p><code>bin/rails credentials:edit</code> ignored <code>RAILS_ENV</code>, and would always edit<br />\n<code>config/credentials.yml.enc</code>.</p>\n  </li>\n  <li>\n    <p><code>bin/rails credentials:edit --environment foo</code> would create and edit<br />\n<code>config/credentials/foo.yml.enc</code>.</p>\n  </li>\n  <li>\n    <p>If <code>config.credentials.content_path</code> or <code>config.credentials.key_path</code><br />\nwas set, <code>bin/rails credentials:edit</code> could not be used to edit the<br />\ncredentials.  Editing credentials required using <code>bin/rails\nencrypted:edit path/to/credentials --key path/to/key</code>.</p>\n  </li>\n</ul>\n\n<p>After:</p>\n\n<ul>\n  <li>\n    <p><code>bin/rails credentials:edit</code> will edit the credentials file that the app<br />\nwould load for the current <code>RAILS_ENV</code>.</p>\n  </li>\n  <li>\n    <p><code>bin/rails credentials:edit</code> respects <code>config.credentials.content_path</code><br />\nand <code>config.credentials.key_path</code> when set in <code>config/application.rb</code>.<br />\nUsing <code>RAILS_ENV</code>, environment-specific paths can be set, such as:</p>\n\n    <div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"c1\"># config/application.rb</span>\n  <span class=\"k\">module</span> <span class=\"nn\">MyCoolApp</span>\n    <span class=\"k\">class</span> <span class=\"nc\">Application</span> <span class=\"o\">&lt;</span> <span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">Application</span>\n      <span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">credentials</span><span class=\"p\">.</span><span class=\"nf\">content_path</span> <span class=\"o\">=</span> <span class=\"s2\">\"my_credentials/</span><span class=\"si\">#{</span><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">env</span><span class=\"si\">}</span><span class=\"s2\">.yml.enc\"</span>\n\n      <span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">credentials</span><span class=\"p\">.</span><span class=\"nf\">key_path</span> <span class=\"o\">=</span> <span class=\"s2\">\"path/to/production.key\"</span> <span class=\"k\">if</span> <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">env</span><span class=\"p\">.</span><span class=\"nf\">production?</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n</code></pre></div>    </div>\n  </li>\n  <li>\n    <p><code>bin/rails credentials:edit --environment foo</code> will create and edit<br />\n<code>config/credentials/foo.yml.enc</code> <em>if</em> <code>config.credentials.content_path</code><br />\nhas not been set for the <code>foo</code> environment.  Ultimately, it will edit<br />\nthe credentials file that the app would load for the <code>foo</code> environment.</p>\n  </li>\n</ul>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
     "message": "*   Add descriptions for non-Rake commands when running `rails -h`.\n\n    *Petrik de Heus*",
