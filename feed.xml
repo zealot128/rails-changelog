@@ -139,6 +139,46 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Add HTTP::Request#route_uri_pattern that returns URI pattern of matched route.
+</title>
+    <link>https://github.com/rails/rails/issues/47129</link>
+    <guid>https://github.com/rails/rails/issues/47129</guid>
+    <description>*   Add HTTP::Request#route_uri_pattern that returns URI pattern of matched route.
+
+    *Joel Hawksley*, *Kate Higa*</description>
+    <pubDate>Wed, 25 Jan 2023 22:22:47 +0000</pubDate>
+    <author>Joel Hawksley</author>
+    <content:encoded><![CDATA[<p>Add HTTP::Request#route_uri_pattern that returns URI pattern of matched route.</p>
+
+<p><em>Joel Hawksley</em>, <em>Kate Higa</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `ActionDispatch::AssumeSSL` middleware that can be turned on via `config.assume_ssl`.
+</title>
+    <link>https://github.com/rails/rails/issues/47139</link>
+    <guid>https://github.com/rails/rails/issues/47139</guid>
+    <description>*   Add `ActionDispatch::AssumeSSL` middleware that can be turned on via `config.assume_ssl`.
+    It makes the application believe that all requests are arring over SSL. This is useful
+    when proxying through a load balancer that terminates SSL, the forwarded request will appear
+    as though its HTTP instead of HTTPS to the application. This makes redirects and cookie
+    security target HTTP instead of HTTPS. This middleware makes the server assume that the
+    proxy already terminated SSL, and that the request really is HTTPS.
+
+    *DHH*</description>
+    <pubDate>Wed, 25 Jan 2023 20:13:18 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add <code>ActionDispatch::AssumeSSL</code> middleware that can be turned on via <code>config.assume_ssl</code>.<br />
+It makes the application believe that all requests are arring over SSL. This is useful<br />
+when proxying through a load balancer that terminates SSL, the forwarded request will appear<br />
+as though its HTTP instead of HTTPS to the application. This makes redirects and cookie<br />
+security target HTTP instead of HTTPS. This middleware makes the server assume that the<br />
+proxy already terminated SSL, and that the request really is HTTPS.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Only use HostAuthorization middleware if `config.hosts` is not empty
 </title>
     <link>https://github.com/rails/rails/issues/46903</link>
@@ -1174,6 +1214,112 @@ mode doesn’t actually send any data, it doesn’t need to be<br />
 streamed.</p>
 
 <p><em>Luke Lau</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Credentials commands (e.g. `bin/rails credentials:edit`) now respect
+</title>
+    <link>https://github.com/rails/rails/issues/47107</link>
+    <guid>https://github.com/rails/rails/issues/47107</guid>
+    <description>*   Credentials commands (e.g. `bin/rails credentials:edit`) now respect
+    `config.credentials.content_path` and `config.credentials.key_path` when set
+    in `config/application.rb`.
+
+    Before:
+
+      * `bin/rails credentials:edit` ignored `RAILS_ENV`, and would always edit
+        `config/credentials.yml.enc`.
+
+      * `bin/rails credentials:edit --environment foo` would create and edit
+        `config/credentials/foo.yml.enc`.
+
+      * If `config.credentials.content_path` or `config.credentials.key_path`
+        was set, `bin/rails credentials:edit` could not be used to edit the
+        credentials.  Editing credentials required using `bin/rails
+        encrypted:edit path/to/credentials --key path/to/key`.
+
+    After:
+
+      * `bin/rails credentials:edit` will edit the credentials file that the app
+        would load for the current `RAILS_ENV`.
+
+      * `bin/rails credentials:edit` respects `config.credentials.content_path`
+        and `config.credentials.key_path` when set in `config/application.rb`.
+        Using `RAILS_ENV`, environment-specific paths can be set, such as:
+
+          ```ruby
+          # config/application.rb
+          module MyCoolApp
+            class Application &lt; Rails::Application
+              config.credentials.content_path = &quot;my_credentials/#{Rails.env}.yml.enc&quot;
+
+              config.credentials.key_path = &quot;path/to/production.key&quot; if Rails.env.production?
+            end
+          end
+          ```
+
+      * `bin/rails credentials:edit --environment foo` will create and edit
+        `config/credentials/foo.yml.enc` _if_ `config.credentials.content_path`
+        has not been set for the `foo` environment.  Ultimately, it will edit
+        the credentials file that the app would load for the `foo` environment.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Wed, 25 Jan 2023 22:27:51 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Credentials commands (e.g. <code>bin/rails credentials:edit</code>) now respect<br />
+<code>config.credentials.content_path</code> and <code>config.credentials.key_path</code> when set<br />
+in <code>config/application.rb</code>.</p>
+
+<p>Before:</p>
+
+<ul>
+  <li>
+    <p><code>bin/rails credentials:edit</code> ignored <code>RAILS_ENV</code>, and would always edit<br />
+<code>config/credentials.yml.enc</code>.</p>
+  </li>
+  <li>
+    <p><code>bin/rails credentials:edit --environment foo</code> would create and edit<br />
+<code>config/credentials/foo.yml.enc</code>.</p>
+  </li>
+  <li>
+    <p>If <code>config.credentials.content_path</code> or <code>config.credentials.key_path</code><br />
+was set, <code>bin/rails credentials:edit</code> could not be used to edit the<br />
+credentials.  Editing credentials required using <code>bin/rails
+encrypted:edit path/to/credentials --key path/to/key</code>.</p>
+  </li>
+</ul>
+
+<p>After:</p>
+
+<ul>
+  <li>
+    <p><code>bin/rails credentials:edit</code> will edit the credentials file that the app<br />
+would load for the current <code>RAILS_ENV</code>.</p>
+  </li>
+  <li>
+    <p><code>bin/rails credentials:edit</code> respects <code>config.credentials.content_path</code><br />
+and <code>config.credentials.key_path</code> when set in <code>config/application.rb</code>.<br />
+Using <code>RAILS_ENV</code>, environment-specific paths can be set, such as:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># config/application.rb</span>
+  <span class="k">module</span> <span class="nn">MyCoolApp</span>
+    <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
+      <span class="n">config</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">content_path</span> <span class="o">=</span> <span class="s2">"my_credentials/</span><span class="si">#{</span><span class="no">Rails</span><span class="p">.</span><span class="nf">env</span><span class="si">}</span><span class="s2">.yml.enc"</span>
+
+      <span class="n">config</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">key_path</span> <span class="o">=</span> <span class="s2">"path/to/production.key"</span> <span class="k">if</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">env</span><span class="p">.</span><span class="nf">production?</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code>bin/rails credentials:edit --environment foo</code> will create and edit<br />
+<code>config/credentials/foo.yml.enc</code> <em>if</em> <code>config.credentials.content_path</code><br />
+has not been set for the <code>foo</code> environment.  Ultimately, it will edit<br />
+the credentials file that the app would load for the <code>foo</code> environment.</p>
+  </li>
+</ul>
+
+<p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
   </item>
   <item>
