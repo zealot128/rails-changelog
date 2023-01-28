@@ -201,7 +201,7 @@ before closing the connection with the reconnection strategy specified (defaults
     <link>https://github.com/rails/rails/issues/47139</link>
     <guid>https://github.com/rails/rails/issues/47139</guid>
     <description>*   Add `ActionDispatch::AssumeSSL` middleware that can be turned on via `config.assume_ssl`.
-    It makes the application believe that all requests are arring over SSL. This is useful
+    It makes the application believe that all requests are arriving over SSL. This is useful
     when proxying through a load balancer that terminates SSL, the forwarded request will appear
     as though its HTTP instead of HTTPS to the application. This makes redirects and cookie
     security target HTTP instead of HTTPS. This middleware makes the server assume that the
@@ -211,7 +211,7 @@ before closing the connection with the reconnection strategy specified (defaults
     <pubDate>Wed, 25 Jan 2023 20:13:18 +0000</pubDate>
     <author>David Heinemeier Hansson</author>
     <content:encoded><![CDATA[<p>Add <code>ActionDispatch::AssumeSSL</code> middleware that can be turned on via <code>config.assume_ssl</code>.<br />
-It makes the application believe that all requests are arring over SSL. This is useful<br />
+It makes the application believe that all requests are arriving over SSL. This is useful<br />
 when proxying through a load balancer that terminates SSL, the forwarded request will appear<br />
 as though its HTTP instead of HTTPS to the application. This makes redirects and cookie<br />
 security target HTTP instead of HTTPS. This middleware makes the server assume that the<br />
