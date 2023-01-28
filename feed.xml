@@ -6,6 +6,48 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actioncable: The Action Cable client now supports subprotocols to allow passing arbitrary data
+</title>
+    <link>https://github.com/rails/rails/issues/41415</link>
+    <guid>https://github.com/rails/rails/issues/41415</guid>
+    <description>*   The Action Cable client now supports subprotocols to allow passing arbitrary data
+    to the server.
+
+    ```js
+    const consumer = ActionCable.createConsumer()
+
+    consumer.addSubProtocol(&#39;custom-protocol&#39;)
+
+    consumer.connect()
+    ```
+
+    See also:
+
+    * https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#subprotocols
+
+    *Guillaume Hain*</description>
+    <pubDate>Sat, 28 Jan 2023 00:04:25 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>The Action Cable client now supports subprotocols to allow passing arbitrary data<br />
+to the server.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">consumer</span> <span class="o">=</span> <span class="nx">ActionCable</span><span class="p">.</span><span class="nx">createConsumer</span><span class="p">()</span>
+
+<span class="nx">consumer</span><span class="p">.</span><span class="nx">addSubProtocol</span><span class="p">(</span><span class="dl">'</span><span class="s1">custom-protocol</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="nx">consumer</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>See also:</p>
+
+<ul>
+  <li>https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#subprotocols</li>
+</ul>
+
+<p><em>Guillaume Hain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actioncable: Redis pub/sub adapter now automatically reconnects when Redis connection is lost.
 </title>
     <link>https://github.com/rails/rails/issues/46562</link>
