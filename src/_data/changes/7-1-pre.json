@@ -80,14 +80,14 @@
     "html": "<p>Add HTTP::Request#route_uri_pattern that returns URI pattern of matched route.</p>\n\n<p><em>Joel Hawksley</em>, <em>Kate Higa</em></p>\n"
   },
   {
-    "message": "*   Add `ActionDispatch::AssumeSSL` middleware that can be turned on via `config.assume_ssl`.\n    It makes the application believe that all requests are arring over SSL. This is useful\n    when proxying through a load balancer that terminates SSL, the forwarded request will appear\n    as though its HTTP instead of HTTPS to the application. This makes redirects and cookie\n    security target HTTP instead of HTTPS. This middleware makes the server assume that the\n    proxy already terminated SSL, and that the request really is HTTPS.\n\n    *DHH*",
+    "message": "*   Add `ActionDispatch::AssumeSSL` middleware that can be turned on via `config.assume_ssl`.\n    It makes the application believe that all requests are arriving over SSL. This is useful\n    when proxying through a load balancer that terminates SSL, the forwarded request will appear\n    as though its HTTP instead of HTTPS to the application. This makes redirects and cookie\n    security target HTTP instead of HTTPS. This middleware makes the server assume that the\n    proxy already terminated SSL, and that the request really is HTTPS.\n\n    *DHH*",
     "project": "actionpack",
     "date_merged": 1674677598000,
     "author": "David Heinemeier Hansson",
     "sha": "1da6f8c68eacf280a36b23cae99b7c3d1e548078",
     "pr": "47139",
     "merge_sha": "1b44989521fe0ef274d85f24af6c5d6e69ac8463",
-    "html": "<p>Add <code>ActionDispatch::AssumeSSL</code> middleware that can be turned on via <code>config.assume_ssl</code>.<br />\nIt makes the application believe that all requests are arring over SSL. This is useful<br />\nwhen proxying through a load balancer that terminates SSL, the forwarded request will appear<br />\nas though its HTTP instead of HTTPS to the application. This makes redirects and cookie<br />\nsecurity target HTTP instead of HTTPS. This middleware makes the server assume that the<br />\nproxy already terminated SSL, and that the request really is HTTPS.</p>\n\n<p><em>DHH</em></p>\n"
+    "html": "<p>Add <code>ActionDispatch::AssumeSSL</code> middleware that can be turned on via <code>config.assume_ssl</code>.<br />\nIt makes the application believe that all requests are arriving over SSL. This is useful<br />\nwhen proxying through a load balancer that terminates SSL, the forwarded request will appear<br />\nas though its HTTP instead of HTTPS to the application. This makes redirects and cookie<br />\nsecurity target HTTP instead of HTTPS. This middleware makes the server assume that the<br />\nproxy already terminated SSL, and that the request really is HTTPS.</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
     "message": "*   Only use HostAuthorization middleware if `config.hosts` is not empty\n\n    *Hartley McGuire*",
