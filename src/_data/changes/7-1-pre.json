@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   The Action Cable client now supports subprotocols to allow passing arbitrary data\n    to the server.\n\n    ```js\n    const consumer = ActionCable.createConsumer()\n\n    consumer.addSubProtocol('custom-protocol')\n\n    consumer.connect()\n    ```\n\n    See also:\n\n    * https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#subprotocols\n\n    *Guillaume Hain*",
+    "project": "actioncable",
+    "date_merged": 1674864265000,
+    "author": "zzak",
+    "sha": "b1f605471d1128493a73e14e0b6670741a735ef3",
+    "pr": "41415",
+    "merge_sha": "6b30c3f41098c26abb71b73e5be377ceae85e573",
+    "html": "<p>The Action Cable client now supports subprotocols to allow passing arbitrary data<br />\nto the server.</p>\n\n<div class=\"language-js highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"kd\">const</span> <span class=\"nx\">consumer</span> <span class=\"o\">=</span> <span class=\"nx\">ActionCable</span><span class=\"p\">.</span><span class=\"nx\">createConsumer</span><span class=\"p\">()</span>\n\n<span class=\"nx\">consumer</span><span class=\"p\">.</span><span class=\"nx\">addSubProtocol</span><span class=\"p\">(</span><span class=\"dl\">'</span><span class=\"s1\">custom-protocol</span><span class=\"dl\">'</span><span class=\"p\">)</span>\n\n<span class=\"nx\">consumer</span><span class=\"p\">.</span><span class=\"nx\">connect</span><span class=\"p\">()</span>\n</code></pre></div></div>\n\n<p>See also:</p>\n\n<ul>\n  <li>https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#subprotocols</li>\n</ul>\n\n<p><em>Guillaume Hain</em></p>\n"
+  },
+  {
     "message": "*   Redis pub/sub adapter now automatically reconnects when Redis connection is lost.\n\n    *Vladimir Dementyev*",
     "project": "actioncable",
     "date_merged": 1669289238000,
