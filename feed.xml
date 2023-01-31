@@ -181,6 +181,51 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Change `ActionDispatch::Testing::TestResponse#parsed_body` to parse HTML as
+</title>
+    <link>https://github.com/rails/rails/issues/47144</link>
+    <guid>https://github.com/rails/rails/issues/47144</guid>
+    <description>*   Change `ActionDispatch::Testing::TestResponse#parsed_body` to parse HTML as
+    a Nokogiri document
+
+    ```ruby
+    get &quot;/posts&quot;
+    response.content_type         # =&gt; &quot;text/html; charset=utf-8&quot;
+    response.parsed_body.class    # =&gt; Nokogiri::HTML5::Document
+    response.parsed_body.to_html  # =&gt; &quot;&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n...&quot;
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Mon, 30 Jan 2023 22:53:09 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Change <code>ActionDispatch::Testing::TestResponse#parsed_body</code> to parse HTML as<br />
+a Nokogiri document</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">get</span> <span class="s2">"/posts"</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span>         <span class="c1"># =&gt; "text/html; charset=utf-8"</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">parsed_body</span><span class="p">.</span><span class="nf">class</span>    <span class="c1"># =&gt; Nokogiri::HTML5::Document</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">parsed_body</span><span class="p">.</span><span class="nf">to_html</span>  <span class="c1"># =&gt; "&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n..."</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Deprecate `ActionDispatch::IllegalStateError`.
+</title>
+    <link>https://github.com/rails/rails/issues/47144</link>
+    <guid>https://github.com/rails/rails/issues/47144</guid>
+    <description>*   Deprecate `ActionDispatch::IllegalStateError`.
+
+    *Samuel Williams*</description>
+    <pubDate>Mon, 30 Jan 2023 22:53:09 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>ActionDispatch::IllegalStateError</code>.</p>
+
+<p><em>Samuel Williams</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add HTTP::Request#route_uri_pattern that returns URI pattern of matched route.
 </title>
     <link>https://github.com/rails/rails/issues/47129</link>
