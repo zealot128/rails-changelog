@@ -181,6 +181,21 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Deprecate `AbstractController::Helpers::MissingHelperError`
+</title>
+    <link>https://github.com/rails/rails/issues/47199</link>
+    <guid>https://github.com/rails/rails/issues/47199</guid>
+    <description>*   Deprecate `AbstractController::Helpers::MissingHelperError`
+
+    *Hartley McGuire*</description>
+    <pubDate>Tue, 31 Jan 2023 13:48:29 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>AbstractController::Helpers::MissingHelperError</code></p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Change `ActionDispatch::Testing::TestResponse#parsed_body` to parse HTML as
 </title>
     <link>https://github.com/rails/rails/issues/47144</link>
