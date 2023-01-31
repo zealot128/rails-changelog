@@ -70,6 +70,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Deprecate `AbstractController::Helpers::MissingHelperError`\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1675172909000,
+    "author": "Hartley McGuire",
+    "sha": "ada584bcb893ff8eb0c704a5bd0e611e0efd4554",
+    "pr": "47199",
+    "merge_sha": "77d4ce0ade195f756db9ff925a68afddbf582ec5",
+    "html": "<p>Deprecate <code>AbstractController::Helpers::MissingHelperError</code></p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Change `ActionDispatch::Testing::TestResponse#parsed_body` to parse HTML as\n    a Nokogiri document\n\n    ```ruby\n    get \"/posts\"\n    response.content_type         # => \"text/html; charset=utf-8\"\n    response.parsed_body.class    # => Nokogiri::HTML5::Document\n    response.parsed_body.to_html  # => \"<!DOCTYPE html>\\n<html>\\n...\"\n    ```\n\n    *Sean Doyle*",
     "project": "actionpack",
     "date_merged": 1675119189000,
