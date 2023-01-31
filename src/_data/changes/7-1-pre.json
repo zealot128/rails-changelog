@@ -70,6 +70,26 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Change `ActionDispatch::Testing::TestResponse#parsed_body` to parse HTML as\n    a Nokogiri document\n\n    ```ruby\n    get \"/posts\"\n    response.content_type         # => \"text/html; charset=utf-8\"\n    response.parsed_body.class    # => Nokogiri::HTML5::Document\n    response.parsed_body.to_html  # => \"<!DOCTYPE html>\\n<html>\\n...\"\n    ```\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1675119189000,
+    "author": "Sean Doyle",
+    "sha": "ad79ed0e6b8cf07e59d52e54b39ae8fbb042b850",
+    "pr": "47144",
+    "merge_sha": "c8190750f9d28b831f9b38b4ded8a3ee5b41fd9d",
+    "html": "<p>Change <code>ActionDispatch::Testing::TestResponse#parsed_body</code> to parse HTML as<br />\na Nokogiri document</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">get</span> <span class=\"s2\">\"/posts\"</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span>         <span class=\"c1\"># =&gt; \"text/html; charset=utf-8\"</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">parsed_body</span><span class=\"p\">.</span><span class=\"nf\">class</span>    <span class=\"c1\"># =&gt; Nokogiri::HTML5::Document</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">parsed_body</span><span class=\"p\">.</span><span class=\"nf\">to_html</span>  <span class=\"c1\"># =&gt; \"&lt;!DOCTYPE html&gt;\\n&lt;html&gt;\\n...\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActionDispatch::IllegalStateError`.\n\n    *Samuel Williams*",
+    "project": "actionpack",
+    "date_merged": 1675119189000,
+    "author": "Rafael Mendonça França",
+    "sha": "fee14347348ad99ff6260225aaebc8809a983fa9",
+    "pr": "47144",
+    "merge_sha": "c8190750f9d28b831f9b38b4ded8a3ee5b41fd9d",
+    "html": "<p>Deprecate <code>ActionDispatch::IllegalStateError</code>.</p>\n\n<p><em>Samuel Williams</em></p>\n"
+  },
+  {
     "message": "*   Add HTTP::Request#route_uri_pattern that returns URI pattern of matched route.\n\n    *Joel Hawksley*, *Kate Higa*",
     "project": "actionpack",
     "date_merged": 1674685367000,
