@@ -4893,7 +4893,7 @@ is called.</p>
     it generally end up being encoded in `UTF-8`, and `QueryLogs` would
     end up failing on it.
 
-    `ActiveRecord::QueryLogs` now longer depend on the query to be properly encoded.
+    `ActiveRecord::QueryLogs` no longer depend on the query to be properly encoded.
 
     *Jean Boussier*</description>
     <pubDate>Wed, 01 Feb 2023 13:20:48 +0000</pubDate>
@@ -4905,7 +4905,7 @@ binary data. Unless the call carefully encode the string in ASCII-8BIT<br />
 it generally end up being encoded in <code>UTF-8</code>, and <code>QueryLogs</code> would<br />
 end up failing on it.</p>
 
-<p><code>ActiveRecord::QueryLogs</code> now longer depend on the query to be properly encoded.</p>
+<p><code>ActiveRecord::QueryLogs</code> no longer depend on the query to be properly encoded.</p>
 
 <p><em>Jean Boussier</em></p>
 ]]></content:encoded>
