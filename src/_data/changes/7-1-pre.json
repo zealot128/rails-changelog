@@ -550,6 +550,16 @@
     "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
   },
   {
+    "message": "*   Use infinitive form for all rails command descriptions verbs.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1675290656000,
+    "author": "Petrik",
+    "sha": "6e89ae2d2eb72d951ec20aa7f7474aee64e29574",
+    "pr": "47215",
+    "merge_sha": "41b5306ad63751960caeb52dc39a82e07f1144db",
+    "html": "<p>Use infinitive form for all rails command descriptions verbs.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Credentials commands (e.g. `bin/rails credentials:edit`) now respect\n    `config.credentials.content_path` and `config.credentials.key_path` when set\n    in `config/application.rb`.\n\n    Before:\n\n      * `bin/rails credentials:edit` ignored `RAILS_ENV`, and would always edit\n        `config/credentials.yml.enc`.\n\n      * `bin/rails credentials:edit --environment foo` would create and edit\n        `config/credentials/foo.yml.enc`.\n\n      * If `config.credentials.content_path` or `config.credentials.key_path`\n        was set, `bin/rails credentials:edit` could not be used to edit the\n        credentials.  Editing credentials required using `bin/rails\n        encrypted:edit path/to/credentials --key path/to/key`.\n\n    After:\n\n      * `bin/rails credentials:edit` will edit the credentials file that the app\n        would load for the current `RAILS_ENV`.\n\n      * `bin/rails credentials:edit` respects `config.credentials.content_path`\n        and `config.credentials.key_path` when set in `config/application.rb`.\n        Using `RAILS_ENV`, environment-specific paths can be set, such as:\n\n          ```ruby\n          # config/application.rb\n          module MyCoolApp\n            class Application < Rails::Application\n              config.credentials.content_path = \"my_credentials/#{Rails.env}.yml.enc\"\n\n              config.credentials.key_path = \"path/to/production.key\" if Rails.env.production?\n            end\n          end\n          ```\n\n      * `bin/rails credentials:edit --environment foo` will create and edit\n        `config/credentials/foo.yml.enc` _if_ `config.credentials.content_path`\n        has not been set for the `foo` environment.  Ultimately, it will edit\n        the credentials file that the app would load for the `foo` environment.\n\n    *Jonathan Hefner*",
     "project": "railties",
     "date_merged": 1674685671000,
