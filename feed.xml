@@ -1319,6 +1319,21 @@ streamed.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Use infinitive form for all rails command descriptions verbs.
+</title>
+    <link>https://github.com/rails/rails/issues/47215</link>
+    <guid>https://github.com/rails/rails/issues/47215</guid>
+    <description>*   Use infinitive form for all rails command descriptions verbs.
+
+    *Petrik de Heus*</description>
+    <pubDate>Wed, 01 Feb 2023 22:30:56 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Use infinitive form for all rails command descriptions verbs.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Credentials commands (e.g. `bin/rails credentials:edit`) now respect
 </title>
     <link>https://github.com/rails/rails/issues/47107</link>
