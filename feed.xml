@@ -1340,7 +1340,7 @@ streamed.</p>
     <guid>https://github.com/rails/rails/issues/47107</guid>
     <description>*   Credentials commands (e.g. `bin/rails credentials:edit`) now respect
     `config.credentials.content_path` and `config.credentials.key_path` when set
-    in `config/application.rb`.
+    in `config/application.rb` or `config/environments/#{Rails.env}.rb`.
 
     Before:
 
@@ -1361,19 +1361,8 @@ streamed.</p>
         would load for the current `RAILS_ENV`.
 
       * `bin/rails credentials:edit` respects `config.credentials.content_path`
-        and `config.credentials.key_path` when set in `config/application.rb`.
-        Using `RAILS_ENV`, environment-specific paths can be set, such as:
-
-          ```ruby
-          # config/application.rb
-          module MyCoolApp
-            class Application &lt; Rails::Application
-              config.credentials.content_path = &quot;my_credentials/#{Rails.env}.yml.enc&quot;
-
-              config.credentials.key_path = &quot;path/to/production.key&quot; if Rails.env.production?
-            end
-          end
-          ```
+        and `config.credentials.key_path` when set in `config/application.rb`
+        or `config/environments/#{Rails.env}.rb`.
 
       * `bin/rails credentials:edit --environment foo` will create and edit
         `config/credentials/foo.yml.enc` _if_ `config.credentials.content_path`
@@ -1385,7 +1374,7 @@ streamed.</p>
     <author>Jonathan Hefner</author>
     <content:encoded><![CDATA[<p>Credentials commands (e.g. <code>bin/rails credentials:edit</code>) now respect<br />
 <code>config.credentials.content_path</code> and <code>config.credentials.key_path</code> when set<br />
-in <code>config/application.rb</code>.</p>
+in <code>config/application.rb</code> or <code>config/environments/#{Rails.env}.rb</code>.</p>
 
 <p>Before:</p>
 
@@ -1415,18 +1404,8 @@ would load for the current <code>RAILS_ENV</code>.</p>
   </li>
   <li>
     <p><code>bin/rails credentials:edit</code> respects <code>config.credentials.content_path</code><br />
-and <code>config.credentials.key_path</code> when set in <code>config/application.rb</code>.<br />
-Using <code>RAILS_ENV</code>, environment-specific paths can be set, such as:</p>
-
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># config/application.rb</span>
-  <span class="k">module</span> <span class="nn">MyCoolApp</span>
-    <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
-      <span class="n">config</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">content_path</span> <span class="o">=</span> <span class="s2">"my_credentials/</span><span class="si">#{</span><span class="no">Rails</span><span class="p">.</span><span class="nf">env</span><span class="si">}</span><span class="s2">.yml.enc"</span>
-
-      <span class="n">config</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">key_path</span> <span class="o">=</span> <span class="s2">"path/to/production.key"</span> <span class="k">if</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">env</span><span class="p">.</span><span class="nf">production?</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-</code></pre></div>    </div>
+and <code>config.credentials.key_path</code> when set in <code>config/application.rb</code><br />
+or <code>config/environments/#{Rails.env}.rb</code>.</p>
   </li>
   <li>
     <p><code>bin/rails credentials:edit --environment foo</code> will create and edit<br />
