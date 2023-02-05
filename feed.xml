@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actioncable: Display broadcasted messages on error message when using `assert_broadcast_on`
+</title>
+    <link>https://github.com/rails/rails/issues/47204</link>
+    <guid>https://github.com/rails/rails/issues/47204</guid>
+    <description>*   Display broadcasted messages on error message when using `assert_broadcast_on`
+
+    *Stéphane Robino*</description>
+    <pubDate>Sat, 04 Feb 2023 23:24:46 +0000</pubDate>
+    <author>StephaneRob</author>
+    <content:encoded><![CDATA[<p>Display broadcasted messages on error message when using <code>assert_broadcast_on</code></p>
+
+<p><em>Stéphane Robino</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actioncable: The Action Cable client now supports subprotocols to allow passing arbitrary data
 </title>
     <link>https://github.com/rails/rails/issues/41415</link>
