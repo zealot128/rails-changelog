@@ -196,6 +196,32 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Change `ActionController::Instrumentation` to pass `filtered_path` instead of `fullpath` in the event payload to filter sensitive query params
+</title>
+    <link>https://github.com/rails/rails/issues/47296</link>
+    <guid>https://github.com/rails/rails/issues/47296</guid>
+    <description>*   Change `ActionController::Instrumentation` to pass `filtered_path` instead of `fullpath` in the event payload to filter sensitive query params
+
+    ```ruby
+    get &quot;/posts?password=test&quot;
+    request.full_path         # =&gt; &quot;/posts?password=test&quot;
+    response.filtered_path    # =&gt; &quot;/posts?password=[FILTERED]&quot;
+    ```
+
+    *Ritikesh G*</description>
+    <pubDate>Wed, 08 Feb 2023 18:29:10 +0000</pubDate>
+    <author>Ritikesh G</author>
+    <content:encoded><![CDATA[<p>Change <code>ActionController::Instrumentation</code> to pass <code>filtered_path</code> instead of <code>fullpath</code> in the event payload to filter sensitive query params</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">get</span> <span class="s2">"/posts?password=test"</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">full_path</span>         <span class="c1"># =&gt; "/posts?password=test"</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">filtered_path</span>    <span class="c1"># =&gt; "/posts?password=[FILTERED]"</span>
+</code></pre></div></div>
+
+<p><em>Ritikesh G</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Deprecate `AbstractController::Helpers::MissingHelperError`
 </title>
     <link>https://github.com/rails/rails/issues/47199</link>
