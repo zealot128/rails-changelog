@@ -8259,6 +8259,21 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Guard `token_list` calls from escaping HTML too often
+</title>
+    <link>https://github.com/rails/rails/issues/47318</link>
+    <guid>https://github.com/rails/rails/issues/47318</guid>
+    <description>*   Guard `token_list` calls from escaping HTML too often
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 08 Feb 2023 19:11:47 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Guard <code>token_list</code> calls from escaping HTML too often</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: `select` can now be called with a single hash containing options and some HTML options
 </title>
     <link>https://github.com/rails/rails/issues/46629</link>
@@ -8780,6 +8795,29 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Email previews now include an expandable section to show all headers.
+</title>
+    <link>https://github.com/rails/rails/issues/47331</link>
+    <guid>https://github.com/rails/rails/issues/47331</guid>
+    <description>*   Email previews now include an expandable section to show all headers.
+
+    Headers like `Message-ID` for threading or email service provider specific
+    features like analytics tags or account metadata can now be viewed directly
+    in the mailer preview.
+
+    *Matt Swanson*</description>
+    <pubDate>Thu, 09 Feb 2023 05:53:41 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Email previews now include an expandable section to show all headers.</p>
+
+<p>Headers like <code>Message-ID</code> for threading or email service provider specific<br />
+features like analytics tags or account metadata can now be viewed directly<br />
+in the mailer preview.</p>
+
+<p><em>Matt Swanson</em></p>
 ]]></content:encoded>
   </item>
   <item>
