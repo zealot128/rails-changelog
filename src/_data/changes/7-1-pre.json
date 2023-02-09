@@ -80,14 +80,14 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
-    "message": "*   Change `ActionController::Instrumentation` to pass `filtered_path` instead of `fullpath` in the event payload to filter sensitive query params\n\n    ```ruby\n    get \"/posts?password=test\"\n    request.full_path         # => \"/posts?password=test\"\n    response.filtered_path    # => \"/posts?password=[FILTERED]\"\n    ```\n\n    *Ritikesh G*",
+    "message": "*   Change `ActionController::Instrumentation` to pass `filtered_path` instead of `fullpath` in the event payload to filter sensitive query params\n\n    ```ruby\n    get \"/posts?password=test\"\n    request.fullpath         # => \"/posts?password=test\"\n    request.filtered_path    # => \"/posts?password=[FILTERED]\"\n    ```\n\n    *Ritikesh G*",
     "project": "actionpack",
     "date_merged": 1675880950000,
     "author": "Ritikesh G",
     "sha": "c59ce2cf71f4350df50fdf4491b2d85ea305c947",
     "pr": "47296",
     "merge_sha": "aa3fc0fca25780797d6706f294c220a2ada0edb8",
-    "html": "<p>Change <code>ActionController::Instrumentation</code> to pass <code>filtered_path</code> instead of <code>fullpath</code> in the event payload to filter sensitive query params</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">get</span> <span class=\"s2\">\"/posts?password=test\"</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">full_path</span>         <span class=\"c1\"># =&gt; \"/posts?password=test\"</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">filtered_path</span>    <span class=\"c1\"># =&gt; \"/posts?password=[FILTERED]\"</span>\n</code></pre></div></div>\n\n<p><em>Ritikesh G</em></p>\n"
+    "html": "<p>Change <code>ActionController::Instrumentation</code> to pass <code>filtered_path</code> instead of <code>fullpath</code> in the event payload to filter sensitive query params</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">get</span> <span class=\"s2\">\"/posts?password=test\"</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">fullpath</span>         <span class=\"c1\"># =&gt; \"/posts?password=test\"</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">filtered_path</span>    <span class=\"c1\"># =&gt; \"/posts?password=[FILTERED]\"</span>\n</code></pre></div></div>\n\n<p><em>Ritikesh G</em></p>\n"
   },
   {
     "message": "*   Deprecate `AbstractController::Helpers::MissingHelperError`\n\n    *Hartley McGuire*",
