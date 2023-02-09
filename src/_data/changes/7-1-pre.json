@@ -3010,6 +3010,16 @@
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Guard `token_list` calls from escaping HTML too often\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1675883507000,
+    "author": "Sean Doyle",
+    "sha": "812e50b00a3ced69c3eb1cd9ad5c8f68b105bfdb",
+    "pr": "47318",
+    "merge_sha": "fad9050d80cb4d2d7c482311832724558bbfbbc2",
+    "html": "<p>Guard <code>token_list</code> calls from escaping HTML too often</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   `select` can now be called with a single hash containing options and some HTML options\n\n    Previously this would not work as expected:\n\n    ```erb\n    <%= select :post, :author, authors, required: true %>\n    ```\n\n    Instead you needed to do this:\n\n    ```erb\n    <%= select :post, :author, authors, {}, required: true %>\n    ```\n\n    Now, either form is accepted, for the following HTML attributes: `required`, `multiple`, `size`.\n\n    *Alex Ghiculescu*",
     "project": "actionview",
     "date_merged": 1670953527000,
@@ -3158,6 +3168,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Email previews now include an expandable section to show all headers.\n\n    Headers like `Message-ID` for threading or email service provider specific\n    features like analytics tags or account metadata can now be viewed directly\n    in the mailer preview.\n\n    *Matt Swanson*",
+    "project": "actionmailer",
+    "date_merged": 1675922021000,
+    "author": "zzak",
+    "sha": "b3d64e01122cdb50eeb1813e598d89886ab68a3d",
+    "pr": "47331",
+    "merge_sha": "5315d8d04d5c9eb6f31ae61f9956bf514e7c79ec",
+    "html": "<p>Email previews now include an expandable section to show all headers.</p>\n\n<p>Headers like <code>Message-ID</code> for threading or email service provider specific<br />\nfeatures like analytics tags or account metadata can now be viewed directly<br />\nin the mailer preview.</p>\n\n<p><em>Matt Swanson</em></p>\n"
   },
   {
     "message": "*   Default `ActionMailer::Parameterized#params` to an empty `Hash`\n\n    *Sean Doyle*",
