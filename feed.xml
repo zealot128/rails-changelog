@@ -2767,6 +2767,44 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Maintain `html_safe?` on html_safe strings when sliced with `slice`, `slice!`, or `chr` method.
+</title>
+    <link>https://github.com/rails/rails/issues/47343</link>
+    <guid>https://github.com/rails/rails/issues/47343</guid>
+    <description>*   Maintain `html_safe?` on html_safe strings when sliced with `slice`, `slice!`, or `chr` method.
+
+    Previously, `html_safe?` was only maintained when the html_safe strings were sliced
+    with `[]` method. Now, `slice`, `slice!`, and `chr` methods will maintain `html_safe?` like `[]` method.
+
+    ```ruby
+    string = &quot;&lt;div&gt;test&lt;/div&gt;&quot;.html_safe
+    string.slice(0, 1).html_safe? # =&gt; true
+    string.slice!(0, 1).html_safe? # =&gt; true
+    # maintain html_safe? after the slice!
+    string.html_safe? # =&gt; true
+    string.chr # =&gt; true
+    ```
+
+    *Michael Go*</description>
+    <pubDate>Thu, 09 Feb 2023 21:24:08 +0000</pubDate>
+    <author>Michael Go</author>
+    <content:encoded><![CDATA[<p>Maintain <code>html_safe?</code> on html_safe strings when sliced with <code>slice</code>, <code>slice!</code>, or <code>chr</code> method.</p>
+
+<p>Previously, <code>html_safe?</code> was only maintained when the html_safe strings were sliced<br />
+with <code>[]</code> method. Now, <code>slice</code>, <code>slice!</code>, and <code>chr</code> methods will maintain <code>html_safe?</code> like <code>[]</code> method.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">string</span> <span class="o">=</span> <span class="s2">"&lt;div&gt;test&lt;/div&gt;"</span><span class="p">.</span><span class="nf">html_safe</span>
+<span class="n">string</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="nf">html_safe?</span> <span class="c1"># =&gt; true</span>
+<span class="n">string</span><span class="p">.</span><span class="nf">slice!</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="nf">html_safe?</span> <span class="c1"># =&gt; true</span>
+<span class="c1"># maintain html_safe? after the slice!</span>
+<span class="n">string</span><span class="p">.</span><span class="nf">html_safe?</span> <span class="c1"># =&gt; true</span>
+<span class="n">string</span><span class="p">.</span><span class="nf">chr</span> <span class="c1"># =&gt; true</span>
+</code></pre></div></div>
+
+<p><em>Michael Go</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `config.i18n.raise_on_missing_translations = true` now raises on any missing translation.
 </title>
     <link>https://github.com/rails/rails/issues/47105</link>
