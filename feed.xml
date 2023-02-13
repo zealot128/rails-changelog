@@ -2767,6 +2767,120 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Raise `ActiveSupport::MessageEncryptor::InvalidMessage` from
+</title>
+    <link>https://github.com/rails/rails/issues/47326</link>
+    <guid>https://github.com/rails/rails/issues/47326</guid>
+    <description>*   Raise `ActiveSupport::MessageEncryptor::InvalidMessage` from
+    `ActiveSupport::MessageEncryptor#decrypt_and_verify` regardless of cipher.
+    Previously, when a `MessageEncryptor` was using a non-AEAD cipher such as
+    AES-256-CBC, a corrupt or tampered message would raise
+    `ActiveSupport::MessageVerifier::InvalidSignature`.  Now, all ciphers raise
+    the same error:
+
+      ```ruby
+      encryptor = ActiveSupport::MessageEncryptor.new(&quot;x&quot; * 32, cipher: &quot;aes-256-gcm&quot;)
+      message = encryptor.encrypt_and_sign(&quot;message&quot;)
+      encryptor.decrypt_and_verify(message.next)
+      # =&gt; raises ActiveSupport::MessageEncryptor::InvalidMessage
+
+      encryptor = ActiveSupport::MessageEncryptor.new(&quot;x&quot; * 32, cipher: &quot;aes-256-cbc&quot;)
+      message = encryptor.encrypt_and_sign(&quot;message&quot;)
+      encryptor.decrypt_and_verify(message.next)
+      # BEFORE:
+      # =&gt; raises ActiveSupport::MessageVerifier::InvalidSignature
+      # AFTER:
+      # =&gt; raises ActiveSupport::MessageEncryptor::InvalidMessage
+      ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Sun, 12 Feb 2023 21:50:51 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Raise <code>ActiveSupport::MessageEncryptor::InvalidMessage</code> from<br />
+<code>ActiveSupport::MessageEncryptor#decrypt_and_verify</code> regardless of cipher.<br />
+Previously, when a <code>MessageEncryptor</code> was using a non-AEAD cipher such as<br />
+AES-256-CBC, a corrupt or tampered message would raise<br />
+<code>ActiveSupport::MessageVerifier::InvalidSignature</code>.  Now, all ciphers raise<br />
+the same error:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">encryptor</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageEncryptor</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"x"</span> <span class="o">*</span> <span class="mi">32</span><span class="p">,</span> <span class="ss">cipher: </span><span class="s2">"aes-256-gcm"</span><span class="p">)</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="n">encryptor</span><span class="p">.</span><span class="nf">encrypt_and_sign</span><span class="p">(</span><span class="s2">"message"</span><span class="p">)</span>
+  <span class="n">encryptor</span><span class="p">.</span><span class="nf">decrypt_and_verify</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="nf">next</span><span class="p">)</span>
+  <span class="c1"># =&gt; raises ActiveSupport::MessageEncryptor::InvalidMessage</span>
+
+  <span class="n">encryptor</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageEncryptor</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"x"</span> <span class="o">*</span> <span class="mi">32</span><span class="p">,</span> <span class="ss">cipher: </span><span class="s2">"aes-256-cbc"</span><span class="p">)</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="n">encryptor</span><span class="p">.</span><span class="nf">encrypt_and_sign</span><span class="p">(</span><span class="s2">"message"</span><span class="p">)</span>
+  <span class="n">encryptor</span><span class="p">.</span><span class="nf">decrypt_and_verify</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="nf">next</span><span class="p">)</span>
+  <span class="c1"># BEFORE:</span>
+  <span class="c1"># =&gt; raises ActiveSupport::MessageVerifier::InvalidSignature</span>
+  <span class="c1"># AFTER:</span>
+  <span class="c1"># =&gt; raises ActiveSupport::MessageEncryptor::InvalidMessage</span>
+</code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Support `nil` original values when using `ActiveSupport::MessageVerifier#verify`.
+</title>
+    <link>https://github.com/rails/rails/issues/47326</link>
+    <guid>https://github.com/rails/rails/issues/47326</guid>
+    <description>*   Support `nil` original values when using `ActiveSupport::MessageVerifier#verify`.
+    Previously, `MessageVerifier#verify` did not work with `nil` original
+    values, though both `MessageVerifier#verified` and
+    `MessageEncryptor#decrypt_and_verify` do:
+
+      ```ruby
+      encryptor = ActiveSupport::MessageEncryptor.new(secret)
+      message = encryptor.encrypt_and_sign(nil)
+
+      encryptor.decrypt_and_verify(message)
+      # =&gt; nil
+
+      verifier = ActiveSupport::MessageVerifier.new(secret)
+      message = verifier.generate(nil)
+
+      verifier.verified(message)
+      # =&gt; nil
+
+      verifier.verify(message)
+      # BEFORE:
+      # =&gt; raises ActiveSupport::MessageVerifier::InvalidSignature
+      # AFTER:
+      # =&gt; nil
+      ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Sun, 12 Feb 2023 21:50:51 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Support <code>nil</code> original values when using <code>ActiveSupport::MessageVerifier#verify</code>.<br />
+Previously, <code>MessageVerifier#verify</code> did not work with <code>nil</code> original<br />
+values, though both <code>MessageVerifier#verified</code> and<br />
+<code>MessageEncryptor#decrypt_and_verify</code> do:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">encryptor</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageEncryptor</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">secret</span><span class="p">)</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="n">encryptor</span><span class="p">.</span><span class="nf">encrypt_and_sign</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
+
+  <span class="n">encryptor</span><span class="p">.</span><span class="nf">decrypt_and_verify</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+  <span class="c1"># =&gt; nil</span>
+
+  <span class="n">verifier</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageVerifier</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">secret</span><span class="p">)</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="n">verifier</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
+
+  <span class="n">verifier</span><span class="p">.</span><span class="nf">verified</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+  <span class="c1"># =&gt; nil</span>
+
+  <span class="n">verifier</span><span class="p">.</span><span class="nf">verify</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+  <span class="c1"># BEFORE:</span>
+  <span class="c1"># =&gt; raises ActiveSupport::MessageVerifier::InvalidSignature</span>
+  <span class="c1"># AFTER:</span>
+  <span class="c1"># =&gt; nil</span>
+</code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Maintain `html_safe?` on html_safe strings when sliced with `slice`, `slice!`, or `chr` method.
 </title>
     <link>https://github.com/rails/rails/issues/47343</link>
