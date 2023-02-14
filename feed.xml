@@ -4749,6 +4749,56 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: Add `perform_all_later` to enqueue multiple jobs at once
+</title>
+    <link>https://github.com/rails/rails/issues/46603</link>
+    <guid>https://github.com/rails/rails/issues/46603</guid>
+    <description>*   Add `perform_all_later` to enqueue multiple jobs at once
+
+    This adds the ability to bulk enqueue jobs, without running callbacks, by
+    passing multiple jobs or an array of jobs. For example:
+
+    ```ruby
+    ActiveJob.perform_all_later(MyJob.new(&quot;hello&quot;, 42), MyJob.new(&quot;world&quot;, 0))
+
+    user_jobs = User.pluck(:id).map { |id| UserJob.new(user_id: id) }
+    ActiveJob.perform_all_later(user_jobs)
+    ```
+
+    This can greatly reduce the number of round-trips to the queue datastore.
+    For queue adapters that do not implement the new `enqueue_all` method, we
+    fall back to enqueuing jobs indvidually. The Sidekiq adapter implements
+    `enqueue_all` with `push_bulk`.
+
+    This method does not use the existing `enqueue.active_job` event, but adds a
+    new event `enqueue_all.active_job`.
+
+    *Sander Verdonschot*</description>
+    <pubDate>Mon, 13 Feb 2023 20:03:58 +0000</pubDate>
+    <author>Sander Verdonschot</author>
+    <content:encoded><![CDATA[<p>Add <code>perform_all_later</code> to enqueue multiple jobs at once</p>
+
+<p>This adds the ability to bulk enqueue jobs, without running callbacks, by<br />
+passing multiple jobs or an array of jobs. For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveJob</span><span class="p">.</span><span class="nf">perform_all_later</span><span class="p">(</span><span class="no">MyJob</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">,</span> <span class="mi">42</span><span class="p">),</span> <span class="no">MyJob</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"world"</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">user_jobs</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">pluck</span><span class="p">(</span><span class="ss">:id</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="nb">id</span><span class="o">|</span> <span class="no">UserJob</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">user_id: </span><span class="nb">id</span><span class="p">)</span> <span class="p">}</span>
+<span class="no">ActiveJob</span><span class="p">.</span><span class="nf">perform_all_later</span><span class="p">(</span><span class="n">user_jobs</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This can greatly reduce the number of round-trips to the queue datastore.<br />
+For queue adapters that do not implement the new <code>enqueue_all</code> method, we<br />
+fall back to enqueuing jobs indvidually. The Sidekiq adapter implements<br />
+<code>enqueue_all</code> with <code>push_bulk</code>.</p>
+
+<p>This method does not use the existing <code>enqueue.active_job</code> event, but adds a<br />
+new event <code>enqueue_all.active_job</code>.</p>
+
+<p><em>Sander Verdonschot</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: Don&#39;t double log the `job` when using `ActiveRecord::QueryLog`
 </title>
     <link>https://github.com/rails/rails/issues/46279</link>
