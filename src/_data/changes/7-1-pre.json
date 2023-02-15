@@ -1070,6 +1070,16 @@
     "html": "<p>Add .node-version files for Rails apps that use Node.js</p>\n\n<p>Node version managers that make use of this file:<br />\n  https://github.com/shadowspawn/node-version-usage#node-version-file-usage</p>\n\n<p>The generated Dockerfile will use the same node version.</p>\n\n<p><em>Sam Ruby</em></p>\n"
   },
   {
+    "message": "*   Stub `Time.new()` in `TimeHelpers#travel_to`\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1676400954000,
+    "author": "fatkodima",
+    "sha": "0c4e9d35bb75819f467db48f60ae142e9f8546d3",
+    "pr": "47315",
+    "merge_sha": "f0845ec14d4541d1780a5988d4c43c30a9ba3d90",
+    "html": "<p>Stub <code>Time.new()</code> in <code>TimeHelpers#travel_to</code></p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Raise `ActiveSupport::MessageEncryptor::InvalidMessage` from\n    `ActiveSupport::MessageEncryptor#decrypt_and_verify` regardless of cipher.\n    Previously, when a `MessageEncryptor` was using a non-AEAD cipher such as\n    AES-256-CBC, a corrupt or tampered message would raise\n    `ActiveSupport::MessageVerifier::InvalidSignature`.  Now, all ciphers raise\n    the same error:\n\n      ```ruby\n      encryptor = ActiveSupport::MessageEncryptor.new(\"x\" * 32, cipher: \"aes-256-gcm\")\n      message = encryptor.encrypt_and_sign(\"message\")\n      encryptor.decrypt_and_verify(message.next)\n      # => raises ActiveSupport::MessageEncryptor::InvalidMessage\n\n      encryptor = ActiveSupport::MessageEncryptor.new(\"x\" * 32, cipher: \"aes-256-cbc\")\n      message = encryptor.encrypt_and_sign(\"message\")\n      encryptor.decrypt_and_verify(message.next)\n      # BEFORE:\n      # => raises ActiveSupport::MessageVerifier::InvalidSignature\n      # AFTER:\n      # => raises ActiveSupport::MessageEncryptor::InvalidMessage\n      ```\n\n    *Jonathan Hefner*",
     "project": "activesupport",
     "date_merged": 1676238651000,
