@@ -2767,6 +2767,21 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Stub `Time.new()` in `TimeHelpers#travel_to`
+</title>
+    <link>https://github.com/rails/rails/issues/47315</link>
+    <guid>https://github.com/rails/rails/issues/47315</guid>
+    <description>*   Stub `Time.new()` in `TimeHelpers#travel_to`
+
+    *fatkodima*</description>
+    <pubDate>Tue, 14 Feb 2023 18:55:54 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Stub <code>Time.new()</code> in <code>TimeHelpers#travel_to</code></p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Raise `ActiveSupport::MessageEncryptor::InvalidMessage` from
 </title>
     <link>https://github.com/rails/rails/issues/47326</link>
