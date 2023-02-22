@@ -2160,6 +2160,16 @@
     "html": "<p>PostgreSQL adapter method <code>enable_extension</code> now allows parameter to be <code>[schema_name.]&lt;extension_name&gt;</code><br />\nif the extension must be installed on another schema.</p>\n\n<p>Example: <code>enable_extension('heroku_ext.hstore')</code></p>\n\n<p><em>Leonardo Luarte</em></p>\n"
   },
   {
+    "message": "*   Add `:include` option to `add_index`.\n\n    Add support for including non-key columns in indexes for PostgreSQL\n    with the `INCLUDE` parameter.\n\n    ```ruby\n    add_index(:users, :email, include: [:id, :created_at])\n    ```\n\n    will result in:\n\n    ```sql\n    CREATE INDEX index_users_on_email USING btree (email) INCLUDE (id, created_at)\n    ```\n\n    *Steve Abrams*",
+    "project": "activerecord",
+    "date_merged": 1677057937000,
+    "author": "zzak",
+    "sha": "c7e444e3b085ab026ca4116955c6e91f0608ad23",
+    "pr": "44803",
+    "merge_sha": "ca6f2f16c1671b875f8a0590fadcdde459403bbe",
+    "html": "<p>Add <code>:include</code> option to <code>add_index</code>.</p>\n\n<p>Add support for including non-key columns in indexes for PostgreSQL<br />\nwith the <code>INCLUDE</code> parameter.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_index</span><span class=\"p\">(</span><span class=\"ss\">:users</span><span class=\"p\">,</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">include: </span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">,</span> <span class=\"ss\">:created_at</span><span class=\"p\">])</span>\n</code></pre></div></div>\n\n<p>will result in:</p>\n\n<div class=\"language-sql highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">CREATE</span> <span class=\"k\">INDEX</span> <span class=\"n\">index_users_on_email</span> <span class=\"k\">USING</span> <span class=\"n\">btree</span> <span class=\"p\">(</span><span class=\"n\">email</span><span class=\"p\">)</span> <span class=\"n\">INCLUDE</span> <span class=\"p\">(</span><span class=\"n\">id</span><span class=\"p\">,</span> <span class=\"n\">created_at</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Steve Abrams</em></p>\n"
+  },
+  {
     "message": "*   `ActiveRecord::Relation`’s `#any?`, `#none?`, and `#one?` methods take an optional pattern\n    argument, more closely matching their `Enumerable` equivalents.\n\n    *George Claghorn*",
     "project": "activerecord",
     "date_merged": 1671696060000,
