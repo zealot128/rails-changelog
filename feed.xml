@@ -6048,6 +6048,45 @@ if the extension must be installed on another schema.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add `:include` option to `add_index`.
+</title>
+    <link>https://github.com/rails/rails/issues/44803</link>
+    <guid>https://github.com/rails/rails/issues/44803</guid>
+    <description>*   Add `:include` option to `add_index`.
+
+    Add support for including non-key columns in indexes for PostgreSQL
+    with the `INCLUDE` parameter.
+
+    ```ruby
+    add_index(:users, :email, include: [:id, :created_at])
+    ```
+
+    will result in:
+
+    ```sql
+    CREATE INDEX index_users_on_email USING btree (email) INCLUDE (id, created_at)
+    ```
+
+    *Steve Abrams*</description>
+    <pubDate>Wed, 22 Feb 2023 09:25:37 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Add <code>:include</code> option to <code>add_index</code>.</p>
+
+<p>Add support for including non-key columns in indexes for PostgreSQL<br />
+with the <code>INCLUDE</code> parameter.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_index</span><span class="p">(</span><span class="ss">:users</span><span class="p">,</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">include: </span><span class="p">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:created_at</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>will result in:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">index_users_on_email</span> <span class="k">USING</span> <span class="n">btree</span> <span class="p">(</span><span class="n">email</span><span class="p">)</span> <span class="n">INCLUDE</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">created_at</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Steve Abrams</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `ActiveRecord::Relation`’s `#any?`, `#none?`, and `#one?` methods take an optional pattern
 </title>
     <link>https://github.com/rails/rails/issues/46728</link>
