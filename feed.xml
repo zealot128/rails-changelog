@@ -3732,6 +3732,30 @@ with <code>[]</code> method. Now, <code>slice</code>, <code>slice!</code>, and <
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Add `Object#in?` support for open ranges.
+</title>
+    <link>https://github.com/rails/rails/issues/47316</link>
+    <guid>https://github.com/rails/rails/issues/47316</guid>
+    <description>*   Add `Object#in?` support for open ranges.
+
+    ```ruby
+    assert Date.today.in?(..Date.tomorrow)
+    assert_not Date.today.in?(Date.tomorrow..)
+    ```
+
+    *Ignacio Galindo*</description>
+    <pubDate>Sat, 25 Feb 2023 01:35:38 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Add <code>Object#in?</code> support for open ranges.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert</span> <span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">.</span><span class="nf">in?</span><span class="p">(</span><span class="o">..</span><span class="no">Date</span><span class="p">.</span><span class="nf">tomorrow</span><span class="p">)</span>
+<span class="n">assert_not</span> <span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">.</span><span class="nf">in?</span><span class="p">(</span><span class="no">Date</span><span class="p">.</span><span class="nf">tomorrow</span><span class="o">..</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Ignacio Galindo</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `config.i18n.raise_on_missing_translations = true` now raises on any missing translation.
 </title>
     <link>https://github.com/rails/rails/issues/47105</link>
@@ -5826,6 +5850,100 @@ in the mailer preview.</p>
 will cause those paths to be used in the search for mailer previews.</p>
 
 <p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: `ActiveRecord::Base.serialize` no longer uses YAML by default.
+</title>
+    <link>https://github.com/rails/rails/issues/47492</link>
+    <guid>https://github.com/rails/rails/issues/47492</guid>
+    <description>*   `ActiveRecord::Base.serialize` no longer uses YAML by default.
+
+    YAML isn&#39;t particularly performant and can lead to security issues
+    if not used carefully.
+
+    Unfortunately there isn&#39;t really any good serializers in Ruby&#39;s stdlib
+    to replace it.
+
+    The obvious choice would be JSON, which is a fine format for this use case,
+    however the JSON serializer in Ruby&#39;s stdlib isn&#39;t strict enough, as it fallback
+    to casting unknown types to strings, which could lead to corrupted data.
+
+    Some third party JSON libraries like `Oj` have a suitable strict mode.
+
+    So it&#39;s preferable that users choose a serializer based on their own constraints.
+
+    The original default can be restored by setting `config.active_record.default_column_serializer = YAML`.
+
+    *Jean Boussier*</description>
+    <pubDate>Sat, 25 Feb 2023 01:35:38 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Base.serialize</code> no longer uses YAML by default.</p>
+
+<p>YAML isn’t particularly performant and can lead to security issues<br />
+if not used carefully.</p>
+
+<p>Unfortunately there isn’t really any good serializers in Ruby’s stdlib<br />
+to replace it.</p>
+
+<p>The obvious choice would be JSON, which is a fine format for this use case,<br />
+however the JSON serializer in Ruby’s stdlib isn’t strict enough, as it fallback<br />
+to casting unknown types to strings, which could lead to corrupted data.</p>
+
+<p>Some third party JSON libraries like <code>Oj</code> have a suitable strict mode.</p>
+
+<p>So it’s preferable that users choose a serializer based on their own constraints.</p>
+
+<p>The original default can be restored by setting <code>config.active_record.default_column_serializer = YAML</code>.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: `ActiveRecord::Base.serialize` signature changed.
+</title>
+    <link>https://github.com/rails/rails/issues/47492</link>
+    <guid>https://github.com/rails/rails/issues/47492</guid>
+    <description>*   `ActiveRecord::Base.serialize` signature changed.
+
+    Rather than a single positional argument that accepts two possible
+    types of values, `serialize` now accepts two distinct keyword arguments.
+
+    Before:
+
+    ```ruby
+      serialize :content, JSON
+      serialize :backtrace, Array
+    ```
+
+    After:
+
+    ```ruby
+      serialize :content, coder: JSON
+      serialize :backtrace, type: Array
+    ```
+
+    *Jean Boussier*</description>
+    <pubDate>Sat, 25 Feb 2023 01:35:38 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Base.serialize</code> signature changed.</p>
+
+<p>Rather than a single positional argument that accepts two possible<br />
+types of values, <code>serialize</code> now accepts two distinct keyword arguments.</p>
+
+<p>Before:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">serialize</span> <span class="ss">:content</span><span class="p">,</span> <span class="no">JSON</span>
+  <span class="n">serialize</span> <span class="ss">:backtrace</span><span class="p">,</span> <span class="no">Array</span>
+</code></pre></div></div>
+
+<p>After:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">serialize</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">coder: </span><span class="no">JSON</span>
+  <span class="n">serialize</span> <span class="ss">:backtrace</span><span class="p">,</span> <span class="ss">type: </span><span class="no">Array</span>
+</code></pre></div></div>
+
+<p><em>Jean Boussier</em></p>
 ]]></content:encoded>
   </item>
   <item>
