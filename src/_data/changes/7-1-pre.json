@@ -1390,6 +1390,16 @@
     "html": "<p>Maintain <code>html_safe?</code> on html_safe strings when sliced with <code>slice</code>, <code>slice!</code>, or <code>chr</code> method.</p>\n\n<p>Previously, <code>html_safe?</code> was only maintained when the html_safe strings were sliced<br />\nwith <code>[]</code> method. Now, <code>slice</code>, <code>slice!</code>, and <code>chr</code> methods will maintain <code>html_safe?</code> like <code>[]</code> method.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">string</span> <span class=\"o\">=</span> <span class=\"s2\">\"&lt;div&gt;test&lt;/div&gt;\"</span><span class=\"p\">.</span><span class=\"nf\">html_safe</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">slice</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">slice!</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"c1\"># maintain html_safe? after the slice!</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">chr</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Michael Go</em></p>\n"
   },
   {
+    "message": "*   Add `Object#in?` support for open ranges.\n\n    ```ruby\n    assert Date.today.in?(..Date.tomorrow)\n    assert_not Date.today.in?(Date.tomorrow..)\n    ```\n\n    *Ignacio Galindo*",
+    "project": "activesupport",
+    "date_merged": 1677288938000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "b6964e8c8841e171e3bfb8cf693b54c87d75c06c",
+    "pr": "47316",
+    "merge_sha": "b146cd473b5ad90c629d9350f0535d0bcf77febe",
+    "html": "<p>Add <code>Object#in?</code> support for open ranges.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert</span> <span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span><span class=\"p\">.</span><span class=\"nf\">in?</span><span class=\"p\">(</span><span class=\"o\">..</span><span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">tomorrow</span><span class=\"p\">)</span>\n<span class=\"n\">assert_not</span> <span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span><span class=\"p\">.</span><span class=\"nf\">in?</span><span class=\"p\">(</span><span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">tomorrow</span><span class=\"o\">..</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Ignacio Galindo</em></p>\n"
+  },
+  {
     "message": "*   `config.i18n.raise_on_missing_translations = true` now raises on any missing translation.\n\n    Previously it would only raise when called in a view or controller. Now it will raise\n    anytime `I18n.t` is provided an unrecognised key.\n\n    If you do not want this behaviour, you can customise the i18n exception handler. See the\n    upgrading guide or i18n guide for more information.\n\n    *Alex Ghiculescu*",
     "project": "activesupport",
     "date_merged": 1674501050000,
@@ -2078,6 +2088,26 @@
     "pr": "31595",
     "merge_sha": "95066e5fbd617edeaa6b1d28a50f295145aee52d",
     "html": "<p>Support multiple preview paths for mailers.</p>\n\n<p>Option <code>config.action_mailer.preview_path</code> is deprecated in favor of<br />\n<code>config.action_mailer.preview_paths</code>. Appending paths to this configuration option<br />\nwill cause those paths to be used in the search for mailer previews.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveRecord::Base.serialize` no longer uses YAML by default.\n\n    YAML isn't particularly performant and can lead to security issues\n    if not used carefully.\n\n    Unfortunately there isn't really any good serializers in Ruby's stdlib\n    to replace it.\n\n    The obvious choice would be JSON, which is a fine format for this use case,\n    however the JSON serializer in Ruby's stdlib isn't strict enough, as it fallback\n    to casting unknown types to strings, which could lead to corrupted data.\n\n    Some third party JSON libraries like `Oj` have a suitable strict mode.\n\n    So it's preferable that users choose a serializer based on their own constraints.\n\n    The original default can be restored by setting `config.active_record.default_column_serializer = YAML`.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1677288938000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "0b328528784746650ac5f8b7d5e74c941c0051b7",
+    "pr": "47492",
+    "merge_sha": "b146cd473b5ad90c629d9350f0535d0bcf77febe",
+    "html": "<p><code>ActiveRecord::Base.serialize</code> no longer uses YAML by default.</p>\n\n<p>YAML isn’t particularly performant and can lead to security issues<br />\nif not used carefully.</p>\n\n<p>Unfortunately there isn’t really any good serializers in Ruby’s stdlib<br />\nto replace it.</p>\n\n<p>The obvious choice would be JSON, which is a fine format for this use case,<br />\nhowever the JSON serializer in Ruby’s stdlib isn’t strict enough, as it fallback<br />\nto casting unknown types to strings, which could lead to corrupted data.</p>\n\n<p>Some third party JSON libraries like <code>Oj</code> have a suitable strict mode.</p>\n\n<p>So it’s preferable that users choose a serializer based on their own constraints.</p>\n\n<p>The original default can be restored by setting <code>config.active_record.default_column_serializer = YAML</code>.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveRecord::Base.serialize` signature changed.\n\n    Rather than a single positional argument that accepts two possible\n    types of values, `serialize` now accepts two distinct keyword arguments.\n\n    Before:\n\n    ```ruby\n      serialize :content, JSON\n      serialize :backtrace, Array\n    ```\n\n    After:\n\n    ```ruby\n      serialize :content, coder: JSON\n      serialize :backtrace, type: Array\n    ```\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1677288938000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "0b328528784746650ac5f8b7d5e74c941c0051b7",
+    "pr": "47492",
+    "merge_sha": "b146cd473b5ad90c629d9350f0535d0bcf77febe",
+    "html": "<p><code>ActiveRecord::Base.serialize</code> signature changed.</p>\n\n<p>Rather than a single positional argument that accepts two possible<br />\ntypes of values, <code>serialize</code> now accepts two distinct keyword arguments.</p>\n\n<p>Before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"n\">serialize</span> <span class=\"ss\">:content</span><span class=\"p\">,</span> <span class=\"no\">JSON</span>\n  <span class=\"n\">serialize</span> <span class=\"ss\">:backtrace</span><span class=\"p\">,</span> <span class=\"no\">Array</span>\n</code></pre></div></div>\n\n<p>After:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"n\">serialize</span> <span class=\"ss\">:content</span><span class=\"p\">,</span> <span class=\"ss\">coder: </span><span class=\"no\">JSON</span>\n  <span class=\"n\">serialize</span> <span class=\"ss\">:backtrace</span><span class=\"p\">,</span> <span class=\"ss\">type: </span><span class=\"no\">Array</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   YAML columns use `YAML.safe_dump` is available.\n\n    As of `psych 5.1.0`, `YAML.safe_dump` can now apply the same permitted\n    types restrictions than `YAML.safe_load`.\n\n    It's preferable to ensure the payload only use allowed types when we first\n    try to serialize it, otherwise you may end up with invalid records in the\n    database.\n\n    *Jean Boussier*",
