@@ -894,25 +894,6 @@ generated “config/puma.rb” directly.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Bump `required_rubygems_version` from 1.8.11 to 3.3.13 or higher in order to
-</title>
-    <link>https://github.com/rails/rails/issues/46817</link>
-    <guid>https://github.com/rails/rails/issues/46817</guid>
-    <description>*   Bump `required_rubygems_version` from 1.8.11 to 3.3.13 or higher in order to
-    support pre-release versions of Ruby when generating a new Rails app
-    Gemfile.
-
-    *Yasuo Honda*</description>
-    <pubDate>Sat, 07 Jan 2023 08:38:35 +0000</pubDate>
-    <author>zzak</author>
-    <content:encoded><![CDATA[<p>Bump <code>required_rubygems_version</code> from 1.8.11 to 3.3.13 or higher in order to<br />
-support pre-release versions of Ruby when generating a new Rails app<br />
-Gemfile.</p>
-
-<p><em>Yasuo Honda</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>railties: Add Docker files by default to new apps: Dockerfile, .dockerignore, bin/docker-entrypoint.
 </title>
     <link>https://github.com/rails/rails/issues/46762</link>
