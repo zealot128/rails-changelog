@@ -5834,6 +5834,141 @@ will cause those paths to be used in the search for mailer previews.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Remove the `:include_replicas` argument from `configs_for`. Use `:include_hidden` argument instead.
+</title>
+    <link>https://github.com/rails/rails/issues/47536</link>
+    <guid>https://github.com/rails/rails/issues/47536</guid>
+    <description>*   Remove the `:include_replicas` argument from `configs_for`. Use `:include_hidden` argument instead.
+
+    *Eileen M. Uchitelle*</description>
+    <pubDate>Tue, 28 Feb 2023 18:02:06 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Remove the <code>:include_replicas</code> argument from <code>configs_for</code>. Use <code>:include_hidden</code> argument instead.</p>
+
+<p><em>Eileen M. Uchitelle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Allow applications to lookup a config via a custom hash key.
+</title>
+    <link>https://github.com/rails/rails/issues/47536</link>
+    <guid>https://github.com/rails/rails/issues/47536</guid>
+    <description>*   Allow applications to lookup a config via a custom hash key.
+
+    If you have registered a custom config or want to find configs where the hash matches a specific key, now you can pass `config_key` to `configs_for`. For example if you have a `db_config` with the key `vitess` you can look up a database configuration hash by  matching that key.
+
+    ```ruby
+    ActiveRecord::Base.configurations.configs_for(env_name: &quot;development&quot;, name: &quot;primary&quot;, config_key: :vitess)
+    ActiveRecord::Base.configurations.configs_for(env_name: &quot;development&quot;, config_key: :vitess)
+    ```
+
+    *Eileen M. Uchitelle*</description>
+    <pubDate>Tue, 28 Feb 2023 18:02:06 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Allow applications to lookup a config via a custom hash key.</p>
+
+<p>If you have registered a custom config or want to find configs where the hash matches a specific key, now you can pass <code>config_key</code> to <code>configs_for</code>. For example if you have a <code>db_config</code> with the key <code>vitess</code> you can look up a database configuration hash by  matching that key.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">configurations</span><span class="p">.</span><span class="nf">configs_for</span><span class="p">(</span><span class="ss">env_name: </span><span class="s2">"development"</span><span class="p">,</span> <span class="ss">name: </span><span class="s2">"primary"</span><span class="p">,</span> <span class="ss">config_key: :vitess</span><span class="p">)</span>
+<span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">configurations</span><span class="p">.</span><span class="nf">configs_for</span><span class="p">(</span><span class="ss">env_name: </span><span class="s2">"development"</span><span class="p">,</span> <span class="ss">config_key: :vitess</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Eileen M. Uchitelle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Allow applications to register a custom database configuration handler.
+</title>
+    <link>https://github.com/rails/rails/issues/47522</link>
+    <guid>https://github.com/rails/rails/issues/47522</guid>
+    <description>*   Allow applications to register a custom database configuration handler.
+
+    Adds a mechanism for registering a custom handler for cases where you want database configurations to respond to custom methods. This is useful for non-Rails database adapters or tools like Vitess that you may want to configure differently from a standard `HashConfig` or `UrlConfig`.
+
+    Given the following database YAML we want the `animals` db to create a `CustomConfig` object instead while the `primary` database will be a `UrlConfig`:
+
+    ```yaml
+    development:
+      primary:
+        url: postgres://localhost/primary
+      animals:
+        url: postgres://localhost/animals
+        custom_config:
+          sharded: 1
+    ```
+
+    To register a custom handler first make a class that has your custom methods:
+
+    ```ruby
+    class CustomConfig &lt; ActiveRecord::DatabaseConfigurations::UrlConfig
+      def sharded?
+        custom_config.fetch(&quot;sharded&quot;, false)
+      end
+
+      private
+        def custom_config
+          configuration_hash.fetch(:custom_config)
+        end
+    end
+    ```
+
+    Then register the config in an inializer:
+
+    ```ruby
+    ActiveRecord::DatabaseConfigurations.register_db_config_handler do |env_name, name, url, config|
+      next unless config.key?(:custom_config)
+      CustomConfig.new(env_name, name, url, config)
+    end
+    ```
+
+    When the application is booted, configuration hashes with the `:custom_config` key will be `CustomConfig` objects and respond to `sharded?`. Applications must handle the condition in which Active Record should use their custom handler.
+
+    *Eileen M. Uchitelle and John Crepezzi*</description>
+    <pubDate>Tue, 28 Feb 2023 16:01:28 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Allow applications to register a custom database configuration handler.</p>
+
+<p>Adds a mechanism for registering a custom handler for cases where you want database configurations to respond to custom methods. This is useful for non-Rails database adapters or tools like Vitess that you may want to configure differently from a standard <code>HashConfig</code> or <code>UrlConfig</code>.</p>
+
+<p>Given the following database YAML we want the <code>animals</code> db to create a <code>CustomConfig</code> object instead while the <code>primary</code> database will be a <code>UrlConfig</code>:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">development</span><span class="pi">:</span>
+  <span class="na">primary</span><span class="pi">:</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">postgres://localhost/primary</span>
+  <span class="na">animals</span><span class="pi">:</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">postgres://localhost/animals</span>
+    <span class="na">custom_config</span><span class="pi">:</span>
+      <span class="na">sharded</span><span class="pi">:</span> <span class="m">1</span>
+</code></pre></div></div>
+
+<p>To register a custom handler first make a class that has your custom methods:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CustomConfig</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">DatabaseConfigurations</span><span class="o">::</span><span class="no">UrlConfig</span>
+  <span class="k">def</span> <span class="nf">sharded?</span>
+    <span class="n">custom_config</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"sharded"</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+    <span class="k">def</span> <span class="nf">custom_config</span>
+      <span class="n">configuration_hash</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:custom_config</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Then register the config in an inializer:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">DatabaseConfigurations</span><span class="p">.</span><span class="nf">register_db_config_handler</span> <span class="k">do</span> <span class="o">|</span><span class="n">env_name</span><span class="p">,</span> <span class="nb">name</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">config</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">unless</span> <span class="n">config</span><span class="p">.</span><span class="nf">key?</span><span class="p">(</span><span class="ss">:custom_config</span><span class="p">)</span>
+  <span class="no">CustomConfig</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="nb">name</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>When the application is booted, configuration hashes with the <code>:custom_config</code> key will be <code>CustomConfig</code> objects and respond to <code>sharded?</code>. Applications must handle the condition in which Active Record should use their custom handler.</p>
+
+<p><em>Eileen M. Uchitelle and John Crepezzi</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `ActiveRecord::Base.serialize` no longer uses YAML by default.
 </title>
     <link>https://github.com/rails/rails/issues/47492</link>
