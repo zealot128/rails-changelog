@@ -1340,6 +1340,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Deprecated initializing a `ActiveSupport::Cache::MemCacheStore` with an instance of `Dalli::Client`.\n\n    Deprecate the undocumented option of providing an already-initialized instance of `Dalli::Client` to `ActiveSupport::Cache::MemCacheStore`. Such clients could be configured with unrecognized options, which could lead to unexpected behavior. Instead, provide addresses as documented.\n\n    *aledustet*",
+    "project": "activesupport",
+    "date_merged": 1677616513000,
+    "author": "Alejandro Dustet",
+    "sha": "78b74e92271e72b60e570646ce736eeb64d86ab0",
+    "pr": "47340",
+    "merge_sha": "6c51cd399e1e682fdbc0e636f0b96f384a172d16",
+    "html": "<p>Deprecated initializing a <code>ActiveSupport::Cache::MemCacheStore</code> with an instance of <code>Dalli::Client</code>.</p>\n\n<p>Deprecate the undocumented option of providing an already-initialized instance of <code>Dalli::Client</code> to <code>ActiveSupport::Cache::MemCacheStore</code>. Such clients could be configured with unrecognized options, which could lead to unexpected behavior. Instead, provide addresses as documented.</p>\n\n<p><em>aledustet</em></p>\n"
+  },
+  {
     "message": "*   Stub `Time.new()` in `TimeHelpers#travel_to`\n\n      ```ruby\n      travel_to Time.new(2004, 11, 24) do\n        # Inside the `travel_to` block `Time.new` is stubbed\n        assert_equal Time.new.year, 2004\n      end\n      ```\n\n    *fatkodima*",
     "project": "activesupport",
     "date_merged": 1676400954000,
@@ -2018,6 +2028,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Added `deliver_enqueued_emails` to `ActionMailer::TestHelper`. This method\n    delivers all enqueued email jobs.\n\n    Example:\n\n    ```ruby\n    def test_deliver_enqueued_emails\n      deliver_enqueued_emails do\n        ContactMailer.welcome.deliver_later\n      end\n      assert_emails 1\n    end\n    ```\n\n    *Andrew Novoselac*",
+    "project": "actionmailer",
+    "date_merged": 1677611625000,
+    "author": "Andrew Novoselac",
+    "sha": "f2cacd5d11061c64c30d0fbc8741cb42d58fd01f",
+    "pr": "47520",
+    "merge_sha": "0b95524ac8e0729c04cbd080a1ad57c6dd7c9c07",
+    "html": "<p>Added <code>deliver_enqueued_emails</code> to <code>ActionMailer::TestHelper</code>. This method<br />\ndelivers all enqueued email jobs.</p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">def</span> <span class=\"nf\">test_deliver_enqueued_emails</span>\n  <span class=\"n\">deliver_enqueued_emails</span> <span class=\"k\">do</span>\n    <span class=\"no\">ContactMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">.</span><span class=\"nf\">deliver_later</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_emails</span> <span class=\"mi\">1</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Andrew Novoselac</em></p>\n"
   },
   {
     "message": "*   The `deliver_later_queue_name` used by the default mailer job can now be\n    configured on a per-mailer basis. Previously this was only configurable\n    for all mailers via `ActionMailer::Base`.\n\n    Example:\n\n    ```ruby\n    class EventsMailer < ApplicationMailer\n      self.deliver_later_queue_name = :throttled_mailer\n    end\n    ```\n\n    *Jeffrey Hardy*",
