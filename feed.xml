@@ -3533,6 +3533,25 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Deprecated initializing a `ActiveSupport::Cache::MemCacheStore` with an instance of `Dalli::Client`.
+</title>
+    <link>https://github.com/rails/rails/issues/47340</link>
+    <guid>https://github.com/rails/rails/issues/47340</guid>
+    <description>*   Deprecated initializing a `ActiveSupport::Cache::MemCacheStore` with an instance of `Dalli::Client`.
+
+    Deprecate the undocumented option of providing an already-initialized instance of `Dalli::Client` to `ActiveSupport::Cache::MemCacheStore`. Such clients could be configured with unrecognized options, which could lead to unexpected behavior. Instead, provide addresses as documented.
+
+    *aledustet*</description>
+    <pubDate>Tue, 28 Feb 2023 20:35:13 +0000</pubDate>
+    <author>Alejandro Dustet</author>
+    <content:encoded><![CDATA[<p>Deprecated initializing a <code>ActiveSupport::Cache::MemCacheStore</code> with an instance of <code>Dalli::Client</code>.</p>
+
+<p>Deprecate the undocumented option of providing an already-initialized instance of <code>Dalli::Client</code> to <code>ActiveSupport::Cache::MemCacheStore</code>. Such clients could be configured with unrecognized options, which could lead to unexpected behavior. Instead, provide addresses as documented.</p>
+
+<p><em>aledustet</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Stub `Time.new()` in `TimeHelpers#travel_to`
 </title>
     <link>https://github.com/rails/rails/issues/47315</link>
@@ -5673,6 +5692,44 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Added `deliver_enqueued_emails` to `ActionMailer::TestHelper`. This method
+</title>
+    <link>https://github.com/rails/rails/issues/47520</link>
+    <guid>https://github.com/rails/rails/issues/47520</guid>
+    <description>*   Added `deliver_enqueued_emails` to `ActionMailer::TestHelper`. This method
+    delivers all enqueued email jobs.
+
+    Example:
+
+    ```ruby
+    def test_deliver_enqueued_emails
+      deliver_enqueued_emails do
+        ContactMailer.welcome.deliver_later
+      end
+      assert_emails 1
+    end
+    ```
+
+    *Andrew Novoselac*</description>
+    <pubDate>Tue, 28 Feb 2023 19:13:45 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Added <code>deliver_enqueued_emails</code> to <code>ActionMailer::TestHelper</code>. This method<br />
+delivers all enqueued email jobs.</p>
+
+<p>Example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_deliver_enqueued_emails</span>
+  <span class="n">deliver_enqueued_emails</span> <span class="k">do</span>
+    <span class="no">ContactMailer</span><span class="p">.</span><span class="nf">welcome</span><span class="p">.</span><span class="nf">deliver_later</span>
+  <span class="k">end</span>
+  <span class="n">assert_emails</span> <span class="mi">1</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Andrew Novoselac</em></p>
 ]]></content:encoded>
   </item>
   <item>
