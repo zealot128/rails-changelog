@@ -2145,6 +2145,70 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Remove deprecated `purge` and `purge_later` methods from the attachments association.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated `purge` and `purge_later` methods from the attachments association.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>purge</code> and <code>purge_later</code> methods from the attachments association.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Remove deprecated behavior when assigning to a collection of attachments.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated behavior when assigning to a collection of attachments.
+
+    Instead of appending to the collection, the collection is now replaced.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated behavior when assigning to a collection of attachments.</p>
+
+<p>Instead of appending to the collection, the collection is now replaced.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Remove deprecated `ActiveStorage::Current#host` and `ActiveStorage::Current#host=` methods.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated `ActiveStorage::Current#host` and `ActiveStorage::Current#host=` methods.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveStorage::Current#host</code> and <code>ActiveStorage::Current#host=</code> methods.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Remove deprecated invalid default content types in Active Storage configurations.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated invalid default content types in Active Storage configurations.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated invalid default content types in Active Storage configurations.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Add missing preview event to `ActiveStorage::LogSubscriber`
 </title>
     <link>https://github.com/rails/rails/issues/46291</link>
@@ -2634,6 +2698,66 @@ before closing the connection with the reconnection strategy specified (defaults
 <p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>
 
 <p><em>Vladimir Dementyev</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated `poltergeist` and `webkit` (capybara-webkit) driver registration for system testing.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated `poltergeist` and `webkit` (capybara-webkit) driver registration for system testing.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>poltergeist</code> and <code>webkit</code> (capybara-webkit) driver registration for system testing.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated ability to assign a single value to `config.action_dispatch.trusted_proxies`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated ability to assign a single value to `config.action_dispatch.trusted_proxies`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated ability to assign a single value to <code>config.action_dispatch.trusted_proxies</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Deprecate `config.action_dispatch.return_only_request_media_type_on_content_type`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Deprecate `config.action_dispatch.return_only_request_media_type_on_content_type`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>config.action_dispatch.return_only_request_media_type_on_content_type</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated behavior on `Request#content_type`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated behavior on `Request#content_type`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated behavior on <code>Request#content_type</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -3530,6 +3654,175 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
     <content:encoded><![CDATA[<p>Add X-Forwarded-To addresses to recipients.</p>
 
 <p><em>Andrew Stewart</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated support to generate incorrect RFC 4122 UUIDs when providing a namespace ID that is not one of the
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated support to generate incorrect RFC 4122 UUIDs when providing a namespace ID that is not one of the
+    constants defined on `Digest::UUID`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to generate incorrect RFC 4122 UUIDs when providing a namespace ID that is not one of the<br />
+constants defined on <code>Digest::UUID</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Deprecate `config.active_support.use_rfc4122_namespaced_uuids`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Deprecate `config.active_support.use_rfc4122_namespaced_uuids`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>config.active_support.use_rfc4122_namespaced_uuids</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `ActiveSupport::Notifications::Event#children` and  `ActiveSupport::Notifications::Event#parent_of?`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated `ActiveSupport::Notifications::Event#children` and  `ActiveSupport::Notifications::Event#parent_of?`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveSupport::Notifications::Event#children</code> and  <code>ActiveSupport::Notifications::Event#parent_of?</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove implicit conversion of objects into `String` by `ActiveSupport::SafeBuffer`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove implicit conversion of objects into `String` by `ActiveSupport::SafeBuffer`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove implicit conversion of objects into <code>String</code> by <code>ActiveSupport::SafeBuffer</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `active_support/core_ext/range/include_time_with_zone` file.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated `active_support/core_ext/range/include_time_with_zone` file.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>active_support/core_ext/range/include_time_with_zone</code> file.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Deprecate `config.active_support.remove_deprecated_time_with_zone_name`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Deprecate `config.active_support.remove_deprecated_time_with_zone_name`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>config.active_support.remove_deprecated_time_with_zone_name</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated override of `ActiveSupport::TimeWithZone.name`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated override of `ActiveSupport::TimeWithZone.name`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated override of <code>ActiveSupport::TimeWithZone.name</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Deprecate `config.active_support.disable_to_s_conversion`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Deprecate `config.active_support.disable_to_s_conversion`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>config.active_support.disable_to_s_conversion</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated option to passing a format to `#to_s` in `Array`, `Range`, `Date`, `DateTime`, `Time`,
+</title>
+    <link>https://github.com/rails/rails/issues/47568</link>
+    <guid>https://github.com/rails/rails/issues/47568</guid>
+    <description>*   Remove deprecated option to passing a format to `#to_s` in `Array`, `Range`, `Date`, `DateTime`, `Time`,
+    `BigDecimal`, `Float` and, `Integer`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 02:51:11 +0000</pubDate>
+    <author>Yasuo Honda</author>
+    <content:encoded><![CDATA[<p>Remove deprecated option to passing a format to <code>#to_s</code> in <code>Array</code>, <code>Range</code>, <code>Date</code>, <code>DateTime</code>, <code>Time</code>,<br />
+<code>BigDecimal</code>, <code>Float</code> and, <code>Integer</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `ActiveSupport::PerThreadRegistry`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated `ActiveSupport::PerThreadRegistry`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveSupport::PerThreadRegistry</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated override of `Enumerable#sum`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated override of `Enumerable#sum`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated override of <code>Enumerable#sum</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -5156,6 +5449,36 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Remove deprecated support to passing instance variables as locals to partials.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated support to passing instance variables as locals to partials.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to passing instance variables as locals to partials.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Remove deprecated constant `ActionView::Path`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated constant `ActionView::Path`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated constant <code>ActionView::Path</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Guard `token_list` calls from escaping HTML too often
 </title>
     <link>https://github.com/rails/rails/issues/47318</link>
@@ -5891,6 +6214,51 @@ will cause those paths to be used in the search for mailer previews.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Remove deprecated `Tasks::DatabaseTasks.schema_file_type`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated `Tasks::DatabaseTasks.schema_file_type`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>Tasks::DatabaseTasks.schema_file_type</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `config.active_record.partial_writes`.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated `config.active_record.partial_writes`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>config.active_record.partial_writes</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::Base` config accessors.
+</title>
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   Remove deprecated `ActiveRecord::Base` config accessors.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::Base</code> config accessors.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Remove the `:include_replicas` argument from `configs_for`. Use `:include_hidden` argument instead.
 </title>
     <link>https://github.com/rails/rails/issues/47536</link>
@@ -6227,18 +6595,18 @@ of SQL.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: `ActiveRecord::Base#signed_id` raises if called on a new record
+    <title>activerecord: `ActiveRecord::Base#signed_id` raises if called on a new record.
 </title>
-    <link>https://github.com/rails/rails/issues/47027</link>
-    <guid>https://github.com/rails/rails/issues/47027</guid>
-    <description>*   `ActiveRecord::Base#signed_id` raises if called on a new record
+    <link>https://github.com/rails/rails/issues/47556</link>
+    <guid>https://github.com/rails/rails/issues/47556</guid>
+    <description>*   `ActiveRecord::Base#signed_id` raises if called on a new record.
 
     Previously it would return an ID that was not usable, since it was based on `id = nil`.
 
     *Alex Ghiculescu*</description>
-    <pubDate>Wed, 18 Jan 2023 20:29:44 +0000</pubDate>
-    <author>Alex Ghiculescu</author>
-    <content:encoded><![CDATA[<p><code>ActiveRecord::Base#signed_id</code> raises if called on a new record</p>
+    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Base#signed_id</code> raises if called on a new record.</p>
 
 <p>Previously it would return an ID that was not usable, since it was based on <code>id = nil</code>.</p>
 
