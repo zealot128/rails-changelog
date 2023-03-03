@@ -750,6 +750,46 @@
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
   },
   {
+    "message": "*   Remove deprecated `purge` and `purge_later` methods from the attachments association.\n\n    *Rafael Mendonça França*",
+    "project": "activestorage",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "18e53fbb2c1b76e4e0b906e602edb4ad7291b621",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated <code>purge</code> and <code>purge_later</code> methods from the attachments association.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated behavior when assigning to a collection of attachments.\n\n    Instead of appending to the collection, the collection is now replaced.\n\n    *Rafael Mendonça França*",
+    "project": "activestorage",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "c720b7eba8bab1d227553ad4f962bf35abd41c88",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated behavior when assigning to a collection of attachments.</p>\n\n<p>Instead of appending to the collection, the collection is now replaced.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveStorage::Current#host` and `ActiveStorage::Current#host=` methods.\n\n    *Rafael Mendonça França*",
+    "project": "activestorage",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "0591de55af5cb1fa249237772309e94b07a640c2",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated <code>ActiveStorage::Current#host</code> and <code>ActiveStorage::Current#host=</code> methods.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated invalid default content types in Active Storage configurations.\n\n    *Rafael Mendonça França*",
+    "project": "activestorage",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "4edaa4120bd76fafa770dc654f85f83f1c2c6d78",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated invalid default content types in Active Storage configurations.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Add missing preview event to `ActiveStorage::LogSubscriber`\n\n    A `preview` event is being instrumented in `ActiveStorage::Previewer`.\n    However it was not added inside ActiveStorage's LogSubscriber class.\n\n    This will allow to have logs for when a preview happens\n    in the same fashion as all other ActiveStorage events such as\n    `upload` and `download` inside `Rails.logger`.\n\n    *Chedli Bourguiba*",
     "project": "activestorage",
     "date_merged": 1666432443000,
@@ -928,6 +968,46 @@
     "pr": "46829",
     "merge_sha": "85bc6ca9d2c0768796bbd6e496b2b3206853127f",
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `poltergeist` and `webkit` (capybara-webkit) driver registration for system testing.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "696ccbc26568fb98af4695ad4dd445b593bbc43e",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated <code>poltergeist</code> and <code>webkit</code> (capybara-webkit) driver registration for system testing.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated ability to assign a single value to `config.action_dispatch.trusted_proxies`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "1e70d0f5d3695bd9f18f909e953e84ca04d25e17",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated ability to assign a single value to <code>config.action_dispatch.trusted_proxies</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `config.action_dispatch.return_only_request_media_type_on_content_type`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "689b27773396c06b49333de9f6e9d0127f16d6ea",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Deprecate <code>config.action_dispatch.return_only_request_media_type_on_content_type</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated behavior on `Request#content_type`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "689b27773396c06b49333de9f6e9d0127f16d6ea",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated behavior on <code>Request#content_type</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Change `ActionController::Instrumentation` to pass `filtered_path` instead of `fullpath` in the event payload to filter sensitive query params\n\n    ```ruby\n    get \"/posts?password=test\"\n    request.fullpath         # => \"/posts?password=test\"\n    request.filtered_path    # => \"/posts?password=[FILTERED]\"\n    ```\n\n    *Ritikesh G*",
@@ -1338,6 +1418,116 @@
     "pr": "46552",
     "merge_sha": "d42defd8c9f8d1c04fd3548c200dbd4f8ecb10a6",
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to generate incorrect RFC 4122 UUIDs when providing a namespace ID that is not one of the\n    constants defined on `Digest::UUID`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "7b4affc78bf2fdd349a86c60b940b7c172e111df",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated support to generate incorrect RFC 4122 UUIDs when providing a namespace ID that is not one of the<br />\nconstants defined on <code>Digest::UUID</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `config.active_support.use_rfc4122_namespaced_uuids`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "7b4affc78bf2fdd349a86c60b940b7c172e111df",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Deprecate <code>config.active_support.use_rfc4122_namespaced_uuids</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveSupport::Notifications::Event#children` and  `ActiveSupport::Notifications::Event#parent_of?`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "29679df058e057cdb75e0978204b576d86dfb4fb",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated <code>ActiveSupport::Notifications::Event#children</code> and  <code>ActiveSupport::Notifications::Event#parent_of?</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove implicit conversion of objects into `String` by `ActiveSupport::SafeBuffer`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "f02998d2b5982434faf2d258fe2977074ee4424f",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove implicit conversion of objects into <code>String</code> by <code>ActiveSupport::SafeBuffer</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `active_support/core_ext/range/include_time_with_zone` file.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "f0ddb7709bcd076256d8e4ce494963a7bef3ec29",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated <code>active_support/core_ext/range/include_time_with_zone</code> file.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `config.active_support.remove_deprecated_time_with_zone_name`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "34e296d4927938a69caf118c98ab9f8a7afa10a5",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Deprecate <code>config.active_support.remove_deprecated_time_with_zone_name</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated override of `ActiveSupport::TimeWithZone.name`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "34e296d4927938a69caf118c98ab9f8a7afa10a5",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated override of <code>ActiveSupport::TimeWithZone.name</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `config.active_support.disable_to_s_conversion`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "e420c3380eb2b698a4fe84ed196f914d18f7844a",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Deprecate <code>config.active_support.disable_to_s_conversion</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated option to passing a format to `#to_s` in `Array`, `Range`, `Date`, `DateTime`, `Time`,\n    `BigDecimal`, `Float` and, `Integer`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677811871000,
+    "author": "Yasuo Honda",
+    "sha": "78fd178512483b4694392b027dfaaeeefb57a676",
+    "pr": "47568",
+    "merge_sha": "f067caae165af3646ddc06b21fee3c628d8909b0",
+    "html": "<p>Remove deprecated option to passing a format to <code>#to_s</code> in <code>Array</code>, <code>Range</code>, <code>Date</code>, <code>DateTime</code>, <code>Time</code>,<br />\n<code>BigDecimal</code>, <code>Float</code> and, <code>Integer</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveSupport::PerThreadRegistry`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "4eb6441dd8f0409ae432f1596cf35d7c5468292c",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated <code>ActiveSupport::PerThreadRegistry</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated override of `Enumerable#sum`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "3ec629784cac7a8b518feb402475153465cd8e96",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated override of <code>Enumerable#sum</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Deprecated initializing a `ActiveSupport::Cache::MemCacheStore` with an instance of `Dalli::Client`.\n\n    Deprecate the undocumented option of providing an already-initialized instance of `Dalli::Client` to `ActiveSupport::Cache::MemCacheStore`. Such clients could be configured with unrecognized options, which could lead to unexpected behavior. Instead, provide addresses as documented.\n\n    *aledustet*",
@@ -1870,6 +2060,26 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Remove deprecated support to passing instance variables as locals to partials.\n\n    *Rafael Mendonça França*",
+    "project": "actionview",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "8241178723d02123734a1efd01c12b9fda2f4fea",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated support to passing instance variables as locals to partials.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated constant `ActionView::Path`.\n\n    *Rafael Mendonça França*",
+    "project": "actionview",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "23344d4b8cc36bb8ae3db209e0365b70469118d2",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated constant <code>ActionView::Path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Guard `token_list` calls from escaping HTML too often\n\n    *Sean Doyle*",
     "project": "actionview",
     "date_merged": 1675883507000,
@@ -2100,6 +2310,36 @@
     "html": "<p>Support multiple preview paths for mailers.</p>\n\n<p>Option <code>config.action_mailer.preview_path</code> is deprecated in favor of<br />\n<code>config.action_mailer.preview_paths</code>. Appending paths to this configuration option<br />\nwill cause those paths to be used in the search for mailer previews.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Remove deprecated `Tasks::DatabaseTasks.schema_file_type`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "049dfd4ccf22b9abc4283053ca8d38a6235c237e",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated <code>Tasks::DatabaseTasks.schema_file_type</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `config.active_record.partial_writes`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "96b9fd6f140674c58e2b83740d8478cdb02236ad",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated <code>config.active_record.partial_writes</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::Base` config accessors.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "96c9db1b4829cb5d2f0e7054bec5a9c6b33f8725",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p>Remove deprecated <code>ActiveRecord::Base</code> config accessors.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Remove the `:include_replicas` argument from `configs_for`. Use `:include_hidden` argument instead.\n\n    *Eileen M. Uchitelle*",
     "project": "activerecord",
     "date_merged": 1677607326000,
@@ -2190,14 +2430,14 @@
     "html": "<p>Multiple <code>Arel::Nodes::SqlLiteral</code> nodes can now be added together to<br />\nform <code>Arel::Nodes::Fragments</code> nodes. This allows joining several pieces<br />\nof SQL.</p>\n\n<p><em>Matthew Draper</em>, <em>Ole Friis</em></p>\n"
   },
   {
-    "message": "*   `ActiveRecord::Base#signed_id` raises if called on a new record\n\n    Previously it would return an ID that was not usable, since it was based on `id = nil`.\n\n    *Alex Ghiculescu*",
+    "message": "*   `ActiveRecord::Base#signed_id` raises if called on a new record.\n\n    Previously it would return an ID that was not usable, since it was based on `id = nil`.\n\n    *Alex Ghiculescu*",
     "project": "activerecord",
-    "date_merged": 1674073784000,
-    "author": "Alex Ghiculescu",
-    "sha": "d0921663471b722a34ce8da96ce5b8b7b31bd965",
-    "pr": "47027",
-    "merge_sha": "3290a20935bfb0b562624fff9342d90081902b55",
-    "html": "<p><code>ActiveRecord::Base#signed_id</code> raises if called on a new record</p>\n\n<p>Previously it would return an ID that was not usable, since it was based on <code>id = nil</code>.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+    "date_merged": 1677805729000,
+    "author": "Rafael Mendonça França",
+    "sha": "96c9db1b4829cb5d2f0e7054bec5a9c6b33f8725",
+    "pr": "47556",
+    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
+    "html": "<p><code>ActiveRecord::Base#signed_id</code> raises if called on a new record.</p>\n\n<p>Previously it would return an ID that was not usable, since it was based on <code>id = nil</code>.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
   },
   {
     "message": "*   Allow SQL warnings to be reported.\n\n    Active Record configs can be set to enable SQL warning reporting.\n\n    ```ruby\n    # Configure action to take when SQL query produces warning\n    config.active_record.db_warnings_action = :raise\n\n    # Configure allowlist of warnings that should always be ignored\n    config.active_record.db_warnings_ignore = [\n      /Invalid utf8mb4 character string/,\n      \"An exact warning message\",\n    ]\n    ```\n\n    This is supported for the MySQL and PostgreSQL adapters.\n\n    *Adrianna Chang*, *Paarth Madan*",
