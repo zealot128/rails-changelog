@@ -6,6 +6,55 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activemodel: Improve typography of user facing error messages. In English contractions,
+</title>
+    <link>https://github.com/rails/rails/issues/45463</link>
+    <guid>https://github.com/rails/rails/issues/45463</guid>
+    <description>*   Improve typography of user facing error messages. In English contractions,
+    the Unicode APOSTROPHE (`U+0027`) is now RIGHT SINGLE QUOTATION MARK
+    (`U+2019`). For example, &quot;can&#39;t be blank&quot; is now &quot;can’t be blank&quot;.
+
+    *Jon Dufresne*</description>
+    <pubDate>Fri, 03 Mar 2023 22:58:01 +0000</pubDate>
+    <author>Jon Dufresne</author>
+    <content:encoded><![CDATA[<p>Improve typography of user facing error messages. In English contractions,<br />
+the Unicode APOSTROPHE (<code>U+0027</code>) is now RIGHT SINGLE QUOTATION MARK<br />
+(<code>U+2019</code>). For example, “can’t be blank” is now “can’t be blank”.</p>
+
+<p><em>Jon Dufresne</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Add class to `ActiveModel::MissingAttributeError` error message.
+</title>
+    <link>https://github.com/rails/rails/issues/45463</link>
+    <guid>https://github.com/rails/rails/issues/45463</guid>
+    <description>*   Add class to `ActiveModel::MissingAttributeError` error message.
+
+    Show which class is missing the attribute in the error message:
+
+    ```ruby
+    user = User.first
+    user.pets.select(:id).first.user_id
+    # =&gt; ActiveModel::MissingAttributeError: missing attribute &#39;user_id&#39; for Pet
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Sat, 04 Mar 2023 15:27:27 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Add class to <code>ActiveModel::MissingAttributeError</code> error message.</p>
+
+<p>Show which class is missing the attribute in the error message:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">first</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">pets</span><span class="p">.</span><span class="nf">select</span><span class="p">(</span><span class="ss">:id</span><span class="p">).</span><span class="nf">first</span><span class="p">.</span><span class="nf">user_id</span>
+<span class="c1"># =&gt; ActiveModel::MissingAttributeError: missing attribute 'user_id' for Pet</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Raise `NoMethodError` in `ActiveModel::Type::Value#as_json` to avoid unpredictable
 </title>
     <link>https://github.com/rails/rails/issues/46535</link>
@@ -2701,6 +2750,21 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**
+</title>
+    <link>https://github.com/rails/rails/issues/47532</link>
+    <guid>https://github.com/rails/rails/issues/47532</guid>
+    <description>*   Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**
+
+    *Jason Kotchoff*</description>
+    <pubDate>Fri, 03 Mar 2023 22:41:27 +0000</pubDate>
+    <author>Jason Kotchoff</author>
+    <content:encoded><![CDATA[<p>Expand search field on <code>rails/info/routes</code> to also search <strong>route name</strong>, <strong>http verb</strong> and <strong>controller#action</strong></p>
+
+<p><em>Jason Kotchoff</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Remove deprecated `poltergeist` and `webkit` (capybara-webkit) driver registration for system testing.
 </title>
     <link>https://github.com/rails/rails/issues/47556</link>
@@ -3684,21 +3748,6 @@ constants defined on <code>Digest::UUID</code>.</p>
     <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
     <author>Rafael Mendonça França</author>
     <content:encoded><![CDATA[<p>Deprecate <code>config.active_support.use_rfc4122_namespaced_uuids</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Remove deprecated `ActiveSupport::Notifications::Event#children` and  `ActiveSupport::Notifications::Event#parent_of?`.
-</title>
-    <link>https://github.com/rails/rails/issues/47556</link>
-    <guid>https://github.com/rails/rails/issues/47556</guid>
-    <description>*   Remove deprecated `ActiveSupport::Notifications::Event#children` and  `ActiveSupport::Notifications::Event#parent_of?`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Fri, 03 Mar 2023 01:08:49 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveSupport::Notifications::Event#children</code> and  <code>ActiveSupport::Notifications::Event#parent_of?</code>.</p>
 
 <p><em>Rafael Mendonça França</em></p>
 ]]></content:encoded>
