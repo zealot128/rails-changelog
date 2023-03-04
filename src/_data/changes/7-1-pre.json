@@ -1,5 +1,25 @@
 [
   {
+    "message": "*   Improve typography of user facing error messages. In English contractions,\n    the Unicode APOSTROPHE (`U+0027`) is now RIGHT SINGLE QUOTATION MARK\n    (`U+2019`). For example, \"can't be blank\" is now \"can’t be blank\".\n\n    *Jon Dufresne*",
+    "project": "activemodel",
+    "date_merged": 1677884281000,
+    "author": "Jon Dufresne",
+    "sha": "da82e587f2a3fdc7625e23ccc5ef2814bad74d8f",
+    "pr": "45463",
+    "merge_sha": "9f60cd8dc7d963b1843b66d9639715b4a04c9c65",
+    "html": "<p>Improve typography of user facing error messages. In English contractions,<br />\nthe Unicode APOSTROPHE (<code>U+0027</code>) is now RIGHT SINGLE QUOTATION MARK<br />\n(<code>U+2019</code>). For example, “can’t be blank” is now “can’t be blank”.</p>\n\n<p><em>Jon Dufresne</em></p>\n"
+  },
+  {
+    "message": "*   Add class to `ActiveModel::MissingAttributeError` error message.\n\n    Show which class is missing the attribute in the error message:\n\n    ```ruby\n    user = User.first\n    user.pets.select(:id).first.user_id\n    # => ActiveModel::MissingAttributeError: missing attribute 'user_id' for Pet\n    ```\n\n    *Petrik de Heus*",
+    "project": "activemodel",
+    "date_merged": 1677943647000,
+    "author": "zzak",
+    "sha": "aa2052ec4ceb64682828154e8669ac0327c678db",
+    "pr": "45463",
+    "merge_sha": "c8780e2895ed7ced6c7bb8b2357a030f354e48cc",
+    "html": "<p>Add class to <code>ActiveModel::MissingAttributeError</code> error message.</p>\n\n<p>Show which class is missing the attribute in the error message:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">first</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">pets</span><span class=\"p\">.</span><span class=\"nf\">select</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">).</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">user_id</span>\n<span class=\"c1\"># =&gt; ActiveModel::MissingAttributeError: missing attribute 'user_id' for Pet</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Raise `NoMethodError` in `ActiveModel::Type::Value#as_json` to avoid unpredictable\n    results.\n\n    *Vasiliy Ermolovich*",
     "project": "activemodel",
     "date_merged": 1669665262000,
@@ -970,6 +990,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**\n\n    *Jason Kotchoff*",
+    "project": "actionpack",
+    "date_merged": 1677883287000,
+    "author": "Jason Kotchoff",
+    "sha": "69d50468cb502345ffd1fba0936ceb6c4672c643",
+    "pr": "47532",
+    "merge_sha": "c060c2449e331e3c85eea8975491229f074546cd",
+    "html": "<p>Expand search field on <code>rails/info/routes</code> to also search <strong>route name</strong>, <strong>http verb</strong> and <strong>controller#action</strong></p>\n\n<p><em>Jason Kotchoff</em></p>\n"
+  },
+  {
     "message": "*   Remove deprecated `poltergeist` and `webkit` (capybara-webkit) driver registration for system testing.\n\n    *Rafael Mendonça França*",
     "project": "actionpack",
     "date_merged": 1677805729000,
@@ -1438,16 +1468,6 @@
     "pr": "47556",
     "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
     "html": "<p>Deprecate <code>config.active_support.use_rfc4122_namespaced_uuids</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated `ActiveSupport::Notifications::Event#children` and  `ActiveSupport::Notifications::Event#parent_of?`.\n\n    *Rafael Mendonça França*",
-    "project": "activesupport",
-    "date_merged": 1677805729000,
-    "author": "Rafael Mendonça França",
-    "sha": "29679df058e057cdb75e0978204b576d86dfb4fb",
-    "pr": "47556",
-    "merge_sha": "dd7ecb073c67fee00e409049f02d72accece94a2",
-    "html": "<p>Remove deprecated <code>ActiveSupport::Notifications::Event#children</code> and  <code>ActiveSupport::Notifications::Event#parent_of?</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Remove implicit conversion of objects into `String` by `ActiveSupport::SafeBuffer`.\n\n    *Rafael Mendonça França*",
