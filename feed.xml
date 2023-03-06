@@ -710,6 +710,62 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Autoloading setup honors root directories manually set by the user.
+</title>
+    <link>https://github.com/rails/rails/issues/47583</link>
+    <guid>https://github.com/rails/rails/issues/47583</guid>
+    <description>*   Autoloading setup honors root directories manually set by the user.
+
+    This is relevant for custom namespaces. For example, if you&#39;d like classes
+    and modules under `app/services` to be defined in the `Services` namespace
+    without an extra `app/services/services` directory, this is now enough:
+
+    ```ruby
+    # config/initializers/autoloading.rb
+
+    # The namespace has to exist.
+    #
+    # In this example we define the module on the spot. Could also be created
+    # elsewhere and its definition loaded here with an ordinary `require`. In
+    # any case, `push_dir` expects a class or module object as second argument.
+    module Services; end
+
+    Rails.autoloaders.main.push_dir(&quot;#{Rails.root}/app/services&quot;, Services)
+    ```
+
+    Before this change, Rails would later override the configuration. You had to
+    delete `app/services` from `ActiveSupport::Dependencies.autoload_paths` as
+    well.
+
+    *Xavier Noria*</description>
+    <pubDate>Sun, 05 Mar 2023 20:59:18 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Autoloading setup honors root directories manually set by the user.</p>
+
+<p>This is relevant for custom namespaces. For example, if you’d like classes<br />
+and modules under <code>app/services</code> to be defined in the <code>Services</code> namespace<br />
+without an extra <code>app/services/services</code> directory, this is now enough:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># config/initializers/autoloading.rb</span>
+
+<span class="c1"># The namespace has to exist.</span>
+<span class="c1">#</span>
+<span class="c1"># In this example we define the module on the spot. Could also be created</span>
+<span class="c1"># elsewhere and its definition loaded here with an ordinary `require`. In</span>
+<span class="c1"># any case, `push_dir` expects a class or module object as second argument.</span>
+<span class="k">module</span> <span class="nn">Services</span><span class="p">;</span> <span class="k">end</span>
+
+<span class="no">Rails</span><span class="p">.</span><span class="nf">autoloaders</span><span class="p">.</span><span class="nf">main</span><span class="p">.</span><span class="nf">push_dir</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="si">}</span><span class="s2">/app/services"</span><span class="p">,</span> <span class="no">Services</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Before this change, Rails would later override the configuration. You had to<br />
+delete <code>app/services</code> from <code>ActiveSupport::Dependencies.autoload_paths</code> as<br />
+well.</p>
+
+<p><em>Xavier Noria</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Use infinitive form for all rails command descriptions verbs.
 </title>
     <link>https://github.com/rails/rails/issues/47215</link>
