@@ -230,6 +230,16 @@
     "html": "<p>Autoloading setup honors root directories manually set by the user.</p>\n\n<p>This is relevant for custom namespaces. For example, if you’d like classes<br />\nand modules under <code>app/services</code> to be defined in the <code>Services</code> namespace<br />\nwithout an extra <code>app/services/services</code> directory, this is now enough:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># config/initializers/autoloading.rb</span>\n\n<span class=\"c1\"># The namespace has to exist.</span>\n<span class=\"c1\">#</span>\n<span class=\"c1\"># In this example we define the module on the spot. Could also be created</span>\n<span class=\"c1\"># elsewhere and its definition loaded here with an ordinary `require`. In</span>\n<span class=\"c1\"># any case, `push_dir` expects a class or module object.</span>\n<span class=\"k\">module</span> <span class=\"nn\">Services</span><span class=\"p\">;</span> <span class=\"k\">end</span>\n\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">autoloaders</span><span class=\"p\">.</span><span class=\"nf\">main</span><span class=\"p\">.</span><span class=\"nf\">push_dir</span><span class=\"p\">(</span><span class=\"s2\">\"</span><span class=\"si\">#{</span><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"si\">}</span><span class=\"s2\">/app/services\"</span><span class=\"p\">,</span> <span class=\"ss\">namespace: </span><span class=\"no\">Services</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Check the autoloading guide for further details.</p>\n\n<p><em>Xavier Noria</em></p>\n"
   },
   {
+    "message": "*   Railties now requires the irb gem as a dependency, which means when you install Rails, irb will also\n    be installed as a gem. Rails will then use the installed version of irb for its console instead of\n    relying on Ruby's built-in version.\n    This ensures that Rails has access to the most up-to-date and reliable version of irb for its console.\n\n    *Stan Lo*",
+    "project": "railties",
+    "date_merged": 1678140712000,
+    "author": "Stan Lo",
+    "sha": "4fefed42398867e4a103d48267395481b2845cb3",
+    "pr": "47442",
+    "merge_sha": "bf560f6bfac8a89b612e46179b837f669b10fb02",
+    "html": "<p>Railties now requires the irb gem as a dependency, which means when you install Rails, irb will also<br />\nbe installed as a gem. Rails will then use the installed version of irb for its console instead of<br />\nrelying on Ruby’s built-in version.<br />\nThis ensures that Rails has access to the most up-to-date and reliable version of irb for its console.</p>\n\n<p><em>Stan Lo</em></p>\n"
+  },
+  {
     "message": "*   Use infinitive form for all rails command descriptions verbs.\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1675290656000,
