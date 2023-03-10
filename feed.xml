@@ -6448,6 +6448,44 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activemodel: `has_secure_password` now generates an `#{attribute}_salt` method that returns the salt
+</title>
+    <link>https://github.com/rails/rails/issues/47490</link>
+    <guid>https://github.com/rails/rails/issues/47490</guid>
+    <description>*   `has_secure_password` now generates an `#{attribute}_salt` method that returns the salt
+    used to compute the password digest. The salt will change whenever the password is changed,
+    so it can be used to create single-use password reset tokens with `generates_token_for`:
+
+    ```ruby
+    class User &lt; ActiveRecord::Base
+      has_secure_password
+
+      generates_token_for :password_reset, expires_in: 15.minutes do
+        password_salt&amp;.last(10)
+      end
+    end
+    ```
+
+    *Lázaro Nixon*</description>
+    <pubDate>Thu, 09 Mar 2023 20:53:10 +0000</pubDate>
+    <author>Nixon</author>
+    <content:encoded><![CDATA[<p><code>has_secure_password</code> now generates an <code>#{attribute}_salt</code> method that returns the salt<br />
+used to compute the password digest. The salt will change whenever the password is changed,<br />
+so it can be used to create single-use password reset tokens with <code>generates_token_for</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">has_secure_password</span>
+
+  <span class="n">generates_token_for</span> <span class="ss">:password_reset</span><span class="p">,</span> <span class="ss">expires_in: </span><span class="mi">15</span><span class="p">.</span><span class="nf">minutes</span> <span class="k">do</span>
+    <span class="n">password_salt</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">last</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Lázaro Nixon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Improve typography of user facing error messages. In English contractions,
 </title>
     <link>https://github.com/rails/rails/issues/45463</link>
