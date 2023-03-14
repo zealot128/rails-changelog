@@ -8755,6 +8755,21 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Support prerelease rubies in Gemfile template if RubyGems version is 3.3.16 or higher.
+</title>
+    <link>https://github.com/rails/rails/issues/47584</link>
+    <guid>https://github.com/rails/rails/issues/47584</guid>
+    <description>*   Support prerelease rubies in Gemfile template if RubyGems version is 3.3.16 or higher.
+
+    *Yasuo Honda*, *David Rodríguez*</description>
+    <pubDate>Tue, 14 Mar 2023 03:10:14 +0000</pubDate>
+    <author>Yasuo Honda</author>
+    <content:encoded><![CDATA[<p>Support prerelease rubies in Gemfile template if RubyGems version is 3.3.16 or higher.</p>
+
+<p><em>Yasuo Honda</em>, <em>David Rodríguez</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Autoloading setup honors root directories manually set by the user.
 </title>
     <link>https://github.com/rails/rails/issues/47583</link>
