@@ -2749,6 +2749,27 @@ will cause those paths to be used in the search for mailer previews.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Respect `foreign_type` option to `delegated_type` for `{role}_class` method.
+</title>
+    <link>https://github.com/rails/rails/issues/45041</link>
+    <guid>https://github.com/rails/rails/issues/45041</guid>
+    <description>*   Respect `foreign_type` option to `delegated_type` for `{role}_class` method.
+
+    Usage of `delegated_type` with non-conventional `{role}_type` column names can now be specified with `foreign_type` option.
+    This option is the same as `foreign_type` as forwarded to the underlying `belongs_to` association that `delegated_type` wraps.
+
+    *Jason Karns*</description>
+    <pubDate>Tue, 14 Mar 2023 13:58:32 +0000</pubDate>
+    <author>Jason Karns</author>
+    <content:encoded><![CDATA[<p>Respect <code>foreign_type</code> option to <code>delegated_type</code> for <code>{role}_class</code> method.</p>
+
+<p>Usage of <code>delegated_type</code> with non-conventional <code>{role}_type</code> column names can now be specified with <code>foreign_type</code> option.<br />
+This option is the same as <code>foreign_type</code> as forwarded to the underlying <code>belongs_to</code> association that <code>delegated_type</code> wraps.</p>
+
+<p><em>Jason Karns</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add support for unique constraints (PostgreSQL-only).
 </title>
     <link>https://github.com/rails/rails/issues/46192</link>
