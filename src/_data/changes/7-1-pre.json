@@ -3170,6 +3170,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Support prerelease rubies in Gemfile template if RubyGems version is 3.3.16 or higher.\n\n    *Yasuo Honda*, *David Rodríguez*",
+    "project": "railties",
+    "date_merged": 1678763414000,
+    "author": "Yasuo Honda",
+    "sha": "7da3353b60749426aac27c6b43d589448f3a3cd0",
+    "pr": "47584",
+    "merge_sha": "ed337e637ac2d23df57404a005fa92f74a68920b",
+    "html": "<p>Support prerelease rubies in Gemfile template if RubyGems version is 3.3.16 or higher.</p>\n\n<p><em>Yasuo Honda</em>, <em>David Rodríguez</em></p>\n"
+  },
+  {
     "message": "*   Autoloading setup honors root directories manually set by the user.\n\n    This is relevant for custom namespaces. For example, if you'd like classes\n    and modules under `app/services` to be defined in the `Services` namespace\n    without an extra `app/services/services` directory, this is now enough:\n\n    ```ruby\n    # config/initializers/autoloading.rb\n\n    # The namespace has to exist.\n    #\n    # In this example we define the module on the spot. Could also be created\n    # elsewhere and its definition loaded here with an ordinary `require`. In\n    # any case, `push_dir` expects a class or module object.\n    module Services; end\n\n    Rails.autoloaders.main.push_dir(\"#{Rails.root}/app/services\", namespace: Services)\n    ```\n\n    Check the autoloading guide for further details.\n\n    *Xavier Noria*",
     "project": "railties",
     "date_merged": 1678049958000,
