@@ -1110,6 +1110,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Introduce `TestFixtures#fixture_paths`.\n\n    Multiple fixture paths can now be specified using the `#fixture_paths` accessor.\n    Apps will continue to have `test/fixtures` as their one fixture path by default,\n    but additional fixture paths can be specified.\n\n    ```ruby\n    ActiveSupport::TestCase.fixture_paths << \"component1/test/fixtures\"\n    ActiveSupport::TestCase.fixture_paths << \"component2/test/fixtures\"\n    ```\n\n    `TestFixtures#fixture_path` is now deprecated.\n\n    *Andrew Novoselac*",
+    "project": "activerecord",
+    "date_merged": 1678885544000,
+    "author": "Andrew Novoselac",
+    "sha": "6902cbce1b3ea7babab588171d413b9b78cb3f0f",
+    "pr": "47675",
+    "merge_sha": "74554cde8b96f6b9ae3e0b31ffb37783d4f56d10",
+    "html": "<p>Introduce <code>TestFixtures#fixture_paths</code>.</p>\n\n<p>Multiple fixture paths can now be specified using the <code>#fixture_paths</code> accessor.<br />\nApps will continue to have <code>test/fixtures</code> as their one fixture path by default,<br />\nbut additional fixture paths can be specified.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">TestCase</span><span class=\"p\">.</span><span class=\"nf\">fixture_paths</span> <span class=\"o\">&lt;&lt;</span> <span class=\"s2\">\"component1/test/fixtures\"</span>\n<span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">TestCase</span><span class=\"p\">.</span><span class=\"nf\">fixture_paths</span> <span class=\"o\">&lt;&lt;</span> <span class=\"s2\">\"component2/test/fixtures\"</span>\n</code></pre></div></div>\n\n<p><code>TestFixtures#fixture_path</code> is now deprecated.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
     "message": "*   Adds support for deferrable exclude constraints in PostgreSQL.\n\n    By default, exclude constraints in PostgreSQL are checked after each statement.\n    This works for most use cases, but becomes a major limitation when replacing\n    records with overlapping ranges by using multiple statements.\n\n    ```ruby\n    exclusion_constraint :users, \"daterange(valid_from, valid_to) WITH &&\", deferrable: :immediate\n    ```\n\n    Passing `deferrable: :immediate` checks constraint after each statement,\n    but allows manually deferring the check using `SET CONSTRAINTS ALL DEFERRED`\n    within a transaction. This will cause the excludes to be checked after the transaction.\n\n    It's also possible to change the default behavior from an immediate check\n    (after the statement), to a deferred check (after the transaction):\n\n    ```ruby\n    exclusion_constraint :users, \"daterange(valid_from, valid_to) WITH &&\", deferrable: :deferred\n    ```\n\n    *Hiroyuki Ishii*",
     "project": "activerecord",
     "date_merged": 1678836421000,
@@ -3188,6 +3198,16 @@
     "pr": "43951",
     "merge_sha": "58c0b76982e3fbcb5642223effd9cce93947029e",
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Allow calling `bin/rails restart` outside of app directory.\n\n    The following would previously fail with a \"No Rakefile found\" error.\n\n    ```bash\n    blog/bin/rails restart\n    ```\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1678898287000,
+    "author": "Petrik",
+    "sha": "51c965c43174a45fed8e5d052f0d7d91ba632dc6",
+    "pr": "47619",
+    "merge_sha": "a51364dcf1dab34bc6cfc9aeca56a3b0ecf823ad",
+    "html": "<p>Allow calling <code>bin/rails restart</code> outside of app directory.</p>\n\n<p>The following would previously fail with a “No Rakefile found” error.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>blog/bin/rails restart\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
     "message": "*   Support prerelease rubies in Gemfile template if RubyGems version is 3.3.13 or higher.\n\n    *Yasuo Honda*, *David Rodríguez*",
