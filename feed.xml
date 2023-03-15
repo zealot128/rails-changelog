@@ -2749,6 +2749,57 @@ will cause those paths to be used in the search for mailer previews.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Adds support for deferrable exclude constraints in PostgreSQL.
+</title>
+    <link>https://github.com/rails/rails/issues/47655</link>
+    <guid>https://github.com/rails/rails/issues/47655</guid>
+    <description>*   Adds support for deferrable exclude constraints in PostgreSQL.
+
+    By default, exclude constraints in PostgreSQL are checked after each statement.
+    This works for most use cases, but becomes a major limitation when replacing
+    records with overlapping ranges by using multiple statements.
+
+    ```ruby
+    exclusion_constraint :users, &quot;daterange(valid_from, valid_to) WITH &amp;&amp;&quot;, deferrable: :immediate
+    ```
+
+    Passing `deferrable: :immediate` checks constraint after each statement,
+    but allows manually deferring the check using `SET CONSTRAINTS ALL DEFERRED`
+    within a transaction. This will cause the excludes to be checked after the transaction.
+
+    It&#39;s also possible to change the default behavior from an immediate check
+    (after the statement), to a deferred check (after the transaction):
+
+    ```ruby
+    exclusion_constraint :users, &quot;daterange(valid_from, valid_to) WITH &amp;&amp;&quot;, deferrable: :deferred
+    ```
+
+    *Hiroyuki Ishii*</description>
+    <pubDate>Tue, 14 Mar 2023 23:27:01 +0000</pubDate>
+    <author>alpaca-tc</author>
+    <content:encoded><![CDATA[<p>Adds support for deferrable exclude constraints in PostgreSQL.</p>
+
+<p>By default, exclude constraints in PostgreSQL are checked after each statement.<br />
+This works for most use cases, but becomes a major limitation when replacing<br />
+records with overlapping ranges by using multiple statements.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">exclusion_constraint</span> <span class="ss">:users</span><span class="p">,</span> <span class="s2">"daterange(valid_from, valid_to) WITH &amp;&amp;"</span><span class="p">,</span> <span class="ss">deferrable: :immediate</span>
+</code></pre></div></div>
+
+<p>Passing <code>deferrable: :immediate</code> checks constraint after each statement,<br />
+but allows manually deferring the check using <code>SET CONSTRAINTS ALL DEFERRED</code><br />
+within a transaction. This will cause the excludes to be checked after the transaction.</p>
+
+<p>It’s also possible to change the default behavior from an immediate check<br />
+(after the statement), to a deferred check (after the transaction):</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">exclusion_constraint</span> <span class="ss">:users</span><span class="p">,</span> <span class="s2">"daterange(valid_from, valid_to) WITH &amp;&amp;"</span><span class="p">,</span> <span class="ss">deferrable: :deferred</span>
+</code></pre></div></div>
+
+<p><em>Hiroyuki Ishii</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Respect `foreign_type` option to `delegated_type` for `{role}_class` method.
 </title>
     <link>https://github.com/rails/rails/issues/45041</link>
@@ -8776,16 +8827,16 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Support prerelease rubies in Gemfile template if RubyGems version is 3.3.16 or higher.
+    <title>railties: Support prerelease rubies in Gemfile template if RubyGems version is 3.3.13 or higher.
 </title>
-    <link>https://github.com/rails/rails/issues/47584</link>
-    <guid>https://github.com/rails/rails/issues/47584</guid>
-    <description>*   Support prerelease rubies in Gemfile template if RubyGems version is 3.3.16 or higher.
+    <link>https://github.com/rails/rails/issues/47681</link>
+    <guid>https://github.com/rails/rails/issues/47681</guid>
+    <description>*   Support prerelease rubies in Gemfile template if RubyGems version is 3.3.13 or higher.
 
     *Yasuo Honda*, *David Rodríguez*</description>
-    <pubDate>Tue, 14 Mar 2023 03:10:14 +0000</pubDate>
-    <author>Yasuo Honda</author>
-    <content:encoded><![CDATA[<p>Support prerelease rubies in Gemfile template if RubyGems version is 3.3.16 or higher.</p>
+    <pubDate>Wed, 15 Mar 2023 04:36:28 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Support prerelease rubies in Gemfile template if RubyGems version is 3.3.13 or higher.</p>
 
 <p><em>Yasuo Honda</em>, <em>David Rodríguez</em></p>
 ]]></content:encoded>
