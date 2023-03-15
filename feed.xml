@@ -2749,6 +2749,42 @@ will cause those paths to be used in the search for mailer previews.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Introduce `TestFixtures#fixture_paths`.
+</title>
+    <link>https://github.com/rails/rails/issues/47675</link>
+    <guid>https://github.com/rails/rails/issues/47675</guid>
+    <description>*   Introduce `TestFixtures#fixture_paths`.
+
+    Multiple fixture paths can now be specified using the `#fixture_paths` accessor.
+    Apps will continue to have `test/fixtures` as their one fixture path by default,
+    but additional fixture paths can be specified.
+
+    ```ruby
+    ActiveSupport::TestCase.fixture_paths &lt;&lt; &quot;component1/test/fixtures&quot;
+    ActiveSupport::TestCase.fixture_paths &lt;&lt; &quot;component2/test/fixtures&quot;
+    ```
+
+    `TestFixtures#fixture_path` is now deprecated.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Wed, 15 Mar 2023 13:05:44 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Introduce <code>TestFixtures#fixture_paths</code>.</p>
+
+<p>Multiple fixture paths can now be specified using the <code>#fixture_paths</code> accessor.<br />
+Apps will continue to have <code>test/fixtures</code> as their one fixture path by default,<br />
+but additional fixture paths can be specified.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span><span class="p">.</span><span class="nf">fixture_paths</span> <span class="o">&lt;&lt;</span> <span class="s2">"component1/test/fixtures"</span>
+<span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span><span class="p">.</span><span class="nf">fixture_paths</span> <span class="o">&lt;&lt;</span> <span class="s2">"component2/test/fixtures"</span>
+</code></pre></div></div>
+
+<p><code>TestFixtures#fixture_path</code> is now deprecated.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Adds support for deferrable exclude constraints in PostgreSQL.
 </title>
     <link>https://github.com/rails/rails/issues/47655</link>
@@ -8824,6 +8860,32 @@ if the path existed and was an empty directory or file.</p>
 but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 
 <p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Allow calling `bin/rails restart` outside of app directory.
+</title>
+    <link>https://github.com/rails/rails/issues/47619</link>
+    <guid>https://github.com/rails/rails/issues/47619</guid>
+    <description>*   Allow calling `bin/rails restart` outside of app directory.
+
+    The following would previously fail with a &quot;No Rakefile found&quot; error.
+
+    ```bash
+    blog/bin/rails restart
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Wed, 15 Mar 2023 16:38:07 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Allow calling <code>bin/rails restart</code> outside of app directory.</p>
+
+<p>The following would previously fail with a “No Rakefile found” error.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>blog/bin/rails restart
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
   <item>
