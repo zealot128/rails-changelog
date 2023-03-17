@@ -1480,6 +1480,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Introduce `:active_record_fixtures` lazy load hook.\n\n    Hooks defined with this name will be run whenever `TestFixtures` is included\n    in a class.\n\n    ```ruby\n    ActiveSupport.on_load(:active_record_fixtures) do\n      self.fixture_paths << \"test/fixtures\"\n    end\n\n    klass = Class.new\n    klass.include(ActiveRecord::TestFixtures)\n\n    klass.fixture_paths # => [\"test/fixtures\"]\n    ```\n\n    *Andrew Novoselac*",
+    "project": "activerecord",
+    "date_merged": 1679076652000,
+    "author": "Andrew Novoselac",
+    "sha": "49283adc1663b8a65d1062540ba731fe00cecbcf",
+    "pr": "47690",
+    "merge_sha": "e23e1718ead861ae43004f5706ddad780a440359",
+    "html": "<p>Introduce <code>:active_record_fixtures</code> lazy load hook.</p>\n\n<p>Hooks defined with this name will be run whenever <code>TestFixtures</code> is included<br />\nin a class.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"p\">.</span><span class=\"nf\">on_load</span><span class=\"p\">(</span><span class=\"ss\">:active_record_fixtures</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">fixture_paths</span> <span class=\"o\">&lt;&lt;</span> <span class=\"s2\">\"test/fixtures\"</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">klass</span> <span class=\"o\">=</span> <span class=\"no\">Class</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">klass</span><span class=\"p\">.</span><span class=\"nf\">include</span><span class=\"p\">(</span><span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">TestFixtures</span><span class=\"p\">)</span>\n\n<span class=\"n\">klass</span><span class=\"p\">.</span><span class=\"nf\">fixture_paths</span> <span class=\"c1\"># =&gt; [\"test/fixtures\"]</span>\n</code></pre></div></div>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
     "message": "*   Introduce `TestFixtures#fixture_paths`.\n\n    Multiple fixture paths can now be specified using the `#fixture_paths` accessor.\n    Apps will continue to have `test/fixtures` as their one fixture path by default,\n    but additional fixture paths can be specified.\n\n    ```ruby\n    ActiveSupport::TestCase.fixture_paths << \"component1/test/fixtures\"\n    ActiveSupport::TestCase.fixture_paths << \"component2/test/fixtures\"\n    ```\n\n    `TestFixtures#fixture_path` is now deprecated.\n\n    *Andrew Novoselac*",
     "project": "activerecord",
     "date_merged": 1678885544000,
