@@ -4101,6 +4101,48 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Introduce `:active_record_fixtures` lazy load hook.
+</title>
+    <link>https://github.com/rails/rails/issues/47690</link>
+    <guid>https://github.com/rails/rails/issues/47690</guid>
+    <description>*   Introduce `:active_record_fixtures` lazy load hook.
+
+    Hooks defined with this name will be run whenever `TestFixtures` is included
+    in a class.
+
+    ```ruby
+    ActiveSupport.on_load(:active_record_fixtures) do
+      self.fixture_paths &lt;&lt; &quot;test/fixtures&quot;
+    end
+
+    klass = Class.new
+    klass.include(ActiveRecord::TestFixtures)
+
+    klass.fixture_paths # =&gt; [&quot;test/fixtures&quot;]
+    ```
+
+    *Andrew Novoselac*</description>
+    <pubDate>Fri, 17 Mar 2023 18:10:52 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Introduce <code>:active_record_fixtures</code> lazy load hook.</p>
+
+<p>Hooks defined with this name will be run whenever <code>TestFixtures</code> is included<br />
+in a class.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveSupport</span><span class="p">.</span><span class="nf">on_load</span><span class="p">(</span><span class="ss">:active_record_fixtures</span><span class="p">)</span> <span class="k">do</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">fixture_paths</span> <span class="o">&lt;&lt;</span> <span class="s2">"test/fixtures"</span>
+<span class="k">end</span>
+
+<span class="n">klass</span> <span class="o">=</span> <span class="no">Class</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">klass</span><span class="p">.</span><span class="nf">include</span><span class="p">(</span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">TestFixtures</span><span class="p">)</span>
+
+<span class="n">klass</span><span class="p">.</span><span class="nf">fixture_paths</span> <span class="c1"># =&gt; ["test/fixtures"]</span>
+</code></pre></div></div>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Introduce `TestFixtures#fixture_paths`.
 </title>
     <link>https://github.com/rails/rails/issues/47675</link>
