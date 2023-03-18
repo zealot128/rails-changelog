@@ -4487,7 +4487,7 @@ you need execute <code>remove_index</code> before creating deferrable unique con
     end
     ```
 
-    Then register the config in an inializer:
+    Then register the config in an initializer:
 
     ```ruby
     ActiveRecord::DatabaseConfigurations.register_db_config_handler do |env_name, name, url, config|
@@ -4530,7 +4530,7 @@ you need execute <code>remove_index</code> before creating deferrable unique con
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>Then register the config in an inializer:</p>
+<p>Then register the config in an initializer:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">DatabaseConfigurations</span><span class="p">.</span><span class="nf">register_db_config_handler</span> <span class="k">do</span> <span class="o">|</span><span class="n">env_name</span><span class="p">,</span> <span class="nb">name</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">config</span><span class="o">|</span>
   <span class="k">next</span> <span class="k">unless</span> <span class="n">config</span><span class="p">.</span><span class="nf">key?</span><span class="p">(</span><span class="ss">:custom_config</span><span class="p">)</span>
