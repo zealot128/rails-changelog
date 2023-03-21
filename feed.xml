@@ -4101,6 +4101,42 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow warning codes to be ignore when reporting SQL warnings.
+</title>
+    <link>https://github.com/rails/rails/issues/47650</link>
+    <guid>https://github.com/rails/rails/issues/47650</guid>
+    <description>*   Allow warning codes to be ignore when reporting SQL warnings.
+
+    Active Record config that can ignore warning codes
+
+    ```ruby
+    # Configure allowlist of warnings that should always be ignored
+    config.active_record.db_warnings_ignore = [
+      &quot;1062&quot;, # MySQL Error 1062: Duplicate entry
+    ]
+    ```
+
+    This is supported for the MySQL and PostgreSQL adapters.
+
+    *Nick Borromeo*</description>
+    <pubDate>Tue, 21 Mar 2023 03:08:49 +0000</pubDate>
+    <author>Nick Borromeo</author>
+    <content:encoded><![CDATA[<p>Allow warning codes to be ignore when reporting SQL warnings.</p>
+
+<p>Active Record config that can ignore warning codes</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Configure allowlist of warnings that should always be ignored</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">db_warnings_ignore</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">"1062"</span><span class="p">,</span> <span class="c1"># MySQL Error 1062: Duplicate entry</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>This is supported for the MySQL and PostgreSQL adapters.</p>
+
+<p><em>Nick Borromeo</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Introduce `:active_record_fixtures` lazy load hook.
 </title>
     <link>https://github.com/rails/rails/issues/47690</link>
