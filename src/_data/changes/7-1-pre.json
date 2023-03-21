@@ -1480,6 +1480,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Allow warning codes to be ignore when reporting SQL warnings.\n\n    Active Record config that can ignore warning codes\n\n    ```ruby\n    # Configure allowlist of warnings that should always be ignored\n    config.active_record.db_warnings_ignore = [\n      \"1062\", # MySQL Error 1062: Duplicate entry\n    ]\n    ```\n\n    This is supported for the MySQL and PostgreSQL adapters.\n\n    *Nick Borromeo*",
+    "project": "activerecord",
+    "date_merged": 1679368129000,
+    "author": "Nick Borromeo",
+    "sha": "6bd100711c0e6ce5b29a76dc641a36d21851ef6c",
+    "pr": "47650",
+    "merge_sha": "05cb63abdaf6101e6c8fb43119e2c0d08e543c28",
+    "html": "<p>Allow warning codes to be ignore when reporting SQL warnings.</p>\n\n<p>Active Record config that can ignore warning codes</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Configure allowlist of warnings that should always be ignored</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">db_warnings_ignore</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n  <span class=\"s2\">\"1062\"</span><span class=\"p\">,</span> <span class=\"c1\"># MySQL Error 1062: Duplicate entry</span>\n<span class=\"p\">]</span>\n</code></pre></div></div>\n\n<p>This is supported for the MySQL and PostgreSQL adapters.</p>\n\n<p><em>Nick Borromeo</em></p>\n"
+  },
+  {
     "message": "*   Introduce `:active_record_fixtures` lazy load hook.\n\n    Hooks defined with this name will be run whenever `TestFixtures` is included\n    in a class.\n\n    ```ruby\n    ActiveSupport.on_load(:active_record_fixtures) do\n      self.fixture_paths << \"test/fixtures\"\n    end\n\n    klass = Class.new\n    klass.include(ActiveRecord::TestFixtures)\n\n    klass.fixture_paths # => [\"test/fixtures\"]\n    ```\n\n    *Andrew Novoselac*",
     "project": "activerecord",
     "date_merged": 1679076652000,
