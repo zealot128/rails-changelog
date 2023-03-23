@@ -4101,6 +4101,58 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow specifying where clauses with column-tuple syntax.
+</title>
+    <link>https://github.com/rails/rails/issues/47729</link>
+    <guid>https://github.com/rails/rails/issues/47729</guid>
+    <description>*   Allow specifying where clauses with column-tuple syntax.
+
+    Querying through `#where` now accepts a new tuple-syntax which accepts, as
+    a key, an array of columns and, as a value, an array of corresponding tuples.
+    The key specifies a list of columns, while the value is an array of
+    ordered-tuples that conform to the column list.
+
+    For instance:
+
+    ```ruby
+    # Cpk::Book =&gt; Cpk::Book(author_id: integer, number: integer, title: string, revision: integer)
+    # Cpk::Book.primary_key =&gt; [&quot;author_id&quot;, &quot;number&quot;]
+
+    book = Cpk::Book.create!(author_id: 1, number: 1)
+    Cpk::Book.where(Cpk::Book.primary_key =&gt; [[1, 2]]) # =&gt; [book]
+
+    # Topic =&gt; Topic(id: integer, title: string, author_name: string...)
+
+    Topic.where([:title, :author_name] =&gt; [[&quot;The Alchemist&quot;, &quot;Paul Coelho&quot;], [&quot;Harry Potter&quot;, &quot;J.K Rowling&quot;]])
+    ```
+
+    *Paarth Madan*</description>
+    <pubDate>Wed, 22 Mar 2023 21:08:42 +0000</pubDate>
+    <author>Paarth Madan</author>
+    <content:encoded><![CDATA[<p>Allow specifying where clauses with column-tuple syntax.</p>
+
+<p>Querying through <code>#where</code> now accepts a new tuple-syntax which accepts, as<br />
+a key, an array of columns and, as a value, an array of corresponding tuples.<br />
+The key specifies a list of columns, while the value is an array of<br />
+ordered-tuples that conform to the column list.</p>
+
+<p>For instance:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Cpk::Book =&gt; Cpk::Book(author_id: integer, number: integer, title: string, revision: integer)</span>
+<span class="c1"># Cpk::Book.primary_key =&gt; ["author_id", "number"]</span>
+
+<span class="n">book</span> <span class="o">=</span> <span class="no">Cpk</span><span class="o">::</span><span class="no">Book</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">author_id: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">number: </span><span class="mi">1</span><span class="p">)</span>
+<span class="no">Cpk</span><span class="o">::</span><span class="no">Book</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="no">Cpk</span><span class="o">::</span><span class="no">Book</span><span class="p">.</span><span class="nf">primary_key</span> <span class="o">=&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span> <span class="c1"># =&gt; [book]</span>
+
+<span class="c1"># Topic =&gt; Topic(id: integer, title: string, author_name: string...)</span>
+
+<span class="no">Topic</span><span class="p">.</span><span class="nf">where</span><span class="p">([</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:author_name</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="p">[[</span><span class="s2">"The Alchemist"</span><span class="p">,</span> <span class="s2">"Paul Coelho"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"Harry Potter"</span><span class="p">,</span> <span class="s2">"J.K Rowling"</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<p><em>Paarth Madan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow warning codes to be ignore when reporting SQL warnings.
 </title>
     <link>https://github.com/rails/rails/issues/47650</link>
