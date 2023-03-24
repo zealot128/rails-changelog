@@ -2199,6 +2199,21 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Add `sample_rate` to `ActiveStorage::Analyzer::AudioAnalyzer` output
+</title>
+    <link>https://github.com/rails/rails/issues/47749</link>
+    <guid>https://github.com/rails/rails/issues/47749</guid>
+    <description>*   Add `sample_rate` to `ActiveStorage::Analyzer::AudioAnalyzer` output
+
+    *Matija Čupić*</description>
+    <pubDate>Thu, 23 Mar 2023 19:17:10 +0000</pubDate>
+    <author>Matija Čupić</author>
+    <content:encoded><![CDATA[<p>Add <code>sample_rate</code> to <code>ActiveStorage::Analyzer::AudioAnalyzer</code> output</p>
+
+<p><em>Matija Čupić</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Remove deprecated `purge` and `purge_later` methods from the attachments association.
 </title>
     <link>https://github.com/rails/rails/issues/47556</link>
