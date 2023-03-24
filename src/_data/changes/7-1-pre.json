@@ -790,6 +790,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Add `sample_rate` to `ActiveStorage::Analyzer::AudioAnalyzer` output\n\n    *Matija Čupić*",
+    "project": "activestorage",
+    "date_merged": 1679599030000,
+    "author": "Matija Čupić",
+    "sha": "c0465cf6aa224bd06fc5cae4d1a12284ecc3cdeb",
+    "pr": "47749",
+    "merge_sha": "097f703d59a64da1164bf63ea020ff85e3b32004",
+    "html": "<p>Add <code>sample_rate</code> to <code>ActiveStorage::Analyzer::AudioAnalyzer</code> output</p>\n\n<p><em>Matija Čupić</em></p>\n"
+  },
+  {
     "message": "*   Remove deprecated `purge` and `purge_later` methods from the attachments association.\n\n    *Rafael Mendonça França*",
     "project": "activestorage",
     "date_merged": 1677805729000,
