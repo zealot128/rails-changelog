@@ -790,6 +790,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Allow destroying active storage variants\n\n    ```ruby\n    User.first.avatar.variant(resize_to_limit: [100, 100]).destroy\n    ```\n\n    *Shouichi Kamiya*, *Yuichiro NAKAGAWA*, *Ryohei UEDA*",
+    "project": "activestorage",
+    "date_merged": 1679763306000,
+    "author": "Shouichi Kamiya",
+    "sha": "98abeea7b6cae376533b7c0176d139f561a9e347",
+    "pr": "47150",
+    "merge_sha": "febd9ab4f62c21ed3ac66392a9ad4b3a3685d6ac",
+    "html": "<p>Allow destroying active storage variants</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">avatar</span><span class=\"p\">.</span><span class=\"nf\">variant</span><span class=\"p\">(</span><span class=\"ss\">resize_to_limit: </span><span class=\"p\">[</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">]).</span><span class=\"nf\">destroy</span>\n</code></pre></div></div>\n\n<p><em>Shouichi Kamiya</em>, <em>Yuichiro NAKAGAWA</em>, <em>Ryohei UEDA</em></p>\n"
+  },
+  {
     "message": "*   Add `sample_rate` to `ActiveStorage::Analyzer::AudioAnalyzer` output\n\n    *Matija Čupić*",
     "project": "activestorage",
     "date_merged": 1679599030000,
@@ -2860,6 +2870,16 @@
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Attachables now can override default attachment missing template.\n\n    When rendering Action Text attachments where the underlying attachable model has\n    been removed, a fallback template is used. You now can override this template on\n    a per-model basis. For example, you could render a placeholder image for a file\n    attachment or the text \"Deleted User\" for a User attachment.\n\n    *Matt Swanson*, *Joel Drapper*",
+    "project": "actiontext",
+    "date_merged": 1679762994000,
+    "author": "Matt Swanson",
+    "sha": "fbf0145f19948ce3a4caf3438a1665ffc3e00baa",
+    "pr": "46101",
+    "merge_sha": "6aaa9db6472c1017e6dbd12163a56a4902e813ff",
+    "html": "<p>Attachables now can override default attachment missing template.</p>\n\n<p>When rendering Action Text attachments where the underlying attachable model has<br />\nbeen removed, a fallback template is used. You now can override this template on<br />\na per-model basis. For example, you could render a placeholder image for a file<br />\nattachment or the text “Deleted User” for a User attachment.</p>\n\n<p><em>Matt Swanson</em>, <em>Joel Drapper</em></p>\n"
+  },
+  {
     "message": "*   Update bundled Trix version from `1.3.1` to `2.0.4`.\n\n    *Sean Doyle*",
     "project": "actiontext",
     "date_merged": 1674500650000,
@@ -3538,6 +3558,16 @@
     "pr": "44261",
     "merge_sha": "6a55aff4a9fc5021066146f2c4abebb98a8d9894",
     "html": "<p>Make <code>Session#merge!</code> stringify keys.</p>\n\n<p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>\n\n<p><em>Drew Bragg</em></p>\n"
+  },
+  {
+    "message": "*   Set `provider_job_id` for Backburner jobs\n\n    *Cameron Matheson*",
+    "project": "activejob",
+    "date_merged": 1679757700000,
+    "author": "Cameron Matheson",
+    "sha": "0cb0880b1a1d1dc6ac7c38039cfc0377ab937692",
+    "pr": "47732",
+    "merge_sha": "05104e82b8e0e49c18198210422870aaec544bfc",
+    "html": "<p>Set <code>provider_job_id</code> for Backburner jobs</p>\n\n<p><em>Cameron Matheson</em></p>\n"
   },
   {
     "message": "*   Add `perform_all_later` to enqueue multiple jobs at once\n\n    This adds the ability to bulk enqueue jobs, without running callbacks, by\n    passing multiple jobs or an array of jobs. For example:\n\n    ```ruby\n    ActiveJob.perform_all_later(MyJob.new(\"hello\", 42), MyJob.new(\"world\", 0))\n\n    user_jobs = User.pluck(:id).map { |id| UserJob.new(user_id: id) }\n    ActiveJob.perform_all_later(user_jobs)\n    ```\n\n    This can greatly reduce the number of round-trips to the queue datastore.\n    For queue adapters that do not implement the new `enqueue_all` method, we\n    fall back to enqueuing jobs indvidually. The Sidekiq adapter implements\n    `enqueue_all` with `push_bulk`.\n\n    This method does not use the existing `enqueue.active_job` event, but adds a\n    new event `enqueue_all.active_job`.\n\n    *Sander Verdonschot*",
