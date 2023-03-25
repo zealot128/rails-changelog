@@ -3100,14 +3100,14 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
-    "message": "*   Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**\n\n    *Jason Kotchoff*",
+    "message": "*   Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**.\n\n    *Jason Kotchoff*",
     "project": "actionpack",
-    "date_merged": 1677883287000,
-    "author": "Jason Kotchoff",
-    "sha": "69d50468cb502345ffd1fba0936ceb6c4672c643",
-    "pr": "47532",
-    "merge_sha": "c060c2449e331e3c85eea8975491229f074546cd",
-    "html": "<p>Expand search field on <code>rails/info/routes</code> to also search <strong>route name</strong>, <strong>http verb</strong> and <strong>controller#action</strong></p>\n\n<p><em>Jason Kotchoff</em></p>\n"
+    "date_merged": 1679701883000,
+    "author": "zzak",
+    "sha": "57b01b4633f43339957ed691d0fef7017c0bfe9c",
+    "pr": "47766",
+    "merge_sha": "9f49959fee522f2f38a07eb07a23830b99db30f6",
+    "html": "<p>Expand search field on <code>rails/info/routes</code> to also search <strong>route name</strong>, <strong>http verb</strong> and <strong>controller#action</strong>.</p>\n\n<p><em>Jason Kotchoff</em></p>\n"
   },
   {
     "message": "*   Remove deprecated `poltergeist` and `webkit` (capybara-webkit) driver registration for system testing.\n\n    *Rafael Mendonça França*",
