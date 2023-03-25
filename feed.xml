@@ -2199,6 +2199,28 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Allow destroying active storage variants
+</title>
+    <link>https://github.com/rails/rails/issues/47150</link>
+    <guid>https://github.com/rails/rails/issues/47150</guid>
+    <description>*   Allow destroying active storage variants
+
+    ```ruby
+    User.first.avatar.variant(resize_to_limit: [100, 100]).destroy
+    ```
+
+    *Shouichi Kamiya*, *Yuichiro NAKAGAWA*, *Ryohei UEDA*</description>
+    <pubDate>Sat, 25 Mar 2023 16:55:06 +0000</pubDate>
+    <author>Shouichi Kamiya</author>
+    <content:encoded><![CDATA[<p>Allow destroying active storage variants</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">avatar</span><span class="p">.</span><span class="nf">variant</span><span class="p">(</span><span class="ss">resize_to_limit: </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]).</span><span class="nf">destroy</span>
+</code></pre></div></div>
+
+<p><em>Shouichi Kamiya</em>, <em>Yuichiro NAKAGAWA</em>, <em>Ryohei UEDA</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Add `sample_rate` to `ActiveStorage::Analyzer::AudioAnalyzer` output
 </title>
     <link>https://github.com/rails/rails/issues/47749</link>
@@ -8166,6 +8188,31 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Attachables now can override default attachment missing template.
+</title>
+    <link>https://github.com/rails/rails/issues/46101</link>
+    <guid>https://github.com/rails/rails/issues/46101</guid>
+    <description>*   Attachables now can override default attachment missing template.
+
+    When rendering Action Text attachments where the underlying attachable model has
+    been removed, a fallback template is used. You now can override this template on
+    a per-model basis. For example, you could render a placeholder image for a file
+    attachment or the text &quot;Deleted User&quot; for a User attachment.
+
+    *Matt Swanson*, *Joel Drapper*</description>
+    <pubDate>Sat, 25 Mar 2023 16:49:54 +0000</pubDate>
+    <author>Matt Swanson</author>
+    <content:encoded><![CDATA[<p>Attachables now can override default attachment missing template.</p>
+
+<p>When rendering Action Text attachments where the underlying attachable model has<br />
+been removed, a fallback template is used. You now can override this template on<br />
+a per-model basis. For example, you could render a placeholder image for a file<br />
+attachment or the text “Deleted User” for a User attachment.</p>
+
+<p><em>Matt Swanson</em>, <em>Joel Drapper</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Update bundled Trix version from `1.3.1` to `2.0.4`.
 </title>
     <link>https://github.com/rails/rails/issues/46447</link>
@@ -9765,6 +9812,21 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 <p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>
 
 <p><em>Drew Bragg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Set `provider_job_id` for Backburner jobs
+</title>
+    <link>https://github.com/rails/rails/issues/47732</link>
+    <guid>https://github.com/rails/rails/issues/47732</guid>
+    <description>*   Set `provider_job_id` for Backburner jobs
+
+    *Cameron Matheson*</description>
+    <pubDate>Sat, 25 Mar 2023 15:21:40 +0000</pubDate>
+    <author>Cameron Matheson</author>
+    <content:encoded><![CDATA[<p>Set <code>provider_job_id</code> for Backburner jobs</p>
+
+<p><em>Cameron Matheson</em></p>
 ]]></content:encoded>
   </item>
   <item>
