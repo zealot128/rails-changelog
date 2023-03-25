@@ -8831,16 +8831,16 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionpack: Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**
+    <title>actionpack: Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**.
 </title>
-    <link>https://github.com/rails/rails/issues/47532</link>
-    <guid>https://github.com/rails/rails/issues/47532</guid>
-    <description>*   Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**
+    <link>https://github.com/rails/rails/issues/47766</link>
+    <guid>https://github.com/rails/rails/issues/47766</guid>
+    <description>*   Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**.
 
     *Jason Kotchoff*</description>
-    <pubDate>Fri, 03 Mar 2023 22:41:27 +0000</pubDate>
-    <author>Jason Kotchoff</author>
-    <content:encoded><![CDATA[<p>Expand search field on <code>rails/info/routes</code> to also search <strong>route name</strong>, <strong>http verb</strong> and <strong>controller#action</strong></p>
+    <pubDate>Fri, 24 Mar 2023 23:51:23 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Expand search field on <code>rails/info/routes</code> to also search <strong>route name</strong>, <strong>http verb</strong> and <strong>controller#action</strong>.</p>
 
 <p><em>Jason Kotchoff</em></p>
 ]]></content:encoded>
