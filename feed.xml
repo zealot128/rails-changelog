@@ -4182,6 +4182,25 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Introduce a more stable and optimized Marshal serializer for Active Record models.
+</title>
+    <link>https://github.com/rails/rails/issues/47747</link>
+    <guid>https://github.com/rails/rails/issues/47747</guid>
+    <description>*   Introduce a more stable and optimized Marshal serializer for Active Record models.
+
+    Can be enabled with `config.active_record.marshalling_format_version = 7.1`.
+
+    *Jean Boussier*</description>
+    <pubDate>Tue, 28 Mar 2023 15:19:23 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Introduce a more stable and optimized Marshal serializer for Active Record models.</p>
+
+<p>Can be enabled with <code>config.active_record.marshalling_format_version = 7.1</code>.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow specifying where clauses with column-tuple syntax.
 </title>
     <link>https://github.com/rails/rails/issues/47729</link>
