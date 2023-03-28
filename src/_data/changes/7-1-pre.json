@@ -790,6 +790,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Remove mini_mime usage in favour of marcel.\n\n    We have two libraries that are have similar usage. This change removes\n    dependency on mini_mime and makes use of similar methods from marcel.\n\n    *Vipul A M*",
+    "project": "activestorage",
+    "date_merged": 1679943256000,
+    "author": "Vipul A M",
+    "sha": "3d414f3986c6488829da7734bd1be5085e405b3f",
+    "pr": "47754",
+    "merge_sha": "71a1f61926c7e6370ec3297d668390c0730e0f87",
+    "html": "<p>Remove mini_mime usage in favour of marcel.</p>\n\n<p>We have two libraries that are have similar usage. This change removes<br />\ndependency on mini_mime and makes use of similar methods from marcel.</p>\n\n<p><em>Vipul A M</em></p>\n"
+  },
+  {
     "message": "*   Allow destroying active storage variants\n\n    ```ruby\n    User.first.avatar.variant(resize_to_limit: [100, 100]).destroy\n    ```\n\n    *Shouichi Kamiya*, *Yuichiro NAKAGAWA*, *Ryohei UEDA*",
     "project": "activestorage",
     "date_merged": 1679763306000,
@@ -948,6 +958,16 @@
     "pr": "44244",
     "merge_sha": "bd41655d17ff85c3118a4c69d19bad47b6a2890f",
     "html": "<p>Don’t stream responses in redirect mode</p>\n\n<p>Previously, both redirect mode and proxy mode streamed their<br />\nresponses which caused a new thread to be created, and could end<br />\nup leaking connections in the connection pool. But since redirect<br />\nmode doesn’t actually send any data, it doesn’t need to be<br />\nstreamed.</p>\n\n<p><em>Luke Lau</em></p>\n"
+  },
+  {
+    "message": "*   Safe for direct upload on Libraries or Frameworks\n\n    Enable the use of custom headers during direct uploads, which allows for\n    the inclusion of Authorization bearer tokens or other forms of authorization\n    tokens through headers.\n\n    *Radamés Roriz*",
+    "project": "activestorage",
+    "date_merged": 1679949445000,
+    "author": "Radamés Roriz",
+    "sha": "26b209437b46409c79577a7f18c5ab47a6954363",
+    "pr": "47773",
+    "merge_sha": "1ed5ef6bb32df8ad61ea0ccc79fd67c91de81027",
+    "html": "<p>Safe for direct upload on Libraries or Frameworks</p>\n\n<p>Enable the use of custom headers during direct uploads, which allows for<br />\nthe inclusion of Authorization bearer tokens or other forms of authorization<br />\ntokens through headers.</p>\n\n<p><em>Radamés Roriz</em></p>\n"
   },
   {
     "message": "*   Allow calling `bin/rails restart` outside of app directory.\n\n    The following would previously fail with a \"No Rakefile found\" error.\n\n    ```bash\n    blog/bin/rails restart\n    ```\n\n    *Petrik de Heus*",
