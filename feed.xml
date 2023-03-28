@@ -2199,6 +2199,27 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Remove mini_mime usage in favour of marcel.
+</title>
+    <link>https://github.com/rails/rails/issues/47754</link>
+    <guid>https://github.com/rails/rails/issues/47754</guid>
+    <description>*   Remove mini_mime usage in favour of marcel.
+
+    We have two libraries that are have similar usage. This change removes
+    dependency on mini_mime and makes use of similar methods from marcel.
+
+    *Vipul A M*</description>
+    <pubDate>Mon, 27 Mar 2023 18:54:16 +0000</pubDate>
+    <author>Vipul A M</author>
+    <content:encoded><![CDATA[<p>Remove mini_mime usage in favour of marcel.</p>
+
+<p>We have two libraries that are have similar usage. This change removes<br />
+dependency on mini_mime and makes use of similar methods from marcel.</p>
+
+<p><em>Vipul A M</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Allow destroying active storage variants
 </title>
     <link>https://github.com/rails/rails/issues/47150</link>
@@ -2599,6 +2620,29 @@ mode doesn’t actually send any data, it doesn’t need to be<br />
 streamed.</p>
 
 <p><em>Luke Lau</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Safe for direct upload on Libraries or Frameworks
+</title>
+    <link>https://github.com/rails/rails/issues/47773</link>
+    <guid>https://github.com/rails/rails/issues/47773</guid>
+    <description>*   Safe for direct upload on Libraries or Frameworks
+
+    Enable the use of custom headers during direct uploads, which allows for
+    the inclusion of Authorization bearer tokens or other forms of authorization
+    tokens through headers.
+
+    *Radamés Roriz*</description>
+    <pubDate>Mon, 27 Mar 2023 20:37:25 +0000</pubDate>
+    <author>Radamés Roriz</author>
+    <content:encoded><![CDATA[<p>Safe for direct upload on Libraries or Frameworks</p>
+
+<p>Enable the use of custom headers during direct uploads, which allows for<br />
+the inclusion of Authorization bearer tokens or other forms of authorization<br />
+tokens through headers.</p>
+
+<p><em>Radamés Roriz</em></p>
 ]]></content:encoded>
   </item>
   <item>
