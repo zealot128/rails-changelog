@@ -1520,6 +1520,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Introduce a more stable and optimized Marshal serializer for Active Record models.\n\n    Can be enabled with `config.active_record.marshalling_format_version = 7.1`.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1680016763000,
+    "author": "Jean Boussier",
+    "sha": "dee93277e3c90fd9d71907c09f88a764df51c8b4",
+    "pr": "47747",
+    "merge_sha": "73aa044ed594baf759a776e1626f2289bd4a4a8a",
+    "html": "<p>Introduce a more stable and optimized Marshal serializer for Active Record models.</p>\n\n<p>Can be enabled with <code>config.active_record.marshalling_format_version = 7.1</code>.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Allow specifying where clauses with column-tuple syntax.\n\n    Querying through `#where` now accepts a new tuple-syntax which accepts, as\n    a key, an array of columns and, as a value, an array of corresponding tuples.\n    The key specifies a list of columns, while the value is an array of\n    ordered-tuples that conform to the column list.\n\n    For instance:\n\n    ```ruby\n    # Cpk::Book => Cpk::Book(author_id: integer, number: integer, title: string, revision: integer)\n    # Cpk::Book.primary_key => [\"author_id\", \"number\"]\n\n    book = Cpk::Book.create!(author_id: 1, number: 1)\n    Cpk::Book.where(Cpk::Book.primary_key => [[1, 2]]) # => [book]\n\n    # Topic => Topic(id: integer, title: string, author_name: string...)\n\n    Topic.where([:title, :author_name] => [[\"The Alchemist\", \"Paul Coelho\"], [\"Harry Potter\", \"J.K Rowling\"]])\n    ```\n\n    *Paarth Madan*",
     "project": "activerecord",
     "date_merged": 1679519322000,
