@@ -2646,6 +2646,25 @@ tokens through headers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: `bin/rails --help` will now list only framework and plugin commands. Rake
+</title>
+    <link>https://github.com/rails/rails/issues/47718</link>
+    <guid>https://github.com/rails/rails/issues/47718</guid>
+    <description>*   `bin/rails --help` will now list only framework and plugin commands. Rake
+    tasks defined in `lib/tasks/*.rake` files will no longer be included. For a
+    list of those tasks, use `rake -T`.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Tue, 28 Mar 2023 21:32:28 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p><code>bin/rails --help</code> will now list only framework and plugin commands. Rake<br />
+tasks defined in <code>lib/tasks/*.rake</code> files will no longer be included. For a<br />
+list of those tasks, use <code>rake -T</code>.</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Allow calling `bin/rails restart` outside of app directory.
 </title>
     <link>https://github.com/rails/rails/issues/47619</link>
@@ -8278,16 +8297,16 @@ attachment or the text “Deleted User” for a User attachment.</p>
   <item>
     <title>actiontext: Update bundled Trix version from `1.3.1` to `2.0.4`.
 </title>
-    <link>https://github.com/rails/rails/issues/46447</link>
-    <guid>https://github.com/rails/rails/issues/46447</guid>
+    <link>https://github.com/rails/rails/issues/47679</link>
+    <guid>https://github.com/rails/rails/issues/47679</guid>
     <description>*   Update bundled Trix version from `1.3.1` to `2.0.4`.
 
-    *Sean Doyle*</description>
-    <pubDate>Mon, 23 Jan 2023 19:04:10 +0000</pubDate>
-    <author>Sean Doyle</author>
+    *Sarah Ridge*, *Sean Doyle*</description>
+    <pubDate>Tue, 28 Mar 2023 21:39:43 +0000</pubDate>
+    <author>Sarah Ridge</author>
     <content:encoded><![CDATA[<p>Update bundled Trix version from <code>1.3.1</code> to <code>2.0.4</code>.</p>
 
-<p><em>Sean Doyle</em></p>
+<p><em>Sarah Ridge</em>, <em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
