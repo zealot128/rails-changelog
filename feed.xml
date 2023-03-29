@@ -4201,6 +4201,53 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Limit max length of auto generated index names
+</title>
+    <link>https://github.com/rails/rails/issues/47753</link>
+    <guid>https://github.com/rails/rails/issues/47753</guid>
+    <description>*   Limit max length of auto generated index names
+
+    Auto generated index names are now limited to 62 bytes, which fits within
+    the default index name length limits for MySQL, Postgres and SQLite.
+
+    Any index name over the limit will fallback to the new short format.
+
+    Before (too long):
+    ```
+    index_testings_on_foo_and_bar_and_first_name_and_last_name_and_administrator
+    ```
+
+    After (short format):
+    ```
+    idx_on_foo_bar_first_name_last_name_administrator_5939248142
+    ```
+
+    The short format includes a hash to ensure the name is unique database-wide.
+
+    *Mike Coutermarsh*</description>
+    <pubDate>Wed, 29 Mar 2023 07:25:03 +0000</pubDate>
+    <author>Mike Coutermarsh</author>
+    <content:encoded><![CDATA[<p>Limit max length of auto generated index names</p>
+
+<p>Auto generated index names are now limited to 62 bytes, which fits within<br />
+the default index name length limits for MySQL, Postgres and SQLite.</p>
+
+<p>Any index name over the limit will fallback to the new short format.</p>
+
+<p>Before (too long):</p>
+<pre><code>index_testings_on_foo_and_bar_and_first_name_and_last_name_and_administrator
+</code></pre>
+
+<p>After (short format):</p>
+<pre><code>idx_on_foo_bar_first_name_last_name_administrator_5939248142
+</code></pre>
+
+<p>The short format includes a hash to ensure the name is unique database-wide.</p>
+
+<p><em>Mike Coutermarsh</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Introduce a more stable and optimized Marshal serializer for Active Record models.
 </title>
     <link>https://github.com/rails/rails/issues/47747</link>
@@ -8957,6 +9004,21 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `without` as an alias of `except` on `ActiveController::Parameters`.
+</title>
+    <link>https://github.com/rails/rails/issues/47687</link>
+    <guid>https://github.com/rails/rails/issues/47687</guid>
+    <description>*   Add `without` as an alias of `except` on `ActiveController::Parameters`.
+
+    *Hidde-Jan Jongsma*</description>
+    <pubDate>Wed, 29 Mar 2023 09:16:51 +0000</pubDate>
+    <author>Hidde-Jan Jongsma</author>
+    <content:encoded><![CDATA[<p>Add <code>without</code> as an alias of <code>except</code> on <code>ActiveController::Parameters</code>.</p>
+
+<p><em>Hidde-Jan Jongsma</em></p>
 ]]></content:encoded>
   </item>
   <item>
