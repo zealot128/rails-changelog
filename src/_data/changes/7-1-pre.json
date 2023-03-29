@@ -970,6 +970,16 @@
     "html": "<p>Safe for direct upload on Libraries or Frameworks</p>\n\n<p>Enable the use of custom headers during direct uploads, which allows for<br />\nthe inclusion of Authorization bearer tokens or other forms of authorization<br />\ntokens through headers.</p>\n\n<p><em>Radamés Roriz</em></p>\n"
   },
   {
+    "message": "*   `bin/rails --help` will now list only framework and plugin commands. Rake\n    tasks defined in `lib/tasks/*.rake` files will no longer be included. For a\n    list of those tasks, use `rake -T`.\n\n    *Jonathan Hefner*",
+    "project": "railties",
+    "date_merged": 1680039148000,
+    "author": "Jonathan Hefner",
+    "sha": "a32ff0e1d0d63713a6757205a081f95f998d9bdc",
+    "pr": "47718",
+    "merge_sha": "cf80ede0366283c5853df12b8312492edb67c8d9",
+    "html": "<p><code>bin/rails --help</code> will now list only framework and plugin commands. Rake<br />\ntasks defined in <code>lib/tasks/*.rake</code> files will no longer be included. For a<br />\nlist of those tasks, use <code>rake -T</code>.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
     "message": "*   Allow calling `bin/rails restart` outside of app directory.\n\n    The following would previously fail with a \"No Rakefile found\" error.\n\n    ```bash\n    blog/bin/rails restart\n    ```\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1678898287000,
@@ -2910,14 +2920,14 @@
     "html": "<p>Attachables now can override default attachment missing template.</p>\n\n<p>When rendering Action Text attachments where the underlying attachable model has<br />\nbeen removed, a fallback template is used. You now can override this template on<br />\na per-model basis. For example, you could render a placeholder image for a file<br />\nattachment or the text “Deleted User” for a User attachment.</p>\n\n<p><em>Matt Swanson</em>, <em>Joel Drapper</em></p>\n"
   },
   {
-    "message": "*   Update bundled Trix version from `1.3.1` to `2.0.4`.\n\n    *Sean Doyle*",
+    "message": "*   Update bundled Trix version from `1.3.1` to `2.0.4`.\n\n    *Sarah Ridge*, *Sean Doyle*",
     "project": "actiontext",
-    "date_merged": 1674500650000,
-    "author": "Sean Doyle",
-    "sha": "fab1b522cd11696c7330028fcc7bf25a8a109f5f",
-    "pr": "46447",
-    "merge_sha": "372977c59285003192e3283d1c41006675d6dae8",
-    "html": "<p>Update bundled Trix version from <code>1.3.1</code> to <code>2.0.4</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+    "date_merged": 1680039583000,
+    "author": "Sarah Ridge",
+    "sha": "de317f9d6ae2ac830c8b19aafaebe0a97f7a87c0",
+    "pr": "47679",
+    "merge_sha": "dda3e02b78a0e8ad8f31dd519ecf94e3493909a3",
+    "html": "<p>Update bundled Trix version from <code>1.3.1</code> to <code>2.0.4</code>.</p>\n\n<p><em>Sarah Ridge</em>, <em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Apply `field_error_proc` to `rich_text_area` form fields.\n\n    *Kaíque Kandy Koga*",
