@@ -1530,6 +1530,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Limit max length of auto generated index names\n\n    Auto generated index names are now limited to 62 bytes, which fits within\n    the default index name length limits for MySQL, Postgres and SQLite.\n\n    Any index name over the limit will fallback to the new short format.\n\n    Before (too long):\n    ```\n    index_testings_on_foo_and_bar_and_first_name_and_last_name_and_administrator\n    ```\n\n    After (short format):\n    ```\n    idx_on_foo_bar_first_name_last_name_administrator_5939248142\n    ```\n\n    The short format includes a hash to ensure the name is unique database-wide.\n\n    *Mike Coutermarsh*",
+    "project": "activerecord",
+    "date_merged": 1680074703000,
+    "author": "Mike Coutermarsh",
+    "sha": "3682aa1016e187398a7ae65e521f24f38b710d2b",
+    "pr": "47753",
+    "merge_sha": "c792c71eb9df1e61088a23e64cfbbda040c6e15a",
+    "html": "<p>Limit max length of auto generated index names</p>\n\n<p>Auto generated index names are now limited to 62 bytes, which fits within<br />\nthe default index name length limits for MySQL, Postgres and SQLite.</p>\n\n<p>Any index name over the limit will fallback to the new short format.</p>\n\n<p>Before (too long):</p>\n<pre><code>index_testings_on_foo_and_bar_and_first_name_and_last_name_and_administrator\n</code></pre>\n\n<p>After (short format):</p>\n<pre><code>idx_on_foo_bar_first_name_last_name_administrator_5939248142\n</code></pre>\n\n<p>The short format includes a hash to ensure the name is unique database-wide.</p>\n\n<p><em>Mike Coutermarsh</em></p>\n"
+  },
+  {
     "message": "*   Introduce a more stable and optimized Marshal serializer for Active Record models.\n\n    Can be enabled with `config.active_record.marshalling_format_version = 7.1`.\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1680016763000,
@@ -3158,6 +3168,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add `without` as an alias of `except` on `ActiveController::Parameters`.\n\n    *Hidde-Jan Jongsma*",
+    "project": "actionpack",
+    "date_merged": 1680081411000,
+    "author": "Hidde-Jan Jongsma",
+    "sha": "603b5cdde539a07e98a533be8b54394a6e1f9655",
+    "pr": "47687",
+    "merge_sha": "33e1a898a9a3cf9f6849b5f28c7f259262af3c1b",
+    "html": "<p>Add <code>without</code> as an alias of <code>except</code> on <code>ActiveController::Parameters</code>.</p>\n\n<p><em>Hidde-Jan Jongsma</em></p>\n"
   },
   {
     "message": "*   Expand search field on `rails/info/routes` to also search **route name**, **http verb** and **controller#action**.\n\n    *Jason Kotchoff*",
