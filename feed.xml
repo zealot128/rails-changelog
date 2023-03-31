@@ -4201,6 +4201,43 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Infer `foerign_key` when `inverse_of` is present on `has_one` and `has_many` associations.
+</title>
+    <link>https://github.com/rails/rails/issues/47797</link>
+    <guid>https://github.com/rails/rails/issues/47797</guid>
+    <description>*   Infer `foerign_key` when `inverse_of` is present on `has_one` and `has_many` associations.
+
+    ```ruby
+    has_many :citations, foreign_key: &quot;book1_id&quot;, inverse_of: :book
+    ```
+
+    can be simplified to
+
+    ```ruby
+    has_many :citations, inverse_of: :book
+    ```
+
+    and the foreign_key will be read from the corresponding `belongs_to` association.
+
+    *Daniel Whitney*</description>
+    <pubDate>Thu, 30 Mar 2023 20:22:51 +0000</pubDate>
+    <author>Daniel Whitney</author>
+    <content:encoded><![CDATA[<p>Infer <code>foerign_key</code> when <code>inverse_of</code> is present on <code>has_one</code> and <code>has_many</code> associations.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">has_many</span> <span class="ss">:citations</span><span class="p">,</span> <span class="ss">foreign_key: </span><span class="s2">"book1_id"</span><span class="p">,</span> <span class="ss">inverse_of: :book</span>
+</code></pre></div></div>
+
+<p>can be simplified to</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">has_many</span> <span class="ss">:citations</span><span class="p">,</span> <span class="ss">inverse_of: :book</span>
+</code></pre></div></div>
+
+<p>and the foreign_key will be read from the corresponding <code>belongs_to</code> association.</p>
+
+<p><em>Daniel Whitney</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Limit max length of auto generated index names
 </title>
     <link>https://github.com/rails/rails/issues/47753</link>
