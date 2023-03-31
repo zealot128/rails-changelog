@@ -2009,6 +2009,54 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actioncable: `assert_broadcasts` now returns the messages that were broadcast.
+</title>
+    <link>https://github.com/rails/rails/issues/47793</link>
+    <guid>https://github.com/rails/rails/issues/47793</guid>
+    <description>*   `assert_broadcasts` now returns the messages that were broadcast.
+
+    This makes it easier to do further analysis on those messages:
+
+    ```ruby
+    message = assert_broadcasts(&quot;test&quot;, 1) do
+      ActionCable.server.broadcast &quot;test&quot;, &quot;message&quot;
+    end
+    assert_equal &quot;message&quot;, message
+
+    messages = assert_broadcasts(&quot;test&quot;, 2) do
+      ActionCable.server.broadcast &quot;test&quot;, { message: &quot;one&quot; }
+      ActionCable.server.broadcast &quot;test&quot;, { message: &quot;two&quot; }
+    end
+    assert_equal 2, messages.length
+    assert_equal({ &quot;message&quot; =&gt; &quot;one&quot; }, messages.first)
+    assert_equal({ &quot;message&quot; =&gt; &quot;two&quot; }, messages.last)
+    ```
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Fri, 31 Mar 2023 09:52:07 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p><code>assert_broadcasts</code> now returns the messages that were broadcast.</p>
+
+<p>This makes it easier to do further analysis on those messages:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">message</span> <span class="o">=</span> <span class="n">assert_broadcasts</span><span class="p">(</span><span class="s2">"test"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">do</span>
+  <span class="no">ActionCable</span><span class="p">.</span><span class="nf">server</span><span class="p">.</span><span class="nf">broadcast</span> <span class="s2">"test"</span><span class="p">,</span> <span class="s2">"message"</span>
+<span class="k">end</span>
+<span class="n">assert_equal</span> <span class="s2">"message"</span><span class="p">,</span> <span class="n">message</span>
+
+<span class="n">messages</span> <span class="o">=</span> <span class="n">assert_broadcasts</span><span class="p">(</span><span class="s2">"test"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">do</span>
+  <span class="no">ActionCable</span><span class="p">.</span><span class="nf">server</span><span class="p">.</span><span class="nf">broadcast</span> <span class="s2">"test"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">message: </span><span class="s2">"one"</span> <span class="p">}</span>
+  <span class="no">ActionCable</span><span class="p">.</span><span class="nf">server</span><span class="p">.</span><span class="nf">broadcast</span> <span class="s2">"test"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">message: </span><span class="s2">"two"</span> <span class="p">}</span>
+<span class="k">end</span>
+<span class="n">assert_equal</span> <span class="mi">2</span><span class="p">,</span> <span class="n">messages</span><span class="p">.</span><span class="nf">length</span>
+<span class="n">assert_equal</span><span class="p">({</span> <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="s2">"one"</span> <span class="p">},</span> <span class="n">messages</span><span class="p">.</span><span class="nf">first</span><span class="p">)</span>
+<span class="n">assert_equal</span><span class="p">({</span> <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="s2">"two"</span> <span class="p">},</span> <span class="n">messages</span><span class="p">.</span><span class="nf">last</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actioncable: Display broadcasted messages on error message when using `assert_broadcast_on`
 </title>
     <link>https://github.com/rails/rails/issues/47204</link>
@@ -4201,11 +4249,11 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Infer `foerign_key` when `inverse_of` is present on `has_one` and `has_many` associations.
+    <title>activerecord: Infer `foreign_key` when `inverse_of` is present on `has_one` and `has_many` associations.
 </title>
-    <link>https://github.com/rails/rails/issues/47797</link>
-    <guid>https://github.com/rails/rails/issues/47797</guid>
-    <description>*   Infer `foerign_key` when `inverse_of` is present on `has_one` and `has_many` associations.
+    <link>https://github.com/rails/rails/issues/47834</link>
+    <guid>https://github.com/rails/rails/issues/47834</guid>
+    <description>*   Infer `foreign_key` when `inverse_of` is present on `has_one` and `has_many` associations.
 
     ```ruby
     has_many :citations, foreign_key: &quot;book1_id&quot;, inverse_of: :book
@@ -4220,9 +4268,9 @@ support Internet Explorer this header should not be a default one.</p>
     and the foreign_key will be read from the corresponding `belongs_to` association.
 
     *Daniel Whitney*</description>
-    <pubDate>Thu, 30 Mar 2023 20:22:51 +0000</pubDate>
-    <author>Daniel Whitney</author>
-    <content:encoded><![CDATA[<p>Infer <code>foerign_key</code> when <code>inverse_of</code> is present on <code>has_one</code> and <code>has_many</code> associations.</p>
+    <pubDate>Fri, 31 Mar 2023 15:44:53 +0000</pubDate>
+    <author>Viktor Habchak</author>
+    <content:encoded><![CDATA[<p>Infer <code>foreign_key</code> when <code>inverse_of</code> is present on <code>has_one</code> and <code>has_many</code> associations.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">has_many</span> <span class="ss">:citations</span><span class="p">,</span> <span class="ss">foreign_key: </span><span class="s2">"book1_id"</span><span class="p">,</span> <span class="ss">inverse_of: :book</span>
 </code></pre></div></div>
