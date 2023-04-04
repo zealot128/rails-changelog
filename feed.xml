@@ -10044,6 +10044,46 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: Log background job enqueue callers
+</title>
+    <link>https://github.com/rails/rails/issues/47839</link>
+    <guid>https://github.com/rails/rails/issues/47839</guid>
+    <description>*   Log background job enqueue callers
+
+    Add `verbose_enqueue_logs` configuration option to display the caller
+    of background job enqueue in the log to help with debugging.
+
+    Example log line:
+
+    ```
+    Enqueued AvatarThumbnailsJob (Job ID: ab528951-41fb-4c48-9129-3171791c27d6) to Sidekiq(default) with arguments: 1092412064
+    ↳ app/models/user.rb:421:in `generate_avatar_thumbnails&#39;
+    ```
+
+    Enabled in development only for new and upgraded applications. Not recommended for use
+    in the production environment since it relies on Ruby&#39;s `Kernel#caller` which is fairly slow.
+
+    *fatkodima*</description>
+    <pubDate>Mon, 03 Apr 2023 07:51:53 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Log background job enqueue callers</p>
+
+<p>Add <code>verbose_enqueue_logs</code> configuration option to display the caller<br />
+of background job enqueue in the log to help with debugging.</p>
+
+<p>Example log line:</p>
+
+<pre><code>Enqueued AvatarThumbnailsJob (Job ID: ab528951-41fb-4c48-9129-3171791c27d6) to Sidekiq(default) with arguments: 1092412064
+↳ app/models/user.rb:421:in `generate_avatar_thumbnails'
+</code></pre>
+
+<p>Enabled in development only for new and upgraded applications. Not recommended for use<br />
+in the production environment since it relies on Ruby’s <code>Kernel#caller</code> which is fairly slow.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: Set `provider_job_id` for Backburner jobs
 </title>
     <link>https://github.com/rails/rails/issues/47732</link>
