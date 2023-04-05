@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Added `*_deliver` callbacks to `ActionMailer::Base` that wrap mail message delivery.\n\n    Example:\n\n    ```ruby\n    class EventsMailer < ApplicationMailer\n      after_deliver do\n        User.find_by(email: message.to.first).update(email_provider_id: message.message_id, emailed_at: Time.current)\n      end\n    end\n    ```\n\n    *Ben Sheldon*",
+    "project": "actionmailer",
+    "date_merged": 1680645495000,
+    "author": "Ben Sheldon",
+    "sha": "468d80640613a3817ea2e53b24b5f39ef92a57ac",
+    "pr": "47630",
+    "merge_sha": "6cd8dddb92f41b8b0732557dc7a85f5bebf40308",
+    "html": "<p>Added <code>*_deliver</code> callbacks to <code>ActionMailer::Base</code> that wrap mail message delivery.</p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">EventsMailer</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationMailer</span>\n  <span class=\"n\">after_deliver</span> <span class=\"k\">do</span>\n    <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"nf\">to</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">).</span><span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"ss\">email_provider_id: </span><span class=\"n\">message</span><span class=\"p\">.</span><span class=\"nf\">message_id</span><span class=\"p\">,</span> <span class=\"ss\">emailed_at: </span><span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">current</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Ben Sheldon</em></p>\n"
+  },
+  {
     "message": "*   Added `deliver_enqueued_emails` to `ActionMailer::TestHelper`. This method\n    delivers all enqueued email jobs.\n\n    Example:\n\n    ```ruby\n    def test_deliver_enqueued_emails\n      deliver_enqueued_emails do\n        ContactMailer.welcome.deliver_later\n      end\n      assert_emails 1\n    end\n    ```\n\n    *Andrew Novoselac*",
     "project": "actionmailer",
     "date_merged": 1677611625000,
