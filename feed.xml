@@ -6,6 +6,40 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actionmailer: Added `*_deliver` callbacks to `ActionMailer::Base` that wrap mail message delivery.
+</title>
+    <link>https://github.com/rails/rails/issues/47630</link>
+    <guid>https://github.com/rails/rails/issues/47630</guid>
+    <description>*   Added `*_deliver` callbacks to `ActionMailer::Base` that wrap mail message delivery.
+
+    Example:
+
+    ```ruby
+    class EventsMailer &lt; ApplicationMailer
+      after_deliver do
+        User.find_by(email: message.to.first).update(email_provider_id: message.message_id, emailed_at: Time.current)
+      end
+    end
+    ```
+
+    *Ben Sheldon*</description>
+    <pubDate>Tue, 04 Apr 2023 21:58:15 +0000</pubDate>
+    <author>Ben Sheldon</author>
+    <content:encoded><![CDATA[<p>Added <code>*_deliver</code> callbacks to <code>ActionMailer::Base</code> that wrap mail message delivery.</p>
+
+<p>Example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">EventsMailer</span> <span class="o">&lt;</span> <span class="no">ApplicationMailer</span>
+  <span class="n">after_deliver</span> <span class="k">do</span>
+    <span class="no">User</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">email: </span><span class="n">message</span><span class="p">.</span><span class="nf">to</span><span class="p">.</span><span class="nf">first</span><span class="p">).</span><span class="nf">update</span><span class="p">(</span><span class="ss">email_provider_id: </span><span class="n">message</span><span class="p">.</span><span class="nf">message_id</span><span class="p">,</span> <span class="ss">emailed_at: </span><span class="no">Time</span><span class="p">.</span><span class="nf">current</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Ben Sheldon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionmailer: Added `deliver_enqueued_emails` to `ActionMailer::TestHelper`. This method
 </title>
     <link>https://github.com/rails/rails/issues/47520</link>
