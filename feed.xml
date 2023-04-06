@@ -838,6 +838,85 @@ will cause those paths to be used in the search for mailer previews.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Deprecate usage of the singleton `ActiveSupport::Deprecation`.
+</title>
+    <link>https://github.com/rails/rails/issues/47354</link>
+    <guid>https://github.com/rails/rails/issues/47354</guid>
+    <description>*   Deprecate usage of the singleton `ActiveSupport::Deprecation`.
+
+    All usage of `ActiveSupport::Deprecation` as a singleton is deprecated, the most common one being
+    `ActiveSupport::Deprecation.warn`. Gem authors should now create their own deprecator (`ActiveSupport::Deprecation`
+    object), and use it to emit deprecation warnings.
+
+    Calling any of the following without specifying a deprecator argument is also deprecated:
+      * Module.deprecate
+      * deprecate_constant
+      * DeprecatedObjectProxy
+      * DeprecatedInstanceVariableProxy
+      * DeprecatedConstantProxy
+      * deprecation-related test assertions
+
+    Use of `ActiveSupport::Deprecation.silence` and configuration methods like `behavior=`, `disallowed_behavior=`,
+    `disallowed_warnings=` should now be aimed at the [application&#39;s deprecators](https://api.rubyonrails.org/classes/Rails/Application.html#method-i-deprecators).
+
+    ```ruby
+    Rails.application.deprecators.silence do
+      # code that emits deprecation warnings
+    end
+    ```
+
+    If your gem has a Railtie or Engine, it&#39;s encouraged to add your deprecator to the application&#39;s deprecators, that
+    way the deprecation related configuration options will apply to it as well, e.g.
+    `config.active_support.report_deprecations` set to `false` in the production environment will also disable your
+    deprecator.
+
+    ```ruby
+    initializer &quot;my_gem.deprecator&quot; do |app|
+      app.deprecators[:my_gem] = MyGem.deprecator
+    end
+    ```
+
+    *Étienne Barrié*</description>
+    <pubDate>Thu, 06 Apr 2023 14:20:38 +0000</pubDate>
+    <author>Étienne Barrié</author>
+    <content:encoded><![CDATA[<p>Deprecate usage of the singleton <code>ActiveSupport::Deprecation</code>.</p>
+
+<p>All usage of <code>ActiveSupport::Deprecation</code> as a singleton is deprecated, the most common one being<br />
+<code>ActiveSupport::Deprecation.warn</code>. Gem authors should now create their own deprecator (<code>ActiveSupport::Deprecation</code><br />
+object), and use it to emit deprecation warnings.</p>
+
+<p>Calling any of the following without specifying a deprecator argument is also deprecated:</p>
+<ul>
+  <li>Module.deprecate</li>
+  <li>deprecate_constant</li>
+  <li>DeprecatedObjectProxy</li>
+  <li>DeprecatedInstanceVariableProxy</li>
+  <li>DeprecatedConstantProxy</li>
+  <li>deprecation-related test assertions</li>
+</ul>
+
+<p>Use of <code>ActiveSupport::Deprecation.silence</code> and configuration methods like <code>behavior=</code>, <code>disallowed_behavior=</code>,<br />
+<code>disallowed_warnings=</code> should now be aimed at the <a href="https://api.rubyonrails.org/classes/Rails/Application.html#method-i-deprecators">application’s deprecators</a>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">deprecators</span><span class="p">.</span><span class="nf">silence</span> <span class="k">do</span>
+  <span class="c1"># code that emits deprecation warnings</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>If your gem has a Railtie or Engine, it’s encouraged to add your deprecator to the application’s deprecators, that<br />
+way the deprecation related configuration options will apply to it as well, e.g.<br />
+<code>config.active_support.report_deprecations</code> set to <code>false</code> in the production environment will also disable your<br />
+deprecator.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">initializer</span> <span class="s2">"my_gem.deprecator"</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
+  <span class="n">app</span><span class="p">.</span><span class="nf">deprecators</span><span class="p">[</span><span class="ss">:my_gem</span><span class="p">]</span> <span class="o">=</span> <span class="no">MyGem</span><span class="p">.</span><span class="nf">deprecator</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Étienne Barrié</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Add `Object#with` to set and restore public attributes around a block
 </title>
     <link>https://github.com/rails/rails/issues/46681</link>
@@ -1955,6 +2034,9 @@ the same as before:</p>
     deprecator.warn(&quot;bar&quot;)                 # =&gt; raise ActiveSupport::DeprecationException
     ```
 
+    Note that global `ActiveSupport::Deprecation` methods such as `ActiveSupport::Deprecation.warn`
+    and `ActiveSupport::Deprecation.disallowed_warnings` have been deprecated.
+
     *Jonathan Hefner*</description>
     <pubDate>Wed, 14 Sep 2022 19:15:22 +0000</pubDate>
     <author>Jonathan Hefner</author>
@@ -1989,6 +2071,9 @@ configured with their own disallowed warnings, and the global<br />
 <span class="n">deprecator</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)</span>                 <span class="c1"># =&gt; print "DEPRECATION WARNING: foo"</span>
 <span class="n">deprecator</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="s2">"bar"</span><span class="p">)</span>                 <span class="c1"># =&gt; raise ActiveSupport::DeprecationException</span>
 </code></pre></div></div>
+
+<p>Note that global <code>ActiveSupport::Deprecation</code> methods such as <code>ActiveSupport::Deprecation.warn</code><br />
+and <code>ActiveSupport::Deprecation.disallowed_warnings</code> have been deprecated.</p>
 
 <p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
