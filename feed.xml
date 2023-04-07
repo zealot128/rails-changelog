@@ -2730,6 +2730,49 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: `after_commit` callbacks defined on models now execute in the correct order.
+</title>
+    <link>https://github.com/rails/rails/issues/46992</link>
+    <guid>https://github.com/rails/rails/issues/46992</guid>
+    <description>*   `after_commit` callbacks defined on models now execute in the correct order.
+
+    ```ruby
+    class User &lt; ActiveRecord::Base
+      after_commit { puts(&quot;this gets called first&quot;) }
+      after_commit { puts(&quot;this gets called second&quot;) }
+    end
+    ```
+
+    Previously, the callbacks executed in the reverse order. To opt in to the new behaviour:
+
+    ```ruby
+    config.active_record.run_after_transaction_callbacks_in_order_defined = true
+    ```
+
+    This is the default for new apps.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Fri, 07 Apr 2023 17:12:35 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p><code>after_commit</code> callbacks defined on models now execute in the correct order.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">after_commit</span> <span class="p">{</span> <span class="nb">puts</span><span class="p">(</span><span class="s2">"this gets called first"</span><span class="p">)</span> <span class="p">}</span>
+  <span class="n">after_commit</span> <span class="p">{</span> <span class="nb">puts</span><span class="p">(</span><span class="s2">"this gets called second"</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Previously, the callbacks executed in the reverse order. To opt in to the new behaviour:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">run_after_transaction_callbacks_in_order_defined</span> <span class="o">=</span> <span class="kp">true</span>
+</code></pre></div></div>
+
+<p>This is the default for new apps.</p>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Infer `foreign_key` when `inverse_of` is present on `has_one` and `has_many` associations.
 </title>
     <link>https://github.com/rails/rails/issues/47834</link>
