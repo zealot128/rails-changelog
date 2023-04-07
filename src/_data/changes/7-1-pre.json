@@ -1000,6 +1000,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   `after_commit` callbacks defined on models now execute in the correct order.\n\n    ```ruby\n    class User < ActiveRecord::Base\n      after_commit { puts(\"this gets called first\") }\n      after_commit { puts(\"this gets called second\") }\n    end\n    ```\n\n    Previously, the callbacks executed in the reverse order. To opt in to the new behaviour:\n\n    ```ruby\n    config.active_record.run_after_transaction_callbacks_in_order_defined = true\n    ```\n\n    This is the default for new apps.\n\n    *Alex Ghiculescu*",
+    "project": "activerecord",
+    "date_merged": 1680887555000,
+    "author": "Alex Ghiculescu",
+    "sha": "3bcd167c3ec8b8f0a73101884f29769a2e62731b",
+    "pr": "46992",
+    "merge_sha": "a9506eb06243d309472071a5d65a3307d15580d4",
+    "html": "<p><code>after_commit</code> callbacks defined on models now execute in the correct order.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">after_commit</span> <span class=\"p\">{</span> <span class=\"nb\">puts</span><span class=\"p\">(</span><span class=\"s2\">\"this gets called first\"</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n  <span class=\"n\">after_commit</span> <span class=\"p\">{</span> <span class=\"nb\">puts</span><span class=\"p\">(</span><span class=\"s2\">\"this gets called second\"</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Previously, the callbacks executed in the reverse order. To opt in to the new behaviour:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">run_after_transaction_callbacks_in_order_defined</span> <span class=\"o\">=</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p>This is the default for new apps.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   Infer `foreign_key` when `inverse_of` is present on `has_one` and `has_many` associations.\n\n    ```ruby\n    has_many :citations, foreign_key: \"book1_id\", inverse_of: :book\n    ```\n\n    can be simplified to\n\n    ```ruby\n    has_many :citations, inverse_of: :book\n    ```\n\n    and the foreign_key will be read from the corresponding `belongs_to` association.\n\n    *Daniel Whitney*",
     "project": "activerecord",
     "date_merged": 1680277493000,
