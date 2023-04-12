@@ -2860,6 +2860,16 @@
     "html": "<p>Make <code>Session#merge!</code> stringify keys.</p>\n\n<p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>\n\n<p><em>Drew Bragg</em></p>\n"
   },
   {
+    "message": "*   Deprecate `secrets:edit/show` and remove `secrets:setup`\n\n    `bin/rails secrets:setup` has been deprecated since Rails 5.2 in favor of\n    credentials. This command has been removed.\n\n    `bin/rails secrets:show` and `bin/rails secrets:edit` have been deprecated\n    in favor of credentials.\n    Run `bin/rails credentials:help` for more information\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1681249966000,
+    "author": "Petrik",
+    "sha": "333bb6ba87278979cb7a0cc6969baf99642e14fc",
+    "pr": "47801",
+    "merge_sha": "1d22ea8f84f02afc7e53cbbd981c357ec895e84a",
+    "html": "<p>Deprecate <code>secrets:edit/show</code> and remove <code>secrets:setup</code></p>\n\n<p><code>bin/rails secrets:setup</code> has been deprecated since Rails 5.2 in favor of<br />\ncredentials. This command has been removed.</p>\n\n<p><code>bin/rails secrets:show</code> and <code>bin/rails secrets:edit</code> have been deprecated<br />\nin favor of credentials.<br />\nRun <code>bin/rails credentials:help</code> for more information</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   `bin/rails --help` will now list only framework and plugin commands. Rake\n    tasks defined in `lib/tasks/*.rake` files will no longer be included. For a\n    list of those tasks, use `rake -T`.\n\n    *Jonathan Hefner*",
     "project": "railties",
     "date_merged": 1680039148000,
