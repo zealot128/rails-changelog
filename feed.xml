@@ -7878,6 +7878,35 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Deprecate `secrets:edit/show` and remove `secrets:setup`
+</title>
+    <link>https://github.com/rails/rails/issues/47801</link>
+    <guid>https://github.com/rails/rails/issues/47801</guid>
+    <description>*   Deprecate `secrets:edit/show` and remove `secrets:setup`
+
+    `bin/rails secrets:setup` has been deprecated since Rails 5.2 in favor of
+    credentials. This command has been removed.
+
+    `bin/rails secrets:show` and `bin/rails secrets:edit` have been deprecated
+    in favor of credentials.
+    Run `bin/rails credentials:help` for more information
+
+    *Petrik de Heus*</description>
+    <pubDate>Tue, 11 Apr 2023 21:52:46 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>secrets:edit/show</code> and remove <code>secrets:setup</code></p>
+
+<p><code>bin/rails secrets:setup</code> has been deprecated since Rails 5.2 in favor of<br />
+credentials. This command has been removed.</p>
+
+<p><code>bin/rails secrets:show</code> and <code>bin/rails secrets:edit</code> have been deprecated<br />
+in favor of credentials.<br />
+Run <code>bin/rails credentials:help</code> for more information</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: `bin/rails --help` will now list only framework and plugin commands. Rake
 </title>
     <link>https://github.com/rails/rails/issues/47718</link>
