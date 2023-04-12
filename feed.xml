@@ -6926,6 +6926,44 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Include source location in routes extended view.
+</title>
+    <link>https://github.com/rails/rails/issues/47921</link>
+    <guid>https://github.com/rails/rails/issues/47921</guid>
+    <description>*   Include source location in routes extended view.
+
+    ```
+    bin/rails routes --expanded
+
+    [...]
+    --[ Route 14 ]-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    Prefix            | new_gist
+    Verb              | GET
+    URI               | /gist(.:format)
+    Controller#Action | gists/gists#new
+    Source Location   | config/routes/gist.rb:3
+    ```
+
+    *Luan Vieira, John Hawthorn and Daniel Colson*</description>
+    <pubDate>Wed, 12 Apr 2023 15:15:21 +0000</pubDate>
+    <author>Luan Vieira</author>
+    <content:encoded><![CDATA[<p>Include source location in routes extended view.</p>
+
+<pre><code>bin/rails routes --expanded
+
+[...]
+--[ Route 14 ]-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Prefix            | new_gist
+Verb              | GET
+URI               | /gist(.:format)
+Controller#Action | gists/gists#new
+Source Location   | config/routes/gist.rb:3
+</code></pre>
+
+<p><em>Luan Vieira, John Hawthorn and Daniel Colson</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add `without` as an alias of `except` on `ActiveController::Parameters`.
 </title>
     <link>https://github.com/rails/rails/issues/47687</link>
