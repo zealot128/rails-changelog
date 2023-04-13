@@ -6932,11 +6932,11 @@ time regardless of whether a user with a matching email is found:</p>
     <guid>https://github.com/rails/rails/issues/47921</guid>
     <description>*   Include source location in routes extended view.
 
-    ```
-    bin/rails routes --expanded
+    ```bash
+    $ bin/rails routes --expanded
 
-    [...]
-    --[ Route 14 ]-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ...
+    --[ Route 14 ]----------
     Prefix            | new_gist
     Verb              | GET
     URI               | /gist(.:format)
@@ -6949,16 +6949,16 @@ time regardless of whether a user with a matching email is found:</p>
     <author>Luan Vieira</author>
     <content:encoded><![CDATA[<p>Include source location in routes extended view.</p>
 
-<pre><code>bin/rails routes --expanded
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bin/rails routes <span class="nt">--expanded</span>
 
-[...]
---[ Route 14 ]-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+...
+<span class="nt">--</span><span class="o">[</span> Route 14 <span class="o">]</span><span class="nt">----------</span>
 Prefix            | new_gist
 Verb              | GET
-URI               | /gist(.:format)
+URI               | /gist<span class="o">(</span>.:format<span class="o">)</span>
 Controller#Action | gists/gists#new
 Source Location   | config/routes/gist.rb:3
-</code></pre>
+</code></pre></div></div>
 
 <p><em>Luan Vieira, John Hawthorn and Daniel Colson</em></p>
 ]]></content:encoded>
