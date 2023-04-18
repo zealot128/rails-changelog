@@ -1000,6 +1000,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Introduce adapter for Trilogy database client\n\n    Trilogy is a MySQL-compatible database client. Rails applications can use Trilogy\n    by configuring their `config/database.yml`:\n\n    ```yaml\n    development:\n    adapter: trilogy\n    database: blog_development\n    pool: 5\n    ```\n\n    Or by using the `DATABASE_URL` environment variable:\n\n    ```ruby\n    ENV['DATABASE_URL'] # => \"trilogy://localhost/blog_development?pool=5\"\n    ```\n\n    *Adrianna Chang*",
+    "project": "activerecord",
+    "date_merged": 1681757809000,
+    "author": "Adrianna Chang",
+    "sha": "5ed3f60df67636ffba895d641cd4ee6e2ede40da",
+    "pr": "47880",
+    "merge_sha": "f7a40229e3bfb6c8858ae84f287144b227c9e601",
+    "html": "<p>Introduce adapter for Trilogy database client</p>\n\n<p>Trilogy is a MySQL-compatible database client. Rails applications can use Trilogy<br />\nby configuring their <code>config/database.yml</code>:</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n<span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">trilogy</span>\n<span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">blog_development</span>\n<span class=\"na\">pool</span><span class=\"pi\">:</span> <span class=\"m\">5</span>\n</code></pre></div></div>\n\n<p>Or by using the <code>DATABASE_URL</code> environment variable:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ENV</span><span class=\"p\">[</span><span class=\"s1\">'DATABASE_URL'</span><span class=\"p\">]</span> <span class=\"c1\"># =&gt; \"trilogy://localhost/blog_development?pool=5\"</span>\n</code></pre></div></div>\n\n<p><em>Adrianna Chang</em></p>\n"
+  },
+  {
     "message": "*   `after_commit` callbacks defined on models now execute in the correct order.\n\n    ```ruby\n    class User < ActiveRecord::Base\n      after_commit { puts(\"this gets called first\") }\n      after_commit { puts(\"this gets called second\") }\n    end\n    ```\n\n    Previously, the callbacks executed in the reverse order. To opt in to the new behaviour:\n\n    ```ruby\n    config.active_record.run_after_transaction_callbacks_in_order_defined = true\n    ```\n\n    This is the default for new apps.\n\n    *Alex Ghiculescu*",
     "project": "activerecord",
     "date_merged": 1680887555000,
