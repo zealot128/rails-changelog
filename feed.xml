@@ -2730,6 +2730,51 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Introduce adapter for Trilogy database client
+</title>
+    <link>https://github.com/rails/rails/issues/47880</link>
+    <guid>https://github.com/rails/rails/issues/47880</guid>
+    <description>*   Introduce adapter for Trilogy database client
+
+    Trilogy is a MySQL-compatible database client. Rails applications can use Trilogy
+    by configuring their `config/database.yml`:
+
+    ```yaml
+    development:
+    adapter: trilogy
+    database: blog_development
+    pool: 5
+    ```
+
+    Or by using the `DATABASE_URL` environment variable:
+
+    ```ruby
+    ENV[&#39;DATABASE_URL&#39;] # =&gt; &quot;trilogy://localhost/blog_development?pool=5&quot;
+    ```
+
+    *Adrianna Chang*</description>
+    <pubDate>Mon, 17 Apr 2023 18:56:49 +0000</pubDate>
+    <author>Adrianna Chang</author>
+    <content:encoded><![CDATA[<p>Introduce adapter for Trilogy database client</p>
+
+<p>Trilogy is a MySQL-compatible database client. Rails applications can use Trilogy<br />
+by configuring their <code>config/database.yml</code>:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">development</span><span class="pi">:</span>
+<span class="na">adapter</span><span class="pi">:</span> <span class="s">trilogy</span>
+<span class="na">database</span><span class="pi">:</span> <span class="s">blog_development</span>
+<span class="na">pool</span><span class="pi">:</span> <span class="m">5</span>
+</code></pre></div></div>
+
+<p>Or by using the <code>DATABASE_URL</code> environment variable:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ENV</span><span class="p">[</span><span class="s1">'DATABASE_URL'</span><span class="p">]</span> <span class="c1"># =&gt; "trilogy://localhost/blog_development?pool=5"</span>
+</code></pre></div></div>
+
+<p><em>Adrianna Chang</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `after_commit` callbacks defined on models now execute in the correct order.
 </title>
     <link>https://github.com/rails/rails/issues/46992</link>
