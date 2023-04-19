@@ -3210,11 +3210,12 @@ This option is the same as <code>foreign_type</code> as forwarded to the underly
     add_unique_key :items, [:position], deferrable: :deferred
     ```
 
-    PostgreSQL allows users to create a unique constraints on top of the unique
-    index that cannot be deferred. In this case, even if users creates deferrable
-    unique constraint, the existing unique index does not allow users to violate uniqueness
-    within the transaction. If you want to change existing unique index to deferrable,
-    you need execute `remove_index` before creating deferrable unique constraints.
+    If you want to change an existing unique index to deferrable, you can use :using_index
+    to create deferrable unique constraints.
+
+    ```ruby
+    add_unique_key :items, deferrable: :deferred, using_index: &quot;index_items_on_position&quot;
+    ```
 
     *Hiroyuki Ishii*</description>
     <pubDate>Sun, 12 Mar 2023 09:31:38 +0000</pubDate>
@@ -3262,11 +3263,11 @@ check (after the statement), to a deferred check (after the transaction):</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_unique_key</span> <span class="ss">:items</span><span class="p">,</span> <span class="p">[</span><span class="ss">:position</span><span class="p">],</span> <span class="ss">deferrable: :deferred</span>
 </code></pre></div></div>
 
-<p>PostgreSQL allows users to create a unique constraints on top of the unique<br />
-index that cannot be deferred. In this case, even if users creates deferrable<br />
-unique constraint, the existing unique index does not allow users to violate uniqueness<br />
-within the transaction. If you want to change existing unique index to deferrable,<br />
-you need execute <code>remove_index</code> before creating deferrable unique constraints.</p>
+<p>If you want to change an existing unique index to deferrable, you can use :using_index<br />
+to create deferrable unique constraints.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_unique_key</span> <span class="ss">:items</span><span class="p">,</span> <span class="ss">deferrable: :deferred</span><span class="p">,</span> <span class="ss">using_index: </span><span class="s2">"index_items_on_position"</span>
+</code></pre></div></div>
 
 <p><em>Hiroyuki Ishii</em></p>
 ]]></content:encoded>
