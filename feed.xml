@@ -10750,6 +10750,21 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: Allow queue adapters to provide a custom name by implementing `queue_adapter_name`
+</title>
+    <link>https://github.com/rails/rails/issues/48003</link>
+    <guid>https://github.com/rails/rails/issues/48003</guid>
+    <description>*   Allow queue adapters to provide a custom name by implementing `queue_adapter_name`
+
+    *Sander Verdonschot*</description>
+    <pubDate>Thu, 20 Apr 2023 20:05:39 +0000</pubDate>
+    <author>Sander Verdonschot</author>
+    <content:encoded><![CDATA[<p>Allow queue adapters to provide a custom name by implementing <code>queue_adapter_name</code></p>
+
+<p><em>Sander Verdonschot</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: Log background job enqueue callers
 </title>
     <link>https://github.com/rails/rails/issues/47839</link>
