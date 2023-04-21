@@ -3820,6 +3820,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Allow queue adapters to provide a custom name by implementing `queue_adapter_name`\n\n    *Sander Verdonschot*",
+    "project": "activejob",
+    "date_merged": 1682021139000,
+    "author": "Sander Verdonschot",
+    "sha": "6daba18791a674baae4722a80003d1facfe36177",
+    "pr": "48003",
+    "merge_sha": "9f8f5583ca7c67a5eae799fd48ab20ec0e24f8e5",
+    "html": "<p>Allow queue adapters to provide a custom name by implementing <code>queue_adapter_name</code></p>\n\n<p><em>Sander Verdonschot</em></p>\n"
+  },
+  {
     "message": "*   Log background job enqueue callers\n\n    Add `verbose_enqueue_logs` configuration option to display the caller\n    of background job enqueue in the log to help with debugging.\n\n    Example log line:\n\n    ```\n    Enqueued AvatarThumbnailsJob (Job ID: ab528951-41fb-4c48-9129-3171791c27d6) to Sidekiq(default) with arguments: 1092412064\n    ↳ app/models/user.rb:421:in `generate_avatar_thumbnails'\n    ```\n\n    Enabled in development only for new and upgraded applications. Not recommended for use\n    in the production environment since it relies on Ruby's `Kernel#caller` which is fairly slow.\n\n    *fatkodima*",
     "project": "activejob",
     "date_merged": 1680508313000,
