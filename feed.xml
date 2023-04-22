@@ -2730,6 +2730,27 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add a load hook for `ActiveRecord::ConnectionAdapters::Mysql2Adapter`
+</title>
+    <link>https://github.com/rails/rails/issues/48012</link>
+    <guid>https://github.com/rails/rails/issues/48012</guid>
+    <description>*   Add a load hook for `ActiveRecord::ConnectionAdapters::Mysql2Adapter`
+    (named `active_record_mysql2adapter`) to allow for overriding aspects of the
+    `ActiveRecord::ConnectionAdapters::Mysql2Adapter` class. This makes `Mysql2Adapter`
+    consistent with `PostgreSQLAdapter` and `SQLite3Adapter` that already have load hooks.
+
+    *fatkodima*</description>
+    <pubDate>Fri, 21 Apr 2023 22:56:16 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Add a load hook for <code>ActiveRecord::ConnectionAdapters::Mysql2Adapter</code><br />
+(named <code>active_record_mysql2adapter</code>) to allow for overriding aspects of the<br />
+<code>ActiveRecord::ConnectionAdapters::Mysql2Adapter</code> class. This makes <code>Mysql2Adapter</code><br />
+consistent with <code>PostgreSQLAdapter</code> and <code>SQLite3Adapter</code> that already have load hooks.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Introduce adapter for Trilogy database client
 </title>
     <link>https://github.com/rails/rails/issues/47880</link>
@@ -10094,12 +10115,12 @@ whole tag.</p>
     ```ruby
       user = User.new(password: &quot;a&quot; * 73)  # 73 characters
       user.valid? # =&gt; false
-      user.errors[:password] # =&gt; [&quot;is too long (maximum is 72 characters)&quot;]
+      user.errors[:password] # =&gt; [&quot;is too long&quot;]
 
 
       user = User.new(password: &quot;あ&quot; * 25)  # 25 characters, 75 bytes
       user.valid? # =&gt; false
-      user.errors[:password] # =&gt; [&quot;is too long (maximum is 72 bytes)&quot;]
+      user.errors[:password] # =&gt; [&quot;is too long&quot;]
     ```
 
     *ChatGPT*, *Guillermo Iguaran*</description>
@@ -10113,12 +10134,12 @@ to consider both character count and byte size while keeping the character lengt
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">password: </span><span class="s2">"a"</span> <span class="o">*</span> <span class="mi">73</span><span class="p">)</span>  <span class="c1"># 73 characters</span>
   <span class="n">user</span><span class="p">.</span><span class="nf">valid?</span> <span class="c1"># =&gt; false</span>
-  <span class="n">user</span><span class="p">.</span><span class="nf">errors</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span> <span class="c1"># =&gt; ["is too long (maximum is 72 characters)"]</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">errors</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span> <span class="c1"># =&gt; ["is too long"]</span>
 
 
   <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">password: </span><span class="s2">"あ"</span> <span class="o">*</span> <span class="mi">25</span><span class="p">)</span>  <span class="c1"># 25 characters, 75 bytes</span>
   <span class="n">user</span><span class="p">.</span><span class="nf">valid?</span> <span class="c1"># =&gt; false</span>
-  <span class="n">user</span><span class="p">.</span><span class="nf">errors</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span> <span class="c1"># =&gt; ["is too long (maximum is 72 bytes)"]</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">errors</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span> <span class="c1"># =&gt; ["is too long"]</span>
 </code></pre></div></div>
 
 <p><em>ChatGPT</em>, <em>Guillermo Iguaran</em></p>
