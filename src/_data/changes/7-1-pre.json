@@ -2890,6 +2890,16 @@
     "html": "<p>Make <code>Session#merge!</code> stringify keys.</p>\n\n<p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>\n\n<p><em>Drew Bragg</em></p>\n"
   },
   {
+    "message": "*   Trying to set a config key with the same name of a method now raises:\n\n    ```ruby\n    config.load_defaults = 7.0\n    # NoMethodError: Cannot assign to `load_defaults`, it is a configuration method\n    ```\n\n    *Xavier Noria*",
+    "project": "railties",
+    "date_merged": 1682239114000,
+    "author": "Xavier Noria",
+    "sha": "265bfad5fb7f875dfb3ddfafd895cb2ec80458f7",
+    "pr": "48030",
+    "merge_sha": "ea7ac1594b4e10b0d8814338209e5358fbd6a668",
+    "html": "<p>Trying to set a config key with the same name of a method now raises:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">load_defaults</span> <span class=\"o\">=</span> <span class=\"mf\">7.0</span>\n<span class=\"c1\"># NoMethodError: Cannot assign to `load_defaults`, it is a configuration method</span>\n</code></pre></div></div>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `secrets:edit/show` and remove `secrets:setup`\n\n    `bin/rails secrets:setup` has been deprecated since Rails 5.2 in favor of\n    credentials. This command has been removed.\n\n    `bin/rails secrets:show` and `bin/rails secrets:edit` have been deprecated\n    in favor of credentials.\n    Run `bin/rails credentials:help` for more information\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1681249966000,
