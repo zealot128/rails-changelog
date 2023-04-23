@@ -7983,6 +7983,30 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Trying to set a config key with the same name of a method now raises:
+</title>
+    <link>https://github.com/rails/rails/issues/48030</link>
+    <guid>https://github.com/rails/rails/issues/48030</guid>
+    <description>*   Trying to set a config key with the same name of a method now raises:
+
+    ```ruby
+    config.load_defaults = 7.0
+    # NoMethodError: Cannot assign to `load_defaults`, it is a configuration method
+    ```
+
+    *Xavier Noria*</description>
+    <pubDate>Sun, 23 Apr 2023 08:38:34 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Trying to set a config key with the same name of a method now raises:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">load_defaults</span> <span class="o">=</span> <span class="mf">7.0</span>
+<span class="c1"># NoMethodError: Cannot assign to `load_defaults`, it is a configuration method</span>
+</code></pre></div></div>
+
+<p><em>Xavier Noria</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Deprecate `secrets:edit/show` and remove `secrets:setup`
 </title>
     <link>https://github.com/rails/rails/issues/47801</link>
