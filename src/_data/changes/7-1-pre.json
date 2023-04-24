@@ -2430,6 +2430,16 @@
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Remove leading dot from domains on cookies set with `domain: :all`, to meet RFC6265 requirements\n\n    *Gareth Adams*",
+    "project": "actionpack",
+    "date_merged": 1682301111000,
+    "author": "Gareth Adams",
+    "sha": "8f3c6a1005a9dd3f4584c2bc30c1a63e7db15aa8",
+    "pr": "48036",
+    "merge_sha": "3c08d359a44ff8f32e83745c86eeae554e9b9306",
+    "html": "<p>Remove leading dot from domains on cookies set with <code>domain: :all</code>, to meet RFC6265 requirements</p>\n\n<p><em>Gareth Adams</em></p>\n"
+  },
+  {
     "message": "*   Include source location in routes extended view.\n\n    ```bash\n    $ bin/rails routes --expanded\n\n    ...\n    --[ Route 14 ]----------\n    Prefix            | new_gist\n    Verb              | GET\n    URI               | /gist(.:format)\n    Controller#Action | gists/gists#new\n    Source Location   | config/routes/gist.rb:3\n    ```\n\n    *Luan Vieira, John Hawthorn and Daniel Colson*",
     "project": "actionpack",
     "date_merged": 1681312521000,
