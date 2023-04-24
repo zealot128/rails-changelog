@@ -6993,6 +6993,21 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Remove leading dot from domains on cookies set with `domain: :all`, to meet RFC6265 requirements
+</title>
+    <link>https://github.com/rails/rails/issues/48036</link>
+    <guid>https://github.com/rails/rails/issues/48036</guid>
+    <description>*   Remove leading dot from domains on cookies set with `domain: :all`, to meet RFC6265 requirements
+
+    *Gareth Adams*</description>
+    <pubDate>Mon, 24 Apr 2023 01:51:51 +0000</pubDate>
+    <author>Gareth Adams</author>
+    <content:encoded><![CDATA[<p>Remove leading dot from domains on cookies set with <code>domain: :all</code>, to meet RFC6265 requirements</p>
+
+<p><em>Gareth Adams</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Include source location in routes extended view.
 </title>
     <link>https://github.com/rails/rails/issues/47921</link>
