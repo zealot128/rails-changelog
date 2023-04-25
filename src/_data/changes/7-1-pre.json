@@ -1000,6 +1000,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Make `.joins` / `.left_outer_joins` work with CTEs.\n\n    For example:\n\n    ```ruby\n    Post\n     .with(commented_posts: Comment.select(:post_id).distinct)\n     .joins(:commented_posts)\n    #=> WITH (...) SELECT ... INNER JOIN commented_posts on posts.id = commented_posts.post_id\n    ```\n\n    *Vladimir Dementyev*",
+    "project": "activerecord",
+    "date_merged": 1682447228000,
+    "author": "Vladimir Dementyev",
+    "sha": "92bb466dde04c73b7dda6d0094fe9cc7175310a6",
+    "pr": "46843",
+    "merge_sha": "fb4881270b80d5c3601efa94ebcfd9bca41b0c3b",
+    "html": "<p>Make <code>.joins</code> / <code>.left_outer_joins</code> work with CTEs.</p>\n\n<p>For example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span>\n <span class=\"p\">.</span><span class=\"nf\">with</span><span class=\"p\">(</span><span class=\"ss\">commented_posts: </span><span class=\"no\">Comment</span><span class=\"p\">.</span><span class=\"nf\">select</span><span class=\"p\">(</span><span class=\"ss\">:post_id</span><span class=\"p\">).</span><span class=\"nf\">distinct</span><span class=\"p\">)</span>\n <span class=\"p\">.</span><span class=\"nf\">joins</span><span class=\"p\">(</span><span class=\"ss\">:commented_posts</span><span class=\"p\">)</span>\n<span class=\"c1\">#=&gt; WITH (...) SELECT ... INNER JOIN commented_posts on posts.id = commented_posts.post_id</span>\n</code></pre></div></div>\n\n<p><em>Vladimir Dementyev</em></p>\n"
+  },
+  {
     "message": "*   Add a load hook for `ActiveRecord::ConnectionAdapters::Mysql2Adapter`\n    (named `active_record_mysql2adapter`) to allow for overriding aspects of the\n    `ActiveRecord::ConnectionAdapters::Mysql2Adapter` class. This makes `Mysql2Adapter`\n    consistent with `PostgreSQLAdapter` and `SQLite3Adapter` that already have load hooks.\n\n    *fatkodima*",
     "project": "activerecord",
     "date_merged": 1682117776000,
