@@ -590,6 +590,26 @@
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
+    "message": "*   The deferrable foreign key can be passed to `t.references`.\n\n    *Hiroyuki Ishii*",
+    "project": "activerecord",
+    "date_merged": 1682561798000,
+    "author": "alpaca-tc",
+    "sha": "ec0a2a9d98cd45afd095b6eb2435d44f41335528",
+    "pr": "47671",
+    "merge_sha": "53df1e140d75efaffa63c1b058d8b17834e576a1",
+    "html": "<p>The deferrable foreign key can be passed to <code>t.references</code>.</p>\n\n<p><em>Hiroyuki Ishii</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `deferrable: true` option of `add_foreign_key`.\n\n    `deferrable: true` is deprecated in favor of `deferrable: :immediate`, and\n    will be removed in Rails 7.2.\n\n    Because `deferrable: true` and `deferrable: :deferred` are hard to understand.\n    Both true and :deferred are truthy values.\n    This behavior is the same as the deferrable option of the add_unique_key method, added in #46192.\n\n    *Hiroyuki Ishii*",
+    "project": "activerecord",
+    "date_merged": 1682552751000,
+    "author": "alpaca-tc",
+    "sha": "896d35910a3e5c7363533e63903902c4a7483f1e",
+    "pr": "47659",
+    "merge_sha": "992d689ae6f8acd1345ee8ca389a71f80e3455ef",
+    "html": "<p>Deprecate <code>deferrable: true</code> option of <code>add_foreign_key</code>.</p>\n\n<p><code>deferrable: true</code> is deprecated in favor of <code>deferrable: :immediate</code>, and<br />\nwill be removed in Rails 7.2.</p>\n\n<p>Because <code>deferrable: true</code> and <code>deferrable: :deferred</code> are hard to understand.<br />\nBoth true and :deferred are truthy values.<br />\nThis behavior is the same as the deferrable option of the add_unique_key method, added in #46192.</p>\n\n<p><em>Hiroyuki Ishii</em></p>\n"
+  },
+  {
     "message": "*   `AbstractAdapter#execute` and `#exec_query` now clear the query cache\n\n    If you need to perform a read only SQL query without clearing the query\n    cache, use `AbstractAdapter#select_all`.\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1682509910000,
