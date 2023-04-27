@@ -1442,6 +1442,50 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: The deferrable foreign key can be passed to `t.references`.
+</title>
+    <link>https://github.com/rails/rails/issues/47671</link>
+    <guid>https://github.com/rails/rails/issues/47671</guid>
+    <description>*   The deferrable foreign key can be passed to `t.references`.
+
+    *Hiroyuki Ishii*</description>
+    <pubDate>Thu, 27 Apr 2023 02:16:38 +0000</pubDate>
+    <author>alpaca-tc</author>
+    <content:encoded><![CDATA[<p>The deferrable foreign key can be passed to <code>t.references</code>.</p>
+
+<p><em>Hiroyuki Ishii</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deprecate `deferrable: true` option of `add_foreign_key`.
+</title>
+    <link>https://github.com/rails/rails/issues/47659</link>
+    <guid>https://github.com/rails/rails/issues/47659</guid>
+    <description>*   Deprecate `deferrable: true` option of `add_foreign_key`.
+
+    `deferrable: true` is deprecated in favor of `deferrable: :immediate`, and
+    will be removed in Rails 7.2.
+
+    Because `deferrable: true` and `deferrable: :deferred` are hard to understand.
+    Both true and :deferred are truthy values.
+    This behavior is the same as the deferrable option of the add_unique_key method, added in #46192.
+
+    *Hiroyuki Ishii*</description>
+    <pubDate>Wed, 26 Apr 2023 23:45:51 +0000</pubDate>
+    <author>alpaca-tc</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>deferrable: true</code> option of <code>add_foreign_key</code>.</p>
+
+<p><code>deferrable: true</code> is deprecated in favor of <code>deferrable: :immediate</code>, and<br />
+will be removed in Rails 7.2.</p>
+
+<p>Because <code>deferrable: true</code> and <code>deferrable: :deferred</code> are hard to understand.<br />
+Both true and :deferred are truthy values.<br />
+This behavior is the same as the deferrable option of the add_unique_key method, added in #46192.</p>
+
+<p><em>Hiroyuki Ishii</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `AbstractAdapter#execute` and `#exec_query` now clear the query cache
 </title>
     <link>https://github.com/rails/rails/issues/48069</link>
