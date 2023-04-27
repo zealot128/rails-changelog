@@ -1442,6 +1442,29 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add support for `Array#intersect?` to `ActiveRecord::Relation`.
+</title>
+    <link>https://github.com/rails/rails/issues/47670</link>
+    <guid>https://github.com/rails/rails/issues/47670</guid>
+    <description>*   Add support for `Array#intersect?` to `ActiveRecord::Relation`.
+
+    `Array#intersect?` is only available on Ruby 3.1 or later.
+
+    This allows the Rubocop `Style/ArrayIntersect` cop to work with `ActiveRecord::Relation` objects.
+
+    *John Harry Kelly*</description>
+    <pubDate>Thu, 27 Apr 2023 14:12:21 +0000</pubDate>
+    <author>John Kelly</author>
+    <content:encoded><![CDATA[<p>Add support for <code>Array#intersect?</code> to <code>ActiveRecord::Relation</code>.</p>
+
+<p><code>Array#intersect?</code> is only available on Ruby 3.1 or later.</p>
+
+<p>This allows the Rubocop <code>Style/ArrayIntersect</code> cop to work with <code>ActiveRecord::Relation</code> objects.</p>
+
+<p><em>John Harry Kelly</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: The deferrable foreign key can be passed to `t.references`.
 </title>
     <link>https://github.com/rails/rails/issues/47671</link>
