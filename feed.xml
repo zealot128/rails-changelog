@@ -6697,6 +6697,47 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: `Object#deep_dup` no longer duplicate named classes and modules.
+</title>
+    <link>https://github.com/rails/rails/issues/48106</link>
+    <guid>https://github.com/rails/rails/issues/48106</guid>
+    <description>*   `Object#deep_dup` no longer duplicate named classes and modules.
+
+    Before:
+
+    ```ruby
+    hash = { class: Object, module: Kernel }
+    hash.deep_dup # =&gt; {:class=&gt;#&lt;Class:0x00000001063ffc80&gt;, :module=&gt;#&lt;Module:0x00000001063ffa00&gt;}
+    ```
+
+    After:
+
+    ```ruby
+    hash = { class: Object, module: Kernel }
+    hash.deep_dup # =&gt; {:class=&gt;Object, :module=&gt;Kernel}
+    ```
+
+    *Jean Boussier*</description>
+    <pubDate>Tue, 02 May 2023 09:25:03 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p><code>Object#deep_dup</code> no longer duplicate named classes and modules.</p>
+
+<p>Before:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">class: </span><span class="no">Object</span><span class="p">,</span> <span class="ss">module: </span><span class="no">Kernel</span> <span class="p">}</span>
+<span class="nb">hash</span><span class="p">.</span><span class="nf">deep_dup</span> <span class="c1"># =&gt; {:class=&gt;#&lt;Class:0x00000001063ffc80&gt;, :module=&gt;#&lt;Module:0x00000001063ffa00&gt;}</span>
+</code></pre></div></div>
+
+<p>After:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">class: </span><span class="no">Object</span><span class="p">,</span> <span class="ss">module: </span><span class="no">Kernel</span> <span class="p">}</span>
+<span class="nb">hash</span><span class="p">.</span><span class="nf">deep_dup</span> <span class="c1"># =&gt; {:class=&gt;Object, :module=&gt;Kernel}</span>
+</code></pre></div></div>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Consistently raise an `ArgumentError` if the `ActiveSupport::Cache` key is blank.
 </title>
     <link>https://github.com/rails/rails/issues/48043</link>
