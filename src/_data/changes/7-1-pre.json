@@ -3500,6 +3500,16 @@
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
   },
   {
+    "message": "*   Support configured primary key types in generated migrations.\n\n    *Nishiki Liu*",
+    "project": "actionmailbox",
+    "date_merged": 1683215189000,
+    "author": "Nishiki Liu",
+    "sha": "1df5ece43bd74cd3c234be4c7e173c3ff532825f",
+    "pr": "48126",
+    "merge_sha": "7e735451a71ca8c9e7509096f13d00a82adba4f9",
+    "html": "<p>Support configured primary key types in generated migrations.</p>\n\n<p><em>Nishiki Liu</em></p>\n"
+  },
+  {
     "message": "*   Fixed ingress controllers' ability to accept emails that contain no UTF-8 encoded parts.\n\n    Fixes #46297.\n\n    *Jan Honza Sterba*",
     "project": "actionmailbox",
     "date_merged": 1674395639000,
