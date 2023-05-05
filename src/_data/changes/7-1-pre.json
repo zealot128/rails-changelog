@@ -590,6 +590,16 @@
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
+    "message": "*   Make `increment_counter`/`decrement_counter` accept an amount argument\n\n    ```ruby\n    Post.increment_counter(:comments_count, 5, by: 3)\n    ```\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1683288223000,
+    "author": "fatkodima",
+    "sha": "cabc1842b73e5e659ce114f0802e849080eb8894",
+    "pr": "48128",
+    "merge_sha": "2bfb6565a4996a19065e03300d9061e9eb265d92",
+    "html": "<p>Make <code>increment_counter</code>/<code>decrement_counter</code> accept an amount argument</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">increment_counter</span><span class=\"p\">(</span><span class=\"ss\">:comments_count</span><span class=\"p\">,</span> <span class=\"mi\">5</span><span class=\"p\">,</span> <span class=\"ss\">by: </span><span class=\"mi\">3</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Add support for `Array#intersect?` to `ActiveRecord::Relation`.\n\n    `Array#intersect?` is only available on Ruby 3.1 or later.\n\n    This allows the Rubocop `Style/ArrayIntersect` cop to work with `ActiveRecord::Relation` objects.\n\n    *John Harry Kelly*",
     "project": "activerecord",
     "date_merged": 1682604741000,
