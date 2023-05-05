@@ -6697,6 +6697,47 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: A new `7.1` cache format is available which includes an optimization for
+</title>
+    <link>https://github.com/rails/rails/issues/48122</link>
+    <guid>https://github.com/rails/rails/issues/48122</guid>
+    <description>*   A new `7.1` cache format is available which includes an optimization for
+    bare string values such as view fragments. The `:message_pack` cache format
+    has also been modified to include this optimization.
+
+    The `7.1` cache format is used by default for new apps, and existing apps
+    can enable the format by setting `config.load_defaults 7.1` or by setting
+    `config.active_support.cache_format_version = 7.1` in `config/application.rb`
+    or a `config/environments/*.rb` file.
+
+    Cache entries written using the `6.1` or `7.0` cache formats can be read
+    when using the `7.1` format. To perform a rolling deploy of a Rails 7.1
+    upgrade, wherein servers that have not yet been upgraded must be able to
+    read caches from upgraded servers, leave the cache format unchanged on the
+    first deploy, then enable the `7.1` cache format on a subsequent deploy.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Thu, 04 May 2023 21:37:06 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>A new <code>7.1</code> cache format is available which includes an optimization for<br />
+bare string values such as view fragments. The <code>:message_pack</code> cache format<br />
+has also been modified to include this optimization.</p>
+
+<p>The <code>7.1</code> cache format is used by default for new apps, and existing apps<br />
+can enable the format by setting <code>config.load_defaults 7.1</code> or by setting<br />
+<code>config.active_support.cache_format_version = 7.1</code> in <code>config/application.rb</code><br />
+or a <code>config/environments/*.rb</code> file.</p>
+
+<p>Cache entries written using the <code>6.1</code> or <code>7.0</code> cache formats can be read<br />
+when using the <code>7.1</code> format. To perform a rolling deploy of a Rails 7.1<br />
+upgrade, wherein servers that have not yet been upgraded must be able to<br />
+read caches from upgraded servers, leave the cache format unchanged on the<br />
+first deploy, then enable the <code>7.1</code> cache format on a subsequent deploy.</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `config.active_support.cache_format_version` now accepts `:message_pack` as
 </title>
     <link>https://github.com/rails/rails/issues/48104</link>
@@ -6706,10 +6747,10 @@ is called.</p>
     performance, but requires the [`msgpack` gem](https://rubygems.org/gems/msgpack)
     (&gt;= 1.7.0).
 
-    Cache entries written using the `6.1` or `7.0` cache formats can be read
+    Cache entries written using the `6.1`, `7.0`, or `7.1` cache formats can be read
     when using the `:message_pack` cache format. Additionally, cache entries
     written using the `:message_pack` cache format can now be read when using
-    the `6.1` or `7.0` cache formats. These behaviors makes it easy to migrate
+    the `6.1`, `7.0`, or `7.1` cache formats. These behaviors makes it easy to migrate
     between formats without invalidating the entire cache.
 
     *Jonathan Hefner*</description>
@@ -6720,10 +6761,10 @@ an option. <code>:message_pack</code> can reduce cache entry sizes and improve<b
 performance, but requires the <a href="https://rubygems.org/gems/msgpack"><code>msgpack</code> gem</a><br />
 (&gt;= 1.7.0).</p>
 
-<p>Cache entries written using the <code>6.1</code> or <code>7.0</code> cache formats can be read<br />
+<p>Cache entries written using the <code>6.1</code>, <code>7.0</code>, or <code>7.1</code> cache formats can be read<br />
 when using the <code>:message_pack</code> cache format. Additionally, cache entries<br />
 written using the <code>:message_pack</code> cache format can now be read when using<br />
-the <code>6.1</code> or <code>7.0</code> cache formats. These behaviors makes it easy to migrate<br />
+the <code>6.1</code>, <code>7.0</code>, or <code>7.1</code> cache formats. These behaviors makes it easy to migrate<br />
 between formats without invalidating the entire cache.</p>
 
 <p><em>Jonathan Hefner</em></p>
