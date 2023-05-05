@@ -1442,6 +1442,28 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Make `increment_counter`/`decrement_counter` accept an amount argument
+</title>
+    <link>https://github.com/rails/rails/issues/48128</link>
+    <guid>https://github.com/rails/rails/issues/48128</guid>
+    <description>*   Make `increment_counter`/`decrement_counter` accept an amount argument
+
+    ```ruby
+    Post.increment_counter(:comments_count, 5, by: 3)
+    ```
+
+    *fatkodima*</description>
+    <pubDate>Fri, 05 May 2023 12:03:43 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Make <code>increment_counter</code>/<code>decrement_counter</code> accept an amount argument</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">increment_counter</span><span class="p">(</span><span class="ss">:comments_count</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="ss">by: </span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add support for `Array#intersect?` to `ActiveRecord::Relation`.
 </title>
     <link>https://github.com/rails/rails/issues/47670</link>
