@@ -1442,6 +1442,25 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Deprecate `check_pending!` in favor of `check_pending_migrations!`.
+</title>
+    <link>https://github.com/rails/rails/issues/48134</link>
+    <guid>https://github.com/rails/rails/issues/48134</guid>
+    <description>*   Deprecate `check_pending!` in favor of `check_pending_migrations!`.
+
+    `check_pending!` will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of `check_pending_migrations!` which will find all pending migrations for the database configurations in a given environment.
+
+    *Eileen M. Uchitelle*</description>
+    <pubDate>Fri, 05 May 2023 18:42:10 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>check_pending!</code> in favor of <code>check_pending_migrations!</code>.</p>
+
+<p><code>check_pending!</code> will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of <code>check_pending_migrations!</code> which will find all pending migrations for the database configurations in a given environment.</p>
+
+<p><em>Eileen M. Uchitelle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Make `increment_counter`/`decrement_counter` accept an amount argument
 </title>
     <link>https://github.com/rails/rails/issues/48128</link>
