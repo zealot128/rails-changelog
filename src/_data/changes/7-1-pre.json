@@ -590,6 +590,16 @@
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
+    "message": "*   Deprecate `check_pending!` in favor of `check_pending_migrations!`.\n\n    `check_pending!` will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of `check_pending_migrations!` which will find all pending migrations for the database configurations in a given environment.\n\n    *Eileen M. Uchitelle*",
+    "project": "activerecord",
+    "date_merged": 1683312130000,
+    "author": "eileencodes",
+    "sha": "03379d1f599653d100dff9fbf3ce4434a930b915",
+    "pr": "48134",
+    "merge_sha": "7b9497a9d405ad9c0b14f82c43fc7e285bf016e7",
+    "html": "<p>Deprecate <code>check_pending!</code> in favor of <code>check_pending_migrations!</code>.</p>\n\n<p><code>check_pending!</code> will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of <code>check_pending_migrations!</code> which will find all pending migrations for the database configurations in a given environment.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
     "message": "*   Make `increment_counter`/`decrement_counter` accept an amount argument\n\n    ```ruby\n    Post.increment_counter(:comments_count, 5, by: 3)\n    ```\n\n    *fatkodima*",
     "project": "activerecord",
     "date_merged": 1683288223000,
