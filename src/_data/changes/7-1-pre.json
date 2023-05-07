@@ -590,6 +590,16 @@
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
+    "message": "*   Active Record query cache is now evicts least recently used entries\n\n    By default it only keeps the `100` most recently used queries.\n\n    The cache size can be configured via `database.yml`\n\n    ```yaml\n    development:\n      adapter: mysql2\n      query_cache: 200\n    ```\n\n    It can also be entirely disabled:\n\n    ```yaml\n    development:\n      adapter: mysql2\n      query_cache: false\n    ```\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1683427078000,
+    "author": "Jean Boussier",
+    "sha": "89a5d6ada51a09c37f61e32247f68536477fc825",
+    "pr": "48110",
+    "merge_sha": "5fd77fede1a4ccdbf648202b039b3ac25095dca7",
+    "html": "<p>Active Record query cache is now evicts least recently used entries</p>\n\n<p>By default it only keeps the <code>100</code> most recently used queries.</p>\n\n<p>The cache size can be configured via <code>database.yml</code></p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">mysql2</span>\n  <span class=\"na\">query_cache</span><span class=\"pi\">:</span> <span class=\"m\">200</span>\n</code></pre></div></div>\n\n<p>It can also be entirely disabled:</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">mysql2</span>\n  <span class=\"na\">query_cache</span><span class=\"pi\">:</span> <span class=\"no\">false</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `check_pending!` in favor of `check_pending_migrations!`.\n\n    `check_pending!` will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of `check_pending_migrations!` which will find all pending migrations for the database configurations in a given environment.\n\n    *Eileen M. Uchitelle*",
     "project": "activerecord",
     "date_merged": 1683312130000,
