@@ -1442,6 +1442,55 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Active Record query cache is now evicts least recently used entries
+</title>
+    <link>https://github.com/rails/rails/issues/48110</link>
+    <guid>https://github.com/rails/rails/issues/48110</guid>
+    <description>*   Active Record query cache is now evicts least recently used entries
+
+    By default it only keeps the `100` most recently used queries.
+
+    The cache size can be configured via `database.yml`
+
+    ```yaml
+    development:
+      adapter: mysql2
+      query_cache: 200
+    ```
+
+    It can also be entirely disabled:
+
+    ```yaml
+    development:
+      adapter: mysql2
+      query_cache: false
+    ```
+
+    *Jean Boussier*</description>
+    <pubDate>Sun, 07 May 2023 02:37:58 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Active Record query cache is now evicts least recently used entries</p>
+
+<p>By default it only keeps the <code>100</code> most recently used queries.</p>
+
+<p>The cache size can be configured via <code>database.yml</code></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">development</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql2</span>
+  <span class="na">query_cache</span><span class="pi">:</span> <span class="m">200</span>
+</code></pre></div></div>
+
+<p>It can also be entirely disabled:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">development</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql2</span>
+  <span class="na">query_cache</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Deprecate `check_pending!` in favor of `check_pending_migrations!`.
 </title>
     <link>https://github.com/rails/rails/issues/48134</link>
