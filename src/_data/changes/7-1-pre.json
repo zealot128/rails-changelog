@@ -3070,14 +3070,24 @@
     "html": "<p>Deprecate <code>Notification::Event</code>’s <code>#children</code> and <code>#parent_of?</code></p>\n\n<p><em>John Hawthorn</em></p>\n"
   },
   {
-    "message": "*   Change default serialization format of `MessageEncryptor` from `Marshal` to `JSON` for Rails 7.1.\n\n    Existing apps are provided with an upgrade path to migrate to `JSON` as described in `guides/source/upgrading_ruby_on_rails.md`\n\n    *Zack Deveau* and *Martin Gingras*",
+    "message": "*   Change the default serializer of `ActiveSupport::MessageVerifier` from\n    `Marshal` to `ActiveSupport::JSON` when using `config.load_defaults 7.1`.\n\n    Existing apps can use the `:json_allow_marshal` serializer to migrate. See\n    https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.\n\n    *Saba Kiaei* and *David Buckley*",
     "project": "activesupport",
-    "date_merged": 1644267068000,
-    "author": "Zack",
-    "sha": "5d0c2b0dd255e6d3dc0fd4b5d1750d7997c728cf",
-    "pr": "42846",
-    "merge_sha": "9bd50f92b4d078670275b153d1876de384c88350",
-    "html": "<p>Change default serialization format of <code>MessageEncryptor</code> from <code>Marshal</code> to <code>JSON</code> for Rails 7.1.</p>\n\n<p>Existing apps are provided with an upgrade path to migrate to <code>JSON</code> as described in <code>guides/source/upgrading_ruby_on_rails.md</code></p>\n\n<p><em>Zack Deveau</em> and <em>Martin Gingras</em></p>\n"
+    "date_merged": 1683567682000,
+    "author": "Jonathan Hefner",
+    "sha": "9fbfd8100bf0f141769d2ced42940b2d7b9b71f0",
+    "pr": "47963",
+    "merge_sha": "e49fcfa0dc4139edfb02c696666ec63eef29e422",
+    "html": "<p>Change the default serializer of <code>ActiveSupport::MessageVerifier</code> from<br />\n<code>Marshal</code> to <code>ActiveSupport::JSON</code> when using <code>config.load_defaults 7.1</code>.</p>\n\n<p>Existing apps can use the <code>:json_allow_marshal</code> serializer to migrate. See<br />\nhttps://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.</p>\n\n<p><em>Saba Kiaei</em> and <em>David Buckley</em></p>\n"
+  },
+  {
+    "message": "*   Change the default serializer of `ActiveSupport::MessageEncryptor` from\n    `Marshal` to `ActiveSupport::JSON` when using `config.load_defaults 7.1`.\n\n    Existing apps can use the `:json_allow_marshal` serializer to migrate. See\n    https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.\n\n    *Zack Deveau* and *Martin Gingras*",
+    "project": "activesupport",
+    "date_merged": 1683567682000,
+    "author": "Jonathan Hefner",
+    "sha": "9fbfd8100bf0f141769d2ced42940b2d7b9b71f0",
+    "pr": "47963",
+    "merge_sha": "e49fcfa0dc4139edfb02c696666ec63eef29e422",
+    "html": "<p>Change the default serializer of <code>ActiveSupport::MessageEncryptor</code> from<br />\n<code>Marshal</code> to <code>ActiveSupport::JSON</code> when using <code>config.load_defaults 7.1</code>.</p>\n\n<p>Existing apps can use the <code>:json_allow_marshal</code> serializer to migrate. See<br />\nhttps://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.</p>\n\n<p><em>Zack Deveau</em> and <em>Martin Gingras</em></p>\n"
   },
   {
     "message": "*   Add `ActiveSupport::TestCase#stub_const` to stub a constant for the duration of a yield.\n\n    *DHH*",
