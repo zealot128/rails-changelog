@@ -8724,20 +8724,47 @@ if the path existed and was an empty directory or file.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activesupport: Change default serialization format of `MessageEncryptor` from `Marshal` to `JSON` for Rails 7.1.
+    <title>activesupport: Change the default serializer of `ActiveSupport::MessageVerifier` from
 </title>
-    <link>https://github.com/rails/rails/issues/42846</link>
-    <guid>https://github.com/rails/rails/issues/42846</guid>
-    <description>*   Change default serialization format of `MessageEncryptor` from `Marshal` to `JSON` for Rails 7.1.
+    <link>https://github.com/rails/rails/issues/47963</link>
+    <guid>https://github.com/rails/rails/issues/47963</guid>
+    <description>*   Change the default serializer of `ActiveSupport::MessageVerifier` from
+    `Marshal` to `ActiveSupport::JSON` when using `config.load_defaults 7.1`.
 
-    Existing apps are provided with an upgrade path to migrate to `JSON` as described in `guides/source/upgrading_ruby_on_rails.md`
+    Existing apps can use the `:json_allow_marshal` serializer to migrate. See
+    https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.
+
+    *Saba Kiaei* and *David Buckley*</description>
+    <pubDate>Mon, 08 May 2023 17:41:22 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Change the default serializer of <code>ActiveSupport::MessageVerifier</code> from<br />
+<code>Marshal</code> to <code>ActiveSupport::JSON</code> when using <code>config.load_defaults 7.1</code>.</p>
+
+<p>Existing apps can use the <code>:json_allow_marshal</code> serializer to migrate. See<br />
+https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.</p>
+
+<p><em>Saba Kiaei</em> and <em>David Buckley</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Change the default serializer of `ActiveSupport::MessageEncryptor` from
+</title>
+    <link>https://github.com/rails/rails/issues/47963</link>
+    <guid>https://github.com/rails/rails/issues/47963</guid>
+    <description>*   Change the default serializer of `ActiveSupport::MessageEncryptor` from
+    `Marshal` to `ActiveSupport::JSON` when using `config.load_defaults 7.1`.
+
+    Existing apps can use the `:json_allow_marshal` serializer to migrate. See
+    https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.
 
     *Zack Deveau* and *Martin Gingras*</description>
-    <pubDate>Mon, 07 Feb 2022 20:51:08 +0000</pubDate>
-    <author>Zack</author>
-    <content:encoded><![CDATA[<p>Change default serialization format of <code>MessageEncryptor</code> from <code>Marshal</code> to <code>JSON</code> for Rails 7.1.</p>
+    <pubDate>Mon, 08 May 2023 17:41:22 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Change the default serializer of <code>ActiveSupport::MessageEncryptor</code> from<br />
+<code>Marshal</code> to <code>ActiveSupport::JSON</code> when using <code>config.load_defaults 7.1</code>.</p>
 
-<p>Existing apps are provided with an upgrade path to migrate to <code>JSON</code> as described in <code>guides/source/upgrading_ruby_on_rails.md</code></p>
+<p>Existing apps can use the <code>:json_allow_marshal</code> serializer to migrate. See<br />
+https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.</p>
 
 <p><em>Zack Deveau</em> and <em>Martin Gingras</em></p>
 ]]></content:encoded>
