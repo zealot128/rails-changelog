@@ -6,6 +6,80 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actionpack: `config.action_dispatch.cookies_serializer` now accepts `:message_pack` and
+</title>
+    <link>https://github.com/rails/rails/issues/48103</link>
+    <guid>https://github.com/rails/rails/issues/48103</guid>
+    <description>*   `config.action_dispatch.cookies_serializer` now accepts `:message_pack` and
+    `:message_pack_allow_marshal` as serializers. These serializers require the
+    [`msgpack` gem](https://rubygems.org/gems/msgpack) (&gt;= 1.7.0).
+
+    The Message Pack format can provide improved performance and smaller payload
+    sizes. It also supports roundtripping some Ruby types that are not supported
+    by JSON. For example:
+
+      ```ruby
+      cookies.encrypted[:foo] = [{ a: 1 }, { b: 2 }.with_indifferent_access, 1.to_d, Time.at(0, 123)]
+
+      # BEFORE with config.action_dispatch.cookies_serializer = :json
+      cookies.encrypted[:foo]
+      # =&gt; [{&quot;a&quot;=&gt;1}, {&quot;b&quot;=&gt;2}, &quot;1.0&quot;, &quot;1969-12-31T18:00:00.000-06:00&quot;]
+      cookies.encrypted[:foo].map(&amp;:class)
+      # =&gt; [Hash, Hash, String, String]
+
+      # AFTER with config.action_dispatch.cookies_serializer = :message_pack
+      cookies.encrypted[:foo]
+      # =&gt; [{:a=&gt;1}, {&quot;b&quot;=&gt;2}, 0.1e1, 1969-12-31 18:00:00.000123 -0600]
+      cookies.encrypted[:foo].map(&amp;:class)
+      # =&gt; [Hash, ActiveSupport::HashWithIndifferentAccess, BigDecimal, Time]
+      ```
+
+    The `:message_pack` serializer can fall back to deserializing with
+    `ActiveSupport::JSON` when necessary, and the `:message_pack_allow_marshal`
+    serializer can fall back to deserializing with `Marshal` as well as
+    `ActiveSupport::JSON`. Additionally, the `:marshal`, `:json`, and
+    `:json_allow_marshal` (AKA `:hybrid`) serializers can now fall back to
+    deserializing with `ActiveSupport::MessagePack` when necessary. These
+    behaviors ensure old cookies can still be read so that migration is easier.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Mon, 08 May 2023 20:38:51 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p><code>config.action_dispatch.cookies_serializer</code> now accepts <code>:message_pack</code> and<br />
+<code>:message_pack_allow_marshal</code> as serializers. These serializers require the<br />
+<a href="https://rubygems.org/gems/msgpack"><code>msgpack</code> gem</a> (&gt;= 1.7.0).</p>
+
+<p>The Message Pack format can provide improved performance and smaller payload<br />
+sizes. It also supports roundtripping some Ruby types that are not supported<br />
+by JSON. For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">cookies</span><span class="p">.</span><span class="nf">encrypted</span><span class="p">[</span><span class="ss">:foo</span><span class="p">]</span> <span class="o">=</span> <span class="p">[{</span> <span class="ss">a: </span><span class="mi">1</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">b: </span><span class="mi">2</span> <span class="p">}.</span><span class="nf">with_indifferent_access</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="nf">to_d</span><span class="p">,</span> <span class="no">Time</span><span class="p">.</span><span class="nf">at</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">123</span><span class="p">)]</span>
+
+  <span class="c1"># BEFORE with config.action_dispatch.cookies_serializer = :json</span>
+  <span class="n">cookies</span><span class="p">.</span><span class="nf">encrypted</span><span class="p">[</span><span class="ss">:foo</span><span class="p">]</span>
+  <span class="c1"># =&gt; [{"a"=&gt;1}, {"b"=&gt;2}, "1.0", "1969-12-31T18:00:00.000-06:00"]</span>
+  <span class="n">cookies</span><span class="p">.</span><span class="nf">encrypted</span><span class="p">[</span><span class="ss">:foo</span><span class="p">].</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span>
+  <span class="c1"># =&gt; [Hash, Hash, String, String]</span>
+
+  <span class="c1"># AFTER with config.action_dispatch.cookies_serializer = :message_pack</span>
+  <span class="n">cookies</span><span class="p">.</span><span class="nf">encrypted</span><span class="p">[</span><span class="ss">:foo</span><span class="p">]</span>
+  <span class="c1"># =&gt; [{:a=&gt;1}, {"b"=&gt;2}, 0.1e1, 1969-12-31 18:00:00.000123 -0600]</span>
+  <span class="n">cookies</span><span class="p">.</span><span class="nf">encrypted</span><span class="p">[</span><span class="ss">:foo</span><span class="p">].</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span>
+  <span class="c1"># =&gt; [Hash, ActiveSupport::HashWithIndifferentAccess, BigDecimal, Time]</span>
+</code></pre></div></div>
+
+<p>The <code>:message_pack</code> serializer can fall back to deserializing with<br />
+<code>ActiveSupport::JSON</code> when necessary, and the <code>:message_pack_allow_marshal</code><br />
+serializer can fall back to deserializing with <code>Marshal</code> as well as<br />
+<code>ActiveSupport::JSON</code>. Additionally, the <code>:marshal</code>, <code>:json</code>, and<br />
+<code>:json_allow_marshal</code> (AKA <code>:hybrid</code>) serializers can now fall back to<br />
+deserializing with <code>ActiveSupport::MessagePack</code> when necessary. These<br />
+behaviors ensure old cookies can still be read so that migration is easier.</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Remove leading dot from domains on cookies set with `domain: :all`, to meet RFC6265 requirements
 </title>
     <link>https://github.com/rails/rails/issues/48036</link>
@@ -6787,6 +6861,86 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: `MessageEncryptor`, `MessageVerifier`, and `config.active_support.message_serializer`
+</title>
+    <link>https://github.com/rails/rails/issues/47964</link>
+    <guid>https://github.com/rails/rails/issues/47964</guid>
+    <description>*   `MessageEncryptor`, `MessageVerifier`, and `config.active_support.message_serializer`
+    now accept `:message_pack` and `:message_pack_allow_marshal` as serializers.
+    These serializers require the [`msgpack` gem](https://rubygems.org/gems/msgpack)
+    (&gt;= 1.7.0).
+
+    The Message Pack format can provide improved performance and smaller payload
+    sizes. It also supports roundtripping some Ruby types that are not supported
+    by JSON. For example:
+
+      ```ruby
+      verifier = ActiveSupport::MessageVerifier.new(&quot;secret&quot;)
+      data = [{ a: 1 }, { b: 2 }.with_indifferent_access, 1.to_d, Time.at(0, 123)]
+      message = verifier.generate(data)
+
+      # BEFORE with config.active_support.message_serializer = :json
+      verifier.verified(message)
+      # =&gt; [{&quot;a&quot;=&gt;1}, {&quot;b&quot;=&gt;2}, &quot;1.0&quot;, &quot;1969-12-31T18:00:00.000-06:00&quot;]
+      verifier.verified(message).map(&amp;:class)
+      # =&gt; [Hash, Hash, String, String]
+
+      # AFTER with config.active_support.message_serializer = :message_pack
+      verifier.verified(message)
+      # =&gt; [{:a=&gt;1}, {&quot;b&quot;=&gt;2}, 0.1e1, 1969-12-31 18:00:00.000123 -0600]
+      verifier.verified(message).map(&amp;:class)
+      # =&gt; [Hash, ActiveSupport::HashWithIndifferentAccess, BigDecimal, Time]
+      ```
+
+    The `:message_pack` serializer can fall back to deserializing with
+    `ActiveSupport::JSON` when necessary, and the `:message_pack_allow_marshal`
+    serializer can fall back to deserializing with `Marshal` as well as
+    `ActiveSupport::JSON`. Additionally, the `:marshal`, `:json`, and
+    `:json_allow_marshal` serializers can now fall back to deserializing with
+    `ActiveSupport::MessagePack` when necessary. These behaviors ensure old
+    messages can still be read so that migration is easier.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Mon, 08 May 2023 19:59:30 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p><code>MessageEncryptor</code>, <code>MessageVerifier</code>, and <code>config.active_support.message_serializer</code><br />
+now accept <code>:message_pack</code> and <code>:message_pack_allow_marshal</code> as serializers.<br />
+These serializers require the <a href="https://rubygems.org/gems/msgpack"><code>msgpack</code> gem</a><br />
+(&gt;= 1.7.0).</p>
+
+<p>The Message Pack format can provide improved performance and smaller payload<br />
+sizes. It also supports roundtripping some Ruby types that are not supported<br />
+by JSON. For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">verifier</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageVerifier</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"secret"</span><span class="p">)</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="p">[{</span> <span class="ss">a: </span><span class="mi">1</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">b: </span><span class="mi">2</span> <span class="p">}.</span><span class="nf">with_indifferent_access</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="nf">to_d</span><span class="p">,</span> <span class="no">Time</span><span class="p">.</span><span class="nf">at</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">123</span><span class="p">)]</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="n">verifier</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+  <span class="c1"># BEFORE with config.active_support.message_serializer = :json</span>
+  <span class="n">verifier</span><span class="p">.</span><span class="nf">verified</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+  <span class="c1"># =&gt; [{"a"=&gt;1}, {"b"=&gt;2}, "1.0", "1969-12-31T18:00:00.000-06:00"]</span>
+  <span class="n">verifier</span><span class="p">.</span><span class="nf">verified</span><span class="p">(</span><span class="n">message</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span>
+  <span class="c1"># =&gt; [Hash, Hash, String, String]</span>
+
+  <span class="c1"># AFTER with config.active_support.message_serializer = :message_pack</span>
+  <span class="n">verifier</span><span class="p">.</span><span class="nf">verified</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+  <span class="c1"># =&gt; [{:a=&gt;1}, {"b"=&gt;2}, 0.1e1, 1969-12-31 18:00:00.000123 -0600]</span>
+  <span class="n">verifier</span><span class="p">.</span><span class="nf">verified</span><span class="p">(</span><span class="n">message</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:class</span><span class="p">)</span>
+  <span class="c1"># =&gt; [Hash, ActiveSupport::HashWithIndifferentAccess, BigDecimal, Time]</span>
+</code></pre></div></div>
+
+<p>The <code>:message_pack</code> serializer can fall back to deserializing with<br />
+<code>ActiveSupport::JSON</code> when necessary, and the <code>:message_pack_allow_marshal</code><br />
+serializer can fall back to deserializing with <code>Marshal</code> as well as<br />
+<code>ActiveSupport::JSON</code>. Additionally, the <code>:marshal</code>, <code>:json</code>, and<br />
+<code>:json_allow_marshal</code> serializers can now fall back to deserializing with<br />
+<code>ActiveSupport::MessagePack</code> when necessary. These behaviors ensure old<br />
+messages can still be read so that migration is easier.</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: A new `7.1` cache format is available which includes an optimization for
 </title>
     <link>https://github.com/rails/rails/issues/48122</link>
@@ -8731,19 +8885,21 @@ if the path existed and was an empty directory or file.</p>
     <description>*   Change the default serializer of `ActiveSupport::MessageVerifier` from
     `Marshal` to `ActiveSupport::JSON` when using `config.load_defaults 7.1`.
 
-    Existing apps can use the `:json_allow_marshal` serializer to migrate. See
+    Messages serialized with `Marshal` can still be read, but new messages will
+    be serialized with `ActiveSupport::JSON`. For more information, see
     https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.
 
-    *Saba Kiaei* and *David Buckley*</description>
+    *Saba Kiaei*, *David Buckley*, and *Jonathan Hefner*</description>
     <pubDate>Mon, 08 May 2023 17:41:22 +0000</pubDate>
     <author>Jonathan Hefner</author>
     <content:encoded><![CDATA[<p>Change the default serializer of <code>ActiveSupport::MessageVerifier</code> from<br />
 <code>Marshal</code> to <code>ActiveSupport::JSON</code> when using <code>config.load_defaults 7.1</code>.</p>
 
-<p>Existing apps can use the <code>:json_allow_marshal</code> serializer to migrate. See<br />
+<p>Messages serialized with <code>Marshal</code> can still be read, but new messages will<br />
+be serialized with <code>ActiveSupport::JSON</code>. For more information, see<br />
 https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.</p>
 
-<p><em>Saba Kiaei</em> and <em>David Buckley</em></p>
+<p><em>Saba Kiaei</em>, <em>David Buckley</em>, and <em>Jonathan Hefner</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -8754,19 +8910,21 @@ https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-messa
     <description>*   Change the default serializer of `ActiveSupport::MessageEncryptor` from
     `Marshal` to `ActiveSupport::JSON` when using `config.load_defaults 7.1`.
 
-    Existing apps can use the `:json_allow_marshal` serializer to migrate. See
+    Messages serialized with `Marshal` can still be read, but new messages will
+    be serialized with `ActiveSupport::JSON`. For more information, see
     https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.
 
-    *Zack Deveau* and *Martin Gingras*</description>
+    *Zack Deveau*, *Martin Gingras*, and *Jonathan Hefner*</description>
     <pubDate>Mon, 08 May 2023 17:41:22 +0000</pubDate>
     <author>Jonathan Hefner</author>
     <content:encoded><![CDATA[<p>Change the default serializer of <code>ActiveSupport::MessageEncryptor</code> from<br />
 <code>Marshal</code> to <code>ActiveSupport::JSON</code> when using <code>config.load_defaults 7.1</code>.</p>
 
-<p>Existing apps can use the <code>:json_allow_marshal</code> serializer to migrate. See<br />
+<p>Messages serialized with <code>Marshal</code> can still be read, but new messages will<br />
+be serialized with <code>ActiveSupport::JSON</code>. For more information, see<br />
 https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-message-serializer.</p>
 
-<p><em>Zack Deveau</em> and <em>Martin Gingras</em></p>
+<p><em>Zack Deveau</em>, <em>Martin Gingras</em>, and <em>Jonathan Hefner</em></p>
 ]]></content:encoded>
   </item>
   <item>
