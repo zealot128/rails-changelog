@@ -1360,6 +1360,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Accept procs for args and params in `assert_enqueued_email_with`\n\n    ```ruby\n    assert_enqueued_email_with DeliveryJob, params: -> p { p[:token] =~ /\\w+/ } do\n      UserMailer.with(token: user.generate_token).email_verification.deliver_later\n    end\n    ```\n\n    *Max Chernyak*",
+    "project": "actionmailer",
+    "date_merged": 1683828395000,
+    "author": "Max Chernyak",
+    "sha": "96f19e965b0ce4d50e958e02a66f6c005496fdcd",
+    "pr": "46626",
+    "merge_sha": "cb1073e664c41c3c4c87dee4788cc2a326247b4f",
+    "html": "<p>Accept procs for args and params in <code>assert_enqueued_email_with</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_enqueued_email_with</span> <span class=\"no\">DeliveryJob</span><span class=\"p\">,</span> <span class=\"ss\">params: </span><span class=\"o\">-&gt;</span> <span class=\"nb\">p</span> <span class=\"p\">{</span> <span class=\"nb\">p</span><span class=\"p\">[</span><span class=\"ss\">:token</span><span class=\"p\">]</span> <span class=\"o\">=~</span> <span class=\"sr\">/\\w+/</span> <span class=\"p\">}</span> <span class=\"k\">do</span>\n  <span class=\"no\">UserMailer</span><span class=\"p\">.</span><span class=\"nf\">with</span><span class=\"p\">(</span><span class=\"ss\">token: </span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">generate_token</span><span class=\"p\">).</span><span class=\"nf\">email_verification</span><span class=\"p\">.</span><span class=\"nf\">deliver_later</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Max Chernyak</em></p>\n"
+  },
+  {
     "message": "*   Added `*_deliver` callbacks to `ActionMailer::Base` that wrap mail message delivery.\n\n    Example:\n\n    ```ruby\n    class EventsMailer < ApplicationMailer\n      after_deliver do\n        User.find_by(email: message.to.first).update(email_provider_id: message.message_id, emailed_at: Time.current)\n      end\n    end\n    ```\n\n    *Ben Sheldon*",
     "project": "actionmailer",
     "date_merged": 1680645495000,
@@ -1920,14 +1930,14 @@
     "html": "<p>Safe for direct upload on Libraries or Frameworks</p>\n\n<p>Enable the use of custom headers during direct uploads, which allows for<br />\nthe inclusion of Authorization bearer tokens or other forms of authorization<br />\ntokens through headers.</p>\n\n<p><em>Radamés Roriz</em></p>\n"
   },
   {
-    "message": "*   Active Record query cache is now evicts least recently used entries\n\n    By default it only keeps the `100` most recently used queries.\n\n    The cache size can be configured via `database.yml`\n\n    ```yaml\n    development:\n      adapter: mysql2\n      query_cache: 200\n    ```\n\n    It can also be entirely disabled:\n\n    ```yaml\n    development:\n      adapter: mysql2\n      query_cache: false\n    ```\n\n    *Jean Boussier*",
+    "message": "*   Active Record query cache now evicts least recently used entries\n\n    By default it only keeps the `100` most recently used queries.\n\n    The cache size can be configured via `database.yml`\n\n    ```yaml\n    development:\n      adapter: mysql2\n      query_cache: 200\n    ```\n\n    It can also be entirely disabled:\n\n    ```yaml\n    development:\n      adapter: mysql2\n      query_cache: false\n    ```\n\n    *Jean Boussier*",
     "project": "activerecord",
-    "date_merged": 1683427078000,
-    "author": "Jean Boussier",
-    "sha": "89a5d6ada51a09c37f61e32247f68536477fc825",
-    "pr": "48110",
-    "merge_sha": "5fd77fede1a4ccdbf648202b039b3ac25095dca7",
-    "html": "<p>Active Record query cache is now evicts least recently used entries</p>\n\n<p>By default it only keeps the <code>100</code> most recently used queries.</p>\n\n<p>The cache size can be configured via <code>database.yml</code></p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">mysql2</span>\n  <span class=\"na\">query_cache</span><span class=\"pi\">:</span> <span class=\"m\">200</span>\n</code></pre></div></div>\n\n<p>It can also be entirely disabled:</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">mysql2</span>\n  <span class=\"na\">query_cache</span><span class=\"pi\">:</span> <span class=\"no\">false</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
+    "date_merged": 1683818462000,
+    "author": "Olivier",
+    "sha": "e394c38f3eed9c5b551999fc9ee654c061134293",
+    "pr": "48192",
+    "merge_sha": "511a18722aef64d6d5a0ac5fabbb540cc1733e8f",
+    "html": "<p>Active Record query cache now evicts least recently used entries</p>\n\n<p>By default it only keeps the <code>100</code> most recently used queries.</p>\n\n<p>The cache size can be configured via <code>database.yml</code></p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">mysql2</span>\n  <span class=\"na\">query_cache</span><span class=\"pi\">:</span> <span class=\"m\">200</span>\n</code></pre></div></div>\n\n<p>It can also be entirely disabled:</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">mysql2</span>\n  <span class=\"na\">query_cache</span><span class=\"pi\">:</span> <span class=\"no\">false</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Deprecate `check_pending!` in favor of `check_pending_migrations!`.\n\n    `check_pending!` will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of `check_pending_migrations!` which will find all pending migrations for the database configurations in a given environment.\n\n    *Eileen M. Uchitelle*",
