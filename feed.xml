@@ -10132,6 +10132,103 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Add support for the HTML picture tag. It supports passing a String, an Array or a Block.
+</title>
+    <link>https://github.com/rails/rails/issues/48100</link>
+    <guid>https://github.com/rails/rails/issues/48100</guid>
+    <description>*   Add support for the HTML picture tag. It supports passing a String, an Array or a Block.
+    Supports passing properties directly to the img tag via the `:image` key.
+    Since the picture tag requires an img tag, the last element you provide will be used for the img tag.
+    For complete control over the picture tag, a block can be passed, which will populate the contents of the tag accordingly.
+
+    Can be used like this for a single source:
+    ```erb
+    &lt;%= picture_tag(&quot;picture.webp&quot;) %&gt;
+    ```
+    which will generate the following:
+    ```html
+    &lt;picture&gt;
+        &lt;img src=&quot;/images/picture.webp&quot; /&gt;
+    &lt;/picture&gt;
+    ```
+
+    For multiple sources:
+    ```erb
+    &lt;%= picture_tag(&quot;picture.webp&quot;, &quot;picture.png&quot;, :class =&gt; &quot;mt-2&quot;, :image =&gt; { alt: &quot;Image&quot;, class: &quot;responsive-img&quot; }) %&gt;
+    ```
+    will generate:
+    ```html
+    &lt;picture class=&quot;mt-2&quot;&gt;
+        &lt;source srcset=&quot;/images/picture.webp&quot; /&gt;
+        &lt;source srcset=&quot;/images/picture.png&quot; /&gt;
+        &lt;img alt=&quot;Image&quot; class=&quot;responsive-img&quot; src=&quot;/images/picture.png&quot; /&gt;
+    &lt;/picture&gt;
+    ```
+
+    Full control via a block:
+    ```erb
+    &lt;%= picture_tag(:class =&gt; &quot;my-class&quot;) do %&gt;
+        &lt;%= tag(:source, :srcset =&gt; image_path(&quot;picture.webp&quot;)) %&gt;
+        &lt;%= tag(:source, :srcset =&gt; image_path(&quot;picture.png&quot;)) %&gt;
+        &lt;%= image_tag(&quot;picture.png&quot;, :alt =&gt; &quot;Image&quot;) %&gt;
+    &lt;% end %&gt;
+    ```
+    will generate:
+    ```html
+    &lt;picture class=&quot;my-class&quot;&gt;
+        &lt;source srcset=&quot;/images/picture.webp&quot; /&gt;
+        &lt;source srcset=&quot;/images/picture.png&quot; /&gt;
+        &lt;img alt=&quot;Image&quot; src=&quot;/images/picture.png&quot; /&gt;
+    &lt;/picture&gt;
+    ```
+
+    *Juan Pablo Balarini*</description>
+    <pubDate>Fri, 12 May 2023 02:27:35 +0000</pubDate>
+    <author>Juan Pablo Balarini</author>
+    <content:encoded><![CDATA[<p>Add support for the HTML picture tag. It supports passing a String, an Array or a Block.<br />
+Supports passing properties directly to the img tag via the <code>:image</code> key.<br />
+Since the picture tag requires an img tag, the last element you provide will be used for the img tag.<br />
+For complete control over the picture tag, a block can be passed, which will populate the contents of the tag accordingly.</p>
+
+<p>Can be used like this for a single source:</p>
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">picture_tag</span><span class="p">(</span><span class="s2">"picture.webp"</span><span class="p">)</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+<p>which will generate the following:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;picture&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/images/picture.webp"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/picture&gt;</span>
+</code></pre></div></div>
+
+<p>For multiple sources:</p>
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">picture_tag</span><span class="p">(</span><span class="s2">"picture.webp"</span><span class="p">,</span> <span class="s2">"picture.png"</span><span class="p">,</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s2">"mt-2"</span><span class="p">,</span> <span class="ss">:image</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">alt: </span><span class="s2">"Image"</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"responsive-img"</span> <span class="p">})</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+<p>will generate:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;picture</span> <span class="na">class=</span><span class="s">"mt-2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">srcset=</span><span class="s">"/images/picture.webp"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">srcset=</span><span class="s">"/images/picture.png"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"Image"</span> <span class="na">class=</span><span class="s">"responsive-img"</span> <span class="na">src=</span><span class="s">"/images/picture.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/picture&gt;</span>
+</code></pre></div></div>
+
+<p>Full control via a block:</p>
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">picture_tag</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s2">"my-class"</span><span class="p">)</span> <span class="k">do</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">tag</span><span class="p">(</span><span class="ss">:source</span><span class="p">,</span> <span class="ss">:srcset</span> <span class="o">=&gt;</span> <span class="n">image_path</span><span class="p">(</span><span class="s2">"picture.webp"</span><span class="p">))</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">tag</span><span class="p">(</span><span class="ss">:source</span><span class="p">,</span> <span class="ss">:srcset</span> <span class="o">=&gt;</span> <span class="n">image_path</span><span class="p">(</span><span class="s2">"picture.png"</span><span class="p">))</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">image_tag</span><span class="p">(</span><span class="s2">"picture.png"</span><span class="p">,</span> <span class="ss">:alt</span> <span class="o">=&gt;</span> <span class="s2">"Image"</span><span class="p">)</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+<p>will generate:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;picture</span> <span class="na">class=</span><span class="s">"my-class"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">srcset=</span><span class="s">"/images/picture.webp"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">srcset=</span><span class="s">"/images/picture.png"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"Image"</span> <span class="na">src=</span><span class="s">"/images/picture.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/picture&gt;</span>
+</code></pre></div></div>
+
+<p><em>Juan Pablo Balarini</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Remove deprecated support to passing instance variables as locals to partials.
 </title>
     <link>https://github.com/rails/rails/issues/47556</link>
