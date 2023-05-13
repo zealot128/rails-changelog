@@ -41,6 +41,7 @@
 
     `bin/rails secrets:show` and `bin/rails secrets:edit` have been deprecated
     in favor of credentials.
+
     Run `bin/rails credentials:help` for more information
 
     *Petrik de Heus*</description>
@@ -52,8 +53,9 @@
 credentials. This command has been removed.</p>
 
 <p><code>bin/rails secrets:show</code> and <code>bin/rails secrets:edit</code> have been deprecated<br />
-in favor of credentials.<br />
-Run <code>bin/rails credentials:help</code> for more information</p>
+in favor of credentials.</p>
+
+<p>Run <code>bin/rails credentials:help</code> for more information</p>
 
 <p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
@@ -87,7 +89,7 @@ list of those tasks, use <code>rake -T</code>.</p>
     The following would previously fail with a &quot;No Rakefile found&quot; error.
 
     ```bash
-    blog/bin/rails restart
+    $ blog/bin/rails restart
     ```
 
     *Petrik de Heus*</description>
@@ -97,7 +99,7 @@ list of those tasks, use <code>rake -T</code>.</p>
 
 <p>The following would previously fail with a “No Rakefile found” error.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>blog/bin/rails restart
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>blog/bin/rails restart
 </code></pre></div></div>
 
 <p><em>Petrik de Heus</em></p>
@@ -386,7 +388,7 @@ This is a good starting point that’ll work in many situations.</p>
     options reference an action that doesn&#39;t exist. This will be enabled by
     default but can be overridden via config.
 
-    ```
+    ```ruby
     # config/environments/production.rb
     config.action_controller.raise_on_missing_callback_actions = false
     ```
@@ -398,9 +400,9 @@ This is a good starting point that’ll work in many situations.</p>
 options reference an action that doesn’t exist. This will be enabled by<br />
 default but can be overridden via config.</p>
 
-<pre><code># config/environments/production.rb
-config.action_controller.raise_on_missing_callback_actions = false
-</code></pre>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># config/environments/production.rb</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">action_controller</span><span class="p">.</span><span class="nf">raise_on_missing_callback_actions</span> <span class="o">=</span> <span class="kp">false</span>
+</code></pre></div></div>
 
 <p><em>Jess Bees</em></p>
 ]]></content:encoded>
@@ -435,24 +437,24 @@ generated “config/puma.rb” directly.</p>
 
     Example:
 
-    ```
-    docker build -t app .
-    docker volume create app-storage
-    docker run --rm -it -v app-storage:/rails/storage -p 3000:3000 --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app
+    ```bash
+    $ docker build -t app .
+    $ docker volume create app-storage
+    $ docker run --rm -it -v app-storage:/rails/storage -p 3000:3000 --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app
     ```
 
     You can also start a console or a runner from this image:
 
-    ```
-    docker run --rm -it -v app-storage:/rails/storage --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app console
+    ```bash
+    $ docker run --rm -it -v app-storage:/rails/storage --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app console
     ```
 
     To create a multi-platform image on Apple Silicon to deploy on AMD or Intel and push to Docker Hub for user/app:
 
-    ```
-    docker login -u &lt;user&gt;
-    docker buildx create --use
-    docker buildx build --push --platform=linux/amd64,linux/arm64 -t &lt;user/image&gt; .
+    ```bash
+    $ docker login -u &lt;user&gt;
+    $ docker buildx create --use
+    $ docker buildx build --push --platform=linux/amd64,linux/arm64 -t &lt;user/image&gt; .
     ```
 
     *DHH, Sam Ruby*</description>
@@ -464,22 +466,22 @@ a production deploy of the application. Not intended for development (see Docked
 
 <p>Example:</p>
 
-<pre><code>docker build -t app .
-docker volume create app-storage
-docker run --rm -it -v app-storage:/rails/storage -p 3000:3000 --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app
-</code></pre>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker build <span class="nt">-t</span> app <span class="nb">.</span>
+<span class="nv">$ </span>docker volume create app-storage
+<span class="nv">$ </span>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">-v</span> app-storage:/rails/storage <span class="nt">-p</span> 3000:3000 <span class="nt">--env</span> <span class="nv">RAILS_MASTER_KEY</span><span class="o">=</span>&lt;see config/master.key&gt; app
+</code></pre></div></div>
 
 <p>You can also start a console or a runner from this image:</p>
 
-<pre><code>docker run --rm -it -v app-storage:/rails/storage --env RAILS_MASTER_KEY=&lt;see config/master.key&gt; app console
-</code></pre>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">-v</span> app-storage:/rails/storage <span class="nt">--env</span> <span class="nv">RAILS_MASTER_KEY</span><span class="o">=</span>&lt;see config/master.key&gt; app console
+</code></pre></div></div>
 
 <p>To create a multi-platform image on Apple Silicon to deploy on AMD or Intel and push to Docker Hub for user/app:</p>
 
-<pre><code>docker login -u &lt;user&gt;
-docker buildx create --use
-docker buildx build --push --platform=linux/amd64,linux/arm64 -t &lt;user/image&gt; .
-</code></pre>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker login <span class="nt">-u</span> &lt;user&gt;
+<span class="nv">$ </span>docker buildx create <span class="nt">--use</span>
+<span class="nv">$ </span>docker buildx build <span class="nt">--push</span> <span class="nt">--platform</span><span class="o">=</span>linux/amd64,linux/arm64 <span class="nt">-t</span> &lt;user/image&gt; <span class="nb">.</span>
+</code></pre></div></div>
 
 <p><em>DHH, Sam Ruby</em></p>
 ]]></content:encoded>
@@ -851,8 +853,8 @@ for the dbconsole command.</p>
 
     Example:
 
-    ```
-    &gt; bin/rails routes --grep /cats/1
+    ```bash
+    $ bin/rails routes --grep /cats/1
     Prefix Verb   URI Pattern         Controller#Action
        cat GET    /cats/:id(.:format) cats#show
            PATCH  /cats/:id(.:format) cats#update
@@ -867,13 +869,13 @@ for the dbconsole command.</p>
 
 <p>Example:</p>
 
-<pre><code>&gt; bin/rails routes --grep /cats/1
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bin/rails routes <span class="nt">--grep</span> /cats/1
 Prefix Verb   URI Pattern         Controller#Action
-   cat GET    /cats/:id(.:format) cats#show
-       PATCH  /cats/:id(.:format) cats#update
-       PUT    /cats/:id(.:format) cats#update
-       DELETE /cats/:id(.:format) cats#destroy
-</code></pre>
+   <span class="nb">cat </span>GET    /cats/:id<span class="o">(</span>.:format<span class="o">)</span> cats#show
+       PATCH  /cats/:id<span class="o">(</span>.:format<span class="o">)</span> cats#update
+       PUT    /cats/:id<span class="o">(</span>.:format<span class="o">)</span> cats#update
+       DELETE /cats/:id<span class="o">(</span>.:format<span class="o">)</span> cats#destroy
+</code></pre></div></div>
 
 <p><em>Orhan Toy</em></p>
 ]]></content:encoded>
@@ -923,8 +925,8 @@ when <code>config.allow_concurrency</code> is disabled.</p>
 
     Example:
 
-    ```
-    &gt; bin/rails routes --unused
+    ```bash
+    $ bin/rails routes --unused
 
     Found 2 unused routes:
 
@@ -940,14 +942,14 @@ when <code>config.allow_concurrency</code> is disabled.</p>
 
 <p>Example:</p>
 
-<pre><code>&gt; bin/rails routes --unused
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bin/rails routes <span class="nt">--unused</span>
 
 Found 2 unused routes:
 
 Prefix Verb URI Pattern    Controller#Action
-   one GET  /one(.:format) action#one
-   two GET  /two(.:format) action#two
-</code></pre>
+   one GET  /one<span class="o">(</span>.:format<span class="o">)</span> action#one
+   two GET  /two<span class="o">(</span>.:format<span class="o">)</span> action#two
+</code></pre></div></div>
 
 <p><em>Gannon McGibbon</em></p>
 ]]></content:encoded>
@@ -1046,7 +1048,7 @@ does.</p>
     <description>*   `--no-*` options now work with the app generator&#39;s `--minimal` option, and
     are both comprehensive and precise.  For example:
 
-    ```console
+    ```bash
     $ rails new my_cool_app --minimal
     Based on the specified options, the following options will also be activated:
 
@@ -1086,38 +1088,38 @@ does.</p>
     <content:encoded><![CDATA[<p><code>--no-*</code> options now work with the app generator’s <code>--minimal</code> option, and<br />
 are both comprehensive and precise.  For example:</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>rails new my_cool_app <span class="nt">--minimal</span>
-<span class="go">Based on the specified options, the following options will also be activated:
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rails new my_cool_app <span class="nt">--minimal</span>
+Based on the specified options, the following options will also be activated:
 
-  --skip-active-job [due to --minimal]
-  --skip-action-mailer [due to --skip-active-job, --minimal]
-  --skip-active-storage [due to --skip-active-job, --minimal]
-  --skip-action-mailbox [due to --skip-active-storage, --minimal]
-  --skip-action-text [due to --skip-active-storage, --minimal]
-  --skip-javascript [due to --minimal]
-  --skip-hotwire [due to --skip-javascript, --minimal]
-  --skip-action-cable [due to --minimal]
-  --skip-bootsnap [due to --minimal]
-  --skip-dev-gems [due to --minimal]
-  --skip-system-test [due to --minimal]
+  <span class="nt">--skip-active-job</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-action-mailer</span> <span class="o">[</span>due to <span class="nt">--skip-active-job</span>, <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-active-storage</span> <span class="o">[</span>due to <span class="nt">--skip-active-job</span>, <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-action-mailbox</span> <span class="o">[</span>due to <span class="nt">--skip-active-storage</span>, <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-action-text</span> <span class="o">[</span>due to <span class="nt">--skip-active-storage</span>, <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-javascript</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-hotwire</span> <span class="o">[</span>due to <span class="nt">--skip-javascript</span>, <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-action-cable</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-bootsnap</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-dev-gems</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-system-test</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
 
-</span><span class="c">...
-</span><span class="go">
-</span><span class="gp">$</span><span class="w"> </span>rails new my_cool_app <span class="nt">--minimal</span> <span class="nt">--no-skip-active-storage</span>
-<span class="go">Based on the specified options, the following options will also be activated:
+...
 
-  --skip-action-mailer [due to --minimal]
-  --skip-action-mailbox [due to --minimal]
-  --skip-action-text [due to --minimal]
-  --skip-javascript [due to --minimal]
-  --skip-hotwire [due to --skip-javascript, --minimal]
-  --skip-action-cable [due to --minimal]
-  --skip-bootsnap [due to --minimal]
-  --skip-dev-gems [due to --minimal]
-  --skip-system-test [due to --minimal]
+<span class="nv">$ </span>rails new my_cool_app <span class="nt">--minimal</span> <span class="nt">--no-skip-active-storage</span>
+Based on the specified options, the following options will also be activated:
 
-</span><span class="c">...
-</span></code></pre></div></div>
+  <span class="nt">--skip-action-mailer</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-action-mailbox</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-action-text</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-javascript</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-hotwire</span> <span class="o">[</span>due to <span class="nt">--skip-javascript</span>, <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-action-cable</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-bootsnap</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-dev-gems</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+  <span class="nt">--skip-system-test</span> <span class="o">[</span>due to <span class="nt">--minimal</span><span class="o">]</span>
+
+...
+</code></pre></div></div>
 
 <p><em>Brad Trick</em> and <em>Jonathan Hefner</em></p>
 ]]></content:encoded>
