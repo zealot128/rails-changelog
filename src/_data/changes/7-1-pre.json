@@ -1930,6 +1930,16 @@
     "html": "<p>Safe for direct upload on Libraries or Frameworks</p>\n\n<p>Enable the use of custom headers during direct uploads, which allows for<br />\nthe inclusion of Authorization bearer tokens or other forms of authorization<br />\ntokens through headers.</p>\n\n<p><em>Radamés Roriz</em></p>\n"
   },
   {
+    "message": "*   Discard connections which may have been left in a transaction.\n\n    There are cases where, due to an error, `within_new_transaction` may unexpectedly leave a connection in an open transaction. In these cases the connection may be reused, and the following may occur:\n    - Writes appear to fail when they actually succeed.\n    - Writes appear to succeed when they actually fail.\n    - Reads return stale or uncommitted data.\n\n    Previously, the following case was detected:\n    - An error is encountered during the transaction, then another error is encountered while attempting to roll it back.\n\n    Now, the following additional cases are detected:\n    - An error is encountered just after successfully beginning a transaction.\n    - An error is encountered while committing a transaction, then another error is encountered while attempting to roll it back.\n    - An error is encountered while rolling back a transaction.\n\n    *Nick Dower*",
+    "project": "activerecord",
+    "date_merged": 1684032512000,
+    "author": "Nick Dower",
+    "sha": "bdd00158737a9dfc9b479b2eee2971dd40c7bd0d",
+    "pr": "48200",
+    "merge_sha": "d1028617c5875c2da08007c5db37425481db6737",
+    "html": "<p>Discard connections which may have been left in a transaction.</p>\n\n<p>There are cases where, due to an error, <code>within_new_transaction</code> may unexpectedly leave a connection in an open transaction. In these cases the connection may be reused, and the following may occur:</p>\n<ul>\n  <li>Writes appear to fail when they actually succeed.</li>\n  <li>Writes appear to succeed when they actually fail.</li>\n  <li>Reads return stale or uncommitted data.</li>\n</ul>\n\n<p>Previously, the following case was detected:</p>\n<ul>\n  <li>An error is encountered during the transaction, then another error is encountered while attempting to roll it back.</li>\n</ul>\n\n<p>Now, the following additional cases are detected:</p>\n<ul>\n  <li>An error is encountered just after successfully beginning a transaction.</li>\n  <li>An error is encountered while committing a transaction, then another error is encountered while attempting to roll it back.</li>\n  <li>An error is encountered while rolling back a transaction.</li>\n</ul>\n\n<p><em>Nick Dower</em></p>\n"
+  },
+  {
     "message": "*   Active Record query cache now evicts least recently used entries\n\n    By default it only keeps the `100` most recently used queries.\n\n    The cache size can be configured via `database.yml`\n\n    ```yaml\n    development:\n      adapter: mysql2\n      query_cache: 200\n    ```\n\n    It can also be entirely disabled:\n\n    ```yaml\n    development:\n      adapter: mysql2\n      query_cache: false\n    ```\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1683818462000,
