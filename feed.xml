@@ -5765,6 +5765,27 @@ This behavior is the same as the deferrable option of the add_unique_key method,
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: `AbstractAdapter#execute` and `#exec_query` now clear the query cache
+</title>
+    <link>https://github.com/rails/rails/issues/48188</link>
+    <guid>https://github.com/rails/rails/issues/48188</guid>
+    <description>*   `AbstractAdapter#execute` and `#exec_query` now clear the query cache
+
+    If you need to perform a read only SQL query without clearing the query
+    cache, use `AbstractAdapter#select_all`.
+
+    *Jean Boussier*</description>
+    <pubDate>Mon, 15 May 2023 15:03:08 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p><code>AbstractAdapter#execute</code> and <code>#exec_query</code> now clear the query cache</p>
+
+<p>If you need to perform a read only SQL query without clearing the query<br />
+cache, use <code>AbstractAdapter#select_all</code>.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Make `.joins` / `.left_outer_joins` work with CTEs.
 </title>
     <link>https://github.com/rails/rails/issues/46843</link>
