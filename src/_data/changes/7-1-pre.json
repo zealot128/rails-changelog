@@ -2000,6 +2000,16 @@
     "html": "<p>Deprecate <code>deferrable: true</code> option of <code>add_foreign_key</code>.</p>\n\n<p><code>deferrable: true</code> is deprecated in favor of <code>deferrable: :immediate</code>, and<br />\nwill be removed in Rails 7.2.</p>\n\n<p>Because <code>deferrable: true</code> and <code>deferrable: :deferred</code> are hard to understand.<br />\nBoth true and :deferred are truthy values.<br />\nThis behavior is the same as the deferrable option of the add_unique_key method, added in #46192.</p>\n\n<p><em>Hiroyuki Ishii</em></p>\n"
   },
   {
+    "message": "*   `AbstractAdapter#execute` and `#exec_query` now clear the query cache\n\n    If you need to perform a read only SQL query without clearing the query\n    cache, use `AbstractAdapter#select_all`.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1684162988000,
+    "author": "eileencodes",
+    "sha": "942785fb8b03772dde338cc241af8e5de4d2efbc",
+    "pr": "48188",
+    "merge_sha": "d12f1a2f84128085ee0bdbbbe28df9ec27a9bc64",
+    "html": "<p><code>AbstractAdapter#execute</code> and <code>#exec_query</code> now clear the query cache</p>\n\n<p>If you need to perform a read only SQL query without clearing the query<br />\ncache, use <code>AbstractAdapter#select_all</code>.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Make `.joins` / `.left_outer_joins` work with CTEs.\n\n    For example:\n\n    ```ruby\n    Post\n     .with(commented_posts: Comment.select(:post_id).distinct)\n     .joins(:commented_posts)\n    #=> WITH (...) SELECT ... INNER JOIN commented_posts on posts.id = commented_posts.post_id\n    ```\n\n    *Vladimir Dementyev*",
     "project": "activerecord",
     "date_merged": 1682447228000,
