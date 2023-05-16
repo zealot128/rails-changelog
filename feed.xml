@@ -6,6 +6,60 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>railties: Enable passing column size to migration generator
+</title>
+    <link>https://github.com/rails/rails/issues/48210</link>
+    <guid>https://github.com/rails/rails/issues/48210</guid>
+    <description>*   Enable passing column size to migration generator
+
+    Previously you could pass a limit to the migration generator:
+
+    `rails generate migration CreateAuthor name:text{65535}`
+
+    Now, a size attribute can be passed to the migration generator:
+
+    `rails generate migration CreateAuthor name:text{medium}`
+
+    This generates a migration which includes the size attribute:
+
+    ```ruby
+    class CreateAuthor &lt; ActiveRecord::Migration[7.1]
+      def change
+        create_table :authors do |t|
+          t.text :name, size: :medium
+        end
+      end
+    end
+    ```
+
+    *Josh Broughton*, *Hartley McGuire*</description>
+    <pubDate>Mon, 15 May 2023 19:40:07 +0000</pubDate>
+    <author>Josh Broughton</author>
+    <content:encoded><![CDATA[<p>Enable passing column size to migration generator</p>
+
+<p>Previously you could pass a limit to the migration generator:</p>
+
+<p><code>rails generate migration CreateAuthor name:text{65535}</code></p>
+
+<p>Now, a size attribute can be passed to the migration generator:</p>
+
+<p><code>rails generate migration CreateAuthor name:text{medium}</code></p>
+
+<p>This generates a migration which includes the size attribute:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreateAuthor</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">7.1</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:authors</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">text</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">size: :medium</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Josh Broughton</em>, <em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Trying to set a config key with the same name of a method now raises:
 </title>
     <link>https://github.com/rails/rails/issues/48030</link>
@@ -11944,6 +11998,36 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 <p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>
 
 <p><em>Drew Bragg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `:unsafe_hashes` mapping for `content_security_policy`
+</title>
+    <link>https://github.com/rails/rails/issues/48212</link>
+    <guid>https://github.com/rails/rails/issues/48212</guid>
+    <description>*   Add `:unsafe_hashes` mapping for `content_security_policy`
+
+    ```ruby
+    # Before
+    policy.script_src  :strict_dynamic, &quot;&#39;unsafe-hashes&#39;&quot;, &quot;&#39;sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU=&#39;&quot;
+
+    # After
+    policy.script_src  :strict_dynamic, :unsafe_hashes, &quot;&#39;sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU=&#39;&quot;
+    ```
+
+    *Igor Morozov*</description>
+    <pubDate>Mon, 15 May 2023 18:58:07 +0000</pubDate>
+    <author>Igor S. Morozov</author>
+    <content:encoded><![CDATA[<p>Add <code>:unsafe_hashes</code> mapping for <code>content_security_policy</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span>  <span class="ss">:strict_dynamic</span><span class="p">,</span> <span class="s2">"'unsafe-hashes'"</span><span class="p">,</span> <span class="s2">"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='"</span>
+
+<span class="c1"># After</span>
+<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span>  <span class="ss">:strict_dynamic</span><span class="p">,</span> <span class="ss">:unsafe_hashes</span><span class="p">,</span> <span class="s2">"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='"</span>
+</code></pre></div></div>
+
+<p><em>Igor Morozov</em></p>
 ]]></content:encoded>
   </item>
 </channel>
