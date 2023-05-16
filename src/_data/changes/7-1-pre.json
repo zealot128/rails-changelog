@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Enable passing column size to migration generator\n\n    Previously you could pass a limit to the migration generator:\n\n    `rails generate migration CreateAuthor name:text{65535}`\n\n    Now, a size attribute can be passed to the migration generator:\n\n    `rails generate migration CreateAuthor name:text{medium}`\n\n    This generates a migration which includes the size attribute:\n\n    ```ruby\n    class CreateAuthor < ActiveRecord::Migration[7.1]\n      def change\n        create_table :authors do |t|\n          t.text :name, size: :medium\n        end\n      end\n    end\n    ```\n\n    *Josh Broughton*, *Hartley McGuire*",
+    "project": "railties",
+    "date_merged": 1684179607000,
+    "author": "Josh Broughton",
+    "sha": "f5e4410d7e71c4c5acd961106e6c1fd13e6dd18d",
+    "pr": "48210",
+    "merge_sha": "ae92a8a30e01e3328d357769f2d7bfa9db2d9b22",
+    "html": "<p>Enable passing column size to migration generator</p>\n\n<p>Previously you could pass a limit to the migration generator:</p>\n\n<p><code>rails generate migration CreateAuthor name:text{65535}</code></p>\n\n<p>Now, a size attribute can be passed to the migration generator:</p>\n\n<p><code>rails generate migration CreateAuthor name:text{medium}</code></p>\n\n<p>This generates a migration which includes the size attribute:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">CreateAuthor</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Migration</span><span class=\"p\">[</span><span class=\"mf\">7.1</span><span class=\"p\">]</span>\n  <span class=\"k\">def</span> <span class=\"nf\">change</span>\n    <span class=\"n\">create_table</span> <span class=\"ss\">:authors</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">text</span> <span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">size: :medium</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Josh Broughton</em>, <em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Trying to set a config key with the same name of a method now raises:\n\n    ```ruby\n    config.load_defaults = 7.0\n    # NoMethodError: Cannot assign to `load_defaults`, it is a configuration method\n    ```\n\n    *Xavier Noria*",
     "project": "railties",
     "date_merged": 1682239114000,
@@ -4188,5 +4198,15 @@
     "pr": "44261",
     "merge_sha": "6a55aff4a9fc5021066146f2c4abebb98a8d9894",
     "html": "<p>Make <code>Session#merge!</code> stringify keys.</p>\n\n<p>Previously <code>Session#update</code> would, but <code>merge!</code> wouldn’t.</p>\n\n<p><em>Drew Bragg</em></p>\n"
+  },
+  {
+    "message": "*   Add `:unsafe_hashes` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src  :strict_dynamic, \"'unsafe-hashes'\", \"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"\n\n    # After\n    policy.script_src  :strict_dynamic, :unsafe_hashes, \"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"\n    ```\n\n    *Igor Morozov*",
+    "project": "actionpack",
+    "date_merged": 1684177087000,
+    "author": "Igor S. Morozov",
+    "sha": "300b8e32c28e57f78663977767603080ebe29ac2",
+    "pr": "48212",
+    "merge_sha": "bdbcbc179df93b18e2ce6e1deef631eb2eea1624",
+    "html": "<p>Add <code>:unsafe_hashes</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"s2\">\"'unsafe-hashes'\"</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"ss\">:unsafe_hashes</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n</code></pre></div></div>\n\n<p><em>Igor Morozov</em></p>\n"
   }
 ]
