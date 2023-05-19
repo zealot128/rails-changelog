@@ -5615,6 +5615,21 @@ tokens through headers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add `ActiveRecord.disconnect_all!` method to immediately close all connections from all pools.
+</title>
+    <link>https://github.com/rails/rails/issues/47856</link>
+    <guid>https://github.com/rails/rails/issues/47856</guid>
+    <description>*   Add `ActiveRecord.disconnect_all!` method to immediately close all connections from all pools.
+
+    *Jean Boussier*</description>
+    <pubDate>Fri, 19 May 2023 11:21:17 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add <code>ActiveRecord.disconnect_all!</code> method to immediately close all connections from all pools.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Discard connections which may have been left in a transaction.
 </title>
     <link>https://github.com/rails/rails/issues/48200</link>
