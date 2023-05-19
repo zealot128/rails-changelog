@@ -1940,6 +1940,16 @@
     "html": "<p>Safe for direct upload on Libraries or Frameworks</p>\n\n<p>Enable the use of custom headers during direct uploads, which allows for<br />\nthe inclusion of Authorization bearer tokens or other forms of authorization<br />\ntokens through headers.</p>\n\n<p><em>Radamés Roriz</em></p>\n"
   },
   {
+    "message": "*   Add `ActiveRecord.disconnect_all!` method to immediately close all connections from all pools.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1684495277000,
+    "author": "Jean Boussier",
+    "sha": "f1b15971a54258a0c144139d74abd050ed51160e",
+    "pr": "47856",
+    "merge_sha": "068bf41acd7264a44faa3266ce8c7a6149dd6341",
+    "html": "<p>Add <code>ActiveRecord.disconnect_all!</code> method to immediately close all connections from all pools.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Discard connections which may have been left in a transaction.\n\n    There are cases where, due to an error, `within_new_transaction` may unexpectedly leave a connection in an open transaction. In these cases the connection may be reused, and the following may occur:\n    - Writes appear to fail when they actually succeed.\n    - Writes appear to succeed when they actually fail.\n    - Reads return stale or uncommitted data.\n\n    Previously, the following case was detected:\n    - An error is encountered during the transaction, then another error is encountered while attempting to roll it back.\n\n    Now, the following additional cases are detected:\n    - An error is encountered just after successfully beginning a transaction.\n    - An error is encountered while committing a transaction, then another error is encountered while attempting to roll it back.\n    - An error is encountered while rolling back a transaction.\n\n    *Nick Dower*",
     "project": "activerecord",
     "date_merged": 1684032512000,
