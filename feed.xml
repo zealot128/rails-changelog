@@ -4007,6 +4007,55 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionmailer: Deprecate passing params to `assert_enqueued_email_with` via the `:args`
+</title>
+    <link>https://github.com/rails/rails/issues/48194</link>
+    <guid>https://github.com/rails/rails/issues/48194</guid>
+    <description>*   Deprecate passing params to `assert_enqueued_email_with` via the `:args`
+    kwarg. `assert_enqueued_email_with` now supports a `:params` kwarg, so use
+    that to pass params:
+
+    ```ruby
+    # BEFORE
+    assert_enqueued_email_with MyMailer, :my_method, args: { my_param: &quot;value&quot; }
+
+    # AFTER
+    assert_enqueued_email_with MyMailer, :my_method, params: { my_param: &quot;value&quot; }
+    ```
+
+    To specify named mailer args as a Hash, wrap the Hash in an array:
+
+    ```ruby
+    assert_enqueued_email_with MyMailer, :my_method, args: [{ my_arg: &quot;value&quot; }]
+    # OR
+    assert_enqueued_email_with MyMailer, :my_method, args: [my_arg: &quot;value&quot;]
+    ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Fri, 19 May 2023 22:26:50 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Deprecate passing params to <code>assert_enqueued_email_with</code> via the <code>:args</code><br />
+kwarg. <code>assert_enqueued_email_with</code> now supports a <code>:params</code> kwarg, so use<br />
+that to pass params:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># BEFORE</span>
+<span class="n">assert_enqueued_email_with</span> <span class="no">MyMailer</span><span class="p">,</span> <span class="ss">:my_method</span><span class="p">,</span> <span class="ss">args: </span><span class="p">{</span> <span class="ss">my_param: </span><span class="s2">"value"</span> <span class="p">}</span>
+
+<span class="c1"># AFTER</span>
+<span class="n">assert_enqueued_email_with</span> <span class="no">MyMailer</span><span class="p">,</span> <span class="ss">:my_method</span><span class="p">,</span> <span class="ss">params: </span><span class="p">{</span> <span class="ss">my_param: </span><span class="s2">"value"</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>To specify named mailer args as a Hash, wrap the Hash in an array:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_enqueued_email_with</span> <span class="no">MyMailer</span><span class="p">,</span> <span class="ss">:my_method</span><span class="p">,</span> <span class="ss">args: </span><span class="p">[{</span> <span class="ss">my_arg: </span><span class="s2">"value"</span> <span class="p">}]</span>
+<span class="c1"># OR</span>
+<span class="n">assert_enqueued_email_with</span> <span class="no">MyMailer</span><span class="p">,</span> <span class="ss">:my_method</span><span class="p">,</span> <span class="ss">args: </span><span class="p">[</span><span class="ss">my_arg: </span><span class="s2">"value"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionmailer: Accept procs for args and params in `assert_enqueued_email_with`
 </title>
     <link>https://github.com/rails/rails/issues/46626</link>
