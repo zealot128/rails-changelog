@@ -1874,6 +1874,25 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Deprecate `SafeBuffer#clone_empty`.
+</title>
+    <link>https://github.com/rails/rails/issues/48264</link>
+    <guid>https://github.com/rails/rails/issues/48264</guid>
+    <description>*   Deprecate `SafeBuffer#clone_empty`.
+
+    This method has not been used internally since Rails 4.2.0.
+
+    *Mike Dalessio*</description>
+    <pubDate>Sun, 21 May 2023 00:15:49 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>SafeBuffer#clone_empty</code>.</p>
+
+<p>This method has not been used internally since Rails 4.2.0.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `MessageEncryptor`, `MessageVerifier`, and `config.active_support.message_serializer`
 </title>
     <link>https://github.com/rails/rails/issues/47964</link>
