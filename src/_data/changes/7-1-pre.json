@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   `bin/rails app:template` now runs `bundle install` and any `after_bundle`\n    blocks after the template is executed.\n\n    *Jonathan Hefner* and *Gerry Caulfield*",
+    "project": "railties",
+    "date_merged": 1684699003000,
+    "author": "Jonathan Hefner",
+    "sha": "83e69c22e9ebfb3585c0fb6d536353f4f43fd483",
+    "pr": "48269",
+    "merge_sha": "844adad2c0dd0767b78c26c03372f9c60eda6791",
+    "html": "<p><code>bin/rails app:template</code> now runs <code>bundle install</code> and any <code>after_bundle</code><br />\nblocks after the template is executed.</p>\n\n<p><em>Jonathan Hefner</em> and <em>Gerry Caulfield</em></p>\n"
+  },
+  {
     "message": "*   Enable passing column size to migration generator\n\n    Previously you could pass a limit to the migration generator:\n\n    `rails generate migration CreateAuthor name:text{65535}`\n\n    Now, a size attribute can be passed to the migration generator:\n\n    `rails generate migration CreateAuthor name:text{medium}`\n\n    This generates a migration which includes the size attribute:\n\n    ```ruby\n    class CreateAuthor < ActiveRecord::Migration[7.1]\n      def change\n        create_table :authors do |t|\n          t.text :name, size: :medium\n        end\n      end\n    end\n    ```\n\n    *Josh Broughton*, *Hartley McGuire*",
     "project": "railties",
     "date_merged": 1684179607000,
