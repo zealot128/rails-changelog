@@ -1891,6 +1891,66 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: `ERB::Util.html_escape_once` always returns an `html_safe` string.
+</title>
+    <link>https://github.com/rails/rails/issues/48265</link>
+    <guid>https://github.com/rails/rails/issues/48265</guid>
+    <description>*   `ERB::Util.html_escape_once` always returns an `html_safe` string.
+
+    This method previously maintained the `html_safe?` property of a string on the return
+    value. Because this string has been escaped, however, not marking it as `html_safe` causes
+    entities to be double-escaped.
+
+    As an example, take this view snippet:
+
+      ```html
+      &lt;p&gt;&lt;%= html_escape_once(&quot;this &amp; that &amp;amp; the other&quot;) %&gt;&lt;/p&gt;
+      ```
+
+    Before this change, that would be double-escaped and render as:
+
+      ```html
+      &lt;p&gt;this &amp;amp;amp; that &amp;amp;amp; the other&lt;/p&gt;
+      ```
+
+    After this change, it renders correctly as:
+
+      ```html
+      &lt;p&gt;this &amp;amp; that &amp;amp; the other&lt;/p&gt;
+      ```
+
+    Fixes #48256
+
+    *Mike Dalessio*</description>
+    <pubDate>Mon, 22 May 2023 10:03:35 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p><code>ERB::Util.html_escape_once</code> always returns an <code>html_safe</code> string.</p>
+
+<p>This method previously maintained the <code>html_safe?</code> property of a string on the return<br />
+value. Because this string has been escaped, however, not marking it as <code>html_safe</code> causes<br />
+entities to be double-escaped.</p>
+
+<p>As an example, take this view snippet:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;p&gt;&lt;</span><span class="err">%=</span> <span class="na">html_escape_once</span><span class="err">("</span><span class="na">this</span> <span class="err">&amp;</span> <span class="na">that</span> <span class="err">&amp;</span><span class="na">amp</span><span class="err">;</span> <span class="na">the</span> <span class="na">other</span><span class="err">")</span> <span class="err">%</span><span class="nt">&gt;&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p>Before this change, that would be double-escaped and render as:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;p&gt;</span>this <span class="ni">&amp;amp;</span>amp; that <span class="ni">&amp;amp;</span>amp; the other<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p>After this change, it renders correctly as:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;p&gt;</span>this <span class="ni">&amp;amp;</span> that <span class="ni">&amp;amp;</span> the other<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p>Fixes #48256</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Deprecate `SafeBuffer#clone_empty`.
 </title>
     <link>https://github.com/rails/rails/issues/48264</link>
@@ -5697,6 +5757,21 @@ the inclusion of Authorization bearer tokens or other forms of authorization<br 
 tokens through headers.</p>
 
 <p><em>Radamés Roriz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix mutation detection for serialized attributes backed by binary columns.
+</title>
+    <link>https://github.com/rails/rails/issues/48274</link>
+    <guid>https://github.com/rails/rails/issues/48274</guid>
+    <description>*   Fix mutation detection for serialized attributes backed by binary columns.
+
+    *Jean Boussier*</description>
+    <pubDate>Mon, 22 May 2023 12:44:19 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix mutation detection for serialized attributes backed by binary columns.</p>
+
+<p><em>Jean Boussier</em></p>
 ]]></content:encoded>
   </item>
   <item>
