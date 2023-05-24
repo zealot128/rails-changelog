@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Add engine's `test/fixtures` path to `fixture_paths` in `on_load` hook if\n    path exists and is under the Rails application root.\n\n    *Chris Salzberg*",
+    "project": "railties",
+    "date_merged": 1684939219000,
+    "author": "Chris Salzberg",
+    "sha": "908f1c9bbc426368dbce91d3c740ac7bddefd7ab",
+    "pr": "48287",
+    "merge_sha": "a19b13b61f7af612569943ec7d536185cbec875c",
+    "html": "<p>Add engine’s <code>test/fixtures</code> path to <code>fixture_paths</code> in <code>on_load</code> hook if<br />\npath exists and is under the Rails application root.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
+  },
+  {
     "message": "*   `bin/rails app:template` now runs `bundle install` and any `after_bundle`\n    blocks after the template is executed.\n\n    *Jonathan Hefner* and *Gerry Caulfield*",
     "project": "railties",
     "date_merged": 1684699003000,
@@ -3778,6 +3788,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Change `action_dispatch.show_exceptions` to one of `:all`, `:rescuable`, or\n    `:none`. `:all` and `:none` behave the same as the previous `true` and\n    `false` respectively. The new `:rescuable` option will only show exceptions\n    that can be rescued (e.g. `ActiveRecord::RecordNotFound`). `:rescuable` is\n    now the default for the test environment.\n\n    *Jon Dufresne*",
+    "project": "actionpack",
+    "date_merged": 1684950345000,
+    "author": "Jon Dufresne",
+    "sha": "e28f147329330e7ae55606e62ecc3de328431f0b",
+    "pr": "45867",
+    "merge_sha": "61accb7dea3539316bce941c4e2be2047688734f",
+    "html": "<p>Change <code>action_dispatch.show_exceptions</code> to one of <code>:all</code>, <code>:rescuable</code>, or<br />\n<code>:none</code>. <code>:all</code> and <code>:none</code> behave the same as the previous <code>true</code> and<br />\n<code>false</code> respectively. The new <code>:rescuable</code> option will only show exceptions<br />\nthat can be rescued (e.g. <code>ActiveRecord::RecordNotFound</code>). <code>:rescuable</code> is<br />\nnow the default for the test environment.</p>\n\n<p><em>Jon Dufresne</em></p>\n"
   },
   {
     "message": "*   `config.action_dispatch.cookies_serializer` now accepts `:message_pack` and\n    `:message_pack_allow_marshal` as serializers. These serializers require the\n    [`msgpack` gem](https://rubygems.org/gems/msgpack) (>= 1.7.0).\n\n    The Message Pack format can provide improved performance and smaller payload\n    sizes. It also supports roundtripping some Ruby types that are not supported\n    by JSON. For example:\n\n      ```ruby\n      cookies.encrypted[:foo] = [{ a: 1 }, { b: 2 }.with_indifferent_access, 1.to_d, Time.at(0, 123)]\n\n      # BEFORE with config.action_dispatch.cookies_serializer = :json\n      cookies.encrypted[:foo]\n      # => [{\"a\"=>1}, {\"b\"=>2}, \"1.0\", \"1969-12-31T18:00:00.000-06:00\"]\n      cookies.encrypted[:foo].map(&:class)\n      # => [Hash, Hash, String, String]\n\n      # AFTER with config.action_dispatch.cookies_serializer = :message_pack\n      cookies.encrypted[:foo]\n      # => [{:a=>1}, {\"b\"=>2}, 0.1e1, 1969-12-31 18:00:00.000123 -0600]\n      cookies.encrypted[:foo].map(&:class)\n      # => [Hash, ActiveSupport::HashWithIndifferentAccess, BigDecimal, Time]\n      ```\n\n    The `:message_pack` serializer can fall back to deserializing with\n    `ActiveSupport::JSON` when necessary, and the `:message_pack_allow_marshal`\n    serializer can fall back to deserializing with `Marshal` as well as\n    `ActiveSupport::JSON`. Additionally, the `:marshal`, `:json`, and\n    `:json_allow_marshal` (AKA `:hybrid`) serializers can now fall back to\n    deserializing with `ActiveSupport::MessagePack` when necessary. These\n    behaviors ensure old cookies can still be read so that migration is easier.\n\n    *Jonathan Hefner*",
