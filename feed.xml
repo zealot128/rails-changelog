@@ -6,6 +6,23 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>railties: Add engine&#39;s `test/fixtures` path to `fixture_paths` in `on_load` hook if
+</title>
+    <link>https://github.com/rails/rails/issues/48287</link>
+    <guid>https://github.com/rails/rails/issues/48287</guid>
+    <description>*   Add engine&#39;s `test/fixtures` path to `fixture_paths` in `on_load` hook if
+    path exists and is under the Rails application root.
+
+    *Chris Salzberg*</description>
+    <pubDate>Wed, 24 May 2023 14:40:19 +0000</pubDate>
+    <author>Chris Salzberg</author>
+    <content:encoded><![CDATA[<p>Add engine’s <code>test/fixtures</code> path to <code>fixture_paths</code> in <code>on_load</code> hook if<br />
+path exists and is under the Rails application root.</p>
+
+<p><em>Chris Salzberg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: `bin/rails app:template` now runs `bundle install` and any `after_bundle`
 </title>
     <link>https://github.com/rails/rails/issues/48269</link>
@@ -11094,6 +11111,29 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Change `action_dispatch.show_exceptions` to one of `:all`, `:rescuable`, or
+</title>
+    <link>https://github.com/rails/rails/issues/45867</link>
+    <guid>https://github.com/rails/rails/issues/45867</guid>
+    <description>*   Change `action_dispatch.show_exceptions` to one of `:all`, `:rescuable`, or
+    `:none`. `:all` and `:none` behave the same as the previous `true` and
+    `false` respectively. The new `:rescuable` option will only show exceptions
+    that can be rescued (e.g. `ActiveRecord::RecordNotFound`). `:rescuable` is
+    now the default for the test environment.
+
+    *Jon Dufresne*</description>
+    <pubDate>Wed, 24 May 2023 17:45:45 +0000</pubDate>
+    <author>Jon Dufresne</author>
+    <content:encoded><![CDATA[<p>Change <code>action_dispatch.show_exceptions</code> to one of <code>:all</code>, <code>:rescuable</code>, or<br />
+<code>:none</code>. <code>:all</code> and <code>:none</code> behave the same as the previous <code>true</code> and<br />
+<code>false</code> respectively. The new <code>:rescuable</code> option will only show exceptions<br />
+that can be rescued (e.g. <code>ActiveRecord::RecordNotFound</code>). <code>:rescuable</code> is<br />
+now the default for the test environment.</p>
+
+<p><em>Jon Dufresne</em></p>
 ]]></content:encoded>
   </item>
   <item>
