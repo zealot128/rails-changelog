@@ -5777,58 +5777,6 @@ tokens through headers.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add `Arel::Nodes::Cte` for use in `WITH` expressions
-</title>
-    <link>https://github.com/rails/rails/issues/48261</link>
-    <guid>https://github.com/rails/rails/issues/48261</guid>
-    <description>*   Add `Arel::Nodes::Cte` for use in `WITH` expressions
-
-    `Cte` nodes also support explicit `MATERIALIZED` or `NOT MATERIALIZED` hints for the query planner.
-
-    ```ruby
-    posts = Arel::Table.new(:posts)
-    comments = Arel::Table.new(:comments)
-
-    good_comments_query = comments.project(Arel.star).where(comments[:rating].gt(7))
-    cte = Arel::Nodes::Cte.new(:good_comments, good_comments_query, materialized: true)
-
-    query = posts.
-      project(Arel.star).
-      with(cte).
-      where(posts[:id].in(cte.to_table.project(:post_id))).
-
-    puts query.to_sql
-
-    # WITH &quot;good_comments&quot; AS MATERIALIZED (SELECT * FROM &quot;comments&quot; WHERE &quot;comments&quot;.&quot;rating&quot; &gt; 7) SELECT * FROM &quot;posts&quot; WHERE &quot;posts&quot;.&quot;id&quot; IN (SELECT post_id FROM &quot;good_comments&quot;)
-    ```
-
-    *Jon Zeppieri*</description>
-    <pubDate>Wed, 24 May 2023 23:53:29 +0000</pubDate>
-    <author>Jon Zeppieri</author>
-    <content:encoded><![CDATA[<p>Add <code>Arel::Nodes::Cte</code> for use in <code>WITH</code> expressions</p>
-
-<p><code>Cte</code> nodes also support explicit <code>MATERIALIZED</code> or <code>NOT MATERIALIZED</code> hints for the query planner.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">posts</span> <span class="o">=</span> <span class="no">Arel</span><span class="o">::</span><span class="no">Table</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:posts</span><span class="p">)</span>
-<span class="n">comments</span> <span class="o">=</span> <span class="no">Arel</span><span class="o">::</span><span class="no">Table</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:comments</span><span class="p">)</span>
-
-<span class="n">good_comments_query</span> <span class="o">=</span> <span class="n">comments</span><span class="p">.</span><span class="nf">project</span><span class="p">(</span><span class="no">Arel</span><span class="p">.</span><span class="nf">star</span><span class="p">).</span><span class="nf">where</span><span class="p">(</span><span class="n">comments</span><span class="p">[</span><span class="ss">:rating</span><span class="p">].</span><span class="nf">gt</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
-<span class="n">cte</span> <span class="o">=</span> <span class="no">Arel</span><span class="o">::</span><span class="no">Nodes</span><span class="o">::</span><span class="no">Cte</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:good_comments</span><span class="p">,</span> <span class="n">good_comments_query</span><span class="p">,</span> <span class="ss">materialized: </span><span class="kp">true</span><span class="p">)</span>
-
-<span class="n">query</span> <span class="o">=</span> <span class="n">posts</span><span class="p">.</span>
-  <span class="nf">project</span><span class="p">(</span><span class="no">Arel</span><span class="p">.</span><span class="nf">star</span><span class="p">).</span>
-  <span class="nf">with</span><span class="p">(</span><span class="n">cte</span><span class="p">).</span>
-  <span class="nf">where</span><span class="p">(</span><span class="n">posts</span><span class="p">[</span><span class="ss">:id</span><span class="p">].</span><span class="nf">in</span><span class="p">(</span><span class="n">cte</span><span class="p">.</span><span class="nf">to_table</span><span class="p">.</span><span class="nf">project</span><span class="p">(</span><span class="ss">:post_id</span><span class="p">))).</span>
-
-<span class="nf">puts</span> <span class="n">query</span><span class="p">.</span><span class="nf">to_sql</span>
-
-<span class="c1"># WITH "good_comments" AS MATERIALIZED (SELECT * FROM "comments" WHERE "comments"."rating" &gt; 7) SELECT * FROM "posts" WHERE "posts"."id" IN (SELECT post_id FROM "good_comments")</span>
-</code></pre></div></div>
-
-<p><em>Jon Zeppieri</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activerecord: Fix mutation detection for serialized attributes backed by binary columns.
 </title>
     <link>https://github.com/rails/rails/issues/48274</link>
