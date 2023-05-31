@@ -1670,6 +1670,25 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actioncable: Added `health_check_path` and `health_check_application` config to
+</title>
+    <link>https://github.com/rails/rails/issues/48222</link>
+    <guid>https://github.com/rails/rails/issues/48222</guid>
+    <description>*   Added `health_check_path` and `health_check_application` config to
+    mount a given health check rack app on a given path.
+    Useful when mounting Action Cable standalone.
+
+    *Joé Dupuis*</description>
+    <pubDate>Tue, 30 May 2023 20:35:12 +0000</pubDate>
+    <author>Joé Dupuis</author>
+    <content:encoded><![CDATA[<p>Added <code>health_check_path</code> and <code>health_check_application</code> config to<br />
+mount a given health check rack app on a given path.<br />
+Useful when mounting Action Cable standalone.</p>
+
+<p><em>Joé Dupuis</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actioncable: `assert_broadcasts` now returns the messages that were broadcast.
 </title>
     <link>https://github.com/rails/rails/issues/47793</link>
@@ -10479,6 +10498,39 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Add support for HTML5 standards-compliant sanitizers, and default to `Rails::HTML5::Sanitizer`
+</title>
+    <link>https://github.com/rails/rails/issues/48293</link>
+    <guid>https://github.com/rails/rails/issues/48293</guid>
+    <description>*   Add support for HTML5 standards-compliant sanitizers, and default to `Rails::HTML5::Sanitizer`
+    in the Rails 7.1 configuration if it is supported.
+
+    Action View&#39;s HTML sanitizers can be configured by setting
+    `config.action_view.sanitizer_vendor`. Supported values are `Rails::HTML4::Sanitizer` or
+    `Rails::HTML5::Sanitizer`.
+
+    The Rails 7.1 configuration will set this to `Rails::HTML5::Sanitizer` when it is supported, and
+    fall back to `Rails::HTML4::Sanitizer`. Previous configurations default to
+    `Rails::HTML4::Sanitizer`.
+
+    *Mike Dalessio*</description>
+    <pubDate>Tue, 30 May 2023 20:00:13 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Add support for HTML5 standards-compliant sanitizers, and default to <code>Rails::HTML5::Sanitizer</code><br />
+in the Rails 7.1 configuration if it is supported.</p>
+
+<p>Action View’s HTML sanitizers can be configured by setting<br />
+<code>config.action_view.sanitizer_vendor</code>. Supported values are <code>Rails::HTML4::Sanitizer</code> or<br />
+<code>Rails::HTML5::Sanitizer</code>.</p>
+
+<p>The Rails 7.1 configuration will set this to <code>Rails::HTML5::Sanitizer</code> when it is supported, and<br />
+fall back to <code>Rails::HTML4::Sanitizer</code>. Previous configurations default to<br />
+<code>Rails::HTML4::Sanitizer</code>.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Add support for the HTML picture tag. It supports passing a String, an Array or a Block.
 </title>
     <link>https://github.com/rails/rails/issues/48100</link>
@@ -11142,6 +11194,84 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: The url_for helpers now support a new option called `path_params`.
+</title>
+    <link>https://github.com/rails/rails/issues/43770</link>
+    <guid>https://github.com/rails/rails/issues/43770</guid>
+    <description>*   The url_for helpers now support a new option called `path_params`.
+    This is very useful in situations where you only want to add a required param that is part of the route&#39;s URL but for other route not append an extraneous query param.
+
+    Given the following router...
+    ```ruby
+    Rails.application.routes.draw do
+      scope &quot;:account_id&quot; do
+        get &quot;dashboard&quot; =&gt; &quot;pages#dashboard&quot;, as: :dashboard
+        get &quot;search/:term&quot; =&gt; &quot;search#search&quot;, as: :search
+      end
+      delete &quot;signout&quot; =&gt; &quot;sessions#destroy&quot;, as: :signout
+    end
+    ```
+
+    And given the following `ApplicationController`
+    ```ruby
+      class ApplicationController &lt; ActionController::Base
+        def default_url_options
+          { path_params: { account_id: &quot;foo&quot; } }
+        end
+      end
+    ```
+
+    The standard url_for helper and friends will now behave as follows:
+
+    ```ruby
+    dashboard_path # =&gt; /foo/dashboard
+    dashboard_path(account_id: &quot;bar&quot;) # =&gt; /bar/dashboard
+
+    signout_path # =&gt; /signout
+    signout_path(account_id: &quot;bar&quot;) # =&gt; /signout?account_id=bar
+    signout_path(account_id: &quot;bar&quot;, path_params: { account_id: &quot;baz&quot; }) # =&gt; /signout?account_id=bar
+    search_path(&quot;quin&quot;) # =&gt; /foo/search/quin
+    ```
+
+    *Jason Meller, Jeremy Beker*</description>
+    <pubDate>Wed, 31 May 2023 05:36:35 +0000</pubDate>
+    <author>Jason Meller</author>
+    <content:encoded><![CDATA[<p>The url_for helpers now support a new option called <code>path_params</code>.<br />
+This is very useful in situations where you only want to add a required param that is part of the route’s URL but for other route not append an extraneous query param.</p>
+
+<p>Given the following router…</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+  <span class="n">scope</span> <span class="s2">":account_id"</span> <span class="k">do</span>
+    <span class="n">get</span> <span class="s2">"dashboard"</span> <span class="o">=&gt;</span> <span class="s2">"pages#dashboard"</span><span class="p">,</span> <span class="ss">as: :dashboard</span>
+    <span class="n">get</span> <span class="s2">"search/:term"</span> <span class="o">=&gt;</span> <span class="s2">"search#search"</span><span class="p">,</span> <span class="ss">as: :search</span>
+  <span class="k">end</span>
+  <span class="n">delete</span> <span class="s2">"signout"</span> <span class="o">=&gt;</span> <span class="s2">"sessions#destroy"</span><span class="p">,</span> <span class="ss">as: :signout</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>And given the following <code>ApplicationController</code></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+    <span class="k">def</span> <span class="nf">default_url_options</span>
+      <span class="p">{</span> <span class="ss">path_params: </span><span class="p">{</span> <span class="ss">account_id: </span><span class="s2">"foo"</span> <span class="p">}</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p>The standard url_for helper and friends will now behave as follows:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dashboard_path</span> <span class="c1"># =&gt; /foo/dashboard</span>
+<span class="n">dashboard_path</span><span class="p">(</span><span class="ss">account_id: </span><span class="s2">"bar"</span><span class="p">)</span> <span class="c1"># =&gt; /bar/dashboard</span>
+
+<span class="n">signout_path</span> <span class="c1"># =&gt; /signout</span>
+<span class="n">signout_path</span><span class="p">(</span><span class="ss">account_id: </span><span class="s2">"bar"</span><span class="p">)</span> <span class="c1"># =&gt; /signout?account_id=bar</span>
+<span class="n">signout_path</span><span class="p">(</span><span class="ss">account_id: </span><span class="s2">"bar"</span><span class="p">,</span> <span class="ss">path_params: </span><span class="p">{</span> <span class="ss">account_id: </span><span class="s2">"baz"</span> <span class="p">})</span> <span class="c1"># =&gt; /signout?account_id=bar</span>
+<span class="n">search_path</span><span class="p">(</span><span class="s2">"quin"</span><span class="p">)</span> <span class="c1"># =&gt; /foo/search/quin</span>
+</code></pre></div></div>
+
+<p><em>Jason Meller, Jeremy Beker</em></p>
 ]]></content:encoded>
   </item>
   <item>
