@@ -6,6 +6,23 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>railties: Support `VISUAL` environment variable for commands which open an editor,
+</title>
+    <link>https://github.com/rails/rails/issues/48374</link>
+    <guid>https://github.com/rails/rails/issues/48374</guid>
+    <description>*   Support `VISUAL` environment variable for commands which open an editor,
+    and prefer it over `EDITOR`.
+
+    *Summer ☀️*</description>
+    <pubDate>Fri, 02 Jun 2023 03:55:17 +0000</pubDate>
+    <author>Summer ☀️</author>
+    <content:encoded><![CDATA[<p>Support <code>VISUAL</code> environment variable for commands which open an editor,<br />
+and prefer it over <code>EDITOR</code>.</p>
+
+<p><em>Summer ☀️</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add engine&#39;s `test/fixtures` path to `fixture_paths` in `on_load` hook if
 </title>
     <link>https://github.com/rails/rails/issues/48287</link>
@@ -5364,6 +5381,49 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Allow an ActiveStorage attachment to be removed via a form post
+</title>
+    <link>https://github.com/rails/rails/issues/48339</link>
+    <guid>https://github.com/rails/rails/issues/48339</guid>
+    <description>*   Allow an ActiveStorage attachment to be removed via a form post
+
+    Attachments can already be removed by updating the attachment to be nil such as:
+    ```ruby
+    User.find(params[:id]).update!(avatar: nil)
+    ```
+
+    However, a form cannot post a nil param, it can only post an empty string. But, posting an
+    empty string would result in an `ActiveSupport::MessageVerifier::InvalidSignature: mismatched digest`
+    error being raised, because it&#39;s being treated as a signed blob id.
+
+    Now, nil and an empty string are treated as a delete, which allows attachments to be removed via:
+    ```ruby
+    User.find(params[:id]).update!(params.require(:user).permit(:avatar))
+
+    ```
+
+    *Nate Matykiewicz*</description>
+    <pubDate>Thu, 01 Jun 2023 23:17:02 +0000</pubDate>
+    <author>Nate Matykiewicz</author>
+    <content:encoded><![CDATA[<p>Allow an ActiveStorage attachment to be removed via a form post</p>
+
+<p>Attachments can already be removed by updating the attachment to be nil such as:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]).</span><span class="nf">update!</span><span class="p">(</span><span class="ss">avatar: </span><span class="kp">nil</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>However, a form cannot post a nil param, it can only post an empty string. But, posting an<br />
+empty string would result in an <code>ActiveSupport::MessageVerifier::InvalidSignature: mismatched digest</code><br />
+error being raised, because it’s being treated as a signed blob id.</p>
+
+<p>Now, nil and an empty string are treated as a delete, which allows attachments to be removed via:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]).</span><span class="nf">update!</span><span class="p">(</span><span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:user</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:avatar</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p><em>Nate Matykiewicz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Remove mini_mime usage in favour of marcel.
 </title>
     <link>https://github.com/rails/rails/issues/47754</link>
@@ -5808,6 +5868,52 @@ the inclusion of Authorization bearer tokens or other forms of authorization<br 
 tokens through headers.</p>
 
 <p><em>Radamés Roriz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Assign auto populated columns on Active Record record creation.
+</title>
+    <link>https://github.com/rails/rails/issues/48339</link>
+    <guid>https://github.com/rails/rails/issues/48339</guid>
+    <description>*   Assign auto populated columns on Active Record record creation.
+
+    Changes record creation logic to allow for the `auto_increment` column to be assigned
+    immediately after creation regardless of it&#39;s relation to the model&#39;s primary key.
+
+    The PostgreSQL adapter benefits the most from the change allowing for any number of auto-populated
+    columns to be assigned on the object immediately after row insertion utilizing the `RETURNING` statement.
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Thu, 01 Jun 2023 23:17:02 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Assign auto populated columns on Active Record record creation.</p>
+
+<p>Changes record creation logic to allow for the <code>auto_increment</code> column to be assigned<br />
+immediately after creation regardless of it’s relation to the model’s primary key.</p>
+
+<p>The PostgreSQL adapter benefits the most from the change allowing for any number of auto-populated<br />
+columns to be assigned on the object immediately after row insertion utilizing the <code>RETURNING</code> statement.</p>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove the deprecation warning when `prepared_statements` configuration is set for the mysql2 adapter.
+</title>
+    <link>https://github.com/rails/rails/issues/48370</link>
+    <guid>https://github.com/rails/rails/issues/48370</guid>
+    <description>*   Remove the deprecation warning when `prepared_statements` configuration is set for the mysql2 adapter.
+
+    There is a known bug in `mysql2`. We don&#39;t want to encourage applications to migrate to `prepared_statements: true` until it&#39;s fixed.
+
+    *Eileen M. Uchitelle*</description>
+    <pubDate>Thu, 01 Jun 2023 20:12:39 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Remove the deprecation warning when <code>prepared_statements</code> configuration is set for the mysql2 adapter.</p>
+
+<p>There is a known bug in <code>mysql2</code>. We don’t want to encourage applications to migrate to <code>prepared_statements: true</code> until it’s fixed.</p>
+
+<p><em>Eileen M. Uchitelle</em></p>
 ]]></content:encoded>
   </item>
   <item>
