@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Support `VISUAL` environment variable for commands which open an editor,\n    and prefer it over `EDITOR`.\n\n    *Summer ☀️*",
+    "project": "railties",
+    "date_merged": 1685678117000,
+    "author": "Summer ☀️",
+    "sha": "a062d182c38cf3c0dc850c151b74a90dc7179880",
+    "pr": "48374",
+    "merge_sha": "48e4d99c75b7fded3d54c42883e49eddac879b39",
+    "html": "<p>Support <code>VISUAL</code> environment variable for commands which open an editor,<br />\nand prefer it over <code>EDITOR</code>.</p>\n\n<p><em>Summer ☀️</em></p>\n"
+  },
+  {
     "message": "*   Add engine's `test/fixtures` path to `fixture_paths` in `on_load` hook if\n    path exists and is under the Rails application root.\n\n    *Chris Salzberg*",
     "project": "railties",
     "date_merged": 1684939219000,
@@ -1830,6 +1840,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Allow an ActiveStorage attachment to be removed via a form post\n\n    Attachments can already be removed by updating the attachment to be nil such as:\n    ```ruby\n    User.find(params[:id]).update!(avatar: nil)\n    ```\n\n    However, a form cannot post a nil param, it can only post an empty string. But, posting an\n    empty string would result in an `ActiveSupport::MessageVerifier::InvalidSignature: mismatched digest`\n    error being raised, because it's being treated as a signed blob id.\n\n    Now, nil and an empty string are treated as a delete, which allows attachments to be removed via:\n    ```ruby\n    User.find(params[:id]).update!(params.require(:user).permit(:avatar))\n\n    ```\n\n    *Nate Matykiewicz*",
+    "project": "activestorage",
+    "date_merged": 1685661422000,
+    "author": "Nate Matykiewicz",
+    "sha": "dd894b2fc261594fde3d39028066d86b91e22070",
+    "pr": "48339",
+    "merge_sha": "e94999fab862c2a22087c4bc6cd0a6f7dc4e4c98",
+    "html": "<p>Allow an ActiveStorage attachment to be removed via a form post</p>\n\n<p>Attachments can already be removed by updating the attachment to be nil such as:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">]).</span><span class=\"nf\">update!</span><span class=\"p\">(</span><span class=\"ss\">avatar: </span><span class=\"kp\">nil</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>However, a form cannot post a nil param, it can only post an empty string. But, posting an<br />\nempty string would result in an <code>ActiveSupport::MessageVerifier::InvalidSignature: mismatched digest</code><br />\nerror being raised, because it’s being treated as a signed blob id.</p>\n\n<p>Now, nil and an empty string are treated as a delete, which allows attachments to be removed via:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">]).</span><span class=\"nf\">update!</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:user</span><span class=\"p\">).</span><span class=\"nf\">permit</span><span class=\"p\">(</span><span class=\"ss\">:avatar</span><span class=\"p\">))</span>\n\n</code></pre></div></div>\n\n<p><em>Nate Matykiewicz</em></p>\n"
+  },
+  {
     "message": "*   Remove mini_mime usage in favour of marcel.\n\n    We have two libraries that are have similar usage. This change removes\n    dependency on mini_mime and makes use of similar methods from marcel.\n\n    *Vipul A M*",
     "project": "activestorage",
     "date_merged": 1679943256000,
@@ -2008,6 +2028,26 @@
     "pr": "47773",
     "merge_sha": "1ed5ef6bb32df8ad61ea0ccc79fd67c91de81027",
     "html": "<p>Safe for direct upload on Libraries or Frameworks</p>\n\n<p>Enable the use of custom headers during direct uploads, which allows for<br />\nthe inclusion of Authorization bearer tokens or other forms of authorization<br />\ntokens through headers.</p>\n\n<p><em>Radamés Roriz</em></p>\n"
+  },
+  {
+    "message": "*   Assign auto populated columns on Active Record record creation.\n\n    Changes record creation logic to allow for the `auto_increment` column to be assigned\n    immediately after creation regardless of it's relation to the model's primary key.\n\n    The PostgreSQL adapter benefits the most from the change allowing for any number of auto-populated\n    columns to be assigned on the object immediately after row insertion utilizing the `RETURNING` statement.\n\n    *Nikita Vasilevsky*",
+    "project": "activerecord",
+    "date_merged": 1685661422000,
+    "author": "eileencodes",
+    "sha": "a6efde6cf648a5c4125c6677b775357cdc1c92f0",
+    "pr": "48339",
+    "merge_sha": "e94999fab862c2a22087c4bc6cd0a6f7dc4e4c98",
+    "html": "<p>Assign auto populated columns on Active Record record creation.</p>\n\n<p>Changes record creation logic to allow for the <code>auto_increment</code> column to be assigned<br />\nimmediately after creation regardless of it’s relation to the model’s primary key.</p>\n\n<p>The PostgreSQL adapter benefits the most from the change allowing for any number of auto-populated<br />\ncolumns to be assigned on the object immediately after row insertion utilizing the <code>RETURNING</code> statement.</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
+    "message": "*   Remove the deprecation warning when `prepared_statements` configuration is set for the mysql2 adapter.\n\n    There is a known bug in `mysql2`. We don't want to encourage applications to migrate to `prepared_statements: true` until it's fixed.\n\n    *Eileen M. Uchitelle*",
+    "project": "activerecord",
+    "date_merged": 1685650359000,
+    "author": "eileencodes",
+    "sha": "2c39149e9901b14e138d231b049f2986b2db6075",
+    "pr": "48370",
+    "merge_sha": "888f76de34bb89b5ef671c1c78aa2bd970588d9e",
+    "html": "<p>Remove the deprecation warning when <code>prepared_statements</code> configuration is set for the mysql2 adapter.</p>\n\n<p>There is a known bug in <code>mysql2</code>. We don’t want to encourage applications to migrate to <code>prepared_statements: true</code> until it’s fixed.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
     "message": "*   Use the first key in the `shards` hash from `connected_to` for the `default_shard`.\n\n    Some applications may not want to use `:default` as a shard name in their connection model. Unfortunately Active Record expects there to be a `:default` shard because it must assume a shard to get the right connection from the pool manager. Rather than force applications to manually set this, `connects_to` can infer the default shard name from the hash of shards and will now assume that the first shard is your default.\n\n    For example if your model looked like this:\n\n    ```ruby\n    class ShardRecord < ApplicationRecord\n      self.abstract_class = true\n\n      connects_to shards: {\n        shard_one: { writing: :shard_one },\n        shard_two: { writing: :shard_two }\n      }\n    ```\n\n    Then the `default_shard` for this class would be set to `shard_one`.\n\n    Fixes: #45390\n\n    *Eileen M. Uchitelle*",
