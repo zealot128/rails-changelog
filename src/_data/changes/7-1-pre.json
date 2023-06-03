@@ -1320,16 +1320,6 @@
     "html": "<p>Assign auto populated columns on Active Record record creation.</p>\n\n<p>Changes record creation logic to allow for the <code>auto_increment</code> column to be assigned<br />\nimmediately after creation regardless of it’s relation to the model’s primary key.</p>\n\n<p>The PostgreSQL adapter benefits the most from the change allowing for any number of auto-populated<br />\ncolumns to be assigned on the object immediately after row insertion utilizing the <code>RETURNING</code> statement.</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
   },
   {
-    "message": "*   Remove the deprecation warning when `prepared_statements` configuration is set for the mysql2 adapter.\n\n    There is a known bug in `mysql2`. We don't want to encourage applications to migrate to `prepared_statements: true` until it's fixed.\n\n    *Eileen M. Uchitelle*",
-    "project": "activerecord",
-    "date_merged": 1685650359000,
-    "author": "eileencodes",
-    "sha": "2c39149e9901b14e138d231b049f2986b2db6075",
-    "pr": "48370",
-    "merge_sha": "888f76de34bb89b5ef671c1c78aa2bd970588d9e",
-    "html": "<p>Remove the deprecation warning when <code>prepared_statements</code> configuration is set for the mysql2 adapter.</p>\n\n<p>There is a known bug in <code>mysql2</code>. We don’t want to encourage applications to migrate to <code>prepared_statements: true</code> until it’s fixed.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
-  },
-  {
     "message": "*   Use the first key in the `shards` hash from `connected_to` for the `default_shard`.\n\n    Some applications may not want to use `:default` as a shard name in their connection model. Unfortunately Active Record expects there to be a `:default` shard because it must assume a shard to get the right connection from the pool manager. Rather than force applications to manually set this, `connects_to` can infer the default shard name from the hash of shards and will now assume that the first shard is your default.\n\n    For example if your model looked like this:\n\n    ```ruby\n    class ShardRecord < ApplicationRecord\n      self.abstract_class = true\n\n      connects_to shards: {\n        shard_one: { writing: :shard_one },\n        shard_two: { writing: :shard_two }\n      }\n    ```\n\n    Then the `default_shard` for this class would be set to `shard_one`.\n\n    Fixes: #45390\n\n    *Eileen M. Uchitelle*",
     "project": "activerecord",
     "date_merged": 1685561397000,
@@ -2848,16 +2838,6 @@
     "pr": "43295",
     "merge_sha": "2ea5268cd2994a8d4628fbdb02c64e4d25549c7f",
     "html": "<p>Fix migration compatibility to create SQLite references/belongs_to column as integer when migration version is 6.0.</p>\n\n<p>Reference/belongs_to in migrations with version 6.0 were creating columns as<br />\nbigint instead of integer for the SQLite Adapter.</p>\n\n<p><em>Marcelo Lauxen</em></p>\n"
-  },
-  {
-    "message": "*   Add a deprecation warning when `prepared_statements` configuration is not\n    set for the mysql2 adapter.\n\n    *Thiago Araujo and Stefanni Brasil*",
-    "project": "activerecord",
-    "date_merged": 1640068665000,
-    "author": "Stefanni Brasil",
-    "sha": "8bc1c4ad228c77610f11387d6282ef2c3a663e91",
-    "pr": "43141",
-    "merge_sha": "75fea0bd9590c3ea9447542c5829cf43fe874374",
-    "html": "<p>Add a deprecation warning when <code>prepared_statements</code> configuration is not<br />\nset for the mysql2 adapter.</p>\n\n<p><em>Thiago Araujo and Stefanni Brasil</em></p>\n"
   },
   {
     "message": "*   Fix `QueryMethods#in_order_of` to handle empty order list.\n\n    ```ruby\n    Post.in_order_of(:id, []).to_a\n    ```\n\n    Also more explicitly set the column as secondary order, so that any other\n    value is still ordered.\n\n    *Jean Boussier*",
