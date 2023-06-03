@@ -3900,25 +3900,6 @@ columns to be assigned on the object immediately after row insertion utilizing t
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Remove the deprecation warning when `prepared_statements` configuration is set for the mysql2 adapter.
-</title>
-    <link>https://github.com/rails/rails/issues/48370</link>
-    <guid>https://github.com/rails/rails/issues/48370</guid>
-    <description>*   Remove the deprecation warning when `prepared_statements` configuration is set for the mysql2 adapter.
-
-    There is a known bug in `mysql2`. We don&#39;t want to encourage applications to migrate to `prepared_statements: true` until it&#39;s fixed.
-
-    *Eileen M. Uchitelle*</description>
-    <pubDate>Thu, 01 Jun 2023 20:12:39 +0000</pubDate>
-    <author>eileencodes</author>
-    <content:encoded><![CDATA[<p>Remove the deprecation warning when <code>prepared_statements</code> configuration is set for the mysql2 adapter.</p>
-
-<p>There is a known bug in <code>mysql2</code>. We don’t want to encourage applications to migrate to <code>prepared_statements: true</code> until it’s fixed.</p>
-
-<p><em>Eileen M. Uchitelle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activerecord: Use the first key in the `shards` hash from `connected_to` for the `default_shard`.
 </title>
     <link>https://github.com/rails/rails/issues/48353</link>
@@ -8407,23 +8388,6 @@ out connections from the pool.</p>
 bigint instead of integer for the SQLite Adapter.</p>
 
 <p><em>Marcelo Lauxen</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Add a deprecation warning when `prepared_statements` configuration is not
-</title>
-    <link>https://github.com/rails/rails/issues/43141</link>
-    <guid>https://github.com/rails/rails/issues/43141</guid>
-    <description>*   Add a deprecation warning when `prepared_statements` configuration is not
-    set for the mysql2 adapter.
-
-    *Thiago Araujo and Stefanni Brasil*</description>
-    <pubDate>Tue, 21 Dec 2021 06:37:45 +0000</pubDate>
-    <author>Stefanni Brasil</author>
-    <content:encoded><![CDATA[<p>Add a deprecation warning when <code>prepared_statements</code> configuration is not<br />
-set for the mysql2 adapter.</p>
-
-<p><em>Thiago Araujo and Stefanni Brasil</em></p>
 ]]></content:encoded>
   </item>
   <item>
