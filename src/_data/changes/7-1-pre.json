@@ -1300,6 +1300,16 @@
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
+    "message": "*   Support multiple column ordering for `find_each`, `find_in_batches` and `in_batches`.\n\n    When find_each/find_in_batches/in_batches are performed on a table with composite primary keys, ascending or descending order can be selected for each key.\n\n    ```ruby\n    Person.find_each(order: [:desc, :asc]) do |person|\n      person.party_all_night!\n    end\n    ```\n\n    *Takuya Kurimoto*",
+    "project": "activerecord",
+    "date_merged": 1685986367000,
+    "author": "takuyaK",
+    "sha": "9452b59506663255d2ce04f1cc46ea7e22bacf67",
+    "pr": "48268",
+    "merge_sha": "acd02a22f43e3c73d1de92aed34d6b74af3cfcbf",
+    "html": "<p>Support multiple column ordering for <code>find_each</code>, <code>find_in_batches</code> and <code>in_batches</code>.</p>\n\n<p>When find_each/find_in_batches/in_batches are performed on a table with composite primary keys, ascending or descending order can be selected for each key.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Person</span><span class=\"p\">.</span><span class=\"nf\">find_each</span><span class=\"p\">(</span><span class=\"ss\">order: </span><span class=\"p\">[</span><span class=\"ss\">:desc</span><span class=\"p\">,</span> <span class=\"ss\">:asc</span><span class=\"p\">])</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">person</span><span class=\"o\">|</span>\n  <span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">party_all_night!</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Takuya Kurimoto</em></p>\n"
+  },
+  {
     "message": "*   Fix where on association with has_one/has_many polymorphic relations.\n\n    Before:\n    ```ruby\n    Treasure.where(price_estimates: PriceEstimate.all)\n    #=> SELECT (...) WHERE \"treasures\".\"id\" IN (SELECT \"price_estimates\".\"estimate_of_id\" FROM \"price_estimates\")\n    ```\n\n    Later:\n    ```ruby\n    Treasure.where(price_estimates: PriceEstimate.all)\n    #=> SELECT (...) WHERE \"treasures\".\"id\" IN (SELECT \"price_estimates\".\"estimate_of_id\" FROM \"price_estimates\" WHERE \"price_estimates\".\"estimate_of_type\" = 'Treasure')\n    ```\n\n    *Lázaro Nixon*",
     "project": "activerecord",
     "date_merged": 1685689618000,
@@ -3778,6 +3788,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   The `Mime::Type` now supports handling types with parameters and correctly handles quotes.\n    When parsing the accept header, the parameters before the q-parameter are kept and if a matching mime-type exists it is used.\n    To keep the current functionality, a fallback is created to look for the media-type without the parameters.\n\n    This change allows for custom MIME-types that are more complex like `application/vnd.api+json; profile=\"https://jsonapi.org/profiles/ethanresnick/cursor-pagination/\" ext=\"https://jsonapi.org/ext/atomic\"` for the [JSON API](https://jsonapi.org/).\n\n    *Nicolas Erni*",
+    "project": "actionpack",
+    "date_merged": 1685984177000,
+    "author": "Nicolas Erni",
+    "sha": "1071a39020564e1f7ebfb618e3e855b52450e015",
+    "pr": "48397",
+    "merge_sha": "0e1800396d4f89643d3872cb88a56ded1bae68f0",
+    "html": "<p>The <code>Mime::Type</code> now supports handling types with parameters and correctly handles quotes.<br />\nWhen parsing the accept header, the parameters before the q-parameter are kept and if a matching mime-type exists it is used.<br />\nTo keep the current functionality, a fallback is created to look for the media-type without the parameters.</p>\n\n<p>This change allows for custom MIME-types that are more complex like <code>application/vnd.api+json; profile=\"https://jsonapi.org/profiles/ethanresnick/cursor-pagination/\" ext=\"https://jsonapi.org/ext/atomic\"</code> for the <a href=\"https://jsonapi.org/\">JSON API</a>.</p>\n\n<p><em>Nicolas Erni</em></p>\n"
   },
   {
     "message": "*   The url_for helpers now support a new option called `path_params`.\n    This is very useful in situations where you only want to add a required param that is part of the route's URL but for other route not append an extraneous query param.\n\n    Given the following router...\n    ```ruby\n    Rails.application.routes.draw do\n      scope \":account_id\" do\n        get \"dashboard\" => \"pages#dashboard\", as: :dashboard\n        get \"search/:term\" => \"search#search\", as: :search\n      end\n      delete \"signout\" => \"sessions#destroy\", as: :signout\n    end\n    ```\n\n    And given the following `ApplicationController`\n    ```ruby\n      class ApplicationController < ActionController::Base\n        def default_url_options\n          { path_params: { account_id: \"foo\" } }\n        end\n      end\n    ```\n\n    The standard url_for helper and friends will now behave as follows:\n\n    ```ruby\n    dashboard_path # => /foo/dashboard\n    dashboard_path(account_id: \"bar\") # => /bar/dashboard\n\n    signout_path # => /signout\n    signout_path(account_id: \"bar\") # => /signout?account_id=bar\n    signout_path(account_id: \"bar\", path_params: { account_id: \"baz\" }) # => /signout?account_id=bar\n    search_path(\"quin\") # => /foo/search/quin\n    ```\n\n    *Jason Meller, Jeremy Beker*",
