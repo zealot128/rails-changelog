@@ -3836,6 +3836,36 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Support multiple column ordering for `find_each`, `find_in_batches` and `in_batches`.
+</title>
+    <link>https://github.com/rails/rails/issues/48268</link>
+    <guid>https://github.com/rails/rails/issues/48268</guid>
+    <description>*   Support multiple column ordering for `find_each`, `find_in_batches` and `in_batches`.
+
+    When find_each/find_in_batches/in_batches are performed on a table with composite primary keys, ascending or descending order can be selected for each key.
+
+    ```ruby
+    Person.find_each(order: [:desc, :asc]) do |person|
+      person.party_all_night!
+    end
+    ```
+
+    *Takuya Kurimoto*</description>
+    <pubDate>Mon, 05 Jun 2023 17:32:47 +0000</pubDate>
+    <author>takuyaK</author>
+    <content:encoded><![CDATA[<p>Support multiple column ordering for <code>find_each</code>, <code>find_in_batches</code> and <code>in_batches</code>.</p>
+
+<p>When find_each/find_in_batches/in_batches are performed on a table with composite primary keys, ascending or descending order can be selected for each key.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Person</span><span class="p">.</span><span class="nf">find_each</span><span class="p">(</span><span class="ss">order: </span><span class="p">[</span><span class="ss">:desc</span><span class="p">,</span> <span class="ss">:asc</span><span class="p">])</span> <span class="k">do</span> <span class="o">|</span><span class="n">person</span><span class="o">|</span>
+  <span class="n">person</span><span class="p">.</span><span class="nf">party_all_night!</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Takuya Kurimoto</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix where on association with has_one/has_many polymorphic relations.
 </title>
     <link>https://github.com/rails/rails/issues/48362</link>
@@ -11098,6 +11128,29 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: The `Mime::Type` now supports handling types with parameters and correctly handles quotes.
+</title>
+    <link>https://github.com/rails/rails/issues/48397</link>
+    <guid>https://github.com/rails/rails/issues/48397</guid>
+    <description>*   The `Mime::Type` now supports handling types with parameters and correctly handles quotes.
+    When parsing the accept header, the parameters before the q-parameter are kept and if a matching mime-type exists it is used.
+    To keep the current functionality, a fallback is created to look for the media-type without the parameters.
+
+    This change allows for custom MIME-types that are more complex like `application/vnd.api+json; profile=&quot;https://jsonapi.org/profiles/ethanresnick/cursor-pagination/&quot; ext=&quot;https://jsonapi.org/ext/atomic&quot;` for the [JSON API](https://jsonapi.org/).
+
+    *Nicolas Erni*</description>
+    <pubDate>Mon, 05 Jun 2023 16:56:17 +0000</pubDate>
+    <author>Nicolas Erni</author>
+    <content:encoded><![CDATA[<p>The <code>Mime::Type</code> now supports handling types with parameters and correctly handles quotes.<br />
+When parsing the accept header, the parameters before the q-parameter are kept and if a matching mime-type exists it is used.<br />
+To keep the current functionality, a fallback is created to look for the media-type without the parameters.</p>
+
+<p>This change allows for custom MIME-types that are more complex like <code>application/vnd.api+json; profile="https://jsonapi.org/profiles/ethanresnick/cursor-pagination/" ext="https://jsonapi.org/ext/atomic"</code> for the <a href="https://jsonapi.org/">JSON API</a>.</p>
+
+<p><em>Nicolas Erni</em></p>
 ]]></content:encoded>
   </item>
   <item>
