@@ -3836,6 +3836,69 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow composite primary key to be derived from schema
+</title>
+    <link>https://github.com/rails/rails/issues/47633</link>
+    <guid>https://github.com/rails/rails/issues/47633</guid>
+    <description>*   Allow composite primary key to be derived from schema
+
+    Booting an application with a schema that contains composite primary keys
+    will not issue warning and won&#39;t `nil`ify the `ActiveRecord::Base#primary_key` value anymore.
+
+    Given a `travel_routes` table definition and a `TravelRoute` model like:
+    ```ruby
+    create_table :travel_routes, primary_key: [:origin, :destination], force: true do |t|
+      t.string :origin
+      t.string :destination
+    end
+
+    class TravelRoute &lt; ActiveRecord::Base; end
+    ```
+    The `TravelRoute.primary_key` value will be automatically derived to `[&quot;origin&quot;, &quot;destination&quot;]`
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Tue, 06 Jun 2023 15:01:27 +0000</pubDate>
+    <author>Nikita Vasilevsky</author>
+    <content:encoded><![CDATA[<p>Allow composite primary key to be derived from schema</p>
+
+<p>Booting an application with a schema that contains composite primary keys<br />
+will not issue warning and won’t <code>nil</code>ify the <code>ActiveRecord::Base#primary_key</code> value anymore.</p>
+
+<p>Given a <code>travel_routes</code> table definition and a <code>TravelRoute</code> model like:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">create_table</span> <span class="ss">:travel_routes</span><span class="p">,</span> <span class="ss">primary_key: </span><span class="p">[</span><span class="ss">:origin</span><span class="p">,</span> <span class="ss">:destination</span><span class="p">],</span> <span class="ss">force: </span><span class="kp">true</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:origin</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:destination</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">TravelRoute</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">;</span> <span class="k">end</span>
+</code></pre></div></div>
+<p>The <code>TravelRoute.primary_key</code> value will be automatically derived to <code>["origin", "destination"]</code></p>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Include the `connection_pool` with exceptions raised from an adapter.
+</title>
+    <link>https://github.com/rails/rails/issues/48295</link>
+    <guid>https://github.com/rails/rails/issues/48295</guid>
+    <description>*   Include the `connection_pool` with exceptions raised from an adapter.
+
+    The `connection_pool` provides added context such as the connection used
+    that led to the exception as well as which role and shard.
+
+    *Luan Vieira*</description>
+    <pubDate>Tue, 06 Jun 2023 11:03:55 +0000</pubDate>
+    <author>Luan Vieira</author>
+    <content:encoded><![CDATA[<p>Include the <code>connection_pool</code> with exceptions raised from an adapter.</p>
+
+<p>The <code>connection_pool</code> provides added context such as the connection used<br />
+that led to the exception as well as which role and shard.</p>
+
+<p><em>Luan Vieira</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Support multiple column ordering for `find_each`, `find_in_batches` and `in_batches`.
 </title>
     <link>https://github.com/rails/rails/issues/48268</link>
