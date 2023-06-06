@@ -2910,6 +2910,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Add engine's draw paths to application route set, so that the application\n    can draw route files defined in engine paths.\n\n    *Gannon McGibbon*",
+    "project": "railties",
+    "date_merged": 1686023644000,
+    "author": "Gannon McGibbon",
+    "sha": "f9eea790a5b089f320b120593d80425aae5dd1ca",
+    "pr": "48388",
+    "merge_sha": "54ce634a9e297a609925d2904168c6a4166f1927",
+    "html": "<p>Add engine’s draw paths to application route set, so that the application<br />\ncan draw route files defined in engine paths.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Support `VISUAL` environment variable for commands which open an editor,\n    and prefer it over `EDITOR`.\n\n    *Summer ☀️*",
     "project": "railties",
     "date_merged": 1685678117000,
