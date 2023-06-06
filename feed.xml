@@ -8593,6 +8593,23 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add engine&#39;s draw paths to application route set, so that the application
+</title>
+    <link>https://github.com/rails/rails/issues/48388</link>
+    <guid>https://github.com/rails/rails/issues/48388</guid>
+    <description>*   Add engine&#39;s draw paths to application route set, so that the application
+    can draw route files defined in engine paths.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Tue, 06 Jun 2023 03:54:04 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Add engine’s draw paths to application route set, so that the application<br />
+can draw route files defined in engine paths.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Support `VISUAL` environment variable for commands which open an editor,
 </title>
     <link>https://github.com/rails/rails/issues/48374</link>
