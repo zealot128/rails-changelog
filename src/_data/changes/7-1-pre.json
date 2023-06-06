@@ -1300,6 +1300,26 @@
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
+    "message": "*   Allow composite primary key to be derived from schema\n\n    Booting an application with a schema that contains composite primary keys\n    will not issue warning and won't `nil`ify the `ActiveRecord::Base#primary_key` value anymore.\n\n    Given a `travel_routes` table definition and a `TravelRoute` model like:\n    ```ruby\n    create_table :travel_routes, primary_key: [:origin, :destination], force: true do |t|\n      t.string :origin\n      t.string :destination\n    end\n\n    class TravelRoute < ActiveRecord::Base; end\n    ```\n    The `TravelRoute.primary_key` value will be automatically derived to `[\"origin\", \"destination\"]`\n\n    *Nikita Vasilevsky*",
+    "project": "activerecord",
+    "date_merged": 1686063687000,
+    "author": "Nikita Vasilevsky",
+    "sha": "257f0124fc52b0ed9d3bcd51d55c55dd7bb4a194",
+    "pr": "47633",
+    "merge_sha": "791f109d97a38f8b9fe8a8c3d6d0a7acd70f1edb",
+    "html": "<p>Allow composite primary key to be derived from schema</p>\n\n<p>Booting an application with a schema that contains composite primary keys<br />\nwill not issue warning and won’t <code>nil</code>ify the <code>ActiveRecord::Base#primary_key</code> value anymore.</p>\n\n<p>Given a <code>travel_routes</code> table definition and a <code>TravelRoute</code> model like:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">create_table</span> <span class=\"ss\">:travel_routes</span><span class=\"p\">,</span> <span class=\"ss\">primary_key: </span><span class=\"p\">[</span><span class=\"ss\">:origin</span><span class=\"p\">,</span> <span class=\"ss\">:destination</span><span class=\"p\">],</span> <span class=\"ss\">force: </span><span class=\"kp\">true</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:origin</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:destination</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">TravelRoute</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span><span class=\"p\">;</span> <span class=\"k\">end</span>\n</code></pre></div></div>\n<p>The <code>TravelRoute.primary_key</code> value will be automatically derived to <code>[\"origin\", \"destination\"]</code></p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
+    "message": "*   Include the `connection_pool` with exceptions raised from an adapter.\n\n    The `connection_pool` provides added context such as the connection used\n    that led to the exception as well as which role and shard.\n\n    *Luan Vieira*",
+    "project": "activerecord",
+    "date_merged": 1686049435000,
+    "author": "Luan Vieira",
+    "sha": "7d4c88dde305bd6f7d14b68c43bdaedf06812f8d",
+    "pr": "48295",
+    "merge_sha": "3e01b26a16857c83ba0507e1533f02bda4a5d516",
+    "html": "<p>Include the <code>connection_pool</code> with exceptions raised from an adapter.</p>\n\n<p>The <code>connection_pool</code> provides added context such as the connection used<br />\nthat led to the exception as well as which role and shard.</p>\n\n<p><em>Luan Vieira</em></p>\n"
+  },
+  {
     "message": "*   Support multiple column ordering for `find_each`, `find_in_batches` and `in_batches`.\n\n    When find_each/find_in_batches/in_batches are performed on a table with composite primary keys, ascending or descending order can be selected for each key.\n\n    ```ruby\n    Person.find_each(order: [:desc, :asc]) do |person|\n      person.party_all_night!\n    end\n    ```\n\n    *Takuya Kurimoto*",
     "project": "activerecord",
     "date_merged": 1685986367000,
