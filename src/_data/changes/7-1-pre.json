@@ -3610,6 +3610,16 @@
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
   },
   {
+    "message": "*   Stop generating `Link preload` headers once it has reached 1KB.\n\n    Some proxies have trouble handling large headers, but more importantly preload links\n    have diminishing returns so it's preferable not to go overboard with them.\n\n    If tighter control is needed, it's recommended to disable automatic generation of preloads\n    and to generate them manually from the controller or from a middleware.\n\n    *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1686129575000,
+    "author": "Jean Boussier",
+    "sha": "facc260fbb8a414dd66851bf3d0ce83ea35119b8",
+    "pr": "48405",
+    "merge_sha": "0c09ae546fae39333068177b28767abbc6c8726e",
+    "html": "<p>Stop generating <code>Link preload</code> headers once it has reached 1KB.</p>\n\n<p>Some proxies have trouble handling large headers, but more importantly preload links<br />\nhave diminishing returns so it’s preferable not to go overboard with them.</p>\n\n<p>If tighter control is needed, it’s recommended to disable automatic generation of preloads<br />\nand to generate them manually from the controller or from a middleware.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   `simple_format` helper now handles a `:sanitize_options` - any extra options you want appending to the sanitize.\n\n    Before:\n    ```ruby\n      simple_format(\"<a target=\\\"_blank\\\" href=\\\"http://example.com\\\">Continue</a>\")\n      # => \"<p><a href=\\\"http://example.com\\\">Continue</a></p>\"\n    ```\n\n    After:\n    ```ruby\n      simple_format(\"<a target=\\\"_blank\\\" href=\\\"http://example.com\\\">Continue</a>\", {}, { sanitize_options: { attributes: %w[target href] } })\n      # => \"<p><a target=\\\"_blank\\\" href=\\\"http://example.com\\\">Continue</a></p>\"\n    ```\n\n    *Andrei Andriichuk*",
     "project": "actionview",
     "date_merged": 1685577881000,
