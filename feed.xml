@@ -10475,6 +10475,33 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Stop generating `Link preload` headers once it has reached 1KB.
+</title>
+    <link>https://github.com/rails/rails/issues/48405</link>
+    <guid>https://github.com/rails/rails/issues/48405</guid>
+    <description>*   Stop generating `Link preload` headers once it has reached 1KB.
+
+    Some proxies have trouble handling large headers, but more importantly preload links
+    have diminishing returns so it&#39;s preferable not to go overboard with them.
+
+    If tighter control is needed, it&#39;s recommended to disable automatic generation of preloads
+    and to generate them manually from the controller or from a middleware.
+
+    *Jean Boussier*</description>
+    <pubDate>Wed, 07 Jun 2023 09:19:35 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Stop generating <code>Link preload</code> headers once it has reached 1KB.</p>
+
+<p>Some proxies have trouble handling large headers, but more importantly preload links<br />
+have diminishing returns so it’s preferable not to go overboard with them.</p>
+
+<p>If tighter control is needed, it’s recommended to disable automatic generation of preloads<br />
+and to generate them manually from the controller or from a middleware.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: `simple_format` helper now handles a `:sanitize_options` - any extra options you want appending to the sanitize.
 </title>
     <link>https://github.com/rails/rails/issues/48355</link>
