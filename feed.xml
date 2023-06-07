@@ -11211,6 +11211,60 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: The `with_routing` helper can now be called at the class level. When called at the class level, the routes will
+</title>
+    <link>https://github.com/rails/rails/issues/48407</link>
+    <guid>https://github.com/rails/rails/issues/48407</guid>
+    <description>*   The `with_routing` helper can now be called at the class level. When called at the class level, the routes will
+    be setup before each test, and reset after every test. For example:
+
+    ```ruby
+    class RoutingTest &lt; ActionController::TestCase
+      with_routing do |routes|
+        routes.draw do
+          resources :articles
+          resources :authors
+        end
+      end
+
+      def test_articles_route
+        assert_routing(&quot;/articles&quot;, controller: &quot;articles&quot;, action: &quot;index&quot;)
+      end
+
+       def test_authors_route
+        assert_routing(&quot;/authors&quot;, controller: &quot;authors&quot;, action: &quot;index&quot;)
+      end
+    end
+    ```
+
+    *Andrew Novoselac*</description>
+    <pubDate>Tue, 06 Jun 2023 22:17:25 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>The <code>with_routing</code> helper can now be called at the class level. When called at the class level, the routes will<br />
+be setup before each test, and reset after every test. For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">RoutingTest</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="n">with_routing</span> <span class="k">do</span> <span class="o">|</span><span class="n">routes</span><span class="o">|</span>
+    <span class="n">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+      <span class="n">resources</span> <span class="ss">:articles</span>
+      <span class="n">resources</span> <span class="ss">:authors</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">test_articles_route</span>
+    <span class="n">assert_routing</span><span class="p">(</span><span class="s2">"/articles"</span><span class="p">,</span> <span class="ss">controller: </span><span class="s2">"articles"</span><span class="p">,</span> <span class="ss">action: </span><span class="s2">"index"</span><span class="p">)</span>
+  <span class="k">end</span>
+
+   <span class="k">def</span> <span class="nf">test_authors_route</span>
+    <span class="n">assert_routing</span><span class="p">(</span><span class="s2">"/authors"</span><span class="p">,</span> <span class="ss">controller: </span><span class="s2">"authors"</span><span class="p">,</span> <span class="ss">action: </span><span class="s2">"index"</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: The `Mime::Type` now supports handling types with parameters and correctly handles quotes.
 </title>
     <link>https://github.com/rails/rails/issues/48397</link>
