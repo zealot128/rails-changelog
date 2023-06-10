@@ -2930,6 +2930,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Enable force_ssl=true in production by default: Force all access to the app over SSL,\n    use Strict-Transport-Security, and use secure cookies\n\n    *Justin Searls*, *Aaron Patterson*, *Guillermo Iguaran*, *Vinícius Bispo*",
+    "project": "railties",
+    "date_merged": 1686408119000,
+    "author": "Justin Searls",
+    "sha": "3b8375868064ef5adc3e768523425bd5edd1a08f",
+    "pr": "47852",
+    "merge_sha": "18acbe8948e04088a3116ed3eb5df05ce72f0b20",
+    "html": "<p>Enable force_ssl=true in production by default: Force all access to the app over SSL,<br />\nuse Strict-Transport-Security, and use secure cookies</p>\n\n<p><em>Justin Searls</em>, <em>Aaron Patterson</em>, <em>Guillermo Iguaran</em>, <em>Vinícius Bispo</em></p>\n"
+  },
+  {
     "message": "*   Add engine's draw paths to application route set, so that the application\n    can draw route files defined in engine paths.\n\n    *Gannon McGibbon*",
     "project": "railties",
     "date_merged": 1686023644000,
