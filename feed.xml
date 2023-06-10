@@ -8656,6 +8656,23 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Enable force_ssl=true in production by default: Force all access to the app over SSL,
+</title>
+    <link>https://github.com/rails/rails/issues/47852</link>
+    <guid>https://github.com/rails/rails/issues/47852</guid>
+    <description>*   Enable force_ssl=true in production by default: Force all access to the app over SSL,
+    use Strict-Transport-Security, and use secure cookies
+
+    *Justin Searls*, *Aaron Patterson*, *Guillermo Iguaran*, *Vinícius Bispo*</description>
+    <pubDate>Sat, 10 Jun 2023 14:41:59 +0000</pubDate>
+    <author>Justin Searls</author>
+    <content:encoded><![CDATA[<p>Enable force_ssl=true in production by default: Force all access to the app over SSL,<br />
+use Strict-Transport-Security, and use secure cookies</p>
+
+<p><em>Justin Searls</em>, <em>Aaron Patterson</em>, <em>Guillermo Iguaran</em>, <em>Vinícius Bispo</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add engine&#39;s draw paths to application route set, so that the application
 </title>
     <link>https://github.com/rails/rails/issues/48388</link>
