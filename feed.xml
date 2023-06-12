@@ -185,8 +185,7 @@ messages can still be read so that migration is easier.</p>
     <link>https://github.com/rails/rails/issues/48122</link>
     <guid>https://github.com/rails/rails/issues/48122</guid>
     <description>*   A new `7.1` cache format is available which includes an optimization for
-    bare string values such as view fragments. The `:message_pack` cache format
-    has also been modified to include this optimization.
+    bare string values such as view fragments.
 
     The `7.1` cache format is used by default for new apps, and existing apps
     can enable the format by setting `config.load_defaults 7.1` or by setting
@@ -199,12 +198,13 @@ messages can still be read so that migration is easier.</p>
     read caches from upgraded servers, leave the cache format unchanged on the
     first deploy, then enable the `7.1` cache format on a subsequent deploy.
 
+    The new `:message_pack` cache coder also includes this optimization.
+
     *Jonathan Hefner*</description>
     <pubDate>Thu, 04 May 2023 21:37:06 +0000</pubDate>
     <author>Jonathan Hefner</author>
     <content:encoded><![CDATA[<p>A new <code>7.1</code> cache format is available which includes an optimization for<br />
-bare string values such as view fragments. The <code>:message_pack</code> cache format<br />
-has also been modified to include this optimization.</p>
+bare string values such as view fragments.</p>
 
 <p>The <code>7.1</code> cache format is used by default for new apps, and existing apps<br />
 can enable the format by setting <code>config.load_defaults 7.1</code> or by setting<br />
@@ -217,38 +217,49 @@ upgrade, wherein servers that have not yet been upgraded must be able to<br />
 read caches from upgraded servers, leave the cache format unchanged on the<br />
 first deploy, then enable the <code>7.1</code> cache format on a subsequent deploy.</p>
 
+<p>The new <code>:message_pack</code> cache coder also includes this optimization.</p>
+
 <p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activesupport: `config.active_support.cache_format_version` now accepts `:message_pack` as
+    <title>activesupport: The `:coder` option for Active Support cache stores now supports a
 </title>
-    <link>https://github.com/rails/rails/issues/48104</link>
-    <guid>https://github.com/rails/rails/issues/48104</guid>
-    <description>*   `config.active_support.cache_format_version` now accepts `:message_pack` as
-    an option. `:message_pack` can reduce cache entry sizes and improve
+    <link>https://github.com/rails/rails/issues/48449</link>
+    <guid>https://github.com/rails/rails/issues/48449</guid>
+    <description>*   The `:coder` option for Active Support cache stores now supports a
+    `:message_pack` value:
+
+      ```ruby
+      config.cache_store = :redis_cache_store, { coder: :message_pack }
+      ```
+
+    The `:message_pack` coder can reduce cache entry sizes and improve
     performance, but requires the [`msgpack` gem](https://rubygems.org/gems/msgpack)
     (&gt;= 1.7.0).
 
-    Cache entries written using the `6.1`, `7.0`, or `7.1` cache formats can be read
-    when using the `:message_pack` cache format. Additionally, cache entries
-    written using the `:message_pack` cache format can now be read when using
-    the `6.1`, `7.0`, or `7.1` cache formats. These behaviors makes it easy to migrate
-    between formats without invalidating the entire cache.
+    The `:message_pack` coder can read cache entries written by the default
+    coder, and the default coder can now read entries written by the
+    `:message_pack` coder. These behaviors make it easy to migrate between
+    coders without invalidating the entire cache.
 
     *Jonathan Hefner*</description>
-    <pubDate>Wed, 03 May 2023 20:43:30 +0000</pubDate>
+    <pubDate>Sun, 11 Jun 2023 20:59:21 +0000</pubDate>
     <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p><code>config.active_support.cache_format_version</code> now accepts <code>:message_pack</code> as<br />
-an option. <code>:message_pack</code> can reduce cache entry sizes and improve<br />
+    <content:encoded><![CDATA[<p>The <code>:coder</code> option for Active Support cache stores now supports a<br />
+<code>:message_pack</code> value:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">config</span><span class="p">.</span><span class="nf">cache_store</span> <span class="o">=</span> <span class="ss">:redis_cache_store</span><span class="p">,</span> <span class="p">{</span> <span class="ss">coder: :message_pack</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <code>:message_pack</code> coder can reduce cache entry sizes and improve<br />
 performance, but requires the <a href="https://rubygems.org/gems/msgpack"><code>msgpack</code> gem</a><br />
 (&gt;= 1.7.0).</p>
 
-<p>Cache entries written using the <code>6.1</code>, <code>7.0</code>, or <code>7.1</code> cache formats can be read<br />
-when using the <code>:message_pack</code> cache format. Additionally, cache entries<br />
-written using the <code>:message_pack</code> cache format can now be read when using<br />
-the <code>6.1</code>, <code>7.0</code>, or <code>7.1</code> cache formats. These behaviors makes it easy to migrate<br />
-between formats without invalidating the entire cache.</p>
+<p>The <code>:message_pack</code> coder can read cache entries written by the default<br />
+coder, and the default coder can now read entries written by the<br />
+<code>:message_pack</code> coder. These behaviors make it easy to migrate between<br />
+coders without invalidating the entire cache.</p>
 
 <p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
