@@ -1147,6 +1147,27 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Deprecate calling `Rails.application.secrets`.
+</title>
+    <link>https://github.com/rails/rails/issues/48472</link>
+    <guid>https://github.com/rails/rails/issues/48472</guid>
+    <description>*   Deprecate calling `Rails.application.secrets`.
+
+    Rails `secrets` have been deprecated in favor of `credentials`.
+    Calling `Rails.application.secrets` should show a deprecation warning.
+
+    *Petrik de Heus*</description>
+    <pubDate>Thu, 15 Jun 2023 07:09:08 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Deprecate calling <code>Rails.application.secrets</code>.</p>
+
+<p>Rails <code>secrets</code> have been deprecated in favor of <code>credentials</code>.<br />
+Calling <code>Rails.application.secrets</code> should show a deprecation warning.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Store `secret_key_base` in `Rails.config` for local environments.
 </title>
     <link>https://github.com/rails/rails/issues/48470</link>
@@ -3238,6 +3259,54 @@ will cause those paths to be used in the search for mailer previews.</p>
     <content:encoded><![CDATA[<p>Add X-Forwarded-To addresses to recipients.</p>
 
 <p><em>Andrew Stewart</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Added PostgreSQL migration commands for enum rename, add value, and rename value.
+</title>
+    <link>https://github.com/rails/rails/issues/44898</link>
+    <guid>https://github.com/rails/rails/issues/44898</guid>
+    <description>*   Added PostgreSQL migration commands for enum rename, add value, and rename value.
+
+    `rename_enum` and `rename_enum_value` are reversible. Due to Postgres
+    limitation, `add_enum_value` is not reversible since you cannot delete enum
+    values. As an alternative you should drop and recreate the enum entirely.
+
+    ```ruby
+    rename_enum :article_status, to: :article_state
+    ```
+
+    ```ruby
+    add_enum_value :article_state, &quot;archived&quot; # will be at the end of existing values
+    add_enum_value :article_state, &quot;in review&quot;, before: &quot;published&quot;
+    add_enum_value :article_state, &quot;approved&quot;, after: &quot;in review&quot;
+    ```
+
+    ```ruby
+    rename_enum_value :article_state, from: &quot;archived&quot;, to: &quot;deleted&quot;
+    ```
+
+    *Ray Faddis*</description>
+    <pubDate>Thu, 15 Jun 2023 14:45:43 +0000</pubDate>
+    <author>Ray Faddis</author>
+    <content:encoded><![CDATA[<p>Added PostgreSQL migration commands for enum rename, add value, and rename value.</p>
+
+<p><code>rename_enum</code> and <code>rename_enum_value</code> are reversible. Due to Postgres<br />
+limitation, <code>add_enum_value</code> is not reversible since you cannot delete enum<br />
+values. As an alternative you should drop and recreate the enum entirely.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rename_enum</span> <span class="ss">:article_status</span><span class="p">,</span> <span class="ss">to: :article_state</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_enum_value</span> <span class="ss">:article_state</span><span class="p">,</span> <span class="s2">"archived"</span> <span class="c1"># will be at the end of existing values</span>
+<span class="n">add_enum_value</span> <span class="ss">:article_state</span><span class="p">,</span> <span class="s2">"in review"</span><span class="p">,</span> <span class="ss">before: </span><span class="s2">"published"</span>
+<span class="n">add_enum_value</span> <span class="ss">:article_state</span><span class="p">,</span> <span class="s2">"approved"</span><span class="p">,</span> <span class="ss">after: </span><span class="s2">"in review"</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rename_enum_value</span> <span class="ss">:article_state</span><span class="p">,</span> <span class="ss">from: </span><span class="s2">"archived"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"deleted"</span>
+</code></pre></div></div>
+
+<p><em>Ray Faddis</em></p>
 ]]></content:encoded>
   </item>
   <item>
