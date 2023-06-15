@@ -390,6 +390,16 @@
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
   },
   {
+    "message": "*   Deprecate calling `Rails.application.secrets`.\n\n    Rails `secrets` have been deprecated in favor of `credentials`.\n    Calling `Rails.application.secrets` should show a deprecation warning.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1686812948000,
+    "author": "Petrik",
+    "sha": "9f9b540cb514a06341604122788ccf5a86cbe80d",
+    "pr": "48472",
+    "merge_sha": "e10e35dd32aff48457a76b83e244e8baad34a9ec",
+    "html": "<p>Deprecate calling <code>Rails.application.secrets</code>.</p>\n\n<p>Rails <code>secrets</code> have been deprecated in favor of <code>credentials</code>.<br />\nCalling <code>Rails.application.secrets</code> should show a deprecation warning.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Store `secret_key_base` in `Rails.config` for local environments.\n\n    Rails `secrets` have been deprecated in favor of `credentials`.\n    For the local environments the `secret_key_base` is now stored in\n    `Rails.config.secret_key_base` instead of the soft deprecated\n    `Rails.application.secrets.secret_key_base`.\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1686779537000,
@@ -1148,6 +1158,16 @@
     "pr": "46552",
     "merge_sha": "d42defd8c9f8d1c04fd3548c200dbd4f8ecb10a6",
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
+  },
+  {
+    "message": "*   Added PostgreSQL migration commands for enum rename, add value, and rename value.\n\n    `rename_enum` and `rename_enum_value` are reversible. Due to Postgres\n    limitation, `add_enum_value` is not reversible since you cannot delete enum\n    values. As an alternative you should drop and recreate the enum entirely.\n\n    ```ruby\n    rename_enum :article_status, to: :article_state\n    ```\n\n    ```ruby\n    add_enum_value :article_state, \"archived\" # will be at the end of existing values\n    add_enum_value :article_state, \"in review\", before: \"published\"\n    add_enum_value :article_state, \"approved\", after: \"in review\"\n    ```\n\n    ```ruby\n    rename_enum_value :article_state, from: \"archived\", to: \"deleted\"\n    ```\n\n    *Ray Faddis*",
+    "project": "activerecord",
+    "date_merged": 1686840343000,
+    "author": "Ray Faddis",
+    "sha": "ce6047f84f1b88a91074505f9363842f81ce31a6",
+    "pr": "44898",
+    "merge_sha": "dfc365949b1b18f8a25eb4eec696982442ed28f7",
+    "html": "<p>Added PostgreSQL migration commands for enum rename, add value, and rename value.</p>\n\n<p><code>rename_enum</code> and <code>rename_enum_value</code> are reversible. Due to Postgres<br />\nlimitation, <code>add_enum_value</code> is not reversible since you cannot delete enum<br />\nvalues. As an alternative you should drop and recreate the enum entirely.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">rename_enum</span> <span class=\"ss\">:article_status</span><span class=\"p\">,</span> <span class=\"ss\">to: :article_state</span>\n</code></pre></div></div>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_enum_value</span> <span class=\"ss\">:article_state</span><span class=\"p\">,</span> <span class=\"s2\">\"archived\"</span> <span class=\"c1\"># will be at the end of existing values</span>\n<span class=\"n\">add_enum_value</span> <span class=\"ss\">:article_state</span><span class=\"p\">,</span> <span class=\"s2\">\"in review\"</span><span class=\"p\">,</span> <span class=\"ss\">before: </span><span class=\"s2\">\"published\"</span>\n<span class=\"n\">add_enum_value</span> <span class=\"ss\">:article_state</span><span class=\"p\">,</span> <span class=\"s2\">\"approved\"</span><span class=\"p\">,</span> <span class=\"ss\">after: </span><span class=\"s2\">\"in review\"</span>\n</code></pre></div></div>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">rename_enum_value</span> <span class=\"ss\">:article_state</span><span class=\"p\">,</span> <span class=\"ss\">from: </span><span class=\"s2\">\"archived\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"deleted\"</span>\n</code></pre></div></div>\n\n<p><em>Ray Faddis</em></p>\n"
   },
   {
     "message": "*   Allow composite primary key to be derived from schema\n\n    Booting an application with a schema that contains composite primary keys\n    will not issue warning and won't `nil`ify the `ActiveRecord::Base#primary_key` value anymore.\n\n    Given a `travel_routes` table definition and a `TravelRoute` model like:\n    ```ruby\n    create_table :travel_routes, primary_key: [:origin, :destination], force: true do |t|\n      t.string :origin\n      t.string :destination\n    end\n\n    class TravelRoute < ActiveRecord::Base; end\n    ```\n    The `TravelRoute.primary_key` value will be automatically derived to `[\"origin\", \"destination\"]`\n\n    *Nikita Vasilevsky*",
