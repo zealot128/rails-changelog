@@ -1147,6 +1147,47 @@ rich_text field was updated.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Don&#39;t show secret_key_base for `Rails.application.config#inspect`.
+</title>
+    <link>https://github.com/rails/rails/issues/48500</link>
+    <guid>https://github.com/rails/rails/issues/48500</guid>
+    <description>*   Don&#39;t show secret_key_base for `Rails.application.config#inspect`.
+
+    Before:
+
+    ```ruby
+    Rails.application.config.inspect
+    &quot;#&lt;Rails::Application::Configuration:0x00000001132b02a0 @root=... @secret_key_base=\&quot;b3c631c314c0bbca50c1b2843150fe33\&quot; ... &gt;&quot;
+    ```
+
+    After:
+
+    ```ruby
+    Rails.application.config.inspect
+    &quot;#&lt;Rails::Application::Configuration:0x00000001132b02a0&gt;&quot;
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 16 Jun 2023 18:19:40 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Don’t show secret_key_base for <code>Rails.application.config#inspect</code>.</p>
+
+<p>Before:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">inspect</span>
+<span class="s2">"#&lt;Rails::Application::Configuration:0x00000001132b02a0 @root=... @secret_key_base=</span><span class="se">\"</span><span class="s2">b3c631c314c0bbca50c1b2843150fe33</span><span class="se">\"</span><span class="s2"> ... &gt;"</span>
+</code></pre></div></div>
+
+<p>After:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">config</span><span class="p">.</span><span class="nf">inspect</span>
+<span class="s2">"#&lt;Rails::Application::Configuration:0x00000001132b02a0&gt;"</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Deprecate calling `Rails.application.secrets`.
 </title>
     <link>https://github.com/rails/rails/issues/48472</link>
@@ -10221,6 +10262,43 @@ is called.</p>
 </code></pre></div></div>
 
 <p><em>Jacopo Beschi</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Don&#39;t show contents for `EncryptedConfiguration#inspect`.
+</title>
+    <link>https://github.com/rails/rails/issues/48498</link>
+    <guid>https://github.com/rails/rails/issues/48498</guid>
+    <description>*   Don&#39;t show contents for `EncryptedConfiguration#inspect`.
+
+    Before:
+    ```ruby
+    Rails.application.credentials.inspect
+    &quot;#&lt;ActiveSupport::EncryptedConfiguration:0x000000010d2b38e8 ... @config={:secret=&gt;\&quot;something secret\&quot;} ... @key_file_contents=\&quot;915e4ea054e011022398dc242\&quot; ...&gt;&quot;
+    ```
+
+    After:
+    ```ruby
+    Rails.application.credentials.inspect
+    &quot;#&lt;ActiveSupport::EncryptedConfiguration:0x000000010d2b38e8&gt;&quot;
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 16 Jun 2023 18:25:52 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Don’t show contents for <code>EncryptedConfiguration#inspect</code>.</p>
+
+<p>Before:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">inspect</span>
+<span class="s2">"#&lt;ActiveSupport::EncryptedConfiguration:0x000000010d2b38e8 ... @config={:secret=&gt;</span><span class="se">\"</span><span class="s2">something secret</span><span class="se">\"</span><span class="s2">} ... @key_file_contents=</span><span class="se">\"</span><span class="s2">915e4ea054e011022398dc242</span><span class="se">\"</span><span class="s2"> ...&gt;"</span>
+</code></pre></div></div>
+
+<p>After:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">inspect</span>
+<span class="s2">"#&lt;ActiveSupport::EncryptedConfiguration:0x000000010d2b38e8&gt;"</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
   <item>
