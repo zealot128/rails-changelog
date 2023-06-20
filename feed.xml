@@ -8553,6 +8553,27 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: `ActionDispatch::Assertions#html_document` uses Nokogiri&#39;s HTML5 parser if it is available.
+</title>
+    <link>https://github.com/rails/rails/issues/48523</link>
+    <guid>https://github.com/rails/rails/issues/48523</guid>
+    <description>*   `ActionDispatch::Assertions#html_document` uses Nokogiri&#39;s HTML5 parser if it is available.
+
+    The HTML5 parser better represents what the DOM would be in a browser. Previously this test
+    helper always used Nokogiri&#39;s HTML4 parser.
+
+    *Mike Dalessio*</description>
+    <pubDate>Tue, 20 Jun 2023 02:40:22 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p><code>ActionDispatch::Assertions#html_document</code> uses Nokogiri’s HTML5 parser if it is available.</p>
+
+<p>The HTML5 parser better represents what the DOM would be in a browser. Previously this test<br />
+helper always used Nokogiri’s HTML4 parser.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: The `with_routing` helper can now be called at the class level. When called at the class level, the routes will
 </title>
     <link>https://github.com/rails/rails/issues/48407</link>
