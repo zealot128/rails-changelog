@@ -2900,6 +2900,16 @@
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
+    "message": "*   `ActionDispatch::Assertions#html_document` uses Nokogiri's HTML5 parser if it is available.\n\n    The HTML5 parser better represents what the DOM would be in a browser. Previously this test\n    helper always used Nokogiri's HTML4 parser.\n\n    *Mike Dalessio*",
+    "project": "actionpack",
+    "date_merged": 1687228822000,
+    "author": "Mike Dalessio",
+    "sha": "2362f57cd88fdbe7af8d3c36d868b7bc40483d9c",
+    "pr": "48523",
+    "merge_sha": "162c4b47d3d5e230b4b64f2c977d814c96e3bbbd",
+    "html": "<p><code>ActionDispatch::Assertions#html_document</code> uses Nokogiri’s HTML5 parser if it is available.</p>\n\n<p>The HTML5 parser better represents what the DOM would be in a browser. Previously this test<br />\nhelper always used Nokogiri’s HTML4 parser.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   The `with_routing` helper can now be called at the class level. When called at the class level, the routes will\n    be setup before each test, and reset after every test. For example:\n\n    ```ruby\n    class RoutingTest < ActionController::TestCase\n      with_routing do |routes|\n        routes.draw do\n          resources :articles\n          resources :authors\n        end\n      end\n\n      def test_articles_route\n        assert_routing(\"/articles\", controller: \"articles\", action: \"index\")\n      end\n\n       def test_authors_route\n        assert_routing(\"/authors\", controller: \"authors\", action: \"index\")\n      end\n    end\n    ```\n\n    *Andrew Novoselac*",
     "project": "actionpack",
     "date_merged": 1686089845000,
