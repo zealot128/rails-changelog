@@ -3766,20 +3766,20 @@ columns to be assigned on the object immediately after row insertion utilizing t
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add support for `Array#intersect?` to `ActiveRecord::Relation`.
+    <title>activerecord: Add support for `Array#intersects?` to `ActiveRecord::Relation`.
 </title>
-    <link>https://github.com/rails/rails/issues/47670</link>
-    <guid>https://github.com/rails/rails/issues/47670</guid>
-    <description>*   Add support for `Array#intersect?` to `ActiveRecord::Relation`.
+    <link>https://github.com/rails/rails/issues/48539</link>
+    <guid>https://github.com/rails/rails/issues/48539</guid>
+    <description>*   Add support for `Array#intersects?` to `ActiveRecord::Relation`.
 
     `Array#intersect?` is only available on Ruby 3.1 or later.
 
     This allows the Rubocop `Style/ArrayIntersect` cop to work with `ActiveRecord::Relation` objects.
 
     *John Harry Kelly*</description>
-    <pubDate>Thu, 27 Apr 2023 14:12:21 +0000</pubDate>
-    <author>John Kelly</author>
-    <content:encoded><![CDATA[<p>Add support for <code>Array#intersect?</code> to <code>ActiveRecord::Relation</code>.</p>
+    <pubDate>Wed, 21 Jun 2023 18:33:41 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add support for <code>Array#intersects?</code> to <code>ActiveRecord::Relation</code>.</p>
 
 <p><code>Array#intersect?</code> is only available on Ruby 3.1 or later.</p>
 
