@@ -3303,6 +3303,47 @@ will cause those paths to be used in the search for mailer previews.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Apply scope to association subqueries. (belongs_to/has_one/has_many)
+</title>
+    <link>https://github.com/rails/rails/issues/48487</link>
+    <guid>https://github.com/rails/rails/issues/48487</guid>
+    <description>*   Apply scope to association subqueries. (belongs_to/has_one/has_many)
+
+    Given: `has_many :welcome_posts, -&gt; { where(title: &quot;welcome&quot;) }`
+
+    Before:
+    ```ruby
+    Author.where(welcome_posts: Post.all)
+    #=&gt; SELECT (...) WHERE &quot;authors&quot;.&quot;id&quot; IN (SELECT &quot;posts&quot;.&quot;author_id&quot; FROM &quot;posts&quot;)
+    ```
+
+    Later:
+    ```ruby
+    Author.where(welcome_posts: Post.all)
+    #=&gt; SELECT (...) WHERE &quot;authors&quot;.&quot;id&quot; IN (SELECT &quot;posts&quot;.&quot;author_id&quot; FROM &quot;posts&quot; WHERE &quot;posts&quot;.&quot;title&quot; = &#39;welcome&#39;)
+    ```
+
+    *Lázaro Nixon*</description>
+    <pubDate>Tue, 20 Jun 2023 22:07:29 +0000</pubDate>
+    <author>Nixon</author>
+    <content:encoded><![CDATA[<p>Apply scope to association subqueries. (belongs_to/has_one/has_many)</p>
+
+<p>Given: <code>has_many :welcome_posts, -&gt; { where(title: "welcome") }</code></p>
+
+<p>Before:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Author</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">welcome_posts: </span><span class="no">Post</span><span class="p">.</span><span class="nf">all</span><span class="p">)</span>
+<span class="c1">#=&gt; SELECT (...) WHERE "authors"."id" IN (SELECT "posts"."author_id" FROM "posts")</span>
+</code></pre></div></div>
+
+<p>Later:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Author</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">welcome_posts: </span><span class="no">Post</span><span class="p">.</span><span class="nf">all</span><span class="p">)</span>
+<span class="c1">#=&gt; SELECT (...) WHERE "authors"."id" IN (SELECT "posts"."author_id" FROM "posts" WHERE "posts"."title" = 'welcome')</span>
+</code></pre></div></div>
+
+<p><em>Lázaro Nixon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Added PostgreSQL migration commands for enum rename, add value, and rename value.
 </title>
     <link>https://github.com/rails/rails/issues/44898</link>
