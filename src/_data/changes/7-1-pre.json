@@ -1170,6 +1170,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Apply scope to association subqueries. (belongs_to/has_one/has_many)\n\n    Given: `has_many :welcome_posts, -> { where(title: \"welcome\") }`\n\n    Before:\n    ```ruby\n    Author.where(welcome_posts: Post.all)\n    #=> SELECT (...) WHERE \"authors\".\"id\" IN (SELECT \"posts\".\"author_id\" FROM \"posts\")\n    ```\n\n    Later:\n    ```ruby\n    Author.where(welcome_posts: Post.all)\n    #=> SELECT (...) WHERE \"authors\".\"id\" IN (SELECT \"posts\".\"author_id\" FROM \"posts\" WHERE \"posts\".\"title\" = 'welcome')\n    ```\n\n    *Lázaro Nixon*",
+    "project": "activerecord",
+    "date_merged": 1687298849000,
+    "author": "Nixon",
+    "sha": "8d520e03595f9876d2f71809b48c11c46ec5a47c",
+    "pr": "48487",
+    "merge_sha": "6264c1de762cbd7fda6eddc825d6de3027ed5e42",
+    "html": "<p>Apply scope to association subqueries. (belongs_to/has_one/has_many)</p>\n\n<p>Given: <code>has_many :welcome_posts, -&gt; { where(title: \"welcome\") }</code></p>\n\n<p>Before:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Author</span><span class=\"p\">.</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"ss\">welcome_posts: </span><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">)</span>\n<span class=\"c1\">#=&gt; SELECT (...) WHERE \"authors\".\"id\" IN (SELECT \"posts\".\"author_id\" FROM \"posts\")</span>\n</code></pre></div></div>\n\n<p>Later:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Author</span><span class=\"p\">.</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"ss\">welcome_posts: </span><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">)</span>\n<span class=\"c1\">#=&gt; SELECT (...) WHERE \"authors\".\"id\" IN (SELECT \"posts\".\"author_id\" FROM \"posts\" WHERE \"posts\".\"title\" = 'welcome')</span>\n</code></pre></div></div>\n\n<p><em>Lázaro Nixon</em></p>\n"
+  },
+  {
     "message": "*   Added PostgreSQL migration commands for enum rename, add value, and rename value.\n\n    `rename_enum` and `rename_enum_value` are reversible. Due to Postgres\n    limitation, `add_enum_value` is not reversible since you cannot delete enum\n    values. As an alternative you should drop and recreate the enum entirely.\n\n    ```ruby\n    rename_enum :article_status, to: :article_state\n    ```\n\n    ```ruby\n    add_enum_value :article_state, \"archived\" # will be at the end of existing values\n    add_enum_value :article_state, \"in review\", before: \"published\"\n    add_enum_value :article_state, \"approved\", after: \"in review\"\n    ```\n\n    ```ruby\n    rename_enum_value :article_state, from: \"archived\", to: \"deleted\"\n    ```\n\n    *Ray Faddis*",
     "project": "activerecord",
     "date_merged": 1686840343000,
