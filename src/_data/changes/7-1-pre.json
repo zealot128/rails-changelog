@@ -1310,14 +1310,14 @@
     "html": "<p>Make <code>increment_counter</code>/<code>decrement_counter</code> accept an amount argument</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">increment_counter</span><span class=\"p\">(</span><span class=\"ss\">:comments_count</span><span class=\"p\">,</span> <span class=\"mi\">5</span><span class=\"p\">,</span> <span class=\"ss\">by: </span><span class=\"mi\">3</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
-    "message": "*   Add support for `Array#intersect?` to `ActiveRecord::Relation`.\n\n    `Array#intersect?` is only available on Ruby 3.1 or later.\n\n    This allows the Rubocop `Style/ArrayIntersect` cop to work with `ActiveRecord::Relation` objects.\n\n    *John Harry Kelly*",
+    "message": "*   Add support for `Array#intersects?` to `ActiveRecord::Relation`.\n\n    `Array#intersect?` is only available on Ruby 3.1 or later.\n\n    This allows the Rubocop `Style/ArrayIntersect` cop to work with `ActiveRecord::Relation` objects.\n\n    *John Harry Kelly*",
     "project": "activerecord",
-    "date_merged": 1682604741000,
-    "author": "John Kelly",
-    "sha": "c837ae624bc96f46b49f4656c76cd935591a8a3f",
-    "pr": "47670",
-    "merge_sha": "bb4cc27003372b0bd279eb64027a1848cd98693d",
-    "html": "<p>Add support for <code>Array#intersect?</code> to <code>ActiveRecord::Relation</code>.</p>\n\n<p><code>Array#intersect?</code> is only available on Ruby 3.1 or later.</p>\n\n<p>This allows the Rubocop <code>Style/ArrayIntersect</code> cop to work with <code>ActiveRecord::Relation</code> objects.</p>\n\n<p><em>John Harry Kelly</em></p>\n"
+    "date_merged": 1687372421000,
+    "author": "Jean Boussier",
+    "sha": "e446ef82c8174a4bd6c98f670912bb395b3091d6",
+    "pr": "48539",
+    "merge_sha": "d26812484260b70255dd24c6c249dfd979069d5b",
+    "html": "<p>Add support for <code>Array#intersects?</code> to <code>ActiveRecord::Relation</code>.</p>\n\n<p><code>Array#intersect?</code> is only available on Ruby 3.1 or later.</p>\n\n<p>This allows the Rubocop <code>Style/ArrayIntersect</code> cop to work with <code>ActiveRecord::Relation</code> objects.</p>\n\n<p><em>John Harry Kelly</em></p>\n"
   },
   {
     "message": "*   The deferrable foreign key can be passed to `t.references`.\n\n    *Hiroyuki Ishii*",
