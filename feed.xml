@@ -3766,20 +3766,20 @@ columns to be assigned on the object immediately after row insertion utilizing t
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add support for `Array#intersects?` to `ActiveRecord::Relation`.
+    <title>activerecord: Add support for `Array#intersect?` to `ActiveRecord::Relation`.
 </title>
-    <link>https://github.com/rails/rails/issues/48539</link>
-    <guid>https://github.com/rails/rails/issues/48539</guid>
-    <description>*   Add support for `Array#intersects?` to `ActiveRecord::Relation`.
+    <link>https://github.com/rails/rails/issues/48544</link>
+    <guid>https://github.com/rails/rails/issues/48544</guid>
+    <description>*   Add support for `Array#intersect?` to `ActiveRecord::Relation`.
 
     `Array#intersect?` is only available on Ruby 3.1 or later.
 
     This allows the Rubocop `Style/ArrayIntersect` cop to work with `ActiveRecord::Relation` objects.
 
     *John Harry Kelly*</description>
-    <pubDate>Wed, 21 Jun 2023 18:33:41 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Add support for <code>Array#intersects?</code> to <code>ActiveRecord::Relation</code>.</p>
+    <pubDate>Wed, 21 Jun 2023 21:08:32 +0000</pubDate>
+    <author>Guillermo Iguaran</author>
+    <content:encoded><![CDATA[<p>Add support for <code>Array#intersect?</code> to <code>ActiveRecord::Relation</code>.</p>
 
 <p><code>Array#intersect?</code> is only available on Ruby 3.1 or later.</p>
 
@@ -10384,6 +10384,7 @@ is called.</p>
     ```ruby
     Rails.application.credentials.inspect
     &quot;#&lt;ActiveSupport::EncryptedConfiguration:0x000000010d2b38e8&gt;&quot;
+    ```
 
     *Petrik de Heus*</description>
     <pubDate>Fri, 16 Jun 2023 18:25:52 +0000</pubDate>
@@ -10395,10 +10396,10 @@ is called.</p>
 <span class="s2">"#&lt;ActiveSupport::EncryptedConfiguration:0x000000010d2b38e8 ... @config={:secret=&gt;</span><span class="se">\"</span><span class="s2">something secret</span><span class="se">\"</span><span class="s2">} ... @key_file_contents=</span><span class="se">\"</span><span class="s2">915e4ea054e011022398dc242</span><span class="se">\"</span><span class="s2"> ...&gt;"</span>
 </code></pre></div></div>
 
-<p>After:<br />
-```ruby<br />
-Rails.application.credentials.inspect<br />
-“#&lt;ActiveSupport::EncryptedConfiguration:0x000000010d2b38e8&gt;”</p>
+<p>After:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">inspect</span>
+<span class="s2">"#&lt;ActiveSupport::EncryptedConfiguration:0x000000010d2b38e8&gt;"</span>
+</code></pre></div></div>
 
 <p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
