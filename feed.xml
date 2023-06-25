@@ -8302,6 +8302,21 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Rename `Range#overlaps?` to `#overlap?` and add alias for backwards compatibility
+</title>
+    <link>https://github.com/rails/rails/issues/48565</link>
+    <guid>https://github.com/rails/rails/issues/48565</guid>
+    <description>*   Rename `Range#overlaps?` to `#overlap?` and add alias for backwards compatibility
+
+    *Christian Schmidt*</description>
+    <pubDate>Sat, 24 Jun 2023 21:36:18 +0000</pubDate>
+    <author>Christian Schmidt</author>
+    <content:encoded><![CDATA[<p>Rename <code>Range#overlaps?</code> to <code>#overlap?</code> and add alias for backwards compatibility</p>
+
+<p><em>Christian Schmidt</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Fix `EncryptedConfiguration` returning incorrect values for some `Hash`
 </title>
     <link>https://github.com/rails/rails/issues/48556</link>
