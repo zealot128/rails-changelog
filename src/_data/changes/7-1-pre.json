@@ -2770,6 +2770,16 @@
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
+    "message": "*   Rename `Range#overlaps?` to `#overlap?` and add alias for backwards compatibility\n\n    *Christian Schmidt*",
+    "project": "activesupport",
+    "date_merged": 1687642578000,
+    "author": "Christian Schmidt",
+    "sha": "11ed5b5c52c4f545bf06f10ce89c70d9c9b514b2",
+    "pr": "48565",
+    "merge_sha": "672376c0773e45c81192533a0b0d25a2d651eb31",
+    "html": "<p>Rename <code>Range#overlaps?</code> to <code>#overlap?</code> and add alias for backwards compatibility</p>\n\n<p><em>Christian Schmidt</em></p>\n"
+  },
+  {
     "message": "*   Fix `EncryptedConfiguration` returning incorrect values for some `Hash`\n    methods\n\n    *Hartley McGuire*",
     "project": "activesupport",
     "date_merged": 1687421762000,
