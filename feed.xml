@@ -21,6 +21,44 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Support decrypting data encrypted non-deterministically with a SHA1 hash digest.
+</title>
+    <link>https://github.com/rails/rails/issues/48530</link>
+    <guid>https://github.com/rails/rails/issues/48530</guid>
+    <description>*   Support decrypting data encrypted non-deterministically with a SHA1 hash digest.
+
+    This adds a new Active Record encryption option to support decrypting data encrypted
+    non-deterministically with a SHA1 hash digest:
+
+    ```
+    Rails.application.config.active_record.encryption.support_sha1_for_non_deterministic_encryption = true
+    ```
+
+    The new option addresses a problem when upgrading from 7.0 to 7.1. Due to a bug in how Active Record
+    Encryption was getting initialized, the key provider used for non-deterministic encryption were using
+    SHA-1 as its digest class, instead of the one configured globally by Rails via
+    `Rails.application.config.active_support.key_generator_hash_digest_class`.
+
+    *Cadu Ribeiro and Jorge Manrubia*</description>
+    <pubDate>Sun, 25 Jun 2023 08:43:10 +0000</pubDate>
+    <author>Jorge Manrubia</author>
+    <content:encoded><![CDATA[<p>Support decrypting data encrypted non-deterministically with a SHA1 hash digest.</p>
+
+<p>This adds a new Active Record encryption option to support decrypting data encrypted<br />
+non-deterministically with a SHA1 hash digest:</p>
+
+<pre><code>Rails.application.config.active_record.encryption.support_sha1_for_non_deterministic_encryption = true
+</code></pre>
+
+<p>The new option addresses a problem when upgrading from 7.0 to 7.1. Due to a bug in how Active Record<br />
+Encryption was getting initialized, the key provider used for non-deterministic encryption were using<br />
+SHA-1 as its digest class, instead of the one configured globally by Rails via<br />
+<code>Rails.application.config.active_support.key_generator_hash_digest_class</code>.</p>
+
+<p><em>Cadu Ribeiro and Jorge Manrubia</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Apply scope to association subqueries. (belongs_to/has_one/has_many)
 </title>
     <link>https://github.com/rails/rails/issues/48487</link>
@@ -4881,6 +4919,38 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: The new method `config.autoload_lib(ignore:)` provides a simple way to
+</title>
+    <link>https://github.com/rails/rails/issues/48572</link>
+    <guid>https://github.com/rails/rails/issues/48572</guid>
+    <description>*   The new method `config.autoload_lib(ignore:)` provides a simple way to
+    autoload from `lib`:
+
+    ```ruby
+    # config/application.rb
+    config.autoload_lib(ignore: %w(assets tasks))
+    ```
+
+    Please, see further details in the [autoloading
+    guide](https://guides.rubyonrails.org/v7.1/autoloading_and_reloading_constants.html).
+
+    *Xavier Noria*</description>
+    <pubDate>Sun, 25 Jun 2023 08:43:10 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>The new method <code>config.autoload_lib(ignore:)</code> provides a simple way to<br />
+autoload from <code>lib</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># config/application.rb</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">autoload_lib</span><span class="p">(</span><span class="ss">ignore: </span><span class="sx">%w(assets tasks)</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Please, see further details in the <a href="https://guides.rubyonrails.org/v7.1/autoloading_and_reloading_constants.html">autoloading<br />
+guide</a>.</p>
+
+<p><em>Xavier Noria</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Don&#39;t show secret_key_base for `Rails.application.config#inspect`.
 </title>
     <link>https://github.com/rails/rails/issues/48500</link>
@@ -6771,7 +6841,7 @@ in the production environment since it relies on Ruby’s <code>Kernel#caller</c
 
     This can greatly reduce the number of round-trips to the queue datastore.
     For queue adapters that do not implement the new `enqueue_all` method, we
-    fall back to enqueuing jobs indvidually. The Sidekiq adapter implements
+    fall back to enqueuing jobs individually. The Sidekiq adapter implements
     `enqueue_all` with `push_bulk`.
 
     This method does not use the existing `enqueue.active_job` event, but adds a
@@ -6793,7 +6863,7 @@ passing multiple jobs or an array of jobs. For example:</p>
 
 <p>This can greatly reduce the number of round-trips to the queue datastore.<br />
 For queue adapters that do not implement the new <code>enqueue_all</code> method, we<br />
-fall back to enqueuing jobs indvidually. The Sidekiq adapter implements<br />
+fall back to enqueuing jobs individually. The Sidekiq adapter implements<br />
 <code>enqueue_all</code> with <code>push_bulk</code>.</p>
 
 <p>This method does not use the existing <code>enqueue.active_job</code> event, but adds a<br />
@@ -8501,7 +8571,7 @@ entities to be double-escaped.</p>
     (&gt;= 1.7.0).
 
     The Message Pack format can provide improved performance and smaller payload
-    sizes. It also supports roundtripping some Ruby types that are not supported
+    sizes. It also supports round-tripping some Ruby types that are not supported
     by JSON. For example:
 
       ```ruby
@@ -8539,7 +8609,7 @@ These serializers require the <a href="https://rubygems.org/gems/msgpack"><code>
 (&gt;= 1.7.0).</p>
 
 <p>The Message Pack format can provide improved performance and smaller payload<br />
-sizes. It also supports roundtripping some Ruby types that are not supported<br />
+sizes. It also supports round-tripping some Ruby types that are not supported<br />
 by JSON. For example:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">verifier</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageVerifier</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"secret"</span><span class="p">)</span>
