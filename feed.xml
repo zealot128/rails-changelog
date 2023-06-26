@@ -4919,6 +4919,34 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add `DATABASE` option to `railties:install:migrations`
+</title>
+    <link>https://github.com/rails/rails/issues/48579</link>
+    <guid>https://github.com/rails/rails/issues/48579</guid>
+    <description>*   Add `DATABASE` option to `railties:install:migrations`
+
+    This allows you to specify which database the migrations should be copied to
+    when running `rails railties:install:migrations`.
+
+    ```bash
+    $ rails railties:install:migrations DATABASE=animals
+    ```
+
+    *Matthew Hirst*</description>
+    <pubDate>Mon, 26 Jun 2023 17:45:48 +0000</pubDate>
+    <author>Matthew Hirst</author>
+    <content:encoded><![CDATA[<p>Add <code>DATABASE</code> option to <code>railties:install:migrations</code></p>
+
+<p>This allows you to specify which database the migrations should be copied to<br />
+when running <code>rails railties:install:migrations</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rails railties:install:migrations <span class="nv">DATABASE</span><span class="o">=</span>animals
+</code></pre></div></div>
+
+<p><em>Matthew Hirst</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: The new method `config.autoload_lib(ignore:)` provides a simple way to
 </title>
     <link>https://github.com/rails/rails/issues/48572</link>
@@ -8369,6 +8397,35 @@ names, leading to conflicts. Adding a new namespace <code>:active_model_proxy</c
 fixes the issue.</p>
 
 <p><em>Chris Salzberg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add `:report` behavior for Deprecation
+</title>
+    <link>https://github.com/rails/rails/issues/48578</link>
+    <guid>https://github.com/rails/rails/issues/48578</guid>
+    <description>*   Add `:report` behavior for Deprecation
+
+    Setting `config.active_support.deprecation = :report` uses the error
+    reporter to report deprecation warnings to `ActiveSupport::ErrorReporter`.
+
+    Deprecations are reported as handled errors, with a severity of `:warning`.
+
+    Useful to report deprecations happening in production to your bug tracker.
+
+    *Étienne Barrié*</description>
+    <pubDate>Mon, 26 Jun 2023 17:27:58 +0000</pubDate>
+    <author>Étienne Barrié</author>
+    <content:encoded><![CDATA[<p>Add <code>:report</code> behavior for Deprecation</p>
+
+<p>Setting <code>config.active_support.deprecation = :report</code> uses the error<br />
+reporter to report deprecation warnings to <code>ActiveSupport::ErrorReporter</code>.</p>
+
+<p>Deprecations are reported as handled errors, with a severity of <code>:warning</code>.</p>
+
+<p>Useful to report deprecations happening in production to your bug tracker.</p>
+
+<p><em>Étienne Barrié</em></p>
 ]]></content:encoded>
   </item>
   <item>
