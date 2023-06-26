@@ -1640,6 +1640,16 @@
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Add `DATABASE` option to `railties:install:migrations`\n\n    This allows you to specify which database the migrations should be copied to\n    when running `rails railties:install:migrations`.\n\n    ```bash\n    $ rails railties:install:migrations DATABASE=animals\n    ```\n\n    *Matthew Hirst*",
+    "project": "railties",
+    "date_merged": 1687801548000,
+    "author": "Matthew Hirst",
+    "sha": "00ebbbd7464a802cf08e2ea238637736cb691ea9",
+    "pr": "48579",
+    "merge_sha": "37a56aadc6638e749eb30bee86d9a41df18456c1",
+    "html": "<p>Add <code>DATABASE</code> option to <code>railties:install:migrations</code></p>\n\n<p>This allows you to specify which database the migrations should be copied to<br />\nwhen running <code>rails railties:install:migrations</code>.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>rails railties:install:migrations <span class=\"nv\">DATABASE</span><span class=\"o\">=</span>animals\n</code></pre></div></div>\n\n<p><em>Matthew Hirst</em></p>\n"
+  },
+  {
     "message": "*   The new method `config.autoload_lib(ignore:)` provides a simple way to\n    autoload from `lib`:\n\n    ```ruby\n    # config/application.rb\n    config.autoload_lib(ignore: %w(assets tasks))\n    ```\n\n    Please, see further details in the [autoloading\n    guide](https://guides.rubyonrails.org/v7.1/autoloading_and_reloading_constants.html).\n\n    *Xavier Noria*",
     "project": "railties",
     "date_merged": 1687682590000,
@@ -2788,6 +2798,16 @@
     "pr": "44322",
     "merge_sha": "61cf029f8269fe4214c54dd911f62c335371e6e8",
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
+  },
+  {
+    "message": "*   Add `:report` behavior for Deprecation\n\n    Setting `config.active_support.deprecation = :report` uses the error\n    reporter to report deprecation warnings to `ActiveSupport::ErrorReporter`.\n\n    Deprecations are reported as handled errors, with a severity of `:warning`.\n\n    Useful to report deprecations happening in production to your bug tracker.\n\n    *Étienne Barrié*",
+    "project": "activesupport",
+    "date_merged": 1687800478000,
+    "author": "Étienne Barrié",
+    "sha": "78c73430577ac3925c98efeee78167fb51b63509",
+    "pr": "48578",
+    "merge_sha": "fe52de644b1c3a3d60d160c52b5a31b28cb42645",
+    "html": "<p>Add <code>:report</code> behavior for Deprecation</p>\n\n<p>Setting <code>config.active_support.deprecation = :report</code> uses the error<br />\nreporter to report deprecation warnings to <code>ActiveSupport::ErrorReporter</code>.</p>\n\n<p>Deprecations are reported as handled errors, with a severity of <code>:warning</code>.</p>\n\n<p>Useful to report deprecations happening in production to your bug tracker.</p>\n\n<p><em>Étienne Barrié</em></p>\n"
   },
   {
     "message": "*   Rename `Range#overlaps?` to `#overlap?` and add alias for backwards compatibility\n\n    *Christian Schmidt*",
