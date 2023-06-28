@@ -2320,6 +2320,16 @@
     "html": "<p>Add .node-version files for Rails apps that use Node.js</p>\n\n<p>Node version managers that make use of this file:<br />\n  https://github.com/shadowspawn/node-version-usage#node-version-file-usage</p>\n\n<p>The generated Dockerfile will use the same node version.</p>\n\n<p><em>Sam Ruby</em></p>\n"
   },
   {
+    "message": "*   `perform_enqueued_jobs` is now compatible with all Active Job adapters\n\n    This means that methods that depend on it, like Action Mailer's `assert_emails`,\n    will work correctly even if the test adapter is not used.\n\n    *Alex Ghiculescu*",
+    "project": "activejob",
+    "date_merged": 1687972223000,
+    "author": "Alex Ghiculescu",
+    "sha": "ba70a5be866775165ec546ba8aab3cbbe1efde30",
+    "pr": "48599",
+    "merge_sha": "5b2523edaa131eec7b18780b7916760828262df4",
+    "html": "<p><code>perform_enqueued_jobs</code> is now compatible with all Active Job adapters</p>\n\n<p>This means that methods that depend on it, like Action Mailer’s <code>assert_emails</code>,<br />\nwill work correctly even if the test adapter is not used.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   Allow queue adapters to provide a custom name by implementing `queue_adapter_name`\n\n    *Sander Verdonschot*",
     "project": "activejob",
     "date_merged": 1682021139000,
