@@ -6804,6 +6804,27 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: `perform_enqueued_jobs` is now compatible with all Active Job adapters
+</title>
+    <link>https://github.com/rails/rails/issues/48599</link>
+    <guid>https://github.com/rails/rails/issues/48599</guid>
+    <description>*   `perform_enqueued_jobs` is now compatible with all Active Job adapters
+
+    This means that methods that depend on it, like Action Mailer&#39;s `assert_emails`,
+    will work correctly even if the test adapter is not used.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Wed, 28 Jun 2023 17:10:23 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p><code>perform_enqueued_jobs</code> is now compatible with all Active Job adapters</p>
+
+<p>This means that methods that depend on it, like Action Mailer’s <code>assert_emails</code>,<br />
+will work correctly even if the test adapter is not used.</p>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: Allow queue adapters to provide a custom name by implementing `queue_adapter_name`
 </title>
     <link>https://github.com/rails/rails/issues/48003</link>
