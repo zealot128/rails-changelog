@@ -3700,6 +3700,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Added `bounce_now_with` to send the bounce email without going through a mailer queue.\n\n    *Ronan Limon Duparcmeur*",
+    "project": "actionmailbox",
+    "date_merged": 1687988395000,
+    "author": "Ronan Limon Duparcmeur",
+    "sha": "3bac56e11f8e30f3848a90c2709f938a7bf2112a",
+    "pr": "48446",
+    "merge_sha": "f936b93d076a9f63d2defbcc72e2130b8e8a1d6b",
+    "html": "<p>Added <code>bounce_now_with</code> to send the bounce email without going through a mailer queue.</p>\n\n<p><em>Ronan Limon Duparcmeur</em></p>\n"
+  },
+  {
     "message": "*   Support configured primary key types in generated migrations.\n\n    *Nishiki Liu*",
     "project": "actionmailbox",
     "date_merged": 1683215189000,
