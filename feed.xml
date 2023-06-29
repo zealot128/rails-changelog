@@ -11063,6 +11063,21 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionmailbox: Added `bounce_now_with` to send the bounce email without going through a mailer queue.
+</title>
+    <link>https://github.com/rails/rails/issues/48446</link>
+    <guid>https://github.com/rails/rails/issues/48446</guid>
+    <description>*   Added `bounce_now_with` to send the bounce email without going through a mailer queue.
+
+    *Ronan Limon Duparcmeur*</description>
+    <pubDate>Wed, 28 Jun 2023 21:39:55 +0000</pubDate>
+    <author>Ronan Limon Duparcmeur</author>
+    <content:encoded><![CDATA[<p>Added <code>bounce_now_with</code> to send the bounce email without going through a mailer queue.</p>
+
+<p><em>Ronan Limon Duparcmeur</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionmailbox: Support configured primary key types in generated migrations.
 </title>
     <link>https://github.com/rails/rails/issues/48126</link>
