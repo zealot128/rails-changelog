@@ -7625,6 +7625,27 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Fix variants not included when eager loading multiple records containing a single attachment
+</title>
+    <link>https://github.com/rails/rails/issues/47370</link>
+    <guid>https://github.com/rails/rails/issues/47370</guid>
+    <description>*   Fix variants not included when eager loading multiple records containing a single attachment
+
+    When using the `with_attached_#{name}` scope for a `has_one_attached` relation,
+    attachment variants were not eagerly loaded.
+
+    *Russell Porter*</description>
+    <pubDate>Thu, 29 Jun 2023 19:28:06 +0000</pubDate>
+    <author>Russell Porter</author>
+    <content:encoded><![CDATA[<p>Fix variants not included when eager loading multiple records containing a single attachment</p>
+
+<p>When using the <code>with_attached_#{name}</code> scope for a <code>has_one_attached</code> relation,<br />
+attachment variants were not eagerly loaded.</p>
+
+<p><em>Russell Porter</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Allow an ActiveStorage attachment to be removed via a form post
 </title>
     <link>https://github.com/rails/rails/issues/48339</link>
