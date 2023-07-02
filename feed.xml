@@ -8136,6 +8136,27 @@ tokens through headers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Update default scaffold templates to set 303 (See Other) as status code
+</title>
+    <link>https://github.com/rails/rails/issues/48622</link>
+    <guid>https://github.com/rails/rails/issues/48622</guid>
+    <description>*   Update default scaffold templates to set 303 (See Other) as status code
+    on redirect for the update action for XHR requests other than GET or POST
+    to avoid issues (e.g browsers trying to follow the redirect using the
+    original request method resulting in double PATCH/PUT)
+
+    *Guillermo Iguaran*</description>
+    <pubDate>Sun, 02 Jul 2023 05:10:48 +0000</pubDate>
+    <author>Guillermo Iguaran</author>
+    <content:encoded><![CDATA[<p>Update default scaffold templates to set 303 (See Other) as status code<br />
+on redirect for the update action for XHR requests other than GET or POST<br />
+to avoid issues (e.g browsers trying to follow the redirect using the<br />
+original request method resulting in double PATCH/PUT)</p>
+
+<p><em>Guillermo Iguaran</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: The new `config.autoload_lib_once` is similar to `config.autoload_lib`,
 </title>
     <link>https://github.com/rails/rails/issues/48610</link>
@@ -10114,6 +10135,36 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Allow opting in/out of `Link preload` headers when calling `stylesheet_link_tag` or `javascript_include_tag`
+</title>
+    <link>https://github.com/rails/rails/issues/48553</link>
+    <guid>https://github.com/rails/rails/issues/48553</guid>
+    <description>*   Allow opting in/out of `Link preload` headers when calling `stylesheet_link_tag` or `javascript_include_tag`
+
+    ```ruby
+    # will exclude header, even if setting is enabled:
+    javascript_include_tag(&quot;http://example.com/all.js&quot;, preload_links_header: false)
+
+    # will include header, even if setting is disabled:
+    stylesheet_link_tag(&quot;http://example.com/all.js&quot;, preload_links_header: true)
+    ```
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Fri, 30 Jun 2023 20:40:03 +0000</pubDate>
+    <author>Alex</author>
+    <content:encoded><![CDATA[<p>Allow opting in/out of <code>Link preload</code> headers when calling <code>stylesheet_link_tag</code> or <code>javascript_include_tag</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># will exclude header, even if setting is enabled:</span>
+<span class="n">javascript_include_tag</span><span class="p">(</span><span class="s2">"http://example.com/all.js"</span><span class="p">,</span> <span class="ss">preload_links_header: </span><span class="kp">false</span><span class="p">)</span>
+
+<span class="c1"># will include header, even if setting is disabled:</span>
+<span class="n">stylesheet_link_tag</span><span class="p">(</span><span class="s2">"http://example.com/all.js"</span><span class="p">,</span> <span class="ss">preload_links_header: </span><span class="kp">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Stop generating `Link preload` headers once it has reached 1KB.
 </title>
     <link>https://github.com/rails/rails/issues/48405</link>
@@ -10874,6 +10925,23 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Improve error message when EventedFileUpdateChecker is used without a
+</title>
+    <link>https://github.com/rails/rails/issues/48622</link>
+    <guid>https://github.com/rails/rails/issues/48622</guid>
+    <description>*   Improve error message when EventedFileUpdateChecker is used without a
+    compatible version of the Listen gem
+
+    *Hartley McGuire*</description>
+    <pubDate>Sun, 02 Jul 2023 05:10:48 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Improve error message when EventedFileUpdateChecker is used without a<br />
+compatible version of the Listen gem</p>
+
+<p><em>Hartley McGuire</em></p>
 ]]></content:encoded>
   </item>
   <item>
