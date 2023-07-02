@@ -2850,6 +2850,16 @@
     "html": "<p>Safe for direct upload on Libraries or Frameworks</p>\n\n<p>Enable the use of custom headers during direct uploads, which allows for<br />\nthe inclusion of Authorization bearer tokens or other forms of authorization<br />\ntokens through headers.</p>\n\n<p><em>Radamés Roriz</em></p>\n"
   },
   {
+    "message": "*   Update default scaffold templates to set 303 (See Other) as status code\n    on redirect for the update action for XHR requests other than GET or POST\n    to avoid issues (e.g browsers trying to follow the redirect using the\n    original request method resulting in double PATCH/PUT)\n\n    *Guillermo Iguaran*",
+    "project": "railties",
+    "date_merged": 1688274648000,
+    "author": "Guillermo Iguaran",
+    "sha": "5ed37b35d666b833aeccb14a4cacd2926251232d",
+    "pr": "48622",
+    "merge_sha": "f46d3452ae30c46d3e213c687decbbca0cee9119",
+    "html": "<p>Update default scaffold templates to set 303 (See Other) as status code<br />\non redirect for the update action for XHR requests other than GET or POST<br />\nto avoid issues (e.g browsers trying to follow the redirect using the<br />\noriginal request method resulting in double PATCH/PUT)</p>\n\n<p><em>Guillermo Iguaran</em></p>\n"
+  },
+  {
     "message": "*   The new `config.autoload_lib_once` is similar to `config.autoload_lib`,\n    except that it adds `lib` to `config.autoload_once_paths` instead.\n\n    By calling `config.autoload_lib_once`, classes and modules in `lib` can be\n    autoloaded, even from application initializers, but won't be reloaded.\n\n    Please, see further details in the [autoloading\n    guide](https://guides.rubyonrails.org/v7.1/autoloading_and_reloading_constants.html).\n\n    *Xavier Noria*",
     "project": "railties",
     "date_merged": 1688023706000,
@@ -3580,6 +3590,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Allow opting in/out of `Link preload` headers when calling `stylesheet_link_tag` or `javascript_include_tag`\n\n    ```ruby\n    # will exclude header, even if setting is enabled:\n    javascript_include_tag(\"http://example.com/all.js\", preload_links_header: false)\n\n    # will include header, even if setting is disabled:\n    stylesheet_link_tag(\"http://example.com/all.js\", preload_links_header: true)\n    ```\n\n    *Alex Ghiculescu*",
+    "project": "actionview",
+    "date_merged": 1688157603000,
+    "author": "Alex",
+    "sha": "5b116c5216528c39e12861a6774078221122a536",
+    "pr": "48553",
+    "merge_sha": "8a158ed5e3f870566dc96709b4202187f9aba410",
+    "html": "<p>Allow opting in/out of <code>Link preload</code> headers when calling <code>stylesheet_link_tag</code> or <code>javascript_include_tag</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># will exclude header, even if setting is enabled:</span>\n<span class=\"n\">javascript_include_tag</span><span class=\"p\">(</span><span class=\"s2\">\"http://example.com/all.js\"</span><span class=\"p\">,</span> <span class=\"ss\">preload_links_header: </span><span class=\"kp\">false</span><span class=\"p\">)</span>\n\n<span class=\"c1\"># will include header, even if setting is disabled:</span>\n<span class=\"n\">stylesheet_link_tag</span><span class=\"p\">(</span><span class=\"s2\">\"http://example.com/all.js\"</span><span class=\"p\">,</span> <span class=\"ss\">preload_links_header: </span><span class=\"kp\">true</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   Stop generating `Link preload` headers once it has reached 1KB.\n\n    Some proxies have trouble handling large headers, but more importantly preload links\n    have diminishing returns so it's preferable not to go overboard with them.\n\n    If tighter control is needed, it's recommended to disable automatic generation of preloads\n    and to generate them manually from the controller or from a middleware.\n\n    *Jean Boussier*",
     "project": "actionview",
     "date_merged": 1686129575000,
@@ -3798,6 +3818,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Improve error message when EventedFileUpdateChecker is used without a\n    compatible version of the Listen gem\n\n    *Hartley McGuire*",
+    "project": "activesupport",
+    "date_merged": 1688274648000,
+    "author": "Hartley McGuire",
+    "sha": "f31172582cfe6da662bae6eec2e56aeeb1ce0488",
+    "pr": "48622",
+    "merge_sha": "f46d3452ae30c46d3e213c687decbbca0cee9119",
+    "html": "<p>Improve error message when EventedFileUpdateChecker is used without a<br />\ncompatible version of the Listen gem</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   Add `:report` behavior for Deprecation\n\n    Setting `config.active_support.deprecation = :report` uses the error\n    reporter to report deprecation warnings to `ActiveSupport::ErrorReporter`.\n\n    Deprecations are reported as handled errors, with a severity of `:warning`.\n\n    Useful to report deprecations happening in production to your bug tracker.\n\n    *Étienne Barrié*",
