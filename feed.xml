@@ -2322,6 +2322,25 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Disable database prepared statements when query logs are enabled
+</title>
+    <link>https://github.com/rails/rails/issues/48631</link>
+    <guid>https://github.com/rails/rails/issues/48631</guid>
+    <description>*   Disable database prepared statements when query logs are enabled
+
+    Prepared Statements and Query Logs are incompatible features due to query logs making every query unique.
+
+    *zzak, Jean Boussier*</description>
+    <pubDate>Mon, 03 Jul 2023 10:39:33 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Disable database prepared statements when query logs are enabled</p>
+
+<p>Prepared Statements and Query Logs are incompatible features due to query logs making every query unique.</p>
+
+<p><em>zzak, Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Support decrypting data encrypted non-deterministically with a SHA1 hash digest.
 </title>
     <link>https://github.com/rails/rails/issues/48530</link>
@@ -7622,6 +7641,48 @@ is called.</p>
 </code></pre></div></div>
 
 <p><em>Jacopo Beschi</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Add an option to preprocess variants
+</title>
+    <link>https://github.com/rails/rails/issues/47473</link>
+    <guid>https://github.com/rails/rails/issues/47473</guid>
+    <description>*   Add an option to preprocess variants
+
+    ActiveStorage variants are processed on the fly when they are needed but
+    sometimes we&#39;re sure that they are accessed and want to processed them
+    upfront.
+
+    `preprocessed` option is added when declaring variants.
+
+    ```
+    class User &lt; ApplicationRecord
+      has_one_attached :avatar do |attachable|
+        attachable.variant :thumb, resize_to_limit: [100, 100], preprocessed: true
+      end
+    end
+    ```
+
+    *Shouichi Kamiya*</description>
+    <pubDate>Mon, 03 Jul 2023 13:25:03 +0000</pubDate>
+    <author>Shouichi Kamiya</author>
+    <content:encoded><![CDATA[<p>Add an option to preprocess variants</p>
+
+<p>ActiveStorage variants are processed on the fly when they are needed but<br />
+sometimes we’re sure that they are accessed and want to processed them<br />
+upfront.</p>
+
+<p><code>preprocessed</code> option is added when declaring variants.</p>
+
+<pre><code>class User &lt; ApplicationRecord
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100], preprocessed: true
+  end
+end
+</code></pre>
+
+<p><em>Shouichi Kamiya</em></p>
 ]]></content:encoded>
   </item>
   <item>
