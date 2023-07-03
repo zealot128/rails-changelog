@@ -870,6 +870,16 @@
     "html": "<p>Add <code>:unsafe_hashes</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"s2\">\"'unsafe-hashes'\"</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"ss\">:unsafe_hashes</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n</code></pre></div></div>\n\n<p><em>Igor Morozov</em></p>\n"
   },
   {
+    "message": "*   Disable database prepared statements when query logs are enabled\n\n    Prepared Statements and Query Logs are incompatible features due to query logs making every query unique.\n\n    *zzak, Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1688380773000,
+    "author": "zzak",
+    "sha": "a234669d63d8d1fc8ab5b872712dfa8ceab4257a",
+    "pr": "48631",
+    "merge_sha": "d08669292ca7b9058663ee77cbfa510aaacba21c",
+    "html": "<p>Disable database prepared statements when query logs are enabled</p>\n\n<p>Prepared Statements and Query Logs are incompatible features due to query logs making every query unique.</p>\n\n<p><em>zzak, Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Support decrypting data encrypted non-deterministically with a SHA1 hash digest.\n\n    This adds a new Active Record encryption option to support decrypting data encrypted\n    non-deterministically with a SHA1 hash digest:\n\n    ```\n    Rails.application.config.active_record.encryption.support_sha1_for_non_deterministic_encryption = true\n    ```\n\n    The new option addresses a problem when upgrading from 7.0 to 7.1. Due to a bug in how Active Record\n    Encryption was getting initialized, the key provider used for non-deterministic encryption were using\n    SHA-1 as its digest class, instead of the one configured globally by Rails via\n    `Rails.application.config.active_support.key_generator_hash_digest_class`.\n\n    *Cadu Ribeiro and Jorge Manrubia*",
     "project": "activerecord",
     "date_merged": 1687682590000,
@@ -2648,6 +2658,16 @@
     "pr": "43066",
     "merge_sha": "6fb54c00e48d666ea9c07b82babc9a2874c999b8",
     "html": "<p>Allow testing <code>discard_on/retry_on ActiveJob::DeserializationError</code></p>\n\n<p>Previously in <code>perform_enqueued_jobs</code>, <code>deserialize_arguments_if_needed</code><br />\nwas called before calling <code>perform_now</code>. When a record no longer exists<br />\nand is serialized using GlobalID this led to raising<br />\nan <code>ActiveJob::DeserializationError</code> before reaching <code>perform_now</code> call.<br />\nThis behavior makes difficult testing the job <code>discard_on/retry_on</code> logic.</p>\n\n<p>Now <code>deserialize_arguments_if_needed</code> call is postponed to when <code>perform_now</code><br />\nis called.</p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">UpdateUserJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">discard_on</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">DeserializationError</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span>\n    <span class=\"c1\"># ...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"c1\"># In the test</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">destroy_all</span>\n<span class=\"n\">assert_nothing_raised</span> <span class=\"k\">do</span>\n  <span class=\"n\">perform_enqueued_jobs</span> <span class=\"ss\">only: </span><span class=\"no\">UpdateUserJob</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jacopo Beschi</em></p>\n"
+  },
+  {
+    "message": "*   Add an option to preprocess variants\n\n    ActiveStorage variants are processed on the fly when they are needed but\n    sometimes we're sure that they are accessed and want to processed them\n    upfront.\n\n    `preprocessed` option is added when declaring variants.\n\n    ```\n    class User < ApplicationRecord\n      has_one_attached :avatar do |attachable|\n        attachable.variant :thumb, resize_to_limit: [100, 100], preprocessed: true\n      end\n    end\n    ```\n\n    *Shouichi Kamiya*",
+    "project": "activestorage",
+    "date_merged": 1688390703000,
+    "author": "Shouichi Kamiya",
+    "sha": "b1c544b1d109e6e9861c58c36d43f8763edf0cab",
+    "pr": "47473",
+    "merge_sha": "c388a4dcf580281aef4e341f87c52956b0b0057a",
+    "html": "<p>Add an option to preprocess variants</p>\n\n<p>ActiveStorage variants are processed on the fly when they are needed but<br />\nsometimes we’re sure that they are accessed and want to processed them<br />\nupfront.</p>\n\n<p><code>preprocessed</code> option is added when declaring variants.</p>\n\n<pre><code>class User &lt; ApplicationRecord\n  has_one_attached :avatar do |attachable|\n    attachable.variant :thumb, resize_to_limit: [100, 100], preprocessed: true\n  end\nend\n</code></pre>\n\n<p><em>Shouichi Kamiya</em></p>\n"
   },
   {
     "message": "*   Fix variants not included when eager loading multiple records containing a single attachment\n\n    When using the `with_attached_#{name}` scope for a `has_one_attached` relation,\n    attachment variants were not eagerly loaded.\n\n    *Russell Porter*",
