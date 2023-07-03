@@ -3590,6 +3590,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Don't double-encode nested `field_id` and `field_name` index values\n\n    Pass `index: @options` as a default keyword argument to `field_id` and\n    `field_name` view helper methods.\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1688333664000,
+    "author": "Sean Doyle",
+    "sha": "5cb8678dd6423186e9e4f91ab703f09bea2438a3",
+    "pr": "47436",
+    "merge_sha": "f8c06f95dfa5380e9ef12ccf7c75db36659020c1",
+    "html": "<p>Don’t double-encode nested <code>field_id</code> and <code>field_name</code> index values</p>\n\n<p>Pass <code>index: @options</code> as a default keyword argument to <code>field_id</code> and<br />\n<code>field_name</code> view helper methods.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Allow opting in/out of `Link preload` headers when calling `stylesheet_link_tag` or `javascript_include_tag`\n\n    ```ruby\n    # will exclude header, even if setting is enabled:\n    javascript_include_tag(\"http://example.com/all.js\", preload_links_header: false)\n\n    # will include header, even if setting is disabled:\n    stylesheet_link_tag(\"http://example.com/all.js\", preload_links_header: true)\n    ```\n\n    *Alex Ghiculescu*",
     "project": "actionview",
     "date_merged": 1688157603000,
