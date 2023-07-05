@@ -4640,6 +4640,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Use `Rails::HTML5::SafeListSanitizer` by default in the Rails 7.1 configuration if it is\n    supported.\n\n    Action Text's sanitizer can be configured by setting\n    `config.action_text.sanitizer_vendor`. Supported values are `Rails::HTML4::Sanitizer` or\n    `Rails::HTML5::Sanitizer`.\n\n    The Rails 7.1 configuration will set this to `Rails::HTML5::Sanitizer` when it is supported, and\n    fall back to `Rails::HTML4::Sanitizer`. Previous configurations default to\n    `Rails::HTML4::Sanitizer`.\n\n    *Mike Dalessio*",
+    "project": "actiontext",
+    "date_merged": 1688504879000,
+    "author": "Mike Dalessio",
+    "sha": "44d3b44d9d7f42658bda1037f6c7713d02d4b1c0",
+    "pr": "48644",
+    "merge_sha": "fe6b96afd1afaadb67cd70924a698ba99f8cc9e2",
+    "html": "<p>Use <code>Rails::HTML5::SafeListSanitizer</code> by default in the Rails 7.1 configuration if it is<br />\nsupported.</p>\n\n<p>Action Text’s sanitizer can be configured by setting<br />\n<code>config.action_text.sanitizer_vendor</code>. Supported values are <code>Rails::HTML4::Sanitizer</code> or<br />\n<code>Rails::HTML5::Sanitizer</code>.</p>\n\n<p>The Rails 7.1 configuration will set this to <code>Rails::HTML5::Sanitizer</code> when it is supported, and<br />\nfall back to <code>Rails::HTML4::Sanitizer</code>. Previous configurations default to<br />\n<code>Rails::HTML4::Sanitizer</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Attachables now can override default attachment missing template.\n\n    When rendering Action Text attachments where the underlying attachable model has\n    been removed, a fallback template is used. You now can override this template on\n    a per-model basis. For example, you could render a placeholder image for a file\n    attachment or the text \"Deleted User\" for a User attachment.\n\n    *Matt Swanson*, *Joel Drapper*",
     "project": "actiontext",
     "date_merged": 1679762994000,
