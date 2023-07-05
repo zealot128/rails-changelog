@@ -13389,6 +13389,39 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Use `Rails::HTML5::SafeListSanitizer` by default in the Rails 7.1 configuration if it is
+</title>
+    <link>https://github.com/rails/rails/issues/48644</link>
+    <guid>https://github.com/rails/rails/issues/48644</guid>
+    <description>*   Use `Rails::HTML5::SafeListSanitizer` by default in the Rails 7.1 configuration if it is
+    supported.
+
+    Action Text&#39;s sanitizer can be configured by setting
+    `config.action_text.sanitizer_vendor`. Supported values are `Rails::HTML4::Sanitizer` or
+    `Rails::HTML5::Sanitizer`.
+
+    The Rails 7.1 configuration will set this to `Rails::HTML5::Sanitizer` when it is supported, and
+    fall back to `Rails::HTML4::Sanitizer`. Previous configurations default to
+    `Rails::HTML4::Sanitizer`.
+
+    *Mike Dalessio*</description>
+    <pubDate>Tue, 04 Jul 2023 21:07:59 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Use <code>Rails::HTML5::SafeListSanitizer</code> by default in the Rails 7.1 configuration if it is<br />
+supported.</p>
+
+<p>Action Text’s sanitizer can be configured by setting<br />
+<code>config.action_text.sanitizer_vendor</code>. Supported values are <code>Rails::HTML4::Sanitizer</code> or<br />
+<code>Rails::HTML5::Sanitizer</code>.</p>
+
+<p>The Rails 7.1 configuration will set this to <code>Rails::HTML5::Sanitizer</code> when it is supported, and<br />
+fall back to <code>Rails::HTML4::Sanitizer</code>. Previous configurations default to<br />
+<code>Rails::HTML4::Sanitizer</code>.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Attachables now can override default attachment missing template.
 </title>
     <link>https://github.com/rails/rails/issues/46101</link>
