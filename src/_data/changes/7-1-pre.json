@@ -950,6 +950,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Deprecate `name` argument on `#remove_connection`.\n\n    The `name` argument is deprecated on `#remove_connection` without replacement. `#remove_connection` should be called directly on the class that established the connection.\n\n    *Eileen M. Uchitelle*",
+    "project": "activerecord",
+    "date_merged": 1688674520000,
+    "author": "eileencodes",
+    "sha": "b69fa80b66d19f1c571b799240b251607fab6afc",
+    "pr": "48681",
+    "merge_sha": "e79250cb2691da099387e00d334250bec43ced5d",
+    "html": "<p>Deprecate <code>name</code> argument on <code>#remove_connection</code>.</p>\n\n<p>The <code>name</code> argument is deprecated on <code>#remove_connection</code> without replacement. <code>#remove_connection</code> should be called directly on the class that established the connection.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
     "message": "*   Fix has_one through singular building with inverse.\n\n    Allows building of records from an association with a has_one through a\n    singular association with inverse. For belongs_to through associations,\n    linking the foreign key to the primary key model isn't needed.\n    For has_one, we cannot build records due to the association not being mutable.\n\n    *Gannon McGibbon*",
     "project": "activerecord",
     "date_merged": 1688648968000,
