@@ -2638,6 +2638,25 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Deprecate `name` argument on `#remove_connection`.
+</title>
+    <link>https://github.com/rails/rails/issues/48681</link>
+    <guid>https://github.com/rails/rails/issues/48681</guid>
+    <description>*   Deprecate `name` argument on `#remove_connection`.
+
+    The `name` argument is deprecated on `#remove_connection` without replacement. `#remove_connection` should be called directly on the class that established the connection.
+
+    *Eileen M. Uchitelle*</description>
+    <pubDate>Thu, 06 Jul 2023 20:15:20 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>name</code> argument on <code>#remove_connection</code>.</p>
+
+<p>The <code>name</code> argument is deprecated on <code>#remove_connection</code> without replacement. <code>#remove_connection</code> should be called directly on the class that established the connection.</p>
+
+<p><em>Eileen M. Uchitelle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix has_one through singular building with inverse.
 </title>
     <link>https://github.com/rails/rails/issues/48674</link>
