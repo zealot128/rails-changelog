@@ -2655,6 +2655,27 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix incrementation of in memory counter caches when associations overlap
+</title>
+    <link>https://github.com/rails/rails/issues/48665</link>
+    <guid>https://github.com/rails/rails/issues/48665</guid>
+    <description>*   Fix incrementation of in memory counter caches when associations overlap
+
+    When two associations had a similarly named counter cache column, Active Record
+    could sometime increment the wrong one.
+
+    *Jacopo Beschi*, *Jean Boussier*</description>
+    <pubDate>Thu, 13 Jul 2023 11:57:45 +0000</pubDate>
+    <author>Jacopo</author>
+    <content:encoded><![CDATA[<p>Fix incrementation of in memory counter caches when associations overlap</p>
+
+<p>When two associations had a similarly named counter cache column, Active Record<br />
+could sometime increment the wrong one.</p>
+
+<p><em>Jacopo Beschi</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Don&#39;t show secrets for Active Record&#39;s `Cipher::Aes256Gcm#inspect`.
 </title>
     <link>https://github.com/rails/rails/issues/48679</link>
