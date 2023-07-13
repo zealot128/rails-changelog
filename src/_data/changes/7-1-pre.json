@@ -960,6 +960,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix incrementation of in memory counter caches when associations overlap\n\n    When two associations had a similarly named counter cache column, Active Record\n    could sometime increment the wrong one.\n\n    *Jacopo Beschi*, *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1689249465000,
+    "author": "Jacopo",
+    "sha": "186474f2730639a32320434607a248e93ae5dde9",
+    "pr": "48665",
+    "merge_sha": "b22439ed6412fef74afc86ff3f87ca57eafa94e7",
+    "html": "<p>Fix incrementation of in memory counter caches when associations overlap</p>\n\n<p>When two associations had a similarly named counter cache column, Active Record<br />\ncould sometime increment the wrong one.</p>\n\n<p><em>Jacopo Beschi</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Don't show secrets for Active Record's `Cipher::Aes256Gcm#inspect`.\n\n    Before:\n\n    ```ruby\n    ActiveRecord::Encryption::Cipher::Aes256Gcm.new(secret).inspect\n    \"#<ActiveRecord::Encryption::Cipher::Aes256Gcm:0x0000000104888038 ... @secret=\\\"\\\\xAF\\\\bFh]LV}q\\\\nl\\\\xB2U\\\\xB3 ... >\"\n    ```\n\n    After:\n\n    ```ruby\n    ActiveRecord::Encryption::Cipher::Aes256Gcm(secret).inspect\n    \"#<ActiveRecord::Encryption::Cipher::Aes256Gcm:0x0000000104888038>\"\n    ```\n\n    *Petrik de Heus*",
     "project": "activerecord",
     "date_merged": 1689108948000,
