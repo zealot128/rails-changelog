@@ -13073,6 +13073,12 @@ tokens through headers.</p>
     fall back to `Rails::HTML4::Sanitizer`. Previous configurations default to
     `Rails::HTML4::Sanitizer`.
 
+    As a result of this change, the defaults for `ActionText::ContentHelper.allowed_tags` and
+    `.allowed_attributes` are applied at runtime, so the value of these attributes is now &#39;nil&#39;
+    unless set by the application. You may call `sanitizer_allowed_tags` or
+    `sanitizer_allowed_attributes` to inspect the tags and attributes being allowed by the
+    sanitizer.
+
     *Mike Dalessio*</description>
     <pubDate>Tue, 04 Jul 2023 21:07:59 +0000</pubDate>
     <author>Mike Dalessio</author>
@@ -13086,6 +13092,12 @@ supported.</p>
 <p>The Rails 7.1 configuration will set this to <code>Rails::HTML5::Sanitizer</code> when it is supported, and<br />
 fall back to <code>Rails::HTML4::Sanitizer</code>. Previous configurations default to<br />
 <code>Rails::HTML4::Sanitizer</code>.</p>
+
+<p>As a result of this change, the defaults for <code>ActionText::ContentHelper.allowed_tags</code> and<br />
+<code>.allowed_attributes</code> are applied at runtime, so the value of these attributes is now ‘nil’<br />
+unless set by the application. You may call <code>sanitizer_allowed_tags</code> or<br />
+<code>sanitizer_allowed_attributes</code> to inspect the tags and attributes being allowed by the<br />
+sanitizer.</p>
 
 <p><em>Mike Dalessio</em></p>
 ]]></content:encoded>
@@ -13209,6 +13221,31 @@ Streams) now use <code>Rails.application.default_url_options</code> and<br />
 rich_text field was updated.</p>
 
 <p><em>Jacob Herrington</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actioncable: Add a `@server` instance variable referencing the `ActionCable.server`
+</title>
+    <link>https://github.com/rails/rails/issues/48706</link>
+    <guid>https://github.com/rails/rails/issues/48706</guid>
+    <description>*   Add a `@server` instance variable referencing the `ActionCable.server`
+    singleton to `ActionCable::Channel::ConnectionStub`
+
+    This lets us delegate the `pubsub` and `config` method calls
+    to the server. This fixes `NoMethodError` errors when testing
+    channel logic that call `pubsub` (e.g. `stop_stream_for`).
+
+    *Julian Foo*</description>
+    <pubDate>Mon, 17 Jul 2023 11:24:59 +0000</pubDate>
+    <author>julianfssen</author>
+    <content:encoded><![CDATA[<p>Add a <code>@server</code> instance variable referencing the <code>ActionCable.server</code><br />
+singleton to <code>ActionCable::Channel::ConnectionStub</code></p>
+
+<p>This lets us delegate the <code>pubsub</code> and <code>config</code> method calls<br />
+to the server. This fixes <code>NoMethodError</code> errors when testing<br />
+channel logic that call <code>pubsub</code> (e.g. <code>stop_stream_for</code>).</p>
+
+<p><em>Julian Foo</em></p>
 ]]></content:encoded>
   </item>
   <item>
