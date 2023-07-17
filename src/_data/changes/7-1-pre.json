@@ -4510,14 +4510,14 @@
     "html": "<p>Safe for direct upload on Libraries or Frameworks</p>\n\n<p>Enable the use of custom headers during direct uploads, which allows for<br />\nthe inclusion of Authorization bearer tokens or other forms of authorization<br />\ntokens through headers.</p>\n\n<p><em>Radamés Roriz</em></p>\n"
   },
   {
-    "message": "*   Use `Rails::HTML5::SafeListSanitizer` by default in the Rails 7.1 configuration if it is\n    supported.\n\n    Action Text's sanitizer can be configured by setting\n    `config.action_text.sanitizer_vendor`. Supported values are `Rails::HTML4::Sanitizer` or\n    `Rails::HTML5::Sanitizer`.\n\n    The Rails 7.1 configuration will set this to `Rails::HTML5::Sanitizer` when it is supported, and\n    fall back to `Rails::HTML4::Sanitizer`. Previous configurations default to\n    `Rails::HTML4::Sanitizer`.\n\n    *Mike Dalessio*",
+    "message": "*   Use `Rails::HTML5::SafeListSanitizer` by default in the Rails 7.1 configuration if it is\n    supported.\n\n    Action Text's sanitizer can be configured by setting\n    `config.action_text.sanitizer_vendor`. Supported values are `Rails::HTML4::Sanitizer` or\n    `Rails::HTML5::Sanitizer`.\n\n    The Rails 7.1 configuration will set this to `Rails::HTML5::Sanitizer` when it is supported, and\n    fall back to `Rails::HTML4::Sanitizer`. Previous configurations default to\n    `Rails::HTML4::Sanitizer`.\n\n    As a result of this change, the defaults for `ActionText::ContentHelper.allowed_tags` and\n    `.allowed_attributes` are applied at runtime, so the value of these attributes is now 'nil'\n    unless set by the application. You may call `sanitizer_allowed_tags` or\n    `sanitizer_allowed_attributes` to inspect the tags and attributes being allowed by the\n    sanitizer.\n\n    *Mike Dalessio*",
     "project": "actiontext",
     "date_merged": 1688504879000,
     "author": "Mike Dalessio",
     "sha": "44d3b44d9d7f42658bda1037f6c7713d02d4b1c0",
     "pr": "48644",
     "merge_sha": "fe6b96afd1afaadb67cd70924a698ba99f8cc9e2",
-    "html": "<p>Use <code>Rails::HTML5::SafeListSanitizer</code> by default in the Rails 7.1 configuration if it is<br />\nsupported.</p>\n\n<p>Action Text’s sanitizer can be configured by setting<br />\n<code>config.action_text.sanitizer_vendor</code>. Supported values are <code>Rails::HTML4::Sanitizer</code> or<br />\n<code>Rails::HTML5::Sanitizer</code>.</p>\n\n<p>The Rails 7.1 configuration will set this to <code>Rails::HTML5::Sanitizer</code> when it is supported, and<br />\nfall back to <code>Rails::HTML4::Sanitizer</code>. Previous configurations default to<br />\n<code>Rails::HTML4::Sanitizer</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+    "html": "<p>Use <code>Rails::HTML5::SafeListSanitizer</code> by default in the Rails 7.1 configuration if it is<br />\nsupported.</p>\n\n<p>Action Text’s sanitizer can be configured by setting<br />\n<code>config.action_text.sanitizer_vendor</code>. Supported values are <code>Rails::HTML4::Sanitizer</code> or<br />\n<code>Rails::HTML5::Sanitizer</code>.</p>\n\n<p>The Rails 7.1 configuration will set this to <code>Rails::HTML5::Sanitizer</code> when it is supported, and<br />\nfall back to <code>Rails::HTML4::Sanitizer</code>. Previous configurations default to<br />\n<code>Rails::HTML4::Sanitizer</code>.</p>\n\n<p>As a result of this change, the defaults for <code>ActionText::ContentHelper.allowed_tags</code> and<br />\n<code>.allowed_attributes</code> are applied at runtime, so the value of these attributes is now ‘nil’<br />\nunless set by the application. You may call <code>sanitizer_allowed_tags</code> or<br />\n<code>sanitizer_allowed_attributes</code> to inspect the tags and attributes being allowed by the<br />\nsanitizer.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
     "message": "*   Attachables now can override default attachment missing template.\n\n    When rendering Action Text attachments where the underlying attachable model has\n    been removed, a fallback template is used. You now can override this template on\n    a per-model basis. For example, you could render a placeholder image for a file\n    attachment or the text \"Deleted User\" for a User attachment.\n\n    *Matt Swanson*, *Joel Drapper*",
@@ -4588,6 +4588,16 @@
     "pr": "43706",
     "merge_sha": "327ba2d9796d1c630ede63bbc3bc9ebfc8f8740c",
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
+  },
+  {
+    "message": "*   Add a `@server` instance variable referencing the `ActionCable.server`\n    singleton to `ActionCable::Channel::ConnectionStub`\n\n    This lets us delegate the `pubsub` and `config` method calls\n    to the server. This fixes `NoMethodError` errors when testing\n    channel logic that call `pubsub` (e.g. `stop_stream_for`).\n\n    *Julian Foo*",
+    "project": "actioncable",
+    "date_merged": 1689593099000,
+    "author": "julianfssen",
+    "sha": "9c5175e06766fd5df31a91c6267090f88260c4e9",
+    "pr": "48706",
+    "merge_sha": "e18791c0bf2e03d3e6380f69b44e946564c6f873",
+    "html": "<p>Add a <code>@server</code> instance variable referencing the <code>ActionCable.server</code><br />\nsingleton to <code>ActionCable::Channel::ConnectionStub</code></p>\n\n<p>This lets us delegate the <code>pubsub</code> and <code>config</code> method calls<br />\nto the server. This fixes <code>NoMethodError</code> errors when testing<br />\nchannel logic that call <code>pubsub</code> (e.g. <code>stop_stream_for</code>).</p>\n\n<p><em>Julian Foo</em></p>\n"
   },
   {
     "message": "*   Added `health_check_path` and `health_check_application` config to\n    mount a given health check rack app on a given path.\n    Useful when mounting Action Cable standalone.\n\n    *Joé Dupuis*",
