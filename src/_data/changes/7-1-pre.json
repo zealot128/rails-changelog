@@ -960,6 +960,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Specify callback in `has_secure_token`\n\n    ```ruby\n    class User < ApplicationRecord\n      has_secure_token on: :initialize\n    end\n\n    User.new.token # => \"abc123....\"\n    ```\n\n    *Sean Doyle*",
+    "project": "activerecord",
+    "date_merged": 1689715176000,
+    "author": "Sean Doyle",
+    "sha": "7d63864486d048c1c99b561248ca5fb63c320eaf",
+    "pr": "47420",
+    "merge_sha": "2884d00f0c982711aa9ddef477b1898fbbda4c58",
+    "html": "<p>Specify callback in <code>has_secure_token</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">has_secure_token</span> <span class=\"ss\">on: :initialize</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">.</span><span class=\"nf\">token</span> <span class=\"c1\"># =&gt; \"abc123....\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Fix incrementation of in memory counter caches when associations overlap\n\n    When two associations had a similarly named counter cache column, Active Record\n    could sometime increment the wrong one.\n\n    *Jacopo Beschi*, *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1689249465000,
