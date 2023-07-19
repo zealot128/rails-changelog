@@ -2655,6 +2655,36 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Specify callback in `has_secure_token`
+</title>
+    <link>https://github.com/rails/rails/issues/47420</link>
+    <guid>https://github.com/rails/rails/issues/47420</guid>
+    <description>*   Specify callback in `has_secure_token`
+
+    ```ruby
+    class User &lt; ApplicationRecord
+      has_secure_token on: :initialize
+    end
+
+    User.new.token # =&gt; &quot;abc123....&quot;
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Tue, 18 Jul 2023 21:19:36 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Specify callback in <code>has_secure_token</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">has_secure_token</span> <span class="ss">on: :initialize</span>
+<span class="k">end</span>
+
+<span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">token</span> <span class="c1"># =&gt; "abc123...."</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix incrementation of in memory counter caches when associations overlap
 </title>
     <link>https://github.com/rails/rails/issues/48665</link>
