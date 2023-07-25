@@ -13298,21 +13298,16 @@ Useful when mounting Action Cable standalone.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: `assert_broadcasts` now returns the messages that were broadcast.
+    <title>actioncable: Introduce the `capture_broadcasts` test helper.
 </title>
-    <link>https://github.com/rails/rails/issues/47793</link>
-    <guid>https://github.com/rails/rails/issues/47793</guid>
-    <description>*   `assert_broadcasts` now returns the messages that were broadcast.
+    <link>https://github.com/rails/rails/issues/48798</link>
+    <guid>https://github.com/rails/rails/issues/48798</guid>
+    <description>*   Introduce the `capture_broadcasts` test helper.
 
-    This makes it easier to do further analysis on those messages:
+    Returns all messages broadcast in a block.
 
     ```ruby
-    message = assert_broadcasts(&quot;test&quot;, 1) do
-      ActionCable.server.broadcast &quot;test&quot;, &quot;message&quot;
-    end
-    assert_equal &quot;message&quot;, message
-
-    messages = assert_broadcasts(&quot;test&quot;, 2) do
+    messages = capture_broadcasts(&quot;test&quot;) do
       ActionCable.server.broadcast &quot;test&quot;, { message: &quot;one&quot; }
       ActionCable.server.broadcast &quot;test&quot;, { message: &quot;two&quot; }
     end
@@ -13322,18 +13317,13 @@ Useful when mounting Action Cable standalone.</p>
     ```
 
     *Alex Ghiculescu*</description>
-    <pubDate>Fri, 31 Mar 2023 09:52:07 +0000</pubDate>
+    <pubDate>Tue, 25 Jul 2023 14:51:13 +0000</pubDate>
     <author>Alex Ghiculescu</author>
-    <content:encoded><![CDATA[<p><code>assert_broadcasts</code> now returns the messages that were broadcast.</p>
+    <content:encoded><![CDATA[<p>Introduce the <code>capture_broadcasts</code> test helper.</p>
 
-<p>This makes it easier to do further analysis on those messages:</p>
+<p>Returns all messages broadcast in a block.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">message</span> <span class="o">=</span> <span class="n">assert_broadcasts</span><span class="p">(</span><span class="s2">"test"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">do</span>
-  <span class="no">ActionCable</span><span class="p">.</span><span class="nf">server</span><span class="p">.</span><span class="nf">broadcast</span> <span class="s2">"test"</span><span class="p">,</span> <span class="s2">"message"</span>
-<span class="k">end</span>
-<span class="n">assert_equal</span> <span class="s2">"message"</span><span class="p">,</span> <span class="n">message</span>
-
-<span class="n">messages</span> <span class="o">=</span> <span class="n">assert_broadcasts</span><span class="p">(</span><span class="s2">"test"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">do</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">messages</span> <span class="o">=</span> <span class="n">capture_broadcasts</span><span class="p">(</span><span class="s2">"test"</span><span class="p">)</span> <span class="k">do</span>
   <span class="no">ActionCable</span><span class="p">.</span><span class="nf">server</span><span class="p">.</span><span class="nf">broadcast</span> <span class="s2">"test"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">message: </span><span class="s2">"one"</span> <span class="p">}</span>
   <span class="no">ActionCable</span><span class="p">.</span><span class="nf">server</span><span class="p">.</span><span class="nf">broadcast</span> <span class="s2">"test"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">message: </span><span class="s2">"two"</span> <span class="p">}</span>
 <span class="k">end</span>
@@ -13755,22 +13745,17 @@ in the mailer preview.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionmailer: `assert_emails` now returns the emails that were sent.
+    <title>actionmailer: Introduce the `capture_emails` test helper.
 </title>
-    <link>https://github.com/rails/rails/issues/47025</link>
-    <guid>https://github.com/rails/rails/issues/47025</guid>
-    <description>*   `assert_emails` now returns the emails that were sent.
+    <link>https://github.com/rails/rails/issues/48798</link>
+    <guid>https://github.com/rails/rails/issues/48798</guid>
+    <description>*   Introduce the `capture_emails` test helper.
 
-    This makes it easier to do further analysis on those emails:
+    Returns all emails that are sent in a block.
 
     ```ruby
-    def test_emails_more_thoroughly
-      email = assert_emails 1 do
-        ContactMailer.welcome.deliver_now
-      end
-      assert_email &quot;Hi there&quot;, email.subject
-
-      emails = assert_emails 2 do
+    def test_emails
+      emails = capture_emails do
         ContactMailer.welcome.deliver_now
         ContactMailer.welcome.deliver_later
       end
@@ -13779,19 +13764,14 @@ in the mailer preview.</p>
     ```
 
     *Alex Ghiculescu*</description>
-    <pubDate>Mon, 16 Jan 2023 20:05:34 +0000</pubDate>
+    <pubDate>Tue, 25 Jul 2023 14:51:13 +0000</pubDate>
     <author>Alex Ghiculescu</author>
-    <content:encoded><![CDATA[<p><code>assert_emails</code> now returns the emails that were sent.</p>
+    <content:encoded><![CDATA[<p>Introduce the <code>capture_emails</code> test helper.</p>
 
-<p>This makes it easier to do further analysis on those emails:</p>
+<p>Returns all emails that are sent in a block.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_emails_more_thoroughly</span>
-  <span class="n">email</span> <span class="o">=</span> <span class="n">assert_emails</span> <span class="mi">1</span> <span class="k">do</span>
-    <span class="no">ContactMailer</span><span class="p">.</span><span class="nf">welcome</span><span class="p">.</span><span class="nf">deliver_now</span>
-  <span class="k">end</span>
-  <span class="n">assert_email</span> <span class="s2">"Hi there"</span><span class="p">,</span> <span class="n">email</span><span class="p">.</span><span class="nf">subject</span>
-
-  <span class="n">emails</span> <span class="o">=</span> <span class="n">assert_emails</span> <span class="mi">2</span> <span class="k">do</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_emails</span>
+  <span class="n">emails</span> <span class="o">=</span> <span class="n">capture_emails</span> <span class="k">do</span>
     <span class="no">ContactMailer</span><span class="p">.</span><span class="nf">welcome</span><span class="p">.</span><span class="nf">deliver_now</span>
     <span class="no">ContactMailer</span><span class="p">.</span><span class="nf">welcome</span><span class="p">.</span><span class="nf">deliver_later</span>
   <span class="k">end</span>
