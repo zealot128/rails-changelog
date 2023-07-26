@@ -960,6 +960,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix `#previously_new_record?` to return true for destroyed records.\n\n    Before, if a record was created and then destroyed, `#previously_new_record?` would return true.\n    Now, any UPDATE or DELETE to a record is considered a change, and will result in `#previously_new_record?`\n    returning false.\n\n    *Adrianna Chang*",
+    "project": "activerecord",
+    "date_merged": 1690318534000,
+    "author": "Adrianna Chang",
+    "sha": "7981988fa0e28b520042c11909caf3792aade9c4",
+    "pr": "48796",
+    "merge_sha": "0c78ab2cc7f8ea14db26e2e779994022f2ef9d8a",
+    "html": "<p>Fix <code>#previously_new_record?</code> to return true for destroyed records.</p>\n\n<p>Before, if a record was created and then destroyed, <code>#previously_new_record?</code> would return true.<br />\nNow, any UPDATE or DELETE to a record is considered a change, and will result in <code>#previously_new_record?</code><br />\nreturning false.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
+  },
+  {
     "message": "*   Specify callback in `has_secure_token`\n\n    ```ruby\n    class User < ApplicationRecord\n      has_secure_token on: :initialize\n    end\n\n    User.new.token # => \"abc123....\"\n    ```\n\n    *Sean Doyle*",
     "project": "activerecord",
     "date_merged": 1689715176000,
@@ -2808,6 +2818,16 @@
     "pr": "43066",
     "merge_sha": "6fb54c00e48d666ea9c07b82babc9a2874c999b8",
     "html": "<p>Allow testing <code>discard_on/retry_on ActiveJob::DeserializationError</code></p>\n\n<p>Previously in <code>perform_enqueued_jobs</code>, <code>deserialize_arguments_if_needed</code><br />\nwas called before calling <code>perform_now</code>. When a record no longer exists<br />\nand is serialized using GlobalID this led to raising<br />\nan <code>ActiveJob::DeserializationError</code> before reaching <code>perform_now</code> call.<br />\nThis behavior makes difficult testing the job <code>discard_on/retry_on</code> logic.</p>\n\n<p>Now <code>deserialize_arguments_if_needed</code> call is postponed to when <code>perform_now</code><br />\nis called.</p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">UpdateUserJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">discard_on</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">DeserializationError</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span>\n    <span class=\"c1\"># ...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"c1\"># In the test</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">destroy_all</span>\n<span class=\"n\">assert_nothing_raised</span> <span class=\"k\">do</span>\n  <span class=\"n\">perform_enqueued_jobs</span> <span class=\"ss\">only: </span><span class=\"no\">UpdateUserJob</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jacopo Beschi</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActiveSupport::Inflector.humanize(nil)` raising ``NoMethodError: undefined method `end_with?' for nil:NilClass``.\n\n    *James Robinson*",
+    "project": "activesupport",
+    "date_merged": 1690313667000,
+    "author": "James Robinson",
+    "sha": "016b81f0b205b0d59aa59a22bdaa9fd503a22a6b",
+    "pr": "48800",
+    "merge_sha": "d580a776c3b33fd3bb75109929f0f758d3e400ad",
+    "html": "<p>Fix <code>ActiveSupport::Inflector.humanize(nil)</code> raising <code>NoMethodError: undefined method `end_with?' for nil:NilClass</code>.</p>\n\n<p><em>James Robinson</em></p>\n"
   },
   {
     "message": "*   Don't show secrets for `ActiveSupport::KeyGenerator#inspect`.\n\n    Before:\n\n    ```ruby\n    ActiveSupport::KeyGenerator.new(secret).inspect\n    \"#<ActiveSupport::KeyGenerator:0x0000000104888038 ... @secret=\\\"\\\\xAF\\\\bFh]LV}q\\\\nl\\\\xB2U\\\\xB3 ... >\"\n    ```\n\n    After:\n\n    ```ruby\n    ActiveSupport::KeyGenerator::Aes256Gcm(secret).inspect\n    \"#<ActiveSupport::KeyGenerator:0x0000000104888038>\"\n    ```\n\n    *Petrik de Heus*",
