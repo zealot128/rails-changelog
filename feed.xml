@@ -2655,6 +2655,29 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix `#previously_new_record?` to return true for destroyed records.
+</title>
+    <link>https://github.com/rails/rails/issues/48796</link>
+    <guid>https://github.com/rails/rails/issues/48796</guid>
+    <description>*   Fix `#previously_new_record?` to return true for destroyed records.
+
+    Before, if a record was created and then destroyed, `#previously_new_record?` would return true.
+    Now, any UPDATE or DELETE to a record is considered a change, and will result in `#previously_new_record?`
+    returning false.
+
+    *Adrianna Chang*</description>
+    <pubDate>Tue, 25 Jul 2023 20:55:34 +0000</pubDate>
+    <author>Adrianna Chang</author>
+    <content:encoded><![CDATA[<p>Fix <code>#previously_new_record?</code> to return true for destroyed records.</p>
+
+<p>Before, if a record was created and then destroyed, <code>#previously_new_record?</code> would return true.<br />
+Now, any UPDATE or DELETE to a record is considered a change, and will result in <code>#previously_new_record?</code><br />
+returning false.</p>
+
+<p><em>Adrianna Chang</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Specify callback in `has_secure_token`
 </title>
     <link>https://github.com/rails/rails/issues/47420</link>
@@ -8177,6 +8200,21 @@ is called.</p>
 </code></pre></div></div>
 
 <p><em>Jacopo Beschi</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix `ActiveSupport::Inflector.humanize(nil)` raising ``NoMethodError: undefined method `end_with?&#39; for nil:NilClass``.
+</title>
+    <link>https://github.com/rails/rails/issues/48800</link>
+    <guid>https://github.com/rails/rails/issues/48800</guid>
+    <description>*   Fix `ActiveSupport::Inflector.humanize(nil)` raising ``NoMethodError: undefined method `end_with?&#39; for nil:NilClass``.
+
+    *James Robinson*</description>
+    <pubDate>Tue, 25 Jul 2023 19:34:27 +0000</pubDate>
+    <author>James Robinson</author>
+    <content:encoded><![CDATA[<p>Fix <code>ActiveSupport::Inflector.humanize(nil)</code> raising <code>NoMethodError: undefined method `end_with?' for nil:NilClass</code>.</p>
+
+<p><em>James Robinson</em></p>
 ]]></content:encoded>
   </item>
   <item>
