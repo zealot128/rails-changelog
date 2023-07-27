@@ -8203,6 +8203,91 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Active Support cache stores now support replacing the default compressor via
+</title>
+    <link>https://github.com/rails/rails/issues/48451</link>
+    <guid>https://github.com/rails/rails/issues/48451</guid>
+    <description>*   Active Support cache stores now support replacing the default compressor via
+    a `:compressor` option. The specified compressor must respond to `deflate`
+    and `inflate`. For example:
+
+      ```ruby
+      module MyCompressor
+        def self.deflate(string)
+          # compression logic...
+        end
+
+        def self.inflate(compressed)
+          # decompression logic...
+        end
+      end
+
+      config.cache_store = :redis_cache_store, { compressor: MyCompressor }
+      ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Wed, 26 Jul 2023 21:39:22 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Active Support cache stores now support replacing the default compressor via<br />
+a <code>:compressor</code> option. The specified compressor must respond to <code>deflate</code><br />
+and <code>inflate</code>. For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">module</span> <span class="nn">MyCompressor</span>
+    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">deflate</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+      <span class="c1"># compression logic...</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">inflate</span><span class="p">(</span><span class="n">compressed</span><span class="p">)</span>
+      <span class="c1"># decompression logic...</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="n">config</span><span class="p">.</span><span class="nf">cache_store</span> <span class="o">=</span> <span class="ss">:redis_cache_store</span><span class="p">,</span> <span class="p">{</span> <span class="ss">compressor: </span><span class="no">MyCompressor</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Active Support cache stores now support a `:serializer` option. Similar to
+</title>
+    <link>https://github.com/rails/rails/issues/48451</link>
+    <guid>https://github.com/rails/rails/issues/48451</guid>
+    <description>*   Active Support cache stores now support a `:serializer` option. Similar to
+    the `:coder` option, serializers must respond to `dump` and `load`. However,
+    serializers are only responsible for serializing a cached value, whereas
+    coders are responsible for serializing the entire `ActiveSupport::Cache::Entry`
+    instance.  Additionally, the output from serializers can be automatically
+    compressed, whereas coders are responsible for their own compression.
+
+    Specifying a serializer instead of a coder also enables performance
+    optimizations, including the bare string optimization introduced by cache
+    format version 7.1.
+
+    The `:serializer` and `:coder` options are mutually exclusive. Specifying
+    both will raise an `ArgumentError`.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Wed, 26 Jul 2023 21:39:22 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Active Support cache stores now support a <code>:serializer</code> option. Similar to<br />
+the <code>:coder</code> option, serializers must respond to <code>dump</code> and <code>load</code>. However,<br />
+serializers are only responsible for serializing a cached value, whereas<br />
+coders are responsible for serializing the entire <code>ActiveSupport::Cache::Entry</code><br />
+instance.  Additionally, the output from serializers can be automatically<br />
+compressed, whereas coders are responsible for their own compression.</p>
+
+<p>Specifying a serializer instead of a coder also enables performance<br />
+optimizations, including the bare string optimization introduced by cache<br />
+format version 7.1.</p>
+
+<p>The <code>:serializer</code> and <code>:coder</code> options are mutually exclusive. Specifying<br />
+both will raise an <code>ArgumentError</code>.</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Fix `ActiveSupport::Inflector.humanize(nil)` raising ``NoMethodError: undefined method `end_with?&#39; for nil:NilClass``.
 </title>
     <link>https://github.com/rails/rails/issues/48800</link>
@@ -8592,8 +8677,6 @@ messages can still be read so that migration is easier.</p>
     read caches from upgraded servers, leave the cache format unchanged on the
     first deploy, then enable the `7.1` cache format on a subsequent deploy.
 
-    The new `:message_pack` cache coder also includes this optimization.
-
     *Jonathan Hefner*</description>
     <pubDate>Thu, 04 May 2023 21:37:06 +0000</pubDate>
     <author>Jonathan Hefner</author>
@@ -8611,49 +8694,47 @@ upgrade, wherein servers that have not yet been upgraded must be able to<br />
 read caches from upgraded servers, leave the cache format unchanged on the<br />
 first deploy, then enable the <code>7.1</code> cache format on a subsequent deploy.</p>
 
-<p>The new <code>:message_pack</code> cache coder also includes this optimization.</p>
-
 <p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activesupport: The `:coder` option for Active Support cache stores now supports a
+    <title>activesupport: Active Support cache stores can now use a preconfigured serializer based on
 </title>
-    <link>https://github.com/rails/rails/issues/48449</link>
-    <guid>https://github.com/rails/rails/issues/48449</guid>
-    <description>*   The `:coder` option for Active Support cache stores now supports a
-    `:message_pack` value:
+    <link>https://github.com/rails/rails/issues/48451</link>
+    <guid>https://github.com/rails/rails/issues/48451</guid>
+    <description>*   Active Support cache stores can now use a preconfigured serializer based on
+    `ActiveSupport::MessagePack` via the `:serializer` option:
 
       ```ruby
-      config.cache_store = :redis_cache_store, { coder: :message_pack }
+      config.cache_store = :redis_cache_store, { serializer: :message_pack }
       ```
 
-    The `:message_pack` coder can reduce cache entry sizes and improve
+    The `:message_pack` serializer can reduce cache entry sizes and improve
     performance, but requires the [`msgpack` gem](https://rubygems.org/gems/msgpack)
     (&gt;= 1.7.0).
 
-    The `:message_pack` coder can read cache entries written by the default
-    coder, and the default coder can now read entries written by the
-    `:message_pack` coder. These behaviors make it easy to migrate between
-    coders without invalidating the entire cache.
+    The `:message_pack` serializer can read cache entries written by the default
+    serializer, and the default serializer can now read entries written by the
+    `:message_pack` serializer. These behaviors make it easy to migrate between
+    serializer without invalidating the entire cache.
 
     *Jonathan Hefner*</description>
-    <pubDate>Sun, 11 Jun 2023 20:59:21 +0000</pubDate>
+    <pubDate>Wed, 26 Jul 2023 21:39:22 +0000</pubDate>
     <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>The <code>:coder</code> option for Active Support cache stores now supports a<br />
-<code>:message_pack</code> value:</p>
+    <content:encoded><![CDATA[<p>Active Support cache stores can now use a preconfigured serializer based on<br />
+<code>ActiveSupport::MessagePack</code> via the <code>:serializer</code> option:</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">config</span><span class="p">.</span><span class="nf">cache_store</span> <span class="o">=</span> <span class="ss">:redis_cache_store</span><span class="p">,</span> <span class="p">{</span> <span class="ss">coder: :message_pack</span> <span class="p">}</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">config</span><span class="p">.</span><span class="nf">cache_store</span> <span class="o">=</span> <span class="ss">:redis_cache_store</span><span class="p">,</span> <span class="p">{</span> <span class="ss">serializer: :message_pack</span> <span class="p">}</span>
 </code></pre></div></div>
 
-<p>The <code>:message_pack</code> coder can reduce cache entry sizes and improve<br />
+<p>The <code>:message_pack</code> serializer can reduce cache entry sizes and improve<br />
 performance, but requires the <a href="https://rubygems.org/gems/msgpack"><code>msgpack</code> gem</a><br />
 (&gt;= 1.7.0).</p>
 
-<p>The <code>:message_pack</code> coder can read cache entries written by the default<br />
-coder, and the default coder can now read entries written by the<br />
-<code>:message_pack</code> coder. These behaviors make it easy to migrate between<br />
-coders without invalidating the entire cache.</p>
+<p>The <code>:message_pack</code> serializer can read cache entries written by the default<br />
+serializer, and the default serializer can now read entries written by the<br />
+<code>:message_pack</code> serializer. These behaviors make it easy to migrate between<br />
+serializer without invalidating the entire cache.</p>
 
 <p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
