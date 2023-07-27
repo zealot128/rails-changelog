@@ -8203,6 +8203,35 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Make all cache stores return a boolean for `#delete`
+</title>
+    <link>https://github.com/rails/rails/issues/48638</link>
+    <guid>https://github.com/rails/rails/issues/48638</guid>
+    <description>*   Make all cache stores return a boolean for `#delete`
+
+    Previously the `RedisCacheStore#delete` would return `1` if the entry
+    exists and `0` otherwise. Now it returns true if the entry exists and false
+    otherwise, just like the other stores.
+
+    The `FileStore` would return `nil` if the entry doesn&#39;t exists and returns
+    `false` now as well.
+
+    *Petrik de Heus*</description>
+    <pubDate>Thu, 27 Jul 2023 06:48:53 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Make all cache stores return a boolean for <code>#delete</code></p>
+
+<p>Previously the <code>RedisCacheStore#delete</code> would return <code>1</code> if the entry<br />
+exists and <code>0</code> otherwise. Now it returns true if the entry exists and false<br />
+otherwise, just like the other stores.</p>
+
+<p>The <code>FileStore</code> would return <code>nil</code> if the entry doesn’t exists and returns<br />
+<code>false</code> now as well.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Active Support cache stores now support replacing the default compressor via
 </title>
     <link>https://github.com/rails/rails/issues/48451</link>
