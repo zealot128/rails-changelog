@@ -8203,6 +8203,25 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: When using cache format version &gt;= 7.1 or a custom serializer, expired and
+</title>
+    <link>https://github.com/rails/rails/issues/48754</link>
+    <guid>https://github.com/rails/rails/issues/48754</guid>
+    <description>*   When using cache format version &gt;= 7.1 or a custom serializer, expired and
+    version-mismatched cache entries can now be detected without deserializing
+    their values.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Thu, 27 Jul 2023 20:42:30 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>When using cache format version &gt;= 7.1 or a custom serializer, expired and<br />
+version-mismatched cache entries can now be detected without deserializing<br />
+their values.</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Make all cache stores return a boolean for `#delete`
 </title>
     <link>https://github.com/rails/rails/issues/48638</link>
@@ -12680,6 +12699,21 @@ support Internet Explorer this header should not be a default one.</p>
 <p>The generated Dockerfile will use the same node version.</p>
 
 <p><em>Sam Ruby</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Add `tags` to `ActiveStorage::Analyzer::AudioAnalyzer` output
+</title>
+    <link>https://github.com/rails/rails/issues/48823</link>
+    <guid>https://github.com/rails/rails/issues/48823</guid>
+    <description>*   Add `tags` to `ActiveStorage::Analyzer::AudioAnalyzer` output
+
+    *Keaton Roux*</description>
+    <pubDate>Fri, 28 Jul 2023 00:38:28 +0000</pubDate>
+    <author>Keaton Roux</author>
+    <content:encoded><![CDATA[<p>Add <code>tags</code> to <code>ActiveStorage::Analyzer::AudioAnalyzer</code> output</p>
+
+<p><em>Keaton Roux</em></p>
 ]]></content:encoded>
   </item>
   <item>
