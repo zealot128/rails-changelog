@@ -2655,6 +2655,21 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow escaping of literal colon characters in `sanitize_sql_*` methods when named bind variables are used
+</title>
+    <link>https://github.com/rails/rails/issues/48852</link>
+    <guid>https://github.com/rails/rails/issues/48852</guid>
+    <description>*   Allow escaping of literal colon characters in `sanitize_sql_*` methods when named bind variables are used
+
+    *Justin Bull*</description>
+    <pubDate>Tue, 01 Aug 2023 14:38:04 +0000</pubDate>
+    <author>Justin Bull</author>
+    <content:encoded><![CDATA[<p>Allow escaping of literal colon characters in <code>sanitize_sql_*</code> methods when named bind variables are used</p>
+
+<p><em>Justin Bull</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix `#previously_new_record?` to return true for destroyed records.
 </title>
     <link>https://github.com/rails/rails/issues/48796</link>
@@ -10764,6 +10779,34 @@ https://guides.rubyonrails.org/v7.1/configuring.html#config-active-support-messa
 but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 
 <p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Support filtering tests by line ranges
+</title>
+    <link>https://github.com/rails/rails/issues/48807</link>
+    <guid>https://github.com/rails/rails/issues/48807</guid>
+    <description>*   Support filtering tests by line ranges
+
+    The new syntax allows you to filter tests by line ranges. For example, the
+    following command runs tests from line 10 to 20.
+
+    ```bash
+    $ rails test test/models/user_test.rb:10-20
+    ```
+
+    *Shouichi Kamiya*, *Seonggi Yang*, *oljfte*, *Ryohei UEDA*</description>
+    <pubDate>Tue, 01 Aug 2023 06:40:50 +0000</pubDate>
+    <author>Shouichi Kamiya</author>
+    <content:encoded><![CDATA[<p>Support filtering tests by line ranges</p>
+
+<p>The new syntax allows you to filter tests by line ranges. For example, the<br />
+following command runs tests from line 10 to 20.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rails <span class="nb">test test</span>/models/user_test.rb:10-20
+</code></pre></div></div>
+
+<p><em>Shouichi Kamiya</em>, <em>Seonggi Yang</em>, <em>oljfte</em>, <em>Ryohei UEDA</em></p>
 ]]></content:encoded>
   </item>
   <item>
