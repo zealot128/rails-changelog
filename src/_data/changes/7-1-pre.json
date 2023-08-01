@@ -960,6 +960,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Allow escaping of literal colon characters in `sanitize_sql_*` methods when named bind variables are used\n\n    *Justin Bull*",
+    "project": "activerecord",
+    "date_merged": 1690900684000,
+    "author": "Justin Bull",
+    "sha": "694376f15eecc6a2387697044370938ffc8af157",
+    "pr": "48852",
+    "merge_sha": "98e12fc6d6bff11200d579543109219031ff1bfd",
+    "html": "<p>Allow escaping of literal colon characters in <code>sanitize_sql_*</code> methods when named bind variables are used</p>\n\n<p><em>Justin Bull</em></p>\n"
+  },
+  {
     "message": "*   Fix `#previously_new_record?` to return true for destroyed records.\n\n    Before, if a record was created and then destroyed, `#previously_new_record?` would return true.\n    Now, any UPDATE or DELETE to a record is considered a change, and will result in `#previously_new_record?`\n    returning false.\n\n    *Adrianna Chang*",
     "project": "activerecord",
     "date_merged": 1690318534000,
@@ -3668,6 +3678,16 @@
     "pr": "43951",
     "merge_sha": "58c0b76982e3fbcb5642223effd9cce93947029e",
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Support filtering tests by line ranges\n\n    The new syntax allows you to filter tests by line ranges. For example, the\n    following command runs tests from line 10 to 20.\n\n    ```bash\n    $ rails test test/models/user_test.rb:10-20\n    ```\n\n    *Shouichi Kamiya*, *Seonggi Yang*, *oljfte*, *Ryohei UEDA*",
+    "project": "railties",
+    "date_merged": 1690872050000,
+    "author": "Shouichi Kamiya",
+    "sha": "5931a681582d0120908744bfd662d20d6df48630",
+    "pr": "48807",
+    "merge_sha": "741cd18c45f96e0e88a76fe9a2267d8cf135dc3f",
+    "html": "<p>Support filtering tests by line ranges</p>\n\n<p>The new syntax allows you to filter tests by line ranges. For example, the<br />\nfollowing command runs tests from line 10 to 20.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>rails <span class=\"nb\">test test</span>/models/user_test.rb:10-20\n</code></pre></div></div>\n\n<p><em>Shouichi Kamiya</em>, <em>Seonggi Yang</em>, <em>oljfte</em>, <em>Ryohei UEDA</em></p>\n"
   },
   {
     "message": "*   Update default scaffold templates to set 303 (See Other) as status code\n    on redirect for the update action for XHR requests other than GET or POST\n    to avoid issues (e.g browsers trying to follow the redirect using the\n    original request method resulting in double PATCH/PUT)\n\n    *Guillermo Iguaran*",
