@@ -10782,6 +10782,21 @@ but <code>Class#subclasses</code> was kept, breaking the feature detection.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Omit `webdrivers` gem dependency from `Gemfile` template
+</title>
+    <link>https://github.com/rails/rails/issues/48847</link>
+    <guid>https://github.com/rails/rails/issues/48847</guid>
+    <description>*   Omit `webdrivers` gem dependency from `Gemfile` template
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 02 Aug 2023 17:49:28 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Omit <code>webdrivers</code> gem dependency from <code>Gemfile</code> template</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Support filtering tests by line ranges
 </title>
     <link>https://github.com/rails/rails/issues/48807</link>
