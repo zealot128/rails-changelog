@@ -3680,6 +3680,16 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Omit `webdrivers` gem dependency from `Gemfile` template\n\n    *Sean Doyle*",
+    "project": "railties",
+    "date_merged": 1690998568000,
+    "author": "Sean Doyle",
+    "sha": "9a532346950c74c6c745a2f22cbbb6b471a4297f",
+    "pr": "48847",
+    "merge_sha": "e980f158a4d48c712024b50cf61f20ce1a0265ed",
+    "html": "<p>Omit <code>webdrivers</code> gem dependency from <code>Gemfile</code> template</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Support filtering tests by line ranges\n\n    The new syntax allows you to filter tests by line ranges. For example, the\n    following command runs tests from line 10 to 20.\n\n    ```bash\n    $ rails test test/models/user_test.rb:10-20\n    ```\n\n    *Shouichi Kamiya*, *Seonggi Yang*, *oljfte*, *Ryohei UEDA*",
     "project": "railties",
     "date_merged": 1690872050000,
