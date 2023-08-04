@@ -730,6 +730,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fully support `NULLS [NOT] DISTINCT` for PostgreSQL 15+ indexes.\n\n    Previous work was done to allow the index to be created in a migration, but it was not\n    supported in schema.rb. Additionally, the matching for `NULLS [NOT] DISTINCT` was not\n    in the correct order, which could have resulted in inconsistent schema detection.\n\n    *Gregory Jones*",
+    "project": "activerecord",
+    "date_merged": 1691092834000,
+    "author": "Rafael Mendonça França",
+    "sha": "fbaba19e2dee7efc628a68e85e81e04d191902b6",
+    "pr": "48608",
+    "merge_sha": "83e59883e990704fd57572708b7d61f776113345",
+    "html": "<p>Fully support <code>NULLS [NOT] DISTINCT</code> for PostgreSQL 15+ indexes.</p>\n\n<p>Previous work was done to allow the index to be created in a migration, but it was not<br />\nsupported in schema.rb. Additionally, the matching for <code>NULLS [NOT] DISTINCT</code> was not<br />\nin the correct order, which could have resulted in inconsistent schema detection.</p>\n\n<p><em>Gregory Jones</em></p>\n"
+  },
+  {
     "message": "*   Allow escaping of literal colon characters in `sanitize_sql_*` methods when named bind variables are used\n\n    *Justin Bull*",
     "project": "activerecord",
     "date_merged": 1690900684000,
@@ -2438,6 +2448,16 @@
     "pr": "43880",
     "merge_sha": "5e75674196376b5e46e68419e004886379a31f6c",
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Disables the session in `ActiveStorage::Blobs::ProxyController`\n    and `ActiveStorage::Representations::ProxyController`\n    in order to allow caching by default in some CDNs as CloudFlare\n\n    Fixes #44136\n\n    *Bruno Prieto*",
+    "project": "activestorage",
+    "date_merged": 1691092834000,
+    "author": "Bruno Prieto",
+    "sha": "8a88ce194319b951237104c0235e70d655db8ccd",
+    "pr": "48869",
+    "merge_sha": "83e59883e990704fd57572708b7d61f776113345",
+    "html": "<p>Disables the session in <code>ActiveStorage::Blobs::ProxyController</code><br />\nand <code>ActiveStorage::Representations::ProxyController</code><br />\nin order to allow caching by default in some CDNs as CloudFlare</p>\n\n<p>Fixes #44136</p>\n\n<p><em>Bruno Prieto</em></p>\n"
   },
   {
     "message": "*   Add `tags` to `ActiveStorage::Analyzer::AudioAnalyzer` output\n\n    *Keaton Roux*",
