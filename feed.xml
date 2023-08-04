@@ -2124,6 +2124,29 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fully support `NULLS [NOT] DISTINCT` for PostgreSQL 15+ indexes.
+</title>
+    <link>https://github.com/rails/rails/issues/48608</link>
+    <guid>https://github.com/rails/rails/issues/48608</guid>
+    <description>*   Fully support `NULLS [NOT] DISTINCT` for PostgreSQL 15+ indexes.
+
+    Previous work was done to allow the index to be created in a migration, but it was not
+    supported in schema.rb. Additionally, the matching for `NULLS [NOT] DISTINCT` was not
+    in the correct order, which could have resulted in inconsistent schema detection.
+
+    *Gregory Jones*</description>
+    <pubDate>Thu, 03 Aug 2023 20:00:34 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Fully support <code>NULLS [NOT] DISTINCT</code> for PostgreSQL 15+ indexes.</p>
+
+<p>Previous work was done to allow the index to be created in a migration, but it was not<br />
+supported in schema.rb. Additionally, the matching for <code>NULLS [NOT] DISTINCT</code> was not<br />
+in the correct order, which could have resulted in inconsistent schema detection.</p>
+
+<p><em>Gregory Jones</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow escaping of literal colon characters in `sanitize_sql_*` methods when named bind variables are used
 </title>
     <link>https://github.com/rails/rails/issues/48852</link>
@@ -7238,6 +7261,29 @@ time regardless of whether a user with a matching email is found:</p>
 </code></pre></div></div>
 
 <p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Disables the session in `ActiveStorage::Blobs::ProxyController`
+</title>
+    <link>https://github.com/rails/rails/issues/48869</link>
+    <guid>https://github.com/rails/rails/issues/48869</guid>
+    <description>*   Disables the session in `ActiveStorage::Blobs::ProxyController`
+    and `ActiveStorage::Representations::ProxyController`
+    in order to allow caching by default in some CDNs as CloudFlare
+
+    Fixes #44136
+
+    *Bruno Prieto*</description>
+    <pubDate>Thu, 03 Aug 2023 20:00:34 +0000</pubDate>
+    <author>Bruno Prieto</author>
+    <content:encoded><![CDATA[<p>Disables the session in <code>ActiveStorage::Blobs::ProxyController</code><br />
+and <code>ActiveStorage::Representations::ProxyController</code><br />
+in order to allow caching by default in some CDNs as CloudFlare</p>
+
+<p>Fixes #44136</p>
+
+<p><em>Bruno Prieto</em></p>
 ]]></content:encoded>
   </item>
   <item>
