@@ -8301,6 +8301,25 @@ is called.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Rename `fixture_file_upload` method to `file_fixture_upload`
+</title>
+    <link>https://github.com/rails/rails/issues/48857</link>
+    <guid>https://github.com/rails/rails/issues/48857</guid>
+    <description>*   Rename `fixture_file_upload` method to `file_fixture_upload`
+
+    Declare an alias to preserve the backwards compatibility of `fixture_file_upload`
+
+    *Sean Doyle*</description>
+    <pubDate>Fri, 04 Aug 2023 21:08:40 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Rename <code>fixture_file_upload</code> method to <code>file_fixture_upload</code></p>
+
+<p>Declare an alias to preserve the backwards compatibility of <code>fixture_file_upload</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: `ActionDispatch::SystemTesting::TestHelpers::ScreenshotHelper` saves the screenshot path in test metadata on failure.
 </title>
     <link>https://github.com/rails/rails/issues/48863</link>
