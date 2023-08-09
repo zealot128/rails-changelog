@@ -730,6 +730,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix previous change tracking for `ActiveRecord::Store` when using a column with JSON structured database type\n\n    Before, the methods to access the changes made during the last save `#saved_change_to_key?`, `#saved_change_to_key`, and `#key_before_last_save` did not work if the store was defined as a `store_accessor` on a column with a JSON structured database type\n\n    *Robert DiMartino*",
+    "project": "activerecord",
+    "date_merged": 1691598736000,
+    "author": "Robert DiMartino",
+    "sha": "eceaa38e060e6cb00d9dd25eb1df98cd83d978f6",
+    "pr": "43386",
+    "merge_sha": "8ec27a4529e37cff77abe54573bb8923d9fe8e9a",
+    "html": "<p>Fix previous change tracking for <code>ActiveRecord::Store</code> when using a column with JSON structured database type</p>\n\n<p>Before, the methods to access the changes made during the last save <code>#saved_change_to_key?</code>, <code>#saved_change_to_key</code>, and <code>#key_before_last_save</code> did not work if the store was defined as a <code>store_accessor</code> on a column with a JSON structured database type</p>\n\n<p><em>Robert DiMartino</em></p>\n"
+  },
+  {
     "message": "*   Fully support `NULLS [NOT] DISTINCT` for PostgreSQL 15+ indexes.\n\n    Previous work was done to allow the index to be created in a migration, but it was not\n    supported in schema.rb. Additionally, the matching for `NULLS [NOT] DISTINCT` was not\n    in the correct order, which could have resulted in inconsistent schema detection.\n\n    *Gregory Jones*",
     "project": "activerecord",
     "date_merged": 1691092834000,
