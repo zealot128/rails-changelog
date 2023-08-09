@@ -11625,6 +11625,21 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Add `drb`, `mutex_m` and `base64` that are bundled gem candidates for Ruby 3.4
+</title>
+    <link>https://github.com/rails/rails/issues/48907</link>
+    <guid>https://github.com/rails/rails/issues/48907</guid>
+    <description>*   Add `drb`, `mutex_m` and `base64` that are bundled gem candidates for Ruby 3.4
+
+    *Yasuo Honda*</description>
+    <pubDate>Tue, 08 Aug 2023 23:30:44 +0000</pubDate>
+    <author>Yasuo Honda</author>
+    <content:encoded><![CDATA[<p>Add <code>drb</code>, <code>mutex_m</code> and <code>base64</code> that are bundled gem candidates for Ruby 3.4</p>
+
+<p><em>Yasuo Honda</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: When using cache format version &gt;= 7.1 or a custom serializer, expired and
 </title>
     <link>https://github.com/rails/rails/issues/48754</link>
