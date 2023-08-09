@@ -4120,6 +4120,16 @@
     "html": "<p>Add .node-version files for Rails apps that use Node.js</p>\n\n<p>Node version managers that make use of this file:<br />\n  https://github.com/shadowspawn/node-version-usage#node-version-file-usage</p>\n\n<p>The generated Dockerfile will use the same node version.</p>\n\n<p><em>Sam Ruby</em></p>\n"
   },
   {
+    "message": "*   Add `drb`, `mutex_m` and `base64` that are bundled gem candidates for Ruby 3.4\n\n    *Yasuo Honda*",
+    "project": "activesupport",
+    "date_merged": 1691537444000,
+    "author": "Yasuo Honda",
+    "sha": "3e52adf28e90af490f7e3bdc4bcc85618a4e0867",
+    "pr": "48907",
+    "merge_sha": "4e01a7e8753c30e22264e185082524a9ea5e0c90",
+    "html": "<p>Add <code>drb</code>, <code>mutex_m</code> and <code>base64</code> that are bundled gem candidates for Ruby 3.4</p>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
     "message": "*   When using cache format version >= 7.1 or a custom serializer, expired and\n    version-mismatched cache entries can now be detected without deserializing\n    their values.\n\n    *Jonathan Hefner*",
     "project": "activesupport",
     "date_merged": 1690490550000,
