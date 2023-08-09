@@ -2124,6 +2124,25 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix previous change tracking for `ActiveRecord::Store` when using a column with JSON structured database type
+</title>
+    <link>https://github.com/rails/rails/issues/43386</link>
+    <guid>https://github.com/rails/rails/issues/43386</guid>
+    <description>*   Fix previous change tracking for `ActiveRecord::Store` when using a column with JSON structured database type
+
+    Before, the methods to access the changes made during the last save `#saved_change_to_key?`, `#saved_change_to_key`, and `#key_before_last_save` did not work if the store was defined as a `store_accessor` on a column with a JSON structured database type
+
+    *Robert DiMartino*</description>
+    <pubDate>Wed, 09 Aug 2023 16:32:16 +0000</pubDate>
+    <author>Robert DiMartino</author>
+    <content:encoded><![CDATA[<p>Fix previous change tracking for <code>ActiveRecord::Store</code> when using a column with JSON structured database type</p>
+
+<p>Before, the methods to access the changes made during the last save <code>#saved_change_to_key?</code>, <code>#saved_change_to_key</code>, and <code>#key_before_last_save</code> did not work if the store was defined as a <code>store_accessor</code> on a column with a JSON structured database type</p>
+
+<p><em>Robert DiMartino</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fully support `NULLS [NOT] DISTINCT` for PostgreSQL 15+ indexes.
 </title>
     <link>https://github.com/rails/rails/issues/48608</link>
