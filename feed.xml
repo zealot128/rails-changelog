@@ -7874,6 +7874,33 @@ tokens through headers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: Fix deserialization of ActiveSupport::Duration
+</title>
+    <link>https://github.com/rails/rails/issues/44262</link>
+    <guid>https://github.com/rails/rails/issues/44262</guid>
+    <description>*   Fix deserialization of ActiveSupport::Duration
+
+    Previously, a deserialized Duration would return an array from Duration#parts.
+    It will now return a hash just like a regular Duration.
+
+    This also fixes an error when trying to add or subtract from a deserialized Duration
+    (eg `duration + 1.year`).
+
+    *Jonathan del Strother*</description>
+    <pubDate>Mon, 14 Aug 2023 18:06:05 +0000</pubDate>
+    <author>Jonathan del Strother</author>
+    <content:encoded><![CDATA[<p>Fix deserialization of ActiveSupport::Duration</p>
+
+<p>Previously, a deserialized Duration would return an array from Duration#parts.<br />
+It will now return a hash just like a regular Duration.</p>
+
+<p>This also fixes an error when trying to add or subtract from a deserialized Duration<br />
+(eg <code>duration + 1.year</code>).</p>
+
+<p><em>Jonathan del Strother</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: `perform_enqueued_jobs` is now compatible with all Active Job adapters
 </title>
     <link>https://github.com/rails/rails/issues/48599</link>
