@@ -2690,6 +2690,16 @@
     "html": "<p>Safe for direct upload on Libraries or Frameworks</p>\n\n<p>Enable the use of custom headers during direct uploads, which allows for<br />\nthe inclusion of Authorization bearer tokens or other forms of authorization<br />\ntokens through headers.</p>\n\n<p><em>Radamés Roriz</em></p>\n"
   },
   {
+    "message": "*   Fix deserialization of ActiveSupport::Duration\n\n    Previously, a deserialized Duration would return an array from Duration#parts.\n    It will now return a hash just like a regular Duration.\n\n    This also fixes an error when trying to add or subtract from a deserialized Duration\n    (eg `duration + 1.year`).\n\n    *Jonathan del Strother*",
+    "project": "activejob",
+    "date_merged": 1692036365000,
+    "author": "Jonathan del Strother",
+    "sha": "074d431493f0d770fb571e3d19292f038dfab775",
+    "pr": "44262",
+    "merge_sha": "3779b5069dd1742d878cc0e322fc642e730efa42",
+    "html": "<p>Fix deserialization of ActiveSupport::Duration</p>\n\n<p>Previously, a deserialized Duration would return an array from Duration#parts.<br />\nIt will now return a hash just like a regular Duration.</p>\n\n<p>This also fixes an error when trying to add or subtract from a deserialized Duration<br />\n(eg <code>duration + 1.year</code>).</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
     "message": "*   `perform_enqueued_jobs` is now compatible with all Active Job adapters\n\n    This means that methods that depend on it, like Action Mailer's `assert_emails`,\n    will work correctly even if the test adapter is not used.\n\n    *Alex Ghiculescu*",
     "project": "activejob",
     "date_merged": 1687972223000,
