@@ -960,14 +960,14 @@
     "html": "<p>Active Record query cache now evicts least recently used entries</p>\n\n<p>By default it only keeps the <code>100</code> most recently used queries.</p>\n\n<p>The cache size can be configured via <code>database.yml</code></p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">mysql2</span>\n  <span class=\"na\">query_cache</span><span class=\"pi\">:</span> <span class=\"m\">200</span>\n</code></pre></div></div>\n\n<p>It can also be entirely disabled:</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">mysql2</span>\n  <span class=\"na\">query_cache</span><span class=\"pi\">:</span> <span class=\"no\">false</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
-    "message": "*   Deprecate `check_pending!` in favor of `check_pending_migrations!`.\n\n    `check_pending!` will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of `check_pending_migrations!` which will find all pending migrations for the database configurations in a given environment.\n\n    *Eileen M. Uchitelle*",
+    "message": "*   Deprecate `check_pending!` in favor of `check_all_pending!`.\n\n    `check_pending!` will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of `check_all_pending!` which will find all pending migrations for the database configurations in a given environment.\n\n    *Eileen M. Uchitelle*",
     "project": "activerecord",
-    "date_merged": 1683312130000,
-    "author": "eileencodes",
-    "sha": "03379d1f599653d100dff9fbf3ce4434a930b915",
-    "pr": "48134",
-    "merge_sha": "7b9497a9d405ad9c0b14f82c43fc7e285bf016e7",
-    "html": "<p>Deprecate <code>check_pending!</code> in favor of <code>check_pending_migrations!</code>.</p>\n\n<p><code>check_pending!</code> will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of <code>check_pending_migrations!</code> which will find all pending migrations for the database configurations in a given environment.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+    "date_merged": 1692281081000,
+    "author": "Takumi Shotoku",
+    "sha": "0e41e2cd8ea825479fdaf181a9518280b8fccc20",
+    "pr": "48964",
+    "merge_sha": "b56f938b5f0f7c044c30790fdf618adb88188dad",
+    "html": "<p>Deprecate <code>check_pending!</code> in favor of <code>check_all_pending!</code>.</p>\n\n<p><code>check_pending!</code> will only check for pending migrations on the current database connection or the one passed in. This has been deprecated in favor of <code>check_all_pending!</code> which will find all pending migrations for the database configurations in a given environment.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
     "message": "*   Make `increment_counter`/`decrement_counter` accept an amount argument\n\n    ```ruby\n    Post.increment_counter(:comments_count, 5, by: 3)\n    ```\n\n    *fatkodima*",
