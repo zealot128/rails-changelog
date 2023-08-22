@@ -8422,6 +8422,21 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix change_column setting datetime precision for 6.1 Migrations
+</title>
+    <link>https://github.com/rails/rails/issues/48969</link>
+    <guid>https://github.com/rails/rails/issues/48969</guid>
+    <description>*   Fix change_column setting datetime precision for 6.1 Migrations
+
+    *Hartley McGuire*</description>
+    <pubDate>Tue, 22 Aug 2023 08:28:41 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix change_column setting datetime precision for 6.1 Migrations</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add `ActiveRecord::Base#id_value` alias to access the raw value of a record&#39;s id column.
 </title>
     <link>https://github.com/rails/rails/issues/48930</link>
