@@ -1430,6 +1430,26 @@
     "html": "<p>Add “back to top” button to guides</p>\n\n<p><em>Alysson Rosa</em></p>\n"
   },
   {
+    "message": "*   Add support for Playwright as a driver for system tests.\n\n    *Yuki Nishijima*",
+    "project": "actionpack",
+    "date_merged": 1692646073000,
+    "author": "Yuki Nishijima",
+    "sha": "72c5270e45b982957b134372def3f7079a037465",
+    "pr": "48950",
+    "merge_sha": "24876e6a7982569aa421b2aa95ba095126dfd532",
+    "html": "<p>Add support for Playwright as a driver for system tests.</p>\n\n<p><em>Yuki Nishijima</em></p>\n"
+  },
+  {
+    "message": "*   Fix `HostAuthorization` potentially displaying the value of the\n    X_FORWARDED_HOST header when the HTTP_HOST header is being blocked.\n\n    *Hartley McGuire*, *Daniel Schlosser*",
+    "project": "actionpack",
+    "date_merged": 1692644744000,
+    "author": "Hartley McGuire",
+    "sha": "11ef3cecf098979bf152ff7a3633721969fc233d",
+    "pr": "48941",
+    "merge_sha": "364266893573622d42c521d830a265a873ab75f6",
+    "html": "<p>Fix <code>HostAuthorization</code> potentially displaying the value of the<br />\nX_FORWARDED_HOST header when the HTTP_HOST header is being blocked.</p>\n\n<p><em>Hartley McGuire</em>, <em>Daniel Schlosser</em></p>\n"
+  },
+  {
     "message": "*   Rename `fixture_file_upload` method to `file_fixture_upload`\n\n    Declare an alias to preserve the backwards compatibility of `fixture_file_upload`\n\n    *Sean Doyle*",
     "project": "actionpack",
     "date_merged": 1691183320000,
@@ -1988,6 +2008,16 @@
     "pr": "48212",
     "merge_sha": "bdbcbc179df93b18e2ce6e1deef631eb2eea1624",
     "html": "<p>Add <code>:unsafe_hashes</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"s2\">\"'unsafe-hashes'\"</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"ss\">:unsafe_hashes</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n</code></pre></div></div>\n\n<p><em>Igor Morozov</em></p>\n"
+  },
+  {
+    "message": "*   Add an option to start rails console in sandbox mode by default\n\n    `sandbox_by_default` option is added to start rails console in sandbox\n    mode by default. With this option turned on, `--no-sandbox` must be\n    specified to start rails in non-sandbox mode.\n\n    Note that this option is ignored when rails environment is development\n    or test.\n\n    *Shouichi Kamiya*",
+    "project": "railties",
+    "date_merged": 1692667322000,
+    "author": "Shouichi Kamiya",
+    "sha": "b8decf79d80a33d5a2d504d0305175f1f1849bfa",
+    "pr": "48984",
+    "merge_sha": "9b6dee054df33a23c6997c900045b2a41bc2a2ce",
+    "html": "<p>Add an option to start rails console in sandbox mode by default</p>\n\n<p><code>sandbox_by_default</code> option is added to start rails console in sandbox<br />\nmode by default. With this option turned on, <code>--no-sandbox</code> must be<br />\nspecified to start rails in non-sandbox mode.</p>\n\n<p>Note that this option is ignored when rails environment is development<br />\nor test.</p>\n\n<p><em>Shouichi Kamiya</em></p>\n"
   },
   {
     "message": "*   Omit `webdrivers` gem dependency from `Gemfile` template\n\n    *Sean Doyle*",
