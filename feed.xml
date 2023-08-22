@@ -4132,6 +4132,38 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Add support for Playwright as a driver for system tests.
+</title>
+    <link>https://github.com/rails/rails/issues/48950</link>
+    <guid>https://github.com/rails/rails/issues/48950</guid>
+    <description>*   Add support for Playwright as a driver for system tests.
+
+    *Yuki Nishijima*</description>
+    <pubDate>Mon, 21 Aug 2023 19:27:53 +0000</pubDate>
+    <author>Yuki Nishijima</author>
+    <content:encoded><![CDATA[<p>Add support for Playwright as a driver for system tests.</p>
+
+<p><em>Yuki Nishijima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Fix `HostAuthorization` potentially displaying the value of the
+</title>
+    <link>https://github.com/rails/rails/issues/48941</link>
+    <guid>https://github.com/rails/rails/issues/48941</guid>
+    <description>*   Fix `HostAuthorization` potentially displaying the value of the
+    X_FORWARDED_HOST header when the HTTP_HOST header is being blocked.
+
+    *Hartley McGuire*, *Daniel Schlosser*</description>
+    <pubDate>Mon, 21 Aug 2023 19:05:44 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix <code>HostAuthorization</code> potentially displaying the value of the<br />
+X_FORWARDED_HOST header when the HTTP_HOST header is being blocked.</p>
+
+<p><em>Hartley McGuire</em>, <em>Daniel Schlosser</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Rename `fixture_file_upload` method to `file_fixture_upload`
 </title>
     <link>https://github.com/rails/rails/issues/48857</link>
@@ -5475,6 +5507,35 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 </code></pre></div></div>
 
 <p><em>Igor Morozov</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add an option to start rails console in sandbox mode by default
+</title>
+    <link>https://github.com/rails/rails/issues/48984</link>
+    <guid>https://github.com/rails/rails/issues/48984</guid>
+    <description>*   Add an option to start rails console in sandbox mode by default
+
+    `sandbox_by_default` option is added to start rails console in sandbox
+    mode by default. With this option turned on, `--no-sandbox` must be
+    specified to start rails in non-sandbox mode.
+
+    Note that this option is ignored when rails environment is development
+    or test.
+
+    *Shouichi Kamiya*</description>
+    <pubDate>Tue, 22 Aug 2023 01:22:02 +0000</pubDate>
+    <author>Shouichi Kamiya</author>
+    <content:encoded><![CDATA[<p>Add an option to start rails console in sandbox mode by default</p>
+
+<p><code>sandbox_by_default</code> option is added to start rails console in sandbox<br />
+mode by default. With this option turned on, <code>--no-sandbox</code> must be<br />
+specified to start rails in non-sandbox mode.</p>
+
+<p>Note that this option is ignored when rails environment is development<br />
+or test.</p>
+
+<p><em>Shouichi Kamiya</em></p>
 ]]></content:encoded>
   </item>
   <item>
