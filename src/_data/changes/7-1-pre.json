@@ -3030,6 +3030,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix change_column setting datetime precision for 6.1 Migrations\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1692692921000,
+    "author": "Hartley McGuire",
+    "sha": "c2f838e80c76c9a3407e1e7af1ecbd738511fd72",
+    "pr": "48969",
+    "merge_sha": "e98a6bda0934ab4773de20889df883dd598d6f04",
+    "html": "<p>Fix change_column setting datetime precision for 6.1 Migrations</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Add `ActiveRecord::Base#id_value` alias to access the raw value of a record's id column.\n\n    This alias is only provided for models that declare an `:id` column.\n\n    *Adrianna Chang*",
     "project": "activerecord",
     "date_merged": 1692642819000,
