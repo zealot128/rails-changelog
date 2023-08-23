@@ -3030,6 +3030,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix `change_table` setting datetime precision for 6.1 Migrations\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1692754144000,
+    "author": "Hartley McGuire",
+    "sha": "9b07b2d6ca2ee9854cd986da0bf914b9ace9d547",
+    "pr": "48974",
+    "merge_sha": "2c5bfbd397e39a906e84ee6be3f30b7d240b272c",
+    "html": "<p>Fix <code>change_table</code> setting datetime precision for 6.1 Migrations</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Fix change_column setting datetime precision for 6.1 Migrations\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1692692921000,
