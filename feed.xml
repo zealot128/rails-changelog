@@ -4132,6 +4132,29 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Parse JSON `response.parsed_body` with `ActiveSupport::HashWithIndifferentAccess`
+</title>
+    <link>https://github.com/rails/rails/issues/49003</link>
+    <guid>https://github.com/rails/rails/issues/49003</guid>
+    <description>*   Parse JSON `response.parsed_body` with `ActiveSupport::HashWithIndifferentAccess`
+
+    Integrate with Minitest&#39;s new `assert_pattern` by parsing the JSON contents
+    of `response.parsed_body` with `ActiveSupport::HashWithIndifferentAccess`, so
+    that it&#39;s pattern-matching compatible.
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 23 Aug 2023 18:02:40 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Parse JSON <code>response.parsed_body</code> with <code>ActiveSupport::HashWithIndifferentAccess</code></p>
+
+<p>Integrate with Minitest’s new <code>assert_pattern</code> by parsing the JSON contents<br />
+of <code>response.parsed_body</code> with <code>ActiveSupport::HashWithIndifferentAccess</code>, so<br />
+that it’s pattern-matching compatible.</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add support for Playwright as a driver for system tests.
 </title>
     <link>https://github.com/rails/rails/issues/48950</link>
