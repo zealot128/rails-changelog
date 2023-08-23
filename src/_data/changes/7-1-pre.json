@@ -1430,6 +1430,16 @@
     "html": "<p>Add “back to top” button to guides</p>\n\n<p><em>Alysson Rosa</em></p>\n"
   },
   {
+    "message": "*   Parse JSON `response.parsed_body` with `ActiveSupport::HashWithIndifferentAccess`\n\n    Integrate with Minitest's new `assert_pattern` by parsing the JSON contents\n    of `response.parsed_body` with `ActiveSupport::HashWithIndifferentAccess`, so\n    that it's pattern-matching compatible.\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1692813760000,
+    "author": "Sean Doyle",
+    "sha": "0f4ab82082c87f22b6733d46b4251009cbbb1dd4",
+    "pr": "49003",
+    "merge_sha": "a7a1217cd4b9f300cb7038e6933dd40c6e812cc8",
+    "html": "<p>Parse JSON <code>response.parsed_body</code> with <code>ActiveSupport::HashWithIndifferentAccess</code></p>\n\n<p>Integrate with Minitest’s new <code>assert_pattern</code> by parsing the JSON contents<br />\nof <code>response.parsed_body</code> with <code>ActiveSupport::HashWithIndifferentAccess</code>, so<br />\nthat it’s pattern-matching compatible.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Add support for Playwright as a driver for system tests.\n\n    *Yuki Nishijima*",
     "project": "actionpack",
     "date_merged": 1692646073000,
