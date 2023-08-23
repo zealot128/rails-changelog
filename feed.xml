@@ -8422,6 +8422,21 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix `change_table` setting datetime precision for 6.1 Migrations
+</title>
+    <link>https://github.com/rails/rails/issues/48974</link>
+    <guid>https://github.com/rails/rails/issues/48974</guid>
+    <description>*   Fix `change_table` setting datetime precision for 6.1 Migrations
+
+    *Hartley McGuire*</description>
+    <pubDate>Wed, 23 Aug 2023 01:29:04 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix <code>change_table</code> setting datetime precision for 6.1 Migrations</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix change_column setting datetime precision for 6.1 Migrations
 </title>
     <link>https://github.com/rails/rails/issues/48969</link>
