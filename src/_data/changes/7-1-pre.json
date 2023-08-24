@@ -1280,6 +1280,26 @@
     "html": "<p>Support multiple preview paths for mailers.</p>\n\n<p>Option <code>config.action_mailer.preview_path</code> is deprecated in favor of<br />\n<code>config.action_mailer.preview_paths</code>. Appending paths to this configuration option<br />\nwill cause those paths to be used in the search for mailer previews.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Add `ActiveModel::Conversion.param_delimiter` to configure delimiter being used in `to_param`\n\n    *Nikita Vasilevsky*",
+    "project": "activemodel",
+    "date_merged": 1692828674000,
+    "author": "Nikita Vasilevsky",
+    "sha": "37342a37fd1031e1ec9fc0ba87ad00aca1fa0f3e",
+    "pr": "49020",
+    "merge_sha": "d70707d9af15587e8debf669e81547bc4258b6c8",
+    "html": "<p>Add <code>ActiveModel::Conversion.param_delimiter</code> to configure delimiter being used in <code>to_param</code></p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
+    "message": "*   `undefine_attribute_methods` undefines alias attribute methods along with attribute methods.\n\n    *Nikita Vasilevsky*",
+    "project": "activemodel",
+    "date_merged": 1692815919000,
+    "author": "Nikita Vasilevsky",
+    "sha": "e50fce0fa9729fbf836e14854b9c84956e493ca1",
+    "pr": "49015",
+    "merge_sha": "3a680cd64739a47052ee75db986fb1ca22486a1c",
+    "html": "<p><code>undefine_attribute_methods</code> undefines alias attribute methods along with attribute methods.</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
     "message": "*   Error.full_message now strips \":base\" from the message.\n\n    *zzak*",
     "project": "activemodel",
     "date_merged": 1691008271000,
@@ -3038,6 +3058,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `read_attribute(:id)` returning the primary key if the primary key is not `:id`.\n\n    Starting in Rails 7.2, `read_attribute(:id)` will return the value of the id column, regardless of the model's\n    primary key. To retrieve the value of the primary key, use `#id` instead. `read_attribute(:id)` for composite\n    primary key models will now return the value of the id column.\n\n    *Adrianna Chang*",
+    "project": "activerecord",
+    "date_merged": 1692828156000,
+    "author": "Adrianna Chang",
+    "sha": "ac83311baef339bdd9a30b4ba7ad55a390f087cd",
+    "pr": "49019",
+    "merge_sha": "59542e86c43f73ddc4dca097112df14ba2bf40c9",
+    "html": "<p>Deprecate <code>read_attribute(:id)</code> returning the primary key if the primary key is not <code>:id</code>.</p>\n\n<p>Starting in Rails 7.2, <code>read_attribute(:id)</code> will return the value of the id column, regardless of the model’s<br />\nprimary key. To retrieve the value of the primary key, use <code>#id</code> instead. <code>read_attribute(:id)</code> for composite<br />\nprimary key models will now return the value of the id column.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
   },
   {
     "message": "*   Fix `change_table` setting datetime precision for 6.1 Migrations\n\n    *Hartley McGuire*",
