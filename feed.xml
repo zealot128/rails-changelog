@@ -3652,6 +3652,36 @@ will cause those paths to be used in the search for mailer previews.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activemodel: Add `ActiveModel::Conversion.param_delimiter` to configure delimiter being used in `to_param`
+</title>
+    <link>https://github.com/rails/rails/issues/49020</link>
+    <guid>https://github.com/rails/rails/issues/49020</guid>
+    <description>*   Add `ActiveModel::Conversion.param_delimiter` to configure delimiter being used in `to_param`
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Wed, 23 Aug 2023 22:11:14 +0000</pubDate>
+    <author>Nikita Vasilevsky</author>
+    <content:encoded><![CDATA[<p>Add <code>ActiveModel::Conversion.param_delimiter</code> to configure delimiter being used in <code>to_param</code></p>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: `undefine_attribute_methods` undefines alias attribute methods along with attribute methods.
+</title>
+    <link>https://github.com/rails/rails/issues/49015</link>
+    <guid>https://github.com/rails/rails/issues/49015</guid>
+    <description>*   `undefine_attribute_methods` undefines alias attribute methods along with attribute methods.
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Wed, 23 Aug 2023 18:38:39 +0000</pubDate>
+    <author>Nikita Vasilevsky</author>
+    <content:encoded><![CDATA[<p><code>undefine_attribute_methods</code> undefines alias attribute methods along with attribute methods.</p>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Error.full_message now strips &quot;:base&quot; from the message.
 </title>
     <link>https://github.com/rails/rails/issues/48871</link>
@@ -8442,6 +8472,29 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deprecate `read_attribute(:id)` returning the primary key if the primary key is not `:id`.
+</title>
+    <link>https://github.com/rails/rails/issues/49019</link>
+    <guid>https://github.com/rails/rails/issues/49019</guid>
+    <description>*   Deprecate `read_attribute(:id)` returning the primary key if the primary key is not `:id`.
+
+    Starting in Rails 7.2, `read_attribute(:id)` will return the value of the id column, regardless of the model&#39;s
+    primary key. To retrieve the value of the primary key, use `#id` instead. `read_attribute(:id)` for composite
+    primary key models will now return the value of the id column.
+
+    *Adrianna Chang*</description>
+    <pubDate>Wed, 23 Aug 2023 22:02:36 +0000</pubDate>
+    <author>Adrianna Chang</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>read_attribute(:id)</code> returning the primary key if the primary key is not <code>:id</code>.</p>
+
+<p>Starting in Rails 7.2, <code>read_attribute(:id)</code> will return the value of the id column, regardless of the model’s<br />
+primary key. To retrieve the value of the primary key, use <code>#id</code> instead. <code>read_attribute(:id)</code> for composite<br />
+primary key models will now return the value of the id column.</p>
+
+<p><em>Adrianna Chang</em></p>
 ]]></content:encoded>
   </item>
   <item>
