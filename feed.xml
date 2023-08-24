@@ -7438,8 +7438,8 @@ can be opted out of with the app generator’s <code>--skip-decrypted-diffs</cod
 
     Previously, when running this command:
 
-    ``` sh
-    bin/rails generate scaffold_controller Admin/Post --model-name Post
+    ```bash
+    $ bin/rails generate scaffold_controller Admin/Post --model-name Post
     ```
 
     the comments above the controller action would look like:
@@ -7472,7 +7472,7 @@ a namespaced controller with a top-level model using <code>--model-name</code>.<
 
 <p>Previously, when running this command:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/rails generate scaffold_controller Admin/Post <span class="nt">--model-name</span> Post
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bin/rails generate scaffold_controller Admin/Post <span class="nt">--model-name</span> Post
 </code></pre></div></div>
 
 <p>the comments above the controller action would look like:</p>
