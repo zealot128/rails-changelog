@@ -2040,6 +2040,16 @@
     "html": "<p>Add <code>:unsafe_hashes</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"s2\">\"'unsafe-hashes'\"</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"ss\">:unsafe_hashes</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n</code></pre></div></div>\n\n<p><em>Igor Morozov</em></p>\n"
   },
   {
+    "message": "*   `config/application.rb` now includes\n\n    ```ruby\n    config.autoload_lib(ignore: %w(assets tasks))\n    ```\n\n    In practice, this means that new 7.1 applications autoload from `lib` out of the box.\n\n    *Xavier Noria*",
+    "project": "railties",
+    "date_merged": 1692949004000,
+    "author": "Xavier Noria",
+    "sha": "b16adcd4e49fae25e937b42d0473c7a872218857",
+    "pr": "49032",
+    "merge_sha": "153eae8995c2de3d1bafc0fb13ae5a3250703a3d",
+    "html": "<p><code>config/application.rb</code> now includes</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">autoload_lib</span><span class=\"p\">(</span><span class=\"ss\">ignore: </span><span class=\"sx\">%w(assets tasks)</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>In practice, this means that new 7.1 applications autoload from <code>lib</code> out of the box.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
     "message": "*   Add an option to start rails console in sandbox mode by default\n\n    `sandbox_by_default` option is added to start rails console in sandbox\n    mode by default. With this option turned on, `--no-sandbox` must be\n    specified to start rails in non-sandbox mode.\n\n    Note that this option is ignored when rails environment is development\n    or test.\n\n    *Shouichi Kamiya*",
     "project": "railties",
     "date_merged": 1692667322000,
