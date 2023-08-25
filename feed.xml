@@ -5563,6 +5563,32 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: `config/application.rb` now includes
+</title>
+    <link>https://github.com/rails/rails/issues/49032</link>
+    <guid>https://github.com/rails/rails/issues/49032</guid>
+    <description>*   `config/application.rb` now includes
+
+    ```ruby
+    config.autoload_lib(ignore: %w(assets tasks))
+    ```
+
+    In practice, this means that new 7.1 applications autoload from `lib` out of the box.
+
+    *Xavier Noria*</description>
+    <pubDate>Fri, 25 Aug 2023 07:36:44 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p><code>config/application.rb</code> now includes</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">autoload_lib</span><span class="p">(</span><span class="ss">ignore: </span><span class="sx">%w(assets tasks)</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In practice, this means that new 7.1 applications autoload from <code>lib</code> out of the box.</p>
+
+<p><em>Xavier Noria</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add an option to start rails console in sandbox mode by default
 </title>
     <link>https://github.com/rails/rails/issues/48984</link>
