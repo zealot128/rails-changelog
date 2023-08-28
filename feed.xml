@@ -4162,6 +4162,32 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Add `ActionController::Parameters#extract_value` method to allow extracting serialized values from params
+</title>
+    <link>https://github.com/rails/rails/issues/49042</link>
+    <guid>https://github.com/rails/rails/issues/49042</guid>
+    <description>*   Add `ActionController::Parameters#extract_value` method to allow extracting serialized values from params
+
+    ```ruby
+    params = ActionController::Parameters.new(id: &quot;1_123&quot;, tags: &quot;ruby,rails&quot;)
+    params.extract_value(:id) # =&gt; [&quot;1&quot;, &quot;123&quot;]
+    params.extract_value(:tags, delimiter: &quot;,&quot;) # =&gt; [&quot;ruby&quot;, &quot;rails&quot;]
+    ```
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Mon, 28 Aug 2023 15:09:55 +0000</pubDate>
+    <author>Nikita Vasilevsky</author>
+    <content:encoded><![CDATA[<p>Add <code>ActionController::Parameters#extract_value</code> method to allow extracting serialized values from params</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">params</span> <span class="o">=</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Parameters</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">id: </span><span class="s2">"1_123"</span><span class="p">,</span> <span class="ss">tags: </span><span class="s2">"ruby,rails"</span><span class="p">)</span>
+<span class="n">params</span><span class="p">.</span><span class="nf">extract_value</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span> <span class="c1"># =&gt; ["1", "123"]</span>
+<span class="n">params</span><span class="p">.</span><span class="nf">extract_value</span><span class="p">(</span><span class="ss">:tags</span><span class="p">,</span> <span class="ss">delimiter: </span><span class="s2">","</span><span class="p">)</span> <span class="c1"># =&gt; ["ruby", "rails"]</span>
+</code></pre></div></div>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Parse JSON `response.parsed_body` with `ActiveSupport::HashWithIndifferentAccess`
 </title>
     <link>https://github.com/rails/rails/issues/49003</link>
