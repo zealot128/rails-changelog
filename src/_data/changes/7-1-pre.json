@@ -1450,6 +1450,16 @@
     "html": "<p>Add “back to top” button to guides</p>\n\n<p><em>Alysson Rosa</em></p>\n"
   },
   {
+    "message": "*   Add `ActionController::Parameters#extract_value` method to allow extracting serialized values from params\n\n    ```ruby\n    params = ActionController::Parameters.new(id: \"1_123\", tags: \"ruby,rails\")\n    params.extract_value(:id) # => [\"1\", \"123\"]\n    params.extract_value(:tags, delimiter: \",\") # => [\"ruby\", \"rails\"]\n    ```\n\n    *Nikita Vasilevsky*",
+    "project": "actionpack",
+    "date_merged": 1693235395000,
+    "author": "Nikita Vasilevsky",
+    "sha": "da7a6da4e7f5caf227420c550a8a13550dd9c682",
+    "pr": "49042",
+    "merge_sha": "743d1fc71cfaf87adaf1cc32f66565d475e2b8da",
+    "html": "<p>Add <code>ActionController::Parameters#extract_value</code> method to allow extracting serialized values from params</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Parameters</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">id: </span><span class=\"s2\">\"1_123\"</span><span class=\"p\">,</span> <span class=\"ss\">tags: </span><span class=\"s2\">\"ruby,rails\"</span><span class=\"p\">)</span>\n<span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">extract_value</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; [\"1\", \"123\"]</span>\n<span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">extract_value</span><span class=\"p\">(</span><span class=\"ss\">:tags</span><span class=\"p\">,</span> <span class=\"ss\">delimiter: </span><span class=\"s2\">\",\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; [\"ruby\", \"rails\"]</span>\n</code></pre></div></div>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
     "message": "*   Parse JSON `response.parsed_body` with `ActiveSupport::HashWithIndifferentAccess`\n\n    Integrate with Minitest's new `assert_pattern` by parsing the JSON contents\n    of `response.parsed_body` with `ActiveSupport::HashWithIndifferentAccess`, so\n    that it's pattern-matching compatible.\n\n    *Sean Doyle*",
     "project": "actionpack",
     "date_merged": 1692813760000,
