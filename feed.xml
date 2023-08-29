@@ -8527,6 +8527,27 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow batching methods to use already loaded relation if available
+</title>
+    <link>https://github.com/rails/rails/issues/49071</link>
+    <guid>https://github.com/rails/rails/issues/49071</guid>
+    <description>*   Allow batching methods to use already loaded relation if available
+
+    Calling batch methods on already loaded relations will use the records previously loaded instead of retrieving
+    them from the database again.
+
+    *Adam Hess*</description>
+    <pubDate>Tue, 29 Aug 2023 08:22:31 +0000</pubDate>
+    <author>HParker</author>
+    <content:encoded><![CDATA[<p>Allow batching methods to use already loaded relation if available</p>
+
+<p>Calling batch methods on already loaded relations will use the records previously loaded instead of retrieving<br />
+them from the database again.</p>
+
+<p><em>Adam Hess</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Deprecate `read_attribute(:id)` returning the primary key if the primary key is not `:id`.
 </title>
     <link>https://github.com/rails/rails/issues/49019</link>
