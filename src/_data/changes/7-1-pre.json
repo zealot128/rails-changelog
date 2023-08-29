@@ -3080,6 +3080,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Allow batching methods to use already loaded relation if available\n\n    Calling batch methods on already loaded relations will use the records previously loaded instead of retrieving\n    them from the database again.\n\n    *Adam Hess*",
+    "project": "activerecord",
+    "date_merged": 1693297351000,
+    "author": "HParker",
+    "sha": "451053eca5637f33ac9987a103ae8766f668fe2f",
+    "pr": "49071",
+    "merge_sha": "4f33e65fc57ca45153f6c05e38dc067e6c519065",
+    "html": "<p>Allow batching methods to use already loaded relation if available</p>\n\n<p>Calling batch methods on already loaded relations will use the records previously loaded instead of retrieving<br />\nthem from the database again.</p>\n\n<p><em>Adam Hess</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `read_attribute(:id)` returning the primary key if the primary key is not `:id`.\n\n    Starting in Rails 7.2, `read_attribute(:id)` will return the value of the id column, regardless of the model's\n    primary key. To retrieve the value of the primary key, use `#id` instead. `read_attribute(:id)` for composite\n    primary key models will now return the value of the id column.\n\n    *Adrianna Chang*",
     "project": "activerecord",
     "date_merged": 1692828156000,
