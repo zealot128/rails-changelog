@@ -3652,6 +3652,25 @@ will cause those paths to be used in the search for mailer previews.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activemodel: Support composite identifiers in `to_key`
+</title>
+    <link>https://github.com/rails/rails/issues/49110</link>
+    <guid>https://github.com/rails/rails/issues/49110</guid>
+    <description>*   Support composite identifiers in `to_key`
+
+    `to_key` avoids wrapping `#id` value into an `Array` if `#id` already an array
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Fri, 01 Sep 2023 16:09:39 +0000</pubDate>
+    <author>Nikita Vasilevsky</author>
+    <content:encoded><![CDATA[<p>Support composite identifiers in <code>to_key</code></p>
+
+<p><code>to_key</code> avoids wrapping <code>#id</code> value into an <code>Array</code> if <code>#id</code> already an array</p>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Add `ActiveModel::Conversion.param_delimiter` to configure delimiter being used in `to_param`
 </title>
     <link>https://github.com/rails/rails/issues/49020</link>
@@ -8527,6 +8546,42 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix `change_column` not setting `precision: 6` on `datetime` columns when
+</title>
+    <link>https://github.com/rails/rails/issues/49090</link>
+    <guid>https://github.com/rails/rails/issues/49090</guid>
+    <description>*   Fix `change_column` not setting `precision: 6` on `datetime` columns when
+    using 7.0+ Migrations and SQLite.
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 01 Sep 2023 18:21:53 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix <code>change_column</code> not setting <code>precision: 6</code> on <code>datetime</code> columns when<br />
+using 7.0+ Migrations and SQLite.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Support composite identifiers in `to_key`
+</title>
+    <link>https://github.com/rails/rails/issues/49110</link>
+    <guid>https://github.com/rails/rails/issues/49110</guid>
+    <description>*   Support composite identifiers in `to_key`
+
+    `to_key` avoids wrapping `#id` value into an `Array` if `#id` already an array
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Fri, 01 Sep 2023 16:09:39 +0000</pubDate>
+    <author>Nikita Vasilevsky</author>
+    <content:encoded><![CDATA[<p>Support composite identifiers in <code>to_key</code></p>
+
+<p><code>to_key</code> avoids wrapping <code>#id</code> value into an <code>Array</code> if <code>#id</code> already an array</p>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow batching methods to use already loaded relation if available
 </title>
     <link>https://github.com/rails/rails/issues/49071</link>
@@ -10661,6 +10716,7 @@ argument, more closely matching their <code>Enumerable</code> equivalents.</p>
       ```ruby
       class User &lt; ActiveRecord::Base
         normalizes :email, with: -&gt; email { email.strip.downcase }
+        normalizes :phone, with: -&gt; phone { phone.delete(&quot;^0-9&quot;).delete_prefix(&quot;1&quot;) }
       end
 
       user = User.create(email: &quot; CRUISE-CONTROL@EXAMPLE.COM\n&quot;)
@@ -10670,8 +10726,12 @@ argument, more closely matching their <code>Enumerable</code> equivalents.</p>
       user.email                  # =&gt; &quot;cruise-control@example.com&quot;
       user.email_before_type_cast # =&gt; &quot;cruise-control@example.com&quot;
 
+      User.where(email: &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;).count # =&gt; 1
+
       User.exists?(email: &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;)         # =&gt; true
       User.exists?([&quot;email = ?&quot;, &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;]) # =&gt; false
+
+      User.normalize_value_for(:phone, &quot;+1 (555) 867-5309&quot;) # =&gt; &quot;5558675309&quot;
       ```
 
     *Jonathan Hefner*</description>
@@ -10687,6 +10747,7 @@ values.  For example:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
     <span class="n">normalizes</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">with: </span><span class="o">-&gt;</span> <span class="n">email</span> <span class="p">{</span> <span class="n">email</span><span class="p">.</span><span class="nf">strip</span><span class="p">.</span><span class="nf">downcase</span> <span class="p">}</span>
+    <span class="n">normalizes</span> <span class="ss">:phone</span><span class="p">,</span> <span class="ss">with: </span><span class="o">-&gt;</span> <span class="n">phone</span> <span class="p">{</span> <span class="n">phone</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="s2">"^0-9"</span><span class="p">).</span><span class="nf">delete_prefix</span><span class="p">(</span><span class="s2">"1"</span><span class="p">)</span> <span class="p">}</span>
   <span class="k">end</span>
 
   <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">email: </span><span class="s2">" CRUISE-CONTROL@EXAMPLE.COM</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
@@ -10696,8 +10757,12 @@ values.  For example:</p>
   <span class="n">user</span><span class="p">.</span><span class="nf">email</span>                  <span class="c1"># =&gt; "cruise-control@example.com"</span>
   <span class="n">user</span><span class="p">.</span><span class="nf">email_before_type_cast</span> <span class="c1"># =&gt; "cruise-control@example.com"</span>
 
+  <span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">email: </span><span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">).</span><span class="nf">count</span> <span class="c1"># =&gt; 1</span>
+
   <span class="no">User</span><span class="p">.</span><span class="nf">exists?</span><span class="p">(</span><span class="ss">email: </span><span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">)</span>         <span class="c1"># =&gt; true</span>
   <span class="no">User</span><span class="p">.</span><span class="nf">exists?</span><span class="p">([</span><span class="s2">"email = ?"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">])</span> <span class="c1"># =&gt; false</span>
+
+  <span class="no">User</span><span class="p">.</span><span class="nf">normalize_value_for</span><span class="p">(</span><span class="ss">:phone</span><span class="p">,</span> <span class="s2">"+1 (555) 867-5309"</span><span class="p">)</span> <span class="c1"># =&gt; "5558675309"</span>
 </code></pre></div></div>
 
 <p><em>Jonathan Hefner</em></p>
