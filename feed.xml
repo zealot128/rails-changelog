@@ -8546,6 +8546,38 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Change `has_secure_token` default to `on: :initialize`
+</title>
+    <link>https://github.com/rails/rails/issues/48912</link>
+    <guid>https://github.com/rails/rails/issues/48912</guid>
+    <description>*   Change `has_secure_token` default to `on: :initialize`
+
+    Change the new default value from `on: :create` to `on: :initialize`
+
+    Can be controlled by the `config.active_record.generate_secure_token_on`
+    configuration:
+
+    ```ruby
+    config.active_record.generate_secure_token_on = :create
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Fri, 01 Sep 2023 20:29:57 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Change <code>has_secure_token</code> default to <code>on: :initialize</code></p>
+
+<p>Change the new default value from <code>on: :create</code> to <code>on: :initialize</code></p>
+
+<p>Can be controlled by the <code>config.active_record.generate_secure_token_on</code><br />
+configuration:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">generate_secure_token_on</span> <span class="o">=</span> <span class="ss">:create</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix `change_column` not setting `precision: 6` on `datetime` columns when
 </title>
     <link>https://github.com/rails/rails/issues/49090</link>
@@ -8579,6 +8611,52 @@ using 7.0+ Migrations and SQLite.</p>
 <p><code>to_key</code> avoids wrapping <code>#id</code> value into an <code>Array</code> if <code>#id</code> already an array</p>
 
 <p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add validation option for `enum`
+</title>
+    <link>https://github.com/rails/rails/issues/49100</link>
+    <guid>https://github.com/rails/rails/issues/49100</guid>
+    <description>*   Add validation option for `enum`
+
+    ```ruby
+    class Contract &lt; ApplicationRecord
+      enum :status, %w[in_progress completed], validate: true
+    end
+    Contract.new(status: &quot;unknown&quot;).valid? # =&gt; false
+    Contract.new(status: nil).valid? # =&gt; false
+    Contract.new(status: &quot;completed&quot;).valid? # =&gt; true
+
+    class Contract &lt; ApplicationRecord
+      enum :status, %w[in_progress completed], validate: { allow_nil: true }
+    end
+    Contract.new(status: &quot;unknown&quot;).valid? # =&gt; false
+    Contract.new(status: nil).valid? # =&gt; true
+    Contract.new(status: &quot;completed&quot;).valid? # =&gt; true
+    ```
+
+    *Edem Topuzov*</description>
+    <pubDate>Fri, 01 Sep 2023 19:58:54 +0000</pubDate>
+    <author>Эдем</author>
+    <content:encoded><![CDATA[<p>Add validation option for <code>enum</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Contract</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">enum</span> <span class="ss">:status</span><span class="p">,</span> <span class="sx">%w[in_progress completed]</span><span class="p">,</span> <span class="ss">validate: </span><span class="kp">true</span>
+<span class="k">end</span>
+<span class="no">Contract</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">status: </span><span class="s2">"unknown"</span><span class="p">).</span><span class="nf">valid?</span> <span class="c1"># =&gt; false</span>
+<span class="no">Contract</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">status: </span><span class="kp">nil</span><span class="p">).</span><span class="nf">valid?</span> <span class="c1"># =&gt; false</span>
+<span class="no">Contract</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">status: </span><span class="s2">"completed"</span><span class="p">).</span><span class="nf">valid?</span> <span class="c1"># =&gt; true</span>
+
+<span class="k">class</span> <span class="nc">Contract</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">enum</span> <span class="ss">:status</span><span class="p">,</span> <span class="sx">%w[in_progress completed]</span><span class="p">,</span> <span class="ss">validate: </span><span class="p">{</span> <span class="ss">allow_nil: </span><span class="kp">true</span> <span class="p">}</span>
+<span class="k">end</span>
+<span class="no">Contract</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">status: </span><span class="s2">"unknown"</span><span class="p">).</span><span class="nf">valid?</span> <span class="c1"># =&gt; false</span>
+<span class="no">Contract</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">status: </span><span class="kp">nil</span><span class="p">).</span><span class="nf">valid?</span> <span class="c1"># =&gt; true</span>
+<span class="no">Contract</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">status: </span><span class="s2">"completed"</span><span class="p">).</span><span class="nf">valid?</span> <span class="c1"># =&gt; true</span>
+</code></pre></div></div>
+
+<p><em>Edem Topuzov</em></p>
 ]]></content:encoded>
   </item>
   <item>
