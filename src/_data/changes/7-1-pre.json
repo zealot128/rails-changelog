@@ -3090,6 +3090,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Change `has_secure_token` default to `on: :initialize`\n\n    Change the new default value from `on: :create` to `on: :initialize`\n\n    Can be controlled by the `config.active_record.generate_secure_token_on`\n    configuration:\n\n    ```ruby\n    config.active_record.generate_secure_token_on = :create\n    ```\n\n    *Sean Doyle*",
+    "project": "activerecord",
+    "date_merged": 1693600197000,
+    "author": "Sean Doyle",
+    "sha": "e85a3ec624074e7cbaf7d5f448e1973b79ac8913",
+    "pr": "48912",
+    "merge_sha": "a21c40bb703001cb6353fdaf751e9e1c77cd30f0",
+    "html": "<p>Change <code>has_secure_token</code> default to <code>on: :initialize</code></p>\n\n<p>Change the new default value from <code>on: :create</code> to <code>on: :initialize</code></p>\n\n<p>Can be controlled by the <code>config.active_record.generate_secure_token_on</code><br />\nconfiguration:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">generate_secure_token_on</span> <span class=\"o\">=</span> <span class=\"ss\">:create</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Fix `change_column` not setting `precision: 6` on `datetime` columns when\n    using 7.0+ Migrations and SQLite.\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1693592513000,
@@ -3108,6 +3118,16 @@
     "pr": "49110",
     "merge_sha": "b1fca671554a9de9929823dd873670e2f6f3cdaf",
     "html": "<p>Support composite identifiers in <code>to_key</code></p>\n\n<p><code>to_key</code> avoids wrapping <code>#id</code> value into an <code>Array</code> if <code>#id</code> already an array</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
+    "message": "*   Add validation option for `enum`\n\n    ```ruby\n    class Contract < ApplicationRecord\n      enum :status, %w[in_progress completed], validate: true\n    end\n    Contract.new(status: \"unknown\").valid? # => false\n    Contract.new(status: nil).valid? # => false\n    Contract.new(status: \"completed\").valid? # => true\n\n    class Contract < ApplicationRecord\n      enum :status, %w[in_progress completed], validate: { allow_nil: true }\n    end\n    Contract.new(status: \"unknown\").valid? # => false\n    Contract.new(status: nil).valid? # => true\n    Contract.new(status: \"completed\").valid? # => true\n    ```\n\n    *Edem Topuzov*",
+    "project": "activerecord",
+    "date_merged": 1693598334000,
+    "author": "Эдем",
+    "sha": "7c65a4b83b583f4f27f3f20a9fb078b35823d2fe",
+    "pr": "49100",
+    "merge_sha": "3bc64016afedf56504b0d1393772563255738147",
+    "html": "<p>Add validation option for <code>enum</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Contract</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">enum</span> <span class=\"ss\">:status</span><span class=\"p\">,</span> <span class=\"sx\">%w[in_progress completed]</span><span class=\"p\">,</span> <span class=\"ss\">validate: </span><span class=\"kp\">true</span>\n<span class=\"k\">end</span>\n<span class=\"no\">Contract</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">status: </span><span class=\"s2\">\"unknown\"</span><span class=\"p\">).</span><span class=\"nf\">valid?</span> <span class=\"c1\"># =&gt; false</span>\n<span class=\"no\">Contract</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">status: </span><span class=\"kp\">nil</span><span class=\"p\">).</span><span class=\"nf\">valid?</span> <span class=\"c1\"># =&gt; false</span>\n<span class=\"no\">Contract</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">status: </span><span class=\"s2\">\"completed\"</span><span class=\"p\">).</span><span class=\"nf\">valid?</span> <span class=\"c1\"># =&gt; true</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">Contract</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">enum</span> <span class=\"ss\">:status</span><span class=\"p\">,</span> <span class=\"sx\">%w[in_progress completed]</span><span class=\"p\">,</span> <span class=\"ss\">validate: </span><span class=\"p\">{</span> <span class=\"ss\">allow_nil: </span><span class=\"kp\">true</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n<span class=\"no\">Contract</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">status: </span><span class=\"s2\">\"unknown\"</span><span class=\"p\">).</span><span class=\"nf\">valid?</span> <span class=\"c1\"># =&gt; false</span>\n<span class=\"no\">Contract</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">status: </span><span class=\"kp\">nil</span><span class=\"p\">).</span><span class=\"nf\">valid?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"no\">Contract</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">status: </span><span class=\"s2\">\"completed\"</span><span class=\"p\">).</span><span class=\"nf\">valid?</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Edem Topuzov</em></p>\n"
   },
   {
     "message": "*   Allow batching methods to use already loaded relation if available\n\n    Calling batch methods on already loaded relations will use the records previously loaded instead of retrieving\n    them from the database again.\n\n    *Adam Hess*",
