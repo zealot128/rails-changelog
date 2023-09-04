@@ -8546,6 +8546,45 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix unscope is not working in specific case
+</title>
+    <link>https://github.com/rails/rails/issues/48095</link>
+    <guid>https://github.com/rails/rails/issues/48095</guid>
+    <description>*   Fix unscope is not working in specific case
+
+    Before:
+    ```ruby
+    Post.where(id: 1...3).unscope(where: :id).to_sql # &quot;SELECT `posts`.* FROM `posts` WHERE `posts`.`id` &gt;= 1 AND `posts`.`id` &lt; 3&quot;
+
+    ```
+
+    After:
+    ```ruby
+    Post.where(id: 1...3).unscope(where: :id).to_sql # &quot;SELECT `posts`.* FROM `posts`&quot;
+    ```
+
+    Fixes #48094.
+
+    *Kazuya Hatanaka*</description>
+    <pubDate>Mon, 04 Sep 2023 08:16:25 +0000</pubDate>
+    <author>ippachi</author>
+    <content:encoded><![CDATA[<p>Fix unscope is not working in specific case</p>
+
+<p>Before:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">id: </span><span class="mi">1</span><span class="o">...</span><span class="mi">3</span><span class="p">).</span><span class="nf">unscope</span><span class="p">(</span><span class="ss">where: :id</span><span class="p">).</span><span class="nf">to_sql</span> <span class="c1"># "SELECT `posts`.* FROM `posts` WHERE `posts`.`id` &gt;= 1 AND `posts`.`id` &lt; 3"</span>
+
+</code></pre></div></div>
+
+<p>After:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">id: </span><span class="mi">1</span><span class="o">...</span><span class="mi">3</span><span class="p">).</span><span class="nf">unscope</span><span class="p">(</span><span class="ss">where: :id</span><span class="p">).</span><span class="nf">to_sql</span> <span class="c1"># "SELECT `posts`.* FROM `posts`"</span>
+</code></pre></div></div>
+
+<p>Fixes #48094.</p>
+
+<p><em>Kazuya Hatanaka</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Change `has_secure_token` default to `on: :initialize`
 </title>
     <link>https://github.com/rails/rails/issues/48912</link>
