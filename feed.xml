@@ -8636,7 +8636,7 @@ using 7.0+ Migrations and SQLite.</p>
     Contract.new(status: &quot;completed&quot;).valid? # =&gt; true
     ```
 
-    *Edem Topuzov*</description>
+    *Edem Topuzov*, *Ryuta Kamizono*</description>
     <pubDate>Fri, 01 Sep 2023 19:58:54 +0000</pubDate>
     <author>Эдем</author>
     <content:encoded><![CDATA[<p>Add validation option for <code>enum</code></p>
@@ -8656,7 +8656,7 @@ using 7.0+ Migrations and SQLite.</p>
 <span class="no">Contract</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">status: </span><span class="s2">"completed"</span><span class="p">).</span><span class="nf">valid?</span> <span class="c1"># =&gt; true</span>
 </code></pre></div></div>
 
-<p><em>Edem Topuzov</em></p>
+<p><em>Edem Topuzov</em>, <em>Ryuta Kamizono</em></p>
 ]]></content:encoded>
   </item>
   <item>
