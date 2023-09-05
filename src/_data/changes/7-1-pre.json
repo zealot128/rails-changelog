@@ -4920,6 +4920,16 @@
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Fix Active Job log message to correctly report a job failed to enqueue\n    when the adapter raises an `ActiveJob::EnqueueError`.\n\n    *Ben Sheldon*",
+    "project": "activejob",
+    "date_merged": 1693883818000,
+    "author": "Ben Sheldon",
+    "sha": "b1b7debaa392c01a6e1b9bd46f6fae5261c5eeb8",
+    "pr": "47865",
+    "merge_sha": "b32c8a04bd7798f7a9a2409253aadd6c773e0241",
+    "html": "<p>Fix Active Job log message to correctly report a job failed to enqueue<br />\nwhen the adapter raises an <code>ActiveJob::EnqueueError</code>.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
+  },
+  {
     "message": "*   Add `after_discard` method.\n\n    This method lets job authors define a block which will be run when a job is about to be discarded. For example:\n\n    ```ruby\n      class AfterDiscardJob < ActiveJob::Base\n        after_discard do |job, exception|\n          Rails.logger.info(\"#{job.class} raised an exception: #{exception}\")\n        end\n\n        def perform\n          raise StandardError\n        end\n      end\n    ```\n\n    The above job will run the block passed to `after_discard` after the job is discarded. The exception will\n    still be raised after the block has been run.\n\n    *Rob Cardy*",
     "project": "activejob",
     "date_merged": 1692640546000,
