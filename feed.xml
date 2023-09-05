@@ -7705,6 +7705,53 @@ support Internet Explorer this header should not be a default one.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Fix `simple_format` with blank `wrapper_tag` option returns plain html tag
+</title>
+    <link>https://github.com/rails/rails/issues/49120</link>
+    <guid>https://github.com/rails/rails/issues/49120</guid>
+    <description>*   Fix `simple_format` with blank `wrapper_tag` option returns plain html tag
+
+    By default `simple_format` method returns the text wrapped with `&lt;p&gt;`. But if we explicitly specify
+    the `wrapper_tag: nil` in the options, it returns the text wrapped with `&lt;&gt;&lt;/&gt;` tag.
+
+    Before:
+
+    ```ruby
+    simple_format(&quot;Hello World&quot;, {},  { wrapper_tag: nil })
+    # &lt;&gt;Hello World&lt;/&gt;
+    ```
+
+    After:
+
+    ```ruby
+    simple_format(&quot;Hello World&quot;, {},  { wrapper_tag: nil })
+    # &lt;p&gt;Hello World&lt;/p&gt;
+    ```
+
+    *Akhil G Krishnan*, *Junichi Ito*</description>
+    <pubDate>Tue, 05 Sep 2023 10:17:49 +0000</pubDate>
+    <author>Akhil G Krishnan</author>
+    <content:encoded><![CDATA[<p>Fix <code>simple_format</code> with blank <code>wrapper_tag</code> option returns plain html tag</p>
+
+<p>By default <code>simple_format</code> method returns the text wrapped with <code>&lt;p&gt;</code>. But if we explicitly specify<br />
+the <code>wrapper_tag: nil</code> in the options, it returns the text wrapped with <code>&lt;&gt;&lt;/&gt;</code> tag.</p>
+
+<p>Before:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">simple_format</span><span class="p">(</span><span class="s2">"Hello World"</span><span class="p">,</span> <span class="p">{},</span>  <span class="p">{</span> <span class="ss">wrapper_tag: </span><span class="kp">nil</span> <span class="p">})</span>
+<span class="c1"># &lt;&gt;Hello World&lt;/&gt;</span>
+</code></pre></div></div>
+
+<p>After:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">simple_format</span><span class="p">(</span><span class="s2">"Hello World"</span><span class="p">,</span> <span class="p">{},</span>  <span class="p">{</span> <span class="ss">wrapper_tag: </span><span class="kp">nil</span> <span class="p">})</span>
+<span class="c1"># &lt;p&gt;Hello World&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p><em>Akhil G Krishnan</em>, <em>Junichi Ito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Don&#39;t double-encode nested `field_id` and `field_name` index values
 </title>
     <link>https://github.com/rails/rails/issues/47436</link>
@@ -8543,6 +8590,27 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deprecate `rewhere` argument on `#merge`.
+</title>
+    <link>https://github.com/rails/rails/issues/49149</link>
+    <guid>https://github.com/rails/rails/issues/49149</guid>
+    <description>*   Deprecate `rewhere` argument on `#merge`.
+
+    The `rewhere` argument on `#merge`is deprecated without replacement and
+    will be removed in Rails 7.2.
+
+    *Adam Hess*</description>
+    <pubDate>Tue, 05 Sep 2023 10:53:04 +0000</pubDate>
+    <author>Deepak Mahakale</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>rewhere</code> argument on <code>#merge</code>.</p>
+
+<p>The <code>rewhere</code> argument on <code>#merge</code>is deprecated without replacement and<br />
+will be removed in Rails 7.2.</p>
+
+<p><em>Adam Hess</em></p>
 ]]></content:encoded>
   </item>
   <item>
