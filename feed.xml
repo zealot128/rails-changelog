@@ -13961,6 +13961,23 @@ time regardless of whether a user with a matching email is found:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: Fix Active Job log message to correctly report a job failed to enqueue
+</title>
+    <link>https://github.com/rails/rails/issues/47865</link>
+    <guid>https://github.com/rails/rails/issues/47865</guid>
+    <description>*   Fix Active Job log message to correctly report a job failed to enqueue
+    when the adapter raises an `ActiveJob::EnqueueError`.
+
+    *Ben Sheldon*</description>
+    <pubDate>Tue, 05 Sep 2023 03:16:58 +0000</pubDate>
+    <author>Ben Sheldon</author>
+    <content:encoded><![CDATA[<p>Fix Active Job log message to correctly report a job failed to enqueue<br />
+when the adapter raises an <code>ActiveJob::EnqueueError</code>.</p>
+
+<p><em>Ben Sheldon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: Add `after_discard` method.
 </title>
     <link>https://github.com/rails/rails/issues/48010</link>
