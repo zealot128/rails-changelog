@@ -2840,6 +2840,16 @@
     "html": "<p>Add X-Forwarded-To addresses to recipients.</p>\n\n<p><em>Andrew Stewart</em></p>\n"
   },
   {
+    "message": "*   Fix `simple_format` with blank `wrapper_tag` option returns plain html tag\n\n    By default `simple_format` method returns the text wrapped with `<p>`. But if we explicitly specify\n    the `wrapper_tag: nil` in the options, it returns the text wrapped with `<></>` tag.\n\n    Before:\n\n    ```ruby\n    simple_format(\"Hello World\", {},  { wrapper_tag: nil })\n    # <>Hello World</>\n    ```\n\n    After:\n\n    ```ruby\n    simple_format(\"Hello World\", {},  { wrapper_tag: nil })\n    # <p>Hello World</p>\n    ```\n\n    *Akhil G Krishnan*, *Junichi Ito*",
+    "project": "actionview",
+    "date_merged": 1693909069000,
+    "author": "Akhil G Krishnan",
+    "sha": "1677e31240f77010244786fd7300e0d8a3ab8685",
+    "pr": "49120",
+    "merge_sha": "11257c82eedf32166cc59ecbc905ab65d5fce3d4",
+    "html": "<p>Fix <code>simple_format</code> with blank <code>wrapper_tag</code> option returns plain html tag</p>\n\n<p>By default <code>simple_format</code> method returns the text wrapped with <code>&lt;p&gt;</code>. But if we explicitly specify<br />\nthe <code>wrapper_tag: nil</code> in the options, it returns the text wrapped with <code>&lt;&gt;&lt;/&gt;</code> tag.</p>\n\n<p>Before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">simple_format</span><span class=\"p\">(</span><span class=\"s2\">\"Hello World\"</span><span class=\"p\">,</span> <span class=\"p\">{},</span>  <span class=\"p\">{</span> <span class=\"ss\">wrapper_tag: </span><span class=\"kp\">nil</span> <span class=\"p\">})</span>\n<span class=\"c1\"># &lt;&gt;Hello World&lt;/&gt;</span>\n</code></pre></div></div>\n\n<p>After:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">simple_format</span><span class=\"p\">(</span><span class=\"s2\">\"Hello World\"</span><span class=\"p\">,</span> <span class=\"p\">{},</span>  <span class=\"p\">{</span> <span class=\"ss\">wrapper_tag: </span><span class=\"kp\">nil</span> <span class=\"p\">})</span>\n<span class=\"c1\"># &lt;p&gt;Hello World&lt;/p&gt;</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em>, <em>Junichi Ito</em></p>\n"
+  },
+  {
     "message": "*   Don't double-encode nested `field_id` and `field_name` index values\n\n    Pass `index: @options` as a default keyword argument to `field_id` and\n    `field_name` view helper methods.\n\n    *Sean Doyle*",
     "project": "actionview",
     "date_merged": 1688333664000,
@@ -3088,6 +3098,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `rewhere` argument on `#merge`.\n\n    The `rewhere` argument on `#merge`is deprecated without replacement and\n    will be removed in Rails 7.2.\n\n    *Adam Hess*",
+    "project": "activerecord",
+    "date_merged": 1693911184000,
+    "author": "Deepak Mahakale",
+    "sha": "ba7def2e53a940e9b403ff90d549ed20b2923214",
+    "pr": "49149",
+    "merge_sha": "1b0ee9f3f692520d777fe010deb6974d96b010a7",
+    "html": "<p>Deprecate <code>rewhere</code> argument on <code>#merge</code>.</p>\n\n<p>The <code>rewhere</code> argument on <code>#merge</code>is deprecated without replacement and<br />\nwill be removed in Rails 7.2.</p>\n\n<p><em>Adam Hess</em></p>\n"
   },
   {
     "message": "*   Fix unscope is not working in specific case\n\n    Before:\n    ```ruby\n    Post.where(id: 1...3).unscope(where: :id).to_sql # \"SELECT `posts`.* FROM `posts` WHERE `posts`.`id` >= 1 AND `posts`.`id` < 3\"\n\n    ```\n\n    After:\n    ```ruby\n    Post.where(id: 1...3).unscope(where: :id).to_sql # \"SELECT `posts`.* FROM `posts`\"\n    ```\n\n    Fixes #48094.\n\n    *Kazuya Hatanaka*",
