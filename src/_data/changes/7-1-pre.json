@@ -3100,6 +3100,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Raise an `ArgumentError` when `#accepts_nested_attributes_for` is declared more than once for an association in\n    the same class. Previously, the last declaration would silently override the previous one. Overriding in a subclass\n    is still allowed.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1694015261000,
+    "author": "Joshua Young",
+    "sha": "0a54155757d4412c71c83521165696d3c46bc1ce",
+    "pr": "49055",
+    "merge_sha": "b6166e8da2a395f55b275ac9fdc8b957fb97d54a",
+    "html": "<p>Raise an <code>ArgumentError</code> when <code>#accepts_nested_attributes_for</code> is declared more than once for an association in<br />\nthe same class. Previously, the last declaration would silently override the previous one. Overriding in a subclass<br />\nis still allowed.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `rewhere` argument on `#merge`.\n\n    The `rewhere` argument on `#merge`is deprecated without replacement and\n    will be removed in Rails 7.2.\n\n    *Adam Hess*",
     "project": "activerecord",
     "date_merged": 1693911184000,
