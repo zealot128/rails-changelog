@@ -8593,6 +8593,25 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Raise an `ArgumentError` when `#accepts_nested_attributes_for` is declared more than once for an association in
+</title>
+    <link>https://github.com/rails/rails/issues/49055</link>
+    <guid>https://github.com/rails/rails/issues/49055</guid>
+    <description>*   Raise an `ArgumentError` when `#accepts_nested_attributes_for` is declared more than once for an association in
+    the same class. Previously, the last declaration would silently override the previous one. Overriding in a subclass
+    is still allowed.
+
+    *Joshua Young*</description>
+    <pubDate>Wed, 06 Sep 2023 15:47:41 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Raise an <code>ArgumentError</code> when <code>#accepts_nested_attributes_for</code> is declared more than once for an association in<br />
+the same class. Previously, the last declaration would silently override the previous one. Overriding in a subclass<br />
+is still allowed.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Deprecate `rewhere` argument on `#merge`.
 </title>
     <link>https://github.com/rails/rails/issues/49149</link>
