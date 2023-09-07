@@ -412,21 +412,21 @@ is persisted, unchanged, and saving it fails, in which case it returns <code>nil
 
     In the following example, the code failed to upload all but the last file to the configured service.
     ```ruby
-      ActiveRecord::Base.transaction do
-        user.attachments.attach({
-          content_type: &quot;text/plain&quot;,
-          filename: &quot;dummy.txt&quot;,
-          io: ::StringIO.new(&quot;dummy&quot;),
-        })
-        user.attachments.attach({
-          content_type: &quot;text/plain&quot;,
-          filename: &quot;dummy2.txt&quot;,
-          io: ::StringIO.new(&quot;dummy2&quot;),
-        })
-      end
+    ActiveRecord::Base.transaction do
+      user.attachments.attach({
+        content_type: &quot;text/plain&quot;,
+        filename: &quot;dummy.txt&quot;,
+        io: ::StringIO.new(&quot;dummy&quot;),
+      })
+      user.attachments.attach({
+        content_type: &quot;text/plain&quot;,
+        filename: &quot;dummy2.txt&quot;,
+        io: ::StringIO.new(&quot;dummy2&quot;),
+      })
+    end
 
-      assert_equal 2, user.attachments.count
-      assert user.attachments.first.service.exist?(user.attachments.first.key)  # Fails
+    assert_equal 2, user.attachments.count
+    assert user.attachments.first.service.exist?(user.attachments.first.key)  # Fails
     ```
 
     This was addressed by keeping track of the subchanges pending upload, and uploading them
@@ -440,21 +440,21 @@ is persisted, unchanged, and saving it fails, in which case it returns <code>nil
     <content:encoded><![CDATA[<p>Fixes multiple <code>attach</code> calls within transaction not uploading files correctly.</p>
 
 <p>In the following example, the code failed to upload all but the last file to the configured service.</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
-    <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">attach</span><span class="p">({</span>
-      <span class="ss">content_type: </span><span class="s2">"text/plain"</span><span class="p">,</span>
-      <span class="ss">filename: </span><span class="s2">"dummy.txt"</span><span class="p">,</span>
-      <span class="ss">io: </span><span class="o">::</span><span class="no">StringIO</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"dummy"</span><span class="p">),</span>
-    <span class="p">})</span>
-    <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">attach</span><span class="p">({</span>
-      <span class="ss">content_type: </span><span class="s2">"text/plain"</span><span class="p">,</span>
-      <span class="ss">filename: </span><span class="s2">"dummy2.txt"</span><span class="p">,</span>
-      <span class="ss">io: </span><span class="o">::</span><span class="no">StringIO</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"dummy2"</span><span class="p">),</span>
-    <span class="p">})</span>
-  <span class="k">end</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">attach</span><span class="p">({</span>
+    <span class="ss">content_type: </span><span class="s2">"text/plain"</span><span class="p">,</span>
+    <span class="ss">filename: </span><span class="s2">"dummy.txt"</span><span class="p">,</span>
+    <span class="ss">io: </span><span class="o">::</span><span class="no">StringIO</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"dummy"</span><span class="p">),</span>
+  <span class="p">})</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">attach</span><span class="p">({</span>
+    <span class="ss">content_type: </span><span class="s2">"text/plain"</span><span class="p">,</span>
+    <span class="ss">filename: </span><span class="s2">"dummy2.txt"</span><span class="p">,</span>
+    <span class="ss">io: </span><span class="o">::</span><span class="no">StringIO</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"dummy2"</span><span class="p">),</span>
+  <span class="p">})</span>
+<span class="k">end</span>
 
-  <span class="n">assert_equal</span> <span class="mi">2</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">count</span>
-  <span class="n">assert</span> <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">service</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">key</span><span class="p">)</span>  <span class="c1"># Fails</span>
+<span class="n">assert_equal</span> <span class="mi">2</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">count</span>
+<span class="n">assert</span> <span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">service</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">attachments</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">key</span><span class="p">)</span>  <span class="c1"># Fails</span>
 </code></pre></div></div>
 
 <p>This was addressed by keeping track of the subchanges pending upload, and uploading them<br />
@@ -3745,14 +3745,14 @@ will cause those paths to be used in the search for mailer previews.</p>
     to consider both character count and byte size while keeping the character length validation in place.
 
     ```ruby
-      user = User.new(password: &quot;a&quot; * 73)  # 73 characters
-      user.valid? # =&gt; false
-      user.errors[:password] # =&gt; [&quot;is too long&quot;]
+    user = User.new(password: &quot;a&quot; * 73)  # 73 characters
+    user.valid? # =&gt; false
+    user.errors[:password] # =&gt; [&quot;is too long&quot;]
 
 
-      user = User.new(password: &quot;あ&quot; * 25)  # 25 characters, 75 bytes
-      user.valid? # =&gt; false
-      user.errors[:password] # =&gt; [&quot;is too long&quot;]
+    user = User.new(password: &quot;あ&quot; * 25)  # 25 characters, 75 bytes
+    user.valid? # =&gt; false
+    user.errors[:password] # =&gt; [&quot;is too long&quot;]
     ```
 
     *ChatGPT*, *Guillermo Iguaran*</description>
@@ -3765,14 +3765,14 @@ compatibility.</p>
 accurately reflect the 72-byte size limit imposed by BCrypt. This change updates the validation<br />
 to consider both character count and byte size while keeping the character length validation in place.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">password: </span><span class="s2">"a"</span> <span class="o">*</span> <span class="mi">73</span><span class="p">)</span>  <span class="c1"># 73 characters</span>
-  <span class="n">user</span><span class="p">.</span><span class="nf">valid?</span> <span class="c1"># =&gt; false</span>
-  <span class="n">user</span><span class="p">.</span><span class="nf">errors</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span> <span class="c1"># =&gt; ["is too long"]</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">password: </span><span class="s2">"a"</span> <span class="o">*</span> <span class="mi">73</span><span class="p">)</span>  <span class="c1"># 73 characters</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">valid?</span> <span class="c1"># =&gt; false</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">errors</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span> <span class="c1"># =&gt; ["is too long"]</span>
 
 
-  <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">password: </span><span class="s2">"あ"</span> <span class="o">*</span> <span class="mi">25</span><span class="p">)</span>  <span class="c1"># 25 characters, 75 bytes</span>
-  <span class="n">user</span><span class="p">.</span><span class="nf">valid?</span> <span class="c1"># =&gt; false</span>
-  <span class="n">user</span><span class="p">.</span><span class="nf">errors</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span> <span class="c1"># =&gt; ["is too long"]</span>
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">password: </span><span class="s2">"あ"</span> <span class="o">*</span> <span class="mi">25</span><span class="p">)</span>  <span class="c1"># 25 characters, 75 bytes</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">valid?</span> <span class="c1"># =&gt; false</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">errors</span><span class="p">[</span><span class="ss">:password</span><span class="p">]</span> <span class="c1"># =&gt; ["is too long"]</span>
 </code></pre></div></div>
 
 <p><em>ChatGPT</em>, <em>Guillermo Iguaran</em></p>
@@ -4406,6 +4406,7 @@ To keep the current functionality, a fallback is created to look for the media-t
     This is very useful in situations where you only want to add a required param that is part of the route&#39;s URL but for other route not append an extraneous query param.
 
     Given the following router...
+
     ```ruby
     Rails.application.routes.draw do
       scope &quot;:account_id&quot; do
@@ -4417,12 +4418,13 @@ To keep the current functionality, a fallback is created to look for the media-t
     ```
 
     And given the following `ApplicationController`
+
     ```ruby
-      class ApplicationController &lt; ActionController::Base
-        def default_url_options
-          { path_params: { account_id: &quot;foo&quot; } }
-        end
+    class ApplicationController &lt; ActionController::Base
+      def default_url_options
+        { path_params: { account_id: &quot;foo&quot; } }
       end
+    end
     ```
 
     The standard url_for helper and friends will now behave as follows:
@@ -4444,6 +4446,7 @@ To keep the current functionality, a fallback is created to look for the media-t
 This is very useful in situations where you only want to add a required param that is part of the route’s URL but for other route not append an extraneous query param.</p>
 
 <p>Given the following router…</p>
+
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
   <span class="n">scope</span> <span class="s2">":account_id"</span> <span class="k">do</span>
     <span class="n">get</span> <span class="s2">"dashboard"</span> <span class="o">=&gt;</span> <span class="s2">"pages#dashboard"</span><span class="p">,</span> <span class="ss">as: :dashboard</span>
@@ -4454,11 +4457,12 @@ This is very useful in situations where you only want to add a required param th
 </code></pre></div></div>
 
 <p>And given the following <code>ApplicationController</code></p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
-    <span class="k">def</span> <span class="nf">default_url_options</span>
-      <span class="p">{</span> <span class="ss">path_params: </span><span class="p">{</span> <span class="ss">account_id: </span><span class="s2">"foo"</span> <span class="p">}</span> <span class="p">}</span>
-    <span class="k">end</span>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="k">def</span> <span class="nf">default_url_options</span>
+    <span class="p">{</span> <span class="ss">path_params: </span><span class="p">{</span> <span class="ss">account_id: </span><span class="s2">"foo"</span> <span class="p">}</span> <span class="p">}</span>
   <span class="k">end</span>
+<span class="k">end</span>
 </code></pre></div></div>
 
 <p>The standard url_for helper and friends will now behave as follows:</p>
@@ -10564,15 +10568,15 @@ to casting unknown types to strings, which could lead to corrupted data.</p>
     Before:
 
     ```ruby
-      serialize :content, JSON
-      serialize :backtrace, Array
+    serialize :content, JSON
+    serialize :backtrace, Array
     ```
 
     After:
 
     ```ruby
-      serialize :content, coder: JSON
-      serialize :backtrace, type: Array
+    serialize :content, coder: JSON
+    serialize :backtrace, type: Array
     ```
 
     *Jean Boussier*</description>
@@ -10585,14 +10589,14 @@ types of values, <code>serialize</code> now accepts two distinct keyword argumen
 
 <p>Before:</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">serialize</span> <span class="ss">:content</span><span class="p">,</span> <span class="no">JSON</span>
-  <span class="n">serialize</span> <span class="ss">:backtrace</span><span class="p">,</span> <span class="no">Array</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">serialize</span> <span class="ss">:content</span><span class="p">,</span> <span class="no">JSON</span>
+<span class="n">serialize</span> <span class="ss">:backtrace</span><span class="p">,</span> <span class="no">Array</span>
 </code></pre></div></div>
 
 <p>After:</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">serialize</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">coder: </span><span class="no">JSON</span>
-  <span class="n">serialize</span> <span class="ss">:backtrace</span><span class="p">,</span> <span class="ss">type: </span><span class="no">Array</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">serialize</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">coder: </span><span class="no">JSON</span>
+<span class="n">serialize</span> <span class="ss">:backtrace</span><span class="p">,</span> <span class="ss">type: </span><span class="no">Array</span>
 </code></pre></div></div>
 
 <p><em>Jean Boussier</em></p>
@@ -14074,15 +14078,15 @@ when the adapter raises an <code>ActiveJob::EnqueueError</code>.</p>
     This method lets job authors define a block which will be run when a job is about to be discarded. For example:
 
     ```ruby
-      class AfterDiscardJob &lt; ActiveJob::Base
-        after_discard do |job, exception|
-          Rails.logger.info(&quot;#{job.class} raised an exception: #{exception}&quot;)
-        end
-
-        def perform
-          raise StandardError
-        end
+    class AfterDiscardJob &lt; ActiveJob::Base
+      after_discard do |job, exception|
+        Rails.logger.info(&quot;#{job.class} raised an exception: #{exception}&quot;)
       end
+
+      def perform
+        raise StandardError
+      end
+    end
     ```
 
     The above job will run the block passed to `after_discard` after the job is discarded. The exception will
@@ -14095,15 +14099,15 @@ when the adapter raises an <code>ActiveJob::EnqueueError</code>.</p>
 
 <p>This method lets job authors define a block which will be run when a job is about to be discarded. For example:</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">AfterDiscardJob</span> <span class="o">&lt;</span> <span class="no">ActiveJob</span><span class="o">::</span><span class="no">Base</span>
-    <span class="n">after_discard</span> <span class="k">do</span> <span class="o">|</span><span class="n">job</span><span class="p">,</span> <span class="n">exception</span><span class="o">|</span>
-      <span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">job</span><span class="p">.</span><span class="nf">class</span><span class="si">}</span><span class="s2"> raised an exception: </span><span class="si">#{</span><span class="n">exception</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="k">end</span>
-
-    <span class="k">def</span> <span class="nf">perform</span>
-      <span class="k">raise</span> <span class="no">StandardError</span>
-    <span class="k">end</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AfterDiscardJob</span> <span class="o">&lt;</span> <span class="no">ActiveJob</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">after_discard</span> <span class="k">do</span> <span class="o">|</span><span class="n">job</span><span class="p">,</span> <span class="n">exception</span><span class="o">|</span>
+    <span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">job</span><span class="p">.</span><span class="nf">class</span><span class="si">}</span><span class="s2"> raised an exception: </span><span class="si">#{</span><span class="n">exception</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
   <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">perform</span>
+    <span class="k">raise</span> <span class="no">StandardError</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 </code></pre></div></div>
 
 <p>The above job will run the block passed to <code>after_discard</code> after the job is discarded. The exception will<br />
