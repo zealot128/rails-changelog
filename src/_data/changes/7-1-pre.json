@@ -3100,6 +3100,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Adds support for `if_not_exists` when adding a check constraint.\n\n    ```ruby\n    add_check_constraint :posts, \"post_type IN ('blog', 'comment', 'share')\", if_not_exists: true\n    ```\n\n    *Cody Cutrer*",
+    "project": "activerecord",
+    "date_merged": 1694225217000,
+    "author": "Cody Cutrer",
+    "sha": "bb783cad08ef99fa3ce44d1a7da6b7932ba502f9",
+    "pr": "49178",
+    "merge_sha": "234eff4cbcbff283df887928142aa5189411178b",
+    "html": "<p>Adds support for <code>if_not_exists</code> when adding a check constraint.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_check_constraint</span> <span class=\"ss\">:posts</span><span class=\"p\">,</span> <span class=\"s2\">\"post_type IN ('blog', 'comment', 'share')\"</span><span class=\"p\">,</span> <span class=\"ss\">if_not_exists: </span><span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Cody Cutrer</em></p>\n"
+  },
+  {
     "message": "*   Raise an `ArgumentError` when `#accepts_nested_attributes_for` is declared more than once for an association in\n    the same class. Previously, the last declaration would silently override the previous one. Overriding in a subclass\n    is still allowed.\n\n    *Joshua Young*",
     "project": "activerecord",
     "date_merged": 1694015261000,
