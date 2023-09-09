@@ -8597,6 +8597,28 @@ whole tag.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Adds support for `if_not_exists` when adding a check constraint.
+</title>
+    <link>https://github.com/rails/rails/issues/49178</link>
+    <guid>https://github.com/rails/rails/issues/49178</guid>
+    <description>*   Adds support for `if_not_exists` when adding a check constraint.
+
+    ```ruby
+    add_check_constraint :posts, &quot;post_type IN (&#39;blog&#39;, &#39;comment&#39;, &#39;share&#39;)&quot;, if_not_exists: true
+    ```
+
+    *Cody Cutrer*</description>
+    <pubDate>Sat, 09 Sep 2023 02:06:57 +0000</pubDate>
+    <author>Cody Cutrer</author>
+    <content:encoded><![CDATA[<p>Adds support for <code>if_not_exists</code> when adding a check constraint.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_check_constraint</span> <span class="ss">:posts</span><span class="p">,</span> <span class="s2">"post_type IN ('blog', 'comment', 'share')"</span><span class="p">,</span> <span class="ss">if_not_exists: </span><span class="kp">true</span>
+</code></pre></div></div>
+
+<p><em>Cody Cutrer</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Raise an `ArgumentError` when `#accepts_nested_attributes_for` is declared more than once for an association in
 </title>
     <link>https://github.com/rails/rails/issues/49055</link>
