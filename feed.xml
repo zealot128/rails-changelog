@@ -4181,6 +4181,27 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: `AbstractController::Translation.raise_on_missing_translations` removed
+</title>
+    <link>https://github.com/rails/rails/issues/47115</link>
+    <guid>https://github.com/rails/rails/issues/47115</guid>
+    <description>*   `AbstractController::Translation.raise_on_missing_translations` removed
+
+    This was a private API, and has been removed in favour of a more broadly applicable
+    `config.i18n.raise_on_missing_translations`. See the upgrading guide for more information.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Sat, 09 Sep 2023 20:14:44 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p><code>AbstractController::Translation.raise_on_missing_translations</code> removed</p>
+
+<p>This was a private API, and has been removed in favour of a more broadly applicable<br />
+<code>config.i18n.raise_on_missing_translations</code>. See the upgrading guide for more information.</p>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add `ActionController::Parameters#extract_value` method to allow extracting serialized values from params
 </title>
     <link>https://github.com/rails/rails/issues/49042</link>
@@ -8594,6 +8615,38 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Support composite foreign keys via migration helpers.
+</title>
+    <link>https://github.com/rails/rails/issues/47637</link>
+    <guid>https://github.com/rails/rails/issues/47637</guid>
+    <description>*   Support composite foreign keys via migration helpers.
+
+    ```ruby
+    # Assuming &quot;carts&quot; table has &quot;(shop_id, user_id)&quot; as a primary key.
+
+    add_foreign_key(:orders, :carts, primary_key: [:shop_id, :user_id])
+
+    remove_foreign_key(:orders, :carts, primary_key: [:shop_id, :user_id])
+    foreign_key_exists?(:orders, :carts, primary_key: [:shop_id, :user_id])
+    ```
+
+    *fatkodima*</description>
+    <pubDate>Sat, 09 Sep 2023 20:44:13 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Support composite foreign keys via migration helpers.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Assuming "carts" table has "(shop_id, user_id)" as a primary key.</span>
+
+<span class="n">add_foreign_key</span><span class="p">(</span><span class="ss">:orders</span><span class="p">,</span> <span class="ss">:carts</span><span class="p">,</span> <span class="ss">primary_key: </span><span class="p">[</span><span class="ss">:shop_id</span><span class="p">,</span> <span class="ss">:user_id</span><span class="p">])</span>
+
+<span class="n">remove_foreign_key</span><span class="p">(</span><span class="ss">:orders</span><span class="p">,</span> <span class="ss">:carts</span><span class="p">,</span> <span class="ss">primary_key: </span><span class="p">[</span><span class="ss">:shop_id</span><span class="p">,</span> <span class="ss">:user_id</span><span class="p">])</span>
+<span class="n">foreign_key_exists?</span><span class="p">(</span><span class="ss">:orders</span><span class="p">,</span> <span class="ss">:carts</span><span class="p">,</span> <span class="ss">primary_key: </span><span class="p">[</span><span class="ss">:shop_id</span><span class="p">,</span> <span class="ss">:user_id</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p><em>fatkodima</em></p>
 ]]></content:encoded>
   </item>
   <item>
