@@ -1460,6 +1460,16 @@
     "html": "<p>Add “back to top” button to guides</p>\n\n<p><em>Alysson Rosa</em></p>\n"
   },
   {
+    "message": "*   `AbstractController::Translation.raise_on_missing_translations` removed\n\n    This was a private API, and has been removed in favour of a more broadly applicable\n    `config.i18n.raise_on_missing_translations`. See the upgrading guide for more information.\n\n    *Alex Ghiculescu*",
+    "project": "actionpack",
+    "date_merged": 1694290484000,
+    "author": "Alex Ghiculescu",
+    "sha": "ff6881d2b231cdb053e100a8e0c865475ae024fc",
+    "pr": "47115",
+    "merge_sha": "09c15530fa6e96679135dbde42935d4217dbd846",
+    "html": "<p><code>AbstractController::Translation.raise_on_missing_translations</code> removed</p>\n\n<p>This was a private API, and has been removed in favour of a more broadly applicable<br />\n<code>config.i18n.raise_on_missing_translations</code>. See the upgrading guide for more information.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   Add `ActionController::Parameters#extract_value` method to allow extracting serialized values from params\n\n    ```ruby\n    params = ActionController::Parameters.new(id: \"1_123\", tags: \"ruby,rails\")\n    params.extract_value(:id) # => [\"1\", \"123\"]\n    params.extract_value(:tags, delimiter: \",\") # => [\"ruby\", \"rails\"]\n    ```\n\n    *Nikita Vasilevsky*",
     "project": "actionpack",
     "date_merged": 1693235395000,
@@ -3098,6 +3108,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Support composite foreign keys via migration helpers.\n\n    ```ruby\n    # Assuming \"carts\" table has \"(shop_id, user_id)\" as a primary key.\n\n    add_foreign_key(:orders, :carts, primary_key: [:shop_id, :user_id])\n\n    remove_foreign_key(:orders, :carts, primary_key: [:shop_id, :user_id])\n    foreign_key_exists?(:orders, :carts, primary_key: [:shop_id, :user_id])\n    ```\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1694292253000,
+    "author": "fatkodima",
+    "sha": "3f17465362f60c025825d6de53792a8c8f72ee91",
+    "pr": "47637",
+    "merge_sha": "1559fe1bb9603f92c094969a3dd68c99370aa866",
+    "html": "<p>Support composite foreign keys via migration helpers.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Assuming \"carts\" table has \"(shop_id, user_id)\" as a primary key.</span>\n\n<span class=\"n\">add_foreign_key</span><span class=\"p\">(</span><span class=\"ss\">:orders</span><span class=\"p\">,</span> <span class=\"ss\">:carts</span><span class=\"p\">,</span> <span class=\"ss\">primary_key: </span><span class=\"p\">[</span><span class=\"ss\">:shop_id</span><span class=\"p\">,</span> <span class=\"ss\">:user_id</span><span class=\"p\">])</span>\n\n<span class=\"n\">remove_foreign_key</span><span class=\"p\">(</span><span class=\"ss\">:orders</span><span class=\"p\">,</span> <span class=\"ss\">:carts</span><span class=\"p\">,</span> <span class=\"ss\">primary_key: </span><span class=\"p\">[</span><span class=\"ss\">:shop_id</span><span class=\"p\">,</span> <span class=\"ss\">:user_id</span><span class=\"p\">])</span>\n<span class=\"n\">foreign_key_exists?</span><span class=\"p\">(</span><span class=\"ss\">:orders</span><span class=\"p\">,</span> <span class=\"ss\">:carts</span><span class=\"p\">,</span> <span class=\"ss\">primary_key: </span><span class=\"p\">[</span><span class=\"ss\">:shop_id</span><span class=\"p\">,</span> <span class=\"ss\">:user_id</span><span class=\"p\">])</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
     "message": "*   Adds support for `if_not_exists` when adding a check constraint.\n\n    ```ruby\n    add_check_constraint :posts, \"post_type IN ('blog', 'comment', 'share')\", if_not_exists: true\n    ```\n\n    *Cody Cutrer*",
