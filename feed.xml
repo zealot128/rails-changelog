@@ -10984,17 +10984,18 @@ argument, more closely matching their <code>Enumerable</code> equivalents.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add `ActiveRecord::Base::normalizes` to declare attribute normalizations.
+    <title>activerecord: Add `ActiveRecord::Base.normalizes` for declaring attribute normalizations.
 </title>
-    <link>https://github.com/rails/rails/issues/43945</link>
-    <guid>https://github.com/rails/rails/issues/43945</guid>
-    <description>*   Add `ActiveRecord::Base::normalizes` to declare attribute normalizations.
+    <link>https://github.com/rails/rails/issues/49216</link>
+    <guid>https://github.com/rails/rails/issues/49216</guid>
+    <description>*   Add `ActiveRecord::Base.normalizes` for declaring attribute normalizations.
 
-    A normalization is applied when the attribute is assigned or updated, and
-    the normalized value will be persisted to the database.  The normalization
-    is also applied to the corresponding keyword argument of finder methods.
-    This allows a record to be created and later queried using unnormalized
-    values.  For example:
+    An attribute normalization is applied when the attribute is assigned or
+    updated, and the normalized value will be persisted to the database.  The
+    normalization is also applied to the corresponding keyword argument of query
+    methods, allowing records to be queried using unnormalized values.
+
+    For example:
 
       ```ruby
       class User &lt; ActiveRecord::Base
@@ -11009,7 +11010,8 @@ argument, more closely matching their <code>Enumerable</code> equivalents.</p>
       user.email                  # =&gt; &quot;cruise-control@example.com&quot;
       user.email_before_type_cast # =&gt; &quot;cruise-control@example.com&quot;
 
-      User.where(email: &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;).count # =&gt; 1
+      User.where(email: &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;).count         # =&gt; 1
+      User.where([&quot;email = ?&quot;, &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;]).count # =&gt; 0
 
       User.exists?(email: &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;)         # =&gt; true
       User.exists?([&quot;email = ?&quot;, &quot;\tCRUISE-CONTROL@EXAMPLE.COM &quot;]) # =&gt; false
@@ -11018,15 +11020,16 @@ argument, more closely matching their <code>Enumerable</code> equivalents.</p>
       ```
 
     *Jonathan Hefner*</description>
-    <pubDate>Wed, 21 Dec 2022 20:07:55 +0000</pubDate>
+    <pubDate>Sun, 10 Sep 2023 23:00:30 +0000</pubDate>
     <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Add <code>ActiveRecord::Base::normalizes</code> to declare attribute normalizations.</p>
+    <content:encoded><![CDATA[<p>Add <code>ActiveRecord::Base.normalizes</code> for declaring attribute normalizations.</p>
 
-<p>A normalization is applied when the attribute is assigned or updated, and<br />
-the normalized value will be persisted to the database.  The normalization<br />
-is also applied to the corresponding keyword argument of finder methods.<br />
-This allows a record to be created and later queried using unnormalized<br />
-values.  For example:</p>
+<p>An attribute normalization is applied when the attribute is assigned or<br />
+updated, and the normalized value will be persisted to the database.  The<br />
+normalization is also applied to the corresponding keyword argument of query<br />
+methods, allowing records to be queried using unnormalized values.</p>
+
+<p>For example:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
     <span class="n">normalizes</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">with: </span><span class="o">-&gt;</span> <span class="n">email</span> <span class="p">{</span> <span class="n">email</span><span class="p">.</span><span class="nf">strip</span><span class="p">.</span><span class="nf">downcase</span> <span class="p">}</span>
@@ -11040,7 +11043,8 @@ values.  For example:</p>
   <span class="n">user</span><span class="p">.</span><span class="nf">email</span>                  <span class="c1"># =&gt; "cruise-control@example.com"</span>
   <span class="n">user</span><span class="p">.</span><span class="nf">email_before_type_cast</span> <span class="c1"># =&gt; "cruise-control@example.com"</span>
 
-  <span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">email: </span><span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">).</span><span class="nf">count</span> <span class="c1"># =&gt; 1</span>
+  <span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">email: </span><span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">).</span><span class="nf">count</span>         <span class="c1"># =&gt; 1</span>
+  <span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">([</span><span class="s2">"email = ?"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">]).</span><span class="nf">count</span> <span class="c1"># =&gt; 0</span>
 
   <span class="no">User</span><span class="p">.</span><span class="nf">exists?</span><span class="p">(</span><span class="ss">email: </span><span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">)</span>         <span class="c1"># =&gt; true</span>
   <span class="no">User</span><span class="p">.</span><span class="nf">exists?</span><span class="p">([</span><span class="s2">"email = ?"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">CRUISE-CONTROL@EXAMPLE.COM "</span><span class="p">])</span> <span class="c1"># =&gt; false</span>
@@ -12653,11 +12657,11 @@ which is wasteful and cause problem with YAML safe_load.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add new `ActiveRecord::Base::generates_token_for` API.
+    <title>activerecord: Add new `ActiveRecord::Base.generates_token_for` API.
 </title>
-    <link>https://github.com/rails/rails/issues/44189</link>
-    <guid>https://github.com/rails/rails/issues/44189</guid>
-    <description>*   Add new `ActiveRecord::Base::generates_token_for` API.
+    <link>https://github.com/rails/rails/issues/49216</link>
+    <guid>https://github.com/rails/rails/issues/49216</guid>
+    <description>*   Add new `ActiveRecord::Base.generates_token_for` API.
 
     Currently, `signed_id` fulfills the role of generating tokens for e.g.
     resetting a password.  However, signed IDs cannot reflect record state, so
@@ -12665,9 +12669,9 @@ which is wasteful and cause problem with YAML safe_load.</p>
     least until it expires.
 
     With `generates_token_for`, a token can embed data from a record.  When
-    using the token to fetch the record, the data from the token and the data
-    from the record will be compared.  If the two do not match, the token will
-    be treated as invalid, the same as if it had expired.  For example:
+    using the token to fetch the record, the data from the token and the current
+    data from the record will be compared.  If the two do not match, the token
+    will be treated as invalid, the same as if it had expired.  For example:
 
     ```ruby
     class User &lt; ActiveRecord::Base
@@ -12691,9 +12695,9 @@ which is wasteful and cause problem with YAML safe_load.</p>
     ```
 
     *Jonathan Hefner*</description>
-    <pubDate>Sat, 09 Jul 2022 05:39:27 +0000</pubDate>
+    <pubDate>Sun, 10 Sep 2023 23:00:30 +0000</pubDate>
     <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Add new <code>ActiveRecord::Base::generates_token_for</code> API.</p>
+    <content:encoded><![CDATA[<p>Add new <code>ActiveRecord::Base.generates_token_for</code> API.</p>
 
 <p>Currently, <code>signed_id</code> fulfills the role of generating tokens for e.g.<br />
 resetting a password.  However, signed IDs cannot reflect record state, so<br />
@@ -12701,9 +12705,9 @@ if a token is intended to be single-use, it must be tracked in a database at<br 
 least until it expires.</p>
 
 <p>With <code>generates_token_for</code>, a token can embed data from a record.  When<br />
-using the token to fetch the record, the data from the token and the data<br />
-from the record will be compared.  If the two do not match, the token will<br />
-be treated as invalid, the same as if it had expired.  For example:</p>
+using the token to fetch the record, the data from the token and the current<br />
+data from the record will be compared.  If the two do not match, the token<br />
+will be treated as invalid, the same as if it had expired.  For example:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">has_secure_password</span>
