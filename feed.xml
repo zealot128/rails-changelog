@@ -5633,6 +5633,25 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: bin/setup uses `bun` instead of `yarn` when generated an app with bun
+</title>
+    <link>https://github.com/rails/rails/issues/49229</link>
+    <guid>https://github.com/rails/rails/issues/49229</guid>
+    <description>*   bin/setup uses `bun` instead of `yarn` when generated an app with bun
+
+    Use `bun install` on `bin/setup` when using `bun`.
+
+    *Cadu Ribeiro*</description>
+    <pubDate>Tue, 12 Sep 2023 01:21:38 +0000</pubDate>
+    <author>Cadu Ribeiro</author>
+    <content:encoded><![CDATA[<p>bin/setup uses <code>bun</code> instead of <code>yarn</code> when generated an app with bun</p>
+
+<p>Use <code>bun install</code> on <code>bin/setup</code> when using <code>bun</code>.</p>
+
+<p><em>Cadu Ribeiro</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: `config/application.rb` now includes
 </title>
     <link>https://github.com/rails/rails/issues/49032</link>
@@ -8615,6 +8634,40 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add instrumentation for Active Record transactions
+</title>
+    <link>https://github.com/rails/rails/issues/49192</link>
+    <guid>https://github.com/rails/rails/issues/49192</guid>
+    <description>*   Add instrumentation for Active Record transactions
+
+    Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection, as well as timing details.
+
+    ```ruby
+    ActiveSupport::Notifications.subscribe(&quot;transaction.active_record&quot;) do |event|
+      puts &quot;Transaction event occurred!&quot;
+      connection = event.payload[:connection]
+      puts &quot;Connection: #{connection.inspect}&quot;
+    end
+    ```
+
+    *Daniel Colson*, *Ian Candy*</description>
+    <pubDate>Tue, 12 Sep 2023 01:20:11 +0000</pubDate>
+    <author>Daniel Colson</author>
+    <content:encoded><![CDATA[<p>Add instrumentation for Active Record transactions</p>
+
+<p>Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection, as well as timing details.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Notifications</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="s2">"transaction.active_record"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"Transaction event occurred!"</span>
+  <span class="n">connection</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="nf">payload</span><span class="p">[</span><span class="ss">:connection</span><span class="p">]</span>
+  <span class="nb">puts</span> <span class="s2">"Connection: </span><span class="si">#{</span><span class="n">connection</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Daniel Colson</em>, <em>Ian Candy</em></p>
 ]]></content:encoded>
   </item>
   <item>
