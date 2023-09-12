@@ -2070,6 +2070,16 @@
     "html": "<p>Add <code>:unsafe_hashes</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"s2\">\"'unsafe-hashes'\"</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"ss\">:unsafe_hashes</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n</code></pre></div></div>\n\n<p><em>Igor Morozov</em></p>\n"
   },
   {
+    "message": "*   bin/setup uses `bun` instead of `yarn` when generated an app with bun\n\n    Use `bun install` on `bin/setup` when using `bun`.\n\n    *Cadu Ribeiro*",
+    "project": "railties",
+    "date_merged": 1694481698000,
+    "author": "Cadu Ribeiro",
+    "sha": "9a98235cedfd6dad924801dc979b85d22d7b0e50",
+    "pr": "49229",
+    "merge_sha": "d469436074bd4ab5b9349c92450a4e4784a881da",
+    "html": "<p>bin/setup uses <code>bun</code> instead of <code>yarn</code> when generated an app with bun</p>\n\n<p>Use <code>bun install</code> on <code>bin/setup</code> when using <code>bun</code>.</p>\n\n<p><em>Cadu Ribeiro</em></p>\n"
+  },
+  {
     "message": "*   `config/application.rb` now includes\n\n    ```ruby\n    config.autoload_lib(ignore: %w(assets tasks))\n    ```\n\n    In practice, this means that new 7.1 applications autoload from `lib` out of the box.\n\n    *Xavier Noria*",
     "project": "railties",
     "date_merged": 1692949004000,
@@ -3108,6 +3118,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add instrumentation for Active Record transactions\n\n    Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection, as well as timing details.\n\n    ```ruby\n    ActiveSupport::Notifications.subscribe(\"transaction.active_record\") do |event|\n      puts \"Transaction event occurred!\"\n      connection = event.payload[:connection]\n      puts \"Connection: #{connection.inspect}\"\n    end\n    ```\n\n    *Daniel Colson*, *Ian Candy*",
+    "project": "activerecord",
+    "date_merged": 1694481611000,
+    "author": "Daniel Colson",
+    "sha": "ce49fa9b31cd4a21d43db39d0cea364bce28b51d",
+    "pr": "49192",
+    "merge_sha": "514021f676ac0ee64fdc037b4ac8206791cc44b0",
+    "html": "<p>Add instrumentation for Active Record transactions</p>\n\n<p>Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection, as well as timing details.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">subscribe</span><span class=\"p\">(</span><span class=\"s2\">\"transaction.active_record\"</span><span class=\"p\">)</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">event</span><span class=\"o\">|</span>\n  <span class=\"nb\">puts</span> <span class=\"s2\">\"Transaction event occurred!\"</span>\n  <span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"n\">event</span><span class=\"p\">.</span><span class=\"nf\">payload</span><span class=\"p\">[</span><span class=\"ss\">:connection</span><span class=\"p\">]</span>\n  <span class=\"nb\">puts</span> <span class=\"s2\">\"Connection: </span><span class=\"si\">#{</span><span class=\"n\">connection</span><span class=\"p\">.</span><span class=\"nf\">inspect</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Daniel Colson</em>, <em>Ian Candy</em></p>\n"
   },
   {
     "message": "*   Support composite foreign keys via migration helpers.\n\n    ```ruby\n    # Assuming \"carts\" table has \"(shop_id, user_id)\" as a primary key.\n\n    add_foreign_key(:orders, :carts, primary_key: [:shop_id, :user_id])\n\n    remove_foreign_key(:orders, :carts, primary_key: [:shop_id, :user_id])\n    foreign_key_exists?(:orders, :carts, primary_key: [:shop_id, :user_id])\n    ```\n\n    *fatkodima*",
