@@ -5633,6 +5633,28 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: `rails new --javascript` generator now supports Bun
+</title>
+    <link>https://github.com/rails/rails/issues/49241</link>
+    <guid>https://github.com/rails/rails/issues/49241</guid>
+    <description>*   `rails new --javascript` generator now supports Bun
+
+    ```bash
+    rails new my_new_app --javascript=bun
+    ```
+
+    *Jason Meller*</description>
+    <pubDate>Wed, 13 Sep 2023 00:23:46 +0000</pubDate>
+    <author>Jason Meller</author>
+    <content:encoded><![CDATA[<p><code>rails new --javascript</code> generator now supports Bun</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails new my_new_app <span class="nt">--javascript</span><span class="o">=</span>bun
+</code></pre></div></div>
+
+<p><em>Jason Meller</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: bin/setup uses `bun` instead of `yarn` when generated an app with bun
 </title>
     <link>https://github.com/rails/rails/issues/49229</link>
@@ -8634,6 +8656,40 @@ whole tag.</p>
     <content:encoded><![CDATA[<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Encryption now supports `support_unencrypted_data` being set per-attribute.
+</title>
+    <link>https://github.com/rails/rails/issues/49072</link>
+    <guid>https://github.com/rails/rails/issues/49072</guid>
+    <description>*   Encryption now supports `support_unencrypted_data` being set per-attribute.
+
+    You can now opt out of `support_unencrypted_data` on a specific encrypted attribute.
+    This only has an effect if `ActiveRecord::Encryption.config.support_unencrypted_data == true`.
+
+    ```ruby
+    class User &lt; ActiveRecord::Base
+      encrypts :name, deterministic: true, support_unencrypted_data: false
+      encrypts :email, deterministic: true
+    end
+    ```
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Wed, 13 Sep 2023 00:23:46 +0000</pubDate>
+    <author>Alex</author>
+    <content:encoded><![CDATA[<p>Encryption now supports <code>support_unencrypted_data</code> being set per-attribute.</p>
+
+<p>You can now opt out of <code>support_unencrypted_data</code> on a specific encrypted attribute.<br />
+This only has an effect if <code>ActiveRecord::Encryption.config.support_unencrypted_data == true</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">encrypts</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">deterministic: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">support_unencrypted_data: </span><span class="kp">false</span>
+  <span class="n">encrypts</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">deterministic: </span><span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Alex Ghiculescu</em></p>
 ]]></content:encoded>
   </item>
   <item>
