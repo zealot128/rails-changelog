@@ -2070,6 +2070,16 @@
     "html": "<p>Add <code>:unsafe_hashes</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"s2\">\"'unsafe-hashes'\"</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"ss\">:unsafe_hashes</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n</code></pre></div></div>\n\n<p><em>Igor Morozov</em></p>\n"
   },
   {
+    "message": "*   `rails new --javascript` generator now supports Bun\n\n    ```bash\n    rails new my_new_app --javascript=bun\n    ```\n\n    *Jason Meller*",
+    "project": "railties",
+    "date_merged": 1694564626000,
+    "author": "Jason Meller",
+    "sha": "274bc97d63f9e29129851a99c00fd2cefe97cfcf",
+    "pr": "49241",
+    "merge_sha": "aa268ba931f1535f29a2056c26f96d9da18fdd23",
+    "html": "<p><code>rails new --javascript</code> generator now supports Bun</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>rails new my_new_app <span class=\"nt\">--javascript</span><span class=\"o\">=</span>bun\n</code></pre></div></div>\n\n<p><em>Jason Meller</em></p>\n"
+  },
+  {
     "message": "*   bin/setup uses `bun` instead of `yarn` when generated an app with bun\n\n    Use `bun install` on `bin/setup` when using `bun`.\n\n    *Cadu Ribeiro*",
     "project": "railties",
     "date_merged": 1694481698000,
@@ -3118,6 +3128,16 @@
     "pr": "44328",
     "merge_sha": "159ce6921550f363b46625c243faa6ddad995579",
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Encryption now supports `support_unencrypted_data` being set per-attribute.\n\n    You can now opt out of `support_unencrypted_data` on a specific encrypted attribute.\n    This only has an effect if `ActiveRecord::Encryption.config.support_unencrypted_data == true`.\n\n    ```ruby\n    class User < ActiveRecord::Base\n      encrypts :name, deterministic: true, support_unencrypted_data: false\n      encrypts :email, deterministic: true\n    end\n    ```\n\n    *Alex Ghiculescu*",
+    "project": "activerecord",
+    "date_merged": 1694564626000,
+    "author": "Alex",
+    "sha": "439c93ed74d3abbb980be504cf6689249d7282fe",
+    "pr": "49072",
+    "merge_sha": "aa268ba931f1535f29a2056c26f96d9da18fdd23",
+    "html": "<p>Encryption now supports <code>support_unencrypted_data</code> being set per-attribute.</p>\n\n<p>You can now opt out of <code>support_unencrypted_data</code> on a specific encrypted attribute.<br />\nThis only has an effect if <code>ActiveRecord::Encryption.config.support_unencrypted_data == true</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">encrypts</span> <span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">deterministic: </span><span class=\"kp\">true</span><span class=\"p\">,</span> <span class=\"ss\">support_unencrypted_data: </span><span class=\"kp\">false</span>\n  <span class=\"n\">encrypts</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">deterministic: </span><span class=\"kp\">true</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
   },
   {
     "message": "*   Add instrumentation for Active Record transactions\n\n    Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection, as well as timing details.\n\n    ```ruby\n    ActiveSupport::Notifications.subscribe(\"transaction.active_record\") do |event|\n      puts \"Transaction event occurred!\"\n      connection = event.payload[:connection]\n      puts \"Connection: #{connection.inspect}\"\n    end\n    ```\n\n    *Daniel Colson*, *Ian Candy*",
