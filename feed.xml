@@ -4996,7 +4996,7 @@ This only has an effect if <code>ActiveRecord::Encryption.config.support_unencry
     <guid>https://github.com/rails/rails/issues/49192</guid>
     <description>*   Add instrumentation for Active Record transactions
 
-    Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection, as well as timing details.
+    Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection and the outcome (commit, rollback, restart, incomplete), as well as timing details.
 
     ```ruby
     ActiveSupport::Notifications.subscribe(&quot;transaction.active_record&quot;) do |event|
@@ -5011,7 +5011,7 @@ This only has an effect if <code>ActiveRecord::Encryption.config.support_unencry
     <author>Daniel Colson</author>
     <content:encoded><![CDATA[<p>Add instrumentation for Active Record transactions</p>
 
-<p>Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection, as well as timing details.</p>
+<p>Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection and the outcome (commit, rollback, restart, incomplete), as well as timing details.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Notifications</span><span class="p">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="s2">"transaction.active_record"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="s2">"Transaction event occurred!"</span>
