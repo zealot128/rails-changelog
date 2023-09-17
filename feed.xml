@@ -14568,6 +14568,25 @@ to keep things such as <code>CurrentAttributes</code> set from middlewares worki
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: Clarify the backoff strategy for the recommended `:wait` option when retrying jobs
+</title>
+    <link>https://github.com/rails/rails/issues/49292</link>
+    <guid>https://github.com/rails/rails/issues/49292</guid>
+    <description>*   Clarify the backoff strategy for the recommended `:wait` option when retrying jobs
+
+    `wait: :exponentially_longer` is waiting polynomially longer, so it is now recommended to use `wait: :polynomially_longer` to keep the same behavior.
+
+    *Victor Mours*</description>
+    <pubDate>Sat, 16 Sep 2023 19:02:21 +0000</pubDate>
+    <author>Victor Mours</author>
+    <content:encoded><![CDATA[<p>Clarify the backoff strategy for the recommended <code>:wait</code> option when retrying jobs</p>
+
+<p><code>wait: :exponentially_longer</code> is waiting polynomially longer, so it is now recommended to use <code>wait: :polynomially_longer</code> to keep the same behavior.</p>
+
+<p><em>Victor Mours</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: Fix Active Job log message to correctly report a job failed to enqueue
 </title>
     <link>https://github.com/rails/rails/issues/47865</link>
