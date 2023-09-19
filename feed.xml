@@ -11484,7 +11484,7 @@ constants defined on <code>Digest::UUID</code>.</p>
       ```ruby
       travel_to Time.new(2004, 11, 24) do
         # Inside the `travel_to` block `Time.new` is stubbed
-        assert_equal Time.new.year, 2004
+        assert_equal 2004, Time.new.year
       end
       ```
 
@@ -11495,7 +11495,7 @@ constants defined on <code>Digest::UUID</code>.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">travel_to</span> <span class="no">Time</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2004</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span> <span class="k">do</span>
     <span class="c1"># Inside the `travel_to` block `Time.new` is stubbed</span>
-    <span class="n">assert_equal</span> <span class="no">Time</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">year</span><span class="p">,</span> <span class="mi">2004</span>
+    <span class="n">assert_equal</span> <span class="mi">2004</span><span class="p">,</span> <span class="no">Time</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">year</span>
   <span class="k">end</span>
 </code></pre></div></div>
 
@@ -11632,7 +11632,7 @@ values, though both <code>MessageVerifier#verified</code> and<br />
     string.slice!(0, 1).html_safe? # =&gt; true
     # maintain html_safe? after the slice!
     string.html_safe? # =&gt; true
-    string.chr # =&gt; true
+    string.chr.html_safe? # =&gt; true
     ```
 
     *Michael Go*</description>
@@ -11648,7 +11648,7 @@ with <code>[]</code> method. Now, <code>slice</code>, <code>slice!</code>, and <
 <span class="n">string</span><span class="p">.</span><span class="nf">slice!</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="nf">html_safe?</span> <span class="c1"># =&gt; true</span>
 <span class="c1"># maintain html_safe? after the slice!</span>
 <span class="n">string</span><span class="p">.</span><span class="nf">html_safe?</span> <span class="c1"># =&gt; true</span>
-<span class="n">string</span><span class="p">.</span><span class="nf">chr</span> <span class="c1"># =&gt; true</span>
+<span class="n">string</span><span class="p">.</span><span class="nf">chr</span><span class="p">.</span><span class="nf">html_safe?</span> <span class="c1"># =&gt; true</span>
 </code></pre></div></div>
 
 <p><em>Michael Go</em></p>
