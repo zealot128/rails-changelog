@@ -1111,6 +1111,27 @@ fixes the issue.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Require `concurrent-ruby` in `config/puma.rb` so that Puma can boot in
+</title>
+    <link>https://github.com/rails/rails/issues/49325</link>
+    <guid>https://github.com/rails/rails/issues/49325</guid>
+    <description>*   Require `concurrent-ruby` in `config/puma.rb` so that Puma can boot in
+    production when `WEB_CONCURRENCY` is not explicitly specified.
+
+    Fixes #49323.
+
+    *Matt Brictson*</description>
+    <pubDate>Wed, 20 Sep 2023 15:57:05 +0000</pubDate>
+    <author>Matt Brictson</author>
+    <content:encoded><![CDATA[<p>Require <code>concurrent-ruby</code> in <code>config/puma.rb</code> so that Puma can boot in<br />
+production when <code>WEB_CONCURRENCY</code> is not explicitly specified.</p>
+
+<p>Fixes #49323.</p>
+
+<p><em>Matt Brictson</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Raise error when generating attribute with dangerous name.
 </title>
     <link>https://github.com/rails/rails/issues/47752</link>
@@ -4953,6 +4974,34 @@ before closing the connection with the reconnection strategy specified (defaults
 <p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>
 
 <p><em>Vladimir Dementyev</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Ensure the SQLite3 adapter handles default functions with the `||` concatenation operator
+</title>
+    <link>https://github.com/rails/rails/issues/49287</link>
+    <guid>https://github.com/rails/rails/issues/49287</guid>
+    <description>*   Ensure the SQLite3 adapter handles default functions with the `||` concatenation operator
+
+    Previously, this default function would produce the static string `&quot;&#39;Ruby &#39; || &#39;on &#39; || &#39;Rails&#39;&quot;`.
+    Now, the adapter will appropriately receive and use `&quot;Ruby on Rails&quot;`.
+
+    ```ruby
+    change_column_default &quot;test_models&quot;, &quot;ruby_on_rails&quot;, -&gt; { &quot;(&#39;Ruby &#39; || &#39;on &#39; || &#39;Rails&#39;)&quot; }
+    ```
+
+    *Stephen Margheim*</description>
+    <pubDate>Wed, 20 Sep 2023 16:20:23 +0000</pubDate>
+    <author>Stephen Margheim</author>
+    <content:encoded><![CDATA[<p>Ensure the SQLite3 adapter handles default functions with the <code>||</code> concatenation operator</p>
+
+<p>Previously, this default function would produce the static string <code>"'Ruby ' || 'on ' || 'Rails'"</code>.<br />
+Now, the adapter will appropriately receive and use <code>"Ruby on Rails"</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">change_column_default</span> <span class="s2">"test_models"</span><span class="p">,</span> <span class="s2">"ruby_on_rails"</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s2">"('Ruby ' || 'on ' || 'Rails')"</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Stephen Margheim</em></p>
 ]]></content:encoded>
   </item>
   <item>
