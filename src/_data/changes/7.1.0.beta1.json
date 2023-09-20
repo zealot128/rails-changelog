@@ -1790,6 +1790,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Dump PostgreSQL schemas as part of the schema dump.\n\n    *Lachlan Sylvester*",
+    "project": "activerecord",
+    "date_merged": 1695171603000,
+    "author": "Lachlan Sylvester",
+    "sha": "5f6efdab0f9acef8d04ca9a018667bfcd1cf59b5",
+    "pr": "49164",
+    "merge_sha": "b3df4f25ac3ff9f12da3aaa7441e7c082289c293",
+    "html": "<p>Dump PostgreSQL schemas as part of the schema dump.</p>\n\n<p><em>Lachlan Sylvester</em></p>\n"
+  },
+  {
     "message": "*   Encryption now supports `support_unencrypted_data` being set per-attribute.\n\n    You can now opt out of `support_unencrypted_data` on a specific encrypted attribute.\n    This only has an effect if `ActiveRecord::Encryption.config.support_unencrypted_data == true`.\n\n    ```ruby\n    class User < ActiveRecord::Base\n      encrypts :name, deterministic: true, support_unencrypted_data: false\n      encrypts :email, deterministic: true\n    end\n    ```\n\n    *Alex Ghiculescu*",
     "project": "activerecord",
     "date_merged": 1694564626000,
@@ -3678,6 +3688,26 @@
     "pr": "43880",
     "merge_sha": "5e75674196376b5e46e68419e004886379a31f6c",
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Use Ruby 3.3 Range#overlap? if available\n\n    *Yasuo Honda*",
+    "project": "activesupport",
+    "date_merged": 1695151110000,
+    "author": "Yasuo Honda",
+    "sha": "1d76d454113147cb2868dd7073d17a73fa8278dc",
+    "pr": "49317",
+    "merge_sha": "42523a01dbff0b140f7554a519cec37f1b256f8b",
+    "html": "<p>Use Ruby 3.3 Range#overlap? if available</p>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
+    "message": "*   Add `bigdecimal` as Active Support dependency that is a bundled gem candidate for Ruby 3.4.\n\n    `bigdecimal` 3.1.4 or higher version will be installed.\n    Ruby 2.7 and 3.0 users who want `bigdecimal` version 2.0.0 or 3.0.0 behavior as a default gem,\n    pin the `bigdecimal` version in your application Gemfile.\n\n    *Koichi ITO*",
+    "project": "activesupport",
+    "date_merged": 1695189803000,
+    "author": "Yasuo Honda",
+    "sha": "bc8da7abdd0f9840d7883c30805e1f34af1fbff6",
+    "pr": "49318",
+    "merge_sha": "0723e6c6584b3f22640424e834965d023381ea9c",
+    "html": "<p>Add <code>bigdecimal</code> as Active Support dependency that is a bundled gem candidate for Ruby 3.4.</p>\n\n<p><code>bigdecimal</code> 3.1.4 or higher version will be installed.<br />\nRuby 2.7 and 3.0 users who want <code>bigdecimal</code> version 2.0.0 or 3.0.0 behavior as a default gem,<br />\npin the <code>bigdecimal</code> version in your application Gemfile.</p>\n\n<p><em>Koichi ITO</em></p>\n"
   },
   {
     "message": "*   Add `drb`, `mutex_m` and `base64` that are bundled gem candidates for Ruby 3.4\n\n    *Yasuo Honda*",
