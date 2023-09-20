@@ -400,6 +400,16 @@
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
   },
   {
+    "message": "*   Require `concurrent-ruby` in `config/puma.rb` so that Puma can boot in\n    production when `WEB_CONCURRENCY` is not explicitly specified.\n\n    Fixes #49323.\n\n    *Matt Brictson*",
+    "project": "railties",
+    "date_merged": 1695225425000,
+    "author": "Matt Brictson",
+    "sha": "39ccb97e3c0d3de6fb54fa34d7ef581801c7b1db",
+    "pr": "49325",
+    "merge_sha": "a02444723e924a619523fadc97f8bf5aa067fbbb",
+    "html": "<p>Require <code>concurrent-ruby</code> in <code>config/puma.rb</code> so that Puma can boot in<br />\nproduction when <code>WEB_CONCURRENCY</code> is not explicitly specified.</p>\n\n<p>Fixes #49323.</p>\n\n<p><em>Matt Brictson</em></p>\n"
+  },
+  {
     "message": "*   Raise error when generating attribute with dangerous name.\n\n    The following will now raise an error as `save` and `hash` are already\n    defined by Active Record.\n\n    ```bash\n    $ bin/rails generate model Post save\n    $ bin/rails generate model Post hash\n    ```\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1694694786000,
@@ -1788,6 +1798,16 @@
     "pr": "46829",
     "merge_sha": "85bc6ca9d2c0768796bbd6e496b2b3206853127f",
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
+  },
+  {
+    "message": "*   Ensure the SQLite3 adapter handles default functions with the `||` concatenation operator\n\n    Previously, this default function would produce the static string `\"'Ruby ' || 'on ' || 'Rails'\"`.\n    Now, the adapter will appropriately receive and use `\"Ruby on Rails\"`.\n\n    ```ruby\n    change_column_default \"test_models\", \"ruby_on_rails\", -> { \"('Ruby ' || 'on ' || 'Rails')\" }\n    ```\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1695226823000,
+    "author": "Stephen Margheim",
+    "sha": "828eec67078a058ff768963db7ac43e6ff89be1e",
+    "pr": "49287",
+    "merge_sha": "c8830a2bba43b86cb527425bbf6b38facaf0a0c9",
+    "html": "<p>Ensure the SQLite3 adapter handles default functions with the <code>||</code> concatenation operator</p>\n\n<p>Previously, this default function would produce the static string <code>\"'Ruby ' || 'on ' || 'Rails'\"</code>.<br />\nNow, the adapter will appropriately receive and use <code>\"Ruby on Rails\"</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">change_column_default</span> <span class=\"s2\">\"test_models\"</span><span class=\"p\">,</span> <span class=\"s2\">\"ruby_on_rails\"</span><span class=\"p\">,</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"s2\">\"('Ruby ' || 'on ' || 'Rails')\"</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
   },
   {
     "message": "*   Dump PostgreSQL schemas as part of the schema dump.\n\n    *Lachlan Sylvester*",
