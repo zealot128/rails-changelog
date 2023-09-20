@@ -4956,6 +4956,21 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Dump PostgreSQL schemas as part of the schema dump.
+</title>
+    <link>https://github.com/rails/rails/issues/49164</link>
+    <guid>https://github.com/rails/rails/issues/49164</guid>
+    <description>*   Dump PostgreSQL schemas as part of the schema dump.
+
+    *Lachlan Sylvester*</description>
+    <pubDate>Wed, 20 Sep 2023 01:00:03 +0000</pubDate>
+    <author>Lachlan Sylvester</author>
+    <content:encoded><![CDATA[<p>Dump PostgreSQL schemas as part of the schema dump.</p>
+
+<p><em>Lachlan Sylvester</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Encryption now supports `support_unencrypted_data` being set per-attribute.
 </title>
     <link>https://github.com/rails/rails/issues/49072</link>
@@ -10534,6 +10549,44 @@ time regardless of whether a user with a matching email is found:</p>
 </code></pre></div></div>
 
 <p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Use Ruby 3.3 Range#overlap? if available
+</title>
+    <link>https://github.com/rails/rails/issues/49317</link>
+    <guid>https://github.com/rails/rails/issues/49317</guid>
+    <description>*   Use Ruby 3.3 Range#overlap? if available
+
+    *Yasuo Honda*</description>
+    <pubDate>Tue, 19 Sep 2023 19:18:30 +0000</pubDate>
+    <author>Yasuo Honda</author>
+    <content:encoded><![CDATA[<p>Use Ruby 3.3 Range#overlap? if available</p>
+
+<p><em>Yasuo Honda</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add `bigdecimal` as Active Support dependency that is a bundled gem candidate for Ruby 3.4.
+</title>
+    <link>https://github.com/rails/rails/issues/49318</link>
+    <guid>https://github.com/rails/rails/issues/49318</guid>
+    <description>*   Add `bigdecimal` as Active Support dependency that is a bundled gem candidate for Ruby 3.4.
+
+    `bigdecimal` 3.1.4 or higher version will be installed.
+    Ruby 2.7 and 3.0 users who want `bigdecimal` version 2.0.0 or 3.0.0 behavior as a default gem,
+    pin the `bigdecimal` version in your application Gemfile.
+
+    *Koichi ITO*</description>
+    <pubDate>Wed, 20 Sep 2023 06:03:23 +0000</pubDate>
+    <author>Yasuo Honda</author>
+    <content:encoded><![CDATA[<p>Add <code>bigdecimal</code> as Active Support dependency that is a bundled gem candidate for Ruby 3.4.</p>
+
+<p><code>bigdecimal</code> 3.1.4 or higher version will be installed.<br />
+Ruby 2.7 and 3.0 users who want <code>bigdecimal</code> version 2.0.0 or 3.0.0 behavior as a default gem,<br />
+pin the <code>bigdecimal</code> version in your application Gemfile.</p>
+
+<p><em>Koichi ITO</em></p>
 ]]></content:encoded>
   </item>
   <item>
