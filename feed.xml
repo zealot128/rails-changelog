@@ -4977,6 +4977,25 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: The SQLite3 adapter now supports `supports_insert_returning?`
+</title>
+    <link>https://github.com/rails/rails/issues/49290</link>
+    <guid>https://github.com/rails/rails/issues/49290</guid>
+    <description>*   The SQLite3 adapter now supports `supports_insert_returning?`
+
+    Implementing the full `supports_insert_returning?` contract means the SQLite3 adapter supports auto-populated columns (#48241) as well as custom primary keys.
+
+    *Stephen Margheim*</description>
+    <pubDate>Wed, 20 Sep 2023 23:21:39 +0000</pubDate>
+    <author>Stephen Margheim</author>
+    <content:encoded><![CDATA[<p>The SQLite3 adapter now supports <code>supports_insert_returning?</code></p>
+
+<p>Implementing the full <code>supports_insert_returning?</code> contract means the SQLite3 adapter supports auto-populated columns (#48241) as well as custom primary keys.</p>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Ensure the SQLite3 adapter handles default functions with the `||` concatenation operator
 </title>
     <link>https://github.com/rails/rails/issues/49287</link>
