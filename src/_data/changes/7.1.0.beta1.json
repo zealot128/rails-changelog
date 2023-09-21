@@ -1800,6 +1800,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   The SQLite3 adapter now supports `supports_insert_returning?`\n\n    Implementing the full `supports_insert_returning?` contract means the SQLite3 adapter supports auto-populated columns (#48241) as well as custom primary keys.\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1695252099000,
+    "author": "Stephen Margheim",
+    "sha": "9bbbf4b8b9bf3d7cb31c0425a6646cec49e4bc6c",
+    "pr": "49290",
+    "merge_sha": "0f92f8bf913ef0d1d32e0d7a6458fc55512e147a",
+    "html": "<p>The SQLite3 adapter now supports <code>supports_insert_returning?</code></p>\n\n<p>Implementing the full <code>supports_insert_returning?</code> contract means the SQLite3 adapter supports auto-populated columns (#48241) as well as custom primary keys.</p>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
     "message": "*   Ensure the SQLite3 adapter handles default functions with the `||` concatenation operator\n\n    Previously, this default function would produce the static string `\"'Ruby ' || 'on ' || 'Rails'\"`.\n    Now, the adapter will appropriately receive and use `\"Ruby on Rails\"`.\n\n    ```ruby\n    change_column_default \"test_models\", \"ruby_on_rails\", -> { \"('Ruby ' || 'on ' || 'Rails')\" }\n    ```\n\n    *Stephen Margheim*",
     "project": "activerecord",
     "date_merged": 1695226823000,
