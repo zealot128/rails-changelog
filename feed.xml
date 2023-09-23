@@ -7167,11 +7167,11 @@ types of values, <code>serialize</code> now accepts two distinct keyword argumen
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: YAML columns use `YAML.safe_dump` is available.
+    <title>activerecord: YAML columns use `YAML.safe_dump` if available.
 </title>
-    <link>https://github.com/rails/rails/issues/47103</link>
-    <guid>https://github.com/rails/rails/issues/47103</guid>
-    <description>*   YAML columns use `YAML.safe_dump` is available.
+    <link>https://github.com/rails/rails/issues/49358</link>
+    <guid>https://github.com/rails/rails/issues/49358</guid>
+    <description>*   YAML columns use `YAML.safe_dump` if available.
 
     As of `psych 5.1.0`, `YAML.safe_dump` can now apply the same permitted
     types restrictions than `YAML.safe_load`.
@@ -7181,9 +7181,9 @@ types of values, <code>serialize</code> now accepts two distinct keyword argumen
     database.
 
     *Jean Boussier*</description>
-    <pubDate>Mon, 13 Feb 2023 16:14:41 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>YAML columns use <code>YAML.safe_dump</code> is available.</p>
+    <pubDate>Sat, 23 Sep 2023 05:42:34 +0000</pubDate>
+    <author>hachi8833</author>
+    <content:encoded><![CDATA[<p>YAML columns use <code>YAML.safe_dump</code> if available.</p>
 
 <p>As of <code>psych 5.1.0</code>, <code>YAML.safe_dump</code> can now apply the same permitted<br />
 types restrictions than <code>YAML.safe_load</code>.</p>
