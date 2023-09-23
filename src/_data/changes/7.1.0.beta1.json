@@ -2500,14 +2500,14 @@
     "html": "<p><code>ActiveRecord::Base.serialize</code> signature changed.</p>\n\n<p>Rather than a single positional argument that accepts two possible<br />\ntypes of values, <code>serialize</code> now accepts two distinct keyword arguments.</p>\n\n<p>Before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">serialize</span> <span class=\"ss\">:content</span><span class=\"p\">,</span> <span class=\"no\">JSON</span>\n<span class=\"n\">serialize</span> <span class=\"ss\">:backtrace</span><span class=\"p\">,</span> <span class=\"no\">Array</span>\n</code></pre></div></div>\n\n<p>After:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">serialize</span> <span class=\"ss\">:content</span><span class=\"p\">,</span> <span class=\"ss\">coder: </span><span class=\"no\">JSON</span>\n<span class=\"n\">serialize</span> <span class=\"ss\">:backtrace</span><span class=\"p\">,</span> <span class=\"ss\">type: </span><span class=\"no\">Array</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
-    "message": "*   YAML columns use `YAML.safe_dump` is available.\n\n    As of `psych 5.1.0`, `YAML.safe_dump` can now apply the same permitted\n    types restrictions than `YAML.safe_load`.\n\n    It's preferable to ensure the payload only use allowed types when we first\n    try to serialize it, otherwise you may end up with invalid records in the\n    database.\n\n    *Jean Boussier*",
+    "message": "*   YAML columns use `YAML.safe_dump` if available.\n\n    As of `psych 5.1.0`, `YAML.safe_dump` can now apply the same permitted\n    types restrictions than `YAML.safe_load`.\n\n    It's preferable to ensure the payload only use allowed types when we first\n    try to serialize it, otherwise you may end up with invalid records in the\n    database.\n\n    *Jean Boussier*",
     "project": "activerecord",
-    "date_merged": 1676304881000,
-    "author": "Jean Boussier",
-    "sha": "3635d2d9cf15f1e404013e9207b3e5b80cfda59d",
-    "pr": "47103",
-    "merge_sha": "3bebf19f562ea85199753ca5a3737e09a7be4385",
-    "html": "<p>YAML columns use <code>YAML.safe_dump</code> is available.</p>\n\n<p>As of <code>psych 5.1.0</code>, <code>YAML.safe_dump</code> can now apply the same permitted<br />\ntypes restrictions than <code>YAML.safe_load</code>.</p>\n\n<p>It’s preferable to ensure the payload only use allowed types when we first<br />\ntry to serialize it, otherwise you may end up with invalid records in the<br />\ndatabase.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+    "date_merged": 1695447754000,
+    "author": "hachi8833",
+    "sha": "16f592ffa7c0875883b27044113c237aaf7323ba",
+    "pr": "49358",
+    "merge_sha": "a5f4aadcee42f9b4fa99468776c56b5b988c87cf",
+    "html": "<p>YAML columns use <code>YAML.safe_dump</code> if available.</p>\n\n<p>As of <code>psych 5.1.0</code>, <code>YAML.safe_dump</code> can now apply the same permitted<br />\ntypes restrictions than <code>YAML.safe_load</code>.</p>\n\n<p>It’s preferable to ensure the payload only use allowed types when we first<br />\ntry to serialize it, otherwise you may end up with invalid records in the<br />\ndatabase.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   `ActiveRecord::QueryLogs` better handle broken encoding.\n\n    It's not uncommon when building queries with BLOB fields to contain\n    binary data. Unless the call carefully encode the string in ASCII-8BIT\n    it generally end up being encoded in `UTF-8`, and `QueryLogs` would\n    end up failing on it.\n\n    `ActiveRecord::QueryLogs` no longer depend on the query to be properly encoded.\n\n    *Jean Boussier*",
