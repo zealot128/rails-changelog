@@ -8468,16 +8468,16 @@ that <code>#with_raw_connection</code> offers.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add `expires_in` option to `signed_id`.
+    <title>activerecord: Add `expires_at` option to `signed_id`.
 </title>
-    <link>https://github.com/rails/rails/issues/46108</link>
-    <guid>https://github.com/rails/rails/issues/46108</guid>
-    <description>*   Add `expires_in` option to `signed_id`.
+    <link>https://github.com/rails/rails/issues/49366</link>
+    <guid>https://github.com/rails/rails/issues/49366</guid>
+    <description>*   Add `expires_at` option to `signed_id`.
 
     *Shouichi Kamiya*</description>
-    <pubDate>Thu, 22 Sep 2022 21:27:37 +0000</pubDate>
-    <author>Shouichi Kamiya</author>
-    <content:encoded><![CDATA[<p>Add <code>expires_in</code> option to <code>signed_id</code>.</p>
+    <pubDate>Sun, 24 Sep 2023 06:05:03 +0000</pubDate>
+    <author>hachi8833</author>
+    <content:encoded><![CDATA[<p>Add <code>expires_at</code> option to <code>signed_id</code>.</p>
 
 <p><em>Shouichi Kamiya</em></p>
 ]]></content:encoded>
@@ -10617,6 +10617,21 @@ time regardless of whether a user with a matching email is found:</p>
 </code></pre></div></div>
 
 <p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix Range#overlap? not taking empty ranges into account on Ruby &lt; 3.3
+</title>
+    <link>https://github.com/rails/rails/issues/49356</link>
+    <guid>https://github.com/rails/rails/issues/49356</guid>
+    <description>*   Fix Range#overlap? not taking empty ranges into account on Ruby &lt; 3.3
+
+    *Nobuyoshi Nakada*, *Shouichi Kamiya*, *Hartley McGuire*</description>
+    <pubDate>Sat, 23 Sep 2023 19:03:15 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix Range#overlap? not taking empty ranges into account on Ruby &lt; 3.3</p>
+
+<p><em>Nobuyoshi Nakada</em>, <em>Shouichi Kamiya</em>, <em>Hartley McGuire</em></p>
 ]]></content:encoded>
   </item>
   <item>
