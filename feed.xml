@@ -4977,6 +4977,25 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow SQLite3 `busy_handler` to be configured with simple max number of `retries`
+</title>
+    <link>https://github.com/rails/rails/issues/49352</link>
+    <guid>https://github.com/rails/rails/issues/49352</guid>
+    <description>*   Allow SQLite3 `busy_handler` to be configured with simple max number of `retries`
+
+    Retrying busy connections without delay is a preferred practice for performance-sensitive applications. Add support for a `database.yml` `retries` integer, which is used in a simple `busy_handler` function to retry busy connections without exponential backoff up to the max number of `retries`.
+
+    *Stephen Margheim*</description>
+    <pubDate>Sun, 24 Sep 2023 17:53:02 +0000</pubDate>
+    <author>Stephen Margheim</author>
+    <content:encoded><![CDATA[<p>Allow SQLite3 <code>busy_handler</code> to be configured with simple max number of <code>retries</code></p>
+
+<p>Retrying busy connections without delay is a preferred practice for performance-sensitive applications. Add support for a <code>database.yml</code> <code>retries</code> integer, which is used in a simple <code>busy_handler</code> function to retry busy connections without exponential backoff up to the max number of <code>retries</code>.</p>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: The SQLite3 adapter now supports `supports_insert_returning?`
 </title>
     <link>https://github.com/rails/rails/issues/49290</link>
