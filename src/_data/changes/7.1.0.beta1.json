@@ -1800,6 +1800,16 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Allow SQLite3 `busy_handler` to be configured with simple max number of `retries`\n\n    Retrying busy connections without delay is a preferred practice for performance-sensitive applications. Add support for a `database.yml` `retries` integer, which is used in a simple `busy_handler` function to retry busy connections without exponential backoff up to the max number of `retries`.\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1695577982000,
+    "author": "Stephen Margheim",
+    "sha": "236a144b50de05ce541275e81f8d5bb8c4ef774e",
+    "pr": "49352",
+    "merge_sha": "7c07787a5d24b03f5cf444dced5df7cf3d33137a",
+    "html": "<p>Allow SQLite3 <code>busy_handler</code> to be configured with simple max number of <code>retries</code></p>\n\n<p>Retrying busy connections without delay is a preferred practice for performance-sensitive applications. Add support for a <code>database.yml</code> <code>retries</code> integer, which is used in a simple <code>busy_handler</code> function to retry busy connections without exponential backoff up to the max number of <code>retries</code>.</p>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
     "message": "*   The SQLite3 adapter now supports `supports_insert_returning?`\n\n    Implementing the full `supports_insert_returning?` contract means the SQLite3 adapter supports auto-populated columns (#48241) as well as custom primary keys.\n\n    *Stephen Margheim*",
     "project": "activerecord",
     "date_merged": 1695252099000,
