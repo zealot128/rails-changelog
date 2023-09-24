@@ -2950,14 +2950,14 @@
     "html": "<p>Use connection from <code>#with_raw_connection</code> in <code>#quote_string</code>.</p>\n\n<p>This ensures that the string quoting is wrapped in the reconnect and retry logic<br />\nthat <code>#with_raw_connection</code> offers.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
   },
   {
-    "message": "*   Add `expires_in` option to `signed_id`.\n\n    *Shouichi Kamiya*",
+    "message": "*   Add `expires_at` option to `signed_id`.\n\n    *Shouichi Kamiya*",
     "project": "activerecord",
-    "date_merged": 1663882057000,
-    "author": "Shouichi Kamiya",
-    "sha": "364939c2b17b219fc8c158da63a8517e57f892ab",
-    "pr": "46108",
-    "merge_sha": "b5e5fad4ded363d01a180e0d962ec34015942329",
-    "html": "<p>Add <code>expires_in</code> option to <code>signed_id</code>.</p>\n\n<p><em>Shouichi Kamiya</em></p>\n"
+    "date_merged": 1695535503000,
+    "author": "hachi8833",
+    "sha": "3b028fd74e42d64973ee52a572938143d81f811d",
+    "pr": "49366",
+    "merge_sha": "46e3076848663124ab905de234306cfba7a895fc",
+    "html": "<p>Add <code>expires_at</code> option to <code>signed_id</code>.</p>\n\n<p><em>Shouichi Kamiya</em></p>\n"
   },
   {
     "message": "*   Allow applications to set retry deadline for query retries.\n\n    Building on the work done in #44576 and #44591, we extend the logic that automatically\n    reconnects database connections to take into account a timeout limit. We won't retry\n    a query if a given amount of time has elapsed since the query was first attempted. This\n    value defaults to nil, meaning that all retryable queries are retried regardless of time elapsed,\n    but this can be changed via the `retry_deadline` option in the database config.\n\n    *Adrianna Chang*",
@@ -3718,6 +3718,16 @@
     "pr": "43880",
     "merge_sha": "5e75674196376b5e46e68419e004886379a31f6c",
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Fix Range#overlap? not taking empty ranges into account on Ruby < 3.3\n\n    *Nobuyoshi Nakada*, *Shouichi Kamiya*, *Hartley McGuire*",
+    "project": "activesupport",
+    "date_merged": 1695495795000,
+    "author": "Hartley McGuire",
+    "sha": "64184c6f5054d9b1898176107d488f40118aaac1",
+    "pr": "49356",
+    "merge_sha": "4b8cdef21054aaf6d23a2d2f90418b58e4d0c8ff",
+    "html": "<p>Fix Range#overlap? not taking empty ranges into account on Ruby &lt; 3.3</p>\n\n<p><em>Nobuyoshi Nakada</em>, <em>Shouichi Kamiya</em>, <em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   Use Ruby 3.3 Range#overlap? if available\n\n    *Yasuo Honda*",
