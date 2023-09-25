@@ -6,6 +6,30 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activestorage: Allow attaching File and Pathname when assigning attributes, e.g.
+</title>
+    <link>https://github.com/rails/rails/issues/45606</link>
+    <guid>https://github.com/rails/rails/issues/45606</guid>
+    <description>*   Allow attaching File and Pathname when assigning attributes, e.g.
+
+    ```ruby
+    User.create!(avatar: File.open(&quot;image.jpg&quot;))
+    User.create!(avatar: file_fixture(&quot;image.jpg&quot;))
+    ```
+
+    *Dorian Marié*</description>
+    <pubDate>Mon, 25 Sep 2023 11:50:46 +0000</pubDate>
+    <author>Dorian Marié</author>
+    <content:encoded><![CDATA[<p>Allow attaching File and Pathname when assigning attributes, e.g.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">avatar: </span><span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"image.jpg"</span><span class="p">))</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">avatar: </span><span class="n">file_fixture</span><span class="p">(</span><span class="s2">"image.jpg"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><em>Dorian Marié</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Disables the session in `ActiveStorage::Blobs::ProxyController`
 </title>
     <link>https://github.com/rails/rails/issues/48869</link>
