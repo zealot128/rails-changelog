@@ -4977,6 +4977,25 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Performance tune the SQLite3 adapter connection configuration
+</title>
+    <link>https://github.com/rails/rails/issues/49349</link>
+    <guid>https://github.com/rails/rails/issues/49349</guid>
+    <description>*   Performance tune the SQLite3 adapter connection configuration
+
+    For Rails applications, the Write-Ahead-Log in normal syncing mode with a capped journal size, a healthy shared memory buffer and a shared cache will perform, on average, 2× better.
+
+    *Stephen Margheim*</description>
+    <pubDate>Sun, 24 Sep 2023 21:09:47 +0000</pubDate>
+    <author>Stephen Margheim</author>
+    <content:encoded><![CDATA[<p>Performance tune the SQLite3 adapter connection configuration</p>
+
+<p>For Rails applications, the Write-Ahead-Log in normal syncing mode with a capped journal size, a healthy shared memory buffer and a shared cache will perform, on average, 2× better.</p>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow SQLite3 `busy_handler` to be configured with simple max number of `retries`
 </title>
     <link>https://github.com/rails/rails/issues/49352</link>
