@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Allow attaching File and Pathname when assigning attributes, e.g.\n\n    ```ruby\n    User.create!(avatar: File.open(\"image.jpg\"))\n    User.create!(avatar: file_fixture(\"image.jpg\"))\n    ```\n\n    *Dorian Marié*",
+    "project": "activestorage",
+    "date_merged": 1695642646000,
+    "author": "Dorian Marié",
+    "sha": "22bacd710de78e36029489a81e8e82cb704429c6",
+    "pr": "45606",
+    "merge_sha": "94c90ecf20ac1357bc38080c2b9bef2b58ee42de",
+    "html": "<p>Allow attaching File and Pathname when assigning attributes, e.g.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">avatar: </span><span class=\"no\">File</span><span class=\"p\">.</span><span class=\"nf\">open</span><span class=\"p\">(</span><span class=\"s2\">\"image.jpg\"</span><span class=\"p\">))</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">avatar: </span><span class=\"n\">file_fixture</span><span class=\"p\">(</span><span class=\"s2\">\"image.jpg\"</span><span class=\"p\">))</span>\n</code></pre></div></div>\n\n<p><em>Dorian Marié</em></p>\n"
+  },
+  {
     "message": "*   Disables the session in `ActiveStorage::Blobs::ProxyController`\n    and `ActiveStorage::Representations::ProxyController`\n    in order to allow caching by default in some CDNs as CloudFlare\n\n    Fixes #44136\n\n    *Bruno Prieto*",
     "project": "activestorage",
     "date_merged": 1691092834000,
