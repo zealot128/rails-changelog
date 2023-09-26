@@ -5029,6 +5029,78 @@ before closing the connection with the reconnection strategy specified (defaults
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Better naming for unique constraints support.
+</title>
+    <link>https://github.com/rails/rails/issues/49383</link>
+    <guid>https://github.com/rails/rails/issues/49383</guid>
+    <description>*   Better naming for unique constraints support.
+
+    Naming unique keys leads to misunderstanding it&#39;s a short-hand of unique indexes.
+    Just naming it unique constraints is not misleading.
+
+    In Rails 7.1.0.beta1 or before:
+
+    ```ruby
+    add_unique_key :sections, [:position], deferrable: :deferred, name: &quot;unique_section_position&quot;
+    remove_unique_key :sections, name: &quot;unique_section_position&quot;
+    ```
+
+    Now:
+
+    ```ruby
+    add_unique_constraint :sections, [:position], deferrable: :deferred, name: &quot;unique_section_position&quot;
+    remove_unique_constraint :sections, name: &quot;unique_section_position&quot;
+    ```
+
+    *Ryuta Kamizono*</description>
+    <pubDate>Tue, 26 Sep 2023 17:53:45 +0000</pubDate>
+    <author>Ryuta Kamizono</author>
+    <content:encoded><![CDATA[<p>Better naming for unique constraints support.</p>
+
+<p>Naming unique keys leads to misunderstanding it’s a short-hand of unique indexes.<br />
+Just naming it unique constraints is not misleading.</p>
+
+<p>In Rails 7.1.0.beta1 or before:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_unique_key</span> <span class="ss">:sections</span><span class="p">,</span> <span class="p">[</span><span class="ss">:position</span><span class="p">],</span> <span class="ss">deferrable: :deferred</span><span class="p">,</span> <span class="ss">name: </span><span class="s2">"unique_section_position"</span>
+<span class="n">remove_unique_key</span> <span class="ss">:sections</span><span class="p">,</span> <span class="ss">name: </span><span class="s2">"unique_section_position"</span>
+</code></pre></div></div>
+
+<p>Now:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_unique_constraint</span> <span class="ss">:sections</span><span class="p">,</span> <span class="p">[</span><span class="ss">:position</span><span class="p">],</span> <span class="ss">deferrable: :deferred</span><span class="p">,</span> <span class="ss">name: </span><span class="s2">"unique_section_position"</span>
+<span class="n">remove_unique_constraint</span> <span class="ss">:sections</span><span class="p">,</span> <span class="ss">name: </span><span class="s2">"unique_section_position"</span>
+</code></pre></div></div>
+
+<p><em>Ryuta Kamizono</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix duplicate quoting for check constraint expressions in schema dump when using MySQL
+</title>
+    <link>https://github.com/rails/rails/issues/42429</link>
+    <guid>https://github.com/rails/rails/issues/42429</guid>
+    <description>*   Fix duplicate quoting for check constraint expressions in schema dump when using MySQL
+
+    A check constraint with an expression, that already contains quotes, lead to an invalid schema
+    dump with the mysql2 adapter.
+
+    Fixes #42424.
+
+    *Felix Tscheulin*</description>
+    <pubDate>Tue, 26 Sep 2023 16:34:43 +0000</pubDate>
+    <author>Felix Tscheulin</author>
+    <content:encoded><![CDATA[<p>Fix duplicate quoting for check constraint expressions in schema dump when using MySQL</p>
+
+<p>A check constraint with an expression, that already contains quotes, lead to an invalid schema<br />
+dump with the mysql2 adapter.</p>
+
+<p>Fixes #42424.</p>
+
+<p><em>Felix Tscheulin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Performance tune the SQLite3 adapter connection configuration
 </title>
     <link>https://github.com/rails/rails/issues/49349</link>
