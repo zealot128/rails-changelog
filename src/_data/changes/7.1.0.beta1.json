@@ -1820,6 +1820,26 @@
     "html": "<p>Added command callbacks to <code>ActionCable::Connection::Base</code>.</p>\n\n<p>Now you can define <code>before_command</code>, <code>after_command</code>, and <code>around_command</code> to be invoked before, after or around any command received by a client respectively.</p>\n\n<p><em>Vladimir Dementyev</em></p>\n"
   },
   {
+    "message": "*   Better naming for unique constraints support.\n\n    Naming unique keys leads to misunderstanding it's a short-hand of unique indexes.\n    Just naming it unique constraints is not misleading.\n\n    In Rails 7.1.0.beta1 or before:\n\n    ```ruby\n    add_unique_key :sections, [:position], deferrable: :deferred, name: \"unique_section_position\"\n    remove_unique_key :sections, name: \"unique_section_position\"\n    ```\n\n    Now:\n\n    ```ruby\n    add_unique_constraint :sections, [:position], deferrable: :deferred, name: \"unique_section_position\"\n    remove_unique_constraint :sections, name: \"unique_section_position\"\n    ```\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1695750825000,
+    "author": "Ryuta Kamizono",
+    "sha": "a86d4d7bbd6e48e99ed43140c3fae2a54e2b015d",
+    "pr": "49383",
+    "merge_sha": "6ef9007cf5da7392280b15becd6948dd6de8eb06",
+    "html": "<p>Better naming for unique constraints support.</p>\n\n<p>Naming unique keys leads to misunderstanding it’s a short-hand of unique indexes.<br />\nJust naming it unique constraints is not misleading.</p>\n\n<p>In Rails 7.1.0.beta1 or before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_unique_key</span> <span class=\"ss\">:sections</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"ss\">:position</span><span class=\"p\">],</span> <span class=\"ss\">deferrable: :deferred</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"unique_section_position\"</span>\n<span class=\"n\">remove_unique_key</span> <span class=\"ss\">:sections</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"unique_section_position\"</span>\n</code></pre></div></div>\n\n<p>Now:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_unique_constraint</span> <span class=\"ss\">:sections</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"ss\">:position</span><span class=\"p\">],</span> <span class=\"ss\">deferrable: :deferred</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"unique_section_position\"</span>\n<span class=\"n\">remove_unique_constraint</span> <span class=\"ss\">:sections</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"unique_section_position\"</span>\n</code></pre></div></div>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
+    "message": "*   Fix duplicate quoting for check constraint expressions in schema dump when using MySQL\n\n    A check constraint with an expression, that already contains quotes, lead to an invalid schema\n    dump with the mysql2 adapter.\n\n    Fixes #42424.\n\n    *Felix Tscheulin*",
+    "project": "activerecord",
+    "date_merged": 1695746083000,
+    "author": "Felix Tscheulin",
+    "sha": "468d3d0deb645a38b7c5567d3555fb4fa57095c9",
+    "pr": "42429",
+    "merge_sha": "dc56140f56d05d640425a68c9a356b417e1dddaf",
+    "html": "<p>Fix duplicate quoting for check constraint expressions in schema dump when using MySQL</p>\n\n<p>A check constraint with an expression, that already contains quotes, lead to an invalid schema<br />\ndump with the mysql2 adapter.</p>\n\n<p>Fixes #42424.</p>\n\n<p><em>Felix Tscheulin</em></p>\n"
+  },
+  {
     "message": "*   Performance tune the SQLite3 adapter connection configuration\n\n    For Rails applications, the Write-Ahead-Log in normal syncing mode with a capped journal size, a healthy shared memory buffer and a shared cache will perform, on average, 2× better.\n\n    *Stephen Margheim*",
     "project": "activerecord",
     "date_merged": 1695589787000,
