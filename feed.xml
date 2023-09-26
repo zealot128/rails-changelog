@@ -1055,12 +1055,19 @@ other form fields, including utilizing <code>config.action_view.field_error_proc
     validates_inclusion_of :birth_date, in: -&gt; { (..Date.today) }
     ```
 
+    ```ruby
+    validates_exclusion_of :birth_date, in: -&gt; { (..Date.today) }
+    ```
+
     *Bo Jeanes*</description>
     <pubDate>Fri, 20 May 2022 14:54:54 +0000</pubDate>
     <author>Bo Jeanes</author>
     <content:encoded><![CDATA[<p>Add support for beginless ranges to inclusivity/exclusivity validators:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validates_inclusion_of</span> <span class="ss">:birth_date</span><span class="p">,</span> <span class="ss">in: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="p">(</span><span class="o">..</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">)</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validates_exclusion_of</span> <span class="ss">:birth_date</span><span class="p">,</span> <span class="ss">in: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="p">(</span><span class="o">..</span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span><span class="p">)</span> <span class="p">}</span>
 </code></pre></div></div>
 
 <p><em>Bo Jeanes</em></p>
@@ -3298,6 +3305,27 @@ support Internet Explorer this header should not be a default one.</p>
     <content:encoded><![CDATA[<p>Add “back to top” button to guides</p>
 
 <p><em>Alysson Rosa</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Introduce `ActionMailer::FormBuilder`
+</title>
+    <link>https://github.com/rails/rails/issues/48542</link>
+    <guid>https://github.com/rails/rails/issues/48542</guid>
+    <description>*   Introduce `ActionMailer::FormBuilder`
+
+    Use the `default_form_builder` method in mailers to set the default form builder
+    for templates rendered by that mailer. Matches the behaviour in Action Controller.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Mon, 25 Sep 2023 21:27:38 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p>Introduce <code>ActionMailer::FormBuilder</code></p>
+
+<p>Use the <code>default_form_builder</code> method in mailers to set the default form builder<br />
+for templates rendered by that mailer. Matches the behaviour in Action Controller.</p>
+
+<p><em>Alex Ghiculescu</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -10679,6 +10707,80 @@ time regardless of whether a user with a matching email is found:</p>
 </code></pre></div></div>
 
 <p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add a new public API for broadcasting logs
+</title>
+    <link>https://github.com/rails/rails/issues/48615</link>
+    <guid>https://github.com/rails/rails/issues/48615</guid>
+    <description>*   Add a new public API for broadcasting logs
+
+    This feature existed for a while but was until now a private API.
+    Broadcasting log allows to send log message to difference sinks (STDOUT, a file ...) and
+    is used by default in the development environment to write logs both on STDOUT and in the
+    &quot;development.log&quot; file.
+
+    Basic usage:
+
+    ```ruby
+    stdout_logger = Logger.new(STDOUT)
+    file_logger = Logger.new(&quot;development.log&quot;)
+    broadcast = ActiveSupport::BroadcastLogger.new(stdout_logger, file_logger)
+
+    broadcast.info(&quot;Hello!&quot;) # The &quot;Hello!&quot; message is written on STDOUT and in the log file.
+    ```
+
+    Adding other sink(s) to the broadcast:
+
+    ```ruby
+    broadcast = ActiveSupport::BroadcastLogger.new
+    broadcast.broadcast_to(Logger.new(STDERR))
+    ```
+
+    Remove a sink from the broadcast:
+
+    ```ruby
+    stdout_logger = Logger.new(STDOUT)
+    broadcast = ActiveSupport::BroadcastLogger.new(stdout_logger)
+
+    broadcast.stop_broadcasting_to(stdout_logger)
+    ```
+
+    *Edouard Chin*</description>
+    <pubDate>Mon, 25 Sep 2023 21:13:58 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p>Add a new public API for broadcasting logs</p>
+
+<p>This feature existed for a while but was until now a private API.<br />
+Broadcasting log allows to send log message to difference sinks (STDOUT, a file …) and<br />
+is used by default in the development environment to write logs both on STDOUT and in the<br />
+“development.log” file.</p>
+
+<p>Basic usage:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stdout_logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+<span class="n">file_logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"development.log"</span><span class="p">)</span>
+<span class="n">broadcast</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">BroadcastLogger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">stdout_logger</span><span class="p">,</span> <span class="n">file_logger</span><span class="p">)</span>
+
+<span class="n">broadcast</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">"Hello!"</span><span class="p">)</span> <span class="c1"># The "Hello!" message is written on STDOUT and in the log file.</span>
+</code></pre></div></div>
+
+<p>Adding other sink(s) to the broadcast:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">broadcast</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">BroadcastLogger</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">broadcast</span><span class="p">.</span><span class="nf">broadcast_to</span><span class="p">(</span><span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">STDERR</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Remove a sink from the broadcast:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stdout_logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+<span class="n">broadcast</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">BroadcastLogger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">stdout_logger</span><span class="p">)</span>
+
+<span class="n">broadcast</span><span class="p">.</span><span class="nf">stop_broadcasting_to</span><span class="p">(</span><span class="n">stdout_logger</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Edouard Chin</em></p>
 ]]></content:encoded>
   </item>
   <item>
