@@ -5,6 +5,58 @@
 <link>https://zealot128.github.io/rails-changelog</link>
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>actionview: Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
+</title>
+    <link>https://github.com/rails/rails/issues/49175</link>
+    <guid>https://github.com/rails/rails/issues/49175</guid>
+    <description>*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
+    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If
+    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error
+    message.
+
+    Examples:
+
+    ```ruby
+    # Raises ArgumentError: Invalid HTML5 tag name: 12p
+    content_tag(&quot;12p&quot;) # Starting with a number
+
+    # Raises ArgumentError: Invalid HTML5 tag name: &quot;&quot;
+    content_tag(&quot;&quot;) # Empty tag name
+
+    # Raises ArgumentError: Invalid HTML5 tag name: div/
+    tag(&quot;div/&quot;) # Contains a solidus
+
+    # Raises ArgumentError: Invalid HTML5 tag name: &quot;image file&quot;
+    tag(&quot;image file&quot;) # Contains a space
+    ```
+
+    *Akhil G Krishnan*</description>
+    <pubDate>Wed, 27 Sep 2023 17:37:41 +0000</pubDate>
+    <author>Akhil G Krishnan</author>
+    <content:encoded><![CDATA[<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />
+<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />
+an invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />
+message.</p>
+
+<p>Examples:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>
+<span class="n">content_tag</span><span class="p">(</span><span class="s2">"12p"</span><span class="p">)</span> <span class="c1"># Starting with a number</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: ""</span>
+<span class="n">content_tag</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="c1"># Empty tag name</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>
+<span class="n">tag</span><span class="p">(</span><span class="s2">"div/"</span><span class="p">)</span> <span class="c1"># Contains a solidus</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: "image file"</span>
+<span class="n">tag</span><span class="p">(</span><span class="s2">"image file"</span><span class="p">)</span> <span class="c1"># Contains a space</span>
+</code></pre></div></div>
+
+<p><em>Akhil G Krishnan</em></p>
+]]></content:encoded>
+  </item>
 </channel>
 </rss>
 
