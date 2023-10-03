@@ -57,6 +57,40 @@ message.</p>
 <p><em>Akhil G Krishnan</em></p>
 ]]></content:encoded>
   </item>
+  <item>
+    <title>railties: Conditionally print `$stdout` when invoking `run_generator`
+</title>
+    <link>https://github.com/rails/rails/issues/49448</link>
+    <guid>https://github.com/rails/rails/issues/49448</guid>
+    <description>*   Conditionally print `$stdout` when invoking `run_generator`
+
+    In an effort to improve the developer experience when debugging
+    generator tests, we add the ability to conditionally print `$stdout`
+    instead of capturing it.
+
+    This allows for calls to `binding.irb` and `puts` work as expected.
+
+    ```sh
+    RAILS_LOG_TO_STDOUT=true ./bin/test test/generators/actions_test.rb
+    ```
+
+    *Steve Polito*</description>
+    <pubDate>Tue, 03 Oct 2023 11:06:14 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>
+
+<p>In an effort to improve the developer experience when debugging<br />
+generator tests, we add the ability to conditionally print <code>$stdout</code><br />
+instead of capturing it.</p>
+
+<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">RAILS_LOG_TO_STDOUT</span><span class="o">=</span><span class="nb">true</span> ./bin/test <span class="nb">test</span>/generators/actions_test.rb
+</code></pre></div></div>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
 </channel>
 </rss>
 
