@@ -91,6 +91,27 @@ instead of capturing it.</p>
 <p><em>Steve Polito</em></p>
 ]]></content:encoded>
   </item>
+  <item>
+    <title>activesupport: Implement `HashWithIndifferentAccess#to_proc`.
+</title>
+    <link>https://github.com/rails/rails/issues/49475</link>
+    <guid>https://github.com/rails/rails/issues/49475</guid>
+    <description>*   Implement `HashWithIndifferentAccess#to_proc`.
+
+    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`
+    method from the `Hash` class, which was not able to access values using indifferent keys.
+
+    *fatkodima*</description>
+    <pubDate>Wed, 04 Oct 2023 07:56:58 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>
+
+<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />
+method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
 </channel>
 </rss>
 
