@@ -18,5 +18,15 @@
     "pr": "49448",
     "merge_sha": "7cc4de0aa2c8812ad90fe23c1c0889d405675572",
     "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Implement `HashWithIndifferentAccess#to_proc`.\n\n    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`\n    method from the `Hash` class, which was not able to access values using indifferent keys.\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1696406218000,
+    "author": "fatkodima",
+    "sha": "39438318c72cdc3194a3fa772f284df708ca80b7",
+    "pr": "49475",
+    "merge_sha": "d21f4e638ff3498a19730c505e5fb255740a7960",
+    "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   }
 ]
