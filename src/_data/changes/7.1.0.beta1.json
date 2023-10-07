@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Ensure `#signed_id` outputs `url_safe` strings.\n\n    *Jason Meller*",
+    "project": "activerecord",
+    "date_merged": 1696625916000,
+    "author": "Jason Meller",
+    "sha": "fc5c8d0cfe1871dd66efec2b6ca37e1a75ccd21f",
+    "pr": "49507",
+    "merge_sha": "7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d",
+    "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
+  },
+  {
     "message": "*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and\n    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If\n    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error\n    message.\n\n    Examples:\n\n    ```ruby\n    # Raises ArgumentError: Invalid HTML5 tag name: 12p\n    content_tag(\"12p\") # Starting with a number\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"\"\n    content_tag(\"\") # Empty tag name\n\n    # Raises ArgumentError: Invalid HTML5 tag name: div/\n    tag(\"div/\") # Contains a solidus\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"image file\"\n    tag(\"image file\") # Contains a space\n    ```\n\n    *Akhil G Krishnan*",
     "project": "actionview",
     "date_merged": 1695836261000,
