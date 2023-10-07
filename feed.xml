@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Ensure `#signed_id` outputs `url_safe` strings.
+</title>
+    <link>https://github.com/rails/rails/issues/49507</link>
+    <guid>https://github.com/rails/rails/issues/49507</guid>
+    <description>*   Ensure `#signed_id` outputs `url_safe` strings.
+
+    *Jason Meller*</description>
+    <pubDate>Fri, 06 Oct 2023 20:58:36 +0000</pubDate>
+    <author>Jason Meller</author>
+    <content:encoded><![CDATA[<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>
+
+<p><em>Jason Meller</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
 </title>
     <link>https://github.com/rails/rails/issues/49175</link>
