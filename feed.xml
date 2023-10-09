@@ -107,6 +107,21 @@ instead of capturing it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Fix MemoryStore to prevent race conditions when incrementing or decrementing.
+</title>
+    <link>https://github.com/rails/rails/issues/49542</link>
+    <guid>https://github.com/rails/rails/issues/49542</guid>
+    <description>*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.
+
+    *Pierre Jambet*</description>
+    <pubDate>Mon, 09 Oct 2023 07:24:47 +0000</pubDate>
+    <author>Pierre Jambet</author>
+    <content:encoded><![CDATA[<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>
+
+<p><em>Pierre Jambet</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Implement `HashWithIndifferentAccess#to_proc`.
 </title>
     <link>https://github.com/rails/rails/issues/49475</link>
