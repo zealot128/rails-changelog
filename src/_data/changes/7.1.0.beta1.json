@@ -30,6 +30,16 @@
     "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
   },
   {
+    "message": "*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.\n\n    *Pierre Jambet*",
+    "project": "activesupport",
+    "date_merged": 1696836287000,
+    "author": "Pierre Jambet",
+    "sha": "7f2e0ffb7eaa05f8732574e4476316d5108227e3",
+    "pr": "49542",
+    "merge_sha": "a385d7b170c06df5674d7d22dc5555cd5cbdd15b",
+    "html": "<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>\n\n<p><em>Pierre Jambet</em></p>\n"
+  },
+  {
     "message": "*   Implement `HashWithIndifferentAccess#to_proc`.\n\n    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`\n    method from the `Hash` class, which was not able to access values using indifferent keys.\n\n    *fatkodima*",
     "project": "activesupport",
     "date_merged": 1696406218000,
