@@ -10,6 +10,16 @@
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
   },
   {
+    "message": "*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.\n\n    This fix was already landed in >= 7.0.4.3, < 7.1.0.\n    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]\n\n    *Ryunosuke Sato*",
+    "project": "actionview",
+    "date_merged": 1697057081000,
+    "author": "Ryunosuke Sato",
+    "sha": "8b18d44d1705629de600869056e24aed7601d1da",
+    "pr": "49553",
+    "merge_sha": "fc8d9ed84348b17c9fd020fac9061f1bd73ddf74",
+    "html": "<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>\n\n<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />\n[<a href=\"https://github.com/advisories/GHSA-xp5h-f8jf-rc8q\">CVE-2023-23913</a>]</p>\n\n<p><em>Ryunosuke Sato</em></p>\n"
+  },
+  {
     "message": "*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and\n    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If\n    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error\n    message.\n\n    Examples:\n\n    ```ruby\n    # Raises ArgumentError: Invalid HTML5 tag name: 12p\n    content_tag(\"12p\") # Starting with a number\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"\"\n    content_tag(\"\") # Empty tag name\n\n    # Raises ArgumentError: Invalid HTML5 tag name: div/\n    tag(\"div/\") # Contains a solidus\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"image file\"\n    tag(\"image file\") # Contains a space\n    ```\n\n    *Akhil G Krishnan*",
     "project": "actionview",
     "date_merged": 1695836261000,
