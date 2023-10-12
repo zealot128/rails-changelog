@@ -21,6 +21,27 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+</title>
+    <link>https://github.com/rails/rails/issues/49553</link>
+    <guid>https://github.com/rails/rails/issues/49553</guid>
+    <description>*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+
+    This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.
+    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]
+
+    *Ryunosuke Sato*</description>
+    <pubDate>Wed, 11 Oct 2023 20:44:41 +0000</pubDate>
+    <author>Ryunosuke Sato</author>
+    <content:encoded><![CDATA[<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>
+
+<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />
+[<a href="https://github.com/advisories/GHSA-xp5h-f8jf-rc8q">CVE-2023-23913</a>]</p>
+
+<p><em>Ryunosuke Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
 </title>
     <link>https://github.com/rails/rails/issues/49175</link>
