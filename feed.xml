@@ -21,6 +21,27 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Fix the `capture` view helper compatibility with HAML and Slim
+</title>
+    <link>https://github.com/rails/rails/issues/49612</link>
+    <guid>https://github.com/rails/rails/issues/49612</guid>
+    <description>*   Fix the `capture` view helper compatibility with HAML and Slim
+
+    When a blank string was captured in HAML or Slim (and possibly other template engines)
+    it would instead return the entire buffer.
+
+    *Jean Boussier*</description>
+    <pubDate>Fri, 13 Oct 2023 06:29:47 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>
+
+<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />
+it would instead return the entire buffer.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
 </title>
     <link>https://github.com/rails/rails/issues/49553</link>
@@ -91,6 +112,29 @@ message.</p>
 </code></pre></div></div>
 
 <p><em>Akhil G Krishnan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Disallow invalid values for rails new options.
+</title>
+    <link>https://github.com/rails/rails/issues/49609</link>
+    <guid>https://github.com/rails/rails/issues/49609</guid>
+    <description>*   Disallow invalid values for rails new options.
+
+    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for
+    `rails new` can all take different options. This change adds checks to
+    options to make sure the user enters the correct value.
+
+    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*</description>
+    <pubDate>Thu, 12 Oct 2023 20:21:23 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Disallow invalid values for rails new options.</p>
+
+<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> flags for<br />
+<code>rails new</code> can all take different options. This change adds checks to<br />
+options to make sure the user enters the correct value.</p>
+
+<p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
   <item>
