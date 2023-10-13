@@ -60,6 +60,16 @@
     "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
   },
   {
+    "message": "*   Fix compatibility with the `semantic_logger` gem.\n\n    The `semantic_logger` gem doesn't behave exactly like stdlib logger in that\n    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.\n\n    This caused the various `LogSubscriber` classes in Rails to break when assigned a\n    `SemanticLogger` instance.\n\n    *Jean Boussier*, *ojab*",
+    "project": "activesupport",
+    "date_merged": 1697200446000,
+    "author": "Jean Boussier",
+    "sha": "e01d1e25dd6e03233effff524a9e2bf03e3f4869",
+    "pr": "49621",
+    "merge_sha": "c9da2694de2cc8897f0a04604e26ad7f3b672f42",
+    "html": "<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>\n\n<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />\n<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>\n\n<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />\n<code>SemanticLogger</code> instance.</p>\n\n<p><em>Jean Boussier</em>, <em>ojab</em></p>\n"
+  },
+  {
     "message": "*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.\n\n    *Pierre Jambet*",
     "project": "activesupport",
     "date_merged": 1696836287000,
