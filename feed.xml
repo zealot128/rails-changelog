@@ -172,6 +172,33 @@ instead of capturing it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Fix compatibility with the `semantic_logger` gem.
+</title>
+    <link>https://github.com/rails/rails/issues/49621</link>
+    <guid>https://github.com/rails/rails/issues/49621</guid>
+    <description>*   Fix compatibility with the `semantic_logger` gem.
+
+    The `semantic_logger` gem doesn&#39;t behave exactly like stdlib logger in that
+    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.
+
+    This caused the various `LogSubscriber` classes in Rails to break when assigned a
+    `SemanticLogger` instance.
+
+    *Jean Boussier*, *ojab*</description>
+    <pubDate>Fri, 13 Oct 2023 12:34:06 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>
+
+<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />
+<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>
+
+<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />
+<code>SemanticLogger</code> instance.</p>
+
+<p><em>Jean Boussier</em>, <em>ojab</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Fix MemoryStore to prevent race conditions when incrementing or decrementing.
 </title>
     <link>https://github.com/rails/rails/issues/49542</link>
