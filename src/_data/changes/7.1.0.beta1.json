@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Include `ActiveModel::API` in `ActiveRecord::Base`\n\n    *Sean Doyle*",
+    "project": "activerecord",
+    "date_merged": 1697644075000,
+    "author": "Sean Doyle",
+    "sha": "2c57ec6a179e5fb851aca1bdc4b11b17d99a93c8",
+    "pr": "49680",
+    "merge_sha": "00dfa109d6a5f4fb13d745f83d5cc779eba3b352",
+    "html": "<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Ensure `#signed_id` outputs `url_safe` strings.\n\n    *Jason Meller*",
     "project": "activerecord",
     "date_merged": 1696625916000,
@@ -8,36 +18,6 @@
     "pr": "49507",
     "merge_sha": "7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d",
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
-  },
-  {
-    "message": "*   Fix the `capture` view helper compatibility with HAML and Slim\n\n    When a blank string was captured in HAML or Slim (and possibly other template engines)\n    it would instead return the entire buffer.\n\n    *Jean Boussier*",
-    "project": "actionview",
-    "date_merged": 1697178587000,
-    "author": "Jean Boussier",
-    "sha": "79a242dc54ffaedad24e8b885ae14d0a4f704587",
-    "pr": "49612",
-    "merge_sha": "223974913411dc4152eaf6235e0bd3986406faae",
-    "html": "<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>\n\n<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />\nit would instead return the entire buffer.</p>\n\n<p><em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.\n\n    This fix was already landed in >= 7.0.4.3, < 7.1.0.\n    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]\n\n    *Ryunosuke Sato*",
-    "project": "actionview",
-    "date_merged": 1697057081000,
-    "author": "Ryunosuke Sato",
-    "sha": "8b18d44d1705629de600869056e24aed7601d1da",
-    "pr": "49553",
-    "merge_sha": "fc8d9ed84348b17c9fd020fac9061f1bd73ddf74",
-    "html": "<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>\n\n<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />\n[<a href=\"https://github.com/advisories/GHSA-xp5h-f8jf-rc8q\">CVE-2023-23913</a>]</p>\n\n<p><em>Ryunosuke Sato</em></p>\n"
-  },
-  {
-    "message": "*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and\n    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If\n    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error\n    message.\n\n    Examples:\n\n    ```ruby\n    # Raises ArgumentError: Invalid HTML5 tag name: 12p\n    content_tag(\"12p\") # Starting with a number\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"\"\n    content_tag(\"\") # Empty tag name\n\n    # Raises ArgumentError: Invalid HTML5 tag name: div/\n    tag(\"div/\") # Contains a solidus\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"image file\"\n    tag(\"image file\") # Contains a space\n    ```\n\n    *Akhil G Krishnan*",
-    "project": "actionview",
-    "date_merged": 1695836261000,
-    "author": "Akhil G Krishnan",
-    "sha": "bb626ffca82317ae2cd02543785a7b78c2bba9c1",
-    "pr": "49175",
-    "merge_sha": "7c03e4f1b7553084f34318a9efc2793137de36f4",
-    "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   },
   {
     "message": "*   Disallow invalid values for rails new options.\n\n    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for\n    `rails new` can all take different options. This change adds checks to\n    options to make sure the user enters the correct value.\n\n    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*",
@@ -88,5 +68,35 @@
     "pr": "49475",
     "merge_sha": "d21f4e638ff3498a19730c505e5fb255740a7960",
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix the `capture` view helper compatibility with HAML and Slim\n\n    When a blank string was captured in HAML or Slim (and possibly other template engines)\n    it would instead return the entire buffer.\n\n    *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1697178587000,
+    "author": "Jean Boussier",
+    "sha": "79a242dc54ffaedad24e8b885ae14d0a4f704587",
+    "pr": "49612",
+    "merge_sha": "223974913411dc4152eaf6235e0bd3986406faae",
+    "html": "<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>\n\n<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />\nit would instead return the entire buffer.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.\n\n    This fix was already landed in >= 7.0.4.3, < 7.1.0.\n    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]\n\n    *Ryunosuke Sato*",
+    "project": "actionview",
+    "date_merged": 1697057081000,
+    "author": "Ryunosuke Sato",
+    "sha": "8b18d44d1705629de600869056e24aed7601d1da",
+    "pr": "49553",
+    "merge_sha": "fc8d9ed84348b17c9fd020fac9061f1bd73ddf74",
+    "html": "<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>\n\n<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />\n[<a href=\"https://github.com/advisories/GHSA-xp5h-f8jf-rc8q\">CVE-2023-23913</a>]</p>\n\n<p><em>Ryunosuke Sato</em></p>\n"
+  },
+  {
+    "message": "*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and\n    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If\n    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error\n    message.\n\n    Examples:\n\n    ```ruby\n    # Raises ArgumentError: Invalid HTML5 tag name: 12p\n    content_tag(\"12p\") # Starting with a number\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"\"\n    content_tag(\"\") # Empty tag name\n\n    # Raises ArgumentError: Invalid HTML5 tag name: div/\n    tag(\"div/\") # Contains a solidus\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"image file\"\n    tag(\"image file\") # Contains a space\n    ```\n\n    *Akhil G Krishnan*",
+    "project": "actionview",
+    "date_merged": 1695836261000,
+    "author": "Akhil G Krishnan",
+    "sha": "bb626ffca82317ae2cd02543785a7b78c2bba9c1",
+    "pr": "49175",
+    "merge_sha": "7c03e4f1b7553084f34318a9efc2793137de36f4",
+    "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   }
 ]
