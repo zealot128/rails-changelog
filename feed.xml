@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Include `ActiveModel::API` in `ActiveRecord::Base`
+</title>
+    <link>https://github.com/rails/rails/issues/49680</link>
+    <guid>https://github.com/rails/rails/issues/49680</guid>
+    <description>*   Include `ActiveModel::API` in `ActiveRecord::Base`
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 18 Oct 2023 15:47:55 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Ensure `#signed_id` outputs `url_safe` strings.
 </title>
     <link>https://github.com/rails/rails/issues/49507</link>
@@ -18,100 +33,6 @@
     <content:encoded><![CDATA[<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>
 
 <p><em>Jason Meller</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Fix the `capture` view helper compatibility with HAML and Slim
-</title>
-    <link>https://github.com/rails/rails/issues/49612</link>
-    <guid>https://github.com/rails/rails/issues/49612</guid>
-    <description>*   Fix the `capture` view helper compatibility with HAML and Slim
-
-    When a blank string was captured in HAML or Slim (and possibly other template engines)
-    it would instead return the entire buffer.
-
-    *Jean Boussier*</description>
-    <pubDate>Fri, 13 Oct 2023 06:29:47 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>
-
-<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />
-it would instead return the entire buffer.</p>
-
-<p><em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
-</title>
-    <link>https://github.com/rails/rails/issues/49553</link>
-    <guid>https://github.com/rails/rails/issues/49553</guid>
-    <description>*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
-
-    This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.
-    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]
-
-    *Ryunosuke Sato*</description>
-    <pubDate>Wed, 11 Oct 2023 20:44:41 +0000</pubDate>
-    <author>Ryunosuke Sato</author>
-    <content:encoded><![CDATA[<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>
-
-<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />
-[<a href="https://github.com/advisories/GHSA-xp5h-f8jf-rc8q">CVE-2023-23913</a>]</p>
-
-<p><em>Ryunosuke Sato</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
-</title>
-    <link>https://github.com/rails/rails/issues/49175</link>
-    <guid>https://github.com/rails/rails/issues/49175</guid>
-    <description>*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
-    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If
-    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error
-    message.
-
-    Examples:
-
-    ```ruby
-    # Raises ArgumentError: Invalid HTML5 tag name: 12p
-    content_tag(&quot;12p&quot;) # Starting with a number
-
-    # Raises ArgumentError: Invalid HTML5 tag name: &quot;&quot;
-    content_tag(&quot;&quot;) # Empty tag name
-
-    # Raises ArgumentError: Invalid HTML5 tag name: div/
-    tag(&quot;div/&quot;) # Contains a solidus
-
-    # Raises ArgumentError: Invalid HTML5 tag name: &quot;image file&quot;
-    tag(&quot;image file&quot;) # Contains a space
-    ```
-
-    *Akhil G Krishnan*</description>
-    <pubDate>Wed, 27 Sep 2023 17:37:41 +0000</pubDate>
-    <author>Akhil G Krishnan</author>
-    <content:encoded><![CDATA[<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />
-<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />
-an invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />
-message.</p>
-
-<p>Examples:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>
-<span class="n">content_tag</span><span class="p">(</span><span class="s2">"12p"</span><span class="p">)</span> <span class="c1"># Starting with a number</span>
-
-<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: ""</span>
-<span class="n">content_tag</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="c1"># Empty tag name</span>
-
-<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>
-<span class="n">tag</span><span class="p">(</span><span class="s2">"div/"</span><span class="p">)</span> <span class="c1"># Contains a solidus</span>
-
-<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: "image file"</span>
-<span class="n">tag</span><span class="p">(</span><span class="s2">"image file"</span><span class="p">)</span> <span class="c1"># Contains a space</span>
-</code></pre></div></div>
-
-<p><em>Akhil G Krishnan</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -232,6 +153,100 @@ instead of capturing it.</p>
 method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
 
 <p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix the `capture` view helper compatibility with HAML and Slim
+</title>
+    <link>https://github.com/rails/rails/issues/49612</link>
+    <guid>https://github.com/rails/rails/issues/49612</guid>
+    <description>*   Fix the `capture` view helper compatibility with HAML and Slim
+
+    When a blank string was captured in HAML or Slim (and possibly other template engines)
+    it would instead return the entire buffer.
+
+    *Jean Boussier*</description>
+    <pubDate>Fri, 13 Oct 2023 06:29:47 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>
+
+<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />
+it would instead return the entire buffer.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+</title>
+    <link>https://github.com/rails/rails/issues/49553</link>
+    <guid>https://github.com/rails/rails/issues/49553</guid>
+    <description>*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+
+    This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.
+    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]
+
+    *Ryunosuke Sato*</description>
+    <pubDate>Wed, 11 Oct 2023 20:44:41 +0000</pubDate>
+    <author>Ryunosuke Sato</author>
+    <content:encoded><![CDATA[<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>
+
+<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />
+[<a href="https://github.com/advisories/GHSA-xp5h-f8jf-rc8q">CVE-2023-23913</a>]</p>
+
+<p><em>Ryunosuke Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
+</title>
+    <link>https://github.com/rails/rails/issues/49175</link>
+    <guid>https://github.com/rails/rails/issues/49175</guid>
+    <description>*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
+    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If
+    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error
+    message.
+
+    Examples:
+
+    ```ruby
+    # Raises ArgumentError: Invalid HTML5 tag name: 12p
+    content_tag(&quot;12p&quot;) # Starting with a number
+
+    # Raises ArgumentError: Invalid HTML5 tag name: &quot;&quot;
+    content_tag(&quot;&quot;) # Empty tag name
+
+    # Raises ArgumentError: Invalid HTML5 tag name: div/
+    tag(&quot;div/&quot;) # Contains a solidus
+
+    # Raises ArgumentError: Invalid HTML5 tag name: &quot;image file&quot;
+    tag(&quot;image file&quot;) # Contains a space
+    ```
+
+    *Akhil G Krishnan*</description>
+    <pubDate>Wed, 27 Sep 2023 17:37:41 +0000</pubDate>
+    <author>Akhil G Krishnan</author>
+    <content:encoded><![CDATA[<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />
+<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />
+an invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />
+message.</p>
+
+<p>Examples:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>
+<span class="n">content_tag</span><span class="p">(</span><span class="s2">"12p"</span><span class="p">)</span> <span class="c1"># Starting with a number</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: ""</span>
+<span class="n">content_tag</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="c1"># Empty tag name</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>
+<span class="n">tag</span><span class="p">(</span><span class="s2">"div/"</span><span class="p">)</span> <span class="c1"># Contains a solidus</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: "image file"</span>
+<span class="n">tag</span><span class="p">(</span><span class="s2">"image file"</span><span class="p">)</span> <span class="c1"># Contains a space</span>
+</code></pre></div></div>
+
+<p><em>Akhil G Krishnan</em></p>
 ]]></content:encoded>
   </item>
 </channel>
