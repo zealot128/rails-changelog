@@ -40,6 +40,16 @@
     "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
   },
   {
+    "message": "*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`'s `broadcasts`.\n\n    *Andrew Novoselac*",
+    "project": "activesupport",
+    "date_merged": 1697821164000,
+    "author": "Andrew Novoselac",
+    "sha": "f212fb8b8349f4b7cd4bb4ea74ef940bf1050873",
+    "pr": "49721",
+    "merge_sha": "7c58911bd821d22d837f12129de1811167be9b97",
+    "html": "<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
     "message": "*   Fix compatibility with the `semantic_logger` gem.\n\n    The `semantic_logger` gem doesn't behave exactly like stdlib logger in that\n    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.\n\n    This caused the various `LogSubscriber` classes in Rails to break when assigned a\n    `SemanticLogger` instance.\n\n    *Jean Boussier*, *ojab*",
     "project": "activesupport",
     "date_merged": 1697200446000,
