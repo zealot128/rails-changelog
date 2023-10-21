@@ -108,5 +108,15 @@
     "pr": "49175",
     "merge_sha": "7c03e4f1b7553084f34318a9efc2793137de36f4",
     "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
+  },
+  {
+    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1697839813000,
+    "author": "Hartley McGuire",
+    "sha": "5005480adf5057b7efe9197a8d8b7a716c91bec5",
+    "pr": "49722",
+    "merge_sha": "d4866ede93a99642002f1854f05c8f813d342b02",
+    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   }
 ]
