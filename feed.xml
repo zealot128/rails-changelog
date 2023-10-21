@@ -264,6 +264,21 @@ message.</p>
 <p><em>Akhil G Krishnan</em></p>
 ]]></content:encoded>
   </item>
+  <item>
+    <title>actionpack: Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
+</title>
+    <link>https://github.com/rails/rails/issues/49722</link>
+    <guid>https://github.com/rails/rails/issues/49722</guid>
+    <description>*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 20 Oct 2023 22:10:13 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
 </channel>
 </rss>
 
