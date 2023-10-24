@@ -93,6 +93,21 @@ instead of capturing it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
+</title>
+    <link>https://github.com/rails/rails/issues/49720</link>
+    <guid>https://github.com/rails/rails/issues/49720</guid>
+    <description>*   Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Mon, 23 Oct 2023 23:05:43 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
 </title>
     <link>https://github.com/rails/rails/issues/49721</link>
