@@ -40,6 +40,16 @@
     "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
   },
   {
+    "message": "*   Fix `BroadcastLogger#dup` so that it duplicates the logger's `broadcasts`.\n\n    *Andrew Novoselac*",
+    "project": "activesupport",
+    "date_merged": 1698102343000,
+    "author": "Andrew Novoselac",
+    "sha": "c14b98c28a5962281dd3bc6fb2ca6c6cf79fbc2a",
+    "pr": "49720",
+    "merge_sha": "fefd8f3a1619409f3fd11ad2602beecec8a76943",
+    "html": "<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
     "message": "*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`'s `broadcasts`.\n\n    *Andrew Novoselac*",
     "project": "activesupport",
     "date_merged": 1697821164000,
