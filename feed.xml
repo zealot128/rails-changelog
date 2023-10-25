@@ -186,6 +186,29 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
+</title>
+    <link>https://github.com/rails/rails/issues/49782</link>
+    <guid>https://github.com/rails/rails/issues/49782</guid>
+    <description>*   Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
+
+    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.
+
+    Now they are only passed if the template will actually accept them.
+
+    *Yasha Krasnou*, *Jean Boussier*</description>
+    <pubDate>Wed, 25 Oct 2023 16:00:06 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Automatically discard the implicit locals injected by collection rendering for template that can’t accept them</p>
+
+<p>When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.</p>
+
+<p>Now they are only passed if the template will actually accept them.</p>
+
+<p><em>Yasha Krasnou</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Fix `@rails/ujs` calling `start()` an extra time when using bundlers
 </title>
     <link>https://github.com/rails/rails/issues/49668</link>
