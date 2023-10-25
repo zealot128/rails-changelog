@@ -186,6 +186,21 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Fix `@rails/ujs` calling `start()` an extra time when using bundlers
+</title>
+    <link>https://github.com/rails/rails/issues/49668</link>
+    <guid>https://github.com/rails/rails/issues/49668</guid>
+    <description>*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers
+
+    *Hartley McGuire*, *Ryunosuke Sato*</description>
+    <pubDate>Tue, 24 Oct 2023 19:01:24 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix <code>@rails/ujs</code> calling <code>start()</code> an extra time when using bundlers</p>
+
+<p><em>Hartley McGuire</em>, <em>Ryunosuke Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Fix the `capture` view helper compatibility with HAML and Slim
 </title>
     <link>https://github.com/rails/rails/issues/49612</link>
