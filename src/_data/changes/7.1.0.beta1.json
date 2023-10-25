@@ -90,6 +90,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers\n\n    *Hartley McGuire*, *Ryunosuke Sato*",
+    "project": "actionview",
+    "date_merged": 1698174084000,
+    "author": "Hartley McGuire",
+    "sha": "f7617808992c9c2a77920ccf4f2a4a42160fe1bd",
+    "pr": "49668",
+    "merge_sha": "4c5c904a212a850c43adb7a3c3a719ca3d2b9159",
+    "html": "<p>Fix <code>@rails/ujs</code> calling <code>start()</code> an extra time when using bundlers</p>\n\n<p><em>Hartley McGuire</em>, <em>Ryunosuke Sato</em></p>\n"
+  },
+  {
     "message": "*   Fix the `capture` view helper compatibility with HAML and Slim\n\n    When a blank string was captured in HAML or Slim (and possibly other template engines)\n    it would instead return the entire buffer.\n\n    *Jean Boussier*",
     "project": "actionview",
     "date_merged": 1697178587000,
