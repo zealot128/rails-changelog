@@ -90,6 +90,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Automatically discard the implicit locals injected by collection rendering for template that can't accept them\n\n    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.\n\n    Now they are only passed if the template will actually accept them.\n\n    *Yasha Krasnou*, *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1698249606000,
+    "author": "Jean Boussier",
+    "sha": "110206a74bd92ccb7a8d3dbb891b08248a7ae284",
+    "pr": "49782",
+    "merge_sha": "aa9496002550f7cd07c53f04cbfc8bf749336dd6",
+    "html": "<p>Automatically discard the implicit locals injected by collection rendering for template that can’t accept them</p>\n\n<p>When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.</p>\n\n<p>Now they are only passed if the template will actually accept them.</p>\n\n<p><em>Yasha Krasnou</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers\n\n    *Hartley McGuire*, *Ryunosuke Sato*",
     "project": "actionview",
     "date_merged": 1698174084000,
