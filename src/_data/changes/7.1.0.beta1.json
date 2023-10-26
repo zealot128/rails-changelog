@@ -10,6 +10,16 @@
     "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.\n\n    *Earlopain*",
+    "project": "activesupport",
+    "date_merged": 1698337259000,
+    "author": "Earlopain",
+    "sha": "c6dcb11691162342550831cdbbcefb5ee59ad198",
+    "pr": "49791",
+    "merge_sha": "87609e821b86fb3b5f4170a8b498d0171c7277cc",
+    "html": "<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
     "message": "*   Fix `BroadcastLogger#dup` so that it duplicates the logger's `broadcasts`.\n\n    *Andrew Novoselac*",
     "project": "activesupport",
     "date_merged": 1698102343000,
@@ -58,6 +68,16 @@
     "pr": "49475",
     "merge_sha": "d21f4e638ff3498a19730c505e5fb255740a7960",
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.\n\n    *Earlopain*",
+    "project": "actionview",
+    "date_merged": 1698337259000,
+    "author": "Earlopain",
+    "sha": "c6dcb11691162342550831cdbbcefb5ee59ad198",
+    "pr": "49791",
+    "merge_sha": "87609e821b86fb3b5f4170a8b498d0171c7277cc",
+    "html": "<p>Fix the <code>number_to_human_size</code> view helper to correctly work with negative numbers.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
     "message": "*   Automatically discard the implicit locals injected by collection rendering for template that can't accept them\n\n    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.\n\n    Now they are only passed if the template will actually accept them.\n\n    *Yasha Krasnou*, *Jean Boussier*",
