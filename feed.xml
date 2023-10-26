@@ -6,90 +6,18 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>activerecord: Include `ActiveModel::API` in `ActiveRecord::Base`
+    <title>actionpack: Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
 </title>
-    <link>https://github.com/rails/rails/issues/49680</link>
-    <guid>https://github.com/rails/rails/issues/49680</guid>
-    <description>*   Include `ActiveModel::API` in `ActiveRecord::Base`
+    <link>https://github.com/rails/rails/issues/49722</link>
+    <guid>https://github.com/rails/rails/issues/49722</guid>
+    <description>*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
 
-    *Sean Doyle*</description>
-    <pubDate>Wed, 18 Oct 2023 15:47:55 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 20 Oct 2023 22:10:13 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>
 
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Ensure `#signed_id` outputs `url_safe` strings.
-</title>
-    <link>https://github.com/rails/rails/issues/49507</link>
-    <guid>https://github.com/rails/rails/issues/49507</guid>
-    <description>*   Ensure `#signed_id` outputs `url_safe` strings.
-
-    *Jason Meller*</description>
-    <pubDate>Fri, 06 Oct 2023 20:58:36 +0000</pubDate>
-    <author>Jason Meller</author>
-    <content:encoded><![CDATA[<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>
-
-<p><em>Jason Meller</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Disallow invalid values for rails new options.
-</title>
-    <link>https://github.com/rails/rails/issues/49609</link>
-    <guid>https://github.com/rails/rails/issues/49609</guid>
-    <description>*   Disallow invalid values for rails new options.
-
-    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for
-    `rails new` can all take different options. This change adds checks to
-    options to make sure the user enters the correct value.
-
-    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*</description>
-    <pubDate>Thu, 12 Oct 2023 20:21:23 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Disallow invalid values for rails new options.</p>
-
-<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> flags for<br />
-<code>rails new</code> can all take different options. This change adds checks to<br />
-options to make sure the user enters the correct value.</p>
-
-<p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Conditionally print `$stdout` when invoking `run_generator`
-</title>
-    <link>https://github.com/rails/rails/issues/49448</link>
-    <guid>https://github.com/rails/rails/issues/49448</guid>
-    <description>*   Conditionally print `$stdout` when invoking `run_generator`
-
-    In an effort to improve the developer experience when debugging
-    generator tests, we add the ability to conditionally print `$stdout`
-    instead of capturing it.
-
-    This allows for calls to `binding.irb` and `puts` work as expected.
-
-    ```sh
-    RAILS_LOG_TO_STDOUT=true ./bin/test test/generators/actions_test.rb
-    ```
-
-    *Steve Polito*</description>
-    <pubDate>Tue, 03 Oct 2023 11:06:14 +0000</pubDate>
-    <author>Steve Polito</author>
-    <content:encoded><![CDATA[<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>
-
-<p>In an effort to improve the developer experience when debugging<br />
-generator tests, we add the ability to conditionally print <code>$stdout</code><br />
-instead of capturing it.</p>
-
-<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">RAILS_LOG_TO_STDOUT</span><span class="o">=</span><span class="nb">true</span> ./bin/test <span class="nb">test</span>/generators/actions_test.rb
-</code></pre></div></div>
-
-<p><em>Steve Polito</em></p>
+<p><em>Hartley McGuire</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -318,18 +246,90 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionpack: Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
+    <title>railties: Disallow invalid values for rails new options.
 </title>
-    <link>https://github.com/rails/rails/issues/49722</link>
-    <guid>https://github.com/rails/rails/issues/49722</guid>
-    <description>*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
+    <link>https://github.com/rails/rails/issues/49609</link>
+    <guid>https://github.com/rails/rails/issues/49609</guid>
+    <description>*   Disallow invalid values for rails new options.
 
-    *Hartley McGuire*</description>
-    <pubDate>Fri, 20 Oct 2023 22:10:13 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>
+    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for
+    `rails new` can all take different options. This change adds checks to
+    options to make sure the user enters the correct value.
 
-<p><em>Hartley McGuire</em></p>
+    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*</description>
+    <pubDate>Thu, 12 Oct 2023 20:21:23 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Disallow invalid values for rails new options.</p>
+
+<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> flags for<br />
+<code>rails new</code> can all take different options. This change adds checks to<br />
+options to make sure the user enters the correct value.</p>
+
+<p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Conditionally print `$stdout` when invoking `run_generator`
+</title>
+    <link>https://github.com/rails/rails/issues/49448</link>
+    <guid>https://github.com/rails/rails/issues/49448</guid>
+    <description>*   Conditionally print `$stdout` when invoking `run_generator`
+
+    In an effort to improve the developer experience when debugging
+    generator tests, we add the ability to conditionally print `$stdout`
+    instead of capturing it.
+
+    This allows for calls to `binding.irb` and `puts` work as expected.
+
+    ```sh
+    RAILS_LOG_TO_STDOUT=true ./bin/test test/generators/actions_test.rb
+    ```
+
+    *Steve Polito*</description>
+    <pubDate>Tue, 03 Oct 2023 11:06:14 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>
+
+<p>In an effort to improve the developer experience when debugging<br />
+generator tests, we add the ability to conditionally print <code>$stdout</code><br />
+instead of capturing it.</p>
+
+<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">RAILS_LOG_TO_STDOUT</span><span class="o">=</span><span class="nb">true</span> ./bin/test <span class="nb">test</span>/generators/actions_test.rb
+</code></pre></div></div>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Include `ActiveModel::API` in `ActiveRecord::Base`
+</title>
+    <link>https://github.com/rails/rails/issues/49680</link>
+    <guid>https://github.com/rails/rails/issues/49680</guid>
+    <description>*   Include `ActiveModel::API` in `ActiveRecord::Base`
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 18 Oct 2023 15:47:55 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Ensure `#signed_id` outputs `url_safe` strings.
+</title>
+    <link>https://github.com/rails/rails/issues/49507</link>
+    <guid>https://github.com/rails/rails/issues/49507</guid>
+    <description>*   Ensure `#signed_id` outputs `url_safe` strings.
+
+    *Jason Meller*</description>
+    <pubDate>Fri, 06 Oct 2023 20:58:36 +0000</pubDate>
+    <author>Jason Meller</author>
+    <content:encoded><![CDATA[<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>
+
+<p><em>Jason Meller</em></p>
 ]]></content:encoded>
   </item>
 </channel>
