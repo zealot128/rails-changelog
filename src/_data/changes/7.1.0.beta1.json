@@ -1,43 +1,13 @@
 [
   {
-    "message": "*   Include `ActiveModel::API` in `ActiveRecord::Base`\n\n    *Sean Doyle*",
-    "project": "activerecord",
-    "date_merged": 1697644075000,
-    "author": "Sean Doyle",
-    "sha": "2c57ec6a179e5fb851aca1bdc4b11b17d99a93c8",
-    "pr": "49680",
-    "merge_sha": "00dfa109d6a5f4fb13d745f83d5cc779eba3b352",
-    "html": "<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Ensure `#signed_id` outputs `url_safe` strings.\n\n    *Jason Meller*",
-    "project": "activerecord",
-    "date_merged": 1696625916000,
-    "author": "Jason Meller",
-    "sha": "fc5c8d0cfe1871dd66efec2b6ca37e1a75ccd21f",
-    "pr": "49507",
-    "merge_sha": "7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d",
-    "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
-  },
-  {
-    "message": "*   Disallow invalid values for rails new options.\n\n    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for\n    `rails new` can all take different options. This change adds checks to\n    options to make sure the user enters the correct value.\n\n    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1697142083000,
-    "author": "Petrik",
-    "sha": "b8a3efeee348db1d357bd83d5e7cca24cbbe4f28",
-    "pr": "49609",
-    "merge_sha": "056396fea663d3adb9ba332b039a007d2730901a",
-    "html": "<p>Disallow invalid values for rails new options.</p>\n\n<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> flags for<br />\n<code>rails new</code> can all take different options. This change adds checks to<br />\noptions to make sure the user enters the correct value.</p>\n\n<p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Conditionally print `$stdout` when invoking `run_generator`\n\n    In an effort to improve the developer experience when debugging\n    generator tests, we add the ability to conditionally print `$stdout`\n    instead of capturing it.\n\n    This allows for calls to `binding.irb` and `puts` work as expected.\n\n    ```sh\n    RAILS_LOG_TO_STDOUT=true ./bin/test test/generators/actions_test.rb\n    ```\n\n    *Steve Polito*",
-    "project": "railties",
-    "date_merged": 1696331174000,
-    "author": "Steve Polito",
-    "sha": "e659f46da1822b0fd9cd9c040fa3772e999d21f1",
-    "pr": "49448",
-    "merge_sha": "7cc4de0aa2c8812ad90fe23c1c0889d405675572",
-    "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
+    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1697839813000,
+    "author": "Hartley McGuire",
+    "sha": "5005480adf5057b7efe9197a8d8b7a716c91bec5",
+    "pr": "49722",
+    "merge_sha": "d4866ede93a99642002f1854f05c8f813d342b02",
+    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   Fix `BroadcastLogger#dup` so that it duplicates the logger's `broadcasts`.\n\n    *Andrew Novoselac*",
@@ -140,13 +110,43 @@
     "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   },
   {
-    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
-    "project": "actionpack",
-    "date_merged": 1697839813000,
-    "author": "Hartley McGuire",
-    "sha": "5005480adf5057b7efe9197a8d8b7a716c91bec5",
-    "pr": "49722",
-    "merge_sha": "d4866ede93a99642002f1854f05c8f813d342b02",
-    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+    "message": "*   Disallow invalid values for rails new options.\n\n    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for\n    `rails new` can all take different options. This change adds checks to\n    options to make sure the user enters the correct value.\n\n    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1697142083000,
+    "author": "Petrik",
+    "sha": "b8a3efeee348db1d357bd83d5e7cca24cbbe4f28",
+    "pr": "49609",
+    "merge_sha": "056396fea663d3adb9ba332b039a007d2730901a",
+    "html": "<p>Disallow invalid values for rails new options.</p>\n\n<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> flags for<br />\n<code>rails new</code> can all take different options. This change adds checks to<br />\noptions to make sure the user enters the correct value.</p>\n\n<p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Conditionally print `$stdout` when invoking `run_generator`\n\n    In an effort to improve the developer experience when debugging\n    generator tests, we add the ability to conditionally print `$stdout`\n    instead of capturing it.\n\n    This allows for calls to `binding.irb` and `puts` work as expected.\n\n    ```sh\n    RAILS_LOG_TO_STDOUT=true ./bin/test test/generators/actions_test.rb\n    ```\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1696331174000,
+    "author": "Steve Polito",
+    "sha": "e659f46da1822b0fd9cd9c040fa3772e999d21f1",
+    "pr": "49448",
+    "merge_sha": "7cc4de0aa2c8812ad90fe23c1c0889d405675572",
+    "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Include `ActiveModel::API` in `ActiveRecord::Base`\n\n    *Sean Doyle*",
+    "project": "activerecord",
+    "date_merged": 1697644075000,
+    "author": "Sean Doyle",
+    "sha": "2c57ec6a179e5fb851aca1bdc4b11b17d99a93c8",
+    "pr": "49680",
+    "merge_sha": "00dfa109d6a5f4fb13d745f83d5cc779eba3b352",
+    "html": "<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Ensure `#signed_id` outputs `url_safe` strings.\n\n    *Jason Meller*",
+    "project": "activerecord",
+    "date_merged": 1696625916000,
+    "author": "Jason Meller",
+    "sha": "fc5c8d0cfe1871dd66efec2b6ca37e1a75ccd21f",
+    "pr": "49507",
+    "merge_sha": "7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d",
+    "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
   }
 ]
