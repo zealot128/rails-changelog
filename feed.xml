@@ -21,6 +21,21 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Fix `#to_fs(:human_size)` to correctly work with negative numbers.
+</title>
+    <link>https://github.com/rails/rails/issues/49791</link>
+    <guid>https://github.com/rails/rails/issues/49791</guid>
+    <description>*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.
+
+    *Earlopain*</description>
+    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>
+
+<p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
 </title>
     <link>https://github.com/rails/rails/issues/49720</link>
@@ -111,6 +126,21 @@
 method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
 
 <p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix the `number_to_human_size` view helper to correctly work with negative numbers.
+</title>
+    <link>https://github.com/rails/rails/issues/49791</link>
+    <guid>https://github.com/rails/rails/issues/49791</guid>
+    <description>*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.
+
+    *Earlopain*</description>
+    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Fix the <code>number_to_human_size</code> view helper to correctly work with negative numbers.</p>
+
+<p><em>Earlopain</em></p>
 ]]></content:encoded>
   </item>
   <item>
