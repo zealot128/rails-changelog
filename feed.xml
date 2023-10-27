@@ -276,6 +276,36 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Upgrade Trix to 2.0.7
+</title>
+    <link>https://github.com/rails/rails/issues/49778</link>
+    <guid>https://github.com/rails/rails/issues/49778</guid>
+    <description>*   Upgrade Trix to 2.0.7
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 27 Oct 2023 14:29:30 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Upgrade Trix to 2.0.7</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Fix using Trix with Sprockets
+</title>
+    <link>https://github.com/rails/rails/issues/49778</link>
+    <guid>https://github.com/rails/rails/issues/49778</guid>
+    <description>*   Fix using Trix with Sprockets
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 27 Oct 2023 14:29:30 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix using Trix with Sprockets</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Disallow invalid values for rails new options.
 </title>
     <link>https://github.com/rails/rails/issues/49609</link>
