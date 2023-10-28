@@ -170,6 +170,16 @@
     "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
   },
   {
+    "message": "*   Add `set_constraints` helper for PostgreSQL\n\n    ```ruby\n    Post.create!(user_id: -1) # => ActiveRecord::InvalidForeignKey\n\n    Post.transaction do\n      Post.connection.set_constraints(:deferred)\n      p = Post.create!(user_id: -1)\n      u = User.create!\n      p.user = u\n      p.save!\n    end\n    ```\n\n    *Cody Cutrer*",
+    "project": "activerecord",
+    "date_merged": 1698471624000,
+    "author": "Cody Cutrer",
+    "sha": "f9fee1a3cbbcfe95cfd212c1861469e07f2e5642",
+    "pr": "49187",
+    "merge_sha": "6c63b9b090e48bde20eea2881fe0ed56360fe6c1",
+    "html": "<p>Add <code>set_constraints</code> helper for PostgreSQL</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; ActiveRecord::InvalidForeignKey</span>\n\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n  <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">connection</span><span class=\"p\">.</span><span class=\"nf\">set_constraints</span><span class=\"p\">(</span><span class=\"ss\">:deferred</span><span class=\"p\">)</span>\n  <span class=\"nb\">p</span> <span class=\"o\">=</span> <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n  <span class=\"n\">u</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create!</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">user</span> <span class=\"o\">=</span> <span class=\"n\">u</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">save!</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Cody Cutrer</em></p>\n"
+  },
+  {
     "message": "*   Include `ActiveModel::API` in `ActiveRecord::Base`\n\n    *Sean Doyle*",
     "project": "activerecord",
     "date_merged": 1697644075000,
