@@ -363,6 +363,44 @@ instead of capturing it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add `set_constraints` helper for PostgreSQL
+</title>
+    <link>https://github.com/rails/rails/issues/49187</link>
+    <guid>https://github.com/rails/rails/issues/49187</guid>
+    <description>*   Add `set_constraints` helper for PostgreSQL
+
+    ```ruby
+    Post.create!(user_id: -1) # =&gt; ActiveRecord::InvalidForeignKey
+
+    Post.transaction do
+      Post.connection.set_constraints(:deferred)
+      p = Post.create!(user_id: -1)
+      u = User.create!
+      p.user = u
+      p.save!
+    end
+    ```
+
+    *Cody Cutrer*</description>
+    <pubDate>Sat, 28 Oct 2023 05:40:24 +0000</pubDate>
+    <author>Cody Cutrer</author>
+    <content:encoded><![CDATA[<p>Add <code>set_constraints</code> helper for PostgreSQL</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">user_id: </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># =&gt; ActiveRecord::InvalidForeignKey</span>
+
+<span class="no">Post</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">set_constraints</span><span class="p">(</span><span class="ss">:deferred</span><span class="p">)</span>
+  <span class="nb">p</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">user_id: </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">u</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">create!</span>
+  <span class="nb">p</span><span class="p">.</span><span class="nf">user</span> <span class="o">=</span> <span class="n">u</span>
+  <span class="nb">p</span><span class="p">.</span><span class="nf">save!</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Cody Cutrer</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Include `ActiveModel::API` in `ActiveRecord::Base`
 </title>
     <link>https://github.com/rails/rails/issues/49680</link>
