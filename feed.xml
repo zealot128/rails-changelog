@@ -363,6 +363,34 @@ instead of capturing it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract
+</title>
+    <link>https://github.com/rails/rails/issues/49376</link>
+    <guid>https://github.com/rails/rails/issues/49376</guid>
+    <description>*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract
+
+    Allows foreign keys to be deferred by adding the `:deferrable` key to the `foreign_key` options.
+
+    ```ruby
+    add_reference :person, :alias, foreign_key: { deferrable: :deferred }
+    add_reference :alias, :person, foreign_key: { deferrable: :deferred }
+    ```
+
+    *Stephen Margheim*</description>
+    <pubDate>Sun, 29 Oct 2023 01:59:06 +0000</pubDate>
+    <author>Stephen Margheim</author>
+    <content:encoded><![CDATA[<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract</p>
+
+<p>Allows foreign keys to be deferred by adding the <code>:deferrable</code> key to the <code>foreign_key</code> options.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_reference</span> <span class="ss">:person</span><span class="p">,</span> <span class="ss">:alias</span><span class="p">,</span> <span class="ss">foreign_key: </span><span class="p">{</span> <span class="ss">deferrable: :deferred</span> <span class="p">}</span>
+<span class="n">add_reference</span> <span class="ss">:alias</span><span class="p">,</span> <span class="ss">:person</span><span class="p">,</span> <span class="ss">foreign_key: </span><span class="p">{</span> <span class="ss">deferrable: :deferred</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add `set_constraints` helper for PostgreSQL
 </title>
     <link>https://github.com/rails/rails/issues/49187</link>
