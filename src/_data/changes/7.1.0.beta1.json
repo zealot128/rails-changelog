@@ -170,6 +170,16 @@
     "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
   },
   {
+    "message": "*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract\n\n    Allows foreign keys to be deferred by adding the `:deferrable` key to the `foreign_key` options.\n\n    ```ruby\n    add_reference :person, :alias, foreign_key: { deferrable: :deferred }\n    add_reference :alias, :person, foreign_key: { deferrable: :deferred }\n    ```\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1698544746000,
+    "author": "Stephen Margheim",
+    "sha": "ea17941e39225eca81880c770644652c4612dc69",
+    "pr": "49376",
+    "merge_sha": "a561dd4b2928459feb313b2db0910d2bc0133864",
+    "html": "<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract</p>\n\n<p>Allows foreign keys to be deferred by adding the <code>:deferrable</code> key to the <code>foreign_key</code> options.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_reference</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n<span class=\"n\">add_reference</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
     "message": "*   Add `set_constraints` helper for PostgreSQL\n\n    ```ruby\n    Post.create!(user_id: -1) # => ActiveRecord::InvalidForeignKey\n\n    Post.transaction do\n      Post.connection.set_constraints(:deferred)\n      p = Post.create!(user_id: -1)\n      u = User.create!\n      p.user = u\n      p.save!\n    end\n    ```\n\n    *Cody Cutrer*",
     "project": "activerecord",
     "date_merged": 1698471624000,
