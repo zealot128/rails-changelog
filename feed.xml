@@ -21,6 +21,29 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Improve error messages of `assert_changes` and `assert_no_changes`
+</title>
+    <link>https://github.com/rails/rails/issues/48482</link>
+    <guid>https://github.com/rails/rails/issues/48482</guid>
+    <description>*   Improve error messages of `assert_changes` and `assert_no_changes`
+
+    `assert_changes` error messages now display objects with `.inspect` to make it easier
+    to differentiate nil from empty strings, strings from symbols, etc.
+    `assert_no_changes` error messages now surface the actual value.
+
+    *pcreux*</description>
+    <pubDate>Mon, 30 Oct 2023 18:43:51 +0000</pubDate>
+    <author>Philippe Creux</author>
+    <content:encoded><![CDATA[<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>
+
+<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />
+to differentiate nil from empty strings, strings from symbols, etc.<br />
+<code>assert_no_changes</code> error messages now surface the actual value.</p>
+
+<p><em>pcreux</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Fix `#to_fs(:human_size)` to correctly work with negative numbers.
 </title>
     <link>https://github.com/rails/rails/issues/49791</link>
