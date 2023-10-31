@@ -10,6 +10,16 @@
     "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Improve error messages of `assert_changes` and `assert_no_changes`\n\n    `assert_changes` error messages now display objects with `.inspect` to make it easier\n    to differentiate nil from empty strings, strings from symbols, etc.\n    `assert_no_changes` error messages now surface the actual value.\n\n    *pcreux*",
+    "project": "activesupport",
+    "date_merged": 1698691431000,
+    "author": "Philippe Creux",
+    "sha": "2b3a002a2a62ee5ef4767b4738456dedba88f780",
+    "pr": "48482",
+    "merge_sha": "1b195b30bc22e6cd53d7b277b1ac8b214ccc1176",
+    "html": "<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>\n\n<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />\nto differentiate nil from empty strings, strings from symbols, etc.<br />\n<code>assert_no_changes</code> error messages now surface the actual value.</p>\n\n<p><em>pcreux</em></p>\n"
+  },
+  {
     "message": "*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.\n\n    *Earlopain*",
     "project": "activesupport",
     "date_merged": 1698337259000,
