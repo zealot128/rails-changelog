@@ -329,6 +329,21 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Exit with non-zero status when the migration generator fails.
+</title>
+    <link>https://github.com/rails/rails/issues/49644</link>
+    <guid>https://github.com/rails/rails/issues/49644</guid>
+    <description>*   Exit with non-zero status when the migration generator fails.
+
+    *Katsuhiko YOSHIDA*</description>
+    <pubDate>Wed, 01 Nov 2023 10:28:00 +0000</pubDate>
+    <author>Katsuhiko YOSHIDA</author>
+    <content:encoded><![CDATA[<p>Exit with non-zero status when the migration generator fails.</p>
+
+<p><em>Katsuhiko YOSHIDA</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Use numeric UID and GID in Dockerfile template
 </title>
     <link>https://github.com/rails/rails/issues/49742</link>
