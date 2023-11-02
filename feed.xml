@@ -299,6 +299,21 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
+</title>
+    <link>https://github.com/rails/rails/issues/49863</link>
+    <guid>https://github.com/rails/rails/issues/49863</guid>
+    <description>*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
+
+    *Yogesh Khater*</description>
+    <pubDate>Thu, 02 Nov 2023 02:45:48 +0000</pubDate>
+    <author>Yogesh Khater</author>
+    <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
+
+<p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Upgrade Trix to 2.0.7
 </title>
     <link>https://github.com/rails/rails/issues/49778</link>
