@@ -1,13 +1,93 @@
 [
   {
-    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
-    "project": "actionpack",
-    "date_merged": 1697839813000,
-    "author": "Hartley McGuire",
-    "sha": "5005480adf5057b7efe9197a8d8b7a716c91bec5",
-    "pr": "49722",
-    "merge_sha": "d4866ede93a99642002f1854f05c8f813d342b02",
-    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+    "message": "*   Support `RETURNING` clause for MariaDB\n\n    *fatkodima*, *Nikolay Kondratyev*",
+    "project": "activerecord",
+    "date_merged": 1698739730000,
+    "author": "fatkodima",
+    "sha": "81eeecda7e522c9f79aa731b8ba1dc0823a2f898",
+    "pr": "49840",
+    "merge_sha": "cb185fcf66dadc4373f0934a8e3c168f40759a5a",
+    "html": "<p>Support <code>RETURNING</code> clause for MariaDB</p>\n\n<p><em>fatkodima</em>, <em>Nikolay Kondratyev</em></p>\n"
+  },
+  {
+    "message": "*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract\n\n    Allows foreign keys to be deferred by adding the `:deferrable` key to the `foreign_key` options.\n\n    ```ruby\n    add_reference :person, :alias, foreign_key: { deferrable: :deferred }\n    add_reference :alias, :person, foreign_key: { deferrable: :deferred }\n    ```\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1698544746000,
+    "author": "Stephen Margheim",
+    "sha": "ea17941e39225eca81880c770644652c4612dc69",
+    "pr": "49376",
+    "merge_sha": "a561dd4b2928459feb313b2db0910d2bc0133864",
+    "html": "<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract</p>\n\n<p>Allows foreign keys to be deferred by adding the <code>:deferrable</code> key to the <code>foreign_key</code> options.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_reference</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n<span class=\"n\">add_reference</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
+    "message": "*   Add `set_constraints` helper for PostgreSQL\n\n    ```ruby\n    Post.create!(user_id: -1) # => ActiveRecord::InvalidForeignKey\n\n    Post.transaction do\n      Post.connection.set_constraints(:deferred)\n      p = Post.create!(user_id: -1)\n      u = User.create!\n      p.user = u\n      p.save!\n    end\n    ```\n\n    *Cody Cutrer*",
+    "project": "activerecord",
+    "date_merged": 1698471624000,
+    "author": "Cody Cutrer",
+    "sha": "f9fee1a3cbbcfe95cfd212c1861469e07f2e5642",
+    "pr": "49187",
+    "merge_sha": "6c63b9b090e48bde20eea2881fe0ed56360fe6c1",
+    "html": "<p>Add <code>set_constraints</code> helper for PostgreSQL</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; ActiveRecord::InvalidForeignKey</span>\n\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n  <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">connection</span><span class=\"p\">.</span><span class=\"nf\">set_constraints</span><span class=\"p\">(</span><span class=\"ss\">:deferred</span><span class=\"p\">)</span>\n  <span class=\"nb\">p</span> <span class=\"o\">=</span> <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n  <span class=\"n\">u</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create!</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">user</span> <span class=\"o\">=</span> <span class=\"n\">u</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">save!</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Cody Cutrer</em></p>\n"
+  },
+  {
+    "message": "*   Include `ActiveModel::API` in `ActiveRecord::Base`\n\n    *Sean Doyle*",
+    "project": "activerecord",
+    "date_merged": 1697644075000,
+    "author": "Sean Doyle",
+    "sha": "2c57ec6a179e5fb851aca1bdc4b11b17d99a93c8",
+    "pr": "49680",
+    "merge_sha": "00dfa109d6a5f4fb13d745f83d5cc779eba3b352",
+    "html": "<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Ensure `#signed_id` outputs `url_safe` strings.\n\n    *Jason Meller*",
+    "project": "activerecord",
+    "date_merged": 1696625916000,
+    "author": "Jason Meller",
+    "sha": "fc5c8d0cfe1871dd66efec2b6ca37e1a75ccd21f",
+    "pr": "49507",
+    "merge_sha": "7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d",
+    "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
+  },
+  {
+    "message": "*   Exit with non-zero status when the migration generator fails.\n\n    *Katsuhiko YOSHIDA*",
+    "project": "railties",
+    "date_merged": 1698834480000,
+    "author": "Katsuhiko YOSHIDA",
+    "sha": "6cd4de4a8ad4c9f637d2ee6bbaca41f505711232",
+    "pr": "49644",
+    "merge_sha": "994ceea92a2758ef1b2971afc2888476e9ba1d02",
+    "html": "<p>Exit with non-zero status when the migration generator fails.</p>\n\n<p><em>Katsuhiko YOSHIDA</em></p>\n"
+  },
+  {
+    "message": "*   Use numeric UID and GID in Dockerfile template\n\n    The Dockerfile generated by `rails new` sets the default user and group\n    by name instead of UID:GID. This can cause the following error in kubernetes:\n    ```\n    container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root\n    ```\n    This change sets default user and group by their numeric values.\n\n    *Ivan Fedotov*",
+    "project": "railties",
+    "date_merged": 1698739359000,
+    "author": "Ivan Fedotov",
+    "sha": "7ff33d8b3c6d2c5187ac2a59067fce8eea7ceba3",
+    "pr": "49742",
+    "merge_sha": "f2088bec18996ab209a71d2587c8945b8776ea38",
+    "html": "<p>Use numeric UID and GID in Dockerfile template</p>\n\n<p>The Dockerfile generated by <code>rails new</code> sets the default user and group<br />\nby name instead of UID:GID. This can cause the following error in kubernetes:</p>\n<pre><code>container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root\n</code></pre>\n<p>This change sets default user and group by their numeric values.</p>\n\n<p><em>Ivan Fedotov</em></p>\n"
+  },
+  {
+    "message": "*   Disallow invalid values for rails new options.\n\n    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for\n    `rails new` can all take different options. This change adds checks to\n    options to make sure the user enters the correct value.\n\n    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1697142083000,
+    "author": "Petrik",
+    "sha": "b8a3efeee348db1d357bd83d5e7cca24cbbe4f28",
+    "pr": "49609",
+    "merge_sha": "056396fea663d3adb9ba332b039a007d2730901a",
+    "html": "<p>Disallow invalid values for rails new options.</p>\n\n<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> flags for<br />\n<code>rails new</code> can all take different options. This change adds checks to<br />\noptions to make sure the user enters the correct value.</p>\n\n<p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Conditionally print `$stdout` when invoking `run_generator`\n\n    In an effort to improve the developer experience when debugging\n    generator tests, we add the ability to conditionally print `$stdout`\n    instead of capturing it.\n\n    This allows for calls to `binding.irb` and `puts` work as expected.\n\n    ```sh\n    RAILS_LOG_TO_STDOUT=true ./bin/test test/generators/actions_test.rb\n    ```\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1696331174000,
+    "author": "Steve Polito",
+    "sha": "e659f46da1822b0fd9cd9c040fa3772e999d21f1",
+    "pr": "49448",
+    "merge_sha": "7cc4de0aa2c8812ad90fe23c1c0889d405675572",
+    "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
   },
   {
     "message": "*   Improve error messages of `assert_changes` and `assert_no_changes`\n\n    `assert_changes` error messages now display objects with `.inspect` to make it easier\n    to differentiate nil from empty strings, strings from symbols, etc.\n    `assert_no_changes` error messages now surface the actual value.\n\n    *pcreux*",
@@ -80,6 +160,46 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.\n\n    *Yogesh Khater*",
+    "project": "activestorage",
+    "date_merged": 1698893148000,
+    "author": "Yogesh Khater",
+    "sha": "8bf1353cae3736045cc8343a7bca5d1855497214",
+    "pr": "49863",
+    "merge_sha": "efa11e67d652b7f1f16b7840dc288730463da492",
+    "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
+  },
+  {
+    "message": "*   Upgrade Trix to 2.0.7\n\n    *Hartley McGuire*",
+    "project": "actiontext",
+    "date_merged": 1698416970000,
+    "author": "Hartley McGuire",
+    "sha": "c93a989635d01fa46947b2618a7dde2505c77410",
+    "pr": "49778",
+    "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
+    "html": "<p>Upgrade Trix to 2.0.7</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix using Trix with Sprockets\n\n    *Hartley McGuire*",
+    "project": "actiontext",
+    "date_merged": 1698416970000,
+    "author": "Hartley McGuire",
+    "sha": "c93a989635d01fa46947b2618a7dde2505c77410",
+    "pr": "49778",
+    "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
+    "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1697839813000,
+    "author": "Hartley McGuire",
+    "sha": "5005480adf5057b7efe9197a8d8b7a716c91bec5",
+    "pr": "49722",
+    "merge_sha": "d4866ede93a99642002f1854f05c8f813d342b02",
+    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.\n\n    *Earlopain*",
     "project": "actionview",
     "date_merged": 1698337259000,
@@ -138,125 +258,5 @@
     "pr": "49175",
     "merge_sha": "7c03e4f1b7553084f34318a9efc2793137de36f4",
     "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
-  },
-  {
-    "message": "*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.\n\n    *Yogesh Khater*",
-    "project": "activestorage",
-    "date_merged": 1698893148000,
-    "author": "Yogesh Khater",
-    "sha": "8bf1353cae3736045cc8343a7bca5d1855497214",
-    "pr": "49863",
-    "merge_sha": "efa11e67d652b7f1f16b7840dc288730463da492",
-    "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
-  },
-  {
-    "message": "*   Upgrade Trix to 2.0.7\n\n    *Hartley McGuire*",
-    "project": "actiontext",
-    "date_merged": 1698416970000,
-    "author": "Hartley McGuire",
-    "sha": "c93a989635d01fa46947b2618a7dde2505c77410",
-    "pr": "49778",
-    "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
-    "html": "<p>Upgrade Trix to 2.0.7</p>\n\n<p><em>Hartley McGuire</em></p>\n"
-  },
-  {
-    "message": "*   Fix using Trix with Sprockets\n\n    *Hartley McGuire*",
-    "project": "actiontext",
-    "date_merged": 1698416970000,
-    "author": "Hartley McGuire",
-    "sha": "c93a989635d01fa46947b2618a7dde2505c77410",
-    "pr": "49778",
-    "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
-    "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
-  },
-  {
-    "message": "*   Exit with non-zero status when the migration generator fails.\n\n    *Katsuhiko YOSHIDA*",
-    "project": "railties",
-    "date_merged": 1698834480000,
-    "author": "Katsuhiko YOSHIDA",
-    "sha": "6cd4de4a8ad4c9f637d2ee6bbaca41f505711232",
-    "pr": "49644",
-    "merge_sha": "994ceea92a2758ef1b2971afc2888476e9ba1d02",
-    "html": "<p>Exit with non-zero status when the migration generator fails.</p>\n\n<p><em>Katsuhiko YOSHIDA</em></p>\n"
-  },
-  {
-    "message": "*   Use numeric UID and GID in Dockerfile template\n\n    The Dockerfile generated by `rails new` sets the default user and group\n    by name instead of UID:GID. This can cause the following error in kubernetes:\n    ```\n    container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root\n    ```\n    This change sets default user and group by their numeric values.\n\n    *Ivan Fedotov*",
-    "project": "railties",
-    "date_merged": 1698739359000,
-    "author": "Ivan Fedotov",
-    "sha": "7ff33d8b3c6d2c5187ac2a59067fce8eea7ceba3",
-    "pr": "49742",
-    "merge_sha": "f2088bec18996ab209a71d2587c8945b8776ea38",
-    "html": "<p>Use numeric UID and GID in Dockerfile template</p>\n\n<p>The Dockerfile generated by <code>rails new</code> sets the default user and group<br />\nby name instead of UID:GID. This can cause the following error in kubernetes:</p>\n<pre><code>container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root\n</code></pre>\n<p>This change sets default user and group by their numeric values.</p>\n\n<p><em>Ivan Fedotov</em></p>\n"
-  },
-  {
-    "message": "*   Disallow invalid values for rails new options.\n\n    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for\n    `rails new` can all take different options. This change adds checks to\n    options to make sure the user enters the correct value.\n\n    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1697142083000,
-    "author": "Petrik",
-    "sha": "b8a3efeee348db1d357bd83d5e7cca24cbbe4f28",
-    "pr": "49609",
-    "merge_sha": "056396fea663d3adb9ba332b039a007d2730901a",
-    "html": "<p>Disallow invalid values for rails new options.</p>\n\n<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> flags for<br />\n<code>rails new</code> can all take different options. This change adds checks to<br />\noptions to make sure the user enters the correct value.</p>\n\n<p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Conditionally print `$stdout` when invoking `run_generator`\n\n    In an effort to improve the developer experience when debugging\n    generator tests, we add the ability to conditionally print `$stdout`\n    instead of capturing it.\n\n    This allows for calls to `binding.irb` and `puts` work as expected.\n\n    ```sh\n    RAILS_LOG_TO_STDOUT=true ./bin/test test/generators/actions_test.rb\n    ```\n\n    *Steve Polito*",
-    "project": "railties",
-    "date_merged": 1696331174000,
-    "author": "Steve Polito",
-    "sha": "e659f46da1822b0fd9cd9c040fa3772e999d21f1",
-    "pr": "49448",
-    "merge_sha": "7cc4de0aa2c8812ad90fe23c1c0889d405675572",
-    "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
-  },
-  {
-    "message": "*   Support `RETURNING` clause for MariaDB\n\n    *fatkodima*, *Nikolay Kondratyev*",
-    "project": "activerecord",
-    "date_merged": 1698739730000,
-    "author": "fatkodima",
-    "sha": "81eeecda7e522c9f79aa731b8ba1dc0823a2f898",
-    "pr": "49840",
-    "merge_sha": "cb185fcf66dadc4373f0934a8e3c168f40759a5a",
-    "html": "<p>Support <code>RETURNING</code> clause for MariaDB</p>\n\n<p><em>fatkodima</em>, <em>Nikolay Kondratyev</em></p>\n"
-  },
-  {
-    "message": "*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract\n\n    Allows foreign keys to be deferred by adding the `:deferrable` key to the `foreign_key` options.\n\n    ```ruby\n    add_reference :person, :alias, foreign_key: { deferrable: :deferred }\n    add_reference :alias, :person, foreign_key: { deferrable: :deferred }\n    ```\n\n    *Stephen Margheim*",
-    "project": "activerecord",
-    "date_merged": 1698544746000,
-    "author": "Stephen Margheim",
-    "sha": "ea17941e39225eca81880c770644652c4612dc69",
-    "pr": "49376",
-    "merge_sha": "a561dd4b2928459feb313b2db0910d2bc0133864",
-    "html": "<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract</p>\n\n<p>Allows foreign keys to be deferred by adding the <code>:deferrable</code> key to the <code>foreign_key</code> options.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_reference</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n<span class=\"n\">add_reference</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
-  },
-  {
-    "message": "*   Add `set_constraints` helper for PostgreSQL\n\n    ```ruby\n    Post.create!(user_id: -1) # => ActiveRecord::InvalidForeignKey\n\n    Post.transaction do\n      Post.connection.set_constraints(:deferred)\n      p = Post.create!(user_id: -1)\n      u = User.create!\n      p.user = u\n      p.save!\n    end\n    ```\n\n    *Cody Cutrer*",
-    "project": "activerecord",
-    "date_merged": 1698471624000,
-    "author": "Cody Cutrer",
-    "sha": "f9fee1a3cbbcfe95cfd212c1861469e07f2e5642",
-    "pr": "49187",
-    "merge_sha": "6c63b9b090e48bde20eea2881fe0ed56360fe6c1",
-    "html": "<p>Add <code>set_constraints</code> helper for PostgreSQL</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; ActiveRecord::InvalidForeignKey</span>\n\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n  <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">connection</span><span class=\"p\">.</span><span class=\"nf\">set_constraints</span><span class=\"p\">(</span><span class=\"ss\">:deferred</span><span class=\"p\">)</span>\n  <span class=\"nb\">p</span> <span class=\"o\">=</span> <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n  <span class=\"n\">u</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create!</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">user</span> <span class=\"o\">=</span> <span class=\"n\">u</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">save!</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Cody Cutrer</em></p>\n"
-  },
-  {
-    "message": "*   Include `ActiveModel::API` in `ActiveRecord::Base`\n\n    *Sean Doyle*",
-    "project": "activerecord",
-    "date_merged": 1697644075000,
-    "author": "Sean Doyle",
-    "sha": "2c57ec6a179e5fb851aca1bdc4b11b17d99a93c8",
-    "pr": "49680",
-    "merge_sha": "00dfa109d6a5f4fb13d745f83d5cc779eba3b352",
-    "html": "<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Ensure `#signed_id` outputs `url_safe` strings.\n\n    *Jason Meller*",
-    "project": "activerecord",
-    "date_merged": 1696625916000,
-    "author": "Jason Meller",
-    "sha": "fc5c8d0cfe1871dd66efec2b6ca37e1a75ccd21f",
-    "pr": "49507",
-    "merge_sha": "7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d",
-    "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
   }
 ]
