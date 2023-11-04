@@ -238,6 +238,92 @@ for all environments, as the value is the same in all environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activemodel: Port the `BeforeTypeCast` module to Active Model. Classes that include
+</title>
+    <link>https://github.com/rails/rails/issues/44534</link>
+    <guid>https://github.com/rails/rails/issues/44534</guid>
+    <description>*   Port the `BeforeTypeCast` module to Active Model. Classes that include
+    `ActiveModel::Attributes` will now automatically define methods such as
+    `*_before_type_cast`, `*_for_database`, etc. These methods behave the same
+    for Active Model as they do for Active Record.
+
+      ```ruby
+      class MyModel
+        include ActiveModel::Attributes
+
+        attribute :my_attribute, :integer
+      end
+
+      m = MyModel.new
+      m.my_attribute = &quot;123&quot;
+      m.my_attribute                                   # =&gt; 123
+      m.my_attribute_before_type_cast                  # =&gt; &quot;123&quot;
+      m.read_attribute_before_type_cast(:my_attribute) # =&gt; &quot;123&quot;
+      ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Sat, 04 Nov 2023 03:22:24 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Port the <code>BeforeTypeCast</code> module to Active Model. Classes that include<br />
+<code>ActiveModel::Attributes</code> will now automatically define methods such as<br />
+<code>*_before_type_cast</code>, <code>*_for_database</code>, etc. These methods behave the same<br />
+for Active Model as they do for Active Record.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">MyModel</span>
+    <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span>
+
+    <span class="n">attribute</span> <span class="ss">:my_attribute</span><span class="p">,</span> <span class="ss">:integer</span>
+  <span class="k">end</span>
+
+  <span class="n">m</span> <span class="o">=</span> <span class="no">MyModel</span><span class="p">.</span><span class="nf">new</span>
+  <span class="n">m</span><span class="p">.</span><span class="nf">my_attribute</span> <span class="o">=</span> <span class="s2">"123"</span>
+  <span class="n">m</span><span class="p">.</span><span class="nf">my_attribute</span>                                   <span class="c1"># =&gt; 123</span>
+  <span class="n">m</span><span class="p">.</span><span class="nf">my_attribute_before_type_cast</span>                  <span class="c1"># =&gt; "123"</span>
+  <span class="n">m</span><span class="p">.</span><span class="nf">read_attribute_before_type_cast</span><span class="p">(</span><span class="ss">:my_attribute</span><span class="p">)</span> <span class="c1"># =&gt; "123"</span>
+</code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Port the `type_for_attribute` method to Active Model. Classes that include
+</title>
+    <link>https://github.com/rails/rails/issues/49910</link>
+    <guid>https://github.com/rails/rails/issues/49910</guid>
+    <description>*   Port the `type_for_attribute` method to Active Model. Classes that include
+    `ActiveModel::Attributes` will now provide this method. This method behaves
+    the same for Active Model as it does for Active Record.
+
+      ```ruby
+      class MyModel
+        include ActiveModel::Attributes
+
+        attribute :my_attribute, :integer
+      end
+
+      MyModel.type_for_attribute(:my_attribute) # =&gt; #&lt;ActiveModel::Type::Integer ...&gt;
+      ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Sat, 04 Nov 2023 02:54:59 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />
+<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />
+the same for Active Model as it does for Active Record.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">MyModel</span>
+    <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span>
+
+    <span class="n">attribute</span> <span class="ss">:my_attribute</span><span class="p">,</span> <span class="ss">:integer</span>
+  <span class="k">end</span>
+
+  <span class="no">MyModel</span><span class="p">.</span><span class="nf">type_for_attribute</span><span class="p">(</span><span class="ss">:my_attribute</span><span class="p">)</span> <span class="c1"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>
+</code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Improve error messages of `assert_changes` and `assert_no_changes`
 </title>
     <link>https://github.com/rails/rails/issues/48482</link>
