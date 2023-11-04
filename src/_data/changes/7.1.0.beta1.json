@@ -100,6 +100,26 @@
     "html": "<p>Remove the option <code>config.public_file_server.enabled</code> from the generators<br />\nfor all environments, as the value is the same in all environments.</p>\n\n<p><em>Adrian Hirt</em></p>\n"
   },
   {
+    "message": "*   Port the `BeforeTypeCast` module to Active Model. Classes that include\n    `ActiveModel::Attributes` will now automatically define methods such as\n    `*_before_type_cast`, `*_for_database`, etc. These methods behave the same\n    for Active Model as they do for Active Record.\n\n      ```ruby\n      class MyModel\n        include ActiveModel::Attributes\n\n        attribute :my_attribute, :integer\n      end\n\n      m = MyModel.new\n      m.my_attribute = \"123\"\n      m.my_attribute                                   # => 123\n      m.my_attribute_before_type_cast                  # => \"123\"\n      m.read_attribute_before_type_cast(:my_attribute) # => \"123\"\n      ```\n\n    *Jonathan Hefner*",
+    "project": "activemodel",
+    "date_merged": 1699068144000,
+    "author": "Jonathan Hefner",
+    "sha": "cfb72c9d37ad8168b72680606e14cd5adbbeaea4",
+    "pr": "44534",
+    "merge_sha": "e400b8a46478315031a8abb4f09e6ba33037fcdb",
+    "html": "<p>Port the <code>BeforeTypeCast</code> module to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now automatically define methods such as<br />\n<code>*_before_type_cast</code>, <code>*_for_database</code>, etc. These methods behave the same<br />\nfor Active Model as they do for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"n\">m</span> <span class=\"o\">=</span> <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n  <span class=\"n\">m</span><span class=\"p\">.</span><span class=\"nf\">my_attribute</span> <span class=\"o\">=</span> <span class=\"s2\">\"123\"</span>\n  <span class=\"n\">m</span><span class=\"p\">.</span><span class=\"nf\">my_attribute</span>                                   <span class=\"c1\"># =&gt; 123</span>\n  <span class=\"n\">m</span><span class=\"p\">.</span><span class=\"nf\">my_attribute_before_type_cast</span>                  <span class=\"c1\"># =&gt; \"123\"</span>\n  <span class=\"n\">m</span><span class=\"p\">.</span><span class=\"nf\">read_attribute_before_type_cast</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"123\"</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Port the `type_for_attribute` method to Active Model. Classes that include\n    `ActiveModel::Attributes` will now provide this method. This method behaves\n    the same for Active Model as it does for Active Record.\n\n      ```ruby\n      class MyModel\n        include ActiveModel::Attributes\n\n        attribute :my_attribute, :integer\n      end\n\n      MyModel.type_for_attribute(:my_attribute) # => #<ActiveModel::Type::Integer ...>\n      ```\n\n    *Jonathan Hefner*",
+    "project": "activemodel",
+    "date_merged": 1699066499000,
+    "author": "Jonathan Hefner",
+    "sha": "83f543b8760308081ab1b58c25804c45c2597844",
+    "pr": "49910",
+    "merge_sha": "7d525d3128af0c1d1e76fc3396746a81ee41a82e",
+    "html": "<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />\nthe same for Active Model as it does for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">type_for_attribute</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
     "message": "*   Improve error messages of `assert_changes` and `assert_no_changes`\n\n    `assert_changes` error messages now display objects with `.inspect` to make it easier\n    to differentiate nil from empty strings, strings from symbols, etc.\n    `assert_no_changes` error messages now surface the actual value.\n\n    *pcreux*",
     "project": "activesupport",
     "date_merged": 1698691431000,
