@@ -117,6 +117,21 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: In Action Mailer previews, show date from message `Date` header if present.
+</title>
+    <link>https://github.com/rails/rails/issues/49790</link>
+    <guid>https://github.com/rails/rails/issues/49790</guid>
+    <description>*   In Action Mailer previews, show date from message `Date` header if present.
+
+    *Sampat Badhe*</description>
+    <pubDate>Sat, 04 Nov 2023 21:45:08 +0000</pubDate>
+    <author>sampatbadhe</author>
+    <content:encoded><![CDATA[<p>In Action Mailer previews, show date from message <code>Date</code> header if present.</p>
+
+<p><em>Sampat Badhe</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Exit with non-zero status when the migration generator fails.
 </title>
     <link>https://github.com/rails/rails/issues/49644</link>
