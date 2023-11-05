@@ -50,6 +50,16 @@
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
   },
   {
+    "message": "*   In Action Mailer previews, show date from message `Date` header if present.\n\n    *Sampat Badhe*",
+    "project": "railties",
+    "date_merged": 1699134308000,
+    "author": "sampatbadhe",
+    "sha": "f4a9b406393849bfcefa088c346a2fe8e212d5dd",
+    "pr": "49790",
+    "merge_sha": "354e435a65fafdbf62fff2b03acbf16bfc6158e3",
+    "html": "<p>In Action Mailer previews, show date from message <code>Date</code> header if present.</p>\n\n<p><em>Sampat Badhe</em></p>\n"
+  },
+  {
     "message": "*   Exit with non-zero status when the migration generator fails.\n\n    *Katsuhiko YOSHIDA*",
     "project": "railties",
     "date_merged": 1698834480000,
