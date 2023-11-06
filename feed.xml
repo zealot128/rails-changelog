@@ -6,6 +6,25 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Don&#39;t mark Float::INFINITY as changed when reassigning it
+</title>
+    <link>https://github.com/rails/rails/issues/49904</link>
+    <guid>https://github.com/rails/rails/issues/49904</guid>
+    <description>*   Don&#39;t mark Float::INFINITY as changed when reassigning it
+
+    When saving a record with a float infinite value, it shouldn&#39;t mark as changed
+
+    *Maicol Bentancor*</description>
+    <pubDate>Mon, 06 Nov 2023 14:47:29 +0000</pubDate>
+    <author>MaicolBen</author>
+    <content:encoded><![CDATA[<p>Don’t mark Float::INFINITY as changed when reassigning it</p>
+
+<p>When saving a record with a float infinite value, it shouldn’t mark as changed</p>
+
+<p><em>Maicol Bentancor</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Support `RETURNING` clause for MariaDB
 </title>
     <link>https://github.com/rails/rails/issues/49840</link>
