@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Don't mark Float::INFINITY as changed when reassigning it\n\n    When saving a record with a float infinite value, it shouldn't mark as changed\n\n    *Maicol Bentancor*",
+    "project": "activerecord",
+    "date_merged": 1699282049000,
+    "author": "MaicolBen",
+    "sha": "19869e765ee8174e8890fc65c7ea7ba039665608",
+    "pr": "49904",
+    "merge_sha": "8d778e0708196bdac2ce0d18e24600735469f1a3",
+    "html": "<p>Don’t mark Float::INFINITY as changed when reassigning it</p>\n\n<p>When saving a record with a float infinite value, it shouldn’t mark as changed</p>\n\n<p><em>Maicol Bentancor</em></p>\n"
+  },
+  {
     "message": "*   Support `RETURNING` clause for MariaDB\n\n    *fatkodima*, *Nikolay Kondratyev*",
     "project": "activerecord",
     "date_merged": 1698739730000,
