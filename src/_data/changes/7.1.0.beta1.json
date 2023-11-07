@@ -60,6 +60,26 @@
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
   },
   {
+    "message": "*   In mailer preview, only show SMTP-To if it differs from the union of To, Cc and Bcc.\n\n    *Christian Schmidt*",
+    "project": "railties",
+    "date_merged": 1699380025000,
+    "author": "Christian Schmidt",
+    "sha": "e5481edb8bd39ebdda066fb4ff17e19930cfeb65",
+    "pr": "48782",
+    "merge_sha": "0157819d0858fa368c895dbb7eaf048ed023db7b",
+    "html": "<p>In mailer preview, only show SMTP-To if it differs from the union of To, Cc and Bcc.</p>\n\n<p><em>Christian Schmidt</em></p>\n"
+  },
+  {
+    "message": "*   Enable YJIT by default on new applications running Ruby 3.3+\n\n    Adds a `config/initializers/enable_yjit.rb` initializer that enables YJIT\n    when running on Ruby 3.3+.\n\n    *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1699351193000,
+    "author": "Alex Ghiculescu",
+    "sha": "644ee2fb0bf77bc23f0d941b6e3bd32718393149",
+    "pr": "49948",
+    "merge_sha": "d53ef2c18073a3a662edddd3fbbce32805e1135a",
+    "html": "<p>Enable YJIT by default on new applications running Ruby 3.3+</p>\n\n<p>Adds a <code>config/initializers/enable_yjit.rb</code> initializer that enables YJIT<br />\nwhen running on Ruby 3.3+.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   In Action Mailer previews, show date from message `Date` header if present.\n\n    *Sampat Badhe*",
     "project": "railties",
     "date_merged": 1699134308000,
@@ -238,6 +258,16 @@
     "pr": "49778",
     "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
     "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix a race condition that could cause a `Text file busy - chromedriver`\n    error with parallel system tests\n\n    *Matt Brictson*",
+    "project": "actionpack",
+    "date_merged": 1699378873000,
+    "author": "Matt Brictson",
+    "sha": "e7d743b8ac6f6ce60753bfab3c8190e7b37eaeee",
+    "pr": "49908",
+    "merge_sha": "3162afe9596aa8e38bf6b983db536d2d15227489",
+    "html": "<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />\nerror with parallel system tests</p>\n\n<p><em>Matt Brictson</em></p>\n"
   },
   {
     "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
