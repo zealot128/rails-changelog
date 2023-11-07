@@ -136,6 +136,42 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: In mailer preview, only show SMTP-To if it differs from the union of To, Cc and Bcc.
+</title>
+    <link>https://github.com/rails/rails/issues/48782</link>
+    <guid>https://github.com/rails/rails/issues/48782</guid>
+    <description>*   In mailer preview, only show SMTP-To if it differs from the union of To, Cc and Bcc.
+
+    *Christian Schmidt*</description>
+    <pubDate>Tue, 07 Nov 2023 18:00:25 +0000</pubDate>
+    <author>Christian Schmidt</author>
+    <content:encoded><![CDATA[<p>In mailer preview, only show SMTP-To if it differs from the union of To, Cc and Bcc.</p>
+
+<p><em>Christian Schmidt</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Enable YJIT by default on new applications running Ruby 3.3+
+</title>
+    <link>https://github.com/rails/rails/issues/49948</link>
+    <guid>https://github.com/rails/rails/issues/49948</guid>
+    <description>*   Enable YJIT by default on new applications running Ruby 3.3+
+
+    Adds a `config/initializers/enable_yjit.rb` initializer that enables YJIT
+    when running on Ruby 3.3+.
+
+    *Jean Boussier*</description>
+    <pubDate>Tue, 07 Nov 2023 09:59:53 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p>Enable YJIT by default on new applications running Ruby 3.3+</p>
+
+<p>Adds a <code>config/initializers/enable_yjit.rb</code> initializer that enables YJIT<br />
+when running on Ruby 3.3+.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: In Action Mailer previews, show date from message `Date` header if present.
 </title>
     <link>https://github.com/rails/rails/issues/49790</link>
@@ -531,6 +567,23 @@ method from the <code>Hash</code> class, which was not able to access values usi
     <content:encoded><![CDATA[<p>Fix using Trix with Sprockets</p>
 
 <p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Fix a race condition that could cause a `Text file busy - chromedriver`
+</title>
+    <link>https://github.com/rails/rails/issues/49908</link>
+    <guid>https://github.com/rails/rails/issues/49908</guid>
+    <description>*   Fix a race condition that could cause a `Text file busy - chromedriver`
+    error with parallel system tests
+
+    *Matt Brictson*</description>
+    <pubDate>Tue, 07 Nov 2023 17:41:13 +0000</pubDate>
+    <author>Matt Brictson</author>
+    <content:encoded><![CDATA[<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />
+error with parallel system tests</p>
+
+<p><em>Matt Brictson</em></p>
 ]]></content:encoded>
   </item>
   <item>
