@@ -60,6 +60,16 @@
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
   },
   {
+    "message": "*   In Action Mailer previews, list inline attachments separately from normal\n    attachments. For example, attachments that were previously listed like\n\n      > Attachments: logo.png file1.pdf file2.pdf\n\n    will now be listed like\n\n      > Attachments: file1.pdf file2.pdf (Inline: logo.png)\n\n    *Christian Schmidt* and *Jonathan Hefner*",
+    "project": "railties",
+    "date_merged": 1699395270000,
+    "author": "Christian Schmidt",
+    "sha": "ff2e38ccc53c202dbc4b16956dd1adc30c94b450",
+    "pr": "49828",
+    "merge_sha": "14294c0cc84b43e82865abb99850b51a99bf67ef",
+    "html": "<p>In Action Mailer previews, list inline attachments separately from normal<br />\nattachments. For example, attachments that were previously listed like</p>\n\n<blockquote>\n  <p>Attachments: logo.png file1.pdf file2.pdf</p>\n</blockquote>\n\n<p>will now be listed like</p>\n\n<blockquote>\n  <p>Attachments: file1.pdf file2.pdf (Inline: logo.png)</p>\n</blockquote>\n\n<p><em>Christian Schmidt</em> and <em>Jonathan Hefner</em></p>\n"
+  },
+  {
     "message": "*   In mailer preview, only show SMTP-To if it differs from the union of To, Cc and Bcc.\n\n    *Christian Schmidt*",
     "project": "railties",
     "date_merged": 1699380025000,
