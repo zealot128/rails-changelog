@@ -136,6 +136,39 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: In Action Mailer previews, list inline attachments separately from normal
+</title>
+    <link>https://github.com/rails/rails/issues/49828</link>
+    <guid>https://github.com/rails/rails/issues/49828</guid>
+    <description>*   In Action Mailer previews, list inline attachments separately from normal
+    attachments. For example, attachments that were previously listed like
+
+      &gt; Attachments: logo.png file1.pdf file2.pdf
+
+    will now be listed like
+
+      &gt; Attachments: file1.pdf file2.pdf (Inline: logo.png)
+
+    *Christian Schmidt* and *Jonathan Hefner*</description>
+    <pubDate>Tue, 07 Nov 2023 22:14:30 +0000</pubDate>
+    <author>Christian Schmidt</author>
+    <content:encoded><![CDATA[<p>In Action Mailer previews, list inline attachments separately from normal<br />
+attachments. For example, attachments that were previously listed like</p>
+
+<blockquote>
+  <p>Attachments: logo.png file1.pdf file2.pdf</p>
+</blockquote>
+
+<p>will now be listed like</p>
+
+<blockquote>
+  <p>Attachments: file1.pdf file2.pdf (Inline: logo.png)</p>
+</blockquote>
+
+<p><em>Christian Schmidt</em> and <em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: In mailer preview, only show SMTP-To if it differs from the union of To, Cc and Bcc.
 </title>
     <link>https://github.com/rails/rails/issues/48782</link>
