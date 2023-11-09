@@ -6,6 +6,72 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Make the output of `ActiveRecord::Core#inspect` configurable.
+</title>
+    <link>https://github.com/rails/rails/issues/49765</link>
+    <guid>https://github.com/rails/rails/issues/49765</guid>
+    <description>*   Make the output of `ActiveRecord::Core#inspect` configurable.
+
+    By default, calling `inspect` on a record will yield a formatted string including just the `id`.
+
+    ```ruby
+    Post.first.inspect #=&gt; &quot;#&lt;Post id: 1&gt;&quot;
+    ```
+
+    The attributes to be included in the output of `inspect` can be configured with
+    `ActiveRecord::Core#attributes_for_inspect`.
+
+    ```ruby
+    Post.attributes_for_inspect = [:id, :title]
+    Post.first.inspect #=&gt; &quot;#&lt;Post id: 1, title: &quot;Hello, World!&quot;&gt;&quot;
+    ```
+
+    With the `attributes_for_inspect` set to `:all`, `inspect` will list all the record&#39;s attributes.
+
+    ```ruby
+    Post.attributes_for_inspect = :all
+    Post.first.inspect #=&gt; &quot;#&lt;Post id: 1, title: &quot;Hello, World!&quot;, published_at: &quot;2023-10-23 14:28:11 +0000&quot;&gt;&quot;
+    ```
+
+    In development and test mode, `attributes_for_inspect` will be set to `:all` by default.
+
+    You can also call `full_inspect` to get an inspection with all the attributes.
+
+    The attributes in `attribute_for_inspect` will also be used for `pretty_print`.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Wed, 08 Nov 2023 20:08:36 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Make the output of <code>ActiveRecord::Core#inspect</code> configurable.</p>
+
+<p>By default, calling <code>inspect</code> on a record will yield a formatted string including just the <code>id</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1&gt;"</span>
+</code></pre></div></div>
+
+<p>The attributes to be included in the output of <code>inspect</code> can be configured with<br />
+<code>ActiveRecord::Core#attributes_for_inspect</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">attributes_for_inspect</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:title</span><span class="p">]</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1, title: "Hello, World!"&gt;"</span>
+</code></pre></div></div>
+
+<p>With the <code>attributes_for_inspect</code> set to <code>:all</code>, <code>inspect</code> will list all the record’s attributes.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">attributes_for_inspect</span> <span class="o">=</span> <span class="ss">:all</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1, title: "Hello, World!", published_at: "2023-10-23 14:28:11 +0000"&gt;"</span>
+</code></pre></div></div>
+
+<p>In development and test mode, <code>attributes_for_inspect</code> will be set to <code>:all</code> by default.</p>
+
+<p>You can also call <code>full_inspect</code> to get an inspection with all the attributes.</p>
+
+<p>The attributes in <code>attribute_for_inspect</code> will also be used for <code>pretty_print</code>.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Don&#39;t mark Float::INFINITY as changed when reassigning it
 </title>
     <link>https://github.com/rails/rails/issues/49904</link>
@@ -341,54 +407,6 @@ for all environments, as the value is the same in all environments.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activemodel: Port the `BeforeTypeCast` module to Active Model. Classes that include
-</title>
-    <link>https://github.com/rails/rails/issues/44534</link>
-    <guid>https://github.com/rails/rails/issues/44534</guid>
-    <description>*   Port the `BeforeTypeCast` module to Active Model. Classes that include
-    `ActiveModel::Attributes` will now automatically define methods such as
-    `*_before_type_cast`, `*_for_database`, etc. These methods behave the same
-    for Active Model as they do for Active Record.
-
-      ```ruby
-      class MyModel
-        include ActiveModel::Attributes
-
-        attribute :my_attribute, :integer
-      end
-
-      m = MyModel.new
-      m.my_attribute = &quot;123&quot;
-      m.my_attribute                                   # =&gt; 123
-      m.my_attribute_before_type_cast                  # =&gt; &quot;123&quot;
-      m.read_attribute_before_type_cast(:my_attribute) # =&gt; &quot;123&quot;
-      ```
-
-    *Jonathan Hefner*</description>
-    <pubDate>Sat, 04 Nov 2023 03:22:24 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Port the <code>BeforeTypeCast</code> module to Active Model. Classes that include<br />
-<code>ActiveModel::Attributes</code> will now automatically define methods such as<br />
-<code>*_before_type_cast</code>, <code>*_for_database</code>, etc. These methods behave the same<br />
-for Active Model as they do for Active Record.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">MyModel</span>
-    <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span>
-
-    <span class="n">attribute</span> <span class="ss">:my_attribute</span><span class="p">,</span> <span class="ss">:integer</span>
-  <span class="k">end</span>
-
-  <span class="n">m</span> <span class="o">=</span> <span class="no">MyModel</span><span class="p">.</span><span class="nf">new</span>
-  <span class="n">m</span><span class="p">.</span><span class="nf">my_attribute</span> <span class="o">=</span> <span class="s2">"123"</span>
-  <span class="n">m</span><span class="p">.</span><span class="nf">my_attribute</span>                                   <span class="c1"># =&gt; 123</span>
-  <span class="n">m</span><span class="p">.</span><span class="nf">my_attribute_before_type_cast</span>                  <span class="c1"># =&gt; "123"</span>
-  <span class="n">m</span><span class="p">.</span><span class="nf">read_attribute_before_type_cast</span><span class="p">(</span><span class="ss">:my_attribute</span><span class="p">)</span> <span class="c1"># =&gt; "123"</span>
-</code></pre></div></div>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activemodel: Port the `type_for_attribute` method to Active Model. Classes that include
 </title>
     <link>https://github.com/rails/rails/issues/49910</link>
@@ -570,6 +588,36 @@ method from the <code>Hash</code> class, which was not able to access values usi
     <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
 
 <p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Compile ESM package that can be used directly in the browser as actiontext.esm.js
+</title>
+    <link>https://github.com/rails/rails/issues/49952</link>
+    <guid>https://github.com/rails/rails/issues/49952</guid>
+    <description>*   Compile ESM package that can be used directly in the browser as actiontext.esm.js
+
+    *Matias Grunberg*</description>
+    <pubDate>Wed, 08 Nov 2023 20:30:18 +0000</pubDate>
+    <author>Matias Grunberg</author>
+    <content:encoded><![CDATA[<p>Compile ESM package that can be used directly in the browser as actiontext.esm.js</p>
+
+<p><em>Matias Grunberg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Fix using actiontext.js with Sprockets
+</title>
+    <link>https://github.com/rails/rails/issues/49952</link>
+    <guid>https://github.com/rails/rails/issues/49952</guid>
+    <description>*   Fix using actiontext.js with Sprockets
+
+    *Matias Grunberg*</description>
+    <pubDate>Wed, 08 Nov 2023 20:30:18 +0000</pubDate>
+    <author>Matias Grunberg</author>
+    <content:encoded><![CDATA[<p>Fix using actiontext.js with Sprockets</p>
+
+<p><em>Matias Grunberg</em></p>
 ]]></content:encoded>
   </item>
   <item>
