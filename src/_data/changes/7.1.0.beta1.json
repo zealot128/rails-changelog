@@ -70,6 +70,16 @@
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
   },
   {
+    "message": "*   Fix running `db:system:change` when app has no Dockerfile.\n\n    *Hartley McGuire*",
+    "project": "railties",
+    "date_merged": 1699548155000,
+    "author": "Hartley McGuire",
+    "sha": "c8e1fe9981a301ce77e30fb9f3558e083fd6743a",
+    "pr": "49988",
+    "merge_sha": "a82d1bce6c261112c54ec639f7f08d43e34fdeb8",
+    "html": "<p>Fix running <code>db:system:change</code> when app has no Dockerfile.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   In Action Mailer previews, list inline attachments separately from normal\n    attachments. For example, attachments that were previously listed like\n\n      > Attachments: logo.png file1.pdf file2.pdf\n\n    will now be listed like\n\n      > Attachments: file1.pdf file2.pdf (Inline: logo.png)\n\n    *Christian Schmidt* and *Jonathan Hefner*",
     "project": "railties",
     "date_merged": 1699395270000,
