@@ -202,6 +202,21 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Fix running `db:system:change` when app has no Dockerfile.
+</title>
+    <link>https://github.com/rails/rails/issues/49988</link>
+    <guid>https://github.com/rails/rails/issues/49988</guid>
+    <description>*   Fix running `db:system:change` when app has no Dockerfile.
+
+    *Hartley McGuire*</description>
+    <pubDate>Thu, 09 Nov 2023 16:42:35 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix running <code>db:system:change</code> when app has no Dockerfile.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: In Action Mailer previews, list inline attachments separately from normal
 </title>
     <link>https://github.com/rails/rails/issues/49828</link>
