@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Fix `where(field: values)` queries when `field` is a serialized attribute\n    (for example, when `field` uses `ActiveRecord::Base.serialize` or is a JSON\n    column).\n\n    *João Alves*",
+    "project": "activerecord",
+    "date_merged": 1699565901000,
+    "author": "JohnAnon9771",
+    "sha": "fb5773b3e825b098fd6920c43342daea0251dd82",
+    "pr": "49050",
+    "merge_sha": "377f6f6c75c099e9235927fc31e7ca132a1d6883",
+    "html": "<p>Fix <code>where(field: values)</code> queries when <code>field</code> is a serialized attribute<br />\n(for example, when <code>field</code> uses <code>ActiveRecord::Base.serialize</code> or is a JSON<br />\ncolumn).</p>\n\n<p><em>João Alves</em></p>\n"
+  },
+  {
     "message": "*   Make the output of `ActiveRecord::Core#inspect` configurable.\n\n    By default, calling `inspect` on a record will yield a formatted string including just the `id`.\n\n    ```ruby\n    Post.first.inspect #=> \"#<Post id: 1>\"\n    ```\n\n    The attributes to be included in the output of `inspect` can be configured with\n    `ActiveRecord::Core#attributes_for_inspect`.\n\n    ```ruby\n    Post.attributes_for_inspect = [:id, :title]\n    Post.first.inspect #=> \"#<Post id: 1, title: \"Hello, World!\">\"\n    ```\n\n    With the `attributes_for_inspect` set to `:all`, `inspect` will list all the record's attributes.\n\n    ```ruby\n    Post.attributes_for_inspect = :all\n    Post.first.inspect #=> \"#<Post id: 1, title: \"Hello, World!\", published_at: \"2023-10-23 14:28:11 +0000\">\"\n    ```\n\n    In development and test mode, `attributes_for_inspect` will be set to `:all` by default.\n\n    You can also call `full_inspect` to get an inspection with all the attributes.\n\n    The attributes in `attribute_for_inspect` will also be used for `pretty_print`.\n\n    *Andrew Novoselac*",
     "project": "activerecord",
     "date_merged": 1699474116000,
