@@ -6,6 +6,25 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Fix `where(field: values)` queries when `field` is a serialized attribute
+</title>
+    <link>https://github.com/rails/rails/issues/49050</link>
+    <guid>https://github.com/rails/rails/issues/49050</guid>
+    <description>*   Fix `where(field: values)` queries when `field` is a serialized attribute
+    (for example, when `field` uses `ActiveRecord::Base.serialize` or is a JSON
+    column).
+
+    *João Alves*</description>
+    <pubDate>Thu, 09 Nov 2023 21:38:21 +0000</pubDate>
+    <author>JohnAnon9771</author>
+    <content:encoded><![CDATA[<p>Fix <code>where(field: values)</code> queries when <code>field</code> is a serialized attribute<br />
+(for example, when <code>field</code> uses <code>ActiveRecord::Base.serialize</code> or is a JSON<br />
+column).</p>
+
+<p><em>João Alves</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Make the output of `ActiveRecord::Core#inspect` configurable.
 </title>
     <link>https://github.com/rails/rails/issues/49765</link>
