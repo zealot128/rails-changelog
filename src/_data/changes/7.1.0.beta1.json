@@ -260,6 +260,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Fix `preprocessed: true` option for named variants of previewable files.\n\n    *Nico Wenterodt*",
+    "project": "activestorage",
+    "date_merged": 1699724950000,
+    "author": "Nico Wenterodt",
+    "sha": "435a347a1039d8f357ba798ea262ec07c4b13d6c",
+    "pr": "50005",
+    "merge_sha": "17c82c60382912fc2bbba956d2005a9db75f2de3",
+    "html": "<p>Fix <code>preprocessed: true</code> option for named variants of previewable files.</p>\n\n<p><em>Nico Wenterodt</em></p>\n"
+  },
+  {
     "message": "*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.\n\n    *Yogesh Khater*",
     "project": "activestorage",
     "date_merged": 1698893148000,
