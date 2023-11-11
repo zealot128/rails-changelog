@@ -610,6 +610,21 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Fix `preprocessed: true` option for named variants of previewable files.
+</title>
+    <link>https://github.com/rails/rails/issues/50005</link>
+    <guid>https://github.com/rails/rails/issues/50005</guid>
+    <description>*   Fix `preprocessed: true` option for named variants of previewable files.
+
+    *Nico Wenterodt*</description>
+    <pubDate>Sat, 11 Nov 2023 17:49:10 +0000</pubDate>
+    <author>Nico Wenterodt</author>
+    <content:encoded><![CDATA[<p>Fix <code>preprocessed: true</code> option for named variants of previewable files.</p>
+
+<p><em>Nico Wenterodt</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
 </title>
     <link>https://github.com/rails/rails/issues/49863</link>
