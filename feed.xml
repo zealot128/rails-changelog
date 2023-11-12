@@ -479,6 +479,21 @@ the same for Active Model as it does for Active Record.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Fix logged cache keys not always matching actual key used by cache action.
+</title>
+    <link>https://github.com/rails/rails/issues/50008</link>
+    <guid>https://github.com/rails/rails/issues/50008</guid>
+    <description>*   Fix logged cache keys not always matching actual key used by cache action.
+
+    *Hartley McGuire*</description>
+    <pubDate>Sat, 11 Nov 2023 19:12:48 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix logged cache keys not always matching actual key used by cache action.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Improve error messages of `assert_changes` and `assert_no_changes`
 </title>
     <link>https://github.com/rails/rails/issues/48482</link>
