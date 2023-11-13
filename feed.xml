@@ -625,6 +625,25 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
+</title>
+    <link>https://github.com/rails/rails/issues/50043</link>
+    <guid>https://github.com/rails/rails/issues/50043</guid>
+    <description>*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
+    enabled and the variant of an Active Storage preview has already been
+    processed (for example, by calling `ActiveStorage::Preview#url`).
+
+    *Jonathan Hefner*</description>
+    <pubDate>Mon, 13 Nov 2023 17:17:04 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Prevent <code>ActiveRecord::StrictLoadingViolationError</code> when strict loading is<br />
+enabled and the variant of an Active Storage preview has already been<br />
+processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Fix `preprocessed: true` option for named variants of previewable files.
 </title>
     <link>https://github.com/rails/rails/issues/50005</link>
