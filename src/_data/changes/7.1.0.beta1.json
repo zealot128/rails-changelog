@@ -270,6 +270,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is\n    enabled and the variant of an Active Storage preview has already been\n    processed (for example, by calling `ActiveStorage::Preview#url`).\n\n    *Jonathan Hefner*",
+    "project": "activestorage",
+    "date_merged": 1699895824000,
+    "author": "Jonathan Hefner",
+    "sha": "aa47bde556bb40a0d26fa3e89fdd4458c48627a8",
+    "pr": "50043",
+    "merge_sha": "55c7b9bab8522bebd66fbe864570de993e7212ab",
+    "html": "<p>Prevent <code>ActiveRecord::StrictLoadingViolationError</code> when strict loading is<br />\nenabled and the variant of an Active Storage preview has already been<br />\nprocessed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
     "message": "*   Fix `preprocessed: true` option for named variants of previewable files.\n\n    *Nico Wenterodt*",
     "project": "activestorage",
     "date_merged": 1699724950000,
