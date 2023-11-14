@@ -270,6 +270,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Process preview image variant when calling `ActiveStorage::Preview#processed`.\n    For example, `attached_pdf.preview(:thumb).processed` will now immediately\n    generate the full-sized preview image and the `:thumb` variant of it.\n    Previously, the `:thumb` variant would not be generated until a further call\n    to e.g. `processed.url`.\n\n    *Chedli Bourguiba* and *Jonathan Hefner*",
+    "project": "activestorage",
+    "date_merged": 1699900718000,
+    "author": "Jonathan Hefner",
+    "sha": "a5e1fc97d281419381d5d189ff3c78cb4c66464b",
+    "pr": "50044",
+    "merge_sha": "757f4896417f86b58303e416f4040a2b434abdd6",
+    "html": "<p>Process preview image variant when calling <code>ActiveStorage::Preview#processed</code>.<br />\nFor example, <code>attached_pdf.preview(:thumb).processed</code> will now immediately<br />\ngenerate the full-sized preview image and the <code>:thumb</code> variant of it.<br />\nPreviously, the <code>:thumb</code> variant would not be generated until a further call<br />\nto e.g. <code>processed.url</code>.</p>\n\n<p><em>Chedli Bourguiba</em> and <em>Jonathan Hefner</em></p>\n"
+  },
+  {
     "message": "*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is\n    enabled and the variant of an Active Storage preview has already been\n    processed (for example, by calling `ActiveStorage::Preview#url`).\n\n    *Jonathan Hefner*",
     "project": "activestorage",
     "date_merged": 1699895824000,
