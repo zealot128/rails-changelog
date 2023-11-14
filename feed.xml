@@ -625,6 +625,29 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Process preview image variant when calling `ActiveStorage::Preview#processed`.
+</title>
+    <link>https://github.com/rails/rails/issues/50044</link>
+    <guid>https://github.com/rails/rails/issues/50044</guid>
+    <description>*   Process preview image variant when calling `ActiveStorage::Preview#processed`.
+    For example, `attached_pdf.preview(:thumb).processed` will now immediately
+    generate the full-sized preview image and the `:thumb` variant of it.
+    Previously, the `:thumb` variant would not be generated until a further call
+    to e.g. `processed.url`.
+
+    *Chedli Bourguiba* and *Jonathan Hefner*</description>
+    <pubDate>Mon, 13 Nov 2023 18:38:38 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Process preview image variant when calling <code>ActiveStorage::Preview#processed</code>.<br />
+For example, <code>attached_pdf.preview(:thumb).processed</code> will now immediately<br />
+generate the full-sized preview image and the <code>:thumb</code> variant of it.<br />
+Previously, the <code>:thumb</code> variant would not be generated until a further call<br />
+to e.g. <code>processed.url</code>.</p>
+
+<p><em>Chedli Bourguiba</em> and <em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
 </title>
     <link>https://github.com/rails/rails/issues/50043</link>
