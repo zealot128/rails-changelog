@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: `DatabaseConfigurations#configs_for` can accept a symbol in the `name` parameter.
+</title>
+    <link>https://github.com/rails/rails/issues/50061</link>
+    <guid>https://github.com/rails/rails/issues/50061</guid>
+    <description>*   `DatabaseConfigurations#configs_for` can accept a symbol in the `name` parameter.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Wed, 15 Nov 2023 19:35:50 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p><code>DatabaseConfigurations#configs_for</code> can accept a symbol in the <code>name</code> parameter.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix `where(field: values)` queries when `field` is a serialized attribute
 </title>
     <link>https://github.com/rails/rails/issues/49050</link>
@@ -622,6 +637,25 @@ to differentiate nil from empty strings, strings from symbols, etc.<br />
 method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
 
 <p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
+</title>
+    <link>https://github.com/rails/rails/issues/50046</link>
+    <guid>https://github.com/rails/rails/issues/50046</guid>
+    <description>*   Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
+    Calls to `#url`, `#key` or `#download` will now use the original preview
+    image instead of generating a variant with the exact same dimensions.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Wed, 15 Nov 2023 23:16:00 +0000</pubDate>
+    <author>chaadow</author>
+    <content:encoded><![CDATA[<p>Prevent <code>ActiveStorage::Blob#preview</code> to generate a variant if an empty variation is passed.<br />
+Calls to <code>#url</code>, <code>#key</code> or <code>#download</code> will now use the original preview<br />
+image instead of generating a variant with the exact same dimensions.</p>
+
+<p><em>Chedli Bourguiba</em></p>
 ]]></content:encoded>
   </item>
   <item>
