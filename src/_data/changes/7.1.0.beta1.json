@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   `DatabaseConfigurations#configs_for` can accept a symbol in the `name` parameter.\n\n    *Andrew Novoselac*",
+    "project": "activerecord",
+    "date_merged": 1700076950000,
+    "author": "Andrew Novoselac",
+    "sha": "c7063f944a69f2821e3624ccaf6ec0b8df962197",
+    "pr": "50061",
+    "merge_sha": "d424cab95126a6e08d86bb79da3e42877f6f3293",
+    "html": "<p><code>DatabaseConfigurations#configs_for</code> can accept a symbol in the <code>name</code> parameter.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
     "message": "*   Fix `where(field: values)` queries when `field` is a serialized attribute\n    (for example, when `field` uses `ActiveRecord::Base.serialize` or is a JSON\n    column).\n\n    *João Alves*",
     "project": "activerecord",
     "date_merged": 1699565901000,
@@ -268,6 +278,16 @@
     "pr": "49475",
     "merge_sha": "d21f4e638ff3498a19730c505e5fb255740a7960",
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.\n    Calls to `#url`, `#key` or `#download` will now use the original preview\n    image instead of generating a variant with the exact same dimensions.\n\n    *Chedli Bourguiba*",
+    "project": "activestorage",
+    "date_merged": 1700090160000,
+    "author": "chaadow",
+    "sha": "eae19656fe526891f5e149351a81fcd9a45ca714",
+    "pr": "50046",
+    "merge_sha": "f98bb7ed41d513539cd6a1af1f21d96ae4f3cd17",
+    "html": "<p>Prevent <code>ActiveStorage::Blob#preview</code> to generate a variant if an empty variation is passed.<br />\nCalls to <code>#url</code>, <code>#key</code> or <code>#download</code> will now use the original preview<br />\nimage instead of generating a variant with the exact same dimensions.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
     "message": "*   Process preview image variant when calling `ActiveStorage::Preview#processed`.\n    For example, `attached_pdf.preview(:thumb).processed` will now immediately\n    generate the full-sized preview image and the `:thumb` variant of it.\n    Previously, the `:thumb` variant would not be generated until a further call\n    to e.g. `processed.url`.\n\n    *Chedli Bourguiba* and *Jonathan Hefner*",
