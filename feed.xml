@@ -494,6 +494,29 @@ the same for Active Model as it does for Active Record.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Make return values of `Cache::Store#write` consistent.
+</title>
+    <link>https://github.com/rails/rails/issues/49873</link>
+    <guid>https://github.com/rails/rails/issues/49873</guid>
+    <description>*   Make return values of `Cache::Store#write` consistent.
+
+    The return value was not specified before. Now it returns `true` on a successful write,
+    `nil` if there was an error talking to the cache backend, and `false` if the write failed
+    for another reason (e.g. the key already exists and `unless_exist: true` was passed).
+
+    *Sander Verdonschot*</description>
+    <pubDate>Thu, 16 Nov 2023 14:55:51 +0000</pubDate>
+    <author>Sander Verdonschot</author>
+    <content:encoded><![CDATA[<p>Make return values of <code>Cache::Store#write</code> consistent.</p>
+
+<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />
+<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />
+for another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>
+
+<p><em>Sander Verdonschot</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Fix logged cache keys not always matching actual key used by cache action.
 </title>
     <link>https://github.com/rails/rails/issues/50008</link>
