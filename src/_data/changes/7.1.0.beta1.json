@@ -200,6 +200,16 @@
     "html": "<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />\nthe same for Active Model as it does for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">type_for_attribute</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Make return values of `Cache::Store#write` consistent.\n\n    The return value was not specified before. Now it returns `true` on a successful write,\n    `nil` if there was an error talking to the cache backend, and `false` if the write failed\n    for another reason (e.g. the key already exists and `unless_exist: true` was passed).\n\n    *Sander Verdonschot*",
+    "project": "activesupport",
+    "date_merged": 1700146551000,
+    "author": "Sander Verdonschot",
+    "sha": "4cfdcfef8eedb28a4e0f5d12fae80c2aade02a4c",
+    "pr": "49873",
+    "merge_sha": "949b4d1482e41d2d8cfe1b7ed3a69df40a825225",
+    "html": "<p>Make return values of <code>Cache::Store#write</code> consistent.</p>\n\n<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />\n<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />\nfor another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>\n\n<p><em>Sander Verdonschot</em></p>\n"
+  },
+  {
     "message": "*   Fix logged cache keys not always matching actual key used by cache action.\n\n    *Hartley McGuire*",
     "project": "activesupport",
     "date_merged": 1699729968000,
