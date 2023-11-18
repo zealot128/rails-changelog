@@ -6,190 +6,6 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>activesupport: Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
-</title>
-    <link>https://github.com/rails/rails/issues/50071</link>
-    <guid>https://github.com/rails/rails/issues/50071</guid>
-    <description>*   Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
-
-    *Adam Renberg Tamm*</description>
-    <pubDate>Fri, 17 Nov 2023 17:37:39 +0000</pubDate>
-    <author>Adam Renberg Tamm</author>
-    <content:encoded><![CDATA[<p>Make the order of read_multi and write_multi notifications for <code>Cache::Store#fetch_multi</code> operations match the order they are executed in.</p>
-
-<p><em>Adam Renberg Tamm</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Make return values of `Cache::Store#write` consistent.
-</title>
-    <link>https://github.com/rails/rails/issues/49873</link>
-    <guid>https://github.com/rails/rails/issues/49873</guid>
-    <description>*   Make return values of `Cache::Store#write` consistent.
-
-    The return value was not specified before. Now it returns `true` on a successful write,
-    `nil` if there was an error talking to the cache backend, and `false` if the write failed
-    for another reason (e.g. the key already exists and `unless_exist: true` was passed).
-
-    *Sander Verdonschot*</description>
-    <pubDate>Thu, 16 Nov 2023 14:55:51 +0000</pubDate>
-    <author>Sander Verdonschot</author>
-    <content:encoded><![CDATA[<p>Make return values of <code>Cache::Store#write</code> consistent.</p>
-
-<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />
-<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />
-for another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>
-
-<p><em>Sander Verdonschot</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix logged cache keys not always matching actual key used by cache action.
-</title>
-    <link>https://github.com/rails/rails/issues/50008</link>
-    <guid>https://github.com/rails/rails/issues/50008</guid>
-    <description>*   Fix logged cache keys not always matching actual key used by cache action.
-
-    *Hartley McGuire*</description>
-    <pubDate>Sat, 11 Nov 2023 19:12:48 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Fix logged cache keys not always matching actual key used by cache action.</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Improve error messages of `assert_changes` and `assert_no_changes`
-</title>
-    <link>https://github.com/rails/rails/issues/48482</link>
-    <guid>https://github.com/rails/rails/issues/48482</guid>
-    <description>*   Improve error messages of `assert_changes` and `assert_no_changes`
-
-    `assert_changes` error messages now display objects with `.inspect` to make it easier
-    to differentiate nil from empty strings, strings from symbols, etc.
-    `assert_no_changes` error messages now surface the actual value.
-
-    *pcreux*</description>
-    <pubDate>Mon, 30 Oct 2023 18:43:51 +0000</pubDate>
-    <author>Philippe Creux</author>
-    <content:encoded><![CDATA[<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>
-
-<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />
-to differentiate nil from empty strings, strings from symbols, etc.<br />
-<code>assert_no_changes</code> error messages now surface the actual value.</p>
-
-<p><em>pcreux</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix `#to_fs(:human_size)` to correctly work with negative numbers.
-</title>
-    <link>https://github.com/rails/rails/issues/49791</link>
-    <guid>https://github.com/rails/rails/issues/49791</guid>
-    <description>*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.
-
-    *Earlopain*</description>
-    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
-    <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>
-
-<p><em>Earlopain</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
-</title>
-    <link>https://github.com/rails/rails/issues/49720</link>
-    <guid>https://github.com/rails/rails/issues/49720</guid>
-    <description>*   Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
-
-    *Andrew Novoselac*</description>
-    <pubDate>Mon, 23 Oct 2023 23:05:43 +0000</pubDate>
-    <author>Andrew Novoselac</author>
-    <content:encoded><![CDATA[<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>
-
-<p><em>Andrew Novoselac</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
-</title>
-    <link>https://github.com/rails/rails/issues/49721</link>
-    <guid>https://github.com/rails/rails/issues/49721</guid>
-    <description>*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
-
-    *Andrew Novoselac*</description>
-    <pubDate>Fri, 20 Oct 2023 16:59:24 +0000</pubDate>
-    <author>Andrew Novoselac</author>
-    <content:encoded><![CDATA[<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>
-
-<p><em>Andrew Novoselac</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix compatibility with the `semantic_logger` gem.
-</title>
-    <link>https://github.com/rails/rails/issues/49621</link>
-    <guid>https://github.com/rails/rails/issues/49621</guid>
-    <description>*   Fix compatibility with the `semantic_logger` gem.
-
-    The `semantic_logger` gem doesn&#39;t behave exactly like stdlib logger in that
-    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.
-
-    This caused the various `LogSubscriber` classes in Rails to break when assigned a
-    `SemanticLogger` instance.
-
-    *Jean Boussier*, *ojab*</description>
-    <pubDate>Fri, 13 Oct 2023 12:34:06 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>
-
-<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />
-<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>
-
-<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />
-<code>SemanticLogger</code> instance.</p>
-
-<p><em>Jean Boussier</em>, <em>ojab</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix MemoryStore to prevent race conditions when incrementing or decrementing.
-</title>
-    <link>https://github.com/rails/rails/issues/49542</link>
-    <guid>https://github.com/rails/rails/issues/49542</guid>
-    <description>*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.
-
-    *Pierre Jambet*</description>
-    <pubDate>Mon, 09 Oct 2023 07:24:47 +0000</pubDate>
-    <author>Pierre Jambet</author>
-    <content:encoded><![CDATA[<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>
-
-<p><em>Pierre Jambet</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Implement `HashWithIndifferentAccess#to_proc`.
-</title>
-    <link>https://github.com/rails/rails/issues/49475</link>
-    <guid>https://github.com/rails/rails/issues/49475</guid>
-    <description>*   Implement `HashWithIndifferentAccess#to_proc`.
-
-    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`
-    method from the `Hash` class, which was not able to access values using indifferent keys.
-
-    *fatkodima*</description>
-    <pubDate>Wed, 04 Oct 2023 07:56:58 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>
-
-<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />
-method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
-
-<p><em>fatkodima</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activerecord: `DatabaseConfigurations#configs_for` can accept a symbol in the `name` parameter.
 </title>
     <link>https://github.com/rails/rails/issues/50061</link>
@@ -420,331 +236,6 @@ column).</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Fix the `number_to_human_size` view helper to correctly work with negative numbers.
-</title>
-    <link>https://github.com/rails/rails/issues/49791</link>
-    <guid>https://github.com/rails/rails/issues/49791</guid>
-    <description>*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.
-
-    *Earlopain*</description>
-    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
-    <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Fix the <code>number_to_human_size</code> view helper to correctly work with negative numbers.</p>
-
-<p><em>Earlopain</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
-</title>
-    <link>https://github.com/rails/rails/issues/49782</link>
-    <guid>https://github.com/rails/rails/issues/49782</guid>
-    <description>*   Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
-
-    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.
-
-    Now they are only passed if the template will actually accept them.
-
-    *Yasha Krasnou*, *Jean Boussier*</description>
-    <pubDate>Wed, 25 Oct 2023 16:00:06 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Automatically discard the implicit locals injected by collection rendering for template that can’t accept them</p>
-
-<p>When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.</p>
-
-<p>Now they are only passed if the template will actually accept them.</p>
-
-<p><em>Yasha Krasnou</em>, <em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Fix `@rails/ujs` calling `start()` an extra time when using bundlers
-</title>
-    <link>https://github.com/rails/rails/issues/49668</link>
-    <guid>https://github.com/rails/rails/issues/49668</guid>
-    <description>*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers
-
-    *Hartley McGuire*, *Ryunosuke Sato*</description>
-    <pubDate>Tue, 24 Oct 2023 19:01:24 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Fix <code>@rails/ujs</code> calling <code>start()</code> an extra time when using bundlers</p>
-
-<p><em>Hartley McGuire</em>, <em>Ryunosuke Sato</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Fix the `capture` view helper compatibility with HAML and Slim
-</title>
-    <link>https://github.com/rails/rails/issues/49612</link>
-    <guid>https://github.com/rails/rails/issues/49612</guid>
-    <description>*   Fix the `capture` view helper compatibility with HAML and Slim
-
-    When a blank string was captured in HAML or Slim (and possibly other template engines)
-    it would instead return the entire buffer.
-
-    *Jean Boussier*</description>
-    <pubDate>Fri, 13 Oct 2023 06:29:47 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>
-
-<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />
-it would instead return the entire buffer.</p>
-
-<p><em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
-</title>
-    <link>https://github.com/rails/rails/issues/49553</link>
-    <guid>https://github.com/rails/rails/issues/49553</guid>
-    <description>*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
-
-    This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.
-    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]
-
-    *Ryunosuke Sato*</description>
-    <pubDate>Wed, 11 Oct 2023 20:44:41 +0000</pubDate>
-    <author>Ryunosuke Sato</author>
-    <content:encoded><![CDATA[<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>
-
-<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />
-[<a href="https://github.com/advisories/GHSA-xp5h-f8jf-rc8q">CVE-2023-23913</a>]</p>
-
-<p><em>Ryunosuke Sato</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
-</title>
-    <link>https://github.com/rails/rails/issues/49175</link>
-    <guid>https://github.com/rails/rails/issues/49175</guid>
-    <description>*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
-    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If
-    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error
-    message.
-
-    Examples:
-
-    ```ruby
-    # Raises ArgumentError: Invalid HTML5 tag name: 12p
-    content_tag(&quot;12p&quot;) # Starting with a number
-
-    # Raises ArgumentError: Invalid HTML5 tag name: &quot;&quot;
-    content_tag(&quot;&quot;) # Empty tag name
-
-    # Raises ArgumentError: Invalid HTML5 tag name: div/
-    tag(&quot;div/&quot;) # Contains a solidus
-
-    # Raises ArgumentError: Invalid HTML5 tag name: &quot;image file&quot;
-    tag(&quot;image file&quot;) # Contains a space
-    ```
-
-    *Akhil G Krishnan*</description>
-    <pubDate>Wed, 27 Sep 2023 17:37:41 +0000</pubDate>
-    <author>Akhil G Krishnan</author>
-    <content:encoded><![CDATA[<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />
-<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />
-an invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />
-message.</p>
-
-<p>Examples:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>
-<span class="n">content_tag</span><span class="p">(</span><span class="s2">"12p"</span><span class="p">)</span> <span class="c1"># Starting with a number</span>
-
-<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: ""</span>
-<span class="n">content_tag</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="c1"># Empty tag name</span>
-
-<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>
-<span class="n">tag</span><span class="p">(</span><span class="s2">"div/"</span><span class="p">)</span> <span class="c1"># Contains a solidus</span>
-
-<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: "image file"</span>
-<span class="n">tag</span><span class="p">(</span><span class="s2">"image file"</span><span class="p">)</span> <span class="c1"># Contains a space</span>
-</code></pre></div></div>
-
-<p><em>Akhil G Krishnan</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: When using the `preprocessed: true` option, avoid enqueuing transform jobs
-</title>
-    <link>https://github.com/rails/rails/issues/50082</link>
-    <guid>https://github.com/rails/rails/issues/50082</guid>
-    <description>*   When using the `preprocessed: true` option, avoid enqueuing transform jobs
-    for blobs that are not representable.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Fri, 17 Nov 2023 23:25:17 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>When using the <code>preprocessed: true</code> option, avoid enqueuing transform jobs<br />
-for blobs that are not representable.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
-</title>
-    <link>https://github.com/rails/rails/issues/50046</link>
-    <guid>https://github.com/rails/rails/issues/50046</guid>
-    <description>*   Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
-    Calls to `#url`, `#key` or `#download` will now use the original preview
-    image instead of generating a variant with the exact same dimensions.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Wed, 15 Nov 2023 23:16:00 +0000</pubDate>
-    <author>chaadow</author>
-    <content:encoded><![CDATA[<p>Prevent <code>ActiveStorage::Blob#preview</code> to generate a variant if an empty variation is passed.<br />
-Calls to <code>#url</code>, <code>#key</code> or <code>#download</code> will now use the original preview<br />
-image instead of generating a variant with the exact same dimensions.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Process preview image variant when calling `ActiveStorage::Preview#processed`.
-</title>
-    <link>https://github.com/rails/rails/issues/50044</link>
-    <guid>https://github.com/rails/rails/issues/50044</guid>
-    <description>*   Process preview image variant when calling `ActiveStorage::Preview#processed`.
-    For example, `attached_pdf.preview(:thumb).processed` will now immediately
-    generate the full-sized preview image and the `:thumb` variant of it.
-    Previously, the `:thumb` variant would not be generated until a further call
-    to e.g. `processed.url`.
-
-    *Chedli Bourguiba* and *Jonathan Hefner*</description>
-    <pubDate>Mon, 13 Nov 2023 18:38:38 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Process preview image variant when calling <code>ActiveStorage::Preview#processed</code>.<br />
-For example, <code>attached_pdf.preview(:thumb).processed</code> will now immediately<br />
-generate the full-sized preview image and the <code>:thumb</code> variant of it.<br />
-Previously, the <code>:thumb</code> variant would not be generated until a further call<br />
-to e.g. <code>processed.url</code>.</p>
-
-<p><em>Chedli Bourguiba</em> and <em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
-</title>
-    <link>https://github.com/rails/rails/issues/50043</link>
-    <guid>https://github.com/rails/rails/issues/50043</guid>
-    <description>*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
-    enabled and the variant of an Active Storage preview has already been
-    processed (for example, by calling `ActiveStorage::Preview#url`).
-
-    *Jonathan Hefner*</description>
-    <pubDate>Mon, 13 Nov 2023 17:17:04 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Prevent <code>ActiveRecord::StrictLoadingViolationError</code> when strict loading is<br />
-enabled and the variant of an Active Storage preview has already been<br />
-processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Fix `preprocessed: true` option for named variants of previewable files.
-</title>
-    <link>https://github.com/rails/rails/issues/50005</link>
-    <guid>https://github.com/rails/rails/issues/50005</guid>
-    <description>*   Fix `preprocessed: true` option for named variants of previewable files.
-
-    *Nico Wenterodt*</description>
-    <pubDate>Sat, 11 Nov 2023 17:49:10 +0000</pubDate>
-    <author>Nico Wenterodt</author>
-    <content:encoded><![CDATA[<p>Fix <code>preprocessed: true</code> option for named variants of previewable files.</p>
-
-<p><em>Nico Wenterodt</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
-</title>
-    <link>https://github.com/rails/rails/issues/49863</link>
-    <guid>https://github.com/rails/rails/issues/49863</guid>
-    <description>*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
-
-    *Yogesh Khater*</description>
-    <pubDate>Thu, 02 Nov 2023 02:45:48 +0000</pubDate>
-    <author>Yogesh Khater</author>
-    <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
-
-<p><em>Yogesh Khater</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Fix a race condition that could cause a `Text file busy - chromedriver`
-</title>
-    <link>https://github.com/rails/rails/issues/49908</link>
-    <guid>https://github.com/rails/rails/issues/49908</guid>
-    <description>*   Fix a race condition that could cause a `Text file busy - chromedriver`
-    error with parallel system tests
-
-    *Matt Brictson*</description>
-    <pubDate>Tue, 07 Nov 2023 17:41:13 +0000</pubDate>
-    <author>Matt Brictson</author>
-    <content:encoded><![CDATA[<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />
-error with parallel system tests</p>
-
-<p><em>Matt Brictson</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
-</title>
-    <link>https://github.com/rails/rails/issues/49722</link>
-    <guid>https://github.com/rails/rails/issues/49722</guid>
-    <description>*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
-
-    *Hartley McGuire*</description>
-    <pubDate>Fri, 20 Oct 2023 22:10:13 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Port the `type_for_attribute` method to Active Model. Classes that include
-</title>
-    <link>https://github.com/rails/rails/issues/49910</link>
-    <guid>https://github.com/rails/rails/issues/49910</guid>
-    <description>*   Port the `type_for_attribute` method to Active Model. Classes that include
-    `ActiveModel::Attributes` will now provide this method. This method behaves
-    the same for Active Model as it does for Active Record.
-
-      ```ruby
-      class MyModel
-        include ActiveModel::Attributes
-
-        attribute :my_attribute, :integer
-      end
-
-      MyModel.type_for_attribute(:my_attribute) # =&gt; #&lt;ActiveModel::Type::Integer ...&gt;
-      ```
-
-    *Jonathan Hefner*</description>
-    <pubDate>Sat, 04 Nov 2023 02:54:59 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />
-<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />
-the same for Active Model as it does for Active Record.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">MyModel</span>
-    <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span>
-
-    <span class="n">attribute</span> <span class="ss">:my_attribute</span><span class="p">,</span> <span class="ss">:integer</span>
-  <span class="k">end</span>
-
-  <span class="no">MyModel</span><span class="p">.</span><span class="nf">type_for_attribute</span><span class="p">(</span><span class="ss">:my_attribute</span><span class="p">)</span> <span class="c1"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>
-</code></pre></div></div>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>railties: Fix running `db:system:change` when app has no Dockerfile.
 </title>
     <link>https://github.com/rails/rails/issues/49988</link>
@@ -965,6 +456,336 @@ for all environments, as the value is the same in all environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activemodel: Port the `type_for_attribute` method to Active Model. Classes that include
+</title>
+    <link>https://github.com/rails/rails/issues/49910</link>
+    <guid>https://github.com/rails/rails/issues/49910</guid>
+    <description>*   Port the `type_for_attribute` method to Active Model. Classes that include
+    `ActiveModel::Attributes` will now provide this method. This method behaves
+    the same for Active Model as it does for Active Record.
+
+      ```ruby
+      class MyModel
+        include ActiveModel::Attributes
+
+        attribute :my_attribute, :integer
+      end
+
+      MyModel.type_for_attribute(:my_attribute) # =&gt; #&lt;ActiveModel::Type::Integer ...&gt;
+      ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Sat, 04 Nov 2023 02:54:59 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />
+<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />
+the same for Active Model as it does for Active Record.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">MyModel</span>
+    <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span>
+
+    <span class="n">attribute</span> <span class="ss">:my_attribute</span><span class="p">,</span> <span class="ss">:integer</span>
+  <span class="k">end</span>
+
+  <span class="no">MyModel</span><span class="p">.</span><span class="nf">type_for_attribute</span><span class="p">(</span><span class="ss">:my_attribute</span><span class="p">)</span> <span class="c1"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>
+</code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
+</title>
+    <link>https://github.com/rails/rails/issues/50071</link>
+    <guid>https://github.com/rails/rails/issues/50071</guid>
+    <description>*   Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
+
+    *Adam Renberg Tamm*</description>
+    <pubDate>Fri, 17 Nov 2023 17:37:39 +0000</pubDate>
+    <author>Adam Renberg Tamm</author>
+    <content:encoded><![CDATA[<p>Make the order of read_multi and write_multi notifications for <code>Cache::Store#fetch_multi</code> operations match the order they are executed in.</p>
+
+<p><em>Adam Renberg Tamm</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Make return values of `Cache::Store#write` consistent.
+</title>
+    <link>https://github.com/rails/rails/issues/49873</link>
+    <guid>https://github.com/rails/rails/issues/49873</guid>
+    <description>*   Make return values of `Cache::Store#write` consistent.
+
+    The return value was not specified before. Now it returns `true` on a successful write,
+    `nil` if there was an error talking to the cache backend, and `false` if the write failed
+    for another reason (e.g. the key already exists and `unless_exist: true` was passed).
+
+    *Sander Verdonschot*</description>
+    <pubDate>Thu, 16 Nov 2023 14:55:51 +0000</pubDate>
+    <author>Sander Verdonschot</author>
+    <content:encoded><![CDATA[<p>Make return values of <code>Cache::Store#write</code> consistent.</p>
+
+<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />
+<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />
+for another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>
+
+<p><em>Sander Verdonschot</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix logged cache keys not always matching actual key used by cache action.
+</title>
+    <link>https://github.com/rails/rails/issues/50008</link>
+    <guid>https://github.com/rails/rails/issues/50008</guid>
+    <description>*   Fix logged cache keys not always matching actual key used by cache action.
+
+    *Hartley McGuire*</description>
+    <pubDate>Sat, 11 Nov 2023 19:12:48 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix logged cache keys not always matching actual key used by cache action.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Improve error messages of `assert_changes` and `assert_no_changes`
+</title>
+    <link>https://github.com/rails/rails/issues/48482</link>
+    <guid>https://github.com/rails/rails/issues/48482</guid>
+    <description>*   Improve error messages of `assert_changes` and `assert_no_changes`
+
+    `assert_changes` error messages now display objects with `.inspect` to make it easier
+    to differentiate nil from empty strings, strings from symbols, etc.
+    `assert_no_changes` error messages now surface the actual value.
+
+    *pcreux*</description>
+    <pubDate>Mon, 30 Oct 2023 18:43:51 +0000</pubDate>
+    <author>Philippe Creux</author>
+    <content:encoded><![CDATA[<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>
+
+<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />
+to differentiate nil from empty strings, strings from symbols, etc.<br />
+<code>assert_no_changes</code> error messages now surface the actual value.</p>
+
+<p><em>pcreux</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix `#to_fs(:human_size)` to correctly work with negative numbers.
+</title>
+    <link>https://github.com/rails/rails/issues/49791</link>
+    <guid>https://github.com/rails/rails/issues/49791</guid>
+    <description>*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.
+
+    *Earlopain*</description>
+    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>
+
+<p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
+</title>
+    <link>https://github.com/rails/rails/issues/49720</link>
+    <guid>https://github.com/rails/rails/issues/49720</guid>
+    <description>*   Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Mon, 23 Oct 2023 23:05:43 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
+</title>
+    <link>https://github.com/rails/rails/issues/49721</link>
+    <guid>https://github.com/rails/rails/issues/49721</guid>
+    <description>*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Fri, 20 Oct 2023 16:59:24 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix compatibility with the `semantic_logger` gem.
+</title>
+    <link>https://github.com/rails/rails/issues/49621</link>
+    <guid>https://github.com/rails/rails/issues/49621</guid>
+    <description>*   Fix compatibility with the `semantic_logger` gem.
+
+    The `semantic_logger` gem doesn&#39;t behave exactly like stdlib logger in that
+    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.
+
+    This caused the various `LogSubscriber` classes in Rails to break when assigned a
+    `SemanticLogger` instance.
+
+    *Jean Boussier*, *ojab*</description>
+    <pubDate>Fri, 13 Oct 2023 12:34:06 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>
+
+<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />
+<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>
+
+<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />
+<code>SemanticLogger</code> instance.</p>
+
+<p><em>Jean Boussier</em>, <em>ojab</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix MemoryStore to prevent race conditions when incrementing or decrementing.
+</title>
+    <link>https://github.com/rails/rails/issues/49542</link>
+    <guid>https://github.com/rails/rails/issues/49542</guid>
+    <description>*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.
+
+    *Pierre Jambet*</description>
+    <pubDate>Mon, 09 Oct 2023 07:24:47 +0000</pubDate>
+    <author>Pierre Jambet</author>
+    <content:encoded><![CDATA[<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>
+
+<p><em>Pierre Jambet</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Implement `HashWithIndifferentAccess#to_proc`.
+</title>
+    <link>https://github.com/rails/rails/issues/49475</link>
+    <guid>https://github.com/rails/rails/issues/49475</guid>
+    <description>*   Implement `HashWithIndifferentAccess#to_proc`.
+
+    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`
+    method from the `Hash` class, which was not able to access values using indifferent keys.
+
+    *fatkodima*</description>
+    <pubDate>Wed, 04 Oct 2023 07:56:58 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>
+
+<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />
+method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: When using the `preprocessed: true` option, avoid enqueuing transform jobs
+</title>
+    <link>https://github.com/rails/rails/issues/50082</link>
+    <guid>https://github.com/rails/rails/issues/50082</guid>
+    <description>*   When using the `preprocessed: true` option, avoid enqueuing transform jobs
+    for blobs that are not representable.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Fri, 17 Nov 2023 23:25:17 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>When using the <code>preprocessed: true</code> option, avoid enqueuing transform jobs<br />
+for blobs that are not representable.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
+</title>
+    <link>https://github.com/rails/rails/issues/50046</link>
+    <guid>https://github.com/rails/rails/issues/50046</guid>
+    <description>*   Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
+    Calls to `#url`, `#key` or `#download` will now use the original preview
+    image instead of generating a variant with the exact same dimensions.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Wed, 15 Nov 2023 23:16:00 +0000</pubDate>
+    <author>chaadow</author>
+    <content:encoded><![CDATA[<p>Prevent <code>ActiveStorage::Blob#preview</code> to generate a variant if an empty variation is passed.<br />
+Calls to <code>#url</code>, <code>#key</code> or <code>#download</code> will now use the original preview<br />
+image instead of generating a variant with the exact same dimensions.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Process preview image variant when calling `ActiveStorage::Preview#processed`.
+</title>
+    <link>https://github.com/rails/rails/issues/50044</link>
+    <guid>https://github.com/rails/rails/issues/50044</guid>
+    <description>*   Process preview image variant when calling `ActiveStorage::Preview#processed`.
+    For example, `attached_pdf.preview(:thumb).processed` will now immediately
+    generate the full-sized preview image and the `:thumb` variant of it.
+    Previously, the `:thumb` variant would not be generated until a further call
+    to e.g. `processed.url`.
+
+    *Chedli Bourguiba* and *Jonathan Hefner*</description>
+    <pubDate>Mon, 13 Nov 2023 18:38:38 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Process preview image variant when calling <code>ActiveStorage::Preview#processed</code>.<br />
+For example, <code>attached_pdf.preview(:thumb).processed</code> will now immediately<br />
+generate the full-sized preview image and the <code>:thumb</code> variant of it.<br />
+Previously, the <code>:thumb</code> variant would not be generated until a further call<br />
+to e.g. <code>processed.url</code>.</p>
+
+<p><em>Chedli Bourguiba</em> and <em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
+</title>
+    <link>https://github.com/rails/rails/issues/50043</link>
+    <guid>https://github.com/rails/rails/issues/50043</guid>
+    <description>*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
+    enabled and the variant of an Active Storage preview has already been
+    processed (for example, by calling `ActiveStorage::Preview#url`).
+
+    *Jonathan Hefner*</description>
+    <pubDate>Mon, 13 Nov 2023 17:17:04 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Prevent <code>ActiveRecord::StrictLoadingViolationError</code> when strict loading is<br />
+enabled and the variant of an Active Storage preview has already been<br />
+processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Fix `preprocessed: true` option for named variants of previewable files.
+</title>
+    <link>https://github.com/rails/rails/issues/50005</link>
+    <guid>https://github.com/rails/rails/issues/50005</guid>
+    <description>*   Fix `preprocessed: true` option for named variants of previewable files.
+
+    *Nico Wenterodt*</description>
+    <pubDate>Sat, 11 Nov 2023 17:49:10 +0000</pubDate>
+    <author>Nico Wenterodt</author>
+    <content:encoded><![CDATA[<p>Fix <code>preprocessed: true</code> option for named variants of previewable files.</p>
+
+<p><em>Nico Wenterodt</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
+</title>
+    <link>https://github.com/rails/rails/issues/49863</link>
+    <guid>https://github.com/rails/rails/issues/49863</guid>
+    <description>*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
+
+    *Yogesh Khater*</description>
+    <pubDate>Thu, 02 Nov 2023 02:45:48 +0000</pubDate>
+    <author>Yogesh Khater</author>
+    <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
+
+<p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Compile ESM package that can be used directly in the browser as actiontext.esm.js
 </title>
     <link>https://github.com/rails/rails/issues/49952</link>
@@ -1022,6 +843,185 @@ for all environments, as the value is the same in all environments.</p>
     <content:encoded><![CDATA[<p>Fix using Trix with Sprockets</p>
 
 <p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Fix a race condition that could cause a `Text file busy - chromedriver`
+</title>
+    <link>https://github.com/rails/rails/issues/49908</link>
+    <guid>https://github.com/rails/rails/issues/49908</guid>
+    <description>*   Fix a race condition that could cause a `Text file busy - chromedriver`
+    error with parallel system tests
+
+    *Matt Brictson*</description>
+    <pubDate>Tue, 07 Nov 2023 17:41:13 +0000</pubDate>
+    <author>Matt Brictson</author>
+    <content:encoded><![CDATA[<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />
+error with parallel system tests</p>
+
+<p><em>Matt Brictson</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
+</title>
+    <link>https://github.com/rails/rails/issues/49722</link>
+    <guid>https://github.com/rails/rails/issues/49722</guid>
+    <description>*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 20 Oct 2023 22:10:13 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix the `number_to_human_size` view helper to correctly work with negative numbers.
+</title>
+    <link>https://github.com/rails/rails/issues/49791</link>
+    <guid>https://github.com/rails/rails/issues/49791</guid>
+    <description>*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.
+
+    *Earlopain*</description>
+    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Fix the <code>number_to_human_size</code> view helper to correctly work with negative numbers.</p>
+
+<p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
+</title>
+    <link>https://github.com/rails/rails/issues/49782</link>
+    <guid>https://github.com/rails/rails/issues/49782</guid>
+    <description>*   Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
+
+    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.
+
+    Now they are only passed if the template will actually accept them.
+
+    *Yasha Krasnou*, *Jean Boussier*</description>
+    <pubDate>Wed, 25 Oct 2023 16:00:06 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Automatically discard the implicit locals injected by collection rendering for template that can’t accept them</p>
+
+<p>When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.</p>
+
+<p>Now they are only passed if the template will actually accept them.</p>
+
+<p><em>Yasha Krasnou</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix `@rails/ujs` calling `start()` an extra time when using bundlers
+</title>
+    <link>https://github.com/rails/rails/issues/49668</link>
+    <guid>https://github.com/rails/rails/issues/49668</guid>
+    <description>*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers
+
+    *Hartley McGuire*, *Ryunosuke Sato*</description>
+    <pubDate>Tue, 24 Oct 2023 19:01:24 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix <code>@rails/ujs</code> calling <code>start()</code> an extra time when using bundlers</p>
+
+<p><em>Hartley McGuire</em>, <em>Ryunosuke Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix the `capture` view helper compatibility with HAML and Slim
+</title>
+    <link>https://github.com/rails/rails/issues/49612</link>
+    <guid>https://github.com/rails/rails/issues/49612</guid>
+    <description>*   Fix the `capture` view helper compatibility with HAML and Slim
+
+    When a blank string was captured in HAML or Slim (and possibly other template engines)
+    it would instead return the entire buffer.
+
+    *Jean Boussier*</description>
+    <pubDate>Fri, 13 Oct 2023 06:29:47 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>
+
+<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />
+it would instead return the entire buffer.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+</title>
+    <link>https://github.com/rails/rails/issues/49553</link>
+    <guid>https://github.com/rails/rails/issues/49553</guid>
+    <description>*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+
+    This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.
+    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]
+
+    *Ryunosuke Sato*</description>
+    <pubDate>Wed, 11 Oct 2023 20:44:41 +0000</pubDate>
+    <author>Ryunosuke Sato</author>
+    <content:encoded><![CDATA[<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>
+
+<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />
+[<a href="https://github.com/advisories/GHSA-xp5h-f8jf-rc8q">CVE-2023-23913</a>]</p>
+
+<p><em>Ryunosuke Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
+</title>
+    <link>https://github.com/rails/rails/issues/49175</link>
+    <guid>https://github.com/rails/rails/issues/49175</guid>
+    <description>*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
+    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If
+    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error
+    message.
+
+    Examples:
+
+    ```ruby
+    # Raises ArgumentError: Invalid HTML5 tag name: 12p
+    content_tag(&quot;12p&quot;) # Starting with a number
+
+    # Raises ArgumentError: Invalid HTML5 tag name: &quot;&quot;
+    content_tag(&quot;&quot;) # Empty tag name
+
+    # Raises ArgumentError: Invalid HTML5 tag name: div/
+    tag(&quot;div/&quot;) # Contains a solidus
+
+    # Raises ArgumentError: Invalid HTML5 tag name: &quot;image file&quot;
+    tag(&quot;image file&quot;) # Contains a space
+    ```
+
+    *Akhil G Krishnan*</description>
+    <pubDate>Wed, 27 Sep 2023 17:37:41 +0000</pubDate>
+    <author>Akhil G Krishnan</author>
+    <content:encoded><![CDATA[<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />
+<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />
+an invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />
+message.</p>
+
+<p>Examples:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>
+<span class="n">content_tag</span><span class="p">(</span><span class="s2">"12p"</span><span class="p">)</span> <span class="c1"># Starting with a number</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: ""</span>
+<span class="n">content_tag</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="c1"># Empty tag name</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>
+<span class="n">tag</span><span class="p">(</span><span class="s2">"div/"</span><span class="p">)</span> <span class="c1"># Contains a solidus</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: "image file"</span>
+<span class="n">tag</span><span class="p">(</span><span class="s2">"image file"</span><span class="p">)</span> <span class="c1"># Contains a space</span>
+</code></pre></div></div>
+
+<p><em>Akhil G Krishnan</em></p>
 ]]></content:encoded>
   </item>
 </channel>
