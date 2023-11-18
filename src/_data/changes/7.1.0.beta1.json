@@ -1,105 +1,5 @@
 [
   {
-    "message": "*   Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.\n\n    *Adam Renberg Tamm*",
-    "project": "activesupport",
-    "date_merged": 1700242659000,
-    "author": "Adam Renberg Tamm",
-    "sha": "2251a4ba075daf1e9bb4a5f72a4090fd6bfb932e",
-    "pr": "50071",
-    "merge_sha": "e5d3d782b6c89d382688b7e580a563e96bb874a4",
-    "html": "<p>Make the order of read_multi and write_multi notifications for <code>Cache::Store#fetch_multi</code> operations match the order they are executed in.</p>\n\n<p><em>Adam Renberg Tamm</em></p>\n"
-  },
-  {
-    "message": "*   Make return values of `Cache::Store#write` consistent.\n\n    The return value was not specified before. Now it returns `true` on a successful write,\n    `nil` if there was an error talking to the cache backend, and `false` if the write failed\n    for another reason (e.g. the key already exists and `unless_exist: true` was passed).\n\n    *Sander Verdonschot*",
-    "project": "activesupport",
-    "date_merged": 1700146551000,
-    "author": "Sander Verdonschot",
-    "sha": "4cfdcfef8eedb28a4e0f5d12fae80c2aade02a4c",
-    "pr": "49873",
-    "merge_sha": "949b4d1482e41d2d8cfe1b7ed3a69df40a825225",
-    "html": "<p>Make return values of <code>Cache::Store#write</code> consistent.</p>\n\n<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />\n<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />\nfor another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>\n\n<p><em>Sander Verdonschot</em></p>\n"
-  },
-  {
-    "message": "*   Fix logged cache keys not always matching actual key used by cache action.\n\n    *Hartley McGuire*",
-    "project": "activesupport",
-    "date_merged": 1699729968000,
-    "author": "Hartley McGuire",
-    "sha": "9af99bfffc86700c295772bfd45aaff45e248274",
-    "pr": "50008",
-    "merge_sha": "9194b336e9cb42a216017cef10dc60f863906dd1",
-    "html": "<p>Fix logged cache keys not always matching actual key used by cache action.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
-  },
-  {
-    "message": "*   Improve error messages of `assert_changes` and `assert_no_changes`\n\n    `assert_changes` error messages now display objects with `.inspect` to make it easier\n    to differentiate nil from empty strings, strings from symbols, etc.\n    `assert_no_changes` error messages now surface the actual value.\n\n    *pcreux*",
-    "project": "activesupport",
-    "date_merged": 1698691431000,
-    "author": "Philippe Creux",
-    "sha": "2b3a002a2a62ee5ef4767b4738456dedba88f780",
-    "pr": "48482",
-    "merge_sha": "1b195b30bc22e6cd53d7b277b1ac8b214ccc1176",
-    "html": "<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>\n\n<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />\nto differentiate nil from empty strings, strings from symbols, etc.<br />\n<code>assert_no_changes</code> error messages now surface the actual value.</p>\n\n<p><em>pcreux</em></p>\n"
-  },
-  {
-    "message": "*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.\n\n    *Earlopain*",
-    "project": "activesupport",
-    "date_merged": 1698337259000,
-    "author": "Earlopain",
-    "sha": "c6dcb11691162342550831cdbbcefb5ee59ad198",
-    "pr": "49791",
-    "merge_sha": "87609e821b86fb3b5f4170a8b498d0171c7277cc",
-    "html": "<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>\n\n<p><em>Earlopain</em></p>\n"
-  },
-  {
-    "message": "*   Fix `BroadcastLogger#dup` so that it duplicates the logger's `broadcasts`.\n\n    *Andrew Novoselac*",
-    "project": "activesupport",
-    "date_merged": 1698102343000,
-    "author": "Andrew Novoselac",
-    "sha": "c14b98c28a5962281dd3bc6fb2ca6c6cf79fbc2a",
-    "pr": "49720",
-    "merge_sha": "fefd8f3a1619409f3fd11ad2602beecec8a76943",
-    "html": "<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
-  },
-  {
-    "message": "*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`'s `broadcasts`.\n\n    *Andrew Novoselac*",
-    "project": "activesupport",
-    "date_merged": 1697821164000,
-    "author": "Andrew Novoselac",
-    "sha": "f212fb8b8349f4b7cd4bb4ea74ef940bf1050873",
-    "pr": "49721",
-    "merge_sha": "7c58911bd821d22d837f12129de1811167be9b97",
-    "html": "<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
-  },
-  {
-    "message": "*   Fix compatibility with the `semantic_logger` gem.\n\n    The `semantic_logger` gem doesn't behave exactly like stdlib logger in that\n    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.\n\n    This caused the various `LogSubscriber` classes in Rails to break when assigned a\n    `SemanticLogger` instance.\n\n    *Jean Boussier*, *ojab*",
-    "project": "activesupport",
-    "date_merged": 1697200446000,
-    "author": "Jean Boussier",
-    "sha": "e01d1e25dd6e03233effff524a9e2bf03e3f4869",
-    "pr": "49621",
-    "merge_sha": "c9da2694de2cc8897f0a04604e26ad7f3b672f42",
-    "html": "<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>\n\n<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />\n<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>\n\n<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />\n<code>SemanticLogger</code> instance.</p>\n\n<p><em>Jean Boussier</em>, <em>ojab</em></p>\n"
-  },
-  {
-    "message": "*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.\n\n    *Pierre Jambet*",
-    "project": "activesupport",
-    "date_merged": 1696836287000,
-    "author": "Pierre Jambet",
-    "sha": "7f2e0ffb7eaa05f8732574e4476316d5108227e3",
-    "pr": "49542",
-    "merge_sha": "a385d7b170c06df5674d7d22dc5555cd5cbdd15b",
-    "html": "<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>\n\n<p><em>Pierre Jambet</em></p>\n"
-  },
-  {
-    "message": "*   Implement `HashWithIndifferentAccess#to_proc`.\n\n    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`\n    method from the `Hash` class, which was not able to access values using indifferent keys.\n\n    *fatkodima*",
-    "project": "activesupport",
-    "date_merged": 1696406218000,
-    "author": "fatkodima",
-    "sha": "39438318c72cdc3194a3fa772f284df708ca80b7",
-    "pr": "49475",
-    "merge_sha": "d21f4e638ff3498a19730c505e5fb255740a7960",
-    "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
-  },
-  {
     "message": "*   `DatabaseConfigurations#configs_for` can accept a symbol in the `name` parameter.\n\n    *Andrew Novoselac*",
     "project": "activerecord",
     "date_merged": 1700076950000,
@@ -188,156 +88,6 @@
     "pr": "49507",
     "merge_sha": "7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d",
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
-  },
-  {
-    "message": "*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.\n\n    *Earlopain*",
-    "project": "actionview",
-    "date_merged": 1698337259000,
-    "author": "Earlopain",
-    "sha": "c6dcb11691162342550831cdbbcefb5ee59ad198",
-    "pr": "49791",
-    "merge_sha": "87609e821b86fb3b5f4170a8b498d0171c7277cc",
-    "html": "<p>Fix the <code>number_to_human_size</code> view helper to correctly work with negative numbers.</p>\n\n<p><em>Earlopain</em></p>\n"
-  },
-  {
-    "message": "*   Automatically discard the implicit locals injected by collection rendering for template that can't accept them\n\n    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.\n\n    Now they are only passed if the template will actually accept them.\n\n    *Yasha Krasnou*, *Jean Boussier*",
-    "project": "actionview",
-    "date_merged": 1698249606000,
-    "author": "Jean Boussier",
-    "sha": "110206a74bd92ccb7a8d3dbb891b08248a7ae284",
-    "pr": "49782",
-    "merge_sha": "aa9496002550f7cd07c53f04cbfc8bf749336dd6",
-    "html": "<p>Automatically discard the implicit locals injected by collection rendering for template that can’t accept them</p>\n\n<p>When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.</p>\n\n<p>Now they are only passed if the template will actually accept them.</p>\n\n<p><em>Yasha Krasnou</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers\n\n    *Hartley McGuire*, *Ryunosuke Sato*",
-    "project": "actionview",
-    "date_merged": 1698174084000,
-    "author": "Hartley McGuire",
-    "sha": "f7617808992c9c2a77920ccf4f2a4a42160fe1bd",
-    "pr": "49668",
-    "merge_sha": "4c5c904a212a850c43adb7a3c3a719ca3d2b9159",
-    "html": "<p>Fix <code>@rails/ujs</code> calling <code>start()</code> an extra time when using bundlers</p>\n\n<p><em>Hartley McGuire</em>, <em>Ryunosuke Sato</em></p>\n"
-  },
-  {
-    "message": "*   Fix the `capture` view helper compatibility with HAML and Slim\n\n    When a blank string was captured in HAML or Slim (and possibly other template engines)\n    it would instead return the entire buffer.\n\n    *Jean Boussier*",
-    "project": "actionview",
-    "date_merged": 1697178587000,
-    "author": "Jean Boussier",
-    "sha": "79a242dc54ffaedad24e8b885ae14d0a4f704587",
-    "pr": "49612",
-    "merge_sha": "223974913411dc4152eaf6235e0bd3986406faae",
-    "html": "<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>\n\n<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />\nit would instead return the entire buffer.</p>\n\n<p><em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.\n\n    This fix was already landed in >= 7.0.4.3, < 7.1.0.\n    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]\n\n    *Ryunosuke Sato*",
-    "project": "actionview",
-    "date_merged": 1697057081000,
-    "author": "Ryunosuke Sato",
-    "sha": "8b18d44d1705629de600869056e24aed7601d1da",
-    "pr": "49553",
-    "merge_sha": "fc8d9ed84348b17c9fd020fac9061f1bd73ddf74",
-    "html": "<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>\n\n<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />\n[<a href=\"https://github.com/advisories/GHSA-xp5h-f8jf-rc8q\">CVE-2023-23913</a>]</p>\n\n<p><em>Ryunosuke Sato</em></p>\n"
-  },
-  {
-    "message": "*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and\n    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If\n    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error\n    message.\n\n    Examples:\n\n    ```ruby\n    # Raises ArgumentError: Invalid HTML5 tag name: 12p\n    content_tag(\"12p\") # Starting with a number\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"\"\n    content_tag(\"\") # Empty tag name\n\n    # Raises ArgumentError: Invalid HTML5 tag name: div/\n    tag(\"div/\") # Contains a solidus\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"image file\"\n    tag(\"image file\") # Contains a space\n    ```\n\n    *Akhil G Krishnan*",
-    "project": "actionview",
-    "date_merged": 1695836261000,
-    "author": "Akhil G Krishnan",
-    "sha": "bb626ffca82317ae2cd02543785a7b78c2bba9c1",
-    "pr": "49175",
-    "merge_sha": "7c03e4f1b7553084f34318a9efc2793137de36f4",
-    "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
-  },
-  {
-    "message": "*   When using the `preprocessed: true` option, avoid enqueuing transform jobs\n    for blobs that are not representable.\n\n    *Chedli Bourguiba*",
-    "project": "activestorage",
-    "date_merged": 1700263517000,
-    "author": "Jonathan Hefner",
-    "sha": "e514c586f1eb1bcc943169898b6411afcc36265f",
-    "pr": "50082",
-    "merge_sha": "6178b8b52474089ab3710bce46ca7c9b10acaab8",
-    "html": "<p>When using the <code>preprocessed: true</code> option, avoid enqueuing transform jobs<br />\nfor blobs that are not representable.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
-  },
-  {
-    "message": "*   Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.\n    Calls to `#url`, `#key` or `#download` will now use the original preview\n    image instead of generating a variant with the exact same dimensions.\n\n    *Chedli Bourguiba*",
-    "project": "activestorage",
-    "date_merged": 1700090160000,
-    "author": "chaadow",
-    "sha": "eae19656fe526891f5e149351a81fcd9a45ca714",
-    "pr": "50046",
-    "merge_sha": "f98bb7ed41d513539cd6a1af1f21d96ae4f3cd17",
-    "html": "<p>Prevent <code>ActiveStorage::Blob#preview</code> to generate a variant if an empty variation is passed.<br />\nCalls to <code>#url</code>, <code>#key</code> or <code>#download</code> will now use the original preview<br />\nimage instead of generating a variant with the exact same dimensions.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
-  },
-  {
-    "message": "*   Process preview image variant when calling `ActiveStorage::Preview#processed`.\n    For example, `attached_pdf.preview(:thumb).processed` will now immediately\n    generate the full-sized preview image and the `:thumb` variant of it.\n    Previously, the `:thumb` variant would not be generated until a further call\n    to e.g. `processed.url`.\n\n    *Chedli Bourguiba* and *Jonathan Hefner*",
-    "project": "activestorage",
-    "date_merged": 1699900718000,
-    "author": "Jonathan Hefner",
-    "sha": "a5e1fc97d281419381d5d189ff3c78cb4c66464b",
-    "pr": "50044",
-    "merge_sha": "757f4896417f86b58303e416f4040a2b434abdd6",
-    "html": "<p>Process preview image variant when calling <code>ActiveStorage::Preview#processed</code>.<br />\nFor example, <code>attached_pdf.preview(:thumb).processed</code> will now immediately<br />\ngenerate the full-sized preview image and the <code>:thumb</code> variant of it.<br />\nPreviously, the <code>:thumb</code> variant would not be generated until a further call<br />\nto e.g. <code>processed.url</code>.</p>\n\n<p><em>Chedli Bourguiba</em> and <em>Jonathan Hefner</em></p>\n"
-  },
-  {
-    "message": "*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is\n    enabled and the variant of an Active Storage preview has already been\n    processed (for example, by calling `ActiveStorage::Preview#url`).\n\n    *Jonathan Hefner*",
-    "project": "activestorage",
-    "date_merged": 1699895824000,
-    "author": "Jonathan Hefner",
-    "sha": "aa47bde556bb40a0d26fa3e89fdd4458c48627a8",
-    "pr": "50043",
-    "merge_sha": "55c7b9bab8522bebd66fbe864570de993e7212ab",
-    "html": "<p>Prevent <code>ActiveRecord::StrictLoadingViolationError</code> when strict loading is<br />\nenabled and the variant of an Active Storage preview has already been<br />\nprocessed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
-  },
-  {
-    "message": "*   Fix `preprocessed: true` option for named variants of previewable files.\n\n    *Nico Wenterodt*",
-    "project": "activestorage",
-    "date_merged": 1699724950000,
-    "author": "Nico Wenterodt",
-    "sha": "435a347a1039d8f357ba798ea262ec07c4b13d6c",
-    "pr": "50005",
-    "merge_sha": "17c82c60382912fc2bbba956d2005a9db75f2de3",
-    "html": "<p>Fix <code>preprocessed: true</code> option for named variants of previewable files.</p>\n\n<p><em>Nico Wenterodt</em></p>\n"
-  },
-  {
-    "message": "*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.\n\n    *Yogesh Khater*",
-    "project": "activestorage",
-    "date_merged": 1698893148000,
-    "author": "Yogesh Khater",
-    "sha": "8bf1353cae3736045cc8343a7bca5d1855497214",
-    "pr": "49863",
-    "merge_sha": "efa11e67d652b7f1f16b7840dc288730463da492",
-    "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
-  },
-  {
-    "message": "*   Fix a race condition that could cause a `Text file busy - chromedriver`\n    error with parallel system tests\n\n    *Matt Brictson*",
-    "project": "actionpack",
-    "date_merged": 1699378873000,
-    "author": "Matt Brictson",
-    "sha": "e7d743b8ac6f6ce60753bfab3c8190e7b37eaeee",
-    "pr": "49908",
-    "merge_sha": "3162afe9596aa8e38bf6b983db536d2d15227489",
-    "html": "<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />\nerror with parallel system tests</p>\n\n<p><em>Matt Brictson</em></p>\n"
-  },
-  {
-    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
-    "project": "actionpack",
-    "date_merged": 1697839813000,
-    "author": "Hartley McGuire",
-    "sha": "5005480adf5057b7efe9197a8d8b7a716c91bec5",
-    "pr": "49722",
-    "merge_sha": "d4866ede93a99642002f1854f05c8f813d342b02",
-    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
-  },
-  {
-    "message": "*   Port the `type_for_attribute` method to Active Model. Classes that include\n    `ActiveModel::Attributes` will now provide this method. This method behaves\n    the same for Active Model as it does for Active Record.\n\n      ```ruby\n      class MyModel\n        include ActiveModel::Attributes\n\n        attribute :my_attribute, :integer\n      end\n\n      MyModel.type_for_attribute(:my_attribute) # => #<ActiveModel::Type::Integer ...>\n      ```\n\n    *Jonathan Hefner*",
-    "project": "activemodel",
-    "date_merged": 1699066499000,
-    "author": "Jonathan Hefner",
-    "sha": "83f543b8760308081ab1b58c25804c45c2597844",
-    "pr": "49910",
-    "merge_sha": "7d525d3128af0c1d1e76fc3396746a81ee41a82e",
-    "html": "<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />\nthe same for Active Model as it does for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">type_for_attribute</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
     "message": "*   Fix running `db:system:change` when app has no Dockerfile.\n\n    *Hartley McGuire*",
@@ -440,6 +190,176 @@
     "html": "<p>Remove the option <code>config.public_file_server.enabled</code> from the generators<br />\nfor all environments, as the value is the same in all environments.</p>\n\n<p><em>Adrian Hirt</em></p>\n"
   },
   {
+    "message": "*   Port the `type_for_attribute` method to Active Model. Classes that include\n    `ActiveModel::Attributes` will now provide this method. This method behaves\n    the same for Active Model as it does for Active Record.\n\n      ```ruby\n      class MyModel\n        include ActiveModel::Attributes\n\n        attribute :my_attribute, :integer\n      end\n\n      MyModel.type_for_attribute(:my_attribute) # => #<ActiveModel::Type::Integer ...>\n      ```\n\n    *Jonathan Hefner*",
+    "project": "activemodel",
+    "date_merged": 1699066499000,
+    "author": "Jonathan Hefner",
+    "sha": "83f543b8760308081ab1b58c25804c45c2597844",
+    "pr": "49910",
+    "merge_sha": "7d525d3128af0c1d1e76fc3396746a81ee41a82e",
+    "html": "<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />\nthe same for Active Model as it does for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">type_for_attribute</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.\n\n    *Adam Renberg Tamm*",
+    "project": "activesupport",
+    "date_merged": 1700242659000,
+    "author": "Adam Renberg Tamm",
+    "sha": "2251a4ba075daf1e9bb4a5f72a4090fd6bfb932e",
+    "pr": "50071",
+    "merge_sha": "e5d3d782b6c89d382688b7e580a563e96bb874a4",
+    "html": "<p>Make the order of read_multi and write_multi notifications for <code>Cache::Store#fetch_multi</code> operations match the order they are executed in.</p>\n\n<p><em>Adam Renberg Tamm</em></p>\n"
+  },
+  {
+    "message": "*   Make return values of `Cache::Store#write` consistent.\n\n    The return value was not specified before. Now it returns `true` on a successful write,\n    `nil` if there was an error talking to the cache backend, and `false` if the write failed\n    for another reason (e.g. the key already exists and `unless_exist: true` was passed).\n\n    *Sander Verdonschot*",
+    "project": "activesupport",
+    "date_merged": 1700146551000,
+    "author": "Sander Verdonschot",
+    "sha": "4cfdcfef8eedb28a4e0f5d12fae80c2aade02a4c",
+    "pr": "49873",
+    "merge_sha": "949b4d1482e41d2d8cfe1b7ed3a69df40a825225",
+    "html": "<p>Make return values of <code>Cache::Store#write</code> consistent.</p>\n\n<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />\n<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />\nfor another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>\n\n<p><em>Sander Verdonschot</em></p>\n"
+  },
+  {
+    "message": "*   Fix logged cache keys not always matching actual key used by cache action.\n\n    *Hartley McGuire*",
+    "project": "activesupport",
+    "date_merged": 1699729968000,
+    "author": "Hartley McGuire",
+    "sha": "9af99bfffc86700c295772bfd45aaff45e248274",
+    "pr": "50008",
+    "merge_sha": "9194b336e9cb42a216017cef10dc60f863906dd1",
+    "html": "<p>Fix logged cache keys not always matching actual key used by cache action.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Improve error messages of `assert_changes` and `assert_no_changes`\n\n    `assert_changes` error messages now display objects with `.inspect` to make it easier\n    to differentiate nil from empty strings, strings from symbols, etc.\n    `assert_no_changes` error messages now surface the actual value.\n\n    *pcreux*",
+    "project": "activesupport",
+    "date_merged": 1698691431000,
+    "author": "Philippe Creux",
+    "sha": "2b3a002a2a62ee5ef4767b4738456dedba88f780",
+    "pr": "48482",
+    "merge_sha": "1b195b30bc22e6cd53d7b277b1ac8b214ccc1176",
+    "html": "<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>\n\n<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />\nto differentiate nil from empty strings, strings from symbols, etc.<br />\n<code>assert_no_changes</code> error messages now surface the actual value.</p>\n\n<p><em>pcreux</em></p>\n"
+  },
+  {
+    "message": "*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.\n\n    *Earlopain*",
+    "project": "activesupport",
+    "date_merged": 1698337259000,
+    "author": "Earlopain",
+    "sha": "c6dcb11691162342550831cdbbcefb5ee59ad198",
+    "pr": "49791",
+    "merge_sha": "87609e821b86fb3b5f4170a8b498d0171c7277cc",
+    "html": "<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
+    "message": "*   Fix `BroadcastLogger#dup` so that it duplicates the logger's `broadcasts`.\n\n    *Andrew Novoselac*",
+    "project": "activesupport",
+    "date_merged": 1698102343000,
+    "author": "Andrew Novoselac",
+    "sha": "c14b98c28a5962281dd3bc6fb2ca6c6cf79fbc2a",
+    "pr": "49720",
+    "merge_sha": "fefd8f3a1619409f3fd11ad2602beecec8a76943",
+    "html": "<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
+    "message": "*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`'s `broadcasts`.\n\n    *Andrew Novoselac*",
+    "project": "activesupport",
+    "date_merged": 1697821164000,
+    "author": "Andrew Novoselac",
+    "sha": "f212fb8b8349f4b7cd4bb4ea74ef940bf1050873",
+    "pr": "49721",
+    "merge_sha": "7c58911bd821d22d837f12129de1811167be9b97",
+    "html": "<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
+    "message": "*   Fix compatibility with the `semantic_logger` gem.\n\n    The `semantic_logger` gem doesn't behave exactly like stdlib logger in that\n    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.\n\n    This caused the various `LogSubscriber` classes in Rails to break when assigned a\n    `SemanticLogger` instance.\n\n    *Jean Boussier*, *ojab*",
+    "project": "activesupport",
+    "date_merged": 1697200446000,
+    "author": "Jean Boussier",
+    "sha": "e01d1e25dd6e03233effff524a9e2bf03e3f4869",
+    "pr": "49621",
+    "merge_sha": "c9da2694de2cc8897f0a04604e26ad7f3b672f42",
+    "html": "<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>\n\n<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />\n<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>\n\n<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />\n<code>SemanticLogger</code> instance.</p>\n\n<p><em>Jean Boussier</em>, <em>ojab</em></p>\n"
+  },
+  {
+    "message": "*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.\n\n    *Pierre Jambet*",
+    "project": "activesupport",
+    "date_merged": 1696836287000,
+    "author": "Pierre Jambet",
+    "sha": "7f2e0ffb7eaa05f8732574e4476316d5108227e3",
+    "pr": "49542",
+    "merge_sha": "a385d7b170c06df5674d7d22dc5555cd5cbdd15b",
+    "html": "<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>\n\n<p><em>Pierre Jambet</em></p>\n"
+  },
+  {
+    "message": "*   Implement `HashWithIndifferentAccess#to_proc`.\n\n    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`\n    method from the `Hash` class, which was not able to access values using indifferent keys.\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1696406218000,
+    "author": "fatkodima",
+    "sha": "39438318c72cdc3194a3fa772f284df708ca80b7",
+    "pr": "49475",
+    "merge_sha": "d21f4e638ff3498a19730c505e5fb255740a7960",
+    "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   When using the `preprocessed: true` option, avoid enqueuing transform jobs\n    for blobs that are not representable.\n\n    *Chedli Bourguiba*",
+    "project": "activestorage",
+    "date_merged": 1700263517000,
+    "author": "Jonathan Hefner",
+    "sha": "e514c586f1eb1bcc943169898b6411afcc36265f",
+    "pr": "50082",
+    "merge_sha": "6178b8b52474089ab3710bce46ca7c9b10acaab8",
+    "html": "<p>When using the <code>preprocessed: true</code> option, avoid enqueuing transform jobs<br />\nfor blobs that are not representable.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
+    "message": "*   Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.\n    Calls to `#url`, `#key` or `#download` will now use the original preview\n    image instead of generating a variant with the exact same dimensions.\n\n    *Chedli Bourguiba*",
+    "project": "activestorage",
+    "date_merged": 1700090160000,
+    "author": "chaadow",
+    "sha": "eae19656fe526891f5e149351a81fcd9a45ca714",
+    "pr": "50046",
+    "merge_sha": "f98bb7ed41d513539cd6a1af1f21d96ae4f3cd17",
+    "html": "<p>Prevent <code>ActiveStorage::Blob#preview</code> to generate a variant if an empty variation is passed.<br />\nCalls to <code>#url</code>, <code>#key</code> or <code>#download</code> will now use the original preview<br />\nimage instead of generating a variant with the exact same dimensions.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
+    "message": "*   Process preview image variant when calling `ActiveStorage::Preview#processed`.\n    For example, `attached_pdf.preview(:thumb).processed` will now immediately\n    generate the full-sized preview image and the `:thumb` variant of it.\n    Previously, the `:thumb` variant would not be generated until a further call\n    to e.g. `processed.url`.\n\n    *Chedli Bourguiba* and *Jonathan Hefner*",
+    "project": "activestorage",
+    "date_merged": 1699900718000,
+    "author": "Jonathan Hefner",
+    "sha": "a5e1fc97d281419381d5d189ff3c78cb4c66464b",
+    "pr": "50044",
+    "merge_sha": "757f4896417f86b58303e416f4040a2b434abdd6",
+    "html": "<p>Process preview image variant when calling <code>ActiveStorage::Preview#processed</code>.<br />\nFor example, <code>attached_pdf.preview(:thumb).processed</code> will now immediately<br />\ngenerate the full-sized preview image and the <code>:thumb</code> variant of it.<br />\nPreviously, the <code>:thumb</code> variant would not be generated until a further call<br />\nto e.g. <code>processed.url</code>.</p>\n\n<p><em>Chedli Bourguiba</em> and <em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is\n    enabled and the variant of an Active Storage preview has already been\n    processed (for example, by calling `ActiveStorage::Preview#url`).\n\n    *Jonathan Hefner*",
+    "project": "activestorage",
+    "date_merged": 1699895824000,
+    "author": "Jonathan Hefner",
+    "sha": "aa47bde556bb40a0d26fa3e89fdd4458c48627a8",
+    "pr": "50043",
+    "merge_sha": "55c7b9bab8522bebd66fbe864570de993e7212ab",
+    "html": "<p>Prevent <code>ActiveRecord::StrictLoadingViolationError</code> when strict loading is<br />\nenabled and the variant of an Active Storage preview has already been<br />\nprocessed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Fix `preprocessed: true` option for named variants of previewable files.\n\n    *Nico Wenterodt*",
+    "project": "activestorage",
+    "date_merged": 1699724950000,
+    "author": "Nico Wenterodt",
+    "sha": "435a347a1039d8f357ba798ea262ec07c4b13d6c",
+    "pr": "50005",
+    "merge_sha": "17c82c60382912fc2bbba956d2005a9db75f2de3",
+    "html": "<p>Fix <code>preprocessed: true</code> option for named variants of previewable files.</p>\n\n<p><em>Nico Wenterodt</em></p>\n"
+  },
+  {
+    "message": "*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.\n\n    *Yogesh Khater*",
+    "project": "activestorage",
+    "date_merged": 1698893148000,
+    "author": "Yogesh Khater",
+    "sha": "8bf1353cae3736045cc8343a7bca5d1855497214",
+    "pr": "49863",
+    "merge_sha": "efa11e67d652b7f1f16b7840dc288730463da492",
+    "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
+  },
+  {
     "message": "*   Compile ESM package that can be used directly in the browser as actiontext.esm.js\n\n    *Matias Grunberg*",
     "project": "actiontext",
     "date_merged": 1699475418000,
@@ -478,5 +398,85 @@
     "pr": "49778",
     "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
     "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix a race condition that could cause a `Text file busy - chromedriver`\n    error with parallel system tests\n\n    *Matt Brictson*",
+    "project": "actionpack",
+    "date_merged": 1699378873000,
+    "author": "Matt Brictson",
+    "sha": "e7d743b8ac6f6ce60753bfab3c8190e7b37eaeee",
+    "pr": "49908",
+    "merge_sha": "3162afe9596aa8e38bf6b983db536d2d15227489",
+    "html": "<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />\nerror with parallel system tests</p>\n\n<p><em>Matt Brictson</em></p>\n"
+  },
+  {
+    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1697839813000,
+    "author": "Hartley McGuire",
+    "sha": "5005480adf5057b7efe9197a8d8b7a716c91bec5",
+    "pr": "49722",
+    "merge_sha": "d4866ede93a99642002f1854f05c8f813d342b02",
+    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.\n\n    *Earlopain*",
+    "project": "actionview",
+    "date_merged": 1698337259000,
+    "author": "Earlopain",
+    "sha": "c6dcb11691162342550831cdbbcefb5ee59ad198",
+    "pr": "49791",
+    "merge_sha": "87609e821b86fb3b5f4170a8b498d0171c7277cc",
+    "html": "<p>Fix the <code>number_to_human_size</code> view helper to correctly work with negative numbers.</p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
+    "message": "*   Automatically discard the implicit locals injected by collection rendering for template that can't accept them\n\n    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.\n\n    Now they are only passed if the template will actually accept them.\n\n    *Yasha Krasnou*, *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1698249606000,
+    "author": "Jean Boussier",
+    "sha": "110206a74bd92ccb7a8d3dbb891b08248a7ae284",
+    "pr": "49782",
+    "merge_sha": "aa9496002550f7cd07c53f04cbfc8bf749336dd6",
+    "html": "<p>Automatically discard the implicit locals injected by collection rendering for template that can’t accept them</p>\n\n<p>When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.</p>\n\n<p>Now they are only passed if the template will actually accept them.</p>\n\n<p><em>Yasha Krasnou</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers\n\n    *Hartley McGuire*, *Ryunosuke Sato*",
+    "project": "actionview",
+    "date_merged": 1698174084000,
+    "author": "Hartley McGuire",
+    "sha": "f7617808992c9c2a77920ccf4f2a4a42160fe1bd",
+    "pr": "49668",
+    "merge_sha": "4c5c904a212a850c43adb7a3c3a719ca3d2b9159",
+    "html": "<p>Fix <code>@rails/ujs</code> calling <code>start()</code> an extra time when using bundlers</p>\n\n<p><em>Hartley McGuire</em>, <em>Ryunosuke Sato</em></p>\n"
+  },
+  {
+    "message": "*   Fix the `capture` view helper compatibility with HAML and Slim\n\n    When a blank string was captured in HAML or Slim (and possibly other template engines)\n    it would instead return the entire buffer.\n\n    *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1697178587000,
+    "author": "Jean Boussier",
+    "sha": "79a242dc54ffaedad24e8b885ae14d0a4f704587",
+    "pr": "49612",
+    "merge_sha": "223974913411dc4152eaf6235e0bd3986406faae",
+    "html": "<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>\n\n<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />\nit would instead return the entire buffer.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.\n\n    This fix was already landed in >= 7.0.4.3, < 7.1.0.\n    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]\n\n    *Ryunosuke Sato*",
+    "project": "actionview",
+    "date_merged": 1697057081000,
+    "author": "Ryunosuke Sato",
+    "sha": "8b18d44d1705629de600869056e24aed7601d1da",
+    "pr": "49553",
+    "merge_sha": "fc8d9ed84348b17c9fd020fac9061f1bd73ddf74",
+    "html": "<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>\n\n<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />\n[<a href=\"https://github.com/advisories/GHSA-xp5h-f8jf-rc8q\">CVE-2023-23913</a>]</p>\n\n<p><em>Ryunosuke Sato</em></p>\n"
+  },
+  {
+    "message": "*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and\n    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If\n    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error\n    message.\n\n    Examples:\n\n    ```ruby\n    # Raises ArgumentError: Invalid HTML5 tag name: 12p\n    content_tag(\"12p\") # Starting with a number\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"\"\n    content_tag(\"\") # Empty tag name\n\n    # Raises ArgumentError: Invalid HTML5 tag name: div/\n    tag(\"div/\") # Contains a solidus\n\n    # Raises ArgumentError: Invalid HTML5 tag name: \"image file\"\n    tag(\"image file\") # Contains a space\n    ```\n\n    *Akhil G Krishnan*",
+    "project": "actionview",
+    "date_merged": 1695836261000,
+    "author": "Akhil G Krishnan",
+    "sha": "bb626ffca82317ae2cd02543785a7b78c2bba9c1",
+    "pr": "49175",
+    "merge_sha": "7c03e4f1b7553084f34318a9efc2793137de36f4",
+    "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   }
 ]
