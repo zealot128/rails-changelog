@@ -567,6 +567,23 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: When using the `preprocessed: true` option, avoid enqueuing transform jobs
+</title>
+    <link>https://github.com/rails/rails/issues/50082</link>
+    <guid>https://github.com/rails/rails/issues/50082</guid>
+    <description>*   When using the `preprocessed: true` option, avoid enqueuing transform jobs
+    for blobs that are not representable.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Fri, 17 Nov 2023 23:25:17 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>When using the <code>preprocessed: true</code> option, avoid enqueuing transform jobs<br />
+for blobs that are not representable.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
 </title>
     <link>https://github.com/rails/rails/issues/50046</link>
