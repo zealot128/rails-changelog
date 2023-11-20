@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Add `ErrorReported#unexpected` to report precondition violations.\n\n    For example:\n\n    ```ruby\n    def edit\n      if published?\n        Rails.error.unexpected(\"[BUG] Attempting to edit a published article, that shouldn't be possible\")\n        return false\n      end\n      # ...\n    end\n    ```\n\n    The above will raise an error in development and test, but only report the error in production.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1700470510000,
+    "author": "Jean Boussier",
+    "sha": "2f19782dcea579fd030cdc4fe98d06595b8e2fb0",
+    "pr": "49951",
+    "merge_sha": "fb1b2aa3e51a13e54052919e7d228580e100e9bc",
+    "html": "<p>Add <code>ErrorReported#unexpected</code> to report precondition violations.</p>\n\n<p>For example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">def</span> <span class=\"nf\">edit</span>\n  <span class=\"k\">if</span> <span class=\"n\">published?</span>\n    <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">unexpected</span><span class=\"p\">(</span><span class=\"s2\">\"[BUG] Attempting to edit a published article, that shouldn't be possible\"</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"kp\">false</span>\n  <span class=\"k\">end</span>\n  <span class=\"c1\"># ...</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>The above will raise an error in development and test, but only report the error in production.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.\n\n    *Adam Renberg Tamm*",
     "project": "activesupport",
     "date_merged": 1700242659000,
