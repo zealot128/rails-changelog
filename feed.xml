@@ -6,6 +6,48 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activesupport: Add `ErrorReported#unexpected` to report precondition violations.
+</title>
+    <link>https://github.com/rails/rails/issues/49951</link>
+    <guid>https://github.com/rails/rails/issues/49951</guid>
+    <description>*   Add `ErrorReported#unexpected` to report precondition violations.
+
+    For example:
+
+    ```ruby
+    def edit
+      if published?
+        Rails.error.unexpected(&quot;[BUG] Attempting to edit a published article, that shouldn&#39;t be possible&quot;)
+        return false
+      end
+      # ...
+    end
+    ```
+
+    The above will raise an error in development and test, but only report the error in production.
+
+    *Jean Boussier*</description>
+    <pubDate>Mon, 20 Nov 2023 08:55:10 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add <code>ErrorReported#unexpected</code> to report precondition violations.</p>
+
+<p>For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">edit</span>
+  <span class="k">if</span> <span class="n">published?</span>
+    <span class="no">Rails</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">unexpected</span><span class="p">(</span><span class="s2">"[BUG] Attempting to edit a published article, that shouldn't be possible"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kp">false</span>
+  <span class="k">end</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>The above will raise an error in development and test, but only report the error in production.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
 </title>
     <link>https://github.com/rails/rails/issues/50071</link>
