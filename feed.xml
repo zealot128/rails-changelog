@@ -609,6 +609,23 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Fix `ActiveStorage::Representations::ProxyController` to proxy untracked
+</title>
+    <link>https://github.com/rails/rails/issues/50107</link>
+    <guid>https://github.com/rails/rails/issues/50107</guid>
+    <description>*   Fix `ActiveStorage::Representations::ProxyController` to proxy untracked
+    variants.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Mon, 20 Nov 2023 20:46:00 +0000</pubDate>
+    <author>chaadow</author>
+    <content:encoded><![CDATA[<p>Fix <code>ActiveStorage::Representations::ProxyController</code> to proxy untracked<br />
+variants.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: When using the `preprocessed: true` option, avoid enqueuing transform jobs
 </title>
     <link>https://github.com/rails/rails/issues/50082</link>
