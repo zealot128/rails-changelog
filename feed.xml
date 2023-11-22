@@ -609,6 +609,23 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Fix `ActiveStorage::Representations::ProxyController` not returning the proper
+</title>
+    <link>https://github.com/rails/rails/issues/50098</link>
+    <guid>https://github.com/rails/rails/issues/50098</guid>
+    <description>*   Fix `ActiveStorage::Representations::ProxyController` not returning the proper
+    preview image variant for previewable files.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Tue, 21 Nov 2023 22:23:38 +0000</pubDate>
+    <author>chaadow</author>
+    <content:encoded><![CDATA[<p>Fix <code>ActiveStorage::Representations::ProxyController</code> not returning the proper<br />
+preview image variant for previewable files.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Fix `ActiveStorage::Representations::ProxyController` to proxy untracked
 </title>
     <link>https://github.com/rails/rails/issues/50107</link>
