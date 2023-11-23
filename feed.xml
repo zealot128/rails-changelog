@@ -232,6 +232,25 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: In cases where MySQL returns `warning_count` greater than zero, but returns no warnings when
+</title>
+    <link>https://github.com/rails/rails/issues/50049</link>
+    <guid>https://github.com/rails/rails/issues/50049</guid>
+    <description>*   In cases where MySQL returns `warning_count` greater than zero, but returns no warnings when
+    the `SHOW WARNINGS` query is executed, `ActiveRecord.db_warnings_action` proc will still be
+    called with a generic warning message rather than silently ignoring the warning(s).
+
+    *Kevin McPhillips*</description>
+    <pubDate>Wed, 22 Nov 2023 22:02:06 +0000</pubDate>
+    <author>Kevin McPhillips</author>
+    <content:encoded><![CDATA[<p>In cases where MySQL returns <code>warning_count</code> greater than zero, but returns no warnings when<br />
+the <code>SHOW WARNINGS</code> query is executed, <code>ActiveRecord.db_warnings_action</code> proc will still be<br />
+called with a generic warning message rather than silently ignoring the warning(s).</p>
+
+<p><em>Kevin McPhillips</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `DatabaseConfigurations#configs_for` can accept a symbol in the `name` parameter.
 </title>
     <link>https://github.com/rails/rails/issues/50061</link>
@@ -751,6 +770,186 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: Remove deprecated `:exponentially_longer` value for the `:wait` in `retry_on`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated `:exponentially_longer` value for the `:wait` in `retry_on`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>:exponentially_longer</code> value for the <code>:wait</code> in <code>retry_on</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Remove deprecated support to set numeric values to `scheduled_at` attribute.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated support to set numeric values to `scheduled_at` attribute.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to set numeric values to <code>scheduled_at</code> attribute.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Deprecate `Rails.application.config.active_job.use_big_decimal_serialize`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Deprecate `Rails.application.config.active_job.use_big_decimal_serialize`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>Rails.application.config.active_job.use_big_decimal_serialize</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Remove deprecated primitive serializer for `BigDecimal` arguments.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated primitive serializer for `BigDecimal` arguments.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated primitive serializer for <code>BigDecimal</code> arguments.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Remove deprecated params via `:args` for `assert_enqueued_email_with`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated params via `:args` for `assert_enqueued_email_with`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated params via <code>:args</code> for <code>assert_enqueued_email_with</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Remove deprecated `config.action_mailer.preview_path`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated `config.action_mailer.preview_path`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to set <code>Rails.application.config.action_dispatch.show_exceptions</code> to <code>true</code> and <code>false</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated `speaker`, `vibrate`, and `vr` permissions policy directives.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated `speaker`, `vibrate`, and `vr` permissions policy directives.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>speaker</code>, <code>vibrate</code>, and <code>vr</code> permissions policy directives.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated `Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated `Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Deprecate `Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Deprecate `Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated comparison between `ActionController::Parameters` and `Hash`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated comparison between `ActionController::Parameters` and `Hash`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated comparison between <code>ActionController::Parameters</code> and <code>Hash</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated constant `AbstractController::Helpers::MissingHelperError`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated constant `AbstractController::Helpers::MissingHelperError`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated constant <code>AbstractController::Helpers::MissingHelperError</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Fix a race condition that could cause a `Text file busy - chromedriver`
 </title>
     <link>https://github.com/rails/rails/issues/49908</link>
@@ -780,6 +979,21 @@ error with parallel system tests</p>
     <content:encoded><![CDATA[<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>
 
 <p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated constant `ActionDispatch::IllegalStateError`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated constant `ActionDispatch::IllegalStateError`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated constant <code>ActionDispatch::IllegalStateError</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
 ]]></content:encoded>
   </item>
   <item>
