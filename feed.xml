@@ -860,6 +860,21 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Add support for `with_routing` test helper in `ActionDispatch::IntegrationTest`
+</title>
+    <link>https://github.com/rails/rails/issues/49819</link>
+    <guid>https://github.com/rails/rails/issues/49819</guid>
+    <description>*   Add support for `with_routing` test helper in `ActionDispatch::IntegrationTest`
+
+    *Gannon McGibbon*</description>
+    <pubDate>Fri, 24 Nov 2023 04:48:19 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Add support for <code>with_routing</code> test helper in <code>ActionDispatch::IntegrationTest</code></p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.
 </title>
     <link>https://github.com/rails/rails/issues/50144</link>
