@@ -410,6 +410,16 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Add support for `with_routing` test helper in `ActionDispatch::IntegrationTest`\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1700801299000,
+    "author": "Gannon McGibbon",
+    "sha": "d46d5ce6107e34423727b1a8a70767ed233f882f",
+    "pr": "49819",
+    "merge_sha": "82e33e44bf3d8bcdc2a4ea40b6039472f0e2b297",
+    "html": "<p>Add support for <code>with_routing</code> test helper in <code>ActionDispatch::IntegrationTest</code></p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.\n\n    *Rafael Mendonça França*",
     "project": "actionpack",
     "date_merged": 1700692705000,
