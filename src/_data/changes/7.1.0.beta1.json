@@ -110,6 +110,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database\n    adapter. This allows decoupling the adapter the application chooses to use from the database connection details\n    set in the deployment environment.\n\n    ```ruby\n    # ENV['DATABASE_URL'] = \"mysql://localhost/example_database\"\n    config.active_record.protocol_adapters.mysql = \"trilogy\"\n    # will connect to MySQL using the trilogy adapter\n    ```\n\n    *Jean Boussier*, *Kevin McPhillips*",
+    "project": "activerecord",
+    "date_merged": 1701276111000,
+    "author": "Kevin McPhillips",
+    "sha": "0ccf300add4d88a7dde3e0969ea7911d43dc6766",
+    "pr": "50140",
+    "merge_sha": "9c22f35440ab85718ebf48e26b8944032c737193",
+    "html": "<p>When using a <code>DATABASE_URL</code>, allow for a configuration to map the protocol in the URL to a specific database<br />\nadapter. This allows decoupling the adapter the application chooses to use from the database connection details<br />\nset in the deployment environment.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># ENV['DATABASE_URL'] = \"mysql://localhost/example_database\"</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">protocol_adapters</span><span class=\"p\">.</span><span class=\"nf\">mysql</span> <span class=\"o\">=</span> <span class=\"s2\">\"trilogy\"</span>\n<span class=\"c1\"># will connect to MySQL using the trilogy adapter</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em>, <em>Kevin McPhillips</em></p>\n"
+  },
+  {
     "message": "*   In cases where MySQL returns `warning_count` greater than zero, but returns no warnings when\n    the `SHOW WARNINGS` query is executed, `ActiveRecord.db_warnings_action` proc will still be\n    called with a generic warning message rather than silently ignoring the warning(s).\n\n    *Kevin McPhillips*",
     "project": "activerecord",
     "date_merged": 1700690526000,
