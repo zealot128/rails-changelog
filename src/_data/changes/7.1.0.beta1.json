@@ -110,16 +110,6 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
-    "message": "*   Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.\n\n    When set, validates that the timestamp prefix for a migration is in the form YYYYMMDDHHMMSS.\n    This is designed to prevent migration timestamps from being modified by hand.\n\n    *Adrianna Chang*",
-    "project": "activerecord",
-    "date_merged": 1701379249000,
-    "author": "Adrianna Chang",
-    "sha": "06575d1d75687ecc77d8c4649891280f66695fb5",
-    "pr": "50205",
-    "merge_sha": "c60d064fd5f1d60d9cb8a09626e2633f88ed0985",
-    "html": "<p>Add <code>active_record.config.validate_migration_timestamps</code> option for validating migration timestamps.</p>\n\n<p>When set, validates that the timestamp prefix for a migration is in the form YYYYMMDDHHMMSS.<br />\nThis is designed to prevent migration timestamps from being modified by hand.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
-  },
-  {
     "message": "*   When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database\n    adapter. This allows decoupling the adapter the application chooses to use from the database connection details\n    set in the deployment environment.\n\n    ```ruby\n    # ENV['DATABASE_URL'] = \"mysql://localhost/example_database\"\n    config.active_record.protocol_adapters.mysql = \"trilogy\"\n    # will connect to MySQL using the trilogy adapter\n    ```\n\n    *Jean Boussier*, *Kevin McPhillips*",
     "project": "activerecord",
     "date_merged": 1701276111000,
@@ -228,6 +218,16 @@
     "pr": "49507",
     "merge_sha": "7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d",
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate passing content to void elements when using `tag.br` type tag builders.\n\n    *Hartley McGuire*",
+    "project": "actionview",
+    "date_merged": 1701441270000,
+    "author": "Hartley McGuire",
+    "sha": "343897980cf9c1a8c1d102df3afb0631f5c9145b",
+    "pr": "50159",
+    "merge_sha": "d6197c5efc84161bb507b73b9d7f5bb064c33cf2",
+    "html": "<p>Deprecate passing content to void elements when using <code>tag.br</code> type tag builders.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.\n\n    *Earlopain*",
