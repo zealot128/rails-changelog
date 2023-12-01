@@ -110,6 +110,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.\n\n    When set, validates that the timestamp prefix for a migration is in the form YYYYMMDDHHMMSS.\n    This is designed to prevent migration timestamps from being modified by hand.\n\n    *Adrianna Chang*",
+    "project": "activerecord",
+    "date_merged": 1701379249000,
+    "author": "Adrianna Chang",
+    "sha": "06575d1d75687ecc77d8c4649891280f66695fb5",
+    "pr": "50205",
+    "merge_sha": "c60d064fd5f1d60d9cb8a09626e2633f88ed0985",
+    "html": "<p>Add <code>active_record.config.validate_migration_timestamps</code> option for validating migration timestamps.</p>\n\n<p>When set, validates that the timestamp prefix for a migration is in the form YYYYMMDDHHMMSS.<br />\nThis is designed to prevent migration timestamps from being modified by hand.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
+  },
+  {
     "message": "*   When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database\n    adapter. This allows decoupling the adapter the application chooses to use from the database connection details\n    set in the deployment environment.\n\n    ```ruby\n    # ENV['DATABASE_URL'] = \"mysql://localhost/example_database\"\n    config.active_record.protocol_adapters.mysql = \"trilogy\"\n    # will connect to MySQL using the trilogy adapter\n    ```\n\n    *Jean Boussier*, *Kevin McPhillips*",
     "project": "activerecord",
     "date_merged": 1701276111000,
