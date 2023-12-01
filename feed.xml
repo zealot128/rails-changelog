@@ -232,27 +232,6 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.
-</title>
-    <link>https://github.com/rails/rails/issues/50205</link>
-    <guid>https://github.com/rails/rails/issues/50205</guid>
-    <description>*   Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.
-
-    When set, validates that the timestamp prefix for a migration is in the form YYYYMMDDHHMMSS.
-    This is designed to prevent migration timestamps from being modified by hand.
-
-    *Adrianna Chang*</description>
-    <pubDate>Thu, 30 Nov 2023 21:20:49 +0000</pubDate>
-    <author>Adrianna Chang</author>
-    <content:encoded><![CDATA[<p>Add <code>active_record.config.validate_migration_timestamps</code> option for validating migration timestamps.</p>
-
-<p>When set, validates that the timestamp prefix for a migration is in the form YYYYMMDDHHMMSS.<br />
-This is designed to prevent migration timestamps from being modified by hand.</p>
-
-<p><em>Adrianna Chang</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activerecord: When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database
 </title>
     <link>https://github.com/rails/rails/issues/50140</link>
@@ -529,6 +508,21 @@ column).</p>
     <content:encoded><![CDATA[<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>
 
 <p><em>Jason Meller</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Deprecate passing content to void elements when using `tag.br` type tag builders.
+</title>
+    <link>https://github.com/rails/rails/issues/50159</link>
+    <guid>https://github.com/rails/rails/issues/50159</guid>
+    <description>*   Deprecate passing content to void elements when using `tag.br` type tag builders.
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 01 Dec 2023 14:34:30 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Deprecate passing content to void elements when using <code>tag.br</code> type tag builders.</p>
+
+<p><em>Hartley McGuire</em></p>
 ]]></content:encoded>
   </item>
   <item>
