@@ -6,6 +6,31 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activesupport: Fix `Time.now/DateTime.now/Date.today&#39; to return results in a system timezone after `#travel_to&#39;.
+</title>
+    <link>https://github.com/rails/rails/issues/50236</link>
+    <guid>https://github.com/rails/rails/issues/50236</guid>
+    <description>*   Fix `Time.now/DateTime.now/Date.today&#39; to return results in a system timezone after `#travel_to&#39;.
+
+    There is a bug in the current implementation of #travel_to:
+    it remembers a timezone of its argument, and all stubbed methods start
+    returning results in that remembered timezone. However, the expected
+    behaviour is to return results in a system timezone.
+
+    *Aleksei Chernenkov*</description>
+    <pubDate>Sat, 02 Dec 2023 09:24:54 +0000</pubDate>
+    <author>Aleksei Chernenkov</author>
+    <content:encoded><![CDATA[<p>Fix <code>Time.now/DateTime.now/Date.today' to return results in a system timezone after </code>#travel_to’.</p>
+
+<p>There is a bug in the current implementation of #travel_to:<br />
+it remembers a timezone of its argument, and all stubbed methods start<br />
+returning results in that remembered timezone. However, the expected<br />
+behaviour is to return results in a system timezone.</p>
+
+<p><em>Aleksei Chernenkov</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Add `ErrorReported#unexpected` to report precondition violations.
 </title>
     <link>https://github.com/rails/rails/issues/49951</link>
@@ -511,6 +536,21 @@ column).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Alias `field_set_tag` helper to `fieldset_tag` to match `&lt;fieldset&gt;` element
+</title>
+    <link>https://github.com/rails/rails/issues/50241</link>
+    <guid>https://github.com/rails/rails/issues/50241</guid>
+    <description>*   Alias `field_set_tag` helper to `fieldset_tag` to match `&lt;fieldset&gt;` element
+
+    *Sean Doyle*</description>
+    <pubDate>Sat, 02 Dec 2023 09:23:24 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Alias <code>field_set_tag</code> helper to <code>fieldset_tag</code> to match <code>&lt;fieldset&gt;</code> element</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Deprecate passing content to void elements when using `tag.br` type tag builders.
 </title>
     <link>https://github.com/rails/rails/issues/50159</link>
@@ -812,6 +852,21 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
     <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
 
 <p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.
+</title>
+    <link>https://github.com/rails/rails/issues/50230</link>
+    <guid>https://github.com/rails/rails/issues/50230</guid>
+    <description>*   Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.
+
+    *Joshua Young*</description>
+    <pubDate>Sat, 02 Dec 2023 15:05:46 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Preserve the serialized timezone when deserializing <code>ActiveSupport::TimeWithZone</code> arguments.</p>
+
+<p><em>Joshua Young</em></p>
 ]]></content:encoded>
   </item>
   <item>
