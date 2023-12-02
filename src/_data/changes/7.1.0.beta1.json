@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Fix `Time.now/DateTime.now/Date.today' to return results in a system timezone after `#travel_to'.\n\n    There is a bug in the current implementation of #travel_to:\n    it remembers a timezone of its argument, and all stubbed methods start\n    returning results in that remembered timezone. However, the expected\n    behaviour is to return results in a system timezone.\n\n    *Aleksei Chernenkov*",
+    "project": "activesupport",
+    "date_merged": 1701509094000,
+    "author": "Aleksei Chernenkov",
+    "sha": "aedb8088299eb8db39306c22c2f7a98d5b2019a8",
+    "pr": "50236",
+    "merge_sha": "67fb4414e598d29e7b3ea6024ffd2edd7bff4775",
+    "html": "<p>Fix <code>Time.now/DateTime.now/Date.today' to return results in a system timezone after </code>#travel_to’.</p>\n\n<p>There is a bug in the current implementation of #travel_to:<br />\nit remembers a timezone of its argument, and all stubbed methods start<br />\nreturning results in that remembered timezone. However, the expected<br />\nbehaviour is to return results in a system timezone.</p>\n\n<p><em>Aleksei Chernenkov</em></p>\n"
+  },
+  {
     "message": "*   Add `ErrorReported#unexpected` to report precondition violations.\n\n    For example:\n\n    ```ruby\n    def edit\n      if published?\n        Rails.error.unexpected(\"[BUG] Attempting to edit a published article, that shouldn't be possible\")\n        return false\n      end\n      # ...\n    end\n    ```\n\n    The above will raise an error in development and test, but only report the error in production.\n\n    *Jean Boussier*",
     "project": "activesupport",
     "date_merged": 1700470510000,
@@ -220,6 +230,16 @@
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
   },
   {
+    "message": "*   Alias `field_set_tag` helper to `fieldset_tag` to match `<fieldset>` element\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1701509004000,
+    "author": "Sean Doyle",
+    "sha": "c5ae44d659f43ca21572253e19b53521f7bf1e9d",
+    "pr": "50241",
+    "merge_sha": "90daef692822a9e3bf00c136d39c7b8ca80f0cc5",
+    "html": "<p>Alias <code>field_set_tag</code> helper to <code>fieldset_tag</code> to match <code>&lt;fieldset&gt;</code> element</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Deprecate passing content to void elements when using `tag.br` type tag builders.\n\n    *Hartley McGuire*",
     "project": "actionview",
     "date_merged": 1701441270000,
@@ -368,6 +388,16 @@
     "pr": "49863",
     "merge_sha": "efa11e67d652b7f1f16b7840dc288730463da492",
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
+  },
+  {
+    "message": "*   Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.\n\n    *Joshua Young*",
+    "project": "activejob",
+    "date_merged": 1701529546000,
+    "author": "Joshua Young",
+    "sha": "18098ccc4c837278c42d9757dd2b1e0bdd2016e0",
+    "pr": "50230",
+    "merge_sha": "c5d519f93af9f5aefda329649e0789d33c995308",
+    "html": "<p>Preserve the serialized timezone when deserializing <code>ActiveSupport::TimeWithZone</code> arguments.</p>\n\n<p><em>Joshua Young</em></p>\n"
   },
   {
     "message": "*   Remove deprecated `:exponentially_longer` value for the `:wait` in `retry_on`.\n\n    *Rafael Mendonça França*",
