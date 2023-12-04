@@ -257,6 +257,21 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix `has_secure_token` calls the setter method on initialize.
+</title>
+    <link>https://github.com/rails/rails/issues/49874</link>
+    <guid>https://github.com/rails/rails/issues/49874</guid>
+    <description>*   Fix `has_secure_token` calls the setter method on initialize.
+
+    *Abeid Ahmed*</description>
+    <pubDate>Mon, 04 Dec 2023 00:34:29 +0000</pubDate>
+    <author>abeidahmed</author>
+    <content:encoded><![CDATA[<p>Fix <code>has_secure_token</code> calls the setter method on initialize.</p>
+
+<p><em>Abeid Ahmed</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database
 </title>
     <link>https://github.com/rails/rails/issues/50140</link>
