@@ -120,6 +120,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Fix `has_secure_token` calls the setter method on initialize.\n\n    *Abeid Ahmed*",
+    "project": "activerecord",
+    "date_merged": 1701650069000,
+    "author": "abeidahmed",
+    "sha": "c8caf6d867f2da869d823301fb57c1267a1c75fb",
+    "pr": "49874",
+    "merge_sha": "06d9c3cbe6c92ea2ca8dd6d601a0997821748b5e",
+    "html": "<p>Fix <code>has_secure_token</code> calls the setter method on initialize.</p>\n\n<p><em>Abeid Ahmed</em></p>\n"
+  },
+  {
     "message": "*   When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database\n    adapter. This allows decoupling the adapter the application chooses to use from the database connection details\n    set in the deployment environment.\n\n    ```ruby\n    # ENV['DATABASE_URL'] = \"mysql://localhost/example_database\"\n    config.active_record.protocol_adapters.mysql = \"trilogy\"\n    # will connect to MySQL using the trilogy adapter\n    ```\n\n    *Jean Boussier*, *Kevin McPhillips*",
     "project": "activerecord",
     "date_merged": 1701276111000,
