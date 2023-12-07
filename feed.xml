@@ -1165,6 +1165,25 @@ the same for Active Model as it does for Active Record.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Fix isolated engines to take `ActiveRecord::Base.table_name_prefix` into consideration.
+</title>
+    <link>https://github.com/rails/rails/issues/50247</link>
+    <guid>https://github.com/rails/rails/issues/50247</guid>
+    <description>*   Fix isolated engines to take `ActiveRecord::Base.table_name_prefix` into consideration.
+    This will allow for engine defined models, such as inside Active Storage, to respect
+    Active Record table name prefix configuration.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Wed, 06 Dec 2023 22:37:21 +0000</pubDate>
+    <author>Chedli Bourguiba</author>
+    <content:encoded><![CDATA[<p>Fix isolated engines to take <code>ActiveRecord::Base.table_name_prefix</code> into consideration.<br />
+This will allow for engine defined models, such as inside Active Storage, to respect<br />
+Active Record table name prefix configuration.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Fix running `db:system:change` when app has no Dockerfile.
 </title>
     <link>https://github.com/rails/rails/issues/49988</link>
