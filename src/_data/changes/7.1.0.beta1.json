@@ -580,6 +580,16 @@
     "html": "<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />\nthe same for Active Model as it does for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">type_for_attribute</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Fix isolated engines to take `ActiveRecord::Base.table_name_prefix` into consideration.\n    This will allow for engine defined models, such as inside Active Storage, to respect\n    Active Record table name prefix configuration.\n\n    *Chedli Bourguiba*",
+    "project": "railties",
+    "date_merged": 1701902241000,
+    "author": "Chedli Bourguiba",
+    "sha": "0fe286339a7527fefa7840ab1cfcdce1bf191892",
+    "pr": "50247",
+    "merge_sha": "c1489a8ca4a9b91e21725f6a139e82e803c9eaa6",
+    "html": "<p>Fix isolated engines to take <code>ActiveRecord::Base.table_name_prefix</code> into consideration.<br />\nThis will allow for engine defined models, such as inside Active Storage, to respect<br />\nActive Record table name prefix configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
     "message": "*   Fix running `db:system:change` when app has no Dockerfile.\n\n    *Hartley McGuire*",
     "project": "railties",
     "date_merged": 1699548155000,
