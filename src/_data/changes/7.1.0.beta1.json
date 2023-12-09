@@ -610,6 +610,16 @@
     "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Use `bin/rails runner --skip-executor` option to not wrap the runner script\n    with an Executor.\n\n    *Ben Sheldon*",
+    "project": "railties",
+    "date_merged": 1702110936000,
+    "author": "Ben Sheldon [he/him]",
+    "sha": "a9c4699751f5acc9346270d6b307be9108fd0ee0",
+    "pr": "50223",
+    "merge_sha": "5c4a7a711068c1dff2bd873da510ddbb82dcadd7",
+    "html": "<p>Use <code>bin/rails runner --skip-executor</code> option to not wrap the runner script<br />\nwith an Executor.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
+  },
+  {
     "message": "*   Fix isolated engines to take `ActiveRecord::Base.table_name_prefix` into consideration.\n    This will allow for engine defined models, such as inside Active Storage, to respect\n    Active Record table name prefix configuration.\n\n    *Chedli Bourguiba*",
     "project": "railties",
     "date_merged": 1701902241000,
