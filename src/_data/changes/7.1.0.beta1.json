@@ -170,6 +170,16 @@
     "html": "<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>\n\n<p><em>Jason Meller</em></p>\n"
   },
   {
+    "message": "*   Add `nulls_last` and working `desc.nulls_first` for MySQL.\n\n    *Tristan Fellows*",
+    "project": "activerecord",
+    "date_merged": 1702079042000,
+    "author": "tttffff",
+    "sha": "059caa206519687345eddf545134e42dad21b0f1",
+    "pr": "50079",
+    "merge_sha": "ab8f5c9d9381b5058f76e9572e6f02e90c958a6d",
+    "html": "<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>\n\n<p><em>Tristan Fellows</em></p>\n"
+  },
+  {
     "message": "*   Fix all Active Storage database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
     "project": "activestorage",
     "date_merged": 1701970599000,
