@@ -1189,6 +1189,23 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Use `bin/rails runner --skip-executor` option to not wrap the runner script
+</title>
+    <link>https://github.com/rails/rails/issues/50223</link>
+    <guid>https://github.com/rails/rails/issues/50223</guid>
+    <description>*   Use `bin/rails runner --skip-executor` option to not wrap the runner script
+    with an Executor.
+
+    *Ben Sheldon*</description>
+    <pubDate>Sat, 09 Dec 2023 08:35:36 +0000</pubDate>
+    <author>Ben Sheldon [he/him]</author>
+    <content:encoded><![CDATA[<p>Use <code>bin/rails runner --skip-executor</code> option to not wrap the runner script<br />
+with an Executor.</p>
+
+<p><em>Ben Sheldon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Fix isolated engines to take `ActiveRecord::Base.table_name_prefix` into consideration.
 </title>
     <link>https://github.com/rails/rails/issues/50247</link>
