@@ -375,6 +375,21 @@ column).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add `nulls_last` and working `desc.nulls_first` for MySQL.
+</title>
+    <link>https://github.com/rails/rails/issues/50079</link>
+    <guid>https://github.com/rails/rails/issues/50079</guid>
+    <description>*   Add `nulls_last` and working `desc.nulls_first` for MySQL.
+
+    *Tristan Fellows*</description>
+    <pubDate>Fri, 08 Dec 2023 23:44:02 +0000</pubDate>
+    <author>tttffff</author>
+    <content:encoded><![CDATA[<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>
+
+<p><em>Tristan Fellows</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Fix all Active Storage database related models to respect
 </title>
     <link>https://github.com/rails/rails/issues/50167</link>
