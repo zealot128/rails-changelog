@@ -570,6 +570,16 @@
     "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   },
   {
+    "message": "*   Fix all Action Text database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
+    "project": "actiontext",
+    "date_merged": 1702304642000,
+    "author": "Chedli Bourguiba",
+    "sha": "c3b821e6d87e50687eec8ceea5cc67f9a571c234",
+    "pr": "50299",
+    "merge_sha": "6eeae61351ffcd8d0d205edaeb491c4a938489cc",
+    "html": "<p>Fix all Action Text database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
     "message": "*   Compile ESM package that can be used directly in the browser as actiontext.esm.js\n\n    *Matias Grunberg*",
     "project": "actiontext",
     "date_merged": 1699475418000,
@@ -608,6 +618,16 @@
     "pr": "49778",
     "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
     "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix all Action Mailbox database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
+    "project": "actionmailbox",
+    "date_merged": 1702304683000,
+    "author": "Chedli Bourguiba",
+    "sha": "1b97f976641d5d2cc314a27b1a41d8832790b465",
+    "pr": "50300",
+    "merge_sha": "ac97750789df33df38b523ff626813fb1d03e71c",
+    "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
     "message": "*   Use `bin/rails runner --skip-executor` option to not wrap the runner script\n    with an Executor.\n\n    *Ben Sheldon*",
