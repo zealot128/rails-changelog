@@ -1129,6 +1129,23 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Fix all Action Text database related models to respect
+</title>
+    <link>https://github.com/rails/rails/issues/50299</link>
+    <guid>https://github.com/rails/rails/issues/50299</guid>
+    <description>*   Fix all Action Text database related models to respect
+    `ActiveRecord::Base.table_name_prefix` configuration.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Mon, 11 Dec 2023 14:24:02 +0000</pubDate>
+    <author>Chedli Bourguiba</author>
+    <content:encoded><![CDATA[<p>Fix all Action Text database related models to respect<br />
+<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Compile ESM package that can be used directly in the browser as actiontext.esm.js
 </title>
     <link>https://github.com/rails/rails/issues/49952</link>
@@ -1186,6 +1203,23 @@ message.</p>
     <content:encoded><![CDATA[<p>Fix using Trix with Sprockets</p>
 
 <p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailbox: Fix all Action Mailbox database related models to respect
+</title>
+    <link>https://github.com/rails/rails/issues/50300</link>
+    <guid>https://github.com/rails/rails/issues/50300</guid>
+    <description>*   Fix all Action Mailbox database related models to respect
+    `ActiveRecord::Base.table_name_prefix` configuration.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Mon, 11 Dec 2023 14:24:43 +0000</pubDate>
+    <author>Chedli Bourguiba</author>
+    <content:encoded><![CDATA[<p>Fix all Action Mailbox database related models to respect<br />
+<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
+
+<p><em>Chedli Bourguiba</em></p>
 ]]></content:encoded>
   </item>
   <item>
