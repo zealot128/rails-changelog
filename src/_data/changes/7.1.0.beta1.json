@@ -50,6 +50,16 @@
     "html": "<p>Remove deprecated primitive serializer for <code>BigDecimal</code> arguments.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Make `assert_queries` and `assert_no_queries` assertions public.\n\n    To assert the expected number of queries are made, Rails internally uses\n    `assert_queries` and `assert_no_queries`. These assertions can be now\n    be used in applications as well.\n\n    ```ruby\n    class ArticleTest < ActiveSupport::TestCase\n      test \"queries are made\" do\n         assert_queries(1) { Article.first }\n      end\n    end\n    ```\n\n    *Petrik de Heus*",
+    "project": "activerecord",
+    "date_merged": 1702337385000,
+    "author": "Petrik",
+    "sha": "8392c54e73087991eb94ca7e3d2ee4789bed96e0",
+    "pr": "50281",
+    "merge_sha": "3881518c474b346940e328642d614ff49c05c735",
+    "html": "<p>Make <code>assert_queries</code> and <code>assert_no_queries</code> assertions public.</p>\n\n<p>To assert the expected number of queries are made, Rails internally uses<br />\n<code>assert_queries</code> and <code>assert_no_queries</code>. These assertions can be now<br />\nbe used in applications as well.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ArticleTest</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">TestCase</span>\n  <span class=\"nb\">test</span> <span class=\"s2\">\"queries are made\"</span> <span class=\"k\">do</span>\n     <span class=\"n\">assert_queries</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">first</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Fix `has_secure_token` calls the setter method on initialize.\n\n    *Abeid Ahmed*",
     "project": "activerecord",
     "date_merged": 1701650069000,
