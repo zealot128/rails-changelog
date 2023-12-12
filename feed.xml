@@ -81,6 +81,44 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Make `assert_queries` and `assert_no_queries` assertions public.
+</title>
+    <link>https://github.com/rails/rails/issues/50281</link>
+    <guid>https://github.com/rails/rails/issues/50281</guid>
+    <description>*   Make `assert_queries` and `assert_no_queries` assertions public.
+
+    To assert the expected number of queries are made, Rails internally uses
+    `assert_queries` and `assert_no_queries`. These assertions can be now
+    be used in applications as well.
+
+    ```ruby
+    class ArticleTest &lt; ActiveSupport::TestCase
+      test &quot;queries are made&quot; do
+         assert_queries(1) { Article.first }
+      end
+    end
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Mon, 11 Dec 2023 23:29:45 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Make <code>assert_queries</code> and <code>assert_no_queries</code> assertions public.</p>
+
+<p>To assert the expected number of queries are made, Rails internally uses<br />
+<code>assert_queries</code> and <code>assert_no_queries</code>. These assertions can be now<br />
+be used in applications as well.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ArticleTest</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="nb">test</span> <span class="s2">"queries are made"</span> <span class="k">do</span>
+     <span class="n">assert_queries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="no">Article</span><span class="p">.</span><span class="nf">first</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix `has_secure_token` calls the setter method on initialize.
 </title>
     <link>https://github.com/rails/rails/issues/49874</link>
