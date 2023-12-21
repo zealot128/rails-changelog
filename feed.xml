@@ -173,41 +173,55 @@ This adds support for those to the SQLite3 adapter.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Make `assert_queries` and `assert_no_queries` assertions public.
+    <title>activerecord: Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match` and
 </title>
-    <link>https://github.com/rails/rails/issues/50281</link>
-    <guid>https://github.com/rails/rails/issues/50281</guid>
-    <description>*   Make `assert_queries` and `assert_no_queries` assertions public.
+    <link>https://github.com/rails/rails/issues/50373</link>
+    <guid>https://github.com/rails/rails/issues/50373</guid>
+    <description>*   Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match` and
+    `assert_no_queries_match` assertions public.
 
-    To assert the expected number of queries are made, Rails internally uses
-    `assert_queries` and `assert_no_queries`. These assertions can be now
-    be used in applications as well.
+    To assert the expected number of queries are made, Rails internally uses `assert_queries_count` and
+    `assert_no_queries`. To assert that specific SQL queries are made, `assert_queries_match` and
+    `assert_no_queries_match` are used. These assertions can now be used in applications as well.
 
     ```ruby
     class ArticleTest &lt; ActiveSupport::TestCase
       test &quot;queries are made&quot; do
-         assert_queries(1) { Article.first }
+        assert_queries_count(1) { Article.first }
+      end
+
+      test &quot;creates a foreign key&quot; do
+        assert_queries_match(/ADD FOREIGN KEY/i, include_schema: true) do
+          @connection.add_foreign_key(:comments, :posts)
+        end
       end
     end
     ```
 
-    *Petrik de Heus*</description>
-    <pubDate>Mon, 11 Dec 2023 23:29:45 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Make <code>assert_queries</code> and <code>assert_no_queries</code> assertions public.</p>
+    *Petrik de Heus*, *fatkodima*</description>
+    <pubDate>Thu, 21 Dec 2023 11:59:10 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Make <code>assert_queries_count</code>, <code>assert_no_queries</code>, <code>assert_queries_match</code> and<br />
+<code>assert_no_queries_match</code> assertions public.</p>
 
-<p>To assert the expected number of queries are made, Rails internally uses<br />
-<code>assert_queries</code> and <code>assert_no_queries</code>. These assertions can be now<br />
-be used in applications as well.</p>
+<p>To assert the expected number of queries are made, Rails internally uses <code>assert_queries_count</code> and<br />
+<code>assert_no_queries</code>. To assert that specific SQL queries are made, <code>assert_queries_match</code> and<br />
+<code>assert_no_queries_match</code> are used. These assertions can now be used in applications as well.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ArticleTest</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
   <span class="nb">test</span> <span class="s2">"queries are made"</span> <span class="k">do</span>
-     <span class="n">assert_queries</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="no">Article</span><span class="p">.</span><span class="nf">first</span> <span class="p">}</span>
+    <span class="n">assert_queries_count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="no">Article</span><span class="p">.</span><span class="nf">first</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="nb">test</span> <span class="s2">"creates a foreign key"</span> <span class="k">do</span>
+    <span class="n">assert_queries_match</span><span class="p">(</span><span class="sr">/ADD FOREIGN KEY/i</span><span class="p">,</span> <span class="ss">include_schema: </span><span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
+      <span class="vi">@connection</span><span class="p">.</span><span class="nf">add_foreign_key</span><span class="p">(</span><span class="ss">:comments</span><span class="p">,</span> <span class="ss">:posts</span><span class="p">)</span>
+    <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><em>Petrik de Heus</em></p>
+<p><em>Petrik de Heus</em>, <em>fatkodima</em></p>
 ]]></content:encoded>
   </item>
   <item>
