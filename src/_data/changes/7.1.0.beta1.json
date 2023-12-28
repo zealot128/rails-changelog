@@ -70,6 +70,16 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Remove warning message when running SQLite in production, but leave it unconfigured\n\n    There are valid use cases for running SQLite in production, however it must be done\n    with care, so instead of a warning most users won't see anyway, it's preferable to\n    leave the configuration commented out to force them to think about having the database\n    on a persistent volume etc.\n\n    *Jacopo Beschi*, *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1703716487000,
+    "author": "Jean Boussier",
+    "sha": "6b446bee63c401364d193920f3426af0bfe75650",
+    "pr": "50463",
+    "merge_sha": "354d1c42b45a380f201a24d060a3d1bc71010327",
+    "html": "<p>Remove warning message when running SQLite in production, but leave it unconfigured</p>\n\n<p>There are valid use cases for running SQLite in production, however it must be done<br />\nwith care, so instead of a warning most users won’t see anyway, it’s preferable to<br />\nleave the configuration commented out to force them to think about having the database<br />\non a persistent volume etc.</p>\n\n<p><em>Jacopo Beschi</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Add support for generated columns in SQLite3 adapter\n\n    Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.\n    This adds support for those to the SQLite3 adapter.\n\n    ```ruby\n    create_table :users do |t|\n      t.string :name\n      t.virtual :name_upper, type: :string, as: 'UPPER(name)'\n      t.virtual :name_lower, type: :string, as: 'LOWER(name)', stored: true\n    end\n    ```\n\n    *Stephen Margheim*",
     "project": "activerecord",
     "date_merged": 1702575263000,
