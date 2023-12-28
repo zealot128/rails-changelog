@@ -111,6 +111,31 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Remove warning message when running SQLite in production, but leave it unconfigured
+</title>
+    <link>https://github.com/rails/rails/issues/50463</link>
+    <guid>https://github.com/rails/rails/issues/50463</guid>
+    <description>*   Remove warning message when running SQLite in production, but leave it unconfigured
+
+    There are valid use cases for running SQLite in production, however it must be done
+    with care, so instead of a warning most users won&#39;t see anyway, it&#39;s preferable to
+    leave the configuration commented out to force them to think about having the database
+    on a persistent volume etc.
+
+    *Jacopo Beschi*, *Jean Boussier*</description>
+    <pubDate>Wed, 27 Dec 2023 22:34:47 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Remove warning message when running SQLite in production, but leave it unconfigured</p>
+
+<p>There are valid use cases for running SQLite in production, however it must be done<br />
+with care, so instead of a warning most users won’t see anyway, it’s preferable to<br />
+leave the configuration commented out to force them to think about having the database<br />
+on a persistent volume etc.</p>
+
+<p><em>Jacopo Beschi</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add support for generated columns in SQLite3 adapter
 </title>
     <link>https://github.com/rails/rails/issues/49346</link>
