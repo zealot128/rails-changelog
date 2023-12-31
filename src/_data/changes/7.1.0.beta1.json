@@ -510,6 +510,16 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Add RuboCop with rules from rubocop-rails-omakase by default. Skip with --skip-rubocop.\n\n    *DHH* and *zzak*",
+    "project": "railties",
+    "date_merged": 1703993192000,
+    "author": "zzak",
+    "sha": "0fb5f67ac413d62df64b8b59094b4fe85999b5c1",
+    "pr": "50486",
+    "merge_sha": "e7826d864f8c8f41259e787403a04ee1e2e4eba9",
+    "html": "<p>Add RuboCop with rules from rubocop-rails-omakase by default. Skip with –skip-rubocop.</p>\n\n<p><em>DHH</em> and <em>zzak</em></p>\n"
+  },
+  {
     "message": "*   Use `bin/rails runner --skip-executor` option to not wrap the runner script\n    with an Executor.\n\n    *Ben Sheldon*",
     "project": "railties",
     "date_merged": 1702110936000,
