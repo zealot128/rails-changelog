@@ -1084,6 +1084,21 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add RuboCop with rules from rubocop-rails-omakase by default. Skip with --skip-rubocop.
+</title>
+    <link>https://github.com/rails/rails/issues/50486</link>
+    <guid>https://github.com/rails/rails/issues/50486</guid>
+    <description>*   Add RuboCop with rules from rubocop-rails-omakase by default. Skip with --skip-rubocop.
+
+    *DHH* and *zzak*</description>
+    <pubDate>Sun, 31 Dec 2023 03:26:32 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Add RuboCop with rules from rubocop-rails-omakase by default. Skip with –skip-rubocop.</p>
+
+<p><em>DHH</em> and <em>zzak</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Use `bin/rails runner --skip-executor` option to not wrap the runner script
 </title>
     <link>https://github.com/rails/rails/issues/50223</link>
