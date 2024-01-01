@@ -1084,6 +1084,51 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Updated system tests to now use headless Chrome by default for the new applications.
+</title>
+    <link>https://github.com/rails/rails/issues/50512</link>
+    <guid>https://github.com/rails/rails/issues/50512</guid>
+    <description>*   Updated system tests to now use headless Chrome by default for the new applications.
+
+    *DHH*</description>
+    <pubDate>Mon, 01 Jan 2024 10:11:28 +0000</pubDate>
+    <author>Akhil G Krishnan</author>
+    <content:encoded><![CDATA[<p>Updated system tests to now use headless Chrome by default for the new applications.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add GitHub CI files for dependabot, brakeman, rubocop, and running tests by default. Can be skipped with --skip-ci.
+</title>
+    <link>https://github.com/rails/rails/issues/50508</link>
+    <guid>https://github.com/rails/rails/issues/50508</guid>
+    <description>*   Add GitHub CI files for dependabot, brakeman, rubocop, and running tests by default. Can be skipped with --skip-ci.
+
+    *DHH*</description>
+    <pubDate>Mon, 01 Jan 2024 10:08:45 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add GitHub CI files for dependabot, brakeman, rubocop, and running tests by default. Can be skipped with –skip-ci.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add brakeman gem by default for static analysis of security vulnerabilities. Allow skipping with --skip-brakeman option.
+</title>
+    <link>https://github.com/rails/rails/issues/50507</link>
+    <guid>https://github.com/rails/rails/issues/50507</guid>
+    <description>*   Add brakeman gem by default for static analysis of security vulnerabilities. Allow skipping with --skip-brakeman option.
+
+    *vipulnsward*</description>
+    <pubDate>Mon, 01 Jan 2024 10:08:45 +0000</pubDate>
+    <author>Vipul A M</author>
+    <content:encoded><![CDATA[<p>Add brakeman gem by default for static analysis of security vulnerabilities. Allow skipping with –skip-brakeman option.</p>
+
+<p><em>vipulnsward</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add RuboCop with rules from rubocop-rails-omakase by default. Skip with --skip-rubocop.
 </title>
     <link>https://github.com/rails/rails/issues/50486</link>
@@ -1352,6 +1397,94 @@ instead of capturing it.</p>
 for all environments, as the value is the same in all environments.</p>
 
 <p><em>Adrian Hirt</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `allow_browser` to set minimum browser versions for the application.
+</title>
+    <link>https://github.com/rails/rails/issues/50505</link>
+    <guid>https://github.com/rails/rails/issues/50505</guid>
+    <description>*   Add `allow_browser` to set minimum browser versions for the application.
+
+    A browser that&#39;s blocked will by default be served the file in `public/426.html` with a HTTP status code of &quot;426 Upgrade Required&quot;.
+
+    ```ruby
+    class ApplicationController &lt; ActionController::Base
+      # Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has
+      allow_browser versions: :modern
+    end
+
+    class ApplicationController &lt; ActionController::Base
+      # All versions of Chrome and Opera will be allowed, but no versions of &quot;internet explorer&quot; (ie). Safari needs to be 16.4+ and Firefox 121+.
+      allow_browser versions: { safari: 16.4, firefox: 121, ie: false }
+    end
+
+    class MessagesController &lt; ApplicationController
+      # In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.
+      allow_browser versions: { opera: 104, chrome: 119 }, only: :show
+    end
+    ```
+
+    *DHH*</description>
+    <pubDate>Mon, 01 Jan 2024 10:08:45 +0000</pubDate>
+    <author>Vipul A M</author>
+    <content:encoded><![CDATA[<p>Add <code>allow_browser</code> to set minimum browser versions for the application.</p>
+
+<p>A browser that’s blocked will by default be served the file in <code>public/426.html</code> with a HTTP status code of “426 Upgrade Required”.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="c1"># Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has</span>
+  <span class="n">allow_browser</span> <span class="ss">versions: :modern</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="c1"># All versions of Chrome and Opera will be allowed, but no versions of "internet explorer" (ie). Safari needs to be 16.4+ and Firefox 121+.</span>
+  <span class="n">allow_browser</span> <span class="ss">versions: </span><span class="p">{</span> <span class="ss">safari: </span><span class="mf">16.4</span><span class="p">,</span> <span class="ss">firefox: </span><span class="mi">121</span><span class="p">,</span> <span class="ss">ie: </span><span class="kp">false</span> <span class="p">}</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">MessagesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="c1"># In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.</span>
+  <span class="n">allow_browser</span> <span class="ss">versions: </span><span class="p">{</span> <span class="ss">opera: </span><span class="mi">104</span><span class="p">,</span> <span class="ss">chrome: </span><span class="mi">119</span> <span class="p">},</span> <span class="ss">only: :show</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add rate limiting API using Redis and the [Kredis limiter type](https://github.com/rails/kredis/blob/main/lib/kredis/types/limiter.rb).
+</title>
+    <link>https://github.com/rails/rails/issues/50490</link>
+    <guid>https://github.com/rails/rails/issues/50490</guid>
+    <description>*   Add rate limiting API using Redis and the [Kredis limiter type](https://github.com/rails/kredis/blob/main/lib/kredis/types/limiter.rb).
+
+    ```ruby
+    class SessionsController &lt; ApplicationController
+      rate_limit to: 10, within: 3.minutes, only: :create
+    end
+
+    class SignupsController &lt; ApplicationController
+      rate_limit to: 1000, within: 10.seconds,
+        by: -&gt; { request.domain }, with: -&gt; { redirect_to busy_controller_url, alert: &quot;Too many signups!&quot; }, only: :new
+    end
+    ```
+
+    *DHH*</description>
+    <pubDate>Sun, 31 Dec 2023 15:14:03 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add rate limiting API using Redis and the <a href="https://github.com/rails/kredis/blob/main/lib/kredis/types/limiter.rb">Kredis limiter type</a>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SessionsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="n">rate_limit</span> <span class="ss">to: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">within: </span><span class="mi">3</span><span class="p">.</span><span class="nf">minutes</span><span class="p">,</span> <span class="ss">only: :create</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">SignupsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="n">rate_limit</span> <span class="ss">to: </span><span class="mi">1000</span><span class="p">,</span> <span class="ss">within: </span><span class="mi">10</span><span class="p">.</span><span class="nf">seconds</span><span class="p">,</span>
+    <span class="ss">by: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="n">request</span><span class="p">.</span><span class="nf">domain</span> <span class="p">},</span> <span class="ss">with: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="n">redirect_to</span> <span class="n">busy_controller_url</span><span class="p">,</span> <span class="ss">alert: </span><span class="s2">"Too many signups!"</span> <span class="p">},</span> <span class="ss">only: :new</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>DHH</em></p>
 ]]></content:encoded>
   </item>
   <item>
