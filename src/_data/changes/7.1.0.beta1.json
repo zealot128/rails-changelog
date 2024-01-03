@@ -380,6 +380,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`\n\n    ```ruby\n    content = ActionText::Content.new <<~HTML\n      <h1>Hello, world</h1>\n\n      <div>The body</div>\n    HTML\n\n    content => [h1, div]\n\n    assert_pattern { h1 => { content: \"Hello, world\" } }\n    assert_pattern { div => { content: \"The body\" } }\n    ```\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1704303082000,
+    "author": "Sean Doyle",
+    "sha": "2e15010d568cb279a988dec012cca09f49142809",
+    "pr": "50473",
+    "merge_sha": "664eb0dfc42cdab7d34d0e1948a9ea5c9e6558e2",
+    "html": "<p>Delegate <code>ActionText::Content#deconstruct</code> to <code>Nokogiri::XML::DocumentFragment#elements</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">content</span> <span class=\"o\">=</span> <span class=\"no\">ActionText</span><span class=\"o\">::</span><span class=\"no\">Content</span><span class=\"p\">.</span><span class=\"nf\">new</span> <span class=\"o\">&lt;&lt;~</span><span class=\"no\">HTML</span><span class=\"sh\">\n  &lt;h1&gt;Hello, world&lt;/h1&gt;\n\n  &lt;div&gt;The body&lt;/div&gt;\n</span><span class=\"no\">HTML</span>\n\n<span class=\"n\">content</span> <span class=\"o\">=&gt;</span> <span class=\"p\">[</span><span class=\"n\">h1</span><span class=\"p\">,</span> <span class=\"n\">div</span><span class=\"p\">]</span>\n\n<span class=\"n\">assert_pattern</span> <span class=\"p\">{</span> <span class=\"n\">h1</span> <span class=\"o\">=&gt;</span> <span class=\"p\">{</span> <span class=\"ss\">content: </span><span class=\"s2\">\"Hello, world\"</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n<span class=\"n\">assert_pattern</span> <span class=\"p\">{</span> <span class=\"n\">div</span> <span class=\"o\">=&gt;</span> <span class=\"p\">{</span> <span class=\"ss\">content: </span><span class=\"s2\">\"The body\"</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Fix all Action Text database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
     "project": "actiontext",
     "date_merged": 1702304642000,
@@ -518,6 +528,16 @@
     "pr": "49863",
     "merge_sha": "efa11e67d652b7f1f16b7840dc288730463da492",
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
+  },
+  {
+    "message": "*   Add default PWA files for manifest and service-worker that are served from `app/views/pwa` and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1704289368000,
+    "author": "David Heinemeier Hansson",
+    "sha": "bb5e2791e08f3381a9ca3b198f41779bc4597fdf",
+    "pr": "50528",
+    "merge_sha": "3c7b520656b865bbf9a2c0388df9ec924c57f2f2",
+    "html": "<p>Add default PWA files for manifest and service-worker that are served from <code>app/views/pwa</code> and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
     "message": "*   Updated system tests to now use headless Chrome by default for the new applications.\n\n    *DHH*",
