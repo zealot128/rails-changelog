@@ -70,6 +70,16 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Allow overriding SQLite defaults from `database.yml`\n\n    Any PRAGMA configuration set under the `pragmas` key in the configuration file take precedence over Rails' defaults, and additional PRAGMAs can be set as well.\n\n    ```yaml\n    database: storage/development.sqlite3\n    timeout: 5000\n    pragmas:\n      journal_mode: off\n      temp_store: memory\n    ```\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1704224920000,
+    "author": "Stephen Margheim",
+    "sha": "8ac2af29ad7dc8c86bfb569e3375d8c1cd58a323",
+    "pr": "50460",
+    "merge_sha": "6c0f5f65a7d14d08aad200ae2865b84b4cdaa8b0",
+    "html": "<p>Allow overriding SQLite defaults from <code>database.yml</code></p>\n\n<p>Any PRAGMA configuration set under the <code>pragmas</code> key in the configuration file take precedence over Rails’ defaults, and additional PRAGMAs can be set as well.</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">storage/development.sqlite3</span>\n<span class=\"na\">timeout</span><span class=\"pi\">:</span> <span class=\"m\">5000</span>\n<span class=\"na\">pragmas</span><span class=\"pi\">:</span>\n  <span class=\"na\">journal_mode</span><span class=\"pi\">:</span> <span class=\"s\">off</span>\n  <span class=\"na\">temp_store</span><span class=\"pi\">:</span> <span class=\"s\">memory</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
     "message": "*   Remove warning message when running SQLite in production, but leave it unconfigured\n\n    There are valid use cases for running SQLite in production, however it must be done\n    with care, so instead of a warning most users won't see anyway, it's preferable to\n    leave the configuration commented out to force them to think about having the database\n    on a persistent volume etc.\n\n    *Jacopo Beschi*, *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1703716487000,
