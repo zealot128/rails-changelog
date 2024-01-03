@@ -111,6 +111,40 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow overriding SQLite defaults from `database.yml`
+</title>
+    <link>https://github.com/rails/rails/issues/50460</link>
+    <guid>https://github.com/rails/rails/issues/50460</guid>
+    <description>*   Allow overriding SQLite defaults from `database.yml`
+
+    Any PRAGMA configuration set under the `pragmas` key in the configuration file take precedence over Rails&#39; defaults, and additional PRAGMAs can be set as well.
+
+    ```yaml
+    database: storage/development.sqlite3
+    timeout: 5000
+    pragmas:
+      journal_mode: off
+      temp_store: memory
+    ```
+
+    *Stephen Margheim*</description>
+    <pubDate>Tue, 02 Jan 2024 19:48:40 +0000</pubDate>
+    <author>Stephen Margheim</author>
+    <content:encoded><![CDATA[<p>Allow overriding SQLite defaults from <code>database.yml</code></p>
+
+<p>Any PRAGMA configuration set under the <code>pragmas</code> key in the configuration file take precedence over Rails’ defaults, and additional PRAGMAs can be set as well.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">database</span><span class="pi">:</span> <span class="s">storage/development.sqlite3</span>
+<span class="na">timeout</span><span class="pi">:</span> <span class="m">5000</span>
+<span class="na">pragmas</span><span class="pi">:</span>
+  <span class="na">journal_mode</span><span class="pi">:</span> <span class="s">off</span>
+  <span class="na">temp_store</span><span class="pi">:</span> <span class="s">memory</span>
+</code></pre></div></div>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Remove warning message when running SQLite in production, but leave it unconfigured
 </title>
     <link>https://github.com/rails/rails/issues/50463</link>
