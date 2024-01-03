@@ -882,6 +882,46 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`
+</title>
+    <link>https://github.com/rails/rails/issues/50473</link>
+    <guid>https://github.com/rails/rails/issues/50473</guid>
+    <description>*   Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`
+
+    ```ruby
+    content = ActionText::Content.new &lt;&lt;~HTML
+      &lt;h1&gt;Hello, world&lt;/h1&gt;
+
+      &lt;div&gt;The body&lt;/div&gt;
+    HTML
+
+    content =&gt; [h1, div]
+
+    assert_pattern { h1 =&gt; { content: &quot;Hello, world&quot; } }
+    assert_pattern { div =&gt; { content: &quot;The body&quot; } }
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 03 Jan 2024 17:31:22 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Delegate <code>ActionText::Content#deconstruct</code> to <code>Nokogiri::XML::DocumentFragment#elements</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">content</span> <span class="o">=</span> <span class="no">ActionText</span><span class="o">::</span><span class="no">Content</span><span class="p">.</span><span class="nf">new</span> <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
+  &lt;h1&gt;Hello, world&lt;/h1&gt;
+
+  &lt;div&gt;The body&lt;/div&gt;
+</span><span class="no">HTML</span>
+
+<span class="n">content</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="n">h1</span><span class="p">,</span> <span class="n">div</span><span class="p">]</span>
+
+<span class="n">assert_pattern</span> <span class="p">{</span> <span class="n">h1</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">content: </span><span class="s2">"Hello, world"</span> <span class="p">}</span> <span class="p">}</span>
+<span class="n">assert_pattern</span> <span class="p">{</span> <span class="n">div</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">content: </span><span class="s2">"The body"</span> <span class="p">}</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Fix all Action Text database related models to respect
 </title>
     <link>https://github.com/rails/rails/issues/50299</link>
@@ -1115,6 +1155,21 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
     <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
 
 <p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add default PWA files for manifest and service-worker that are served from `app/views/pwa` and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.
+</title>
+    <link>https://github.com/rails/rails/issues/50528</link>
+    <guid>https://github.com/rails/rails/issues/50528</guid>
+    <description>*   Add default PWA files for manifest and service-worker that are served from `app/views/pwa` and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.
+
+    *DHH*</description>
+    <pubDate>Wed, 03 Jan 2024 13:42:48 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add default PWA files for manifest and service-worker that are served from <code>app/views/pwa</code> and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.</p>
+
+<p><em>DHH</em></p>
 ]]></content:encoded>
   </item>
   <item>
