@@ -111,6 +111,27 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Validate using `:on` option when using `validates_associated`
+</title>
+    <link>https://github.com/rails/rails/issues/46238</link>
+    <guid>https://github.com/rails/rails/issues/46238</guid>
+    <description>*   Validate using `:on` option when using `validates_associated`
+
+    Fixes an issue where `validates_associated` `:on`  option wasn&#39;t respected
+    when validated associated records.
+
+    *Austen Madden*, *Alex Ghiculescu*, *Rafał Brize*</description>
+    <pubDate>Wed, 03 Jan 2024 19:44:54 +0000</pubDate>
+    <author>Austen Madden</author>
+    <content:encoded><![CDATA[<p>Validate using <code>:on</code> option when using <code>validates_associated</code></p>
+
+<p>Fixes an issue where <code>validates_associated</code> <code>:on</code>  option wasn’t respected<br />
+when validated associated records.</p>
+
+<p><em>Austen Madden</em>, <em>Alex Ghiculescu</em>, <em>Rafał Brize</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow overriding SQLite defaults from `database.yml`
 </title>
     <link>https://github.com/rails/rails/issues/50460</link>
@@ -626,6 +647,23 @@ the same for Active Model as it does for Active Record.</p>
 
   <span class="no">MyModel</span><span class="p">.</span><span class="nf">type_for_attribute</span><span class="p">(</span><span class="ss">:my_attribute</span><span class="p">)</span> <span class="c1"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>
 </code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Use logical core count instead of physical core count to determine the
+</title>
+    <link>https://github.com/rails/rails/issues/50564</link>
+    <guid>https://github.com/rails/rails/issues/50564</guid>
+    <description>*   Use logical core count instead of physical core count to determine the
+    default number of workers when parallelizing tests.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Wed, 03 Jan 2024 23:08:09 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Use logical core count instead of physical core count to determine the<br />
+default number of workers when parallelizing tests.</p>
 
 <p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
@@ -1155,6 +1193,54 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
     <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
 
 <p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Support `BACKTRACE` ENV variable to turn off backtrace cleaning.
+</title>
+    <link>https://github.com/rails/rails/issues/50563</link>
+    <guid>https://github.com/rails/rails/issues/50563</guid>
+    <description>*   Support `BACKTRACE` ENV variable to turn off backtrace cleaning.
+
+    Useful for debugging framework code:
+
+    ```sh
+    BACKTRACE=1 ./bin/rails server
+    ```
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Wed, 03 Jan 2024 22:14:21 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p>Support <code>BACKTRACE</code> ENV variable to turn off backtrace cleaning.</p>
+
+<p>Useful for debugging framework code:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">BACKTRACE</span><span class="o">=</span>1 ./bin/rails server
+</code></pre></div></div>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Raise `ArgumentError` when reading `config.x.something` with arguments
+</title>
+    <link>https://github.com/rails/rails/issues/50050</link>
+    <guid>https://github.com/rails/rails/issues/50050</guid>
+    <description>*   Raise `ArgumentError` when reading `config.x.something` with arguments
+
+    ```ruby
+    config.x.this_works.this_raises true # raises ArgumentError
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 03 Jan 2024 20:50:57 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Raise <code>ArgumentError</code> when reading <code>config.x.something</code> with arguments</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">x</span><span class="p">.</span><span class="nf">this_works</span><span class="p">.</span><span class="nf">this_raises</span> <span class="kp">true</span> <span class="c1"># raises ArgumentError</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -1777,6 +1863,21 @@ error with parallel system tests</p>
 <code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
 
 <p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Raise `ArgumentError` when `nil` is passed as `model:` argument value to the `form_with` method.
+</title>
+    <link>https://github.com/rails/rails/issues/49943</link>
+    <guid>https://github.com/rails/rails/issues/49943</guid>
+    <description>*   Raise `ArgumentError` when `nil` is passed as `model:` argument value to the `form_with` method.
+
+    *Collin Jilbert*</description>
+    <pubDate>Thu, 04 Jan 2024 03:02:41 +0000</pubDate>
+    <author>Collin Jilbert</author>
+    <content:encoded><![CDATA[<p>Raise <code>ArgumentError</code> when <code>nil</code> is passed as <code>model:</code> argument value to the <code>form_with</code> method.</p>
+
+<p><em>Collin Jilbert</em></p>
 ]]></content:encoded>
   </item>
   <item>
