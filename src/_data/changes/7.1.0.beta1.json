@@ -70,6 +70,16 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Add `explain` support for `last`, `pluck` and `count`\n\n    Let `explain` return a proxy that delegates these methods:\n\n    ```ruby\n    User.all.explain.count\n    # EXPLAIN SELECT COUNT(*) FROM `users`\n    # ...\n\n    User.all.explain.maximum(:id)\n    # EXPLAIN SELECT MAX(`users`.`id`) FROM `users`\n    # ...\n    ```\n\n    *Petrik de Heus*",
+    "project": "activerecord",
+    "date_merged": 1704408002000,
+    "author": "Petrik",
+    "sha": "1f83af389042b8f87b909b6a2892416e87e3b486",
+    "pr": "50482",
+    "merge_sha": "89693e5dde7676640765c51193060ac87b9e960f",
+    "html": "<p>Add <code>explain</code> support for <code>last</code>, <code>pluck</code> and <code>count</code></p>\n\n<p>Let <code>explain</code> return a proxy that delegates these methods:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">.</span><span class=\"nf\">explain</span><span class=\"p\">.</span><span class=\"nf\">count</span>\n<span class=\"c1\"># EXPLAIN SELECT COUNT(*) FROM `users`</span>\n<span class=\"c1\"># ...</span>\n\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">.</span><span class=\"nf\">explain</span><span class=\"p\">.</span><span class=\"nf\">maximum</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">)</span>\n<span class=\"c1\"># EXPLAIN SELECT MAX(`users`.`id`) FROM `users`</span>\n<span class=\"c1\"># ...</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Validate using `:on` option when using `validates_associated`\n\n    Fixes an issue where `validates_associated` `:on`  option wasn't respected\n    when validated associated records.\n\n    *Austen Madden*, *Alex Ghiculescu*, *Rafał Brize*",
     "project": "activerecord",
     "date_merged": 1704311094000,
@@ -550,6 +560,16 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in the\n    development environment.\n\n    *Adrian Marin*",
+    "project": "railties",
+    "date_merged": 1704396801000,
+    "author": "Adrian",
+    "sha": "475bb4b1edae66d34fc745b47fc907358faeb415",
+    "pr": "50436",
+    "merge_sha": "64370c903985c8c9dbca943a1503b3723dba3997",
+    "html": "<p>Set <code>config.action_view.annotate_rendered_view_with_filenames</code> to <code>true</code> in the<br />\ndevelopment environment.</p>\n\n<p><em>Adrian Marin</em></p>\n"
+  },
+  {
     "message": "*   Support `BACKTRACE` ENV variable to turn off backtrace cleaning.\n\n    Useful for debugging framework code:\n\n    ```sh\n    BACKTRACE=1 ./bin/rails server\n    ```\n\n    *Alex Ghiculescu*",
     "project": "railties",
     "date_merged": 1704320061000,
@@ -888,6 +908,36 @@
     "pr": "50300",
     "merge_sha": "ac97750789df33df38b523ff626813fb1d03e71c",
     "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
+    "message": "*   Add two new assertion methods for ActionCable test cases: `assert_not_has_stream`\n    and `assert_not_has_stream_for`. These methods can be used to assert that a\n    stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement\n    the already existing `assert_has_stream` and `assert_has_stream_for` methods.\n\n    ```ruby\n    assert_not_has_stream \"messages\"\n    assert_not_has_stream_for User.find(42)\n    ```\n\n    *Sebastian Pöll*",
+    "project": "actioncable",
+    "date_merged": 1704403302000,
+    "author": "Sebi",
+    "sha": "d9e2b159f9e40626a119c05645b5bd1e82e8588c",
+    "pr": "50585",
+    "merge_sha": "bed0b44e3c5af4c22d88ff25dbf0a5c67c0e2a7b",
+    "html": "<p>Add two new assertion methods for ActionCable test cases: <code>assert_not_has_stream</code><br />\nand <code>assert_not_has_stream_for</code>. These methods can be used to assert that a<br />\nstream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />\nthe already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_not_has_stream</span> <span class=\"s2\">\"messages\"</span>\n<span class=\"n\">assert_not_has_stream_for</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">42</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Sebastian Pöll</em></p>\n"
+  },
+  {
+    "message": "*   Parse `ActionView::TestCase#rendered` HTML content as `Nokogiri::XML::DocumentFragment` instead of `Nokogiri::XML::Document`\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1704407933000,
+    "author": "Sean Doyle",
+    "sha": "bec80373cd814f6bfb7d6779e68de02068a3cb10",
+    "pr": "50584",
+    "merge_sha": "64c93600bda4c2dbf9356f3ae6ec13b0946cac1d",
+    "html": "<p>Parse <code>ActionView::TestCase#rendered</code> HTML content as <code>Nokogiri::XML::DocumentFragment</code> instead of <code>Nokogiri::XML::Document</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Rename `ActionView::TestCase::Behavior::{Content,RenderedViewContent}`\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1704397658000,
+    "author": "Sean Doyle",
+    "sha": "cebbd1cf0ada6d13cc51a05cdde33ca437b77fb0",
+    "pr": "49856",
+    "merge_sha": "4d2beb73984696402f6b769f7d464017ab27f0f4",
+    "html": "<p>Rename <code>ActionView::TestCase::Behavior::{Content,RenderedViewContent}</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Raise `ArgumentError` when `nil` is passed as `model:` argument value to the `form_with` method.\n\n    *Collin Jilbert*",
