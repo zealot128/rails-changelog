@@ -111,6 +111,44 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add `explain` support for `last`, `pluck` and `count`
+</title>
+    <link>https://github.com/rails/rails/issues/50482</link>
+    <guid>https://github.com/rails/rails/issues/50482</guid>
+    <description>*   Add `explain` support for `last`, `pluck` and `count`
+
+    Let `explain` return a proxy that delegates these methods:
+
+    ```ruby
+    User.all.explain.count
+    # EXPLAIN SELECT COUNT(*) FROM `users`
+    # ...
+
+    User.all.explain.maximum(:id)
+    # EXPLAIN SELECT MAX(`users`.`id`) FROM `users`
+    # ...
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Thu, 04 Jan 2024 22:40:02 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Add <code>explain</code> support for <code>last</code>, <code>pluck</code> and <code>count</code></p>
+
+<p>Let <code>explain</code> return a proxy that delegates these methods:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">explain</span><span class="p">.</span><span class="nf">count</span>
+<span class="c1"># EXPLAIN SELECT COUNT(*) FROM `users`</span>
+<span class="c1"># ...</span>
+
+<span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">explain</span><span class="p">.</span><span class="nf">maximum</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>
+<span class="c1"># EXPLAIN SELECT MAX(`users`.`id`) FROM `users`</span>
+<span class="c1"># ...</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Validate using `:on` option when using `validates_associated`
 </title>
     <link>https://github.com/rails/rails/issues/46238</link>
@@ -1196,6 +1234,23 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in the
+</title>
+    <link>https://github.com/rails/rails/issues/50436</link>
+    <guid>https://github.com/rails/rails/issues/50436</guid>
+    <description>*   Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in the
+    development environment.
+
+    *Adrian Marin*</description>
+    <pubDate>Thu, 04 Jan 2024 19:33:21 +0000</pubDate>
+    <author>Adrian</author>
+    <content:encoded><![CDATA[<p>Set <code>config.action_view.annotate_rendered_view_with_filenames</code> to <code>true</code> in the<br />
+development environment.</p>
+
+<p><em>Adrian Marin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Support `BACKTRACE` ENV variable to turn off backtrace cleaning.
 </title>
     <link>https://github.com/rails/rails/issues/50563</link>
@@ -1863,6 +1918,66 @@ error with parallel system tests</p>
 <code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
 
 <p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actioncable: Add two new assertion methods for ActionCable test cases: `assert_not_has_stream`
+</title>
+    <link>https://github.com/rails/rails/issues/50585</link>
+    <guid>https://github.com/rails/rails/issues/50585</guid>
+    <description>*   Add two new assertion methods for ActionCable test cases: `assert_not_has_stream`
+    and `assert_not_has_stream_for`. These methods can be used to assert that a
+    stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement
+    the already existing `assert_has_stream` and `assert_has_stream_for` methods.
+
+    ```ruby
+    assert_not_has_stream &quot;messages&quot;
+    assert_not_has_stream_for User.find(42)
+    ```
+
+    *Sebastian Pöll*</description>
+    <pubDate>Thu, 04 Jan 2024 21:21:42 +0000</pubDate>
+    <author>Sebi</author>
+    <content:encoded><![CDATA[<p>Add two new assertion methods for ActionCable test cases: <code>assert_not_has_stream</code><br />
+and <code>assert_not_has_stream_for</code>. These methods can be used to assert that a<br />
+stream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />
+the already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_not_has_stream</span> <span class="s2">"messages"</span>
+<span class="n">assert_not_has_stream_for</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Sebastian Pöll</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Parse `ActionView::TestCase#rendered` HTML content as `Nokogiri::XML::DocumentFragment` instead of `Nokogiri::XML::Document`
+</title>
+    <link>https://github.com/rails/rails/issues/50584</link>
+    <guid>https://github.com/rails/rails/issues/50584</guid>
+    <description>*   Parse `ActionView::TestCase#rendered` HTML content as `Nokogiri::XML::DocumentFragment` instead of `Nokogiri::XML::Document`
+
+    *Sean Doyle*</description>
+    <pubDate>Thu, 04 Jan 2024 22:38:53 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Parse <code>ActionView::TestCase#rendered</code> HTML content as <code>Nokogiri::XML::DocumentFragment</code> instead of <code>Nokogiri::XML::Document</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Rename `ActionView::TestCase::Behavior::{Content,RenderedViewContent}`
+</title>
+    <link>https://github.com/rails/rails/issues/49856</link>
+    <guid>https://github.com/rails/rails/issues/49856</guid>
+    <description>*   Rename `ActionView::TestCase::Behavior::{Content,RenderedViewContent}`
+
+    *Sean Doyle*</description>
+    <pubDate>Thu, 04 Jan 2024 19:47:38 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Rename <code>ActionView::TestCase::Behavior::{Content,RenderedViewContent}</code></p>
+
+<p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
