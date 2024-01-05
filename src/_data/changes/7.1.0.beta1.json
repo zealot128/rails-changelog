@@ -70,74 +70,94 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
-    "message": "*   Add `explain` support for `last`, `pluck` and `count`\n\n    Let `explain` return a proxy that delegates these methods:\n\n    ```ruby\n    User.all.explain.count\n    # EXPLAIN SELECT COUNT(*) FROM `users`\n    # ...\n\n    User.all.explain.maximum(:id)\n    # EXPLAIN SELECT MAX(`users`.`id`) FROM `users`\n    # ...\n    ```\n\n    *Petrik de Heus*",
+    "message": "*   Make `ActiveRecord::Encryption::Encryptor` agnostic of the serialization format used for encrypted data.\n\n    Previously, the encryptor instance only allowed an encrypted value serialized as a `String` to be passed to the message serializer.\n\n    Now, the encryptor lets the configured `message_serializer` decide which types of serialized encrypted values are supported. A custom serialiser is therefore allowed to serialize `ActiveRecord::Encryption::Message` objects using a type other than `String`.\n\n    The default `ActiveRecord::Encryption::MessageSerializer` already ensures that only `String` objects are passed for deserialization.\n\n    *Maxime Réty*",
     "project": "activerecord",
-    "date_merged": 1704408002000,
-    "author": "Petrik",
-    "sha": "1f83af389042b8f87b909b6a2892416e87e3b486",
-    "pr": "50482",
-    "merge_sha": "89693e5dde7676640765c51193060ac87b9e960f",
-    "html": "<p>Add <code>explain</code> support for <code>last</code>, <code>pluck</code> and <code>count</code></p>\n\n<p>Let <code>explain</code> return a proxy that delegates these methods:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">.</span><span class=\"nf\">explain</span><span class=\"p\">.</span><span class=\"nf\">count</span>\n<span class=\"c1\"># EXPLAIN SELECT COUNT(*) FROM `users`</span>\n<span class=\"c1\"># ...</span>\n\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">.</span><span class=\"nf\">explain</span><span class=\"p\">.</span><span class=\"nf\">maximum</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">)</span>\n<span class=\"c1\"># EXPLAIN SELECT MAX(`users`.`id`) FROM `users`</span>\n<span class=\"c1\"># ...</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+    "date_merged": 1704477950000,
+    "author": "maximerety",
+    "sha": "d0f3b007b25f9e267ce7748f116197ef7f844140",
+    "pr": "48685",
+    "merge_sha": "4470ad78d1062c923ef3401760b96a3ab4de6eee",
+    "html": "<p>Make <code>ActiveRecord::Encryption::Encryptor</code> agnostic of the serialization format used for encrypted data.</p>\n\n<p>Previously, the encryptor instance only allowed an encrypted value serialized as a <code>String</code> to be passed to the message serializer.</p>\n\n<p>Now, the encryptor lets the configured <code>message_serializer</code> decide which types of serialized encrypted values are supported. A custom serialiser is therefore allowed to serialize <code>ActiveRecord::Encryption::Message</code> objects using a type other than <code>String</code>.</p>\n\n<p>The default <code>ActiveRecord::Encryption::MessageSerializer</code> already ensures that only <code>String</code> objects are passed for deserialization.</p>\n\n<p><em>Maxime Réty</em></p>\n"
   },
   {
-    "message": "*   Validate using `:on` option when using `validates_associated`\n\n    Fixes an issue where `validates_associated` `:on`  option wasn't respected\n    when validated associated records.\n\n    *Austen Madden*, *Alex Ghiculescu*, *Rafał Brize*",
+    "message": "*   Fix `encrypted_attribute?` to take into account context properties passed to `encrypts`.\n\n    *Maxime Réty*",
     "project": "activerecord",
-    "date_merged": 1704311094000,
-    "author": "Austen Madden",
-    "sha": "e1e798142d357ad0d2d3ad6c03487d9ad6edc82d",
-    "pr": "46238",
-    "merge_sha": "b1fd934bbc17ebe6be5a07aae61c1b50e447b09b",
-    "html": "<p>Validate using <code>:on</code> option when using <code>validates_associated</code></p>\n\n<p>Fixes an issue where <code>validates_associated</code> <code>:on</code>  option wasn’t respected<br />\nwhen validated associated records.</p>\n\n<p><em>Austen Madden</em>, <em>Alex Ghiculescu</em>, <em>Rafał Brize</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "maximerety",
+    "sha": "e7432ae5bb2482c2dd4ec456d3a8bf08eaf8d85a",
+    "pr": "48922",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Fix <code>encrypted_attribute?</code> to take into account context properties passed to <code>encrypts</code>.</p>\n\n<p><em>Maxime Réty</em></p>\n"
   },
   {
-    "message": "*   Allow overriding SQLite defaults from `database.yml`\n\n    Any PRAGMA configuration set under the `pragmas` key in the configuration file take precedence over Rails' defaults, and additional PRAGMAs can be set as well.\n\n    ```yaml\n    database: storage/development.sqlite3\n    timeout: 5000\n    pragmas:\n      journal_mode: off\n      temp_store: memory\n    ```\n\n    *Stephen Margheim*",
+    "message": "*   The object returned by `explain` now responds to `pluck`, `first`,\n    `last`, `average`, `count`, `maximum`, `minimum`, and `sum`. Those\n    new methods run `EXPLAIN` on the corresponding queries:\n\n    ```ruby\n    User.all.explain.count\n    # EXPLAIN SELECT COUNT(*) FROM `users`\n    # ...\n\n    User.all.explain.maximum(:id)\n    # EXPLAIN SELECT MAX(`users`.`id`) FROM `users`\n    # ...\n    ```\n\n    *Petrik de Heus*",
     "project": "activerecord",
-    "date_merged": 1704224920000,
-    "author": "Stephen Margheim",
-    "sha": "8ac2af29ad7dc8c86bfb569e3375d8c1cd58a323",
-    "pr": "50460",
-    "merge_sha": "6c0f5f65a7d14d08aad200ae2865b84b4cdaa8b0",
-    "html": "<p>Allow overriding SQLite defaults from <code>database.yml</code></p>\n\n<p>Any PRAGMA configuration set under the <code>pragmas</code> key in the configuration file take precedence over Rails’ defaults, and additional PRAGMAs can be set as well.</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">storage/development.sqlite3</span>\n<span class=\"na\">timeout</span><span class=\"pi\">:</span> <span class=\"m\">5000</span>\n<span class=\"na\">pragmas</span><span class=\"pi\">:</span>\n  <span class=\"na\">journal_mode</span><span class=\"pi\">:</span> <span class=\"s\">off</span>\n  <span class=\"na\">temp_store</span><span class=\"pi\">:</span> <span class=\"s\">memory</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
+    "date_merged": 1704471743000,
+    "author": "Xavier Noria",
+    "sha": "6ab1c85dc0dbe6101127726cae9e0b5e7bc51188",
+    "pr": "50602",
+    "merge_sha": "21090a1319064fb3a3639d9b3ca84858c15da756",
+    "html": "<p>The object returned by <code>explain</code> now responds to <code>pluck</code>, <code>first</code>,<br />\n<code>last</code>, <code>average</code>, <code>count</code>, <code>maximum</code>, <code>minimum</code>, and <code>sum</code>. Those<br />\nnew methods run <code>EXPLAIN</code> on the corresponding queries:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">.</span><span class=\"nf\">explain</span><span class=\"p\">.</span><span class=\"nf\">count</span>\n<span class=\"c1\"># EXPLAIN SELECT COUNT(*) FROM `users`</span>\n<span class=\"c1\"># ...</span>\n\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">.</span><span class=\"nf\">explain</span><span class=\"p\">.</span><span class=\"nf\">maximum</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">)</span>\n<span class=\"c1\"># EXPLAIN SELECT MAX(`users`.`id`) FROM `users`</span>\n<span class=\"c1\"># ...</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
-    "message": "*   Remove warning message when running SQLite in production, but leave it unconfigured\n\n    There are valid use cases for running SQLite in production, however it must be done\n    with care, so instead of a warning most users won't see anyway, it's preferable to\n    leave the configuration commented out to force them to think about having the database\n    on a persistent volume etc.\n\n    *Jacopo Beschi*, *Jean Boussier*",
+    "message": "*   Fixes an issue where `validates_associated` `:on`  option wasn't respected\n    when validating associated records.\n\n    *Austen Madden*, *Alex Ghiculescu*, *Rafał Brize*",
     "project": "activerecord",
-    "date_merged": 1703716487000,
-    "author": "Jean Boussier",
-    "sha": "6b446bee63c401364d193920f3426af0bfe75650",
-    "pr": "50463",
-    "merge_sha": "354d1c42b45a380f201a24d060a3d1bc71010327",
-    "html": "<p>Remove warning message when running SQLite in production, but leave it unconfigured</p>\n\n<p>There are valid use cases for running SQLite in production, however it must be done<br />\nwith care, so instead of a warning most users won’t see anyway, it’s preferable to<br />\nleave the configuration commented out to force them to think about having the database<br />\non a persistent volume etc.</p>\n\n<p><em>Jacopo Beschi</em>, <em>Jean Boussier</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Fixes an issue where <code>validates_associated</code> <code>:on</code>  option wasn’t respected<br />\nwhen validating associated records.</p>\n\n<p><em>Austen Madden</em>, <em>Alex Ghiculescu</em>, <em>Rafał Brize</em></p>\n"
   },
   {
-    "message": "*   Add support for generated columns in SQLite3 adapter\n\n    Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.\n    This adds support for those to the SQLite3 adapter.\n\n    ```ruby\n    create_table :users do |t|\n      t.string :name\n      t.virtual :name_upper, type: :string, as: 'UPPER(name)'\n      t.virtual :name_lower, type: :string, as: 'LOWER(name)', stored: true\n    end\n    ```\n\n    *Stephen Margheim*",
+    "message": "*   Allow overriding SQLite defaults from `database.yml`.\n\n    Any PRAGMA configuration set under the `pragmas` key in the configuration\n    file takes precedence over Rails' defaults, and additional PRAGMAs can be\n    set as well.\n\n    ```yaml\n    database: storage/development.sqlite3\n    timeout: 5000\n    pragmas:\n      journal_mode: off\n      temp_store: memory\n    ```\n\n    *Stephen Margheim*",
     "project": "activerecord",
-    "date_merged": 1702575263000,
-    "author": "Stephen Margheim",
-    "sha": "4e7bdcf93a43cfc380439e56251b48ddb152c93b",
-    "pr": "49346",
-    "merge_sha": "9064735ec5cd3c679f8ffabc42532dd85223af58",
-    "html": "<p>Add support for generated columns in SQLite3 adapter</p>\n\n<p>Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.<br />\nThis adds support for those to the SQLite3 adapter.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">create_table</span> <span class=\"ss\">:users</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:name</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">virtual</span> <span class=\"ss\">:name_upper</span><span class=\"p\">,</span> <span class=\"ss\">type: :string</span><span class=\"p\">,</span> <span class=\"ss\">as: </span><span class=\"s1\">'UPPER(name)'</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">virtual</span> <span class=\"ss\">:name_lower</span><span class=\"p\">,</span> <span class=\"ss\">type: :string</span><span class=\"p\">,</span> <span class=\"ss\">as: </span><span class=\"s1\">'LOWER(name)'</span><span class=\"p\">,</span> <span class=\"ss\">stored: </span><span class=\"kp\">true</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Allow overriding SQLite defaults from <code>database.yml</code>.</p>\n\n<p>Any PRAGMA configuration set under the <code>pragmas</code> key in the configuration<br />\nfile takes precedence over Rails’ defaults, and additional PRAGMAs can be<br />\nset as well.</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">storage/development.sqlite3</span>\n<span class=\"na\">timeout</span><span class=\"pi\">:</span> <span class=\"m\">5000</span>\n<span class=\"na\">pragmas</span><span class=\"pi\">:</span>\n  <span class=\"na\">journal_mode</span><span class=\"pi\">:</span> <span class=\"s\">off</span>\n  <span class=\"na\">temp_store</span><span class=\"pi\">:</span> <span class=\"s\">memory</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
   },
   {
-    "message": "*   TrilogyAdapter: ignore `host` if `socket` parameter is set.\n\n    This allows to configure a connection on a UNIX socket via DATABASE_URL:\n\n    ```\n    DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock\n    ```\n\n    *Jean Boussier*",
+    "message": "*   Remove warning message when running SQLite in production, but leave it unconfigured.\n\n    There are valid use cases for running SQLite in production. However, it must be done\n    with care, so instead of a warning most users won't see anyway, it's preferable to\n    leave the configuration commented out to force them to think about having the database\n    on a persistent volume etc.\n\n    *Jacopo Beschi*, *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Remove warning message when running SQLite in production, but leave it unconfigured.</p>\n\n<p>There are valid use cases for running SQLite in production. However, it must be done<br />\nwith care, so instead of a warning most users won’t see anyway, it’s preferable to<br />\nleave the configuration commented out to force them to think about having the database<br />\non a persistent volume etc.</p>\n\n<p><em>Jacopo Beschi</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add support for generated columns to the SQLite3 adapter.\n\n    Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.\n    This adds support for those to the SQLite3 adapter.\n\n    ```ruby\n    create_table :users do |t|\n      t.string :name\n      t.virtual :name_upper, type: :string, as: 'UPPER(name)'\n      t.virtual :name_lower, type: :string, as: 'LOWER(name)', stored: true\n    end\n    ```\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Add support for generated columns to the SQLite3 adapter.</p>\n\n<p>Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.<br />\nThis adds support for those to the SQLite3 adapter.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">create_table</span> <span class=\"ss\">:users</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:name</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">virtual</span> <span class=\"ss\">:name_upper</span><span class=\"p\">,</span> <span class=\"ss\">type: :string</span><span class=\"p\">,</span> <span class=\"ss\">as: </span><span class=\"s1\">'UPPER(name)'</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">virtual</span> <span class=\"ss\">:name_lower</span><span class=\"p\">,</span> <span class=\"ss\">type: :string</span><span class=\"p\">,</span> <span class=\"ss\">as: </span><span class=\"s1\">'LOWER(name)'</span><span class=\"p\">,</span> <span class=\"ss\">stored: </span><span class=\"kp\">true</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
+    "message": "*   TrilogyAdapter: ignore `host` if `socket` parameter is set.\n\n    This allows to configure a connection on a UNIX socket via `DATABASE_URL`:\n\n    ```\n    DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock\n    ```\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1702486490000,
     "author": "Jean Boussier",
     "sha": "0fe087eb5635864d7c98e6d88a5535f50bb48f8a",
     "pr": "50349",
     "merge_sha": "bec5cde2751c7d4cbf7d68e9ef7fbeabab10d69b",
-    "html": "<p>TrilogyAdapter: ignore <code>host</code> if <code>socket</code> parameter is set.</p>\n\n<p>This allows to configure a connection on a UNIX socket via DATABASE_URL:</p>\n\n<pre><code>DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock\n</code></pre>\n\n<p><em>Jean Boussier</em></p>\n"
+    "html": "<p>TrilogyAdapter: ignore <code>host</code> if <code>socket</code> parameter is set.</p>\n\n<p>This allows to configure a connection on a UNIX socket via <code>DATABASE_URL</code>:</p>\n\n<pre><code>DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock\n</code></pre>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
-    "message": "*   Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match` and\n    `assert_no_queries_match` assertions public.\n\n    To assert the expected number of queries are made, Rails internally uses `assert_queries_count` and\n    `assert_no_queries`. To assert that specific SQL queries are made, `assert_queries_match` and\n    `assert_no_queries_match` are used. These assertions can now be used in applications as well.\n\n    ```ruby\n    class ArticleTest < ActiveSupport::TestCase\n      test \"queries are made\" do\n        assert_queries_count(1) { Article.first }\n      end\n\n      test \"creates a foreign key\" do\n        assert_queries_match(/ADD FOREIGN KEY/i, include_schema: true) do\n          @connection.add_foreign_key(:comments, :posts)\n        end\n      end\n    end\n    ```\n\n    *Petrik de Heus*, *fatkodima*",
+    "message": "*   Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match`, and\n    `assert_no_queries_match` assertions public.\n\n    To assert the expected number of queries are made, Rails internally uses `assert_queries_count` and\n    `assert_no_queries`. To assert that specific SQL queries are made, `assert_queries_match` and\n    `assert_no_queries_match` are used. These assertions can now be used in applications as well.\n\n    ```ruby\n    class ArticleTest < ActiveSupport::TestCase\n      test \"queries are made\" do\n        assert_queries_count(1) { Article.first }\n      end\n\n      test \"creates a foreign key\" do\n        assert_queries_match(/ADD FOREIGN KEY/i, include_schema: true) do\n          @connection.add_foreign_key(:comments, :posts)\n        end\n      end\n    end\n    ```\n\n    *Petrik de Heus*, *fatkodima*",
     "project": "activerecord",
-    "date_merged": 1703159950000,
-    "author": "fatkodima",
-    "sha": "f48bbff32c8e090219065a3dcf0fbe5feb887fb8",
-    "pr": "50373",
-    "merge_sha": "60df08920f13fb7ce84334ad81227af27c7d021d",
-    "html": "<p>Make <code>assert_queries_count</code>, <code>assert_no_queries</code>, <code>assert_queries_match</code> and<br />\n<code>assert_no_queries_match</code> assertions public.</p>\n\n<p>To assert the expected number of queries are made, Rails internally uses <code>assert_queries_count</code> and<br />\n<code>assert_no_queries</code>. To assert that specific SQL queries are made, <code>assert_queries_match</code> and<br />\n<code>assert_no_queries_match</code> are used. These assertions can now be used in applications as well.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ArticleTest</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">TestCase</span>\n  <span class=\"nb\">test</span> <span class=\"s2\">\"queries are made\"</span> <span class=\"k\">do</span>\n    <span class=\"n\">assert_queries_count</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">first</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"nb\">test</span> <span class=\"s2\">\"creates a foreign key\"</span> <span class=\"k\">do</span>\n    <span class=\"n\">assert_queries_match</span><span class=\"p\">(</span><span class=\"sr\">/ADD FOREIGN KEY/i</span><span class=\"p\">,</span> <span class=\"ss\">include_schema: </span><span class=\"kp\">true</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n      <span class=\"vi\">@connection</span><span class=\"p\">.</span><span class=\"nf\">add_foreign_key</span><span class=\"p\">(</span><span class=\"ss\">:comments</span><span class=\"p\">,</span> <span class=\"ss\">:posts</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em>, <em>fatkodima</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Make <code>assert_queries_count</code>, <code>assert_no_queries</code>, <code>assert_queries_match</code>, and<br />\n<code>assert_no_queries_match</code> assertions public.</p>\n\n<p>To assert the expected number of queries are made, Rails internally uses <code>assert_queries_count</code> and<br />\n<code>assert_no_queries</code>. To assert that specific SQL queries are made, <code>assert_queries_match</code> and<br />\n<code>assert_no_queries_match</code> are used. These assertions can now be used in applications as well.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ArticleTest</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">TestCase</span>\n  <span class=\"nb\">test</span> <span class=\"s2\">\"queries are made\"</span> <span class=\"k\">do</span>\n    <span class=\"n\">assert_queries_count</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">first</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"nb\">test</span> <span class=\"s2\">\"creates a foreign key\"</span> <span class=\"k\">do</span>\n    <span class=\"n\">assert_queries_match</span><span class=\"p\">(</span><span class=\"sr\">/ADD FOREIGN KEY/i</span><span class=\"p\">,</span> <span class=\"ss\">include_schema: </span><span class=\"kp\">true</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n      <span class=\"vi\">@connection</span><span class=\"p\">.</span><span class=\"nf\">add_foreign_key</span><span class=\"p\">(</span><span class=\"ss\">:comments</span><span class=\"p\">,</span> <span class=\"ss\">:posts</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em>, <em>fatkodima</em></p>\n"
   },
   {
     "message": "*   Fix `has_secure_token` calls the setter method on initialize.\n\n    *Abeid Ahmed*",
@@ -170,14 +190,14 @@
     "html": "<p>In cases where MySQL returns <code>warning_count</code> greater than zero, but returns no warnings when<br />\nthe <code>SHOW WARNINGS</code> query is executed, <code>ActiveRecord.db_warnings_action</code> proc will still be<br />\ncalled with a generic warning message rather than silently ignoring the warning(s).</p>\n\n<p><em>Kevin McPhillips</em></p>\n"
   },
   {
-    "message": "*   `DatabaseConfigurations#configs_for` can accept a symbol in the `name` parameter.\n\n    *Andrew Novoselac*",
+    "message": "*   `DatabaseConfigurations#configs_for` accepts a symbol in the `name` parameter.\n\n    *Andrew Novoselac*",
     "project": "activerecord",
-    "date_merged": 1700076950000,
-    "author": "Andrew Novoselac",
-    "sha": "c7063f944a69f2821e3624ccaf6ec0b8df962197",
-    "pr": "50061",
-    "merge_sha": "d424cab95126a6e08d86bb79da3e42877f6f3293",
-    "html": "<p><code>DatabaseConfigurations#configs_for</code> can accept a symbol in the <code>name</code> parameter.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p><code>DatabaseConfigurations#configs_for</code> accepts a symbol in the <code>name</code> parameter.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
   },
   {
     "message": "*   Fix `where(field: values)` queries when `field` is a serialized attribute\n    (for example, when `field` uses `ActiveRecord::Base.serialize` or is a JSON\n    column).\n\n    *João Alves*",
@@ -190,64 +210,64 @@
     "html": "<p>Fix <code>where(field: values)</code> queries when <code>field</code> is a serialized attribute<br />\n(for example, when <code>field</code> uses <code>ActiveRecord::Base.serialize</code> or is a JSON<br />\ncolumn).</p>\n\n<p><em>João Alves</em></p>\n"
   },
   {
-    "message": "*   Make the output of `ActiveRecord::Core#inspect` configurable.\n\n    By default, calling `inspect` on a record will yield a formatted string including just the `id`.\n\n    ```ruby\n    Post.first.inspect #=> \"#<Post id: 1>\"\n    ```\n\n    The attributes to be included in the output of `inspect` can be configured with\n    `ActiveRecord::Core#attributes_for_inspect`.\n\n    ```ruby\n    Post.attributes_for_inspect = [:id, :title]\n    Post.first.inspect #=> \"#<Post id: 1, title: \"Hello, World!\">\"\n    ```\n\n    With the `attributes_for_inspect` set to `:all`, `inspect` will list all the record's attributes.\n\n    ```ruby\n    Post.attributes_for_inspect = :all\n    Post.first.inspect #=> \"#<Post id: 1, title: \"Hello, World!\", published_at: \"2023-10-23 14:28:11 +0000\">\"\n    ```\n\n    In development and test mode, `attributes_for_inspect` will be set to `:all` by default.\n\n    You can also call `full_inspect` to get an inspection with all the attributes.\n\n    The attributes in `attribute_for_inspect` will also be used for `pretty_print`.\n\n    *Andrew Novoselac*",
+    "message": "*   Make the output of `ActiveRecord::Core#inspect` configurable.\n\n    By default, calling `inspect` on a record will yield a formatted string including just the `id`.\n\n    ```ruby\n    Post.first.inspect #=> \"#<Post id: 1>\"\n    ```\n\n    The attributes to be included in the output of `inspect` can be configured with\n    `ActiveRecord::Core#attributes_for_inspect`.\n\n    ```ruby\n    Post.attributes_for_inspect = [:id, :title]\n    Post.first.inspect #=> \"#<Post id: 1, title: \"Hello, World!\">\"\n    ```\n\n    With `attributes_for_inspect` set to `:all`, `inspect` will list all the record's attributes.\n\n    ```ruby\n    Post.attributes_for_inspect = :all\n    Post.first.inspect #=> \"#<Post id: 1, title: \"Hello, World!\", published_at: \"2023-10-23 14:28:11 +0000\">\"\n    ```\n\n    In `development` and `test` mode, `attributes_for_inspect` will be set to `:all` by default.\n\n    You can also call `full_inspect` to get an inspection with all the attributes.\n\n    The attributes in `attribute_for_inspect` will also be used for `pretty_print`.\n\n    *Andrew Novoselac*",
     "project": "activerecord",
     "date_merged": 1699474116000,
     "author": "Andrew Novoselac",
     "sha": "e50182a42c8cb1f5f987c44b1764918a4bac5d10",
     "pr": "49765",
     "merge_sha": "ee42128bc11fdfdb4f0ffce13ef9c4c6097935c1",
-    "html": "<p>Make the output of <code>ActiveRecord::Core#inspect</code> configurable.</p>\n\n<p>By default, calling <code>inspect</code> on a record will yield a formatted string including just the <code>id</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">inspect</span> <span class=\"c1\">#=&gt; \"#&lt;Post id: 1&gt;\"</span>\n</code></pre></div></div>\n\n<p>The attributes to be included in the output of <code>inspect</code> can be configured with<br />\n<code>ActiveRecord::Core#attributes_for_inspect</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">attributes_for_inspect</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">,</span> <span class=\"ss\">:title</span><span class=\"p\">]</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">inspect</span> <span class=\"c1\">#=&gt; \"#&lt;Post id: 1, title: \"Hello, World!\"&gt;\"</span>\n</code></pre></div></div>\n\n<p>With the <code>attributes_for_inspect</code> set to <code>:all</code>, <code>inspect</code> will list all the record’s attributes.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">attributes_for_inspect</span> <span class=\"o\">=</span> <span class=\"ss\">:all</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">inspect</span> <span class=\"c1\">#=&gt; \"#&lt;Post id: 1, title: \"Hello, World!\", published_at: \"2023-10-23 14:28:11 +0000\"&gt;\"</span>\n</code></pre></div></div>\n\n<p>In development and test mode, <code>attributes_for_inspect</code> will be set to <code>:all</code> by default.</p>\n\n<p>You can also call <code>full_inspect</code> to get an inspection with all the attributes.</p>\n\n<p>The attributes in <code>attribute_for_inspect</code> will also be used for <code>pretty_print</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+    "html": "<p>Make the output of <code>ActiveRecord::Core#inspect</code> configurable.</p>\n\n<p>By default, calling <code>inspect</code> on a record will yield a formatted string including just the <code>id</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">inspect</span> <span class=\"c1\">#=&gt; \"#&lt;Post id: 1&gt;\"</span>\n</code></pre></div></div>\n\n<p>The attributes to be included in the output of <code>inspect</code> can be configured with<br />\n<code>ActiveRecord::Core#attributes_for_inspect</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">attributes_for_inspect</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">,</span> <span class=\"ss\">:title</span><span class=\"p\">]</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">inspect</span> <span class=\"c1\">#=&gt; \"#&lt;Post id: 1, title: \"Hello, World!\"&gt;\"</span>\n</code></pre></div></div>\n\n<p>With <code>attributes_for_inspect</code> set to <code>:all</code>, <code>inspect</code> will list all the record’s attributes.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">attributes_for_inspect</span> <span class=\"o\">=</span> <span class=\"ss\">:all</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">inspect</span> <span class=\"c1\">#=&gt; \"#&lt;Post id: 1, title: \"Hello, World!\", published_at: \"2023-10-23 14:28:11 +0000\"&gt;\"</span>\n</code></pre></div></div>\n\n<p>In <code>development</code> and <code>test</code> mode, <code>attributes_for_inspect</code> will be set to <code>:all</code> by default.</p>\n\n<p>You can also call <code>full_inspect</code> to get an inspection with all the attributes.</p>\n\n<p>The attributes in <code>attribute_for_inspect</code> will also be used for <code>pretty_print</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
   },
   {
-    "message": "*   Don't mark Float::INFINITY as changed when reassigning it\n\n    When saving a record with a float infinite value, it shouldn't mark as changed\n\n    *Maicol Bentancor*",
+    "message": "*   Don't mark attributes as changed when reassigned to `Float::INFINITY` or\n    `-Float::INFINITY`.\n\n    *Maicol Bentancor*",
     "project": "activerecord",
-    "date_merged": 1699282049000,
-    "author": "MaicolBen",
-    "sha": "19869e765ee8174e8890fc65c7ea7ba039665608",
-    "pr": "49904",
-    "merge_sha": "8d778e0708196bdac2ce0d18e24600735469f1a3",
-    "html": "<p>Don’t mark Float::INFINITY as changed when reassigning it</p>\n\n<p>When saving a record with a float infinite value, it shouldn’t mark as changed</p>\n\n<p><em>Maicol Bentancor</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Don’t mark attributes as changed when reassigned to <code>Float::INFINITY</code> or<br />\n<code>-Float::INFINITY</code>.</p>\n\n<p><em>Maicol Bentancor</em></p>\n"
   },
   {
-    "message": "*   Support `RETURNING` clause for MariaDB\n\n    *fatkodima*, *Nikolay Kondratyev*",
+    "message": "*   Support the `RETURNING` clause for MariaDB.\n\n    *fatkodima*, *Nikolay Kondratyev*",
     "project": "activerecord",
-    "date_merged": 1698739730000,
-    "author": "fatkodima",
-    "sha": "81eeecda7e522c9f79aa731b8ba1dc0823a2f898",
-    "pr": "49840",
-    "merge_sha": "cb185fcf66dadc4373f0934a8e3c168f40759a5a",
-    "html": "<p>Support <code>RETURNING</code> clause for MariaDB</p>\n\n<p><em>fatkodima</em>, <em>Nikolay Kondratyev</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Support the <code>RETURNING</code> clause for MariaDB.</p>\n\n<p><em>fatkodima</em>, <em>Nikolay Kondratyev</em></p>\n"
   },
   {
-    "message": "*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract\n\n    Allows foreign keys to be deferred by adding the `:deferrable` key to the `foreign_key` options.\n\n    ```ruby\n    add_reference :person, :alias, foreign_key: { deferrable: :deferred }\n    add_reference :alias, :person, foreign_key: { deferrable: :deferred }\n    ```\n\n    *Stephen Margheim*",
+    "message": "*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract.\n\n    Allows foreign keys to be deferred by adding the `:deferrable` key to the `foreign_key` options.\n\n    ```ruby\n    add_reference :person, :alias, foreign_key: { deferrable: :deferred }\n    add_reference :alias, :person, foreign_key: { deferrable: :deferred }\n    ```\n\n    *Stephen Margheim*",
     "project": "activerecord",
-    "date_merged": 1698544746000,
-    "author": "Stephen Margheim",
-    "sha": "ea17941e39225eca81880c770644652c4612dc69",
-    "pr": "49376",
-    "merge_sha": "a561dd4b2928459feb313b2db0910d2bc0133864",
-    "html": "<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract</p>\n\n<p>Allows foreign keys to be deferred by adding the <code>:deferrable</code> key to the <code>foreign_key</code> options.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_reference</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n<span class=\"n\">add_reference</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract.</p>\n\n<p>Allows foreign keys to be deferred by adding the <code>:deferrable</code> key to the <code>foreign_key</code> options.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_reference</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n<span class=\"n\">add_reference</span> <span class=\"ss\">:alias</span><span class=\"p\">,</span> <span class=\"ss\">:person</span><span class=\"p\">,</span> <span class=\"ss\">foreign_key: </span><span class=\"p\">{</span> <span class=\"ss\">deferrable: :deferred</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
   },
   {
-    "message": "*   Add `set_constraints` helper for PostgreSQL\n\n    ```ruby\n    Post.create!(user_id: -1) # => ActiveRecord::InvalidForeignKey\n\n    Post.transaction do\n      Post.connection.set_constraints(:deferred)\n      p = Post.create!(user_id: -1)\n      u = User.create!\n      p.user = u\n      p.save!\n    end\n    ```\n\n    *Cody Cutrer*",
+    "message": "*   Add the `set_constraints` helper to PostgreSQL connections.\n\n    ```ruby\n    Post.create!(user_id: -1) # => ActiveRecord::InvalidForeignKey\n\n    Post.transaction do\n      Post.connection.set_constraints(:deferred)\n      p = Post.create!(user_id: -1)\n      u = User.create!\n      p.user = u\n      p.save!\n    end\n    ```\n\n    *Cody Cutrer*",
     "project": "activerecord",
-    "date_merged": 1698471624000,
-    "author": "Cody Cutrer",
-    "sha": "f9fee1a3cbbcfe95cfd212c1861469e07f2e5642",
-    "pr": "49187",
-    "merge_sha": "6c63b9b090e48bde20eea2881fe0ed56360fe6c1",
-    "html": "<p>Add <code>set_constraints</code> helper for PostgreSQL</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; ActiveRecord::InvalidForeignKey</span>\n\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n  <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">connection</span><span class=\"p\">.</span><span class=\"nf\">set_constraints</span><span class=\"p\">(</span><span class=\"ss\">:deferred</span><span class=\"p\">)</span>\n  <span class=\"nb\">p</span> <span class=\"o\">=</span> <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n  <span class=\"n\">u</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create!</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">user</span> <span class=\"o\">=</span> <span class=\"n\">u</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">save!</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Cody Cutrer</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Add the <code>set_constraints</code> helper to PostgreSQL connections.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; ActiveRecord::InvalidForeignKey</span>\n\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n  <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">connection</span><span class=\"p\">.</span><span class=\"nf\">set_constraints</span><span class=\"p\">(</span><span class=\"ss\">:deferred</span><span class=\"p\">)</span>\n  <span class=\"nb\">p</span> <span class=\"o\">=</span> <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n  <span class=\"n\">u</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create!</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">user</span> <span class=\"o\">=</span> <span class=\"n\">u</span>\n  <span class=\"nb\">p</span><span class=\"p\">.</span><span class=\"nf\">save!</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Cody Cutrer</em></p>\n"
   },
   {
-    "message": "*   Include `ActiveModel::API` in `ActiveRecord::Base`\n\n    *Sean Doyle*",
+    "message": "*   Include `ActiveModel::API` in `ActiveRecord::Base`.\n\n    *Sean Doyle*",
     "project": "activerecord",
-    "date_merged": 1697644075000,
-    "author": "Sean Doyle",
-    "sha": "2c57ec6a179e5fb851aca1bdc4b11b17d99a93c8",
-    "pr": "49680",
-    "merge_sha": "00dfa109d6a5f4fb13d745f83d5cc779eba3b352",
-    "html": "<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+    "date_merged": 1704477686000,
+    "author": "Xavier Noria",
+    "sha": "6ca3a2ea4f6f756f29e5c9688805792855747172",
+    "pr": "48923",
+    "merge_sha": "1866ea93ad31766b10e478d0b5fce8b6e2f3f73f",
+    "html": "<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Ensure `#signed_id` outputs `url_safe` strings.\n\n    *Jason Meller*",
@@ -910,14 +930,24 @@
     "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
-    "message": "*   Add two new assertion methods for ActionCable test cases: `assert_not_has_stream`\n    and `assert_not_has_stream_for`. These methods can be used to assert that a\n    stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement\n    the already existing `assert_has_stream` and `assert_has_stream_for` methods.\n\n    ```ruby\n    assert_not_has_stream \"messages\"\n    assert_not_has_stream_for User.find(42)\n    ```\n\n    *Sebastian Pöll*",
+    "message": "*   Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`\n    and `assert_has_no_stream_for`. These methods can be used to assert that a\n    stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement\n    the already existing `assert_has_stream` and `assert_has_stream_for` methods.\n\n    ```ruby\n    assert_has_no_stream \"messages\"\n    assert_has_no_stream_for User.find(42)\n    ```\n\n    *Sebastian Pöll*, *Junichi Sato*",
     "project": "actioncable",
-    "date_merged": 1704403302000,
-    "author": "Sebi",
-    "sha": "d9e2b159f9e40626a119c05645b5bd1e82e8588c",
-    "pr": "50585",
-    "merge_sha": "bed0b44e3c5af4c22d88ff25dbf0a5c67c0e2a7b",
-    "html": "<p>Add two new assertion methods for ActionCable test cases: <code>assert_not_has_stream</code><br />\nand <code>assert_not_has_stream_for</code>. These methods can be used to assert that a<br />\nstream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />\nthe already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_not_has_stream</span> <span class=\"s2\">\"messages\"</span>\n<span class=\"n\">assert_not_has_stream_for</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">42</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Sebastian Pöll</em></p>\n"
+    "date_merged": 1704467031000,
+    "author": "Junichi Sato",
+    "sha": "523f86964f688b086efc610cfa51d2c9e4ee674c",
+    "pr": "50589",
+    "merge_sha": "de30889d0d2bc213207596d90ffa136e7c820e06",
+    "html": "<p>Add two new assertion methods for ActionCable test cases: <code>assert_has_no_stream</code><br />\nand <code>assert_has_no_stream_for</code>. These methods can be used to assert that a<br />\nstream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />\nthe already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_has_no_stream</span> <span class=\"s2\">\"messages\"</span>\n<span class=\"n\">assert_has_no_stream_for</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">42</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>\n"
+  },
+  {
+    "message": "*   Add the `nonce: true` option for `stylesheet_link_tag` helper to support automatic nonce generation for Content Security Policy.\n    Works the same way as `javascript_include_tag nonce: true` does.\n\n    *Akhil G Krishnan*, *AJ Esler*",
+    "project": "actionview",
+    "date_merged": 1704468553000,
+    "author": "Akhil G Krishnan",
+    "sha": "7fa6d158904e02f6a2e82cf8ba8ec9adc5dbc992",
+    "pr": "50591",
+    "merge_sha": "8c4af05a382d477506591c8fedbdf67ac080c4ea",
+    "html": "<p>Add the <code>nonce: true</code> option for <code>stylesheet_link_tag</code> helper to support automatic nonce generation for Content Security Policy.<br />\nWorks the same way as <code>javascript_include_tag nonce: true</code> does.</p>\n\n<p><em>Akhil G Krishnan</em>, <em>AJ Esler</em></p>\n"
   },
   {
     "message": "*   Parse `ActionView::TestCase#rendered` HTML content as `Nokogiri::XML::DocumentFragment` instead of `Nokogiri::XML::Document`\n\n    *Sean Doyle*",
