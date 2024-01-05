@@ -111,13 +111,55 @@
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add `explain` support for `last`, `pluck` and `count`
+    <title>activerecord: Make `ActiveRecord::Encryption::Encryptor` agnostic of the serialization format used for encrypted data.
 </title>
-    <link>https://github.com/rails/rails/issues/50482</link>
-    <guid>https://github.com/rails/rails/issues/50482</guid>
-    <description>*   Add `explain` support for `last`, `pluck` and `count`
+    <link>https://github.com/rails/rails/issues/48685</link>
+    <guid>https://github.com/rails/rails/issues/48685</guid>
+    <description>*   Make `ActiveRecord::Encryption::Encryptor` agnostic of the serialization format used for encrypted data.
 
-    Let `explain` return a proxy that delegates these methods:
+    Previously, the encryptor instance only allowed an encrypted value serialized as a `String` to be passed to the message serializer.
+
+    Now, the encryptor lets the configured `message_serializer` decide which types of serialized encrypted values are supported. A custom serialiser is therefore allowed to serialize `ActiveRecord::Encryption::Message` objects using a type other than `String`.
+
+    The default `ActiveRecord::Encryption::MessageSerializer` already ensures that only `String` objects are passed for deserialization.
+
+    *Maxime Réty*</description>
+    <pubDate>Fri, 05 Jan 2024 18:05:50 +0000</pubDate>
+    <author>maximerety</author>
+    <content:encoded><![CDATA[<p>Make <code>ActiveRecord::Encryption::Encryptor</code> agnostic of the serialization format used for encrypted data.</p>
+
+<p>Previously, the encryptor instance only allowed an encrypted value serialized as a <code>String</code> to be passed to the message serializer.</p>
+
+<p>Now, the encryptor lets the configured <code>message_serializer</code> decide which types of serialized encrypted values are supported. A custom serialiser is therefore allowed to serialize <code>ActiveRecord::Encryption::Message</code> objects using a type other than <code>String</code>.</p>
+
+<p>The default <code>ActiveRecord::Encryption::MessageSerializer</code> already ensures that only <code>String</code> objects are passed for deserialization.</p>
+
+<p><em>Maxime Réty</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix `encrypted_attribute?` to take into account context properties passed to `encrypts`.
+</title>
+    <link>https://github.com/rails/rails/issues/48922</link>
+    <guid>https://github.com/rails/rails/issues/48922</guid>
+    <description>*   Fix `encrypted_attribute?` to take into account context properties passed to `encrypts`.
+
+    *Maxime Réty*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>maximerety</author>
+    <content:encoded><![CDATA[<p>Fix <code>encrypted_attribute?</code> to take into account context properties passed to <code>encrypts</code>.</p>
+
+<p><em>Maxime Réty</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: The object returned by `explain` now responds to `pluck`, `first`,
+</title>
+    <link>https://github.com/rails/rails/issues/50602</link>
+    <guid>https://github.com/rails/rails/issues/50602</guid>
+    <description>*   The object returned by `explain` now responds to `pluck`, `first`,
+    `last`, `average`, `count`, `maximum`, `minimum`, and `sum`. Those
+    new methods run `EXPLAIN` on the corresponding queries:
 
     ```ruby
     User.all.explain.count
@@ -130,11 +172,11 @@
     ```
 
     *Petrik de Heus*</description>
-    <pubDate>Thu, 04 Jan 2024 22:40:02 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Add <code>explain</code> support for <code>last</code>, <code>pluck</code> and <code>count</code></p>
-
-<p>Let <code>explain</code> return a proxy that delegates these methods:</p>
+    <pubDate>Fri, 05 Jan 2024 16:22:23 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>The object returned by <code>explain</code> now responds to <code>pluck</code>, <code>first</code>,<br />
+<code>last</code>, <code>average</code>, <code>count</code>, <code>maximum</code>, <code>minimum</code>, and <code>sum</code>. Those<br />
+new methods run <code>EXPLAIN</code> on the corresponding queries:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">explain</span><span class="p">.</span><span class="nf">count</span>
 <span class="c1"># EXPLAIN SELECT COUNT(*) FROM `users`</span>
@@ -149,34 +191,32 @@
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Validate using `:on` option when using `validates_associated`
+    <title>activerecord: Fixes an issue where `validates_associated` `:on`  option wasn&#39;t respected
 </title>
-    <link>https://github.com/rails/rails/issues/46238</link>
-    <guid>https://github.com/rails/rails/issues/46238</guid>
-    <description>*   Validate using `:on` option when using `validates_associated`
-
-    Fixes an issue where `validates_associated` `:on`  option wasn&#39;t respected
-    when validated associated records.
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Fixes an issue where `validates_associated` `:on`  option wasn&#39;t respected
+    when validating associated records.
 
     *Austen Madden*, *Alex Ghiculescu*, *Rafał Brize*</description>
-    <pubDate>Wed, 03 Jan 2024 19:44:54 +0000</pubDate>
-    <author>Austen Madden</author>
-    <content:encoded><![CDATA[<p>Validate using <code>:on</code> option when using <code>validates_associated</code></p>
-
-<p>Fixes an issue where <code>validates_associated</code> <code>:on</code>  option wasn’t respected<br />
-when validated associated records.</p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Fixes an issue where <code>validates_associated</code> <code>:on</code>  option wasn’t respected<br />
+when validating associated records.</p>
 
 <p><em>Austen Madden</em>, <em>Alex Ghiculescu</em>, <em>Rafał Brize</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Allow overriding SQLite defaults from `database.yml`
+    <title>activerecord: Allow overriding SQLite defaults from `database.yml`.
 </title>
-    <link>https://github.com/rails/rails/issues/50460</link>
-    <guid>https://github.com/rails/rails/issues/50460</guid>
-    <description>*   Allow overriding SQLite defaults from `database.yml`
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Allow overriding SQLite defaults from `database.yml`.
 
-    Any PRAGMA configuration set under the `pragmas` key in the configuration file take precedence over Rails&#39; defaults, and additional PRAGMAs can be set as well.
+    Any PRAGMA configuration set under the `pragmas` key in the configuration
+    file takes precedence over Rails&#39; defaults, and additional PRAGMAs can be
+    set as well.
 
     ```yaml
     database: storage/development.sqlite3
@@ -187,11 +227,13 @@ when validated associated records.</p>
     ```
 
     *Stephen Margheim*</description>
-    <pubDate>Tue, 02 Jan 2024 19:48:40 +0000</pubDate>
-    <author>Stephen Margheim</author>
-    <content:encoded><![CDATA[<p>Allow overriding SQLite defaults from <code>database.yml</code></p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Allow overriding SQLite defaults from <code>database.yml</code>.</p>
 
-<p>Any PRAGMA configuration set under the <code>pragmas</code> key in the configuration file take precedence over Rails’ defaults, and additional PRAGMAs can be set as well.</p>
+<p>Any PRAGMA configuration set under the <code>pragmas</code> key in the configuration<br />
+file takes precedence over Rails’ defaults, and additional PRAGMAs can be<br />
+set as well.</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">database</span><span class="pi">:</span> <span class="s">storage/development.sqlite3</span>
 <span class="na">timeout</span><span class="pi">:</span> <span class="m">5000</span>
@@ -204,23 +246,23 @@ when validated associated records.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Remove warning message when running SQLite in production, but leave it unconfigured
+    <title>activerecord: Remove warning message when running SQLite in production, but leave it unconfigured.
 </title>
-    <link>https://github.com/rails/rails/issues/50463</link>
-    <guid>https://github.com/rails/rails/issues/50463</guid>
-    <description>*   Remove warning message when running SQLite in production, but leave it unconfigured
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Remove warning message when running SQLite in production, but leave it unconfigured.
 
-    There are valid use cases for running SQLite in production, however it must be done
+    There are valid use cases for running SQLite in production. However, it must be done
     with care, so instead of a warning most users won&#39;t see anyway, it&#39;s preferable to
     leave the configuration commented out to force them to think about having the database
     on a persistent volume etc.
 
     *Jacopo Beschi*, *Jean Boussier*</description>
-    <pubDate>Wed, 27 Dec 2023 22:34:47 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Remove warning message when running SQLite in production, but leave it unconfigured</p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Remove warning message when running SQLite in production, but leave it unconfigured.</p>
 
-<p>There are valid use cases for running SQLite in production, however it must be done<br />
+<p>There are valid use cases for running SQLite in production. However, it must be done<br />
 with care, so instead of a warning most users won’t see anyway, it’s preferable to<br />
 leave the configuration commented out to force them to think about having the database<br />
 on a persistent volume etc.</p>
@@ -229,11 +271,11 @@ on a persistent volume etc.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add support for generated columns in SQLite3 adapter
+    <title>activerecord: Add support for generated columns to the SQLite3 adapter.
 </title>
-    <link>https://github.com/rails/rails/issues/49346</link>
-    <guid>https://github.com/rails/rails/issues/49346</guid>
-    <description>*   Add support for generated columns in SQLite3 adapter
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Add support for generated columns to the SQLite3 adapter.
 
     Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.
     This adds support for those to the SQLite3 adapter.
@@ -247,9 +289,9 @@ on a persistent volume etc.</p>
     ```
 
     *Stephen Margheim*</description>
-    <pubDate>Thu, 14 Dec 2023 17:34:23 +0000</pubDate>
-    <author>Stephen Margheim</author>
-    <content:encoded><![CDATA[<p>Add support for generated columns in SQLite3 adapter</p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add support for generated columns to the SQLite3 adapter.</p>
 
 <p>Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.<br />
 This adds support for those to the SQLite3 adapter.</p>
@@ -271,7 +313,7 @@ This adds support for those to the SQLite3 adapter.</p>
     <guid>https://github.com/rails/rails/issues/50349</guid>
     <description>*   TrilogyAdapter: ignore `host` if `socket` parameter is set.
 
-    This allows to configure a connection on a UNIX socket via DATABASE_URL:
+    This allows to configure a connection on a UNIX socket via `DATABASE_URL`:
 
     ```
     DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock
@@ -282,7 +324,7 @@ This adds support for those to the SQLite3 adapter.</p>
     <author>Jean Boussier</author>
     <content:encoded><![CDATA[<p>TrilogyAdapter: ignore <code>host</code> if <code>socket</code> parameter is set.</p>
 
-<p>This allows to configure a connection on a UNIX socket via DATABASE_URL:</p>
+<p>This allows to configure a connection on a UNIX socket via <code>DATABASE_URL</code>:</p>
 
 <pre><code>DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock
 </code></pre>
@@ -291,11 +333,11 @@ This adds support for those to the SQLite3 adapter.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match` and
+    <title>activerecord: Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match`, and
 </title>
-    <link>https://github.com/rails/rails/issues/50373</link>
-    <guid>https://github.com/rails/rails/issues/50373</guid>
-    <description>*   Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match` and
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match`, and
     `assert_no_queries_match` assertions public.
 
     To assert the expected number of queries are made, Rails internally uses `assert_queries_count` and
@@ -317,9 +359,9 @@ This adds support for those to the SQLite3 adapter.</p>
     ```
 
     *Petrik de Heus*, *fatkodima*</description>
-    <pubDate>Thu, 21 Dec 2023 11:59:10 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Make <code>assert_queries_count</code>, <code>assert_no_queries</code>, <code>assert_queries_match</code> and<br />
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Make <code>assert_queries_count</code>, <code>assert_no_queries</code>, <code>assert_queries_match</code>, and<br />
 <code>assert_no_queries_match</code> assertions public.</p>
 
 <p>To assert the expected number of queries are made, Rails internally uses <code>assert_queries_count</code> and<br />
@@ -407,16 +449,16 @@ called with a generic warning message rather than silently ignoring the warning(
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: `DatabaseConfigurations#configs_for` can accept a symbol in the `name` parameter.
+    <title>activerecord: `DatabaseConfigurations#configs_for` accepts a symbol in the `name` parameter.
 </title>
-    <link>https://github.com/rails/rails/issues/50061</link>
-    <guid>https://github.com/rails/rails/issues/50061</guid>
-    <description>*   `DatabaseConfigurations#configs_for` can accept a symbol in the `name` parameter.
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   `DatabaseConfigurations#configs_for` accepts a symbol in the `name` parameter.
 
     *Andrew Novoselac*</description>
-    <pubDate>Wed, 15 Nov 2023 19:35:50 +0000</pubDate>
-    <author>Andrew Novoselac</author>
-    <content:encoded><![CDATA[<p><code>DatabaseConfigurations#configs_for</code> can accept a symbol in the <code>name</code> parameter.</p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p><code>DatabaseConfigurations#configs_for</code> accepts a symbol in the <code>name</code> parameter.</p>
 
 <p><em>Andrew Novoselac</em></p>
 ]]></content:encoded>
@@ -461,14 +503,14 @@ column).</p>
     Post.first.inspect #=&gt; &quot;#&lt;Post id: 1, title: &quot;Hello, World!&quot;&gt;&quot;
     ```
 
-    With the `attributes_for_inspect` set to `:all`, `inspect` will list all the record&#39;s attributes.
+    With `attributes_for_inspect` set to `:all`, `inspect` will list all the record&#39;s attributes.
 
     ```ruby
     Post.attributes_for_inspect = :all
     Post.first.inspect #=&gt; &quot;#&lt;Post id: 1, title: &quot;Hello, World!&quot;, published_at: &quot;2023-10-23 14:28:11 +0000&quot;&gt;&quot;
     ```
 
-    In development and test mode, `attributes_for_inspect` will be set to `:all` by default.
+    In `development` and `test` mode, `attributes_for_inspect` will be set to `:all` by default.
 
     You can also call `full_inspect` to get an inspection with all the attributes.
 
@@ -491,13 +533,13 @@ column).</p>
 <span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1, title: "Hello, World!"&gt;"</span>
 </code></pre></div></div>
 
-<p>With the <code>attributes_for_inspect</code> set to <code>:all</code>, <code>inspect</code> will list all the record’s attributes.</p>
+<p>With <code>attributes_for_inspect</code> set to <code>:all</code>, <code>inspect</code> will list all the record’s attributes.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">attributes_for_inspect</span> <span class="o">=</span> <span class="ss">:all</span>
 <span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1, title: "Hello, World!", published_at: "2023-10-23 14:28:11 +0000"&gt;"</span>
 </code></pre></div></div>
 
-<p>In development and test mode, <code>attributes_for_inspect</code> will be set to <code>:all</code> by default.</p>
+<p>In <code>development</code> and <code>test</code> mode, <code>attributes_for_inspect</code> will be set to <code>:all</code> by default.</p>
 
 <p>You can also call <code>full_inspect</code> to get an inspection with all the attributes.</p>
 
@@ -507,45 +549,43 @@ column).</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Don&#39;t mark Float::INFINITY as changed when reassigning it
+    <title>activerecord: Don&#39;t mark attributes as changed when reassigned to `Float::INFINITY` or
 </title>
-    <link>https://github.com/rails/rails/issues/49904</link>
-    <guid>https://github.com/rails/rails/issues/49904</guid>
-    <description>*   Don&#39;t mark Float::INFINITY as changed when reassigning it
-
-    When saving a record with a float infinite value, it shouldn&#39;t mark as changed
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Don&#39;t mark attributes as changed when reassigned to `Float::INFINITY` or
+    `-Float::INFINITY`.
 
     *Maicol Bentancor*</description>
-    <pubDate>Mon, 06 Nov 2023 14:47:29 +0000</pubDate>
-    <author>MaicolBen</author>
-    <content:encoded><![CDATA[<p>Don’t mark Float::INFINITY as changed when reassigning it</p>
-
-<p>When saving a record with a float infinite value, it shouldn’t mark as changed</p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Don’t mark attributes as changed when reassigned to <code>Float::INFINITY</code> or<br />
+<code>-Float::INFINITY</code>.</p>
 
 <p><em>Maicol Bentancor</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Support `RETURNING` clause for MariaDB
+    <title>activerecord: Support the `RETURNING` clause for MariaDB.
 </title>
-    <link>https://github.com/rails/rails/issues/49840</link>
-    <guid>https://github.com/rails/rails/issues/49840</guid>
-    <description>*   Support `RETURNING` clause for MariaDB
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Support the `RETURNING` clause for MariaDB.
 
     *fatkodima*, *Nikolay Kondratyev*</description>
-    <pubDate>Tue, 31 Oct 2023 08:08:50 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Support <code>RETURNING</code> clause for MariaDB</p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Support the <code>RETURNING</code> clause for MariaDB.</p>
 
 <p><em>fatkodima</em>, <em>Nikolay Kondratyev</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract
+    <title>activerecord: The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract.
 </title>
-    <link>https://github.com/rails/rails/issues/49376</link>
-    <guid>https://github.com/rails/rails/issues/49376</guid>
-    <description>*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract.
 
     Allows foreign keys to be deferred by adding the `:deferrable` key to the `foreign_key` options.
 
@@ -555,9 +595,9 @@ column).</p>
     ```
 
     *Stephen Margheim*</description>
-    <pubDate>Sun, 29 Oct 2023 01:59:06 +0000</pubDate>
-    <author>Stephen Margheim</author>
-    <content:encoded><![CDATA[<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract</p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract.</p>
 
 <p>Allows foreign keys to be deferred by adding the <code>:deferrable</code> key to the <code>foreign_key</code> options.</p>
 
@@ -569,11 +609,11 @@ column).</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add `set_constraints` helper for PostgreSQL
+    <title>activerecord: Add the `set_constraints` helper to PostgreSQL connections.
 </title>
-    <link>https://github.com/rails/rails/issues/49187</link>
-    <guid>https://github.com/rails/rails/issues/49187</guid>
-    <description>*   Add `set_constraints` helper for PostgreSQL
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Add the `set_constraints` helper to PostgreSQL connections.
 
     ```ruby
     Post.create!(user_id: -1) # =&gt; ActiveRecord::InvalidForeignKey
@@ -588,9 +628,9 @@ column).</p>
     ```
 
     *Cody Cutrer*</description>
-    <pubDate>Sat, 28 Oct 2023 05:40:24 +0000</pubDate>
-    <author>Cody Cutrer</author>
-    <content:encoded><![CDATA[<p>Add <code>set_constraints</code> helper for PostgreSQL</p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add the <code>set_constraints</code> helper to PostgreSQL connections.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">user_id: </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># =&gt; ActiveRecord::InvalidForeignKey</span>
 
@@ -607,16 +647,16 @@ column).</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Include `ActiveModel::API` in `ActiveRecord::Base`
+    <title>activerecord: Include `ActiveModel::API` in `ActiveRecord::Base`.
 </title>
-    <link>https://github.com/rails/rails/issues/49680</link>
-    <guid>https://github.com/rails/rails/issues/49680</guid>
-    <description>*   Include `ActiveModel::API` in `ActiveRecord::Base`
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Include `ActiveModel::API` in `ActiveRecord::Base`.
 
     *Sean Doyle*</description>
-    <pubDate>Wed, 18 Oct 2023 15:47:55 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code></p>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code>.</p>
 
 <p><em>Sean Doyle</em></p>
 ]]></content:encoded>
@@ -1921,33 +1961,50 @@ error with parallel system tests</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: Add two new assertion methods for ActionCable test cases: `assert_not_has_stream`
+    <title>actioncable: Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`
 </title>
-    <link>https://github.com/rails/rails/issues/50585</link>
-    <guid>https://github.com/rails/rails/issues/50585</guid>
-    <description>*   Add two new assertion methods for ActionCable test cases: `assert_not_has_stream`
-    and `assert_not_has_stream_for`. These methods can be used to assert that a
+    <link>https://github.com/rails/rails/issues/50589</link>
+    <guid>https://github.com/rails/rails/issues/50589</guid>
+    <description>*   Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`
+    and `assert_has_no_stream_for`. These methods can be used to assert that a
     stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement
     the already existing `assert_has_stream` and `assert_has_stream_for` methods.
 
     ```ruby
-    assert_not_has_stream &quot;messages&quot;
-    assert_not_has_stream_for User.find(42)
+    assert_has_no_stream &quot;messages&quot;
+    assert_has_no_stream_for User.find(42)
     ```
 
-    *Sebastian Pöll*</description>
-    <pubDate>Thu, 04 Jan 2024 21:21:42 +0000</pubDate>
-    <author>Sebi</author>
-    <content:encoded><![CDATA[<p>Add two new assertion methods for ActionCable test cases: <code>assert_not_has_stream</code><br />
-and <code>assert_not_has_stream_for</code>. These methods can be used to assert that a<br />
+    *Sebastian Pöll*, *Junichi Sato*</description>
+    <pubDate>Fri, 05 Jan 2024 15:03:51 +0000</pubDate>
+    <author>Junichi Sato</author>
+    <content:encoded><![CDATA[<p>Add two new assertion methods for ActionCable test cases: <code>assert_has_no_stream</code><br />
+and <code>assert_has_no_stream_for</code>. These methods can be used to assert that a<br />
 stream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />
 the already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_not_has_stream</span> <span class="s2">"messages"</span>
-<span class="n">assert_not_has_stream_for</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_has_no_stream</span> <span class="s2">"messages"</span>
+<span class="n">assert_has_no_stream_for</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><em>Sebastian Pöll</em></p>
+<p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Add the `nonce: true` option for `stylesheet_link_tag` helper to support automatic nonce generation for Content Security Policy.
+</title>
+    <link>https://github.com/rails/rails/issues/50591</link>
+    <guid>https://github.com/rails/rails/issues/50591</guid>
+    <description>*   Add the `nonce: true` option for `stylesheet_link_tag` helper to support automatic nonce generation for Content Security Policy.
+    Works the same way as `javascript_include_tag nonce: true` does.
+
+    *Akhil G Krishnan*, *AJ Esler*</description>
+    <pubDate>Fri, 05 Jan 2024 15:29:13 +0000</pubDate>
+    <author>Akhil G Krishnan</author>
+    <content:encoded><![CDATA[<p>Add the <code>nonce: true</code> option for <code>stylesheet_link_tag</code> helper to support automatic nonce generation for Content Security Policy.<br />
+Works the same way as <code>javascript_include_tag nonce: true</code> does.</p>
+
+<p><em>Akhil G Krishnan</em>, <em>AJ Esler</em></p>
 ]]></content:encoded>
   </item>
   <item>
