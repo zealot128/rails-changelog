@@ -730,6 +730,32 @@ the same for Active Model as it does for Active Record.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Yield instance to `Object#with` block
+</title>
+    <link>https://github.com/rails/rails/issues/50470</link>
+    <guid>https://github.com/rails/rails/issues/50470</guid>
+    <description>*   Yield instance to `Object#with` block
+
+    ```ruby
+    client.with(timeout: 5_000) do |c|
+      c.get(&quot;/commits&quot;)
+    end
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Sun, 07 Jan 2024 20:06:02 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Yield instance to <code>Object#with</code> block</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span><span class="p">.</span><span class="nf">with</span><span class="p">(</span><span class="ss">timeout: </span><span class="mi">5_000</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+  <span class="n">c</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/commits"</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Use logical core count instead of physical core count to determine the
 </title>
     <link>https://github.com/rails/rails/issues/50564</link>
