@@ -300,6 +300,16 @@
     "html": "<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />\nthe same for Active Model as it does for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">type_for_attribute</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Yield instance to `Object#with` block\n\n    ```ruby\n    client.with(timeout: 5_000) do |c|\n      c.get(\"/commits\")\n    end\n    ```\n\n    *Sean Doyle*",
+    "project": "activesupport",
+    "date_merged": 1704657962000,
+    "author": "Sean Doyle",
+    "sha": "9e64b13d8adda1baaba555339e2619f6c9cef324",
+    "pr": "50470",
+    "merge_sha": "9c712f8e3aadd186f4a3298f9b81a88a29322b7e",
+    "html": "<p>Yield instance to <code>Object#with</code> block</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">client</span><span class=\"p\">.</span><span class=\"nf\">with</span><span class=\"p\">(</span><span class=\"ss\">timeout: </span><span class=\"mi\">5_000</span><span class=\"p\">)</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">c</span><span class=\"o\">|</span>\n  <span class=\"n\">c</span><span class=\"p\">.</span><span class=\"nf\">get</span><span class=\"p\">(</span><span class=\"s2\">\"/commits\"</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Use logical core count instead of physical core count to determine the\n    default number of workers when parallelizing tests.\n\n    *Jonathan Hefner*",
     "project": "activesupport",
     "date_merged": 1704323289000,
