@@ -590,6 +590,26 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Use `oven-sh/setup-bun` in GitHub CI when generating an app with bun\n\n    *TangRufus*",
+    "project": "railties",
+    "date_merged": 1704747895000,
+    "author": "TangRufus",
+    "sha": "4c5b6008baa09eb904a25d26de9893ab9b6b5fcd",
+    "pr": "50636",
+    "merge_sha": "e71ebfaa8c214960dc7d4608c0b38776fbde2b55",
+    "html": "<p>Use <code>oven-sh/setup-bun</code> in GitHub CI when generating an app with bun</p>\n\n<p><em>TangRufus</em></p>\n"
+  },
+  {
+    "message": "*   Disable `pidfile` generation in production environment.\n\n    *Hans Schnedlitz*",
+    "project": "railties",
+    "date_merged": 1704743360000,
+    "author": "Hans Schnedlitz",
+    "sha": "482330d156ebde147992c1973b4c572cee89737e",
+    "pr": "50644",
+    "merge_sha": "082f269974b2da82bb4ac51cfd1f2a0cfd9f6d8f",
+    "html": "<p>Disable <code>pidfile</code> generation in production environment.</p>\n\n<p><em>Hans Schnedlitz</em></p>\n"
+  },
+  {
     "message": "*   Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in the\n    development environment.\n\n    *Adrian Marin*",
     "project": "railties",
     "date_merged": 1704396801000,
