@@ -1300,6 +1300,36 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Use `oven-sh/setup-bun` in GitHub CI when generating an app with bun
+</title>
+    <link>https://github.com/rails/rails/issues/50636</link>
+    <guid>https://github.com/rails/rails/issues/50636</guid>
+    <description>*   Use `oven-sh/setup-bun` in GitHub CI when generating an app with bun
+
+    *TangRufus*</description>
+    <pubDate>Mon, 08 Jan 2024 21:04:55 +0000</pubDate>
+    <author>TangRufus</author>
+    <content:encoded><![CDATA[<p>Use <code>oven-sh/setup-bun</code> in GitHub CI when generating an app with bun</p>
+
+<p><em>TangRufus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Disable `pidfile` generation in production environment.
+</title>
+    <link>https://github.com/rails/rails/issues/50644</link>
+    <guid>https://github.com/rails/rails/issues/50644</guid>
+    <description>*   Disable `pidfile` generation in production environment.
+
+    *Hans Schnedlitz*</description>
+    <pubDate>Mon, 08 Jan 2024 19:49:20 +0000</pubDate>
+    <author>Hans Schnedlitz</author>
+    <content:encoded><![CDATA[<p>Disable <code>pidfile</code> generation in production environment.</p>
+
+<p><em>Hans Schnedlitz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in the
 </title>
     <link>https://github.com/rails/rails/issues/50436</link>
