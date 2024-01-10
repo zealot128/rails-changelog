@@ -730,6 +730,32 @@ the same for Active Model as it does for Active Record.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
+</title>
+    <link>https://github.com/rails/rails/issues/50677</link>
+    <guid>https://github.com/rails/rails/issues/50677</guid>
+    <description>*   Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
+
+    ```ruby
+    class Current &lt; ActiveSupport::CurrentAttributes
+      attribute :counter, default: 0
+    end
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 10 Jan 2024 00:43:37 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Add <code>default:</code> support for <code>ActiveSupport::CurrentAttributes.attribute</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Current</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">CurrentAttributes</span>
+  <span class="n">attribute</span> <span class="ss">:counter</span><span class="p">,</span> <span class="ss">default: </span><span class="mi">0</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Yield instance to `Object#with` block
 </title>
     <link>https://github.com/rails/rails/issues/50470</link>
@@ -2044,6 +2070,21 @@ the already existing <code>assert_has_stream</code> and <code>assert_has_stream_
 </code></pre></div></div>
 
 <p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Raise `ArgumentError` if `:renderable` object does not respond to `#render_in`
+</title>
+    <link>https://github.com/rails/rails/issues/50665</link>
+    <guid>https://github.com/rails/rails/issues/50665</guid>
+    <description>*   Raise `ArgumentError` if `:renderable` object does not respond to `#render_in`
+
+    *Sean Doyle*</description>
+    <pubDate>Tue, 09 Jan 2024 22:03:24 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Raise <code>ArgumentError</code> if <code>:renderable</code> object does not respond to <code>#render_in</code></p>
+
+<p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
