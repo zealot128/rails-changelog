@@ -300,6 +300,16 @@
     "html": "<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />\nthe same for Active Model as it does for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">type_for_attribute</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`\n\n    ```ruby\n    class Current < ActiveSupport::CurrentAttributes\n      attribute :counter, default: 0\n    end\n    ```\n\n    *Sean Doyle*",
+    "project": "activesupport",
+    "date_merged": 1704847417000,
+    "author": "Sean Doyle",
+    "sha": "d1d6b6bce38c6d15d0d37585b9e4659b08266d47",
+    "pr": "50677",
+    "merge_sha": "1db97053960ec621a770cfc1d182d9d65c1cd5ad",
+    "html": "<p>Add <code>default:</code> support for <code>ActiveSupport::CurrentAttributes.attribute</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Current</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">CurrentAttributes</span>\n  <span class=\"n\">attribute</span> <span class=\"ss\">:counter</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Yield instance to `Object#with` block\n\n    ```ruby\n    client.with(timeout: 5_000) do |c|\n      c.get(\"/commits\")\n    end\n    ```\n\n    *Sean Doyle*",
     "project": "activesupport",
     "date_merged": 1704657962000,
@@ -968,6 +978,16 @@
     "pr": "50589",
     "merge_sha": "de30889d0d2bc213207596d90ffa136e7c820e06",
     "html": "<p>Add two new assertion methods for ActionCable test cases: <code>assert_has_no_stream</code><br />\nand <code>assert_has_no_stream_for</code>. These methods can be used to assert that a<br />\nstream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />\nthe already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_has_no_stream</span> <span class=\"s2\">\"messages\"</span>\n<span class=\"n\">assert_has_no_stream_for</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">42</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>\n"
+  },
+  {
+    "message": "*   Raise `ArgumentError` if `:renderable` object does not respond to `#render_in`\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1704837804000,
+    "author": "Sean Doyle",
+    "sha": "b3bb06a24a21fda9fa9a0e4409ffeff123f6b464",
+    "pr": "50665",
+    "merge_sha": "f3d96c2aa475d7da4deeb34bc3da9745b7624920",
+    "html": "<p>Raise <code>ArgumentError</code> if <code>:renderable</code> object does not respond to <code>#render_in</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Add the `nonce: true` option for `stylesheet_link_tag` helper to support automatic nonce generation for Content Security Policy.\n    Works the same way as `javascript_include_tag nonce: true` does.\n\n    *Akhil G Krishnan*, *AJ Esler*",
