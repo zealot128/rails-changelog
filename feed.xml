@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activejob: Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.
+</title>
+    <link>https://github.com/rails/rails/issues/50713</link>
+    <guid>https://github.com/rails/rails/issues/50713</guid>
+    <description>*   Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.
+
+    *Maxime Réty*</description>
+    <pubDate>Thu, 11 Jan 2024 19:41:21 +0000</pubDate>
+    <author>maximerety</author>
+    <content:encoded><![CDATA[<p>Do not trigger immediate loading of <code>ActiveJob::Base</code> when loading <code>ActiveJob::TestHelper</code>.</p>
+
+<p><em>Maxime Réty</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.
 </title>
     <link>https://github.com/rails/rails/issues/50230</link>
@@ -1323,6 +1338,29 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
     <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
 
 <p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Prevent unnecessary application reloads in development.
+</title>
+    <link>https://github.com/rails/rails/issues/50708</link>
+    <guid>https://github.com/rails/rails/issues/50708</guid>
+    <description>*   Prevent unnecessary application reloads in development.
+
+    Previously, some files outside autoload paths triggered unnecessary reloads.
+    With this fix, application reloads according to `Rails.autoloaders.main.dirs`,
+    thereby preventing unnecessary reloads.
+
+    *Takumasa Ochi*</description>
+    <pubDate>Thu, 11 Jan 2024 19:10:14 +0000</pubDate>
+    <author>Takumasa Ochi</author>
+    <content:encoded><![CDATA[<p>Prevent unnecessary application reloads in development.</p>
+
+<p>Previously, some files outside autoload paths triggered unnecessary reloads.<br />
+With this fix, application reloads according to <code>Rails.autoloaders.main.dirs</code>,<br />
+thereby preventing unnecessary reloads.</p>
+
+<p><em>Takumasa Ochi</em></p>
 ]]></content:encoded>
   </item>
   <item>
