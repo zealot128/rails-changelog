@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.\n\n    *Maxime Réty*",
+    "project": "activejob",
+    "date_merged": 1705002081000,
+    "author": "maximerety",
+    "sha": "f72d2118fe8ce739cfbb4b3e223432041f274c38",
+    "pr": "50713",
+    "merge_sha": "cff2eb1be11cb729382b3674e3caa2bd198ec55e",
+    "html": "<p>Do not trigger immediate loading of <code>ActiveJob::Base</code> when loading <code>ActiveJob::TestHelper</code>.</p>\n\n<p><em>Maxime Réty</em></p>\n"
+  },
+  {
     "message": "*   Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.\n\n    *Joshua Young*",
     "project": "activejob",
     "date_merged": 1701529546000,
@@ -598,6 +608,16 @@
     "pr": "49863",
     "merge_sha": "efa11e67d652b7f1f16b7840dc288730463da492",
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
+  },
+  {
+    "message": "*   Prevent unnecessary application reloads in development.\n\n    Previously, some files outside autoload paths triggered unnecessary reloads.\n    With this fix, application reloads according to `Rails.autoloaders.main.dirs`,\n    thereby preventing unnecessary reloads.\n\n    *Takumasa Ochi*",
+    "project": "railties",
+    "date_merged": 1705000214000,
+    "author": "Takumasa Ochi",
+    "sha": "d7e2575082c864f092d96581309a07b1c28dc322",
+    "pr": "50708",
+    "merge_sha": "233532857453a9bab19e44d296aef498aa416827",
+    "html": "<p>Prevent unnecessary application reloads in development.</p>\n\n<p>Previously, some files outside autoload paths triggered unnecessary reloads.<br />\nWith this fix, application reloads according to <code>Rails.autoloaders.main.dirs</code>,<br />\nthereby preventing unnecessary reloads.</p>\n\n<p><em>Takumasa Ochi</em></p>\n"
   },
   {
     "message": "*   Use `oven-sh/setup-bun` in GitHub CI when generating an app with bun\n\n    *TangRufus*",
