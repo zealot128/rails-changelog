@@ -126,6 +126,27 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Introduce `ActiveRecord::Transactions::ClassMethods#set_callback`
+</title>
+    <link>https://github.com/rails/rails/issues/50260</link>
+    <guid>https://github.com/rails/rails/issues/50260</guid>
+    <description>*   Introduce `ActiveRecord::Transactions::ClassMethods#set_callback`
+
+     It is identical to `ActiveSupport::Callbacks::ClassMethods#set_callback`
+     but with support for `after_commit` and `after_rollback` callback options.
+
+    *Joshua Young*</description>
+    <pubDate>Fri, 12 Jan 2024 11:30:33 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Introduce <code>ActiveRecord::Transactions::ClassMethods#set_callback</code></p>
+
+<p>It is identical to <code>ActiveSupport::Callbacks::ClassMethods#set_callback</code><br />
+ but with support for <code>after_commit</code> and <code>after_rollback</code> callback options.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Make `ActiveRecord::Encryption::Encryptor` agnostic of the serialization format used for encrypted data.
 </title>
     <link>https://github.com/rails/rails/issues/48685</link>
