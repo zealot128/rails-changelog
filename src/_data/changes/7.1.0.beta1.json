@@ -350,14 +350,14 @@
     "html": "<p>Use logical core count instead of physical core count to determine the<br />\ndefault number of workers when parallelizing tests.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
-    "message": "*   Fix `Time.now/DateTime.now/Date.today' to return results in a system timezone after `#travel_to'.\n\n    There is a bug in the current implementation of #travel_to:\n    it remembers a timezone of its argument, and all stubbed methods start\n    returning results in that remembered timezone. However, the expected\n    behaviour is to return results in a system timezone.\n\n    *Aleksei Chernenkov*",
+    "message": "*   Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.\n\n    There is a bug in the current implementation of #travel_to:\n    it remembers a timezone of its argument, and all stubbed methods start\n    returning results in that remembered timezone. However, the expected\n    behaviour is to return results in a system timezone.\n\n    *Aleksei Chernenkov*",
     "project": "activesupport",
-    "date_merged": 1701509094000,
-    "author": "Aleksei Chernenkov",
-    "sha": "aedb8088299eb8db39306c22c2f7a98d5b2019a8",
-    "pr": "50236",
-    "merge_sha": "67fb4414e598d29e7b3ea6024ffd2edd7bff4775",
-    "html": "<p>Fix <code>Time.now/DateTime.now/Date.today' to return results in a system timezone after </code>#travel_to’.</p>\n\n<p>There is a bug in the current implementation of #travel_to:<br />\nit remembers a timezone of its argument, and all stubbed methods start<br />\nreturning results in that remembered timezone. However, the expected<br />\nbehaviour is to return results in a system timezone.</p>\n\n<p><em>Aleksei Chernenkov</em></p>\n"
+    "date_merged": 1705249872000,
+    "author": "Earlopain",
+    "sha": "805fa6faf3eb65170d85aa0494c1e9964b292f51",
+    "pr": "50749",
+    "merge_sha": "0ecfbe25688a0deb9aaee0596c99148002b9f3a4",
+    "html": "<p>Fix <code>Time.now/DateTime.now/Date.today</code> to return results in a system timezone after <code>#travel_to</code>.</p>\n\n<p>There is a bug in the current implementation of #travel_to:<br />\nit remembers a timezone of its argument, and all stubbed methods start<br />\nreturning results in that remembered timezone. However, the expected<br />\nbehaviour is to return results in a system timezone.</p>\n\n<p><em>Aleksei Chernenkov</em></p>\n"
   },
   {
     "message": "*   Add `ErrorReported#unexpected` to report precondition violations.\n\n    For example:\n\n    ```ruby\n    def edit\n      if published?\n        Rails.error.unexpected(\"[BUG] Attempting to edit a published article, that shouldn't be possible\")\n        return false\n      end\n      # ...\n    end\n    ```\n\n    The above will raise an error in development and test, but only report the error in production.\n\n    *Jean Boussier*",
