@@ -835,11 +835,11 @@ default number of workers when parallelizing tests.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activesupport: Fix `Time.now/DateTime.now/Date.today&#39; to return results in a system timezone after `#travel_to&#39;.
+    <title>activesupport: Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
 </title>
-    <link>https://github.com/rails/rails/issues/50236</link>
-    <guid>https://github.com/rails/rails/issues/50236</guid>
-    <description>*   Fix `Time.now/DateTime.now/Date.today&#39; to return results in a system timezone after `#travel_to&#39;.
+    <link>https://github.com/rails/rails/issues/50749</link>
+    <guid>https://github.com/rails/rails/issues/50749</guid>
+    <description>*   Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
 
     There is a bug in the current implementation of #travel_to:
     it remembers a timezone of its argument, and all stubbed methods start
@@ -847,9 +847,9 @@ default number of workers when parallelizing tests.</p>
     behaviour is to return results in a system timezone.
 
     *Aleksei Chernenkov*</description>
-    <pubDate>Sat, 02 Dec 2023 09:24:54 +0000</pubDate>
-    <author>Aleksei Chernenkov</author>
-    <content:encoded><![CDATA[<p>Fix <code>Time.now/DateTime.now/Date.today' to return results in a system timezone after </code>#travel_to’.</p>
+    <pubDate>Sun, 14 Jan 2024 16:31:12 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Fix <code>Time.now/DateTime.now/Date.today</code> to return results in a system timezone after <code>#travel_to</code>.</p>
 
 <p>There is a bug in the current implementation of #travel_to:<br />
 it remembers a timezone of its argument, and all stubbed methods start<br />
