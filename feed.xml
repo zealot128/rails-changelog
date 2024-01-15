@@ -126,6 +126,31 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Make `schema_dump`, `query_cache`, `replica` and `database_tasks` configurable via `DATABASE_URL`
+</title>
+    <link>https://github.com/rails/rails/issues/50757</link>
+    <guid>https://github.com/rails/rails/issues/50757</guid>
+    <description>*   Make `schema_dump`, `query_cache`, `replica` and `database_tasks` configurable via `DATABASE_URL`
+
+    This wouldn&#39;t always work previously because boolean values would be interpreted as strings.
+
+    e.g. `DATABASE_URL=postgres://localhost/foo?schema_dump=false` now properly disable dumping the schema
+    cache.
+
+    *Mike Coutermarsh*, *Jean Boussier*</description>
+    <pubDate>Mon, 15 Jan 2024 14:57:33 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Make <code>schema_dump</code>, <code>query_cache</code>, <code>replica</code> and <code>database_tasks</code> configurable via <code>DATABASE_URL</code></p>
+
+<p>This wouldn’t always work previously because boolean values would be interpreted as strings.</p>
+
+<p>e.g. <code>DATABASE_URL=postgres://localhost/foo?schema_dump=false</code> now properly disable dumping the schema<br />
+cache.</p>
+
+<p><em>Mike Coutermarsh</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Introduce `ActiveRecord::Transactions::ClassMethods#set_callback`
 </title>
     <link>https://github.com/rails/rails/issues/50260</link>
@@ -763,6 +788,27 @@ the same for Active Model as it does for Active Record.</p>
 </code></pre></div></div>
 
 <p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Include `IPAddr#prefix` when serializing an `IPAddr` using the
+</title>
+    <link>https://github.com/rails/rails/issues/50742</link>
+    <guid>https://github.com/rails/rails/issues/50742</guid>
+    <description>*   Include `IPAddr#prefix` when serializing an `IPAddr` using the
+    `ActiveSupport::MessagePack` serializer. This change is backward and forward
+    compatible — old payloads can still be read, and new payloads will be
+    readable by older versions of Rails.
+
+    *Taiki Komaba*</description>
+    <pubDate>Mon, 15 Jan 2024 06:54:08 +0000</pubDate>
+    <author>r-plus</author>
+    <content:encoded><![CDATA[<p>Include <code>IPAddr#prefix</code> when serializing an <code>IPAddr</code> using the<br />
+<code>ActiveSupport::MessagePack</code> serializer. This change is backward and forward<br />
+compatible — old payloads can still be read, and new payloads will be<br />
+readable by older versions of Rails.</p>
+
+<p><em>Taiki Komaba</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -2179,16 +2225,20 @@ Works the same way as <code>javascript_include_tag nonce: true</code> does.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Rename `ActionView::TestCase::Behavior::{Content,RenderedViewContent}`
+    <title>actionview: Rename `ActionView::TestCase::Behavior::Content` to `ActionView::TestCase::Behavior::RenderedViewContent`
 </title>
     <link>https://github.com/rails/rails/issues/49856</link>
     <guid>https://github.com/rails/rails/issues/49856</guid>
-    <description>*   Rename `ActionView::TestCase::Behavior::{Content,RenderedViewContent}`
+    <description>*   Rename `ActionView::TestCase::Behavior::Content` to `ActionView::TestCase::Behavior::RenderedViewContent`
+
+    Make `RenderedViewContent` inherit from `String`. Make private API with `:nodoc:`
 
     *Sean Doyle*</description>
-    <pubDate>Thu, 04 Jan 2024 19:47:38 +0000</pubDate>
+    <pubDate>Mon, 15 Jan 2024 09:55:48 +0000</pubDate>
     <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Rename <code>ActionView::TestCase::Behavior::{Content,RenderedViewContent}</code></p>
+    <content:encoded><![CDATA[<p>Rename <code>ActionView::TestCase::Behavior::Content</code> to <code>ActionView::TestCase::Behavior::RenderedViewContent</code></p>
+
+<p>Make <code>RenderedViewContent</code> inherit from <code>String</code>. Make private API with <code>:nodoc:</code></p>
 
 <p><em>Sean Doyle</em></p>
 ]]></content:encoded>
