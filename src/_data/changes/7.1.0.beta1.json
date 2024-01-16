@@ -660,6 +660,16 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Ensure only directories exist in Rails default load paths\n\n    Previously, some files put under `app` directory would contaminate the load paths.\n    This commit removes files from the default load paths set up by the Rails framework.\n\n    Now, only directories are included as default in the following paths:\n\n    * autoload_paths\n    * autoload_once_paths\n    * eager_load_paths\n    * load_paths\n\n    *Takumasa Ochi*",
+    "project": "railties",
+    "date_merged": 1705423706000,
+    "author": "Takumasa Ochi",
+    "sha": "23cc9229ff07c7db103f6fa7e82778a006566f1e",
+    "pr": "50723",
+    "merge_sha": "cb035bde4e4a09789792ba69117f602231c36584",
+    "html": "<p>Ensure only directories exist in Rails default load paths</p>\n\n<p>Previously, some files put under <code>app</code> directory would contaminate the load paths.<br />\nThis commit removes files from the default load paths set up by the Rails framework.</p>\n\n<p>Now, only directories are included as default in the following paths:</p>\n\n<ul>\n  <li>autoload_paths</li>\n  <li>autoload_once_paths</li>\n  <li>eager_load_paths</li>\n  <li>load_paths</li>\n</ul>\n\n<p><em>Takumasa Ochi</em></p>\n"
+  },
+  {
     "message": "*   Prevent unnecessary application reloads in development.\n\n    Previously, some files outside autoload paths triggered unnecessary reloads.\n    With this fix, application reloads according to `Rails.autoloaders.main.dirs`,\n    thereby preventing unnecessary reloads.\n\n    *Takumasa Ochi*",
     "project": "railties",
     "date_merged": 1705000214000,
