@@ -126,6 +126,38 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix Migrations with versions older than 7.1 validating options given to
+</title>
+    <link>https://github.com/rails/rails/issues/50680</link>
+    <guid>https://github.com/rails/rails/issues/50680</guid>
+    <description>*   Fix Migrations with versions older than 7.1 validating options given to
+    `add_reference`.
+
+    *Hartley McGuire*</description>
+    <pubDate>Mon, 15 Jan 2024 21:25:22 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix Migrations with versions older than 7.1 validating options given to<br />
+<code>add_reference</code>.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `&lt;role&gt;_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be instrospected
+</title>
+    <link>https://github.com/rails/rails/issues/50662</link>
+    <guid>https://github.com/rails/rails/issues/50662</guid>
+    <description>*   Add `&lt;role&gt;_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be instrospected
+
+    *JP Rosevear*</description>
+    <pubDate>Mon, 15 Jan 2024 19:04:14 +0000</pubDate>
+    <author>JP Rosevear</author>
+    <content:encoded><![CDATA[<p>Add <code>&lt;role&gt;_types</code> class method to <code>ActiveRecord::DelegatedType</code> so that the delegated types can be instrospected</p>
+
+<p><em>JP Rosevear</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Make `schema_dump`, `query_cache`, `replica` and `database_tasks` configurable via `DATABASE_URL`
 </title>
     <link>https://github.com/rails/rails/issues/50757</link>
