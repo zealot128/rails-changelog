@@ -80,6 +80,26 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Fix Migrations with versions older than 7.1 validating options given to\n    `add_reference`.\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1705353922000,
+    "author": "Hartley McGuire",
+    "sha": "71b4e223018d180b7c96915c0df1c28afbf7cc53",
+    "pr": "50680",
+    "merge_sha": "62972a16c949a35169d7bd78a5c1685adbe6c29b",
+    "html": "<p>Fix Migrations with versions older than 7.1 validating options given to<br />\n<code>add_reference</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Add `<role>_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be instrospected\n\n    *JP Rosevear*",
+    "project": "activerecord",
+    "date_merged": 1705345454000,
+    "author": "JP Rosevear",
+    "sha": "e323d3f81c07f72a10de610922cf507eb8307a23",
+    "pr": "50662",
+    "merge_sha": "883b033c4e258e302fbde6ada175e36b824388df",
+    "html": "<p>Add <code>&lt;role&gt;_types</code> class method to <code>ActiveRecord::DelegatedType</code> so that the delegated types can be instrospected</p>\n\n<p><em>JP Rosevear</em></p>\n"
+  },
+  {
     "message": "*   Make `schema_dump`, `query_cache`, `replica` and `database_tasks` configurable via `DATABASE_URL`\n\n    This wouldn't always work previously because boolean values would be interpreted as strings.\n\n    e.g. `DATABASE_URL=postgres://localhost/foo?schema_dump=false` now properly disable dumping the schema\n    cache.\n\n    *Mike Coutermarsh*, *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1705330653000,
