@@ -1440,6 +1440,43 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Ensure only directories exist in Rails default load paths
+</title>
+    <link>https://github.com/rails/rails/issues/50723</link>
+    <guid>https://github.com/rails/rails/issues/50723</guid>
+    <description>*   Ensure only directories exist in Rails default load paths
+
+    Previously, some files put under `app` directory would contaminate the load paths.
+    This commit removes files from the default load paths set up by the Rails framework.
+
+    Now, only directories are included as default in the following paths:
+
+    * autoload_paths
+    * autoload_once_paths
+    * eager_load_paths
+    * load_paths
+
+    *Takumasa Ochi*</description>
+    <pubDate>Tue, 16 Jan 2024 16:48:26 +0000</pubDate>
+    <author>Takumasa Ochi</author>
+    <content:encoded><![CDATA[<p>Ensure only directories exist in Rails default load paths</p>
+
+<p>Previously, some files put under <code>app</code> directory would contaminate the load paths.<br />
+This commit removes files from the default load paths set up by the Rails framework.</p>
+
+<p>Now, only directories are included as default in the following paths:</p>
+
+<ul>
+  <li>autoload_paths</li>
+  <li>autoload_once_paths</li>
+  <li>eager_load_paths</li>
+  <li>load_paths</li>
+</ul>
+
+<p><em>Takumasa Ochi</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Prevent unnecessary application reloads in development.
 </title>
     <link>https://github.com/rails/rails/issues/50708</link>
