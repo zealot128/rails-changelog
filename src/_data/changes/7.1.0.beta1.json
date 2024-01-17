@@ -80,14 +80,14 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
-    "message": "*   Fix Migrations with versions older than 7.1 validating options given to\n    `add_reference`.\n\n    *Hartley McGuire*",
+    "message": "*   Fix Migrations with versions older than 7.1 validating options given to\n    `add_reference` and `t.references`.\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1705353922000,
     "author": "Hartley McGuire",
     "sha": "71b4e223018d180b7c96915c0df1c28afbf7cc53",
     "pr": "50680",
     "merge_sha": "62972a16c949a35169d7bd78a5c1685adbe6c29b",
-    "html": "<p>Fix Migrations with versions older than 7.1 validating options given to<br />\n<code>add_reference</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+    "html": "<p>Fix Migrations with versions older than 7.1 validating options given to<br />\n<code>add_reference</code> and <code>t.references</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   Add `<role>_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be instrospected\n\n    *JP Rosevear*",
@@ -510,6 +510,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Use `includes` instead of `eager_load` for `with_all_rich_text`.\n\n    *Petrik de Heus*",
+    "project": "actiontext",
+    "date_merged": 1705447718000,
+    "author": "Petrik",
+    "sha": "3b49e47ce8b1d5b1852515e60ce50544677461bf",
+    "pr": "50769",
+    "merge_sha": "473fd597f6ff8a575c36c565d205627fa7964a05",
+    "html": "<p>Use <code>includes</code> instead of <code>eager_load</code> for <code>with_all_rich_text</code>.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`\n\n    ```ruby\n    content = ActionText::Content.new <<~HTML\n      <h1>Hello, world</h1>\n\n      <div>The body</div>\n    HTML\n\n    content => [h1, div]\n\n    assert_pattern { h1 => { content: \"Hello, world\" } }\n    assert_pattern { div => { content: \"The body\" } }\n    ```\n\n    *Sean Doyle*",
     "project": "actiontext",
     "date_merged": 1704303082000,
@@ -568,6 +578,16 @@
     "pr": "49778",
     "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
     "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix N+1 query when fetching preview images for non-image assets\n\n    *Aaron Patterson & Justin Searls*",
+    "project": "activestorage",
+    "date_merged": 1705430650000,
+    "author": "Aaron Patterson",
+    "sha": "7e9b5889cc2c7f5e804406aed4dd9d1f8c15333b",
+    "pr": "50758",
+    "merge_sha": "eccaddba5cf7f806c7e11cd549ca798c28581a38",
+    "html": "<p>Fix N+1 query when fetching preview images for non-image assets</p>\n\n<p><em>Aaron Patterson &amp; Justin Searls</em></p>\n"
   },
   {
     "message": "*   Fix all Active Storage database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
@@ -660,14 +680,14 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
-    "message": "*   Ensure only directories exist in Rails default load paths\n\n    Previously, some files put under `app` directory would contaminate the load paths.\n    This commit removes files from the default load paths set up by the Rails framework.\n\n    Now, only directories are included as default in the following paths:\n\n    * autoload_paths\n    * autoload_once_paths\n    * eager_load_paths\n    * load_paths\n\n    *Takumasa Ochi*",
+    "message": "*   Ensure `autoload_paths`, `autoload_once_paths`, `eager_load_paths`, and\n    `load_paths` only have directories when initialized from engine defaults.\n    Previously, files under the `app` directory could end up there too.\n\n    *Takumasa Ochi*",
     "project": "railties",
-    "date_merged": 1705423706000,
-    "author": "Takumasa Ochi",
-    "sha": "23cc9229ff07c7db103f6fa7e82778a006566f1e",
-    "pr": "50723",
-    "merge_sha": "cb035bde4e4a09789792ba69117f602231c36584",
-    "html": "<p>Ensure only directories exist in Rails default load paths</p>\n\n<p>Previously, some files put under <code>app</code> directory would contaminate the load paths.<br />\nThis commit removes files from the default load paths set up by the Rails framework.</p>\n\n<p>Now, only directories are included as default in the following paths:</p>\n\n<ul>\n  <li>autoload_paths</li>\n  <li>autoload_once_paths</li>\n  <li>eager_load_paths</li>\n  <li>load_paths</li>\n</ul>\n\n<p><em>Takumasa Ochi</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Ensure <code>autoload_paths</code>, <code>autoload_once_paths</code>, <code>eager_load_paths</code>, and<br />\n<code>load_paths</code> only have directories when initialized from engine defaults.<br />\nPreviously, files under the <code>app</code> directory could end up there too.</p>\n\n<p><em>Takumasa Ochi</em></p>\n"
   },
   {
     "message": "*   Prevent unnecessary application reloads in development.\n\n    Previously, some files outside autoload paths triggered unnecessary reloads.\n    With this fix, application reloads according to `Rails.autoloaders.main.dirs`,\n    thereby preventing unnecessary reloads.\n\n    *Takumasa Ochi*",
@@ -680,64 +700,64 @@
     "html": "<p>Prevent unnecessary application reloads in development.</p>\n\n<p>Previously, some files outside autoload paths triggered unnecessary reloads.<br />\nWith this fix, application reloads according to <code>Rails.autoloaders.main.dirs</code>,<br />\nthereby preventing unnecessary reloads.</p>\n\n<p><em>Takumasa Ochi</em></p>\n"
   },
   {
-    "message": "*   Use `oven-sh/setup-bun` in GitHub CI when generating an app with bun\n\n    *TangRufus*",
+    "message": "*   Use `oven-sh/setup-bun` in GitHub CI when generating an app with Bun.\n\n    *TangRufus*",
     "project": "railties",
-    "date_merged": 1704747895000,
-    "author": "TangRufus",
-    "sha": "4c5b6008baa09eb904a25d26de9893ab9b6b5fcd",
-    "pr": "50636",
-    "merge_sha": "e71ebfaa8c214960dc7d4608c0b38776fbde2b55",
-    "html": "<p>Use <code>oven-sh/setup-bun</code> in GitHub CI when generating an app with bun</p>\n\n<p><em>TangRufus</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Use <code>oven-sh/setup-bun</code> in GitHub CI when generating an app with Bun.</p>\n\n<p><em>TangRufus</em></p>\n"
   },
   {
-    "message": "*   Disable `pidfile` generation in production environment.\n\n    *Hans Schnedlitz*",
+    "message": "*   Disable `pidfile` generation in the `production` environment.\n\n    *Hans Schnedlitz*",
     "project": "railties",
-    "date_merged": 1704743360000,
-    "author": "Hans Schnedlitz",
-    "sha": "482330d156ebde147992c1973b4c572cee89737e",
-    "pr": "50644",
-    "merge_sha": "082f269974b2da82bb4ac51cfd1f2a0cfd9f6d8f",
-    "html": "<p>Disable <code>pidfile</code> generation in production environment.</p>\n\n<p><em>Hans Schnedlitz</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Disable <code>pidfile</code> generation in the <code>production</code> environment.</p>\n\n<p><em>Hans Schnedlitz</em></p>\n"
   },
   {
-    "message": "*   Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in the\n    development environment.\n\n    *Adrian Marin*",
+    "message": "*   Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in\n    the `development` environment.\n\n    *Adrian Marin*",
     "project": "railties",
-    "date_merged": 1704396801000,
-    "author": "Adrian",
-    "sha": "475bb4b1edae66d34fc745b47fc907358faeb415",
-    "pr": "50436",
-    "merge_sha": "64370c903985c8c9dbca943a1503b3723dba3997",
-    "html": "<p>Set <code>config.action_view.annotate_rendered_view_with_filenames</code> to <code>true</code> in the<br />\ndevelopment environment.</p>\n\n<p><em>Adrian Marin</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Set <code>config.action_view.annotate_rendered_view_with_filenames</code> to <code>true</code> in<br />\nthe <code>development</code> environment.</p>\n\n<p><em>Adrian Marin</em></p>\n"
   },
   {
-    "message": "*   Support `BACKTRACE` ENV variable to turn off backtrace cleaning.\n\n    Useful for debugging framework code:\n\n    ```sh\n    BACKTRACE=1 ./bin/rails server\n    ```\n\n    *Alex Ghiculescu*",
+    "message": "*   Support the `BACKTRACE` environment variable to turn off backtrace cleaning.\n\n    Useful for debugging framework code:\n\n    ```sh\n    BACKTRACE=1 bin/rails server\n    ```\n\n    *Alex Ghiculescu*",
     "project": "railties",
-    "date_merged": 1704320061000,
-    "author": "Alex Ghiculescu",
-    "sha": "957a3e5e5571df34b1356e565013179e78e948ad",
-    "pr": "50563",
-    "merge_sha": "1c3ae8719f2a127e1003916291e94305367a7dab",
-    "html": "<p>Support <code>BACKTRACE</code> ENV variable to turn off backtrace cleaning.</p>\n\n<p>Useful for debugging framework code:</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">BACKTRACE</span><span class=\"o\">=</span>1 ./bin/rails server\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Support the <code>BACKTRACE</code> environment variable to turn off backtrace cleaning.</p>\n\n<p>Useful for debugging framework code:</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">BACKTRACE</span><span class=\"o\">=</span>1 bin/rails server\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
   },
   {
-    "message": "*   Raise `ArgumentError` when reading `config.x.something` with arguments\n\n    ```ruby\n    config.x.this_works.this_raises true # raises ArgumentError\n    ```\n\n    *Sean Doyle*",
+    "message": "*   Raise `ArgumentError` when reading `config.x.something` with arguments:\n\n    ```ruby\n    config.x.this_works.this_raises true # raises ArgumentError\n    ```\n\n    *Sean Doyle*",
     "project": "railties",
-    "date_merged": 1704315057000,
-    "author": "Sean Doyle",
-    "sha": "9a58f7eccd0664359d61fc9a1d8eccee02c5a63a",
-    "pr": "50050",
-    "merge_sha": "44bc9525914cadc9b3d1a8d8c2cd7333d9d239c4",
-    "html": "<p>Raise <code>ArgumentError</code> when reading <code>config.x.something</code> with arguments</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">x</span><span class=\"p\">.</span><span class=\"nf\">this_works</span><span class=\"p\">.</span><span class=\"nf\">this_raises</span> <span class=\"kp\">true</span> <span class=\"c1\"># raises ArgumentError</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Raise <code>ArgumentError</code> when reading <code>config.x.something</code> with arguments:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">x</span><span class=\"p\">.</span><span class=\"nf\">this_works</span><span class=\"p\">.</span><span class=\"nf\">this_raises</span> <span class=\"kp\">true</span> <span class=\"c1\"># raises ArgumentError</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
-    "message": "*   Add default PWA files for manifest and service-worker that are served from `app/views/pwa` and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.\n\n    *DHH*",
+    "message": "*   Add default PWA files for manifest and service-worker that are served from `app/views/pwa` and can be dynamically rendered through ERB. Mount these files explicitly at the root with default routes in the generated routes file.\n\n    *DHH*",
     "project": "railties",
-    "date_merged": 1704289368000,
-    "author": "David Heinemeier Hansson",
-    "sha": "bb5e2791e08f3381a9ca3b198f41779bc4597fdf",
-    "pr": "50528",
-    "merge_sha": "3c7b520656b865bbf9a2c0388df9ec924c57f2f2",
-    "html": "<p>Add default PWA files for manifest and service-worker that are served from <code>app/views/pwa</code> and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.</p>\n\n<p><em>DHH</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Add default PWA files for manifest and service-worker that are served from <code>app/views/pwa</code> and can be dynamically rendered through ERB. Mount these files explicitly at the root with default routes in the generated routes file.</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
     "message": "*   Updated system tests to now use headless Chrome by default for the new applications.\n\n    *DHH*",
@@ -750,44 +770,44 @@
     "html": "<p>Updated system tests to now use headless Chrome by default for the new applications.</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
-    "message": "*   Add GitHub CI files for dependabot, brakeman, rubocop, and running tests by default. Can be skipped with --skip-ci.\n\n    *DHH*",
+    "message": "*   Add GitHub CI files for Dependabot, Brakeman, RuboCop, and running tests by default. Can be skipped with `--skip-ci`.\n\n    *DHH*",
     "project": "railties",
-    "date_merged": 1704103725000,
-    "author": "David Heinemeier Hansson",
-    "sha": "08a792be84de7fcaff1a20084f63ea2dd1ae5f48",
-    "pr": "50508",
-    "merge_sha": "8e6fac80ba36bf8eca2448f415dc36fcb5c1f0ce",
-    "html": "<p>Add GitHub CI files for dependabot, brakeman, rubocop, and running tests by default. Can be skipped with –skip-ci.</p>\n\n<p><em>DHH</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Add GitHub CI files for Dependabot, Brakeman, RuboCop, and running tests by default. Can be skipped with <code>--skip-ci</code>.</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
-    "message": "*   Add brakeman gem by default for static analysis of security vulnerabilities. Allow skipping with --skip-brakeman option.\n\n    *vipulnsward*",
+    "message": "*   Add Brakeman by default for static analysis of security vulnerabilities. Allow skipping with `--skip-brakeman option`.\n\n    *vipulnsward*",
     "project": "railties",
-    "date_merged": 1704103725000,
-    "author": "Vipul A M",
-    "sha": "813afbdd7427d524ed4f1058e92a80ded5cc6d82",
-    "pr": "50507",
-    "merge_sha": "8e6fac80ba36bf8eca2448f415dc36fcb5c1f0ce",
-    "html": "<p>Add brakeman gem by default for static analysis of security vulnerabilities. Allow skipping with –skip-brakeman option.</p>\n\n<p><em>vipulnsward</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Add Brakeman by default for static analysis of security vulnerabilities. Allow skipping with <code>--skip-brakeman option</code>.</p>\n\n<p><em>vipulnsward</em></p>\n"
   },
   {
-    "message": "*   Add RuboCop with rules from rubocop-rails-omakase by default. Skip with --skip-rubocop.\n\n    *DHH* and *zzak*",
+    "message": "*   Add RuboCop with rules from `rubocop-rails-omakase` by default. Skip with `--skip-rubocop`.\n\n    *DHH* and *zzak*",
     "project": "railties",
-    "date_merged": 1703993192000,
-    "author": "zzak",
-    "sha": "0fb5f67ac413d62df64b8b59094b4fe85999b5c1",
-    "pr": "50486",
-    "merge_sha": "e7826d864f8c8f41259e787403a04ee1e2e4eba9",
-    "html": "<p>Add RuboCop with rules from rubocop-rails-omakase by default. Skip with –skip-rubocop.</p>\n\n<p><em>DHH</em> and <em>zzak</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Add RuboCop with rules from <code>rubocop-rails-omakase</code> by default. Skip with <code>--skip-rubocop</code>.</p>\n\n<p><em>DHH</em> and <em>zzak</em></p>\n"
   },
   {
-    "message": "*   Use `bin/rails runner --skip-executor` option to not wrap the runner script\n    with an Executor.\n\n    *Ben Sheldon*",
+    "message": "*   Use `bin/rails runner --skip-executor` to not wrap the runner script with an\n    Executor.\n\n    *Ben Sheldon*",
     "project": "railties",
-    "date_merged": 1702110936000,
-    "author": "Ben Sheldon [he/him]",
-    "sha": "a9c4699751f5acc9346270d6b307be9108fd0ee0",
-    "pr": "50223",
-    "merge_sha": "5c4a7a711068c1dff2bd873da510ddbb82dcadd7",
-    "html": "<p>Use <code>bin/rails runner --skip-executor</code> option to not wrap the runner script<br />\nwith an Executor.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Use <code>bin/rails runner --skip-executor</code> to not wrap the runner script with an<br />\nExecutor.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
   },
   {
     "message": "*   Fix isolated engines to take `ActiveRecord::Base.table_name_prefix` into consideration.\n    This will allow for engine defined models, such as inside Active Storage, to respect\n    Active Record table name prefix configuration.\n\n    *Chedli Bourguiba*",
@@ -800,14 +820,14 @@
     "html": "<p>Fix isolated engines to take <code>ActiveRecord::Base.table_name_prefix</code> into consideration.<br />\nThis will allow for engine defined models, such as inside Active Storage, to respect<br />\nActive Record table name prefix configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
-    "message": "*   Fix running `db:system:change` when app has no Dockerfile.\n\n    *Hartley McGuire*",
+    "message": "*   Fix running `db:system:change` when the app has no Dockerfile.\n\n    *Hartley McGuire*",
     "project": "railties",
-    "date_merged": 1699548155000,
-    "author": "Hartley McGuire",
-    "sha": "c8e1fe9981a301ce77e30fb9f3558e083fd6743a",
-    "pr": "49988",
-    "merge_sha": "a82d1bce6c261112c54ec639f7f08d43e34fdeb8",
-    "html": "<p>Fix running <code>db:system:change</code> when app has no Dockerfile.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Fix running <code>db:system:change</code> when the app has no Dockerfile.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   In Action Mailer previews, list inline attachments separately from normal\n    attachments. For example, attachments that were previously listed like\n\n      > Attachments: logo.png file1.pdf file2.pdf\n\n    will now be listed like\n\n      > Attachments: file1.pdf file2.pdf (Inline: logo.png)\n\n    *Christian Schmidt* and *Jonathan Hefner*",
@@ -830,14 +850,14 @@
     "html": "<p>In mailer preview, only show SMTP-To if it differs from the union of To, Cc and Bcc.</p>\n\n<p><em>Christian Schmidt</em></p>\n"
   },
   {
-    "message": "*   Enable YJIT by default on new applications running Ruby 3.3+\n\n    Adds a `config/initializers/enable_yjit.rb` initializer that enables YJIT\n    when running on Ruby 3.3+.\n\n    *Jean Boussier*",
+    "message": "*   Enable YJIT by default on new applications running Ruby 3.3+.\n\n    Adds a `config/initializers/enable_yjit.rb` initializer that enables YJIT\n    when running on Ruby 3.3+.\n\n    *Jean Boussier*",
     "project": "railties",
-    "date_merged": 1699351193000,
-    "author": "Alex Ghiculescu",
-    "sha": "644ee2fb0bf77bc23f0d941b6e3bd32718393149",
-    "pr": "49948",
-    "merge_sha": "d53ef2c18073a3a662edddd3fbbce32805e1135a",
-    "html": "<p>Enable YJIT by default on new applications running Ruby 3.3+</p>\n\n<p>Adds a <code>config/initializers/enable_yjit.rb</code> initializer that enables YJIT<br />\nwhen running on Ruby 3.3+.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Enable YJIT by default on new applications running Ruby 3.3+.</p>\n\n<p>Adds a <code>config/initializers/enable_yjit.rb</code> initializer that enables YJIT<br />\nwhen running on Ruby 3.3+.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   In Action Mailer previews, show date from message `Date` header if present.\n\n    *Sampat Badhe*",
@@ -860,34 +880,34 @@
     "html": "<p>Exit with non-zero status when the migration generator fails.</p>\n\n<p><em>Katsuhiko YOSHIDA</em></p>\n"
   },
   {
-    "message": "*   Use numeric UID and GID in Dockerfile template\n\n    The Dockerfile generated by `rails new` sets the default user and group\n    by name instead of UID:GID. This can cause the following error in kubernetes:\n\n    ```\n    container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root\n    ```\n\n    This change sets default user and group by their numeric values.\n\n    *Ivan Fedotov*",
+    "message": "*   Use numeric UID and GID in Dockerfile template\n\n    The Dockerfile generated by `rails new` sets the default user and group\n    by name instead of UID:GID. This can cause the following error in Kubernetes:\n\n    ```\n    container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root\n    ```\n\n    This change sets default user and group by their numeric values.\n\n    *Ivan Fedotov*",
     "project": "railties",
     "date_merged": 1698739359000,
     "author": "Ivan Fedotov",
     "sha": "7ff33d8b3c6d2c5187ac2a59067fce8eea7ceba3",
     "pr": "49742",
     "merge_sha": "f2088bec18996ab209a71d2587c8945b8776ea38",
-    "html": "<p>Use numeric UID and GID in Dockerfile template</p>\n\n<p>The Dockerfile generated by <code>rails new</code> sets the default user and group<br />\nby name instead of UID:GID. This can cause the following error in kubernetes:</p>\n\n<pre><code>container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root\n</code></pre>\n\n<p>This change sets default user and group by their numeric values.</p>\n\n<p><em>Ivan Fedotov</em></p>\n"
+    "html": "<p>Use numeric UID and GID in Dockerfile template</p>\n\n<p>The Dockerfile generated by <code>rails new</code> sets the default user and group<br />\nby name instead of UID:GID. This can cause the following error in Kubernetes:</p>\n\n<pre><code>container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root\n</code></pre>\n\n<p>This change sets default user and group by their numeric values.</p>\n\n<p><em>Ivan Fedotov</em></p>\n"
   },
   {
-    "message": "*   Disallow invalid values for rails new options.\n\n    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for\n    `rails new` can all take different options. This change adds checks to\n    options to make sure the user enters the correct value.\n\n    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*",
+    "message": "*   Disallow invalid values for rails new options.\n\n    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` options\n    for `rails new` take different arguments. This change validates them.\n\n    *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1697142083000,
     "author": "Petrik",
     "sha": "b8a3efeee348db1d357bd83d5e7cca24cbbe4f28",
     "pr": "49609",
     "merge_sha": "056396fea663d3adb9ba332b039a007d2730901a",
-    "html": "<p>Disallow invalid values for rails new options.</p>\n\n<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> flags for<br />\n<code>rails new</code> can all take different options. This change adds checks to<br />\noptions to make sure the user enters the correct value.</p>\n\n<p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>\n"
+    "html": "<p>Disallow invalid values for rails new options.</p>\n\n<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> options<br />\nfor <code>rails new</code> take different arguments. This change validates them.</p>\n\n<p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>\n"
   },
   {
-    "message": "*   Conditionally print `$stdout` when invoking `run_generator`\n\n    In an effort to improve the developer experience when debugging\n    generator tests, we add the ability to conditionally print `$stdout`\n    instead of capturing it.\n\n    This allows for calls to `binding.irb` and `puts` work as expected.\n\n    ```sh\n    RAILS_LOG_TO_STDOUT=true ./bin/test test/generators/actions_test.rb\n    ```\n\n    *Steve Polito*",
+    "message": "*   Conditionally print `$stdout` when invoking `run_generator`.\n\n    In an effort to improve the developer experience when debugging\n    generator tests, we add the ability to conditionally print `$stdout`\n    instead of capturing it.\n\n    This allows for calls to `binding.irb` and `puts` work as expected.\n\n    ```sh\n    RAILS_LOG_TO_STDOUT=true ./bin/test test/generators/actions_test.rb\n    ```\n\n    *Steve Polito*",
     "project": "railties",
-    "date_merged": 1696331174000,
-    "author": "Steve Polito",
-    "sha": "e659f46da1822b0fd9cd9c040fa3772e999d21f1",
-    "pr": "49448",
-    "merge_sha": "7cc4de0aa2c8812ad90fe23c1c0889d405675572",
-    "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
+    "date_merged": 1705446573000,
+    "author": "Xavier Noria",
+    "sha": "299900f4e50cae5e1d5104b7569eef7bd386e6f5",
+    "pr": "50773",
+    "merge_sha": "474ee0a0141fd26e4a93442e7b920b06bc8401d4",
+    "html": "<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code>.</p>\n\n<p>In an effort to improve the developer experience when debugging<br />\ngenerator tests, we add the ability to conditionally print <code>$stdout</code><br />\ninstead of capturing it.</p>\n\n<p>This allows for calls to <code>binding.irb</code> and <code>puts</code> work as expected.</p>\n\n<div class=\"language-sh highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">RAILS_LOG_TO_STDOUT</span><span class=\"o\">=</span><span class=\"nb\">true</span> ./bin/test <span class=\"nb\">test</span>/generators/actions_test.rb\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
   },
   {
     "message": "*   Remove the option `config.public_file_server.enabled` from the generators\n    for all environments, as the value is the same in all environments.\n\n    *Adrian Hirt*",
