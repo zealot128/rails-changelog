@@ -126,6 +126,37 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix single quote escapes on default generated MySQL columns
+</title>
+    <link>https://github.com/rails/rails/issues/50733</link>
+    <guid>https://github.com/rails/rails/issues/50733</guid>
+    <description>*   Fix single quote escapes on default generated MySQL columns
+
+    MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.
+
+    Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.
+
+    This would result in issues when importing the schema on a fresh instance of a MySQL database.
+
+    Now, the string will not be escaped and will be valid Ruby upon importing of the schema.
+
+    *Yash Kapadia*</description>
+    <pubDate>Wed, 17 Jan 2024 12:48:03 +0000</pubDate>
+    <author>Yash Kapadia</author>
+    <content:encoded><![CDATA[<p>Fix single quote escapes on default generated MySQL columns</p>
+
+<p>MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.</p>
+
+<p>Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.</p>
+
+<p>This would result in issues when importing the schema on a fresh instance of a MySQL database.</p>
+
+<p>Now, the string will not be escaped and will be valid Ruby upon importing of the schema.</p>
+
+<p><em>Yash Kapadia</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix Migrations with versions older than 7.1 validating options given to
 </title>
     <link>https://github.com/rails/rails/issues/50680</link>
@@ -782,6 +813,23 @@ column).</p>
     <content:encoded><![CDATA[<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>
 
 <p><em>Tristan Fellows</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Fix a bug where type casting of string to `Time` and `DateTime` doesn&#39;t
+</title>
+    <link>https://github.com/rails/rails/issues/46872</link>
+    <guid>https://github.com/rails/rails/issues/46872</guid>
+    <description>*   Fix a bug where type casting of string to `Time` and `DateTime` doesn&#39;t
+    calculate minus minute value in TZ offset correctly.
+
+    *Akira Matsuda*</description>
+    <pubDate>Wed, 17 Jan 2024 08:55:38 +0000</pubDate>
+    <author>Akira Matsuda</author>
+    <content:encoded><![CDATA[<p>Fix a bug where type casting of string to <code>Time</code> and <code>DateTime</code> doesn’t<br />
+calculate minus minute value in TZ offset correctly.</p>
+
+<p><em>Akira Matsuda</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -1988,11 +2036,11 @@ for all environments, as the value is the same in all environments.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionpack: Add rate limiting API using Redis and the [Kredis limiter type](https://github.com/rails/kredis/blob/main/lib/kredis/types/limiter.rb).
+    <title>actionpack: Add rate limiting API.
 </title>
-    <link>https://github.com/rails/rails/issues/50490</link>
-    <guid>https://github.com/rails/rails/issues/50490</guid>
-    <description>*   Add rate limiting API using Redis and the [Kredis limiter type](https://github.com/rails/kredis/blob/main/lib/kredis/types/limiter.rb).
+    <link>https://github.com/rails/rails/issues/50781</link>
+    <guid>https://github.com/rails/rails/issues/50781</guid>
+    <description>*   Add rate limiting API.
 
     ```ruby
     class SessionsController &lt; ApplicationController
@@ -2005,10 +2053,10 @@ for all environments, as the value is the same in all environments.</p>
     end
     ```
 
-    *DHH*</description>
-    <pubDate>Sun, 31 Dec 2023 15:14:03 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add rate limiting API using Redis and the <a href="https://github.com/rails/kredis/blob/main/lib/kredis/types/limiter.rb">Kredis limiter type</a>.</p>
+    *DHH*, *Jean Boussier*</description>
+    <pubDate>Wed, 17 Jan 2024 16:49:27 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add rate limiting API.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SessionsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="n">rate_limit</span> <span class="ss">to: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">within: </span><span class="mi">3</span><span class="p">.</span><span class="nf">minutes</span><span class="p">,</span> <span class="ss">only: :create</span>
@@ -2020,7 +2068,7 @@ for all environments, as the value is the same in all environments.</p>
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><em>DHH</em></p>
+<p><em>DHH</em>, <em>Jean Boussier</em></p>
 ]]></content:encoded>
   </item>
   <item>
