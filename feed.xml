@@ -131,13 +131,13 @@
     <link>https://github.com/rails/rails/issues/50680</link>
     <guid>https://github.com/rails/rails/issues/50680</guid>
     <description>*   Fix Migrations with versions older than 7.1 validating options given to
-    `add_reference`.
+    `add_reference` and `t.references`.
 
     *Hartley McGuire*</description>
     <pubDate>Mon, 15 Jan 2024 21:25:22 +0000</pubDate>
     <author>Hartley McGuire</author>
     <content:encoded><![CDATA[<p>Fix Migrations with versions older than 7.1 validating options given to<br />
-<code>add_reference</code>.</p>
+<code>add_reference</code> and <code>t.references</code>.</p>
 
 <p><em>Hartley McGuire</em></p>
 ]]></content:encoded>
@@ -1164,6 +1164,21 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Use `includes` instead of `eager_load` for `with_all_rich_text`.
+</title>
+    <link>https://github.com/rails/rails/issues/50769</link>
+    <guid>https://github.com/rails/rails/issues/50769</guid>
+    <description>*   Use `includes` instead of `eager_load` for `with_all_rich_text`.
+
+    *Petrik de Heus*</description>
+    <pubDate>Tue, 16 Jan 2024 23:28:38 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Use <code>includes</code> instead of <code>eager_load</code> for <code>with_all_rich_text</code>.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`
 </title>
     <link>https://github.com/rails/rails/issues/50473</link>
@@ -1278,6 +1293,21 @@ method from the <code>Hash</code> class, which was not able to access values usi
     <content:encoded><![CDATA[<p>Fix using Trix with Sprockets</p>
 
 <p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Fix N+1 query when fetching preview images for non-image assets
+</title>
+    <link>https://github.com/rails/rails/issues/50758</link>
+    <guid>https://github.com/rails/rails/issues/50758</guid>
+    <description>*   Fix N+1 query when fetching preview images for non-image assets
+
+    *Aaron Patterson &amp; Justin Searls*</description>
+    <pubDate>Tue, 16 Jan 2024 18:44:10 +0000</pubDate>
+    <author>Aaron Patterson</author>
+    <content:encoded><![CDATA[<p>Fix N+1 query when fetching preview images for non-image assets</p>
+
+<p><em>Aaron Patterson &amp; Justin Searls</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -1440,38 +1470,20 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Ensure only directories exist in Rails default load paths
+    <title>railties: Ensure `autoload_paths`, `autoload_once_paths`, `eager_load_paths`, and
 </title>
-    <link>https://github.com/rails/rails/issues/50723</link>
-    <guid>https://github.com/rails/rails/issues/50723</guid>
-    <description>*   Ensure only directories exist in Rails default load paths
-
-    Previously, some files put under `app` directory would contaminate the load paths.
-    This commit removes files from the default load paths set up by the Rails framework.
-
-    Now, only directories are included as default in the following paths:
-
-    * autoload_paths
-    * autoload_once_paths
-    * eager_load_paths
-    * load_paths
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Ensure `autoload_paths`, `autoload_once_paths`, `eager_load_paths`, and
+    `load_paths` only have directories when initialized from engine defaults.
+    Previously, files under the `app` directory could end up there too.
 
     *Takumasa Ochi*</description>
-    <pubDate>Tue, 16 Jan 2024 16:48:26 +0000</pubDate>
-    <author>Takumasa Ochi</author>
-    <content:encoded><![CDATA[<p>Ensure only directories exist in Rails default load paths</p>
-
-<p>Previously, some files put under <code>app</code> directory would contaminate the load paths.<br />
-This commit removes files from the default load paths set up by the Rails framework.</p>
-
-<p>Now, only directories are included as default in the following paths:</p>
-
-<ul>
-  <li>autoload_paths</li>
-  <li>autoload_once_paths</li>
-  <li>eager_load_paths</li>
-  <li>load_paths</li>
-</ul>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Ensure <code>autoload_paths</code>, <code>autoload_once_paths</code>, <code>eager_load_paths</code>, and<br />
+<code>load_paths</code> only have directories when initialized from engine defaults.<br />
+Previously, files under the <code>app</code> directory could end up there too.</p>
 
 <p><em>Takumasa Ochi</em></p>
 ]]></content:encoded>
@@ -1500,93 +1512,93 @@ thereby preventing unnecessary reloads.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Use `oven-sh/setup-bun` in GitHub CI when generating an app with bun
+    <title>railties: Use `oven-sh/setup-bun` in GitHub CI when generating an app with Bun.
 </title>
-    <link>https://github.com/rails/rails/issues/50636</link>
-    <guid>https://github.com/rails/rails/issues/50636</guid>
-    <description>*   Use `oven-sh/setup-bun` in GitHub CI when generating an app with bun
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Use `oven-sh/setup-bun` in GitHub CI when generating an app with Bun.
 
     *TangRufus*</description>
-    <pubDate>Mon, 08 Jan 2024 21:04:55 +0000</pubDate>
-    <author>TangRufus</author>
-    <content:encoded><![CDATA[<p>Use <code>oven-sh/setup-bun</code> in GitHub CI when generating an app with bun</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Use <code>oven-sh/setup-bun</code> in GitHub CI when generating an app with Bun.</p>
 
 <p><em>TangRufus</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Disable `pidfile` generation in production environment.
+    <title>railties: Disable `pidfile` generation in the `production` environment.
 </title>
-    <link>https://github.com/rails/rails/issues/50644</link>
-    <guid>https://github.com/rails/rails/issues/50644</guid>
-    <description>*   Disable `pidfile` generation in production environment.
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Disable `pidfile` generation in the `production` environment.
 
     *Hans Schnedlitz*</description>
-    <pubDate>Mon, 08 Jan 2024 19:49:20 +0000</pubDate>
-    <author>Hans Schnedlitz</author>
-    <content:encoded><![CDATA[<p>Disable <code>pidfile</code> generation in production environment.</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Disable <code>pidfile</code> generation in the <code>production</code> environment.</p>
 
 <p><em>Hans Schnedlitz</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in the
+    <title>railties: Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in
 </title>
-    <link>https://github.com/rails/rails/issues/50436</link>
-    <guid>https://github.com/rails/rails/issues/50436</guid>
-    <description>*   Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in the
-    development environment.
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Set `config.action_view.annotate_rendered_view_with_filenames` to `true` in
+    the `development` environment.
 
     *Adrian Marin*</description>
-    <pubDate>Thu, 04 Jan 2024 19:33:21 +0000</pubDate>
-    <author>Adrian</author>
-    <content:encoded><![CDATA[<p>Set <code>config.action_view.annotate_rendered_view_with_filenames</code> to <code>true</code> in the<br />
-development environment.</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Set <code>config.action_view.annotate_rendered_view_with_filenames</code> to <code>true</code> in<br />
+the <code>development</code> environment.</p>
 
 <p><em>Adrian Marin</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Support `BACKTRACE` ENV variable to turn off backtrace cleaning.
+    <title>railties: Support the `BACKTRACE` environment variable to turn off backtrace cleaning.
 </title>
-    <link>https://github.com/rails/rails/issues/50563</link>
-    <guid>https://github.com/rails/rails/issues/50563</guid>
-    <description>*   Support `BACKTRACE` ENV variable to turn off backtrace cleaning.
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Support the `BACKTRACE` environment variable to turn off backtrace cleaning.
 
     Useful for debugging framework code:
 
     ```sh
-    BACKTRACE=1 ./bin/rails server
+    BACKTRACE=1 bin/rails server
     ```
 
     *Alex Ghiculescu*</description>
-    <pubDate>Wed, 03 Jan 2024 22:14:21 +0000</pubDate>
-    <author>Alex Ghiculescu</author>
-    <content:encoded><![CDATA[<p>Support <code>BACKTRACE</code> ENV variable to turn off backtrace cleaning.</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Support the <code>BACKTRACE</code> environment variable to turn off backtrace cleaning.</p>
 
 <p>Useful for debugging framework code:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">BACKTRACE</span><span class="o">=</span>1 ./bin/rails server
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">BACKTRACE</span><span class="o">=</span>1 bin/rails server
 </code></pre></div></div>
 
 <p><em>Alex Ghiculescu</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Raise `ArgumentError` when reading `config.x.something` with arguments
+    <title>railties: Raise `ArgumentError` when reading `config.x.something` with arguments:
 </title>
-    <link>https://github.com/rails/rails/issues/50050</link>
-    <guid>https://github.com/rails/rails/issues/50050</guid>
-    <description>*   Raise `ArgumentError` when reading `config.x.something` with arguments
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Raise `ArgumentError` when reading `config.x.something` with arguments:
 
     ```ruby
     config.x.this_works.this_raises true # raises ArgumentError
     ```
 
     *Sean Doyle*</description>
-    <pubDate>Wed, 03 Jan 2024 20:50:57 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Raise <code>ArgumentError</code> when reading <code>config.x.something</code> with arguments</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Raise <code>ArgumentError</code> when reading <code>config.x.something</code> with arguments:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">x</span><span class="p">.</span><span class="nf">this_works</span><span class="p">.</span><span class="nf">this_raises</span> <span class="kp">true</span> <span class="c1"># raises ArgumentError</span>
 </code></pre></div></div>
@@ -1595,16 +1607,16 @@ development environment.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Add default PWA files for manifest and service-worker that are served from `app/views/pwa` and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.
+    <title>railties: Add default PWA files for manifest and service-worker that are served from `app/views/pwa` and can be dynamically rendered through ERB. Mount these files explicitly at the root with default routes in the generated routes file.
 </title>
-    <link>https://github.com/rails/rails/issues/50528</link>
-    <guid>https://github.com/rails/rails/issues/50528</guid>
-    <description>*   Add default PWA files for manifest and service-worker that are served from `app/views/pwa` and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Add default PWA files for manifest and service-worker that are served from `app/views/pwa` and can be dynamically rendered through ERB. Mount these files explicitly at the root with default routes in the generated routes file.
 
     *DHH*</description>
-    <pubDate>Wed, 03 Jan 2024 13:42:48 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add default PWA files for manifest and service-worker that are served from <code>app/views/pwa</code> and can be dynamically rendered through erb. Mount these files explicitly at the root with default routes in the generated routes file.</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add default PWA files for manifest and service-worker that are served from <code>app/views/pwa</code> and can be dynamically rendered through ERB. Mount these files explicitly at the root with default routes in the generated routes file.</p>
 
 <p><em>DHH</em></p>
 ]]></content:encoded>
@@ -1625,63 +1637,63 @@ development environment.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Add GitHub CI files for dependabot, brakeman, rubocop, and running tests by default. Can be skipped with --skip-ci.
+    <title>railties: Add GitHub CI files for Dependabot, Brakeman, RuboCop, and running tests by default. Can be skipped with `--skip-ci`.
 </title>
-    <link>https://github.com/rails/rails/issues/50508</link>
-    <guid>https://github.com/rails/rails/issues/50508</guid>
-    <description>*   Add GitHub CI files for dependabot, brakeman, rubocop, and running tests by default. Can be skipped with --skip-ci.
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Add GitHub CI files for Dependabot, Brakeman, RuboCop, and running tests by default. Can be skipped with `--skip-ci`.
 
     *DHH*</description>
-    <pubDate>Mon, 01 Jan 2024 10:08:45 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add GitHub CI files for dependabot, brakeman, rubocop, and running tests by default. Can be skipped with –skip-ci.</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add GitHub CI files for Dependabot, Brakeman, RuboCop, and running tests by default. Can be skipped with <code>--skip-ci</code>.</p>
 
 <p><em>DHH</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Add brakeman gem by default for static analysis of security vulnerabilities. Allow skipping with --skip-brakeman option.
+    <title>railties: Add Brakeman by default for static analysis of security vulnerabilities. Allow skipping with `--skip-brakeman option`.
 </title>
-    <link>https://github.com/rails/rails/issues/50507</link>
-    <guid>https://github.com/rails/rails/issues/50507</guid>
-    <description>*   Add brakeman gem by default for static analysis of security vulnerabilities. Allow skipping with --skip-brakeman option.
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Add Brakeman by default for static analysis of security vulnerabilities. Allow skipping with `--skip-brakeman option`.
 
     *vipulnsward*</description>
-    <pubDate>Mon, 01 Jan 2024 10:08:45 +0000</pubDate>
-    <author>Vipul A M</author>
-    <content:encoded><![CDATA[<p>Add brakeman gem by default for static analysis of security vulnerabilities. Allow skipping with –skip-brakeman option.</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add Brakeman by default for static analysis of security vulnerabilities. Allow skipping with <code>--skip-brakeman option</code>.</p>
 
 <p><em>vipulnsward</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Add RuboCop with rules from rubocop-rails-omakase by default. Skip with --skip-rubocop.
+    <title>railties: Add RuboCop with rules from `rubocop-rails-omakase` by default. Skip with `--skip-rubocop`.
 </title>
-    <link>https://github.com/rails/rails/issues/50486</link>
-    <guid>https://github.com/rails/rails/issues/50486</guid>
-    <description>*   Add RuboCop with rules from rubocop-rails-omakase by default. Skip with --skip-rubocop.
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Add RuboCop with rules from `rubocop-rails-omakase` by default. Skip with `--skip-rubocop`.
 
     *DHH* and *zzak*</description>
-    <pubDate>Sun, 31 Dec 2023 03:26:32 +0000</pubDate>
-    <author>zzak</author>
-    <content:encoded><![CDATA[<p>Add RuboCop with rules from rubocop-rails-omakase by default. Skip with –skip-rubocop.</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add RuboCop with rules from <code>rubocop-rails-omakase</code> by default. Skip with <code>--skip-rubocop</code>.</p>
 
 <p><em>DHH</em> and <em>zzak</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Use `bin/rails runner --skip-executor` option to not wrap the runner script
+    <title>railties: Use `bin/rails runner --skip-executor` to not wrap the runner script with an
 </title>
-    <link>https://github.com/rails/rails/issues/50223</link>
-    <guid>https://github.com/rails/rails/issues/50223</guid>
-    <description>*   Use `bin/rails runner --skip-executor` option to not wrap the runner script
-    with an Executor.
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Use `bin/rails runner --skip-executor` to not wrap the runner script with an
+    Executor.
 
     *Ben Sheldon*</description>
-    <pubDate>Sat, 09 Dec 2023 08:35:36 +0000</pubDate>
-    <author>Ben Sheldon [he/him]</author>
-    <content:encoded><![CDATA[<p>Use <code>bin/rails runner --skip-executor</code> option to not wrap the runner script<br />
-with an Executor.</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Use <code>bin/rails runner --skip-executor</code> to not wrap the runner script with an<br />
+Executor.</p>
 
 <p><em>Ben Sheldon</em></p>
 ]]></content:encoded>
@@ -1706,16 +1718,16 @@ Active Record table name prefix configuration.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Fix running `db:system:change` when app has no Dockerfile.
+    <title>railties: Fix running `db:system:change` when the app has no Dockerfile.
 </title>
-    <link>https://github.com/rails/rails/issues/49988</link>
-    <guid>https://github.com/rails/rails/issues/49988</guid>
-    <description>*   Fix running `db:system:change` when app has no Dockerfile.
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Fix running `db:system:change` when the app has no Dockerfile.
 
     *Hartley McGuire*</description>
-    <pubDate>Thu, 09 Nov 2023 16:42:35 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Fix running <code>db:system:change</code> when app has no Dockerfile.</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Fix running <code>db:system:change</code> when the app has no Dockerfile.</p>
 
 <p><em>Hartley McGuire</em></p>
 ]]></content:encoded>
@@ -1769,19 +1781,19 @@ attachments. For example, attachments that were previously listed like</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Enable YJIT by default on new applications running Ruby 3.3+
+    <title>railties: Enable YJIT by default on new applications running Ruby 3.3+.
 </title>
-    <link>https://github.com/rails/rails/issues/49948</link>
-    <guid>https://github.com/rails/rails/issues/49948</guid>
-    <description>*   Enable YJIT by default on new applications running Ruby 3.3+
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Enable YJIT by default on new applications running Ruby 3.3+.
 
     Adds a `config/initializers/enable_yjit.rb` initializer that enables YJIT
     when running on Ruby 3.3+.
 
     *Jean Boussier*</description>
-    <pubDate>Tue, 07 Nov 2023 09:59:53 +0000</pubDate>
-    <author>Alex Ghiculescu</author>
-    <content:encoded><![CDATA[<p>Enable YJIT by default on new applications running Ruby 3.3+</p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Enable YJIT by default on new applications running Ruby 3.3+.</p>
 
 <p>Adds a <code>config/initializers/enable_yjit.rb</code> initializer that enables YJIT<br />
 when running on Ruby 3.3+.</p>
@@ -1827,7 +1839,7 @@ when running on Ruby 3.3+.</p>
     <description>*   Use numeric UID and GID in Dockerfile template
 
     The Dockerfile generated by `rails new` sets the default user and group
-    by name instead of UID:GID. This can cause the following error in kubernetes:
+    by name instead of UID:GID. This can cause the following error in Kubernetes:
 
     ```
     container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root
@@ -1841,7 +1853,7 @@ when running on Ruby 3.3+.</p>
     <content:encoded><![CDATA[<p>Use numeric UID and GID in Dockerfile template</p>
 
 <p>The Dockerfile generated by <code>rails new</code> sets the default user and group<br />
-by name instead of UID:GID. This can cause the following error in kubernetes:</p>
+by name instead of UID:GID. This can cause the following error in Kubernetes:</p>
 
 <pre><code>container has runAsNonRoot and image has non-numeric user (rails), cannot verify user is non-root
 </code></pre>
@@ -1858,28 +1870,26 @@ by name instead of UID:GID. This can cause the following error in kubernetes:</p
     <guid>https://github.com/rails/rails/issues/49609</guid>
     <description>*   Disallow invalid values for rails new options.
 
-    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` flags for
-    `rails new` can all take different options. This change adds checks to
-    options to make sure the user enters the correct value.
+    The `--database`, `--asset-pipeline`, `--css`, and `--javascript` options
+    for `rails new` take different arguments. This change validates them.
 
     *Tony Drake*, *Akhil G Krishnan*, *Petrik de Heus*</description>
     <pubDate>Thu, 12 Oct 2023 20:21:23 +0000</pubDate>
     <author>Petrik</author>
     <content:encoded><![CDATA[<p>Disallow invalid values for rails new options.</p>
 
-<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> flags for<br />
-<code>rails new</code> can all take different options. This change adds checks to<br />
-options to make sure the user enters the correct value.</p>
+<p>The <code>--database</code>, <code>--asset-pipeline</code>, <code>--css</code>, and <code>--javascript</code> options<br />
+for <code>rails new</code> take different arguments. This change validates them.</p>
 
 <p><em>Tony Drake</em>, <em>Akhil G Krishnan</em>, <em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Conditionally print `$stdout` when invoking `run_generator`
+    <title>railties: Conditionally print `$stdout` when invoking `run_generator`.
 </title>
-    <link>https://github.com/rails/rails/issues/49448</link>
-    <guid>https://github.com/rails/rails/issues/49448</guid>
-    <description>*   Conditionally print `$stdout` when invoking `run_generator`
+    <link>https://github.com/rails/rails/issues/50773</link>
+    <guid>https://github.com/rails/rails/issues/50773</guid>
+    <description>*   Conditionally print `$stdout` when invoking `run_generator`.
 
     In an effort to improve the developer experience when debugging
     generator tests, we add the ability to conditionally print `$stdout`
@@ -1892,9 +1902,9 @@ options to make sure the user enters the correct value.</p>
     ```
 
     *Steve Polito*</description>
-    <pubDate>Tue, 03 Oct 2023 11:06:14 +0000</pubDate>
-    <author>Steve Polito</author>
-    <content:encoded><![CDATA[<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code></p>
+    <pubDate>Tue, 16 Jan 2024 23:09:33 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Conditionally print <code>$stdout</code> when invoking <code>run_generator</code>.</p>
 
 <p>In an effort to improve the developer experience when debugging<br />
 generator tests, we add the ability to conditionally print <code>$stdout</code><br />
