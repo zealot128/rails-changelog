@@ -80,6 +80,16 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Fix single quote escapes on default generated MySQL columns\n\n    MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.\n\n    Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.\n\n    This would result in issues when importing the schema on a fresh instance of a MySQL database.\n\n    Now, the string will not be escaped and will be valid Ruby upon importing of the schema.\n\n    *Yash Kapadia*",
+    "project": "activerecord",
+    "date_merged": 1705495683000,
+    "author": "Yash Kapadia",
+    "sha": "0702c24e7b59020ed3bc5838763198fe0e5c6775",
+    "pr": "50733",
+    "merge_sha": "25b7f640749e0dbbf731a7f5696e5c785195f922",
+    "html": "<p>Fix single quote escapes on default generated MySQL columns</p>\n\n<p>MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.</p>\n\n<p>Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.</p>\n\n<p>This would result in issues when importing the schema on a fresh instance of a MySQL database.</p>\n\n<p>Now, the string will not be escaped and will be valid Ruby upon importing of the schema.</p>\n\n<p><em>Yash Kapadia</em></p>\n"
+  },
+  {
     "message": "*   Fix Migrations with versions older than 7.1 validating options given to\n    `add_reference` and `t.references`.\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1705353922000,
@@ -338,6 +348,16 @@
     "pr": "50079",
     "merge_sha": "ab8f5c9d9381b5058f76e9572e6f02e90c958a6d",
     "html": "<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>\n\n<p><em>Tristan Fellows</em></p>\n"
+  },
+  {
+    "message": "*   Fix a bug where type casting of string to `Time` and `DateTime` doesn't\n    calculate minus minute value in TZ offset correctly.\n\n    *Akira Matsuda*",
+    "project": "activemodel",
+    "date_merged": 1705481738000,
+    "author": "Akira Matsuda",
+    "sha": "d10d5aedce2be03aaf14b493b1f3f9ac3c7852a6",
+    "pr": "46872",
+    "merge_sha": "a71e0aabe3e1eeae9757df1ab614558e85405766",
+    "html": "<p>Fix a bug where type casting of string to <code>Time</code> and <code>DateTime</code> doesn’t<br />\ncalculate minus minute value in TZ offset correctly.</p>\n\n<p><em>Akira Matsuda</em></p>\n"
   },
   {
     "message": "*   Port the `type_for_attribute` method to Active Model. Classes that include\n    `ActiveModel::Attributes` will now provide this method. This method behaves\n    the same for Active Model as it does for Active Record.\n\n      ```ruby\n      class MyModel\n        include ActiveModel::Attributes\n\n        attribute :my_attribute, :integer\n      end\n\n      MyModel.type_for_attribute(:my_attribute) # => #<ActiveModel::Type::Integer ...>\n      ```\n\n    *Jonathan Hefner*",
@@ -930,14 +950,14 @@
     "html": "<p>Add <code>allow_browser</code> to set minimum browser versions for the application.</p>\n\n<p>A browser that’s blocked will by default be served the file in <code>public/426.html</code> with a HTTP status code of “426 Upgrade Required”.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ApplicationController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"c1\"># Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: :modern</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">ApplicationController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"c1\"># All versions of Chrome and Opera will be allowed, but no versions of \"internet explorer\" (ie). Safari needs to be 16.4+ and Firefox 121+.</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: </span><span class=\"p\">{</span> <span class=\"ss\">safari: </span><span class=\"mf\">16.4</span><span class=\"p\">,</span> <span class=\"ss\">firefox: </span><span class=\"mi\">121</span><span class=\"p\">,</span> <span class=\"ss\">ie: </span><span class=\"kp\">false</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">MessagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"c1\"># In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: </span><span class=\"p\">{</span> <span class=\"ss\">opera: </span><span class=\"mi\">104</span><span class=\"p\">,</span> <span class=\"ss\">chrome: </span><span class=\"mi\">119</span> <span class=\"p\">},</span> <span class=\"ss\">only: :show</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
   },
   {
-    "message": "*   Add rate limiting API using Redis and the [Kredis limiter type](https://github.com/rails/kredis/blob/main/lib/kredis/types/limiter.rb).\n\n    ```ruby\n    class SessionsController < ApplicationController\n      rate_limit to: 10, within: 3.minutes, only: :create\n    end\n\n    class SignupsController < ApplicationController\n      rate_limit to: 1000, within: 10.seconds,\n        by: -> { request.domain }, with: -> { redirect_to busy_controller_url, alert: \"Too many signups!\" }, only: :new\n    end\n    ```\n\n    *DHH*",
+    "message": "*   Add rate limiting API.\n\n    ```ruby\n    class SessionsController < ApplicationController\n      rate_limit to: 10, within: 3.minutes, only: :create\n    end\n\n    class SignupsController < ApplicationController\n      rate_limit to: 1000, within: 10.seconds,\n        by: -> { request.domain }, with: -> { redirect_to busy_controller_url, alert: \"Too many signups!\" }, only: :new\n    end\n    ```\n\n    *DHH*, *Jean Boussier*",
     "project": "actionpack",
-    "date_merged": 1704035643000,
-    "author": "David Heinemeier Hansson",
-    "sha": "179b979ddbb7bcc4d1a12d0d71779f47c1c9d9cd",
-    "pr": "50490",
-    "merge_sha": "fe39741382cf63d0bb8a077a4bcf63312398e510",
-    "html": "<p>Add rate limiting API using Redis and the <a href=\"https://github.com/rails/kredis/blob/main/lib/kredis/types/limiter.rb\">Kredis limiter type</a>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">SessionsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">,</span> <span class=\"ss\">only: :create</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">SignupsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">1000</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">10</span><span class=\"p\">.</span><span class=\"nf\">seconds</span><span class=\"p\">,</span>\n    <span class=\"ss\">by: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">domain</span> <span class=\"p\">},</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">redirect_to</span> <span class=\"n\">busy_controller_url</span><span class=\"p\">,</span> <span class=\"ss\">alert: </span><span class=\"s2\">\"Too many signups!\"</span> <span class=\"p\">},</span> <span class=\"ss\">only: :new</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
+    "date_merged": 1705510167000,
+    "author": "Jean Boussier",
+    "sha": "d839ddb71abea276cc1a79b5eaddaa9620353f31",
+    "pr": "50781",
+    "merge_sha": "1205a751c5a79335ffb522ca56986c22ad527371",
+    "html": "<p>Add rate limiting API.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">SessionsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">,</span> <span class=\"ss\">only: :create</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">SignupsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">1000</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">10</span><span class=\"p\">.</span><span class=\"nf\">seconds</span><span class=\"p\">,</span>\n    <span class=\"ss\">by: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">domain</span> <span class=\"p\">},</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">redirect_to</span> <span class=\"n\">busy_controller_url</span><span class=\"p\">,</span> <span class=\"ss\">alert: </span><span class=\"s2\">\"Too many signups!\"</span> <span class=\"p\">},</span> <span class=\"ss\">only: :new</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em>, <em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Add `image/svg+xml` to the compressible content types of ActionDispatch::Static\n\n    *Georg Ledermann*",
