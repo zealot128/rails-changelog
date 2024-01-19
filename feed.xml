@@ -1518,6 +1518,111 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: `bin/rails` now prints its help message when given an unrecognized bare
+</title>
+    <link>https://github.com/rails/rails/issues/50798</link>
+    <guid>https://github.com/rails/rails/issues/50798</guid>
+    <description>*   `bin/rails` now prints its help message when given an unrecognized bare
+    option.
+
+    __Before__
+
+      ```console
+      $ bin/rails -v
+      Rails 7.2.0.alpha
+
+      $ bin/rails -V
+      rake, version 13.0.6
+
+      $ bin/rails -s
+      Running 0 tests in a single process (parallelization threshold is 50)
+      ...
+
+      $ bin/rails -S
+      invalid option: -S
+      ```
+
+    __After__
+
+      ```console
+      $ bin/rails -v
+      Rails 7.2.0.alpha
+
+      $ bin/rails -V
+      Usage:
+        bin/rails COMMAND [options]
+
+      You must specify a command. The most common commands are:
+      ...
+
+      $ bin/rails -s
+      Usage:
+        bin/rails COMMAND [options]
+
+      You must specify a command. The most common commands are:
+      ...
+
+      $ bin/rails -S
+      Usage:
+        bin/rails COMMAND [options]
+
+      You must specify a command. The most common commands are:
+      ...
+      ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Fri, 19 Jan 2024 00:10:23 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p><code>bin/rails</code> now prints its help message when given an unrecognized bare<br />
+option.</p>
+
+<p><strong>Before</strong></p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">  $</span><span class="w"> </span>bin/rails <span class="nt">-v</span>
+<span class="go">  Rails 7.2.0.alpha
+
+</span><span class="gp">  $</span><span class="w"> </span>bin/rails <span class="nt">-V</span>
+<span class="go">  rake, version 13.0.6
+
+</span><span class="gp">  $</span><span class="w"> </span>bin/rails <span class="nt">-s</span>
+<span class="go">  Running 0 tests in a single process (parallelization threshold is 50)
+</span><span class="c">  ...
+</span><span class="go">
+</span><span class="gp">  $</span><span class="w"> </span>bin/rails <span class="nt">-S</span>
+<span class="go">  invalid option: -S
+</span></code></pre></div></div>
+
+<p><strong>After</strong></p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">  $</span><span class="w"> </span>bin/rails <span class="nt">-v</span>
+<span class="go">  Rails 7.2.0.alpha
+
+</span><span class="gp">  $</span><span class="w"> </span>bin/rails <span class="nt">-V</span>
+<span class="go">  Usage:
+    bin/rails COMMAND [options]
+
+  You must specify a command. The most common commands are:
+</span><span class="c">  ...
+</span><span class="go">
+</span><span class="gp">  $</span><span class="w"> </span>bin/rails <span class="nt">-s</span>
+<span class="go">  Usage:
+    bin/rails COMMAND [options]
+
+  You must specify a command. The most common commands are:
+</span><span class="c">  ...
+</span><span class="go">
+</span><span class="gp">  $</span><span class="w"> </span>bin/rails <span class="nt">-S</span>
+<span class="go">  Usage:
+    bin/rails COMMAND [options]
+
+  You must specify a command. The most common commands are:
+</span><span class="c">  ...
+</span></code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Ensure `autoload_paths`, `autoload_once_paths`, `eager_load_paths`, and
 </title>
     <link>https://github.com/rails/rails/issues/50773</link>
