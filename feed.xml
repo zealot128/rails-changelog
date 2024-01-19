@@ -126,6 +126,29 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Consistently raise an `ArgumentError` when passing an invalid argument to a nested attributes association writer.
+</title>
+    <link>https://github.com/rails/rails/issues/50803</link>
+    <guid>https://github.com/rails/rails/issues/50803</guid>
+    <description>*   Consistently raise an `ArgumentError` when passing an invalid argument to a nested attributes association writer.
+
+    Previously, this would only raise on collection associations and produce a generic error on singular associations.
+
+    Now, it will raise on both collection and singular associations.
+
+    *Joshua Young*</description>
+    <pubDate>Fri, 19 Jan 2024 12:29:01 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Consistently raise an <code>ArgumentError</code> when passing an invalid argument to a nested attributes association writer.</p>
+
+<p>Previously, this would only raise on collection associations and produce a generic error on singular associations.</p>
+
+<p>Now, it will raise on both collection and singular associations.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix single quote escapes on default generated MySQL columns
 </title>
     <link>https://github.com/rails/rails/issues/50733</link>
