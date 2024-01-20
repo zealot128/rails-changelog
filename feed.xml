@@ -1541,6 +1541,42 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Rails console now indicates the current Rails environment:
+</title>
+    <link>https://github.com/rails/rails/issues/50796</link>
+    <guid>https://github.com/rails/rails/issues/50796</guid>
+    <description>*   Rails console now indicates the current Rails environment:
+
+    ```txt
+    dev:001&gt; # for RAILS_ENV=development
+    test:001&gt; # for RAILS_ENV=test
+    prod:001&gt; # for RAILS_ENV=production
+    my_env:001&gt; # for RAILS_ENV=my_env
+    ```
+
+    The environment name will also be colorized when the environment is
+    `development` (green), `test` (green), or `production` (red), if your
+    terminal supports it.
+
+    *Stan Lo*</description>
+    <pubDate>Fri, 19 Jan 2024 19:11:51 +0000</pubDate>
+    <author>Stan Lo</author>
+    <content:encoded><![CDATA[<p>Rails console now indicates the current Rails environment:</p>
+
+<pre><code class="language-txt">dev:001&gt; # for RAILS_ENV=development
+test:001&gt; # for RAILS_ENV=test
+prod:001&gt; # for RAILS_ENV=production
+my_env:001&gt; # for RAILS_ENV=my_env
+</code></pre>
+
+<p>The environment name will also be colorized when the environment is<br />
+<code>development</code> (green), <code>test</code> (green), or <code>production</code> (red), if your<br />
+terminal supports it.</p>
+
+<p><em>Stan Lo</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: `bin/rails` now prints its help message when given an unrecognized bare
 </title>
     <link>https://github.com/rails/rails/issues/50798</link>
