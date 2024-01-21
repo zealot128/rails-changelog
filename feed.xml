@@ -1541,35 +1541,41 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Rails console now indicates the current Rails environment:
+    <title>railties: Rails console now indicates application name and the current Rails environment:
 </title>
-    <link>https://github.com/rails/rails/issues/50796</link>
-    <guid>https://github.com/rails/rails/issues/50796</guid>
-    <description>*   Rails console now indicates the current Rails environment:
+    <link>https://github.com/rails/rails/issues/50825</link>
+    <guid>https://github.com/rails/rails/issues/50825</guid>
+    <description>*   Rails console now indicates application name and the current Rails environment:
 
     ```txt
-    dev:001&gt; # for RAILS_ENV=development
-    test:001&gt; # for RAILS_ENV=test
-    prod:001&gt; # for RAILS_ENV=production
-    my_env:001&gt; # for RAILS_ENV=my_env
+    my-app(dev)&gt; # for RAILS_ENV=development
+    my-app(test)&gt; # for RAILS_ENV=test
+    my-app(prod)&gt; # for RAILS_ENV=production
+    my-app(my_env)&gt; # for RAILS_ENV=my_env
     ```
 
-    The environment name will also be colorized when the environment is
+    The application name is derived from the application&#39;s module name from `config/application.rb`.
+    For example, `MyApp` will displayed as `my-app` in the prompt.
+
+    Additionally, the environment name will be colorized when the environment is
     `development` (green), `test` (green), or `production` (red), if your
     terminal supports it.
 
     *Stan Lo*</description>
-    <pubDate>Fri, 19 Jan 2024 19:11:51 +0000</pubDate>
+    <pubDate>Sat, 20 Jan 2024 23:36:25 +0000</pubDate>
     <author>Stan Lo</author>
-    <content:encoded><![CDATA[<p>Rails console now indicates the current Rails environment:</p>
+    <content:encoded><![CDATA[<p>Rails console now indicates application name and the current Rails environment:</p>
 
-<pre><code class="language-txt">dev:001&gt; # for RAILS_ENV=development
-test:001&gt; # for RAILS_ENV=test
-prod:001&gt; # for RAILS_ENV=production
-my_env:001&gt; # for RAILS_ENV=my_env
+<pre><code class="language-txt">my-app(dev)&gt; # for RAILS_ENV=development
+my-app(test)&gt; # for RAILS_ENV=test
+my-app(prod)&gt; # for RAILS_ENV=production
+my-app(my_env)&gt; # for RAILS_ENV=my_env
 </code></pre>
 
-<p>The environment name will also be colorized when the environment is<br />
+<p>The application name is derived from the application’s module name from <code>config/application.rb</code>.<br />
+For example, <code>MyApp</code> will displayed as <code>my-app</code> in the prompt.</p>
+
+<p>Additionally, the environment name will be colorized when the environment is<br />
 <code>development</code> (green), <code>test</code> (green), or <code>production</code> (red), if your<br />
 terminal supports it.</p>
 
