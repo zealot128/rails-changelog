@@ -1558,7 +1558,7 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
     For example, `MyApp` will displayed as `my-app` in the prompt.
 
     Additionally, the environment name will be colorized when the environment is
-    `development` (green), `test` (green), or `production` (red), if your
+    `development` (blue), `test` (blue), or `production` (red), if your
     terminal supports it.
 
     *Stan Lo*</description>
@@ -1576,7 +1576,7 @@ my-app(my_env)&gt; # for RAILS_ENV=my_env
 For example, <code>MyApp</code> will displayed as <code>my-app</code> in the prompt.</p>
 
 <p>Additionally, the environment name will be colorized when the environment is<br />
-<code>development</code> (green), <code>test</code> (green), or <code>production</code> (red), if your<br />
+<code>development</code> (blue), <code>test</code> (blue), or <code>production</code> (red), if your<br />
 terminal supports it.</p>
 
 <p><em>Stan Lo</em></p>
