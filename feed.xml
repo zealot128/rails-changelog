@@ -96,1451 +96,6 @@
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionmailer: Remove deprecated params via `:args` for `assert_enqueued_email_with`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated params via `:args` for `assert_enqueued_email_with`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated params via <code>:args</code> for <code>assert_enqueued_email_with</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionmailer: Remove deprecated `config.action_mailer.preview_path`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated `config.action_mailer.preview_path`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Consistently raise an `ArgumentError` when passing an invalid argument to a nested attributes association writer.
-</title>
-    <link>https://github.com/rails/rails/issues/50803</link>
-    <guid>https://github.com/rails/rails/issues/50803</guid>
-    <description>*   Consistently raise an `ArgumentError` when passing an invalid argument to a nested attributes association writer.
-
-    Previously, this would only raise on collection associations and produce a generic error on singular associations.
-
-    Now, it will raise on both collection and singular associations.
-
-    *Joshua Young*</description>
-    <pubDate>Fri, 19 Jan 2024 12:29:01 +0000</pubDate>
-    <author>Joshua Young</author>
-    <content:encoded><![CDATA[<p>Consistently raise an <code>ArgumentError</code> when passing an invalid argument to a nested attributes association writer.</p>
-
-<p>Previously, this would only raise on collection associations and produce a generic error on singular associations.</p>
-
-<p>Now, it will raise on both collection and singular associations.</p>
-
-<p><em>Joshua Young</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Fix single quote escapes on default generated MySQL columns
-</title>
-    <link>https://github.com/rails/rails/issues/50733</link>
-    <guid>https://github.com/rails/rails/issues/50733</guid>
-    <description>*   Fix single quote escapes on default generated MySQL columns
-
-    MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.
-
-    Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.
-
-    This would result in issues when importing the schema on a fresh instance of a MySQL database.
-
-    Now, the string will not be escaped and will be valid Ruby upon importing of the schema.
-
-    *Yash Kapadia*</description>
-    <pubDate>Wed, 17 Jan 2024 12:48:03 +0000</pubDate>
-    <author>Yash Kapadia</author>
-    <content:encoded><![CDATA[<p>Fix single quote escapes on default generated MySQL columns</p>
-
-<p>MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.</p>
-
-<p>Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.</p>
-
-<p>This would result in issues when importing the schema on a fresh instance of a MySQL database.</p>
-
-<p>Now, the string will not be escaped and will be valid Ruby upon importing of the schema.</p>
-
-<p><em>Yash Kapadia</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Fix Migrations with versions older than 7.1 validating options given to
-</title>
-    <link>https://github.com/rails/rails/issues/50680</link>
-    <guid>https://github.com/rails/rails/issues/50680</guid>
-    <description>*   Fix Migrations with versions older than 7.1 validating options given to
-    `add_reference` and `t.references`.
-
-    *Hartley McGuire*</description>
-    <pubDate>Mon, 15 Jan 2024 21:25:22 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Fix Migrations with versions older than 7.1 validating options given to<br />
-<code>add_reference</code> and <code>t.references</code>.</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Add `&lt;role&gt;_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be instrospected
-</title>
-    <link>https://github.com/rails/rails/issues/50662</link>
-    <guid>https://github.com/rails/rails/issues/50662</guid>
-    <description>*   Add `&lt;role&gt;_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be instrospected
-
-    *JP Rosevear*</description>
-    <pubDate>Mon, 15 Jan 2024 19:04:14 +0000</pubDate>
-    <author>JP Rosevear</author>
-    <content:encoded><![CDATA[<p>Add <code>&lt;role&gt;_types</code> class method to <code>ActiveRecord::DelegatedType</code> so that the delegated types can be instrospected</p>
-
-<p><em>JP Rosevear</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Make `schema_dump`, `query_cache`, `replica` and `database_tasks` configurable via `DATABASE_URL`
-</title>
-    <link>https://github.com/rails/rails/issues/50757</link>
-    <guid>https://github.com/rails/rails/issues/50757</guid>
-    <description>*   Make `schema_dump`, `query_cache`, `replica` and `database_tasks` configurable via `DATABASE_URL`
-
-    This wouldn&#39;t always work previously because boolean values would be interpreted as strings.
-
-    e.g. `DATABASE_URL=postgres://localhost/foo?schema_dump=false` now properly disable dumping the schema
-    cache.
-
-    *Mike Coutermarsh*, *Jean Boussier*</description>
-    <pubDate>Mon, 15 Jan 2024 14:57:33 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Make <code>schema_dump</code>, <code>query_cache</code>, <code>replica</code> and <code>database_tasks</code> configurable via <code>DATABASE_URL</code></p>
-
-<p>This wouldn’t always work previously because boolean values would be interpreted as strings.</p>
-
-<p>e.g. <code>DATABASE_URL=postgres://localhost/foo?schema_dump=false</code> now properly disable dumping the schema<br />
-cache.</p>
-
-<p><em>Mike Coutermarsh</em>, <em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Introduce `ActiveRecord::Transactions::ClassMethods#set_callback`
-</title>
-    <link>https://github.com/rails/rails/issues/50260</link>
-    <guid>https://github.com/rails/rails/issues/50260</guid>
-    <description>*   Introduce `ActiveRecord::Transactions::ClassMethods#set_callback`
-
-     It is identical to `ActiveSupport::Callbacks::ClassMethods#set_callback`
-     but with support for `after_commit` and `after_rollback` callback options.
-
-    *Joshua Young*</description>
-    <pubDate>Fri, 12 Jan 2024 11:30:33 +0000</pubDate>
-    <author>Joshua Young</author>
-    <content:encoded><![CDATA[<p>Introduce <code>ActiveRecord::Transactions::ClassMethods#set_callback</code></p>
-
-<p>It is identical to <code>ActiveSupport::Callbacks::ClassMethods#set_callback</code><br />
- but with support for <code>after_commit</code> and <code>after_rollback</code> callback options.</p>
-
-<p><em>Joshua Young</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Make `ActiveRecord::Encryption::Encryptor` agnostic of the serialization format used for encrypted data.
-</title>
-    <link>https://github.com/rails/rails/issues/48685</link>
-    <guid>https://github.com/rails/rails/issues/48685</guid>
-    <description>*   Make `ActiveRecord::Encryption::Encryptor` agnostic of the serialization format used for encrypted data.
-
-    Previously, the encryptor instance only allowed an encrypted value serialized as a `String` to be passed to the message serializer.
-
-    Now, the encryptor lets the configured `message_serializer` decide which types of serialized encrypted values are supported. A custom serialiser is therefore allowed to serialize `ActiveRecord::Encryption::Message` objects using a type other than `String`.
-
-    The default `ActiveRecord::Encryption::MessageSerializer` already ensures that only `String` objects are passed for deserialization.
-
-    *Maxime Réty*</description>
-    <pubDate>Fri, 05 Jan 2024 18:05:50 +0000</pubDate>
-    <author>maximerety</author>
-    <content:encoded><![CDATA[<p>Make <code>ActiveRecord::Encryption::Encryptor</code> agnostic of the serialization format used for encrypted data.</p>
-
-<p>Previously, the encryptor instance only allowed an encrypted value serialized as a <code>String</code> to be passed to the message serializer.</p>
-
-<p>Now, the encryptor lets the configured <code>message_serializer</code> decide which types of serialized encrypted values are supported. A custom serialiser is therefore allowed to serialize <code>ActiveRecord::Encryption::Message</code> objects using a type other than <code>String</code>.</p>
-
-<p>The default <code>ActiveRecord::Encryption::MessageSerializer</code> already ensures that only <code>String</code> objects are passed for deserialization.</p>
-
-<p><em>Maxime Réty</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Fix `encrypted_attribute?` to take into account context properties passed to `encrypts`.
-</title>
-    <link>https://github.com/rails/rails/issues/48922</link>
-    <guid>https://github.com/rails/rails/issues/48922</guid>
-    <description>*   Fix `encrypted_attribute?` to take into account context properties passed to `encrypts`.
-
-    *Maxime Réty*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>maximerety</author>
-    <content:encoded><![CDATA[<p>Fix <code>encrypted_attribute?</code> to take into account context properties passed to <code>encrypts</code>.</p>
-
-<p><em>Maxime Réty</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: The object returned by `explain` now responds to `pluck`, `first`,
-</title>
-    <link>https://github.com/rails/rails/issues/50602</link>
-    <guid>https://github.com/rails/rails/issues/50602</guid>
-    <description>*   The object returned by `explain` now responds to `pluck`, `first`,
-    `last`, `average`, `count`, `maximum`, `minimum`, and `sum`. Those
-    new methods run `EXPLAIN` on the corresponding queries:
-
-    ```ruby
-    User.all.explain.count
-    # EXPLAIN SELECT COUNT(*) FROM `users`
-    # ...
-
-    User.all.explain.maximum(:id)
-    # EXPLAIN SELECT MAX(`users`.`id`) FROM `users`
-    # ...
-    ```
-
-    *Petrik de Heus*</description>
-    <pubDate>Fri, 05 Jan 2024 16:22:23 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>The object returned by <code>explain</code> now responds to <code>pluck</code>, <code>first</code>,<br />
-<code>last</code>, <code>average</code>, <code>count</code>, <code>maximum</code>, <code>minimum</code>, and <code>sum</code>. Those<br />
-new methods run <code>EXPLAIN</code> on the corresponding queries:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">explain</span><span class="p">.</span><span class="nf">count</span>
-<span class="c1"># EXPLAIN SELECT COUNT(*) FROM `users`</span>
-<span class="c1"># ...</span>
-
-<span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">explain</span><span class="p">.</span><span class="nf">maximum</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>
-<span class="c1"># EXPLAIN SELECT MAX(`users`.`id`) FROM `users`</span>
-<span class="c1"># ...</span>
-</code></pre></div></div>
-
-<p><em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Fixes an issue where `validates_associated` `:on`  option wasn&#39;t respected
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   Fixes an issue where `validates_associated` `:on`  option wasn&#39;t respected
-    when validating associated records.
-
-    *Austen Madden*, *Alex Ghiculescu*, *Rafał Brize*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Fixes an issue where <code>validates_associated</code> <code>:on</code>  option wasn’t respected<br />
-when validating associated records.</p>
-
-<p><em>Austen Madden</em>, <em>Alex Ghiculescu</em>, <em>Rafał Brize</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Allow overriding SQLite defaults from `database.yml`.
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   Allow overriding SQLite defaults from `database.yml`.
-
-    Any PRAGMA configuration set under the `pragmas` key in the configuration
-    file takes precedence over Rails&#39; defaults, and additional PRAGMAs can be
-    set as well.
-
-    ```yaml
-    database: storage/development.sqlite3
-    timeout: 5000
-    pragmas:
-      journal_mode: off
-      temp_store: memory
-    ```
-
-    *Stephen Margheim*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Allow overriding SQLite defaults from <code>database.yml</code>.</p>
-
-<p>Any PRAGMA configuration set under the <code>pragmas</code> key in the configuration<br />
-file takes precedence over Rails’ defaults, and additional PRAGMAs can be<br />
-set as well.</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">database</span><span class="pi">:</span> <span class="s">storage/development.sqlite3</span>
-<span class="na">timeout</span><span class="pi">:</span> <span class="m">5000</span>
-<span class="na">pragmas</span><span class="pi">:</span>
-  <span class="na">journal_mode</span><span class="pi">:</span> <span class="s">off</span>
-  <span class="na">temp_store</span><span class="pi">:</span> <span class="s">memory</span>
-</code></pre></div></div>
-
-<p><em>Stephen Margheim</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Remove warning message when running SQLite in production, but leave it unconfigured.
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   Remove warning message when running SQLite in production, but leave it unconfigured.
-
-    There are valid use cases for running SQLite in production. However, it must be done
-    with care, so instead of a warning most users won&#39;t see anyway, it&#39;s preferable to
-    leave the configuration commented out to force them to think about having the database
-    on a persistent volume etc.
-
-    *Jacopo Beschi*, *Jean Boussier*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Remove warning message when running SQLite in production, but leave it unconfigured.</p>
-
-<p>There are valid use cases for running SQLite in production. However, it must be done<br />
-with care, so instead of a warning most users won’t see anyway, it’s preferable to<br />
-leave the configuration commented out to force them to think about having the database<br />
-on a persistent volume etc.</p>
-
-<p><em>Jacopo Beschi</em>, <em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Add support for generated columns to the SQLite3 adapter.
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   Add support for generated columns to the SQLite3 adapter.
-
-    Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.
-    This adds support for those to the SQLite3 adapter.
-
-    ```ruby
-    create_table :users do |t|
-      t.string :name
-      t.virtual :name_upper, type: :string, as: &#39;UPPER(name)&#39;
-      t.virtual :name_lower, type: :string, as: &#39;LOWER(name)&#39;, stored: true
-    end
-    ```
-
-    *Stephen Margheim*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Add support for generated columns to the SQLite3 adapter.</p>
-
-<p>Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.<br />
-This adds support for those to the SQLite3 adapter.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">create_table</span> <span class="ss">:users</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-  <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:name</span>
-  <span class="n">t</span><span class="p">.</span><span class="nf">virtual</span> <span class="ss">:name_upper</span><span class="p">,</span> <span class="ss">type: :string</span><span class="p">,</span> <span class="ss">as: </span><span class="s1">'UPPER(name)'</span>
-  <span class="n">t</span><span class="p">.</span><span class="nf">virtual</span> <span class="ss">:name_lower</span><span class="p">,</span> <span class="ss">type: :string</span><span class="p">,</span> <span class="ss">as: </span><span class="s1">'LOWER(name)'</span><span class="p">,</span> <span class="ss">stored: </span><span class="kp">true</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>Stephen Margheim</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: TrilogyAdapter: ignore `host` if `socket` parameter is set.
-</title>
-    <link>https://github.com/rails/rails/issues/50349</link>
-    <guid>https://github.com/rails/rails/issues/50349</guid>
-    <description>*   TrilogyAdapter: ignore `host` if `socket` parameter is set.
-
-    This allows to configure a connection on a UNIX socket via `DATABASE_URL`:
-
-    ```
-    DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock
-    ```
-
-    *Jean Boussier*</description>
-    <pubDate>Wed, 13 Dec 2023 16:54:50 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>TrilogyAdapter: ignore <code>host</code> if <code>socket</code> parameter is set.</p>
-
-<p>This allows to configure a connection on a UNIX socket via <code>DATABASE_URL</code>:</p>
-
-<pre><code>DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock
-</code></pre>
-
-<p><em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match`, and
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match`, and
-    `assert_no_queries_match` assertions public.
-
-    To assert the expected number of queries are made, Rails internally uses `assert_queries_count` and
-    `assert_no_queries`. To assert that specific SQL queries are made, `assert_queries_match` and
-    `assert_no_queries_match` are used. These assertions can now be used in applications as well.
-
-    ```ruby
-    class ArticleTest &lt; ActiveSupport::TestCase
-      test &quot;queries are made&quot; do
-        assert_queries_count(1) { Article.first }
-      end
-
-      test &quot;creates a foreign key&quot; do
-        assert_queries_match(/ADD FOREIGN KEY/i, include_schema: true) do
-          @connection.add_foreign_key(:comments, :posts)
-        end
-      end
-    end
-    ```
-
-    *Petrik de Heus*, *fatkodima*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Make <code>assert_queries_count</code>, <code>assert_no_queries</code>, <code>assert_queries_match</code>, and<br />
-<code>assert_no_queries_match</code> assertions public.</p>
-
-<p>To assert the expected number of queries are made, Rails internally uses <code>assert_queries_count</code> and<br />
-<code>assert_no_queries</code>. To assert that specific SQL queries are made, <code>assert_queries_match</code> and<br />
-<code>assert_no_queries_match</code> are used. These assertions can now be used in applications as well.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ArticleTest</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
-  <span class="nb">test</span> <span class="s2">"queries are made"</span> <span class="k">do</span>
-    <span class="n">assert_queries_count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="no">Article</span><span class="p">.</span><span class="nf">first</span> <span class="p">}</span>
-  <span class="k">end</span>
-
-  <span class="nb">test</span> <span class="s2">"creates a foreign key"</span> <span class="k">do</span>
-    <span class="n">assert_queries_match</span><span class="p">(</span><span class="sr">/ADD FOREIGN KEY/i</span><span class="p">,</span> <span class="ss">include_schema: </span><span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
-      <span class="vi">@connection</span><span class="p">.</span><span class="nf">add_foreign_key</span><span class="p">(</span><span class="ss">:comments</span><span class="p">,</span> <span class="ss">:posts</span><span class="p">)</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>Petrik de Heus</em>, <em>fatkodima</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Fix `has_secure_token` calls the setter method on initialize.
-</title>
-    <link>https://github.com/rails/rails/issues/49874</link>
-    <guid>https://github.com/rails/rails/issues/49874</guid>
-    <description>*   Fix `has_secure_token` calls the setter method on initialize.
-
-    *Abeid Ahmed*</description>
-    <pubDate>Mon, 04 Dec 2023 00:34:29 +0000</pubDate>
-    <author>abeidahmed</author>
-    <content:encoded><![CDATA[<p>Fix <code>has_secure_token</code> calls the setter method on initialize.</p>
-
-<p><em>Abeid Ahmed</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database
-</title>
-    <link>https://github.com/rails/rails/issues/50140</link>
-    <guid>https://github.com/rails/rails/issues/50140</guid>
-    <description>*   When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database
-    adapter. This allows decoupling the adapter the application chooses to use from the database connection details
-    set in the deployment environment.
-
-    ```ruby
-    # ENV[&#39;DATABASE_URL&#39;] = &quot;mysql://localhost/example_database&quot;
-    config.active_record.protocol_adapters.mysql = &quot;trilogy&quot;
-    # will connect to MySQL using the trilogy adapter
-    ```
-
-    *Jean Boussier*, *Kevin McPhillips*</description>
-    <pubDate>Wed, 29 Nov 2023 16:41:51 +0000</pubDate>
-    <author>Kevin McPhillips</author>
-    <content:encoded><![CDATA[<p>When using a <code>DATABASE_URL</code>, allow for a configuration to map the protocol in the URL to a specific database<br />
-adapter. This allows decoupling the adapter the application chooses to use from the database connection details<br />
-set in the deployment environment.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ENV['DATABASE_URL'] = "mysql://localhost/example_database"</span>
-<span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">protocol_adapters</span><span class="p">.</span><span class="nf">mysql</span> <span class="o">=</span> <span class="s2">"trilogy"</span>
-<span class="c1"># will connect to MySQL using the trilogy adapter</span>
-</code></pre></div></div>
-
-<p><em>Jean Boussier</em>, <em>Kevin McPhillips</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: In cases where MySQL returns `warning_count` greater than zero, but returns no warnings when
-</title>
-    <link>https://github.com/rails/rails/issues/50049</link>
-    <guid>https://github.com/rails/rails/issues/50049</guid>
-    <description>*   In cases where MySQL returns `warning_count` greater than zero, but returns no warnings when
-    the `SHOW WARNINGS` query is executed, `ActiveRecord.db_warnings_action` proc will still be
-    called with a generic warning message rather than silently ignoring the warning(s).
-
-    *Kevin McPhillips*</description>
-    <pubDate>Wed, 22 Nov 2023 22:02:06 +0000</pubDate>
-    <author>Kevin McPhillips</author>
-    <content:encoded><![CDATA[<p>In cases where MySQL returns <code>warning_count</code> greater than zero, but returns no warnings when<br />
-the <code>SHOW WARNINGS</code> query is executed, <code>ActiveRecord.db_warnings_action</code> proc will still be<br />
-called with a generic warning message rather than silently ignoring the warning(s).</p>
-
-<p><em>Kevin McPhillips</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: `DatabaseConfigurations#configs_for` accepts a symbol in the `name` parameter.
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   `DatabaseConfigurations#configs_for` accepts a symbol in the `name` parameter.
-
-    *Andrew Novoselac*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p><code>DatabaseConfigurations#configs_for</code> accepts a symbol in the <code>name</code> parameter.</p>
-
-<p><em>Andrew Novoselac</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Fix `where(field: values)` queries when `field` is a serialized attribute
-</title>
-    <link>https://github.com/rails/rails/issues/49050</link>
-    <guid>https://github.com/rails/rails/issues/49050</guid>
-    <description>*   Fix `where(field: values)` queries when `field` is a serialized attribute
-    (for example, when `field` uses `ActiveRecord::Base.serialize` or is a JSON
-    column).
-
-    *João Alves*</description>
-    <pubDate>Thu, 09 Nov 2023 21:38:21 +0000</pubDate>
-    <author>JohnAnon9771</author>
-    <content:encoded><![CDATA[<p>Fix <code>where(field: values)</code> queries when <code>field</code> is a serialized attribute<br />
-(for example, when <code>field</code> uses <code>ActiveRecord::Base.serialize</code> or is a JSON<br />
-column).</p>
-
-<p><em>João Alves</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Make the output of `ActiveRecord::Core#inspect` configurable.
-</title>
-    <link>https://github.com/rails/rails/issues/49765</link>
-    <guid>https://github.com/rails/rails/issues/49765</guid>
-    <description>*   Make the output of `ActiveRecord::Core#inspect` configurable.
-
-    By default, calling `inspect` on a record will yield a formatted string including just the `id`.
-
-    ```ruby
-    Post.first.inspect #=&gt; &quot;#&lt;Post id: 1&gt;&quot;
-    ```
-
-    The attributes to be included in the output of `inspect` can be configured with
-    `ActiveRecord::Core#attributes_for_inspect`.
-
-    ```ruby
-    Post.attributes_for_inspect = [:id, :title]
-    Post.first.inspect #=&gt; &quot;#&lt;Post id: 1, title: &quot;Hello, World!&quot;&gt;&quot;
-    ```
-
-    With `attributes_for_inspect` set to `:all`, `inspect` will list all the record&#39;s attributes.
-
-    ```ruby
-    Post.attributes_for_inspect = :all
-    Post.first.inspect #=&gt; &quot;#&lt;Post id: 1, title: &quot;Hello, World!&quot;, published_at: &quot;2023-10-23 14:28:11 +0000&quot;&gt;&quot;
-    ```
-
-    In `development` and `test` mode, `attributes_for_inspect` will be set to `:all` by default.
-
-    You can also call `full_inspect` to get an inspection with all the attributes.
-
-    The attributes in `attribute_for_inspect` will also be used for `pretty_print`.
-
-    *Andrew Novoselac*</description>
-    <pubDate>Wed, 08 Nov 2023 20:08:36 +0000</pubDate>
-    <author>Andrew Novoselac</author>
-    <content:encoded><![CDATA[<p>Make the output of <code>ActiveRecord::Core#inspect</code> configurable.</p>
-
-<p>By default, calling <code>inspect</code> on a record will yield a formatted string including just the <code>id</code>.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1&gt;"</span>
-</code></pre></div></div>
-
-<p>The attributes to be included in the output of <code>inspect</code> can be configured with<br />
-<code>ActiveRecord::Core#attributes_for_inspect</code>.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">attributes_for_inspect</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:title</span><span class="p">]</span>
-<span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1, title: "Hello, World!"&gt;"</span>
-</code></pre></div></div>
-
-<p>With <code>attributes_for_inspect</code> set to <code>:all</code>, <code>inspect</code> will list all the record’s attributes.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">attributes_for_inspect</span> <span class="o">=</span> <span class="ss">:all</span>
-<span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1, title: "Hello, World!", published_at: "2023-10-23 14:28:11 +0000"&gt;"</span>
-</code></pre></div></div>
-
-<p>In <code>development</code> and <code>test</code> mode, <code>attributes_for_inspect</code> will be set to <code>:all</code> by default.</p>
-
-<p>You can also call <code>full_inspect</code> to get an inspection with all the attributes.</p>
-
-<p>The attributes in <code>attribute_for_inspect</code> will also be used for <code>pretty_print</code>.</p>
-
-<p><em>Andrew Novoselac</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Don&#39;t mark attributes as changed when reassigned to `Float::INFINITY` or
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   Don&#39;t mark attributes as changed when reassigned to `Float::INFINITY` or
-    `-Float::INFINITY`.
-
-    *Maicol Bentancor*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Don’t mark attributes as changed when reassigned to <code>Float::INFINITY</code> or<br />
-<code>-Float::INFINITY</code>.</p>
-
-<p><em>Maicol Bentancor</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Support the `RETURNING` clause for MariaDB.
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   Support the `RETURNING` clause for MariaDB.
-
-    *fatkodima*, *Nikolay Kondratyev*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Support the <code>RETURNING</code> clause for MariaDB.</p>
-
-<p><em>fatkodima</em>, <em>Nikolay Kondratyev</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract.
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract.
-
-    Allows foreign keys to be deferred by adding the `:deferrable` key to the `foreign_key` options.
-
-    ```ruby
-    add_reference :person, :alias, foreign_key: { deferrable: :deferred }
-    add_reference :alias, :person, foreign_key: { deferrable: :deferred }
-    ```
-
-    *Stephen Margheim*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract.</p>
-
-<p>Allows foreign keys to be deferred by adding the <code>:deferrable</code> key to the <code>foreign_key</code> options.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_reference</span> <span class="ss">:person</span><span class="p">,</span> <span class="ss">:alias</span><span class="p">,</span> <span class="ss">foreign_key: </span><span class="p">{</span> <span class="ss">deferrable: :deferred</span> <span class="p">}</span>
-<span class="n">add_reference</span> <span class="ss">:alias</span><span class="p">,</span> <span class="ss">:person</span><span class="p">,</span> <span class="ss">foreign_key: </span><span class="p">{</span> <span class="ss">deferrable: :deferred</span> <span class="p">}</span>
-</code></pre></div></div>
-
-<p><em>Stephen Margheim</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Add the `set_constraints` helper to PostgreSQL connections.
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   Add the `set_constraints` helper to PostgreSQL connections.
-
-    ```ruby
-    Post.create!(user_id: -1) # =&gt; ActiveRecord::InvalidForeignKey
-
-    Post.transaction do
-      Post.connection.set_constraints(:deferred)
-      p = Post.create!(user_id: -1)
-      u = User.create!
-      p.user = u
-      p.save!
-    end
-    ```
-
-    *Cody Cutrer*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Add the <code>set_constraints</code> helper to PostgreSQL connections.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">user_id: </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># =&gt; ActiveRecord::InvalidForeignKey</span>
-
-<span class="no">Post</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
-  <span class="no">Post</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">set_constraints</span><span class="p">(</span><span class="ss">:deferred</span><span class="p">)</span>
-  <span class="nb">p</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">user_id: </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-  <span class="n">u</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">create!</span>
-  <span class="nb">p</span><span class="p">.</span><span class="nf">user</span> <span class="o">=</span> <span class="n">u</span>
-  <span class="nb">p</span><span class="p">.</span><span class="nf">save!</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>Cody Cutrer</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Include `ActiveModel::API` in `ActiveRecord::Base`.
-</title>
-    <link>https://github.com/rails/rails/issues/48923</link>
-    <guid>https://github.com/rails/rails/issues/48923</guid>
-    <description>*   Include `ActiveModel::API` in `ActiveRecord::Base`.
-
-    *Sean Doyle*</description>
-    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code>.</p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Ensure `#signed_id` outputs `url_safe` strings.
-</title>
-    <link>https://github.com/rails/rails/issues/49507</link>
-    <guid>https://github.com/rails/rails/issues/49507</guid>
-    <description>*   Ensure `#signed_id` outputs `url_safe` strings.
-
-    *Jason Meller*</description>
-    <pubDate>Fri, 06 Oct 2023 20:58:36 +0000</pubDate>
-    <author>Jason Meller</author>
-    <content:encoded><![CDATA[<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>
-
-<p><em>Jason Meller</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activerecord: Add `nulls_last` and working `desc.nulls_first` for MySQL.
-</title>
-    <link>https://github.com/rails/rails/issues/50079</link>
-    <guid>https://github.com/rails/rails/issues/50079</guid>
-    <description>*   Add `nulls_last` and working `desc.nulls_first` for MySQL.
-
-    *Tristan Fellows*</description>
-    <pubDate>Fri, 08 Dec 2023 23:44:02 +0000</pubDate>
-    <author>tttffff</author>
-    <content:encoded><![CDATA[<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>
-
-<p><em>Tristan Fellows</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Fix a bug where type casting of string to `Time` and `DateTime` doesn&#39;t
-</title>
-    <link>https://github.com/rails/rails/issues/46872</link>
-    <guid>https://github.com/rails/rails/issues/46872</guid>
-    <description>*   Fix a bug where type casting of string to `Time` and `DateTime` doesn&#39;t
-    calculate minus minute value in TZ offset correctly.
-
-    *Akira Matsuda*</description>
-    <pubDate>Wed, 17 Jan 2024 08:55:38 +0000</pubDate>
-    <author>Akira Matsuda</author>
-    <content:encoded><![CDATA[<p>Fix a bug where type casting of string to <code>Time</code> and <code>DateTime</code> doesn’t<br />
-calculate minus minute value in TZ offset correctly.</p>
-
-<p><em>Akira Matsuda</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Port the `type_for_attribute` method to Active Model. Classes that include
-</title>
-    <link>https://github.com/rails/rails/issues/49910</link>
-    <guid>https://github.com/rails/rails/issues/49910</guid>
-    <description>*   Port the `type_for_attribute` method to Active Model. Classes that include
-    `ActiveModel::Attributes` will now provide this method. This method behaves
-    the same for Active Model as it does for Active Record.
-
-      ```ruby
-      class MyModel
-        include ActiveModel::Attributes
-
-        attribute :my_attribute, :integer
-      end
-
-      MyModel.type_for_attribute(:my_attribute) # =&gt; #&lt;ActiveModel::Type::Integer ...&gt;
-      ```
-
-    *Jonathan Hefner*</description>
-    <pubDate>Sat, 04 Nov 2023 02:54:59 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />
-<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />
-the same for Active Model as it does for Active Record.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">MyModel</span>
-    <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span>
-
-    <span class="n">attribute</span> <span class="ss">:my_attribute</span><span class="p">,</span> <span class="ss">:integer</span>
-  <span class="k">end</span>
-
-  <span class="no">MyModel</span><span class="p">.</span><span class="nf">type_for_attribute</span><span class="p">(</span><span class="ss">:my_attribute</span><span class="p">)</span> <span class="c1"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>
-</code></pre></div></div>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Include `IPAddr#prefix` when serializing an `IPAddr` using the
-</title>
-    <link>https://github.com/rails/rails/issues/50742</link>
-    <guid>https://github.com/rails/rails/issues/50742</guid>
-    <description>*   Include `IPAddr#prefix` when serializing an `IPAddr` using the
-    `ActiveSupport::MessagePack` serializer. This change is backward and forward
-    compatible — old payloads can still be read, and new payloads will be
-    readable by older versions of Rails.
-
-    *Taiki Komaba*</description>
-    <pubDate>Mon, 15 Jan 2024 06:54:08 +0000</pubDate>
-    <author>r-plus</author>
-    <content:encoded><![CDATA[<p>Include <code>IPAddr#prefix</code> when serializing an <code>IPAddr</code> using the<br />
-<code>ActiveSupport::MessagePack</code> serializer. This change is backward and forward<br />
-compatible — old payloads can still be read, and new payloads will be<br />
-readable by older versions of Rails.</p>
-
-<p><em>Taiki Komaba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
-</title>
-    <link>https://github.com/rails/rails/issues/50677</link>
-    <guid>https://github.com/rails/rails/issues/50677</guid>
-    <description>*   Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
-
-    ```ruby
-    class Current &lt; ActiveSupport::CurrentAttributes
-      attribute :counter, default: 0
-    end
-    ```
-
-    *Sean Doyle*</description>
-    <pubDate>Wed, 10 Jan 2024 00:43:37 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Add <code>default:</code> support for <code>ActiveSupport::CurrentAttributes.attribute</code></p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Current</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">CurrentAttributes</span>
-  <span class="n">attribute</span> <span class="ss">:counter</span><span class="p">,</span> <span class="ss">default: </span><span class="mi">0</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Yield instance to `Object#with` block
-</title>
-    <link>https://github.com/rails/rails/issues/50470</link>
-    <guid>https://github.com/rails/rails/issues/50470</guid>
-    <description>*   Yield instance to `Object#with` block
-
-    ```ruby
-    client.with(timeout: 5_000) do |c|
-      c.get(&quot;/commits&quot;)
-    end
-    ```
-
-    *Sean Doyle*</description>
-    <pubDate>Sun, 07 Jan 2024 20:06:02 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Yield instance to <code>Object#with</code> block</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span><span class="p">.</span><span class="nf">with</span><span class="p">(</span><span class="ss">timeout: </span><span class="mi">5_000</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-  <span class="n">c</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/commits"</span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Use logical core count instead of physical core count to determine the
-</title>
-    <link>https://github.com/rails/rails/issues/50564</link>
-    <guid>https://github.com/rails/rails/issues/50564</guid>
-    <description>*   Use logical core count instead of physical core count to determine the
-    default number of workers when parallelizing tests.
-
-    *Jonathan Hefner*</description>
-    <pubDate>Wed, 03 Jan 2024 23:08:09 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Use logical core count instead of physical core count to determine the<br />
-default number of workers when parallelizing tests.</p>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
-</title>
-    <link>https://github.com/rails/rails/issues/50749</link>
-    <guid>https://github.com/rails/rails/issues/50749</guid>
-    <description>*   Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
-
-    There is a bug in the current implementation of #travel_to:
-    it remembers a timezone of its argument, and all stubbed methods start
-    returning results in that remembered timezone. However, the expected
-    behaviour is to return results in a system timezone.
-
-    *Aleksei Chernenkov*</description>
-    <pubDate>Sun, 14 Jan 2024 16:31:12 +0000</pubDate>
-    <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Fix <code>Time.now/DateTime.now/Date.today</code> to return results in a system timezone after <code>#travel_to</code>.</p>
-
-<p>There is a bug in the current implementation of #travel_to:<br />
-it remembers a timezone of its argument, and all stubbed methods start<br />
-returning results in that remembered timezone. However, the expected<br />
-behaviour is to return results in a system timezone.</p>
-
-<p><em>Aleksei Chernenkov</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Add `ErrorReported#unexpected` to report precondition violations.
-</title>
-    <link>https://github.com/rails/rails/issues/49951</link>
-    <guid>https://github.com/rails/rails/issues/49951</guid>
-    <description>*   Add `ErrorReported#unexpected` to report precondition violations.
-
-    For example:
-
-    ```ruby
-    def edit
-      if published?
-        Rails.error.unexpected(&quot;[BUG] Attempting to edit a published article, that shouldn&#39;t be possible&quot;)
-        return false
-      end
-      # ...
-    end
-    ```
-
-    The above will raise an error in development and test, but only report the error in production.
-
-    *Jean Boussier*</description>
-    <pubDate>Mon, 20 Nov 2023 08:55:10 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Add <code>ErrorReported#unexpected</code> to report precondition violations.</p>
-
-<p>For example:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">edit</span>
-  <span class="k">if</span> <span class="n">published?</span>
-    <span class="no">Rails</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">unexpected</span><span class="p">(</span><span class="s2">"[BUG] Attempting to edit a published article, that shouldn't be possible"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kp">false</span>
-  <span class="k">end</span>
-  <span class="c1"># ...</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p>The above will raise an error in development and test, but only report the error in production.</p>
-
-<p><em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
-</title>
-    <link>https://github.com/rails/rails/issues/50071</link>
-    <guid>https://github.com/rails/rails/issues/50071</guid>
-    <description>*   Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
-
-    *Adam Renberg Tamm*</description>
-    <pubDate>Fri, 17 Nov 2023 17:37:39 +0000</pubDate>
-    <author>Adam Renberg Tamm</author>
-    <content:encoded><![CDATA[<p>Make the order of read_multi and write_multi notifications for <code>Cache::Store#fetch_multi</code> operations match the order they are executed in.</p>
-
-<p><em>Adam Renberg Tamm</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Make return values of `Cache::Store#write` consistent.
-</title>
-    <link>https://github.com/rails/rails/issues/49873</link>
-    <guid>https://github.com/rails/rails/issues/49873</guid>
-    <description>*   Make return values of `Cache::Store#write` consistent.
-
-    The return value was not specified before. Now it returns `true` on a successful write,
-    `nil` if there was an error talking to the cache backend, and `false` if the write failed
-    for another reason (e.g. the key already exists and `unless_exist: true` was passed).
-
-    *Sander Verdonschot*</description>
-    <pubDate>Thu, 16 Nov 2023 14:55:51 +0000</pubDate>
-    <author>Sander Verdonschot</author>
-    <content:encoded><![CDATA[<p>Make return values of <code>Cache::Store#write</code> consistent.</p>
-
-<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />
-<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />
-for another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>
-
-<p><em>Sander Verdonschot</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix logged cache keys not always matching actual key used by cache action.
-</title>
-    <link>https://github.com/rails/rails/issues/50008</link>
-    <guid>https://github.com/rails/rails/issues/50008</guid>
-    <description>*   Fix logged cache keys not always matching actual key used by cache action.
-
-    *Hartley McGuire*</description>
-    <pubDate>Sat, 11 Nov 2023 19:12:48 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Fix logged cache keys not always matching actual key used by cache action.</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Improve error messages of `assert_changes` and `assert_no_changes`
-</title>
-    <link>https://github.com/rails/rails/issues/48482</link>
-    <guid>https://github.com/rails/rails/issues/48482</guid>
-    <description>*   Improve error messages of `assert_changes` and `assert_no_changes`
-
-    `assert_changes` error messages now display objects with `.inspect` to make it easier
-    to differentiate nil from empty strings, strings from symbols, etc.
-    `assert_no_changes` error messages now surface the actual value.
-
-    *pcreux*</description>
-    <pubDate>Mon, 30 Oct 2023 18:43:51 +0000</pubDate>
-    <author>Philippe Creux</author>
-    <content:encoded><![CDATA[<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>
-
-<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />
-to differentiate nil from empty strings, strings from symbols, etc.<br />
-<code>assert_no_changes</code> error messages now surface the actual value.</p>
-
-<p><em>pcreux</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix `#to_fs(:human_size)` to correctly work with negative numbers.
-</title>
-    <link>https://github.com/rails/rails/issues/49791</link>
-    <guid>https://github.com/rails/rails/issues/49791</guid>
-    <description>*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.
-
-    *Earlopain*</description>
-    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
-    <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>
-
-<p><em>Earlopain</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
-</title>
-    <link>https://github.com/rails/rails/issues/49720</link>
-    <guid>https://github.com/rails/rails/issues/49720</guid>
-    <description>*   Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
-
-    *Andrew Novoselac*</description>
-    <pubDate>Mon, 23 Oct 2023 23:05:43 +0000</pubDate>
-    <author>Andrew Novoselac</author>
-    <content:encoded><![CDATA[<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>
-
-<p><em>Andrew Novoselac</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
-</title>
-    <link>https://github.com/rails/rails/issues/49721</link>
-    <guid>https://github.com/rails/rails/issues/49721</guid>
-    <description>*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
-
-    *Andrew Novoselac*</description>
-    <pubDate>Fri, 20 Oct 2023 16:59:24 +0000</pubDate>
-    <author>Andrew Novoselac</author>
-    <content:encoded><![CDATA[<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>
-
-<p><em>Andrew Novoselac</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix compatibility with the `semantic_logger` gem.
-</title>
-    <link>https://github.com/rails/rails/issues/49621</link>
-    <guid>https://github.com/rails/rails/issues/49621</guid>
-    <description>*   Fix compatibility with the `semantic_logger` gem.
-
-    The `semantic_logger` gem doesn&#39;t behave exactly like stdlib logger in that
-    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.
-
-    This caused the various `LogSubscriber` classes in Rails to break when assigned a
-    `SemanticLogger` instance.
-
-    *Jean Boussier*, *ojab*</description>
-    <pubDate>Fri, 13 Oct 2023 12:34:06 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>
-
-<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />
-<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>
-
-<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />
-<code>SemanticLogger</code> instance.</p>
-
-<p><em>Jean Boussier</em>, <em>ojab</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix MemoryStore to prevent race conditions when incrementing or decrementing.
-</title>
-    <link>https://github.com/rails/rails/issues/49542</link>
-    <guid>https://github.com/rails/rails/issues/49542</guid>
-    <description>*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.
-
-    *Pierre Jambet*</description>
-    <pubDate>Mon, 09 Oct 2023 07:24:47 +0000</pubDate>
-    <author>Pierre Jambet</author>
-    <content:encoded><![CDATA[<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>
-
-<p><em>Pierre Jambet</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Implement `HashWithIndifferentAccess#to_proc`.
-</title>
-    <link>https://github.com/rails/rails/issues/49475</link>
-    <guid>https://github.com/rails/rails/issues/49475</guid>
-    <description>*   Implement `HashWithIndifferentAccess#to_proc`.
-
-    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`
-    method from the `Hash` class, which was not able to access values using indifferent keys.
-
-    *fatkodima*</description>
-    <pubDate>Wed, 04 Oct 2023 07:56:58 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>
-
-<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />
-method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
-
-<p><em>fatkodima</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Use `includes` instead of `eager_load` for `with_all_rich_text`.
-</title>
-    <link>https://github.com/rails/rails/issues/50769</link>
-    <guid>https://github.com/rails/rails/issues/50769</guid>
-    <description>*   Use `includes` instead of `eager_load` for `with_all_rich_text`.
-
-    *Petrik de Heus*</description>
-    <pubDate>Tue, 16 Jan 2024 23:28:38 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Use <code>includes</code> instead of <code>eager_load</code> for <code>with_all_rich_text</code>.</p>
-
-<p><em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`
-</title>
-    <link>https://github.com/rails/rails/issues/50473</link>
-    <guid>https://github.com/rails/rails/issues/50473</guid>
-    <description>*   Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`
-
-    ```ruby
-    content = ActionText::Content.new &lt;&lt;~HTML
-      &lt;h1&gt;Hello, world&lt;/h1&gt;
-
-      &lt;div&gt;The body&lt;/div&gt;
-    HTML
-
-    content =&gt; [h1, div]
-
-    assert_pattern { h1 =&gt; { content: &quot;Hello, world&quot; } }
-    assert_pattern { div =&gt; { content: &quot;The body&quot; } }
-    ```
-
-    *Sean Doyle*</description>
-    <pubDate>Wed, 03 Jan 2024 17:31:22 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Delegate <code>ActionText::Content#deconstruct</code> to <code>Nokogiri::XML::DocumentFragment#elements</code></p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">content</span> <span class="o">=</span> <span class="no">ActionText</span><span class="o">::</span><span class="no">Content</span><span class="p">.</span><span class="nf">new</span> <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
-  &lt;h1&gt;Hello, world&lt;/h1&gt;
-
-  &lt;div&gt;The body&lt;/div&gt;
-</span><span class="no">HTML</span>
-
-<span class="n">content</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="n">h1</span><span class="p">,</span> <span class="n">div</span><span class="p">]</span>
-
-<span class="n">assert_pattern</span> <span class="p">{</span> <span class="n">h1</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">content: </span><span class="s2">"Hello, world"</span> <span class="p">}</span> <span class="p">}</span>
-<span class="n">assert_pattern</span> <span class="p">{</span> <span class="n">div</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">content: </span><span class="s2">"The body"</span> <span class="p">}</span> <span class="p">}</span>
-</code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Fix all Action Text database related models to respect
-</title>
-    <link>https://github.com/rails/rails/issues/50299</link>
-    <guid>https://github.com/rails/rails/issues/50299</guid>
-    <description>*   Fix all Action Text database related models to respect
-    `ActiveRecord::Base.table_name_prefix` configuration.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Mon, 11 Dec 2023 14:24:02 +0000</pubDate>
-    <author>Chedli Bourguiba</author>
-    <content:encoded><![CDATA[<p>Fix all Action Text database related models to respect<br />
-<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Compile ESM package that can be used directly in the browser as actiontext.esm.js
-</title>
-    <link>https://github.com/rails/rails/issues/49952</link>
-    <guid>https://github.com/rails/rails/issues/49952</guid>
-    <description>*   Compile ESM package that can be used directly in the browser as actiontext.esm.js
-
-    *Matias Grunberg*</description>
-    <pubDate>Wed, 08 Nov 2023 20:30:18 +0000</pubDate>
-    <author>Matias Grunberg</author>
-    <content:encoded><![CDATA[<p>Compile ESM package that can be used directly in the browser as actiontext.esm.js</p>
-
-<p><em>Matias Grunberg</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Fix using actiontext.js with Sprockets
-</title>
-    <link>https://github.com/rails/rails/issues/49952</link>
-    <guid>https://github.com/rails/rails/issues/49952</guid>
-    <description>*   Fix using actiontext.js with Sprockets
-
-    *Matias Grunberg*</description>
-    <pubDate>Wed, 08 Nov 2023 20:30:18 +0000</pubDate>
-    <author>Matias Grunberg</author>
-    <content:encoded><![CDATA[<p>Fix using actiontext.js with Sprockets</p>
-
-<p><em>Matias Grunberg</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Upgrade Trix to 2.0.7
-</title>
-    <link>https://github.com/rails/rails/issues/49778</link>
-    <guid>https://github.com/rails/rails/issues/49778</guid>
-    <description>*   Upgrade Trix to 2.0.7
-
-    *Hartley McGuire*</description>
-    <pubDate>Fri, 27 Oct 2023 14:29:30 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Upgrade Trix to 2.0.7</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Fix using Trix with Sprockets
-</title>
-    <link>https://github.com/rails/rails/issues/49778</link>
-    <guid>https://github.com/rails/rails/issues/49778</guid>
-    <description>*   Fix using Trix with Sprockets
-
-    *Hartley McGuire*</description>
-    <pubDate>Fri, 27 Oct 2023 14:29:30 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Fix using Trix with Sprockets</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Fix N+1 query when fetching preview images for non-image assets
-</title>
-    <link>https://github.com/rails/rails/issues/50758</link>
-    <guid>https://github.com/rails/rails/issues/50758</guid>
-    <description>*   Fix N+1 query when fetching preview images for non-image assets
-
-    *Aaron Patterson &amp; Justin Searls*</description>
-    <pubDate>Tue, 16 Jan 2024 18:44:10 +0000</pubDate>
-    <author>Aaron Patterson</author>
-    <content:encoded><![CDATA[<p>Fix N+1 query when fetching preview images for non-image assets</p>
-
-<p><em>Aaron Patterson &amp; Justin Searls</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Fix all Active Storage database related models to respect
-</title>
-    <link>https://github.com/rails/rails/issues/50167</link>
-    <guid>https://github.com/rails/rails/issues/50167</guid>
-    <description>*   Fix all Active Storage database related models to respect
-    `ActiveRecord::Base.table_name_prefix` configuration.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Thu, 07 Dec 2023 17:36:39 +0000</pubDate>
-    <author>chaadow</author>
-    <content:encoded><![CDATA[<p>Fix all Active Storage database related models to respect<br />
-<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Fix `ActiveStorage::Representations::ProxyController` not returning the proper
-</title>
-    <link>https://github.com/rails/rails/issues/50098</link>
-    <guid>https://github.com/rails/rails/issues/50098</guid>
-    <description>*   Fix `ActiveStorage::Representations::ProxyController` not returning the proper
-    preview image variant for previewable files.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Tue, 21 Nov 2023 22:23:38 +0000</pubDate>
-    <author>chaadow</author>
-    <content:encoded><![CDATA[<p>Fix <code>ActiveStorage::Representations::ProxyController</code> not returning the proper<br />
-preview image variant for previewable files.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Fix `ActiveStorage::Representations::ProxyController` to proxy untracked
-</title>
-    <link>https://github.com/rails/rails/issues/50107</link>
-    <guid>https://github.com/rails/rails/issues/50107</guid>
-    <description>*   Fix `ActiveStorage::Representations::ProxyController` to proxy untracked
-    variants.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Mon, 20 Nov 2023 20:46:00 +0000</pubDate>
-    <author>chaadow</author>
-    <content:encoded><![CDATA[<p>Fix <code>ActiveStorage::Representations::ProxyController</code> to proxy untracked<br />
-variants.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: When using the `preprocessed: true` option, avoid enqueuing transform jobs
-</title>
-    <link>https://github.com/rails/rails/issues/50082</link>
-    <guid>https://github.com/rails/rails/issues/50082</guid>
-    <description>*   When using the `preprocessed: true` option, avoid enqueuing transform jobs
-    for blobs that are not representable.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Fri, 17 Nov 2023 23:25:17 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>When using the <code>preprocessed: true</code> option, avoid enqueuing transform jobs<br />
-for blobs that are not representable.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
-</title>
-    <link>https://github.com/rails/rails/issues/50046</link>
-    <guid>https://github.com/rails/rails/issues/50046</guid>
-    <description>*   Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
-    Calls to `#url`, `#key` or `#download` will now use the original preview
-    image instead of generating a variant with the exact same dimensions.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Wed, 15 Nov 2023 23:16:00 +0000</pubDate>
-    <author>chaadow</author>
-    <content:encoded><![CDATA[<p>Prevent <code>ActiveStorage::Blob#preview</code> to generate a variant if an empty variation is passed.<br />
-Calls to <code>#url</code>, <code>#key</code> or <code>#download</code> will now use the original preview<br />
-image instead of generating a variant with the exact same dimensions.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Process preview image variant when calling `ActiveStorage::Preview#processed`.
-</title>
-    <link>https://github.com/rails/rails/issues/50044</link>
-    <guid>https://github.com/rails/rails/issues/50044</guid>
-    <description>*   Process preview image variant when calling `ActiveStorage::Preview#processed`.
-    For example, `attached_pdf.preview(:thumb).processed` will now immediately
-    generate the full-sized preview image and the `:thumb` variant of it.
-    Previously, the `:thumb` variant would not be generated until a further call
-    to e.g. `processed.url`.
-
-    *Chedli Bourguiba* and *Jonathan Hefner*</description>
-    <pubDate>Mon, 13 Nov 2023 18:38:38 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Process preview image variant when calling <code>ActiveStorage::Preview#processed</code>.<br />
-For example, <code>attached_pdf.preview(:thumb).processed</code> will now immediately<br />
-generate the full-sized preview image and the <code>:thumb</code> variant of it.<br />
-Previously, the <code>:thumb</code> variant would not be generated until a further call<br />
-to e.g. <code>processed.url</code>.</p>
-
-<p><em>Chedli Bourguiba</em> and <em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
-</title>
-    <link>https://github.com/rails/rails/issues/50043</link>
-    <guid>https://github.com/rails/rails/issues/50043</guid>
-    <description>*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
-    enabled and the variant of an Active Storage preview has already been
-    processed (for example, by calling `ActiveStorage::Preview#url`).
-
-    *Jonathan Hefner*</description>
-    <pubDate>Mon, 13 Nov 2023 17:17:04 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Prevent <code>ActiveRecord::StrictLoadingViolationError</code> when strict loading is<br />
-enabled and the variant of an Active Storage preview has already been<br />
-processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Fix `preprocessed: true` option for named variants of previewable files.
-</title>
-    <link>https://github.com/rails/rails/issues/50005</link>
-    <guid>https://github.com/rails/rails/issues/50005</guid>
-    <description>*   Fix `preprocessed: true` option for named variants of previewable files.
-
-    *Nico Wenterodt*</description>
-    <pubDate>Sat, 11 Nov 2023 17:49:10 +0000</pubDate>
-    <author>Nico Wenterodt</author>
-    <content:encoded><![CDATA[<p>Fix <code>preprocessed: true</code> option for named variants of previewable files.</p>
-
-<p><em>Nico Wenterodt</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
-</title>
-    <link>https://github.com/rails/rails/issues/49863</link>
-    <guid>https://github.com/rails/rails/issues/49863</guid>
-    <description>*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
-
-    *Yogesh Khater*</description>
-    <pubDate>Thu, 02 Nov 2023 02:45:48 +0000</pubDate>
-    <author>Yogesh Khater</author>
-    <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
-
-<p><em>Yogesh Khater</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>railties: Rails console now indicates application name and the current Rails environment:
 </title>
     <link>https://github.com/rails/rails/issues/50825</link>
@@ -2428,23 +983,6 @@ error with parallel system tests</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionmailbox: Fix all Action Mailbox database related models to respect
-</title>
-    <link>https://github.com/rails/rails/issues/50300</link>
-    <guid>https://github.com/rails/rails/issues/50300</guid>
-    <description>*   Fix all Action Mailbox database related models to respect
-    `ActiveRecord::Base.table_name_prefix` configuration.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Mon, 11 Dec 2023 14:24:43 +0000</pubDate>
-    <author>Chedli Bourguiba</author>
-    <content:encoded><![CDATA[<p>Fix all Action Mailbox database related models to respect<br />
-<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>actioncable: Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`
 </title>
     <link>https://github.com/rails/rails/issues/50589</link>
@@ -2472,6 +1010,1468 @@ the already existing <code>assert_has_stream</code> and <code>assert_has_stream_
 </code></pre></div></div>
 
 <p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Consistently raise an `ArgumentError` when passing an invalid argument to a nested attributes association writer.
+</title>
+    <link>https://github.com/rails/rails/issues/50803</link>
+    <guid>https://github.com/rails/rails/issues/50803</guid>
+    <description>*   Consistently raise an `ArgumentError` when passing an invalid argument to a nested attributes association writer.
+
+    Previously, this would only raise on collection associations and produce a generic error on singular associations.
+
+    Now, it will raise on both collection and singular associations.
+
+    *Joshua Young*</description>
+    <pubDate>Fri, 19 Jan 2024 12:29:01 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Consistently raise an <code>ArgumentError</code> when passing an invalid argument to a nested attributes association writer.</p>
+
+<p>Previously, this would only raise on collection associations and produce a generic error on singular associations.</p>
+
+<p>Now, it will raise on both collection and singular associations.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix single quote escapes on default generated MySQL columns
+</title>
+    <link>https://github.com/rails/rails/issues/50733</link>
+    <guid>https://github.com/rails/rails/issues/50733</guid>
+    <description>*   Fix single quote escapes on default generated MySQL columns
+
+    MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.
+
+    Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.
+
+    This would result in issues when importing the schema on a fresh instance of a MySQL database.
+
+    Now, the string will not be escaped and will be valid Ruby upon importing of the schema.
+
+    *Yash Kapadia*</description>
+    <pubDate>Wed, 17 Jan 2024 12:48:03 +0000</pubDate>
+    <author>Yash Kapadia</author>
+    <content:encoded><![CDATA[<p>Fix single quote escapes on default generated MySQL columns</p>
+
+<p>MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.</p>
+
+<p>Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.</p>
+
+<p>This would result in issues when importing the schema on a fresh instance of a MySQL database.</p>
+
+<p>Now, the string will not be escaped and will be valid Ruby upon importing of the schema.</p>
+
+<p><em>Yash Kapadia</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix Migrations with versions older than 7.1 validating options given to
+</title>
+    <link>https://github.com/rails/rails/issues/50680</link>
+    <guid>https://github.com/rails/rails/issues/50680</guid>
+    <description>*   Fix Migrations with versions older than 7.1 validating options given to
+    `add_reference` and `t.references`.
+
+    *Hartley McGuire*</description>
+    <pubDate>Mon, 15 Jan 2024 21:25:22 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix Migrations with versions older than 7.1 validating options given to<br />
+<code>add_reference</code> and <code>t.references</code>.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `&lt;role&gt;_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be instrospected
+</title>
+    <link>https://github.com/rails/rails/issues/50662</link>
+    <guid>https://github.com/rails/rails/issues/50662</guid>
+    <description>*   Add `&lt;role&gt;_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be instrospected
+
+    *JP Rosevear*</description>
+    <pubDate>Mon, 15 Jan 2024 19:04:14 +0000</pubDate>
+    <author>JP Rosevear</author>
+    <content:encoded><![CDATA[<p>Add <code>&lt;role&gt;_types</code> class method to <code>ActiveRecord::DelegatedType</code> so that the delegated types can be instrospected</p>
+
+<p><em>JP Rosevear</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Make `schema_dump`, `query_cache`, `replica` and `database_tasks` configurable via `DATABASE_URL`
+</title>
+    <link>https://github.com/rails/rails/issues/50757</link>
+    <guid>https://github.com/rails/rails/issues/50757</guid>
+    <description>*   Make `schema_dump`, `query_cache`, `replica` and `database_tasks` configurable via `DATABASE_URL`
+
+    This wouldn&#39;t always work previously because boolean values would be interpreted as strings.
+
+    e.g. `DATABASE_URL=postgres://localhost/foo?schema_dump=false` now properly disable dumping the schema
+    cache.
+
+    *Mike Coutermarsh*, *Jean Boussier*</description>
+    <pubDate>Mon, 15 Jan 2024 14:57:33 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Make <code>schema_dump</code>, <code>query_cache</code>, <code>replica</code> and <code>database_tasks</code> configurable via <code>DATABASE_URL</code></p>
+
+<p>This wouldn’t always work previously because boolean values would be interpreted as strings.</p>
+
+<p>e.g. <code>DATABASE_URL=postgres://localhost/foo?schema_dump=false</code> now properly disable dumping the schema<br />
+cache.</p>
+
+<p><em>Mike Coutermarsh</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Introduce `ActiveRecord::Transactions::ClassMethods#set_callback`
+</title>
+    <link>https://github.com/rails/rails/issues/50260</link>
+    <guid>https://github.com/rails/rails/issues/50260</guid>
+    <description>*   Introduce `ActiveRecord::Transactions::ClassMethods#set_callback`
+
+     It is identical to `ActiveSupport::Callbacks::ClassMethods#set_callback`
+     but with support for `after_commit` and `after_rollback` callback options.
+
+    *Joshua Young*</description>
+    <pubDate>Fri, 12 Jan 2024 11:30:33 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Introduce <code>ActiveRecord::Transactions::ClassMethods#set_callback</code></p>
+
+<p>It is identical to <code>ActiveSupport::Callbacks::ClassMethods#set_callback</code><br />
+ but with support for <code>after_commit</code> and <code>after_rollback</code> callback options.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Make `ActiveRecord::Encryption::Encryptor` agnostic of the serialization format used for encrypted data.
+</title>
+    <link>https://github.com/rails/rails/issues/48685</link>
+    <guid>https://github.com/rails/rails/issues/48685</guid>
+    <description>*   Make `ActiveRecord::Encryption::Encryptor` agnostic of the serialization format used for encrypted data.
+
+    Previously, the encryptor instance only allowed an encrypted value serialized as a `String` to be passed to the message serializer.
+
+    Now, the encryptor lets the configured `message_serializer` decide which types of serialized encrypted values are supported. A custom serialiser is therefore allowed to serialize `ActiveRecord::Encryption::Message` objects using a type other than `String`.
+
+    The default `ActiveRecord::Encryption::MessageSerializer` already ensures that only `String` objects are passed for deserialization.
+
+    *Maxime Réty*</description>
+    <pubDate>Fri, 05 Jan 2024 18:05:50 +0000</pubDate>
+    <author>maximerety</author>
+    <content:encoded><![CDATA[<p>Make <code>ActiveRecord::Encryption::Encryptor</code> agnostic of the serialization format used for encrypted data.</p>
+
+<p>Previously, the encryptor instance only allowed an encrypted value serialized as a <code>String</code> to be passed to the message serializer.</p>
+
+<p>Now, the encryptor lets the configured <code>message_serializer</code> decide which types of serialized encrypted values are supported. A custom serialiser is therefore allowed to serialize <code>ActiveRecord::Encryption::Message</code> objects using a type other than <code>String</code>.</p>
+
+<p>The default <code>ActiveRecord::Encryption::MessageSerializer</code> already ensures that only <code>String</code> objects are passed for deserialization.</p>
+
+<p><em>Maxime Réty</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix `encrypted_attribute?` to take into account context properties passed to `encrypts`.
+</title>
+    <link>https://github.com/rails/rails/issues/48922</link>
+    <guid>https://github.com/rails/rails/issues/48922</guid>
+    <description>*   Fix `encrypted_attribute?` to take into account context properties passed to `encrypts`.
+
+    *Maxime Réty*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>maximerety</author>
+    <content:encoded><![CDATA[<p>Fix <code>encrypted_attribute?</code> to take into account context properties passed to <code>encrypts</code>.</p>
+
+<p><em>Maxime Réty</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: The object returned by `explain` now responds to `pluck`, `first`,
+</title>
+    <link>https://github.com/rails/rails/issues/50602</link>
+    <guid>https://github.com/rails/rails/issues/50602</guid>
+    <description>*   The object returned by `explain` now responds to `pluck`, `first`,
+    `last`, `average`, `count`, `maximum`, `minimum`, and `sum`. Those
+    new methods run `EXPLAIN` on the corresponding queries:
+
+    ```ruby
+    User.all.explain.count
+    # EXPLAIN SELECT COUNT(*) FROM `users`
+    # ...
+
+    User.all.explain.maximum(:id)
+    # EXPLAIN SELECT MAX(`users`.`id`) FROM `users`
+    # ...
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 05 Jan 2024 16:22:23 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>The object returned by <code>explain</code> now responds to <code>pluck</code>, <code>first</code>,<br />
+<code>last</code>, <code>average</code>, <code>count</code>, <code>maximum</code>, <code>minimum</code>, and <code>sum</code>. Those<br />
+new methods run <code>EXPLAIN</code> on the corresponding queries:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">explain</span><span class="p">.</span><span class="nf">count</span>
+<span class="c1"># EXPLAIN SELECT COUNT(*) FROM `users`</span>
+<span class="c1"># ...</span>
+
+<span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">explain</span><span class="p">.</span><span class="nf">maximum</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>
+<span class="c1"># EXPLAIN SELECT MAX(`users`.`id`) FROM `users`</span>
+<span class="c1"># ...</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fixes an issue where `validates_associated` `:on`  option wasn&#39;t respected
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Fixes an issue where `validates_associated` `:on`  option wasn&#39;t respected
+    when validating associated records.
+
+    *Austen Madden*, *Alex Ghiculescu*, *Rafał Brize*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Fixes an issue where <code>validates_associated</code> <code>:on</code>  option wasn’t respected<br />
+when validating associated records.</p>
+
+<p><em>Austen Madden</em>, <em>Alex Ghiculescu</em>, <em>Rafał Brize</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Allow overriding SQLite defaults from `database.yml`.
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Allow overriding SQLite defaults from `database.yml`.
+
+    Any PRAGMA configuration set under the `pragmas` key in the configuration
+    file takes precedence over Rails&#39; defaults, and additional PRAGMAs can be
+    set as well.
+
+    ```yaml
+    database: storage/development.sqlite3
+    timeout: 5000
+    pragmas:
+      journal_mode: off
+      temp_store: memory
+    ```
+
+    *Stephen Margheim*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Allow overriding SQLite defaults from <code>database.yml</code>.</p>
+
+<p>Any PRAGMA configuration set under the <code>pragmas</code> key in the configuration<br />
+file takes precedence over Rails’ defaults, and additional PRAGMAs can be<br />
+set as well.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">database</span><span class="pi">:</span> <span class="s">storage/development.sqlite3</span>
+<span class="na">timeout</span><span class="pi">:</span> <span class="m">5000</span>
+<span class="na">pragmas</span><span class="pi">:</span>
+  <span class="na">journal_mode</span><span class="pi">:</span> <span class="s">off</span>
+  <span class="na">temp_store</span><span class="pi">:</span> <span class="s">memory</span>
+</code></pre></div></div>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove warning message when running SQLite in production, but leave it unconfigured.
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Remove warning message when running SQLite in production, but leave it unconfigured.
+
+    There are valid use cases for running SQLite in production. However, it must be done
+    with care, so instead of a warning most users won&#39;t see anyway, it&#39;s preferable to
+    leave the configuration commented out to force them to think about having the database
+    on a persistent volume etc.
+
+    *Jacopo Beschi*, *Jean Boussier*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Remove warning message when running SQLite in production, but leave it unconfigured.</p>
+
+<p>There are valid use cases for running SQLite in production. However, it must be done<br />
+with care, so instead of a warning most users won’t see anyway, it’s preferable to<br />
+leave the configuration commented out to force them to think about having the database<br />
+on a persistent volume etc.</p>
+
+<p><em>Jacopo Beschi</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add support for generated columns to the SQLite3 adapter.
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Add support for generated columns to the SQLite3 adapter.
+
+    Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.
+    This adds support for those to the SQLite3 adapter.
+
+    ```ruby
+    create_table :users do |t|
+      t.string :name
+      t.virtual :name_upper, type: :string, as: &#39;UPPER(name)&#39;
+      t.virtual :name_lower, type: :string, as: &#39;LOWER(name)&#39;, stored: true
+    end
+    ```
+
+    *Stephen Margheim*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add support for generated columns to the SQLite3 adapter.</p>
+
+<p>Generated columns (both stored and dynamic) are supported since version 3.31.0 of SQLite.<br />
+This adds support for those to the SQLite3 adapter.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">create_table</span> <span class="ss">:users</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:name</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">virtual</span> <span class="ss">:name_upper</span><span class="p">,</span> <span class="ss">type: :string</span><span class="p">,</span> <span class="ss">as: </span><span class="s1">'UPPER(name)'</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">virtual</span> <span class="ss">:name_lower</span><span class="p">,</span> <span class="ss">type: :string</span><span class="p">,</span> <span class="ss">as: </span><span class="s1">'LOWER(name)'</span><span class="p">,</span> <span class="ss">stored: </span><span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: TrilogyAdapter: ignore `host` if `socket` parameter is set.
+</title>
+    <link>https://github.com/rails/rails/issues/50349</link>
+    <guid>https://github.com/rails/rails/issues/50349</guid>
+    <description>*   TrilogyAdapter: ignore `host` if `socket` parameter is set.
+
+    This allows to configure a connection on a UNIX socket via `DATABASE_URL`:
+
+    ```
+    DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock
+    ```
+
+    *Jean Boussier*</description>
+    <pubDate>Wed, 13 Dec 2023 16:54:50 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>TrilogyAdapter: ignore <code>host</code> if <code>socket</code> parameter is set.</p>
+
+<p>This allows to configure a connection on a UNIX socket via <code>DATABASE_URL</code>:</p>
+
+<pre><code>DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock
+</code></pre>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match`, and
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Make `assert_queries_count`, `assert_no_queries`, `assert_queries_match`, and
+    `assert_no_queries_match` assertions public.
+
+    To assert the expected number of queries are made, Rails internally uses `assert_queries_count` and
+    `assert_no_queries`. To assert that specific SQL queries are made, `assert_queries_match` and
+    `assert_no_queries_match` are used. These assertions can now be used in applications as well.
+
+    ```ruby
+    class ArticleTest &lt; ActiveSupport::TestCase
+      test &quot;queries are made&quot; do
+        assert_queries_count(1) { Article.first }
+      end
+
+      test &quot;creates a foreign key&quot; do
+        assert_queries_match(/ADD FOREIGN KEY/i, include_schema: true) do
+          @connection.add_foreign_key(:comments, :posts)
+        end
+      end
+    end
+    ```
+
+    *Petrik de Heus*, *fatkodima*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Make <code>assert_queries_count</code>, <code>assert_no_queries</code>, <code>assert_queries_match</code>, and<br />
+<code>assert_no_queries_match</code> assertions public.</p>
+
+<p>To assert the expected number of queries are made, Rails internally uses <code>assert_queries_count</code> and<br />
+<code>assert_no_queries</code>. To assert that specific SQL queries are made, <code>assert_queries_match</code> and<br />
+<code>assert_no_queries_match</code> are used. These assertions can now be used in applications as well.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ArticleTest</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="nb">test</span> <span class="s2">"queries are made"</span> <span class="k">do</span>
+    <span class="n">assert_queries_count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="no">Article</span><span class="p">.</span><span class="nf">first</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="nb">test</span> <span class="s2">"creates a foreign key"</span> <span class="k">do</span>
+    <span class="n">assert_queries_match</span><span class="p">(</span><span class="sr">/ADD FOREIGN KEY/i</span><span class="p">,</span> <span class="ss">include_schema: </span><span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
+      <span class="vi">@connection</span><span class="p">.</span><span class="nf">add_foreign_key</span><span class="p">(</span><span class="ss">:comments</span><span class="p">,</span> <span class="ss">:posts</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em>, <em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix `has_secure_token` calls the setter method on initialize.
+</title>
+    <link>https://github.com/rails/rails/issues/49874</link>
+    <guid>https://github.com/rails/rails/issues/49874</guid>
+    <description>*   Fix `has_secure_token` calls the setter method on initialize.
+
+    *Abeid Ahmed*</description>
+    <pubDate>Mon, 04 Dec 2023 00:34:29 +0000</pubDate>
+    <author>abeidahmed</author>
+    <content:encoded><![CDATA[<p>Fix <code>has_secure_token</code> calls the setter method on initialize.</p>
+
+<p><em>Abeid Ahmed</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database
+</title>
+    <link>https://github.com/rails/rails/issues/50140</link>
+    <guid>https://github.com/rails/rails/issues/50140</guid>
+    <description>*   When using a `DATABASE_URL`, allow for a configuration to map the protocol in the URL to a specific database
+    adapter. This allows decoupling the adapter the application chooses to use from the database connection details
+    set in the deployment environment.
+
+    ```ruby
+    # ENV[&#39;DATABASE_URL&#39;] = &quot;mysql://localhost/example_database&quot;
+    config.active_record.protocol_adapters.mysql = &quot;trilogy&quot;
+    # will connect to MySQL using the trilogy adapter
+    ```
+
+    *Jean Boussier*, *Kevin McPhillips*</description>
+    <pubDate>Wed, 29 Nov 2023 16:41:51 +0000</pubDate>
+    <author>Kevin McPhillips</author>
+    <content:encoded><![CDATA[<p>When using a <code>DATABASE_URL</code>, allow for a configuration to map the protocol in the URL to a specific database<br />
+adapter. This allows decoupling the adapter the application chooses to use from the database connection details<br />
+set in the deployment environment.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ENV['DATABASE_URL'] = "mysql://localhost/example_database"</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">protocol_adapters</span><span class="p">.</span><span class="nf">mysql</span> <span class="o">=</span> <span class="s2">"trilogy"</span>
+<span class="c1"># will connect to MySQL using the trilogy adapter</span>
+</code></pre></div></div>
+
+<p><em>Jean Boussier</em>, <em>Kevin McPhillips</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: In cases where MySQL returns `warning_count` greater than zero, but returns no warnings when
+</title>
+    <link>https://github.com/rails/rails/issues/50049</link>
+    <guid>https://github.com/rails/rails/issues/50049</guid>
+    <description>*   In cases where MySQL returns `warning_count` greater than zero, but returns no warnings when
+    the `SHOW WARNINGS` query is executed, `ActiveRecord.db_warnings_action` proc will still be
+    called with a generic warning message rather than silently ignoring the warning(s).
+
+    *Kevin McPhillips*</description>
+    <pubDate>Wed, 22 Nov 2023 22:02:06 +0000</pubDate>
+    <author>Kevin McPhillips</author>
+    <content:encoded><![CDATA[<p>In cases where MySQL returns <code>warning_count</code> greater than zero, but returns no warnings when<br />
+the <code>SHOW WARNINGS</code> query is executed, <code>ActiveRecord.db_warnings_action</code> proc will still be<br />
+called with a generic warning message rather than silently ignoring the warning(s).</p>
+
+<p><em>Kevin McPhillips</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: `DatabaseConfigurations#configs_for` accepts a symbol in the `name` parameter.
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   `DatabaseConfigurations#configs_for` accepts a symbol in the `name` parameter.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p><code>DatabaseConfigurations#configs_for</code> accepts a symbol in the <code>name</code> parameter.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix `where(field: values)` queries when `field` is a serialized attribute
+</title>
+    <link>https://github.com/rails/rails/issues/49050</link>
+    <guid>https://github.com/rails/rails/issues/49050</guid>
+    <description>*   Fix `where(field: values)` queries when `field` is a serialized attribute
+    (for example, when `field` uses `ActiveRecord::Base.serialize` or is a JSON
+    column).
+
+    *João Alves*</description>
+    <pubDate>Thu, 09 Nov 2023 21:38:21 +0000</pubDate>
+    <author>JohnAnon9771</author>
+    <content:encoded><![CDATA[<p>Fix <code>where(field: values)</code> queries when <code>field</code> is a serialized attribute<br />
+(for example, when <code>field</code> uses <code>ActiveRecord::Base.serialize</code> or is a JSON<br />
+column).</p>
+
+<p><em>João Alves</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Make the output of `ActiveRecord::Core#inspect` configurable.
+</title>
+    <link>https://github.com/rails/rails/issues/49765</link>
+    <guid>https://github.com/rails/rails/issues/49765</guid>
+    <description>*   Make the output of `ActiveRecord::Core#inspect` configurable.
+
+    By default, calling `inspect` on a record will yield a formatted string including just the `id`.
+
+    ```ruby
+    Post.first.inspect #=&gt; &quot;#&lt;Post id: 1&gt;&quot;
+    ```
+
+    The attributes to be included in the output of `inspect` can be configured with
+    `ActiveRecord::Core#attributes_for_inspect`.
+
+    ```ruby
+    Post.attributes_for_inspect = [:id, :title]
+    Post.first.inspect #=&gt; &quot;#&lt;Post id: 1, title: &quot;Hello, World!&quot;&gt;&quot;
+    ```
+
+    With `attributes_for_inspect` set to `:all`, `inspect` will list all the record&#39;s attributes.
+
+    ```ruby
+    Post.attributes_for_inspect = :all
+    Post.first.inspect #=&gt; &quot;#&lt;Post id: 1, title: &quot;Hello, World!&quot;, published_at: &quot;2023-10-23 14:28:11 +0000&quot;&gt;&quot;
+    ```
+
+    In `development` and `test` mode, `attributes_for_inspect` will be set to `:all` by default.
+
+    You can also call `full_inspect` to get an inspection with all the attributes.
+
+    The attributes in `attribute_for_inspect` will also be used for `pretty_print`.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Wed, 08 Nov 2023 20:08:36 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Make the output of <code>ActiveRecord::Core#inspect</code> configurable.</p>
+
+<p>By default, calling <code>inspect</code> on a record will yield a formatted string including just the <code>id</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1&gt;"</span>
+</code></pre></div></div>
+
+<p>The attributes to be included in the output of <code>inspect</code> can be configured with<br />
+<code>ActiveRecord::Core#attributes_for_inspect</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">attributes_for_inspect</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:title</span><span class="p">]</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1, title: "Hello, World!"&gt;"</span>
+</code></pre></div></div>
+
+<p>With <code>attributes_for_inspect</code> set to <code>:all</code>, <code>inspect</code> will list all the record’s attributes.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">attributes_for_inspect</span> <span class="o">=</span> <span class="ss">:all</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">inspect</span> <span class="c1">#=&gt; "#&lt;Post id: 1, title: "Hello, World!", published_at: "2023-10-23 14:28:11 +0000"&gt;"</span>
+</code></pre></div></div>
+
+<p>In <code>development</code> and <code>test</code> mode, <code>attributes_for_inspect</code> will be set to <code>:all</code> by default.</p>
+
+<p>You can also call <code>full_inspect</code> to get an inspection with all the attributes.</p>
+
+<p>The attributes in <code>attribute_for_inspect</code> will also be used for <code>pretty_print</code>.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Don&#39;t mark attributes as changed when reassigned to `Float::INFINITY` or
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Don&#39;t mark attributes as changed when reassigned to `Float::INFINITY` or
+    `-Float::INFINITY`.
+
+    *Maicol Bentancor*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Don’t mark attributes as changed when reassigned to <code>Float::INFINITY</code> or<br />
+<code>-Float::INFINITY</code>.</p>
+
+<p><em>Maicol Bentancor</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Support the `RETURNING` clause for MariaDB.
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Support the `RETURNING` clause for MariaDB.
+
+    *fatkodima*, *Nikolay Kondratyev*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Support the <code>RETURNING</code> clause for MariaDB.</p>
+
+<p><em>fatkodima</em>, <em>Nikolay Kondratyev</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract.
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   The SQLite3 adapter now implements the `supports_deferrable_constraints?` contract.
+
+    Allows foreign keys to be deferred by adding the `:deferrable` key to the `foreign_key` options.
+
+    ```ruby
+    add_reference :person, :alias, foreign_key: { deferrable: :deferred }
+    add_reference :alias, :person, foreign_key: { deferrable: :deferred }
+    ```
+
+    *Stephen Margheim*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>The SQLite3 adapter now implements the <code>supports_deferrable_constraints?</code> contract.</p>
+
+<p>Allows foreign keys to be deferred by adding the <code>:deferrable</code> key to the <code>foreign_key</code> options.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_reference</span> <span class="ss">:person</span><span class="p">,</span> <span class="ss">:alias</span><span class="p">,</span> <span class="ss">foreign_key: </span><span class="p">{</span> <span class="ss">deferrable: :deferred</span> <span class="p">}</span>
+<span class="n">add_reference</span> <span class="ss">:alias</span><span class="p">,</span> <span class="ss">:person</span><span class="p">,</span> <span class="ss">foreign_key: </span><span class="p">{</span> <span class="ss">deferrable: :deferred</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add the `set_constraints` helper to PostgreSQL connections.
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Add the `set_constraints` helper to PostgreSQL connections.
+
+    ```ruby
+    Post.create!(user_id: -1) # =&gt; ActiveRecord::InvalidForeignKey
+
+    Post.transaction do
+      Post.connection.set_constraints(:deferred)
+      p = Post.create!(user_id: -1)
+      u = User.create!
+      p.user = u
+      p.save!
+    end
+    ```
+
+    *Cody Cutrer*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add the <code>set_constraints</code> helper to PostgreSQL connections.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">user_id: </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># =&gt; ActiveRecord::InvalidForeignKey</span>
+
+<span class="no">Post</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">set_constraints</span><span class="p">(</span><span class="ss">:deferred</span><span class="p">)</span>
+  <span class="nb">p</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">user_id: </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">u</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">create!</span>
+  <span class="nb">p</span><span class="p">.</span><span class="nf">user</span> <span class="o">=</span> <span class="n">u</span>
+  <span class="nb">p</span><span class="p">.</span><span class="nf">save!</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Cody Cutrer</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Include `ActiveModel::API` in `ActiveRecord::Base`.
+</title>
+    <link>https://github.com/rails/rails/issues/48923</link>
+    <guid>https://github.com/rails/rails/issues/48923</guid>
+    <description>*   Include `ActiveModel::API` in `ActiveRecord::Base`.
+
+    *Sean Doyle*</description>
+    <pubDate>Fri, 05 Jan 2024 18:01:26 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Include <code>ActiveModel::API</code> in <code>ActiveRecord::Base</code>.</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Ensure `#signed_id` outputs `url_safe` strings.
+</title>
+    <link>https://github.com/rails/rails/issues/49507</link>
+    <guid>https://github.com/rails/rails/issues/49507</guid>
+    <description>*   Ensure `#signed_id` outputs `url_safe` strings.
+
+    *Jason Meller*</description>
+    <pubDate>Fri, 06 Oct 2023 20:58:36 +0000</pubDate>
+    <author>Jason Meller</author>
+    <content:encoded><![CDATA[<p>Ensure <code>#signed_id</code> outputs <code>url_safe</code> strings.</p>
+
+<p><em>Jason Meller</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `nulls_last` and working `desc.nulls_first` for MySQL.
+</title>
+    <link>https://github.com/rails/rails/issues/50079</link>
+    <guid>https://github.com/rails/rails/issues/50079</guid>
+    <description>*   Add `nulls_last` and working `desc.nulls_first` for MySQL.
+
+    *Tristan Fellows*</description>
+    <pubDate>Fri, 08 Dec 2023 23:44:02 +0000</pubDate>
+    <author>tttffff</author>
+    <content:encoded><![CDATA[<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>
+
+<p><em>Tristan Fellows</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Fix N+1 query when fetching preview images for non-image assets
+</title>
+    <link>https://github.com/rails/rails/issues/50758</link>
+    <guid>https://github.com/rails/rails/issues/50758</guid>
+    <description>*   Fix N+1 query when fetching preview images for non-image assets
+
+    *Aaron Patterson &amp; Justin Searls*</description>
+    <pubDate>Tue, 16 Jan 2024 18:44:10 +0000</pubDate>
+    <author>Aaron Patterson</author>
+    <content:encoded><![CDATA[<p>Fix N+1 query when fetching preview images for non-image assets</p>
+
+<p><em>Aaron Patterson &amp; Justin Searls</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Fix all Active Storage database related models to respect
+</title>
+    <link>https://github.com/rails/rails/issues/50167</link>
+    <guid>https://github.com/rails/rails/issues/50167</guid>
+    <description>*   Fix all Active Storage database related models to respect
+    `ActiveRecord::Base.table_name_prefix` configuration.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Thu, 07 Dec 2023 17:36:39 +0000</pubDate>
+    <author>chaadow</author>
+    <content:encoded><![CDATA[<p>Fix all Active Storage database related models to respect<br />
+<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Fix `ActiveStorage::Representations::ProxyController` not returning the proper
+</title>
+    <link>https://github.com/rails/rails/issues/50098</link>
+    <guid>https://github.com/rails/rails/issues/50098</guid>
+    <description>*   Fix `ActiveStorage::Representations::ProxyController` not returning the proper
+    preview image variant for previewable files.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Tue, 21 Nov 2023 22:23:38 +0000</pubDate>
+    <author>chaadow</author>
+    <content:encoded><![CDATA[<p>Fix <code>ActiveStorage::Representations::ProxyController</code> not returning the proper<br />
+preview image variant for previewable files.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Fix `ActiveStorage::Representations::ProxyController` to proxy untracked
+</title>
+    <link>https://github.com/rails/rails/issues/50107</link>
+    <guid>https://github.com/rails/rails/issues/50107</guid>
+    <description>*   Fix `ActiveStorage::Representations::ProxyController` to proxy untracked
+    variants.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Mon, 20 Nov 2023 20:46:00 +0000</pubDate>
+    <author>chaadow</author>
+    <content:encoded><![CDATA[<p>Fix <code>ActiveStorage::Representations::ProxyController</code> to proxy untracked<br />
+variants.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: When using the `preprocessed: true` option, avoid enqueuing transform jobs
+</title>
+    <link>https://github.com/rails/rails/issues/50082</link>
+    <guid>https://github.com/rails/rails/issues/50082</guid>
+    <description>*   When using the `preprocessed: true` option, avoid enqueuing transform jobs
+    for blobs that are not representable.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Fri, 17 Nov 2023 23:25:17 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>When using the <code>preprocessed: true</code> option, avoid enqueuing transform jobs<br />
+for blobs that are not representable.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
+</title>
+    <link>https://github.com/rails/rails/issues/50046</link>
+    <guid>https://github.com/rails/rails/issues/50046</guid>
+    <description>*   Prevent `ActiveStorage::Blob#preview` to generate a variant if an empty variation is passed.
+    Calls to `#url`, `#key` or `#download` will now use the original preview
+    image instead of generating a variant with the exact same dimensions.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Wed, 15 Nov 2023 23:16:00 +0000</pubDate>
+    <author>chaadow</author>
+    <content:encoded><![CDATA[<p>Prevent <code>ActiveStorage::Blob#preview</code> to generate a variant if an empty variation is passed.<br />
+Calls to <code>#url</code>, <code>#key</code> or <code>#download</code> will now use the original preview<br />
+image instead of generating a variant with the exact same dimensions.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Process preview image variant when calling `ActiveStorage::Preview#processed`.
+</title>
+    <link>https://github.com/rails/rails/issues/50044</link>
+    <guid>https://github.com/rails/rails/issues/50044</guid>
+    <description>*   Process preview image variant when calling `ActiveStorage::Preview#processed`.
+    For example, `attached_pdf.preview(:thumb).processed` will now immediately
+    generate the full-sized preview image and the `:thumb` variant of it.
+    Previously, the `:thumb` variant would not be generated until a further call
+    to e.g. `processed.url`.
+
+    *Chedli Bourguiba* and *Jonathan Hefner*</description>
+    <pubDate>Mon, 13 Nov 2023 18:38:38 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Process preview image variant when calling <code>ActiveStorage::Preview#processed</code>.<br />
+For example, <code>attached_pdf.preview(:thumb).processed</code> will now immediately<br />
+generate the full-sized preview image and the <code>:thumb</code> variant of it.<br />
+Previously, the <code>:thumb</code> variant would not be generated until a further call<br />
+to e.g. <code>processed.url</code>.</p>
+
+<p><em>Chedli Bourguiba</em> and <em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
+</title>
+    <link>https://github.com/rails/rails/issues/50043</link>
+    <guid>https://github.com/rails/rails/issues/50043</guid>
+    <description>*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is
+    enabled and the variant of an Active Storage preview has already been
+    processed (for example, by calling `ActiveStorage::Preview#url`).
+
+    *Jonathan Hefner*</description>
+    <pubDate>Mon, 13 Nov 2023 17:17:04 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Prevent <code>ActiveRecord::StrictLoadingViolationError</code> when strict loading is<br />
+enabled and the variant of an Active Storage preview has already been<br />
+processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Fix `preprocessed: true` option for named variants of previewable files.
+</title>
+    <link>https://github.com/rails/rails/issues/50005</link>
+    <guid>https://github.com/rails/rails/issues/50005</guid>
+    <description>*   Fix `preprocessed: true` option for named variants of previewable files.
+
+    *Nico Wenterodt*</description>
+    <pubDate>Sat, 11 Nov 2023 17:49:10 +0000</pubDate>
+    <author>Nico Wenterodt</author>
+    <content:encoded><![CDATA[<p>Fix <code>preprocessed: true</code> option for named variants of previewable files.</p>
+
+<p><em>Nico Wenterodt</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
+</title>
+    <link>https://github.com/rails/rails/issues/49863</link>
+    <guid>https://github.com/rails/rails/issues/49863</guid>
+    <description>*   Allow accepting `service` as a proc as well in `has_one_attached` and `has_many_attached`.
+
+    *Yogesh Khater*</description>
+    <pubDate>Thu, 02 Nov 2023 02:45:48 +0000</pubDate>
+    <author>Yogesh Khater</author>
+    <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
+
+<p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailbox: Fix all Action Mailbox database related models to respect
+</title>
+    <link>https://github.com/rails/rails/issues/50300</link>
+    <guid>https://github.com/rails/rails/issues/50300</guid>
+    <description>*   Fix all Action Mailbox database related models to respect
+    `ActiveRecord::Base.table_name_prefix` configuration.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Mon, 11 Dec 2023 14:24:43 +0000</pubDate>
+    <author>Chedli Bourguiba</author>
+    <content:encoded><![CDATA[<p>Fix all Action Mailbox database related models to respect<br />
+<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Include `IPAddr#prefix` when serializing an `IPAddr` using the
+</title>
+    <link>https://github.com/rails/rails/issues/50742</link>
+    <guid>https://github.com/rails/rails/issues/50742</guid>
+    <description>*   Include `IPAddr#prefix` when serializing an `IPAddr` using the
+    `ActiveSupport::MessagePack` serializer. This change is backward and forward
+    compatible — old payloads can still be read, and new payloads will be
+    readable by older versions of Rails.
+
+    *Taiki Komaba*</description>
+    <pubDate>Mon, 15 Jan 2024 06:54:08 +0000</pubDate>
+    <author>r-plus</author>
+    <content:encoded><![CDATA[<p>Include <code>IPAddr#prefix</code> when serializing an <code>IPAddr</code> using the<br />
+<code>ActiveSupport::MessagePack</code> serializer. This change is backward and forward<br />
+compatible — old payloads can still be read, and new payloads will be<br />
+readable by older versions of Rails.</p>
+
+<p><em>Taiki Komaba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
+</title>
+    <link>https://github.com/rails/rails/issues/50677</link>
+    <guid>https://github.com/rails/rails/issues/50677</guid>
+    <description>*   Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
+
+    ```ruby
+    class Current &lt; ActiveSupport::CurrentAttributes
+      attribute :counter, default: 0
+    end
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 10 Jan 2024 00:43:37 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Add <code>default:</code> support for <code>ActiveSupport::CurrentAttributes.attribute</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Current</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">CurrentAttributes</span>
+  <span class="n">attribute</span> <span class="ss">:counter</span><span class="p">,</span> <span class="ss">default: </span><span class="mi">0</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Yield instance to `Object#with` block
+</title>
+    <link>https://github.com/rails/rails/issues/50470</link>
+    <guid>https://github.com/rails/rails/issues/50470</guid>
+    <description>*   Yield instance to `Object#with` block
+
+    ```ruby
+    client.with(timeout: 5_000) do |c|
+      c.get(&quot;/commits&quot;)
+    end
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Sun, 07 Jan 2024 20:06:02 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Yield instance to <code>Object#with</code> block</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span><span class="p">.</span><span class="nf">with</span><span class="p">(</span><span class="ss">timeout: </span><span class="mi">5_000</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+  <span class="n">c</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/commits"</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Use logical core count instead of physical core count to determine the
+</title>
+    <link>https://github.com/rails/rails/issues/50564</link>
+    <guid>https://github.com/rails/rails/issues/50564</guid>
+    <description>*   Use logical core count instead of physical core count to determine the
+    default number of workers when parallelizing tests.
+
+    *Jonathan Hefner*</description>
+    <pubDate>Wed, 03 Jan 2024 23:08:09 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Use logical core count instead of physical core count to determine the<br />
+default number of workers when parallelizing tests.</p>
+
+<p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
+</title>
+    <link>https://github.com/rails/rails/issues/50749</link>
+    <guid>https://github.com/rails/rails/issues/50749</guid>
+    <description>*   Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
+
+    There is a bug in the current implementation of #travel_to:
+    it remembers a timezone of its argument, and all stubbed methods start
+    returning results in that remembered timezone. However, the expected
+    behaviour is to return results in a system timezone.
+
+    *Aleksei Chernenkov*</description>
+    <pubDate>Sun, 14 Jan 2024 16:31:12 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Fix <code>Time.now/DateTime.now/Date.today</code> to return results in a system timezone after <code>#travel_to</code>.</p>
+
+<p>There is a bug in the current implementation of #travel_to:<br />
+it remembers a timezone of its argument, and all stubbed methods start<br />
+returning results in that remembered timezone. However, the expected<br />
+behaviour is to return results in a system timezone.</p>
+
+<p><em>Aleksei Chernenkov</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add `ErrorReported#unexpected` to report precondition violations.
+</title>
+    <link>https://github.com/rails/rails/issues/49951</link>
+    <guid>https://github.com/rails/rails/issues/49951</guid>
+    <description>*   Add `ErrorReported#unexpected` to report precondition violations.
+
+    For example:
+
+    ```ruby
+    def edit
+      if published?
+        Rails.error.unexpected(&quot;[BUG] Attempting to edit a published article, that shouldn&#39;t be possible&quot;)
+        return false
+      end
+      # ...
+    end
+    ```
+
+    The above will raise an error in development and test, but only report the error in production.
+
+    *Jean Boussier*</description>
+    <pubDate>Mon, 20 Nov 2023 08:55:10 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add <code>ErrorReported#unexpected</code> to report precondition violations.</p>
+
+<p>For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">edit</span>
+  <span class="k">if</span> <span class="n">published?</span>
+    <span class="no">Rails</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">unexpected</span><span class="p">(</span><span class="s2">"[BUG] Attempting to edit a published article, that shouldn't be possible"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kp">false</span>
+  <span class="k">end</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>The above will raise an error in development and test, but only report the error in production.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
+</title>
+    <link>https://github.com/rails/rails/issues/50071</link>
+    <guid>https://github.com/rails/rails/issues/50071</guid>
+    <description>*   Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
+
+    *Adam Renberg Tamm*</description>
+    <pubDate>Fri, 17 Nov 2023 17:37:39 +0000</pubDate>
+    <author>Adam Renberg Tamm</author>
+    <content:encoded><![CDATA[<p>Make the order of read_multi and write_multi notifications for <code>Cache::Store#fetch_multi</code> operations match the order they are executed in.</p>
+
+<p><em>Adam Renberg Tamm</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Make return values of `Cache::Store#write` consistent.
+</title>
+    <link>https://github.com/rails/rails/issues/49873</link>
+    <guid>https://github.com/rails/rails/issues/49873</guid>
+    <description>*   Make return values of `Cache::Store#write` consistent.
+
+    The return value was not specified before. Now it returns `true` on a successful write,
+    `nil` if there was an error talking to the cache backend, and `false` if the write failed
+    for another reason (e.g. the key already exists and `unless_exist: true` was passed).
+
+    *Sander Verdonschot*</description>
+    <pubDate>Thu, 16 Nov 2023 14:55:51 +0000</pubDate>
+    <author>Sander Verdonschot</author>
+    <content:encoded><![CDATA[<p>Make return values of <code>Cache::Store#write</code> consistent.</p>
+
+<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />
+<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />
+for another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>
+
+<p><em>Sander Verdonschot</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix logged cache keys not always matching actual key used by cache action.
+</title>
+    <link>https://github.com/rails/rails/issues/50008</link>
+    <guid>https://github.com/rails/rails/issues/50008</guid>
+    <description>*   Fix logged cache keys not always matching actual key used by cache action.
+
+    *Hartley McGuire*</description>
+    <pubDate>Sat, 11 Nov 2023 19:12:48 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix logged cache keys not always matching actual key used by cache action.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Improve error messages of `assert_changes` and `assert_no_changes`
+</title>
+    <link>https://github.com/rails/rails/issues/48482</link>
+    <guid>https://github.com/rails/rails/issues/48482</guid>
+    <description>*   Improve error messages of `assert_changes` and `assert_no_changes`
+
+    `assert_changes` error messages now display objects with `.inspect` to make it easier
+    to differentiate nil from empty strings, strings from symbols, etc.
+    `assert_no_changes` error messages now surface the actual value.
+
+    *pcreux*</description>
+    <pubDate>Mon, 30 Oct 2023 18:43:51 +0000</pubDate>
+    <author>Philippe Creux</author>
+    <content:encoded><![CDATA[<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>
+
+<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />
+to differentiate nil from empty strings, strings from symbols, etc.<br />
+<code>assert_no_changes</code> error messages now surface the actual value.</p>
+
+<p><em>pcreux</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix `#to_fs(:human_size)` to correctly work with negative numbers.
+</title>
+    <link>https://github.com/rails/rails/issues/49791</link>
+    <guid>https://github.com/rails/rails/issues/49791</guid>
+    <description>*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.
+
+    *Earlopain*</description>
+    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>
+
+<p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
+</title>
+    <link>https://github.com/rails/rails/issues/49720</link>
+    <guid>https://github.com/rails/rails/issues/49720</guid>
+    <description>*   Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Mon, 23 Oct 2023 23:05:43 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
+</title>
+    <link>https://github.com/rails/rails/issues/49721</link>
+    <guid>https://github.com/rails/rails/issues/49721</guid>
+    <description>*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Fri, 20 Oct 2023 16:59:24 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix compatibility with the `semantic_logger` gem.
+</title>
+    <link>https://github.com/rails/rails/issues/49621</link>
+    <guid>https://github.com/rails/rails/issues/49621</guid>
+    <description>*   Fix compatibility with the `semantic_logger` gem.
+
+    The `semantic_logger` gem doesn&#39;t behave exactly like stdlib logger in that
+    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.
+
+    This caused the various `LogSubscriber` classes in Rails to break when assigned a
+    `SemanticLogger` instance.
+
+    *Jean Boussier*, *ojab*</description>
+    <pubDate>Fri, 13 Oct 2023 12:34:06 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>
+
+<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />
+<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>
+
+<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />
+<code>SemanticLogger</code> instance.</p>
+
+<p><em>Jean Boussier</em>, <em>ojab</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix MemoryStore to prevent race conditions when incrementing or decrementing.
+</title>
+    <link>https://github.com/rails/rails/issues/49542</link>
+    <guid>https://github.com/rails/rails/issues/49542</guid>
+    <description>*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.
+
+    *Pierre Jambet*</description>
+    <pubDate>Mon, 09 Oct 2023 07:24:47 +0000</pubDate>
+    <author>Pierre Jambet</author>
+    <content:encoded><![CDATA[<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>
+
+<p><em>Pierre Jambet</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Implement `HashWithIndifferentAccess#to_proc`.
+</title>
+    <link>https://github.com/rails/rails/issues/49475</link>
+    <guid>https://github.com/rails/rails/issues/49475</guid>
+    <description>*   Implement `HashWithIndifferentAccess#to_proc`.
+
+    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`
+    method from the `Hash` class, which was not able to access values using indifferent keys.
+
+    *fatkodima*</description>
+    <pubDate>Wed, 04 Oct 2023 07:56:58 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>
+
+<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />
+method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Remove deprecated params via `:args` for `assert_enqueued_email_with`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated params via `:args` for `assert_enqueued_email_with`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated params via <code>:args</code> for <code>assert_enqueued_email_with</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Remove deprecated `config.action_mailer.preview_path`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated `config.action_mailer.preview_path`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Use `includes` instead of `eager_load` for `with_all_rich_text`.
+</title>
+    <link>https://github.com/rails/rails/issues/50769</link>
+    <guid>https://github.com/rails/rails/issues/50769</guid>
+    <description>*   Use `includes` instead of `eager_load` for `with_all_rich_text`.
+
+    *Petrik de Heus*</description>
+    <pubDate>Tue, 16 Jan 2024 23:28:38 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Use <code>includes</code> instead of <code>eager_load</code> for <code>with_all_rich_text</code>.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`
+</title>
+    <link>https://github.com/rails/rails/issues/50473</link>
+    <guid>https://github.com/rails/rails/issues/50473</guid>
+    <description>*   Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`
+
+    ```ruby
+    content = ActionText::Content.new &lt;&lt;~HTML
+      &lt;h1&gt;Hello, world&lt;/h1&gt;
+
+      &lt;div&gt;The body&lt;/div&gt;
+    HTML
+
+    content =&gt; [h1, div]
+
+    assert_pattern { h1 =&gt; { content: &quot;Hello, world&quot; } }
+    assert_pattern { div =&gt; { content: &quot;The body&quot; } }
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 03 Jan 2024 17:31:22 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Delegate <code>ActionText::Content#deconstruct</code> to <code>Nokogiri::XML::DocumentFragment#elements</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">content</span> <span class="o">=</span> <span class="no">ActionText</span><span class="o">::</span><span class="no">Content</span><span class="p">.</span><span class="nf">new</span> <span class="o">&lt;&lt;~</span><span class="no">HTML</span><span class="sh">
+  &lt;h1&gt;Hello, world&lt;/h1&gt;
+
+  &lt;div&gt;The body&lt;/div&gt;
+</span><span class="no">HTML</span>
+
+<span class="n">content</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="n">h1</span><span class="p">,</span> <span class="n">div</span><span class="p">]</span>
+
+<span class="n">assert_pattern</span> <span class="p">{</span> <span class="n">h1</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">content: </span><span class="s2">"Hello, world"</span> <span class="p">}</span> <span class="p">}</span>
+<span class="n">assert_pattern</span> <span class="p">{</span> <span class="n">div</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">content: </span><span class="s2">"The body"</span> <span class="p">}</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Fix all Action Text database related models to respect
+</title>
+    <link>https://github.com/rails/rails/issues/50299</link>
+    <guid>https://github.com/rails/rails/issues/50299</guid>
+    <description>*   Fix all Action Text database related models to respect
+    `ActiveRecord::Base.table_name_prefix` configuration.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Mon, 11 Dec 2023 14:24:02 +0000</pubDate>
+    <author>Chedli Bourguiba</author>
+    <content:encoded><![CDATA[<p>Fix all Action Text database related models to respect<br />
+<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
+
+<p><em>Chedli Bourguiba</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Compile ESM package that can be used directly in the browser as actiontext.esm.js
+</title>
+    <link>https://github.com/rails/rails/issues/49952</link>
+    <guid>https://github.com/rails/rails/issues/49952</guid>
+    <description>*   Compile ESM package that can be used directly in the browser as actiontext.esm.js
+
+    *Matias Grunberg*</description>
+    <pubDate>Wed, 08 Nov 2023 20:30:18 +0000</pubDate>
+    <author>Matias Grunberg</author>
+    <content:encoded><![CDATA[<p>Compile ESM package that can be used directly in the browser as actiontext.esm.js</p>
+
+<p><em>Matias Grunberg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Fix using actiontext.js with Sprockets
+</title>
+    <link>https://github.com/rails/rails/issues/49952</link>
+    <guid>https://github.com/rails/rails/issues/49952</guid>
+    <description>*   Fix using actiontext.js with Sprockets
+
+    *Matias Grunberg*</description>
+    <pubDate>Wed, 08 Nov 2023 20:30:18 +0000</pubDate>
+    <author>Matias Grunberg</author>
+    <content:encoded><![CDATA[<p>Fix using actiontext.js with Sprockets</p>
+
+<p><em>Matias Grunberg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Upgrade Trix to 2.0.7
+</title>
+    <link>https://github.com/rails/rails/issues/49778</link>
+    <guid>https://github.com/rails/rails/issues/49778</guid>
+    <description>*   Upgrade Trix to 2.0.7
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 27 Oct 2023 14:29:30 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Upgrade Trix to 2.0.7</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Fix using Trix with Sprockets
+</title>
+    <link>https://github.com/rails/rails/issues/49778</link>
+    <guid>https://github.com/rails/rails/issues/49778</guid>
+    <description>*   Fix using Trix with Sprockets
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 27 Oct 2023 14:29:30 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix using Trix with Sprockets</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Fix a bug where type casting of string to `Time` and `DateTime` doesn&#39;t
+</title>
+    <link>https://github.com/rails/rails/issues/46872</link>
+    <guid>https://github.com/rails/rails/issues/46872</guid>
+    <description>*   Fix a bug where type casting of string to `Time` and `DateTime` doesn&#39;t
+    calculate minus minute value in TZ offset correctly.
+
+    *Akira Matsuda*</description>
+    <pubDate>Wed, 17 Jan 2024 08:55:38 +0000</pubDate>
+    <author>Akira Matsuda</author>
+    <content:encoded><![CDATA[<p>Fix a bug where type casting of string to <code>Time</code> and <code>DateTime</code> doesn’t<br />
+calculate minus minute value in TZ offset correctly.</p>
+
+<p><em>Akira Matsuda</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Port the `type_for_attribute` method to Active Model. Classes that include
+</title>
+    <link>https://github.com/rails/rails/issues/49910</link>
+    <guid>https://github.com/rails/rails/issues/49910</guid>
+    <description>*   Port the `type_for_attribute` method to Active Model. Classes that include
+    `ActiveModel::Attributes` will now provide this method. This method behaves
+    the same for Active Model as it does for Active Record.
+
+      ```ruby
+      class MyModel
+        include ActiveModel::Attributes
+
+        attribute :my_attribute, :integer
+      end
+
+      MyModel.type_for_attribute(:my_attribute) # =&gt; #&lt;ActiveModel::Type::Integer ...&gt;
+      ```
+
+    *Jonathan Hefner*</description>
+    <pubDate>Sat, 04 Nov 2023 02:54:59 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />
+<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />
+the same for Active Model as it does for Active Record.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">MyModel</span>
+    <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span>
+
+    <span class="n">attribute</span> <span class="ss">:my_attribute</span><span class="p">,</span> <span class="ss">:integer</span>
+  <span class="k">end</span>
+
+  <span class="no">MyModel</span><span class="p">.</span><span class="nf">type_for_attribute</span><span class="p">(</span><span class="ss">:my_attribute</span><span class="p">)</span> <span class="c1"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>
+</code></pre></div></div>
+
+<p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
   </item>
   <item>
