@@ -96,6 +96,38 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Commented out lines in .railsrc file should not be treated as arguments when using
+</title>
+    <link>https://github.com/rails/rails/issues/50904</link>
+    <guid>https://github.com/rails/rails/issues/50904</guid>
+    <description>*   Commented out lines in .railsrc file should not be treated as arguments when using
+    rails new generator command. Update ARGVScrubber to ignore text after # symbols.
+
+    *Willian Tenfen*</description>
+    <pubDate>Mon, 29 Jan 2024 18:17:29 +0000</pubDate>
+    <author>Willian Tenfen W</author>
+    <content:encoded><![CDATA[<p>Commented out lines in .railsrc file should not be treated as arguments when using<br />
+rails new generator command. Update ARGVScrubber to ignore text after # symbols.</p>
+
+<p><em>Willian Tenfen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Skip CSS when generating APIs.
+</title>
+    <link>https://github.com/rails/rails/issues/50907</link>
+    <guid>https://github.com/rails/rails/issues/50907</guid>
+    <description>*   Skip CSS when generating APIs.
+
+    *Ruy Rocha*</description>
+    <pubDate>Mon, 29 Jan 2024 17:37:18 +0000</pubDate>
+    <author>Ruy R.</author>
+    <content:encoded><![CDATA[<p>Skip CSS when generating APIs.</p>
+
+<p><em>Ruy Rocha</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Rails console now indicates application name and the current Rails environment:
 </title>
     <link>https://github.com/rails/rails/issues/50825</link>
@@ -905,6 +937,29 @@ the already existing <code>assert_has_stream</code> and <code>assert_has_stream_
 </code></pre></div></div>
 
 <p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add row_count field to sql.active_record notification
+</title>
+    <link>https://github.com/rails/rails/issues/50887</link>
+    <guid>https://github.com/rails/rails/issues/50887</guid>
+    <description>*   Add row_count field to sql.active_record notification
+
+    This field returns the amount of rows returned by the query that emitted the notification.
+
+    This metric is useful in cases where one wants to detect queries with big result sets.
+
+    *Marvin Bitterlich*</description>
+    <pubDate>Mon, 29 Jan 2024 18:02:16 +0000</pubDate>
+    <author>Marvin Bitterlich</author>
+    <content:encoded><![CDATA[<p>Add row_count field to sql.active_record notification</p>
+
+<p>This field returns the amount of rows returned by the query that emitted the notification.</p>
+
+<p>This metric is useful in cases where one wants to detect queries with big result sets.</p>
+
+<p><em>Marvin Bitterlich</em></p>
 ]]></content:encoded>
   </item>
   <item>
