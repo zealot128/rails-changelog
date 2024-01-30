@@ -940,6 +940,55 @@ the already existing <code>assert_has_stream</code> and <code>assert_has_stream_
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add an option to `ActiveRecord::Encryption::Encryptor` to disable compression
+</title>
+    <link>https://github.com/rails/rails/issues/50876</link>
+    <guid>https://github.com/rails/rails/issues/50876</guid>
+    <description>*   Add an option to `ActiveRecord::Encryption::Encryptor` to disable compression
+
+    Allow compression to be disabled by setting `compress: false`
+
+    ```ruby
+      class User
+        encrypts :name, encryptor: ActiveRecord::Encryption::Encryptor.new(compress: false)
+      end
+    ```
+
+    *Donal McBreen*</description>
+    <pubDate>Mon, 29 Jan 2024 19:19:41 +0000</pubDate>
+    <author>Donal McBreen</author>
+    <content:encoded><![CDATA[<p>Add an option to <code>ActiveRecord::Encryption::Encryptor</code> to disable compression</p>
+
+<p>Allow compression to be disabled by setting <code>compress: false</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">User</span>
+    <span class="n">encrypts</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">encryptor: </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Encryption</span><span class="o">::</span><span class="no">Encryptor</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">compress: </span><span class="kp">false</span><span class="p">)</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Donal McBreen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deprecate passing strings to `ActiveRecord::Tasks::DatabaseTasks.cache_dump_filename`.
+</title>
+    <link>https://github.com/rails/rails/issues/50893</link>
+    <guid>https://github.com/rails/rails/issues/50893</guid>
+    <description>*   Deprecate passing strings to `ActiveRecord::Tasks::DatabaseTasks.cache_dump_filename`.
+
+    A `ActiveRecord::DatabaseConfigurations::DatabaseConfig` object should be passed instead.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Mon, 29 Jan 2024 18:36:47 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate passing strings to <code>ActiveRecord::Tasks::DatabaseTasks.cache_dump_filename</code>.</p>
+
+<p>A <code>ActiveRecord::DatabaseConfigurations::DatabaseConfig</code> object should be passed instead.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add row_count field to sql.active_record notification
 </title>
     <link>https://github.com/rails/rails/issues/50887</link>
