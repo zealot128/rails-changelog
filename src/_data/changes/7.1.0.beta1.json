@@ -480,6 +480,26 @@
     "html": "<p>Add two new assertion methods for ActionCable test cases: <code>assert_has_no_stream</code><br />\nand <code>assert_has_no_stream_for</code>. These methods can be used to assert that a<br />\nstream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />\nthe already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_has_no_stream</span> <span class=\"s2\">\"messages\"</span>\n<span class=\"n\">assert_has_no_stream_for</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">42</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>\n"
   },
   {
+    "message": "*   Add an option to `ActiveRecord::Encryption::Encryptor` to disable compression\n\n    Allow compression to be disabled by setting `compress: false`\n\n    ```ruby\n      class User\n        encrypts :name, encryptor: ActiveRecord::Encryption::Encryptor.new(compress: false)\n      end\n    ```\n\n    *Donal McBreen*",
+    "project": "activerecord",
+    "date_merged": 1706555981000,
+    "author": "Donal McBreen",
+    "sha": "8c3d4f2b24b82c124577228e62904876c816bf23",
+    "pr": "50876",
+    "merge_sha": "00ca9f5e7208d280af0ec1e5fd30a5be952b7593",
+    "html": "<p>Add an option to <code>ActiveRecord::Encryption::Encryptor</code> to disable compression</p>\n\n<p>Allow compression to be disabled by setting <code>compress: false</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">User</span>\n    <span class=\"n\">encrypts</span> <span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">encryptor: </span><span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Encryption</span><span class=\"o\">::</span><span class=\"no\">Encryptor</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">compress: </span><span class=\"kp\">false</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Donal McBreen</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate passing strings to `ActiveRecord::Tasks::DatabaseTasks.cache_dump_filename`.\n\n    A `ActiveRecord::DatabaseConfigurations::DatabaseConfig` object should be passed instead.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1706553407000,
+    "author": "Rafael Mendonça França",
+    "sha": "1cf7025b4d00ad0c73184729b2bbacd7bfe0efdc",
+    "pr": "50893",
+    "merge_sha": "12343bdc539258ad4cb45c96eb4c8a1c04f96e33",
+    "html": "<p>Deprecate passing strings to <code>ActiveRecord::Tasks::DatabaseTasks.cache_dump_filename</code>.</p>\n\n<p>A <code>ActiveRecord::DatabaseConfigurations::DatabaseConfig</code> object should be passed instead.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Add row_count field to sql.active_record notification\n\n    This field returns the amount of rows returned by the query that emitted the notification.\n\n    This metric is useful in cases where one wants to detect queries with big result sets.\n\n    *Marvin Bitterlich*",
     "project": "activerecord",
     "date_merged": 1706551336000,
