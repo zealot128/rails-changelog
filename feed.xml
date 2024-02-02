@@ -1612,16 +1612,16 @@ Works the same way as <code>javascript_include_tag nonce: true</code> does.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Raise `ArgumentError` when `nil` is passed as `model:` argument value to the `form_with` method.
+    <title>actionview: Deprecate passing `nil` as value for the `model:` argument to the `form_with` method.
 </title>
-    <link>https://github.com/rails/rails/issues/49943</link>
-    <guid>https://github.com/rails/rails/issues/49943</guid>
-    <description>*   Raise `ArgumentError` when `nil` is passed as `model:` argument value to the `form_with` method.
+    <link>https://github.com/rails/rails/issues/50931</link>
+    <guid>https://github.com/rails/rails/issues/50931</guid>
+    <description>*   Deprecate passing `nil` as value for the `model:` argument to the `form_with` method.
 
     *Collin Jilbert*</description>
-    <pubDate>Thu, 04 Jan 2024 03:02:41 +0000</pubDate>
-    <author>Collin Jilbert</author>
-    <content:encoded><![CDATA[<p>Raise <code>ArgumentError</code> when <code>nil</code> is passed as <code>model:</code> argument value to the <code>form_with</code> method.</p>
+    <pubDate>Thu, 01 Feb 2024 23:15:01 +0000</pubDate>
+    <author>cjilbert504</author>
+    <content:encoded><![CDATA[<p>Deprecate passing <code>nil</code> as value for the <code>model:</code> argument to the <code>form_with</code> method.</p>
 
 <p><em>Collin Jilbert</em></p>
 ]]></content:encoded>
