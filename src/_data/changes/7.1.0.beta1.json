@@ -750,14 +750,14 @@
     "html": "<p>Rename <code>ActionView::TestCase::Behavior::Content</code> to <code>ActionView::TestCase::Behavior::RenderedViewContent</code></p>\n\n<p>Make <code>RenderedViewContent</code> inherit from <code>String</code>. Make private API with <code>:nodoc:</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
-    "message": "*   Raise `ArgumentError` when `nil` is passed as `model:` argument value to the `form_with` method.\n\n    *Collin Jilbert*",
+    "message": "*   Deprecate passing `nil` as value for the `model:` argument to the `form_with` method.\n\n    *Collin Jilbert*",
     "project": "actionview",
-    "date_merged": 1704337361000,
-    "author": "Collin Jilbert",
-    "sha": "12b093df63d2319fb9163f3739dbd04693f19613",
-    "pr": "49943",
-    "merge_sha": "4544b0d15b4b47c543c084068e1de42617021431",
-    "html": "<p>Raise <code>ArgumentError</code> when <code>nil</code> is passed as <code>model:</code> argument value to the <code>form_with</code> method.</p>\n\n<p><em>Collin Jilbert</em></p>\n"
+    "date_merged": 1706829301000,
+    "author": "cjilbert504",
+    "sha": "9d0a9137637c2dde7e02d2ff15bc822ae9cae8ef",
+    "pr": "50931",
+    "merge_sha": "3d887b4667258a1d653074cf186a661faca19a18",
+    "html": "<p>Deprecate passing <code>nil</code> as value for the <code>model:</code> argument to the <code>form_with</code> method.</p>\n\n<p><em>Collin Jilbert</em></p>\n"
   },
   {
     "message": "*   Alias `field_set_tag` helper to `fieldset_tag` to match `<fieldset>` element\n\n    *Sean Doyle*",
