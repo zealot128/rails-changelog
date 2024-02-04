@@ -1010,6 +1010,16 @@
     "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
+    "message": "*   Setup jemalloc in the default Dockerfile for memory optimization.\n\n    *Matt Almeida*, *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1707037613000,
+    "author": "northeastprince",
+    "sha": "8e98b614e404eee72a4ad87dc700b6acef62063d",
+    "pr": "50943",
+    "merge_sha": "0add5dba834f2f1b84fcf1bd1b758545b325fb73",
+    "html": "<p>Setup jemalloc in the default Dockerfile for memory optimization.</p>\n\n<p><em>Matt Almeida</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Commented out lines in .railsrc file should not be treated as arguments when using\n    rails new generator command. Update ARGVScrubber to ignore text after # symbols.\n\n    *Willian Tenfen*",
     "project": "railties",
     "date_merged": 1706552249000,
