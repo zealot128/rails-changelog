@@ -2162,6 +2162,21 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Setup jemalloc in the default Dockerfile for memory optimization.
+</title>
+    <link>https://github.com/rails/rails/issues/50943</link>
+    <guid>https://github.com/rails/rails/issues/50943</guid>
+    <description>*   Setup jemalloc in the default Dockerfile for memory optimization.
+
+    *Matt Almeida*, *Jean Boussier*</description>
+    <pubDate>Sun, 04 Feb 2024 09:06:53 +0000</pubDate>
+    <author>northeastprince</author>
+    <content:encoded><![CDATA[<p>Setup jemalloc in the default Dockerfile for memory optimization.</p>
+
+<p><em>Matt Almeida</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Commented out lines in .railsrc file should not be treated as arguments when using
 </title>
     <link>https://github.com/rails/rails/issues/50904</link>
