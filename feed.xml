@@ -1153,6 +1153,58 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.
+</title>
+    <link>https://github.com/rails/rails/issues/50400</link>
+    <guid>https://github.com/rails/rails/issues/50400</guid>
+    <description>*   Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.
+
+    When set, validates that the timestamp prefix for a migration is no more than a day ahead of
+    the timestamp associated with the current time. This is designed to prevent migrations prefixes
+    from being hand-edited to future timestamps, which impacts migration generation and other
+    migration commands.
+
+    *Adrianna Chang*</description>
+    <pubDate>Thu, 08 Feb 2024 17:52:28 +0000</pubDate>
+    <author>Adrianna Chang</author>
+    <content:encoded><![CDATA[<p>Add <code>active_record.config.validate_migration_timestamps</code> option for validating migration timestamps.</p>
+
+<p>When set, validates that the timestamp prefix for a migration is no more than a day ahead of<br />
+the timestamp associated with the current time. This is designed to prevent migrations prefixes<br />
+from being hand-edited to future timestamps, which impacts migration generation and other<br />
+migration commands.</p>
+
+<p><em>Adrianna Chang</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Properly synchronize `Mysql2Adapter#active?` and `TrilogyAdapter#active?`
+</title>
+    <link>https://github.com/rails/rails/issues/51012</link>
+    <guid>https://github.com/rails/rails/issues/51012</guid>
+    <description>*   Properly synchronize `Mysql2Adapter#active?` and `TrilogyAdapter#active?`
+
+    As well as `disconnect!` and `verify!`.
+
+    This generally isn&#39;t a big problem as connections must not be shared between
+    threads, but is required when running transactional tests or system tests
+    and could lead to a SEGV.
+
+    *Jean Boussier*</description>
+    <pubDate>Thu, 08 Feb 2024 14:10:16 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Properly synchronize <code>Mysql2Adapter#active?</code> and <code>TrilogyAdapter#active?</code></p>
+
+<p>As well as <code>disconnect!</code> and <code>verify!</code>.</p>
+
+<p>This generally isn’t a big problem as connections must not be shared between<br />
+threads, but is required when running transactional tests or system tests<br />
+and could lead to a SEGV.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Support `:source_location` tag option for query log tags
 </title>
     <link>https://github.com/rails/rails/issues/50969</link>
