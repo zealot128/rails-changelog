@@ -580,6 +580,26 @@
     "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   },
   {
+    "message": "*   Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.\n\n    When set, validates that the timestamp prefix for a migration is no more than a day ahead of\n    the timestamp associated with the current time. This is designed to prevent migrations prefixes\n    from being hand-edited to future timestamps, which impacts migration generation and other\n    migration commands.\n\n    *Adrianna Chang*",
+    "project": "activerecord",
+    "date_merged": 1707414748000,
+    "author": "Adrianna Chang",
+    "sha": "06b7e345afe8276850fe1024e3d17a53a5f5df6a",
+    "pr": "50400",
+    "merge_sha": "6bbfbdb8ad93b2f0176ffe8cf7b753591e79a23a",
+    "html": "<p>Add <code>active_record.config.validate_migration_timestamps</code> option for validating migration timestamps.</p>\n\n<p>When set, validates that the timestamp prefix for a migration is no more than a day ahead of<br />\nthe timestamp associated with the current time. This is designed to prevent migrations prefixes<br />\nfrom being hand-edited to future timestamps, which impacts migration generation and other<br />\nmigration commands.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
+  },
+  {
+    "message": "*   Properly synchronize `Mysql2Adapter#active?` and `TrilogyAdapter#active?`\n\n    As well as `disconnect!` and `verify!`.\n\n    This generally isn't a big problem as connections must not be shared between\n    threads, but is required when running transactional tests or system tests\n    and could lead to a SEGV.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1707401416000,
+    "author": "Jean Boussier",
+    "sha": "6f3b46b02d190b18747a27772b0511dab71c8315",
+    "pr": "51012",
+    "merge_sha": "257c6306b5bdfe6c15384e91edb9a44336c81721",
+    "html": "<p>Properly synchronize <code>Mysql2Adapter#active?</code> and <code>TrilogyAdapter#active?</code></p>\n\n<p>As well as <code>disconnect!</code> and <code>verify!</code>.</p>\n\n<p>This generally isn’t a big problem as connections must not be shared between<br />\nthreads, but is required when running transactional tests or system tests<br />\nand could lead to a SEGV.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Support `:source_location` tag option for query log tags\n\n    ```ruby\n    config.active_record.query_log_tags << :source_location\n    ```\n\n    Calculating the caller location is a costly operation and should be used primarily in development\n    (note, there is also a `config.active_record.verbose_query_logs` that serves the same purpose)\n    or occasionally on production for debugging purposes.\n\n    *fatkodima*",
     "project": "activerecord",
     "date_merged": 1707207491000,
