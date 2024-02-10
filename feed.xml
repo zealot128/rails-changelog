@@ -310,6 +310,21 @@ error with parallel system tests</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Ensure logger tags configured with `config.log_tags` are still active in `request.action_dispatch` handlers
+</title>
+    <link>https://github.com/rails/rails/issues/50992</link>
+    <guid>https://github.com/rails/rails/issues/50992</guid>
+    <description>*   Ensure logger tags configured with `config.log_tags` are still active in `request.action_dispatch` handlers
+
+    *KJ Tsanaktsidis*</description>
+    <pubDate>Fri, 09 Feb 2024 23:38:55 +0000</pubDate>
+    <author>KJ Tsanaktsidis</author>
+    <content:encoded><![CDATA[<p>Ensure logger tags configured with <code>config.log_tags</code> are still active in <code>request.action_dispatch</code> handlers</p>
+
+<p><em>KJ Tsanaktsidis</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Setup jemalloc in the default Dockerfile for memory optimization.
 </title>
     <link>https://github.com/rails/rails/issues/50943</link>
@@ -1150,6 +1165,44 @@ message.</p>
 </code></pre></div></div>
 
 <p><em>Akhil G Krishnan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deprecate defining an `enum` with keyword arguments.
+</title>
+    <link>https://github.com/rails/rails/issues/50987</link>
+    <guid>https://github.com/rails/rails/issues/50987</guid>
+    <description>*   Deprecate defining an `enum` with keyword arguments.
+
+    ```ruby
+    class Function &gt; ApplicationRecord
+      # BAD
+      enum color: [:red, :blue],
+           type: [:instance, :class]
+
+      # GOOD
+      enum :color, [:red, :blue]
+      enum :type, [:instance, :class]
+    end
+    ```
+
+    *Hartley McGuire*</description>
+    <pubDate>Sat, 10 Feb 2024 01:32:13 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Deprecate defining an <code>enum</code> with keyword arguments.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Function</span> <span class="o">&gt;</span> <span class="no">ApplicationRecord</span>
+  <span class="c1"># BAD</span>
+  <span class="n">enum</span> <span class="ss">color: </span><span class="p">[</span><span class="ss">:red</span><span class="p">,</span> <span class="ss">:blue</span><span class="p">],</span>
+       <span class="ss">type: </span><span class="p">[</span><span class="ss">:instance</span><span class="p">,</span> <span class="ss">:class</span><span class="p">]</span>
+
+  <span class="c1"># GOOD</span>
+  <span class="n">enum</span> <span class="ss">:color</span><span class="p">,</span> <span class="p">[</span><span class="ss">:red</span><span class="p">,</span> <span class="ss">:blue</span><span class="p">]</span>
+  <span class="n">enum</span> <span class="ss">:type</span><span class="p">,</span> <span class="p">[</span><span class="ss">:instance</span><span class="p">,</span> <span class="ss">:class</span><span class="p">]</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Hartley McGuire</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -2017,6 +2070,23 @@ column).</p>
     <content:encoded><![CDATA[<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>
 
 <p><em>Tristan Fellows</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Add `image/webp` to `config.active_storage.web_image_content_types` when `load_defaults &quot;7.2&quot;`
+</title>
+    <link>https://github.com/rails/rails/issues/50953</link>
+    <guid>https://github.com/rails/rails/issues/50953</guid>
+    <description>*   Add `image/webp` to `config.active_storage.web_image_content_types` when `load_defaults &quot;7.2&quot;`
+    is set.
+
+    *Lewis Buckley*</description>
+    <pubDate>Fri, 09 Feb 2024 23:46:44 +0000</pubDate>
+    <author>Lewis Buckley</author>
+    <content:encoded><![CDATA[<p>Add <code>image/webp</code> to <code>config.active_storage.web_image_content_types</code> when <code>load_defaults "7.2"</code><br />
+is set.</p>
+
+<p><em>Lewis Buckley</em></p>
 ]]></content:encoded>
   </item>
   <item>
