@@ -150,6 +150,16 @@
     "html": "<p>Remove deprecated constant <code>ActionDispatch::IllegalStateError</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Ensure logger tags configured with `config.log_tags` are still active in `request.action_dispatch` handlers\n\n    *KJ Tsanaktsidis*",
+    "project": "railties",
+    "date_merged": 1707521935000,
+    "author": "KJ Tsanaktsidis",
+    "sha": "5faeb7007d2d85b2ea01662f65b382404cca1a97",
+    "pr": "50992",
+    "merge_sha": "cd053bcedcec0f130a74a93abdfae3ca8dcd93c6",
+    "html": "<p>Ensure logger tags configured with <code>config.log_tags</code> are still active in <code>request.action_dispatch</code> handlers</p>\n\n<p><em>KJ Tsanaktsidis</em></p>\n"
+  },
+  {
     "message": "*   Setup jemalloc in the default Dockerfile for memory optimization.\n\n    *Matt Almeida*, *Jean Boussier*",
     "project": "railties",
     "date_merged": 1707037613000,
@@ -580,6 +590,16 @@
     "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   },
   {
+    "message": "*   Deprecate defining an `enum` with keyword arguments.\n\n    ```ruby\n    class Function > ApplicationRecord\n      # BAD\n      enum color: [:red, :blue],\n           type: [:instance, :class]\n\n      # GOOD\n      enum :color, [:red, :blue]\n      enum :type, [:instance, :class]\n    end\n    ```\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1707528733000,
+    "author": "Hartley McGuire",
+    "sha": "8c5425197c7969ff50f675e9792fce1998fb9bc2",
+    "pr": "50987",
+    "merge_sha": "1a92af2b51401a6013126a5573a95db34bbad7b2",
+    "html": "<p>Deprecate defining an <code>enum</code> with keyword arguments.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Function</span> <span class=\"o\">&gt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"c1\"># BAD</span>\n  <span class=\"n\">enum</span> <span class=\"ss\">color: </span><span class=\"p\">[</span><span class=\"ss\">:red</span><span class=\"p\">,</span> <span class=\"ss\">:blue</span><span class=\"p\">],</span>\n       <span class=\"ss\">type: </span><span class=\"p\">[</span><span class=\"ss\">:instance</span><span class=\"p\">,</span> <span class=\"ss\">:class</span><span class=\"p\">]</span>\n\n  <span class=\"c1\"># GOOD</span>\n  <span class=\"n\">enum</span> <span class=\"ss\">:color</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"ss\">:red</span><span class=\"p\">,</span> <span class=\"ss\">:blue</span><span class=\"p\">]</span>\n  <span class=\"n\">enum</span> <span class=\"ss\">:type</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"ss\">:instance</span><span class=\"p\">,</span> <span class=\"ss\">:class</span><span class=\"p\">]</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.\n\n    When set, validates that the timestamp prefix for a migration is no more than a day ahead of\n    the timestamp associated with the current time. This is designed to prevent migrations prefixes\n    from being hand-edited to future timestamps, which impacts migration generation and other\n    migration commands.\n\n    *Adrianna Chang*",
     "project": "activerecord",
     "date_merged": 1707414748000,
@@ -918,6 +938,16 @@
     "pr": "50079",
     "merge_sha": "ab8f5c9d9381b5058f76e9572e6f02e90c958a6d",
     "html": "<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>\n\n<p><em>Tristan Fellows</em></p>\n"
+  },
+  {
+    "message": "*   Add `image/webp` to `config.active_storage.web_image_content_types` when `load_defaults \"7.2\"`\n    is set.\n\n    *Lewis Buckley*",
+    "project": "activestorage",
+    "date_merged": 1707522404000,
+    "author": "Lewis Buckley",
+    "sha": "f3e3f82e7dd0d37a3ec5d3c7b561e085b975e011",
+    "pr": "50953",
+    "merge_sha": "fdc5ec228e8f4b776a3143a83fee8959b5cc547e",
+    "html": "<p>Add <code>image/webp</code> to <code>config.active_storage.web_image_content_types</code> when <code>load_defaults \"7.2\"</code><br />\nis set.</p>\n\n<p><em>Lewis Buckley</em></p>\n"
   },
   {
     "message": "*   Fix JSON-encoding of `ActiveStorage::Filename` instances.\n\n    *Jonathan del Strother*",
