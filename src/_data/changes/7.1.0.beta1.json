@@ -590,6 +590,16 @@
     "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   },
   {
+    "message": "*   Fix an issue where `ActiveRecord::Encryption` configurations are not ready before the loading\n    of Active Record models, when an application is eager loaded. As a result, encrypted attributes\n    could be misconfigured in some cases.\n\n    *Maxime Réty*",
+    "project": "activerecord",
+    "date_merged": 1707772403000,
+    "author": "maximerety",
+    "sha": "d997c554b3dfc87a2896cf7f0d7f87c39a32ab1c",
+    "pr": "50604",
+    "merge_sha": "631429056b68c7122f8a88c5174a272f63efe434",
+    "html": "<p>Fix an issue where <code>ActiveRecord::Encryption</code> configurations are not ready before the loading<br />\nof Active Record models, when an application is eager loaded. As a result, encrypted attributes<br />\ncould be misconfigured in some cases.</p>\n\n<p><em>Maxime Réty</em></p>\n"
+  },
+  {
     "message": "*   Deprecate defining an `enum` with keyword arguments.\n\n    ```ruby\n    class Function > ApplicationRecord\n      # BAD\n      enum color: [:red, :blue],\n           type: [:instance, :class]\n\n      # GOOD\n      enum :color, [:red, :blue]\n      enum :type, [:instance, :class]\n    end\n    ```\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1707528733000,
