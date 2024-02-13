@@ -1168,6 +1168,25 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix an issue where `ActiveRecord::Encryption` configurations are not ready before the loading
+</title>
+    <link>https://github.com/rails/rails/issues/50604</link>
+    <guid>https://github.com/rails/rails/issues/50604</guid>
+    <description>*   Fix an issue where `ActiveRecord::Encryption` configurations are not ready before the loading
+    of Active Record models, when an application is eager loaded. As a result, encrypted attributes
+    could be misconfigured in some cases.
+
+    *Maxime Réty*</description>
+    <pubDate>Mon, 12 Feb 2024 21:13:23 +0000</pubDate>
+    <author>maximerety</author>
+    <content:encoded><![CDATA[<p>Fix an issue where <code>ActiveRecord::Encryption</code> configurations are not ready before the loading<br />
+of Active Record models, when an application is eager loaded. As a result, encrypted attributes<br />
+could be misconfigured in some cases.</p>
+
+<p><em>Maxime Réty</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Deprecate defining an `enum` with keyword arguments.
 </title>
     <link>https://github.com/rails/rails/issues/50987</link>
