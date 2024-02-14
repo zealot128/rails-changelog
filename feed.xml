@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actionpack: Add &quot;.test&quot; as a default allowed host in development to ensure smooth golden-path setup with puma.dev.
+</title>
+    <link>https://github.com/rails/rails/issues/51087</link>
+    <guid>https://github.com/rails/rails/issues/51087</guid>
+    <description>*   Add &quot;.test&quot; as a default allowed host in development to ensure smooth golden-path setup with puma.dev.
+
+    *DHH*</description>
+    <pubDate>Wed, 14 Feb 2024 17:14:03 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add “.test” as a default allowed host in development to ensure smooth golden-path setup with puma.dev.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add `allow_browser` to set minimum browser versions for the application.
 </title>
     <link>https://github.com/rails/rails/issues/50505</link>
@@ -944,6 +959,33 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
     <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
 
 <p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `ActiveRecord::Base.with_connection` as a shortcut for leasing a connection for a short duration.
+</title>
+    <link>https://github.com/rails/rails/issues/51083</link>
+    <guid>https://github.com/rails/rails/issues/51083</guid>
+    <description>*   Add `ActiveRecord::Base.with_connection` as a shortcut for leasing a connection for a short duration.
+
+    The leased connection is yielded, and for the duration of the block, any call to `ActiveRecord::Base.connection`
+    will yield that same connection.
+
+    This is useful to perform a few database operations without causing a connection to be leased for the
+    entire duration of the request or job.
+
+    *Jean Boussier*</description>
+    <pubDate>Wed, 14 Feb 2024 13:24:03 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add <code>ActiveRecord::Base.with_connection</code> as a shortcut for leasing a connection for a short duration.</p>
+
+<p>The leased connection is yielded, and for the duration of the block, any call to <code>ActiveRecord::Base.connection</code><br />
+will yield that same connection.</p>
+
+<p>This is useful to perform a few database operations without causing a connection to be leased for the<br />
+entire duration of the request or job.</p>
+
+<p><em>Jean Boussier</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -2190,6 +2232,21 @@ message.</p>
     <content:encoded><![CDATA[<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>
 
 <p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Use `ruby file: &quot;.ruby-version&quot;` in generated Gemfile if supported.
+</title>
+    <link>https://github.com/rails/rails/issues/49360</link>
+    <guid>https://github.com/rails/rails/issues/49360</guid>
+    <description>*   Use `ruby file: &quot;.ruby-version&quot;` in generated Gemfile if supported.
+
+    *Hartley McGuire*</description>
+    <pubDate>Wed, 14 Feb 2024 17:56:51 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Use <code>ruby file: ".ruby-version"</code> in generated Gemfile if supported.</p>
+
+<p><em>Hartley McGuire</em></p>
 ]]></content:encoded>
   </item>
   <item>
