@@ -947,6 +947,23 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Deprecate `config.active_record.warn_on_records_fetched_greater_than` now that `sql.active_record`
+</title>
+    <link>https://github.com/rails/rails/issues/51007</link>
+    <guid>https://github.com/rails/rails/issues/51007</guid>
+    <description>*   Deprecate `config.active_record.warn_on_records_fetched_greater_than` now that `sql.active_record`
+    notification includes `:row_count` field.
+
+    *Jason Nochlin*</description>
+    <pubDate>Wed, 14 Feb 2024 02:40:05 +0000</pubDate>
+    <author>Jason Nochlin</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>config.active_record.warn_on_records_fetched_greater_than</code> now that <code>sql.active_record</code><br />
+notification includes <code>:row_count</code> field.</p>
+
+<p><em>Jason Nochlin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix an issue where `ActiveRecord::Encryption` configurations are not ready before the loading
 </title>
     <link>https://github.com/rails/rails/issues/50604</link>
@@ -2173,6 +2190,21 @@ message.</p>
     <content:encoded><![CDATA[<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>
 
 <p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: `bin/rails test` will no longer load files named `*_test.rb` if they are located in the `fixtures` folder.
+</title>
+    <link>https://github.com/rails/rails/issues/51068</link>
+    <guid>https://github.com/rails/rails/issues/51068</guid>
+    <description>*   `bin/rails test` will no longer load files named `*_test.rb` if they are located in the `fixtures` folder.
+
+    *Edouard Chin*</description>
+    <pubDate>Tue, 13 Feb 2024 23:09:24 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p><code>bin/rails test</code> will no longer load files named <code>*_test.rb</code> if they are located in the <code>fixtures</code> folder.</p>
+
+<p><em>Edouard Chin</em></p>
 ]]></content:encoded>
   </item>
   <item>
