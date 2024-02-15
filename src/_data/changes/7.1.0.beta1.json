@@ -500,6 +500,16 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Deprecated `ENV[\"SCHEMA_CACHE\"]` in favor of `schema_cache_path` in the database configuration.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1707949013000,
+    "author": "Rafael Mendonça França",
+    "sha": "f91cb4f81fb6c64e3edebfbeca992c3506fc399c",
+    "pr": "51034",
+    "merge_sha": "a9a359ac92d42c5bb36e6fa6877beecae99b1ba1",
+    "html": "<p>Deprecated <code>ENV[\"SCHEMA_CACHE\"]</code> in favor of <code>schema_cache_path</code> in the database configuration.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Add `ActiveRecord::Base.with_connection` as a shortcut for leasing a connection for a short duration.\n\n    The leased connection is yielded, and for the duration of the block, any call to `ActiveRecord::Base.connection`\n    will yield that same connection.\n\n    This is useful to perform a few database operations without causing a connection to be leased for the\n    entire duration of the request or job.\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1707917043000,
@@ -1040,14 +1050,24 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
-    "message": "*   Use `ruby file: \".ruby-version\"` in generated Gemfile if supported.\n\n    *Hartley McGuire*",
+    "message": "*   Generate a .devcontainer folder and its contents when creating a new app.\n\n    The .devcontainer folder includes everything needed to boot the app and do development in a remote container.\n\n    The container setup includes:\n     - A redis container for Kredis, ActionCable etc.\n     - A database (SQLite, Postgres, MySQL or MariaDB)\n     - A Headless chrome container for system tests\n     - Active Storage configured to use the local disk and with preview features working\n\n    If any of these options are skipped in the app setup they will not be included in the container configuration.\n\n    These files can be skipped using the `--skip-devcontainer` option.\n\n    *Andrew Novoselac & Rafael Mendonça França*",
     "project": "railties",
-    "date_merged": 1707933411000,
-    "author": "Hartley McGuire",
-    "sha": "a1c6e27bafd37613e3499771b9438c4d3c1712a4",
-    "pr": "49360",
-    "merge_sha": "6985c3bedf0d85c180d8b86a2fcd6b19e7251bd3",
-    "html": "<p>Use <code>ruby file: \".ruby-version\"</code> in generated Gemfile if supported.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+    "date_merged": 1707949027000,
+    "author": "Andrew Novoselac",
+    "sha": "c90a8701e56af996aadf809499d9a9724695bdb5",
+    "pr": "50914",
+    "merge_sha": "acfaac6ef8efdb523659b74ce30a71e392b60346",
+    "html": "<p>Generate a .devcontainer folder and its contents when creating a new app.</p>\n\n<p>The .devcontainer folder includes everything needed to boot the app and do development in a remote container.</p>\n\n<p>The container setup includes:</p>\n<ul>\n  <li>A redis container for Kredis, ActionCable etc.</li>\n  <li>A database (SQLite, Postgres, MySQL or MariaDB)</li>\n  <li>A Headless chrome container for system tests</li>\n  <li>Active Storage configured to use the local disk and with preview features working</li>\n</ul>\n\n<p>If any of these options are skipped in the app setup they will not be included in the container configuration.</p>\n\n<p>These files can be skipped using the <code>--skip-devcontainer</code> option.</p>\n\n<p><em>Andrew Novoselac &amp; Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Introduce `SystemTestCase#served_by` for configuring the System Test application server\n\n    By default this is localhost. This method allows the host and port to be specified manually.\n\n    ```ruby\n    class ApplicationSystemTestCase < ActionDispatch::SystemTestCase\n      served_by host: \"testserver\", port: 45678\n    end\n    ```\n\n    *Andrew Novoselac & Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1707949027000,
+    "author": "Andrew Novoselac",
+    "sha": "30506d2ef31561d9fb2f24d8f64122108fbf841c",
+    "pr": "50914",
+    "merge_sha": "acfaac6ef8efdb523659b74ce30a71e392b60346",
+    "html": "<p>Introduce <code>SystemTestCase#served_by</code> for configuring the System Test application server</p>\n\n<p>By default this is localhost. This method allows the host and port to be specified manually.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ApplicationSystemTestCase</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionDispatch</span><span class=\"o\">::</span><span class=\"no\">SystemTestCase</span>\n  <span class=\"n\">served_by</span> <span class=\"ss\">host: </span><span class=\"s2\">\"testserver\"</span><span class=\"p\">,</span> <span class=\"ss\">port: </span><span class=\"mi\">45678</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Andrew Novoselac &amp; Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   `bin/rails test` will no longer load files named `*_test.rb` if they are located in the `fixtures` folder.\n\n    *Edouard Chin*",
