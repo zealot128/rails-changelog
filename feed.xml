@@ -962,6 +962,31 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add support for encrypting binary columns
+</title>
+    <link>https://github.com/rails/rails/issues/50920</link>
+    <guid>https://github.com/rails/rails/issues/50920</guid>
+    <description>*   Add support for encrypting binary columns
+
+    Ensure encryption and decryption pass `Type::Binary::Data` around for binary data.
+
+    Previously encrypting binary columns with the `ActiveRecord::Encryption::MessageSerializer`
+    incidentally worked for MySQL and SQLite, but not PostgreSQL.
+
+    *Donal McBreen*</description>
+    <pubDate>Thu, 15 Feb 2024 17:56:48 +0000</pubDate>
+    <author>Donal McBreen</author>
+    <content:encoded><![CDATA[<p>Add support for encrypting binary columns</p>
+
+<p>Ensure encryption and decryption pass <code>Type::Binary::Data</code> around for binary data.</p>
+
+<p>Previously encrypting binary columns with the <code>ActiveRecord::Encryption::MessageSerializer</code><br />
+incidentally worked for MySQL and SQLite, but not PostgreSQL.</p>
+
+<p><em>Donal McBreen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Deprecated `ENV[&quot;SCHEMA_CACHE&quot;]` in favor of `schema_cache_path` in the database configuration.
 </title>
     <link>https://github.com/rails/rails/issues/51034</link>
