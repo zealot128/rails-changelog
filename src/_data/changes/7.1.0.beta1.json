@@ -500,6 +500,16 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Add support for encrypting binary columns\n\n    Ensure encryption and decryption pass `Type::Binary::Data` around for binary data.\n\n    Previously encrypting binary columns with the `ActiveRecord::Encryption::MessageSerializer`\n    incidentally worked for MySQL and SQLite, but not PostgreSQL.\n\n    *Donal McBreen*",
+    "project": "activerecord",
+    "date_merged": 1708019808000,
+    "author": "Donal McBreen",
+    "sha": "7d4a39cc6fe03732bf8160bb4e251fdf0930230b",
+    "pr": "50920",
+    "merge_sha": "9e01d93547e2082e2e88472748baa0f9ea63c181",
+    "html": "<p>Add support for encrypting binary columns</p>\n\n<p>Ensure encryption and decryption pass <code>Type::Binary::Data</code> around for binary data.</p>\n\n<p>Previously encrypting binary columns with the <code>ActiveRecord::Encryption::MessageSerializer</code><br />\nincidentally worked for MySQL and SQLite, but not PostgreSQL.</p>\n\n<p><em>Donal McBreen</em></p>\n"
+  },
+  {
     "message": "*   Deprecated `ENV[\"SCHEMA_CACHE\"]` in favor of `schema_cache_path` in the database configuration.\n\n    *Rafael Mendonça França*",
     "project": "activerecord",
     "date_merged": 1707949013000,
