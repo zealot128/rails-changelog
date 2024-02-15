@@ -962,6 +962,21 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Deprecated `ENV[&quot;SCHEMA_CACHE&quot;]` in favor of `schema_cache_path` in the database configuration.
+</title>
+    <link>https://github.com/rails/rails/issues/51034</link>
+    <guid>https://github.com/rails/rails/issues/51034</guid>
+    <description>*   Deprecated `ENV[&quot;SCHEMA_CACHE&quot;]` in favor of `schema_cache_path` in the database configuration.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 14 Feb 2024 22:16:53 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecated <code>ENV["SCHEMA_CACHE"]</code> in favor of <code>schema_cache_path</code> in the database configuration.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add `ActiveRecord::Base.with_connection` as a shortcut for leasing a connection for a short duration.
 </title>
     <link>https://github.com/rails/rails/issues/51083</link>
@@ -2235,18 +2250,74 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Use `ruby file: &quot;.ruby-version&quot;` in generated Gemfile if supported.
+    <title>railties: Generate a .devcontainer folder and its contents when creating a new app.
 </title>
-    <link>https://github.com/rails/rails/issues/49360</link>
-    <guid>https://github.com/rails/rails/issues/49360</guid>
-    <description>*   Use `ruby file: &quot;.ruby-version&quot;` in generated Gemfile if supported.
+    <link>https://github.com/rails/rails/issues/50914</link>
+    <guid>https://github.com/rails/rails/issues/50914</guid>
+    <description>*   Generate a .devcontainer folder and its contents when creating a new app.
 
-    *Hartley McGuire*</description>
-    <pubDate>Wed, 14 Feb 2024 17:56:51 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Use <code>ruby file: ".ruby-version"</code> in generated Gemfile if supported.</p>
+    The .devcontainer folder includes everything needed to boot the app and do development in a remote container.
 
-<p><em>Hartley McGuire</em></p>
+    The container setup includes:
+     - A redis container for Kredis, ActionCable etc.
+     - A database (SQLite, Postgres, MySQL or MariaDB)
+     - A Headless chrome container for system tests
+     - Active Storage configured to use the local disk and with preview features working
+
+    If any of these options are skipped in the app setup they will not be included in the container configuration.
+
+    These files can be skipped using the `--skip-devcontainer` option.
+
+    *Andrew Novoselac &amp; Rafael Mendonça França*</description>
+    <pubDate>Wed, 14 Feb 2024 22:17:07 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Generate a .devcontainer folder and its contents when creating a new app.</p>
+
+<p>The .devcontainer folder includes everything needed to boot the app and do development in a remote container.</p>
+
+<p>The container setup includes:</p>
+<ul>
+  <li>A redis container for Kredis, ActionCable etc.</li>
+  <li>A database (SQLite, Postgres, MySQL or MariaDB)</li>
+  <li>A Headless chrome container for system tests</li>
+  <li>Active Storage configured to use the local disk and with preview features working</li>
+</ul>
+
+<p>If any of these options are skipped in the app setup they will not be included in the container configuration.</p>
+
+<p>These files can be skipped using the <code>--skip-devcontainer</code> option.</p>
+
+<p><em>Andrew Novoselac &amp; Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Introduce `SystemTestCase#served_by` for configuring the System Test application server
+</title>
+    <link>https://github.com/rails/rails/issues/50914</link>
+    <guid>https://github.com/rails/rails/issues/50914</guid>
+    <description>*   Introduce `SystemTestCase#served_by` for configuring the System Test application server
+
+    By default this is localhost. This method allows the host and port to be specified manually.
+
+    ```ruby
+    class ApplicationSystemTestCase &lt; ActionDispatch::SystemTestCase
+      served_by host: &quot;testserver&quot;, port: 45678
+    end
+    ```
+
+    *Andrew Novoselac &amp; Rafael Mendonça França*</description>
+    <pubDate>Wed, 14 Feb 2024 22:17:07 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Introduce <code>SystemTestCase#served_by</code> for configuring the System Test application server</p>
+
+<p>By default this is localhost. This method allows the host and port to be specified manually.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationSystemTestCase</span> <span class="o">&lt;</span> <span class="no">ActionDispatch</span><span class="o">::</span><span class="no">SystemTestCase</span>
+  <span class="n">served_by</span> <span class="ss">host: </span><span class="s2">"testserver"</span><span class="p">,</span> <span class="ss">port: </span><span class="mi">45678</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Andrew Novoselac &amp; Rafael Mendonça França</em></p>
 ]]></content:encoded>
   </item>
   <item>
