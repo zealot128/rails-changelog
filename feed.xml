@@ -962,6 +962,31 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add ActiveRecord::Encryption::MessagePackMessageSerializer
+</title>
+    <link>https://github.com/rails/rails/issues/51102</link>
+    <guid>https://github.com/rails/rails/issues/51102</guid>
+    <description>*   Add ActiveRecord::Encryption::MessagePackMessageSerializer
+
+    Serialize data to the MessagePack format, for efficient storage in binary columns.
+
+    The binary encoding requires around 30% less space than the base64 encoding
+    used by the default serializer.
+
+    *Donal McBreen*</description>
+    <pubDate>Fri, 16 Feb 2024 17:09:34 +0000</pubDate>
+    <author>Donal McBreen</author>
+    <content:encoded><![CDATA[<p>Add ActiveRecord::Encryption::MessagePackMessageSerializer</p>
+
+<p>Serialize data to the MessagePack format, for efficient storage in binary columns.</p>
+
+<p>The binary encoding requires around 30% less space than the base64 encoding<br />
+used by the default serializer.</p>
+
+<p><em>Donal McBreen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add support for encrypting binary columns
 </title>
     <link>https://github.com/rails/rails/issues/50920</link>
