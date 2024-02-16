@@ -500,6 +500,16 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Add ActiveRecord::Encryption::MessagePackMessageSerializer\n\n    Serialize data to the MessagePack format, for efficient storage in binary columns.\n\n    The binary encoding requires around 30% less space than the base64 encoding\n    used by the default serializer.\n\n    *Donal McBreen*",
+    "project": "activerecord",
+    "date_merged": 1708103374000,
+    "author": "Donal McBreen",
+    "sha": "50e322962b6b3d591be2ff89a58f9b22d788f9fe",
+    "pr": "51102",
+    "merge_sha": "23db60b8ec3ef43590ebf408a3dce394e7865d93",
+    "html": "<p>Add ActiveRecord::Encryption::MessagePackMessageSerializer</p>\n\n<p>Serialize data to the MessagePack format, for efficient storage in binary columns.</p>\n\n<p>The binary encoding requires around 30% less space than the base64 encoding<br />\nused by the default serializer.</p>\n\n<p><em>Donal McBreen</em></p>\n"
+  },
+  {
     "message": "*   Add support for encrypting binary columns\n\n    Ensure encryption and decryption pass `Type::Binary::Data` around for binary data.\n\n    Previously encrypting binary columns with the `ActiveRecord::Encryption::MessageSerializer`\n    incidentally worked for MySQL and SQLite, but not PostgreSQL.\n\n    *Donal McBreen*",
     "project": "activerecord",
     "date_merged": 1708019808000,
