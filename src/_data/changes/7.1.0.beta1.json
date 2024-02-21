@@ -150,6 +150,26 @@
     "html": "<p>Remove deprecated constant <code>ActionDispatch::IllegalStateError</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Add parameter filter capability for redirect locations.\n\n    It uses the `config.filter_parameters` to match what needs to be filtered.\n    The result would be like this:\n\n        Redirected to http://secret.foo.bar?username=roque&password=[FILTERED]\n\n    Fixes #14055.\n\n    *Roque Pinel*, *Trevor Turk*, *tonytonyjan*",
+    "project": "actionpack",
+    "date_merged": 1708471512000,
+    "author": "Roque Pinel",
+    "sha": "f4f3ef77813977d0067635a6c82efbd7936df09a",
+    "pr": "51131",
+    "merge_sha": "05b4db2ad09f8fd275534948e663588a97e90ab8",
+    "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
+  },
+  {
+    "message": "*   Add filename support for `Logger.logger_outputs_to?`\n\n    ```ruby\n    Logger.logger_outputs_to?('/var/log/rails.log')\n    ```\n\n    *Christian Schmidt*",
+    "project": "activesupport",
+    "date_merged": 1708468283000,
+    "author": "Christian Schmidt",
+    "sha": "3aa7d79418dad3b1849627450066b52391b5adac",
+    "pr": "51125",
+    "merge_sha": "5628362165b4b589cb2df45079b4e6a088d44060",
+    "html": "<p>Add filename support for <code>Logger.logger_outputs_to?</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Logger</span><span class=\"p\">.</span><span class=\"nf\">logger_outputs_to?</span><span class=\"p\">(</span><span class=\"s1\">'/var/log/rails.log'</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Christian Schmidt</em></p>\n"
+  },
+  {
     "message": "*   Include `IPAddr#prefix` when serializing an `IPAddr` using the\n    `ActiveSupport::MessagePack` serializer. This change is backward and forward\n    compatible — old payloads can still be read, and new payloads will be\n    readable by older versions of Rails.\n\n    *Taiki Komaba*",
     "project": "activesupport",
     "date_merged": 1705301648000,
@@ -498,6 +518,316 @@
     "pr": "49863",
     "merge_sha": "efa11e67d652b7f1f16b7840dc288730463da492",
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated behavior that would rollback a transaction block when exited using `return`, `break` or `throw`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "eccc6061f4f3abdfdeb9a363987a898418d9498f",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated behavior that would rollback a transaction block when exited using <code>return</code>, <code>break</code> or <code>throw</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `Rails.application.config.active_record.commit_transaction_on_non_local_return`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "eccc6061f4f3abdfdeb9a363987a898418d9498f",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Deprecate <code>Rails.application.config.active_record.commit_transaction_on_non_local_return</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to pass `rewhere` to `ActiveRecord::Relation#merge`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "c313d9161360f4539afeb36cc8353ad29ba6bef3",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated support to pass <code>rewhere</code> to <code>ActiveRecord::Relation#merge</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to pass `deferrable: true` to `add_foreign_key`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "c09956a3add90b6c840ea1d504aa24c0f4b819cb",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated support to pass <code>deferrable: true</code> to <code>add_foreign_key</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to quote `ActiveSupport::Duration`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "95b48d8a3b392852274523c64aa4e5b7f08c351f",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated support to quote <code>ActiveSupport::Duration</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `#quote_bound_value`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "240e9dac0ad756c581fc476df5c53dc4672dd7ea",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>#quote_bound_value</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::ConnectionAdapters::ConnectionPool#connection_klass`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "465fbd78f469b88cba5df16d230f4b3362fc685a",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::ConnectionAdapters::ConnectionPool#connection_klass</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to apply `#connection_pool_list`, `#active_connections?`, `#clear_active_connections!`,\n    `#clear_reloadable_connections!`, `#clear_all_connections!` and `#flush_idle_connections!` to the connections pools\n    for the current role when the `role` argument isn't provided.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "64cbcd7a8c0d83f0da48fdd01bd156aaf12c8221",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated support to apply <code>#connection_pool_list</code>, <code>#active_connections?</code>, <code>#clear_active_connections!</code>,<br />\n<code>#clear_reloadable_connections!</code>, <code>#clear_all_connections!</code> and <code>#flush_idle_connections!</code> to the connections pools<br />\nfor the current role when the <code>role</code> argument isn’t provided.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `#all_connection_pools`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "9489c14b7b6e62dcbb756642ee89444d5e8ff5dc",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>#all_connection_pools</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::ConnectionAdapters::SchemaCache#data_sources`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "7ddf423329a8a211055519d9739d3521192ca458",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::ConnectionAdapters::SchemaCache#data_sources</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::ConnectionAdapters::SchemaCache.load_from`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "5667de1aca18e5af67a3018e1c95c62d418f7870",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::ConnectionAdapters::SchemaCache.load_from</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `#all_foreign_keys_valid?` from database adapters.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "9391f0a0e8c1767dc6331c5a7e961df4fbd1de5c",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>#all_foreign_keys_valid?</code> from database adapters.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to passing coder and class as second argument to `serialize`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "8069cc83e8a508e3f578c49be9007b08e3c5516e",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated support to passing coder and class as second argument to <code>serialize</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to `ActiveRecord::Base#read_attribute(:id)` to return the custom primary key value.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "39997a0f049dfb3d94b28d1cb131b9136a1b7b0a",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated support to <code>ActiveRecord::Base#read_attribute(:id)</code> to return the custom primary key value.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `TestFixtures.fixture_path`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "f40a697e0f2f799b11a9a3fb4f5f63754b767843",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>TestFixtures.fixture_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated behavior to support referring to a singular association by its plural name.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "4bf2c4cea19c422bb3358d4c2ddad6db7247604f",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated behavior to support referring to a singular association by its plural name.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `Rails.application.config.active_record.allow_deprecated_singular_associations_name`\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "4bf2c4cea19c422bb3358d4c2ddad6db7247604f",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Deprecate <code>Rails.application.config.active_record.allow_deprecated_singular_associations_name</code></p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to passing `SchemaMigration` and `InternalMetadata` classes as arguments to\n    `ActiveRecord::MigrationContext`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "9ef79385d92876dd5944e9d5eabd2a25853eed7a",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated support to passing <code>SchemaMigration</code> and <code>InternalMetadata</code> classes as arguments to<br />\n<code>ActiveRecord::MigrationContext</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::Migration.check_pending` method.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "02f66fe3e25cef2b0dec8bca26e777fe788af35c",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::Migration.check_pending</code> method.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::LogSubscriber.runtime` method.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "e509a0edb59dc92457ac5e014eb7c3d9acf0989c",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::LogSubscriber.runtime</code> method.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::LogSubscriber.runtime=` method.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "e509a0edb59dc92457ac5e014eb7c3d9acf0989c",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::LogSubscriber.runtime=</code> method.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::LogSubscriber.reset_runtime` method.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "e509a0edb59dc92457ac5e014eb7c3d9acf0989c",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::LogSubscriber.reset_runtime</code> method.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to define `explain` in the connection adapter with 2 arguments.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "2fb186dabb6bb183824c9f16b780f757ce9e43ae",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated support to define <code>explain</code> in the connection adapter with 2 arguments.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::ActiveJobRequiredError`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "dca35bbd775eadf85f5109391dcf610044237d0c",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::ActiveJobRequiredError</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::Base.clear_active_connections!`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "5515fa49a284b3858feaaf688db243d34de613f5",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::Base.clear_active_connections!</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::Base.clear_reloadable_connections!`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "5515fa49a284b3858feaaf688db243d34de613f5",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::Base.clear_reloadable_connections!</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::Base.clear_all_connections!`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "5515fa49a284b3858feaaf688db243d34de613f5",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::Base.clear_all_connections!</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveRecord::Base.flush_idle_connections!`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "5515fa49a284b3858feaaf688db243d34de613f5",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>ActiveRecord::Base.flush_idle_connections!</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `name` argument from `ActiveRecord::Base.remove_connection`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "7a08a86d21508d62c77d0cacc3f466c62460d782",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>name</code> argument from <code>ActiveRecord::Base.remove_connection</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to call `alias_attribute` with non-existent attribute names.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "94d24f45047c3f557828e54986e106120e8ca2d6",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated support to call <code>alias_attribute</code> with non-existent attribute names.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `Rails.application.config.active_record.suppress_multiple_database_warning`.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1708467420000,
+    "author": "Rafael Mendonça França",
+    "sha": "2af68b257ff9a97a33b40cbddf70b5c8828ae344",
+    "pr": "51146",
+    "merge_sha": "25c45749888caab3840c1848be4ed8acb049244f",
+    "html": "<p>Remove deprecated <code>Rails.application.config.active_record.suppress_multiple_database_warning</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Add ActiveRecord::Encryption::MessagePackMessageSerializer\n\n    Serialize data to the MessagePack format, for efficient storage in binary columns.\n\n    The binary encoding requires around 30% less space than the base64 encoding\n    used by the default serializer.\n\n    *Donal McBreen*",
