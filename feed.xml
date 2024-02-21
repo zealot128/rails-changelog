@@ -295,6 +295,58 @@ error with parallel system tests</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Add parameter filter capability for redirect locations.
+</title>
+    <link>https://github.com/rails/rails/issues/51131</link>
+    <guid>https://github.com/rails/rails/issues/51131</guid>
+    <description>*   Add parameter filter capability for redirect locations.
+
+    It uses the `config.filter_parameters` to match what needs to be filtered.
+    The result would be like this:
+
+        Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]
+
+    Fixes #14055.
+
+    *Roque Pinel*, *Trevor Turk*, *tonytonyjan*</description>
+    <pubDate>Tue, 20 Feb 2024 23:25:12 +0000</pubDate>
+    <author>Roque Pinel</author>
+    <content:encoded><![CDATA[<p>Add parameter filter capability for redirect locations.</p>
+
+<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />
+The result would be like this:</p>
+
+<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]
+</code></pre>
+
+<p>Fixes #14055.</p>
+
+<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add filename support for `Logger.logger_outputs_to?`
+</title>
+    <link>https://github.com/rails/rails/issues/51125</link>
+    <guid>https://github.com/rails/rails/issues/51125</guid>
+    <description>*   Add filename support for `Logger.logger_outputs_to?`
+
+    ```ruby
+    Logger.logger_outputs_to?(&#39;/var/log/rails.log&#39;)
+    ```
+
+    *Christian Schmidt*</description>
+    <pubDate>Tue, 20 Feb 2024 22:31:23 +0000</pubDate>
+    <author>Christian Schmidt</author>
+    <content:encoded><![CDATA[<p>Add filename support for <code>Logger.logger_outputs_to?</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Logger</span><span class="p">.</span><span class="nf">logger_outputs_to?</span><span class="p">(</span><span class="s1">'/var/log/rails.log'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Christian Schmidt</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Include `IPAddr#prefix` when serializing an `IPAddr` using the
 </title>
     <link>https://github.com/rails/rails/issues/50742</link>
@@ -959,6 +1011,477 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
     <content:encoded><![CDATA[<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>
 
 <p><em>Yogesh Khater</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated behavior that would rollback a transaction block when exited using `return`, `break` or `throw`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated behavior that would rollback a transaction block when exited using `return`, `break` or `throw`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated behavior that would rollback a transaction block when exited using <code>return</code>, <code>break</code> or <code>throw</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deprecate `Rails.application.config.active_record.commit_transaction_on_non_local_return`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Deprecate `Rails.application.config.active_record.commit_transaction_on_non_local_return`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>Rails.application.config.active_record.commit_transaction_on_non_local_return</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated support to pass `rewhere` to `ActiveRecord::Relation#merge`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated support to pass `rewhere` to `ActiveRecord::Relation#merge`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to pass <code>rewhere</code> to <code>ActiveRecord::Relation#merge</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated support to pass `deferrable: true` to `add_foreign_key`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated support to pass `deferrable: true` to `add_foreign_key`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to pass <code>deferrable: true</code> to <code>add_foreign_key</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated support to quote `ActiveSupport::Duration`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated support to quote `ActiveSupport::Duration`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to quote <code>ActiveSupport::Duration</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `#quote_bound_value`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `#quote_bound_value`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>#quote_bound_value</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::ConnectionAdapters::ConnectionPool#connection_klass`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::ConnectionAdapters::ConnectionPool#connection_klass`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::ConnectionAdapters::ConnectionPool#connection_klass</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated support to apply `#connection_pool_list`, `#active_connections?`, `#clear_active_connections!`,
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated support to apply `#connection_pool_list`, `#active_connections?`, `#clear_active_connections!`,
+    `#clear_reloadable_connections!`, `#clear_all_connections!` and `#flush_idle_connections!` to the connections pools
+    for the current role when the `role` argument isn&#39;t provided.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to apply <code>#connection_pool_list</code>, <code>#active_connections?</code>, <code>#clear_active_connections!</code>,<br />
+<code>#clear_reloadable_connections!</code>, <code>#clear_all_connections!</code> and <code>#flush_idle_connections!</code> to the connections pools<br />
+for the current role when the <code>role</code> argument isn’t provided.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `#all_connection_pools`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `#all_connection_pools`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>#all_connection_pools</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::ConnectionAdapters::SchemaCache#data_sources`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::ConnectionAdapters::SchemaCache#data_sources`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::ConnectionAdapters::SchemaCache#data_sources</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::ConnectionAdapters::SchemaCache.load_from`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::ConnectionAdapters::SchemaCache.load_from`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::ConnectionAdapters::SchemaCache.load_from</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `#all_foreign_keys_valid?` from database adapters.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `#all_foreign_keys_valid?` from database adapters.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>#all_foreign_keys_valid?</code> from database adapters.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated support to passing coder and class as second argument to `serialize`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated support to passing coder and class as second argument to `serialize`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to passing coder and class as second argument to <code>serialize</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated support to `ActiveRecord::Base#read_attribute(:id)` to return the custom primary key value.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated support to `ActiveRecord::Base#read_attribute(:id)` to return the custom primary key value.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to <code>ActiveRecord::Base#read_attribute(:id)</code> to return the custom primary key value.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `TestFixtures.fixture_path`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `TestFixtures.fixture_path`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>TestFixtures.fixture_path</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated behavior to support referring to a singular association by its plural name.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated behavior to support referring to a singular association by its plural name.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated behavior to support referring to a singular association by its plural name.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deprecate `Rails.application.config.active_record.allow_deprecated_singular_associations_name`
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Deprecate `Rails.application.config.active_record.allow_deprecated_singular_associations_name`
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>Rails.application.config.active_record.allow_deprecated_singular_associations_name</code></p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated support to passing `SchemaMigration` and `InternalMetadata` classes as arguments to
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated support to passing `SchemaMigration` and `InternalMetadata` classes as arguments to
+    `ActiveRecord::MigrationContext`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to passing <code>SchemaMigration</code> and <code>InternalMetadata</code> classes as arguments to<br />
+<code>ActiveRecord::MigrationContext</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::Migration.check_pending` method.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::Migration.check_pending` method.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::Migration.check_pending</code> method.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::LogSubscriber.runtime` method.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::LogSubscriber.runtime` method.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::LogSubscriber.runtime</code> method.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::LogSubscriber.runtime=` method.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::LogSubscriber.runtime=` method.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::LogSubscriber.runtime=</code> method.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::LogSubscriber.reset_runtime` method.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::LogSubscriber.reset_runtime` method.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::LogSubscriber.reset_runtime</code> method.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated support to define `explain` in the connection adapter with 2 arguments.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated support to define `explain` in the connection adapter with 2 arguments.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to define <code>explain</code> in the connection adapter with 2 arguments.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::ActiveJobRequiredError`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::ActiveJobRequiredError`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::ActiveJobRequiredError</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::Base.clear_active_connections!`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::Base.clear_active_connections!`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::Base.clear_active_connections!</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::Base.clear_reloadable_connections!`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::Base.clear_reloadable_connections!`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::Base.clear_reloadable_connections!</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::Base.clear_all_connections!`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::Base.clear_all_connections!`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::Base.clear_all_connections!</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `ActiveRecord::Base.flush_idle_connections!`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `ActiveRecord::Base.flush_idle_connections!`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveRecord::Base.flush_idle_connections!</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `name` argument from `ActiveRecord::Base.remove_connection`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `name` argument from `ActiveRecord::Base.remove_connection`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>name</code> argument from <code>ActiveRecord::Base.remove_connection</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated support to call `alias_attribute` with non-existent attribute names.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated support to call `alias_attribute` with non-existent attribute names.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to call <code>alias_attribute</code> with non-existent attribute names.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Remove deprecated `Rails.application.config.active_record.suppress_multiple_database_warning`.
+</title>
+    <link>https://github.com/rails/rails/issues/51146</link>
+    <guid>https://github.com/rails/rails/issues/51146</guid>
+    <description>*   Remove deprecated `Rails.application.config.active_record.suppress_multiple_database_warning`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Tue, 20 Feb 2024 22:17:00 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>Rails.application.config.active_record.suppress_multiple_database_warning</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
 ]]></content:encoded>
   </item>
   <item>
