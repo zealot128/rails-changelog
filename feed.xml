@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actionpack: Request Forgery takes relative paths into account.
+</title>
+    <link>https://github.com/rails/rails/issues/32770</link>
+    <guid>https://github.com/rails/rails/issues/32770</guid>
+    <description>*   Request Forgery takes relative paths into account.
+
+    *Stefan Wienert*</description>
+    <pubDate>Wed, 21 Feb 2024 17:16:54 +0000</pubDate>
+    <author>Stefan Wienert</author>
+    <content:encoded><![CDATA[<p>Request Forgery takes relative paths into account.</p>
+
+<p><em>Stefan Wienert</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add &quot;.test&quot; as a default allowed host in development to ensure smooth golden-path setup with puma.dev.
 </title>
     <link>https://github.com/rails/rails/issues/51087</link>
@@ -1014,6 +1029,27 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix `has_one` association autosave setting the foreign key attribute when it is unchanged.
+</title>
+    <link>https://github.com/rails/rails/issues/50897</link>
+    <guid>https://github.com/rails/rails/issues/50897</guid>
+    <description>*   Fix `has_one` association autosave setting the foreign key attribute when it is unchanged.
+
+    This behaviour is also inconsistent with autosaving `belongs_to` and can have unintended side effects like raising
+    an `ActiveRecord::ReadOnlyAttributeError` when the foreign key attribute is marked as read-only.
+
+    *Joshua Young*</description>
+    <pubDate>Wed, 21 Feb 2024 20:21:23 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Fix <code>has_one</code> association autosave setting the foreign key attribute when it is unchanged.</p>
+
+<p>This behaviour is also inconsistent with autosaving <code>belongs_to</code> and can have unintended side effects like raising<br />
+an <code>ActiveRecord::ReadOnlyAttributeError</code> when the foreign key attribute is marked as read-only.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Remove deprecated behavior that would rollback a transaction block when exited using `return`, `break` or `throw`.
 </title>
     <link>https://github.com/rails/rails/issues/51146</link>
@@ -1591,6 +1627,42 @@ entire duration of the request or job.</p>
 notification includes <code>:row_count</code> field.</p>
 
 <p><em>Jason Nochlin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: The fix ensures that the association is joined using the appropriate join type
+</title>
+    <link>https://github.com/rails/rails/issues/51078</link>
+    <guid>https://github.com/rails/rails/issues/51078</guid>
+    <description>*   The fix ensures that the association is joined using the appropriate join type
+    (either inner join or left outer join) based on the existing joins in the scope.
+
+    This prevents unintentional overrides of existing join types and ensures consistency in the generated SQL queries.
+
+    Example:
+
+
+
+    ```ruby
+    # `associated` will use `LEFT JOIN` instead of using `JOIN`
+    Post.left_joins(:author).where.associated(:author)
+    ```
+
+    *Saleh Alhaddad*</description>
+    <pubDate>Wed, 21 Feb 2024 20:10:24 +0000</pubDate>
+    <author>saleh-alhaddad</author>
+    <content:encoded><![CDATA[<p>The fix ensures that the association is joined using the appropriate join type<br />
+(either inner join or left outer join) based on the existing joins in the scope.</p>
+
+<p>This prevents unintentional overrides of existing join types and ensures consistency in the generated SQL queries.</p>
+
+<p>Example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># `associated` will use `LEFT JOIN` instead of using `JOIN`</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">left_joins</span><span class="p">(</span><span class="ss">:author</span><span class="p">).</span><span class="nf">where</span><span class="p">.</span><span class="nf">associated</span><span class="p">(</span><span class="ss">:author</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Saleh Alhaddad</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -2515,6 +2587,28 @@ column).</p>
     <content:encoded><![CDATA[<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>
 
 <p><em>Tristan Fellows</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Allow for more complex hash arguments for `order` which mimics `where` in `ActiveRecord::Relation`.
+</title>
+    <link>https://github.com/rails/rails/issues/50000</link>
+    <guid>https://github.com/rails/rails/issues/50000</guid>
+    <description>*   Allow for more complex hash arguments for `order` which mimics `where` in `ActiveRecord::Relation`.
+
+    ```ruby
+    Topic.includes(:posts).order(posts: { created_at: :desc })
+    ```
+
+    *Myles Boone*</description>
+    <pubDate>Wed, 21 Feb 2024 20:10:24 +0000</pubDate>
+    <author>mylesboone</author>
+    <content:encoded><![CDATA[<p>Allow for more complex hash arguments for <code>order</code> which mimics <code>where</code> in <code>ActiveRecord::Relation</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Topic</span><span class="p">.</span><span class="nf">includes</span><span class="p">(</span><span class="ss">:posts</span><span class="p">).</span><span class="nf">order</span><span class="p">(</span><span class="ss">posts: </span><span class="p">{</span> <span class="ss">created_at: :desc</span> <span class="p">})</span>
+</code></pre></div></div>
+
+<p><em>Myles Boone</em></p>
 ]]></content:encoded>
   </item>
   <item>
