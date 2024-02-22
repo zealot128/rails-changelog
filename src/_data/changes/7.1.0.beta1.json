@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Request Forgery takes relative paths into account.\n\n    *Stefan Wienert*",
+    "project": "actionpack",
+    "date_merged": 1708535814000,
+    "author": "Stefan Wienert",
+    "sha": "e2a8bfa1f24395ce8fa5879c4df88de835fd0401",
+    "pr": "32770",
+    "merge_sha": "db4c6db59dd9c17fb7c729c6b3ecff1f3429d7dc",
+    "html": "<p>Request Forgery takes relative paths into account.</p>\n\n<p><em>Stefan Wienert</em></p>\n"
+  },
+  {
     "message": "*   Add \".test\" as a default allowed host in development to ensure smooth golden-path setup with puma.dev.\n\n    *DHH*",
     "project": "actionpack",
     "date_merged": 1707930843000,
@@ -520,6 +530,16 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Fix `has_one` association autosave setting the foreign key attribute when it is unchanged.\n\n    This behaviour is also inconsistent with autosaving `belongs_to` and can have unintended side effects like raising\n    an `ActiveRecord::ReadOnlyAttributeError` when the foreign key attribute is marked as read-only.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1708546883000,
+    "author": "Joshua Young",
+    "sha": "a518b5a9d957424962b4d5c5c21d39ced26c98e0",
+    "pr": "50897",
+    "merge_sha": "939742d69e0fe599b61240fcd1dde113bf5d405b",
+    "html": "<p>Fix <code>has_one</code> association autosave setting the foreign key attribute when it is unchanged.</p>\n\n<p>This behaviour is also inconsistent with autosaving <code>belongs_to</code> and can have unintended side effects like raising<br />\nan <code>ActiveRecord::ReadOnlyAttributeError</code> when the foreign key attribute is marked as read-only.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Remove deprecated behavior that would rollback a transaction block when exited using `return`, `break` or `throw`.\n\n    *Rafael Mendonça França*",
     "project": "activerecord",
     "date_merged": 1708467420000,
@@ -880,6 +900,16 @@
     "html": "<p>Deprecate <code>config.active_record.warn_on_records_fetched_greater_than</code> now that <code>sql.active_record</code><br />\nnotification includes <code>:row_count</code> field.</p>\n\n<p><em>Jason Nochlin</em></p>\n"
   },
   {
+    "message": "*   The fix ensures that the association is joined using the appropriate join type\n    (either inner join or left outer join) based on the existing joins in the scope.\n\n    This prevents unintentional overrides of existing join types and ensures consistency in the generated SQL queries.\n\n    Example:\n\n\n\n    ```ruby\n    # `associated` will use `LEFT JOIN` instead of using `JOIN`\n    Post.left_joins(:author).where.associated(:author)\n    ```\n\n    *Saleh Alhaddad*",
+    "project": "activerecord",
+    "date_merged": 1708546224000,
+    "author": "saleh-alhaddad",
+    "sha": "3400aac7f9648080b0c478bdd2247dc889cd2c1c",
+    "pr": "51078",
+    "merge_sha": "3e42d79c99c24fbeb10bf08429f686f6f78a4b76",
+    "html": "<p>The fix ensures that the association is joined using the appropriate join type<br />\n(either inner join or left outer join) based on the existing joins in the scope.</p>\n\n<p>This prevents unintentional overrides of existing join types and ensures consistency in the generated SQL queries.</p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># `associated` will use `LEFT JOIN` instead of using `JOIN`</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">left_joins</span><span class=\"p\">(</span><span class=\"ss\">:author</span><span class=\"p\">).</span><span class=\"nf\">where</span><span class=\"p\">.</span><span class=\"nf\">associated</span><span class=\"p\">(</span><span class=\"ss\">:author</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Saleh Alhaddad</em></p>\n"
+  },
+  {
     "message": "*   Fix an issue where `ActiveRecord::Encryption` configurations are not ready before the loading\n    of Active Record models, when an application is eager loaded. As a result, encrypted attributes\n    could be misconfigured in some cases.\n\n    *Maxime Réty*",
     "project": "activerecord",
     "date_merged": 1707772403000,
@@ -1238,6 +1268,16 @@
     "pr": "50079",
     "merge_sha": "ab8f5c9d9381b5058f76e9572e6f02e90c958a6d",
     "html": "<p>Add <code>nulls_last</code> and working <code>desc.nulls_first</code> for MySQL.</p>\n\n<p><em>Tristan Fellows</em></p>\n"
+  },
+  {
+    "message": "*   Allow for more complex hash arguments for `order` which mimics `where` in `ActiveRecord::Relation`.\n\n    ```ruby\n    Topic.includes(:posts).order(posts: { created_at: :desc })\n    ```\n\n    *Myles Boone*",
+    "project": "activerecord",
+    "date_merged": 1708546224000,
+    "author": "mylesboone",
+    "sha": "278d6574cfb6cf2b6e60b575514964157420d50f",
+    "pr": "50000",
+    "merge_sha": "3e42d79c99c24fbeb10bf08429f686f6f78a4b76",
+    "html": "<p>Allow for more complex hash arguments for <code>order</code> which mimics <code>where</code> in <code>ActiveRecord::Relation</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">includes</span><span class=\"p\">(</span><span class=\"ss\">:posts</span><span class=\"p\">).</span><span class=\"nf\">order</span><span class=\"p\">(</span><span class=\"ss\">posts: </span><span class=\"p\">{</span> <span class=\"ss\">created_at: :desc</span> <span class=\"p\">})</span>\n</code></pre></div></div>\n\n<p><em>Myles Boone</em></p>\n"
   },
   {
     "message": "*   Raise `ArgumentError` if `:renderable` object does not respond to `#render_in`\n\n    *Sean Doyle*",
