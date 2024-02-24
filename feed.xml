@@ -2917,6 +2917,32 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Introduce `Rails::Generators::Testing::Assertions#assert_initializer`
+</title>
+    <link>https://github.com/rails/rails/issues/51176</link>
+    <guid>https://github.com/rails/rails/issues/51176</guid>
+    <description>*   Introduce `Rails::Generators::Testing::Assertions#assert_initializer`
+
+    Compliments the existing `initializer` generator action.
+
+    ```rb
+    assert_initializer &quot;mail_interceptors.rb&quot;
+    ```
+
+    *Steve Polito*</description>
+    <pubDate>Fri, 23 Feb 2024 20:36:05 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Introduce <code>Rails::Generators::Testing::Assertions#assert_initializer</code></p>
+
+<p>Compliments the existing <code>initializer</code> generator action.</p>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_initializer</span> <span class="s2">"mail_interceptors.rb"</span>
+</code></pre></div></div>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Generate a .devcontainer folder and its contents when creating a new app.
 </title>
     <link>https://github.com/rails/rails/issues/50914</link>
