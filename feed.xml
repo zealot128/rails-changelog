@@ -340,22 +340,24 @@ The result would be like this:</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activesupport: Add filename support for `Logger.logger_outputs_to?`
+    <title>activesupport: Add filename support for `ActiveSupport::Logger.logger_outputs_to?`
 </title>
-    <link>https://github.com/rails/rails/issues/51125</link>
-    <guid>https://github.com/rails/rails/issues/51125</guid>
-    <description>*   Add filename support for `Logger.logger_outputs_to?`
+    <link>https://github.com/rails/rails/issues/51198</link>
+    <guid>https://github.com/rails/rails/issues/51198</guid>
+    <description>*   Add filename support for `ActiveSupport::Logger.logger_outputs_to?`
 
     ```ruby
-    Logger.logger_outputs_to?(&#39;/var/log/rails.log&#39;)
+    logger = Logger.new(&#39;/var/log/rails.log&#39;)
+    ActiveSupport::Logger.logger_outputs_to?(logger, &#39;/var/log/rails.log&#39;)
     ```
 
     *Christian Schmidt*</description>
-    <pubDate>Tue, 20 Feb 2024 22:31:23 +0000</pubDate>
-    <author>Christian Schmidt</author>
-    <content:encoded><![CDATA[<p>Add filename support for <code>Logger.logger_outputs_to?</code></p>
+    <pubDate>Tue, 27 Feb 2024 02:08:52 +0000</pubDate>
+    <author>Shinichi Maeshima</author>
+    <content:encoded><![CDATA[<p>Add filename support for <code>ActiveSupport::Logger.logger_outputs_to?</code></p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Logger</span><span class="p">.</span><span class="nf">logger_outputs_to?</span><span class="p">(</span><span class="s1">'/var/log/rails.log'</span><span class="p">)</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'/var/log/rails.log'</span><span class="p">)</span>
+<span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Logger</span><span class="p">.</span><span class="nf">logger_outputs_to?</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'/var/log/rails.log'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p><em>Christian Schmidt</em></p>
