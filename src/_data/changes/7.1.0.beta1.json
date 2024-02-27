@@ -170,14 +170,14 @@
     "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
   },
   {
-    "message": "*   Add filename support for `Logger.logger_outputs_to?`\n\n    ```ruby\n    Logger.logger_outputs_to?('/var/log/rails.log')\n    ```\n\n    *Christian Schmidt*",
+    "message": "*   Add filename support for `ActiveSupport::Logger.logger_outputs_to?`\n\n    ```ruby\n    logger = Logger.new('/var/log/rails.log')\n    ActiveSupport::Logger.logger_outputs_to?(logger, '/var/log/rails.log')\n    ```\n\n    *Christian Schmidt*",
     "project": "activesupport",
-    "date_merged": 1708468283000,
-    "author": "Christian Schmidt",
-    "sha": "3aa7d79418dad3b1849627450066b52391b5adac",
-    "pr": "51125",
-    "merge_sha": "5628362165b4b589cb2df45079b4e6a088d44060",
-    "html": "<p>Add filename support for <code>Logger.logger_outputs_to?</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Logger</span><span class=\"p\">.</span><span class=\"nf\">logger_outputs_to?</span><span class=\"p\">(</span><span class=\"s1\">'/var/log/rails.log'</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Christian Schmidt</em></p>\n"
+    "date_merged": 1708999732000,
+    "author": "Shinichi Maeshima",
+    "sha": "fc62f03ae30fbb9108b004daa9bfedef0401003f",
+    "pr": "51198",
+    "merge_sha": "88afcce1dd981010a4932abd79cf6f66d05318d1",
+    "html": "<p>Add filename support for <code>ActiveSupport::Logger.logger_outputs_to?</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">logger</span> <span class=\"o\">=</span> <span class=\"no\">Logger</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s1\">'/var/log/rails.log'</span><span class=\"p\">)</span>\n<span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Logger</span><span class=\"p\">.</span><span class=\"nf\">logger_outputs_to?</span><span class=\"p\">(</span><span class=\"n\">logger</span><span class=\"p\">,</span> <span class=\"s1\">'/var/log/rails.log'</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Christian Schmidt</em></p>\n"
   },
   {
     "message": "*   Include `IPAddr#prefix` when serializing an `IPAddr` using the\n    `ActiveSupport::MessagePack` serializer. This change is backward and forward\n    compatible — old payloads can still be read, and new payloads will be\n    readable by older versions of Rails.\n\n    *Taiki Komaba*",
