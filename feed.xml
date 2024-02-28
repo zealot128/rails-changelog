@@ -2919,6 +2919,27 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Set `action_mailer.default_url_options` values in `development` and `test`.
+</title>
+    <link>https://github.com/rails/rails/issues/51191</link>
+    <guid>https://github.com/rails/rails/issues/51191</guid>
+    <description>*   Set `action_mailer.default_url_options` values in `development` and `test`.
+
+    Prior to this commit, new Rails applications would raise `ActionView::Template::Error`
+    if a mailer included a url built with a `*_path` helper.
+
+    *Steve Polito*</description>
+    <pubDate>Tue, 27 Feb 2024 21:29:49 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Set <code>action_mailer.default_url_options</code> values in <code>development</code> and <code>test</code>.</p>
+
+<p>Prior to this commit, new Rails applications would raise <code>ActionView::Template::Error</code><br />
+if a mailer included a url built with a <code>*_path</code> helper.</p>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Introduce `Rails::Generators::Testing::Assertions#assert_initializer`
 </title>
     <link>https://github.com/rails/rails/issues/51176</link>
