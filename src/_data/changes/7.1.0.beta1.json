@@ -1440,6 +1440,16 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Set `action_mailer.default_url_options` values in `development` and `test`.\n\n    Prior to this commit, new Rails applications would raise `ActionView::Template::Error`\n    if a mailer included a url built with a `*_path` helper.\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1709069389000,
+    "author": "Steve Polito",
+    "sha": "59a3dd4729a7b8031aa5ffe3e5dc49181451653d",
+    "pr": "51191",
+    "merge_sha": "649e99bf9267b0cbc55decf2603519cfc9f9d4fa",
+    "html": "<p>Set <code>action_mailer.default_url_options</code> values in <code>development</code> and <code>test</code>.</p>\n\n<p>Prior to this commit, new Rails applications would raise <code>ActionView::Template::Error</code><br />\nif a mailer included a url built with a <code>*_path</code> helper.</p>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
     "message": "*   Introduce `Rails::Generators::Testing::Assertions#assert_initializer`\n\n    Compliments the existing `initializer` generator action.\n\n    ```rb\n    assert_initializer \"mail_interceptors.rb\"\n    ```\n\n    *Steve Polito*",
     "project": "railties",
     "date_merged": 1708720565000,
