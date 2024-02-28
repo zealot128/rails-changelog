@@ -1031,6 +1031,47 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Expose a generic fixture accessor for fixture names that may conflict with Minitest
+</title>
+    <link>https://github.com/rails/rails/issues/51213</link>
+    <guid>https://github.com/rails/rails/issues/51213</guid>
+    <description>*   Expose a generic fixture accessor for fixture names that may conflict with Minitest
+
+    ```ruby
+    assert_equal &quot;Ruby on Rails&quot;, web_sites(:rubyonrails).name
+    assert_equal &quot;Ruby on Rails&quot;, fixture(:web_sites, :rubyonrails).name
+    ```
+
+    *Jean Boussier*</description>
+    <pubDate>Wed, 28 Feb 2024 15:09:34 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Expose a generic fixture accessor for fixture names that may conflict with Minitest</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_equal</span> <span class="s2">"Ruby on Rails"</span><span class="p">,</span> <span class="n">web_sites</span><span class="p">(</span><span class="ss">:rubyonrails</span><span class="p">).</span><span class="nf">name</span>
+<span class="n">assert_equal</span> <span class="s2">"Ruby on Rails"</span><span class="p">,</span> <span class="n">fixture</span><span class="p">(</span><span class="ss">:web_sites</span><span class="p">,</span> <span class="ss">:rubyonrails</span><span class="p">).</span><span class="nf">name</span>
+</code></pre></div></div>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Using `Model.query_constraints` with a single non-primary-key column used to raise as expected, but with an
+</title>
+    <link>https://github.com/rails/rails/issues/51164</link>
+    <guid>https://github.com/rails/rails/issues/51164</guid>
+    <description>*   Using `Model.query_constraints` with a single non-primary-key column used to raise as expected, but with an
+    incorrect error message. This has been fixed to raise with a more appropriate error message.
+
+    *Joshua Young*</description>
+    <pubDate>Wed, 28 Feb 2024 13:12:52 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Using <code>Model.query_constraints</code> with a single non-primary-key column used to raise as expected, but with an<br />
+incorrect error message. This has been fixed to raise with a more appropriate error message.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix `has_one` association autosave setting the foreign key attribute when it is unchanged.
 </title>
     <link>https://github.com/rails/rails/issues/50897</link>
