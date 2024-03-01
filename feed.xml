@@ -1031,6 +1031,54 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`
+</title>
+    <link>https://github.com/rails/rails/issues/51230</link>
+    <guid>https://github.com/rails/rails/issues/51230</guid>
+    <description>*   Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`
+
+    The method has been renamed as `lease_connection` to better reflect that the returned
+    connection will be held for the duration of the request or job.
+
+    This deprecation is a soft deprecation, no warnings will be issued and there is no
+    current plan to remove the method.
+
+    *Jean Boussier*</description>
+    <pubDate>Fri, 01 Mar 2024 13:53:09 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>ActiveRecord::Base.connection</code> in favor of <code>.lease_connection</code></p>
+
+<p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />
+connection will be held for the duration of the request or job.</p>
+
+<p>This deprecation is a soft deprecation, no warnings will be issued and there is no<br />
+current plan to remove the method.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deprecate `ActiveRecord::ConnectionAdapters::ConnectionPool#connection`
+</title>
+    <link>https://github.com/rails/rails/issues/51230</link>
+    <guid>https://github.com/rails/rails/issues/51230</guid>
+    <description>*   Deprecate `ActiveRecord::ConnectionAdapters::ConnectionPool#connection`
+
+    The method has been renamed as `lease_connection` to better reflect that the returned
+    connection will be held for the duration of the request or job.
+
+    *Jean Boussier*</description>
+    <pubDate>Fri, 01 Mar 2024 13:53:09 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>ActiveRecord::ConnectionAdapters::ConnectionPool#connection</code></p>
+
+<p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />
+connection will be held for the duration of the request or job.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Expose a generic fixture accessor for fixture names that may conflict with Minitest
 </title>
     <link>https://github.com/rails/rails/issues/51213</link>
