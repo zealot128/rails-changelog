@@ -530,6 +530,26 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`\n\n    The method has been renamed as `lease_connection` to better reflect that the returned\n    connection will be held for the duration of the request or job.\n\n    This deprecation is a soft deprecation, no warnings will be issued and there is no\n    current plan to remove the method.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1709301189000,
+    "author": "Jean Boussier",
+    "sha": "7263da542b66084dae93af8bc3bd502c8710154b",
+    "pr": "51230",
+    "merge_sha": "e27a0df3384ee8e1046b6f2ffb389117e20c3581",
+    "html": "<p>Deprecate <code>ActiveRecord::Base.connection</code> in favor of <code>.lease_connection</code></p>\n\n<p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />\nconnection will be held for the duration of the request or job.</p>\n\n<p>This deprecation is a soft deprecation, no warnings will be issued and there is no<br />\ncurrent plan to remove the method.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActiveRecord::ConnectionAdapters::ConnectionPool#connection`\n\n    The method has been renamed as `lease_connection` to better reflect that the returned\n    connection will be held for the duration of the request or job.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1709301189000,
+    "author": "Jean Boussier",
+    "sha": "7263da542b66084dae93af8bc3bd502c8710154b",
+    "pr": "51230",
+    "merge_sha": "e27a0df3384ee8e1046b6f2ffb389117e20c3581",
+    "html": "<p>Deprecate <code>ActiveRecord::ConnectionAdapters::ConnectionPool#connection</code></p>\n\n<p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />\nconnection will be held for the duration of the request or job.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Expose a generic fixture accessor for fixture names that may conflict with Minitest\n\n    ```ruby\n    assert_equal \"Ruby on Rails\", web_sites(:rubyonrails).name\n    assert_equal \"Ruby on Rails\", fixture(:web_sites, :rubyonrails).name\n    ```\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1709132974000,
