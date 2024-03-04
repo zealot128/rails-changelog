@@ -1031,6 +1031,37 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add dirties option to uncached
+</title>
+    <link>https://github.com/rails/rails/issues/51204</link>
+    <guid>https://github.com/rails/rails/issues/51204</guid>
+    <description>*   Add dirties option to uncached
+
+    This adds a `dirties` option to `ActiveRecord::Base.uncached` and
+    `ActiveRecord::ConnectionAdapters::ConnectionPool#uncached`.
+
+    When set to `true` (the default), writes will clear all query caches belonging to the current thread.
+    When set to `false`, writes to the affected connection pool will not clear any query cache.
+
+    This is needed by Solid Cache so that cache writes do not clear query caches.
+
+    *Donal McBreen*</description>
+    <pubDate>Sun, 03 Mar 2024 23:39:52 +0000</pubDate>
+    <author>Donal McBreen</author>
+    <content:encoded><![CDATA[<p>Add dirties option to uncached</p>
+
+<p>This adds a <code>dirties</code> option to <code>ActiveRecord::Base.uncached</code> and<br />
+<code>ActiveRecord::ConnectionAdapters::ConnectionPool#uncached</code>.</p>
+
+<p>When set to <code>true</code> (the default), writes will clear all query caches belonging to the current thread.<br />
+When set to <code>false</code>, writes to the affected connection pool will not clear any query cache.</p>
+
+<p>This is needed by Solid Cache so that cache writes do not clear query caches.</p>
+
+<p><em>Donal McBreen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`
 </title>
     <link>https://github.com/rails/rails/issues/51230</link>
