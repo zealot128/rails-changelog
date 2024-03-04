@@ -530,6 +530,16 @@
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
   },
   {
+    "message": "*   Add dirties option to uncached\n\n    This adds a `dirties` option to `ActiveRecord::Base.uncached` and\n    `ActiveRecord::ConnectionAdapters::ConnectionPool#uncached`.\n\n    When set to `true` (the default), writes will clear all query caches belonging to the current thread.\n    When set to `false`, writes to the affected connection pool will not clear any query cache.\n\n    This is needed by Solid Cache so that cache writes do not clear query caches.\n\n    *Donal McBreen*",
+    "project": "activerecord",
+    "date_merged": 1709509192000,
+    "author": "Donal McBreen",
+    "sha": "5d528ba0c82f77342d62f4872b409f87890d05b1",
+    "pr": "51204",
+    "merge_sha": "db30dd6fe71341ac132bb1e850bd4df2596a2803",
+    "html": "<p>Add dirties option to uncached</p>\n\n<p>This adds a <code>dirties</code> option to <code>ActiveRecord::Base.uncached</code> and<br />\n<code>ActiveRecord::ConnectionAdapters::ConnectionPool#uncached</code>.</p>\n\n<p>When set to <code>true</code> (the default), writes will clear all query caches belonging to the current thread.<br />\nWhen set to <code>false</code>, writes to the affected connection pool will not clear any query cache.</p>\n\n<p>This is needed by Solid Cache so that cache writes do not clear query caches.</p>\n\n<p><em>Donal McBreen</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`\n\n    The method has been renamed as `lease_connection` to better reflect that the returned\n    connection will be held for the duration of the request or job.\n\n    This deprecation is a soft deprecation, no warnings will be issued and there is no\n    current plan to remove the method.\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1709301189000,
