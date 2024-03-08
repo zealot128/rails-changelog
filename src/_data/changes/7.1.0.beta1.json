@@ -340,6 +340,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Fix sanitizer vendor configuration in 7.1 defaults.\n\n    In apps where rails-html-sanitizer was not eagerly loaded, the sanitizer default could end up\n    being Rails::HTML4::Sanitizer when it should be set to Rails::HTML5::Sanitizer.\n\n    *Mike Dalessio*, *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1709916188000,
+    "author": "Mike Dalessio",
+    "sha": "8957ba58d524f99286df0f222d40b995e0eb506a",
+    "pr": "51267",
+    "merge_sha": "029d31ca31ab72df7bb79372f4ff057231fd0196",
+    "html": "<p>Fix sanitizer vendor configuration in 7.1 defaults.</p>\n\n<p>In apps where rails-html-sanitizer was not eagerly loaded, the sanitizer default could end up<br />\nbeing Rails::HTML4::Sanitizer when it should be set to Rails::HTML5::Sanitizer.</p>\n\n<p><em>Mike Dalessio</em>, <em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Set `action_mailer.default_url_options` values in `development` and `test`.\n\n    Prior to this commit, new Rails applications would raise `ActionView::Template::Error`\n    if a mailer included a url built with a `*_path` helper.\n\n    *Steve Polito*",
     "project": "railties",
     "date_merged": 1709069389000,
