@@ -705,6 +705,27 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Fix sanitizer vendor configuration in 7.1 defaults.
+</title>
+    <link>https://github.com/rails/rails/issues/51267</link>
+    <guid>https://github.com/rails/rails/issues/51267</guid>
+    <description>*   Fix sanitizer vendor configuration in 7.1 defaults.
+
+    In apps where rails-html-sanitizer was not eagerly loaded, the sanitizer default could end up
+    being Rails::HTML4::Sanitizer when it should be set to Rails::HTML5::Sanitizer.
+
+    *Mike Dalessio*, *Rafael Mendonça França*</description>
+    <pubDate>Fri, 08 Mar 2024 16:43:08 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Fix sanitizer vendor configuration in 7.1 defaults.</p>
+
+<p>In apps where rails-html-sanitizer was not eagerly loaded, the sanitizer default could end up<br />
+being Rails::HTML4::Sanitizer when it should be set to Rails::HTML5::Sanitizer.</p>
+
+<p><em>Mike Dalessio</em>, <em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Set `action_mailer.default_url_options` values in `development` and `test`.
 </title>
     <link>https://github.com/rails/rails/issues/51191</link>
