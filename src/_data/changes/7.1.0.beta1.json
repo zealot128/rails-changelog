@@ -1530,6 +1530,16 @@
     "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   },
   {
+    "message": "*   Add support for custom `key` in `ActiveStorage::Blob#compose`.\n\n    *Elvin Efendiev*",
+    "project": "activestorage",
+    "date_merged": 1710278901000,
+    "author": "Elvin Efendiev",
+    "sha": "64178f998e3e8ca7e3e450fc4f1640cd67529ce4",
+    "pr": "51299",
+    "merge_sha": "d79da7bd5e8df83d4a0b16f1c22e78ed32bc1ff4",
+    "html": "<p>Add support for custom <code>key</code> in <code>ActiveStorage::Blob#compose</code>.</p>\n\n<p><em>Elvin Efendiev</em></p>\n"
+  },
+  {
     "message": "*   Add `image/webp` to `config.active_storage.web_image_content_types` when `load_defaults \"7.2\"`\n    is set.\n\n    *Lewis Buckley*",
     "project": "activestorage",
     "date_merged": 1707522404000,
