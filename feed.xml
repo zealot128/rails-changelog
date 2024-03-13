@@ -3176,6 +3176,21 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Add support for custom `key` in `ActiveStorage::Blob#compose`.
+</title>
+    <link>https://github.com/rails/rails/issues/51299</link>
+    <guid>https://github.com/rails/rails/issues/51299</guid>
+    <description>*   Add support for custom `key` in `ActiveStorage::Blob#compose`.
+
+    *Elvin Efendiev*</description>
+    <pubDate>Tue, 12 Mar 2024 21:28:21 +0000</pubDate>
+    <author>Elvin Efendiev</author>
+    <content:encoded><![CDATA[<p>Add support for custom <code>key</code> in <code>ActiveStorage::Blob#compose</code>.</p>
+
+<p><em>Elvin Efendiev</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Add `image/webp` to `config.active_storage.web_image_content_types` when `load_defaults &quot;7.2&quot;`
 </title>
     <link>https://github.com/rails/rails/issues/50953</link>
