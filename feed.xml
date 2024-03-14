@@ -6,720 +6,6 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>actionpack: Request Forgery takes relative paths into account.
-</title>
-    <link>https://github.com/rails/rails/issues/32770</link>
-    <guid>https://github.com/rails/rails/issues/32770</guid>
-    <description>*   Request Forgery takes relative paths into account.
-
-    *Stefan Wienert*</description>
-    <pubDate>Wed, 21 Feb 2024 17:16:54 +0000</pubDate>
-    <author>Stefan Wienert</author>
-    <content:encoded><![CDATA[<p>Request Forgery takes relative paths into account.</p>
-
-<p><em>Stefan Wienert</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add &quot;.test&quot; as a default allowed host in development to ensure smooth golden-path setup with puma.dev.
-</title>
-    <link>https://github.com/rails/rails/issues/51087</link>
-    <guid>https://github.com/rails/rails/issues/51087</guid>
-    <description>*   Add &quot;.test&quot; as a default allowed host in development to ensure smooth golden-path setup with puma.dev.
-
-    *DHH*</description>
-    <pubDate>Wed, 14 Feb 2024 17:14:03 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add “.test” as a default allowed host in development to ensure smooth golden-path setup with puma.dev.</p>
-
-<p><em>DHH</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `allow_browser` to set minimum browser versions for the application.
-</title>
-    <link>https://github.com/rails/rails/issues/50505</link>
-    <guid>https://github.com/rails/rails/issues/50505</guid>
-    <description>*   Add `allow_browser` to set minimum browser versions for the application.
-
-    A browser that&#39;s blocked will by default be served the file in `public/426.html` with a HTTP status code of &quot;426 Upgrade Required&quot;.
-
-    ```ruby
-    class ApplicationController &lt; ActionController::Base
-      # Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has
-      allow_browser versions: :modern
-    end
-
-    class ApplicationController &lt; ActionController::Base
-      # All versions of Chrome and Opera will be allowed, but no versions of &quot;internet explorer&quot; (ie). Safari needs to be 16.4+ and Firefox 121+.
-      allow_browser versions: { safari: 16.4, firefox: 121, ie: false }
-    end
-
-    class MessagesController &lt; ApplicationController
-      # In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.
-      allow_browser versions: { opera: 104, chrome: 119 }, only: :show
-    end
-    ```
-
-    *DHH*</description>
-    <pubDate>Mon, 01 Jan 2024 10:08:45 +0000</pubDate>
-    <author>Vipul A M</author>
-    <content:encoded><![CDATA[<p>Add <code>allow_browser</code> to set minimum browser versions for the application.</p>
-
-<p>A browser that’s blocked will by default be served the file in <code>public/426.html</code> with a HTTP status code of “426 Upgrade Required”.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
-  <span class="c1"># Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has</span>
-  <span class="n">allow_browser</span> <span class="ss">versions: :modern</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
-  <span class="c1"># All versions of Chrome and Opera will be allowed, but no versions of "internet explorer" (ie). Safari needs to be 16.4+ and Firefox 121+.</span>
-  <span class="n">allow_browser</span> <span class="ss">versions: </span><span class="p">{</span> <span class="ss">safari: </span><span class="mf">16.4</span><span class="p">,</span> <span class="ss">firefox: </span><span class="mi">121</span><span class="p">,</span> <span class="ss">ie: </span><span class="kp">false</span> <span class="p">}</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">MessagesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-  <span class="c1"># In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.</span>
-  <span class="n">allow_browser</span> <span class="ss">versions: </span><span class="p">{</span> <span class="ss">opera: </span><span class="mi">104</span><span class="p">,</span> <span class="ss">chrome: </span><span class="mi">119</span> <span class="p">},</span> <span class="ss">only: :show</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>DHH</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add rate limiting API.
-</title>
-    <link>https://github.com/rails/rails/issues/50781</link>
-    <guid>https://github.com/rails/rails/issues/50781</guid>
-    <description>*   Add rate limiting API.
-
-    ```ruby
-    class SessionsController &lt; ApplicationController
-      rate_limit to: 10, within: 3.minutes, only: :create
-    end
-
-    class SignupsController &lt; ApplicationController
-      rate_limit to: 1000, within: 10.seconds,
-        by: -&gt; { request.domain }, with: -&gt; { redirect_to busy_controller_url, alert: &quot;Too many signups!&quot; }, only: :new
-    end
-    ```
-
-    *DHH*, *Jean Boussier*</description>
-    <pubDate>Wed, 17 Jan 2024 16:49:27 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Add rate limiting API.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SessionsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-  <span class="n">rate_limit</span> <span class="ss">to: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">within: </span><span class="mi">3</span><span class="p">.</span><span class="nf">minutes</span><span class="p">,</span> <span class="ss">only: :create</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">SignupsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-  <span class="n">rate_limit</span> <span class="ss">to: </span><span class="mi">1000</span><span class="p">,</span> <span class="ss">within: </span><span class="mi">10</span><span class="p">.</span><span class="nf">seconds</span><span class="p">,</span>
-    <span class="ss">by: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="n">request</span><span class="p">.</span><span class="nf">domain</span> <span class="p">},</span> <span class="ss">with: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="n">redirect_to</span> <span class="n">busy_controller_url</span><span class="p">,</span> <span class="ss">alert: </span><span class="s2">"Too many signups!"</span> <span class="p">},</span> <span class="ss">only: :new</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>DHH</em>, <em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `image/svg+xml` to the compressible content types of ActionDispatch::Static
-</title>
-    <link>https://github.com/rails/rails/issues/50359</link>
-    <guid>https://github.com/rails/rails/issues/50359</guid>
-    <description>*   Add `image/svg+xml` to the compressible content types of ActionDispatch::Static
-
-    *Georg Ledermann*</description>
-    <pubDate>Thu, 14 Dec 2023 16:54:05 +0000</pubDate>
-    <author>Georg Ledermann</author>
-    <content:encoded><![CDATA[<p>Add <code>image/svg+xml</code> to the compressible content types of ActionDispatch::Static</p>
-
-<p><em>Georg Ledermann</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add instrumentation for ActionController::Live#send_stream
-</title>
-    <link>https://github.com/rails/rails/issues/49297</link>
-    <guid>https://github.com/rails/rails/issues/49297</guid>
-    <description>*   Add instrumentation for ActionController::Live#send_stream
-
-    Allows subscribing to `send_stream` events. The event payload contains the filename, disposition, and type.
-
-    *Hannah Ramadan*</description>
-    <pubDate>Wed, 13 Dec 2023 08:38:59 +0000</pubDate>
-    <author>hramadan</author>
-    <content:encoded><![CDATA[<p>Add instrumentation for ActionController::Live#send_stream</p>
-
-<p>Allows subscribing to <code>send_stream</code> events. The event payload contains the filename, disposition, and type.</p>
-
-<p><em>Hannah Ramadan</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add support for `with_routing` test helper in `ActionDispatch::IntegrationTest`
-</title>
-    <link>https://github.com/rails/rails/issues/49819</link>
-    <guid>https://github.com/rails/rails/issues/49819</guid>
-    <description>*   Add support for `with_routing` test helper in `ActionDispatch::IntegrationTest`
-
-    *Gannon McGibbon*</description>
-    <pubDate>Fri, 24 Nov 2023 04:48:19 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Add support for <code>with_routing</code> test helper in <code>ActionDispatch::IntegrationTest</code></p>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated support to set <code>Rails.application.config.action_dispatch.show_exceptions</code> to <code>true</code> and <code>false</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Remove deprecated `speaker`, `vibrate`, and `vr` permissions policy directives.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated `speaker`, `vibrate`, and `vr` permissions policy directives.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated <code>speaker</code>, <code>vibrate</code>, and <code>vr</code> permissions policy directives.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Remove deprecated `Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated `Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated <code>Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Deprecate `Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Deprecate `Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Deprecate <code>Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Remove deprecated comparison between `ActionController::Parameters` and `Hash`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated comparison between `ActionController::Parameters` and `Hash`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated comparison between <code>ActionController::Parameters</code> and <code>Hash</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Remove deprecated constant `AbstractController::Helpers::MissingHelperError`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated constant `AbstractController::Helpers::MissingHelperError`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated constant <code>AbstractController::Helpers::MissingHelperError</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Fix a race condition that could cause a `Text file busy - chromedriver`
-</title>
-    <link>https://github.com/rails/rails/issues/49908</link>
-    <guid>https://github.com/rails/rails/issues/49908</guid>
-    <description>*   Fix a race condition that could cause a `Text file busy - chromedriver`
-    error with parallel system tests
-
-    *Matt Brictson*</description>
-    <pubDate>Tue, 07 Nov 2023 17:41:13 +0000</pubDate>
-    <author>Matt Brictson</author>
-    <content:encoded><![CDATA[<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />
-error with parallel system tests</p>
-
-<p><em>Matt Brictson</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
-</title>
-    <link>https://github.com/rails/rails/issues/49722</link>
-    <guid>https://github.com/rails/rails/issues/49722</guid>
-    <description>*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
-
-    *Hartley McGuire*</description>
-    <pubDate>Fri, 20 Oct 2023 22:10:13 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Remove deprecated constant `ActionDispatch::IllegalStateError`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated constant `ActionDispatch::IllegalStateError`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated constant <code>ActionDispatch::IllegalStateError</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add parameter filter capability for redirect locations.
-</title>
-    <link>https://github.com/rails/rails/issues/51131</link>
-    <guid>https://github.com/rails/rails/issues/51131</guid>
-    <description>*   Add parameter filter capability for redirect locations.
-
-    It uses the `config.filter_parameters` to match what needs to be filtered.
-    The result would be like this:
-
-        Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]
-
-    Fixes #14055.
-
-    *Roque Pinel*, *Trevor Turk*, *tonytonyjan*</description>
-    <pubDate>Tue, 20 Feb 2024 23:25:12 +0000</pubDate>
-    <author>Roque Pinel</author>
-    <content:encoded><![CDATA[<p>Add parameter filter capability for redirect locations.</p>
-
-<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />
-The result would be like this:</p>
-
-<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]
-</code></pre>
-
-<p>Fixes #14055.</p>
-
-<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Updating Astana with Western Kazakhstan TZInfo identifier
-</title>
-    <link>https://github.com/rails/rails/issues/51317</link>
-    <guid>https://github.com/rails/rails/issues/51317</guid>
-    <description>*   Updating Astana with Western Kazakhstan TZInfo identifier
-
-    *Damian Nelson*</description>
-    <pubDate>Wed, 13 Mar 2024 06:36:12 +0000</pubDate>
-    <author>Damian Nelson</author>
-    <content:encoded><![CDATA[<p>Updating Astana with Western Kazakhstan TZInfo identifier</p>
-
-<p><em>Damian Nelson</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Add filename support for `ActiveSupport::Logger.logger_outputs_to?`
-</title>
-    <link>https://github.com/rails/rails/issues/51198</link>
-    <guid>https://github.com/rails/rails/issues/51198</guid>
-    <description>*   Add filename support for `ActiveSupport::Logger.logger_outputs_to?`
-
-    ```ruby
-    logger = Logger.new(&#39;/var/log/rails.log&#39;)
-    ActiveSupport::Logger.logger_outputs_to?(logger, &#39;/var/log/rails.log&#39;)
-    ```
-
-    *Christian Schmidt*</description>
-    <pubDate>Tue, 27 Feb 2024 02:08:52 +0000</pubDate>
-    <author>Shinichi Maeshima</author>
-    <content:encoded><![CDATA[<p>Add filename support for <code>ActiveSupport::Logger.logger_outputs_to?</code></p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'/var/log/rails.log'</span><span class="p">)</span>
-<span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Logger</span><span class="p">.</span><span class="nf">logger_outputs_to?</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'/var/log/rails.log'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><em>Christian Schmidt</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Include `IPAddr#prefix` when serializing an `IPAddr` using the
-</title>
-    <link>https://github.com/rails/rails/issues/50742</link>
-    <guid>https://github.com/rails/rails/issues/50742</guid>
-    <description>*   Include `IPAddr#prefix` when serializing an `IPAddr` using the
-    `ActiveSupport::MessagePack` serializer. This change is backward and forward
-    compatible — old payloads can still be read, and new payloads will be
-    readable by older versions of Rails.
-
-    *Taiki Komaba*</description>
-    <pubDate>Mon, 15 Jan 2024 06:54:08 +0000</pubDate>
-    <author>r-plus</author>
-    <content:encoded><![CDATA[<p>Include <code>IPAddr#prefix</code> when serializing an <code>IPAddr</code> using the<br />
-<code>ActiveSupport::MessagePack</code> serializer. This change is backward and forward<br />
-compatible — old payloads can still be read, and new payloads will be<br />
-readable by older versions of Rails.</p>
-
-<p><em>Taiki Komaba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
-</title>
-    <link>https://github.com/rails/rails/issues/50677</link>
-    <guid>https://github.com/rails/rails/issues/50677</guid>
-    <description>*   Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
-
-    ```ruby
-    class Current &lt; ActiveSupport::CurrentAttributes
-      attribute :counter, default: 0
-    end
-    ```
-
-    *Sean Doyle*</description>
-    <pubDate>Wed, 10 Jan 2024 00:43:37 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Add <code>default:</code> support for <code>ActiveSupport::CurrentAttributes.attribute</code></p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Current</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">CurrentAttributes</span>
-  <span class="n">attribute</span> <span class="ss">:counter</span><span class="p">,</span> <span class="ss">default: </span><span class="mi">0</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Yield instance to `Object#with` block
-</title>
-    <link>https://github.com/rails/rails/issues/50470</link>
-    <guid>https://github.com/rails/rails/issues/50470</guid>
-    <description>*   Yield instance to `Object#with` block
-
-    ```ruby
-    client.with(timeout: 5_000) do |c|
-      c.get(&quot;/commits&quot;)
-    end
-    ```
-
-    *Sean Doyle*</description>
-    <pubDate>Sun, 07 Jan 2024 20:06:02 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Yield instance to <code>Object#with</code> block</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span><span class="p">.</span><span class="nf">with</span><span class="p">(</span><span class="ss">timeout: </span><span class="mi">5_000</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-  <span class="n">c</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/commits"</span><span class="p">)</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Use logical core count instead of physical core count to determine the
-</title>
-    <link>https://github.com/rails/rails/issues/50564</link>
-    <guid>https://github.com/rails/rails/issues/50564</guid>
-    <description>*   Use logical core count instead of physical core count to determine the
-    default number of workers when parallelizing tests.
-
-    *Jonathan Hefner*</description>
-    <pubDate>Wed, 03 Jan 2024 23:08:09 +0000</pubDate>
-    <author>Jonathan Hefner</author>
-    <content:encoded><![CDATA[<p>Use logical core count instead of physical core count to determine the<br />
-default number of workers when parallelizing tests.</p>
-
-<p><em>Jonathan Hefner</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
-</title>
-    <link>https://github.com/rails/rails/issues/50749</link>
-    <guid>https://github.com/rails/rails/issues/50749</guid>
-    <description>*   Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
-
-    There is a bug in the current implementation of #travel_to:
-    it remembers a timezone of its argument, and all stubbed methods start
-    returning results in that remembered timezone. However, the expected
-    behaviour is to return results in a system timezone.
-
-    *Aleksei Chernenkov*</description>
-    <pubDate>Sun, 14 Jan 2024 16:31:12 +0000</pubDate>
-    <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Fix <code>Time.now/DateTime.now/Date.today</code> to return results in a system timezone after <code>#travel_to</code>.</p>
-
-<p>There is a bug in the current implementation of #travel_to:<br />
-it remembers a timezone of its argument, and all stubbed methods start<br />
-returning results in that remembered timezone. However, the expected<br />
-behaviour is to return results in a system timezone.</p>
-
-<p><em>Aleksei Chernenkov</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Add `ErrorReported#unexpected` to report precondition violations.
-</title>
-    <link>https://github.com/rails/rails/issues/49951</link>
-    <guid>https://github.com/rails/rails/issues/49951</guid>
-    <description>*   Add `ErrorReported#unexpected` to report precondition violations.
-
-    For example:
-
-    ```ruby
-    def edit
-      if published?
-        Rails.error.unexpected(&quot;[BUG] Attempting to edit a published article, that shouldn&#39;t be possible&quot;)
-        return false
-      end
-      # ...
-    end
-    ```
-
-    The above will raise an error in development and test, but only report the error in production.
-
-    *Jean Boussier*</description>
-    <pubDate>Mon, 20 Nov 2023 08:55:10 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Add <code>ErrorReported#unexpected</code> to report precondition violations.</p>
-
-<p>For example:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">edit</span>
-  <span class="k">if</span> <span class="n">published?</span>
-    <span class="no">Rails</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">unexpected</span><span class="p">(</span><span class="s2">"[BUG] Attempting to edit a published article, that shouldn't be possible"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kp">false</span>
-  <span class="k">end</span>
-  <span class="c1"># ...</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p>The above will raise an error in development and test, but only report the error in production.</p>
-
-<p><em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
-</title>
-    <link>https://github.com/rails/rails/issues/50071</link>
-    <guid>https://github.com/rails/rails/issues/50071</guid>
-    <description>*   Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
-
-    *Adam Renberg Tamm*</description>
-    <pubDate>Fri, 17 Nov 2023 17:37:39 +0000</pubDate>
-    <author>Adam Renberg Tamm</author>
-    <content:encoded><![CDATA[<p>Make the order of read_multi and write_multi notifications for <code>Cache::Store#fetch_multi</code> operations match the order they are executed in.</p>
-
-<p><em>Adam Renberg Tamm</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Make return values of `Cache::Store#write` consistent.
-</title>
-    <link>https://github.com/rails/rails/issues/49873</link>
-    <guid>https://github.com/rails/rails/issues/49873</guid>
-    <description>*   Make return values of `Cache::Store#write` consistent.
-
-    The return value was not specified before. Now it returns `true` on a successful write,
-    `nil` if there was an error talking to the cache backend, and `false` if the write failed
-    for another reason (e.g. the key already exists and `unless_exist: true` was passed).
-
-    *Sander Verdonschot*</description>
-    <pubDate>Thu, 16 Nov 2023 14:55:51 +0000</pubDate>
-    <author>Sander Verdonschot</author>
-    <content:encoded><![CDATA[<p>Make return values of <code>Cache::Store#write</code> consistent.</p>
-
-<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />
-<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />
-for another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>
-
-<p><em>Sander Verdonschot</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix logged cache keys not always matching actual key used by cache action.
-</title>
-    <link>https://github.com/rails/rails/issues/50008</link>
-    <guid>https://github.com/rails/rails/issues/50008</guid>
-    <description>*   Fix logged cache keys not always matching actual key used by cache action.
-
-    *Hartley McGuire*</description>
-    <pubDate>Sat, 11 Nov 2023 19:12:48 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Fix logged cache keys not always matching actual key used by cache action.</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Improve error messages of `assert_changes` and `assert_no_changes`
-</title>
-    <link>https://github.com/rails/rails/issues/48482</link>
-    <guid>https://github.com/rails/rails/issues/48482</guid>
-    <description>*   Improve error messages of `assert_changes` and `assert_no_changes`
-
-    `assert_changes` error messages now display objects with `.inspect` to make it easier
-    to differentiate nil from empty strings, strings from symbols, etc.
-    `assert_no_changes` error messages now surface the actual value.
-
-    *pcreux*</description>
-    <pubDate>Mon, 30 Oct 2023 18:43:51 +0000</pubDate>
-    <author>Philippe Creux</author>
-    <content:encoded><![CDATA[<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>
-
-<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />
-to differentiate nil from empty strings, strings from symbols, etc.<br />
-<code>assert_no_changes</code> error messages now surface the actual value.</p>
-
-<p><em>pcreux</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix `#to_fs(:human_size)` to correctly work with negative numbers.
-</title>
-    <link>https://github.com/rails/rails/issues/49791</link>
-    <guid>https://github.com/rails/rails/issues/49791</guid>
-    <description>*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.
-
-    *Earlopain*</description>
-    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
-    <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>
-
-<p><em>Earlopain</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
-</title>
-    <link>https://github.com/rails/rails/issues/49720</link>
-    <guid>https://github.com/rails/rails/issues/49720</guid>
-    <description>*   Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
-
-    *Andrew Novoselac*</description>
-    <pubDate>Mon, 23 Oct 2023 23:05:43 +0000</pubDate>
-    <author>Andrew Novoselac</author>
-    <content:encoded><![CDATA[<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>
-
-<p><em>Andrew Novoselac</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
-</title>
-    <link>https://github.com/rails/rails/issues/49721</link>
-    <guid>https://github.com/rails/rails/issues/49721</guid>
-    <description>*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
-
-    *Andrew Novoselac*</description>
-    <pubDate>Fri, 20 Oct 2023 16:59:24 +0000</pubDate>
-    <author>Andrew Novoselac</author>
-    <content:encoded><![CDATA[<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>
-
-<p><em>Andrew Novoselac</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix compatibility with the `semantic_logger` gem.
-</title>
-    <link>https://github.com/rails/rails/issues/49621</link>
-    <guid>https://github.com/rails/rails/issues/49621</guid>
-    <description>*   Fix compatibility with the `semantic_logger` gem.
-
-    The `semantic_logger` gem doesn&#39;t behave exactly like stdlib logger in that
-    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.
-
-    This caused the various `LogSubscriber` classes in Rails to break when assigned a
-    `SemanticLogger` instance.
-
-    *Jean Boussier*, *ojab*</description>
-    <pubDate>Fri, 13 Oct 2023 12:34:06 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>
-
-<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />
-<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>
-
-<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />
-<code>SemanticLogger</code> instance.</p>
-
-<p><em>Jean Boussier</em>, <em>ojab</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Fix MemoryStore to prevent race conditions when incrementing or decrementing.
-</title>
-    <link>https://github.com/rails/rails/issues/49542</link>
-    <guid>https://github.com/rails/rails/issues/49542</guid>
-    <description>*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.
-
-    *Pierre Jambet*</description>
-    <pubDate>Mon, 09 Oct 2023 07:24:47 +0000</pubDate>
-    <author>Pierre Jambet</author>
-    <content:encoded><![CDATA[<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>
-
-<p><em>Pierre Jambet</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activesupport: Implement `HashWithIndifferentAccess#to_proc`.
-</title>
-    <link>https://github.com/rails/rails/issues/49475</link>
-    <guid>https://github.com/rails/rails/issues/49475</guid>
-    <description>*   Implement `HashWithIndifferentAccess#to_proc`.
-
-    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`
-    method from the `Hash` class, which was not able to access values using indifferent keys.
-
-    *fatkodima*</description>
-    <pubDate>Wed, 04 Oct 2023 07:56:58 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>
-
-<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />
-method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
-
-<p><em>fatkodima</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>railties: Fix sanitizer vendor configuration in 7.1 defaults.
 </title>
     <link>https://github.com/rails/rails/issues/51267</link>
@@ -1444,381 +730,383 @@ for all environments, as the value is the same in all environments.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`
+    <title>activesupport: Updating Astana with Western Kazakhstan TZInfo identifier
 </title>
-    <link>https://github.com/rails/rails/issues/50589</link>
-    <guid>https://github.com/rails/rails/issues/50589</guid>
-    <description>*   Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`
-    and `assert_has_no_stream_for`. These methods can be used to assert that a
-    stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement
-    the already existing `assert_has_stream` and `assert_has_stream_for` methods.
+    <link>https://github.com/rails/rails/issues/51317</link>
+    <guid>https://github.com/rails/rails/issues/51317</guid>
+    <description>*   Updating Astana with Western Kazakhstan TZInfo identifier
+
+    *Damian Nelson*</description>
+    <pubDate>Wed, 13 Mar 2024 06:36:12 +0000</pubDate>
+    <author>Damian Nelson</author>
+    <content:encoded><![CDATA[<p>Updating Astana with Western Kazakhstan TZInfo identifier</p>
+
+<p><em>Damian Nelson</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add filename support for `ActiveSupport::Logger.logger_outputs_to?`
+</title>
+    <link>https://github.com/rails/rails/issues/51198</link>
+    <guid>https://github.com/rails/rails/issues/51198</guid>
+    <description>*   Add filename support for `ActiveSupport::Logger.logger_outputs_to?`
 
     ```ruby
-    assert_has_no_stream &quot;messages&quot;
-    assert_has_no_stream_for User.find(42)
+    logger = Logger.new(&#39;/var/log/rails.log&#39;)
+    ActiveSupport::Logger.logger_outputs_to?(logger, &#39;/var/log/rails.log&#39;)
     ```
 
-    *Sebastian Pöll*, *Junichi Sato*</description>
-    <pubDate>Fri, 05 Jan 2024 15:03:51 +0000</pubDate>
-    <author>Junichi Sato</author>
-    <content:encoded><![CDATA[<p>Add two new assertion methods for ActionCable test cases: <code>assert_has_no_stream</code><br />
-and <code>assert_has_no_stream_for</code>. These methods can be used to assert that a<br />
-stream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />
-the already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>
+    *Christian Schmidt*</description>
+    <pubDate>Tue, 27 Feb 2024 02:08:52 +0000</pubDate>
+    <author>Shinichi Maeshima</author>
+    <content:encoded><![CDATA[<p>Add filename support for <code>ActiveSupport::Logger.logger_outputs_to?</code></p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_has_no_stream</span> <span class="s2">"messages"</span>
-<span class="n">assert_has_no_stream_for</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'/var/log/rails.log'</span><span class="p">)</span>
+<span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Logger</span><span class="p">.</span><span class="nf">logger_outputs_to?</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="s1">'/var/log/rails.log'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>
+<p><em>Christian Schmidt</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activejob: Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.
+    <title>activesupport: Include `IPAddr#prefix` when serializing an `IPAddr` using the
 </title>
-    <link>https://github.com/rails/rails/issues/50713</link>
-    <guid>https://github.com/rails/rails/issues/50713</guid>
-    <description>*   Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.
+    <link>https://github.com/rails/rails/issues/50742</link>
+    <guid>https://github.com/rails/rails/issues/50742</guid>
+    <description>*   Include `IPAddr#prefix` when serializing an `IPAddr` using the
+    `ActiveSupport::MessagePack` serializer. This change is backward and forward
+    compatible — old payloads can still be read, and new payloads will be
+    readable by older versions of Rails.
 
-    *Maxime Réty*</description>
-    <pubDate>Thu, 11 Jan 2024 19:41:21 +0000</pubDate>
-    <author>maximerety</author>
-    <content:encoded><![CDATA[<p>Do not trigger immediate loading of <code>ActiveJob::Base</code> when loading <code>ActiveJob::TestHelper</code>.</p>
+    *Taiki Komaba*</description>
+    <pubDate>Mon, 15 Jan 2024 06:54:08 +0000</pubDate>
+    <author>r-plus</author>
+    <content:encoded><![CDATA[<p>Include <code>IPAddr#prefix</code> when serializing an <code>IPAddr</code> using the<br />
+<code>ActiveSupport::MessagePack</code> serializer. This change is backward and forward<br />
+compatible — old payloads can still be read, and new payloads will be<br />
+readable by older versions of Rails.</p>
 
-<p><em>Maxime Réty</em></p>
+<p><em>Taiki Komaba</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activejob: Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.
+    <title>activesupport: Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
 </title>
-    <link>https://github.com/rails/rails/issues/50230</link>
-    <guid>https://github.com/rails/rails/issues/50230</guid>
-    <description>*   Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.
+    <link>https://github.com/rails/rails/issues/50677</link>
+    <guid>https://github.com/rails/rails/issues/50677</guid>
+    <description>*   Add `default:` support for `ActiveSupport::CurrentAttributes.attribute`
 
-    *Joshua Young*</description>
-    <pubDate>Sat, 02 Dec 2023 15:05:46 +0000</pubDate>
-    <author>Joshua Young</author>
-    <content:encoded><![CDATA[<p>Preserve the serialized timezone when deserializing <code>ActiveSupport::TimeWithZone</code> arguments.</p>
-
-<p><em>Joshua Young</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Remove deprecated `:exponentially_longer` value for the `:wait` in `retry_on`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated `:exponentially_longer` value for the `:wait` in `retry_on`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated <code>:exponentially_longer</code> value for the <code>:wait</code> in <code>retry_on</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Remove deprecated support to set numeric values to `scheduled_at` attribute.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated support to set numeric values to `scheduled_at` attribute.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated support to set numeric values to <code>scheduled_at</code> attribute.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Deprecate `Rails.application.config.active_job.use_big_decimal_serialize`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Deprecate `Rails.application.config.active_job.use_big_decimal_serialize`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Deprecate <code>Rails.application.config.active_job.use_big_decimal_serialize</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Remove deprecated primitive serializer for `BigDecimal` arguments.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated primitive serializer for `BigDecimal` arguments.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated primitive serializer for <code>BigDecimal</code> arguments.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Raise `ArgumentError` if `:renderable` object does not respond to `#render_in`
-</title>
-    <link>https://github.com/rails/rails/issues/50665</link>
-    <guid>https://github.com/rails/rails/issues/50665</guid>
-    <description>*   Raise `ArgumentError` if `:renderable` object does not respond to `#render_in`
+    ```ruby
+    class Current &lt; ActiveSupport::CurrentAttributes
+      attribute :counter, default: 0
+    end
+    ```
 
     *Sean Doyle*</description>
-    <pubDate>Tue, 09 Jan 2024 22:03:24 +0000</pubDate>
+    <pubDate>Wed, 10 Jan 2024 00:43:37 +0000</pubDate>
     <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Raise <code>ArgumentError</code> if <code>:renderable</code> object does not respond to <code>#render_in</code></p>
+    <content:encoded><![CDATA[<p>Add <code>default:</code> support for <code>ActiveSupport::CurrentAttributes.attribute</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Current</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">CurrentAttributes</span>
+  <span class="n">attribute</span> <span class="ss">:counter</span><span class="p">,</span> <span class="ss">default: </span><span class="mi">0</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
 <p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Add the `nonce: true` option for `stylesheet_link_tag` helper to support automatic nonce generation for Content Security Policy.
+    <title>activesupport: Yield instance to `Object#with` block
 </title>
-    <link>https://github.com/rails/rails/issues/50591</link>
-    <guid>https://github.com/rails/rails/issues/50591</guid>
-    <description>*   Add the `nonce: true` option for `stylesheet_link_tag` helper to support automatic nonce generation for Content Security Policy.
-    Works the same way as `javascript_include_tag nonce: true` does.
+    <link>https://github.com/rails/rails/issues/50470</link>
+    <guid>https://github.com/rails/rails/issues/50470</guid>
+    <description>*   Yield instance to `Object#with` block
 
-    *Akhil G Krishnan*, *AJ Esler*</description>
-    <pubDate>Fri, 05 Jan 2024 15:29:13 +0000</pubDate>
-    <author>Akhil G Krishnan</author>
-    <content:encoded><![CDATA[<p>Add the <code>nonce: true</code> option for <code>stylesheet_link_tag</code> helper to support automatic nonce generation for Content Security Policy.<br />
-Works the same way as <code>javascript_include_tag nonce: true</code> does.</p>
-
-<p><em>Akhil G Krishnan</em>, <em>AJ Esler</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Parse `ActionView::TestCase#rendered` HTML content as `Nokogiri::XML::DocumentFragment` instead of `Nokogiri::XML::Document`
-</title>
-    <link>https://github.com/rails/rails/issues/50584</link>
-    <guid>https://github.com/rails/rails/issues/50584</guid>
-    <description>*   Parse `ActionView::TestCase#rendered` HTML content as `Nokogiri::XML::DocumentFragment` instead of `Nokogiri::XML::Document`
+    ```ruby
+    client.with(timeout: 5_000) do |c|
+      c.get(&quot;/commits&quot;)
+    end
+    ```
 
     *Sean Doyle*</description>
-    <pubDate>Thu, 04 Jan 2024 22:38:53 +0000</pubDate>
+    <pubDate>Sun, 07 Jan 2024 20:06:02 +0000</pubDate>
     <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Parse <code>ActionView::TestCase#rendered</code> HTML content as <code>Nokogiri::XML::DocumentFragment</code> instead of <code>Nokogiri::XML::Document</code></p>
+    <content:encoded><![CDATA[<p>Yield instance to <code>Object#with</code> block</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span><span class="p">.</span><span class="nf">with</span><span class="p">(</span><span class="ss">timeout: </span><span class="mi">5_000</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+  <span class="n">c</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"/commits"</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
 <p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Rename `ActionView::TestCase::Behavior::Content` to `ActionView::TestCase::Behavior::RenderedViewContent`
+    <title>activesupport: Use logical core count instead of physical core count to determine the
 </title>
-    <link>https://github.com/rails/rails/issues/49856</link>
-    <guid>https://github.com/rails/rails/issues/49856</guid>
-    <description>*   Rename `ActionView::TestCase::Behavior::Content` to `ActionView::TestCase::Behavior::RenderedViewContent`
+    <link>https://github.com/rails/rails/issues/50564</link>
+    <guid>https://github.com/rails/rails/issues/50564</guid>
+    <description>*   Use logical core count instead of physical core count to determine the
+    default number of workers when parallelizing tests.
 
-    Make `RenderedViewContent` inherit from `String`. Make private API with `:nodoc:`
+    *Jonathan Hefner*</description>
+    <pubDate>Wed, 03 Jan 2024 23:08:09 +0000</pubDate>
+    <author>Jonathan Hefner</author>
+    <content:encoded><![CDATA[<p>Use logical core count instead of physical core count to determine the<br />
+default number of workers when parallelizing tests.</p>
 
-    *Sean Doyle*</description>
-    <pubDate>Mon, 15 Jan 2024 09:55:48 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Rename <code>ActionView::TestCase::Behavior::Content</code> to <code>ActionView::TestCase::Behavior::RenderedViewContent</code></p>
-
-<p>Make <code>RenderedViewContent</code> inherit from <code>String</code>. Make private API with <code>:nodoc:</code></p>
-
-<p><em>Sean Doyle</em></p>
+<p><em>Jonathan Hefner</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Deprecate passing `nil` as value for the `model:` argument to the `form_with` method.
+    <title>activesupport: Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
 </title>
-    <link>https://github.com/rails/rails/issues/50931</link>
-    <guid>https://github.com/rails/rails/issues/50931</guid>
-    <description>*   Deprecate passing `nil` as value for the `model:` argument to the `form_with` method.
+    <link>https://github.com/rails/rails/issues/50749</link>
+    <guid>https://github.com/rails/rails/issues/50749</guid>
+    <description>*   Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.
 
-    *Collin Jilbert*</description>
-    <pubDate>Thu, 01 Feb 2024 23:15:01 +0000</pubDate>
-    <author>cjilbert504</author>
-    <content:encoded><![CDATA[<p>Deprecate passing <code>nil</code> as value for the <code>model:</code> argument to the <code>form_with</code> method.</p>
+    There is a bug in the current implementation of #travel_to:
+    it remembers a timezone of its argument, and all stubbed methods start
+    returning results in that remembered timezone. However, the expected
+    behaviour is to return results in a system timezone.
 
-<p><em>Collin Jilbert</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Alias `field_set_tag` helper to `fieldset_tag` to match `&lt;fieldset&gt;` element
-</title>
-    <link>https://github.com/rails/rails/issues/50241</link>
-    <guid>https://github.com/rails/rails/issues/50241</guid>
-    <description>*   Alias `field_set_tag` helper to `fieldset_tag` to match `&lt;fieldset&gt;` element
-
-    *Sean Doyle*</description>
-    <pubDate>Sat, 02 Dec 2023 09:23:24 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Alias <code>field_set_tag</code> helper to <code>fieldset_tag</code> to match <code>&lt;fieldset&gt;</code> element</p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Deprecate passing content to void elements when using `tag.br` type tag builders.
-</title>
-    <link>https://github.com/rails/rails/issues/50159</link>
-    <guid>https://github.com/rails/rails/issues/50159</guid>
-    <description>*   Deprecate passing content to void elements when using `tag.br` type tag builders.
-
-    *Hartley McGuire*</description>
-    <pubDate>Fri, 01 Dec 2023 14:34:30 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Deprecate passing content to void elements when using <code>tag.br</code> type tag builders.</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Fix the `number_to_human_size` view helper to correctly work with negative numbers.
-</title>
-    <link>https://github.com/rails/rails/issues/49791</link>
-    <guid>https://github.com/rails/rails/issues/49791</guid>
-    <description>*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.
-
-    *Earlopain*</description>
-    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
+    *Aleksei Chernenkov*</description>
+    <pubDate>Sun, 14 Jan 2024 16:31:12 +0000</pubDate>
     <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Fix the <code>number_to_human_size</code> view helper to correctly work with negative numbers.</p>
+    <content:encoded><![CDATA[<p>Fix <code>Time.now/DateTime.now/Date.today</code> to return results in a system timezone after <code>#travel_to</code>.</p>
 
-<p><em>Earlopain</em></p>
+<p>There is a bug in the current implementation of #travel_to:<br />
+it remembers a timezone of its argument, and all stubbed methods start<br />
+returning results in that remembered timezone. However, the expected<br />
+behaviour is to return results in a system timezone.</p>
+
+<p><em>Aleksei Chernenkov</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
+    <title>activesupport: Add `ErrorReported#unexpected` to report precondition violations.
 </title>
-    <link>https://github.com/rails/rails/issues/49782</link>
-    <guid>https://github.com/rails/rails/issues/49782</guid>
-    <description>*   Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
+    <link>https://github.com/rails/rails/issues/49951</link>
+    <guid>https://github.com/rails/rails/issues/49951</guid>
+    <description>*   Add `ErrorReported#unexpected` to report precondition violations.
 
-    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.
+    For example:
 
-    Now they are only passed if the template will actually accept them.
+    ```ruby
+    def edit
+      if published?
+        Rails.error.unexpected(&quot;[BUG] Attempting to edit a published article, that shouldn&#39;t be possible&quot;)
+        return false
+      end
+      # ...
+    end
+    ```
 
-    *Yasha Krasnou*, *Jean Boussier*</description>
-    <pubDate>Wed, 25 Oct 2023 16:00:06 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Automatically discard the implicit locals injected by collection rendering for template that can’t accept them</p>
-
-<p>When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.</p>
-
-<p>Now they are only passed if the template will actually accept them.</p>
-
-<p><em>Yasha Krasnou</em>, <em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Fix `@rails/ujs` calling `start()` an extra time when using bundlers
-</title>
-    <link>https://github.com/rails/rails/issues/49668</link>
-    <guid>https://github.com/rails/rails/issues/49668</guid>
-    <description>*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers
-
-    *Hartley McGuire*, *Ryunosuke Sato*</description>
-    <pubDate>Tue, 24 Oct 2023 19:01:24 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Fix <code>@rails/ujs</code> calling <code>start()</code> an extra time when using bundlers</p>
-
-<p><em>Hartley McGuire</em>, <em>Ryunosuke Sato</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Fix the `capture` view helper compatibility with HAML and Slim
-</title>
-    <link>https://github.com/rails/rails/issues/49612</link>
-    <guid>https://github.com/rails/rails/issues/49612</guid>
-    <description>*   Fix the `capture` view helper compatibility with HAML and Slim
-
-    When a blank string was captured in HAML or Slim (and possibly other template engines)
-    it would instead return the entire buffer.
+    The above will raise an error in development and test, but only report the error in production.
 
     *Jean Boussier*</description>
-    <pubDate>Fri, 13 Oct 2023 06:29:47 +0000</pubDate>
+    <pubDate>Mon, 20 Nov 2023 08:55:10 +0000</pubDate>
     <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>
+    <content:encoded><![CDATA[<p>Add <code>ErrorReported#unexpected</code> to report precondition violations.</p>
 
-<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />
-it would instead return the entire buffer.</p>
+<p>For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">edit</span>
+  <span class="k">if</span> <span class="n">published?</span>
+    <span class="no">Rails</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">unexpected</span><span class="p">(</span><span class="s2">"[BUG] Attempting to edit a published article, that shouldn't be possible"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kp">false</span>
+  <span class="k">end</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>The above will raise an error in development and test, but only report the error in production.</p>
 
 <p><em>Jean Boussier</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+    <title>activesupport: Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
 </title>
-    <link>https://github.com/rails/rails/issues/49553</link>
-    <guid>https://github.com/rails/rails/issues/49553</guid>
-    <description>*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+    <link>https://github.com/rails/rails/issues/50071</link>
+    <guid>https://github.com/rails/rails/issues/50071</guid>
+    <description>*   Make the order of read_multi and write_multi notifications for `Cache::Store#fetch_multi` operations match the order they are executed in.
 
-    This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.
-    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]
+    *Adam Renberg Tamm*</description>
+    <pubDate>Fri, 17 Nov 2023 17:37:39 +0000</pubDate>
+    <author>Adam Renberg Tamm</author>
+    <content:encoded><![CDATA[<p>Make the order of read_multi and write_multi notifications for <code>Cache::Store#fetch_multi</code> operations match the order they are executed in.</p>
 
-    *Ryunosuke Sato*</description>
-    <pubDate>Wed, 11 Oct 2023 20:44:41 +0000</pubDate>
-    <author>Ryunosuke Sato</author>
-    <content:encoded><![CDATA[<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>
-
-<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />
-[<a href="https://github.com/advisories/GHSA-xp5h-f8jf-rc8q">CVE-2023-23913</a>]</p>
-
-<p><em>Ryunosuke Sato</em></p>
+<p><em>Adam Renberg Tamm</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
+    <title>activesupport: Make return values of `Cache::Store#write` consistent.
 </title>
-    <link>https://github.com/rails/rails/issues/49175</link>
-    <guid>https://github.com/rails/rails/issues/49175</guid>
-    <description>*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
-    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If
-    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error
-    message.
+    <link>https://github.com/rails/rails/issues/49873</link>
+    <guid>https://github.com/rails/rails/issues/49873</guid>
+    <description>*   Make return values of `Cache::Store#write` consistent.
 
-    Examples:
+    The return value was not specified before. Now it returns `true` on a successful write,
+    `nil` if there was an error talking to the cache backend, and `false` if the write failed
+    for another reason (e.g. the key already exists and `unless_exist: true` was passed).
 
-    ```ruby
-    # Raises ArgumentError: Invalid HTML5 tag name: 12p
-    content_tag(&quot;12p&quot;) # Starting with a number
+    *Sander Verdonschot*</description>
+    <pubDate>Thu, 16 Nov 2023 14:55:51 +0000</pubDate>
+    <author>Sander Verdonschot</author>
+    <content:encoded><![CDATA[<p>Make return values of <code>Cache::Store#write</code> consistent.</p>
 
-    # Raises ArgumentError: Invalid HTML5 tag name: &quot;&quot;
-    content_tag(&quot;&quot;) # Empty tag name
+<p>The return value was not specified before. Now it returns <code>true</code> on a successful write,<br />
+<code>nil</code> if there was an error talking to the cache backend, and <code>false</code> if the write failed<br />
+for another reason (e.g. the key already exists and <code>unless_exist: true</code> was passed).</p>
 
-    # Raises ArgumentError: Invalid HTML5 tag name: div/
-    tag(&quot;div/&quot;) # Contains a solidus
+<p><em>Sander Verdonschot</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix logged cache keys not always matching actual key used by cache action.
+</title>
+    <link>https://github.com/rails/rails/issues/50008</link>
+    <guid>https://github.com/rails/rails/issues/50008</guid>
+    <description>*   Fix logged cache keys not always matching actual key used by cache action.
 
-    # Raises ArgumentError: Invalid HTML5 tag name: &quot;image file&quot;
-    tag(&quot;image file&quot;) # Contains a space
-    ```
+    *Hartley McGuire*</description>
+    <pubDate>Sat, 11 Nov 2023 19:12:48 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix logged cache keys not always matching actual key used by cache action.</p>
 
-    *Akhil G Krishnan*</description>
-    <pubDate>Wed, 27 Sep 2023 17:37:41 +0000</pubDate>
-    <author>Akhil G Krishnan</author>
-    <content:encoded><![CDATA[<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />
-<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />
-an invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />
-message.</p>
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Improve error messages of `assert_changes` and `assert_no_changes`
+</title>
+    <link>https://github.com/rails/rails/issues/48482</link>
+    <guid>https://github.com/rails/rails/issues/48482</guid>
+    <description>*   Improve error messages of `assert_changes` and `assert_no_changes`
 
-<p>Examples:</p>
+    `assert_changes` error messages now display objects with `.inspect` to make it easier
+    to differentiate nil from empty strings, strings from symbols, etc.
+    `assert_no_changes` error messages now surface the actual value.
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>
-<span class="n">content_tag</span><span class="p">(</span><span class="s2">"12p"</span><span class="p">)</span> <span class="c1"># Starting with a number</span>
+    *pcreux*</description>
+    <pubDate>Mon, 30 Oct 2023 18:43:51 +0000</pubDate>
+    <author>Philippe Creux</author>
+    <content:encoded><![CDATA[<p>Improve error messages of <code>assert_changes</code> and <code>assert_no_changes</code></p>
 
-<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: ""</span>
-<span class="n">content_tag</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="c1"># Empty tag name</span>
+<p><code>assert_changes</code> error messages now display objects with <code>.inspect</code> to make it easier<br />
+to differentiate nil from empty strings, strings from symbols, etc.<br />
+<code>assert_no_changes</code> error messages now surface the actual value.</p>
 
-<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>
-<span class="n">tag</span><span class="p">(</span><span class="s2">"div/"</span><span class="p">)</span> <span class="c1"># Contains a solidus</span>
+<p><em>pcreux</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix `#to_fs(:human_size)` to correctly work with negative numbers.
+</title>
+    <link>https://github.com/rails/rails/issues/49791</link>
+    <guid>https://github.com/rails/rails/issues/49791</guid>
+    <description>*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.
 
-<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: "image file"</span>
-<span class="n">tag</span><span class="p">(</span><span class="s2">"image file"</span><span class="p">)</span> <span class="c1"># Contains a space</span>
-</code></pre></div></div>
+    *Earlopain*</description>
+    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>
 
-<p><em>Akhil G Krishnan</em></p>
+<p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
+</title>
+    <link>https://github.com/rails/rails/issues/49720</link>
+    <guid>https://github.com/rails/rails/issues/49720</guid>
+    <description>*   Fix `BroadcastLogger#dup` so that it duplicates the logger&#39;s `broadcasts`.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Mon, 23 Oct 2023 23:05:43 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
+</title>
+    <link>https://github.com/rails/rails/issues/49721</link>
+    <guid>https://github.com/rails/rails/issues/49721</guid>
+    <description>*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`&#39;s `broadcasts`.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Fri, 20 Oct 2023 16:59:24 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix compatibility with the `semantic_logger` gem.
+</title>
+    <link>https://github.com/rails/rails/issues/49621</link>
+    <guid>https://github.com/rails/rails/issues/49621</guid>
+    <description>*   Fix compatibility with the `semantic_logger` gem.
+
+    The `semantic_logger` gem doesn&#39;t behave exactly like stdlib logger in that
+    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.
+
+    This caused the various `LogSubscriber` classes in Rails to break when assigned a
+    `SemanticLogger` instance.
+
+    *Jean Boussier*, *ojab*</description>
+    <pubDate>Fri, 13 Oct 2023 12:34:06 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>
+
+<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />
+<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>
+
+<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />
+<code>SemanticLogger</code> instance.</p>
+
+<p><em>Jean Boussier</em>, <em>ojab</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix MemoryStore to prevent race conditions when incrementing or decrementing.
+</title>
+    <link>https://github.com/rails/rails/issues/49542</link>
+    <guid>https://github.com/rails/rails/issues/49542</guid>
+    <description>*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.
+
+    *Pierre Jambet*</description>
+    <pubDate>Mon, 09 Oct 2023 07:24:47 +0000</pubDate>
+    <author>Pierre Jambet</author>
+    <content:encoded><![CDATA[<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>
+
+<p><em>Pierre Jambet</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Implement `HashWithIndifferentAccess#to_proc`.
+</title>
+    <link>https://github.com/rails/rails/issues/49475</link>
+    <guid>https://github.com/rails/rails/issues/49475</guid>
+    <description>*   Implement `HashWithIndifferentAccess#to_proc`.
+
+    Previously, calling `#to_proc` on `HashWithIndifferentAccess` object used inherited `#to_proc`
+    method from the `Hash` class, which was not able to access values using indifferent keys.
+
+    *fatkodima*</description>
+    <pubDate>Wed, 04 Oct 2023 07:56:58 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>
+
+<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />
+method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
+
+<p><em>fatkodima</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -3525,6 +2813,384 @@ column).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.
+</title>
+    <link>https://github.com/rails/rails/issues/50713</link>
+    <guid>https://github.com/rails/rails/issues/50713</guid>
+    <description>*   Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.
+
+    *Maxime Réty*</description>
+    <pubDate>Thu, 11 Jan 2024 19:41:21 +0000</pubDate>
+    <author>maximerety</author>
+    <content:encoded><![CDATA[<p>Do not trigger immediate loading of <code>ActiveJob::Base</code> when loading <code>ActiveJob::TestHelper</code>.</p>
+
+<p><em>Maxime Réty</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.
+</title>
+    <link>https://github.com/rails/rails/issues/50230</link>
+    <guid>https://github.com/rails/rails/issues/50230</guid>
+    <description>*   Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.
+
+    *Joshua Young*</description>
+    <pubDate>Sat, 02 Dec 2023 15:05:46 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Preserve the serialized timezone when deserializing <code>ActiveSupport::TimeWithZone</code> arguments.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Remove deprecated `:exponentially_longer` value for the `:wait` in `retry_on`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated `:exponentially_longer` value for the `:wait` in `retry_on`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>:exponentially_longer</code> value for the <code>:wait</code> in <code>retry_on</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Remove deprecated support to set numeric values to `scheduled_at` attribute.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated support to set numeric values to `scheduled_at` attribute.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to set numeric values to <code>scheduled_at</code> attribute.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Deprecate `Rails.application.config.active_job.use_big_decimal_serialize`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Deprecate `Rails.application.config.active_job.use_big_decimal_serialize`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>Rails.application.config.active_job.use_big_decimal_serialize</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Remove deprecated primitive serializer for `BigDecimal` arguments.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated primitive serializer for `BigDecimal` arguments.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated primitive serializer for <code>BigDecimal</code> arguments.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Remove deprecated params via `:args` for `assert_enqueued_email_with`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated params via `:args` for `assert_enqueued_email_with`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated params via <code>:args</code> for <code>assert_enqueued_email_with</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailer: Remove deprecated `config.action_mailer.preview_path`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated `config.action_mailer.preview_path`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Raise `ArgumentError` if `:renderable` object does not respond to `#render_in`
+</title>
+    <link>https://github.com/rails/rails/issues/50665</link>
+    <guid>https://github.com/rails/rails/issues/50665</guid>
+    <description>*   Raise `ArgumentError` if `:renderable` object does not respond to `#render_in`
+
+    *Sean Doyle*</description>
+    <pubDate>Tue, 09 Jan 2024 22:03:24 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Raise <code>ArgumentError</code> if <code>:renderable</code> object does not respond to <code>#render_in</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Add the `nonce: true` option for `stylesheet_link_tag` helper to support automatic nonce generation for Content Security Policy.
+</title>
+    <link>https://github.com/rails/rails/issues/50591</link>
+    <guid>https://github.com/rails/rails/issues/50591</guid>
+    <description>*   Add the `nonce: true` option for `stylesheet_link_tag` helper to support automatic nonce generation for Content Security Policy.
+    Works the same way as `javascript_include_tag nonce: true` does.
+
+    *Akhil G Krishnan*, *AJ Esler*</description>
+    <pubDate>Fri, 05 Jan 2024 15:29:13 +0000</pubDate>
+    <author>Akhil G Krishnan</author>
+    <content:encoded><![CDATA[<p>Add the <code>nonce: true</code> option for <code>stylesheet_link_tag</code> helper to support automatic nonce generation for Content Security Policy.<br />
+Works the same way as <code>javascript_include_tag nonce: true</code> does.</p>
+
+<p><em>Akhil G Krishnan</em>, <em>AJ Esler</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Parse `ActionView::TestCase#rendered` HTML content as `Nokogiri::XML::DocumentFragment` instead of `Nokogiri::XML::Document`
+</title>
+    <link>https://github.com/rails/rails/issues/50584</link>
+    <guid>https://github.com/rails/rails/issues/50584</guid>
+    <description>*   Parse `ActionView::TestCase#rendered` HTML content as `Nokogiri::XML::DocumentFragment` instead of `Nokogiri::XML::Document`
+
+    *Sean Doyle*</description>
+    <pubDate>Thu, 04 Jan 2024 22:38:53 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Parse <code>ActionView::TestCase#rendered</code> HTML content as <code>Nokogiri::XML::DocumentFragment</code> instead of <code>Nokogiri::XML::Document</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Rename `ActionView::TestCase::Behavior::Content` to `ActionView::TestCase::Behavior::RenderedViewContent`
+</title>
+    <link>https://github.com/rails/rails/issues/49856</link>
+    <guid>https://github.com/rails/rails/issues/49856</guid>
+    <description>*   Rename `ActionView::TestCase::Behavior::Content` to `ActionView::TestCase::Behavior::RenderedViewContent`
+
+    Make `RenderedViewContent` inherit from `String`. Make private API with `:nodoc:`
+
+    *Sean Doyle*</description>
+    <pubDate>Mon, 15 Jan 2024 09:55:48 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Rename <code>ActionView::TestCase::Behavior::Content</code> to <code>ActionView::TestCase::Behavior::RenderedViewContent</code></p>
+
+<p>Make <code>RenderedViewContent</code> inherit from <code>String</code>. Make private API with <code>:nodoc:</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Deprecate passing `nil` as value for the `model:` argument to the `form_with` method.
+</title>
+    <link>https://github.com/rails/rails/issues/50931</link>
+    <guid>https://github.com/rails/rails/issues/50931</guid>
+    <description>*   Deprecate passing `nil` as value for the `model:` argument to the `form_with` method.
+
+    *Collin Jilbert*</description>
+    <pubDate>Thu, 01 Feb 2024 23:15:01 +0000</pubDate>
+    <author>cjilbert504</author>
+    <content:encoded><![CDATA[<p>Deprecate passing <code>nil</code> as value for the <code>model:</code> argument to the <code>form_with</code> method.</p>
+
+<p><em>Collin Jilbert</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Alias `field_set_tag` helper to `fieldset_tag` to match `&lt;fieldset&gt;` element
+</title>
+    <link>https://github.com/rails/rails/issues/50241</link>
+    <guid>https://github.com/rails/rails/issues/50241</guid>
+    <description>*   Alias `field_set_tag` helper to `fieldset_tag` to match `&lt;fieldset&gt;` element
+
+    *Sean Doyle*</description>
+    <pubDate>Sat, 02 Dec 2023 09:23:24 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Alias <code>field_set_tag</code> helper to <code>fieldset_tag</code> to match <code>&lt;fieldset&gt;</code> element</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Deprecate passing content to void elements when using `tag.br` type tag builders.
+</title>
+    <link>https://github.com/rails/rails/issues/50159</link>
+    <guid>https://github.com/rails/rails/issues/50159</guid>
+    <description>*   Deprecate passing content to void elements when using `tag.br` type tag builders.
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 01 Dec 2023 14:34:30 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Deprecate passing content to void elements when using <code>tag.br</code> type tag builders.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix the `number_to_human_size` view helper to correctly work with negative numbers.
+</title>
+    <link>https://github.com/rails/rails/issues/49791</link>
+    <guid>https://github.com/rails/rails/issues/49791</guid>
+    <description>*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.
+
+    *Earlopain*</description>
+    <pubDate>Thu, 26 Oct 2023 16:20:59 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Fix the <code>number_to_human_size</code> view helper to correctly work with negative numbers.</p>
+
+<p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
+</title>
+    <link>https://github.com/rails/rails/issues/49782</link>
+    <guid>https://github.com/rails/rails/issues/49782</guid>
+    <description>*   Automatically discard the implicit locals injected by collection rendering for template that can&#39;t accept them
+
+    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.
+
+    Now they are only passed if the template will actually accept them.
+
+    *Yasha Krasnou*, *Jean Boussier*</description>
+    <pubDate>Wed, 25 Oct 2023 16:00:06 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Automatically discard the implicit locals injected by collection rendering for template that can’t accept them</p>
+
+<p>When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.</p>
+
+<p>Now they are only passed if the template will actually accept them.</p>
+
+<p><em>Yasha Krasnou</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix `@rails/ujs` calling `start()` an extra time when using bundlers
+</title>
+    <link>https://github.com/rails/rails/issues/49668</link>
+    <guid>https://github.com/rails/rails/issues/49668</guid>
+    <description>*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers
+
+    *Hartley McGuire*, *Ryunosuke Sato*</description>
+    <pubDate>Tue, 24 Oct 2023 19:01:24 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix <code>@rails/ujs</code> calling <code>start()</code> an extra time when using bundlers</p>
+
+<p><em>Hartley McGuire</em>, <em>Ryunosuke Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix the `capture` view helper compatibility with HAML and Slim
+</title>
+    <link>https://github.com/rails/rails/issues/49612</link>
+    <guid>https://github.com/rails/rails/issues/49612</guid>
+    <description>*   Fix the `capture` view helper compatibility with HAML and Slim
+
+    When a blank string was captured in HAML or Slim (and possibly other template engines)
+    it would instead return the entire buffer.
+
+    *Jean Boussier*</description>
+    <pubDate>Fri, 13 Oct 2023 06:29:47 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>
+
+<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />
+it would instead return the entire buffer.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+</title>
+    <link>https://github.com/rails/rails/issues/49553</link>
+    <guid>https://github.com/rails/rails/issues/49553</guid>
+    <description>*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.
+
+    This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.
+    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]
+
+    *Ryunosuke Sato*</description>
+    <pubDate>Wed, 11 Oct 2023 20:44:41 +0000</pubDate>
+    <author>Ryunosuke Sato</author>
+    <content:encoded><![CDATA[<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>
+
+<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />
+[<a href="https://github.com/advisories/GHSA-xp5h-f8jf-rc8q">CVE-2023-23913</a>]</p>
+
+<p><em>Ryunosuke Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
+</title>
+    <link>https://github.com/rails/rails/issues/49175</link>
+    <guid>https://github.com/rails/rails/issues/49175</guid>
+    <description>*   Added validation for HTML tag names in the `tag` and `content_tag` helper method. The `tag` and
+    `content_tag` method now checks that the provided tag name adheres to the HTML specification. If
+    an invalid HTML tag name is provided, the method raises an `ArgumentError` with an appropriate error
+    message.
+
+    Examples:
+
+    ```ruby
+    # Raises ArgumentError: Invalid HTML5 tag name: 12p
+    content_tag(&quot;12p&quot;) # Starting with a number
+
+    # Raises ArgumentError: Invalid HTML5 tag name: &quot;&quot;
+    content_tag(&quot;&quot;) # Empty tag name
+
+    # Raises ArgumentError: Invalid HTML5 tag name: div/
+    tag(&quot;div/&quot;) # Contains a solidus
+
+    # Raises ArgumentError: Invalid HTML5 tag name: &quot;image file&quot;
+    tag(&quot;image file&quot;) # Contains a space
+    ```
+
+    *Akhil G Krishnan*</description>
+    <pubDate>Wed, 27 Sep 2023 17:37:41 +0000</pubDate>
+    <author>Akhil G Krishnan</author>
+    <content:encoded><![CDATA[<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />
+<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />
+an invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />
+message.</p>
+
+<p>Examples:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>
+<span class="n">content_tag</span><span class="p">(</span><span class="s2">"12p"</span><span class="p">)</span> <span class="c1"># Starting with a number</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: ""</span>
+<span class="n">content_tag</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="c1"># Empty tag name</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>
+<span class="n">tag</span><span class="p">(</span><span class="s2">"div/"</span><span class="p">)</span> <span class="c1"># Contains a solidus</span>
+
+<span class="c1"># Raises ArgumentError: Invalid HTML5 tag name: "image file"</span>
+<span class="n">tag</span><span class="p">(</span><span class="s2">"image file"</span><span class="p">)</span> <span class="c1"># Contains a space</span>
+</code></pre></div></div>
+
+<p><em>Akhil G Krishnan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Add support for custom `key` in `ActiveStorage::Blob#compose`.
 </title>
     <link>https://github.com/rails/rails/issues/51299</link>
@@ -3746,6 +3412,370 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Request Forgery takes relative paths into account.
+</title>
+    <link>https://github.com/rails/rails/issues/32770</link>
+    <guid>https://github.com/rails/rails/issues/32770</guid>
+    <description>*   Request Forgery takes relative paths into account.
+
+    *Stefan Wienert*</description>
+    <pubDate>Wed, 21 Feb 2024 17:16:54 +0000</pubDate>
+    <author>Stefan Wienert</author>
+    <content:encoded><![CDATA[<p>Request Forgery takes relative paths into account.</p>
+
+<p><em>Stefan Wienert</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add &quot;.test&quot; as a default allowed host in development to ensure smooth golden-path setup with puma.dev.
+</title>
+    <link>https://github.com/rails/rails/issues/51087</link>
+    <guid>https://github.com/rails/rails/issues/51087</guid>
+    <description>*   Add &quot;.test&quot; as a default allowed host in development to ensure smooth golden-path setup with puma.dev.
+
+    *DHH*</description>
+    <pubDate>Wed, 14 Feb 2024 17:14:03 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add “.test” as a default allowed host in development to ensure smooth golden-path setup with puma.dev.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `allow_browser` to set minimum browser versions for the application.
+</title>
+    <link>https://github.com/rails/rails/issues/50505</link>
+    <guid>https://github.com/rails/rails/issues/50505</guid>
+    <description>*   Add `allow_browser` to set minimum browser versions for the application.
+
+    A browser that&#39;s blocked will by default be served the file in `public/426.html` with a HTTP status code of &quot;426 Upgrade Required&quot;.
+
+    ```ruby
+    class ApplicationController &lt; ActionController::Base
+      # Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has
+      allow_browser versions: :modern
+    end
+
+    class ApplicationController &lt; ActionController::Base
+      # All versions of Chrome and Opera will be allowed, but no versions of &quot;internet explorer&quot; (ie). Safari needs to be 16.4+ and Firefox 121+.
+      allow_browser versions: { safari: 16.4, firefox: 121, ie: false }
+    end
+
+    class MessagesController &lt; ApplicationController
+      # In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.
+      allow_browser versions: { opera: 104, chrome: 119 }, only: :show
+    end
+    ```
+
+    *DHH*</description>
+    <pubDate>Mon, 01 Jan 2024 10:08:45 +0000</pubDate>
+    <author>Vipul A M</author>
+    <content:encoded><![CDATA[<p>Add <code>allow_browser</code> to set minimum browser versions for the application.</p>
+
+<p>A browser that’s blocked will by default be served the file in <code>public/426.html</code> with a HTTP status code of “426 Upgrade Required”.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="c1"># Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has</span>
+  <span class="n">allow_browser</span> <span class="ss">versions: :modern</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="c1"># All versions of Chrome and Opera will be allowed, but no versions of "internet explorer" (ie). Safari needs to be 16.4+ and Firefox 121+.</span>
+  <span class="n">allow_browser</span> <span class="ss">versions: </span><span class="p">{</span> <span class="ss">safari: </span><span class="mf">16.4</span><span class="p">,</span> <span class="ss">firefox: </span><span class="mi">121</span><span class="p">,</span> <span class="ss">ie: </span><span class="kp">false</span> <span class="p">}</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">MessagesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="c1"># In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.</span>
+  <span class="n">allow_browser</span> <span class="ss">versions: </span><span class="p">{</span> <span class="ss">opera: </span><span class="mi">104</span><span class="p">,</span> <span class="ss">chrome: </span><span class="mi">119</span> <span class="p">},</span> <span class="ss">only: :show</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add rate limiting API.
+</title>
+    <link>https://github.com/rails/rails/issues/50781</link>
+    <guid>https://github.com/rails/rails/issues/50781</guid>
+    <description>*   Add rate limiting API.
+
+    ```ruby
+    class SessionsController &lt; ApplicationController
+      rate_limit to: 10, within: 3.minutes, only: :create
+    end
+
+    class SignupsController &lt; ApplicationController
+      rate_limit to: 1000, within: 10.seconds,
+        by: -&gt; { request.domain }, with: -&gt; { redirect_to busy_controller_url, alert: &quot;Too many signups!&quot; }, only: :new
+    end
+    ```
+
+    *DHH*, *Jean Boussier*</description>
+    <pubDate>Wed, 17 Jan 2024 16:49:27 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add rate limiting API.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SessionsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="n">rate_limit</span> <span class="ss">to: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">within: </span><span class="mi">3</span><span class="p">.</span><span class="nf">minutes</span><span class="p">,</span> <span class="ss">only: :create</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">SignupsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="n">rate_limit</span> <span class="ss">to: </span><span class="mi">1000</span><span class="p">,</span> <span class="ss">within: </span><span class="mi">10</span><span class="p">.</span><span class="nf">seconds</span><span class="p">,</span>
+    <span class="ss">by: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="n">request</span><span class="p">.</span><span class="nf">domain</span> <span class="p">},</span> <span class="ss">with: </span><span class="o">-&gt;</span> <span class="p">{</span> <span class="n">redirect_to</span> <span class="n">busy_controller_url</span><span class="p">,</span> <span class="ss">alert: </span><span class="s2">"Too many signups!"</span> <span class="p">},</span> <span class="ss">only: :new</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>DHH</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `image/svg+xml` to the compressible content types of ActionDispatch::Static
+</title>
+    <link>https://github.com/rails/rails/issues/50359</link>
+    <guid>https://github.com/rails/rails/issues/50359</guid>
+    <description>*   Add `image/svg+xml` to the compressible content types of ActionDispatch::Static
+
+    *Georg Ledermann*</description>
+    <pubDate>Thu, 14 Dec 2023 16:54:05 +0000</pubDate>
+    <author>Georg Ledermann</author>
+    <content:encoded><![CDATA[<p>Add <code>image/svg+xml</code> to the compressible content types of ActionDispatch::Static</p>
+
+<p><em>Georg Ledermann</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add instrumentation for ActionController::Live#send_stream
+</title>
+    <link>https://github.com/rails/rails/issues/49297</link>
+    <guid>https://github.com/rails/rails/issues/49297</guid>
+    <description>*   Add instrumentation for ActionController::Live#send_stream
+
+    Allows subscribing to `send_stream` events. The event payload contains the filename, disposition, and type.
+
+    *Hannah Ramadan*</description>
+    <pubDate>Wed, 13 Dec 2023 08:38:59 +0000</pubDate>
+    <author>hramadan</author>
+    <content:encoded><![CDATA[<p>Add instrumentation for ActionController::Live#send_stream</p>
+
+<p>Allows subscribing to <code>send_stream</code> events. The event payload contains the filename, disposition, and type.</p>
+
+<p><em>Hannah Ramadan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add support for `with_routing` test helper in `ActionDispatch::IntegrationTest`
+</title>
+    <link>https://github.com/rails/rails/issues/49819</link>
+    <guid>https://github.com/rails/rails/issues/49819</guid>
+    <description>*   Add support for `with_routing` test helper in `ActionDispatch::IntegrationTest`
+
+    *Gannon McGibbon*</description>
+    <pubDate>Fri, 24 Nov 2023 04:48:19 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Add support for <code>with_routing</code> test helper in <code>ActionDispatch::IntegrationTest</code></p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to set <code>Rails.application.config.action_dispatch.show_exceptions</code> to <code>true</code> and <code>false</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated `speaker`, `vibrate`, and `vr` permissions policy directives.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated `speaker`, `vibrate`, and `vr` permissions policy directives.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>speaker</code>, <code>vibrate</code>, and <code>vr</code> permissions policy directives.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated `Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated `Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Deprecate `Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Deprecate `Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated comparison between `ActionController::Parameters` and `Hash`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated comparison between `ActionController::Parameters` and `Hash`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated comparison between <code>ActionController::Parameters</code> and <code>Hash</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated constant `AbstractController::Helpers::MissingHelperError`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated constant `AbstractController::Helpers::MissingHelperError`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated constant <code>AbstractController::Helpers::MissingHelperError</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Fix a race condition that could cause a `Text file busy - chromedriver`
+</title>
+    <link>https://github.com/rails/rails/issues/49908</link>
+    <guid>https://github.com/rails/rails/issues/49908</guid>
+    <description>*   Fix a race condition that could cause a `Text file busy - chromedriver`
+    error with parallel system tests
+
+    *Matt Brictson*</description>
+    <pubDate>Tue, 07 Nov 2023 17:41:13 +0000</pubDate>
+    <author>Matt Brictson</author>
+    <content:encoded><![CDATA[<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />
+error with parallel system tests</p>
+
+<p><em>Matt Brictson</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
+</title>
+    <link>https://github.com/rails/rails/issues/49722</link>
+    <guid>https://github.com/rails/rails/issues/49722</guid>
+    <description>*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 20 Oct 2023 22:10:13 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove deprecated constant `ActionDispatch::IllegalStateError`.
+</title>
+    <link>https://github.com/rails/rails/issues/50144</link>
+    <guid>https://github.com/rails/rails/issues/50144</guid>
+    <description>*   Remove deprecated constant `ActionDispatch::IllegalStateError`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated constant <code>ActionDispatch::IllegalStateError</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add parameter filter capability for redirect locations.
+</title>
+    <link>https://github.com/rails/rails/issues/51131</link>
+    <guid>https://github.com/rails/rails/issues/51131</guid>
+    <description>*   Add parameter filter capability for redirect locations.
+
+    It uses the `config.filter_parameters` to match what needs to be filtered.
+    The result would be like this:
+
+        Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]
+
+    Fixes #14055.
+
+    *Roque Pinel*, *Trevor Turk*, *tonytonyjan*</description>
+    <pubDate>Tue, 20 Feb 2024 23:25:12 +0000</pubDate>
+    <author>Roque Pinel</author>
+    <content:encoded><![CDATA[<p>Add parameter filter capability for redirect locations.</p>
+
+<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />
+The result would be like this:</p>
+
+<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]
+</code></pre>
+
+<p>Fixes #14055.</p>
+
+<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actioncable: Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`
+</title>
+    <link>https://github.com/rails/rails/issues/50589</link>
+    <guid>https://github.com/rails/rails/issues/50589</guid>
+    <description>*   Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`
+    and `assert_has_no_stream_for`. These methods can be used to assert that a
+    stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement
+    the already existing `assert_has_stream` and `assert_has_stream_for` methods.
+
+    ```ruby
+    assert_has_no_stream &quot;messages&quot;
+    assert_has_no_stream_for User.find(42)
+    ```
+
+    *Sebastian Pöll*, *Junichi Sato*</description>
+    <pubDate>Fri, 05 Jan 2024 15:03:51 +0000</pubDate>
+    <author>Junichi Sato</author>
+    <content:encoded><![CDATA[<p>Add two new assertion methods for ActionCable test cases: <code>assert_has_no_stream</code><br />
+and <code>assert_has_no_stream_for</code>. These methods can be used to assert that a<br />
+stream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />
+the already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_has_no_stream</span> <span class="s2">"messages"</span>
+<span class="n">assert_has_no_stream_for</span> <span class="no">User</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Fix a bug where type casting of string to `Time` and `DateTime` doesn&#39;t
 </title>
     <link>https://github.com/rails/rails/issues/46872</link>
@@ -3798,6 +3828,23 @@ the same for Active Model as it does for Active Record.</p>
 </code></pre></div></div>
 
 <p><em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailbox: Fix all Action Mailbox database related models to respect
+</title>
+    <link>https://github.com/rails/rails/issues/50300</link>
+    <guid>https://github.com/rails/rails/issues/50300</guid>
+    <description>*   Fix all Action Mailbox database related models to respect
+    `ActiveRecord::Base.table_name_prefix` configuration.
+
+    *Chedli Bourguiba*</description>
+    <pubDate>Mon, 11 Dec 2023 14:24:43 +0000</pubDate>
+    <author>Chedli Bourguiba</author>
+    <content:encoded><![CDATA[<p>Fix all Action Mailbox database related models to respect<br />
+<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
+
+<p><em>Chedli Bourguiba</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -3930,53 +3977,6 @@ the same for Active Model as it does for Active Record.</p>
     <content:encoded><![CDATA[<p>Fix using Trix with Sprockets</p>
 
 <p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionmailbox: Fix all Action Mailbox database related models to respect
-</title>
-    <link>https://github.com/rails/rails/issues/50300</link>
-    <guid>https://github.com/rails/rails/issues/50300</guid>
-    <description>*   Fix all Action Mailbox database related models to respect
-    `ActiveRecord::Base.table_name_prefix` configuration.
-
-    *Chedli Bourguiba*</description>
-    <pubDate>Mon, 11 Dec 2023 14:24:43 +0000</pubDate>
-    <author>Chedli Bourguiba</author>
-    <content:encoded><![CDATA[<p>Fix all Action Mailbox database related models to respect<br />
-<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>
-
-<p><em>Chedli Bourguiba</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionmailer: Remove deprecated params via `:args` for `assert_enqueued_email_with`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated params via `:args` for `assert_enqueued_email_with`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated params via <code>:args</code> for <code>assert_enqueued_email_with</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionmailer: Remove deprecated `config.action_mailer.preview_path`.
-</title>
-    <link>https://github.com/rails/rails/issues/50144</link>
-    <guid>https://github.com/rails/rails/issues/50144</guid>
-    <description>*   Remove deprecated `config.action_mailer.preview_path`.
-
-    *Rafael Mendonça França*</description>
-    <pubDate>Wed, 22 Nov 2023 22:38:25 +0000</pubDate>
-    <author>Rafael Mendonça França</author>
-    <content:encoded><![CDATA[<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>
-
-<p><em>Rafael Mendonça França</em></p>
 ]]></content:encoded>
   </item>
 </channel>
