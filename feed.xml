@@ -1924,11 +1924,11 @@ could be misconfigured in some cases.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.
+    <title>activerecord: Add `config.active_record.validate_migration_timestamps` option for validating migration timestamps.
 </title>
-    <link>https://github.com/rails/rails/issues/50400</link>
-    <guid>https://github.com/rails/rails/issues/50400</guid>
-    <description>*   Add `active_record.config.validate_migration_timestamps` option for validating migration timestamps.
+    <link>https://github.com/rails/rails/issues/51335</link>
+    <guid>https://github.com/rails/rails/issues/51335</guid>
+    <description>*   Add `config.active_record.validate_migration_timestamps` option for validating migration timestamps.
 
     When set, validates that the timestamp prefix for a migration is no more than a day ahead of
     the timestamp associated with the current time. This is designed to prevent migrations prefixes
@@ -1936,9 +1936,9 @@ could be misconfigured in some cases.</p>
     migration commands.
 
     *Adrianna Chang*</description>
-    <pubDate>Thu, 08 Feb 2024 17:52:28 +0000</pubDate>
-    <author>Adrianna Chang</author>
-    <content:encoded><![CDATA[<p>Add <code>active_record.config.validate_migration_timestamps</code> option for validating migration timestamps.</p>
+    <pubDate>Mon, 18 Mar 2024 20:19:48 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Add <code>config.active_record.validate_migration_timestamps</code> option for validating migration timestamps.</p>
 
 <p>When set, validates that the timestamp prefix for a migration is no more than a day ahead of<br />
 the timestamp associated with the current time. This is designed to prevent migrations prefixes<br />
