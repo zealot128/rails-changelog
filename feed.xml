@@ -1110,11 +1110,90 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add dirties option to uncached
+    <title>activerecord: Allow association&#39;s `foreign_key` to be composite.
 </title>
-    <link>https://github.com/rails/rails/issues/51204</link>
-    <guid>https://github.com/rails/rails/issues/51204</guid>
-    <description>*   Add dirties option to uncached
+    <link>https://github.com/rails/rails/issues/51389</link>
+    <guid>https://github.com/rails/rails/issues/51389</guid>
+    <description>*   Allow association&#39;s `foreign_key` to be composite.
+
+    `query_constraints` option was the only way to configure a composite foreign key by passing an `Array`.
+    Now it&#39;s possible to pass an Array value as `foreign_key` to achieve the same behavior of an association.
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Mon, 25 Mar 2024 14:43:35 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Allow association’s <code>foreign_key</code> to be composite.</p>
+
+<p><code>query_constraints</code> option was the only way to configure a composite foreign key by passing an <code>Array</code>.<br />
+Now it’s possible to pass an Array value as <code>foreign_key</code> to achieve the same behavior of an association.</p>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Allow association&#39;s `primary_key` to be composite.
+</title>
+    <link>https://github.com/rails/rails/issues/51389</link>
+    <guid>https://github.com/rails/rails/issues/51389</guid>
+    <description>*   Allow association&#39;s `primary_key` to be composite.
+
+    Association&#39;s `primary_key` can be composite when derived from associated model `primary_key` or `query_constraints`.
+    Now it&#39;s possible to explicitly set it as composite on the association.
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Mon, 25 Mar 2024 14:43:35 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Allow association’s <code>primary_key</code> to be composite.</p>
+
+<p>Association’s <code>primary_key</code> can be composite when derived from associated model <code>primary_key</code> or <code>query_constraints</code>.<br />
+Now it’s possible to explicitly set it as composite on the association.</p>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `config.active_record.permanent_connection_checkout` setting.
+</title>
+    <link>https://github.com/rails/rails/issues/51349</link>
+    <guid>https://github.com/rails/rails/issues/51349</guid>
+    <description>*   Add `config.active_record.permanent_connection_checkout` setting.
+
+    Controls whether `ActiveRecord::Base.connection` raises an error, emits a deprecation warning, or neither.
+
+    `ActiveRecord::Base.connection` checkouts a database connection from the pool and keeps it leased until the end of
+    the request or job. This behavior can be undesirable in environments that use many more threads or fibers than there
+    is available connections.
+
+    This configuration can be used to track down and eliminate code that calls `ActiveRecord::Base.connection` and
+    migrate it to use `ActiveRecord::Base.with_connection` instead.
+
+    The default behavior remains unchanged, and there is currently no plans to change the default.
+
+    *Jean Boussier*</description>
+    <pubDate>Mon, 25 Mar 2024 07:34:56 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add <code>config.active_record.permanent_connection_checkout</code> setting.</p>
+
+<p>Controls whether <code>ActiveRecord::Base.connection</code> raises an error, emits a deprecation warning, or neither.</p>
+
+<p><code>ActiveRecord::Base.connection</code> checkouts a database connection from the pool and keeps it leased until the end of<br />
+the request or job. This behavior can be undesirable in environments that use many more threads or fibers than there<br />
+is available connections.</p>
+
+<p>This configuration can be used to track down and eliminate code that calls <code>ActiveRecord::Base.connection</code> and<br />
+migrate it to use <code>ActiveRecord::Base.with_connection</code> instead.</p>
+
+<p>The default behavior remains unchanged, and there is currently no plans to change the default.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add dirties option to uncached.
+</title>
+    <link>https://github.com/rails/rails/issues/51389</link>
+    <guid>https://github.com/rails/rails/issues/51389</guid>
+    <description>*   Add dirties option to uncached.
 
     This adds a `dirties` option to `ActiveRecord::Base.uncached` and
     `ActiveRecord::ConnectionAdapters::ConnectionPool#uncached`.
@@ -1125,9 +1204,9 @@ method from the <code>Hash</code> class, which was not able to access values usi
     This is needed by Solid Cache so that cache writes do not clear query caches.
 
     *Donal McBreen*</description>
-    <pubDate>Sun, 03 Mar 2024 23:39:52 +0000</pubDate>
-    <author>Donal McBreen</author>
-    <content:encoded><![CDATA[<p>Add dirties option to uncached</p>
+    <pubDate>Mon, 25 Mar 2024 14:43:35 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Add dirties option to uncached.</p>
 
 <p>This adds a <code>dirties</code> option to <code>ActiveRecord::Base.uncached</code> and<br />
 <code>ActiveRecord::ConnectionAdapters::ConnectionPool#uncached</code>.</p>
@@ -1141,11 +1220,11 @@ When set to <code>false</code>, writes to the affected connection pool will not 
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`
+    <title>activerecord: Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`.
 </title>
-    <link>https://github.com/rails/rails/issues/51230</link>
-    <guid>https://github.com/rails/rails/issues/51230</guid>
-    <description>*   Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`
+    <link>https://github.com/rails/rails/issues/51389</link>
+    <guid>https://github.com/rails/rails/issues/51389</guid>
+    <description>*   Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`.
 
     The method has been renamed as `lease_connection` to better reflect that the returned
     connection will be held for the duration of the request or job.
@@ -1154,9 +1233,9 @@ When set to <code>false</code>, writes to the affected connection pool will not 
     current plan to remove the method.
 
     *Jean Boussier*</description>
-    <pubDate>Fri, 01 Mar 2024 13:53:09 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Deprecate <code>ActiveRecord::Base.connection</code> in favor of <code>.lease_connection</code></p>
+    <pubDate>Mon, 25 Mar 2024 14:43:35 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>ActiveRecord::Base.connection</code> in favor of <code>.lease_connection</code>.</p>
 
 <p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />
 connection will be held for the duration of the request or job.</p>
@@ -1168,19 +1247,19 @@ current plan to remove the method.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Deprecate `ActiveRecord::ConnectionAdapters::ConnectionPool#connection`
+    <title>activerecord: Deprecate `ActiveRecord::ConnectionAdapters::ConnectionPool#connection`.
 </title>
-    <link>https://github.com/rails/rails/issues/51230</link>
-    <guid>https://github.com/rails/rails/issues/51230</guid>
-    <description>*   Deprecate `ActiveRecord::ConnectionAdapters::ConnectionPool#connection`
+    <link>https://github.com/rails/rails/issues/51389</link>
+    <guid>https://github.com/rails/rails/issues/51389</guid>
+    <description>*   Deprecate `ActiveRecord::ConnectionAdapters::ConnectionPool#connection`.
 
     The method has been renamed as `lease_connection` to better reflect that the returned
     connection will be held for the duration of the request or job.
 
     *Jean Boussier*</description>
-    <pubDate>Fri, 01 Mar 2024 13:53:09 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Deprecate <code>ActiveRecord::ConnectionAdapters::ConnectionPool#connection</code></p>
+    <pubDate>Mon, 25 Mar 2024 14:43:35 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>ActiveRecord::ConnectionAdapters::ConnectionPool#connection</code>.</p>
 
 <p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />
 connection will be held for the duration of the request or job.</p>
@@ -1189,11 +1268,11 @@ connection will be held for the duration of the request or job.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Expose a generic fixture accessor for fixture names that may conflict with Minitest
+    <title>activerecord: Expose a generic fixture accessor for fixture names that may conflict with Minitest.
 </title>
-    <link>https://github.com/rails/rails/issues/51213</link>
-    <guid>https://github.com/rails/rails/issues/51213</guid>
-    <description>*   Expose a generic fixture accessor for fixture names that may conflict with Minitest
+    <link>https://github.com/rails/rails/issues/51389</link>
+    <guid>https://github.com/rails/rails/issues/51389</guid>
+    <description>*   Expose a generic fixture accessor for fixture names that may conflict with Minitest.
 
     ```ruby
     assert_equal &quot;Ruby on Rails&quot;, web_sites(:rubyonrails).name
@@ -1201,9 +1280,9 @@ connection will be held for the duration of the request or job.</p>
     ```
 
     *Jean Boussier*</description>
-    <pubDate>Wed, 28 Feb 2024 15:09:34 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Expose a generic fixture accessor for fixture names that may conflict with Minitest</p>
+    <pubDate>Mon, 25 Mar 2024 14:43:35 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Expose a generic fixture accessor for fixture names that may conflict with Minitest.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_equal</span> <span class="s2">"Ruby on Rails"</span><span class="p">,</span> <span class="n">web_sites</span><span class="p">(</span><span class="ss">:rubyonrails</span><span class="p">).</span><span class="nf">name</span>
 <span class="n">assert_equal</span> <span class="s2">"Ruby on Rails"</span><span class="p">,</span> <span class="n">fixture</span><span class="p">(</span><span class="ss">:web_sites</span><span class="p">,</span> <span class="ss">:rubyonrails</span><span class="p">).</span><span class="nf">name</span>
