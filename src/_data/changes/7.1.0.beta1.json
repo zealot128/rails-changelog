@@ -530,44 +530,74 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
-    "message": "*   Add dirties option to uncached\n\n    This adds a `dirties` option to `ActiveRecord::Base.uncached` and\n    `ActiveRecord::ConnectionAdapters::ConnectionPool#uncached`.\n\n    When set to `true` (the default), writes will clear all query caches belonging to the current thread.\n    When set to `false`, writes to the affected connection pool will not clear any query cache.\n\n    This is needed by Solid Cache so that cache writes do not clear query caches.\n\n    *Donal McBreen*",
+    "message": "*   Allow association's `foreign_key` to be composite.\n\n    `query_constraints` option was the only way to configure a composite foreign key by passing an `Array`.\n    Now it's possible to pass an Array value as `foreign_key` to achieve the same behavior of an association.\n\n    *Nikita Vasilevsky*",
     "project": "activerecord",
-    "date_merged": 1709509192000,
-    "author": "Donal McBreen",
-    "sha": "5d528ba0c82f77342d62f4872b409f87890d05b1",
-    "pr": "51204",
-    "merge_sha": "db30dd6fe71341ac132bb1e850bd4df2596a2803",
-    "html": "<p>Add dirties option to uncached</p>\n\n<p>This adds a <code>dirties</code> option to <code>ActiveRecord::Base.uncached</code> and<br />\n<code>ActiveRecord::ConnectionAdapters::ConnectionPool#uncached</code>.</p>\n\n<p>When set to <code>true</code> (the default), writes will clear all query caches belonging to the current thread.<br />\nWhen set to <code>false</code>, writes to the affected connection pool will not clear any query cache.</p>\n\n<p>This is needed by Solid Cache so that cache writes do not clear query caches.</p>\n\n<p><em>Donal McBreen</em></p>\n"
+    "date_merged": 1711377815000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "61a3e61e7761bd0a66073f42d986286300cdce6b",
+    "pr": "51389",
+    "merge_sha": "cac65688373b3e3c3e8734e2505fda21b72e844e",
+    "html": "<p>Allow association’s <code>foreign_key</code> to be composite.</p>\n\n<p><code>query_constraints</code> option was the only way to configure a composite foreign key by passing an <code>Array</code>.<br />\nNow it’s possible to pass an Array value as <code>foreign_key</code> to achieve the same behavior of an association.</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
   },
   {
-    "message": "*   Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`\n\n    The method has been renamed as `lease_connection` to better reflect that the returned\n    connection will be held for the duration of the request or job.\n\n    This deprecation is a soft deprecation, no warnings will be issued and there is no\n    current plan to remove the method.\n\n    *Jean Boussier*",
+    "message": "*   Allow association's `primary_key` to be composite.\n\n    Association's `primary_key` can be composite when derived from associated model `primary_key` or `query_constraints`.\n    Now it's possible to explicitly set it as composite on the association.\n\n    *Nikita Vasilevsky*",
     "project": "activerecord",
-    "date_merged": 1709301189000,
-    "author": "Jean Boussier",
-    "sha": "7263da542b66084dae93af8bc3bd502c8710154b",
-    "pr": "51230",
-    "merge_sha": "e27a0df3384ee8e1046b6f2ffb389117e20c3581",
-    "html": "<p>Deprecate <code>ActiveRecord::Base.connection</code> in favor of <code>.lease_connection</code></p>\n\n<p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />\nconnection will be held for the duration of the request or job.</p>\n\n<p>This deprecation is a soft deprecation, no warnings will be issued and there is no<br />\ncurrent plan to remove the method.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+    "date_merged": 1711377815000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "61a3e61e7761bd0a66073f42d986286300cdce6b",
+    "pr": "51389",
+    "merge_sha": "cac65688373b3e3c3e8734e2505fda21b72e844e",
+    "html": "<p>Allow association’s <code>primary_key</code> to be composite.</p>\n\n<p>Association’s <code>primary_key</code> can be composite when derived from associated model <code>primary_key</code> or <code>query_constraints</code>.<br />\nNow it’s possible to explicitly set it as composite on the association.</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
   },
   {
-    "message": "*   Deprecate `ActiveRecord::ConnectionAdapters::ConnectionPool#connection`\n\n    The method has been renamed as `lease_connection` to better reflect that the returned\n    connection will be held for the duration of the request or job.\n\n    *Jean Boussier*",
+    "message": "*   Add `config.active_record.permanent_connection_checkout` setting.\n\n    Controls whether `ActiveRecord::Base.connection` raises an error, emits a deprecation warning, or neither.\n\n    `ActiveRecord::Base.connection` checkouts a database connection from the pool and keeps it leased until the end of\n    the request or job. This behavior can be undesirable in environments that use many more threads or fibers than there\n    is available connections.\n\n    This configuration can be used to track down and eliminate code that calls `ActiveRecord::Base.connection` and\n    migrate it to use `ActiveRecord::Base.with_connection` instead.\n\n    The default behavior remains unchanged, and there is currently no plans to change the default.\n\n    *Jean Boussier*",
     "project": "activerecord",
-    "date_merged": 1709301189000,
+    "date_merged": 1711352096000,
     "author": "Jean Boussier",
-    "sha": "7263da542b66084dae93af8bc3bd502c8710154b",
-    "pr": "51230",
-    "merge_sha": "e27a0df3384ee8e1046b6f2ffb389117e20c3581",
-    "html": "<p>Deprecate <code>ActiveRecord::ConnectionAdapters::ConnectionPool#connection</code></p>\n\n<p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />\nconnection will be held for the duration of the request or job.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+    "sha": "dd8fd52c072b8f6777ad6d8acf86054fa1923dd9",
+    "pr": "51349",
+    "merge_sha": "4db9f512591b0188f05c0762102a3386b43c1b34",
+    "html": "<p>Add <code>config.active_record.permanent_connection_checkout</code> setting.</p>\n\n<p>Controls whether <code>ActiveRecord::Base.connection</code> raises an error, emits a deprecation warning, or neither.</p>\n\n<p><code>ActiveRecord::Base.connection</code> checkouts a database connection from the pool and keeps it leased until the end of<br />\nthe request or job. This behavior can be undesirable in environments that use many more threads or fibers than there<br />\nis available connections.</p>\n\n<p>This configuration can be used to track down and eliminate code that calls <code>ActiveRecord::Base.connection</code> and<br />\nmigrate it to use <code>ActiveRecord::Base.with_connection</code> instead.</p>\n\n<p>The default behavior remains unchanged, and there is currently no plans to change the default.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
-    "message": "*   Expose a generic fixture accessor for fixture names that may conflict with Minitest\n\n    ```ruby\n    assert_equal \"Ruby on Rails\", web_sites(:rubyonrails).name\n    assert_equal \"Ruby on Rails\", fixture(:web_sites, :rubyonrails).name\n    ```\n\n    *Jean Boussier*",
+    "message": "*   Add dirties option to uncached.\n\n    This adds a `dirties` option to `ActiveRecord::Base.uncached` and\n    `ActiveRecord::ConnectionAdapters::ConnectionPool#uncached`.\n\n    When set to `true` (the default), writes will clear all query caches belonging to the current thread.\n    When set to `false`, writes to the affected connection pool will not clear any query cache.\n\n    This is needed by Solid Cache so that cache writes do not clear query caches.\n\n    *Donal McBreen*",
     "project": "activerecord",
-    "date_merged": 1709132974000,
-    "author": "Jean Boussier",
-    "sha": "ef947f9932ac64fcf77945209e61fff3a0183e6a",
-    "pr": "51213",
-    "merge_sha": "3ecc26981476d6a8c4f1ba5bd33bfdeef1659a0f",
-    "html": "<p>Expose a generic fixture accessor for fixture names that may conflict with Minitest</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_equal</span> <span class=\"s2\">\"Ruby on Rails\"</span><span class=\"p\">,</span> <span class=\"n\">web_sites</span><span class=\"p\">(</span><span class=\"ss\">:rubyonrails</span><span class=\"p\">).</span><span class=\"nf\">name</span>\n<span class=\"n\">assert_equal</span> <span class=\"s2\">\"Ruby on Rails\"</span><span class=\"p\">,</span> <span class=\"n\">fixture</span><span class=\"p\">(</span><span class=\"ss\">:web_sites</span><span class=\"p\">,</span> <span class=\"ss\">:rubyonrails</span><span class=\"p\">).</span><span class=\"nf\">name</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
+    "date_merged": 1711377815000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "61a3e61e7761bd0a66073f42d986286300cdce6b",
+    "pr": "51389",
+    "merge_sha": "cac65688373b3e3c3e8734e2505fda21b72e844e",
+    "html": "<p>Add dirties option to uncached.</p>\n\n<p>This adds a <code>dirties</code> option to <code>ActiveRecord::Base.uncached</code> and<br />\n<code>ActiveRecord::ConnectionAdapters::ConnectionPool#uncached</code>.</p>\n\n<p>When set to <code>true</code> (the default), writes will clear all query caches belonging to the current thread.<br />\nWhen set to <code>false</code>, writes to the affected connection pool will not clear any query cache.</p>\n\n<p>This is needed by Solid Cache so that cache writes do not clear query caches.</p>\n\n<p><em>Donal McBreen</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActiveRecord::Base.connection` in favor of `.lease_connection`.\n\n    The method has been renamed as `lease_connection` to better reflect that the returned\n    connection will be held for the duration of the request or job.\n\n    This deprecation is a soft deprecation, no warnings will be issued and there is no\n    current plan to remove the method.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1711377815000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "61a3e61e7761bd0a66073f42d986286300cdce6b",
+    "pr": "51389",
+    "merge_sha": "cac65688373b3e3c3e8734e2505fda21b72e844e",
+    "html": "<p>Deprecate <code>ActiveRecord::Base.connection</code> in favor of <code>.lease_connection</code>.</p>\n\n<p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />\nconnection will be held for the duration of the request or job.</p>\n\n<p>This deprecation is a soft deprecation, no warnings will be issued and there is no<br />\ncurrent plan to remove the method.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActiveRecord::ConnectionAdapters::ConnectionPool#connection`.\n\n    The method has been renamed as `lease_connection` to better reflect that the returned\n    connection will be held for the duration of the request or job.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1711377815000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "61a3e61e7761bd0a66073f42d986286300cdce6b",
+    "pr": "51389",
+    "merge_sha": "cac65688373b3e3c3e8734e2505fda21b72e844e",
+    "html": "<p>Deprecate <code>ActiveRecord::ConnectionAdapters::ConnectionPool#connection</code>.</p>\n\n<p>The method has been renamed as <code>lease_connection</code> to better reflect that the returned<br />\nconnection will be held for the duration of the request or job.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Expose a generic fixture accessor for fixture names that may conflict with Minitest.\n\n    ```ruby\n    assert_equal \"Ruby on Rails\", web_sites(:rubyonrails).name\n    assert_equal \"Ruby on Rails\", fixture(:web_sites, :rubyonrails).name\n    ```\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1711377815000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "61a3e61e7761bd0a66073f42d986286300cdce6b",
+    "pr": "51389",
+    "merge_sha": "cac65688373b3e3c3e8734e2505fda21b72e844e",
+    "html": "<p>Expose a generic fixture accessor for fixture names that may conflict with Minitest.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_equal</span> <span class=\"s2\">\"Ruby on Rails\"</span><span class=\"p\">,</span> <span class=\"n\">web_sites</span><span class=\"p\">(</span><span class=\"ss\">:rubyonrails</span><span class=\"p\">).</span><span class=\"nf\">name</span>\n<span class=\"n\">assert_equal</span> <span class=\"s2\">\"Ruby on Rails\"</span><span class=\"p\">,</span> <span class=\"n\">fixture</span><span class=\"p\">(</span><span class=\"ss\">:web_sites</span><span class=\"p\">,</span> <span class=\"ss\">:rubyonrails</span><span class=\"p\">).</span><span class=\"nf\">name</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Using `Model.query_constraints` with a single non-primary-key column used to raise as expected, but with an\n    incorrect error message. This has been fixed to raise with a more appropriate error message.\n\n    *Joshua Young*",
