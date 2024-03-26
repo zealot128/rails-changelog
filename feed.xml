@@ -6,6 +6,38 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>railties: Skip generating a `test` job in ci.yml when a new application is generated with the
+</title>
+    <link>https://github.com/rails/rails/issues/51289</link>
+    <guid>https://github.com/rails/rails/issues/51289</guid>
+    <description>*   Skip generating a `test` job in ci.yml when a new application is generated with the
+    `--skip-test` option.
+
+    *Steve Polito*</description>
+    <pubDate>Mon, 25 Mar 2024 22:09:13 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Skip generating a <code>test</code> job in ci.yml when a new application is generated with the<br />
+<code>--skip-test</code> option.</p>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Update the `.node-version` file conditionally generated for new applications to 20.11.1
+</title>
+    <link>https://github.com/rails/rails/issues/51393</link>
+    <guid>https://github.com/rails/rails/issues/51393</guid>
+    <description>*   Update the `.node-version` file conditionally generated for new applications to 20.11.1
+
+    *Steve Polito*</description>
+    <pubDate>Mon, 25 Mar 2024 18:57:22 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Update the <code>.node-version</code> file conditionally generated for new applications to 20.11.1</p>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Fix sanitizer vendor configuration in 7.1 defaults.
 </title>
     <link>https://github.com/rails/rails/issues/51267</link>
