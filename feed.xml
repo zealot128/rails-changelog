@@ -1142,6 +1142,31 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Retry known idempotent SELECT queries on connection-related exceptions
+</title>
+    <link>https://github.com/rails/rails/issues/51336</link>
+    <guid>https://github.com/rails/rails/issues/51336</guid>
+    <description>*   Retry known idempotent SELECT queries on connection-related exceptions
+
+    SELECT queries we construct by walking the Arel tree and / or with known model attributes
+    are idempotent and can safely be retried in the case of a connection error. Previously,
+    adapters such as `TrilogyAdapter` would raise `ActiveRecord::ConnectionFailed: Trilogy::EOFError`
+    when encountering a connection error mid-request.
+
+    *Adrianna Chang*</description>
+    <pubDate>Tue, 26 Mar 2024 15:18:15 +0000</pubDate>
+    <author>Adrianna Chang</author>
+    <content:encoded><![CDATA[<p>Retry known idempotent SELECT queries on connection-related exceptions</p>
+
+<p>SELECT queries we construct by walking the Arel tree and / or with known model attributes<br />
+are idempotent and can safely be retried in the case of a connection error. Previously,<br />
+adapters such as <code>TrilogyAdapter</code> would raise <code>ActiveRecord::ConnectionFailed: Trilogy::EOFError</code><br />
+when encountering a connection error mid-request.</p>
+
+<p><em>Adrianna Chang</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow association&#39;s `foreign_key` to be composite.
 </title>
     <link>https://github.com/rails/rails/issues/51389</link>
