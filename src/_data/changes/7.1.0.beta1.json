@@ -550,6 +550,16 @@
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
+    "message": "*   Retry known idempotent SELECT queries on connection-related exceptions\n\n    SELECT queries we construct by walking the Arel tree and / or with known model attributes\n    are idempotent and can safely be retried in the case of a connection error. Previously,\n    adapters such as `TrilogyAdapter` would raise `ActiveRecord::ConnectionFailed: Trilogy::EOFError`\n    when encountering a connection error mid-request.\n\n    *Adrianna Chang*",
+    "project": "activerecord",
+    "date_merged": 1711466295000,
+    "author": "Adrianna Chang",
+    "sha": "eabcff22a86213521eecafbf2dbf3ad82714f941",
+    "pr": "51336",
+    "merge_sha": "530d77170ee3d961d8a7dbac74a6dc462bc298e2",
+    "html": "<p>Retry known idempotent SELECT queries on connection-related exceptions</p>\n\n<p>SELECT queries we construct by walking the Arel tree and / or with known model attributes<br />\nare idempotent and can safely be retried in the case of a connection error. Previously,<br />\nadapters such as <code>TrilogyAdapter</code> would raise <code>ActiveRecord::ConnectionFailed: Trilogy::EOFError</code><br />\nwhen encountering a connection error mid-request.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
+  },
+  {
     "message": "*   Allow association's `foreign_key` to be composite.\n\n    `query_constraints` option was the only way to configure a composite foreign key by passing an `Array`.\n    Now it's possible to pass an Array value as `foreign_key` to achieve the same behavior of an association.\n\n    *Nikita Vasilevsky*",
     "project": "activerecord",
     "date_merged": 1711377815000,
