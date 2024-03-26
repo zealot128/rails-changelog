@@ -1,5 +1,25 @@
 [
   {
+    "message": "*   Skip generating a `test` job in ci.yml when a new application is generated with the\n    `--skip-test` option.\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1711404553000,
+    "author": "Steve Polito",
+    "sha": "7242fd7f5c307e732abc4c6f4d818405abfaab75",
+    "pr": "51289",
+    "merge_sha": "41e31219da6a12ca83fc86b952727fbde6b17484",
+    "html": "<p>Skip generating a <code>test</code> job in ci.yml when a new application is generated with the<br />\n<code>--skip-test</code> option.</p>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Update the `.node-version` file conditionally generated for new applications to 20.11.1\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1711393042000,
+    "author": "Steve Polito",
+    "sha": "0f18fe13224aae8aaf7d0b37e149ddc9222023e4",
+    "pr": "51393",
+    "merge_sha": "cccbedf651bc7106a4c1776c9b0497a4b2bea479",
+    "html": "<p>Update the <code>.node-version</code> file conditionally generated for new applications to 20.11.1</p>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
     "message": "*   Fix sanitizer vendor configuration in 7.1 defaults.\n\n    In apps where rails-html-sanitizer was not eagerly loaded, the sanitizer default could end up\n    being Rails::HTML4::Sanitizer when it should be set to Rails::HTML5::Sanitizer.\n\n    *Mike Dalessio*, *Rafael Mendonça França*",
     "project": "railties",
     "date_merged": 1709916188000,
