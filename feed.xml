@@ -762,6 +762,27 @@ for all environments, as the value is the same in all environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Make ActiveSupport::BacktraceCleaner copy filters and silencers on dup and clone
+</title>
+    <link>https://github.com/rails/rails/issues/51447</link>
+    <guid>https://github.com/rails/rails/issues/51447</guid>
+    <description>*   Make ActiveSupport::BacktraceCleaner copy filters and silencers on dup and clone
+
+    Previously the copy would still share the internal silencers and filters array,
+    causing state to leak.
+
+    *Jean Boussier*</description>
+    <pubDate>Fri, 29 Mar 2024 11:22:35 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Make ActiveSupport::BacktraceCleaner copy filters and silencers on dup and clone</p>
+
+<p>Previously the copy would still share the internal silencers and filters array,<br />
+causing state to leak.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Updating Astana with Western Kazakhstan TZInfo identifier
 </title>
     <link>https://github.com/rails/rails/issues/51317</link>
