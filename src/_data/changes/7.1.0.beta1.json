@@ -370,6 +370,16 @@
     "html": "<p>Remove the option <code>config.public_file_server.enabled</code> from the generators<br />\nfor all environments, as the value is the same in all environments.</p>\n\n<p><em>Adrian Hirt</em></p>\n"
   },
   {
+    "message": "*   Make ActiveSupport::BacktraceCleaner copy filters and silencers on dup and clone\n\n    Previously the copy would still share the internal silencers and filters array,\n    causing state to leak.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1711711355000,
+    "author": "Jean Boussier",
+    "sha": "cc0f0f9c4415a8e7835c5f1fea1d5117ab5a390e",
+    "pr": "51447",
+    "merge_sha": "a2a870a7360e9590e14e1be989792cd5b607f944",
+    "html": "<p>Make ActiveSupport::BacktraceCleaner copy filters and silencers on dup and clone</p>\n\n<p>Previously the copy would still share the internal silencers and filters array,<br />\ncausing state to leak.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Updating Astana with Western Kazakhstan TZInfo identifier\n\n    *Damian Nelson*",
     "project": "activesupport",
     "date_merged": 1710311772000,
