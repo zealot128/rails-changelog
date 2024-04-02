@@ -1163,6 +1163,60 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add the ability to ignore counter cache columns until they are backfilled
+</title>
+    <link>https://github.com/rails/rails/issues/51453</link>
+    <guid>https://github.com/rails/rails/issues/51453</guid>
+    <description>*   Add the ability to ignore counter cache columns until they are backfilled
+
+    Starting to use counter caches on existing large tables can be troublesome, because the column
+    values must be backfilled separately of the column addition (to not lock the table for too long)
+    and before the use of `:counter_cache` (otherwise methods like `size`/`any?`/etc, which use
+    counter caches internally, can produce incorrect results). People usually use database triggers
+    or callbacks on child associations while backfilling before introducing a counter cache
+    configuration to the association.
+
+    Now, to safely backfill the column, while keeping the column updated with child records added/removed, use:
+
+    ```ruby
+    class Comment &lt; ApplicationRecord
+      belongs_to :post, counter_cache: { active: false }
+    end
+    ```
+
+    While the counter cache is not &quot;active&quot;, the methods like `size`/`any?`/etc will not use it,
+    but get the results directly from the database. After the counter cache column is backfilled, simply
+    remove the `{ active: false }` part from the counter cache definition, and it will now be used by the
+    mentioned methods.
+
+    *fatkodima*</description>
+    <pubDate>Tue, 02 Apr 2024 12:04:13 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Add the ability to ignore counter cache columns until they are backfilled</p>
+
+<p>Starting to use counter caches on existing large tables can be troublesome, because the column<br />
+values must be backfilled separately of the column addition (to not lock the table for too long)<br />
+and before the use of <code>:counter_cache</code> (otherwise methods like <code>size</code>/<code>any?</code>/etc, which use<br />
+counter caches internally, can produce incorrect results). People usually use database triggers<br />
+or callbacks on child associations while backfilling before introducing a counter cache<br />
+configuration to the association.</p>
+
+<p>Now, to safely backfill the column, while keeping the column updated with child records added/removed, use:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Comment</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">belongs_to</span> <span class="ss">:post</span><span class="p">,</span> <span class="ss">counter_cache: </span><span class="p">{</span> <span class="ss">active: </span><span class="kp">false</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>While the counter cache is not “active”, the methods like <code>size</code>/<code>any?</code>/etc will not use it,<br />
+but get the results directly from the database. After the counter cache column is backfilled, simply<br />
+remove the <code>{ active: false }</code> part from the counter cache definition, and it will now be used by the<br />
+mentioned methods.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Retry known idempotent SELECT queries on connection-related exceptions
 </title>
     <link>https://github.com/rails/rails/issues/51336</link>
