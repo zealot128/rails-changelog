@@ -1163,6 +1163,120 @@ method from the <code>Hash</code> class, which was not able to access values usi
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: `ActiveRecord::Base.transaction` now yields an `ActiveRecord::Transation` object.
+</title>
+    <link>https://github.com/rails/rails/issues/51474</link>
+    <guid>https://github.com/rails/rails/issues/51474</guid>
+    <description>*   `ActiveRecord::Base.transaction` now yields an `ActiveRecord::Transation` object.
+
+    This allows to register callbacks on it.
+
+    ```ruby
+    Article.transaction do |transaction|
+      article.update(published: true)
+      transaction.after_commit do
+        PublishNotificationMailer.with(article: article).deliver_later
+      end
+    end
+    ```
+
+    *Jean Boussier*</description>
+    <pubDate>Wed, 03 Apr 2024 12:37:34 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Base.transaction</code> now yields an <code>ActiveRecord::Transation</code> object.</p>
+
+<p>This allows to register callbacks on it.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Article</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span> <span class="o">|</span><span class="n">transaction</span><span class="o">|</span>
+  <span class="n">article</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="ss">published: </span><span class="kp">true</span><span class="p">)</span>
+  <span class="n">transaction</span><span class="p">.</span><span class="nf">after_commit</span> <span class="k">do</span>
+    <span class="no">PublishNotificationMailer</span><span class="p">.</span><span class="nf">with</span><span class="p">(</span><span class="ss">article: </span><span class="n">article</span><span class="p">).</span><span class="nf">deliver_later</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `ActiveRecord::Base.current_transaction`.
+</title>
+    <link>https://github.com/rails/rails/issues/51474</link>
+    <guid>https://github.com/rails/rails/issues/51474</guid>
+    <description>*   Add `ActiveRecord::Base.current_transaction`.
+
+    Returns the current transaction, to allow registering callbacks on it.
+
+    ```ruby
+    Article.current_transaction.after_commit do
+      PublishNotificationMailer.with(article: article).deliver_later
+    end
+    ```
+
+    *Jean Boussier*</description>
+    <pubDate>Wed, 03 Apr 2024 12:37:34 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add <code>ActiveRecord::Base.current_transaction</code>.</p>
+
+<p>Returns the current transaction, to allow registering callbacks on it.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Article</span><span class="p">.</span><span class="nf">current_transaction</span><span class="p">.</span><span class="nf">after_commit</span> <span class="k">do</span>
+  <span class="no">PublishNotificationMailer</span><span class="p">.</span><span class="nf">with</span><span class="p">(</span><span class="ss">article: </span><span class="n">article</span><span class="p">).</span><span class="nf">deliver_later</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `ActiveRecord.after_all_transactions_commit` callback.
+</title>
+    <link>https://github.com/rails/rails/issues/51474</link>
+    <guid>https://github.com/rails/rails/issues/51474</guid>
+    <description>*   Add `ActiveRecord.after_all_transactions_commit` callback.
+
+    Useful for code that may run either inside or outside a transaction and need
+    to perform works after the state changes have been properly peristed.
+
+    ```ruby
+    def publish_article(article)
+      article.update(published: true)
+      ActiveRecord.after_all_transactions_commit do
+        PublishNotificationMailer.with(article: article).deliver_later
+      end
+    end
+    ```
+
+    In the above example, the block is either executed immediately if called outside
+    of a transaction, or called after the open transaction is committed.
+
+    If the transaction is rolled back, the block isn&#39;t called.
+
+    *Jean Boussier*</description>
+    <pubDate>Wed, 03 Apr 2024 12:37:34 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Add <code>ActiveRecord.after_all_transactions_commit</code> callback.</p>
+
+<p>Useful for code that may run either inside or outside a transaction and need<br />
+to perform works after the state changes have been properly peristed.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">publish_article</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+  <span class="n">article</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="ss">published: </span><span class="kp">true</span><span class="p">)</span>
+  <span class="no">ActiveRecord</span><span class="p">.</span><span class="nf">after_all_transactions_commit</span> <span class="k">do</span>
+    <span class="no">PublishNotificationMailer</span><span class="p">.</span><span class="nf">with</span><span class="p">(</span><span class="ss">article: </span><span class="n">article</span><span class="p">).</span><span class="nf">deliver_later</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>In the above example, the block is either executed immediately if called outside<br />
+of a transaction, or called after the open transaction is committed.</p>
+
+<p>If the transaction is rolled back, the block isn’t called.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add the ability to ignore counter cache columns until they are backfilled
 </title>
     <link>https://github.com/rails/rails/issues/51453</link>
@@ -3021,6 +3135,65 @@ column).</p>
 </code></pre></div></div>
 
 <p><em>Myles Boone</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Make Active Job transaction aware when used conjointly with Active Record.
+</title>
+    <link>https://github.com/rails/rails/issues/51426</link>
+    <guid>https://github.com/rails/rails/issues/51426</guid>
+    <description>*   Make Active Job transaction aware when used conjointly with Active Record.
+
+    A common mistake with Active Job is to enqueue jobs from inside a transaction,
+    causing them to potentially be picked and ran by another process, before the
+    transaction is committed, which result in various errors.
+
+    ```ruby
+    Topic.transaction do
+      topic = Topic.create(...)
+      NewTopicNotificationJob.perform_later(topic)
+    end
+    ```
+
+    Now Active Job will automatically defer the enqueuing to after the transaction is committed,
+    and drop the job if the transaction is rolled back.
+
+    Various queue implementations can chose to disable this behavior, and users can disable it,
+    or force it on a per job basis:
+
+    ```ruby
+    class NewTopicNotificationJob &lt; ApplicationJob
+      self.enqueue_after_transaction_commit = false # or `true`
+    end
+    ```
+
+    *Jean Boussier*, *Cristian Bica*</description>
+    <pubDate>Wed, 03 Apr 2024 14:49:04 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Make Active Job transaction aware when used conjointly with Active Record.</p>
+
+<p>A common mistake with Active Job is to enqueue jobs from inside a transaction,<br />
+causing them to potentially be picked and ran by another process, before the<br />
+transaction is committed, which result in various errors.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Topic</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="n">topic</span> <span class="o">=</span> <span class="no">Topic</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+  <span class="no">NewTopicNotificationJob</span><span class="p">.</span><span class="nf">perform_later</span><span class="p">(</span><span class="n">topic</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Now Active Job will automatically defer the enqueuing to after the transaction is committed,<br />
+and drop the job if the transaction is rolled back.</p>
+
+<p>Various queue implementations can chose to disable this behavior, and users can disable it,<br />
+or force it on a per job basis:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NewTopicNotificationJob</span> <span class="o">&lt;</span> <span class="no">ApplicationJob</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">enqueue_after_transaction_commit</span> <span class="o">=</span> <span class="kp">false</span> <span class="c1"># or `true`</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Jean Boussier</em>, <em>Cristian Bica</em></p>
 ]]></content:encoded>
   </item>
   <item>
