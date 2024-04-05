@@ -380,6 +380,326 @@
     "html": "<p>Remove the option <code>config.public_file_server.enabled</code> from the generators<br />\nfor all environments, as the value is the same in all environments.</p>\n\n<p><em>Adrian Hirt</em></p>\n"
   },
   {
+    "message": "*   Request Forgery takes relative paths into account.\n\n    *Stefan Wienert*",
+    "project": "actionpack",
+    "date_merged": 1708535814000,
+    "author": "Stefan Wienert",
+    "sha": "e2a8bfa1f24395ce8fa5879c4df88de835fd0401",
+    "pr": "32770",
+    "merge_sha": "db4c6db59dd9c17fb7c729c6b3ecff1f3429d7dc",
+    "html": "<p>Request Forgery takes relative paths into account.</p>\n\n<p><em>Stefan Wienert</em></p>\n"
+  },
+  {
+    "message": "*   Add \".test\" as a default allowed host in development to ensure smooth golden-path setup with puma.dev.\n\n    *DHH*",
+    "project": "actionpack",
+    "date_merged": 1707930843000,
+    "author": "David Heinemeier Hansson",
+    "sha": "6260b6b0c82eb41264f37acda3ab866e658bb1d6",
+    "pr": "51087",
+    "merge_sha": "3163bb735189eddd7c152a1e72bed7b4d052f7d4",
+    "html": "<p>Add “.test” as a default allowed host in development to ensure smooth golden-path setup with puma.dev.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add `allow_browser` to set minimum browser versions for the application.\n\n    A browser that's blocked will by default be served the file in `public/426.html` with a HTTP status code of \"426 Upgrade Required\".\n\n    ```ruby\n    class ApplicationController < ActionController::Base\n      # Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has\n      allow_browser versions: :modern\n    end\n\n    class ApplicationController < ActionController::Base\n      # All versions of Chrome and Opera will be allowed, but no versions of \"internet explorer\" (ie). Safari needs to be 16.4+ and Firefox 121+.\n      allow_browser versions: { safari: 16.4, firefox: 121, ie: false }\n    end\n\n    class MessagesController < ApplicationController\n      # In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.\n      allow_browser versions: { opera: 104, chrome: 119 }, only: :show\n    end\n    ```\n\n    *DHH*",
+    "project": "actionpack",
+    "date_merged": 1704103725000,
+    "author": "Vipul A M",
+    "sha": "5d56bb877764bd35b3d70ff8e9dc20569b854205",
+    "pr": "50505",
+    "merge_sha": "8e6fac80ba36bf8eca2448f415dc36fcb5c1f0ce",
+    "html": "<p>Add <code>allow_browser</code> to set minimum browser versions for the application.</p>\n\n<p>A browser that’s blocked will by default be served the file in <code>public/426.html</code> with a HTTP status code of “426 Upgrade Required”.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ApplicationController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"c1\"># Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: :modern</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">ApplicationController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"c1\"># All versions of Chrome and Opera will be allowed, but no versions of \"internet explorer\" (ie). Safari needs to be 16.4+ and Firefox 121+.</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: </span><span class=\"p\">{</span> <span class=\"ss\">safari: </span><span class=\"mf\">16.4</span><span class=\"p\">,</span> <span class=\"ss\">firefox: </span><span class=\"mi\">121</span><span class=\"p\">,</span> <span class=\"ss\">ie: </span><span class=\"kp\">false</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">MessagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"c1\"># In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: </span><span class=\"p\">{</span> <span class=\"ss\">opera: </span><span class=\"mi\">104</span><span class=\"p\">,</span> <span class=\"ss\">chrome: </span><span class=\"mi\">119</span> <span class=\"p\">},</span> <span class=\"ss\">only: :show</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add rate limiting API.\n\n    ```ruby\n    class SessionsController < ApplicationController\n      rate_limit to: 10, within: 3.minutes, only: :create\n    end\n\n    class SignupsController < ApplicationController\n      rate_limit to: 1000, within: 10.seconds,\n        by: -> { request.domain }, with: -> { redirect_to busy_controller_url, alert: \"Too many signups!\" }, only: :new\n    end\n    ```\n\n    *DHH*, *Jean Boussier*",
+    "project": "actionpack",
+    "date_merged": 1705510167000,
+    "author": "Jean Boussier",
+    "sha": "d839ddb71abea276cc1a79b5eaddaa9620353f31",
+    "pr": "50781",
+    "merge_sha": "1205a751c5a79335ffb522ca56986c22ad527371",
+    "html": "<p>Add rate limiting API.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">SessionsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">,</span> <span class=\"ss\">only: :create</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">SignupsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">1000</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">10</span><span class=\"p\">.</span><span class=\"nf\">seconds</span><span class=\"p\">,</span>\n    <span class=\"ss\">by: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">domain</span> <span class=\"p\">},</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">redirect_to</span> <span class=\"n\">busy_controller_url</span><span class=\"p\">,</span> <span class=\"ss\">alert: </span><span class=\"s2\">\"Too many signups!\"</span> <span class=\"p\">},</span> <span class=\"ss\">only: :new</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add `image/svg+xml` to the compressible content types of ActionDispatch::Static\n\n    *Georg Ledermann*",
+    "project": "actionpack",
+    "date_merged": 1702572845000,
+    "author": "Georg Ledermann",
+    "sha": "0fc5b06c08e79b8767f9c2f9c91650e06b24eba0",
+    "pr": "50359",
+    "merge_sha": "b9cc0a2625ece3f682de6ef368c4c444123afc77",
+    "html": "<p>Add <code>image/svg+xml</code> to the compressible content types of ActionDispatch::Static</p>\n\n<p><em>Georg Ledermann</em></p>\n"
+  },
+  {
+    "message": "*   Add instrumentation for ActionController::Live#send_stream\n\n    Allows subscribing to `send_stream` events. The event payload contains the filename, disposition, and type.\n\n    *Hannah Ramadan*",
+    "project": "actionpack",
+    "date_merged": 1702456739000,
+    "author": "hramadan",
+    "sha": "6488bd9ec0c73feb46eb7124ba6dc9c7db775725",
+    "pr": "49297",
+    "merge_sha": "8278626a2c0e0ee4dc762891a91e70708380b4d6",
+    "html": "<p>Add instrumentation for ActionController::Live#send_stream</p>\n\n<p>Allows subscribing to <code>send_stream</code> events. The event payload contains the filename, disposition, and type.</p>\n\n<p><em>Hannah Ramadan</em></p>\n"
+  },
+  {
+    "message": "*   Add support for `with_routing` test helper in `ActionDispatch::IntegrationTest`\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1700801299000,
+    "author": "Gannon McGibbon",
+    "sha": "d46d5ce6107e34423727b1a8a70767ed233f882f",
+    "pr": "49819",
+    "merge_sha": "82e33e44bf3d8bcdc2a4ea40b6039472f0e2b297",
+    "html": "<p>Add support for <code>with_routing</code> test helper in <code>ActionDispatch::IntegrationTest</code></p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "ec2c2666c255029593dda2f78e89b457cf8509fc",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated support to set <code>Rails.application.config.action_dispatch.show_exceptions</code> to <code>true</code> and <code>false</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `speaker`, `vibrate`, and `vr` permissions policy directives.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "30193dc087b60d2b903b8e2781d5ee0c65de0130",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated <code>speaker</code>, <code>vibrate</code>, and <code>vr</code> permissions policy directives.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "d088d9132f634e88bfa92ea82978d5c21d0c8c32",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated <code>Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "43e42c1ea879de70d42caa0acbc9b24faf74dc1a",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Deprecate <code>Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated comparison between `ActionController::Parameters` and `Hash`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "43e42c1ea879de70d42caa0acbc9b24faf74dc1a",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated comparison between <code>ActionController::Parameters</code> and <code>Hash</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated constant `AbstractController::Helpers::MissingHelperError`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "87bc1190fbc4f8e18682f1bb959a53b263a2df5d",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated constant <code>AbstractController::Helpers::MissingHelperError</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Fix a race condition that could cause a `Text file busy - chromedriver`\n    error with parallel system tests\n\n    *Matt Brictson*",
+    "project": "actionpack",
+    "date_merged": 1699378873000,
+    "author": "Matt Brictson",
+    "sha": "e7d743b8ac6f6ce60753bfab3c8190e7b37eaeee",
+    "pr": "49908",
+    "merge_sha": "3162afe9596aa8e38bf6b983db536d2d15227489",
+    "html": "<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />\nerror with parallel system tests</p>\n\n<p><em>Matt Brictson</em></p>\n"
+  },
+  {
+    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1697839813000,
+    "author": "Hartley McGuire",
+    "sha": "5005480adf5057b7efe9197a8d8b7a716c91bec5",
+    "pr": "49722",
+    "merge_sha": "d4866ede93a99642002f1854f05c8f813d342b02",
+    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated constant `ActionDispatch::IllegalStateError`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "b2f96d07d489f452f7862dcd20336204b2e10ba3",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated constant <code>ActionDispatch::IllegalStateError</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Add parameter filter capability for redirect locations.\n\n    It uses the `config.filter_parameters` to match what needs to be filtered.\n    The result would be like this:\n\n        Redirected to http://secret.foo.bar?username=roque&password=[FILTERED]\n\n    Fixes #14055.\n\n    *Roque Pinel*, *Trevor Turk*, *tonytonyjan*",
+    "project": "actionpack",
+    "date_merged": 1708471512000,
+    "author": "Roque Pinel",
+    "sha": "f4f3ef77813977d0067635a6c82efbd7936df09a",
+    "pr": "51131",
+    "merge_sha": "05b4db2ad09f8fd275534948e663588a97e90ab8",
+    "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
+  },
+  {
+    "message": "*   Make Active Job transaction aware when used conjointly with Active Record.\n\n    A common mistake with Active Job is to enqueue jobs from inside a transaction,\n    causing them to potentially be picked and ran by another process, before the\n    transaction is committed, which result in various errors.\n\n    ```ruby\n    Topic.transaction do\n      topic = Topic.create(...)\n      NewTopicNotificationJob.perform_later(topic)\n    end\n    ```\n\n    Now Active Job will automatically defer the enqueuing to after the transaction is committed,\n    and drop the job if the transaction is rolled back.\n\n    Various queue implementations can chose to disable this behavior, and users can disable it,\n    or force it on a per job basis:\n\n    ```ruby\n    class NewTopicNotificationJob < ApplicationJob\n      self.enqueue_after_transaction_commit = false # or `true`\n    end\n    ```\n\n    *Jean Boussier*, *Cristian Bica*",
+    "project": "activejob",
+    "date_merged": 1712155744000,
+    "author": "Jean Boussier",
+    "sha": "e922c59207c406d51541622690737783e0ec338e",
+    "pr": "51426",
+    "merge_sha": "a134d9166e4d34ab0d97fb82f3e4f0092b3b98ee",
+    "html": "<p>Make Active Job transaction aware when used conjointly with Active Record.</p>\n\n<p>A common mistake with Active Job is to enqueue jobs from inside a transaction,<br />\ncausing them to potentially be picked and ran by another process, before the<br />\ntransaction is committed, which result in various errors.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n  <span class=\"n\">topic</span> <span class=\"o\">=</span> <span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"o\">...</span><span class=\"p\">)</span>\n  <span class=\"no\">NewTopicNotificationJob</span><span class=\"p\">.</span><span class=\"nf\">perform_later</span><span class=\"p\">(</span><span class=\"n\">topic</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Now Active Job will automatically defer the enqueuing to after the transaction is committed,<br />\nand drop the job if the transaction is rolled back.</p>\n\n<p>Various queue implementations can chose to disable this behavior, and users can disable it,<br />\nor force it on a per job basis:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">NewTopicNotificationJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationJob</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">enqueue_after_transaction_commit</span> <span class=\"o\">=</span> <span class=\"kp\">false</span> <span class=\"c1\"># or `true`</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em>, <em>Cristian Bica</em></p>\n"
+  },
+  {
+    "message": "*   Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.\n\n    *Maxime Réty*",
+    "project": "activejob",
+    "date_merged": 1705002081000,
+    "author": "maximerety",
+    "sha": "f72d2118fe8ce739cfbb4b3e223432041f274c38",
+    "pr": "50713",
+    "merge_sha": "cff2eb1be11cb729382b3674e3caa2bd198ec55e",
+    "html": "<p>Do not trigger immediate loading of <code>ActiveJob::Base</code> when loading <code>ActiveJob::TestHelper</code>.</p>\n\n<p><em>Maxime Réty</em></p>\n"
+  },
+  {
+    "message": "*   Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.\n\n    *Joshua Young*",
+    "project": "activejob",
+    "date_merged": 1701529546000,
+    "author": "Joshua Young",
+    "sha": "18098ccc4c837278c42d9757dd2b1e0bdd2016e0",
+    "pr": "50230",
+    "merge_sha": "c5d519f93af9f5aefda329649e0789d33c995308",
+    "html": "<p>Preserve the serialized timezone when deserializing <code>ActiveSupport::TimeWithZone</code> arguments.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `:exponentially_longer` value for the `:wait` in `retry_on`.\n\n    *Rafael Mendonça França*",
+    "project": "activejob",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "03dae98092e21260eb588f432af4bc2bd92d096b",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated <code>:exponentially_longer</code> value for the <code>:wait</code> in <code>retry_on</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to set numeric values to `scheduled_at` attribute.\n\n    *Rafael Mendonça França*",
+    "project": "activejob",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "798289699d49c7443ce11b495444cb900d72c59e",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated support to set numeric values to <code>scheduled_at</code> attribute.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `Rails.application.config.active_job.use_big_decimal_serialize`.\n\n    *Rafael Mendonça França*",
+    "project": "activejob",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "2a761d23d2322f3cf406aba0426ea356673da508",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Deprecate <code>Rails.application.config.active_job.use_big_decimal_serialize</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated primitive serializer for `BigDecimal` arguments.\n\n    *Rafael Mendonça França*",
+    "project": "activejob",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "2a761d23d2322f3cf406aba0426ea356673da508",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated primitive serializer for <code>BigDecimal</code> arguments.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Use `includes` instead of `eager_load` for `with_all_rich_text`.\n\n    *Petrik de Heus*",
+    "project": "actiontext",
+    "date_merged": 1705447718000,
+    "author": "Petrik",
+    "sha": "3b49e47ce8b1d5b1852515e60ce50544677461bf",
+    "pr": "50769",
+    "merge_sha": "473fd597f6ff8a575c36c565d205627fa7964a05",
+    "html": "<p>Use <code>includes</code> instead of <code>eager_load</code> for <code>with_all_rich_text</code>.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`\n\n    ```ruby\n    content = ActionText::Content.new <<~HTML\n      <h1>Hello, world</h1>\n\n      <div>The body</div>\n    HTML\n\n    content => [h1, div]\n\n    assert_pattern { h1 => { content: \"Hello, world\" } }\n    assert_pattern { div => { content: \"The body\" } }\n    ```\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1704303082000,
+    "author": "Sean Doyle",
+    "sha": "2e15010d568cb279a988dec012cca09f49142809",
+    "pr": "50473",
+    "merge_sha": "664eb0dfc42cdab7d34d0e1948a9ea5c9e6558e2",
+    "html": "<p>Delegate <code>ActionText::Content#deconstruct</code> to <code>Nokogiri::XML::DocumentFragment#elements</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">content</span> <span class=\"o\">=</span> <span class=\"no\">ActionText</span><span class=\"o\">::</span><span class=\"no\">Content</span><span class=\"p\">.</span><span class=\"nf\">new</span> <span class=\"o\">&lt;&lt;~</span><span class=\"no\">HTML</span><span class=\"sh\">\n  &lt;h1&gt;Hello, world&lt;/h1&gt;\n\n  &lt;div&gt;The body&lt;/div&gt;\n</span><span class=\"no\">HTML</span>\n\n<span class=\"n\">content</span> <span class=\"o\">=&gt;</span> <span class=\"p\">[</span><span class=\"n\">h1</span><span class=\"p\">,</span> <span class=\"n\">div</span><span class=\"p\">]</span>\n\n<span class=\"n\">assert_pattern</span> <span class=\"p\">{</span> <span class=\"n\">h1</span> <span class=\"o\">=&gt;</span> <span class=\"p\">{</span> <span class=\"ss\">content: </span><span class=\"s2\">\"Hello, world\"</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n<span class=\"n\">assert_pattern</span> <span class=\"p\">{</span> <span class=\"n\">div</span> <span class=\"o\">=&gt;</span> <span class=\"p\">{</span> <span class=\"ss\">content: </span><span class=\"s2\">\"The body\"</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Fix all Action Text database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
+    "project": "actiontext",
+    "date_merged": 1702304642000,
+    "author": "Chedli Bourguiba",
+    "sha": "c3b821e6d87e50687eec8ceea5cc67f9a571c234",
+    "pr": "50299",
+    "merge_sha": "6eeae61351ffcd8d0d205edaeb491c4a938489cc",
+    "html": "<p>Fix all Action Text database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
+    "message": "*   Compile ESM package that can be used directly in the browser as actiontext.esm.js\n\n    *Matias Grunberg*",
+    "project": "actiontext",
+    "date_merged": 1699475418000,
+    "author": "Matias Grunberg",
+    "sha": "2dbcb3df33bdaab5364009dcb93d33222790e17a",
+    "pr": "49952",
+    "merge_sha": "2eace42b2cada90c94f6e0a6c13c22f2e2ede3d5",
+    "html": "<p>Compile ESM package that can be used directly in the browser as actiontext.esm.js</p>\n\n<p><em>Matias Grunberg</em></p>\n"
+  },
+  {
+    "message": "*   Fix using actiontext.js with Sprockets\n\n    *Matias Grunberg*",
+    "project": "actiontext",
+    "date_merged": 1699475418000,
+    "author": "Matias Grunberg",
+    "sha": "2dbcb3df33bdaab5364009dcb93d33222790e17a",
+    "pr": "49952",
+    "merge_sha": "2eace42b2cada90c94f6e0a6c13c22f2e2ede3d5",
+    "html": "<p>Fix using actiontext.js with Sprockets</p>\n\n<p><em>Matias Grunberg</em></p>\n"
+  },
+  {
+    "message": "*   Upgrade Trix to 2.0.7\n\n    *Hartley McGuire*",
+    "project": "actiontext",
+    "date_merged": 1698416970000,
+    "author": "Hartley McGuire",
+    "sha": "c93a989635d01fa46947b2618a7dde2505c77410",
+    "pr": "49778",
+    "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
+    "html": "<p>Upgrade Trix to 2.0.7</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix using Trix with Sprockets\n\n    *Hartley McGuire*",
+    "project": "actiontext",
+    "date_merged": 1698416970000,
+    "author": "Hartley McGuire",
+    "sha": "c93a989635d01fa46947b2618a7dde2505c77410",
+    "pr": "49778",
+    "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
+    "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix all Action Mailbox database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
+    "project": "actionmailbox",
+    "date_merged": 1702304683000,
+    "author": "Chedli Bourguiba",
+    "sha": "1b97f976641d5d2cc314a27b1a41d8832790b465",
+    "pr": "50300",
+    "merge_sha": "ac97750789df33df38b523ff626813fb1d03e71c",
+    "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
     "message": "*   Make ActiveSupport::BacktraceCleaner copy filters and silencers on dup and clone\n\n    Previously the copy would still share the internal silencers and filters array,\n    causing state to leak.\n\n    *Jean Boussier*",
     "project": "activesupport",
     "date_merged": 1711711355000,
@@ -568,6 +888,46 @@
     "pr": "49475",
     "merge_sha": "d21f4e638ff3498a19730c505e5fb255740a7960",
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix a bug where type casting of string to `Time` and `DateTime` doesn't\n    calculate minus minute value in TZ offset correctly.\n\n    *Akira Matsuda*",
+    "project": "activemodel",
+    "date_merged": 1705481738000,
+    "author": "Akira Matsuda",
+    "sha": "d10d5aedce2be03aaf14b493b1f3f9ac3c7852a6",
+    "pr": "46872",
+    "merge_sha": "a71e0aabe3e1eeae9757df1ab614558e85405766",
+    "html": "<p>Fix a bug where type casting of string to <code>Time</code> and <code>DateTime</code> doesn’t<br />\ncalculate minus minute value in TZ offset correctly.</p>\n\n<p><em>Akira Matsuda</em></p>\n"
+  },
+  {
+    "message": "*   Port the `type_for_attribute` method to Active Model. Classes that include\n    `ActiveModel::Attributes` will now provide this method. This method behaves\n    the same for Active Model as it does for Active Record.\n\n      ```ruby\n      class MyModel\n        include ActiveModel::Attributes\n\n        attribute :my_attribute, :integer\n      end\n\n      MyModel.type_for_attribute(:my_attribute) # => #<ActiveModel::Type::Integer ...>\n      ```\n\n    *Jonathan Hefner*",
+    "project": "activemodel",
+    "date_merged": 1699066499000,
+    "author": "Jonathan Hefner",
+    "sha": "83f543b8760308081ab1b58c25804c45c2597844",
+    "pr": "49910",
+    "merge_sha": "7d525d3128af0c1d1e76fc3396746a81ee41a82e",
+    "html": "<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />\nthe same for Active Model as it does for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">type_for_attribute</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated params via `:args` for `assert_enqueued_email_with`.\n\n    *Rafael Mendonça França*",
+    "project": "actionmailer",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "992a126c6ebb3cb8b8f7ade52fdb1acbc0b42b0f",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated params via <code>:args</code> for <code>assert_enqueued_email_with</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `config.action_mailer.preview_path`.\n\n    *Rafael Mendonça França*",
+    "project": "actionmailer",
+    "date_merged": 1700692705000,
+    "author": "Rafael Mendonça França",
+    "sha": "2bd6cf5177e07e4bde7da0dbd0e43c37f75f43a0",
+    "pr": "50144",
+    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
+    "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Raise an `ActiveRecord::ActiveRecordError` error when the MySQL database returns an invalid version string.\n\n    *Kevin McPhillips*",
@@ -1460,96 +1820,6 @@
     "html": "<p>Allow for more complex hash arguments for <code>order</code> which mimics <code>where</code> in <code>ActiveRecord::Relation</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">includes</span><span class=\"p\">(</span><span class=\"ss\">:posts</span><span class=\"p\">).</span><span class=\"nf\">order</span><span class=\"p\">(</span><span class=\"ss\">posts: </span><span class=\"p\">{</span> <span class=\"ss\">created_at: :desc</span> <span class=\"p\">})</span>\n</code></pre></div></div>\n\n<p><em>Myles Boone</em></p>\n"
   },
   {
-    "message": "*   Make Active Job transaction aware when used conjointly with Active Record.\n\n    A common mistake with Active Job is to enqueue jobs from inside a transaction,\n    causing them to potentially be picked and ran by another process, before the\n    transaction is committed, which result in various errors.\n\n    ```ruby\n    Topic.transaction do\n      topic = Topic.create(...)\n      NewTopicNotificationJob.perform_later(topic)\n    end\n    ```\n\n    Now Active Job will automatically defer the enqueuing to after the transaction is committed,\n    and drop the job if the transaction is rolled back.\n\n    Various queue implementations can chose to disable this behavior, and users can disable it,\n    or force it on a per job basis:\n\n    ```ruby\n    class NewTopicNotificationJob < ApplicationJob\n      self.enqueue_after_transaction_commit = false # or `true`\n    end\n    ```\n\n    *Jean Boussier*, *Cristian Bica*",
-    "project": "activejob",
-    "date_merged": 1712155744000,
-    "author": "Jean Boussier",
-    "sha": "e922c59207c406d51541622690737783e0ec338e",
-    "pr": "51426",
-    "merge_sha": "a134d9166e4d34ab0d97fb82f3e4f0092b3b98ee",
-    "html": "<p>Make Active Job transaction aware when used conjointly with Active Record.</p>\n\n<p>A common mistake with Active Job is to enqueue jobs from inside a transaction,<br />\ncausing them to potentially be picked and ran by another process, before the<br />\ntransaction is committed, which result in various errors.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n  <span class=\"n\">topic</span> <span class=\"o\">=</span> <span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"o\">...</span><span class=\"p\">)</span>\n  <span class=\"no\">NewTopicNotificationJob</span><span class=\"p\">.</span><span class=\"nf\">perform_later</span><span class=\"p\">(</span><span class=\"n\">topic</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Now Active Job will automatically defer the enqueuing to after the transaction is committed,<br />\nand drop the job if the transaction is rolled back.</p>\n\n<p>Various queue implementations can chose to disable this behavior, and users can disable it,<br />\nor force it on a per job basis:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">NewTopicNotificationJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationJob</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">enqueue_after_transaction_commit</span> <span class=\"o\">=</span> <span class=\"kp\">false</span> <span class=\"c1\"># or `true`</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em>, <em>Cristian Bica</em></p>\n"
-  },
-  {
-    "message": "*   Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.\n\n    *Maxime Réty*",
-    "project": "activejob",
-    "date_merged": 1705002081000,
-    "author": "maximerety",
-    "sha": "f72d2118fe8ce739cfbb4b3e223432041f274c38",
-    "pr": "50713",
-    "merge_sha": "cff2eb1be11cb729382b3674e3caa2bd198ec55e",
-    "html": "<p>Do not trigger immediate loading of <code>ActiveJob::Base</code> when loading <code>ActiveJob::TestHelper</code>.</p>\n\n<p><em>Maxime Réty</em></p>\n"
-  },
-  {
-    "message": "*   Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.\n\n    *Joshua Young*",
-    "project": "activejob",
-    "date_merged": 1701529546000,
-    "author": "Joshua Young",
-    "sha": "18098ccc4c837278c42d9757dd2b1e0bdd2016e0",
-    "pr": "50230",
-    "merge_sha": "c5d519f93af9f5aefda329649e0789d33c995308",
-    "html": "<p>Preserve the serialized timezone when deserializing <code>ActiveSupport::TimeWithZone</code> arguments.</p>\n\n<p><em>Joshua Young</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated `:exponentially_longer` value for the `:wait` in `retry_on`.\n\n    *Rafael Mendonça França*",
-    "project": "activejob",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "03dae98092e21260eb588f432af4bc2bd92d096b",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated <code>:exponentially_longer</code> value for the <code>:wait</code> in <code>retry_on</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated support to set numeric values to `scheduled_at` attribute.\n\n    *Rafael Mendonça França*",
-    "project": "activejob",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "798289699d49c7443ce11b495444cb900d72c59e",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated support to set numeric values to <code>scheduled_at</code> attribute.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate `Rails.application.config.active_job.use_big_decimal_serialize`.\n\n    *Rafael Mendonça França*",
-    "project": "activejob",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "2a761d23d2322f3cf406aba0426ea356673da508",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Deprecate <code>Rails.application.config.active_job.use_big_decimal_serialize</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated primitive serializer for `BigDecimal` arguments.\n\n    *Rafael Mendonça França*",
-    "project": "activejob",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "2a761d23d2322f3cf406aba0426ea356673da508",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated primitive serializer for <code>BigDecimal</code> arguments.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated params via `:args` for `assert_enqueued_email_with`.\n\n    *Rafael Mendonça França*",
-    "project": "actionmailer",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "992a126c6ebb3cb8b8f7ade52fdb1acbc0b42b0f",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated params via <code>:args</code> for <code>assert_enqueued_email_with</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated `config.action_mailer.preview_path`.\n\n    *Rafael Mendonça França*",
-    "project": "actionmailer",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "2bd6cf5177e07e4bde7da0dbd0e43c37f75f43a0",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
     "message": "*   Add queries count to template rendering instrumentation\n\n    ```\n    # Before\n    Completed 200 OK in 3804ms (Views: 41.0ms | ActiveRecord: 33.5ms | Allocations: 112788)\n\n    # After\n    Completed 200 OK in 3804ms (Views: 41.0ms | ActiveRecord: 33.5ms (2 queries, 1 cached) | Allocations: 112788)\n    ```\n\n    *fatkodima*",
     "project": "actionview",
     "date_merged": 1712245103000,
@@ -1690,6 +1960,26 @@
     "html": "<p>Added validation for HTML tag names in the <code>tag</code> and <code>content_tag</code> helper method. The <code>tag</code> and<br />\n<code>content_tag</code> method now checks that the provided tag name adheres to the HTML specification. If<br />\nan invalid HTML tag name is provided, the method raises an <code>ArgumentError</code> with an appropriate error<br />\nmessage.</p>\n\n<p>Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: 12p</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"12p\"</span><span class=\"p\">)</span> <span class=\"c1\"># Starting with a number</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"\"</span>\n<span class=\"n\">content_tag</span><span class=\"p\">(</span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># Empty tag name</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: div/</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"div/\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a solidus</span>\n\n<span class=\"c1\"># Raises ArgumentError: Invalid HTML5 tag name: \"image file\"</span>\n<span class=\"n\">tag</span><span class=\"p\">(</span><span class=\"s2\">\"image file\"</span><span class=\"p\">)</span> <span class=\"c1\"># Contains a space</span>\n</code></pre></div></div>\n\n<p><em>Akhil G Krishnan</em></p>\n"
   },
   {
+    "message": "*   Record ping on every actioncable message\n\n    Previously only `ping` and `welcome` message types were keeping connection active.\n    Now every Action Cable message updates `pingedAt` value preventing connection from being marked as stale.\n\n    *yauhenininjia*",
+    "project": "actioncable",
+    "date_merged": 1712339631000,
+    "author": "yauhenisushkevich",
+    "sha": "2a71de9cca7c221f96f06a7d2d0ed0eb7b2431db",
+    "pr": "51503",
+    "merge_sha": "2b9366af55904b088e79e53fba6b91f9b54496e5",
+    "html": "<p>Record ping on every actioncable message</p>\n\n<p>Previously only <code>ping</code> and <code>welcome</code> message types were keeping connection active.<br />\nNow every Action Cable message updates <code>pingedAt</code> value preventing connection from being marked as stale.</p>\n\n<p><em>yauhenininjia</em></p>\n"
+  },
+  {
+    "message": "*   Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`\n    and `assert_has_no_stream_for`. These methods can be used to assert that a\n    stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement\n    the already existing `assert_has_stream` and `assert_has_stream_for` methods.\n\n    ```ruby\n    assert_has_no_stream \"messages\"\n    assert_has_no_stream_for User.find(42)\n    ```\n\n    *Sebastian Pöll*, *Junichi Sato*",
+    "project": "actioncable",
+    "date_merged": 1704467031000,
+    "author": "Junichi Sato",
+    "sha": "523f86964f688b086efc610cfa51d2c9e4ee674c",
+    "pr": "50589",
+    "merge_sha": "de30889d0d2bc213207596d90ffa136e7c820e06",
+    "html": "<p>Add two new assertion methods for ActionCable test cases: <code>assert_has_no_stream</code><br />\nand <code>assert_has_no_stream_for</code>. These methods can be used to assert that a<br />\nstream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />\nthe already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_has_no_stream</span> <span class=\"s2\">\"messages\"</span>\n<span class=\"n\">assert_has_no_stream_for</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">42</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>\n"
+  },
+  {
     "message": "*   Add support for custom `key` in `ActiveStorage::Blob#compose`.\n\n    *Elvin Efendiev*",
     "project": "activestorage",
     "date_merged": 1710278901000,
@@ -1818,285 +2108,5 @@
     "pr": "49863",
     "merge_sha": "efa11e67d652b7f1f16b7840dc288730463da492",
     "html": "<p>Allow accepting <code>service</code> as a proc as well in <code>has_one_attached</code> and <code>has_many_attached</code>.</p>\n\n<p><em>Yogesh Khater</em></p>\n"
-  },
-  {
-    "message": "*   Request Forgery takes relative paths into account.\n\n    *Stefan Wienert*",
-    "project": "actionpack",
-    "date_merged": 1708535814000,
-    "author": "Stefan Wienert",
-    "sha": "e2a8bfa1f24395ce8fa5879c4df88de835fd0401",
-    "pr": "32770",
-    "merge_sha": "db4c6db59dd9c17fb7c729c6b3ecff1f3429d7dc",
-    "html": "<p>Request Forgery takes relative paths into account.</p>\n\n<p><em>Stefan Wienert</em></p>\n"
-  },
-  {
-    "message": "*   Add \".test\" as a default allowed host in development to ensure smooth golden-path setup with puma.dev.\n\n    *DHH*",
-    "project": "actionpack",
-    "date_merged": 1707930843000,
-    "author": "David Heinemeier Hansson",
-    "sha": "6260b6b0c82eb41264f37acda3ab866e658bb1d6",
-    "pr": "51087",
-    "merge_sha": "3163bb735189eddd7c152a1e72bed7b4d052f7d4",
-    "html": "<p>Add “.test” as a default allowed host in development to ensure smooth golden-path setup with puma.dev.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Add `allow_browser` to set minimum browser versions for the application.\n\n    A browser that's blocked will by default be served the file in `public/426.html` with a HTTP status code of \"426 Upgrade Required\".\n\n    ```ruby\n    class ApplicationController < ActionController::Base\n      # Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has\n      allow_browser versions: :modern\n    end\n\n    class ApplicationController < ActionController::Base\n      # All versions of Chrome and Opera will be allowed, but no versions of \"internet explorer\" (ie). Safari needs to be 16.4+ and Firefox 121+.\n      allow_browser versions: { safari: 16.4, firefox: 121, ie: false }\n    end\n\n    class MessagesController < ApplicationController\n      # In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.\n      allow_browser versions: { opera: 104, chrome: 119 }, only: :show\n    end\n    ```\n\n    *DHH*",
-    "project": "actionpack",
-    "date_merged": 1704103725000,
-    "author": "Vipul A M",
-    "sha": "5d56bb877764bd35b3d70ff8e9dc20569b854205",
-    "pr": "50505",
-    "merge_sha": "8e6fac80ba36bf8eca2448f415dc36fcb5c1f0ce",
-    "html": "<p>Add <code>allow_browser</code> to set minimum browser versions for the application.</p>\n\n<p>A browser that’s blocked will by default be served the file in <code>public/426.html</code> with a HTTP status code of “426 Upgrade Required”.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ApplicationController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"c1\"># Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: :modern</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">ApplicationController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"c1\"># All versions of Chrome and Opera will be allowed, but no versions of \"internet explorer\" (ie). Safari needs to be 16.4+ and Firefox 121+.</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: </span><span class=\"p\">{</span> <span class=\"ss\">safari: </span><span class=\"mf\">16.4</span><span class=\"p\">,</span> <span class=\"ss\">firefox: </span><span class=\"mi\">121</span><span class=\"p\">,</span> <span class=\"ss\">ie: </span><span class=\"kp\">false</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">MessagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"c1\"># In addition to the browsers blocked by ApplicationController, also block Opera below 104 and Chrome below 119 for the show action.</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: </span><span class=\"p\">{</span> <span class=\"ss\">opera: </span><span class=\"mi\">104</span><span class=\"p\">,</span> <span class=\"ss\">chrome: </span><span class=\"mi\">119</span> <span class=\"p\">},</span> <span class=\"ss\">only: :show</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Add rate limiting API.\n\n    ```ruby\n    class SessionsController < ApplicationController\n      rate_limit to: 10, within: 3.minutes, only: :create\n    end\n\n    class SignupsController < ApplicationController\n      rate_limit to: 1000, within: 10.seconds,\n        by: -> { request.domain }, with: -> { redirect_to busy_controller_url, alert: \"Too many signups!\" }, only: :new\n    end\n    ```\n\n    *DHH*, *Jean Boussier*",
-    "project": "actionpack",
-    "date_merged": 1705510167000,
-    "author": "Jean Boussier",
-    "sha": "d839ddb71abea276cc1a79b5eaddaa9620353f31",
-    "pr": "50781",
-    "merge_sha": "1205a751c5a79335ffb522ca56986c22ad527371",
-    "html": "<p>Add rate limiting API.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">SessionsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">,</span> <span class=\"ss\">only: :create</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">SignupsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">1000</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">10</span><span class=\"p\">.</span><span class=\"nf\">seconds</span><span class=\"p\">,</span>\n    <span class=\"ss\">by: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">domain</span> <span class=\"p\">},</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">redirect_to</span> <span class=\"n\">busy_controller_url</span><span class=\"p\">,</span> <span class=\"ss\">alert: </span><span class=\"s2\">\"Too many signups!\"</span> <span class=\"p\">},</span> <span class=\"ss\">only: :new</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Add `image/svg+xml` to the compressible content types of ActionDispatch::Static\n\n    *Georg Ledermann*",
-    "project": "actionpack",
-    "date_merged": 1702572845000,
-    "author": "Georg Ledermann",
-    "sha": "0fc5b06c08e79b8767f9c2f9c91650e06b24eba0",
-    "pr": "50359",
-    "merge_sha": "b9cc0a2625ece3f682de6ef368c4c444123afc77",
-    "html": "<p>Add <code>image/svg+xml</code> to the compressible content types of ActionDispatch::Static</p>\n\n<p><em>Georg Ledermann</em></p>\n"
-  },
-  {
-    "message": "*   Add instrumentation for ActionController::Live#send_stream\n\n    Allows subscribing to `send_stream` events. The event payload contains the filename, disposition, and type.\n\n    *Hannah Ramadan*",
-    "project": "actionpack",
-    "date_merged": 1702456739000,
-    "author": "hramadan",
-    "sha": "6488bd9ec0c73feb46eb7124ba6dc9c7db775725",
-    "pr": "49297",
-    "merge_sha": "8278626a2c0e0ee4dc762891a91e70708380b4d6",
-    "html": "<p>Add instrumentation for ActionController::Live#send_stream</p>\n\n<p>Allows subscribing to <code>send_stream</code> events. The event payload contains the filename, disposition, and type.</p>\n\n<p><em>Hannah Ramadan</em></p>\n"
-  },
-  {
-    "message": "*   Add support for `with_routing` test helper in `ActionDispatch::IntegrationTest`\n\n    *Gannon McGibbon*",
-    "project": "actionpack",
-    "date_merged": 1700801299000,
-    "author": "Gannon McGibbon",
-    "sha": "d46d5ce6107e34423727b1a8a70767ed233f882f",
-    "pr": "49819",
-    "merge_sha": "82e33e44bf3d8bcdc2a4ea40b6039472f0e2b297",
-    "html": "<p>Add support for <code>with_routing</code> test helper in <code>ActionDispatch::IntegrationTest</code></p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated support to set `Rails.application.config.action_dispatch.show_exceptions` to `true` and `false`.\n\n    *Rafael Mendonça França*",
-    "project": "actionpack",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "ec2c2666c255029593dda2f78e89b457cf8509fc",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated support to set <code>Rails.application.config.action_dispatch.show_exceptions</code> to <code>true</code> and <code>false</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated `speaker`, `vibrate`, and `vr` permissions policy directives.\n\n    *Rafael Mendonça França*",
-    "project": "actionpack",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "30193dc087b60d2b903b8e2781d5ee0c65de0130",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated <code>speaker</code>, <code>vibrate</code>, and <code>vr</code> permissions policy directives.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated `Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type`.\n\n    *Rafael Mendonça França*",
-    "project": "actionpack",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "d088d9132f634e88bfa92ea82978d5c21d0c8c32",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated <code>Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate `Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality`.\n\n    *Rafael Mendonça França*",
-    "project": "actionpack",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "43e42c1ea879de70d42caa0acbc9b24faf74dc1a",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Deprecate <code>Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated comparison between `ActionController::Parameters` and `Hash`.\n\n    *Rafael Mendonça França*",
-    "project": "actionpack",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "43e42c1ea879de70d42caa0acbc9b24faf74dc1a",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated comparison between <code>ActionController::Parameters</code> and <code>Hash</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated constant `AbstractController::Helpers::MissingHelperError`.\n\n    *Rafael Mendonça França*",
-    "project": "actionpack",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "87bc1190fbc4f8e18682f1bb959a53b263a2df5d",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated constant <code>AbstractController::Helpers::MissingHelperError</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Fix a race condition that could cause a `Text file busy - chromedriver`\n    error with parallel system tests\n\n    *Matt Brictson*",
-    "project": "actionpack",
-    "date_merged": 1699378873000,
-    "author": "Matt Brictson",
-    "sha": "e7d743b8ac6f6ce60753bfab3c8190e7b37eaeee",
-    "pr": "49908",
-    "merge_sha": "3162afe9596aa8e38bf6b983db536d2d15227489",
-    "html": "<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />\nerror with parallel system tests</p>\n\n<p><em>Matt Brictson</em></p>\n"
-  },
-  {
-    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
-    "project": "actionpack",
-    "date_merged": 1697839813000,
-    "author": "Hartley McGuire",
-    "sha": "5005480adf5057b7efe9197a8d8b7a716c91bec5",
-    "pr": "49722",
-    "merge_sha": "d4866ede93a99642002f1854f05c8f813d342b02",
-    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated constant `ActionDispatch::IllegalStateError`.\n\n    *Rafael Mendonça França*",
-    "project": "actionpack",
-    "date_merged": 1700692705000,
-    "author": "Rafael Mendonça França",
-    "sha": "b2f96d07d489f452f7862dcd20336204b2e10ba3",
-    "pr": "50144",
-    "merge_sha": "e7ea111e3bbb1f83fe2b1565a8cbdab02c4fef30",
-    "html": "<p>Remove deprecated constant <code>ActionDispatch::IllegalStateError</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
-  },
-  {
-    "message": "*   Add parameter filter capability for redirect locations.\n\n    It uses the `config.filter_parameters` to match what needs to be filtered.\n    The result would be like this:\n\n        Redirected to http://secret.foo.bar?username=roque&password=[FILTERED]\n\n    Fixes #14055.\n\n    *Roque Pinel*, *Trevor Turk*, *tonytonyjan*",
-    "project": "actionpack",
-    "date_merged": 1708471512000,
-    "author": "Roque Pinel",
-    "sha": "f4f3ef77813977d0067635a6c82efbd7936df09a",
-    "pr": "51131",
-    "merge_sha": "05b4db2ad09f8fd275534948e663588a97e90ab8",
-    "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
-  },
-  {
-    "message": "*   Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`\n    and `assert_has_no_stream_for`. These methods can be used to assert that a\n    stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement\n    the already existing `assert_has_stream` and `assert_has_stream_for` methods.\n\n    ```ruby\n    assert_has_no_stream \"messages\"\n    assert_has_no_stream_for User.find(42)\n    ```\n\n    *Sebastian Pöll*, *Junichi Sato*",
-    "project": "actioncable",
-    "date_merged": 1704467031000,
-    "author": "Junichi Sato",
-    "sha": "523f86964f688b086efc610cfa51d2c9e4ee674c",
-    "pr": "50589",
-    "merge_sha": "de30889d0d2bc213207596d90ffa136e7c820e06",
-    "html": "<p>Add two new assertion methods for ActionCable test cases: <code>assert_has_no_stream</code><br />\nand <code>assert_has_no_stream_for</code>. These methods can be used to assert that a<br />\nstream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />\nthe already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_has_no_stream</span> <span class=\"s2\">\"messages\"</span>\n<span class=\"n\">assert_has_no_stream_for</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">42</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Sebastian Pöll</em>, <em>Junichi Sato</em></p>\n"
-  },
-  {
-    "message": "*   Fix a bug where type casting of string to `Time` and `DateTime` doesn't\n    calculate minus minute value in TZ offset correctly.\n\n    *Akira Matsuda*",
-    "project": "activemodel",
-    "date_merged": 1705481738000,
-    "author": "Akira Matsuda",
-    "sha": "d10d5aedce2be03aaf14b493b1f3f9ac3c7852a6",
-    "pr": "46872",
-    "merge_sha": "a71e0aabe3e1eeae9757df1ab614558e85405766",
-    "html": "<p>Fix a bug where type casting of string to <code>Time</code> and <code>DateTime</code> doesn’t<br />\ncalculate minus minute value in TZ offset correctly.</p>\n\n<p><em>Akira Matsuda</em></p>\n"
-  },
-  {
-    "message": "*   Port the `type_for_attribute` method to Active Model. Classes that include\n    `ActiveModel::Attributes` will now provide this method. This method behaves\n    the same for Active Model as it does for Active Record.\n\n      ```ruby\n      class MyModel\n        include ActiveModel::Attributes\n\n        attribute :my_attribute, :integer\n      end\n\n      MyModel.type_for_attribute(:my_attribute) # => #<ActiveModel::Type::Integer ...>\n      ```\n\n    *Jonathan Hefner*",
-    "project": "activemodel",
-    "date_merged": 1699066499000,
-    "author": "Jonathan Hefner",
-    "sha": "83f543b8760308081ab1b58c25804c45c2597844",
-    "pr": "49910",
-    "merge_sha": "7d525d3128af0c1d1e76fc3396746a81ee41a82e",
-    "html": "<p>Port the <code>type_for_attribute</code> method to Active Model. Classes that include<br />\n<code>ActiveModel::Attributes</code> will now provide this method. This method behaves<br />\nthe same for Active Model as it does for Active Record.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">MyModel</span>\n    <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n\n    <span class=\"n\">attribute</span> <span class=\"ss\">:my_attribute</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"no\">MyModel</span><span class=\"p\">.</span><span class=\"nf\">type_for_attribute</span><span class=\"p\">(</span><span class=\"ss\">:my_attribute</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; #&lt;ActiveModel::Type::Integer ...&gt;</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
-  },
-  {
-    "message": "*   Fix all Action Mailbox database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
-    "project": "actionmailbox",
-    "date_merged": 1702304683000,
-    "author": "Chedli Bourguiba",
-    "sha": "1b97f976641d5d2cc314a27b1a41d8832790b465",
-    "pr": "50300",
-    "merge_sha": "ac97750789df33df38b523ff626813fb1d03e71c",
-    "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
-  },
-  {
-    "message": "*   Use `includes` instead of `eager_load` for `with_all_rich_text`.\n\n    *Petrik de Heus*",
-    "project": "actiontext",
-    "date_merged": 1705447718000,
-    "author": "Petrik",
-    "sha": "3b49e47ce8b1d5b1852515e60ce50544677461bf",
-    "pr": "50769",
-    "merge_sha": "473fd597f6ff8a575c36c565d205627fa7964a05",
-    "html": "<p>Use <code>includes</code> instead of <code>eager_load</code> for <code>with_all_rich_text</code>.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Delegate `ActionText::Content#deconstruct` to `Nokogiri::XML::DocumentFragment#elements`\n\n    ```ruby\n    content = ActionText::Content.new <<~HTML\n      <h1>Hello, world</h1>\n\n      <div>The body</div>\n    HTML\n\n    content => [h1, div]\n\n    assert_pattern { h1 => { content: \"Hello, world\" } }\n    assert_pattern { div => { content: \"The body\" } }\n    ```\n\n    *Sean Doyle*",
-    "project": "actiontext",
-    "date_merged": 1704303082000,
-    "author": "Sean Doyle",
-    "sha": "2e15010d568cb279a988dec012cca09f49142809",
-    "pr": "50473",
-    "merge_sha": "664eb0dfc42cdab7d34d0e1948a9ea5c9e6558e2",
-    "html": "<p>Delegate <code>ActionText::Content#deconstruct</code> to <code>Nokogiri::XML::DocumentFragment#elements</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">content</span> <span class=\"o\">=</span> <span class=\"no\">ActionText</span><span class=\"o\">::</span><span class=\"no\">Content</span><span class=\"p\">.</span><span class=\"nf\">new</span> <span class=\"o\">&lt;&lt;~</span><span class=\"no\">HTML</span><span class=\"sh\">\n  &lt;h1&gt;Hello, world&lt;/h1&gt;\n\n  &lt;div&gt;The body&lt;/div&gt;\n</span><span class=\"no\">HTML</span>\n\n<span class=\"n\">content</span> <span class=\"o\">=&gt;</span> <span class=\"p\">[</span><span class=\"n\">h1</span><span class=\"p\">,</span> <span class=\"n\">div</span><span class=\"p\">]</span>\n\n<span class=\"n\">assert_pattern</span> <span class=\"p\">{</span> <span class=\"n\">h1</span> <span class=\"o\">=&gt;</span> <span class=\"p\">{</span> <span class=\"ss\">content: </span><span class=\"s2\">\"Hello, world\"</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n<span class=\"n\">assert_pattern</span> <span class=\"p\">{</span> <span class=\"n\">div</span> <span class=\"o\">=&gt;</span> <span class=\"p\">{</span> <span class=\"ss\">content: </span><span class=\"s2\">\"The body\"</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Fix all Action Text database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
-    "project": "actiontext",
-    "date_merged": 1702304642000,
-    "author": "Chedli Bourguiba",
-    "sha": "c3b821e6d87e50687eec8ceea5cc67f9a571c234",
-    "pr": "50299",
-    "merge_sha": "6eeae61351ffcd8d0d205edaeb491c4a938489cc",
-    "html": "<p>Fix all Action Text database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
-  },
-  {
-    "message": "*   Compile ESM package that can be used directly in the browser as actiontext.esm.js\n\n    *Matias Grunberg*",
-    "project": "actiontext",
-    "date_merged": 1699475418000,
-    "author": "Matias Grunberg",
-    "sha": "2dbcb3df33bdaab5364009dcb93d33222790e17a",
-    "pr": "49952",
-    "merge_sha": "2eace42b2cada90c94f6e0a6c13c22f2e2ede3d5",
-    "html": "<p>Compile ESM package that can be used directly in the browser as actiontext.esm.js</p>\n\n<p><em>Matias Grunberg</em></p>\n"
-  },
-  {
-    "message": "*   Fix using actiontext.js with Sprockets\n\n    *Matias Grunberg*",
-    "project": "actiontext",
-    "date_merged": 1699475418000,
-    "author": "Matias Grunberg",
-    "sha": "2dbcb3df33bdaab5364009dcb93d33222790e17a",
-    "pr": "49952",
-    "merge_sha": "2eace42b2cada90c94f6e0a6c13c22f2e2ede3d5",
-    "html": "<p>Fix using actiontext.js with Sprockets</p>\n\n<p><em>Matias Grunberg</em></p>\n"
-  },
-  {
-    "message": "*   Upgrade Trix to 2.0.7\n\n    *Hartley McGuire*",
-    "project": "actiontext",
-    "date_merged": 1698416970000,
-    "author": "Hartley McGuire",
-    "sha": "c93a989635d01fa46947b2618a7dde2505c77410",
-    "pr": "49778",
-    "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
-    "html": "<p>Upgrade Trix to 2.0.7</p>\n\n<p><em>Hartley McGuire</em></p>\n"
-  },
-  {
-    "message": "*   Fix using Trix with Sprockets\n\n    *Hartley McGuire*",
-    "project": "actiontext",
-    "date_merged": 1698416970000,
-    "author": "Hartley McGuire",
-    "sha": "c93a989635d01fa46947b2618a7dde2505c77410",
-    "pr": "49778",
-    "merge_sha": "e21ed11d569a31389ff9dad4d3692e736dbecd86",
-    "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   }
 ]
