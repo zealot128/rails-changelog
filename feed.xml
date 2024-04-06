@@ -1180,12 +1180,12 @@ The result would be like this:</p>
     Now Active Job will automatically defer the enqueuing to after the transaction is committed,
     and drop the job if the transaction is rolled back.
 
-    Various queue implementations can chose to disable this behavior, and users can disable it,
+    Various queue implementations can choose to disable this behavior, and users can disable it,
     or force it on a per job basis:
 
     ```ruby
     class NewTopicNotificationJob &lt; ApplicationJob
-      self.enqueue_after_transaction_commit = false # or `true`
+      self.enqueue_after_transaction_commit = :never # or `:always` or `:default`
     end
     ```
 
@@ -1207,11 +1207,11 @@ transaction is committed, which result in various errors.</p>
 <p>Now Active Job will automatically defer the enqueuing to after the transaction is committed,<br />
 and drop the job if the transaction is rolled back.</p>
 
-<p>Various queue implementations can chose to disable this behavior, and users can disable it,<br />
+<p>Various queue implementations can choose to disable this behavior, and users can disable it,<br />
 or force it on a per job basis:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NewTopicNotificationJob</span> <span class="o">&lt;</span> <span class="no">ApplicationJob</span>
-  <span class="nb">self</span><span class="p">.</span><span class="nf">enqueue_after_transaction_commit</span> <span class="o">=</span> <span class="kp">false</span> <span class="c1"># or `true`</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">enqueue_after_transaction_commit</span> <span class="o">=</span> <span class="ss">:never</span> <span class="c1"># or `:always` or `:default`</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
