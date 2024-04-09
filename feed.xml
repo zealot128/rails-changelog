@@ -1168,7 +1168,7 @@ The result would be like this:</p>
 
     A common mistake with Active Job is to enqueue jobs from inside a transaction,
     causing them to potentially be picked and ran by another process, before the
-    transaction is committed, which result in various errors.
+    transaction is committed, which may result in various errors.
 
     ```ruby
     Topic.transaction do
@@ -1196,7 +1196,7 @@ The result would be like this:</p>
 
 <p>A common mistake with Active Job is to enqueue jobs from inside a transaction,<br />
 causing them to potentially be picked and ran by another process, before the<br />
-transaction is committed, which result in various errors.</p>
+transaction is committed, which may result in various errors.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Topic</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
   <span class="n">topic</span> <span class="o">=</span> <span class="no">Topic</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
@@ -1959,11 +1959,11 @@ the same for Active Model as it does for Active Record.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: `ActiveRecord::Base.transaction` now yields an `ActiveRecord::Transation` object.
+    <title>activerecord: `ActiveRecord::Base.transaction` now yields an `ActiveRecord::Transaction` object.
 </title>
-    <link>https://github.com/rails/rails/issues/51474</link>
-    <guid>https://github.com/rails/rails/issues/51474</guid>
-    <description>*   `ActiveRecord::Base.transaction` now yields an `ActiveRecord::Transation` object.
+    <link>https://github.com/rails/rails/issues/51514</link>
+    <guid>https://github.com/rails/rails/issues/51514</guid>
+    <description>*   `ActiveRecord::Base.transaction` now yields an `ActiveRecord::Transaction` object.
 
     This allows to register callbacks on it.
 
@@ -1977,9 +1977,9 @@ the same for Active Model as it does for Active Record.</p>
     ```
 
     *Jean Boussier*</description>
-    <pubDate>Wed, 03 Apr 2024 12:37:34 +0000</pubDate>
+    <pubDate>Mon, 08 Apr 2024 14:02:49 +0000</pubDate>
     <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p><code>ActiveRecord::Base.transaction</code> now yields an <code>ActiveRecord::Transation</code> object.</p>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Base.transaction</code> now yields an <code>ActiveRecord::Transaction</code> object.</p>
 
 <p>This allows to register callbacks on it.</p>
 
@@ -2031,8 +2031,8 @@ the same for Active Model as it does for Active Record.</p>
     <guid>https://github.com/rails/rails/issues/51474</guid>
     <description>*   Add `ActiveRecord.after_all_transactions_commit` callback.
 
-    Useful for code that may run either inside or outside a transaction and need
-    to perform works after the state changes have been properly peristed.
+    Useful for code that may run either inside or outside a transaction and needs
+    to perform work after the state changes have been properly persisted.
 
     ```ruby
     def publish_article(article)
@@ -2053,8 +2053,8 @@ the same for Active Model as it does for Active Record.</p>
     <author>Jean Boussier</author>
     <content:encoded><![CDATA[<p>Add <code>ActiveRecord.after_all_transactions_commit</code> callback.</p>
 
-<p>Useful for code that may run either inside or outside a transaction and need<br />
-to perform works after the state changes have been properly peristed.</p>
+<p>Useful for code that may run either inside or outside a transaction and needs<br />
+to perform work after the state changes have been properly persisted.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">publish_article</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
   <span class="n">article</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="ss">published: </span><span class="kp">true</span><span class="p">)</span>
@@ -2073,11 +2073,11 @@ of a transaction, or called after the open transaction is committed.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Add the ability to ignore counter cache columns until they are backfilled
+    <title>activerecord: Add the ability to ignore counter cache columns until they are backfilled.
 </title>
-    <link>https://github.com/rails/rails/issues/51453</link>
-    <guid>https://github.com/rails/rails/issues/51453</guid>
-    <description>*   Add the ability to ignore counter cache columns until they are backfilled
+    <link>https://github.com/rails/rails/issues/51514</link>
+    <guid>https://github.com/rails/rails/issues/51514</guid>
+    <description>*   Add the ability to ignore counter cache columns until they are backfilled.
 
     Starting to use counter caches on existing large tables can be troublesome, because the column
     values must be backfilled separately of the column addition (to not lock the table for too long)
@@ -2100,9 +2100,9 @@ of a transaction, or called after the open transaction is committed.</p>
     mentioned methods.
 
     *fatkodima*</description>
-    <pubDate>Tue, 02 Apr 2024 12:04:13 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Add the ability to ignore counter cache columns until they are backfilled</p>
+    <pubDate>Mon, 08 Apr 2024 14:02:49 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Add the ability to ignore counter cache columns until they are backfilled.</p>
 
 <p>Starting to use counter caches on existing large tables can be troublesome, because the column<br />
 values must be backfilled separately of the column addition (to not lock the table for too long)<br />
@@ -2127,11 +2127,11 @@ mentioned methods.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Retry known idempotent SELECT queries on connection-related exceptions
+    <title>activerecord: Retry known idempotent SELECT queries on connection-related exceptions.
 </title>
-    <link>https://github.com/rails/rails/issues/51336</link>
-    <guid>https://github.com/rails/rails/issues/51336</guid>
-    <description>*   Retry known idempotent SELECT queries on connection-related exceptions
+    <link>https://github.com/rails/rails/issues/51514</link>
+    <guid>https://github.com/rails/rails/issues/51514</guid>
+    <description>*   Retry known idempotent SELECT queries on connection-related exceptions.
 
     SELECT queries we construct by walking the Arel tree and / or with known model attributes
     are idempotent and can safely be retried in the case of a connection error. Previously,
@@ -2139,9 +2139,9 @@ mentioned methods.</p>
     when encountering a connection error mid-request.
 
     *Adrianna Chang*</description>
-    <pubDate>Tue, 26 Mar 2024 15:18:15 +0000</pubDate>
-    <author>Adrianna Chang</author>
-    <content:encoded><![CDATA[<p>Retry known idempotent SELECT queries on connection-related exceptions</p>
+    <pubDate>Mon, 08 Apr 2024 14:02:49 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Retry known idempotent SELECT queries on connection-related exceptions.</p>
 
 <p>SELECT queries we construct by walking the Arel tree and / or with known model attributes<br />
 are idempotent and can safely be retried in the case of a connection error. Previously,<br />
@@ -4222,32 +4222,34 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: Record ping on every actioncable message
+    <title>actioncable: Record ping on every Action Cable message.
 </title>
-    <link>https://github.com/rails/rails/issues/51503</link>
-    <guid>https://github.com/rails/rails/issues/51503</guid>
-    <description>*   Record ping on every actioncable message
+    <link>https://github.com/rails/rails/issues/51513</link>
+    <guid>https://github.com/rails/rails/issues/51513</guid>
+    <description>*   Record ping on every Action Cable message.
 
-    Previously only `ping` and `welcome` message types were keeping connection active.
-    Now every Action Cable message updates `pingedAt` value preventing connection from being marked as stale.
+    Previously only `ping` and `welcome` message types were keeping the connection active.
+    Now every Action Cable message updates the `pingedAt` value, preventing the connection
+    from being marked as stale.
 
     *yauhenininjia*</description>
-    <pubDate>Fri, 05 Apr 2024 17:53:51 +0000</pubDate>
-    <author>yauhenisushkevich</author>
-    <content:encoded><![CDATA[<p>Record ping on every actioncable message</p>
+    <pubDate>Tue, 09 Apr 2024 14:14:30 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Record ping on every Action Cable message.</p>
 
-<p>Previously only <code>ping</code> and <code>welcome</code> message types were keeping connection active.<br />
-Now every Action Cable message updates <code>pingedAt</code> value preventing connection from being marked as stale.</p>
+<p>Previously only <code>ping</code> and <code>welcome</code> message types were keeping the connection active.<br />
+Now every Action Cable message updates the <code>pingedAt</code> value, preventing the connection<br />
+from being marked as stale.</p>
 
 <p><em>yauhenininjia</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actioncable: Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`
+    <title>actioncable: Add two new assertion methods for Action Cable test cases: `assert_has_no_stream`
 </title>
-    <link>https://github.com/rails/rails/issues/50589</link>
-    <guid>https://github.com/rails/rails/issues/50589</guid>
-    <description>*   Add two new assertion methods for ActionCable test cases: `assert_has_no_stream`
+    <link>https://github.com/rails/rails/issues/51513</link>
+    <guid>https://github.com/rails/rails/issues/51513</guid>
+    <description>*   Add two new assertion methods for Action Cable test cases: `assert_has_no_stream`
     and `assert_has_no_stream_for`. These methods can be used to assert that a
     stream has been stopped, e.g. via `stop_stream` or `stop_stream_for`. They complement
     the already existing `assert_has_stream` and `assert_has_stream_for` methods.
@@ -4258,9 +4260,9 @@ Now every Action Cable message updates <code>pingedAt</code> value preventing co
     ```
 
     *Sebastian Pöll*, *Junichi Sato*</description>
-    <pubDate>Fri, 05 Jan 2024 15:03:51 +0000</pubDate>
-    <author>Junichi Sato</author>
-    <content:encoded><![CDATA[<p>Add two new assertion methods for ActionCable test cases: <code>assert_has_no_stream</code><br />
+    <pubDate>Tue, 09 Apr 2024 14:14:30 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Add two new assertion methods for Action Cable test cases: <code>assert_has_no_stream</code><br />
 and <code>assert_has_no_stream_for</code>. These methods can be used to assert that a<br />
 stream has been stopped, e.g. via <code>stop_stream</code> or <code>stop_stream_for</code>. They complement<br />
 the already existing <code>assert_has_stream</code> and <code>assert_has_stream_for</code> methods.</p>
