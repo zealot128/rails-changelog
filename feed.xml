@@ -1458,6 +1458,21 @@ or force it on a per job basis:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: `stub_const` now accepts a `exists: false` parameter to allow stubbing missing constants.
+</title>
+    <link>https://github.com/rails/rails/issues/51525</link>
+    <guid>https://github.com/rails/rails/issues/51525</guid>
+    <description>*   `stub_const` now accepts a `exists: false` parameter to allow stubbing missing constants.
+
+    *Jean Boussier*</description>
+    <pubDate>Wed, 10 Apr 2024 09:42:18 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p><code>stub_const</code> now accepts a <code>exists: false</code> parameter to allow stubbing missing constants.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Make ActiveSupport::BacktraceCleaner copy filters and silencers on dup and clone
 </title>
     <link>https://github.com/rails/rails/issues/51447</link>
