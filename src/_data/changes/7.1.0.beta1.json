@@ -700,6 +700,16 @@
     "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
+    "message": "*   `stub_const` now accepts a `exists: false` parameter to allow stubbing missing constants.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1712742138000,
+    "author": "Jean Boussier",
+    "sha": "afa019835b5a3067bc13fb6968a7b9250018633f",
+    "pr": "51525",
+    "merge_sha": "41d867d5b1f74a36c3b06c5e511eb795ba2ee402",
+    "html": "<p><code>stub_const</code> now accepts a <code>exists: false</code> parameter to allow stubbing missing constants.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Make ActiveSupport::BacktraceCleaner copy filters and silencers on dup and clone\n\n    Previously the copy would still share the internal silencers and filters array,\n    causing state to leak.\n\n    *Jean Boussier*",
     "project": "activesupport",
     "date_merged": 1711711355000,
