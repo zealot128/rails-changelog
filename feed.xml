@@ -862,7 +862,7 @@ for all environments, as the value is the same in all environments.</p>
     <guid>https://github.com/rails/rails/issues/50505</guid>
     <description>*   Add `allow_browser` to set minimum browser versions for the application.
 
-    A browser that&#39;s blocked will by default be served the file in `public/426.html` with a HTTP status code of &quot;426 Upgrade Required&quot;.
+    A browser that&#39;s blocked will by default be served the file in `public/406-unsupported-browser.html` with a HTTP status code of &quot;406 Not Acceptable&quot;.
 
     ```ruby
     class ApplicationController &lt; ActionController::Base
@@ -886,7 +886,7 @@ for all environments, as the value is the same in all environments.</p>
     <author>Vipul A M</author>
     <content:encoded><![CDATA[<p>Add <code>allow_browser</code> to set minimum browser versions for the application.</p>
 
-<p>A browser that’s blocked will by default be served the file in <code>public/426.html</code> with a HTTP status code of “426 Upgrade Required”.</p>
+<p>A browser that’s blocked will by default be served the file in <code>public/406-unsupported-browser.html</code> with a HTTP status code of “406 Not Acceptable”.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
   <span class="c1"># Allow only browsers natively supporting webp images, web push, badges, import maps, CSS nesting + :has</span>
