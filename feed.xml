@@ -1959,6 +1959,36 @@ the same for Active Model as it does for Active Record.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow `ActiveRecord::Base#pluck` to accept hash values
+</title>
+    <link>https://github.com/rails/rails/issues/51565</link>
+    <guid>https://github.com/rails/rails/issues/51565</guid>
+    <description>*   Allow `ActiveRecord::Base#pluck` to accept hash values
+
+    ```ruby
+    # Before
+    Post.joins(:comments).pluck(&quot;posts.id&quot;, &quot;comments.id&quot;, &quot;comments.body&quot;)
+
+    # After
+    Post.joins(:comments).pluck(posts: [:id], comments: [:id, :body])
+    ```
+
+    *fatkodima*</description>
+    <pubDate>Sun, 14 Apr 2024 01:57:08 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Allow <code>ActiveRecord::Base#pluck</code> to accept hash values</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">joins</span><span class="p">(</span><span class="ss">:comments</span><span class="p">).</span><span class="nf">pluck</span><span class="p">(</span><span class="s2">"posts.id"</span><span class="p">,</span> <span class="s2">"comments.id"</span><span class="p">,</span> <span class="s2">"comments.body"</span><span class="p">)</span>
+
+<span class="c1"># After</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">joins</span><span class="p">(</span><span class="ss">:comments</span><span class="p">).</span><span class="nf">pluck</span><span class="p">(</span><span class="ss">posts: </span><span class="p">[</span><span class="ss">:id</span><span class="p">],</span> <span class="ss">comments: </span><span class="p">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:body</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Raise an `ActiveRecord::ActiveRecordError` error when the MySQL database returns an invalid version string.
 </title>
     <link>https://github.com/rails/rails/issues/51478</link>
