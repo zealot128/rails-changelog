@@ -940,6 +940,16 @@
     "html": "<p>Remove deprecated <code>config.action_mailer.preview_path</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
+    "message": "*   Allow `ActiveRecord::Base#pluck` to accept hash values\n\n    ```ruby\n    # Before\n    Post.joins(:comments).pluck(\"posts.id\", \"comments.id\", \"comments.body\")\n\n    # After\n    Post.joins(:comments).pluck(posts: [:id], comments: [:id, :body])\n    ```\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1713059828000,
+    "author": "fatkodima",
+    "sha": "82c02ef4d0235d80836decc54384e7b76495b69b",
+    "pr": "51565",
+    "merge_sha": "0feecd243afa429d551a40dc2be359413afd9661",
+    "html": "<p>Allow <code>ActiveRecord::Base#pluck</code> to accept hash values</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">joins</span><span class=\"p\">(</span><span class=\"ss\">:comments</span><span class=\"p\">).</span><span class=\"nf\">pluck</span><span class=\"p\">(</span><span class=\"s2\">\"posts.id\"</span><span class=\"p\">,</span> <span class=\"s2\">\"comments.id\"</span><span class=\"p\">,</span> <span class=\"s2\">\"comments.body\"</span><span class=\"p\">)</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">joins</span><span class=\"p\">(</span><span class=\"ss\">:comments</span><span class=\"p\">).</span><span class=\"nf\">pluck</span><span class=\"p\">(</span><span class=\"ss\">posts: </span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">],</span> <span class=\"ss\">comments: </span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">,</span> <span class=\"ss\">:body</span><span class=\"p\">])</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Raise an `ActiveRecord::ActiveRecordError` error when the MySQL database returns an invalid version string.\n\n    *Kevin McPhillips*",
     "project": "activerecord",
     "date_merged": 1712243745000,
