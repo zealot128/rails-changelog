@@ -750,6 +750,16 @@
     "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
   },
   {
+    "message": "*   Allow `Sqlite3Adapter` to use `sqlite3` gem version `2.x`\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1713432877000,
+    "author": "Mike Dalessio",
+    "sha": "fd1c635d2f1fd8f348ef9fe8a41fb042a8e43482",
+    "pr": "51592",
+    "merge_sha": "e90cb82384b3709186ace6465543785fcd348f0a",
+    "html": "<p>Allow <code>Sqlite3Adapter</code> to use <code>sqlite3</code> gem version <code>2.x</code></p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Allow `ActiveRecord::Base#pluck` to accept hash values\n\n    ```ruby\n    # Before\n    Post.joins(:comments).pluck(\"posts.id\", \"comments.id\", \"comments.body\")\n\n    # After\n    Post.joins(:comments).pluck(posts: [:id], comments: [:id, :body])\n    ```\n\n    *fatkodima*",
     "project": "activerecord",
     "date_merged": 1713059828000,
