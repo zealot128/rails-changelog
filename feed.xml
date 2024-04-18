@@ -1474,6 +1474,21 @@ The result would be like this:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow `Sqlite3Adapter` to use `sqlite3` gem version `2.x`
+</title>
+    <link>https://github.com/rails/rails/issues/51592</link>
+    <guid>https://github.com/rails/rails/issues/51592</guid>
+    <description>*   Allow `Sqlite3Adapter` to use `sqlite3` gem version `2.x`
+
+    *Mike Dalessio*</description>
+    <pubDate>Thu, 18 Apr 2024 09:34:37 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Allow <code>Sqlite3Adapter</code> to use <code>sqlite3</code> gem version <code>2.x</code></p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow `ActiveRecord::Base#pluck` to accept hash values
 </title>
     <link>https://github.com/rails/rails/issues/51565</link>
