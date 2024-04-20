@@ -1110,6 +1110,23 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Fix the error page that is displayed when a view template is missing to account for nested controller paths in the
+</title>
+    <link>https://github.com/rails/rails/issues/51095</link>
+    <guid>https://github.com/rails/rails/issues/51095</guid>
+    <description>*   Fix the error page that is displayed when a view template is missing to account for nested controller paths in the
+    suggested correct location for the missing template.
+
+    *Joshua Young*</description>
+    <pubDate>Fri, 19 Apr 2024 19:22:55 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Fix the error page that is displayed when a view template is missing to account for nested controller paths in the<br />
+suggested correct location for the missing template.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add `save_and_open_page` helper to IntegrationTest
 </title>
     <link>https://github.com/rails/rails/issues/49267</link>
