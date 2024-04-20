@@ -570,6 +570,16 @@
     "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Fix the error page that is displayed when a view template is missing to account for nested controller paths in the\n    suggested correct location for the missing template.\n\n    *Joshua Young*",
+    "project": "actionpack",
+    "date_merged": 1713554575000,
+    "author": "Joshua Young",
+    "sha": "79f2099fb1f73a26a5fbbdbbc200d32644260118",
+    "pr": "51095",
+    "merge_sha": "73452ef8ca9d0f09f483bf9c73508f642f5a3eea",
+    "html": "<p>Fix the error page that is displayed when a view template is missing to account for nested controller paths in the<br />\nsuggested correct location for the missing template.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Add `save_and_open_page` helper to IntegrationTest\n    `save_and_open_page` is a helpful helper to keep a short feedback loop when working on system tests.\n    A similar helper with matching signature has been added to integration tests.\n\n    *Joé Dupuis*",
     "project": "actionpack",
     "date_merged": 1713474102000,
