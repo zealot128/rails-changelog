@@ -150,6 +150,16 @@
     "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
+    "message": "*   Deprecate `ActiveSupport::ProxyObject` in favor of Ruby's buildin `BasicObject`\n\n    *Earlopain*",
+    "project": "activesupport",
+    "date_merged": 1713817702000,
+    "author": "Earlopain",
+    "sha": "ea7d3c5165d5c7b6d77943482471335d828047ad",
+    "pr": "51638",
+    "merge_sha": "23238230818c1b1cf8cae39d77a50c9755655396",
+    "html": "<p>Deprecate <code>ActiveSupport::ProxyObject</code> in favor of Ruby’s buildin <code>BasicObject</code></p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
     "message": "*   `stub_const` now accepts a `exists: false` parameter to allow stubbing missing constants.\n\n    *Jean Boussier*",
     "project": "activesupport",
     "date_merged": 1712742138000,
