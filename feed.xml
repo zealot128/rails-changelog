@@ -311,6 +311,21 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Deprecate `ActiveSupport::ProxyObject` in favor of Ruby&#39;s buildin `BasicObject`
+</title>
+    <link>https://github.com/rails/rails/issues/51638</link>
+    <guid>https://github.com/rails/rails/issues/51638</guid>
+    <description>*   Deprecate `ActiveSupport::ProxyObject` in favor of Ruby&#39;s buildin `BasicObject`
+
+    *Earlopain*</description>
+    <pubDate>Mon, 22 Apr 2024 20:28:22 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>ActiveSupport::ProxyObject</code> in favor of Ruby’s buildin <code>BasicObject</code></p>
+
+<p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `stub_const` now accepts a `exists: false` parameter to allow stubbing missing constants.
 </title>
     <link>https://github.com/rails/rails/issues/51525</link>
