@@ -311,6 +311,21 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Support `hexBinary` type in `ActiveSupport::XmlMini`.
+</title>
+    <link>https://github.com/rails/rails/issues/51631</link>
+    <guid>https://github.com/rails/rails/issues/51631</guid>
+    <description>*   Support `hexBinary` type in `ActiveSupport::XmlMini`.
+
+    *heka1024*</description>
+    <pubDate>Tue, 23 Apr 2024 12:32:59 +0000</pubDate>
+    <author>Miller</author>
+    <content:encoded><![CDATA[<p>Support <code>hexBinary</code> type in <code>ActiveSupport::XmlMini</code>.</p>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Deprecate `ActiveSupport::ProxyObject` in favor of Ruby&#39;s buildin `BasicObject`
 </title>
     <link>https://github.com/rails/rails/issues/51638</link>
