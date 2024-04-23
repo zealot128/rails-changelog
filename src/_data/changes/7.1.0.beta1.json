@@ -150,6 +150,16 @@
     "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
+    "message": "*   Support `hexBinary` type in `ActiveSupport::XmlMini`.\n\n    *heka1024*",
+    "project": "activesupport",
+    "date_merged": 1713875579000,
+    "author": "Miller",
+    "sha": "fb2e2f336f7ff09723199aeec8a59068ec26069d",
+    "pr": "51631",
+    "merge_sha": "46c41db8fd665735c72c1428a06c1d29a3ed7c36",
+    "html": "<p>Support <code>hexBinary</code> type in <code>ActiveSupport::XmlMini</code>.</p>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `ActiveSupport::ProxyObject` in favor of Ruby's buildin `BasicObject`\n\n    *Earlopain*",
     "project": "activesupport",
     "date_merged": 1713817702000,
