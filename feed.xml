@@ -1140,6 +1140,21 @@ processed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Fix `Mime::Type.parse` handling type parameters for HTTP Accept headers.
+</title>
+    <link>https://github.com/rails/rails/issues/51616</link>
+    <guid>https://github.com/rails/rails/issues/51616</guid>
+    <description>*   Fix `Mime::Type.parse` handling type parameters for HTTP Accept headers.
+
+    *Taylor Chaparro*</description>
+    <pubDate>Tue, 23 Apr 2024 20:51:07 +0000</pubDate>
+    <author>Taylor Chaparro</author>
+    <content:encoded><![CDATA[<p>Fix <code>Mime::Type.parse</code> handling type parameters for HTTP Accept headers.</p>
+
+<p><em>Taylor Chaparro</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Fix the error page that is displayed when a view template is missing to account for nested controller paths in the
 </title>
     <link>https://github.com/rails/rails/issues/51095</link>
