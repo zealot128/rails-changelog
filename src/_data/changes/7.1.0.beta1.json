@@ -590,6 +590,16 @@
     "html": "<p>Fix using Trix with Sprockets</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Fix `Mime::Type.parse` handling type parameters for HTTP Accept headers.\n\n    *Taylor Chaparro*",
+    "project": "actionpack",
+    "date_merged": 1713905467000,
+    "author": "Taylor Chaparro",
+    "sha": "5889b8659e5a8dbb6a4f9c8deb3e15e204a54164",
+    "pr": "51616",
+    "merge_sha": "2bb67823fadd968fd037fc0079fb84da3bfc2814",
+    "html": "<p>Fix <code>Mime::Type.parse</code> handling type parameters for HTTP Accept headers.</p>\n\n<p><em>Taylor Chaparro</em></p>\n"
+  },
+  {
     "message": "*   Fix the error page that is displayed when a view template is missing to account for nested controller paths in the\n    suggested correct location for the missing template.\n\n    *Joshua Young*",
     "project": "actionpack",
     "date_merged": 1713554575000,
