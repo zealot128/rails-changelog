@@ -311,6 +311,34 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Allow assertionless tests to be reported.
+</title>
+    <link>https://github.com/rails/rails/issues/51625</link>
+    <guid>https://github.com/rails/rails/issues/51625</guid>
+    <description>*   Allow assertionless tests to be reported.
+
+    `ActiveSupport::TestCase` can be configured to report tests that do not run any assertions.
+    This is helpful in detecting broken tests that do not perform intended assertions.
+
+    ```ruby
+    config.active_support.assertionless_tests_behavior = :raise
+    ```
+
+    *fatkodima*</description>
+    <pubDate>Fri, 26 Apr 2024 15:42:49 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Allow assertionless tests to be reported.</p>
+
+<p><code>ActiveSupport::TestCase</code> can be configured to report tests that do not run any assertions.<br />
+This is helpful in detecting broken tests that do not perform intended assertions.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">active_support</span><span class="p">.</span><span class="nf">assertionless_tests_behavior</span> <span class="o">=</span> <span class="ss">:raise</span>
+</code></pre></div></div>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Support `hexBinary` type in `ActiveSupport::XmlMini`.
 </title>
     <link>https://github.com/rails/rails/issues/51631</link>
