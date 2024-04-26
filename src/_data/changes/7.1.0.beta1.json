@@ -150,6 +150,16 @@
     "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
+    "message": "*   Allow assertionless tests to be reported.\n\n    `ActiveSupport::TestCase` can be configured to report tests that do not run any assertions.\n    This is helpful in detecting broken tests that do not perform intended assertions.\n\n    ```ruby\n    config.active_support.assertionless_tests_behavior = :raise\n    ```\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1714146169000,
+    "author": "fatkodima",
+    "sha": "76966f9cb5cc87810dc17f8607fbd69b300c0045",
+    "pr": "51625",
+    "merge_sha": "664470b16fbdeec3bb55b320f56696343b2aab0b",
+    "html": "<p>Allow assertionless tests to be reported.</p>\n\n<p><code>ActiveSupport::TestCase</code> can be configured to report tests that do not run any assertions.<br />\nThis is helpful in detecting broken tests that do not perform intended assertions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_support</span><span class=\"p\">.</span><span class=\"nf\">assertionless_tests_behavior</span> <span class=\"o\">=</span> <span class=\"ss\">:raise</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Support `hexBinary` type in `ActiveSupport::XmlMini`.\n\n    *heka1024*",
     "project": "activesupport",
     "date_merged": 1713875579000,
