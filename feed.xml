@@ -354,16 +354,16 @@ This is helpful in detecting broken tests that do not perform intended assertion
 ]]></content:encoded>
   </item>
   <item>
-    <title>activesupport: Deprecate `ActiveSupport::ProxyObject` in favor of Ruby&#39;s buildin `BasicObject`
+    <title>activesupport: Deprecate `ActiveSupport::ProxyObject` in favor of Ruby&#39;s built-in `BasicObject`
 </title>
-    <link>https://github.com/rails/rails/issues/51638</link>
-    <guid>https://github.com/rails/rails/issues/51638</guid>
-    <description>*   Deprecate `ActiveSupport::ProxyObject` in favor of Ruby&#39;s buildin `BasicObject`
+    <link>https://github.com/rails/rails/issues/51688</link>
+    <guid>https://github.com/rails/rails/issues/51688</guid>
+    <description>*   Deprecate `ActiveSupport::ProxyObject` in favor of Ruby&#39;s built-in `BasicObject`
 
     *Earlopain*</description>
-    <pubDate>Mon, 22 Apr 2024 20:28:22 +0000</pubDate>
-    <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Deprecate <code>ActiveSupport::ProxyObject</code> in favor of Ruby’s buildin <code>BasicObject</code></p>
+    <pubDate>Tue, 30 Apr 2024 10:50:17 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>ActiveSupport::ProxyObject</code> in favor of Ruby’s built-in <code>BasicObject</code></p>
 
 <p><em>Earlopain</em></p>
 ]]></content:encoded>
@@ -1580,6 +1580,32 @@ The result would be like this:</p>
 <p>Fixes #14055.</p>
 
 <p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: `PostgreSQLAdapter` now decodes columns of type date to `Date` instead of string.
+</title>
+    <link>https://github.com/rails/rails/issues/51483</link>
+    <guid>https://github.com/rails/rails/issues/51483</guid>
+    <description>*   `PostgreSQLAdapter` now decodes columns of type date to `Date` instead of string.
+
+    Ex:
+    ```ruby
+    ActiveRecord::Base.connection
+         .select_value(&quot;select &#39;2024-01-01&#39;::date&quot;).class #=&gt; Date
+    ```
+
+    *Joé Dupuis*</description>
+    <pubDate>Tue, 30 Apr 2024 11:32:07 +0000</pubDate>
+    <author>Joé Dupuis</author>
+    <content:encoded><![CDATA[<p><code>PostgreSQLAdapter</code> now decodes columns of type date to <code>Date</code> instead of string.</p>
+
+<p>Ex:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span>
+     <span class="p">.</span><span class="nf">select_value</span><span class="p">(</span><span class="s2">"select '2024-01-01'::date"</span><span class="p">).</span><span class="nf">class</span> <span class="c1">#=&gt; Date</span>
+</code></pre></div></div>
+
+<p><em>Joé Dupuis</em></p>
 ]]></content:encoded>
   </item>
   <item>
