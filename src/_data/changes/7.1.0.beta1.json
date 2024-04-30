@@ -170,14 +170,14 @@
     "html": "<p>Support <code>hexBinary</code> type in <code>ActiveSupport::XmlMini</code>.</p>\n\n<p><em>heka1024</em></p>\n"
   },
   {
-    "message": "*   Deprecate `ActiveSupport::ProxyObject` in favor of Ruby's buildin `BasicObject`\n\n    *Earlopain*",
+    "message": "*   Deprecate `ActiveSupport::ProxyObject` in favor of Ruby's built-in `BasicObject`\n\n    *Earlopain*",
     "project": "activesupport",
-    "date_merged": 1713817702000,
-    "author": "Earlopain",
-    "sha": "ea7d3c5165d5c7b6d77943482471335d828047ad",
-    "pr": "51638",
-    "merge_sha": "23238230818c1b1cf8cae39d77a50c9755655396",
-    "html": "<p>Deprecate <code>ActiveSupport::ProxyObject</code> in favor of Ruby’s buildin <code>BasicObject</code></p>\n\n<p><em>Earlopain</em></p>\n"
+    "date_merged": 1714474217000,
+    "author": "Joshua Young",
+    "sha": "35e3ff3667872598f901979cafcc5ac1bf3cd71e",
+    "pr": "51688",
+    "merge_sha": "f963d4a7f25c8c7ba5d874cce96a98735fb36ce2",
+    "html": "<p>Deprecate <code>ActiveSupport::ProxyObject</code> in favor of Ruby’s built-in <code>BasicObject</code></p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
     "message": "*   `stub_const` now accepts a `exists: false` parameter to allow stubbing missing constants.\n\n    *Jean Boussier*",
@@ -808,6 +808,16 @@
     "pr": "51131",
     "merge_sha": "05b4db2ad09f8fd275534948e663588a97e90ab8",
     "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
+  },
+  {
+    "message": "*   `PostgreSQLAdapter` now decodes columns of type date to `Date` instead of string.\n\n    Ex:\n    ```ruby\n    ActiveRecord::Base.connection\n         .select_value(\"select '2024-01-01'::date\").class #=> Date\n    ```\n\n    *Joé Dupuis*",
+    "project": "activerecord",
+    "date_merged": 1714476727000,
+    "author": "Joé Dupuis",
+    "sha": "2c88c80fc7eca97bfa9becedc79f65187a5b74a5",
+    "pr": "51483",
+    "merge_sha": "6a38d3ac6c98ad880fad7753ced86bb63fedecc5",
+    "html": "<p><code>PostgreSQLAdapter</code> now decodes columns of type date to <code>Date</code> instead of string.</p>\n\n<p>Ex:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span><span class=\"p\">.</span><span class=\"nf\">connection</span>\n     <span class=\"p\">.</span><span class=\"nf\">select_value</span><span class=\"p\">(</span><span class=\"s2\">\"select '2024-01-01'::date\"</span><span class=\"p\">).</span><span class=\"nf\">class</span> <span class=\"c1\">#=&gt; Date</span>\n</code></pre></div></div>\n\n<p><em>Joé Dupuis</em></p>\n"
   },
   {
     "message": "*   Strict loading using `:n_plus_one_only` does not eagerly load child associations.\n\n    With this change, child associations are no longer eagerly loaded, to\n    match intended behavior and to prevent non-deterministic order issues caused\n    by calling methods like `first` or `last`. As `first` and `last` don't cause\n    an N+1 by themselves, calling child associations will no longer raise.\n    Fixes #49473.\n\n    Before:\n\n    ```ruby\n    person = Person.find(1)\n    person.strict_loading!(mode: :n_plus_one_only)\n    person.posts.first\n    # SELECT * FROM posts WHERE person_id = 1; -- non-deterministic order\n    person.posts.first.firm # raises ActiveRecord::StrictLoadingViolationError\n    ```\n\n    After:\n\n    ```ruby\n    person = Person.find(1)\n    person.strict_loading!(mode: :n_plus_one_only)\n    person.posts.first # this is 1+1, not N+1\n    # SELECT * FROM posts WHERE person_id = 1 ORDER BY id LIMIT 1;\n    person.posts.first.firm # no longer raises\n    ```\n\n    *Reid Lynch*",
