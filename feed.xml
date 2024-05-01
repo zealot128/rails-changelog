@@ -311,29 +311,22 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activesupport: Allow assertionless tests to be reported.
+    <title>activesupport: Warn on tests without assertions.
 </title>
-    <link>https://github.com/rails/rails/issues/51625</link>
-    <guid>https://github.com/rails/rails/issues/51625</guid>
-    <description>*   Allow assertionless tests to be reported.
+    <link>https://github.com/rails/rails/issues/51696</link>
+    <guid>https://github.com/rails/rails/issues/51696</guid>
+    <description>*   Warn on tests without assertions.
 
-    `ActiveSupport::TestCase` can be configured to report tests that do not run any assertions.
+    `ActiveSupport::TestCase` now warns when tests do not run any assertions.
     This is helpful in detecting broken tests that do not perform intended assertions.
 
-    ```ruby
-    config.active_support.assertionless_tests_behavior = :raise
-    ```
-
     *fatkodima*</description>
-    <pubDate>Fri, 26 Apr 2024 15:42:49 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Allow assertionless tests to be reported.</p>
+    <pubDate>Tue, 30 Apr 2024 21:50:41 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Warn on tests without assertions.</p>
 
-<p><code>ActiveSupport::TestCase</code> can be configured to report tests that do not run any assertions.<br />
+<p><code>ActiveSupport::TestCase</code> now warns when tests do not run any assertions.<br />
 This is helpful in detecting broken tests that do not perform intended assertions.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">active_support</span><span class="p">.</span><span class="nf">assertionless_tests_behavior</span> <span class="o">=</span> <span class="ss">:raise</span>
-</code></pre></div></div>
 
 <p><em>fatkodima</em></p>
 ]]></content:encoded>
@@ -3706,6 +3699,35 @@ column).</p>
 </code></pre></div></div>
 
 <p><em>Myles Boone</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Generated Gemfile will include `require: &quot;debug/prelude&quot;` for the `debug` gem
+</title>
+    <link>https://github.com/rails/rails/issues/51692</link>
+    <guid>https://github.com/rails/rails/issues/51692</guid>
+    <description>*   Generated Gemfile will include `require: &quot;debug/prelude&quot;` for the `debug` gem
+
+    Requiring `debug` gem directly automatically activates it, which could introduce
+    additional overhead and memory usage even without entering a debugging session.
+
+    By making Bundler require `debug/prelude` instead, developers can keep their access
+    to breakpoint methods like `debugger` or `binding.break`, but the debugger won&#39;t be
+    activated until a breakpoint is hit.
+
+    *Stan Lo*</description>
+    <pubDate>Tue, 30 Apr 2024 20:17:50 +0000</pubDate>
+    <author>Stan Lo</author>
+    <content:encoded><![CDATA[<p>Generated Gemfile will include <code>require: "debug/prelude"</code> for the <code>debug</code> gem</p>
+
+<p>Requiring <code>debug</code> gem directly automatically activates it, which could introduce<br />
+additional overhead and memory usage even without entering a debugging session.</p>
+
+<p>By making Bundler require <code>debug/prelude</code> instead, developers can keep their access<br />
+to breakpoint methods like <code>debugger</code> or <code>binding.break</code>, but the debugger won’t be<br />
+activated until a breakpoint is hit.</p>
+
+<p><em>Stan Lo</em></p>
 ]]></content:encoded>
   </item>
   <item>
