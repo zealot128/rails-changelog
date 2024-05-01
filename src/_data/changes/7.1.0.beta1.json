@@ -150,14 +150,14 @@
     "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
-    "message": "*   Allow assertionless tests to be reported.\n\n    `ActiveSupport::TestCase` can be configured to report tests that do not run any assertions.\n    This is helpful in detecting broken tests that do not perform intended assertions.\n\n    ```ruby\n    config.active_support.assertionless_tests_behavior = :raise\n    ```\n\n    *fatkodima*",
+    "message": "*   Warn on tests without assertions.\n\n    `ActiveSupport::TestCase` now warns when tests do not run any assertions.\n    This is helpful in detecting broken tests that do not perform intended assertions.\n\n    *fatkodima*",
     "project": "activesupport",
-    "date_merged": 1714146169000,
-    "author": "fatkodima",
-    "sha": "76966f9cb5cc87810dc17f8607fbd69b300c0045",
-    "pr": "51625",
-    "merge_sha": "664470b16fbdeec3bb55b320f56696343b2aab0b",
-    "html": "<p>Allow assertionless tests to be reported.</p>\n\n<p><code>ActiveSupport::TestCase</code> can be configured to report tests that do not run any assertions.<br />\nThis is helpful in detecting broken tests that do not perform intended assertions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_support</span><span class=\"p\">.</span><span class=\"nf\">assertionless_tests_behavior</span> <span class=\"o\">=</span> <span class=\"ss\">:raise</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+    "date_merged": 1714513841000,
+    "author": "Rafael Mendonça França",
+    "sha": "6a6c7e64f5bbea9b66c8b93eb85278805c2700a1",
+    "pr": "51696",
+    "merge_sha": "894f0797ad4022399f6f5d8a4f3e03e6829f9e35",
+    "html": "<p>Warn on tests without assertions.</p>\n\n<p><code>ActiveSupport::TestCase</code> now warns when tests do not run any assertions.<br />\nThis is helpful in detecting broken tests that do not perform intended assertions.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
     "message": "*   Support `hexBinary` type in `ActiveSupport::XmlMini`.\n\n    *heka1024*",
@@ -1738,6 +1738,16 @@
     "pr": "50000",
     "merge_sha": "3e42d79c99c24fbeb10bf08429f686f6f78a4b76",
     "html": "<p>Allow for more complex hash arguments for <code>order</code> which mimics <code>where</code> in <code>ActiveRecord::Relation</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">includes</span><span class=\"p\">(</span><span class=\"ss\">:posts</span><span class=\"p\">).</span><span class=\"nf\">order</span><span class=\"p\">(</span><span class=\"ss\">posts: </span><span class=\"p\">{</span> <span class=\"ss\">created_at: :desc</span> <span class=\"p\">})</span>\n</code></pre></div></div>\n\n<p><em>Myles Boone</em></p>\n"
+  },
+  {
+    "message": "*   Generated Gemfile will include `require: \"debug/prelude\"` for the `debug` gem\n\n    Requiring `debug` gem directly automatically activates it, which could introduce\n    additional overhead and memory usage even without entering a debugging session.\n\n    By making Bundler require `debug/prelude` instead, developers can keep their access\n    to breakpoint methods like `debugger` or `binding.break`, but the debugger won't be\n    activated until a breakpoint is hit.\n\n    *Stan Lo*",
+    "project": "railties",
+    "date_merged": 1714508270000,
+    "author": "Stan Lo",
+    "sha": "7254549dcd95a6b9f71dab48b2c0a56956682e9a",
+    "pr": "51692",
+    "merge_sha": "2601415c8ad95032d6abccfdcf8d8c8eb244c9ab",
+    "html": "<p>Generated Gemfile will include <code>require: \"debug/prelude\"</code> for the <code>debug</code> gem</p>\n\n<p>Requiring <code>debug</code> gem directly automatically activates it, which could introduce<br />\nadditional overhead and memory usage even without entering a debugging session.</p>\n\n<p>By making Bundler require <code>debug/prelude</code> instead, developers can keep their access<br />\nto breakpoint methods like <code>debugger</code> or <code>binding.break</code>, but the debugger won’t be<br />\nactivated until a breakpoint is hit.</p>\n\n<p><em>Stan Lo</em></p>\n"
   },
   {
     "message": "*   Allow Actionable Errors encountered when running tests to be retried.\n\n    ```txt\n    Migrations are pending. To resolve this issue, run:\n\n            bin/rails db:migrate\n\n    You have 1 pending migration:\n\n    db/migrate/20240201213806_add_a_to_b.rb\n    Run pending migrations? [Yn] Y\n    == 20240201213806 AddAToB: migrating =========================================\n    == 20240201213806 AddAToB: migrated (0.0000s) ================================\n\n    Running 7 tests in a single process (parallelization threshold is 50)\n    Run options: --seed 22200\n\n    # Running:\n\n    .......\n\n    Finished in 0.243394s, 28.7600 runs/s, 45.1942 assertions/s.\n    7 runs, 11 assertions, 0 failures, 0 errors, 0 skips\n    ```\n\n    This feature will only be present on interactive terminals.\n\n    *Andrew Novoselac & Gannon McGibbon*",
