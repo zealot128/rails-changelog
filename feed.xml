@@ -1866,6 +1866,59 @@ The result would be like this:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Added support for recursive common table expressions.
+</title>
+    <link>https://github.com/rails/rails/issues/51711</link>
+    <guid>https://github.com/rails/rails/issues/51711</guid>
+    <description>*   Added support for recursive common table expressions.
+
+    ```ruby
+    Post.with_recursive(
+      post_and_replies: [
+        Post.where(id: 42),
+        Post.joins(&#39;JOIN post_and_replies ON posts.in_reply_to_id = post_and_replies.id&#39;),
+      ]
+    )
+    ```
+
+    Generates the following SQL:
+
+    ```sql
+    WITH RECURSIVE &quot;post_and_replies&quot; AS (
+      (SELECT &quot;posts&quot;.* FROM &quot;posts&quot; WHERE &quot;posts&quot;.&quot;id&quot; = 42)
+      UNION ALL
+      (SELECT &quot;posts&quot;.* FROM &quot;posts&quot; JOIN post_and_replies ON posts.in_reply_to_id = post_and_replies.id)
+    )
+    SELECT &quot;posts&quot;.* FROM &quot;posts&quot;
+    ```
+
+    *ClearlyClaire*</description>
+    <pubDate>Thu, 02 May 2024 12:02:11 +0000</pubDate>
+    <author>nisusam</author>
+    <content:encoded><![CDATA[<p>Added support for recursive common table expressions.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">with_recursive</span><span class="p">(</span>
+  <span class="ss">post_and_replies: </span><span class="p">[</span>
+    <span class="no">Post</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">id: </span><span class="mi">42</span><span class="p">),</span>
+    <span class="no">Post</span><span class="p">.</span><span class="nf">joins</span><span class="p">(</span><span class="s1">'JOIN post_and_replies ON posts.in_reply_to_id = post_and_replies.id'</span><span class="p">),</span>
+  <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Generates the following SQL:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">WITH</span> <span class="k">RECURSIVE</span> <span class="nv">"post_and_replies"</span> <span class="k">AS</span> <span class="p">(</span>
+  <span class="p">(</span><span class="k">SELECT</span> <span class="nv">"posts"</span><span class="p">.</span><span class="o">*</span> <span class="k">FROM</span> <span class="nv">"posts"</span> <span class="k">WHERE</span> <span class="nv">"posts"</span><span class="p">.</span><span class="nv">"id"</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+  <span class="k">UNION</span> <span class="k">ALL</span>
+  <span class="p">(</span><span class="k">SELECT</span> <span class="nv">"posts"</span><span class="p">.</span><span class="o">*</span> <span class="k">FROM</span> <span class="nv">"posts"</span> <span class="k">JOIN</span> <span class="n">post_and_replies</span> <span class="k">ON</span> <span class="n">posts</span><span class="p">.</span><span class="n">in_reply_to_id</span> <span class="o">=</span> <span class="n">post_and_replies</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">SELECT</span> <span class="nv">"posts"</span><span class="p">.</span><span class="o">*</span> <span class="k">FROM</span> <span class="nv">"posts"</span>
+</code></pre></div></div>
+
+<p><em>ClearlyClaire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `validate_constraint` can be called in a `change_table` block.
 </title>
     <link>https://github.com/rails/rails/issues/51707</link>
