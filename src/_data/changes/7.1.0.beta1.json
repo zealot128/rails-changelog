@@ -150,6 +150,136 @@
     "html": "<p>Fix all Action Mailbox database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
+    "message": "*   Remove deprecated `ActiveSupport::Notifications::Event#children` and  `ActiveSupport::Notifications::Event#parent_of?`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "c48aab17ce93eadb947750fc960ebb52331858a6",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>ActiveSupport::Notifications::Event#children</code> and  <code>ActiveSupport::Notifications::Event#parent_of?</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to call the following methods without passing a deprecator:\n\n    - `deprecate`\n    - `deprecate_constant`\n    - `ActiveSupport::Deprecation::DeprecatedObjectProxy.new`\n    - `ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy.new`\n    - `ActiveSupport::Deprecation::DeprecatedConstantProxy.new`\n    - `assert_deprecated`\n    - `assert_not_deprecated`\n    - `collect_deprecations`\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "fc2dc7c8d3449e0d38cccab2e69647d8e1fb9b60",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated support to call the following methods without passing a deprecator:</p>\n\n<ul>\n  <li><code>deprecate</code></li>\n  <li><code>deprecate_constant</code></li>\n  <li><code>ActiveSupport::Deprecation::DeprecatedObjectProxy.new</code></li>\n  <li><code>ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy.new</code></li>\n  <li><code>ActiveSupport::Deprecation::DeprecatedConstantProxy.new</code></li>\n  <li><code>assert_deprecated</code></li>\n  <li><code>assert_not_deprecated</code></li>\n  <li><code>collect_deprecations</code></li>\n</ul>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `ActiveSupport::Deprecation` delegation to instance.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "c682bf26417f2a88b0efa46499e94dcf45955f4f",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>ActiveSupport::Deprecation</code> delegation to instance.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `SafeBuffer#clone_empty`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "a45bfd9ee94af8971b3775d4a9b2c208151eaa37",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>SafeBuffer#clone_empty</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `#to_default_s` from `Array`, `Date`, `DateTime` and `Time`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "be211227a03412334801bb352f0e6f4299930ff2",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>#to_default_s</code> from <code>Array</code>, <code>Date</code>, <code>DateTime</code> and <code>Time</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to passing `Dalli::Client` instances to `MemCacheStore`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "c33e2d2e49d439a3a6a805e2ead13eb5732da4d0",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated support to passing <code>Dalli::Client</code> instances to <code>MemCacheStore</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `config.active_support.use_rfc4122_namespaced_uuids`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "21f38d3d40e757ba351ed022d546d4c6bd4f831e",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>config.active_support.use_rfc4122_namespaced_uuids</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `config.active_support.remove_deprecated_time_with_zone_name`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "e73e67ee9948090ea829e7d25ac6101561ebb7fb",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>config.active_support.remove_deprecated_time_with_zone_name</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `config.active_support.disable_to_s_conversion`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "0e6859a2373a27f86b5dead511bd2458f1237a66",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>config.active_support.disable_to_s_conversion</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to bolding log text with positional boolean in `ActiveSupport::LogSubscriber#color`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "c4fdfc55fa9b7c53f2defb3221321553734e1276",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated support to bolding log text with positional boolean in <code>ActiveSupport::LogSubscriber#color</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated constants `ActiveSupport::LogSubscriber::CLEAR` and `ActiveSupport::LogSubscriber::BOLD`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "75981ade29900c21e8f75ab446b7e9f229349807",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated constants <code>ActiveSupport::LogSubscriber::CLEAR</code> and <code>ActiveSupport::LogSubscriber::BOLD</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support for `config.active_support.cache_format_version = 6.1`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "38bfbcfbeacf461cafc4ef816cd5552696da2352",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated support for <code>config.active_support.cache_format_version = 6.1</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `:pool_size` and `:pool_timeout` options for the cache storage.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "a3d6a9f5fc2b8ba705faf9ec930ccf2454c83281",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>:pool_size</code> and <code>:pool_timeout</code> options for the cache storage.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Warn on tests without assertions.\n\n    `ActiveSupport::TestCase` now warns when tests do not run any assertions.\n    This is helpful in detecting broken tests that do not perform intended assertions.\n\n    *fatkodima*",
     "project": "activesupport",
     "date_merged": 1714513841000,
@@ -238,6 +368,36 @@
     "pr": "50677",
     "merge_sha": "1db97053960ec621a770cfc1d182d9d65c1cd5ad",
     "html": "<p>Add <code>default:</code> support for <code>ActiveSupport::CurrentAttributes.attribute</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Current</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">CurrentAttributes</span>\n  <span class=\"n\">attribute</span> <span class=\"ss\">:counter</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"mi\">0</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support for the pre-Ruby 2.4 behavior of `to_time` returning a `Time` object with local timezone.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "b1b2c6d59c3e82ff8eed95f5556a902a4c03abd9",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated support for the pre-Ruby 2.4 behavior of <code>to_time</code> returning a <code>Time</code> object with local timezone.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `config.active_support.to_time_preserves_timezone`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "b1b2c6d59c3e82ff8eed95f5556a902a4c03abd9",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Deprecate <code>config.active_support.to_time_preserves_timezone</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `DateAndTime::Compatibility.preserve_timezone`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "b1b2c6d59c3e82ff8eed95f5556a902a4c03abd9",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Deprecate <code>DateAndTime::Compatibility.preserve_timezone</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Yield instance to `Object#with` block\n\n    ```ruby\n    client.with(timeout: 5_000) do |c|\n      c.get(\"/commits\")\n    end\n    ```\n\n    *Sean Doyle*",
@@ -378,6 +538,26 @@
     "pr": "49475",
     "merge_sha": "d21f4e638ff3498a19730c505e5fb255740a7960",
     "html": "<p>Implement <code>HashWithIndifferentAccess#to_proc</code>.</p>\n\n<p>Previously, calling <code>#to_proc</code> on <code>HashWithIndifferentAccess</code> object used inherited <code>#to_proc</code><br />\nmethod from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `config.active_storage.silence_invalid_content_types_warning`.\n\n    *Rafael Mendonça França*",
+    "project": "activestorage",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "0cf8444d614747e6a6257ec5ddb700934ebfec07",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>config.active_storage.silence_invalid_content_types_warning</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `config.active_storage.replace_on_assign_to_many`.\n\n    *Rafael Mendonça França*",
+    "project": "activestorage",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "b06252e2a7fa489782099653f7ddcecc5b07745c",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>config.active_storage.replace_on_assign_to_many</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Add support for custom `key` in `ActiveStorage::Blob#compose`.\n\n    *Elvin Efendiev*",
@@ -808,6 +988,16 @@
     "pr": "51131",
     "merge_sha": "05b4db2ad09f8fd275534948e663588a97e90ab8",
     "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
+  },
+  {
+    "message": "*   `validate_constraint` can be called in a `change_table` block.\n\n    ex:\n    ```ruby\n    change_table :products do |t|\n      t.check_constraint \"price > discounted_price\", name: \"price_check\", validate: false\n      t.validate_check_constraint \"price_check\"\n    end\n    ```\n\n    *Cody Cutrer*",
+    "project": "activerecord",
+    "date_merged": 1714601650000,
+    "author": "Cody Cutrer",
+    "sha": "5c5e8d2fd625e0c4f9b422c933f127fc7815e36c",
+    "pr": "51707",
+    "merge_sha": "f84e1ebb5ad79ee53a3a7c080f743ca9cc0fe941",
+    "html": "<p><code>validate_constraint</code> can be called in a <code>change_table</code> block.</p>\n\n<p>ex:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">change_table</span> <span class=\"ss\">:products</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">check_constraint</span> <span class=\"s2\">\"price &gt; discounted_price\"</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"price_check\"</span><span class=\"p\">,</span> <span class=\"ss\">validate: </span><span class=\"kp\">false</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">validate_check_constraint</span> <span class=\"s2\">\"price_check\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Cody Cutrer</em></p>\n"
   },
   {
     "message": "*   `PostgreSQLAdapter` now decodes columns of type date to `Date` instead of string.\n\n    Ex:\n    ```ruby\n    ActiveRecord::Base.connection\n         .select_value(\"select '2024-01-01'::date\").class #=> Date\n    ```\n\n    *Joé Dupuis*",
@@ -1738,6 +1928,56 @@
     "pr": "50000",
     "merge_sha": "3e42d79c99c24fbeb10bf08429f686f6f78a4b76",
     "html": "<p>Allow for more complex hash arguments for <code>order</code> which mimics <code>where</code> in <code>ActiveRecord::Relation</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">includes</span><span class=\"p\">(</span><span class=\"ss\">:posts</span><span class=\"p\">).</span><span class=\"nf\">order</span><span class=\"p\">(</span><span class=\"ss\">posts: </span><span class=\"p\">{</span> <span class=\"ss\">created_at: :desc</span> <span class=\"p\">})</span>\n</code></pre></div></div>\n\n<p><em>Myles Boone</em></p>\n"
+  },
+  {
+    "message": "*   Implement Rails console commands and helpers with IRB v1.13's extension APIs\n\n    Rails console users will now see `helper`, `controller`, `new_session`, and `app` under\n    IRB help message's `Helper methods` category. And `reload!` command will be displayed under\n    the new `Rails console` commands category.\n\n    Prior to this change, Rails console's commands and helper methods are added through IRB's\n    private components and don't show up in its help message, which led to poor discoverability.\n\n    *Stan Lo*",
+    "project": "railties",
+    "date_merged": 1714603118000,
+    "author": "Stan Lo",
+    "sha": "4c1f7d8328d4680be9792345d49ef750245ce047",
+    "pr": "51705",
+    "merge_sha": "6b676577ea52d614958bfb5d3a25ac18110593c2",
+    "html": "<p>Implement Rails console commands and helpers with IRB v1.13’s extension APIs</p>\n\n<p>Rails console users will now see <code>helper</code>, <code>controller</code>, <code>new_session</code>, and <code>app</code> under<br />\nIRB help message’s <code>Helper methods</code> category. And <code>reload!</code> command will be displayed under<br />\nthe new <code>Rails console</code> commands category.</p>\n\n<p>Prior to this change, Rails console’s commands and helper methods are added through IRB’s<br />\nprivate components and don’t show up in its help message, which led to poor discoverability.</p>\n\n<p><em>Stan Lo</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `Rails::Generators::Testing::Behaviour`.\n\n    *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "b35df004fdfe0dd956e7ab17e69b6357904d4715",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>Rails::Generators::Testing::Behaviour</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `find_cmd_and_exec` console helper.\n\n    *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "5085daf98e533eb1842781683673aae52d108a01",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>find_cmd_and_exec</code> console helper.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `Rails.config.enable_dependency_loading`.\n\n    *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "e38dfb2149f26eceb21261ea54296f1938029d80",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>Rails.config.enable_dependency_loading</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `Rails.application.secrets`.\n\n    *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1714601582000,
+    "author": "Rafael Mendonça França",
+    "sha": "0c76f17f2dbf0d7ad90c890e6f334743cacce41f",
+    "pr": "49624",
+    "merge_sha": "8808df66eb6c1a8a7eae52f636b23673aea124d2",
+    "html": "<p>Remove deprecated <code>Rails.application.secrets</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Generated Gemfile will include `require: \"debug/prelude\"` for the `debug` gem\n\n    Requiring `debug` gem directly automatically activates it, which could introduce\n    additional overhead and memory usage even without entering a debugging session.\n\n    By making Bundler require `debug/prelude` instead, developers can keep their access\n    to breakpoint methods like `debugger` or `binding.break`, but the debugger won't be\n    activated until a breakpoint is hit.\n\n    *Stan Lo*",
