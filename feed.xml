@@ -311,6 +311,221 @@ message.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Remove deprecated `ActiveSupport::Notifications::Event#children` and  `ActiveSupport::Notifications::Event#parent_of?`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `ActiveSupport::Notifications::Event#children` and  `ActiveSupport::Notifications::Event#parent_of?`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveSupport::Notifications::Event#children</code> and  <code>ActiveSupport::Notifications::Event#parent_of?</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated support to call the following methods without passing a deprecator:
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated support to call the following methods without passing a deprecator:
+
+    - `deprecate`
+    - `deprecate_constant`
+    - `ActiveSupport::Deprecation::DeprecatedObjectProxy.new`
+    - `ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy.new`
+    - `ActiveSupport::Deprecation::DeprecatedConstantProxy.new`
+    - `assert_deprecated`
+    - `assert_not_deprecated`
+    - `collect_deprecations`
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to call the following methods without passing a deprecator:</p>
+
+<ul>
+  <li><code>deprecate</code></li>
+  <li><code>deprecate_constant</code></li>
+  <li><code>ActiveSupport::Deprecation::DeprecatedObjectProxy.new</code></li>
+  <li><code>ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy.new</code></li>
+  <li><code>ActiveSupport::Deprecation::DeprecatedConstantProxy.new</code></li>
+  <li><code>assert_deprecated</code></li>
+  <li><code>assert_not_deprecated</code></li>
+  <li><code>collect_deprecations</code></li>
+</ul>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `ActiveSupport::Deprecation` delegation to instance.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `ActiveSupport::Deprecation` delegation to instance.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>ActiveSupport::Deprecation</code> delegation to instance.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `SafeBuffer#clone_empty`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `SafeBuffer#clone_empty`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>SafeBuffer#clone_empty</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `#to_default_s` from `Array`, `Date`, `DateTime` and `Time`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `#to_default_s` from `Array`, `Date`, `DateTime` and `Time`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>#to_default_s</code> from <code>Array</code>, <code>Date</code>, <code>DateTime</code> and <code>Time</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated support to passing `Dalli::Client` instances to `MemCacheStore`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated support to passing `Dalli::Client` instances to `MemCacheStore`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to passing <code>Dalli::Client</code> instances to <code>MemCacheStore</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `config.active_support.use_rfc4122_namespaced_uuids`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `config.active_support.use_rfc4122_namespaced_uuids`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>config.active_support.use_rfc4122_namespaced_uuids</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `config.active_support.remove_deprecated_time_with_zone_name`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `config.active_support.remove_deprecated_time_with_zone_name`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>config.active_support.remove_deprecated_time_with_zone_name</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `config.active_support.disable_to_s_conversion`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `config.active_support.disable_to_s_conversion`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>config.active_support.disable_to_s_conversion</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated support to bolding log text with positional boolean in `ActiveSupport::LogSubscriber#color`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated support to bolding log text with positional boolean in `ActiveSupport::LogSubscriber#color`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support to bolding log text with positional boolean in <code>ActiveSupport::LogSubscriber#color</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated constants `ActiveSupport::LogSubscriber::CLEAR` and `ActiveSupport::LogSubscriber::BOLD`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated constants `ActiveSupport::LogSubscriber::CLEAR` and `ActiveSupport::LogSubscriber::BOLD`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated constants <code>ActiveSupport::LogSubscriber::CLEAR</code> and <code>ActiveSupport::LogSubscriber::BOLD</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated support for `config.active_support.cache_format_version = 6.1`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated support for `config.active_support.cache_format_version = 6.1`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support for <code>config.active_support.cache_format_version = 6.1</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated `:pool_size` and `:pool_timeout` options for the cache storage.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `:pool_size` and `:pool_timeout` options for the cache storage.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>:pool_size</code> and <code>:pool_timeout</code> options for the cache storage.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Warn on tests without assertions.
 </title>
     <link>https://github.com/rails/rails/issues/51696</link>
@@ -481,6 +696,51 @@ readable by older versions of Rails.</p>
 </code></pre></div></div>
 
 <p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Remove deprecated support for the pre-Ruby 2.4 behavior of `to_time` returning a `Time` object with local timezone.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated support for the pre-Ruby 2.4 behavior of `to_time` returning a `Time` object with local timezone.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated support for the pre-Ruby 2.4 behavior of <code>to_time</code> returning a <code>Time</code> object with local timezone.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Deprecate `config.active_support.to_time_preserves_timezone`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Deprecate `config.active_support.to_time_preserves_timezone`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>config.active_support.to_time_preserves_timezone</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Deprecate `DateAndTime::Compatibility.preserve_timezone`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Deprecate `DateAndTime::Compatibility.preserve_timezone`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>DateAndTime::Compatibility.preserve_timezone</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -775,6 +1035,36 @@ to differentiate nil from empty strings, strings from symbols, etc.<br />
 method from the <code>Hash</code> class, which was not able to access values using indifferent keys.</p>
 
 <p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Remove deprecated `config.active_storage.silence_invalid_content_types_warning`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `config.active_storage.silence_invalid_content_types_warning`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>config.active_storage.silence_invalid_content_types_warning</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Remove deprecated `config.active_storage.replace_on_assign_to_many`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `config.active_storage.replace_on_assign_to_many`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>config.active_storage.replace_on_assign_to_many</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -1573,6 +1863,36 @@ The result would be like this:</p>
 <p>Fixes #14055.</p>
 
 <p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: `validate_constraint` can be called in a `change_table` block.
+</title>
+    <link>https://github.com/rails/rails/issues/51707</link>
+    <guid>https://github.com/rails/rails/issues/51707</guid>
+    <description>*   `validate_constraint` can be called in a `change_table` block.
+
+    ex:
+    ```ruby
+    change_table :products do |t|
+      t.check_constraint &quot;price &gt; discounted_price&quot;, name: &quot;price_check&quot;, validate: false
+      t.validate_check_constraint &quot;price_check&quot;
+    end
+    ```
+
+    *Cody Cutrer*</description>
+    <pubDate>Wed, 01 May 2024 22:14:10 +0000</pubDate>
+    <author>Cody Cutrer</author>
+    <content:encoded><![CDATA[<p><code>validate_constraint</code> can be called in a <code>change_table</code> block.</p>
+
+<p>ex:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">change_table</span> <span class="ss">:products</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">check_constraint</span> <span class="s2">"price &gt; discounted_price"</span><span class="p">,</span> <span class="ss">name: </span><span class="s2">"price_check"</span><span class="p">,</span> <span class="ss">validate: </span><span class="kp">false</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">validate_check_constraint</span> <span class="s2">"price_check"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Cody Cutrer</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -3699,6 +4019,95 @@ column).</p>
 </code></pre></div></div>
 
 <p><em>Myles Boone</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Implement Rails console commands and helpers with IRB v1.13&#39;s extension APIs
+</title>
+    <link>https://github.com/rails/rails/issues/51705</link>
+    <guid>https://github.com/rails/rails/issues/51705</guid>
+    <description>*   Implement Rails console commands and helpers with IRB v1.13&#39;s extension APIs
+
+    Rails console users will now see `helper`, `controller`, `new_session`, and `app` under
+    IRB help message&#39;s `Helper methods` category. And `reload!` command will be displayed under
+    the new `Rails console` commands category.
+
+    Prior to this change, Rails console&#39;s commands and helper methods are added through IRB&#39;s
+    private components and don&#39;t show up in its help message, which led to poor discoverability.
+
+    *Stan Lo*</description>
+    <pubDate>Wed, 01 May 2024 22:38:38 +0000</pubDate>
+    <author>Stan Lo</author>
+    <content:encoded><![CDATA[<p>Implement Rails console commands and helpers with IRB v1.13’s extension APIs</p>
+
+<p>Rails console users will now see <code>helper</code>, <code>controller</code>, <code>new_session</code>, and <code>app</code> under<br />
+IRB help message’s <code>Helper methods</code> category. And <code>reload!</code> command will be displayed under<br />
+the new <code>Rails console</code> commands category.</p>
+
+<p>Prior to this change, Rails console’s commands and helper methods are added through IRB’s<br />
+private components and don’t show up in its help message, which led to poor discoverability.</p>
+
+<p><em>Stan Lo</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Remove deprecated `Rails::Generators::Testing::Behaviour`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `Rails::Generators::Testing::Behaviour`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>Rails::Generators::Testing::Behaviour</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Remove deprecated `find_cmd_and_exec` console helper.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `find_cmd_and_exec` console helper.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>find_cmd_and_exec</code> console helper.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Remove deprecated `Rails.config.enable_dependency_loading`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `Rails.config.enable_dependency_loading`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>Rails.config.enable_dependency_loading</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Remove deprecated `Rails.application.secrets`.
+</title>
+    <link>https://github.com/rails/rails/issues/49624</link>
+    <guid>https://github.com/rails/rails/issues/49624</guid>
+    <description>*   Remove deprecated `Rails.application.secrets`.
+
+    *Rafael Mendonça França*</description>
+    <pubDate>Wed, 01 May 2024 22:13:02 +0000</pubDate>
+    <author>Rafael Mendonça França</author>
+    <content:encoded><![CDATA[<p>Remove deprecated <code>Rails.application.secrets</code>.</p>
+
+<p><em>Rafael Mendonça França</em></p>
 ]]></content:encoded>
   </item>
   <item>
