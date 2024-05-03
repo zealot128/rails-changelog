@@ -1940,6 +1940,16 @@
     "html": "<p>Allow for more complex hash arguments for <code>order</code> which mimics <code>where</code> in <code>ActiveRecord::Relation</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">includes</span><span class=\"p\">(</span><span class=\"ss\">:posts</span><span class=\"p\">).</span><span class=\"nf\">order</span><span class=\"p\">(</span><span class=\"ss\">posts: </span><span class=\"p\">{</span> <span class=\"ss\">created_at: :desc</span> <span class=\"p\">})</span>\n</code></pre></div></div>\n\n<p><em>Myles Boone</em></p>\n"
   },
   {
+    "message": "*   Add options to bin/rails app:update.\n\n    `bin/rails app:update` now supports the same generic options that generators do:\n\n    * `--force`: Accept all changes to existing files\n    * `--skip`: Refuse all changes to existing files\n    * `--pretend`: Don't make any changes\n    * `--quiet`: Don't output all changes made\n\n    *Étienne Barrié*",
+    "project": "railties",
+    "date_merged": 1714684142000,
+    "author": "Étienne Barrié",
+    "sha": "d379fae6d26a236724df79735fb18f7c5834cd2f",
+    "pr": "51690",
+    "merge_sha": "793ff00442723b2ff9ed7b7fb39cae2f5608cc2b",
+    "html": "<p>Add options to bin/rails app:update.</p>\n\n<p><code>bin/rails app:update</code> now supports the same generic options that generators do:</p>\n\n<ul>\n  <li><code>--force</code>: Accept all changes to existing files</li>\n  <li><code>--skip</code>: Refuse all changes to existing files</li>\n  <li><code>--pretend</code>: Don’t make any changes</li>\n  <li><code>--quiet</code>: Don’t output all changes made</li>\n</ul>\n\n<p><em>Étienne Barrié</em></p>\n"
+  },
+  {
     "message": "*   Implement Rails console commands and helpers with IRB v1.13's extension APIs\n\n    Rails console users will now see `helper`, `controller`, `new_session`, and `app` under\n    IRB help message's `Helper methods` category. And `reload!` command will be displayed under\n    the new `Rails console` commands category.\n\n    Prior to this change, Rails console's commands and helper methods are added through IRB's\n    private components and don't show up in its help message, which led to poor discoverability.\n\n    *Stan Lo*",
     "project": "railties",
     "date_merged": 1714603118000,
