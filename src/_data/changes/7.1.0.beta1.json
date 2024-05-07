@@ -990,6 +990,16 @@
     "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
   },
   {
+    "message": "*   Add ENV[\"SKIP_TEST_DATABASE_TRUNCATE\"] flag to speed up multi-process test runs on large DBs when all tests run within default txn. (This cuts ~10s from the test run of HEY when run by 24 processes against the 178 tables, since ~4,000 table truncates can then be skipped.)\n\n    *DHH*",
+    "project": "activerecord",
+    "date_merged": 1715075824000,
+    "author": "David Heinemeier Hansson",
+    "sha": "e8e077dd16f815c2a5cc4d29646d9451e7046f71",
+    "pr": "51686",
+    "merge_sha": "bfd924ae152a4934b9ba9837b9f9ffd603e413c4",
+    "html": "<p>Add ENV[“SKIP_TEST_DATABASE_TRUNCATE”] flag to speed up multi-process test runs on large DBs when all tests run within default txn. (This cuts ~10s from the test run of HEY when run by 24 processes against the 178 tables, since ~4,000 table truncates can then be skipped.)</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Added support for recursive common table expressions.\n\n    ```ruby\n    Post.with_recursive(\n      post_and_replies: [\n        Post.where(id: 42),\n        Post.joins('JOIN post_and_replies ON posts.in_reply_to_id = post_and_replies.id'),\n      ]\n    )\n    ```\n\n    Generates the following SQL:\n\n    ```sql\n    WITH RECURSIVE \"post_and_replies\" AS (\n      (SELECT \"posts\".* FROM \"posts\" WHERE \"posts\".\"id\" = 42)\n      UNION ALL\n      (SELECT \"posts\".* FROM \"posts\" JOIN post_and_replies ON posts.in_reply_to_id = post_and_replies.id)\n    )\n    SELECT \"posts\".* FROM \"posts\"\n    ```\n\n    *ClearlyClaire*",
     "project": "activerecord",
     "date_merged": 1714651331000,
