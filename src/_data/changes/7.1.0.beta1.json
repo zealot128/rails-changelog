@@ -990,6 +990,16 @@
     "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
   },
   {
+    "message": "*   Association option `query_constraints` is deprecated in favor of `foreign_key`.\n\n    *Nikita Vasilevsky*",
+    "project": "activerecord",
+    "date_merged": 1715199768000,
+    "author": "Nikita Vasilevsky",
+    "sha": "9cadf6183507682d4b3faf3e1620c39c1f7fc765",
+    "pr": "51571",
+    "merge_sha": "07e40ea31677aac8b68d8a25f07511f817295dd5",
+    "html": "<p>Association option <code>query_constraints</code> is deprecated in favor of <code>foreign_key</code>.</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
     "message": "*   Add ENV[\"SKIP_TEST_DATABASE_TRUNCATE\"] flag to speed up multi-process test runs on large DBs when all tests run within default txn. (This cuts ~10s from the test run of HEY when run by 24 processes against the 178 tables, since ~4,000 table truncates can then be skipped.)\n\n    *DHH*",
     "project": "activerecord",
     "date_merged": 1715075824000,
