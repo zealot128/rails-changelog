@@ -990,6 +990,26 @@
     "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
   },
   {
+    "message": "*   Fix `index_errors` having incorrect index in association validation errors.\n\n    *lulalala*",
+    "project": "activerecord",
+    "date_merged": 1715272114000,
+    "author": "lulalala",
+    "sha": "0a36c36dd8484200a3d3e79590e30ff8f46f9404",
+    "pr": "48727",
+    "merge_sha": "735da84034f101c02c652b44de39e2b3009d2a7a",
+    "html": "<p>Fix <code>index_errors</code> having incorrect index in association validation errors.</p>\n\n<p><em>lulalala</em></p>\n"
+  },
+  {
+    "message": "*   Add `index_errors: :nested_attributes_order` mode.\n\n    This indexes the association validation errors based on the order received by nested attributes setter, and respects the `reject_if` configuration. This enables API to provide enough information to the frontend to map the validation errors back to their respective form fields.\n\n    *lulalala*",
+    "project": "activerecord",
+    "date_merged": 1715272114000,
+    "author": "lulalala",
+    "sha": "0a36c36dd8484200a3d3e79590e30ff8f46f9404",
+    "pr": "48727",
+    "merge_sha": "735da84034f101c02c652b44de39e2b3009d2a7a",
+    "html": "<p>Add <code>index_errors: :nested_attributes_order</code> mode.</p>\n\n<p>This indexes the association validation errors based on the order received by nested attributes setter, and respects the <code>reject_if</code> configuration. This enables API to provide enough information to the frontend to map the validation errors back to their respective form fields.</p>\n\n<p><em>lulalala</em></p>\n"
+  },
+  {
     "message": "*   Association option `query_constraints` is deprecated in favor of `foreign_key`.\n\n    *Nikita Vasilevsky*",
     "project": "activerecord",
     "date_merged": 1715199768000,
@@ -2408,6 +2428,16 @@
     "pr": "49851",
     "merge_sha": "705878ef4680615bc1386a5d44c49ee4fc3810d9",
     "html": "<p>Remove the option <code>config.public_file_server.enabled</code> from the generators<br />\nfor all environments, as the value is the same in all environments.</p>\n\n<p><em>Adrian Hirt</em></p>\n"
+  },
+  {
+    "message": "*   All tests now respect the `active_job.queue_adapter` config\n\n    Previously if you had set `config.active_job.queue_adapter` in your `config/application.rb`\n    or `config/environments/test.rb` file, the adapter you selected was previously not used consistently\n    across all tests. In some tests your adapter would be used, but other tests would use the `TestAdapter`.\n\n    In Rails 7.2, all tests will respect the `queue_adapter` config if provided. If no config is provided,\n    the `TestAdapter` will continue to be used.\n\n    See [#48585](https://github.com/rails/rails/pull/48585) for more details.\n\n    *Alex Ghiculescu*",
+    "project": "activejob",
+    "date_merged": 1715257770000,
+    "author": "Alex Ghiculescu",
+    "sha": "2194a738c70a6e8ef7445c4fcec99a048421f1d3",
+    "pr": "48585",
+    "merge_sha": "80fa11246e716a5c0dbd4a0d585a55f0753e8464",
+    "html": "<p>All tests now respect the <code>active_job.queue_adapter</code> config</p>\n\n<p>Previously if you had set <code>config.active_job.queue_adapter</code> in your <code>config/application.rb</code><br />\nor <code>config/environments/test.rb</code> file, the adapter you selected was previously not used consistently<br />\nacross all tests. In some tests your adapter would be used, but other tests would use the <code>TestAdapter</code>.</p>\n\n<p>In Rails 7.2, all tests will respect the <code>queue_adapter</code> config if provided. If no config is provided,<br />\nthe <code>TestAdapter</code> will continue to be used.</p>\n\n<p>See <a href=\"https://github.com/rails/rails/pull/48585\">#48585</a> for more details.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
   },
   {
     "message": "*   Make Active Job transaction aware when used conjointly with Active Record.\n\n    A common mistake with Active Job is to enqueue jobs from inside a transaction,\n    causing them to potentially be picked and ran by another process, before the\n    transaction is committed, which may result in various errors.\n\n    ```ruby\n    Topic.transaction do\n      topic = Topic.create(...)\n      NewTopicNotificationJob.perform_later(topic)\n    end\n    ```\n\n    Now Active Job will automatically defer the enqueuing to after the transaction is committed,\n    and drop the job if the transaction is rolled back.\n\n    Various queue implementations can choose to disable this behavior, and users can disable it,\n    or force it on a per job basis:\n\n    ```ruby\n    class NewTopicNotificationJob < ApplicationJob\n      self.enqueue_after_transaction_commit = :never # or `:always` or `:default`\n    end\n    ```\n\n    *Jean Boussier*, *Cristian Bica*",
