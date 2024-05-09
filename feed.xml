@@ -1866,6 +1866,21 @@ The result would be like this:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Association option `query_constraints` is deprecated in favor of `foreign_key`.
+</title>
+    <link>https://github.com/rails/rails/issues/51571</link>
+    <guid>https://github.com/rails/rails/issues/51571</guid>
+    <description>*   Association option `query_constraints` is deprecated in favor of `foreign_key`.
+
+    *Nikita Vasilevsky*</description>
+    <pubDate>Wed, 08 May 2024 20:22:48 +0000</pubDate>
+    <author>Nikita Vasilevsky</author>
+    <content:encoded><![CDATA[<p>Association option <code>query_constraints</code> is deprecated in favor of <code>foreign_key</code>.</p>
+
+<p><em>Nikita Vasilevsky</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add ENV[&quot;SKIP_TEST_DATABASE_TRUNCATE&quot;] flag to speed up multi-process test runs on large DBs when all tests run within default txn. (This cuts ~10s from the test run of HEY when run by 24 processes against the 178 tables, since ~4,000 table truncates can then be skipped.)
 </title>
     <link>https://github.com/rails/rails/issues/51686</link>
