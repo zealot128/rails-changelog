@@ -1866,6 +1866,40 @@ The result would be like this:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix `index_errors` having incorrect index in association validation errors.
+</title>
+    <link>https://github.com/rails/rails/issues/48727</link>
+    <guid>https://github.com/rails/rails/issues/48727</guid>
+    <description>*   Fix `index_errors` having incorrect index in association validation errors.
+
+    *lulalala*</description>
+    <pubDate>Thu, 09 May 2024 16:28:34 +0000</pubDate>
+    <author>lulalala</author>
+    <content:encoded><![CDATA[<p>Fix <code>index_errors</code> having incorrect index in association validation errors.</p>
+
+<p><em>lulalala</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `index_errors: :nested_attributes_order` mode.
+</title>
+    <link>https://github.com/rails/rails/issues/48727</link>
+    <guid>https://github.com/rails/rails/issues/48727</guid>
+    <description>*   Add `index_errors: :nested_attributes_order` mode.
+
+    This indexes the association validation errors based on the order received by nested attributes setter, and respects the `reject_if` configuration. This enables API to provide enough information to the frontend to map the validation errors back to their respective form fields.
+
+    *lulalala*</description>
+    <pubDate>Thu, 09 May 2024 16:28:34 +0000</pubDate>
+    <author>lulalala</author>
+    <content:encoded><![CDATA[<p>Add <code>index_errors: :nested_attributes_order</code> mode.</p>
+
+<p>This indexes the association validation errors based on the order received by nested attributes setter, and respects the <code>reject_if</code> configuration. This enables API to provide enough information to the frontend to map the validation errors back to their respective form fields.</p>
+
+<p><em>lulalala</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Association option `query_constraints` is deprecated in favor of `foreign_key`.
 </title>
     <link>https://github.com/rails/rails/issues/51571</link>
@@ -5071,6 +5105,39 @@ instead of capturing it.</p>
 for all environments, as the value is the same in all environments.</p>
 
 <p><em>Adrian Hirt</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: All tests now respect the `active_job.queue_adapter` config
+</title>
+    <link>https://github.com/rails/rails/issues/48585</link>
+    <guid>https://github.com/rails/rails/issues/48585</guid>
+    <description>*   All tests now respect the `active_job.queue_adapter` config
+
+    Previously if you had set `config.active_job.queue_adapter` in your `config/application.rb`
+    or `config/environments/test.rb` file, the adapter you selected was previously not used consistently
+    across all tests. In some tests your adapter would be used, but other tests would use the `TestAdapter`.
+
+    In Rails 7.2, all tests will respect the `queue_adapter` config if provided. If no config is provided,
+    the `TestAdapter` will continue to be used.
+
+    See [#48585](https://github.com/rails/rails/pull/48585) for more details.
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Thu, 09 May 2024 12:29:30 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p>All tests now respect the <code>active_job.queue_adapter</code> config</p>
+
+<p>Previously if you had set <code>config.active_job.queue_adapter</code> in your <code>config/application.rb</code><br />
+or <code>config/environments/test.rb</code> file, the adapter you selected was previously not used consistently<br />
+across all tests. In some tests your adapter would be used, but other tests would use the <code>TestAdapter</code>.</p>
+
+<p>In Rails 7.2, all tests will respect the <code>queue_adapter</code> config if provided. If no config is provided,<br />
+the <code>TestAdapter</code> will continue to be used.</p>
+
+<p>See <a href="https://github.com/rails/rails/pull/48585">#48585</a> for more details.</p>
+
+<p><em>Alex Ghiculescu</em></p>
 ]]></content:encoded>
   </item>
   <item>
