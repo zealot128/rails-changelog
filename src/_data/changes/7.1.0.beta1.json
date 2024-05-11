@@ -990,6 +990,16 @@
     "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
   },
   {
+    "message": "*   Add support for `:if_not_exists` and `:force` options to `create_schema`\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1715437302000,
+    "author": "fatkodima",
+    "sha": "47f25b268acaf966437c3e45ced0b47b15a980df",
+    "pr": "51790",
+    "merge_sha": "77f08225d12b432eefb8caf197f4bd99d3c283f5",
+    "html": "<p>Add support for <code>:if_not_exists</code> and <code>:force</code> options to <code>create_schema</code></p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Fix `index_errors` having incorrect index in association validation errors.\n\n    *lulalala*",
     "project": "activerecord",
     "date_merged": 1715272114000,
