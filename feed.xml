@@ -1866,6 +1866,21 @@ The result would be like this:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add support for `:if_not_exists` and `:force` options to `create_schema`
+</title>
+    <link>https://github.com/rails/rails/issues/51790</link>
+    <guid>https://github.com/rails/rails/issues/51790</guid>
+    <description>*   Add support for `:if_not_exists` and `:force` options to `create_schema`
+
+    *fatkodima*</description>
+    <pubDate>Sat, 11 May 2024 14:21:42 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Add support for <code>:if_not_exists</code> and <code>:force</code> options to <code>create_schema</code></p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix `index_errors` having incorrect index in association validation errors.
 </title>
     <link>https://github.com/rails/rails/issues/48727</link>
