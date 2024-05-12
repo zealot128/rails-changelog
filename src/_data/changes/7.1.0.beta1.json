@@ -1730,14 +1730,14 @@
     "html": "<p>Fix Migrations with versions older than 7.1 validating options given to<br />\n<code>add_reference</code> and <code>t.references</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
-    "message": "*   Add `<role>_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be instrospected\n\n    *JP Rosevear*",
+    "message": "*   Add `<role>_types` class method to `ActiveRecord::DelegatedType` so that the delegated types can be introspected\n\n    *JP Rosevear*",
     "project": "activerecord",
-    "date_merged": 1705345454000,
-    "author": "JP Rosevear",
-    "sha": "e323d3f81c07f72a10de610922cf507eb8307a23",
-    "pr": "50662",
-    "merge_sha": "883b033c4e258e302fbde6ada175e36b824388df",
-    "html": "<p>Add <code>&lt;role&gt;_types</code> class method to <code>ActiveRecord::DelegatedType</code> so that the delegated types can be instrospected</p>\n\n<p><em>JP Rosevear</em></p>\n"
+    "date_merged": 1715495910000,
+    "author": "Sampat Badhe",
+    "sha": "a44fbb11a34302fd766d7d8272a45ed5801471e5",
+    "pr": "51794",
+    "merge_sha": "a27a1751cfd499f69499e943f12e3400b55a323e",
+    "html": "<p>Add <code>&lt;role&gt;_types</code> class method to <code>ActiveRecord::DelegatedType</code> so that the delegated types can be introspected</p>\n\n<p><em>JP Rosevear</em></p>\n"
   },
   {
     "message": "*   Make `schema_dump`, `query_cache`, `replica` and `database_tasks` configurable via `DATABASE_URL`\n\n    This wouldn't always work previously because boolean values would be interpreted as strings.\n\n    e.g. `DATABASE_URL=postgres://localhost/foo?schema_dump=false` now properly disable dumping the schema\n    cache.\n\n    *Mike Coutermarsh*, *Jean Boussier*",
@@ -1988,6 +1988,16 @@
     "pr": "50000",
     "merge_sha": "3e42d79c99c24fbeb10bf08429f686f6f78a4b76",
     "html": "<p>Allow for more complex hash arguments for <code>order</code> which mimics <code>where</code> in <code>ActiveRecord::Relation</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">includes</span><span class=\"p\">(</span><span class=\"ss\">:posts</span><span class=\"p\">).</span><span class=\"nf\">order</span><span class=\"p\">(</span><span class=\"ss\">posts: </span><span class=\"p\">{</span> <span class=\"ss\">created_at: :desc</span> <span class=\"p\">})</span>\n</code></pre></div></div>\n\n<p><em>Myles Boone</em></p>\n"
+  },
+  {
+    "message": "*   Defer route drawing to the first request, or when url_helpers are called\n\n    Executes the first routes reload in middleware, or when a route set's\n    url_helpers receives a route call / asked if it responds to a route.\n    Previously, this was executed unconditionally on boot, which can\n    slow down boot time unnecessarily for larger apps with lots of routes.\n\n    *Gannon McGibbon*",
+    "project": "railties",
+    "date_merged": 1715523477000,
+    "author": "Gannon McGibbon",
+    "sha": "e54f869e431372ba30bb6a00c8b58cbba692de7e",
+    "pr": "51614",
+    "merge_sha": "e97db3b3957781c781a61fb01265feb2b57688bb",
+    "html": "<p>Defer route drawing to the first request, or when url_helpers are called</p>\n\n<p>Executes the first routes reload in middleware, or when a route set’s<br />\nurl_helpers receives a route call / asked if it responds to a route.<br />\nPreviously, this was executed unconditionally on boot, which can<br />\nslow down boot time unnecessarily for larger apps with lots of routes.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
     "message": "*   Add options to bin/rails app:update.\n\n    `bin/rails app:update` now supports the same generic options that generators do:\n\n    * `--force`: Accept all changes to existing files\n    * `--skip`: Refuse all changes to existing files\n    * `--pretend`: Don't make any changes\n    * `--quiet`: Don't output all changes made\n\n    *Étienne Barrié*",
