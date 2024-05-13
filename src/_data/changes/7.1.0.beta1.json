@@ -990,6 +990,16 @@
     "html": "<p>Add parameter filter capability for redirect locations.</p>\n\n<p>It uses the <code>config.filter_parameters</code> to match what needs to be filtered.<br />\nThe result would be like this:</p>\n\n<pre><code>Redirected to http://secret.foo.bar?username=roque&amp;password=[FILTERED]\n</code></pre>\n\n<p>Fixes #14055.</p>\n\n<p><em>Roque Pinel</em>, <em>Trevor Turk</em>, <em>tonytonyjan</em></p>\n"
   },
   {
+    "message": "*   Support `touch_all` in batches.\n\n    ```ruby\n    Post.in_batches.touch_all\n    ```\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1715559853000,
+    "author": "fatkodima",
+    "sha": "e057037c72c231b40844f3d82c1f935a36361879",
+    "pr": "51785",
+    "merge_sha": "007a609ef21f94146ef0a085e55d16dc4381c700",
+    "html": "<p>Support <code>touch_all</code> in batches.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">in_batches</span><span class=\"p\">.</span><span class=\"nf\">touch_all</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Add support for `:if_not_exists` and `:force` options to `create_schema`\n\n    *fatkodima*",
     "project": "activerecord",
     "date_merged": 1715437302000,
