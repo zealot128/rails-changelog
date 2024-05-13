@@ -1866,6 +1866,28 @@ The result would be like this:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Support `touch_all` in batches.
+</title>
+    <link>https://github.com/rails/rails/issues/51785</link>
+    <guid>https://github.com/rails/rails/issues/51785</guid>
+    <description>*   Support `touch_all` in batches.
+
+    ```ruby
+    Post.in_batches.touch_all
+    ```
+
+    *fatkodima*</description>
+    <pubDate>Mon, 13 May 2024 00:24:13 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Support <code>touch_all</code> in batches.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">in_batches</span><span class="p">.</span><span class="nf">touch_all</span>
+</code></pre></div></div>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add support for `:if_not_exists` and `:force` options to `create_schema`
 </title>
     <link>https://github.com/rails/rails/issues/51790</link>
