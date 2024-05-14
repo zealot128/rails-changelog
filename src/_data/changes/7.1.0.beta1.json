@@ -1,3 +1,12 @@
 [
-
+  {
+    "message": "*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.\n    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1715647059000,
+    "author": "David Heinemeier Hansson",
+    "sha": "bee3fa41ca9137b9e704ea3ab1bdbcfd3c85446b",
+    "pr": "51798",
+    "merge_sha": "2e7dc14943d285626a9e12ad0d1750d3609185be",
+    "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
+  }
 ]
