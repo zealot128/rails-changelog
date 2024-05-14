@@ -5,6 +5,23 @@
 <link>https://zealot128.github.io/rails-changelog</link>
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>railties: Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
+</title>
+    <link>https://github.com/rails/rails/issues/51798</link>
+    <guid>https://github.com/rails/rails/issues/51798</guid>
+    <description>*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
+    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/
+
+    *DHH*</description>
+    <pubDate>Tue, 14 May 2024 00:37:39 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />
+This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
 </channel>
 </rss>
 
