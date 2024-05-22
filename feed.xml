@@ -6,6 +6,36 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Add public method for checking if a table is ignored by the schema cache.
+</title>
+    <link>https://github.com/rails/rails/issues/51878</link>
+    <guid>https://github.com/rails/rails/issues/51878</guid>
+    <description>*   Add public method for checking if a table is ignored by the schema cache.
+
+    Previously, an application would need to reimplement `ignored_table?` from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.
+
+    ```ruby
+    ActiveRecord.schema_cache_ignored_tables = [&quot;developers&quot;]
+    ActiveRecord.schema_cache_ignored_table?(&quot;developers&quot;)
+    =&gt; true
+    ```
+
+    *Eileen M. Uchitelle*</description>
+    <pubDate>Tue, 21 May 2024 19:33:51 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Add public method for checking if a table is ignored by the schema cache.</p>
+
+<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="p">.</span><span class="nf">schema_cache_ignored_tables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"developers"</span><span class="p">]</span>
+<span class="no">ActiveRecord</span><span class="p">.</span><span class="nf">schema_cache_ignored_table?</span><span class="p">(</span><span class="s2">"developers"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+</code></pre></div></div>
+
+<p><em>Eileen M. Uchitelle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
 </title>
     <link>https://github.com/rails/rails/issues/51798</link>
