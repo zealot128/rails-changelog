@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Add public method for checking if a table is ignored by the schema cache.\n\n    Previously, an application would need to reimplement `ignored_table?` from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.\n\n    ```ruby\n    ActiveRecord.schema_cache_ignored_tables = [\"developers\"]\n    ActiveRecord.schema_cache_ignored_table?(\"developers\")\n    => true\n    ```\n\n    *Eileen M. Uchitelle*",
+    "project": "activerecord",
+    "date_merged": 1716320031000,
+    "author": "eileencodes",
+    "sha": "e815c6663a99e277c43d5f132bcbae71d342a41d",
+    "pr": "51878",
+    "merge_sha": "2281edf99e3583b1ff7ae636906f681d80dab603",
+    "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
     "message": "*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.\n    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1715647059000,
