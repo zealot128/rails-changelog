@@ -20,6 +20,16 @@
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
+    "message": "*   Add Rubocop and GitHub Actions to plugin generator.\n    This can be skipped using --skip-rubocop and --skip-ci.\n\n    *Chris Oliver*",
+    "project": "railties",
+    "date_merged": 1716487738000,
+    "author": "Chris Oliver",
+    "sha": "7594a73942c6b4e64c50d17b4b0c9867b9fe1440",
+    "pr": "51822",
+    "merge_sha": "c906f75282085bf67b807f4f7b420c6b5019f725",
+    "html": "<p>Add Rubocop and GitHub Actions to plugin generator.<br />\nThis can be skipped using –skip-rubocop and –skip-ci.</p>\n\n<p><em>Chris Oliver</em></p>\n"
+  },
+  {
     "message": "*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.\n    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1715647059000,
