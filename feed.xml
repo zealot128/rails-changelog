@@ -6,6 +6,40 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Fix inference of association model on nested models with the same demodularized name.
+</title>
+    <link>https://github.com/rails/rails/issues/51720</link>
+    <guid>https://github.com/rails/rails/issues/51720</guid>
+    <description>*   Fix inference of association model on nested models with the same demodularized name.
+
+    E.g. with the following setup:
+
+    ```ruby
+    class Nested::Post &lt; ApplicationRecord
+      has_one :post, through: :other
+    end
+    ```
+
+    Before, `#post` would infer the model as `Nested::Post`, but now it correctly infers `Post`.
+
+    *Joshua Young*</description>
+    <pubDate>Wed, 22 May 2024 23:46:14 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Fix inference of association model on nested models with the same demodularized name.</p>
+
+<p>E.g. with the following setup:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Nested::Post</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">has_one</span> <span class="ss">:post</span><span class="p">,</span> <span class="ss">through: :other</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Before, <code>#post</code> would infer the model as <code>Nested::Post</code>, but now it correctly infers <code>Post</code>.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add public method for checking if a table is ignored by the schema cache.
 </title>
     <link>https://github.com/rails/rails/issues/51878</link>
