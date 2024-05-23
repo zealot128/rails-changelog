@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Fix inference of association model on nested models with the same demodularized name.\n\n    E.g. with the following setup:\n\n    ```ruby\n    class Nested::Post < ApplicationRecord\n      has_one :post, through: :other\n    end\n    ```\n\n    Before, `#post` would infer the model as `Nested::Post`, but now it correctly infers `Post`.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1716421574000,
+    "author": "Joshua Young",
+    "sha": "0516eafda2f744f1e01631305b94c2e7582442de",
+    "pr": "51720",
+    "merge_sha": "cacb8475a9d4373c0db437e7be4905685f03cefa",
+    "html": "<p>Fix inference of association model on nested models with the same demodularized name.</p>\n\n<p>E.g. with the following setup:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Nested::Post</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">has_one</span> <span class=\"ss\">:post</span><span class=\"p\">,</span> <span class=\"ss\">through: :other</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Before, <code>#post</code> would infer the model as <code>Nested::Post</code>, but now it correctly infers <code>Post</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Add public method for checking if a table is ignored by the schema cache.\n\n    Previously, an application would need to reimplement `ignored_table?` from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.\n\n    ```ruby\n    ActiveRecord.schema_cache_ignored_tables = [\"developers\"]\n    ActiveRecord.schema_cache_ignored_table?(\"developers\")\n    => true\n    ```\n\n    *Eileen M. Uchitelle*",
     "project": "activerecord",
     "date_merged": 1716320031000,
