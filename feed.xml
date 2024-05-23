@@ -70,6 +70,23 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add Rubocop and GitHub Actions to plugin generator.
+</title>
+    <link>https://github.com/rails/rails/issues/51822</link>
+    <guid>https://github.com/rails/rails/issues/51822</guid>
+    <description>*   Add Rubocop and GitHub Actions to plugin generator.
+    This can be skipped using --skip-rubocop and --skip-ci.
+
+    *Chris Oliver*</description>
+    <pubDate>Thu, 23 May 2024 18:08:58 +0000</pubDate>
+    <author>Chris Oliver</author>
+    <content:encoded><![CDATA[<p>Add Rubocop and GitHub Actions to plugin generator.<br />
+This can be skipped using –skip-rubocop and –skip-ci.</p>
+
+<p><em>Chris Oliver</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
 </title>
     <link>https://github.com/rails/rails/issues/51798</link>
