@@ -6,6 +6,47 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Improve `ActiveRecord::Store` to raise a descriptive exception if the column is not either
+</title>
+    <link>https://github.com/rails/rails/issues/51898</link>
+    <guid>https://github.com/rails/rails/issues/51898</guid>
+    <description>*   Improve `ActiveRecord::Store` to raise a descriptive exception if the column is not either
+    structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared serializable via
+    `ActiveRecord.store`.
+
+    Previously, a `NoMethodError` would be raised when the accessor was read or written:
+
+        NoMethodError: undefined method `accessor&#39; for an instance of ActiveRecord::Type::Text
+
+    Now, a descriptive `ConfigurationError` is raised:
+
+        ActiveRecord::ConfigurationError: the column &#39;metadata&#39; has not been configured as a store.
+          Please make sure the column is declared serializable via &#39;ActiveRecord.store&#39; or, if your
+          database supports it, use a structured column type like hstore or json.
+
+    *Mike Dalessio*</description>
+    <pubDate>Fri, 24 May 2024 06:34:42 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Improve <code>ActiveRecord::Store</code> to raise a descriptive exception if the column is not either<br />
+structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared serializable via<br />
+<code>ActiveRecord.store</code>.</p>
+
+<p>Previously, a <code>NoMethodError</code> would be raised when the accessor was read or written:</p>
+
+<pre><code>NoMethodError: undefined method `accessor' for an instance of ActiveRecord::Type::Text
+</code></pre>
+
+<p>Now, a descriptive <code>ConfigurationError</code> is raised:</p>
+
+<pre><code>ActiveRecord::ConfigurationError: the column 'metadata' has not been configured as a store.
+  Please make sure the column is declared serializable via 'ActiveRecord.store' or, if your
+  database supports it, use a structured column type like hstore or json.
+</code></pre>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix inference of association model on nested models with the same demodularized name.
 </title>
     <link>https://github.com/rails/rails/issues/51720</link>
