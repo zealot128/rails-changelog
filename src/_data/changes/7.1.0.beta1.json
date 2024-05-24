@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Improve `ActiveRecord::Store` to raise a descriptive exception if the column is not either\n    structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared serializable via\n    `ActiveRecord.store`.\n\n    Previously, a `NoMethodError` would be raised when the accessor was read or written:\n\n        NoMethodError: undefined method `accessor' for an instance of ActiveRecord::Type::Text\n\n    Now, a descriptive `ConfigurationError` is raised:\n\n        ActiveRecord::ConfigurationError: the column 'metadata' has not been configured as a store.\n          Please make sure the column is declared serializable via 'ActiveRecord.store' or, if your\n          database supports it, use a structured column type like hstore or json.\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1716532482000,
+    "author": "Mike Dalessio",
+    "sha": "2bf7e25243c85e7c5e32f91007f6827a2491067d",
+    "pr": "51898",
+    "merge_sha": "272aa3bd15c84c875e73592669a5c9007e1b12e4",
+    "html": "<p>Improve <code>ActiveRecord::Store</code> to raise a descriptive exception if the column is not either<br />\nstructured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared serializable via<br />\n<code>ActiveRecord.store</code>.</p>\n\n<p>Previously, a <code>NoMethodError</code> would be raised when the accessor was read or written:</p>\n\n<pre><code>NoMethodError: undefined method `accessor' for an instance of ActiveRecord::Type::Text\n</code></pre>\n\n<p>Now, a descriptive <code>ConfigurationError</code> is raised:</p>\n\n<pre><code>ActiveRecord::ConfigurationError: the column 'metadata' has not been configured as a store.\n  Please make sure the column is declared serializable via 'ActiveRecord.store' or, if your\n  database supports it, use a structured column type like hstore or json.\n</code></pre>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Fix inference of association model on nested models with the same demodularized name.\n\n    E.g. with the following setup:\n\n    ```ruby\n    class Nested::Post < ApplicationRecord\n      has_one :post, through: :other\n    end\n    ```\n\n    Before, `#post` would infer the model as `Nested::Post`, but now it correctly infers `Post`.\n\n    *Joshua Young*",
     "project": "activerecord",
     "date_merged": 1716421574000,
