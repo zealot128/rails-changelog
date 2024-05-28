@@ -6,6 +6,25 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Add `ActiveRecord::Relation.readonly?`
+</title>
+    <link>https://github.com/rails/rails/issues/51371</link>
+    <guid>https://github.com/rails/rails/issues/51371</guid>
+    <description>*   Add `ActiveRecord::Relation.readonly?`
+
+    Reflects if the relation has been marked as readonly.
+
+    *Theodor Tonum*</description>
+    <pubDate>Mon, 27 May 2024 20:39:30 +0000</pubDate>
+    <author>Theodor Tonum</author>
+    <content:encoded><![CDATA[<p>Add <code>ActiveRecord::Relation.readonly?</code></p>
+
+<p>Reflects if the relation has been marked as readonly.</p>
+
+<p><em>Theodor Tonum</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Improve `ActiveRecord::Store` to raise a descriptive exception if the column is not either
 </title>
     <link>https://github.com/rails/rails/issues/51898</link>
