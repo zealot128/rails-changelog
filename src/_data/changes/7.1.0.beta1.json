@@ -40,6 +40,16 @@
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
+    "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
+    "project": "actionpack",
+    "date_merged": 1716922390000,
+    "author": "Joe Haig",
+    "sha": "10dc425e8efa9761ab4c46e20eb72b85821b5521",
+    "pr": "51934",
+    "merge_sha": "23151ea1bde5eda46d628cb88355b3f62710abcf",
+    "html": "<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"s2\">\"'wasm-unsafe-eval'\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"ss\">:wasm_unsafe_eval</span>\n</code></pre></div></div>\n\n<p><em>Joe Haig</em></p>\n"
+  },
+  {
     "message": "*   Add Rubocop and GitHub Actions to plugin generator.\n    This can be skipped using --skip-rubocop and --skip-ci.\n\n    *Chris Oliver*",
     "project": "railties",
     "date_merged": 1716487738000,
