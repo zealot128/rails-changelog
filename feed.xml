@@ -130,6 +130,36 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Add `:wasm_unsafe_eval` mapping for `content_security_policy`
+</title>
+    <link>https://github.com/rails/rails/issues/51934</link>
+    <guid>https://github.com/rails/rails/issues/51934</guid>
+    <description>*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`
+
+    ```ruby
+    # Before
+    policy.script_src &quot;&#39;wasm-unsafe-eval&#39;&quot;
+
+    # After
+    policy.script_src :wasm_unsafe_eval
+    ```
+
+    *Joe Haig*</description>
+    <pubDate>Tue, 28 May 2024 18:53:10 +0000</pubDate>
+    <author>Joe Haig</author>
+    <content:encoded><![CDATA[<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="s2">"'wasm-unsafe-eval'"</span>
+
+<span class="c1"># After</span>
+<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="ss">:wasm_unsafe_eval</span>
+</code></pre></div></div>
+
+<p><em>Joe Haig</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add Rubocop and GitHub Actions to plugin generator.
 </title>
     <link>https://github.com/rails/rails/issues/51822</link>
