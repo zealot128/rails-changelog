@@ -1,13 +1,13 @@
 [
   {
-    "message": "*   Add `ActiveRecord::Relation.readonly?`\n\n    Reflects if the relation has been marked as readonly.\n\n    *Theodor Tonum*",
+    "message": "*   Add `ActiveRecord::Relation#readonly?`.\n\n    Reflects if the relation has been marked as readonly.\n\n    *Theodor Tonum*",
     "project": "activerecord",
-    "date_merged": 1716842370000,
-    "author": "Theodor Tonum",
-    "sha": "d28e7c29a26268906a2027c71353aecaf7c5e217",
-    "pr": "51371",
-    "merge_sha": "58883a5f8b18e98f443dfa4faadfef70ac6e81da",
-    "html": "<p>Add <code>ActiveRecord::Relation.readonly?</code></p>\n\n<p>Reflects if the relation has been marked as readonly.</p>\n\n<p><em>Theodor Tonum</em></p>\n"
+    "date_merged": 1717009524000,
+    "author": "Carlos Antonio da Silva",
+    "sha": "e12ba4d5396089633708702ee4513a4b717acac6",
+    "pr": "51943",
+    "merge_sha": "f3b154de0297b690d5ee101704b012bc00d4e745",
+    "html": "<p>Add <code>ActiveRecord::Relation#readonly?</code>.</p>\n\n<p>Reflects if the relation has been marked as readonly.</p>\n\n<p><em>Theodor Tonum</em></p>\n"
   },
   {
     "message": "*   Improve `ActiveRecord::Store` to raise a descriptive exception if the column is not either\n    structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared serializable via\n    `ActiveRecord.store`.\n\n    Previously, a `NoMethodError` would be raised when the accessor was read or written:\n\n        NoMethodError: undefined method `accessor' for an instance of ActiveRecord::Type::Text\n\n    Now, a descriptive `ConfigurationError` is raised:\n\n        ActiveRecord::ConfigurationError: the column 'metadata' has not been configured as a store.\n          Please make sure the column is declared serializable via 'ActiveRecord.store' or, if your\n          database supports it, use a structured column type like hstore or json.\n\n    *Mike Dalessio*",
@@ -42,12 +42,22 @@
   {
     "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
     "project": "actionpack",
-    "date_merged": 1716922390000,
-    "author": "Joe Haig",
-    "sha": "10dc425e8efa9761ab4c46e20eb72b85821b5521",
-    "pr": "51934",
-    "merge_sha": "23151ea1bde5eda46d628cb88355b3f62710abcf",
+    "date_merged": 1717017523000,
+    "author": "Cyril Blaecke",
+    "sha": "6cb41bae10f813799ff85f8b2cda23cab6ae99a9",
+    "pr": "51944",
+    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
     "html": "<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"s2\">\"'wasm-unsafe-eval'\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"ss\">:wasm_unsafe_eval</span>\n</code></pre></div></div>\n\n<p><em>Joe Haig</em></p>\n"
+  },
+  {
+    "message": "*   Add `display_capture` and `keyboard_map` in `permissions_policy`\n\n    *Cyril Blaecke*",
+    "project": "actionpack",
+    "date_merged": 1717017523000,
+    "author": "Cyril Blaecke",
+    "sha": "cba374995c6b32d30d01371292e313112ac0868e",
+    "pr": "51944",
+    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
+    "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
   },
   {
     "message": "*   Add Rubocop and GitHub Actions to plugin generator.\n    This can be skipped using --skip-rubocop and --skip-ci.\n\n    *Chris Oliver*",
