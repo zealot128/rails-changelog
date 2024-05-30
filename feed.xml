@@ -6,18 +6,18 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>activerecord: Add `ActiveRecord::Relation.readonly?`
+    <title>activerecord: Add `ActiveRecord::Relation#readonly?`.
 </title>
-    <link>https://github.com/rails/rails/issues/51371</link>
-    <guid>https://github.com/rails/rails/issues/51371</guid>
-    <description>*   Add `ActiveRecord::Relation.readonly?`
+    <link>https://github.com/rails/rails/issues/51943</link>
+    <guid>https://github.com/rails/rails/issues/51943</guid>
+    <description>*   Add `ActiveRecord::Relation#readonly?`.
 
     Reflects if the relation has been marked as readonly.
 
     *Theodor Tonum*</description>
-    <pubDate>Mon, 27 May 2024 20:39:30 +0000</pubDate>
-    <author>Theodor Tonum</author>
-    <content:encoded><![CDATA[<p>Add <code>ActiveRecord::Relation.readonly?</code></p>
+    <pubDate>Wed, 29 May 2024 19:05:24 +0000</pubDate>
+    <author>Carlos Antonio da Silva</author>
+    <content:encoded><![CDATA[<p>Add <code>ActiveRecord::Relation#readonly?</code>.</p>
 
 <p>Reflects if the relation has been marked as readonly.</p>
 
@@ -132,8 +132,8 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
   <item>
     <title>actionpack: Add `:wasm_unsafe_eval` mapping for `content_security_policy`
 </title>
-    <link>https://github.com/rails/rails/issues/51934</link>
-    <guid>https://github.com/rails/rails/issues/51934</guid>
+    <link>https://github.com/rails/rails/issues/51944</link>
+    <guid>https://github.com/rails/rails/issues/51944</guid>
     <description>*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`
 
     ```ruby
@@ -145,8 +145,8 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
     ```
 
     *Joe Haig*</description>
-    <pubDate>Tue, 28 May 2024 18:53:10 +0000</pubDate>
-    <author>Joe Haig</author>
+    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
+    <author>Cyril Blaecke</author>
     <content:encoded><![CDATA[<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
@@ -157,6 +157,21 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 </code></pre></div></div>
 
 <p><em>Joe Haig</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `display_capture` and `keyboard_map` in `permissions_policy`
+</title>
+    <link>https://github.com/rails/rails/issues/51944</link>
+    <guid>https://github.com/rails/rails/issues/51944</guid>
+    <description>*   Add `display_capture` and `keyboard_map` in `permissions_policy`
+
+    *Cyril Blaecke*</description>
+    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
+    <author>Cyril Blaecke</author>
+    <content:encoded><![CDATA[<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>
+
+<p><em>Cyril Blaecke</em></p>
 ]]></content:encoded>
   </item>
   <item>
