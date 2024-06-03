@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Allow to configure `strict_loading_mode` globally or within a model.\n\n    Defaults to `:all`, can be changed to `:n_plus_one_only`.\n\n    *Garen Torikian*",
+    "project": "activerecord",
+    "date_merged": 1717420324000,
+    "author": "Garen J. Torikian",
+    "sha": "5ff9915db9464654ece43dce02232e8480f4a770",
+    "pr": "51339",
+    "merge_sha": "9cafa55ddd327d6da15073b4caca80305e3ce035",
+    "html": "<p>Allow to configure <code>strict_loading_mode</code> globally or within a model.</p>\n\n<p>Defaults to <code>:all</code>, can be changed to <code>:n_plus_one_only</code>.</p>\n\n<p><em>Garen Torikian</em></p>\n"
+  },
+  {
     "message": "*   Add `ActiveRecord::Relation#readonly?`.\n\n    Reflects if the relation has been marked as readonly.\n\n    *Theodor Tonum*",
     "project": "activerecord",
     "date_merged": 1717009524000,
