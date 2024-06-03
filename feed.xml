@@ -6,6 +6,25 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Allow to configure `strict_loading_mode` globally or within a model.
+</title>
+    <link>https://github.com/rails/rails/issues/51339</link>
+    <guid>https://github.com/rails/rails/issues/51339</guid>
+    <description>*   Allow to configure `strict_loading_mode` globally or within a model.
+
+    Defaults to `:all`, can be changed to `:n_plus_one_only`.
+
+    *Garen Torikian*</description>
+    <pubDate>Mon, 03 Jun 2024 13:12:04 +0000</pubDate>
+    <author>Garen J. Torikian</author>
+    <content:encoded><![CDATA[<p>Allow to configure <code>strict_loading_mode</code> globally or within a model.</p>
+
+<p>Defaults to <code>:all</code>, can be changed to <code>:n_plus_one_only</code>.</p>
+
+<p><em>Garen Torikian</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add `ActiveRecord::Relation#readonly?`.
 </title>
     <link>https://github.com/rails/rails/issues/51943</link>
