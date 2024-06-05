@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Fix an issue where the IDs reader method did not return expected results\n    for preloaded associations in models using composite primary keys.\n\n    *Jay Ang*",
+    "project": "activerecord",
+    "date_merged": 1717599308000,
+    "author": "Jay Ang",
+    "sha": "3e371c6dd6077efa21aeea98cdd14b79822403a2",
+    "pr": "51167",
+    "merge_sha": "5dabff4b7bf4cc5e2e552efb78c6a3f3e44bed37",
+    "html": "<p>Fix an issue where the IDs reader method did not return expected results<br />\nfor preloaded associations in models using composite primary keys.</p>\n\n<p><em>Jay Ang</em></p>\n"
+  },
+  {
     "message": "*   Allow to configure `strict_loading_mode` globally or within a model.\n\n    Defaults to `:all`, can be changed to `:n_plus_one_only`.\n\n    *Garen Torikian*",
     "project": "activerecord",
     "date_merged": 1717420324000,
