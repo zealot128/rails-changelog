@@ -6,6 +6,23 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Fix an issue where the IDs reader method did not return expected results
+</title>
+    <link>https://github.com/rails/rails/issues/51167</link>
+    <guid>https://github.com/rails/rails/issues/51167</guid>
+    <description>*   Fix an issue where the IDs reader method did not return expected results
+    for preloaded associations in models using composite primary keys.
+
+    *Jay Ang*</description>
+    <pubDate>Wed, 05 Jun 2024 14:55:08 +0000</pubDate>
+    <author>Jay Ang</author>
+    <content:encoded><![CDATA[<p>Fix an issue where the IDs reader method did not return expected results<br />
+for preloaded associations in models using composite primary keys.</p>
+
+<p><em>Jay Ang</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow to configure `strict_loading_mode` globally or within a model.
 </title>
     <link>https://github.com/rails/rails/issues/51339</link>
