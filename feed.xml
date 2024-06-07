@@ -222,6 +222,9 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
     Previously, this was executed unconditionally on boot, which can
     slow down boot time unnecessarily for larger apps with lots of routes.
 
+    Environments like production that have `config.eager_load = true` will
+    continue to eagerly load routes on boot.
+
     *Gannon McGibbon*</description>
     <pubDate>Thu, 06 Jun 2024 16:23:47 +0000</pubDate>
     <author>Gannon McGibbon</author>
@@ -231,6 +234,9 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 url_helpers receives a route call / asked if it responds to a route.<br />
 Previously, this was executed unconditionally on boot, which can<br />
 slow down boot time unnecessarily for larger apps with lots of routes.</p>
+
+<p>Environments like production that have <code>config.eager_load = true</code> will<br />
+continue to eagerly load routes on boot.</p>
 
 <p><em>Gannon McGibbon</em></p>
 ]]></content:encoded>
