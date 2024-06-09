@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1717923228000,
+    "author": "Richard Böhme",
+    "sha": "38e9695c10f822caaa54e399833c346249660005",
+    "pr": "52036",
+    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
+    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Fix an issue where the IDs reader method did not return expected results\n    for preloaded associations in models using composite primary keys.\n\n    *Jay Ang*",
     "project": "activerecord",
     "date_merged": 1717599308000,
