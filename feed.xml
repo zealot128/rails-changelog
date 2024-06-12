@@ -183,6 +183,21 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Only sanitize `content` attribute when present in attachments.
+</title>
+    <link>https://github.com/rails/rails/issues/52093</link>
+    <guid>https://github.com/rails/rails/issues/52093</guid>
+    <description>*   Only sanitize `content` attribute when present in attachments.
+
+    *Petrik de Heus*</description>
+    <pubDate>Wed, 12 Jun 2024 18:21:38 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Only sanitize <code>content</code> attribute when present in attachments.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add `:wasm_unsafe_eval` mapping for `content_security_policy`
 </title>
     <link>https://github.com/rails/rails/issues/51944</link>
