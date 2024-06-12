@@ -70,6 +70,16 @@
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
+    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
+    "project": "actiontext",
+    "date_merged": 1718216498000,
+    "author": "Petrik",
+    "sha": "52c21f90669ce59adf7deef85a44b6b1a46928fa",
+    "pr": "52093",
+    "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
+    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
     "project": "actionpack",
     "date_merged": 1717017523000,
