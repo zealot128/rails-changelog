@@ -277,6 +277,21 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
+</title>
+    <link>https://github.com/rails/rails/issues/52115</link>
+    <guid>https://github.com/rails/rails/issues/52115</guid>
+    <description>*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
+
+    *Deepak Mahakale*</description>
+    <pubDate>Thu, 13 Jun 2024 17:22:29 +0000</pubDate>
+    <author>Deepak Mahakale</author>
+    <content:encoded><![CDATA[<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>
+
+<p><em>Deepak Mahakale</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Defer route drawing to the first request, or when url_helpers are called
 </title>
     <link>https://github.com/rails/rails/issues/52012</link>
