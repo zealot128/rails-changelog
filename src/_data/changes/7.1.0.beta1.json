@@ -120,6 +120,16 @@
     "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
   },
   {
+    "message": "*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.\n\n    *Deepak Mahakale*",
+    "project": "railties",
+    "date_merged": 1718299349000,
+    "author": "Deepak Mahakale",
+    "sha": "306d99f8ca7b1dc9f1738b3c8e96061574ac506f",
+    "pr": "52115",
+    "merge_sha": "638f6450977db3be016a954d2685c66309ac8728",
+    "html": "<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>\n\n<p><em>Deepak Mahakale</em></p>\n"
+  },
+  {
     "message": "*   Defer route drawing to the first request, or when url_helpers are called\n\n    Executes the first routes reload in middleware, or when a route set's\n    url_helpers receives a route call / asked if it responds to a route.\n    Previously, this was executed unconditionally on boot, which can\n    slow down boot time unnecessarily for larger apps with lots of routes.\n\n    Environments like production that have `config.eager_load = true` will\n    continue to eagerly load routes on boot.\n\n    *Gannon McGibbon*",
     "project": "railties",
     "date_merged": 1717691027000,
