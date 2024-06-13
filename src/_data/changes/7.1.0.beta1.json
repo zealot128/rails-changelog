@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
+    "project": "activesupport",
+    "date_merged": 1718230877000,
+    "author": "Igor Depolli",
+    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
+    "pr": "52072",
+    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
+    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
+  },
+  {
     "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
     "project": "activesupport",
     "date_merged": 1717923228000,
@@ -8,6 +18,16 @@
     "pr": "52036",
     "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
     "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
+    "project": "activerecord",
+    "date_merged": 1718230877000,
+    "author": "Igor Depolli",
+    "sha": "00f38563a4e09036a4e00a44b264441e3cc4073a",
+    "pr": "51761",
+    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
+    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
   },
   {
     "message": "*   Fix an issue where the IDs reader method did not return expected results\n    for preloaded associations in models using composite primary keys.\n\n    *Jay Ang*",
