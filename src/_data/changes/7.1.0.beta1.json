@@ -1,23 +1,43 @@
 [
   {
-    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
-    "project": "activesupport",
-    "date_merged": 1718230877000,
-    "author": "Igor Depolli",
-    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
-    "pr": "52072",
-    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
-    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
+    "message": "*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.\n\n    *Deepak Mahakale*",
+    "project": "railties",
+    "date_merged": 1718299349000,
+    "author": "Deepak Mahakale",
+    "sha": "306d99f8ca7b1dc9f1738b3c8e96061574ac506f",
+    "pr": "52115",
+    "merge_sha": "638f6450977db3be016a954d2685c66309ac8728",
+    "html": "<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>\n\n<p><em>Deepak Mahakale</em></p>\n"
   },
   {
-    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
-    "project": "activesupport",
-    "date_merged": 1717923228000,
-    "author": "Richard Böhme",
-    "sha": "38e9695c10f822caaa54e399833c346249660005",
-    "pr": "52036",
-    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
-    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
+    "message": "*   Defer route drawing to the first request, or when url_helpers are called\n\n    Executes the first routes reload in middleware, or when a route set's\n    url_helpers receives a route call / asked if it responds to a route.\n    Previously, this was executed unconditionally on boot, which can\n    slow down boot time unnecessarily for larger apps with lots of routes.\n\n    Environments like production that have `config.eager_load = true` will\n    continue to eagerly load routes on boot.\n\n    *Gannon McGibbon*",
+    "project": "railties",
+    "date_merged": 1717691027000,
+    "author": "Gannon McGibbon",
+    "sha": "7ac333858c2531971845fd119850aff4c3b24440",
+    "pr": "52012",
+    "merge_sha": "6622075802bdcca22ab3e32ef6e3f6d2b9a881f8",
+    "html": "<p>Defer route drawing to the first request, or when url_helpers are called</p>\n\n<p>Executes the first routes reload in middleware, or when a route set’s<br />\nurl_helpers receives a route call / asked if it responds to a route.<br />\nPreviously, this was executed unconditionally on boot, which can<br />\nslow down boot time unnecessarily for larger apps with lots of routes.</p>\n\n<p>Environments like production that have <code>config.eager_load = true</code> will<br />\ncontinue to eagerly load routes on boot.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Add Rubocop and GitHub Actions to plugin generator.\n    This can be skipped using --skip-rubocop and --skip-ci.\n\n    *Chris Oliver*",
+    "project": "railties",
+    "date_merged": 1716487738000,
+    "author": "Chris Oliver",
+    "sha": "7594a73942c6b4e64c50d17b4b0c9867b9fe1440",
+    "pr": "51822",
+    "merge_sha": "c906f75282085bf67b807f4f7b420c6b5019f725",
+    "html": "<p>Add Rubocop and GitHub Actions to plugin generator.<br />\nThis can be skipped using –skip-rubocop and –skip-ci.</p>\n\n<p><em>Chris Oliver</em></p>\n"
+  },
+  {
+    "message": "*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.\n    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1715647059000,
+    "author": "David Heinemeier Hansson",
+    "sha": "bee3fa41ca9137b9e704ea3ab1bdbcfd3c85446b",
+    "pr": "51798",
+    "merge_sha": "2e7dc14943d285626a9e12ad0d1750d3609185be",
+    "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
     "message": "*   Add `.shard_keys`, `.sharded?`, & `.connected_to_all_shards` methods.\n\n    ```ruby\n    class ShardedBase < ActiveRecord::Base\n        self.abstract_class = true\n\n        connects_to shards: {\n          shard_one: { writing: :shard_one },\n          shard_two: { writing: :shard_two }\n        }\n    end\n\n    class ShardedModel < ShardedBase\n    end\n\n    ShardedModel.shard_keys => [:shard_one, :shard_two]\n    ShardedModel.sharded? => true\n    ShardedBase.connected_to_all_shards { ShardedModel.current_shard } => [:shard_one, :shard_two]\n    ```\n\n    *Nony Dutton*",
@@ -140,43 +160,23 @@
     "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
   },
   {
-    "message": "*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.\n\n    *Deepak Mahakale*",
-    "project": "railties",
-    "date_merged": 1718299349000,
-    "author": "Deepak Mahakale",
-    "sha": "306d99f8ca7b1dc9f1738b3c8e96061574ac506f",
-    "pr": "52115",
-    "merge_sha": "638f6450977db3be016a954d2685c66309ac8728",
-    "html": "<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>\n\n<p><em>Deepak Mahakale</em></p>\n"
+    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
+    "project": "activesupport",
+    "date_merged": 1718230877000,
+    "author": "Igor Depolli",
+    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
+    "pr": "52072",
+    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
+    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
   },
   {
-    "message": "*   Defer route drawing to the first request, or when url_helpers are called\n\n    Executes the first routes reload in middleware, or when a route set's\n    url_helpers receives a route call / asked if it responds to a route.\n    Previously, this was executed unconditionally on boot, which can\n    slow down boot time unnecessarily for larger apps with lots of routes.\n\n    Environments like production that have `config.eager_load = true` will\n    continue to eagerly load routes on boot.\n\n    *Gannon McGibbon*",
-    "project": "railties",
-    "date_merged": 1717691027000,
-    "author": "Gannon McGibbon",
-    "sha": "7ac333858c2531971845fd119850aff4c3b24440",
-    "pr": "52012",
-    "merge_sha": "6622075802bdcca22ab3e32ef6e3f6d2b9a881f8",
-    "html": "<p>Defer route drawing to the first request, or when url_helpers are called</p>\n\n<p>Executes the first routes reload in middleware, or when a route set’s<br />\nurl_helpers receives a route call / asked if it responds to a route.<br />\nPreviously, this was executed unconditionally on boot, which can<br />\nslow down boot time unnecessarily for larger apps with lots of routes.</p>\n\n<p>Environments like production that have <code>config.eager_load = true</code> will<br />\ncontinue to eagerly load routes on boot.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Add Rubocop and GitHub Actions to plugin generator.\n    This can be skipped using --skip-rubocop and --skip-ci.\n\n    *Chris Oliver*",
-    "project": "railties",
-    "date_merged": 1716487738000,
-    "author": "Chris Oliver",
-    "sha": "7594a73942c6b4e64c50d17b4b0c9867b9fe1440",
-    "pr": "51822",
-    "merge_sha": "c906f75282085bf67b807f4f7b420c6b5019f725",
-    "html": "<p>Add Rubocop and GitHub Actions to plugin generator.<br />\nThis can be skipped using –skip-rubocop and –skip-ci.</p>\n\n<p><em>Chris Oliver</em></p>\n"
-  },
-  {
-    "message": "*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.\n    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1715647059000,
-    "author": "David Heinemeier Hansson",
-    "sha": "bee3fa41ca9137b9e704ea3ab1bdbcfd3c85446b",
-    "pr": "51798",
-    "merge_sha": "2e7dc14943d285626a9e12ad0d1750d3609185be",
-    "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
+    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1717923228000,
+    "author": "Richard Böhme",
+    "sha": "38e9695c10f822caaa54e399833c346249660005",
+    "pr": "52036",
+    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
+    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
   }
 ]
