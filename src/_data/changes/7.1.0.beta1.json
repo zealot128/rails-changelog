@@ -40,6 +40,16 @@
     "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
+    "message": "*   The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from\n    the `classic` autoloader to Zeitwerk has been deleted.\n\n    The last version of this guide can be found\n    [here](https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html),\n    in case you need it.\n\n    *Petrik de Heus*",
+    "project": "guides",
+    "date_merged": 1718873221000,
+    "author": "Xavier Noria",
+    "sha": "b44820276832200c4d672a5d35cd92aa5797ec0c",
+    "pr": "52165",
+    "merge_sha": "242216803ee73f528b0a74c6bdb367e5b98d8f83",
+    "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Add `.shard_keys`, `.sharded?`, & `.connected_to_all_shards` methods.\n\n    ```ruby\n    class ShardedBase < ActiveRecord::Base\n        self.abstract_class = true\n\n        connects_to shards: {\n          shard_one: { writing: :shard_one },\n          shard_two: { writing: :shard_two }\n        }\n    end\n\n    class ShardedModel < ShardedBase\n    end\n\n    ShardedModel.shard_keys => [:shard_one, :shard_two]\n    ShardedModel.sharded? => true\n    ShardedBase.connected_to_all_shards { ShardedModel.current_shard } => [:shard_one, :shard_two]\n    ```\n\n    *Nony Dutton*",
     "project": "activerecord",
     "date_merged": 1718714723000,
