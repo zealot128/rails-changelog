@@ -10,16 +10,6 @@
     "html": "<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>\n\n<p><em>Deepak Mahakale</em></p>\n"
   },
   {
-    "message": "*   Defer route drawing to the first request, or when url_helpers are called\n\n    Executes the first routes reload in middleware, or when a route set's\n    url_helpers receives a route call / asked if it responds to a route.\n    Previously, this was executed unconditionally on boot, which can\n    slow down boot time unnecessarily for larger apps with lots of routes.\n\n    Environments like production that have `config.eager_load = true` will\n    continue to eagerly load routes on boot.\n\n    *Gannon McGibbon*",
-    "project": "railties",
-    "date_merged": 1717691027000,
-    "author": "Gannon McGibbon",
-    "sha": "7ac333858c2531971845fd119850aff4c3b24440",
-    "pr": "52012",
-    "merge_sha": "6622075802bdcca22ab3e32ef6e3f6d2b9a881f8",
-    "html": "<p>Defer route drawing to the first request, or when url_helpers are called</p>\n\n<p>Executes the first routes reload in middleware, or when a route set’s<br />\nurl_helpers receives a route call / asked if it responds to a route.<br />\nPreviously, this was executed unconditionally on boot, which can<br />\nslow down boot time unnecessarily for larger apps with lots of routes.</p>\n\n<p>Environments like production that have <code>config.eager_load = true</code> will<br />\ncontinue to eagerly load routes on boot.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
     "message": "*   Add Rubocop and GitHub Actions to plugin generator.\n    This can be skipped using --skip-rubocop and --skip-ci.\n\n    *Chris Oliver*",
     "project": "railties",
     "date_merged": 1716487738000,
@@ -48,6 +38,16 @@
     "pr": "52165",
     "merge_sha": "242216803ee73f528b0a74c6bdb367e5b98d8f83",
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Add condensed `#inspect` for `ConnectionPool`, `AbstractAdapter`, and\n    `DatabaseConfig`.\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1719006353000,
+    "author": "Hartley McGuire",
+    "sha": "5c8172554ff6d50b491d40f9c4b2a949aa537a0a",
+    "pr": "50405",
+    "merge_sha": "5bec50bc70380bb1e70e8fb0a1654130042b1f16",
+    "html": "<p>Add condensed <code>#inspect</code> for <code>ConnectionPool</code>, <code>AbstractAdapter</code>, and<br />\n<code>DatabaseConfig</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   Add `.shard_keys`, `.sharded?`, & `.connected_to_all_shards` methods.\n\n    ```ruby\n    class ShardedBase < ActiveRecord::Base\n        self.abstract_class = true\n\n        connects_to shards: {\n          shard_one: { writing: :shard_one },\n          shard_two: { writing: :shard_two }\n        }\n    end\n\n    class ShardedModel < ShardedBase\n    end\n\n    ShardedModel.shard_keys => [:shard_one, :shard_two]\n    ShardedModel.sharded? => true\n    ShardedBase.connected_to_all_shards { ShardedModel.current_shard } => [:shard_one, :shard_two]\n    ```\n\n    *Nony Dutton*",
