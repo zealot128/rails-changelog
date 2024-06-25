@@ -1,5 +1,165 @@
 [
   {
+    "message": "*   Fix url generation in nested engine when script name is empty.\n\n    *zzak*",
+    "project": "actionpack",
+    "date_merged": 1717230269000,
+    "author": "Jean Boussier",
+    "sha": "fbf6d49d1687f6de962b3fe7608b8e056f3127eb",
+    "pr": "51933",
+    "merge_sha": "7e0b82c27d1ff92e27613036617e69401815fd69",
+    "html": "<p>Fix url generation in nested engine when script name is empty.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
+    "message": "*   Fix `Mime::Type.parse` handling type parameters for HTTP Accept headers.\n\n    *Taylor Chaparro*",
+    "project": "actionpack",
+    "date_merged": 1714135549000,
+    "author": "Rafael Mendonça França",
+    "sha": "38a29be960046b6c3c6d65b1ef4e629f5a58199b",
+    "pr": "51616",
+    "merge_sha": "c3c164ca12410983e07537531844c4255450ba9b",
+    "html": "<p>Fix <code>Mime::Type.parse</code> handling type parameters for HTTP Accept headers.</p>\n\n<p><em>Taylor Chaparro</em></p>\n"
+  },
+  {
+    "message": "*   Fix the error page that is displayed when a view template is missing to account for nested controller paths in the\n    suggested correct location for the missing template.\n\n    *Joshua Young*",
+    "project": "actionpack",
+    "date_merged": 1713803783000,
+    "author": "Rafael Mendonça França",
+    "sha": "43bbc637045d7fa2832f77b11376169e526dbd98",
+    "pr": "51096",
+    "merge_sha": "9052300e9a4ac7c1aa81fa5fd48d6f112fb9de1c",
+    "html": "<p>Fix the error page that is displayed when a view template is missing to account for nested controller paths in the<br />\nsuggested correct location for the missing template.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Fix a regression in 7.1.3 passing a `to:` option without a controller when the controller is already defined by a scope.\n\n    ```ruby\n    Rails.application.routes.draw do\n      controller :home do\n        get \"recent\", to: \"recent_posts\"\n      end\n    end\n    ```\n\n    *Étienne Barrié*",
+    "project": "actionpack",
+    "date_merged": 1713803783000,
+    "author": "Jean Boussier",
+    "sha": "b501155d84e8e3b77e70e0b82c5ea79a5e4f61d1",
+    "pr": "51523",
+    "merge_sha": "9052300e9a4ac7c1aa81fa5fd48d6f112fb9de1c",
+    "html": "<p>Fix a regression in 7.1.3 passing a <code>to:</code> option without a controller when the controller is already defined by a scope.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">application</span><span class=\"p\">.</span><span class=\"nf\">routes</span><span class=\"p\">.</span><span class=\"nf\">draw</span> <span class=\"k\">do</span>\n  <span class=\"n\">controller</span> <span class=\"ss\">:home</span> <span class=\"k\">do</span>\n    <span class=\"n\">get</span> <span class=\"s2\">\"recent\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"recent_posts\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Étienne Barrié</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActionDispatch::Executor` middleware to report errors handled by `ActionDispatch::ShowExceptions`\n\n    In the default production environment, `ShowExceptions` rescues uncaught errors\n    and returns a response. Because of this the executor wouldn't report production\n    errors with the default Rails configuration.\n\n    *Jean Boussier*",
+    "project": "actionpack",
+    "date_merged": 1707865569000,
+    "author": "Jean Boussier",
+    "sha": "cca9eef8b065ec73059ab68d8dfe185241e4809e",
+    "pr": "51050",
+    "merge_sha": "0ae4ca3a15ab975fd3f24d327f0654831bb5684f",
+    "html": "<p>Fix <code>ActionDispatch::Executor</code> middleware to report errors handled by <code>ActionDispatch::ShowExceptions</code></p>\n\n<p>In the default production environment, <code>ShowExceptions</code> rescues uncaught errors<br />\nand returns a response. Because of this the executor wouldn’t report production<br />\nerrors with the default Rails configuration.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Include the HTTP Permissions-Policy on non-HTML Content-Types\n    [CVE-2024-28103]\n\n    *Aaron Patterson*",
+    "project": "actionpack",
+    "date_merged": 1717524337000,
+    "author": "Aaron Patterson",
+    "sha": "bd7c28a498fde00fdb04f95bca874437b8c94606",
+    "pr": null,
+    "merge_sha": "eedbe69470962e2ac1fb91913b8104a0c873d17a",
+    "html": "<p>Include the HTTP Permissions-Policy on non-HTML Content-Types<br />\n[CVE-2024-28103]</p>\n\n<p><em>Aaron Patterson</em></p>\n"
+  },
+  {
+    "message": "*   Fix `raise_on_missing_translations` not working correctly with the\n    `translate` method in controllers after the patch for CVE-2024-26143.\n\n    *John Hawthorn*",
+    "project": "actionpack",
+    "date_merged": 1708552241000,
+    "author": "John Hawthorn",
+    "sha": "6f0d1ad14b92b9f5906e44740fce8b4f1c7075dc",
+    "pr": null,
+    "merge_sha": "ed84c0d8b0016fd8387d34453803e21c177bcb2b",
+    "html": "<p>Fix <code>raise_on_missing_translations</code> not working correctly with the<br />\n<code>translate</code> method in controllers after the patch for CVE-2024-26143.</p>\n\n<p><em>John Hawthorn</em></p>\n"
+  },
+  {
+    "message": "*   Fix possible XSS vulnerability with the `translate` method in controllers\n\n    CVE-2024-26143\n\n    *ooooooo-q + Aaron Patterson*",
+    "project": "actionpack",
+    "date_merged": 1708541613000,
+    "author": "ooooooo_q",
+    "sha": "5187a9ef51980ad1b8e81945ebe0462d28f84f9e",
+    "pr": null,
+    "merge_sha": "8e2101f9b575e081f3a0a29424925481ef326ac1",
+    "html": "<p>Fix possible XSS vulnerability with the <code>translate</code> method in controllers</p>\n\n<p>CVE-2024-26143</p>\n\n<p><em>ooooooo-q + Aaron Patterson</em></p>\n"
+  },
+  {
+    "message": "*   Fix ReDoS in Accept header parsing\n\n    CVE-2024-26142\n\n    *Aaron Patterson*",
+    "project": "actionpack",
+    "date_merged": 1708541613000,
+    "author": "Aaron Patterson",
+    "sha": "b4d3bfb5ed8a5b5a90aad3a3b28860c7a931e272",
+    "pr": null,
+    "merge_sha": "8e2101f9b575e081f3a0a29424925481ef326ac1",
+    "html": "<p>Fix ReDoS in Accept header parsing</p>\n\n<p>CVE-2024-26142</p>\n\n<p><em>Aaron Patterson</em></p>\n"
+  },
+  {
+    "message": "*   Fix including `Rails.application.routes.url_helpers` directly in an\n    `ActiveSupport::Concern.`\n\n    *Jonathan Hefner*",
+    "project": "actionpack",
+    "date_merged": 1704130614000,
+    "author": "Jonathan Hefner",
+    "sha": "b36a2bd3500ad13e6aa6ef7b709898a98c2331f5",
+    "pr": "50403",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>Fix including <code>Rails.application.routes.url_helpers</code> directly in an<br />\n<code>ActiveSupport::Concern.</code></p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Fix system tests when using a Chrome binary that has been downloaded by\n    Selenium.\n\n    *Jonathan Hefner*",
+    "project": "actionpack",
+    "date_merged": 1704130614000,
+    "author": "Jonathan Hefner",
+    "sha": "f645ef6b230208976720f2517b0ecbc2ebfde94f",
+    "pr": "50296",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>Fix system tests when using a Chrome binary that has been downloaded by<br />\nSelenium.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Fix a race condition that could cause a `Text file busy - chromedriver`\n    error with parallel system tests\n\n    *Matt Brictson*",
+    "project": "actionpack",
+    "date_merged": 1699979066000,
+    "author": "Jonathan Hefner",
+    "sha": "eaee120c1ff4ed5dbb0f71eaa8b8cc12c5d96443",
+    "pr": "49908",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix a race condition that could cause a <code>Text file busy - chromedriver</code><br />\nerror with parallel system tests</p>\n\n<p><em>Matt Brictson</em></p>\n"
+  },
+  {
+    "message": "*   Fix `StrongParameters#extract_value` to include blank values\n\n    Otherwise composite parameters may not be parsed correctly when one of the\n    component is blank.\n\n    *fatkodima*, *Yasha Krasnou*, *Matthias Eiglsperger*",
+    "project": "actionpack",
+    "date_merged": 1698238715000,
+    "author": "Jean Boussier",
+    "sha": "407bed3f204fc8319d66d2eef8ce8ed162c445f4",
+    "pr": "49749",
+    "merge_sha": "4d7c3c5d5997c3b057119b5cabf4d874eaea551f",
+    "html": "<p>Fix <code>StrongParameters#extract_value</code> to include blank values</p>\n\n<p>Otherwise composite parameters may not be parsed correctly when one of the<br />\ncomponent is blank.</p>\n\n<p><em>fatkodima</em>, <em>Yasha Krasnou</em>, <em>Matthias Eiglsperger</em></p>\n"
+  },
+  {
+    "message": "*   Add `racc` as a dependency since it will become a bundled gem in Ruby 3.4.0\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1698238715000,
+    "author": "Yasuo Honda",
+    "sha": "a33614d5582bb89faad71e9bd9372f53f892aff4",
+    "pr": "49722",
+    "merge_sha": "4d7c3c5d5997c3b057119b5cabf4d874eaea551f",
+    "html": "<p>Add <code>racc</code> as a dependency since it will become a bundled gem in Ruby 3.4.0</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Support handling Enumerator for non-buffered responses.\n\n    *Zachary Scott*",
+    "project": "actionpack",
+    "date_merged": 1699979066000,
+    "author": "Rafael Mendonça França",
+    "sha": "200749dec7f59a819fbbcd31cbee179d79517ac8",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Support handling Enumerator for non-buffered responses.</p>\n\n<p><em>Zachary Scott</em></p>\n"
+  },
+  {
+    "message": "*   Add support for `#deep_merge` and `#deep_merge!` to\n    `ActionController::Parameters`.\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1695764477000,
+    "author": "Sean Doyle",
+    "sha": "1d999e681ea2bec8a5411c9302c7d6d17e4616ea",
+    "pr": "45369",
+    "merge_sha": "99cf11cca4617159e6c4b547377656ea5fca14fd",
+    "html": "<p>Add support for <code>#deep_merge</code> and <code>#deep_merge!</code> to<br />\n<code>ActionController::Parameters</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   `AbstractController::Translation.raise_on_missing_translations` removed\n\n    This was a private API, and has been removed in favour of a more broadly applicable\n    `config.i18n.raise_on_missing_translations`. See the upgrading guide for more information.\n\n    *Alex Ghiculescu*",
     "project": "actionpack",
     "date_merged": 1694290484000,
@@ -78,6 +238,16 @@
     "pr": "48682",
     "merge_sha": "94070e04bf4c4296c74bf7fc98567cc46b5bd63c",
     "html": "<p><code>config.dom_testing_default_html_version</code> controls the HTML parser used by<br />\n<code>ActionDispatch::Assertions#html_document</code>.</p>\n\n<p>The Rails 7.1 default configuration opts into the HTML5 parser when it is supported, to better<br />\nrepresent what the DOM would be in a browser user agent. Previously this test helper always used<br />\nNokogiri’s HTML4 parser.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Ensure an uncaught exception when rendering a Turbo Frame properly breaks\n    out of the Frame and shows the `DebugView` error page in development.\n\n    *Joé Dupuis*",
+    "project": "actionpack",
+    "date_merged": 1707156439000,
+    "author": "Hartley McGuire",
+    "sha": "20c58a4ea2e721cea9548cc9bbf720e882b1619d",
+    "pr": "48415",
+    "merge_sha": "9ba5c6b1fbbf829b4f01d3aa24c92e929dc48545",
+    "html": "<p>Ensure an uncaught exception when rendering a Turbo Frame properly breaks<br />\nout of the Frame and shows the <code>DebugView</code> error page in development.</p>\n\n<p><em>Joé Dupuis</em></p>\n"
   },
   {
     "message": "*   The `with_routing` helper can now be called at the class level. When called at the class level, the routes will\n    be setup before each test, and reset after every test. For example:\n\n    ```ruby\n    class RoutingTest < ActionController::TestCase\n      with_routing do |routes|\n        routes.draw do\n          resources :articles\n          resources :authors\n        end\n      end\n\n      def test_articles_route\n        assert_routing(\"/articles\", controller: \"articles\", action: \"index\")\n      end\n\n       def test_authors_route\n        assert_routing(\"/authors\", controller: \"authors\", action: \"index\")\n      end\n    end\n    ```\n\n    *Andrew Novoselac*",
@@ -280,14 +450,14 @@
     "html": "<p>Only use HostAuthorization middleware if <code>config.hosts</code> is not empty</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
-    "message": "*   Allow raising an error when a callback's only/unless symbols aren't existing methods.\n\n    When `before_action :callback, only: :action_name` is declared on a controller that doesn't respond to `action_name`, raise an exception at request time. This is a safety measure to ensure that typos or forgetfulness don't prevent a crucial callback from being run when it should.\n\n    For new applications, raising an error for undefined actions is turned on by default. If you do not want to opt-in to this behavior set `config.action_pack.raise_on_missing_callback_actions` to `false` in your application configuration. See #43487 for more details.\n\n    *Jess Bees*",
+    "message": "*   Allow raising an error when a callback's only/unless symbols aren't existing methods.\n\n    When `before_action :callback, only: :action_name` is declared on a controller that doesn't respond to `action_name`, raise an exception at request time. This is a safety measure to ensure that typos or forgetfulness don't prevent a crucial callback from being run when it should.\n\n    For new applications, raising an error for undefined actions is turned on by default. If you do not want to opt-in to this behavior set `config.action_controller.raise_on_missing_callback_actions` to `false` in your application configuration. See #43487 for more details.\n\n    *Jess Bees*",
     "project": "actionpack",
     "date_merged": 1672773000000,
     "author": "eileencodes",
     "sha": "04e1a0d2e195d8cd5831c6ca953393b784bbfee9",
     "pr": "43487",
     "merge_sha": "60163900a99dc47694f469eef6dc8bdd5349c402",
-    "html": "<p>Allow raising an error when a callback’s only/unless symbols aren’t existing methods.</p>\n\n<p>When <code>before_action :callback, only: :action_name</code> is declared on a controller that doesn’t respond to <code>action_name</code>, raise an exception at request time. This is a safety measure to ensure that typos or forgetfulness don’t prevent a crucial callback from being run when it should.</p>\n\n<p>For new applications, raising an error for undefined actions is turned on by default. If you do not want to opt-in to this behavior set <code>config.action_pack.raise_on_missing_callback_actions</code> to <code>false</code> in your application configuration. See #43487 for more details.</p>\n\n<p><em>Jess Bees</em></p>\n"
+    "html": "<p>Allow raising an error when a callback’s only/unless symbols aren’t existing methods.</p>\n\n<p>When <code>before_action :callback, only: :action_name</code> is declared on a controller that doesn’t respond to <code>action_name</code>, raise an exception at request time. This is a safety measure to ensure that typos or forgetfulness don’t prevent a crucial callback from being run when it should.</p>\n\n<p>For new applications, raising an error for undefined actions is turned on by default. If you do not want to opt-in to this behavior set <code>config.action_controller.raise_on_missing_callback_actions</code> to <code>false</code> in your application configuration. See #43487 for more details.</p>\n\n<p><em>Jess Bees</em></p>\n"
   },
   {
     "message": "*   Allow cookie options[:domain] to accept a proc to set the cookie domain on a more flexible per-request basis\n\n    *RobL*",
@@ -608,6 +778,306 @@
     "pr": "48212",
     "merge_sha": "bdbcbc179df93b18e2ce6e1deef631eb2eea1624",
     "html": "<p>Add <code>:unsafe_hashes</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"s2\">\"'unsafe-hashes'\"</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span>  <span class=\"ss\">:strict_dynamic</span><span class=\"p\">,</span> <span class=\"ss\">:unsafe_hashes</span><span class=\"p\">,</span> <span class=\"s2\">\"'sha256-rRMdkshZyJlCmDX27XnL7g3zXaxv7ei6Sg+yt4R3svU='\"</span>\n</code></pre></div></div>\n\n<p><em>Igor Morozov</em></p>\n"
+  },
+  {
+    "message": "*   Work around a Ruby bug that can cause a VM crash.\n\n    This would happen if using `TaggerLogger` with a Proc\n    formatter on which you called `object_id`.\n\n    ```\n    [BUG] Object ID seen, but not in mapping table: proc\n    ```\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1714135549000,
+    "author": "Earlopain",
+    "sha": "14e835145a07a2c58f651d2b959949031801b831",
+    "pr": "51666",
+    "merge_sha": "c3c164ca12410983e07537531844c4255450ba9b",
+    "html": "<p>Work around a Ruby bug that can cause a VM crash.</p>\n\n<p>This would happen if using <code>TaggerLogger</code> with a Proc<br />\nformatter on which you called <code>object_id</code>.</p>\n\n<pre><code>[BUG] Object ID seen, but not in mapping table: proc\n</code></pre>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActiveSupport::Notifications.publish_event` to preserve units.\n\n    This solves the incorrect reporting of time spent running Active Record\n    asynchronous queries (by a factor `1000`).\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1705597408000,
+    "author": "Jean Boussier",
+    "sha": "086da9dcd4ba839414dc28b19ea0632cb91c2b2f",
+    "pr": "50779",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix <code>ActiveSupport::Notifications.publish_event</code> to preserve units.</p>\n\n<p>This solves the incorrect reporting of time spent running Active Record<br />\nasynchronous queries (by a factor <code>1000</code>).</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Handle nil `backtrace_locations` in `ActiveSupport::SyntaxErrorProxy`.\n\n    *Eugene Kenny*",
+    "project": "activesupport",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Handle nil <code>backtrace_locations</code> in <code>ActiveSupport::SyntaxErrorProxy</code>.</p>\n\n<p><em>Eugene Kenny</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActiveSupport::JSON.encode` to prevent duplicate keys.\n\n    If the same key exist in both String and Symbol form it could\n    lead to the same key being emitted twice.\n\n    *Manish Sharma*",
+    "project": "activesupport",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix <code>ActiveSupport::JSON.encode</code> to prevent duplicate keys.</p>\n\n<p>If the same key exist in both String and Symbol form it could<br />\nlead to the same key being emitted twice.</p>\n\n<p><em>Manish Sharma</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActiveSupport::Cache::Store#read_multi` when using a cache namespace\n    and local cache strategy.\n\n    *Mark Oleson*",
+    "project": "activesupport",
+    "date_merged": 1704130614000,
+    "author": "Jonathan Hefner",
+    "sha": "94d4cf22b721d7d974e12ac5eda6165f8e6853ef",
+    "pr": "50276",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>Fix <code>ActiveSupport::Cache::Store#read_multi</code> when using a cache namespace<br />\nand local cache strategy.</p>\n\n<p><em>Mark Oleson</em></p>\n"
+  },
+  {
+    "message": "*   Fix `Time.now/DateTime.now/Date.today` to return results in a system timezone after `#travel_to`.\n\n    There is a bug in the current implementation of #travel_to:\n    it remembers a timezone of its argument, and all stubbed methods start\n    returning results in that remembered timezone. However, the expected\n    behaviour is to return results in a system timezone.\n\n    *Aleksei Chernenkov*",
+    "project": "activesupport",
+    "date_merged": 1705434113000,
+    "author": "Jonathan Hefner",
+    "sha": "3a85830e6a4fe65716ab7c7e1a8c25f328426153",
+    "pr": "50749",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix <code>Time.now/DateTime.now/Date.today</code> to return results in a system timezone after <code>#travel_to</code>.</p>\n\n<p>There is a bug in the current implementation of #travel_to:<br />\nit remembers a timezone of its argument, and all stubbed methods start<br />\nreturning results in that remembered timezone. However, the expected<br />\nbehaviour is to return results in a system timezone.</p>\n\n<p><em>Aleksei Chernenkov</em></p>\n"
+  },
+  {
+    "message": "*   Fix `:unless_exist` option for `MemoryStore#write` (et al) when using a\n    cache namespace.\n\n    *S. Brent Faulkner*",
+    "project": "activesupport",
+    "date_merged": 1701508455000,
+    "author": "Jonathan Hefner",
+    "sha": "56bc609d9d914b15d397c77317cb19dc3ac48a67",
+    "pr": "50192",
+    "merge_sha": "8fcc89749be94efb12c7914396110b2bff0e4de2",
+    "html": "<p>Fix <code>:unless_exist</code> option for <code>MemoryStore#write</code> (et al) when using a<br />\ncache namespace.</p>\n\n<p><em>S. Brent Faulkner</em></p>\n"
+  },
+  {
+    "message": "*   Fix ActiveSupport::Deprecation to handle blaming generated code.\n\n    *Jean Boussier*, *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix ActiveSupport::Deprecation to handle blaming generated code.</p>\n\n<p><em>Jean Boussier</em>, <em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix `:expires_in` option for `RedisCacheStore#write_multi`.\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1699979066000,
+    "author": "Jonathan Hefner",
+    "sha": "f6987c46572666c439a1ad68b3ab5b41645f2bcf",
+    "pr": "49974",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix <code>:expires_in</code> option for <code>RedisCacheStore#write_multi</code>.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix deserialization of non-string \"purpose\" field in Message serializer\n\n    *Jacopo Beschi*",
+    "project": "activesupport",
+    "date_merged": 1699379790000,
+    "author": "Jean Boussier",
+    "sha": "02e3f69fcd334b2a6abbc417dfa6e7a553fcceee",
+    "pr": "49669",
+    "merge_sha": "b21b6c6f9cb7c5edaf1ebf8aad24204aaf260cc5",
+    "html": "<p>Fix deserialization of non-string “purpose” field in Message serializer</p>\n\n<p><em>Jacopo Beschi</em></p>\n"
+  },
+  {
+    "message": "*   Prevent global cache options being overwritten when setting dynamic options\n    inside a `ActiveSupport::Cache::Store#fetch` block.\n\n    *Yasha Krasnou*",
+    "project": "activesupport",
+    "date_merged": 1698483622000,
+    "author": "Jonathan Hefner",
+    "sha": "4b4615ac91c5daca9a137a2eca35e7a246b965eb",
+    "pr": "49800",
+    "merge_sha": "092d182803475fd69e8b37a737fe696a56e47e1f",
+    "html": "<p>Prevent global cache options being overwritten when setting dynamic options<br />\ninside a <code>ActiveSupport::Cache::Store#fetch</code> block.</p>\n\n<p><em>Yasha Krasnou</em></p>\n"
+  },
+  {
+    "message": "*   Fix missing `require` resulting in `NoMethodError` when running\n    `bin/rails secrets:show` or `bin/rails secrets:edit`.\n\n    *Stephen Ierodiaconou*",
+    "project": "activesupport",
+    "date_merged": 1698483622000,
+    "author": "Jonathan Hefner",
+    "sha": "54e21652d411cc1949448813e47f834f821432bb",
+    "pr": "49792",
+    "merge_sha": "092d182803475fd69e8b37a737fe696a56e47e1f",
+    "html": "<p>Fix missing <code>require</code> resulting in <code>NoMethodError</code> when running<br />\n<code>bin/rails secrets:show</code> or <code>bin/rails secrets:edit</code>.</p>\n\n<p><em>Stephen Ierodiaconou</em></p>\n"
+  },
+  {
+    "message": "*   Ensure `{down,up}case_first` returns non-frozen string.\n\n    *Jonathan Hefner*",
+    "project": "activesupport",
+    "date_merged": 1699979066000,
+    "author": "Rafael Mendonça França",
+    "sha": "200749dec7f59a819fbbcd31cbee179d79517ac8",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Ensure <code>{down,up}case_first</code> returns non-frozen string.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Fix `#to_fs(:human_size)` to correctly work with negative numbers.\n\n    *Earlopain*",
+    "project": "activesupport",
+    "date_merged": 1698483622000,
+    "author": "Jonathan Hefner",
+    "sha": "6d55d50dbfa9f174611637d9375ae72ea4b80fe4",
+    "pr": "49791",
+    "merge_sha": "092d182803475fd69e8b37a737fe696a56e47e1f",
+    "html": "<p>Fix <code>#to_fs(:human_size)</code> to correctly work with negative numbers.</p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
+    "message": "*   Fix `BroadcastLogger#dup` so that it duplicates the logger's `broadcasts`.\n\n    *Andrew Novoselac*",
+    "project": "activesupport",
+    "date_merged": 1698238715000,
+    "author": "Rafael Mendonça França",
+    "sha": "3d1f7d01b64ff7bb5faf24fda330db27b2d59ef5",
+    "pr": "49720",
+    "merge_sha": "4d7c3c5d5997c3b057119b5cabf4d874eaea551f",
+    "html": "<p>Fix <code>BroadcastLogger#dup</code> so that it duplicates the logger’s <code>broadcasts</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
+    "message": "*   Fix issue where `bootstrap.rb` overwrites the `level` of a `BroadcastLogger`'s `broadcasts`.\n\n    *Andrew Novoselac*",
+    "project": "activesupport",
+    "date_merged": 1697842313000,
+    "author": "Rafael Mendonça França",
+    "sha": "7254e275ea44c48abb934e3ce82666e184d32200",
+    "pr": "49721",
+    "merge_sha": "4c297793b9f88051230ef45e247ca2193b9e88d0",
+    "html": "<p>Fix issue where <code>bootstrap.rb</code> overwrites the <code>level</code> of a <code>BroadcastLogger</code>’s <code>broadcasts</code>.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActiveSupport::Cache` to handle outdated Marshal payload from Rails 6.1 format.\n\n    Active Support's Cache is supposed to treat a Marshal payload that can no longer be\n    deserialized as a cache miss. It fail to do so for compressed payload in the Rails 6.1\n    legacy format.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1697842313000,
+    "author": "Jean Boussier",
+    "sha": "bb2493c396e491cae3f5c8fa5d87283559e78198",
+    "pr": "49716",
+    "merge_sha": "4c297793b9f88051230ef45e247ca2193b9e88d0",
+    "html": "<p>Fix <code>ActiveSupport::Cache</code> to handle outdated Marshal payload from Rails 6.1 format.</p>\n\n<p>Active Support’s Cache is supposed to treat a Marshal payload that can no longer be<br />\ndeserialized as a cache miss. It fail to do so for compressed payload in the Rails 6.1<br />\nlegacy format.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix `OrderedOptions#dig` for array indexes.\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1699979066000,
+    "author": "Rafael Mendonça França",
+    "sha": "200749dec7f59a819fbbcd31cbee179d79517ac8",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix <code>OrderedOptions#dig</code> for array indexes.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix time travel helpers to work when nested using with separate classes.\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1699979066000,
+    "author": "Rafael Mendonça França",
+    "sha": "200749dec7f59a819fbbcd31cbee179d79517ac8",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix time travel helpers to work when nested using with separate classes.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix `delete_matched` for file cache store to work with keys longer than the\n    max filename size.\n\n    *fatkodima* and *Jonathan Hefner*",
+    "project": "activesupport",
+    "date_merged": 1697842313000,
+    "author": "Jonathan Hefner",
+    "sha": "86104e0c8d72e54593beab7c2c20cc266ecfddde",
+    "pr": "49694",
+    "merge_sha": "4c297793b9f88051230ef45e247ca2193b9e88d0",
+    "html": "<p>Fix <code>delete_matched</code> for file cache store to work with keys longer than the<br />\nmax filename size.</p>\n\n<p><em>fatkodima</em> and <em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Fix compatibility with the `semantic_logger` gem.\n\n    The `semantic_logger` gem doesn't behave exactly like stdlib logger in that\n    `SemanticLogger#level` returns a Symbol while stdlib `Logger#level` returns an Integer.\n\n    This caused the various `LogSubscriber` classes in Rails to break when assigned a\n    `SemanticLogger` instance.\n\n    *Jean Boussier*, *ojab*",
+    "project": "activesupport",
+    "date_merged": 1697297367000,
+    "author": "Jean Boussier",
+    "sha": "6f3fa3eb669d350f20a6775b5e7b9408502adcfe",
+    "pr": "49621",
+    "merge_sha": "02ed5a10c9b0b12d1c16c0546d53f640ba6b7cb3",
+    "html": "<p>Fix compatibility with the <code>semantic_logger</code> gem.</p>\n\n<p>The <code>semantic_logger</code> gem doesn’t behave exactly like stdlib logger in that<br />\n<code>SemanticLogger#level</code> returns a Symbol while stdlib <code>Logger#level</code> returns an Integer.</p>\n\n<p>This caused the various <code>LogSubscriber</code> classes in Rails to break when assigned a<br />\n<code>SemanticLogger</code> instance.</p>\n\n<p><em>Jean Boussier</em>, <em>ojab</em></p>\n"
+  },
+  {
+    "message": "*   Add support for keyword arguments when delegating calls to custom loggers from `ActiveSupport::BroadcastLogger`.\n\n    *Edouard Chin*",
+    "project": "activesupport",
+    "date_merged": 1697129661000,
+    "author": "Rafael Mendonça França",
+    "sha": "b280d7f127ec5262e8766a54e1e8ce121c6e897a",
+    "pr": "49546",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p>Add support for keyword arguments when delegating calls to custom loggers from <code>ActiveSupport::BroadcastLogger</code>.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
+    "message": "*   `NumberHelper`: handle objects responding `to_d`.\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1697129661000,
+    "author": "Rafael Mendonça França",
+    "sha": "b280d7f127ec5262e8766a54e1e8ce121c6e897a",
+    "pr": "49546",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p><code>NumberHelper</code>: handle objects responding <code>to_d</code>.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix RedisCacheStore to properly set the TTL when incrementing or decrementing.\n\n    This bug was only impacting Redis server older than 7.0.\n\n    *Thomas Countz*",
+    "project": "activesupport",
+    "date_merged": 1697129661000,
+    "author": "Jean Boussier",
+    "sha": "c3117b5405626168ad1ac31073ab00b162de274e",
+    "pr": "49554",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p>Fix RedisCacheStore to properly set the TTL when incrementing or decrementing.</p>\n\n<p>This bug was only impacting Redis server older than 7.0.</p>\n\n<p><em>Thomas Countz</em></p>\n"
+  },
+  {
+    "message": "*   Fix MemoryStore to prevent race conditions when incrementing or decrementing.\n\n    *Pierre Jambet*",
+    "project": "activesupport",
+    "date_merged": 1697129661000,
+    "author": "Jean Boussier",
+    "sha": "52c4aefcd65d07352e28145ca1f52ab0b2f64ebe",
+    "pr": "49542",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p>Fix MemoryStore to prevent race conditions when incrementing or decrementing.</p>\n\n<p><em>Pierre Jambet</em></p>\n"
+  },
+  {
+    "message": "*   Fix `AS::MessagePack` with `ENV[\"RAILS_MAX_THREADS\"]`.\n\n    *Jonathan Hefner*",
+    "project": "activesupport",
+    "date_merged": 1696233640000,
+    "author": "Rafael Mendonça França",
+    "sha": "5f3ec415c6d2c17e3dd447cc6bd16a281ce1ae2b",
+    "pr": "49451",
+    "merge_sha": "b2312bb41cabe4b3228522211fe06d9bbb9f74da",
+    "html": "<p>Fix <code>AS::MessagePack</code> with <code>ENV[\"RAILS_MAX_THREADS\"]</code>.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Add a new public API for broadcasting logs\n\n    This feature existed for a while but was until now a private API.\n    Broadcasting log allows to send log message to difference sinks (STDOUT, a file ...) and\n    is used by default in the development environment to write logs both on STDOUT and in the\n    \"development.log\" file.\n\n    Basic usage:\n\n    ```ruby\n    stdout_logger = Logger.new(STDOUT)\n    file_logger = Logger.new(\"development.log\")\n    broadcast = ActiveSupport::BroadcastLogger.new(stdout_logger, file_logger)\n\n    broadcast.info(\"Hello!\") # The \"Hello!\" message is written on STDOUT and in the log file.\n    ```\n\n    Adding other sink(s) to the broadcast:\n\n    ```ruby\n    broadcast = ActiveSupport::BroadcastLogger.new\n    broadcast.broadcast_to(Logger.new(STDERR))\n    ```\n\n    Remove a sink from the broadcast:\n\n    ```ruby\n    stdout_logger = Logger.new(STDOUT)\n    broadcast = ActiveSupport::BroadcastLogger.new(stdout_logger)\n\n    broadcast.stop_broadcasting_to(stdout_logger)\n    ```\n\n    *Edouard Chin*",
+    "project": "activesupport",
+    "date_merged": 1695676438000,
+    "author": "Edouard CHIN",
+    "sha": "1fbd812c47f7ba840390942e56d9b2ebbc260901",
+    "pr": "48615",
+    "merge_sha": "4c72cc2b048fef2141ce933966c5b2a5f819e073",
+    "html": "<p>Add a new public API for broadcasting logs</p>\n\n<p>This feature existed for a while but was until now a private API.<br />\nBroadcasting log allows to send log message to difference sinks (STDOUT, a file …) and<br />\nis used by default in the development environment to write logs both on STDOUT and in the<br />\n“development.log” file.</p>\n\n<p>Basic usage:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">stdout_logger</span> <span class=\"o\">=</span> <span class=\"no\">Logger</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"no\">STDOUT</span><span class=\"p\">)</span>\n<span class=\"n\">file_logger</span> <span class=\"o\">=</span> <span class=\"no\">Logger</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"development.log\"</span><span class=\"p\">)</span>\n<span class=\"n\">broadcast</span> <span class=\"o\">=</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">BroadcastLogger</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"n\">stdout_logger</span><span class=\"p\">,</span> <span class=\"n\">file_logger</span><span class=\"p\">)</span>\n\n<span class=\"n\">broadcast</span><span class=\"p\">.</span><span class=\"nf\">info</span><span class=\"p\">(</span><span class=\"s2\">\"Hello!\"</span><span class=\"p\">)</span> <span class=\"c1\"># The \"Hello!\" message is written on STDOUT and in the log file.</span>\n</code></pre></div></div>\n\n<p>Adding other sink(s) to the broadcast:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">broadcast</span> <span class=\"o\">=</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">BroadcastLogger</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">broadcast</span><span class=\"p\">.</span><span class=\"nf\">broadcast_to</span><span class=\"p\">(</span><span class=\"no\">Logger</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"no\">STDERR</span><span class=\"p\">))</span>\n</code></pre></div></div>\n\n<p>Remove a sink from the broadcast:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">stdout_logger</span> <span class=\"o\">=</span> <span class=\"no\">Logger</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"no\">STDOUT</span><span class=\"p\">)</span>\n<span class=\"n\">broadcast</span> <span class=\"o\">=</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">BroadcastLogger</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"n\">stdout_logger</span><span class=\"p\">)</span>\n\n<span class=\"n\">broadcast</span><span class=\"p\">.</span><span class=\"nf\">stop_broadcasting_to</span><span class=\"p\">(</span><span class=\"n\">stdout_logger</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
+    "message": "*   Fix Range#overlap? not taking empty ranges into account on Ruby < 3.3\n\n    *Nobuyoshi Nakada*, *Shouichi Kamiya*, *Hartley McGuire*",
+    "project": "activesupport",
+    "date_merged": 1695495795000,
+    "author": "Hartley McGuire",
+    "sha": "64184c6f5054d9b1898176107d488f40118aaac1",
+    "pr": "49356",
+    "merge_sha": "4b8cdef21054aaf6d23a2d2f90418b58e4d0c8ff",
+    "html": "<p>Fix Range#overlap? not taking empty ranges into account on Ruby &lt; 3.3</p>\n\n<p><em>Nobuyoshi Nakada</em>, <em>Shouichi Kamiya</em>, <em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Use Ruby 3.3 Range#overlap? if available\n\n    *Yasuo Honda*",
+    "project": "activesupport",
+    "date_merged": 1695151110000,
+    "author": "Yasuo Honda",
+    "sha": "1d76d454113147cb2868dd7073d17a73fa8278dc",
+    "pr": "49317",
+    "merge_sha": "42523a01dbff0b140f7554a519cec37f1b256f8b",
+    "html": "<p>Use Ruby 3.3 Range#overlap? if available</p>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
+    "message": "*   Add `bigdecimal` as Active Support dependency that is a bundled gem candidate for Ruby 3.4.\n\n    `bigdecimal` 3.1.4 or higher version will be installed.\n    Ruby 2.7 and 3.0 users who want `bigdecimal` version 2.0.0 or 3.0.0 behavior as a default gem,\n    pin the `bigdecimal` version in your application Gemfile.\n\n    *Koichi ITO*",
+    "project": "activesupport",
+    "date_merged": 1695189803000,
+    "author": "Yasuo Honda",
+    "sha": "bc8da7abdd0f9840d7883c30805e1f34af1fbff6",
+    "pr": "49318",
+    "merge_sha": "0723e6c6584b3f22640424e834965d023381ea9c",
+    "html": "<p>Add <code>bigdecimal</code> as Active Support dependency that is a bundled gem candidate for Ruby 3.4.</p>\n\n<p><code>bigdecimal</code> 3.1.4 or higher version will be installed.<br />\nRuby 2.7 and 3.0 users who want <code>bigdecimal</code> version 2.0.0 or 3.0.0 behavior as a default gem,<br />\npin the <code>bigdecimal</code> version in your application Gemfile.</p>\n\n<p><em>Koichi ITO</em></p>\n"
   },
   {
     "message": "*   Add `drb`, `mutex_m` and `base64` that are bundled gem candidates for Ruby 3.4\n\n    *Yasuo Honda*",
@@ -940,14 +1410,14 @@
     "html": "<p>Deprecated initializing a <code>ActiveSupport::Cache::MemCacheStore</code> with an instance of <code>Dalli::Client</code>.</p>\n\n<p>Deprecate the undocumented option of providing an already-initialized instance of <code>Dalli::Client</code> to <code>ActiveSupport::Cache::MemCacheStore</code>. Such clients could be configured with unrecognized options, which could lead to unexpected behavior. Instead, provide addresses as documented.</p>\n\n<p><em>aledustet</em></p>\n"
   },
   {
-    "message": "*   Stub `Time.new()` in `TimeHelpers#travel_to`\n\n      ```ruby\n      travel_to Time.new(2004, 11, 24) do\n        # Inside the `travel_to` block `Time.new` is stubbed\n        assert_equal Time.new.year, 2004\n      end\n      ```\n\n    *fatkodima*",
+    "message": "*   Stub `Time.new()` in `TimeHelpers#travel_to`\n\n      ```ruby\n      travel_to Time.new(2004, 11, 24) do\n        # Inside the `travel_to` block `Time.new` is stubbed\n        assert_equal 2004, Time.new.year\n      end\n      ```\n\n    *fatkodima*",
     "project": "activesupport",
     "date_merged": 1676400954000,
     "author": "fatkodima",
     "sha": "0c4e9d35bb75819f467db48f60ae142e9f8546d3",
     "pr": "47315",
     "merge_sha": "f0845ec14d4541d1780a5988d4c43c30a9ba3d90",
-    "html": "<p>Stub <code>Time.new()</code> in <code>TimeHelpers#travel_to</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"n\">travel_to</span> <span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"mi\">2004</span><span class=\"p\">,</span> <span class=\"mi\">11</span><span class=\"p\">,</span> <span class=\"mi\">24</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n    <span class=\"c1\"># Inside the `travel_to` block `Time.new` is stubbed</span>\n    <span class=\"n\">assert_equal</span> <span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">.</span><span class=\"nf\">year</span><span class=\"p\">,</span> <span class=\"mi\">2004</span>\n  <span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+    "html": "<p>Stub <code>Time.new()</code> in <code>TimeHelpers#travel_to</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"n\">travel_to</span> <span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"mi\">2004</span><span class=\"p\">,</span> <span class=\"mi\">11</span><span class=\"p\">,</span> <span class=\"mi\">24</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n    <span class=\"c1\"># Inside the `travel_to` block `Time.new` is stubbed</span>\n    <span class=\"n\">assert_equal</span> <span class=\"mi\">2004</span><span class=\"p\">,</span> <span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">.</span><span class=\"nf\">year</span>\n  <span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
     "message": "*   Raise `ActiveSupport::MessageEncryptor::InvalidMessage` from\n    `ActiveSupport::MessageEncryptor#decrypt_and_verify` regardless of cipher.\n    Previously, when a `MessageEncryptor` was using a non-AEAD cipher such as\n    AES-256-CBC, a corrupt or tampered message would raise\n    `ActiveSupport::MessageVerifier::InvalidSignature`.  Now, all ciphers raise\n    the same error:\n\n      ```ruby\n      encryptor = ActiveSupport::MessageEncryptor.new(\"x\" * 32, cipher: \"aes-256-gcm\")\n      message = encryptor.encrypt_and_sign(\"message\")\n      encryptor.decrypt_and_verify(message.next)\n      # => raises ActiveSupport::MessageEncryptor::InvalidMessage\n\n      encryptor = ActiveSupport::MessageEncryptor.new(\"x\" * 32, cipher: \"aes-256-cbc\")\n      message = encryptor.encrypt_and_sign(\"message\")\n      encryptor.decrypt_and_verify(message.next)\n      # BEFORE:\n      # => raises ActiveSupport::MessageVerifier::InvalidSignature\n      # AFTER:\n      # => raises ActiveSupport::MessageEncryptor::InvalidMessage\n      ```\n\n    *Jonathan Hefner*",
@@ -970,14 +1440,14 @@
     "html": "<p>Support <code>nil</code> original values when using <code>ActiveSupport::MessageVerifier#verify</code>.<br />\nPreviously, <code>MessageVerifier#verify</code> did not work with <code>nil</code> original<br />\nvalues, though both <code>MessageVerifier#verified</code> and<br />\n<code>MessageEncryptor#decrypt_and_verify</code> do:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"n\">encryptor</span> <span class=\"o\">=</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">MessageEncryptor</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"n\">secret</span><span class=\"p\">)</span>\n  <span class=\"n\">message</span> <span class=\"o\">=</span> <span class=\"n\">encryptor</span><span class=\"p\">.</span><span class=\"nf\">encrypt_and_sign</span><span class=\"p\">(</span><span class=\"kp\">nil</span><span class=\"p\">)</span>\n\n  <span class=\"n\">encryptor</span><span class=\"p\">.</span><span class=\"nf\">decrypt_and_verify</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"c1\"># =&gt; nil</span>\n\n  <span class=\"n\">verifier</span> <span class=\"o\">=</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">MessageVerifier</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"n\">secret</span><span class=\"p\">)</span>\n  <span class=\"n\">message</span> <span class=\"o\">=</span> <span class=\"n\">verifier</span><span class=\"p\">.</span><span class=\"nf\">generate</span><span class=\"p\">(</span><span class=\"kp\">nil</span><span class=\"p\">)</span>\n\n  <span class=\"n\">verifier</span><span class=\"p\">.</span><span class=\"nf\">verified</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"c1\"># =&gt; nil</span>\n\n  <span class=\"n\">verifier</span><span class=\"p\">.</span><span class=\"nf\">verify</span><span class=\"p\">(</span><span class=\"n\">message</span><span class=\"p\">)</span>\n  <span class=\"c1\"># BEFORE:</span>\n  <span class=\"c1\"># =&gt; raises ActiveSupport::MessageVerifier::InvalidSignature</span>\n  <span class=\"c1\"># AFTER:</span>\n  <span class=\"c1\"># =&gt; nil</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
-    "message": "*   Maintain `html_safe?` on html_safe strings when sliced with `slice`, `slice!`, or `chr` method.\n\n    Previously, `html_safe?` was only maintained when the html_safe strings were sliced\n    with `[]` method. Now, `slice`, `slice!`, and `chr` methods will maintain `html_safe?` like `[]` method.\n\n    ```ruby\n    string = \"<div>test</div>\".html_safe\n    string.slice(0, 1).html_safe? # => true\n    string.slice!(0, 1).html_safe? # => true\n    # maintain html_safe? after the slice!\n    string.html_safe? # => true\n    string.chr # => true\n    ```\n\n    *Michael Go*",
+    "message": "*   Maintain `html_safe?` on html_safe strings when sliced with `slice`, `slice!`, or `chr` method.\n\n    Previously, `html_safe?` was only maintained when the html_safe strings were sliced\n    with `[]` method. Now, `slice`, `slice!`, and `chr` methods will maintain `html_safe?` like `[]` method.\n\n    ```ruby\n    string = \"<div>test</div>\".html_safe\n    string.slice(0, 1).html_safe? # => true\n    string.slice!(0, 1).html_safe? # => true\n    # maintain html_safe? after the slice!\n    string.html_safe? # => true\n    string.chr.html_safe? # => true\n    ```\n\n    *Michael Go*",
     "project": "activesupport",
     "date_merged": 1675977848000,
     "author": "Michael Go",
     "sha": "2e52d0a39d13ff8cb0c26a88be2380f7bc3452fd",
     "pr": "47343",
     "merge_sha": "8231a4c61e649ab84877053de9b03b4896edf1d1",
-    "html": "<p>Maintain <code>html_safe?</code> on html_safe strings when sliced with <code>slice</code>, <code>slice!</code>, or <code>chr</code> method.</p>\n\n<p>Previously, <code>html_safe?</code> was only maintained when the html_safe strings were sliced<br />\nwith <code>[]</code> method. Now, <code>slice</code>, <code>slice!</code>, and <code>chr</code> methods will maintain <code>html_safe?</code> like <code>[]</code> method.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">string</span> <span class=\"o\">=</span> <span class=\"s2\">\"&lt;div&gt;test&lt;/div&gt;\"</span><span class=\"p\">.</span><span class=\"nf\">html_safe</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">slice</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">slice!</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"c1\"># maintain html_safe? after the slice!</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">chr</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Michael Go</em></p>\n"
+    "html": "<p>Maintain <code>html_safe?</code> on html_safe strings when sliced with <code>slice</code>, <code>slice!</code>, or <code>chr</code> method.</p>\n\n<p>Previously, <code>html_safe?</code> was only maintained when the html_safe strings were sliced<br />\nwith <code>[]</code> method. Now, <code>slice</code>, <code>slice!</code>, and <code>chr</code> methods will maintain <code>html_safe?</code> like <code>[]</code> method.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">string</span> <span class=\"o\">=</span> <span class=\"s2\">\"&lt;div&gt;test&lt;/div&gt;\"</span><span class=\"p\">.</span><span class=\"nf\">html_safe</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">slice</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">slice!</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"c1\"># maintain html_safe? after the slice!</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">string</span><span class=\"p\">.</span><span class=\"nf\">chr</span><span class=\"p\">.</span><span class=\"nf\">html_safe?</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Michael Go</em></p>\n"
   },
   {
     "message": "*   Add `Object#in?` support for open ranges.\n\n    ```ruby\n    assert Date.today.in?(..Date.tomorrow)\n    assert_not Date.today.in?(Date.tomorrow..)\n    ```\n\n    *Ignacio Galindo*",
@@ -1210,14 +1680,14 @@
     "html": "<p>Add <code>raise_on_invalid_cache_expiration_time</code> config to <code>ActiveSupport::Cache::Store</code></p>\n\n<p>Specifies if an <code>ArgumentError</code> should be raised if <code>Rails.cache</code> <code>fetch</code> or<br />\n<code>write</code> are given an invalid <code>expires_at</code> or <code>expires_in</code> time.</p>\n\n<p>Options are <code>true</code>, and <code>false</code>. If <code>false</code>, the exception will be reported<br />\nas <code>handled</code> and logged instead. Defaults to <code>true</code> if <code>config.load_defaults &gt;= 7.1</code>.</p>\n\n<p><em>Trevor Turk</em></p>\n"
   },
   {
-    "message": "*   `ActiveSupport::Cache:Store#fetch` now passes an options accessor to the block.\n\n    It makes possible to override cache options:\n\n        Rails.cache.fetch(\"3rd-party-token\") do |name, options|\n          token = fetch_token_from_remote\n          # set cache's TTL to match token's TTL\n          options.expires_in = token.expires_in\n          token\n        end\n\n    *Andrii Gladkyi*, *Jean Boussier*",
+    "message": "*   `ActiveSupport::Cache::Store#fetch` now passes an options accessor to the block.\n\n    It makes possible to override cache options:\n\n        Rails.cache.fetch(\"3rd-party-token\") do |name, options|\n          token = fetch_token_from_remote\n          # set cache's TTL to match token's TTL\n          options.expires_in = token.expires_in\n          token\n        end\n\n    *Andrii Gladkyi*, *Jean Boussier*",
     "project": "activesupport",
-    "date_merged": 1661861996000,
-    "author": "Jean Boussier",
-    "sha": "b84b04b33fff38baf3602cba4aa2924876f8b307",
-    "pr": "45905",
-    "merge_sha": "992a898c899fcff676a65b6498e6e473645118ee",
-    "html": "<p><code>ActiveSupport::Cache:Store#fetch</code> now passes an options accessor to the block.</p>\n\n<p>It makes possible to override cache options:</p>\n\n<pre><code>Rails.cache.fetch(\"3rd-party-token\") do |name, options|\n  token = fetch_token_from_remote\n  # set cache's TTL to match token's TTL\n  options.expires_in = token.expires_in\n  token\nend\n</code></pre>\n\n<p><em>Andrii Gladkyi</em>, <em>Jean Boussier</em></p>\n"
+    "date_merged": 1696529467000,
+    "author": "Earlopain",
+    "sha": "71af328f8306710181b1b503a724fb6180cdc97c",
+    "pr": "49501",
+    "merge_sha": "2fdd77dd3454e0c445715b75aaebff008540cfd9",
+    "html": "<p><code>ActiveSupport::Cache::Store#fetch</code> now passes an options accessor to the block.</p>\n\n<p>It makes possible to override cache options:</p>\n\n<pre><code>Rails.cache.fetch(\"3rd-party-token\") do |name, options|\n  token = fetch_token_from_remote\n  # set cache's TTL to match token's TTL\n  options.expires_in = token.expires_in\n  token\nend\n</code></pre>\n\n<p><em>Andrii Gladkyi</em>, <em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   `default` option of `thread_mattr_accessor` now applies through inheritance and\n    also across new threads.\n\n    Previously, the `default` value provided was set only at the moment of defining\n    the attribute writer, which would cause the attribute to be uninitialized in\n    descendants and in other threads.\n\n    Fixes #43312.\n\n    *Thierry Deo*",
@@ -1470,6 +1940,26 @@
     "html": "<p>Fix <code>Class#descendants</code> and <code>DescendantsTracker#descendants</code> compatibility with Ruby 3.1.</p>\n\n<p><a href=\"https://bugs.ruby-lang.org/issues/14394#note-33\">The native <code>Class#descendants</code> was reverted prior to Ruby 3.1 release</a>,<br />\nbut <code>Class#subclasses</code> was kept, breaking the feature detection.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Make `==(other)` method of AttributeSet safe.\n\n    *Dmitry Pogrebnoy*",
+    "project": "activemodel",
+    "date_merged": 1699979066000,
+    "author": "Rafael Mendonça França",
+    "sha": "200749dec7f59a819fbbcd31cbee179d79517ac8",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Make <code>==(other)</code> method of AttributeSet safe.</p>\n\n<p><em>Dmitry Pogrebnoy</em></p>\n"
+  },
+  {
+    "message": "*   Remove change in the typography of user facing error messages.\n    For example, “can’t be blank” is again “can't be blank”.\n\n    *Rafael Mendonça França*",
+    "project": "activemodel",
+    "date_merged": 1695774614000,
+    "author": "Rafael Mendonça França",
+    "sha": "acfa0454058c535c1352ddab91c93ca914f0805a",
+    "pr": "48066",
+    "merge_sha": "bdbc1825c0b1c55033b2c9afa93a3c4987126442",
+    "html": "<p>Remove change in the typography of user facing error messages.<br />\nFor example, “can’t be blank” is again “can’t be blank”.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Support composite identifiers in `to_key`\n\n    `to_key` avoids wrapping `#id` value into an `Array` if `#id` already an array\n\n    *Nikita Vasilevsky*",
     "project": "activemodel",
     "date_merged": 1693584579000,
@@ -1600,14 +2090,14 @@
     "html": "<p>Support infinite ranges for <code>LengthValidator</code>s <code>:in</code>/<code>:within</code> options</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_length_of</span> <span class=\"ss\">:first_name</span><span class=\"p\">,</span> <span class=\"ss\">in: </span><span class=\"o\">..</span><span class=\"mi\">30</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
-    "message": "*   Add support for beginless ranges to inclusivity/exclusivity validators:\n\n    ```ruby\n    validates_inclusion_of :birth_date, in: -> { (..Date.today) }\n    ```\n\n    *Bo Jeanes*",
+    "message": "*   Add support for beginless ranges to inclusivity/exclusivity validators:\n\n    ```ruby\n    validates_inclusion_of :birth_date, in: -> { (..Date.today) }\n    ```\n\n    ```ruby\n    validates_exclusion_of :birth_date, in: -> { (..Date.today) }\n    ```\n\n    *Bo Jeanes*",
     "project": "activemodel",
     "date_merged": 1653058494000,
     "author": "Bo Jeanes",
     "sha": "28e40a64059a0e134b20297d9b38499cfe24fccc",
     "pr": "45123",
     "merge_sha": "9868a26de4bc72d2ea593c2d97d4adfb2fd73ccd",
-    "html": "<p>Add support for beginless ranges to inclusivity/exclusivity validators:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_inclusion_of</span> <span class=\"ss\">:birth_date</span><span class=\"p\">,</span> <span class=\"ss\">in: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"p\">(</span><span class=\"o\">..</span><span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Bo Jeanes</em></p>\n"
+    "html": "<p>Add support for beginless ranges to inclusivity/exclusivity validators:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_inclusion_of</span> <span class=\"ss\">:birth_date</span><span class=\"p\">,</span> <span class=\"ss\">in: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"p\">(</span><span class=\"o\">..</span><span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_exclusion_of</span> <span class=\"ss\">:birth_date</span><span class=\"p\">,</span> <span class=\"ss\">in: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"p\">(</span><span class=\"o\">..</span><span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">today</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Bo Jeanes</em></p>\n"
   },
   {
     "message": "*   Make validators accept lambdas without record argument\n\n    ```ruby\n    # Before\n    validates_comparison_of :birth_date, less_than_or_equal_to: ->(_record) { Date.today }\n\n    # After\n    validates_comparison_of :birth_date, less_than_or_equal_to: -> { Date.today }\n    ```\n\n    *fatkodima*",
@@ -1638,6 +2128,76 @@
     "pr": "44322",
     "merge_sha": "61cf029f8269fe4214c54dd911f62c335371e6e8",
     "html": "<p>Use different cache namespace for proxy calls</p>\n\n<p>Models can currently have different attribute bodies for the same method<br />\nnames, leading to conflicts. Adding a new namespace <code>:active_model_proxy</code><br />\nfixes the issue.</p>\n\n<p><em>Chris Salzberg</em></p>\n"
+  },
+  {
+    "message": "*   Do not trigger immediate loading of `ActiveJob::Base` when loading `ActiveJob::TestHelper`.\n\n    *Maxime Réty*",
+    "project": "activejob",
+    "date_merged": 1705218782000,
+    "author": "Rafael Mendonça França",
+    "sha": "8d41d67770fefb760064f1ea716cc6530e868a8c",
+    "pr": "50715",
+    "merge_sha": "7946389fb64777a8ccdb188318525a2c8f723fe2",
+    "html": "<p>Do not trigger immediate loading of <code>ActiveJob::Base</code> when loading <code>ActiveJob::TestHelper</code>.</p>\n\n<p><em>Maxime Réty</em></p>\n"
+  },
+  {
+    "message": "*   Preserve the serialized timezone when deserializing `ActiveSupport::TimeWithZone` arguments.\n\n    *Joshua Young*",
+    "project": "activejob",
+    "date_merged": 1704130614000,
+    "author": "Jean Boussier",
+    "sha": "fe643938a9762f5adbab16fc331589c10252da15",
+    "pr": "50240",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>Preserve the serialized timezone when deserializing <code>ActiveSupport::TimeWithZone</code> arguments.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Fix ActiveJob arguments serialization to correctly serialize String subclasses having custom serializers.\n\n    *fatkodima*",
+    "project": "activejob",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix ActiveJob arguments serialization to correctly serialize String subclasses having custom serializers.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Don't log enqueuing details when the job wasn't enqueued.\n\n    *Dustin Brown*",
+    "project": "activejob",
+    "date_merged": 1697129661000,
+    "author": "Rafael Mendonça França",
+    "sha": "b280d7f127ec5262e8766a54e1e8ce121c6e897a",
+    "pr": "49546",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p>Don’t log enqueuing details when the job wasn’t enqueued.</p>\n\n<p><em>Dustin Brown</em></p>\n"
+  },
+  {
+    "message": "*   Make sure `scheduled_at` is a Time object when asserting enqueued jobs.\n\n    *Rafael Mendonça França*",
+    "project": "activejob",
+    "date_merged": 1696233640000,
+    "author": "Rafael Mendonça França",
+    "sha": "5f3ec415c6d2c17e3dd447cc6bd16a281ce1ae2b",
+    "pr": "49451",
+    "merge_sha": "b2312bb41cabe4b3228522211fe06d9bbb9f74da",
+    "html": "<p>Make sure <code>scheduled_at</code> is a Time object when asserting enqueued jobs.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Set `scheduled_at` attribute as a Time object instead of epoch seconds, and serialize and deserialize the value\n    when enqueued. Assigning a numeric/epoch value to scheduled_at= is deprecated; use a Time object instead.\n\n    Deserializes `enqueued_at` as a Time instead of ISO8601 String.\n\n    *Ben Sheldon*",
+    "project": "activejob",
+    "date_merged": 1695774614000,
+    "author": "Ben Sheldon [he/him]",
+    "sha": "c919b474a7c0fab1498075fe5cc5e99e3cdc21fa",
+    "pr": "48066",
+    "merge_sha": "bdbc1825c0b1c55033b2c9afa93a3c4987126442",
+    "html": "<p>Set <code>scheduled_at</code> attribute as a Time object instead of epoch seconds, and serialize and deserialize the value<br />\nwhen enqueued. Assigning a numeric/epoch value to scheduled_at= is deprecated; use a Time object instead.</p>\n\n<p>Deserializes <code>enqueued_at</code> as a Time instead of ISO8601 String.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
+  },
+  {
+    "message": "*   Clarify the backoff strategy for the recommended `:wait` option when retrying jobs\n\n    `wait: :exponentially_longer` is waiting polynomially longer, so it is now recommended to use `wait: :polynomially_longer` to keep the same behavior.\n\n    *Victor Mours*",
+    "project": "activejob",
+    "date_merged": 1694890941000,
+    "author": "Victor Mours",
+    "sha": "1bdabc11026ddf52963e66699a96aac3f2d058ea",
+    "pr": "49292",
+    "merge_sha": "65f43d753005559e563403b799e9f71c6585530e",
+    "html": "<p>Clarify the backoff strategy for the recommended <code>:wait</code> option when retrying jobs</p>\n\n<p><code>wait: :exponentially_longer</code> is waiting polynomially longer, so it is now recommended to use <code>wait: :polynomially_longer</code> to keep the same behavior.</p>\n\n<p><em>Victor Mours</em></p>\n"
   },
   {
     "message": "*   Fix Active Job log message to correctly report a job failed to enqueue\n    when the adapter raises an `ActiveJob::EnqueueError`.\n\n    *Ben Sheldon*",
@@ -1830,14 +2390,144 @@
     "html": "<p>Allow testing <code>discard_on/retry_on ActiveJob::DeserializationError</code></p>\n\n<p>Previously in <code>perform_enqueued_jobs</code>, <code>deserialize_arguments_if_needed</code><br />\nwas called before calling <code>perform_now</code>. When a record no longer exists<br />\nand is serialized using GlobalID this led to raising<br />\nan <code>ActiveJob::DeserializationError</code> before reaching <code>perform_now</code> call.<br />\nThis behavior makes difficult testing the job <code>discard_on/retry_on</code> logic.</p>\n\n<p>Now <code>deserialize_arguments_if_needed</code> call is postponed to when <code>perform_now</code><br />\nis called.</p>\n\n<p>Example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">UpdateUserJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">discard_on</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">DeserializationError</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span>\n    <span class=\"c1\"># ...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"c1\"># In the test</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">destroy_all</span>\n<span class=\"n\">assert_nothing_raised</span> <span class=\"k\">do</span>\n  <span class=\"n\">perform_enqueued_jobs</span> <span class=\"ss\">only: </span><span class=\"no\">UpdateUserJob</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jacopo Beschi</em></p>\n"
   },
   {
-    "message": "*   `rails new --javascript` generator now supports Bun\n\n    ```bash\n    rails new my_new_app --javascript=bun\n    ```\n\n    *Jason Meller*",
+    "message": "*   Fix sanitizer vendor configuration in 7.1 defaults.\n\n    In apps where `rails-html-sanitizer` was not eagerly loaded, the sanitizer default could end up\n    being Rails::HTML4::Sanitizer when it should be set to `Rails::HTML5::Sanitizer`.\n\n    *Mike Dalessio*, *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1713803783000,
+    "author": "eileencodes",
+    "sha": "5305d2d2a01d181aed23f3fee8e734ef63415bc7",
+    "pr": "51636",
+    "merge_sha": "9052300e9a4ac7c1aa81fa5fd48d6f112fb9de1c",
+    "html": "<p>Fix sanitizer vendor configuration in 7.1 defaults.</p>\n\n<p>In apps where <code>rails-html-sanitizer</code> was not eagerly loaded, the sanitizer default could end up<br />\nbeing Rails::HTML4::Sanitizer when it should be set to <code>Rails::HTML5::Sanitizer</code>.</p>\n\n<p><em>Mike Dalessio</em>, <em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Revert the use of `Concurrent.physical_processor_count` in default Puma config\n\n    While for many people this saves one config to set, for many others using\n    a shared hosting solution, this cause the default configuration to spawn\n    way more workers than reasonable.\n\n    There is unfortunately no reliable way to detect how many cores an application\n    can realistically use, and even then, assuming the application should use\n    all the machine resources is often wrong.\n\n    *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1707156439000,
+    "author": "Jean Boussier",
+    "sha": "379d7951f1ea92b925d2fab44b3e7e0245456c74",
+    "pr": "50970",
+    "merge_sha": "9ba5c6b1fbbf829b4f01d3aa24c92e929dc48545",
+    "html": "<p>Revert the use of <code>Concurrent.physical_processor_count</code> in default Puma config</p>\n\n<p>While for many people this saves one config to set, for many others using<br />\na shared hosting solution, this cause the default configuration to spawn<br />\nway more workers than reasonable.</p>\n\n<p>There is unfortunately no reliable way to detect how many cores an application<br />\ncan realistically use, and even then, assuming the application should use<br />\nall the machine resources is often wrong.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Make sure `config.after_routes_loaded` hook runs on boot.\n\n    *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "16cd025d983930e3745b395d50136fd287cfb989",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Make sure <code>config.after_routes_loaded</code> hook runs on boot.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Fix `config.log_level` not being respected when using a `BroadcastLogger`\n\n    *Édouard Chin*",
+    "project": "railties",
+    "date_merged": 1704737291000,
+    "author": "Jean Boussier",
+    "sha": "61d8ae0182767e9e37cdb309c4f2f599a713286e",
+    "pr": "50337",
+    "merge_sha": "c5e4250a16e8c833578bd8bd6a818f7c8cd4e826",
+    "html": "<p>Fix <code>config.log_level</code> not being respected when using a <code>BroadcastLogger</code></p>\n\n<p><em>Édouard Chin</em></p>\n"
+  },
+  {
+    "message": "*   Fix isolated engines to take `ActiveRecord::Base.table_name_prefix` into consideration.\n    This will allow for engine defined models, such as inside Active Storage, to respect\n    Active Record table name prefix configuration.\n\n    *Chedli Bourguiba*",
+    "project": "railties",
+    "date_merged": 1704130614000,
+    "author": "Jonathan Hefner",
+    "sha": "dabe7159e879241bbae8da94e897cd4b79324c8b",
+    "pr": "50247",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>Fix isolated engines to take <code>ActiveRecord::Base.table_name_prefix</code> into consideration.<br />\nThis will allow for engine defined models, such as inside Active Storage, to respect<br />\nActive Record table name prefix configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
+    "message": "*   The `bin/rails app:template` command will no longer add potentially unwanted\n    gem platforms via `bundle lock --add-platform=...` commands.\n\n    *Jonathan Hefner*",
+    "project": "railties",
+    "date_merged": 1701508455000,
+    "author": "Jonathan Hefner",
+    "sha": "db2fc18b7b66f45fcffda6b7ae136574aab295e1",
+    "pr": "50183",
+    "merge_sha": "8fcc89749be94efb12c7914396110b2bff0e4de2",
+    "html": "<p>The <code>bin/rails app:template</code> command will no longer add potentially unwanted<br />\ngem platforms via <code>bundle lock --add-platform=...</code> commands.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Fix running `db:system:change` when app has no Dockerfile.\n\n    *Hartley McGuire*",
+    "project": "railties",
+    "date_merged": 1699979066000,
+    "author": "Jonathan Hefner",
+    "sha": "6ef5e0731bd5eed538dd1ef0fda7914fb1d4dad0",
+    "pr": "49988",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix running <code>db:system:change</code> when app has no Dockerfile.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   If you accessed `config.eager_load_paths` and friends, later changes to\n    `config.paths` were not reflected in the expected auto/eager load paths.\n    Now, they are.\n\n    This bug has been latent since Rails 3.\n\n    Fixes #49629.\n\n    *Xavier Noria*",
+    "project": "railties",
+    "date_merged": 1697842313000,
+    "author": "Xavier Noria",
+    "sha": "1531878e4fdea1a7d5ca47e1c46dff7fbf2d3fc1",
+    "pr": "49727",
+    "merge_sha": "4c297793b9f88051230ef45e247ca2193b9e88d0",
+    "html": "<p>If you accessed <code>config.eager_load_paths</code> and friends, later changes to<br />\n<code>config.paths</code> were not reflected in the expected auto/eager load paths.<br />\nNow, they are.</p>\n\n<p>This bug has been latent since Rails 3.</p>\n\n<p>Fixes #49629.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
+    "message": "*   Ensures the Rails generated Dockerfile uses correct ruby version and matches Gemfile.\n\n    *Abhay Nikam*",
+    "project": "railties",
+    "date_merged": 1697129661000,
+    "author": "Rafael Mendonça França",
+    "sha": "b280d7f127ec5262e8766a54e1e8ce121c6e897a",
+    "pr": "49546",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p>Ensures the Rails generated Dockerfile uses correct ruby version and matches Gemfile.</p>\n\n<p><em>Abhay Nikam</em></p>\n"
+  },
+  {
+    "message": "*   Always set the Rails logger to be an instance of `ActiveSupport::BroadcastLogger`.\n\n    *Edouard Chin*",
+    "project": "railties",
+    "date_merged": 1696233640000,
+    "author": "Rafael Mendonça França",
+    "sha": "5f3ec415c6d2c17e3dd447cc6bd16a281ce1ae2b",
+    "pr": "49451",
+    "merge_sha": "b2312bb41cabe4b3228522211fe06d9bbb9f74da",
+    "html": "<p>Always set the Rails logger to be an instance of <code>ActiveSupport::BroadcastLogger</code>.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
+    "message": "*   Require `concurrent-ruby` in `config/puma.rb` so that Puma can boot in\n    production when `WEB_CONCURRENCY` is not explicitly specified.\n\n    Fixes #49323.\n\n    *Matt Brictson*",
+    "project": "railties",
+    "date_merged": 1695225425000,
+    "author": "Matt Brictson",
+    "sha": "39ccb97e3c0d3de6fb54fa34d7ef581801c7b1db",
+    "pr": "49325",
+    "merge_sha": "a02444723e924a619523fadc97f8bf5aa067fbbb",
+    "html": "<p>Require <code>concurrent-ruby</code> in <code>config/puma.rb</code> so that Puma can boot in<br />\nproduction when <code>WEB_CONCURRENCY</code> is not explicitly specified.</p>\n\n<p>Fixes #49323.</p>\n\n<p><em>Matt Brictson</em></p>\n"
+  },
+  {
+    "message": "*   Raise error when generating attribute with dangerous name.\n\n    The following will now raise an error as `save` and `hash` are already\n    defined by Active Record.\n\n    ```bash\n    $ bin/rails generate model Post save\n    $ bin/rails generate model Post hash\n    ```\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1694694786000,
+    "author": "Petrik",
+    "sha": "99b1316fd94e00070ac898aabdabc2e4a8996c14",
+    "pr": "47752",
+    "merge_sha": "6d4abdca5de1f85e1188e030d6cd8399948b02c1",
+    "html": "<p>Raise error when generating attribute with dangerous name.</p>\n\n<p>The following will now raise an error as <code>save</code> and <code>hash</code> are already<br />\ndefined by Active Record.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>bin/rails generate model Post save\n<span class=\"nv\">$ </span>bin/rails generate model Post <span class=\"nb\">hash</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Add ability to show slow tests to the test runner\n\n    ```bash\n    $ bin/test --profile # additionally prints 10 (default) slowest tests\n    # or\n    $ bin/test --profile 20 # prints 20 slowest tests\n    ```\n\n    *fatkodima*",
+    "project": "railties",
+    "date_merged": 1694632206000,
+    "author": "fatkodima",
+    "sha": "e4206c64d9d9a6605118a18f5c5f5837410a3734",
+    "pr": "49257",
+    "merge_sha": "bb2fedbf013d2a087087c6456f3c54bc74d3e609",
+    "html": "<p>Add ability to show slow tests to the test runner</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>bin/test <span class=\"nt\">--profile</span> <span class=\"c\"># additionally prints 10 (default) slowest tests</span>\n<span class=\"c\"># or</span>\n<span class=\"nv\">$ </span>bin/test <span class=\"nt\">--profile</span> 20 <span class=\"c\"># prints 20 slowest tests</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   `rails new --javascript` generator now supports Bun\n\n    ```bash\n    $ rails new my_new_app --javascript=bun\n    ```\n\n    *Jason Meller*",
     "project": "railties",
     "date_merged": 1694564626000,
     "author": "Jason Meller",
     "sha": "274bc97d63f9e29129851a99c00fd2cefe97cfcf",
     "pr": "49241",
     "merge_sha": "aa268ba931f1535f29a2056c26f96d9da18fdd23",
-    "html": "<p><code>rails new --javascript</code> generator now supports Bun</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>rails new my_new_app <span class=\"nt\">--javascript</span><span class=\"o\">=</span>bun\n</code></pre></div></div>\n\n<p><em>Jason Meller</em></p>\n"
+    "html": "<p><code>rails new --javascript</code> generator now supports Bun</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>rails new my_new_app <span class=\"nt\">--javascript</span><span class=\"o\">=</span>bun\n</code></pre></div></div>\n\n<p><em>Jason Meller</em></p>\n"
   },
   {
     "message": "*   bin/setup uses `bun` instead of `yarn` when generated an app with bun\n\n    Use `bun install` on `bin/setup` when using `bun`.\n\n    *Cadu Ribeiro*",
@@ -2710,6 +3400,76 @@
     "html": "<p>Add “back to top” button to guides</p>\n\n<p><em>Alysson Rosa</em></p>\n"
   },
   {
+    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
+    "project": "actiontext",
+    "date_merged": 1718289419000,
+    "author": "Rafael Mendonça França",
+    "sha": "2b05f7685bfa57e3a9fae17b715332910a72deb7",
+    "pr": "52093",
+    "merge_sha": "b67dab4e4360d2454a4c5248e4cc65d803550912",
+    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Sanitize ActionText HTML ContentAttachment in Trix edit view\n    [CVE-2024-32464]\n\n    *Aaron Patterson*",
+    "project": "actiontext",
+    "date_merged": 1717524337000,
+    "author": "Aaron Patterson",
+    "sha": "bd7c28a498fde00fdb04f95bca874437b8c94606",
+    "pr": null,
+    "merge_sha": "eedbe69470962e2ac1fb91913b8104a0c873d17a",
+    "html": "<p>Sanitize ActionText HTML ContentAttachment in Trix edit view<br />\n[CVE-2024-32464]</p>\n\n<p><em>Aaron Patterson</em></p>\n"
+  },
+  {
+    "message": "*   Upgrade Trix to 2.1.1 to fix [CVE-2024-34341](https://github.com/basecamp/trix/security/advisories/GHSA-qjqp-xr96-cj99).\n\n    *Rafael Mendonça França*",
+    "project": "actiontext",
+    "date_merged": 1717230269000,
+    "author": "Hartley McGuire",
+    "sha": "f433112c25b9494ee6dfadec513634e37aa6b5bb",
+    "pr": "51984",
+    "merge_sha": "7e0b82c27d1ff92e27613036617e69401815fd69",
+    "html": "<p>Upgrade Trix to 2.1.1 to fix <a href=\"https://github.com/basecamp/trix/security/advisories/GHSA-qjqp-xr96-cj99\">CVE-2024-34341</a>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Compile ESM package that can be used directly in the browser as `actiontext.esm.js`.\n\n    *Matias Grunberg*",
+    "project": "actiontext",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Compile ESM package that can be used directly in the browser as <code>actiontext.esm.js</code>.</p>\n\n<p><em>Matias Grunberg</em></p>\n"
+  },
+  {
+    "message": "*   Fix using actiontext.js with Sprockets.\n\n    *Matias Grunberg*",
+    "project": "actiontext",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix using actiontext.js with Sprockets.</p>\n\n<p><em>Matias Grunberg</em></p>\n"
+  },
+  {
+    "message": "*   Upgrade Trix to 2.0.7.\n\n    *Hartley McGuire*",
+    "project": "actiontext",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Upgrade Trix to 2.0.7.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix using Trix with Sprockets.\n\n    *Hartley McGuire*",
+    "project": "actiontext",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix using Trix with Sprockets.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Use `Rails::HTML5::SafeListSanitizer` by default in the Rails 7.1 configuration if it is\n    supported.\n\n    Action Text's sanitizer can be configured by setting\n    `config.action_text.sanitizer_vendor`. Supported values are `Rails::HTML4::Sanitizer` or\n    `Rails::HTML5::Sanitizer`.\n\n    The Rails 7.1 configuration will set this to `Rails::HTML5::Sanitizer` when it is supported, and\n    fall back to `Rails::HTML4::Sanitizer`. Previous configurations default to\n    `Rails::HTML4::Sanitizer`.\n\n    As a result of this change, the defaults for `ActionText::ContentHelper.allowed_tags` and\n    `.allowed_attributes` are applied at runtime, so the value of these attributes is now 'nil'\n    unless set by the application. You may call `sanitizer_allowed_tags` or\n    `sanitizer_allowed_attributes` to inspect the tags and attributes being allowed by the\n    sanitizer.\n\n    *Mike Dalessio*",
     "project": "actiontext",
     "date_merged": 1688504879000,
@@ -2790,6 +3550,596 @@
     "html": "<p>Fix an issue that caused the content layout to render multiple times when a<br />\nrich_text field was updated.</p>\n\n<p><em>Jacob Herrington</em></p>\n"
   },
   {
+    "message": "*   Fix a memory perfomance regression in attribute methods.\n\n    Attribute methods used much more memory and were slower to define than\n    they should have been.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1718289419000,
+    "author": "Jean Boussier",
+    "sha": "a2a12fc2e3f4e6d06f81d4c74c88f8e6b3369ee6",
+    "pr": "52117",
+    "merge_sha": "b67dab4e4360d2454a4c5248e4cc65d803550912",
+    "html": "<p>Fix a memory perfomance regression in attribute methods.</p>\n\n<p>Attribute methods used much more memory and were slower to define than<br />\nthey should have been.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix an issue that could cause database connection leaks.\n\n    If Active Record successfully connected to the database, but then failed\n    to read the server informations, the connection would be leaked until the\n    Ruby garbage collector triggers.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1718289419000,
+    "author": "Jean Boussier",
+    "sha": "a2a12fc2e3f4e6d06f81d4c74c88f8e6b3369ee6",
+    "pr": "52117",
+    "merge_sha": "b67dab4e4360d2454a4c5248e4cc65d803550912",
+    "html": "<p>Fix an issue that could cause database connection leaks.</p>\n\n<p>If Active Record successfully connected to the database, but then failed<br />\nto read the server informations, the connection would be leaked until the<br />\nRuby garbage collector triggers.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix an issue where the IDs reader method did not return expected results\n    for preloaded associations in models using composite primary keys.\n\n    *Jay Ang*",
+    "project": "activerecord",
+    "date_merged": 1717772082000,
+    "author": "Eileen M. Uchitelle",
+    "sha": "2604adbc79824640c5380d53ea7dc8ec20897676",
+    "pr": "51167",
+    "merge_sha": "612701b6f9cc9cae7bb98ce20051a98fc1bc7f10",
+    "html": "<p>Fix an issue where the IDs reader method did not return expected results<br />\nfor preloaded associations in models using composite primary keys.</p>\n\n<p><em>Jay Ang</em></p>\n"
+  },
+  {
+    "message": "*   PostgreSQL `Cidr#change?` detects the address prefix change.\n\n    *Taketo Takashima*",
+    "project": "activerecord",
+    "date_merged": 1717230269000,
+    "author": "Rafael Mendonça França",
+    "sha": "38c6cbd64ec06c16c7ceffa2cf290aef938126ca",
+    "pr": "51742",
+    "merge_sha": "7e0b82c27d1ff92e27613036617e69401815fd69",
+    "html": "<p>PostgreSQL <code>Cidr#change?</code> detects the address prefix change.</p>\n\n<p><em>Taketo Takashima</em></p>\n"
+  },
+  {
+    "message": "*   Fix Active Record serialization to not include instantiated but not loaded associations\n\n    *Jean Boussier*, *Ben Kyriakou*",
+    "project": "activerecord",
+    "date_merged": 1715727527000,
+    "author": "Jean Boussier",
+    "sha": "81eda781f512482527900c6d04db9a93a1f582c4",
+    "pr": "51810",
+    "merge_sha": "716a9d430627a75455a4834661889874cbf4e9db",
+    "html": "<p>Fix Active Record serialization to not include instantiated but not loaded associations</p>\n\n<p><em>Jean Boussier</em>, <em>Ben Kyriakou</em></p>\n"
+  },
+  {
+    "message": "*   Allow `Sqlite3Adapter` to use `sqlite3` gem version `2.x`\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1713803783000,
+    "author": "Mike Dalessio",
+    "sha": "3271c4f6d221a73af801d7d57905f0cece374e05",
+    "pr": "51636",
+    "merge_sha": "9052300e9a4ac7c1aa81fa5fd48d6f112fb9de1c",
+    "html": "<p>Allow <code>Sqlite3Adapter</code> to use <code>sqlite3</code> gem version <code>2.x</code></p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Strict loading using `:n_plus_one_only` does not eagerly load child associations.\n\n    With this change, child associations are no longer eagerly loaded, to\n    match intended behavior and to prevent non-deterministic order issues caused\n    by calling methods like `first` or `last`. As `first` and `last` don't cause\n    an N+1 by themselves, calling child associations will no longer raise.\n    Fixes #49473.\n\n    Before:\n\n    ```ruby\n    person = Person.find(1)\n    person.strict_loading!(mode: :n_plus_one_only)\n    person.posts.first\n    # SELECT * FROM posts WHERE person_id = 1; -- non-deterministic order\n    person.posts.first.firm # raises ActiveRecord::StrictLoadingViolationError\n    ```\n\n    After:\n\n    ```ruby\n    person = Person.find(1)\n    person.strict_loading!(mode: :n_plus_one_only)\n    person.posts.first # this is 1+1, not N+1\n    # SELECT * FROM posts WHERE person_id = 1 ORDER BY id LIMIT 1;\n    person.posts.first.firm # no longer raises\n    ```\n\n    *Reid Lynch*",
+    "project": "activerecord",
+    "date_merged": 1713803783000,
+    "author": "Rafael Mendonça França",
+    "sha": "3be65ad38a414a8f40f7ac2b144506cf5104490c",
+    "pr": "48785",
+    "merge_sha": "9052300e9a4ac7c1aa81fa5fd48d6f112fb9de1c",
+    "html": "<p>Strict loading using <code>:n_plus_one_only</code> does not eagerly load child associations.</p>\n\n<p>With this change, child associations are no longer eagerly loaded, to<br />\nmatch intended behavior and to prevent non-deterministic order issues caused<br />\nby calling methods like <code>first</code> or <code>last</code>. As <code>first</code> and <code>last</code> don’t cause<br />\nan N+1 by themselves, calling child associations will no longer raise.<br />\nFixes #49473.</p>\n\n<p>Before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">person</span> <span class=\"o\">=</span> <span class=\"no\">Person</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">strict_loading!</span><span class=\"p\">(</span><span class=\"ss\">mode: :n_plus_one_only</span><span class=\"p\">)</span>\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">posts</span><span class=\"p\">.</span><span class=\"nf\">first</span>\n<span class=\"c1\"># SELECT * FROM posts WHERE person_id = 1; -- non-deterministic order</span>\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">posts</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">firm</span> <span class=\"c1\"># raises ActiveRecord::StrictLoadingViolationError</span>\n</code></pre></div></div>\n\n<p>After:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">person</span> <span class=\"o\">=</span> <span class=\"no\">Person</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">strict_loading!</span><span class=\"p\">(</span><span class=\"ss\">mode: :n_plus_one_only</span><span class=\"p\">)</span>\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">posts</span><span class=\"p\">.</span><span class=\"nf\">first</span> <span class=\"c1\"># this is 1+1, not N+1</span>\n<span class=\"c1\"># SELECT * FROM posts WHERE person_id = 1 ORDER BY id LIMIT 1;</span>\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">posts</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">firm</span> <span class=\"c1\"># no longer raises</span>\n</code></pre></div></div>\n\n<p><em>Reid Lynch</em></p>\n"
+  },
+  {
+    "message": "*   Using `Model.query_constraints` with a single non-primary-key column used to raise as expected, but with an\n    incorrect error message. This has been fixed to raise with a more appropriate error message.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1709912378000,
+    "author": "Eileen M. Uchitelle",
+    "sha": "6f0c3a4721d2ff0190a17d687198c9b84decf2cf",
+    "pr": "51165",
+    "merge_sha": "a031f227b8adf764b515710dd750855849af9a27",
+    "html": "<p>Using <code>Model.query_constraints</code> with a single non-primary-key column used to raise as expected, but with an<br />\nincorrect error message. This has been fixed to raise with a more appropriate error message.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Fix `has_one` association autosave setting the foreign key attribute when it is unchanged.\n\n    This behaviour is also inconsistent with autosaving `belongs_to` and can have unintended side effects like raising\n    an `ActiveRecord::ReadonlyAttributeError` when the foreign key attribute is marked as read-only.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1708552241000,
+    "author": "Rafael Mendonça França",
+    "sha": "a5ad3c8f89aadc0a044786671972c9fb88078db1",
+    "pr": "50901",
+    "merge_sha": "ed84c0d8b0016fd8387d34453803e21c177bcb2b",
+    "html": "<p>Fix <code>has_one</code> association autosave setting the foreign key attribute when it is unchanged.</p>\n\n<p>This behaviour is also inconsistent with autosaving <code>belongs_to</code> and can have unintended side effects like raising<br />\nan <code>ActiveRecord::ReadonlyAttributeError</code> when the foreign key attribute is marked as read-only.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Fix an issue where `ActiveRecord::Encryption` configurations are not ready before the loading\n    of Active Record models, when an application is eager loaded. As a result, encrypted attributes\n    could be misconfigured in some cases.\n\n    *Maxime Réty*",
+    "project": "activerecord",
+    "date_merged": 1707865569000,
+    "author": "Eileen M. Uchitelle",
+    "sha": "cee5d5bf210ed5cab63266552bf75e6d1e34cce3",
+    "pr": "50606",
+    "merge_sha": "0ae4ca3a15ab975fd3f24d327f0654831bb5684f",
+    "html": "<p>Fix an issue where <code>ActiveRecord::Encryption</code> configurations are not ready before the loading<br />\nof Active Record models, when an application is eager loaded. As a result, encrypted attributes<br />\ncould be misconfigured in some cases.</p>\n\n<p><em>Maxime Réty</em></p>\n"
+  },
+  {
+    "message": "*   Properly synchronize `Mysql2Adapter#active?` and `TrilogyAdapter#active?`\n\n    As well as `disconnect!` and `verify!`.\n\n    This generally isn't a big problem as connections must not be shared between\n    threads, but is required when running transactional tests or system tests\n    and could lead to a SEGV.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1707498676000,
+    "author": "Jean Boussier",
+    "sha": "eb760da85898017a1ea300a8f08c32d0412879d3",
+    "pr": "51012",
+    "merge_sha": "aff2e00ce98ac859ab0495a32b9a36026960a9f4",
+    "html": "<p>Properly synchronize <code>Mysql2Adapter#active?</code> and <code>TrilogyAdapter#active?</code></p>\n\n<p>As well as <code>disconnect!</code> and <code>verify!</code>.</p>\n\n<p>This generally isn’t a big problem as connections must not be shared between<br />\nthreads, but is required when running transactional tests or system tests<br />\nand could lead to a SEGV.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix counter caches when the foreign key is composite.\n\n    If the model holding the counter cache had a composite primary key,\n    inserting a dependent record would fail with an `ArgumentError`\n    `Expected corresponding value for...`\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1707498676000,
+    "author": "Jean Boussier",
+    "sha": "26aa77dba2e1b346ea026ccdd6dc8289753c1d6d",
+    "pr": "50983",
+    "merge_sha": "aff2e00ce98ac859ab0495a32b9a36026960a9f4",
+    "html": "<p>Fix counter caches when the foreign key is composite.</p>\n\n<p>If the model holding the counter cache had a composite primary key,<br />\ninserting a dependent record would fail with an <code>ArgumentError</code><br />\n<code>Expected corresponding value for...</code></p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix loading of schema cache for multiple databases.\n\n    Before this change, if you have multiple databases configured in your\n    application, and had schema cache present, Rails would load the same\n    cache to all databases.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1707156439000,
+    "author": "Rafael Mendonça França",
+    "sha": "5d9f51342320cb8e625d4f6f1a9fb961599e935e",
+    "pr": "50970",
+    "merge_sha": "9ba5c6b1fbbf829b4f01d3aa24c92e929dc48545",
+    "html": "<p>Fix loading of schema cache for multiple databases.</p>\n\n<p>Before this change, if you have multiple databases configured in your<br />\napplication, and had schema cache present, Rails would load the same<br />\ncache to all databases.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Fix eager loading of composite primary key associations.\n\n    `relation.eager_load(:other_model)` could load the wrong records if `other_model`\n    had a composite primary key.\n\n    *Nikita Vasilevsky*",
+    "project": "activerecord",
+    "date_merged": 1706221674000,
+    "author": "Jean Boussier",
+    "sha": "8600f3764f46365962bce4fc7a2fb7bfb211ef7b",
+    "pr": "50845",
+    "merge_sha": "5ed3893a4bbe75767d288218fa35d9b0547db97e",
+    "html": "<p>Fix eager loading of composite primary key associations.</p>\n\n<p><code>relation.eager_load(:other_model)</code> could load the wrong records if <code>other_model</code><br />\nhad a composite primary key.</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
+    "message": "*   Fix async queries returning a doubly wrapped result when hitting the query cache.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1705597408000,
+    "author": "Jean Boussier",
+    "sha": "89e9753aa1d2f6a25dfe7f84c4f0dd64ca280e12",
+    "pr": "50778",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix async queries returning a doubly wrapped result when hitting the query cache.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix single quote escapes on default generated MySQL columns\n\n    MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.\n\n    Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.\n\n    This would result in issues when importing the schema on a fresh instance of a MySQL database.\n\n    Now, the string will not be escaped and will be valid Ruby upon importing of the schema.\n\n    *Yash Kapadia*",
+    "project": "activerecord",
+    "date_merged": 1705597408000,
+    "author": "Jean Boussier",
+    "sha": "9822f345715412e213605cee857e51ed922266d4",
+    "pr": "50733",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix single quote escapes on default generated MySQL columns</p>\n\n<p>MySQL 5.7.5+ supports generated columns, which can be used to create a column that is computed from an expression.</p>\n\n<p>Previously, the schema dump would output a string with double escapes for generated columns with single quotes in the default expression.</p>\n\n<p>This would result in issues when importing the schema on a fresh instance of a MySQL database.</p>\n\n<p>Now, the string will not be escaped and will be valid Ruby upon importing of the schema.</p>\n\n<p><em>Yash Kapadia</em></p>\n"
+  },
+  {
+    "message": "*   Fix Migrations with versions older than 7.1 validating options given to\n    `t.references`.\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1705597408000,
+    "author": "Hartley McGuire",
+    "sha": "e002ebc5040ebaa82e34c5f1a5360bcc96ce5a42",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix Migrations with versions older than 7.1 validating options given to<br />\n<code>t.references</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix Migrations with versions older than 7.1 validating options given to\n    `add_reference`.\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "4b699daf3adb04454e0bdf4ebc54c9b6132c1351",
+    "pr": "50680",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix Migrations with versions older than 7.1 validating options given to<br />\n<code>add_reference</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Ensure `reload` sets correct owner for each association.\n\n    *Dmytro Savochkin*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "9cf3c5b39457f67fc956c1c7e2882fa552e84fd6",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Ensure <code>reload</code> sets correct owner for each association.</p>\n\n<p><em>Dmytro Savochkin</em></p>\n"
+  },
+  {
+    "message": "*   Fix view runtime for controllers with async queries.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "81c8023aae6a2d6236be94c58e146fd389087a1a",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix view runtime for controllers with async queries.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix `load_async` to work with query cache.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "81c8023aae6a2d6236be94c58e146fd389087a1a",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix <code>load_async</code> to work with query cache.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix polymorphic `belongs_to` to correctly use parent's `query_constraints`.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "81c8023aae6a2d6236be94c58e146fd389087a1a",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix polymorphic <code>belongs_to</code> to correctly use parent’s <code>query_constraints</code>.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix `Preloader` to not generate a query for already loaded association with `query_constraints`.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "81c8023aae6a2d6236be94c58e146fd389087a1a",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix <code>Preloader</code> to not generate a query for already loaded association with <code>query_constraints</code>.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix multi-database polymorphic preloading with equivalent table names.\n\n    When preloading polymorphic associations, if two models pointed to two\n    tables with the same name but located in different databases, the\n    preloader would only load one.\n\n    *Ari Summer*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "81c8023aae6a2d6236be94c58e146fd389087a1a",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix multi-database polymorphic preloading with equivalent table names.</p>\n\n<p>When preloading polymorphic associations, if two models pointed to two<br />\ntables with the same name but located in different databases, the<br />\npreloader would only load one.</p>\n\n<p><em>Ari Summer</em></p>\n"
+  },
+  {
+    "message": "*   Fix `encrypted_attribute?` to take into account context properties passed to `encrypts`.\n\n    *Maxime Réty*",
+    "project": "activerecord",
+    "date_merged": 1704737291000,
+    "author": "Eileen M. Uchitelle",
+    "sha": "9eda2844185360fa98806a105336b7cfaa3a857c",
+    "pr": "48923",
+    "merge_sha": "c5e4250a16e8c833578bd8bd6a818f7c8cd4e826",
+    "html": "<p>Fix <code>encrypted_attribute?</code> to take into account context properties passed to <code>encrypts</code>.</p>\n\n<p><em>Maxime Réty</em></p>\n"
+  },
+  {
+    "message": "*   Fix `find_by` to work correctly in presence of composite primary keys.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "81c8023aae6a2d6236be94c58e146fd389087a1a",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix <code>find_by</code> to work correctly in presence of composite primary keys.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix async queries sometimes returning a raw result if they hit the query cache.\n\n    `ShipPart.async_count` could return a raw integer rather than a Promise\n    if it found the result in the query cache.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "81c8023aae6a2d6236be94c58e146fd389087a1a",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix async queries sometimes returning a raw result if they hit the query cache.</p>\n\n<p><code>ShipPart.async_count</code> could return a raw integer rather than a Promise<br />\nif it found the result in the query cache.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix `Relation#transaction` to not apply a default scope.\n\n    The method was incorrectly setting a default scope around its block:\n\n    ```ruby\n    Post.where(published: true).transaction do\n      Post.count # SELECT COUNT(*) FROM posts WHERE published = FALSE;\n    end\n    ```\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "81c8023aae6a2d6236be94c58e146fd389087a1a",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix <code>Relation#transaction</code> to not apply a default scope.</p>\n\n<p>The method was incorrectly setting a default scope around its block:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"ss\">published: </span><span class=\"kp\">true</span><span class=\"p\">).</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span>\n  <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">count</span> <span class=\"c1\"># SELECT COUNT(*) FROM posts WHERE published = FALSE;</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix calling `async_pluck` on a `none` relation.\n\n    `Model.none.async_pluck(:id)` was returning a naked value\n    instead of a promise.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1704130614000,
+    "author": "Jean Boussier",
+    "sha": "9280ad25f7d97cd700080f1adf87f0a9a8ce1702",
+    "pr": "50356",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>Fix calling <code>async_pluck</code> on a <code>none</code> relation.</p>\n\n<p><code>Model.none.async_pluck(:id)</code> was returning a naked value<br />\ninstead of a promise.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix calling `load_async` on a `none` relation.\n\n    `Model.none.load_async` was returning a broken result.\n\n    *Lucas Mazza*",
+    "project": "activerecord",
+    "date_merged": 1704130614000,
+    "author": "Jean Boussier",
+    "sha": "9394b10e028edc7aa89bce0415c2369c5ef23b80",
+    "pr": "50353",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>Fix calling <code>load_async</code> on a <code>none</code> relation.</p>\n\n<p><code>Model.none.load_async</code> was returning a broken result.</p>\n\n<p><em>Lucas Mazza</em></p>\n"
+  },
+  {
+    "message": "*   TrilogyAdapter: ignore `host` if `socket` parameter is set.\n\n    This allows to configure a connection on a UNIX socket via DATABASE_URL:\n\n    ```\n    DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock\n    ```\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1704130614000,
+    "author": "Jean Boussier",
+    "sha": "377650f7cc06614421d0de39a67b8ea1dd7a0eac",
+    "pr": "50349",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>TrilogyAdapter: ignore <code>host</code> if <code>socket</code> parameter is set.</p>\n\n<p>This allows to configure a connection on a UNIX socket via DATABASE_URL:</p>\n\n<pre><code>DATABASE_URL=trilogy://does-not-matter/my_db_production?socket=/var/run/mysql.sock\n</code></pre>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix `has_secure_token` calls the setter method on initialize.\n\n    *Abeid Ahmed*",
+    "project": "activerecord",
+    "date_merged": 1704130614000,
+    "author": "Ryuta Kamizono",
+    "sha": "27ec0da8af6e4122ec76fb1ff1d6d48a2f688b14",
+    "pr": "50251",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>Fix <code>has_secure_token</code> calls the setter method on initialize.</p>\n\n<p><em>Abeid Ahmed</em></p>\n"
+  },
+  {
+    "message": "*   Allow using `object_id` as a database column name.\n    It was available before rails 7.1 and may be used as a part of polymorphic relationship to `object` where `object` can be any other database record.\n\n    *Mikhail Doronin*",
+    "project": "activerecord",
+    "date_merged": 1701508455000,
+    "author": "Jean Boussier",
+    "sha": "10bb0c0b954e73e7acf57eab9a1c18e097b322b8",
+    "pr": "50162",
+    "merge_sha": "8fcc89749be94efb12c7914396110b2bff0e4de2",
+    "html": "<p>Allow using <code>object_id</code> as a database column name.<br />\nIt was available before rails 7.1 and may be used as a part of polymorphic relationship to <code>object</code> where <code>object</code> can be any other database record.</p>\n\n<p><em>Mikhail Doronin</em></p>\n"
+  },
+  {
+    "message": "*   Fix `rails db:create:all` to not touch databases before they are created.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1699979066000,
+    "author": "fatkodima",
+    "sha": "114001f90979e5910cea881f2621a00ae442b06c",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix <code>rails db:create:all</code> to not touch databases before they are created.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix renaming primary key index when renaming a table with a UUID primary key\n    in PostgreSQL.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1699979066000,
+    "author": "Jonathan Hefner",
+    "sha": "cceb111bb8c4425979e34678377b053e94f9e6b1",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix renaming primary key index when renaming a table with a UUID primary key<br />\nin PostgreSQL.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix `where(field: values)` queries when `field` is a serialized attribute\n    (for example, when `field` uses `ActiveRecord::Base.serialize` or is a JSON\n    column).\n\n    *João Alves*",
+    "project": "activerecord",
+    "date_merged": 1699979066000,
+    "author": "Jonathan Hefner",
+    "sha": "28deb8bb7a6071573e43a463e766ac6eeeb82601",
+    "pr": "49050",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix <code>where(field: values)</code> queries when <code>field</code> is a serialized attribute<br />\n(for example, when <code>field</code> uses <code>ActiveRecord::Base.serialize</code> or is a JSON<br />\ncolumn).</p>\n\n<p><em>João Alves</em></p>\n"
+  },
+  {
+    "message": "*   Prevent marking broken connections as verified.\n\n    *Daniel Colson*",
+    "project": "activerecord",
+    "date_merged": 1699979066000,
+    "author": "Rafael Mendonça França",
+    "sha": "200749dec7f59a819fbbcd31cbee179d79517ac8",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Prevent marking broken connections as verified.</p>\n\n<p><em>Daniel Colson</em></p>\n"
+  },
+  {
+    "message": "*   Don't mark Float::INFINITY as changed when reassigning it\n\n    When saving a record with a float infinite value, it shouldn't mark as changed\n\n    *Maicol Bentancor*",
+    "project": "activerecord",
+    "date_merged": 1699379790000,
+    "author": "Jonathan Hefner",
+    "sha": "58e4100d8821ea594c52d2af1ff2353cadc2a35e",
+    "pr": "49904",
+    "merge_sha": "b21b6c6f9cb7c5edaf1ebf8aad24204aaf260cc5",
+    "html": "<p>Don’t mark Float::INFINITY as changed when reassigning it</p>\n\n<p>When saving a record with a float infinite value, it shouldn’t mark as changed</p>\n\n<p><em>Maicol Bentancor</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveRecord::Base.table_name` now returns `nil` instead of raising\n    \"undefined method `abstract_class?` for Object:Class\".\n\n    *a5-stable*",
+    "project": "activerecord",
+    "date_merged": 1699379790000,
+    "author": "Jonathan Hefner",
+    "sha": "6c5890ad3920deb2d6be844f6044886629a2f3e3",
+    "pr": "49911",
+    "merge_sha": "b21b6c6f9cb7c5edaf1ebf8aad24204aaf260cc5",
+    "html": "<p><code>ActiveRecord::Base.table_name</code> now returns <code>nil</code> instead of raising<br />\n“undefined method <code>abstract_class?</code> for Object:Class”.</p>\n\n<p><em>a5-stable</em></p>\n"
+  },
+  {
+    "message": "*   Fix upserting for custom `:on_duplicate` and `:unique_by` consisting of all\n    inserts keys.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1699379790000,
+    "author": "Jonathan Hefner",
+    "sha": "28a4d5fc83c92ec91124205aea1ee99dda6962e6",
+    "pr": "49870",
+    "merge_sha": "b21b6c6f9cb7c5edaf1ebf8aad24204aaf260cc5",
+    "html": "<p>Fix upserting for custom <code>:on_duplicate</code> and <code>:unique_by</code> consisting of all<br />\ninserts keys.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fixed an [issue](https://github.com/rails/rails/issues/49809) where saving a\n    record could innappropriately `dup` its attributes.\n\n    *Jonathan Hefner*",
+    "project": "activerecord",
+    "date_merged": 1698671694000,
+    "author": "Jonathan Hefner",
+    "sha": "b64cb3a932826701d6f3bb6a73c69478ebf1a8b7",
+    "pr": "49832",
+    "merge_sha": "8a27333e8eb52d2e47ea5afd2d4b5daf4b76cb43",
+    "html": "<p>Fixed an <a href=\"https://github.com/rails/rails/issues/49809\">issue</a> where saving a<br />\nrecord could innappropriately <code>dup</code> its attributes.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Dump schema only for a specific db for rollback/up/down tasks for multiple dbs.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1699979066000,
+    "author": "Rafael Mendonça França",
+    "sha": "200749dec7f59a819fbbcd31cbee179d79517ac8",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Dump schema only for a specific db for rollback/up/down tasks for multiple dbs.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix `NoMethodError` when casting a PostgreSQL `money` value that uses a\n    comma as its radix point and has no leading currency symbol.  For example,\n    when casting `\"3,50\"`.\n\n    *Andreas Reischuck* and *Jonathan Hefner*",
+    "project": "activerecord",
+    "date_merged": 1698483622000,
+    "author": "Jonathan Hefner",
+    "sha": "e13d5475628b514c2ec6331a0d7cf2050c24e5dd",
+    "pr": "49779",
+    "merge_sha": "092d182803475fd69e8b37a737fe696a56e47e1f",
+    "html": "<p>Fix <code>NoMethodError</code> when casting a PostgreSQL <code>money</code> value that uses a<br />\ncomma as its radix point and has no leading currency symbol.  For example,<br />\nwhen casting <code>\"3,50\"</code>.</p>\n\n<p><em>Andreas Reischuck</em> and <em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Re-enable support for using `enum` with non-column-backed attributes.\n    Non-column-backed attributes must be previously declared with an explicit\n    type. For example:\n\n      ```ruby\n      class Post < ActiveRecord::Base\n        attribute :topic, :string\n        enum topic: %i[science tech engineering math]\n      end\n      ```\n\n    *Jonathan Hefner*",
+    "project": "activerecord",
+    "date_merged": 1698238715000,
+    "author": "Jonathan Hefner",
+    "sha": "3165b6f686838800018da53414a25222477d5511",
+    "pr": "49769",
+    "merge_sha": "4d7c3c5d5997c3b057119b5cabf4d874eaea551f",
+    "html": "<p>Re-enable support for using <code>enum</code> with non-column-backed attributes.<br />\nNon-column-backed attributes must be previously declared with an explicit<br />\ntype. For example:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>  <span class=\"k\">class</span> <span class=\"nc\">Post</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n    <span class=\"n\">attribute</span> <span class=\"ss\">:topic</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n    <span class=\"n\">enum</span> <span class=\"ss\">topic: </span><span class=\"sx\">%i[science tech engineering math]</span>\n  <span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Raise on `foreign_key:` being passed as an array in associations\n\n    *Nikita Vasilevsky*",
+    "project": "activerecord",
+    "date_merged": 1697297367000,
+    "author": "Rafael Mendonça França",
+    "sha": "92016d3766d35b91e3fe0bc6dd019f2e1d439893",
+    "pr": "49625",
+    "merge_sha": "02ed5a10c9b0b12d1c16c0546d53f640ba6b7cb3",
+    "html": "<p>Raise on <code>foreign_key:</code> being passed as an array in associations</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
+    "message": "*   Return back maximum allowed PostgreSQL table name to 63 characters.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1699979066000,
+    "author": "Rafael Mendonça França",
+    "sha": "200749dec7f59a819fbbcd31cbee179d79517ac8",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Return back maximum allowed PostgreSQL table name to 63 characters.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix detecting `IDENTITY` columns for PostgreSQL < 10.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1699979066000,
+    "author": "Rafael Mendonça França",
+    "sha": "200749dec7f59a819fbbcd31cbee179d79517ac8",
+    "pr": "50055",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix detecting <code>IDENTITY</code> columns for PostgreSQL &lt; 10.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix auto populating IDENTITY columns for PostgreSQL.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1697129661000,
+    "author": "Jean Boussier",
+    "sha": "b7837f94928da12d8cdd4e3bfd6982a80eaf65af",
+    "pr": "49504",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p>Fix auto populating IDENTITY columns for PostgreSQL.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix \"ArgumentError: wrong number of arguments (given 3, expected 2)\" when\n    down migrating `rename_table` in older migrations.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1697129661000,
+    "author": "Jonathan Hefner",
+    "sha": "bc4f6fadde80abd120126de6779c622e84e62fc8",
+    "pr": "49526",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p>Fix “ArgumentError: wrong number of arguments (given 3, expected 2)” when<br />\ndown migrating <code>rename_table</code> in older migrations.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Do not require the Action Text, Active Storage and Action Mailbox tables\n    to be present when running when running test on CI.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1697129661000,
+    "author": "Rafael Mendonça França",
+    "sha": "b280d7f127ec5262e8766a54e1e8ce121c6e897a",
+    "pr": "49546",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p>Do not require the Action Text, Active Storage and Action Mailbox tables<br />\nto be present when running when running test on CI.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove -shm and -wal SQLite files when `rails db:drop` is run.\n\n    *Niklas Häusele*",
+    "project": "activerecord",
+    "date_merged": 1696233640000,
+    "author": "Rafael Mendonça França",
+    "sha": "5f3ec415c6d2c17e3dd447cc6bd16a281ce1ae2b",
+    "pr": "49451",
+    "merge_sha": "b2312bb41cabe4b3228522211fe06d9bbb9f74da",
+    "html": "<p>Remove -shm and -wal SQLite files when <code>rails db:drop</code> is run.</p>\n\n<p><em>Niklas Häusele</em></p>\n"
+  },
+  {
+    "message": "*   Revert the change to raise an `ArgumentError` when `#accepts_nested_attributes_for` is declared more than once for\n    an association in the same class.\n\n    The reverted behavior broke the case where the `#accepts_nested_attributes_for` was defined in a concern and\n    where overridden in the class that included the concern.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1696233640000,
+    "author": "Rafael Mendonça França",
+    "sha": "f9133f79aa392d4905e599d8d2707e27af1c2db6",
+    "pr": "49056",
+    "merge_sha": "b2312bb41cabe4b3228522211fe06d9bbb9f74da",
+    "html": "<p>Revert the change to raise an <code>ArgumentError</code> when <code>#accepts_nested_attributes_for</code> is declared more than once for<br />\nan association in the same class.</p>\n\n<p>The reverted behavior broke the case where the <code>#accepts_nested_attributes_for</code> was defined in a concern and<br />\nwhere overridden in the class that included the concern.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Better naming for unique constraints support.\n\n    Naming unique keys leads to misunderstanding it's a short-hand of unique indexes.\n    Just naming it unique constraints is not misleading.\n\n    In Rails 7.1.0.beta1 or before:\n\n    ```ruby\n    add_unique_key :sections, [:position], deferrable: :deferred, name: \"unique_section_position\"\n    remove_unique_key :sections, name: \"unique_section_position\"\n    ```\n\n    Now:\n\n    ```ruby\n    add_unique_constraint :sections, [:position], deferrable: :deferred, name: \"unique_section_position\"\n    remove_unique_constraint :sections, name: \"unique_section_position\"\n    ```\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1695750825000,
+    "author": "Ryuta Kamizono",
+    "sha": "a86d4d7bbd6e48e99ed43140c3fae2a54e2b015d",
+    "pr": "49383",
+    "merge_sha": "6ef9007cf5da7392280b15becd6948dd6de8eb06",
+    "html": "<p>Better naming for unique constraints support.</p>\n\n<p>Naming unique keys leads to misunderstanding it’s a short-hand of unique indexes.<br />\nJust naming it unique constraints is not misleading.</p>\n\n<p>In Rails 7.1.0.beta1 or before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_unique_key</span> <span class=\"ss\">:sections</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"ss\">:position</span><span class=\"p\">],</span> <span class=\"ss\">deferrable: :deferred</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"unique_section_position\"</span>\n<span class=\"n\">remove_unique_key</span> <span class=\"ss\">:sections</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"unique_section_position\"</span>\n</code></pre></div></div>\n\n<p>Now:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_unique_constraint</span> <span class=\"ss\">:sections</span><span class=\"p\">,</span> <span class=\"p\">[</span><span class=\"ss\">:position</span><span class=\"p\">],</span> <span class=\"ss\">deferrable: :deferred</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"unique_section_position\"</span>\n<span class=\"n\">remove_unique_constraint</span> <span class=\"ss\">:sections</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"unique_section_position\"</span>\n</code></pre></div></div>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
+    "message": "*   Fix duplicate quoting for check constraint expressions in schema dump when using MySQL\n\n    A check constraint with an expression, that already contains quotes, lead to an invalid schema\n    dump with the mysql2 adapter.\n\n    Fixes #42424.\n\n    *Felix Tscheulin*",
+    "project": "activerecord",
+    "date_merged": 1695746083000,
+    "author": "Felix Tscheulin",
+    "sha": "468d3d0deb645a38b7c5567d3555fb4fa57095c9",
+    "pr": "42429",
+    "merge_sha": "dc56140f56d05d640425a68c9a356b417e1dddaf",
+    "html": "<p>Fix duplicate quoting for check constraint expressions in schema dump when using MySQL</p>\n\n<p>A check constraint with an expression, that already contains quotes, lead to an invalid schema<br />\ndump with the mysql2 adapter.</p>\n\n<p>Fixes #42424.</p>\n\n<p><em>Felix Tscheulin</em></p>\n"
+  },
+  {
+    "message": "*   Performance tune the SQLite3 adapter connection configuration\n\n    For Rails applications, the Write-Ahead-Log in normal syncing mode with a capped journal size, a healthy shared memory buffer and a shared cache will perform, on average, 2× better.\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1695589787000,
+    "author": "Stephen Margheim",
+    "sha": "c6d7ffc7b870f8c17b9f055f5a239253789a2b5b",
+    "pr": "49349",
+    "merge_sha": "d8391b27d4e0fdf63fd6a6ca040bdab762d58aae",
+    "html": "<p>Performance tune the SQLite3 adapter connection configuration</p>\n\n<p>For Rails applications, the Write-Ahead-Log in normal syncing mode with a capped journal size, a healthy shared memory buffer and a shared cache will perform, on average, 2× better.</p>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
+    "message": "*   Allow SQLite3 `busy_handler` to be configured with simple max number of `retries`\n\n    Retrying busy connections without delay is a preferred practice for performance-sensitive applications. Add support for a `database.yml` `retries` integer, which is used in a simple `busy_handler` function to retry busy connections without exponential backoff up to the max number of `retries`.\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1695577982000,
+    "author": "Stephen Margheim",
+    "sha": "236a144b50de05ce541275e81f8d5bb8c4ef774e",
+    "pr": "49352",
+    "merge_sha": "7c07787a5d24b03f5cf444dced5df7cf3d33137a",
+    "html": "<p>Allow SQLite3 <code>busy_handler</code> to be configured with simple max number of <code>retries</code></p>\n\n<p>Retrying busy connections without delay is a preferred practice for performance-sensitive applications. Add support for a <code>database.yml</code> <code>retries</code> integer, which is used in a simple <code>busy_handler</code> function to retry busy connections without exponential backoff up to the max number of <code>retries</code>.</p>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
+    "message": "*   The SQLite3 adapter now supports `supports_insert_returning?`\n\n    Implementing the full `supports_insert_returning?` contract means the SQLite3 adapter supports auto-populated columns (#48241) as well as custom primary keys.\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1695252099000,
+    "author": "Stephen Margheim",
+    "sha": "9bbbf4b8b9bf3d7cb31c0425a6646cec49e4bc6c",
+    "pr": "49290",
+    "merge_sha": "0f92f8bf913ef0d1d32e0d7a6458fc55512e147a",
+    "html": "<p>The SQLite3 adapter now supports <code>supports_insert_returning?</code></p>\n\n<p>Implementing the full <code>supports_insert_returning?</code> contract means the SQLite3 adapter supports auto-populated columns (#48241) as well as custom primary keys.</p>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
+    "message": "*   Ensure the SQLite3 adapter handles default functions with the `||` concatenation operator\n\n    Previously, this default function would produce the static string `\"'Ruby ' || 'on ' || 'Rails'\"`.\n    Now, the adapter will appropriately receive and use `\"Ruby on Rails\"`.\n\n    ```ruby\n    change_column_default \"test_models\", \"ruby_on_rails\", -> { \"('Ruby ' || 'on ' || 'Rails')\" }\n    ```\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1695226823000,
+    "author": "Stephen Margheim",
+    "sha": "828eec67078a058ff768963db7ac43e6ff89be1e",
+    "pr": "49287",
+    "merge_sha": "c8830a2bba43b86cb527425bbf6b38facaf0a0c9",
+    "html": "<p>Ensure the SQLite3 adapter handles default functions with the <code>||</code> concatenation operator</p>\n\n<p>Previously, this default function would produce the static string <code>\"'Ruby ' || 'on ' || 'Rails'\"</code>.<br />\nNow, the adapter will appropriately receive and use <code>\"Ruby on Rails\"</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">change_column_default</span> <span class=\"s2\">\"test_models\"</span><span class=\"p\">,</span> <span class=\"s2\">\"ruby_on_rails\"</span><span class=\"p\">,</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"s2\">\"('Ruby ' || 'on ' || 'Rails')\"</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
+    "message": "*   Dump PostgreSQL schemas as part of the schema dump.\n\n    *Lachlan Sylvester*",
+    "project": "activerecord",
+    "date_merged": 1695171603000,
+    "author": "Lachlan Sylvester",
+    "sha": "5f6efdab0f9acef8d04ca9a018667bfcd1cf59b5",
+    "pr": "49164",
+    "merge_sha": "b3df4f25ac3ff9f12da3aaa7441e7c082289c293",
+    "html": "<p>Dump PostgreSQL schemas as part of the schema dump.</p>\n\n<p><em>Lachlan Sylvester</em></p>\n"
+  },
+  {
     "message": "*   Encryption now supports `support_unencrypted_data` being set per-attribute.\n\n    You can now opt out of `support_unencrypted_data` on a specific encrypted attribute.\n    This only has an effect if `ActiveRecord::Encryption.config.support_unencrypted_data == true`.\n\n    ```ruby\n    class User < ActiveRecord::Base\n      encrypts :name, deterministic: true, support_unencrypted_data: false\n      encrypts :email, deterministic: true\n    end\n    ```\n\n    *Alex Ghiculescu*",
     "project": "activerecord",
     "date_merged": 1694564626000,
@@ -2800,14 +4150,14 @@
     "html": "<p>Encryption now supports <code>support_unencrypted_data</code> being set per-attribute.</p>\n\n<p>You can now opt out of <code>support_unencrypted_data</code> on a specific encrypted attribute.<br />\nThis only has an effect if <code>ActiveRecord::Encryption.config.support_unencrypted_data == true</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">encrypts</span> <span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">deterministic: </span><span class=\"kp\">true</span><span class=\"p\">,</span> <span class=\"ss\">support_unencrypted_data: </span><span class=\"kp\">false</span>\n  <span class=\"n\">encrypts</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">deterministic: </span><span class=\"kp\">true</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
   },
   {
-    "message": "*   Add instrumentation for Active Record transactions\n\n    Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection, as well as timing details.\n\n    ```ruby\n    ActiveSupport::Notifications.subscribe(\"transaction.active_record\") do |event|\n      puts \"Transaction event occurred!\"\n      connection = event.payload[:connection]\n      puts \"Connection: #{connection.inspect}\"\n    end\n    ```\n\n    *Daniel Colson*, *Ian Candy*",
+    "message": "*   Add instrumentation for Active Record transactions\n\n    Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection and the outcome (commit, rollback, restart, incomplete), as well as timing details.\n\n    ```ruby\n    ActiveSupport::Notifications.subscribe(\"transaction.active_record\") do |event|\n      puts \"Transaction event occurred!\"\n      connection = event.payload[:connection]\n      puts \"Connection: #{connection.inspect}\"\n    end\n    ```\n\n    *Daniel Colson*, *Ian Candy*",
     "project": "activerecord",
     "date_merged": 1694481611000,
     "author": "Daniel Colson",
     "sha": "ce49fa9b31cd4a21d43db39d0cea364bce28b51d",
     "pr": "49192",
     "merge_sha": "514021f676ac0ee64fdc037b4ac8206791cc44b0",
-    "html": "<p>Add instrumentation for Active Record transactions</p>\n\n<p>Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection, as well as timing details.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">subscribe</span><span class=\"p\">(</span><span class=\"s2\">\"transaction.active_record\"</span><span class=\"p\">)</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">event</span><span class=\"o\">|</span>\n  <span class=\"nb\">puts</span> <span class=\"s2\">\"Transaction event occurred!\"</span>\n  <span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"n\">event</span><span class=\"p\">.</span><span class=\"nf\">payload</span><span class=\"p\">[</span><span class=\"ss\">:connection</span><span class=\"p\">]</span>\n  <span class=\"nb\">puts</span> <span class=\"s2\">\"Connection: </span><span class=\"si\">#{</span><span class=\"n\">connection</span><span class=\"p\">.</span><span class=\"nf\">inspect</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Daniel Colson</em>, <em>Ian Candy</em></p>\n"
+    "html": "<p>Add instrumentation for Active Record transactions</p>\n\n<p>Allows subscribing to transaction events for tracking/instrumentation. The event payload contains the connection and the outcome (commit, rollback, restart, incomplete), as well as timing details.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">subscribe</span><span class=\"p\">(</span><span class=\"s2\">\"transaction.active_record\"</span><span class=\"p\">)</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">event</span><span class=\"o\">|</span>\n  <span class=\"nb\">puts</span> <span class=\"s2\">\"Transaction event occurred!\"</span>\n  <span class=\"n\">connection</span> <span class=\"o\">=</span> <span class=\"n\">event</span><span class=\"p\">.</span><span class=\"nf\">payload</span><span class=\"p\">[</span><span class=\"ss\">:connection</span><span class=\"p\">]</span>\n  <span class=\"nb\">puts</span> <span class=\"s2\">\"Connection: </span><span class=\"si\">#{</span><span class=\"n\">connection</span><span class=\"p\">.</span><span class=\"nf\">inspect</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Daniel Colson</em>, <em>Ian Candy</em></p>\n"
   },
   {
     "message": "*   Support composite foreign keys via migration helpers.\n\n    ```ruby\n    # Assuming \"carts\" table has \"(shop_id, user_id)\" as a primary key.\n\n    add_foreign_key(:orders, :carts, primary_key: [:shop_id, :user_id])\n\n    remove_foreign_key(:orders, :carts, primary_key: [:shop_id, :user_id])\n    foreign_key_exists?(:orders, :carts, primary_key: [:shop_id, :user_id])\n    ```\n\n    *fatkodima*",
@@ -2848,6 +4198,16 @@
     "pr": "49149",
     "merge_sha": "1b0ee9f3f692520d777fe010deb6974d96b010a7",
     "html": "<p>Deprecate <code>rewhere</code> argument on <code>#merge</code>.</p>\n\n<p>The <code>rewhere</code> argument on <code>#merge</code>is deprecated without replacement and<br />\nwill be removed in Rails 7.2.</p>\n\n<p><em>Adam Hess</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate aliasing non-attributes with `alias_attribute`.\n\n    *Ian Candy*",
+    "project": "activerecord",
+    "date_merged": 1697842313000,
+    "author": "Hartley McGuire",
+    "sha": "bcadeb2ecfe3d1060f67d363461577d26e4ac9ca",
+    "pr": "49727",
+    "merge_sha": "4c297793b9f88051230ef45e247ca2193b9e88d0",
+    "html": "<p>Deprecate aliasing non-attributes with <code>alias_attribute</code>.</p>\n\n<p><em>Ian Candy</em></p>\n"
   },
   {
     "message": "*   Fix unscope is not working in specific case\n\n    Before:\n    ```ruby\n    Post.where(id: 1...3).unscope(where: :id).to_sql # \"SELECT `posts`.* FROM `posts` WHERE `posts`.`id` >= 1 AND `posts`.`id` < 3\"\n\n    ```\n\n    After:\n    ```ruby\n    Post.where(id: 1...3).unscope(where: :id).to_sql # \"SELECT `posts`.* FROM `posts`\"\n    ```\n\n    Fixes #48094.\n\n    *Kazuya Hatanaka*",
@@ -3310,14 +4670,14 @@
     "html": "<p>Introduce a more stable and optimized Marshal serializer for Active Record models.</p>\n\n<p>Can be enabled with <code>config.active_record.marshalling_format_version = 7.1</code>.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
-    "message": "*   Allow specifying where clauses with column-tuple syntax.\n\n    Querying through `#where` now accepts a new tuple-syntax which accepts, as\n    a key, an array of columns and, as a value, an array of corresponding tuples.\n    The key specifies a list of columns, while the value is an array of\n    ordered-tuples that conform to the column list.\n\n    For instance:\n\n    ```ruby\n    # Cpk::Book => Cpk::Book(author_id: integer, number: integer, title: string, revision: integer)\n    # Cpk::Book.primary_key => [\"author_id\", \"number\"]\n\n    book = Cpk::Book.create!(author_id: 1, number: 1)\n    Cpk::Book.where(Cpk::Book.primary_key => [[1, 2]]) # => [book]\n\n    # Topic => Topic(id: integer, title: string, author_name: string...)\n\n    Topic.where([:title, :author_name] => [[\"The Alchemist\", \"Paul Coelho\"], [\"Harry Potter\", \"J.K Rowling\"]])\n    ```\n\n    *Paarth Madan*",
+    "message": "*   Allow specifying where clauses with column-tuple syntax.\n\n    Querying through `#where` now accepts a new tuple-syntax which accepts, as\n    a key, an array of columns and, as a value, an array of corresponding tuples.\n    The key specifies a list of columns, while the value is an array of\n    ordered-tuples that conform to the column list.\n\n    For instance:\n\n    ```ruby\n    # Cpk::Book => Cpk::Book(author_id: integer, number: integer, title: string, revision: integer)\n    # Cpk::Book.primary_key => [\"author_id\", \"number\"]\n\n    book = Cpk::Book.create!(author_id: 1, number: 1)\n    Cpk::Book.where(Cpk::Book.primary_key => [[1, 2]]) # => [book]\n\n    # Topic => Topic(id: integer, title: string, author_name: string...)\n\n    Topic.where([:title, :author_name] => [[\"The Alchemist\", \"Paulo Coelho\"], [\"Harry Potter\", \"J.K Rowling\"]])\n    ```\n\n    *Paarth Madan*",
     "project": "activerecord",
     "date_merged": 1679519322000,
     "author": "Paarth Madan",
     "sha": "e39e013cf7abae9d4861350c6a1f81e605012715",
     "pr": "47729",
     "merge_sha": "2cef3ac45bd85e1642b1270ab4fa31629044c962",
-    "html": "<p>Allow specifying where clauses with column-tuple syntax.</p>\n\n<p>Querying through <code>#where</code> now accepts a new tuple-syntax which accepts, as<br />\na key, an array of columns and, as a value, an array of corresponding tuples.<br />\nThe key specifies a list of columns, while the value is an array of<br />\nordered-tuples that conform to the column list.</p>\n\n<p>For instance:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Cpk::Book =&gt; Cpk::Book(author_id: integer, number: integer, title: string, revision: integer)</span>\n<span class=\"c1\"># Cpk::Book.primary_key =&gt; [\"author_id\", \"number\"]</span>\n\n<span class=\"n\">book</span> <span class=\"o\">=</span> <span class=\"no\">Cpk</span><span class=\"o\">::</span><span class=\"no\">Book</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">author_id: </span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"ss\">number: </span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"no\">Cpk</span><span class=\"o\">::</span><span class=\"no\">Book</span><span class=\"p\">.</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"no\">Cpk</span><span class=\"o\">::</span><span class=\"no\">Book</span><span class=\"p\">.</span><span class=\"nf\">primary_key</span> <span class=\"o\">=&gt;</span> <span class=\"p\">[[</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">]])</span> <span class=\"c1\"># =&gt; [book]</span>\n\n<span class=\"c1\"># Topic =&gt; Topic(id: integer, title: string, author_name: string...)</span>\n\n<span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">where</span><span class=\"p\">([</span><span class=\"ss\">:title</span><span class=\"p\">,</span> <span class=\"ss\">:author_name</span><span class=\"p\">]</span> <span class=\"o\">=&gt;</span> <span class=\"p\">[[</span><span class=\"s2\">\"The Alchemist\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Paul Coelho\"</span><span class=\"p\">],</span> <span class=\"p\">[</span><span class=\"s2\">\"Harry Potter\"</span><span class=\"p\">,</span> <span class=\"s2\">\"J.K Rowling\"</span><span class=\"p\">]])</span>\n</code></pre></div></div>\n\n<p><em>Paarth Madan</em></p>\n"
+    "html": "<p>Allow specifying where clauses with column-tuple syntax.</p>\n\n<p>Querying through <code>#where</code> now accepts a new tuple-syntax which accepts, as<br />\na key, an array of columns and, as a value, an array of corresponding tuples.<br />\nThe key specifies a list of columns, while the value is an array of<br />\nordered-tuples that conform to the column list.</p>\n\n<p>For instance:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Cpk::Book =&gt; Cpk::Book(author_id: integer, number: integer, title: string, revision: integer)</span>\n<span class=\"c1\"># Cpk::Book.primary_key =&gt; [\"author_id\", \"number\"]</span>\n\n<span class=\"n\">book</span> <span class=\"o\">=</span> <span class=\"no\">Cpk</span><span class=\"o\">::</span><span class=\"no\">Book</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">author_id: </span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"ss\">number: </span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"no\">Cpk</span><span class=\"o\">::</span><span class=\"no\">Book</span><span class=\"p\">.</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"no\">Cpk</span><span class=\"o\">::</span><span class=\"no\">Book</span><span class=\"p\">.</span><span class=\"nf\">primary_key</span> <span class=\"o\">=&gt;</span> <span class=\"p\">[[</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">]])</span> <span class=\"c1\"># =&gt; [book]</span>\n\n<span class=\"c1\"># Topic =&gt; Topic(id: integer, title: string, author_name: string...)</span>\n\n<span class=\"no\">Topic</span><span class=\"p\">.</span><span class=\"nf\">where</span><span class=\"p\">([</span><span class=\"ss\">:title</span><span class=\"p\">,</span> <span class=\"ss\">:author_name</span><span class=\"p\">]</span> <span class=\"o\">=&gt;</span> <span class=\"p\">[[</span><span class=\"s2\">\"The Alchemist\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Paulo Coelho\"</span><span class=\"p\">],</span> <span class=\"p\">[</span><span class=\"s2\">\"Harry Potter\"</span><span class=\"p\">,</span> <span class=\"s2\">\"J.K Rowling\"</span><span class=\"p\">]])</span>\n</code></pre></div></div>\n\n<p><em>Paarth Madan</em></p>\n"
   },
   {
     "message": "*   Allow warning codes to be ignore when reporting SQL warnings.\n\n    Active Record config that can ignore warning codes\n\n    ```ruby\n    # Configure allowlist of warnings that should always be ignored\n    config.active_record.db_warnings_ignore = [\n      \"1062\", # MySQL Error 1062: Duplicate entry\n    ]\n    ```\n\n    This is supported for the MySQL and PostgreSQL adapters.\n\n    *Nick Borromeo*",
@@ -3460,14 +4820,14 @@
     "html": "<p><code>ActiveRecord::Base.serialize</code> signature changed.</p>\n\n<p>Rather than a single positional argument that accepts two possible<br />\ntypes of values, <code>serialize</code> now accepts two distinct keyword arguments.</p>\n\n<p>Before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">serialize</span> <span class=\"ss\">:content</span><span class=\"p\">,</span> <span class=\"no\">JSON</span>\n<span class=\"n\">serialize</span> <span class=\"ss\">:backtrace</span><span class=\"p\">,</span> <span class=\"no\">Array</span>\n</code></pre></div></div>\n\n<p>After:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">serialize</span> <span class=\"ss\">:content</span><span class=\"p\">,</span> <span class=\"ss\">coder: </span><span class=\"no\">JSON</span>\n<span class=\"n\">serialize</span> <span class=\"ss\">:backtrace</span><span class=\"p\">,</span> <span class=\"ss\">type: </span><span class=\"no\">Array</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
-    "message": "*   YAML columns use `YAML.safe_dump` is available.\n\n    As of `psych 5.1.0`, `YAML.safe_dump` can now apply the same permitted\n    types restrictions than `YAML.safe_load`.\n\n    It's preferable to ensure the payload only use allowed types when we first\n    try to serialize it, otherwise you may end up with invalid records in the\n    database.\n\n    *Jean Boussier*",
+    "message": "*   YAML columns use `YAML.safe_dump` if available.\n\n    As of `psych 5.1.0`, `YAML.safe_dump` can now apply the same permitted\n    types restrictions than `YAML.safe_load`.\n\n    It's preferable to ensure the payload only use allowed types when we first\n    try to serialize it, otherwise you may end up with invalid records in the\n    database.\n\n    *Jean Boussier*",
     "project": "activerecord",
-    "date_merged": 1676304881000,
-    "author": "Jean Boussier",
-    "sha": "3635d2d9cf15f1e404013e9207b3e5b80cfda59d",
-    "pr": "47103",
-    "merge_sha": "3bebf19f562ea85199753ca5a3737e09a7be4385",
-    "html": "<p>YAML columns use <code>YAML.safe_dump</code> is available.</p>\n\n<p>As of <code>psych 5.1.0</code>, <code>YAML.safe_dump</code> can now apply the same permitted<br />\ntypes restrictions than <code>YAML.safe_load</code>.</p>\n\n<p>It’s preferable to ensure the payload only use allowed types when we first<br />\ntry to serialize it, otherwise you may end up with invalid records in the<br />\ndatabase.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+    "date_merged": 1695447754000,
+    "author": "hachi8833",
+    "sha": "16f592ffa7c0875883b27044113c237aaf7323ba",
+    "pr": "49358",
+    "merge_sha": "a5f4aadcee42f9b4fa99468776c56b5b988c87cf",
+    "html": "<p>YAML columns use <code>YAML.safe_dump</code> if available.</p>\n\n<p>As of <code>psych 5.1.0</code>, <code>YAML.safe_dump</code> can now apply the same permitted<br />\ntypes restrictions than <code>YAML.safe_load</code>.</p>\n\n<p>It’s preferable to ensure the payload only use allowed types when we first<br />\ntry to serialize it, otherwise you may end up with invalid records in the<br />\ndatabase.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   `ActiveRecord::QueryLogs` better handle broken encoding.\n\n    It's not uncommon when building queries with BLOB fields to contain\n    binary data. Unless the call carefully encode the string in ASCII-8BIT\n    it generally end up being encoded in `UTF-8`, and `QueryLogs` would\n    end up failing on it.\n\n    `ActiveRecord::QueryLogs` no longer depend on the query to be properly encoded.\n\n    *Jean Boussier*",
@@ -3910,14 +5270,14 @@
     "html": "<p>Use connection from <code>#with_raw_connection</code> in <code>#quote_string</code>.</p>\n\n<p>This ensures that the string quoting is wrapped in the reconnect and retry logic<br />\nthat <code>#with_raw_connection</code> offers.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
   },
   {
-    "message": "*   Add `expires_in` option to `signed_id`.\n\n    *Shouichi Kamiya*",
+    "message": "*   Add `expires_at` option to `signed_id`.\n\n    *Shouichi Kamiya*",
     "project": "activerecord",
-    "date_merged": 1663882057000,
-    "author": "Shouichi Kamiya",
-    "sha": "364939c2b17b219fc8c158da63a8517e57f892ab",
-    "pr": "46108",
-    "merge_sha": "b5e5fad4ded363d01a180e0d962ec34015942329",
-    "html": "<p>Add <code>expires_in</code> option to <code>signed_id</code>.</p>\n\n<p><em>Shouichi Kamiya</em></p>\n"
+    "date_merged": 1695535503000,
+    "author": "hachi8833",
+    "sha": "3b028fd74e42d64973ee52a572938143d81f811d",
+    "pr": "49366",
+    "merge_sha": "46e3076848663124ab905de234306cfba7a895fc",
+    "html": "<p>Add <code>expires_at</code> option to <code>signed_id</code>.</p>\n\n<p><em>Shouichi Kamiya</em></p>\n"
   },
   {
     "message": "*   Allow applications to set retry deadline for query retries.\n\n    Building on the work done in #44576 and #44591, we extend the logic that automatically\n    reconnects database connections to take into account a timeout limit. We won't retry\n    a query if a given amount of time has elapsed since the query was first attempted. This\n    value defaults to nil, meaning that all retryable queries are retried regardless of time elapsed,\n    but this can be changed via the `retry_deadline` option in the database config.\n\n    *Adrianna Chang*",
@@ -4680,6 +6040,116 @@
     "html": "<p>Add <code>authenticate_by</code> when using <code>has_secure_password</code>.</p>\n\n<p><code>authenticate_by</code> is intended to replace code like the following, which<br />\nreturns early when a user with a matching email is not found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span><span class=\"o\">&amp;</span><span class=\"p\">.</span><span class=\"nf\">authenticate</span><span class=\"p\">(</span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Such code is vulnerable to timing-based enumeration attacks, wherein an<br />\nattacker can determine if a user account with a given email exists. After<br />\nconfirming that an account exists, the attacker can try passwords associated<br />\nwith that email address from other leaked databases, in case the user<br />\nre-used a password across multiple sites (a common practice). Additionally,<br />\nknowing an account email address allows the attacker to attempt a targeted<br />\nphishing (“spear phishing”) attack.</p>\n\n<p><code>authenticate_by</code> addresses the vulnerability by taking the same amount of<br />\ntime regardless of whether a user with a matching email is found:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">authenticate_by</span><span class=\"p\">(</span><span class=\"ss\">email: </span><span class=\"s2\">\"...\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"...\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Jonathan Hefner</em></p>\n"
   },
   {
+    "message": "*   Restore the ability for templates to return any kind of object and not just strings\n\n    *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1714135549000,
+    "author": "Earlopain",
+    "sha": "14e835145a07a2c58f651d2b959949031801b831",
+    "pr": "51666",
+    "merge_sha": "c3c164ca12410983e07537531844c4255450ba9b",
+    "html": "<p>Restore the ability for templates to return any kind of object and not just strings</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Better handle SyntaxError in Action View.\n\n    *Mario Caropreso*",
+    "project": "actionview",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Better handle SyntaxError in Action View.</p>\n\n<p><em>Mario Caropreso</em></p>\n"
+  },
+  {
+    "message": "*   Fix `word_wrap` with empty string.\n\n    *Jonathan Hefner*",
+    "project": "actionview",
+    "date_merged": 1705434113000,
+    "author": "Rafael Mendonça França",
+    "sha": "81c8023aae6a2d6236be94c58e146fd389087a1a",
+    "pr": "50771",
+    "merge_sha": "1f505f09cb427198e2309f458a87282bc7f8d294",
+    "html": "<p>Fix <code>word_wrap</code> with empty string.</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Rename `ActionView::TestCase::Behavior::Content` to `ActionView::TestCase::Behavior::RenderedViewContent`.\n\n    Make `RenderedViewContent` inherit from `String`. Make private API with `:nodoc:`.\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Rename <code>ActionView::TestCase::Behavior::Content</code> to <code>ActionView::TestCase::Behavior::RenderedViewContent</code>.</p>\n\n<p>Make <code>RenderedViewContent</code> inherit from <code>String</code>. Make private API with <code>:nodoc:</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Fix detection of required strict locals.\n\n    Further fix `render @collection` compatibility with strict locals\n\n    *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix detection of required strict locals.</p>\n\n<p>Further fix <code>render @collection</code> compatibility with strict locals</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix the `number_to_human_size` view helper to correctly work with negative numbers.\n\n    *Earlopain*",
+    "project": "actionview",
+    "date_merged": 1698483622000,
+    "author": "Jonathan Hefner",
+    "sha": "6d55d50dbfa9f174611637d9375ae72ea4b80fe4",
+    "pr": "49791",
+    "merge_sha": "092d182803475fd69e8b37a737fe696a56e47e1f",
+    "html": "<p>Fix the <code>number_to_human_size</code> view helper to correctly work with negative numbers.</p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
+    "message": "*   Automatically discard the implicit locals injected by collection rendering for template that can't accept them\n\n    When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.\n\n    Now they are only passed if the template will actually accept them.\n\n    *Yasha Krasnou*, *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1698483622000,
+    "author": "Jean Boussier",
+    "sha": "ba1285c5ed1412ed926e0362aa9de9a92194d58b",
+    "pr": "49782",
+    "merge_sha": "092d182803475fd69e8b37a737fe696a56e47e1f",
+    "html": "<p>Automatically discard the implicit locals injected by collection rendering for template that can’t accept them</p>\n\n<p>When rendering a collection, two implicit variables are injected, which breaks templates with strict locals.</p>\n\n<p>Now they are only passed if the template will actually accept them.</p>\n\n<p><em>Yasha Krasnou</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Fix `@rails/ujs` calling `start()` an extra time when using bundlers\n\n    *Hartley McGuire*, *Ryunosuke Sato*",
+    "project": "actionview",
+    "date_merged": 1698238715000,
+    "author": "Hartley McGuire",
+    "sha": "b849cf8d1d91ac29ae24a7ff8b1d5d2ca25d8c66",
+    "pr": "49773",
+    "merge_sha": "4d7c3c5d5997c3b057119b5cabf4d874eaea551f",
+    "html": "<p>Fix <code>@rails/ujs</code> calling <code>start()</code> an extra time when using bundlers</p>\n\n<p><em>Hartley McGuire</em>, <em>Ryunosuke Sato</em></p>\n"
+  },
+  {
+    "message": "*   Fix the `capture` view helper compatibility with HAML and Slim\n\n    When a blank string was captured in HAML or Slim (and possibly other template engines)\n    it would instead return the entire buffer.\n\n    *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1697297367000,
+    "author": "Jean Boussier",
+    "sha": "c34ddbcb532b88a97d2236771849c5a350751bc7",
+    "pr": "49612",
+    "merge_sha": "02ed5a10c9b0b12d1c16c0546d53f640ba6b7cb3",
+    "html": "<p>Fix the <code>capture</code> view helper compatibility with HAML and Slim</p>\n\n<p>When a blank string was captured in HAML or Slim (and possibly other template engines)<br />\nit would instead return the entire buffer.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Updated `@rails/ujs` files to ignore certain data-* attributes when element is contenteditable.\n\n    This fix was already landed in >= 7.0.4.3, < 7.1.0.\n    [[CVE-2023-23913](https://github.com/advisories/GHSA-xp5h-f8jf-rc8q)]\n\n    *Ryunosuke Sato*",
+    "project": "actionview",
+    "date_merged": 1697129661000,
+    "author": "Rafael Mendonça França",
+    "sha": "63f204d51aad454723a99b254e55070de7dce968",
+    "pr": "49553",
+    "merge_sha": "2d49514fe20b8084ba75f1077364cbb0951c9b48",
+    "html": "<p>Updated <code>@rails/ujs</code> files to ignore certain data-* attributes when element is contenteditable.</p>\n\n<p>This fix was already landed in &gt;= 7.0.4.3, &lt; 7.1.0.<br />\n[<a href=\"https://github.com/advisories/GHSA-xp5h-f8jf-rc8q\">CVE-2023-23913</a>]</p>\n\n<p><em>Ryunosuke Sato</em></p>\n"
+  },
+  {
+    "message": "*   Introduce `ActionView::TestCase.register_parser`\n\n    ```ruby\n    register_parser :rss, -> rendered { RSS::Parser.parse(rendered) }\n\n    test \"renders RSS\" do\n      article = Article.create!(title: \"Hello, world\")\n\n      render formats: :rss, partial: article\n\n      assert_equal \"Hello, world\", rendered.rss.items.last.title\n    end\n    ```\n\n    By default, register parsers for `:html` and `:json`.\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1695781825000,
+    "author": "Sean Doyle",
+    "sha": "7badc42723f8668518be44d6969ae53a04b67c54",
+    "pr": "49194",
+    "merge_sha": "7893e0a1652e193edd1f9bc5bfa430bd3f859094",
+    "html": "<p>Introduce <code>ActionView::TestCase.register_parser</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">register_parser</span> <span class=\"ss\">:rss</span><span class=\"p\">,</span> <span class=\"o\">-&gt;</span> <span class=\"n\">rendered</span> <span class=\"p\">{</span> <span class=\"no\">RSS</span><span class=\"o\">::</span><span class=\"no\">Parser</span><span class=\"p\">.</span><span class=\"nf\">parse</span><span class=\"p\">(</span><span class=\"n\">rendered</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n\n<span class=\"nb\">test</span> <span class=\"s2\">\"renders RSS\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">article</span> <span class=\"o\">=</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">title: </span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">render</span> <span class=\"ss\">formats: :rss</span><span class=\"p\">,</span> <span class=\"ss\">partial: </span><span class=\"n\">article</span>\n\n  <span class=\"n\">assert_equal</span> <span class=\"s2\">\"Hello, world\"</span><span class=\"p\">,</span> <span class=\"n\">rendered</span><span class=\"p\">.</span><span class=\"nf\">rss</span><span class=\"p\">.</span><span class=\"nf\">items</span><span class=\"p\">.</span><span class=\"nf\">last</span><span class=\"p\">.</span><span class=\"nf\">title</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>By default, register parsers for <code>:html</code> and <code>:json</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Fix `simple_format` with blank `wrapper_tag` option returns plain html tag\n\n    By default `simple_format` method returns the text wrapped with `<p>`. But if we explicitly specify\n    the `wrapper_tag: nil` in the options, it returns the text wrapped with `<></>` tag.\n\n    Before:\n\n    ```ruby\n    simple_format(\"Hello World\", {},  { wrapper_tag: nil })\n    # <>Hello World</>\n    ```\n\n    After:\n\n    ```ruby\n    simple_format(\"Hello World\", {},  { wrapper_tag: nil })\n    # <p>Hello World</p>\n    ```\n\n    *Akhil G Krishnan*, *Junichi Ito*",
     "project": "actionview",
     "date_merged": 1693909069000,
@@ -4940,6 +6410,16 @@
     "html": "<p>Ensure models passed to <code>form_for</code> attempt to call <code>to_model</code>.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Introduce `ActionMailer::FormBuilder`\n\n    Use the `default_form_builder` method in mailers to set the default form builder\n    for templates rendered by that mailer. Matches the behaviour in Action Controller.\n\n    *Alex Ghiculescu*",
+    "project": "actionmailer",
+    "date_merged": 1695677258000,
+    "author": "Alex Ghiculescu",
+    "sha": "9a2cf33f219f627a7230c726e6d89c334575a62d",
+    "pr": "48542",
+    "merge_sha": "38ce7fa6b12ff0b4c8bf0bcc5762e38259becaa7",
+    "html": "<p>Introduce <code>ActionMailer::FormBuilder</code></p>\n\n<p>Use the <code>default_form_builder</code> method in mailers to set the default form builder<br />\nfor templates rendered by that mailer. Matches the behaviour in Action Controller.</p>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   Mailers are listed in alphabetical order on the mailer preview page now.\n\n    *Martin Spickermann*",
     "project": "actionmailer",
     "date_merged": 1692637578000,
@@ -5048,6 +6528,116 @@
     "pr": "31595",
     "merge_sha": "95066e5fbd617edeaa6b1d28a50f295145aee52d",
     "html": "<p>Support multiple preview paths for mailers.</p>\n\n<p>Option <code>config.action_mailer.preview_path</code> is deprecated in favor of<br />\n<code>config.action_mailer.preview_paths</code>. Appending paths to this configuration option<br />\nwill cause those paths to be used in the search for mailer previews.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Fix N+1 query when fetching preview images for non-image assets.\n\n    *Aaron Patterson & Justin Searls*",
+    "project": "activestorage",
+    "date_merged": 1705597408000,
+    "author": "Rafael Mendonça França",
+    "sha": "a84622f1a86e2bf06c173c41c733a568db64c7b5",
+    "pr": "50787",
+    "merge_sha": "cc0fac4581b866ce32b401ad1ee935eb42ad012e",
+    "html": "<p>Fix N+1 query when fetching preview images for non-image assets.</p>\n\n<p><em>Aaron Patterson &amp; Justin Searls</em></p>\n"
+  },
+  {
+    "message": "*   Fix all Active Storage database related models to respect\n    `ActiveRecord::Base.table_name_prefix` configuration.\n\n    *Chedli Bourguiba*",
+    "project": "activestorage",
+    "date_merged": 1704130614000,
+    "author": "Jonathan Hefner",
+    "sha": "29cc70858d7bddeae71ce036090fe407b1552d1c",
+    "pr": "50167",
+    "merge_sha": "087b14cbba0791190bca3be1a79d27ec29ecf1b6",
+    "html": "<p>Fix all Active Storage database related models to respect<br />\n<code>ActiveRecord::Base.table_name_prefix</code> configuration.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActiveStorage::Representations::ProxyController` not returning the proper\n    preview image variant for previewable files.\n\n    *Chedli Bourguiba*",
+    "project": "activestorage",
+    "date_merged": 1701508455000,
+    "author": "Jonathan Hefner",
+    "sha": "5ffc69601cf538d93b416f7d366a38cbd07270f0",
+    "pr": "50098",
+    "merge_sha": "8fcc89749be94efb12c7914396110b2bff0e4de2",
+    "html": "<p>Fix <code>ActiveStorage::Representations::ProxyController</code> not returning the proper<br />\npreview image variant for previewable files.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActiveStorage::Representations::ProxyController` to proxy untracked\n    variants.\n\n    *Chedli Bourguiba*",
+    "project": "activestorage",
+    "date_merged": 1701508455000,
+    "author": "Jonathan Hefner",
+    "sha": "0b8f0e2d2dbfba88eaa87b05b12801e1a76bc7bb",
+    "pr": "50107",
+    "merge_sha": "8fcc89749be94efb12c7914396110b2bff0e4de2",
+    "html": "<p>Fix <code>ActiveStorage::Representations::ProxyController</code> to proxy untracked<br />\nvariants.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
+    "message": "*   Fix direct upload forms when submit button contains nested elements.\n\n    *Marc Köhlbrugge*",
+    "project": "activestorage",
+    "date_merged": 1701508455000,
+    "author": "Jonathan Hefner",
+    "sha": "9b51b98cef5ca321e37fc9e0795dc4b0e3f06279",
+    "pr": "48290",
+    "merge_sha": "8fcc89749be94efb12c7914396110b2bff0e4de2",
+    "html": "<p>Fix direct upload forms when submit button contains nested elements.</p>\n\n<p><em>Marc Köhlbrugge</em></p>\n"
+  },
+  {
+    "message": "*   When using the `preprocessed: true` option, avoid enqueuing transform jobs\n    for blobs that are not representable.\n\n    *Chedli Bourguiba*",
+    "project": "activestorage",
+    "date_merged": 1701508455000,
+    "author": "Jonathan Hefner",
+    "sha": "0fdfeb9bc1a577342a50706f2bae078ab996e238",
+    "pr": "50082",
+    "merge_sha": "8fcc89749be94efb12c7914396110b2bff0e4de2",
+    "html": "<p>When using the <code>preprocessed: true</code> option, avoid enqueuing transform jobs<br />\nfor blobs that are not representable.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
+  },
+  {
+    "message": "*   Process preview image variant when calling `ActiveStorage::Preview#processed`.\n    For example, `attached_pdf.preview(:thumb).processed` will now immediately\n    generate the full-sized preview image and the `:thumb` variant of it.\n    Previously, the `:thumb` variant would not be generated until a further call\n    to e.g. `processed.url`.\n\n    *Chedli Bourguiba* and *Jonathan Hefner*",
+    "project": "activestorage",
+    "date_merged": 1701508455000,
+    "author": "Jonathan Hefner",
+    "sha": "28092e292c1439d97e7f11ee765ce7f721782a7d",
+    "pr": "50044",
+    "merge_sha": "8fcc89749be94efb12c7914396110b2bff0e4de2",
+    "html": "<p>Process preview image variant when calling <code>ActiveStorage::Preview#processed</code>.<br />\nFor example, <code>attached_pdf.preview(:thumb).processed</code> will now immediately<br />\ngenerate the full-sized preview image and the <code>:thumb</code> variant of it.<br />\nPreviously, the <code>:thumb</code> variant would not be generated until a further call<br />\nto e.g. <code>processed.url</code>.</p>\n\n<p><em>Chedli Bourguiba</em> and <em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Prevent `ActiveRecord::StrictLoadingViolationError` when strict loading is\n    enabled and the variant of an Active Storage preview has already been\n    processed (for example, by calling `ActiveStorage::Preview#url`).\n\n    *Jonathan Hefner*",
+    "project": "activestorage",
+    "date_merged": 1701508455000,
+    "author": "Jonathan Hefner",
+    "sha": "6c930059bcdf57b1aab9bc5ce92cce6a66499fff",
+    "pr": "50043",
+    "merge_sha": "8fcc89749be94efb12c7914396110b2bff0e4de2",
+    "html": "<p>Prevent <code>ActiveRecord::StrictLoadingViolationError</code> when strict loading is<br />\nenabled and the variant of an Active Storage preview has already been<br />\nprocessed (for example, by calling <code>ActiveStorage::Preview#url</code>).</p>\n\n<p><em>Jonathan Hefner</em></p>\n"
+  },
+  {
+    "message": "*   Fix `preprocessed: true` option for named variants of previewable files.\n\n    *Nico Wenterodt*",
+    "project": "activestorage",
+    "date_merged": 1699979066000,
+    "author": "Jonathan Hefner",
+    "sha": "bbe30c88e1e9f2edf98abf6b8e0b7cfc012d7e4b",
+    "pr": "50006",
+    "merge_sha": "8fc244ccb57013bbbbe37e84a78ce4fcb831dd44",
+    "html": "<p>Fix <code>preprocessed: true</code> option for named variants of previewable files.</p>\n\n<p><em>Nico Wenterodt</em></p>\n"
+  },
+  {
+    "message": "*   Add `expires_at` option to `ActiveStorage::Blob#signed_id`.\n\n    ```ruby\n    rails_blob_path(user.avatar, disposition: \"attachment\", expires_at: 30.minutes.from_now)\n    <%= image_tag rails_blob_path(user.avatar.variant(resize: \"100x100\"), expires_at: 30.minutes.from_now) %>\n    ```\n\n    *Aki*",
+    "project": "activestorage",
+    "date_merged": 1695763293000,
+    "author": "aki",
+    "sha": "1f9fbbe213b2cdfcb054c9ab8fcac955429aceeb",
+    "pr": "48115",
+    "merge_sha": "2e93162e42d0a0a69ba84b157acff6a2640689e7",
+    "html": "<p>Add <code>expires_at</code> option to <code>ActiveStorage::Blob#signed_id</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">rails_blob_path</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">avatar</span><span class=\"p\">,</span> <span class=\"ss\">disposition: </span><span class=\"s2\">\"attachment\"</span><span class=\"p\">,</span> <span class=\"ss\">expires_at: </span><span class=\"mi\">30</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">.</span><span class=\"nf\">from_now</span><span class=\"p\">)</span>\n<span class=\"o\">&lt;</span><span class=\"sx\">%= image_tag rails_blob_path(user.avatar.variant(resize: \"100x100\"), expires_at: 30.minutes.from_now) %&gt;\n</span></code></pre></div></div>\n\n<p><em>Aki</em></p>\n"
+  },
+  {
+    "message": "*   Allow attaching File and Pathname when assigning attributes, e.g.\n\n    ```ruby\n    User.create!(avatar: File.open(\"image.jpg\"))\n    User.create!(avatar: file_fixture(\"image.jpg\"))\n    ```\n\n    *Dorian Marié*",
+    "project": "activestorage",
+    "date_merged": 1695642646000,
+    "author": "Dorian Marié",
+    "sha": "22bacd710de78e36029489a81e8e82cb704429c6",
+    "pr": "45606",
+    "merge_sha": "94c90ecf20ac1357bc38080c2b9bef2b58ee42de",
+    "html": "<p>Allow attaching File and Pathname when assigning attributes, e.g.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">avatar: </span><span class=\"no\">File</span><span class=\"p\">.</span><span class=\"nf\">open</span><span class=\"p\">(</span><span class=\"s2\">\"image.jpg\"</span><span class=\"p\">))</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">create!</span><span class=\"p\">(</span><span class=\"ss\">avatar: </span><span class=\"n\">file_fixture</span><span class=\"p\">(</span><span class=\"s2\">\"image.jpg\"</span><span class=\"p\">))</span>\n</code></pre></div></div>\n\n<p><em>Dorian Marié</em></p>\n"
   },
   {
     "message": "*   Disables the session in `ActiveStorage::Blobs::ProxyController`\n    and `ActiveStorage::Representations::ProxyController`\n    in order to allow caching by default in some CDNs as CloudFlare\n\n    Fixes #44136\n\n    *Bruno Prieto*",
