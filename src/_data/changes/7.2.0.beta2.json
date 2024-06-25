@@ -1,45 +1,5 @@
 [
   {
-    "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
-    "project": "actionpack",
-    "date_merged": 1717017523000,
-    "author": "Cyril Blaecke",
-    "sha": "6cb41bae10f813799ff85f8b2cda23cab6ae99a9",
-    "pr": "51944",
-    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
-    "html": "<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"s2\">\"'wasm-unsafe-eval'\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"ss\">:wasm_unsafe_eval</span>\n</code></pre></div></div>\n\n<p><em>Joe Haig</em></p>\n"
-  },
-  {
-    "message": "*   Add `display_capture` and `keyboard_map` in `permissions_policy`\n\n    *Cyril Blaecke*",
-    "project": "actionpack",
-    "date_merged": 1717017523000,
-    "author": "Cyril Blaecke",
-    "sha": "cba374995c6b32d30d01371292e313112ac0868e",
-    "pr": "51944",
-    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
-    "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
-  },
-  {
-    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
-    "project": "activesupport",
-    "date_merged": 1718230877000,
-    "author": "Igor Depolli",
-    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
-    "pr": "52072",
-    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
-    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
-  },
-  {
-    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
-    "project": "activesupport",
-    "date_merged": 1717923228000,
-    "author": "Richard Böhme",
-    "sha": "38e9695c10f822caaa54e399833c346249660005",
-    "pr": "52036",
-    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
-    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
     "message": "*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.\n\n    *Deepak Mahakale*",
     "project": "railties",
     "date_merged": 1718299349000,
@@ -78,16 +38,6 @@
     "pr": "52165",
     "merge_sha": "242216803ee73f528b0a74c6bdb367e5b98d8f83",
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
-    "project": "actiontext",
-    "date_merged": 1718216498000,
-    "author": "Petrik",
-    "sha": "52c21f90669ce59adf7deef85a44b6b1a46928fa",
-    "pr": "52093",
-    "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
-    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
     "message": "*   Add condensed `#inspect` for `ConnectionPool`, `AbstractAdapter`, and\n    `DatabaseConfig`.\n\n    *Hartley McGuire*",
@@ -188,5 +138,55 @@
     "pr": "51878",
     "merge_sha": "2281edf99e3583b1ff7ae636906f681d80dab603",
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
+    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
+    "project": "actiontext",
+    "date_merged": 1718216498000,
+    "author": "Petrik",
+    "sha": "52c21f90669ce59adf7deef85a44b6b1a46928fa",
+    "pr": "52093",
+    "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
+    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
+    "project": "actionpack",
+    "date_merged": 1717017523000,
+    "author": "Cyril Blaecke",
+    "sha": "6cb41bae10f813799ff85f8b2cda23cab6ae99a9",
+    "pr": "51944",
+    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
+    "html": "<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"s2\">\"'wasm-unsafe-eval'\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"ss\">:wasm_unsafe_eval</span>\n</code></pre></div></div>\n\n<p><em>Joe Haig</em></p>\n"
+  },
+  {
+    "message": "*   Add `display_capture` and `keyboard_map` in `permissions_policy`\n\n    *Cyril Blaecke*",
+    "project": "actionpack",
+    "date_merged": 1717017523000,
+    "author": "Cyril Blaecke",
+    "sha": "cba374995c6b32d30d01371292e313112ac0868e",
+    "pr": "51944",
+    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
+    "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
+  },
+  {
+    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
+    "project": "activesupport",
+    "date_merged": 1718230877000,
+    "author": "Igor Depolli",
+    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
+    "pr": "52072",
+    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
+    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
+  },
+  {
+    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1717923228000,
+    "author": "Richard Böhme",
+    "sha": "38e9695c10f822caaa54e399833c346249660005",
+    "pr": "52036",
+    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
+    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
   }
 ]
