@@ -150,6 +150,16 @@
     "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Support `immutable` directive in Cache-Control\n\n    ```ruby\n    expires_in 1.minute, public: true, immutable: true\n    # Cache-Control: public, max-age=60, immutable\n    ```\n\n    *heka1024*",
+    "project": "actionpack",
+    "date_merged": 1719433399000,
+    "author": "heka1024",
+    "sha": "d98cfde86a6461148d8dc93665868b7526532e05",
+    "pr": "52197",
+    "merge_sha": "999df686de0d129ad7ad4724b6fff94ee6d6131b",
+    "html": "<p>Support <code>immutable</code> directive in Cache-Control</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">expires_in</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">minute</span><span class=\"p\">,</span> <span class=\"ss\">public: </span><span class=\"kp\">true</span><span class=\"p\">,</span> <span class=\"ss\">immutable: </span><span class=\"kp\">true</span>\n<span class=\"c1\"># Cache-Control: public, max-age=60, immutable</span>\n</code></pre></div></div>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
     "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
     "project": "actionpack",
     "date_merged": 1717017523000,
@@ -188,5 +198,15 @@
     "pr": "52036",
     "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
     "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add a new configuration value `:zone` for `ActiveSupport.to_time_preserves_timezone` and rename the previous `true` value to `:offset`. The new default value is `:zone`.\n\n    *Jason Kim*, *John Hawthorn*",
+    "project": "activesupport",
+    "date_merged": 1719432965000,
+    "author": "Jason Kim",
+    "sha": "9dcf17ec4c51722b5ab8146c5a714242cc0716ba",
+    "pr": "52091",
+    "merge_sha": "716e4a7d326c36fc44d4a6fcab7a21313ab3b2df",
+    "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
   }
 ]
