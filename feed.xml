@@ -358,6 +358,30 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Support `immutable` directive in Cache-Control
+</title>
+    <link>https://github.com/rails/rails/issues/52197</link>
+    <guid>https://github.com/rails/rails/issues/52197</guid>
+    <description>*   Support `immutable` directive in Cache-Control
+
+    ```ruby
+    expires_in 1.minute, public: true, immutable: true
+    # Cache-Control: public, max-age=60, immutable
+    ```
+
+    *heka1024*</description>
+    <pubDate>Wed, 26 Jun 2024 20:23:19 +0000</pubDate>
+    <author>heka1024</author>
+    <content:encoded><![CDATA[<p>Support <code>immutable</code> directive in Cache-Control</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">expires_in</span> <span class="mi">1</span><span class="p">.</span><span class="nf">minute</span><span class="p">,</span> <span class="ss">public: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">immutable: </span><span class="kp">true</span>
+<span class="c1"># Cache-Control: public, max-age=60, immutable</span>
+</code></pre></div></div>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add `:wasm_unsafe_eval` mapping for `content_security_policy`
 </title>
     <link>https://github.com/rails/rails/issues/51944</link>
@@ -434,6 +458,21 @@ by these values.</p>
 proc by printing the proc’s source code (MRI only).</p>
 
 <p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add a new configuration value `:zone` for `ActiveSupport.to_time_preserves_timezone` and rename the previous `true` value to `:offset`. The new default value is `:zone`.
+</title>
+    <link>https://github.com/rails/rails/issues/52091</link>
+    <guid>https://github.com/rails/rails/issues/52091</guid>
+    <description>*   Add a new configuration value `:zone` for `ActiveSupport.to_time_preserves_timezone` and rename the previous `true` value to `:offset`. The new default value is `:zone`.
+
+    *Jason Kim*, *John Hawthorn*</description>
+    <pubDate>Wed, 26 Jun 2024 20:16:05 +0000</pubDate>
+    <author>Jason Kim</author>
+    <content:encoded><![CDATA[<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>
+
+<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>
 ]]></content:encoded>
   </item>
 </channel>
