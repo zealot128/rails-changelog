@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>railties: Deprecate `bin/rake stats` in favor of `bin/rails stats`.
+</title>
+    <link>https://github.com/rails/rails/issues/52231</link>
+    <guid>https://github.com/rails/rails/issues/52231</guid>
+    <description>*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.
+
+    *Juan Vásquez*</description>
+    <pubDate>Sat, 29 Jun 2024 06:52:05 +0000</pubDate>
+    <author>Juan Vásquez</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>bin/rake stats</code> in favor of <code>bin/rails stats</code>.</p>
+
+<p><em>Juan Vásquez</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
 </title>
     <link>https://github.com/rails/rails/issues/52115</link>
