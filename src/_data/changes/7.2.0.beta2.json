@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.\n\n    *Juan Vásquez*",
+    "project": "railties",
+    "date_merged": 1719643925000,
+    "author": "Juan Vásquez",
+    "sha": "3d737cd8ef0b4cfd89df7cafc17315fe1aa88319",
+    "pr": "52231",
+    "merge_sha": "21280a16164d10cdcc02356787fca46940f27c16",
+    "html": "<p>Deprecate <code>bin/rake stats</code> in favor of <code>bin/rails stats</code>.</p>\n\n<p><em>Juan Vásquez</em></p>\n"
+  },
+  {
     "message": "*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.\n\n    *Deepak Mahakale*",
     "project": "railties",
     "date_merged": 1718299349000,
