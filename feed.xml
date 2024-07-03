@@ -95,6 +95,67 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: `ActiveRecord::Encryption::Encryptor` now supports a `:compressor` option to customize the compression algorithm used.
+</title>
+    <link>https://github.com/rails/rails/issues/51735</link>
+    <guid>https://github.com/rails/rails/issues/51735</guid>
+    <description>*   `ActiveRecord::Encryption::Encryptor` now supports a `:compressor` option to customize the compression algorithm used.
+
+    ```ruby
+    module ZstdCompressor
+      def self.deflate(data)
+        Zstd.compress(data)
+      end
+
+      def self.inflate(data)
+        Zstd.decompress(data)
+      end
+    end
+
+    class User
+      encrypts :name, compressor: ZstdCompressor
+    end
+    ```
+
+    You disable compression by passing `compress: false`.
+
+    ```ruby
+    class User
+      encrypts :name, compress: false
+    end
+    ```
+
+    *heka1024*</description>
+    <pubDate>Wed, 03 Jul 2024 12:39:13 +0000</pubDate>
+    <author>heka1024</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Encryption::Encryptor</code> now supports a <code>:compressor</code> option to customize the compression algorithm used.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ZstdCompressor</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">deflate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="no">Zstd</span><span class="p">.</span><span class="nf">compress</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">inflate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="no">Zstd</span><span class="p">.</span><span class="nf">decompress</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">User</span>
+  <span class="n">encrypts</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">compressor: </span><span class="no">ZstdCompressor</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>You disable compression by passing <code>compress: false</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span>
+  <span class="n">encrypts</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">compress: </span><span class="kp">false</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add condensed `#inspect` for `ConnectionPool`, `AbstractAdapter`, and
 </title>
     <link>https://github.com/rails/rails/issues/50405</link>
