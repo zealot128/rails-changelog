@@ -434,6 +434,33 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Add `config.action_dispatch.strict_freshness`.
+</title>
+    <link>https://github.com/rails/rails/issues/52274</link>
+    <guid>https://github.com/rails/rails/issues/52274</guid>
+    <description>*   Add `config.action_dispatch.strict_freshness`.
+
+    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,
+    as specified by RFC 7232, Section 6.
+
+    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of
+    Rails 8.0 defaults.
+
+    *heka1024*</description>
+    <pubDate>Fri, 05 Jul 2024 08:27:46 +0000</pubDate>
+    <author>heka1024</author>
+    <content:encoded><![CDATA[<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>
+
+<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />
+as specified by RFC 7232, Section 6.</p>
+
+<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />
+Rails 8.0 defaults.</p>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Support `immutable` directive in Cache-Control
 </title>
     <link>https://github.com/rails/rails/issues/52197</link>
