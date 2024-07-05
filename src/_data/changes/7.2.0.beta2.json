@@ -170,6 +170,16 @@
     "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Add `config.action_dispatch.strict_freshness`.\n\n    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,\n    as specified by RFC 7232, Section 6.\n\n    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of\n    Rails 8.0 defaults.\n\n    *heka1024*",
+    "project": "actionpack",
+    "date_merged": 1720168066000,
+    "author": "heka1024",
+    "sha": "fc7637103a7edc723b92a1b7fec297eede0c5cb9",
+    "pr": "52274",
+    "merge_sha": "126445239fa6d31ab081414a7d6d8d50fdfcb6ce",
+    "html": "<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>\n\n<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />\nas specified by RFC 7232, Section 6.</p>\n\n<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />\nRails 8.0 defaults.</p>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
     "message": "*   Support `immutable` directive in Cache-Control\n\n    ```ruby\n    expires_in 1.minute, public: true, immutable: true\n    # Cache-Control: public, max-age=60, immutable\n    ```\n\n    *heka1024*",
     "project": "actionpack",
     "date_merged": 1719433399000,
