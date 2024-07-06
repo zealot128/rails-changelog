@@ -434,6 +434,21 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Make `http_cache_forever` use `immutable: true`
+</title>
+    <link>https://github.com/rails/rails/issues/52283</link>
+    <guid>https://github.com/rails/rails/issues/52283</guid>
+    <description>*   Make `http_cache_forever` use `immutable: true`
+
+    *Nate Matykiewicz*</description>
+    <pubDate>Sat, 06 Jul 2024 18:08:48 +0000</pubDate>
+    <author>Nate Matykiewicz</author>
+    <content:encoded><![CDATA[<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>
+
+<p><em>Nate Matykiewicz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add `config.action_dispatch.strict_freshness`.
 </title>
     <link>https://github.com/rails/rails/issues/52274</link>
@@ -576,6 +591,21 @@ proc by printing the proc’s source code (MRI only).</p>
     <content:encoded><![CDATA[<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>
 
 <p><em>Jason Kim</em>, <em>John Hawthorn</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Mark proxied files as `immutable` in their Cache-Control header
+</title>
+    <link>https://github.com/rails/rails/issues/52283</link>
+    <guid>https://github.com/rails/rails/issues/52283</guid>
+    <description>*   Mark proxied files as `immutable` in their Cache-Control header
+
+    *Nate Matykiewicz*</description>
+    <pubDate>Sat, 06 Jul 2024 18:08:48 +0000</pubDate>
+    <author>Nate Matykiewicz</author>
+    <content:encoded><![CDATA[<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>
+
+<p><em>Nate Matykiewicz</em></p>
 ]]></content:encoded>
   </item>
 </channel>
