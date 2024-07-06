@@ -170,6 +170,16 @@
     "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Make `http_cache_forever` use `immutable: true`\n\n    *Nate Matykiewicz*",
+    "project": "actionpack",
+    "date_merged": 1720289328000,
+    "author": "Nate Matykiewicz",
+    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
+    "pr": "52283",
+    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
+    "html": "<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
+  },
+  {
     "message": "*   Add `config.action_dispatch.strict_freshness`.\n\n    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,\n    as specified by RFC 7232, Section 6.\n\n    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of\n    Rails 8.0 defaults.\n\n    *heka1024*",
     "project": "actionpack",
     "date_merged": 1720168066000,
@@ -238,5 +248,15 @@
     "pr": "52091",
     "merge_sha": "716e4a7d326c36fc44d4a6fcab7a21313ab3b2df",
     "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
+  },
+  {
+    "message": "*   Mark proxied files as `immutable` in their Cache-Control header\n\n    *Nate Matykiewicz*",
+    "project": "activestorage",
+    "date_merged": 1720289328000,
+    "author": "Nate Matykiewicz",
+    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
+    "pr": "52283",
+    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
+    "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
   }
 ]
