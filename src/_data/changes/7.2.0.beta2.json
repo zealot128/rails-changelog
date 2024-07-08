@@ -50,6 +50,16 @@
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Fix duplicate callback execution when child autosaves parent with `has_one` and `belongs_to`.\n\n    Before, persisting a new child record with a new associated parent record would run `before_validation`,\n    `after_validation`, `before_save` and `after_save` callbacks twice.\n\n    Now, these callbacks are only executed once as expected.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1720458047000,
+    "author": "Joshua Young",
+    "sha": "154f4a4ba96b8f22e87084c2a82192e51c3a2362",
+    "pr": "49847",
+    "merge_sha": "16f1222753cac0a554a2acd8f4ffa3f23d51d945",
+    "html": "<p>Fix duplicate callback execution when child autosaves parent with <code>has_one</code> and <code>belongs_to</code>.</p>\n\n<p>Before, persisting a new child record with a new associated parent record would run <code>before_validation</code>,<br />\n<code>after_validation</code>, <code>before_save</code> and <code>after_save</code> callbacks twice.</p>\n\n<p>Now, these callbacks are only executed once as expected.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   `ActiveRecord::Encryption::Encryptor` now supports a `:compressor` option to customize the compression algorithm used.\n\n    ```ruby\n    module ZstdCompressor\n      def self.deflate(data)\n        Zstd.compress(data)\n      end\n\n      def self.inflate(data)\n        Zstd.decompress(data)\n      end\n    end\n\n    class User\n      encrypts :name, compressor: ZstdCompressor\n    end\n    ```\n\n    You disable compression by passing `compress: false`.\n\n    ```ruby\n    class User\n      encrypts :name, compress: false\n    end\n    ```\n\n    *heka1024*",
     "project": "activerecord",
     "date_merged": 1720010353000,
