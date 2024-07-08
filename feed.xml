@@ -95,6 +95,31 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix duplicate callback execution when child autosaves parent with `has_one` and `belongs_to`.
+</title>
+    <link>https://github.com/rails/rails/issues/49847</link>
+    <guid>https://github.com/rails/rails/issues/49847</guid>
+    <description>*   Fix duplicate callback execution when child autosaves parent with `has_one` and `belongs_to`.
+
+    Before, persisting a new child record with a new associated parent record would run `before_validation`,
+    `after_validation`, `before_save` and `after_save` callbacks twice.
+
+    Now, these callbacks are only executed once as expected.
+
+    *Joshua Young*</description>
+    <pubDate>Mon, 08 Jul 2024 17:00:47 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Fix duplicate callback execution when child autosaves parent with <code>has_one</code> and <code>belongs_to</code>.</p>
+
+<p>Before, persisting a new child record with a new associated parent record would run <code>before_validation</code>,<br />
+<code>after_validation</code>, <code>before_save</code> and <code>after_save</code> callbacks twice.</p>
+
+<p>Now, these callbacks are only executed once as expected.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `ActiveRecord::Encryption::Encryptor` now supports a `:compressor` option to customize the compression algorithm used.
 </title>
     <link>https://github.com/rails/rails/issues/51735</link>
