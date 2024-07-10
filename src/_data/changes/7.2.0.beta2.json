@@ -40,6 +40,56 @@
     "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
+    "message": "*   Mark proxied files as `immutable` in their Cache-Control header\n\n    *Nate Matykiewicz*",
+    "project": "activestorage",
+    "date_merged": 1720289328000,
+    "author": "Nate Matykiewicz",
+    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
+    "pr": "52283",
+    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
+    "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
+  },
+  {
+    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
+    "project": "activesupport",
+    "date_merged": 1718230877000,
+    "author": "Igor Depolli",
+    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
+    "pr": "52072",
+    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
+    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
+  },
+  {
+    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1717923228000,
+    "author": "Richard Böhme",
+    "sha": "38e9695c10f822caaa54e399833c346249660005",
+    "pr": "52036",
+    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
+    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add a new configuration value `:zone` for `ActiveSupport.to_time_preserves_timezone` and rename the previous `true` value to `:offset`. The new default value is `:zone`.\n\n    *Jason Kim*, *John Hawthorn*",
+    "project": "activesupport",
+    "date_merged": 1719432965000,
+    "author": "Jason Kim",
+    "sha": "9dcf17ec4c51722b5ab8146c5a714242cc0716ba",
+    "pr": "52091",
+    "merge_sha": "716e4a7d326c36fc44d4a6fcab7a21313ab3b2df",
+    "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
+  },
+  {
+    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
+    "project": "actiontext",
+    "date_merged": 1718216498000,
+    "author": "Petrik",
+    "sha": "52c21f90669ce59adf7deef85a44b6b1a46928fa",
+    "pr": "52093",
+    "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
+    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from\n    the `classic` autoloader to Zeitwerk has been deleted.\n\n    The last version of this guide can be found\n    [here](https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html),\n    in case you need it.\n\n    *Petrik de Heus*",
     "project": "guides",
     "date_merged": 1718873221000,
@@ -48,6 +98,56 @@
     "pr": "52165",
     "merge_sha": "242216803ee73f528b0a74c6bdb367e5b98d8f83",
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Make `http_cache_forever` use `immutable: true`\n\n    *Nate Matykiewicz*",
+    "project": "actionpack",
+    "date_merged": 1720289328000,
+    "author": "Nate Matykiewicz",
+    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
+    "pr": "52283",
+    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
+    "html": "<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
+  },
+  {
+    "message": "*   Add `config.action_dispatch.strict_freshness`.\n\n    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,\n    as specified by RFC 7232, Section 6.\n\n    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of\n    Rails 8.0 defaults.\n\n    *heka1024*",
+    "project": "actionpack",
+    "date_merged": 1720168066000,
+    "author": "heka1024",
+    "sha": "fc7637103a7edc723b92a1b7fec297eede0c5cb9",
+    "pr": "52274",
+    "merge_sha": "126445239fa6d31ab081414a7d6d8d50fdfcb6ce",
+    "html": "<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>\n\n<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />\nas specified by RFC 7232, Section 6.</p>\n\n<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />\nRails 8.0 defaults.</p>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   Support `immutable` directive in Cache-Control\n\n    ```ruby\n    expires_in 1.minute, public: true, immutable: true\n    # Cache-Control: public, max-age=60, immutable\n    ```\n\n    *heka1024*",
+    "project": "actionpack",
+    "date_merged": 1719433399000,
+    "author": "heka1024",
+    "sha": "d98cfde86a6461148d8dc93665868b7526532e05",
+    "pr": "52197",
+    "merge_sha": "999df686de0d129ad7ad4724b6fff94ee6d6131b",
+    "html": "<p>Support <code>immutable</code> directive in Cache-Control</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">expires_in</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">minute</span><span class=\"p\">,</span> <span class=\"ss\">public: </span><span class=\"kp\">true</span><span class=\"p\">,</span> <span class=\"ss\">immutable: </span><span class=\"kp\">true</span>\n<span class=\"c1\"># Cache-Control: public, max-age=60, immutable</span>\n</code></pre></div></div>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
+    "project": "actionpack",
+    "date_merged": 1717017523000,
+    "author": "Cyril Blaecke",
+    "sha": "6cb41bae10f813799ff85f8b2cda23cab6ae99a9",
+    "pr": "51944",
+    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
+    "html": "<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"s2\">\"'wasm-unsafe-eval'\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"ss\">:wasm_unsafe_eval</span>\n</code></pre></div></div>\n\n<p><em>Joe Haig</em></p>\n"
+  },
+  {
+    "message": "*   Add `display_capture` and `keyboard_map` in `permissions_policy`\n\n    *Cyril Blaecke*",
+    "project": "actionpack",
+    "date_merged": 1717017523000,
+    "author": "Cyril Blaecke",
+    "sha": "cba374995c6b32d30d01371292e313112ac0868e",
+    "pr": "51944",
+    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
+    "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
   },
   {
     "message": "*   Fix duplicate callback execution when child autosaves parent with `has_one` and `belongs_to`.\n\n    Before, persisting a new child record with a new associated parent record would run `before_validation`,\n    `after_validation`, `before_save` and `after_save` callbacks twice.\n\n    Now, these callbacks are only executed once as expected.\n\n    *Joshua Young*",
@@ -168,105 +268,5 @@
     "pr": "51878",
     "merge_sha": "2281edf99e3583b1ff7ae636906f681d80dab603",
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
-  },
-  {
-    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
-    "project": "actiontext",
-    "date_merged": 1718216498000,
-    "author": "Petrik",
-    "sha": "52c21f90669ce59adf7deef85a44b6b1a46928fa",
-    "pr": "52093",
-    "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
-    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Make `http_cache_forever` use `immutable: true`\n\n    *Nate Matykiewicz*",
-    "project": "actionpack",
-    "date_merged": 1720289328000,
-    "author": "Nate Matykiewicz",
-    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
-    "pr": "52283",
-    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
-    "html": "<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
-  },
-  {
-    "message": "*   Add `config.action_dispatch.strict_freshness`.\n\n    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,\n    as specified by RFC 7232, Section 6.\n\n    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of\n    Rails 8.0 defaults.\n\n    *heka1024*",
-    "project": "actionpack",
-    "date_merged": 1720168066000,
-    "author": "heka1024",
-    "sha": "fc7637103a7edc723b92a1b7fec297eede0c5cb9",
-    "pr": "52274",
-    "merge_sha": "126445239fa6d31ab081414a7d6d8d50fdfcb6ce",
-    "html": "<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>\n\n<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />\nas specified by RFC 7232, Section 6.</p>\n\n<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />\nRails 8.0 defaults.</p>\n\n<p><em>heka1024</em></p>\n"
-  },
-  {
-    "message": "*   Support `immutable` directive in Cache-Control\n\n    ```ruby\n    expires_in 1.minute, public: true, immutable: true\n    # Cache-Control: public, max-age=60, immutable\n    ```\n\n    *heka1024*",
-    "project": "actionpack",
-    "date_merged": 1719433399000,
-    "author": "heka1024",
-    "sha": "d98cfde86a6461148d8dc93665868b7526532e05",
-    "pr": "52197",
-    "merge_sha": "999df686de0d129ad7ad4724b6fff94ee6d6131b",
-    "html": "<p>Support <code>immutable</code> directive in Cache-Control</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">expires_in</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">minute</span><span class=\"p\">,</span> <span class=\"ss\">public: </span><span class=\"kp\">true</span><span class=\"p\">,</span> <span class=\"ss\">immutable: </span><span class=\"kp\">true</span>\n<span class=\"c1\"># Cache-Control: public, max-age=60, immutable</span>\n</code></pre></div></div>\n\n<p><em>heka1024</em></p>\n"
-  },
-  {
-    "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
-    "project": "actionpack",
-    "date_merged": 1717017523000,
-    "author": "Cyril Blaecke",
-    "sha": "6cb41bae10f813799ff85f8b2cda23cab6ae99a9",
-    "pr": "51944",
-    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
-    "html": "<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"s2\">\"'wasm-unsafe-eval'\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"ss\">:wasm_unsafe_eval</span>\n</code></pre></div></div>\n\n<p><em>Joe Haig</em></p>\n"
-  },
-  {
-    "message": "*   Add `display_capture` and `keyboard_map` in `permissions_policy`\n\n    *Cyril Blaecke*",
-    "project": "actionpack",
-    "date_merged": 1717017523000,
-    "author": "Cyril Blaecke",
-    "sha": "cba374995c6b32d30d01371292e313112ac0868e",
-    "pr": "51944",
-    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
-    "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
-  },
-  {
-    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
-    "project": "activesupport",
-    "date_merged": 1718230877000,
-    "author": "Igor Depolli",
-    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
-    "pr": "52072",
-    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
-    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
-  },
-  {
-    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
-    "project": "activesupport",
-    "date_merged": 1717923228000,
-    "author": "Richard Böhme",
-    "sha": "38e9695c10f822caaa54e399833c346249660005",
-    "pr": "52036",
-    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
-    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Add a new configuration value `:zone` for `ActiveSupport.to_time_preserves_timezone` and rename the previous `true` value to `:offset`. The new default value is `:zone`.\n\n    *Jason Kim*, *John Hawthorn*",
-    "project": "activesupport",
-    "date_merged": 1719432965000,
-    "author": "Jason Kim",
-    "sha": "9dcf17ec4c51722b5ab8146c5a714242cc0716ba",
-    "pr": "52091",
-    "merge_sha": "716e4a7d326c36fc44d4a6fcab7a21313ab3b2df",
-    "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
-  },
-  {
-    "message": "*   Mark proxied files as `immutable` in their Cache-Control header\n\n    *Nate Matykiewicz*",
-    "project": "activestorage",
-    "date_merged": 1720289328000,
-    "author": "Nate Matykiewicz",
-    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
-    "pr": "52283",
-    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
-    "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
   }
 ]
