@@ -85,6 +85,25 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Optimize load time for `Railtie#initialize_i18n`. Filter `I18n.load_path`s passed to the file watcher to only those
+</title>
+    <link>https://github.com/rails/rails/issues/52271</link>
+    <guid>https://github.com/rails/rails/issues/52271</guid>
+    <description>*   Optimize load time for `Railtie#initialize_i18n`. Filter `I18n.load_path`s passed to the file watcher to only those
+    under `Rails.root`. Previously the watcher would grab all available locales, including those in gems
+    which do not require a watcher because they won&#39;t change.
+
+    *Nick Schwaderer*</description>
+    <pubDate>Thu, 11 Jul 2024 18:00:20 +0000</pubDate>
+    <author>Nick Schwaderer</author>
+    <content:encoded><![CDATA[<p>Optimize load time for <code>Railtie#initialize_i18n</code>. Filter <code>I18n.load_path</code>s passed to the file watcher to only those<br />
+under <code>Rails.root</code>. Previously the watcher would grab all available locales, including those in gems<br />
+which do not require a watcher because they won’t change.</p>
+
+<p><em>Nick Schwaderer</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results
 </title>
     <link>https://github.com/rails/rails/issues/52072</link>
