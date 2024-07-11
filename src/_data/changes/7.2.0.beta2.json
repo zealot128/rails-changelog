@@ -50,6 +50,16 @@
     "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
   },
   {
+    "message": "*   Optimize load time for `Railtie#initialize_i18n`. Filter `I18n.load_path`s passed to the file watcher to only those\n    under `Rails.root`. Previously the watcher would grab all available locales, including those in gems\n    which do not require a watcher because they won't change.\n\n    *Nick Schwaderer*",
+    "project": "activesupport",
+    "date_merged": 1720720820000,
+    "author": "Nick Schwaderer",
+    "sha": "e61704612471ae01076ff454c57164127b088d83",
+    "pr": "52271",
+    "merge_sha": "36b2dbfc1d722128c05eb6d6506c7d435ba5b55d",
+    "html": "<p>Optimize load time for <code>Railtie#initialize_i18n</code>. Filter <code>I18n.load_path</code>s passed to the file watcher to only those<br />\nunder <code>Rails.root</code>. Previously the watcher would grab all available locales, including those in gems<br />\nwhich do not require a watcher because they won’t change.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
+  },
+  {
     "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
     "project": "activesupport",
     "date_merged": 1718230877000,
