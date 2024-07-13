@@ -160,6 +160,16 @@
     "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
   },
   {
+    "message": "*   Delete the deprecated constant `ActiveRecord::ImmutableRelation`.\n\n    *Xavier Noria*",
+    "project": "activerecord",
+    "date_merged": 1720870104000,
+    "author": "Xavier Noria",
+    "sha": "32c5a358bb2116c0d23bb2246f75180151b6f61b",
+    "pr": "52321",
+    "merge_sha": "e1f8909c66aee3afc91ba8d0d63d2df104bc9260",
+    "html": "<p>Delete the deprecated constant <code>ActiveRecord::ImmutableRelation</code>.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
     "message": "*   Fix duplicate callback execution when child autosaves parent with `has_one` and `belongs_to`.\n\n    Before, persisting a new child record with a new associated parent record would run `before_validation`,\n    `after_validation`, `before_save` and `after_save` callbacks twice.\n\n    Now, these callbacks are only executed once as expected.\n\n    *Joshua Young*",
     "project": "activerecord",
     "date_merged": 1720458047000,
