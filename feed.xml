@@ -304,6 +304,21 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Delete the deprecated constant `ActiveRecord::ImmutableRelation`.
+</title>
+    <link>https://github.com/rails/rails/issues/52321</link>
+    <guid>https://github.com/rails/rails/issues/52321</guid>
+    <description>*   Delete the deprecated constant `ActiveRecord::ImmutableRelation`.
+
+    *Xavier Noria*</description>
+    <pubDate>Sat, 13 Jul 2024 11:28:24 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Delete the deprecated constant <code>ActiveRecord::ImmutableRelation</code>.</p>
+
+<p><em>Xavier Noria</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix duplicate callback execution when child autosaves parent with `has_one` and `belongs_to`.
 </title>
     <link>https://github.com/rails/rails/issues/49847</link>
