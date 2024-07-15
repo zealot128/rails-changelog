@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Enable tracking route source locations only when using routes command. Previously,\n    it was enabled in development mode, but is only needed for `bin/rails routes -E`.\n\n    *Gannon McGibbon*",
+    "project": "railties",
+    "date_merged": 1721061579000,
+    "author": "Gannon McGibbon",
+    "sha": "e3cc8fe707f194fe24dcc9d8ea0cb2db3bed6861",
+    "pr": "52303",
+    "merge_sha": "099776069c4be64be8be7e3fdb0232d7824a38a9",
+    "html": "<p>Enable tracking route source locations only when using routes command. Previously,<br />\nit was enabled in development mode, but is only needed for <code>bin/rails routes -E</code>.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.\n\n    *Juan Vásquez*",
     "project": "railties",
     "date_merged": 1719643925000,
