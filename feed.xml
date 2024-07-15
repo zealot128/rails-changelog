@@ -6,6 +6,23 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>railties: Enable tracking route source locations only when using routes command. Previously,
+</title>
+    <link>https://github.com/rails/rails/issues/52303</link>
+    <guid>https://github.com/rails/rails/issues/52303</guid>
+    <description>*   Enable tracking route source locations only when using routes command. Previously,
+    it was enabled in development mode, but is only needed for `bin/rails routes -E`.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Mon, 15 Jul 2024 16:39:39 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Enable tracking route source locations only when using routes command. Previously,<br />
+it was enabled in development mode, but is only needed for <code>bin/rails routes -E</code>.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Deprecate `bin/rake stats` in favor of `bin/rails stats`.
 </title>
     <link>https://github.com/rails/rails/issues/52231</link>
