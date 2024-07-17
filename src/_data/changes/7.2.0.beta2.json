@@ -1,5 +1,35 @@
 [
   {
+    "message": "*   Add sessions generator to give a basic start to an authentication system using database-tracked sessions.\n\n\n    # Generate with...\n    bin/rails generate sessions\n\n    # Generated files\n    app/models/current.rb\n    app/models/user.rb\n    app/models/session.rb\n    app/controllers/sessions_controller.rb\n    app/views/sessions/new.html.erb\n    db/migrate/xxxxxxx_create_users.rb\n    db/migrate/xxxxxxx_create_sessions.rb\n\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1721163420000,
+    "author": "David Heinemeier Hansson",
+    "sha": "7b1ceb76595837f81248c7f634fe2abe653ecf7d",
+    "pr": "52328",
+    "merge_sha": "e6ca80ee0d3db6d0d78a2e54119076d02213c6a7",
+    "html": "<p>Add sessions generator to give a basic start to an authentication system using database-tracked sessions.</p>\n\n<h1 id=\"generate-with\">Generate with…</h1>\n<p>bin/rails generate sessions</p>\n\n<h1 id=\"generated-files\">Generated files</h1>\n<p>app/models/current.rb<br />\napp/models/user.rb<br />\napp/models/session.rb<br />\napp/controllers/sessions_controller.rb<br />\napp/views/sessions/new.html.erb<br />\ndb/migrate/xxxxxxx_create_users.rb<br />\ndb/migrate/xxxxxxx_create_sessions.rb</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add not-null type modifier to migration attributes.\n\n\n    # Generating with...\n    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!\n\n    # Produces:\n    class CreateUsers < ActiveRecord::Migration[8.0]\n      def change\n        create_table :users do |t|\n          t.string :email_address, null: false\n          t.string :password_digest, null: false\n\n          t.timestamps\n        end\n        add_index :users, :email_address, unique: true\n      end\n    end\n\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1721134851000,
+    "author": "David Heinemeier Hansson",
+    "sha": "2f92b1c94e2a080679ab0ad45abd0bdec24a5349",
+    "pr": "52327",
+    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
+    "html": "<p>Add not-null type modifier to migration attributes.</p>\n\n<h1 id=\"generating-with\">Generating with…</h1>\n<p>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!</p>\n\n<h1 id=\"produces\">Produces:</h1>\n<p>class CreateUsers &lt; ActiveRecord::Migration[8.0]<br />\n  def change<br />\n    create_table :users do |t|<br />\n      t.string :email_address, null: false<br />\n      t.string :password_digest, null: false</p>\n\n<pre><code>  t.timestamps\nend\nadd_index :users, :email_address, unique: true   end end\n</code></pre>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add script folder and generator\n\n    Add a new script default folder to hold your one-off or general purpose\n    scripts, such as data migration scripts, cleanup scripts, etc.\n\n    A new script generator allows you to create such scripts:\n\n      `rails generate script my_script`\n\n    You can run the generated script using:\n\n      `ruby script/my_script.rb`\n\n    *Jerome Dalbert*, *Haroon Ahmed*",
+    "project": "railties",
+    "date_merged": 1721134851000,
+    "author": "Jerome Dalbert",
+    "sha": "c01a8466581b69d7886fb926ede5e76a74395162",
+    "pr": "52335",
+    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
+    "html": "<p>Add script folder and generator</p>\n\n<p>Add a new script default folder to hold your one-off or general purpose<br />\nscripts, such as data migration scripts, cleanup scripts, etc.</p>\n\n<p>A new script generator allows you to create such scripts:</p>\n\n<p><code>rails generate script my_script</code></p>\n\n<p>You can run the generated script using:</p>\n\n<p><code>ruby script/my_script.rb</code></p>\n\n<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>\n"
+  },
+  {
     "message": "*   Enable tracking route source locations only when using routes command. Previously,\n    it was enabled in development mode, but is only needed for `bin/rails routes -E`.\n\n    *Gannon McGibbon*",
     "project": "railties",
     "date_merged": 1721061579000,
@@ -58,6 +88,16 @@
     "pr": "52283",
     "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
     "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
+  },
+  {
+    "message": "*   Support rfc2822 format for Time#to_fs & Date#to_fs.\n\n    *Akshay Birajdar*",
+    "project": "activesupport",
+    "date_merged": 1721134851000,
+    "author": "Akshay Birajdar",
+    "sha": "26575aa19c04e81ef196ff5bd97d9aa2d3ed8417",
+    "pr": "52337",
+    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
+    "html": "<p>Support rfc2822 format for Time#to_fs &amp; Date#to_fs.</p>\n\n<p><em>Akshay Birajdar</em></p>\n"
   },
   {
     "message": "*   Optimize load time for `Railtie#initialize_i18n`. Filter `I18n.load_path`s passed to the file watcher to only those\n    under `Rails.root`. Previously the watcher would grab all available locales, including those in gems\n    which do not require a watcher because they won't change.\n\n    *Nick Schwaderer*",
@@ -168,6 +208,16 @@
     "pr": "51944",
     "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
     "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
+  },
+  {
+    "message": "*   Raise specific exception when a connection is not defined.\n\n     The new `ConnectionNotDefined` exception provides connection name, shard and role accessors indicating the details of the connection that was requested.\n\n    *Hana Harencarova*, *Matthew Draper*",
+    "project": "activerecord",
+    "date_merged": 1721163420000,
+    "author": "Hana Harencarova",
+    "sha": "0bdf44d921ff983312c344b73efcd14a7152434e",
+    "pr": "52298",
+    "merge_sha": "e6ca80ee0d3db6d0d78a2e54119076d02213c6a7",
+    "html": "<p>Raise specific exception when a connection is not defined.</p>\n\n<p>The new <code>ConnectionNotDefined</code> exception provides connection name, shard and role accessors indicating the details of the connection that was requested.</p>\n\n<p><em>Hana Harencarova</em>, <em>Matthew Draper</em></p>\n"
   },
   {
     "message": "*   Delete the deprecated constant `ActiveRecord::ImmutableRelation`.\n\n    *Xavier Noria*",
