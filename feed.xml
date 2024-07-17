@@ -6,6 +6,132 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>railties: Add sessions generator to give a basic start to an authentication system using database-tracked sessions.
+</title>
+    <link>https://github.com/rails/rails/issues/52328</link>
+    <guid>https://github.com/rails/rails/issues/52328</guid>
+    <description>*   Add sessions generator to give a basic start to an authentication system using database-tracked sessions.
+
+
+    # Generate with...
+    bin/rails generate sessions
+
+    # Generated files
+    app/models/current.rb
+    app/models/user.rb
+    app/models/session.rb
+    app/controllers/sessions_controller.rb
+    app/views/sessions/new.html.erb
+    db/migrate/xxxxxxx_create_users.rb
+    db/migrate/xxxxxxx_create_sessions.rb
+
+
+    *DHH*</description>
+    <pubDate>Tue, 16 Jul 2024 20:57:00 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add sessions generator to give a basic start to an authentication system using database-tracked sessions.</p>
+
+<h1 id="generate-with">Generate with…</h1>
+<p>bin/rails generate sessions</p>
+
+<h1 id="generated-files">Generated files</h1>
+<p>app/models/current.rb<br />
+app/models/user.rb<br />
+app/models/session.rb<br />
+app/controllers/sessions_controller.rb<br />
+app/views/sessions/new.html.erb<br />
+db/migrate/xxxxxxx_create_users.rb<br />
+db/migrate/xxxxxxx_create_sessions.rb</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add not-null type modifier to migration attributes.
+</title>
+    <link>https://github.com/rails/rails/issues/52327</link>
+    <guid>https://github.com/rails/rails/issues/52327</guid>
+    <description>*   Add not-null type modifier to migration attributes.
+
+
+    # Generating with...
+    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
+
+    # Produces:
+    class CreateUsers &lt; ActiveRecord::Migration[8.0]
+      def change
+        create_table :users do |t|
+          t.string :email_address, null: false
+          t.string :password_digest, null: false
+
+          t.timestamps
+        end
+        add_index :users, :email_address, unique: true
+      end
+    end
+
+
+    *DHH*</description>
+    <pubDate>Tue, 16 Jul 2024 13:00:51 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add not-null type modifier to migration attributes.</p>
+
+<h1 id="generating-with">Generating with…</h1>
+<p>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!</p>
+
+<h1 id="produces">Produces:</h1>
+<p>class CreateUsers &lt; ActiveRecord::Migration[8.0]<br />
+  def change<br />
+    create_table :users do |t|<br />
+      t.string :email_address, null: false<br />
+      t.string :password_digest, null: false</p>
+
+<pre><code>  t.timestamps
+end
+add_index :users, :email_address, unique: true   end end
+</code></pre>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add script folder and generator
+</title>
+    <link>https://github.com/rails/rails/issues/52335</link>
+    <guid>https://github.com/rails/rails/issues/52335</guid>
+    <description>*   Add script folder and generator
+
+    Add a new script default folder to hold your one-off or general purpose
+    scripts, such as data migration scripts, cleanup scripts, etc.
+
+    A new script generator allows you to create such scripts:
+
+      `rails generate script my_script`
+
+    You can run the generated script using:
+
+      `ruby script/my_script.rb`
+
+    *Jerome Dalbert*, *Haroon Ahmed*</description>
+    <pubDate>Tue, 16 Jul 2024 13:00:51 +0000</pubDate>
+    <author>Jerome Dalbert</author>
+    <content:encoded><![CDATA[<p>Add script folder and generator</p>
+
+<p>Add a new script default folder to hold your one-off or general purpose<br />
+scripts, such as data migration scripts, cleanup scripts, etc.</p>
+
+<p>A new script generator allows you to create such scripts:</p>
+
+<p><code>rails generate script my_script</code></p>
+
+<p>You can run the generated script using:</p>
+
+<p><code>ruby script/my_script.rb</code></p>
+
+<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Enable tracking route source locations only when using routes command. Previously,
 </title>
     <link>https://github.com/rails/rails/issues/52303</link>
@@ -99,6 +225,21 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
     <content:encoded><![CDATA[<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>
 
 <p><em>Nate Matykiewicz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Support rfc2822 format for Time#to_fs &amp; Date#to_fs.
+</title>
+    <link>https://github.com/rails/rails/issues/52337</link>
+    <guid>https://github.com/rails/rails/issues/52337</guid>
+    <description>*   Support rfc2822 format for Time#to_fs &amp; Date#to_fs.
+
+    *Akshay Birajdar*</description>
+    <pubDate>Tue, 16 Jul 2024 13:00:51 +0000</pubDate>
+    <author>Akshay Birajdar</author>
+    <content:encoded><![CDATA[<p>Support rfc2822 format for Time#to_fs &amp; Date#to_fs.</p>
+
+<p><em>Akshay Birajdar</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -318,6 +459,25 @@ Rails 8.0 defaults.</p>
     <content:encoded><![CDATA[<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>
 
 <p><em>Cyril Blaecke</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Raise specific exception when a connection is not defined.
+</title>
+    <link>https://github.com/rails/rails/issues/52298</link>
+    <guid>https://github.com/rails/rails/issues/52298</guid>
+    <description>*   Raise specific exception when a connection is not defined.
+
+     The new `ConnectionNotDefined` exception provides connection name, shard and role accessors indicating the details of the connection that was requested.
+
+    *Hana Harencarova*, *Matthew Draper*</description>
+    <pubDate>Tue, 16 Jul 2024 20:57:00 +0000</pubDate>
+    <author>Hana Harencarova</author>
+    <content:encoded><![CDATA[<p>Raise specific exception when a connection is not defined.</p>
+
+<p>The new <code>ConnectionNotDefined</code> exception provides connection name, shard and role accessors indicating the details of the connection that was requested.</p>
+
+<p><em>Hana Harencarova</em>, <em>Matthew Draper</em></p>
 ]]></content:encoded>
   </item>
   <item>
