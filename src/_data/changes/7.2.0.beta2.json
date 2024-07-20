@@ -90,6 +90,16 @@
     "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
   },
   {
+    "message": "*   Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.\n\n    Previously adding time instances together such as `10.days.ago + 10.days.ago` or `10.days.ago.since(10.days.ago)` produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.\n\n    *Nick Schwaderer*",
+    "project": "activesupport",
+    "date_merged": 1721427926000,
+    "author": "John Hawthorn",
+    "sha": "3df676878a8a9e13f8a0cc9b44f17dada10740e5",
+    "pr": "52370",
+    "merge_sha": "e0a9ef12b39a4871d8f143dae926931b3c3a0919",
+    "html": "<p>Deprecate addition and since between two <code>Time</code> and <code>ActiveSupport::TimeWithZone</code>.</p>\n\n<p>Previously adding time instances together such as <code>10.days.ago + 10.days.ago</code> or <code>10.days.ago.since(10.days.ago)</code> produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
+  },
+  {
     "message": "*   Support rfc2822 format for Time#to_fs & Date#to_fs.\n\n    *Akshay Birajdar*",
     "project": "activesupport",
     "date_merged": 1721134851000,
