@@ -228,6 +228,25 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.
+</title>
+    <link>https://github.com/rails/rails/issues/52370</link>
+    <guid>https://github.com/rails/rails/issues/52370</guid>
+    <description>*   Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.
+
+    Previously adding time instances together such as `10.days.ago + 10.days.ago` or `10.days.ago.since(10.days.ago)` produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.
+
+    *Nick Schwaderer*</description>
+    <pubDate>Fri, 19 Jul 2024 22:25:26 +0000</pubDate>
+    <author>John Hawthorn</author>
+    <content:encoded><![CDATA[<p>Deprecate addition and since between two <code>Time</code> and <code>ActiveSupport::TimeWithZone</code>.</p>
+
+<p>Previously adding time instances together such as <code>10.days.ago + 10.days.ago</code> or <code>10.days.ago.since(10.days.ago)</code> produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.</p>
+
+<p><em>Nick Schwaderer</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Support rfc2822 format for Time#to_fs &amp; Date#to_fs.
 </title>
     <link>https://github.com/rails/rails/issues/52337</link>
