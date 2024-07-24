@@ -1,5 +1,65 @@
 [
   {
+    "message": "*   Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.\n\n    Previously adding time instances together such as `10.days.ago + 10.days.ago` or `10.days.ago.since(10.days.ago)` produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.\n\n    *Nick Schwaderer*",
+    "project": "activesupport",
+    "date_merged": 1721427926000,
+    "author": "John Hawthorn",
+    "sha": "3df676878a8a9e13f8a0cc9b44f17dada10740e5",
+    "pr": "52370",
+    "merge_sha": "e0a9ef12b39a4871d8f143dae926931b3c3a0919",
+    "html": "<p>Deprecate addition and since between two <code>Time</code> and <code>ActiveSupport::TimeWithZone</code>.</p>\n\n<p>Previously adding time instances together such as <code>10.days.ago + 10.days.ago</code> or <code>10.days.ago.since(10.days.ago)</code> produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
+  },
+  {
+    "message": "*   Support rfc2822 format for Time#to_fs & Date#to_fs.\n\n    *Akshay Birajdar*",
+    "project": "activesupport",
+    "date_merged": 1721134851000,
+    "author": "Akshay Birajdar",
+    "sha": "26575aa19c04e81ef196ff5bd97d9aa2d3ed8417",
+    "pr": "52337",
+    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
+    "html": "<p>Support rfc2822 format for Time#to_fs &amp; Date#to_fs.</p>\n\n<p><em>Akshay Birajdar</em></p>\n"
+  },
+  {
+    "message": "*   Optimize load time for `Railtie#initialize_i18n`. Filter `I18n.load_path`s passed to the file watcher to only those\n    under `Rails.root`. Previously the watcher would grab all available locales, including those in gems\n    which do not require a watcher because they won't change.\n\n    *Nick Schwaderer*",
+    "project": "activesupport",
+    "date_merged": 1720720820000,
+    "author": "Nick Schwaderer",
+    "sha": "e61704612471ae01076ff454c57164127b088d83",
+    "pr": "52271",
+    "merge_sha": "36b2dbfc1d722128c05eb6d6506c7d435ba5b55d",
+    "html": "<p>Optimize load time for <code>Railtie#initialize_i18n</code>. Filter <code>I18n.load_path</code>s passed to the file watcher to only those<br />\nunder <code>Rails.root</code>. Previously the watcher would grab all available locales, including those in gems<br />\nwhich do not require a watcher because they won’t change.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
+  },
+  {
+    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
+    "project": "activesupport",
+    "date_merged": 1718230877000,
+    "author": "Igor Depolli",
+    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
+    "pr": "52072",
+    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
+    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
+  },
+  {
+    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1717923228000,
+    "author": "Richard Böhme",
+    "sha": "38e9695c10f822caaa54e399833c346249660005",
+    "pr": "52036",
+    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
+    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add a new configuration value `:zone` for `ActiveSupport.to_time_preserves_timezone` and rename the previous `true` value to `:offset`. The new default value is `:zone`.\n\n    *Jason Kim*, *John Hawthorn*",
+    "project": "activesupport",
+    "date_merged": 1719432965000,
+    "author": "Jason Kim",
+    "sha": "9dcf17ec4c51722b5ab8146c5a714242cc0716ba",
+    "pr": "52091",
+    "merge_sha": "716e4a7d326c36fc44d4a6fcab7a21313ab3b2df",
+    "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
+  },
+  {
     "message": "*   Add sessions generator to give a basic start to an authentication system using database-tracked sessions.\n\n\n    # Generate with...\n    bin/rails generate sessions\n\n    # Generated files\n    app/models/current.rb\n    app/models/user.rb\n    app/models/session.rb\n    app/controllers/sessions_controller.rb\n    app/views/sessions/new.html.erb\n    db/migrate/xxxxxxx_create_users.rb\n    db/migrate/xxxxxxx_create_sessions.rb\n\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1721163420000,
@@ -78,76 +138,6 @@
     "pr": "52283",
     "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
     "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.\n\n    Previously adding time instances together such as `10.days.ago + 10.days.ago` or `10.days.ago.since(10.days.ago)` produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.\n\n    *Nick Schwaderer*",
-    "project": "activesupport",
-    "date_merged": 1721427926000,
-    "author": "John Hawthorn",
-    "sha": "3df676878a8a9e13f8a0cc9b44f17dada10740e5",
-    "pr": "52370",
-    "merge_sha": "e0a9ef12b39a4871d8f143dae926931b3c3a0919",
-    "html": "<p>Deprecate addition and since between two <code>Time</code> and <code>ActiveSupport::TimeWithZone</code>.</p>\n\n<p>Previously adding time instances together such as <code>10.days.ago + 10.days.ago</code> or <code>10.days.ago.since(10.days.ago)</code> produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
-  },
-  {
-    "message": "*   Support rfc2822 format for Time#to_fs & Date#to_fs.\n\n    *Akshay Birajdar*",
-    "project": "activesupport",
-    "date_merged": 1721134851000,
-    "author": "Akshay Birajdar",
-    "sha": "26575aa19c04e81ef196ff5bd97d9aa2d3ed8417",
-    "pr": "52337",
-    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
-    "html": "<p>Support rfc2822 format for Time#to_fs &amp; Date#to_fs.</p>\n\n<p><em>Akshay Birajdar</em></p>\n"
-  },
-  {
-    "message": "*   Optimize load time for `Railtie#initialize_i18n`. Filter `I18n.load_path`s passed to the file watcher to only those\n    under `Rails.root`. Previously the watcher would grab all available locales, including those in gems\n    which do not require a watcher because they won't change.\n\n    *Nick Schwaderer*",
-    "project": "activesupport",
-    "date_merged": 1720720820000,
-    "author": "Nick Schwaderer",
-    "sha": "e61704612471ae01076ff454c57164127b088d83",
-    "pr": "52271",
-    "merge_sha": "36b2dbfc1d722128c05eb6d6506c7d435ba5b55d",
-    "html": "<p>Optimize load time for <code>Railtie#initialize_i18n</code>. Filter <code>I18n.load_path</code>s passed to the file watcher to only those<br />\nunder <code>Rails.root</code>. Previously the watcher would grab all available locales, including those in gems<br />\nwhich do not require a watcher because they won’t change.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
-  },
-  {
-    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
-    "project": "activesupport",
-    "date_merged": 1718230877000,
-    "author": "Igor Depolli",
-    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
-    "pr": "52072",
-    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
-    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
-  },
-  {
-    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
-    "project": "activesupport",
-    "date_merged": 1717923228000,
-    "author": "Richard Böhme",
-    "sha": "38e9695c10f822caaa54e399833c346249660005",
-    "pr": "52036",
-    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
-    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Add a new configuration value `:zone` for `ActiveSupport.to_time_preserves_timezone` and rename the previous `true` value to `:offset`. The new default value is `:zone`.\n\n    *Jason Kim*, *John Hawthorn*",
-    "project": "activesupport",
-    "date_merged": 1719432965000,
-    "author": "Jason Kim",
-    "sha": "9dcf17ec4c51722b5ab8146c5a714242cc0716ba",
-    "pr": "52091",
-    "merge_sha": "716e4a7d326c36fc44d4a6fcab7a21313ab3b2df",
-    "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
-  },
-  {
-    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
-    "project": "actiontext",
-    "date_merged": 1718216498000,
-    "author": "Petrik",
-    "sha": "52c21f90669ce59adf7deef85a44b6b1a46928fa",
-    "pr": "52093",
-    "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
-    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
     "message": "*   The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from\n    the `classic` autoloader to Zeitwerk has been deleted.\n\n    The last version of this guide can be found\n    [here](https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html),\n    in case you need it.\n\n    *Petrik de Heus*",
@@ -348,5 +338,15 @@
     "pr": "51878",
     "merge_sha": "2281edf99e3583b1ff7ae636906f681d80dab603",
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
+    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
+    "project": "actiontext",
+    "date_merged": 1718216498000,
+    "author": "Petrik",
+    "sha": "52c21f90669ce59adf7deef85a44b6b1a46928fa",
+    "pr": "52093",
+    "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
+    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   }
 ]
