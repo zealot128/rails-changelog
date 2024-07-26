@@ -449,6 +449,25 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Use SQLite `IMMEDIATE` transactions when possible.
+</title>
+    <link>https://github.com/rails/rails/issues/50371</link>
+    <guid>https://github.com/rails/rails/issues/50371</guid>
+    <description>*   Use SQLite `IMMEDIATE` transactions when possible.
+
+    Transactions run against the SQLite3 adapter default to IMMEDIATE mode to improve concurrency support and avoid busy exceptions.
+
+    *Stephen Margheim*</description>
+    <pubDate>Fri, 26 Jul 2024 07:15:38 +0000</pubDate>
+    <author>Stephen Margheim</author>
+    <content:encoded><![CDATA[<p>Use SQLite <code>IMMEDIATE</code> transactions when possible.</p>
+
+<p>Transactions run against the SQLite3 adapter default to IMMEDIATE mode to improve concurrency support and avoid busy exceptions.</p>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Raise specific exception when a connection is not defined.
 </title>
     <link>https://github.com/rails/rails/issues/52298</link>
