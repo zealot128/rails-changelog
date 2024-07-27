@@ -338,6 +338,40 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Deprecate drawing routes with multiple paths to make routing faster.
+</title>
+    <link>https://github.com/rails/rails/issues/52409</link>
+    <guid>https://github.com/rails/rails/issues/52409</guid>
+    <description>*   Deprecate drawing routes with multiple paths to make routing faster.
+    You may use `with_options` or a loop to make drawing multiple paths easier.
+
+    ```ruby
+    # Before
+    get &quot;/users&quot;, &quot;/other_path&quot;, to: &quot;users#index&quot;
+
+    # After
+    get &quot;/users&quot;, to: &quot;users#index&quot;
+    get &quot;/other_path&quot;, to: &quot;users#index&quot;
+    ```
+
+    *Gannon McGibbon*</description>
+    <pubDate>Sat, 27 Jul 2024 03:42:17 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Deprecate drawing routes with multiple paths to make routing faster.<br />
+You may use <code>with_options</code> or a loop to make drawing multiple paths easier.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+
+<span class="c1"># After</span>
+<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+<span class="n">get</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+</code></pre></div></div>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Make `http_cache_forever` use `immutable: true`
 </title>
     <link>https://github.com/rails/rails/issues/52283</link>
@@ -655,25 +689,6 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Optimize `Relation#exists?` when records are loaded and the relation has no conditions.
-</title>
-    <link>https://github.com/rails/rails/issues/51987</link>
-    <guid>https://github.com/rails/rails/issues/51987</guid>
-    <description>*   Optimize `Relation#exists?` when records are loaded and the relation has no conditions.
-
-    This can avoid queries in some cases.
-
-    *fatkodima*</description>
-    <pubDate>Fri, 14 Jun 2024 12:12:42 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Optimize <code>Relation#exists?</code> when records are loaded and the relation has no conditions.</p>
-
-<p>This can avoid queries in some cases.</p>
-
-<p><em>fatkodima</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activerecord: Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results
 </title>
     <link>https://github.com/rails/rails/issues/51761</link>
@@ -863,6 +878,56 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
     <content:encoded><![CDATA[<p>Only sanitize <code>content</code> attribute when present in attachments.</p>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Introduce `ActiveModel::AttributeAssignment#attribute_writer_missing`
+</title>
+    <link>https://github.com/rails/rails/issues/52417</link>
+    <guid>https://github.com/rails/rails/issues/52417</guid>
+    <description>*   Introduce `ActiveModel::AttributeAssignment#attribute_writer_missing`
+
+    Provide instances with an opportunity to gracefully handle assigning to an
+    unknown attribute:
+
+    ```ruby
+    class Rectangle
+      include ActiveModel::AttributeAssignment
+
+      attr_accessor :length, :width
+
+      def attribute_writer_missing(name, value)
+        Rails.logger.warn &quot;Tried to assign to unknown attribute #{name}&quot;
+      end
+    end
+
+    rectangle = Rectangle.new
+    rectangle.assign_attributes(height: 10) # =&gt; Logs &quot;Tried to assign to unknown attribute &#39;height&#39;&quot;
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Fri, 26 Jul 2024 22:48:16 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Introduce <code>ActiveModel::AttributeAssignment#attribute_writer_missing</code></p>
+
+<p>Provide instances with an opportunity to gracefully handle assigning to an<br />
+unknown attribute:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Rectangle</span>
+  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">AttributeAssignment</span>
+
+  <span class="nb">attr_accessor</span> <span class="ss">:length</span><span class="p">,</span> <span class="ss">:width</span>
+
+  <span class="k">def</span> <span class="nf">attribute_writer_missing</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Tried to assign to unknown attribute </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">rectangle</span> <span class="o">=</span> <span class="no">Rectangle</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">rectangle</span><span class="p">.</span><span class="nf">assign_attributes</span><span class="p">(</span><span class="ss">height: </span><span class="mi">10</span><span class="p">)</span> <span class="c1"># =&gt; Logs "Tried to assign to unknown attribute 'height'"</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
 </channel>
