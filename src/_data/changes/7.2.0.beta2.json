@@ -360,6 +360,16 @@
     "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Rename `check_box*` methods into `checkbox*`.\n\n    Old names are still available as aliases.\n\n    *Jean Boussier*",
+    "project": "actionview",
+    "date_merged": 1722166825000,
+    "author": "Jean Boussier",
+    "sha": "038a314ded26d399fd4b0ba25c6024dc72a5f73d",
+    "pr": "52432",
+    "merge_sha": "c01ee683aa700b109f704a5b6611107fe2dc5476",
+    "html": "<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Introduce `ActiveModel::AttributeAssignment#attribute_writer_missing`\n\n    Provide instances with an opportunity to gracefully handle assigning to an\n    unknown attribute:\n\n    ```ruby\n    class Rectangle\n      include ActiveModel::AttributeAssignment\n\n      attr_accessor :length, :width\n\n      def attribute_writer_missing(name, value)\n        Rails.logger.warn \"Tried to assign to unknown attribute #{name}\"\n      end\n    end\n\n    rectangle = Rectangle.new\n    rectangle.assign_attributes(height: 10) # => Logs \"Tried to assign to unknown attribute 'height'\"\n    ```\n\n    *Sean Doyle*",
     "project": "activemodel",
     "date_merged": 1722034096000,
