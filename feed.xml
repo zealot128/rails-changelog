@@ -881,6 +881,25 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Rename `check_box*` methods into `checkbox*`.
+</title>
+    <link>https://github.com/rails/rails/issues/52432</link>
+    <guid>https://github.com/rails/rails/issues/52432</guid>
+    <description>*   Rename `check_box*` methods into `checkbox*`.
+
+    Old names are still available as aliases.
+
+    *Jean Boussier*</description>
+    <pubDate>Sun, 28 Jul 2024 11:40:25 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>
+
+<p>Old names are still available as aliases.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Introduce `ActiveModel::AttributeAssignment#attribute_writer_missing`
 </title>
     <link>https://github.com/rails/rails/issues/52417</link>
