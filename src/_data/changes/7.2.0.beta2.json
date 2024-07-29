@@ -60,14 +60,14 @@
     "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
   },
   {
-    "message": "*   Add sessions generator to give a basic start to an authentication system using database-tracked sessions.\n\n\n    # Generate with...\n    bin/rails generate sessions\n\n    # Generated files\n    app/models/current.rb\n    app/models/user.rb\n    app/models/session.rb\n    app/controllers/sessions_controller.rb\n    app/views/sessions/new.html.erb\n    db/migrate/xxxxxxx_create_users.rb\n    db/migrate/xxxxxxx_create_sessions.rb\n\n\n    *DHH*",
+    "message": "*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions.\n\n\n    # Generate with...\n    bin/rails generate authentication\n\n    # Generated files\n    app/models/current.rb\n    app/models/user.rb\n    app/models/session.rb\n    app/controllers/sessions_controller.rb\n    app/views/sessions/new.html.erb\n    db/migrate/xxxxxxx_create_users.rb\n    db/migrate/xxxxxxx_create_sessions.rb\n\n\n    *DHH*",
     "project": "railties",
-    "date_merged": 1721163420000,
+    "date_merged": 1722231039000,
     "author": "David Heinemeier Hansson",
-    "sha": "7b1ceb76595837f81248c7f634fe2abe653ecf7d",
-    "pr": "52328",
-    "merge_sha": "e6ca80ee0d3db6d0d78a2e54119076d02213c6a7",
-    "html": "<p>Add sessions generator to give a basic start to an authentication system using database-tracked sessions.</p>\n\n<h1 id=\"generate-with\">Generate with…</h1>\n<p>bin/rails generate sessions</p>\n\n<h1 id=\"generated-files\">Generated files</h1>\n<p>app/models/current.rb<br />\napp/models/user.rb<br />\napp/models/session.rb<br />\napp/controllers/sessions_controller.rb<br />\napp/views/sessions/new.html.erb<br />\ndb/migrate/xxxxxxx_create_users.rb<br />\ndb/migrate/xxxxxxx_create_sessions.rb</p>\n\n<p><em>DHH</em></p>\n"
+    "sha": "d1cefb48d185c099c1c77ec7e98a2e26dde2b695",
+    "pr": "52436",
+    "merge_sha": "077d6e89c72069dfb89e5ee2e7f9d7e70c53fda5",
+    "html": "<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions.</p>\n\n<h1 id=\"generate-with\">Generate with…</h1>\n<p>bin/rails generate authentication</p>\n\n<h1 id=\"generated-files\">Generated files</h1>\n<p>app/models/current.rb<br />\napp/models/user.rb<br />\napp/models/session.rb<br />\napp/controllers/sessions_controller.rb<br />\napp/views/sessions/new.html.erb<br />\ndb/migrate/xxxxxxx_create_users.rb<br />\ndb/migrate/xxxxxxx_create_sessions.rb</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
     "message": "*   Add not-null type modifier to migration attributes.\n\n\n    # Generating with...\n    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!\n\n    # Produces:\n    class CreateUsers < ActiveRecord::Migration[8.0]\n      def change\n        create_table :users do |t|\n          t.string :email_address, null: false\n          t.string :password_digest, null: false\n\n          t.timestamps\n        end\n        add_index :users, :email_address, unique: true\n      end\n    end\n\n\n    *DHH*",
