@@ -108,15 +108,15 @@ proc by printing the proc’s source code (MRI only).</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Add sessions generator to give a basic start to an authentication system using database-tracked sessions.
+    <title>railties: Add authentication generator to give a basic start to an authentication system using database-tracked sessions.
 </title>
-    <link>https://github.com/rails/rails/issues/52328</link>
-    <guid>https://github.com/rails/rails/issues/52328</guid>
-    <description>*   Add sessions generator to give a basic start to an authentication system using database-tracked sessions.
+    <link>https://github.com/rails/rails/issues/52436</link>
+    <guid>https://github.com/rails/rails/issues/52436</guid>
+    <description>*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions.
 
 
     # Generate with...
-    bin/rails generate sessions
+    bin/rails generate authentication
 
     # Generated files
     app/models/current.rb
@@ -129,12 +129,12 @@ proc by printing the proc’s source code (MRI only).</p>
 
 
     *DHH*</description>
-    <pubDate>Tue, 16 Jul 2024 20:57:00 +0000</pubDate>
+    <pubDate>Mon, 29 Jul 2024 05:30:39 +0000</pubDate>
     <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add sessions generator to give a basic start to an authentication system using database-tracked sessions.</p>
+    <content:encoded><![CDATA[<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions.</p>
 
 <h1 id="generate-with">Generate with…</h1>
-<p>bin/rails generate sessions</p>
+<p>bin/rails generate authentication</p>
 
 <h1 id="generated-files">Generated files</h1>
 <p>app/models/current.rb<br />
