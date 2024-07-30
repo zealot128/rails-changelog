@@ -130,6 +130,16 @@
     "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
+    "message": "*   Improve InvariableError, UnpreviewableError and UnrepresentableError message.\n\n    Include Blob ID and content_type in the messages.\n\n    *Petrik de Heus*",
+    "project": "activestorage",
+    "date_merged": 1722335759000,
+    "author": "Petrik",
+    "sha": "240cbd9ca50ff9c8ce891b4c3669473b645cda21",
+    "pr": "52193",
+    "merge_sha": "2038c9d46ab035de31d7a9968b7aa22297b2618a",
+    "html": "<p>Improve InvariableError, UnpreviewableError and UnrepresentableError message.</p>\n\n<p>Include Blob ID and content_type in the messages.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Mark proxied files as `immutable` in their Cache-Control header\n\n    *Nate Matykiewicz*",
     "project": "activestorage",
     "date_merged": 1720289328000,
