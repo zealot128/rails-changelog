@@ -298,6 +298,25 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Improve InvariableError, UnpreviewableError and UnrepresentableError message.
+</title>
+    <link>https://github.com/rails/rails/issues/52193</link>
+    <guid>https://github.com/rails/rails/issues/52193</guid>
+    <description>*   Improve InvariableError, UnpreviewableError and UnrepresentableError message.
+
+    Include Blob ID and content_type in the messages.
+
+    *Petrik de Heus*</description>
+    <pubDate>Tue, 30 Jul 2024 10:35:59 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Improve InvariableError, UnpreviewableError and UnrepresentableError message.</p>
+
+<p>Include Blob ID and content_type in the messages.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Mark proxied files as `immutable` in their Cache-Control header
 </title>
     <link>https://github.com/rails/rails/issues/52283</link>
