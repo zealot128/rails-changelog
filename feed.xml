@@ -483,6 +483,32 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Support batching using custom columns.
+</title>
+    <link>https://github.com/rails/rails/issues/52384</link>
+    <guid>https://github.com/rails/rails/issues/52384</guid>
+    <description>*   Support batching using custom columns.
+
+    ```ruby
+    Product.in_batches(cursor: [:shop_id, :id]) do |relation|
+      # do something with relation
+    end
+    ```
+
+    *fatkodima*</description>
+    <pubDate>Mon, 29 Jul 2024 21:43:04 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Support batching using custom columns.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Product</span><span class="p">.</span><span class="nf">in_batches</span><span class="p">(</span><span class="ss">cursor: </span><span class="p">[</span><span class="ss">:shop_id</span><span class="p">,</span> <span class="ss">:id</span><span class="p">])</span> <span class="k">do</span> <span class="o">|</span><span class="n">relation</span><span class="o">|</span>
+  <span class="c1"># do something with relation</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Use SQLite `IMMEDIATE` transactions when possible.
 </title>
     <link>https://github.com/rails/rails/issues/50371</link>
@@ -897,6 +923,67 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 <p>Old names are still available as aliases.</p>
 
 <p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Add a load hook `active_model_translation` for `ActiveModel::Translation`.
+</title>
+    <link>https://github.com/rails/rails/issues/52426</link>
+    <guid>https://github.com/rails/rails/issues/52426</guid>
+    <description>*   Add a load hook `active_model_translation` for `ActiveModel::Translation`.
+
+    *Shouichi Kamiya*</description>
+    <pubDate>Mon, 29 Jul 2024 21:59:46 +0000</pubDate>
+    <author>Shouichi Kamiya</author>
+    <content:encoded><![CDATA[<p>Add a load hook <code>active_model_translation</code> for <code>ActiveModel::Translation</code>.</p>
+
+<p><em>Shouichi Kamiya</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Add `raise_on_missing_translations` option to `ActiveModel::Translation`.
+</title>
+    <link>https://github.com/rails/rails/issues/52426</link>
+    <guid>https://github.com/rails/rails/issues/52426</guid>
+    <description>*   Add `raise_on_missing_translations` option to `ActiveModel::Translation`.
+    When the option is set, `human_attribute_name` raises an error if a translation of the given attribute is missing.
+
+    ```ruby
+    # ActiveModel::Translation.raise_on_missing_translations = false
+    Post.human_attribute_name(&quot;title&quot;)
+    =&gt; &quot;Title&quot;
+
+    # ActiveModel::Translation.raise_on_missing_translations = true
+    Post.human_attribute_name(&quot;title&quot;)
+    =&gt; Translation missing. Options considered were: (I18n::MissingTranslationData)
+        - en.activerecord.attributes.post.title
+        - en.attributes.title
+
+                raise exception.respond_to?(:to_exception) ? exception.to_exception : exception
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ```
+
+    *Shouichi Kamiya*</description>
+    <pubDate>Mon, 29 Jul 2024 21:59:46 +0000</pubDate>
+    <author>Shouichi Kamiya</author>
+    <content:encoded><![CDATA[<p>Add <code>raise_on_missing_translations</code> option to <code>ActiveModel::Translation</code>.<br />
+When the option is set, <code>human_attribute_name</code> raises an error if a translation of the given attribute is missing.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ActiveModel::Translation.raise_on_missing_translations = false</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">human_attribute_name</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="s2">"Title"</span>
+
+<span class="c1"># ActiveModel::Translation.raise_on_missing_translations = true</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">human_attribute_name</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="no">Translation</span> <span class="n">missing</span><span class="o">.</span> <span class="no">Options</span> <span class="n">considered</span> <span class="ss">were: </span><span class="p">(</span><span class="no">I18n</span><span class="o">::</span><span class="no">MissingTranslationData</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">en</span><span class="p">.</span><span class="nf">activerecord</span><span class="p">.</span><span class="nf">attributes</span><span class="p">.</span><span class="nf">post</span><span class="p">.</span><span class="nf">title</span>
+    <span class="o">-</span> <span class="n">en</span><span class="p">.</span><span class="nf">attributes</span><span class="p">.</span><span class="nf">title</span>
+
+            <span class="k">raise</span> <span class="n">exception</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="ss">:to_exception</span><span class="p">)</span> <span class="p">?</span> <span class="n">exception</span><span class="p">.</span><span class="nf">to_exception</span> <span class="p">:</span> <span class="n">exception</span>
+                  <span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+</code></pre></div></div>
+
+<p><em>Shouichi Kamiya</em></p>
 ]]></content:encoded>
   </item>
   <item>
