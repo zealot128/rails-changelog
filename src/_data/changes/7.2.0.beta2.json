@@ -210,6 +210,16 @@
     "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
   },
   {
+    "message": "*   Support batching using custom columns.\n\n    ```ruby\n    Product.in_batches(cursor: [:shop_id, :id]) do |relation|\n      # do something with relation\n    end\n    ```\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1722289384000,
+    "author": "fatkodima",
+    "sha": "fd52a754f2c6e234ee46834c63cfde02a368d5c6",
+    "pr": "52384",
+    "merge_sha": "bba9cbae2f8ab0e564cbccf852ba0d34848874db",
+    "html": "<p>Support batching using custom columns.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Product</span><span class=\"p\">.</span><span class=\"nf\">in_batches</span><span class=\"p\">(</span><span class=\"ss\">cursor: </span><span class=\"p\">[</span><span class=\"ss\">:shop_id</span><span class=\"p\">,</span> <span class=\"ss\">:id</span><span class=\"p\">])</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">relation</span><span class=\"o\">|</span>\n  <span class=\"c1\"># do something with relation</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Use SQLite `IMMEDIATE` transactions when possible.\n\n    Transactions run against the SQLite3 adapter default to IMMEDIATE mode to improve concurrency support and avoid busy exceptions.\n\n    *Stephen Margheim*",
     "project": "activerecord",
     "date_merged": 1721978138000,
@@ -368,6 +378,26 @@
     "pr": "52432",
     "merge_sha": "c01ee683aa700b109f704a5b6611107fe2dc5476",
     "html": "<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add a load hook `active_model_translation` for `ActiveModel::Translation`.\n\n    *Shouichi Kamiya*",
+    "project": "activemodel",
+    "date_merged": 1722290386000,
+    "author": "Shouichi Kamiya",
+    "sha": "f6c0a35b1b8b4fb4d033aa6c09c4efaaf6652bdc",
+    "pr": "52426",
+    "merge_sha": "3acf87e26d3171e0e385aa7301389bda9bebb0f8",
+    "html": "<p>Add a load hook <code>active_model_translation</code> for <code>ActiveModel::Translation</code>.</p>\n\n<p><em>Shouichi Kamiya</em></p>\n"
+  },
+  {
+    "message": "*   Add `raise_on_missing_translations` option to `ActiveModel::Translation`.\n    When the option is set, `human_attribute_name` raises an error if a translation of the given attribute is missing.\n\n    ```ruby\n    # ActiveModel::Translation.raise_on_missing_translations = false\n    Post.human_attribute_name(\"title\")\n    => \"Title\"\n\n    # ActiveModel::Translation.raise_on_missing_translations = true\n    Post.human_attribute_name(\"title\")\n    => Translation missing. Options considered were: (I18n::MissingTranslationData)\n        - en.activerecord.attributes.post.title\n        - en.attributes.title\n\n                raise exception.respond_to?(:to_exception) ? exception.to_exception : exception\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ```\n\n    *Shouichi Kamiya*",
+    "project": "activemodel",
+    "date_merged": 1722290386000,
+    "author": "Shouichi Kamiya",
+    "sha": "f6c0a35b1b8b4fb4d033aa6c09c4efaaf6652bdc",
+    "pr": "52426",
+    "merge_sha": "3acf87e26d3171e0e385aa7301389bda9bebb0f8",
+    "html": "<p>Add <code>raise_on_missing_translations</code> option to <code>ActiveModel::Translation</code>.<br />\nWhen the option is set, <code>human_attribute_name</code> raises an error if a translation of the given attribute is missing.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># ActiveModel::Translation.raise_on_missing_translations = false</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">human_attribute_name</span><span class=\"p\">(</span><span class=\"s2\">\"title\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"s2\">\"Title\"</span>\n\n<span class=\"c1\"># ActiveModel::Translation.raise_on_missing_translations = true</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">human_attribute_name</span><span class=\"p\">(</span><span class=\"s2\">\"title\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"no\">Translation</span> <span class=\"n\">missing</span><span class=\"o\">.</span> <span class=\"no\">Options</span> <span class=\"n\">considered</span> <span class=\"ss\">were: </span><span class=\"p\">(</span><span class=\"no\">I18n</span><span class=\"o\">::</span><span class=\"no\">MissingTranslationData</span><span class=\"p\">)</span>\n    <span class=\"o\">-</span> <span class=\"n\">en</span><span class=\"p\">.</span><span class=\"nf\">activerecord</span><span class=\"p\">.</span><span class=\"nf\">attributes</span><span class=\"p\">.</span><span class=\"nf\">post</span><span class=\"p\">.</span><span class=\"nf\">title</span>\n    <span class=\"o\">-</span> <span class=\"n\">en</span><span class=\"p\">.</span><span class=\"nf\">attributes</span><span class=\"p\">.</span><span class=\"nf\">title</span>\n\n            <span class=\"k\">raise</span> <span class=\"n\">exception</span><span class=\"p\">.</span><span class=\"nf\">respond_to?</span><span class=\"p\">(</span><span class=\"ss\">:to_exception</span><span class=\"p\">)</span> <span class=\"p\">?</span> <span class=\"n\">exception</span><span class=\"p\">.</span><span class=\"nf\">to_exception</span> <span class=\"p\">:</span> <span class=\"n\">exception</span>\n                  <span class=\"o\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n</code></pre></div></div>\n\n<p><em>Shouichi Kamiya</em></p>\n"
   },
   {
     "message": "*   Introduce `ActiveModel::AttributeAssignment#attribute_writer_missing`\n\n    Provide instances with an opportunity to gracefully handle assigning to an\n    unknown attribute:\n\n    ```ruby\n    class Rectangle\n      include ActiveModel::AttributeAssignment\n\n      attr_accessor :length, :width\n\n      def attribute_writer_missing(name, value)\n        Rails.logger.warn \"Tried to assign to unknown attribute #{name}\"\n      end\n    end\n\n    rectangle = Rectangle.new\n    rectangle.assign_attributes(height: 10) # => Logs \"Tried to assign to unknown attribute 'height'\"\n    ```\n\n    *Sean Doyle*",
