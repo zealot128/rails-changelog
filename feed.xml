@@ -114,11 +114,15 @@ proc by printing the proc’s source code (MRI only).</p>
     <guid>https://github.com/rails/rails/issues/52436</guid>
     <description>*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions.
 
+    Generate with...
 
-    # Generate with...
+    ```
     bin/rails generate authentication
+    ```
 
-    # Generated files
+    Generated files:
+
+    ```
     app/models/current.rb
     app/models/user.rb
     app/models/session.rb
@@ -126,24 +130,28 @@ proc by printing the proc’s source code (MRI only).</p>
     app/views/sessions/new.html.erb
     db/migrate/xxxxxxx_create_users.rb
     db/migrate/xxxxxxx_create_sessions.rb
-
+    ```
 
     *DHH*</description>
     <pubDate>Mon, 29 Jul 2024 05:30:39 +0000</pubDate>
     <author>David Heinemeier Hansson</author>
     <content:encoded><![CDATA[<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions.</p>
 
-<h1 id="generate-with">Generate with…</h1>
-<p>bin/rails generate authentication</p>
+<p>Generate with…</p>
 
-<h1 id="generated-files">Generated files</h1>
-<p>app/models/current.rb<br />
-app/models/user.rb<br />
-app/models/session.rb<br />
-app/controllers/sessions_controller.rb<br />
-app/views/sessions/new.html.erb<br />
-db/migrate/xxxxxxx_create_users.rb<br />
-db/migrate/xxxxxxx_create_sessions.rb</p>
+<pre><code>bin/rails generate authentication
+</code></pre>
+
+<p>Generated files:</p>
+
+<pre><code>app/models/current.rb
+app/models/user.rb
+app/models/session.rb
+app/controllers/sessions_controller.rb
+app/views/sessions/new.html.erb
+db/migrate/xxxxxxx_create_users.rb
+db/migrate/xxxxxxx_create_sessions.rb
+</code></pre>
 
 <p><em>DHH</em></p>
 ]]></content:encoded>
@@ -155,11 +163,15 @@ db/migrate/xxxxxxx_create_sessions.rb</p>
     <guid>https://github.com/rails/rails/issues/52327</guid>
     <description>*   Add not-null type modifier to migration attributes.
 
+    Generating with...
 
-    # Generating with...
+    ```
     bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
+    ```
 
-    # Produces:
+    Produces:
+
+    ```ruby
     class CreateUsers &lt; ActiveRecord::Migration[8.0]
       def change
         create_table :users do |t|
@@ -171,64 +183,79 @@ db/migrate/xxxxxxx_create_sessions.rb</p>
         add_index :users, :email_address, unique: true
       end
     end
-
+    ```
 
     *DHH*</description>
     <pubDate>Tue, 16 Jul 2024 13:00:51 +0000</pubDate>
     <author>David Heinemeier Hansson</author>
     <content:encoded><![CDATA[<p>Add not-null type modifier to migration attributes.</p>
 
-<h1 id="generating-with">Generating with…</h1>
-<p>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!</p>
+<p>Generating with…</p>
 
-<h1 id="produces">Produces:</h1>
-<p>class CreateUsers &lt; ActiveRecord::Migration[8.0]<br />
-  def change<br />
-    create_table :users do |t|<br />
-      t.string :email_address, null: false<br />
-      t.string :password_digest, null: false</p>
-
-<pre><code>  t.timestamps
-end
-add_index :users, :email_address, unique: true   end end
+<pre><code>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
 </code></pre>
+
+<p>Produces:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreateUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">8.0</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:users</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:password_digest</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+
+      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+    <span class="k">end</span>
+    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
 <p><em>DHH</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Add script folder and generator
+    <title>railties: Add a `script` folder to applications, and a scripts generator.
 </title>
-    <link>https://github.com/rails/rails/issues/52335</link>
-    <guid>https://github.com/rails/rails/issues/52335</guid>
-    <description>*   Add script folder and generator
+    <link>https://github.com/rails/rails/issues/52454</link>
+    <guid>https://github.com/rails/rails/issues/52454</guid>
+    <description>*   Add a `script` folder to applications, and a scripts generator.
 
-    Add a new script default folder to hold your one-off or general purpose
-    scripts, such as data migration scripts, cleanup scripts, etc.
+    The new `script` folder is meant to hold one-off or general purpose scripts,
+    such as data migration scripts, cleanup scripts, etc.
 
     A new script generator allows you to create such scripts:
 
-      `rails generate script my_script`
+    ```
+    bin/rails generate script my_script
+    bin/rails generate script data/backfill
+    ```
 
     You can run the generated script using:
 
-      `ruby script/my_script.rb`
+    ```
+    bundle exec ruby script/my_script.rb
+    bundle exec ruby script/data/backfill.rb
+    ```
 
     *Jerome Dalbert*, *Haroon Ahmed*</description>
-    <pubDate>Tue, 16 Jul 2024 13:00:51 +0000</pubDate>
-    <author>Jerome Dalbert</author>
-    <content:encoded><![CDATA[<p>Add script folder and generator</p>
+    <pubDate>Tue, 30 Jul 2024 19:25:16 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add a <code>script</code> folder to applications, and a scripts generator.</p>
 
-<p>Add a new script default folder to hold your one-off or general purpose<br />
-scripts, such as data migration scripts, cleanup scripts, etc.</p>
+<p>The new <code>script</code> folder is meant to hold one-off or general purpose scripts,<br />
+such as data migration scripts, cleanup scripts, etc.</p>
 
 <p>A new script generator allows you to create such scripts:</p>
 
-<p><code>rails generate script my_script</code></p>
+<pre><code>bin/rails generate script my_script
+bin/rails generate script data/backfill
+</code></pre>
 
 <p>You can run the generated script using:</p>
 
-<p><code>ruby script/my_script.rb</code></p>
+<pre><code>bundle exec ruby script/my_script.rb
+bundle exec ruby script/data/backfill.rb
+</code></pre>
 
 <p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>
 ]]></content:encoded>
