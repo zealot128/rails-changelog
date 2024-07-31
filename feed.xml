@@ -108,6 +108,21 @@ proc by printing the proc’s source code (MRI only).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Generate form helpers to use `textarea*` methods instead of `text_area*` methods
+</title>
+    <link>https://github.com/rails/rails/issues/52467</link>
+    <guid>https://github.com/rails/rails/issues/52467</guid>
+    <description>*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Generate form helpers to use <code>textarea*</code> methods instead of <code>text_area*</code> methods</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add authentication generator to give a basic start to an authentication system using database-tracked sessions.
 </title>
     <link>https://github.com/rails/rails/issues/52436</link>
@@ -381,6 +396,44 @@ the <code>classic</code> autoloader to Zeitwerk has been deleted.</p>
 in case you need it.</p>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Deprecate drawing routes with hash key paths to make routing faster.
+</title>
+    <link>https://github.com/rails/rails/issues/52422</link>
+    <guid>https://github.com/rails/rails/issues/52422</guid>
+    <description>*   Deprecate drawing routes with hash key paths to make routing faster.
+
+    ```ruby
+    # Before
+    get &quot;/users&quot; =&gt; &quot;users#index&quot;
+    post &quot;/logout&quot; =&gt; :sessions
+    mount MyApp =&gt; &quot;/my_app&quot;
+
+    # After
+    get &quot;/users&quot;, to: &quot;users#index&quot;
+    post &quot;/logout&quot;, to: &quot;sessions#logout&quot;
+    mount MyApp, at: &quot;/my_app&quot;
+    ```
+
+    *Gannon McGibbon*</description>
+    <pubDate>Wed, 31 Jul 2024 18:29:27 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Deprecate drawing routes with hash key paths to make routing faster.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">get</span> <span class="s2">"/users"</span> <span class="o">=&gt;</span> <span class="s2">"users#index"</span>
+<span class="n">post</span> <span class="s2">"/logout"</span> <span class="o">=&gt;</span> <span class="ss">:sessions</span>
+<span class="n">mount</span> <span class="no">MyApp</span> <span class="o">=&gt;</span> <span class="s2">"/my_app"</span>
+
+<span class="c1"># After</span>
+<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+<span class="n">post</span> <span class="s2">"/logout"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"sessions#logout"</span>
+<span class="n">mount</span> <span class="no">MyApp</span><span class="p">,</span> <span class="ss">at: </span><span class="s2">"/my_app"</span>
+</code></pre></div></div>
+
+<p><em>Gannon McGibbon</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -938,6 +991,25 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Rename `rich_text_area` methods into `rich_textarea`
+</title>
+    <link>https://github.com/rails/rails/issues/52467</link>
+    <guid>https://github.com/rails/rails/issues/52467</guid>
+    <description>*   Rename `rich_text_area` methods into `rich_textarea`
+
+    Old names are still available as aliases.
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Rename <code>rich_text_area</code> methods into <code>rich_textarea</code></p>
+
+<p>Old names are still available as aliases.</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Only sanitize `content` attribute when present in attachments.
 </title>
     <link>https://github.com/rails/rails/issues/52093</link>
@@ -950,6 +1022,25 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
     <content:encoded><![CDATA[<p>Only sanitize <code>content</code> attribute when present in attachments.</p>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Rename `text_area` methods into `textarea`
+</title>
+    <link>https://github.com/rails/rails/issues/52467</link>
+    <guid>https://github.com/rails/rails/issues/52467</guid>
+    <description>*   Rename `text_area` methods into `textarea`
+
+    Old names are still available as aliases.
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Rename <code>text_area</code> methods into <code>textarea</code></p>
+
+<p>Old names are still available as aliases.</p>
+
+<p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
