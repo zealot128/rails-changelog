@@ -60,6 +60,16 @@
     "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
   },
   {
+    "message": "*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods\n\n    *Sean Doyle*",
+    "project": "railties",
+    "date_merged": 1722446183000,
+    "author": "Sean Doyle",
+    "sha": "f9c51ec385a7b75e212954cd4b22c2da7c1d32f4",
+    "pr": "52467",
+    "merge_sha": "fa476ce275262add84d5b46bfffe078031c55cb8",
+    "html": "<p>Generate form helpers to use <code>textarea*</code> methods instead of <code>text_area*</code> methods</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions.\n\n    Generate with...\n\n    ```\n    bin/rails generate authentication\n    ```\n\n    Generated files:\n\n    ```\n    app/models/current.rb\n    app/models/user.rb\n    app/models/session.rb\n    app/controllers/sessions_controller.rb\n    app/views/sessions/new.html.erb\n    db/migrate/xxxxxxx_create_users.rb\n    db/migrate/xxxxxxx_create_sessions.rb\n    ```\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1722231039000,
@@ -158,6 +168,16 @@
     "pr": "52165",
     "merge_sha": "242216803ee73f528b0a74c6bdb367e5b98d8f83",
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate drawing routes with hash key paths to make routing faster.\n\n    ```ruby\n    # Before\n    get \"/users\" => \"users#index\"\n    post \"/logout\" => :sessions\n    mount MyApp => \"/my_app\"\n\n    # After\n    get \"/users\", to: \"users#index\"\n    post \"/logout\", to: \"sessions#logout\"\n    mount MyApp, at: \"/my_app\"\n    ```\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1722450567000,
+    "author": "Gannon McGibbon",
+    "sha": "1b40bfc8ffeeed0ab2471e272eb6be0940b29dd5",
+    "pr": "52422",
+    "merge_sha": "38bc323012e1f9856036e6c06d5787e2352ad747",
+    "html": "<p>Deprecate drawing routes with hash key paths to make routing faster.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/users\"</span> <span class=\"o\">=&gt;</span> <span class=\"s2\">\"users#index\"</span>\n<span class=\"n\">post</span> <span class=\"s2\">\"/logout\"</span> <span class=\"o\">=&gt;</span> <span class=\"ss\">:sessions</span>\n<span class=\"n\">mount</span> <span class=\"no\">MyApp</span> <span class=\"o\">=&gt;</span> <span class=\"s2\">\"/my_app\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/users\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"users#index\"</span>\n<span class=\"n\">post</span> <span class=\"s2\">\"/logout\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"sessions#logout\"</span>\n<span class=\"n\">mount</span> <span class=\"no\">MyApp</span><span class=\"p\">,</span> <span class=\"ss\">at: </span><span class=\"s2\">\"/my_app\"</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
     "message": "*   Deprecate drawing routes with multiple paths to make routing faster.\n    You may use `with_options` or a loop to make drawing multiple paths easier.\n\n    ```ruby\n    # Before\n    get \"/users\", \"/other_path\", to: \"users#index\"\n\n    # After\n    get \"/users\", to: \"users#index\"\n    get \"/other_path\", to: \"users#index\"\n    ```\n\n    *Gannon McGibbon*",
@@ -370,6 +390,16 @@
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
+    "message": "*   Rename `rich_text_area` methods into `rich_textarea`\n\n    Old names are still available as aliases.\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1722446183000,
+    "author": "Sean Doyle",
+    "sha": "f9c51ec385a7b75e212954cd4b22c2da7c1d32f4",
+    "pr": "52467",
+    "merge_sha": "fa476ce275262add84d5b46bfffe078031c55cb8",
+    "html": "<p>Rename <code>rich_text_area</code> methods into <code>rich_textarea</code></p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
     "project": "actiontext",
     "date_merged": 1718216498000,
@@ -378,6 +408,16 @@
     "pr": "52093",
     "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
     "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Rename `text_area` methods into `textarea`\n\n    Old names are still available as aliases.\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1722446183000,
+    "author": "Sean Doyle",
+    "sha": "f9c51ec385a7b75e212954cd4b22c2da7c1d32f4",
+    "pr": "52467",
+    "merge_sha": "fa476ce275262add84d5b46bfffe078031c55cb8",
+    "html": "<p>Rename <code>text_area</code> methods into <code>textarea</code></p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Rename `check_box*` methods into `checkbox*`.\n\n    Old names are still available as aliases.\n\n    *Jean Boussier*",
