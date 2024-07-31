@@ -60,34 +60,34 @@
     "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
   },
   {
-    "message": "*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions.\n\n\n    # Generate with...\n    bin/rails generate authentication\n\n    # Generated files\n    app/models/current.rb\n    app/models/user.rb\n    app/models/session.rb\n    app/controllers/sessions_controller.rb\n    app/views/sessions/new.html.erb\n    db/migrate/xxxxxxx_create_users.rb\n    db/migrate/xxxxxxx_create_sessions.rb\n\n\n    *DHH*",
+    "message": "*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions.\n\n    Generate with...\n\n    ```\n    bin/rails generate authentication\n    ```\n\n    Generated files:\n\n    ```\n    app/models/current.rb\n    app/models/user.rb\n    app/models/session.rb\n    app/controllers/sessions_controller.rb\n    app/views/sessions/new.html.erb\n    db/migrate/xxxxxxx_create_users.rb\n    db/migrate/xxxxxxx_create_sessions.rb\n    ```\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1722231039000,
     "author": "David Heinemeier Hansson",
     "sha": "d1cefb48d185c099c1c77ec7e98a2e26dde2b695",
     "pr": "52436",
     "merge_sha": "077d6e89c72069dfb89e5ee2e7f9d7e70c53fda5",
-    "html": "<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions.</p>\n\n<h1 id=\"generate-with\">Generate with…</h1>\n<p>bin/rails generate authentication</p>\n\n<h1 id=\"generated-files\">Generated files</h1>\n<p>app/models/current.rb<br />\napp/models/user.rb<br />\napp/models/session.rb<br />\napp/controllers/sessions_controller.rb<br />\napp/views/sessions/new.html.erb<br />\ndb/migrate/xxxxxxx_create_users.rb<br />\ndb/migrate/xxxxxxx_create_sessions.rb</p>\n\n<p><em>DHH</em></p>\n"
+    "html": "<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions.</p>\n\n<p>Generate with…</p>\n\n<pre><code>bin/rails generate authentication\n</code></pre>\n\n<p>Generated files:</p>\n\n<pre><code>app/models/current.rb\napp/models/user.rb\napp/models/session.rb\napp/controllers/sessions_controller.rb\napp/views/sessions/new.html.erb\ndb/migrate/xxxxxxx_create_users.rb\ndb/migrate/xxxxxxx_create_sessions.rb\n</code></pre>\n\n<p><em>DHH</em></p>\n"
   },
   {
-    "message": "*   Add not-null type modifier to migration attributes.\n\n\n    # Generating with...\n    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!\n\n    # Produces:\n    class CreateUsers < ActiveRecord::Migration[8.0]\n      def change\n        create_table :users do |t|\n          t.string :email_address, null: false\n          t.string :password_digest, null: false\n\n          t.timestamps\n        end\n        add_index :users, :email_address, unique: true\n      end\n    end\n\n\n    *DHH*",
+    "message": "*   Add not-null type modifier to migration attributes.\n\n    Generating with...\n\n    ```\n    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!\n    ```\n\n    Produces:\n\n    ```ruby\n    class CreateUsers < ActiveRecord::Migration[8.0]\n      def change\n        create_table :users do |t|\n          t.string :email_address, null: false\n          t.string :password_digest, null: false\n\n          t.timestamps\n        end\n        add_index :users, :email_address, unique: true\n      end\n    end\n    ```\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1721134851000,
     "author": "David Heinemeier Hansson",
     "sha": "2f92b1c94e2a080679ab0ad45abd0bdec24a5349",
     "pr": "52327",
     "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
-    "html": "<p>Add not-null type modifier to migration attributes.</p>\n\n<h1 id=\"generating-with\">Generating with…</h1>\n<p>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!</p>\n\n<h1 id=\"produces\">Produces:</h1>\n<p>class CreateUsers &lt; ActiveRecord::Migration[8.0]<br />\n  def change<br />\n    create_table :users do |t|<br />\n      t.string :email_address, null: false<br />\n      t.string :password_digest, null: false</p>\n\n<pre><code>  t.timestamps\nend\nadd_index :users, :email_address, unique: true   end end\n</code></pre>\n\n<p><em>DHH</em></p>\n"
+    "html": "<p>Add not-null type modifier to migration attributes.</p>\n\n<p>Generating with…</p>\n\n<pre><code>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!\n</code></pre>\n\n<p>Produces:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">CreateUsers</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Migration</span><span class=\"p\">[</span><span class=\"mf\">8.0</span><span class=\"p\">]</span>\n  <span class=\"k\">def</span> <span class=\"nf\">change</span>\n    <span class=\"n\">create_table</span> <span class=\"ss\">:users</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:email_address</span><span class=\"p\">,</span> <span class=\"ss\">null: </span><span class=\"kp\">false</span>\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:password_digest</span><span class=\"p\">,</span> <span class=\"ss\">null: </span><span class=\"kp\">false</span>\n\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">timestamps</span>\n    <span class=\"k\">end</span>\n    <span class=\"n\">add_index</span> <span class=\"ss\">:users</span><span class=\"p\">,</span> <span class=\"ss\">:email_address</span><span class=\"p\">,</span> <span class=\"ss\">unique: </span><span class=\"kp\">true</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
   },
   {
-    "message": "*   Add script folder and generator\n\n    Add a new script default folder to hold your one-off or general purpose\n    scripts, such as data migration scripts, cleanup scripts, etc.\n\n    A new script generator allows you to create such scripts:\n\n      `rails generate script my_script`\n\n    You can run the generated script using:\n\n      `ruby script/my_script.rb`\n\n    *Jerome Dalbert*, *Haroon Ahmed*",
+    "message": "*   Add a `script` folder to applications, and a scripts generator.\n\n    The new `script` folder is meant to hold one-off or general purpose scripts,\n    such as data migration scripts, cleanup scripts, etc.\n\n    A new script generator allows you to create such scripts:\n\n    ```\n    bin/rails generate script my_script\n    bin/rails generate script data/backfill\n    ```\n\n    You can run the generated script using:\n\n    ```\n    bundle exec ruby script/my_script.rb\n    bundle exec ruby script/data/backfill.rb\n    ```\n\n    *Jerome Dalbert*, *Haroon Ahmed*",
     "project": "railties",
-    "date_merged": 1721134851000,
-    "author": "Jerome Dalbert",
-    "sha": "c01a8466581b69d7886fb926ede5e76a74395162",
-    "pr": "52335",
-    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
-    "html": "<p>Add script folder and generator</p>\n\n<p>Add a new script default folder to hold your one-off or general purpose<br />\nscripts, such as data migration scripts, cleanup scripts, etc.</p>\n\n<p>A new script generator allows you to create such scripts:</p>\n\n<p><code>rails generate script my_script</code></p>\n\n<p>You can run the generated script using:</p>\n\n<p><code>ruby script/my_script.rb</code></p>\n\n<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>\n"
+    "date_merged": 1722367516000,
+    "author": "Xavier Noria",
+    "sha": "a71ec5634387b33fa3c103eba30b317dca76dcac",
+    "pr": "52454",
+    "merge_sha": "9262ca443a2d1f1287e02f175128a080dda0121b",
+    "html": "<p>Add a <code>script</code> folder to applications, and a scripts generator.</p>\n\n<p>The new <code>script</code> folder is meant to hold one-off or general purpose scripts,<br />\nsuch as data migration scripts, cleanup scripts, etc.</p>\n\n<p>A new script generator allows you to create such scripts:</p>\n\n<pre><code>bin/rails generate script my_script\nbin/rails generate script data/backfill\n</code></pre>\n\n<p>You can run the generated script using:</p>\n\n<pre><code>bundle exec ruby script/my_script.rb\nbundle exec ruby script/data/backfill.rb\n</code></pre>\n\n<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>\n"
   },
   {
     "message": "*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.\n\n    *Juan Vásquez*",
