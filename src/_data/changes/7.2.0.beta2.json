@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Add an `identifier` to the event payload for the ActiveSupport::Notification `transmit_subscription_confirmation.action_cable` and `transmit_subscription_rejection.action_cable`.\n\n    *Keith Schacht*",
+    "project": "actioncable",
+    "date_merged": 1722462576000,
+    "author": "Keith Schacht",
+    "sha": "52189d25d6ebca22e9e530cf31e49842e85ff7dd",
+    "pr": "52421",
+    "merge_sha": "bcaac3e8c460e44af67b6a84899f024ebe1c8552",
+    "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
+  },
+  {
     "message": "*   Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.\n\n    Previously adding time instances together such as `10.days.ago + 10.days.ago` or `10.days.ago.since(10.days.ago)` produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.\n\n    *Nick Schwaderer*",
     "project": "activesupport",
     "date_merged": 1721427926000,
