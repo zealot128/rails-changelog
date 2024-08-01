@@ -123,6 +123,23 @@ proc by printing the proc’s source code (MRI only).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: The new `bin/rails boot` command boots the application and exits. Supports the
+</title>
+    <link>https://github.com/rails/rails/issues/52480</link>
+    <guid>https://github.com/rails/rails/issues/52480</guid>
+    <description>*   The new `bin/rails boot` command boots the application and exits. Supports the
+    standard `-e/--environment` options.
+
+    *Xavier Noria*</description>
+    <pubDate>Thu, 01 Aug 2024 16:39:56 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>The new <code>bin/rails boot</code> command boots the application and exits. Supports the<br />
+standard <code>-e/--environment</code> options.</p>
+
+<p><em>Xavier Noria</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Generate form helpers to use `textarea*` methods instead of `text_area*` methods
 </title>
     <link>https://github.com/rails/rails/issues/52467</link>
