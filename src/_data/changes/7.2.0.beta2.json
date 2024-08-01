@@ -70,6 +70,16 @@
     "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
   },
   {
+    "message": "*   The new `bin/rails boot` command boots the application and exits. Supports the\n    standard `-e/--environment` options.\n\n    *Xavier Noria*",
+    "project": "railties",
+    "date_merged": 1722530396000,
+    "author": "Xavier Noria",
+    "sha": "4377f08b665b3cbc3c727f53e7457e2911412ae4",
+    "pr": "52480",
+    "merge_sha": "a48c39859bc09044ec18bc3501ca357915adb590",
+    "html": "<p>The new <code>bin/rails boot</code> command boots the application and exits. Supports the<br />\nstandard <code>-e/--environment</code> options.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
     "message": "*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods\n\n    *Sean Doyle*",
     "project": "railties",
     "date_merged": 1722446183000,
