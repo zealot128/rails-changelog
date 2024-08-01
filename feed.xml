@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actioncable: Add an `identifier` to the event payload for the ActiveSupport::Notification `transmit_subscription_confirmation.action_cable` and `transmit_subscription_rejection.action_cable`.
+</title>
+    <link>https://github.com/rails/rails/issues/52421</link>
+    <guid>https://github.com/rails/rails/issues/52421</guid>
+    <description>*   Add an `identifier` to the event payload for the ActiveSupport::Notification `transmit_subscription_confirmation.action_cable` and `transmit_subscription_rejection.action_cable`.
+
+    *Keith Schacht*</description>
+    <pubDate>Wed, 31 Jul 2024 21:49:36 +0000</pubDate>
+    <author>Keith Schacht</author>
+    <content:encoded><![CDATA[<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>
+
+<p><em>Keith Schacht</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.
 </title>
     <link>https://github.com/rails/rails/issues/52370</link>
