@@ -40,6 +40,16 @@
     "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.\n    Replace the characters `\"*?<>` with `-` if they exist in the Filename to match the Filename convention of Win OS.\n\n    *Luong Viet Dung(Martin)*",
+    "project": "activestorage",
+    "date_merged": 1722882513000,
+    "author": "Martin(Luong Viet Dung)",
+    "sha": "0d5bbb65a15ff1f70b4cb27c63e502f73ccd78ae",
+    "pr": "52496",
+    "merge_sha": "25f86e2f8bb845603df4a3a6497682b416076420",
+    "html": "<p>Improve <code>ActiveStorage::Filename#sanitized</code> method to handle special characters more effectively.<br />\nReplace the characters <code>\"*?&lt;&gt;</code> with <code>-</code> if they exist in the Filename to match the Filename convention of Win OS.</p>\n\n<p><em>Luong Viet Dung(Martin)</em></p>\n"
+  },
+  {
     "message": "*   Improve InvariableError, UnpreviewableError and UnrepresentableError message.\n\n    Include Blob ID and content_type in the messages.\n\n    *Petrik de Heus*",
     "project": "activestorage",
     "date_merged": 1722335759000,
