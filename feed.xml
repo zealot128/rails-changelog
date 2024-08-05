@@ -70,6 +70,23 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.
+</title>
+    <link>https://github.com/rails/rails/issues/52496</link>
+    <guid>https://github.com/rails/rails/issues/52496</guid>
+    <description>*   Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.
+    Replace the characters `&quot;*?&lt;&gt;` with `-` if they exist in the Filename to match the Filename convention of Win OS.
+
+    *Luong Viet Dung(Martin)*</description>
+    <pubDate>Mon, 05 Aug 2024 18:28:33 +0000</pubDate>
+    <author>Martin(Luong Viet Dung)</author>
+    <content:encoded><![CDATA[<p>Improve <code>ActiveStorage::Filename#sanitized</code> method to handle special characters more effectively.<br />
+Replace the characters <code>"*?&lt;&gt;</code> with <code>-</code> if they exist in the Filename to match the Filename convention of Win OS.</p>
+
+<p><em>Luong Viet Dung(Martin)</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Improve InvariableError, UnpreviewableError and UnrepresentableError message.
 </title>
     <link>https://github.com/rails/rails/issues/52193</link>
