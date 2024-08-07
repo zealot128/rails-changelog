@@ -6,67 +6,274 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>actioncable: Add an `identifier` to the event payload for the ActiveSupport::Notification `transmit_subscription_confirmation.action_cable` and `transmit_subscription_rejection.action_cable`.
+    <title>guides: The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from
 </title>
-    <link>https://github.com/rails/rails/issues/52421</link>
-    <guid>https://github.com/rails/rails/issues/52421</guid>
-    <description>*   Add an `identifier` to the event payload for the ActiveSupport::Notification `transmit_subscription_confirmation.action_cable` and `transmit_subscription_rejection.action_cable`.
+    <link>https://github.com/rails/rails/issues/52165</link>
+    <guid>https://github.com/rails/rails/issues/52165</guid>
+    <description>*   The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from
+    the `classic` autoloader to Zeitwerk has been deleted.
 
-    *Keith Schacht*</description>
-    <pubDate>Wed, 31 Jul 2024 21:49:36 +0000</pubDate>
-    <author>Keith Schacht</author>
-    <content:encoded><![CDATA[<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>
+    The last version of this guide can be found
+    [here](https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html),
+    in case you need it.
 
-<p><em>Keith Schacht</em></p>
+    *Petrik de Heus*</description>
+    <pubDate>Thu, 20 Jun 2024 08:47:01 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />
+the <code>classic</code> autoloader to Zeitwerk has been deleted.</p>
+
+<p>The last version of this guide can be found<br />
+<a href="https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html">here</a>,<br />
+in case you need it.</p>
+
+<p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activejob: Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
-</title>
-    <link>https://github.com/rails/rails/issues/52468</link>
-    <guid>https://github.com/rails/rails/issues/52468</guid>
-    <description>*   Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
-
-    *heka1024*</description>
-    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
-    <author>heka1024</author>
-    <content:encoded><![CDATA[<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>
-
-<p><em>heka1024</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Rename `rich_text_area` methods into `rich_textarea`
+    <title>railties: Generate form helpers to use `textarea*` methods instead of `text_area*` methods
 </title>
     <link>https://github.com/rails/rails/issues/52467</link>
     <guid>https://github.com/rails/rails/issues/52467</guid>
-    <description>*   Rename `rich_text_area` methods into `rich_textarea`
-
-    Old names are still available as aliases.
+    <description>*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods
 
     *Sean Doyle*</description>
     <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
     <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Rename <code>rich_text_area</code> methods into <code>rich_textarea</code></p>
-
-<p>Old names are still available as aliases.</p>
+    <content:encoded><![CDATA[<p>Generate form helpers to use <code>textarea*</code> methods instead of <code>text_area*</code> methods</p>
 
 <p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actiontext: Only sanitize `content` attribute when present in attachments.
+    <title>railties: Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.
 </title>
-    <link>https://github.com/rails/rails/issues/52093</link>
-    <guid>https://github.com/rails/rails/issues/52093</guid>
-    <description>*   Only sanitize `content` attribute when present in attachments.
+    <link>https://github.com/rails/rails/issues/52468</link>
+    <guid>https://github.com/rails/rails/issues/52468</guid>
+    <description>*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.
 
-    *Petrik de Heus*</description>
-    <pubDate>Wed, 12 Jun 2024 18:21:38 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Only sanitize <code>content</code> attribute when present in attachments.</p>
+    Generate with...
 
-<p><em>Petrik de Heus</em></p>
+    ```
+    bin/rails generate authentication
+    ```
+
+    Generated files:
+
+    ```
+    app/models/current.rb
+    app/models/user.rb
+    app/models/session.rb
+    app/controllers/sessions_controller.rb
+    app/controllers/passwords_controller.rb
+    app/mailers/passwords_mailer.rb
+    app/views/sessions/new.html.erb
+    app/views/passwords/new.html.erb
+    app/views/passwords/edit.html.erb
+    app/views/passwords_mailer/reset.html.erb
+    app/views/passwords_mailer/reset.text.erb
+    db/migrate/xxxxxxx_create_users.rb
+    db/migrate/xxxxxxx_create_sessions.rb
+    test/mailers/previews/passwords_mailer_preview.rb
+    ```
+
+    *DHH*</description>
+    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.</p>
+
+<p>Generate with…</p>
+
+<pre><code>bin/rails generate authentication
+</code></pre>
+
+<p>Generated files:</p>
+
+<pre><code>app/models/current.rb
+app/models/user.rb
+app/models/session.rb
+app/controllers/sessions_controller.rb
+app/controllers/passwords_controller.rb
+app/mailers/passwords_mailer.rb
+app/views/sessions/new.html.erb
+app/views/passwords/new.html.erb
+app/views/passwords/edit.html.erb
+app/views/passwords_mailer/reset.html.erb
+app/views/passwords_mailer/reset.text.erb
+db/migrate/xxxxxxx_create_users.rb
+db/migrate/xxxxxxx_create_sessions.rb
+test/mailers/previews/passwords_mailer_preview.rb
+</code></pre>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add not-null type modifier to migration attributes.
+</title>
+    <link>https://github.com/rails/rails/issues/52327</link>
+    <guid>https://github.com/rails/rails/issues/52327</guid>
+    <description>*   Add not-null type modifier to migration attributes.
+
+    Generating with...
+
+    ```
+    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
+    ```
+
+    Produces:
+
+    ```ruby
+    class CreateUsers &lt; ActiveRecord::Migration[8.0]
+      def change
+        create_table :users do |t|
+          t.string :email_address, null: false
+          t.string :password_digest, null: false
+
+          t.timestamps
+        end
+        add_index :users, :email_address, unique: true
+      end
+    end
+    ```
+
+    *DHH*</description>
+    <pubDate>Tue, 16 Jul 2024 13:00:51 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add not-null type modifier to migration attributes.</p>
+
+<p>Generating with…</p>
+
+<pre><code>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
+</code></pre>
+
+<p>Produces:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreateUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">8.0</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:users</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:password_digest</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+
+      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+    <span class="k">end</span>
+    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add a `script` folder to applications, and a scripts generator.
+</title>
+    <link>https://github.com/rails/rails/issues/52454</link>
+    <guid>https://github.com/rails/rails/issues/52454</guid>
+    <description>*   Add a `script` folder to applications, and a scripts generator.
+
+    The new `script` folder is meant to hold one-off or general purpose scripts,
+    such as data migration scripts, cleanup scripts, etc.
+
+    A new script generator allows you to create such scripts:
+
+    ```
+    bin/rails generate script my_script
+    bin/rails generate script data/backfill
+    ```
+
+    You can run the generated script using:
+
+    ```
+    bundle exec ruby script/my_script.rb
+    bundle exec ruby script/data/backfill.rb
+    ```
+
+    *Jerome Dalbert*, *Haroon Ahmed*</description>
+    <pubDate>Tue, 30 Jul 2024 19:25:16 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add a <code>script</code> folder to applications, and a scripts generator.</p>
+
+<p>The new <code>script</code> folder is meant to hold one-off or general purpose scripts,<br />
+such as data migration scripts, cleanup scripts, etc.</p>
+
+<p>A new script generator allows you to create such scripts:</p>
+
+<pre><code>bin/rails generate script my_script
+bin/rails generate script data/backfill
+</code></pre>
+
+<p>You can run the generated script using:</p>
+
+<pre><code>bundle exec ruby script/my_script.rb
+bundle exec ruby script/data/backfill.rb
+</code></pre>
+
+<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Deprecate `bin/rake stats` in favor of `bin/rails stats`.
+</title>
+    <link>https://github.com/rails/rails/issues/52231</link>
+    <guid>https://github.com/rails/rails/issues/52231</guid>
+    <description>*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.
+
+    *Juan Vásquez*</description>
+    <pubDate>Sat, 29 Jun 2024 06:52:05 +0000</pubDate>
+    <author>Juan Vásquez</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>bin/rake stats</code> in favor of <code>bin/rails stats</code>.</p>
+
+<p><em>Juan Vásquez</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
+</title>
+    <link>https://github.com/rails/rails/issues/52115</link>
+    <guid>https://github.com/rails/rails/issues/52115</guid>
+    <description>*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
+
+    *Deepak Mahakale*</description>
+    <pubDate>Thu, 13 Jun 2024 17:22:29 +0000</pubDate>
+    <author>Deepak Mahakale</author>
+    <content:encoded><![CDATA[<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>
+
+<p><em>Deepak Mahakale</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add Rubocop and GitHub Actions to plugin generator.
+</title>
+    <link>https://github.com/rails/rails/issues/51822</link>
+    <guid>https://github.com/rails/rails/issues/51822</guid>
+    <description>*   Add Rubocop and GitHub Actions to plugin generator.
+    This can be skipped using --skip-rubocop and --skip-ci.
+
+    *Chris Oliver*</description>
+    <pubDate>Thu, 23 May 2024 18:08:58 +0000</pubDate>
+    <author>Chris Oliver</author>
+    <content:encoded><![CDATA[<p>Add Rubocop and GitHub Actions to plugin generator.<br />
+This can be skipped using –skip-rubocop and –skip-ci.</p>
+
+<p><em>Chris Oliver</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
+</title>
+    <link>https://github.com/rails/rails/issues/51798</link>
+    <guid>https://github.com/rails/rails/issues/51798</guid>
+    <description>*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
+    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/
+
+    *DHH*</description>
+    <pubDate>Tue, 14 May 2024 00:37:39 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />
+This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
+
+<p><em>DHH</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -118,6 +325,488 @@ Replace the characters <code>"*?&lt;&gt;</code> with <code>-</code> if they exis
     <content:encoded><![CDATA[<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>
 
 <p><em>Nate Matykiewicz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Add a default token generator for password reset tokens when using `has_secure_password`.
+</title>
+    <link>https://github.com/rails/rails/issues/52483</link>
+    <guid>https://github.com/rails/rails/issues/52483</guid>
+    <description>*   Add a default token generator for password reset tokens when using `has_secure_password`.
+
+    ```ruby
+    class User &lt; ApplicationRecord
+      has_secure_password
+    end
+
+    user = User.create!(name: &quot;david&quot;, password: &quot;123&quot;, password_confirmation: &quot;123&quot;)
+    token = user.password_reset_token
+    User.find_by_password_reset_token(token) # returns user
+
+    # 16 minutes later...
+    User.find_by_password_reset_token(token) # returns nil
+
+    # raises ActiveSupport::MessageVerifier::InvalidSignature since the token is expired
+    User.find_by_password_reset_token!(token)
+    ```
+
+    *DHH*</description>
+    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add a default token generator for password reset tokens when using <code>has_secure_password</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">has_secure_password</span>
+<span class="k">end</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"david"</span><span class="p">,</span> <span class="ss">password: </span><span class="s2">"123"</span><span class="p">,</span> <span class="ss">password_confirmation: </span><span class="s2">"123"</span><span class="p">)</span>
+<span class="n">token</span> <span class="o">=</span> <span class="n">user</span><span class="p">.</span><span class="nf">password_reset_token</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">find_by_password_reset_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="c1"># returns user</span>
+
+<span class="c1"># 16 minutes later...</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">find_by_password_reset_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="c1"># returns nil</span>
+
+<span class="c1"># raises ActiveSupport::MessageVerifier::InvalidSignature since the token is expired</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">find_by_password_reset_token!</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Add a load hook `active_model_translation` for `ActiveModel::Translation`.
+</title>
+    <link>https://github.com/rails/rails/issues/52426</link>
+    <guid>https://github.com/rails/rails/issues/52426</guid>
+    <description>*   Add a load hook `active_model_translation` for `ActiveModel::Translation`.
+
+    *Shouichi Kamiya*</description>
+    <pubDate>Mon, 29 Jul 2024 21:59:46 +0000</pubDate>
+    <author>Shouichi Kamiya</author>
+    <content:encoded><![CDATA[<p>Add a load hook <code>active_model_translation</code> for <code>ActiveModel::Translation</code>.</p>
+
+<p><em>Shouichi Kamiya</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Add `raise_on_missing_translations` option to `ActiveModel::Translation`.
+</title>
+    <link>https://github.com/rails/rails/issues/52426</link>
+    <guid>https://github.com/rails/rails/issues/52426</guid>
+    <description>*   Add `raise_on_missing_translations` option to `ActiveModel::Translation`.
+    When the option is set, `human_attribute_name` raises an error if a translation of the given attribute is missing.
+
+    ```ruby
+    # ActiveModel::Translation.raise_on_missing_translations = false
+    Post.human_attribute_name(&quot;title&quot;)
+    =&gt; &quot;Title&quot;
+
+    # ActiveModel::Translation.raise_on_missing_translations = true
+    Post.human_attribute_name(&quot;title&quot;)
+    =&gt; Translation missing. Options considered were: (I18n::MissingTranslationData)
+        - en.activerecord.attributes.post.title
+        - en.attributes.title
+
+                raise exception.respond_to?(:to_exception) ? exception.to_exception : exception
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ```
+
+    *Shouichi Kamiya*</description>
+    <pubDate>Mon, 29 Jul 2024 21:59:46 +0000</pubDate>
+    <author>Shouichi Kamiya</author>
+    <content:encoded><![CDATA[<p>Add <code>raise_on_missing_translations</code> option to <code>ActiveModel::Translation</code>.<br />
+When the option is set, <code>human_attribute_name</code> raises an error if a translation of the given attribute is missing.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ActiveModel::Translation.raise_on_missing_translations = false</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">human_attribute_name</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="s2">"Title"</span>
+
+<span class="c1"># ActiveModel::Translation.raise_on_missing_translations = true</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">human_attribute_name</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="no">Translation</span> <span class="n">missing</span><span class="o">.</span> <span class="no">Options</span> <span class="n">considered</span> <span class="ss">were: </span><span class="p">(</span><span class="no">I18n</span><span class="o">::</span><span class="no">MissingTranslationData</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">en</span><span class="p">.</span><span class="nf">activerecord</span><span class="p">.</span><span class="nf">attributes</span><span class="p">.</span><span class="nf">post</span><span class="p">.</span><span class="nf">title</span>
+    <span class="o">-</span> <span class="n">en</span><span class="p">.</span><span class="nf">attributes</span><span class="p">.</span><span class="nf">title</span>
+
+            <span class="k">raise</span> <span class="n">exception</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="ss">:to_exception</span><span class="p">)</span> <span class="p">?</span> <span class="n">exception</span><span class="p">.</span><span class="nf">to_exception</span> <span class="p">:</span> <span class="n">exception</span>
+                  <span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+</code></pre></div></div>
+
+<p><em>Shouichi Kamiya</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activemodel: Introduce `ActiveModel::AttributeAssignment#attribute_writer_missing`
+</title>
+    <link>https://github.com/rails/rails/issues/52417</link>
+    <guid>https://github.com/rails/rails/issues/52417</guid>
+    <description>*   Introduce `ActiveModel::AttributeAssignment#attribute_writer_missing`
+
+    Provide instances with an opportunity to gracefully handle assigning to an
+    unknown attribute:
+
+    ```ruby
+    class Rectangle
+      include ActiveModel::AttributeAssignment
+
+      attr_accessor :length, :width
+
+      def attribute_writer_missing(name, value)
+        Rails.logger.warn &quot;Tried to assign to unknown attribute #{name}&quot;
+      end
+    end
+
+    rectangle = Rectangle.new
+    rectangle.assign_attributes(height: 10) # =&gt; Logs &quot;Tried to assign to unknown attribute &#39;height&#39;&quot;
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Fri, 26 Jul 2024 22:48:16 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Introduce <code>ActiveModel::AttributeAssignment#attribute_writer_missing</code></p>
+
+<p>Provide instances with an opportunity to gracefully handle assigning to an<br />
+unknown attribute:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Rectangle</span>
+  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">AttributeAssignment</span>
+
+  <span class="nb">attr_accessor</span> <span class="ss">:length</span><span class="p">,</span> <span class="ss">:width</span>
+
+  <span class="k">def</span> <span class="nf">attribute_writer_missing</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Tried to assign to unknown attribute </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">rectangle</span> <span class="o">=</span> <span class="no">Rectangle</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">rectangle</span><span class="p">.</span><span class="nf">assign_attributes</span><span class="p">(</span><span class="ss">height: </span><span class="mi">10</span><span class="p">)</span> <span class="c1"># =&gt; Logs "Tried to assign to unknown attribute 'height'"</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Rename `rich_text_area` methods into `rich_textarea`
+</title>
+    <link>https://github.com/rails/rails/issues/52467</link>
+    <guid>https://github.com/rails/rails/issues/52467</guid>
+    <description>*   Rename `rich_text_area` methods into `rich_textarea`
+
+    Old names are still available as aliases.
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Rename <code>rich_text_area</code> methods into <code>rich_textarea</code></p>
+
+<p>Old names are still available as aliases.</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Only sanitize `content` attribute when present in attachments.
+</title>
+    <link>https://github.com/rails/rails/issues/52093</link>
+    <guid>https://github.com/rails/rails/issues/52093</guid>
+    <description>*   Only sanitize `content` attribute when present in attachments.
+
+    *Petrik de Heus*</description>
+    <pubDate>Wed, 12 Jun 2024 18:21:38 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Only sanitize <code>content</code> attribute when present in attachments.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Rename `text_area` methods into `textarea`
+</title>
+    <link>https://github.com/rails/rails/issues/52467</link>
+    <guid>https://github.com/rails/rails/issues/52467</guid>
+    <description>*   Rename `text_area` methods into `textarea`
+
+    Old names are still available as aliases.
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Rename <code>text_area</code> methods into <code>textarea</code></p>
+
+<p>Old names are still available as aliases.</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Rename `check_box*` methods into `checkbox*`.
+</title>
+    <link>https://github.com/rails/rails/issues/52432</link>
+    <guid>https://github.com/rails/rails/issues/52432</guid>
+    <description>*   Rename `check_box*` methods into `checkbox*`.
+
+    Old names are still available as aliases.
+
+    *Jean Boussier*</description>
+    <pubDate>Sun, 28 Jul 2024 11:40:25 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>
+
+<p>Old names are still available as aliases.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actioncable: Add an `identifier` to the event payload for the ActiveSupport::Notification `transmit_subscription_confirmation.action_cable` and `transmit_subscription_rejection.action_cable`.
+</title>
+    <link>https://github.com/rails/rails/issues/52421</link>
+    <guid>https://github.com/rails/rails/issues/52421</guid>
+    <description>*   Add an `identifier` to the event payload for the ActiveSupport::Notification `transmit_subscription_confirmation.action_cable` and `transmit_subscription_rejection.action_cable`.
+
+    *Keith Schacht*</description>
+    <pubDate>Wed, 31 Jul 2024 21:49:36 +0000</pubDate>
+    <author>Keith Schacht</author>
+    <content:encoded><![CDATA[<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>
+
+<p><em>Keith Schacht</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Allow bots to ignore `allow_browser`.
+</title>
+    <link>https://github.com/rails/rails/issues/52531</link>
+    <guid>https://github.com/rails/rails/issues/52531</guid>
+    <description>*   Allow bots to ignore `allow_browser`.
+
+    *Matthew Nguyen*</description>
+    <pubDate>Wed, 07 Aug 2024 16:29:46 +0000</pubDate>
+    <author>Matthew Nguyen</author>
+    <content:encoded><![CDATA[<p>Allow bots to ignore <code>allow_browser</code>.</p>
+
+<p><em>Matthew Nguyen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Deprecate drawing routes with hash key paths to make routing faster.
+</title>
+    <link>https://github.com/rails/rails/issues/52422</link>
+    <guid>https://github.com/rails/rails/issues/52422</guid>
+    <description>*   Deprecate drawing routes with hash key paths to make routing faster.
+
+    ```ruby
+    # Before
+    get &quot;/users&quot; =&gt; &quot;users#index&quot;
+    post &quot;/logout&quot; =&gt; :sessions
+    mount MyApp =&gt; &quot;/my_app&quot;
+
+    # After
+    get &quot;/users&quot;, to: &quot;users#index&quot;
+    post &quot;/logout&quot;, to: &quot;sessions#logout&quot;
+    mount MyApp, at: &quot;/my_app&quot;
+    ```
+
+    *Gannon McGibbon*</description>
+    <pubDate>Wed, 31 Jul 2024 18:29:27 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Deprecate drawing routes with hash key paths to make routing faster.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">get</span> <span class="s2">"/users"</span> <span class="o">=&gt;</span> <span class="s2">"users#index"</span>
+<span class="n">post</span> <span class="s2">"/logout"</span> <span class="o">=&gt;</span> <span class="ss">:sessions</span>
+<span class="n">mount</span> <span class="no">MyApp</span> <span class="o">=&gt;</span> <span class="s2">"/my_app"</span>
+
+<span class="c1"># After</span>
+<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+<span class="n">post</span> <span class="s2">"/logout"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"sessions#logout"</span>
+<span class="n">mount</span> <span class="no">MyApp</span><span class="p">,</span> <span class="ss">at: </span><span class="s2">"/my_app"</span>
+</code></pre></div></div>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Deprecate drawing routes with multiple paths to make routing faster.
+</title>
+    <link>https://github.com/rails/rails/issues/52409</link>
+    <guid>https://github.com/rails/rails/issues/52409</guid>
+    <description>*   Deprecate drawing routes with multiple paths to make routing faster.
+    You may use `with_options` or a loop to make drawing multiple paths easier.
+
+    ```ruby
+    # Before
+    get &quot;/users&quot;, &quot;/other_path&quot;, to: &quot;users#index&quot;
+
+    # After
+    get &quot;/users&quot;, to: &quot;users#index&quot;
+    get &quot;/other_path&quot;, to: &quot;users#index&quot;
+    ```
+
+    *Gannon McGibbon*</description>
+    <pubDate>Sat, 27 Jul 2024 03:42:17 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Deprecate drawing routes with multiple paths to make routing faster.<br />
+You may use <code>with_options</code> or a loop to make drawing multiple paths easier.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+
+<span class="c1"># After</span>
+<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+<span class="n">get</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+</code></pre></div></div>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Make `http_cache_forever` use `immutable: true`
+</title>
+    <link>https://github.com/rails/rails/issues/52283</link>
+    <guid>https://github.com/rails/rails/issues/52283</guid>
+    <description>*   Make `http_cache_forever` use `immutable: true`
+
+    *Nate Matykiewicz*</description>
+    <pubDate>Sat, 06 Jul 2024 18:08:48 +0000</pubDate>
+    <author>Nate Matykiewicz</author>
+    <content:encoded><![CDATA[<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>
+
+<p><em>Nate Matykiewicz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `config.action_dispatch.strict_freshness`.
+</title>
+    <link>https://github.com/rails/rails/issues/52274</link>
+    <guid>https://github.com/rails/rails/issues/52274</guid>
+    <description>*   Add `config.action_dispatch.strict_freshness`.
+
+    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,
+    as specified by RFC 7232, Section 6.
+
+    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of
+    Rails 8.0 defaults.
+
+    *heka1024*</description>
+    <pubDate>Fri, 05 Jul 2024 08:27:46 +0000</pubDate>
+    <author>heka1024</author>
+    <content:encoded><![CDATA[<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>
+
+<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />
+as specified by RFC 7232, Section 6.</p>
+
+<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />
+Rails 8.0 defaults.</p>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Support `immutable` directive in Cache-Control
+</title>
+    <link>https://github.com/rails/rails/issues/52197</link>
+    <guid>https://github.com/rails/rails/issues/52197</guid>
+    <description>*   Support `immutable` directive in Cache-Control
+
+    ```ruby
+    expires_in 1.minute, public: true, immutable: true
+    # Cache-Control: public, max-age=60, immutable
+    ```
+
+    *heka1024*</description>
+    <pubDate>Wed, 26 Jun 2024 20:23:19 +0000</pubDate>
+    <author>heka1024</author>
+    <content:encoded><![CDATA[<p>Support <code>immutable</code> directive in Cache-Control</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">expires_in</span> <span class="mi">1</span><span class="p">.</span><span class="nf">minute</span><span class="p">,</span> <span class="ss">public: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">immutable: </span><span class="kp">true</span>
+<span class="c1"># Cache-Control: public, max-age=60, immutable</span>
+</code></pre></div></div>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `:wasm_unsafe_eval` mapping for `content_security_policy`
+</title>
+    <link>https://github.com/rails/rails/issues/51944</link>
+    <guid>https://github.com/rails/rails/issues/51944</guid>
+    <description>*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`
+
+    ```ruby
+    # Before
+    policy.script_src &quot;&#39;wasm-unsafe-eval&#39;&quot;
+
+    # After
+    policy.script_src :wasm_unsafe_eval
+    ```
+
+    *Joe Haig*</description>
+    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
+    <author>Cyril Blaecke</author>
+    <content:encoded><![CDATA[<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="s2">"'wasm-unsafe-eval'"</span>
+
+<span class="c1"># After</span>
+<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="ss">:wasm_unsafe_eval</span>
+</code></pre></div></div>
+
+<p><em>Joe Haig</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `display_capture` and `keyboard_map` in `permissions_policy`
+</title>
+    <link>https://github.com/rails/rails/issues/51944</link>
+    <guid>https://github.com/rails/rails/issues/51944</guid>
+    <description>*   Add `display_capture` and `keyboard_map` in `permissions_policy`
+
+    *Cyril Blaecke*</description>
+    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
+    <author>Cyril Blaecke</author>
+    <content:encoded><![CDATA[<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>
+
+<p><em>Cyril Blaecke</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
+</title>
+    <link>https://github.com/rails/rails/issues/52468</link>
+    <guid>https://github.com/rails/rails/issues/52468</guid>
+    <description>*   Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
+
+    *heka1024*</description>
+    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
+    <author>heka1024</author>
+    <content:encoded><![CDATA[<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: PostgreSQLAdapter: Allow `disable_extension` to be called with schema-qualified name.
+</title>
+    <link>https://github.com/rails/rails/issues/52452</link>
+    <guid>https://github.com/rails/rails/issues/52452</guid>
+    <description>*   PostgreSQLAdapter: Allow `disable_extension` to be called with schema-qualified name.
+
+    For parity with `enable_extension`, the `disable_extension` method can be called with a schema-qualified
+    name (e.g. `disable_extension &quot;myschema.pgcrypto&quot;`). Note that PostgreSQL&#39;s `DROP EXTENSION` does not
+    actually take a schema name (unlike `CREATE EXTENSION`), so the resulting SQL statement will only name
+    the extension, e.g. `DROP EXTENSION IF EXISTS &quot;pgcrypto&quot;`.
+
+    *Tony Novak*</description>
+    <pubDate>Wed, 07 Aug 2024 08:05:06 +0000</pubDate>
+    <author>Tony Novak</author>
+    <content:encoded><![CDATA[<p>PostgreSQLAdapter: Allow <code>disable_extension</code> to be called with schema-qualified name.</p>
+
+<p>For parity with <code>enable_extension</code>, the <code>disable_extension</code> method can be called with a schema-qualified<br />
+name (e.g. <code>disable_extension "myschema.pgcrypto"</code>). Note that PostgreSQL’s <code>DROP EXTENSION</code> does not<br />
+actually take a schema name (unlike <code>CREATE EXTENSION</code>), so the resulting SQL statement will only name<br />
+the extension, e.g. <code>DROP EXTENSION IF EXISTS "pgcrypto"</code>.</p>
+
+<p><em>Tony Novak</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -549,409 +1238,6 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
-    <title>guides: The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from
-</title>
-    <link>https://github.com/rails/rails/issues/52165</link>
-    <guid>https://github.com/rails/rails/issues/52165</guid>
-    <description>*   The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from
-    the `classic` autoloader to Zeitwerk has been deleted.
-
-    The last version of this guide can be found
-    [here](https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html),
-    in case you need it.
-
-    *Petrik de Heus*</description>
-    <pubDate>Thu, 20 Jun 2024 08:47:01 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />
-the <code>classic</code> autoloader to Zeitwerk has been deleted.</p>
-
-<p>The last version of this guide can be found<br />
-<a href="https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html">here</a>,<br />
-in case you need it.</p>
-
-<p><em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Rename `text_area` methods into `textarea`
-</title>
-    <link>https://github.com/rails/rails/issues/52467</link>
-    <guid>https://github.com/rails/rails/issues/52467</guid>
-    <description>*   Rename `text_area` methods into `textarea`
-
-    Old names are still available as aliases.
-
-    *Sean Doyle*</description>
-    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Rename <code>text_area</code> methods into <code>textarea</code></p>
-
-<p>Old names are still available as aliases.</p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Rename `check_box*` methods into `checkbox*`.
-</title>
-    <link>https://github.com/rails/rails/issues/52432</link>
-    <guid>https://github.com/rails/rails/issues/52432</guid>
-    <description>*   Rename `check_box*` methods into `checkbox*`.
-
-    Old names are still available as aliases.
-
-    *Jean Boussier*</description>
-    <pubDate>Sun, 28 Jul 2024 11:40:25 +0000</pubDate>
-    <author>Jean Boussier</author>
-    <content:encoded><![CDATA[<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>
-
-<p>Old names are still available as aliases.</p>
-
-<p><em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Deprecate drawing routes with hash key paths to make routing faster.
-</title>
-    <link>https://github.com/rails/rails/issues/52422</link>
-    <guid>https://github.com/rails/rails/issues/52422</guid>
-    <description>*   Deprecate drawing routes with hash key paths to make routing faster.
-
-    ```ruby
-    # Before
-    get &quot;/users&quot; =&gt; &quot;users#index&quot;
-    post &quot;/logout&quot; =&gt; :sessions
-    mount MyApp =&gt; &quot;/my_app&quot;
-
-    # After
-    get &quot;/users&quot;, to: &quot;users#index&quot;
-    post &quot;/logout&quot;, to: &quot;sessions#logout&quot;
-    mount MyApp, at: &quot;/my_app&quot;
-    ```
-
-    *Gannon McGibbon*</description>
-    <pubDate>Wed, 31 Jul 2024 18:29:27 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Deprecate drawing routes with hash key paths to make routing faster.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
-<span class="n">get</span> <span class="s2">"/users"</span> <span class="o">=&gt;</span> <span class="s2">"users#index"</span>
-<span class="n">post</span> <span class="s2">"/logout"</span> <span class="o">=&gt;</span> <span class="ss">:sessions</span>
-<span class="n">mount</span> <span class="no">MyApp</span> <span class="o">=&gt;</span> <span class="s2">"/my_app"</span>
-
-<span class="c1"># After</span>
-<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
-<span class="n">post</span> <span class="s2">"/logout"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"sessions#logout"</span>
-<span class="n">mount</span> <span class="no">MyApp</span><span class="p">,</span> <span class="ss">at: </span><span class="s2">"/my_app"</span>
-</code></pre></div></div>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Deprecate drawing routes with multiple paths to make routing faster.
-</title>
-    <link>https://github.com/rails/rails/issues/52409</link>
-    <guid>https://github.com/rails/rails/issues/52409</guid>
-    <description>*   Deprecate drawing routes with multiple paths to make routing faster.
-    You may use `with_options` or a loop to make drawing multiple paths easier.
-
-    ```ruby
-    # Before
-    get &quot;/users&quot;, &quot;/other_path&quot;, to: &quot;users#index&quot;
-
-    # After
-    get &quot;/users&quot;, to: &quot;users#index&quot;
-    get &quot;/other_path&quot;, to: &quot;users#index&quot;
-    ```
-
-    *Gannon McGibbon*</description>
-    <pubDate>Sat, 27 Jul 2024 03:42:17 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Deprecate drawing routes with multiple paths to make routing faster.<br />
-You may use <code>with_options</code> or a loop to make drawing multiple paths easier.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
-<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
-
-<span class="c1"># After</span>
-<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
-<span class="n">get</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
-</code></pre></div></div>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Make `http_cache_forever` use `immutable: true`
-</title>
-    <link>https://github.com/rails/rails/issues/52283</link>
-    <guid>https://github.com/rails/rails/issues/52283</guid>
-    <description>*   Make `http_cache_forever` use `immutable: true`
-
-    *Nate Matykiewicz*</description>
-    <pubDate>Sat, 06 Jul 2024 18:08:48 +0000</pubDate>
-    <author>Nate Matykiewicz</author>
-    <content:encoded><![CDATA[<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>
-
-<p><em>Nate Matykiewicz</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `config.action_dispatch.strict_freshness`.
-</title>
-    <link>https://github.com/rails/rails/issues/52274</link>
-    <guid>https://github.com/rails/rails/issues/52274</guid>
-    <description>*   Add `config.action_dispatch.strict_freshness`.
-
-    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,
-    as specified by RFC 7232, Section 6.
-
-    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of
-    Rails 8.0 defaults.
-
-    *heka1024*</description>
-    <pubDate>Fri, 05 Jul 2024 08:27:46 +0000</pubDate>
-    <author>heka1024</author>
-    <content:encoded><![CDATA[<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>
-
-<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />
-as specified by RFC 7232, Section 6.</p>
-
-<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />
-Rails 8.0 defaults.</p>
-
-<p><em>heka1024</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Support `immutable` directive in Cache-Control
-</title>
-    <link>https://github.com/rails/rails/issues/52197</link>
-    <guid>https://github.com/rails/rails/issues/52197</guid>
-    <description>*   Support `immutable` directive in Cache-Control
-
-    ```ruby
-    expires_in 1.minute, public: true, immutable: true
-    # Cache-Control: public, max-age=60, immutable
-    ```
-
-    *heka1024*</description>
-    <pubDate>Wed, 26 Jun 2024 20:23:19 +0000</pubDate>
-    <author>heka1024</author>
-    <content:encoded><![CDATA[<p>Support <code>immutable</code> directive in Cache-Control</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">expires_in</span> <span class="mi">1</span><span class="p">.</span><span class="nf">minute</span><span class="p">,</span> <span class="ss">public: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">immutable: </span><span class="kp">true</span>
-<span class="c1"># Cache-Control: public, max-age=60, immutable</span>
-</code></pre></div></div>
-
-<p><em>heka1024</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `:wasm_unsafe_eval` mapping for `content_security_policy`
-</title>
-    <link>https://github.com/rails/rails/issues/51944</link>
-    <guid>https://github.com/rails/rails/issues/51944</guid>
-    <description>*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`
-
-    ```ruby
-    # Before
-    policy.script_src &quot;&#39;wasm-unsafe-eval&#39;&quot;
-
-    # After
-    policy.script_src :wasm_unsafe_eval
-    ```
-
-    *Joe Haig*</description>
-    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
-    <author>Cyril Blaecke</author>
-    <content:encoded><![CDATA[<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
-<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="s2">"'wasm-unsafe-eval'"</span>
-
-<span class="c1"># After</span>
-<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="ss">:wasm_unsafe_eval</span>
-</code></pre></div></div>
-
-<p><em>Joe Haig</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `display_capture` and `keyboard_map` in `permissions_policy`
-</title>
-    <link>https://github.com/rails/rails/issues/51944</link>
-    <guid>https://github.com/rails/rails/issues/51944</guid>
-    <description>*   Add `display_capture` and `keyboard_map` in `permissions_policy`
-
-    *Cyril Blaecke*</description>
-    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
-    <author>Cyril Blaecke</author>
-    <content:encoded><![CDATA[<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>
-
-<p><em>Cyril Blaecke</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Add a default token generator for password reset tokens when using `has_secure_password`.
-</title>
-    <link>https://github.com/rails/rails/issues/52483</link>
-    <guid>https://github.com/rails/rails/issues/52483</guid>
-    <description>*   Add a default token generator for password reset tokens when using `has_secure_password`.
-
-    ```ruby
-    class User &lt; ApplicationRecord
-      has_secure_password
-    end
-
-    user = User.create!(name: &quot;david&quot;, password: &quot;123&quot;, password_confirmation: &quot;123&quot;)
-    token = user.password_reset_token
-    User.find_by_password_reset_token(token) # returns user
-
-    # 16 minutes later...
-    User.find_by_password_reset_token(token) # returns nil
-
-    # raises ActiveSupport::MessageVerifier::InvalidSignature since the token is expired
-    User.find_by_password_reset_token!(token)
-    ```
-
-    *DHH*</description>
-    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add a default token generator for password reset tokens when using <code>has_secure_password</code>.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
-  <span class="n">has_secure_password</span>
-<span class="k">end</span>
-
-<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">create!</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"david"</span><span class="p">,</span> <span class="ss">password: </span><span class="s2">"123"</span><span class="p">,</span> <span class="ss">password_confirmation: </span><span class="s2">"123"</span><span class="p">)</span>
-<span class="n">token</span> <span class="o">=</span> <span class="n">user</span><span class="p">.</span><span class="nf">password_reset_token</span>
-<span class="no">User</span><span class="p">.</span><span class="nf">find_by_password_reset_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="c1"># returns user</span>
-
-<span class="c1"># 16 minutes later...</span>
-<span class="no">User</span><span class="p">.</span><span class="nf">find_by_password_reset_token</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="c1"># returns nil</span>
-
-<span class="c1"># raises ActiveSupport::MessageVerifier::InvalidSignature since the token is expired</span>
-<span class="no">User</span><span class="p">.</span><span class="nf">find_by_password_reset_token!</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><em>DHH</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Add a load hook `active_model_translation` for `ActiveModel::Translation`.
-</title>
-    <link>https://github.com/rails/rails/issues/52426</link>
-    <guid>https://github.com/rails/rails/issues/52426</guid>
-    <description>*   Add a load hook `active_model_translation` for `ActiveModel::Translation`.
-
-    *Shouichi Kamiya*</description>
-    <pubDate>Mon, 29 Jul 2024 21:59:46 +0000</pubDate>
-    <author>Shouichi Kamiya</author>
-    <content:encoded><![CDATA[<p>Add a load hook <code>active_model_translation</code> for <code>ActiveModel::Translation</code>.</p>
-
-<p><em>Shouichi Kamiya</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Add `raise_on_missing_translations` option to `ActiveModel::Translation`.
-</title>
-    <link>https://github.com/rails/rails/issues/52426</link>
-    <guid>https://github.com/rails/rails/issues/52426</guid>
-    <description>*   Add `raise_on_missing_translations` option to `ActiveModel::Translation`.
-    When the option is set, `human_attribute_name` raises an error if a translation of the given attribute is missing.
-
-    ```ruby
-    # ActiveModel::Translation.raise_on_missing_translations = false
-    Post.human_attribute_name(&quot;title&quot;)
-    =&gt; &quot;Title&quot;
-
-    # ActiveModel::Translation.raise_on_missing_translations = true
-    Post.human_attribute_name(&quot;title&quot;)
-    =&gt; Translation missing. Options considered were: (I18n::MissingTranslationData)
-        - en.activerecord.attributes.post.title
-        - en.attributes.title
-
-                raise exception.respond_to?(:to_exception) ? exception.to_exception : exception
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ```
-
-    *Shouichi Kamiya*</description>
-    <pubDate>Mon, 29 Jul 2024 21:59:46 +0000</pubDate>
-    <author>Shouichi Kamiya</author>
-    <content:encoded><![CDATA[<p>Add <code>raise_on_missing_translations</code> option to <code>ActiveModel::Translation</code>.<br />
-When the option is set, <code>human_attribute_name</code> raises an error if a translation of the given attribute is missing.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ActiveModel::Translation.raise_on_missing_translations = false</span>
-<span class="no">Post</span><span class="p">.</span><span class="nf">human_attribute_name</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="s2">"Title"</span>
-
-<span class="c1"># ActiveModel::Translation.raise_on_missing_translations = true</span>
-<span class="no">Post</span><span class="p">.</span><span class="nf">human_attribute_name</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="no">Translation</span> <span class="n">missing</span><span class="o">.</span> <span class="no">Options</span> <span class="n">considered</span> <span class="ss">were: </span><span class="p">(</span><span class="no">I18n</span><span class="o">::</span><span class="no">MissingTranslationData</span><span class="p">)</span>
-    <span class="o">-</span> <span class="n">en</span><span class="p">.</span><span class="nf">activerecord</span><span class="p">.</span><span class="nf">attributes</span><span class="p">.</span><span class="nf">post</span><span class="p">.</span><span class="nf">title</span>
-    <span class="o">-</span> <span class="n">en</span><span class="p">.</span><span class="nf">attributes</span><span class="p">.</span><span class="nf">title</span>
-
-            <span class="k">raise</span> <span class="n">exception</span><span class="p">.</span><span class="nf">respond_to?</span><span class="p">(</span><span class="ss">:to_exception</span><span class="p">)</span> <span class="p">?</span> <span class="n">exception</span><span class="p">.</span><span class="nf">to_exception</span> <span class="p">:</span> <span class="n">exception</span>
-                  <span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
-</code></pre></div></div>
-
-<p><em>Shouichi Kamiya</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activemodel: Introduce `ActiveModel::AttributeAssignment#attribute_writer_missing`
-</title>
-    <link>https://github.com/rails/rails/issues/52417</link>
-    <guid>https://github.com/rails/rails/issues/52417</guid>
-    <description>*   Introduce `ActiveModel::AttributeAssignment#attribute_writer_missing`
-
-    Provide instances with an opportunity to gracefully handle assigning to an
-    unknown attribute:
-
-    ```ruby
-    class Rectangle
-      include ActiveModel::AttributeAssignment
-
-      attr_accessor :length, :width
-
-      def attribute_writer_missing(name, value)
-        Rails.logger.warn &quot;Tried to assign to unknown attribute #{name}&quot;
-      end
-    end
-
-    rectangle = Rectangle.new
-    rectangle.assign_attributes(height: 10) # =&gt; Logs &quot;Tried to assign to unknown attribute &#39;height&#39;&quot;
-    ```
-
-    *Sean Doyle*</description>
-    <pubDate>Fri, 26 Jul 2024 22:48:16 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Introduce <code>ActiveModel::AttributeAssignment#attribute_writer_missing</code></p>
-
-<p>Provide instances with an opportunity to gracefully handle assigning to an<br />
-unknown attribute:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Rectangle</span>
-  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">AttributeAssignment</span>
-
-  <span class="nb">attr_accessor</span> <span class="ss">:length</span><span class="p">,</span> <span class="ss">:width</span>
-
-  <span class="k">def</span> <span class="nf">attribute_writer_missing</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-    <span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Tried to assign to unknown attribute </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="n">rectangle</span> <span class="o">=</span> <span class="no">Rectangle</span><span class="p">.</span><span class="nf">new</span>
-<span class="n">rectangle</span><span class="p">.</span><span class="nf">assign_attributes</span><span class="p">(</span><span class="ss">height: </span><span class="mi">10</span><span class="p">)</span> <span class="c1"># =&gt; Logs "Tried to assign to unknown attribute 'height'"</span>
-</code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activesupport: Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.
 </title>
     <link>https://github.com/rails/rails/issues/52370</link>
@@ -1051,252 +1337,6 @@ proc by printing the proc’s source code (MRI only).</p>
     <content:encoded><![CDATA[<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>
 
 <p><em>Jason Kim</em>, <em>John Hawthorn</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Generate form helpers to use `textarea*` methods instead of `text_area*` methods
-</title>
-    <link>https://github.com/rails/rails/issues/52467</link>
-    <guid>https://github.com/rails/rails/issues/52467</guid>
-    <description>*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods
-
-    *Sean Doyle*</description>
-    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Generate form helpers to use <code>textarea*</code> methods instead of <code>text_area*</code> methods</p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.
-</title>
-    <link>https://github.com/rails/rails/issues/52468</link>
-    <guid>https://github.com/rails/rails/issues/52468</guid>
-    <description>*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.
-
-    Generate with...
-
-    ```
-    bin/rails generate authentication
-    ```
-
-    Generated files:
-
-    ```
-    app/models/current.rb
-    app/models/user.rb
-    app/models/session.rb
-    app/controllers/sessions_controller.rb
-    app/controllers/passwords_controller.rb
-    app/mailers/passwords_mailer.rb
-    app/views/sessions/new.html.erb
-    app/views/passwords/new.html.erb
-    app/views/passwords/edit.html.erb
-    app/views/passwords_mailer/reset.html.erb
-    app/views/passwords_mailer/reset.text.erb
-    db/migrate/xxxxxxx_create_users.rb
-    db/migrate/xxxxxxx_create_sessions.rb
-    test/mailers/previews/passwords_mailer_preview.rb
-    ```
-
-    *DHH*</description>
-    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.</p>
-
-<p>Generate with…</p>
-
-<pre><code>bin/rails generate authentication
-</code></pre>
-
-<p>Generated files:</p>
-
-<pre><code>app/models/current.rb
-app/models/user.rb
-app/models/session.rb
-app/controllers/sessions_controller.rb
-app/controllers/passwords_controller.rb
-app/mailers/passwords_mailer.rb
-app/views/sessions/new.html.erb
-app/views/passwords/new.html.erb
-app/views/passwords/edit.html.erb
-app/views/passwords_mailer/reset.html.erb
-app/views/passwords_mailer/reset.text.erb
-db/migrate/xxxxxxx_create_users.rb
-db/migrate/xxxxxxx_create_sessions.rb
-test/mailers/previews/passwords_mailer_preview.rb
-</code></pre>
-
-<p><em>DHH</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add not-null type modifier to migration attributes.
-</title>
-    <link>https://github.com/rails/rails/issues/52327</link>
-    <guid>https://github.com/rails/rails/issues/52327</guid>
-    <description>*   Add not-null type modifier to migration attributes.
-
-    Generating with...
-
-    ```
-    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
-    ```
-
-    Produces:
-
-    ```ruby
-    class CreateUsers &lt; ActiveRecord::Migration[8.0]
-      def change
-        create_table :users do |t|
-          t.string :email_address, null: false
-          t.string :password_digest, null: false
-
-          t.timestamps
-        end
-        add_index :users, :email_address, unique: true
-      end
-    end
-    ```
-
-    *DHH*</description>
-    <pubDate>Tue, 16 Jul 2024 13:00:51 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add not-null type modifier to migration attributes.</p>
-
-<p>Generating with…</p>
-
-<pre><code>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
-</code></pre>
-
-<p>Produces:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreateUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">8.0</span><span class="p">]</span>
-  <span class="k">def</span> <span class="nf">change</span>
-    <span class="n">create_table</span> <span class="ss">:users</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
-      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:password_digest</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
-
-      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
-    <span class="k">end</span>
-    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>DHH</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add a `script` folder to applications, and a scripts generator.
-</title>
-    <link>https://github.com/rails/rails/issues/52454</link>
-    <guid>https://github.com/rails/rails/issues/52454</guid>
-    <description>*   Add a `script` folder to applications, and a scripts generator.
-
-    The new `script` folder is meant to hold one-off or general purpose scripts,
-    such as data migration scripts, cleanup scripts, etc.
-
-    A new script generator allows you to create such scripts:
-
-    ```
-    bin/rails generate script my_script
-    bin/rails generate script data/backfill
-    ```
-
-    You can run the generated script using:
-
-    ```
-    bundle exec ruby script/my_script.rb
-    bundle exec ruby script/data/backfill.rb
-    ```
-
-    *Jerome Dalbert*, *Haroon Ahmed*</description>
-    <pubDate>Tue, 30 Jul 2024 19:25:16 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Add a <code>script</code> folder to applications, and a scripts generator.</p>
-
-<p>The new <code>script</code> folder is meant to hold one-off or general purpose scripts,<br />
-such as data migration scripts, cleanup scripts, etc.</p>
-
-<p>A new script generator allows you to create such scripts:</p>
-
-<pre><code>bin/rails generate script my_script
-bin/rails generate script data/backfill
-</code></pre>
-
-<p>You can run the generated script using:</p>
-
-<pre><code>bundle exec ruby script/my_script.rb
-bundle exec ruby script/data/backfill.rb
-</code></pre>
-
-<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Deprecate `bin/rake stats` in favor of `bin/rails stats`.
-</title>
-    <link>https://github.com/rails/rails/issues/52231</link>
-    <guid>https://github.com/rails/rails/issues/52231</guid>
-    <description>*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.
-
-    *Juan Vásquez*</description>
-    <pubDate>Sat, 29 Jun 2024 06:52:05 +0000</pubDate>
-    <author>Juan Vásquez</author>
-    <content:encoded><![CDATA[<p>Deprecate <code>bin/rake stats</code> in favor of <code>bin/rails stats</code>.</p>
-
-<p><em>Juan Vásquez</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
-</title>
-    <link>https://github.com/rails/rails/issues/52115</link>
-    <guid>https://github.com/rails/rails/issues/52115</guid>
-    <description>*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
-
-    *Deepak Mahakale*</description>
-    <pubDate>Thu, 13 Jun 2024 17:22:29 +0000</pubDate>
-    <author>Deepak Mahakale</author>
-    <content:encoded><![CDATA[<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>
-
-<p><em>Deepak Mahakale</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add Rubocop and GitHub Actions to plugin generator.
-</title>
-    <link>https://github.com/rails/rails/issues/51822</link>
-    <guid>https://github.com/rails/rails/issues/51822</guid>
-    <description>*   Add Rubocop and GitHub Actions to plugin generator.
-    This can be skipped using --skip-rubocop and --skip-ci.
-
-    *Chris Oliver*</description>
-    <pubDate>Thu, 23 May 2024 18:08:58 +0000</pubDate>
-    <author>Chris Oliver</author>
-    <content:encoded><![CDATA[<p>Add Rubocop and GitHub Actions to plugin generator.<br />
-This can be skipped using –skip-rubocop and –skip-ci.</p>
-
-<p><em>Chris Oliver</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
-</title>
-    <link>https://github.com/rails/rails/issues/51798</link>
-    <guid>https://github.com/rails/rails/issues/51798</guid>
-    <description>*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
-    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/
-
-    *DHH*</description>
-    <pubDate>Tue, 14 May 2024 00:37:39 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />
-This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
-
-<p><em>DHH</em></p>
 ]]></content:encoded>
   </item>
 </channel>
