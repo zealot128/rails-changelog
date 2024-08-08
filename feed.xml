@@ -572,6 +572,21 @@ unknown attribute:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.
+</title>
+    <link>https://github.com/rails/rails/issues/52525</link>
+    <guid>https://github.com/rails/rails/issues/52525</guid>
+    <description>*   Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Thu, 08 Aug 2024 02:26:51 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Speed up <code>ActionDispatch::Routing::Mapper::Scope#[]</code> by merging frame hashes.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Allow bots to ignore `allow_browser`.
 </title>
     <link>https://github.com/rails/rails/issues/52531</link>
