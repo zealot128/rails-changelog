@@ -210,6 +210,16 @@
     "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
   },
   {
+    "message": "*   Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1723084011000,
+    "author": "Gannon McGibbon",
+    "sha": "8632cc6a9803bc26af9f3d72fc1415816ef6a649",
+    "pr": "52525",
+    "merge_sha": "a63bef556547fd7effb1ff84e56680c05d6ae3cf",
+    "html": "<p>Speed up <code>ActionDispatch::Routing::Mapper::Scope#[]</code> by merging frame hashes.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Allow bots to ignore `allow_browser`.\n\n    *Matthew Nguyen*",
     "project": "actionpack",
     "date_merged": 1723048186000,
