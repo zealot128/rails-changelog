@@ -10,6 +10,16 @@
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Defer route drawing to the first request, or when url_helpers are called\n\n    Executes the first routes reload in middleware, or when a route set's\n    url_helpers receives a route call / asked if it responds to a route.\n    Previously, this was executed unconditionally on boot, which can\n    slow down boot time unnecessarily for larger apps with lots of routes.\n\n    Environments like production that have `config.eager_load = true` will\n    continue to eagerly load routes on boot.\n\n    *Gannon McGibbon*",
+    "project": "railties",
+    "date_merged": 1723185863000,
+    "author": "Gannon McGibbon",
+    "sha": "cdb283566c5d5251e2f7e663e655e57e8e10abbc",
+    "pr": "52353",
+    "merge_sha": "9f80efc79119037fc4421d06e94a0d7e076876a4",
+    "html": "<p>Defer route drawing to the first request, or when url_helpers are called</p>\n\n<p>Executes the first routes reload in middleware, or when a route set’s<br />\nurl_helpers receives a route call / asked if it responds to a route.<br />\nPreviously, this was executed unconditionally on boot, which can<br />\nslow down boot time unnecessarily for larger apps with lots of routes.</p>\n\n<p>Environments like production that have <code>config.eager_load = true</code> will<br />\ncontinue to eagerly load routes on boot.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods\n\n    *Sean Doyle*",
     "project": "railties",
     "date_merged": 1722446183000,
