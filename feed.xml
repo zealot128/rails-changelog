@@ -31,6 +31,37 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Defer route drawing to the first request, or when url_helpers are called
+</title>
+    <link>https://github.com/rails/rails/issues/52353</link>
+    <guid>https://github.com/rails/rails/issues/52353</guid>
+    <description>*   Defer route drawing to the first request, or when url_helpers are called
+
+    Executes the first routes reload in middleware, or when a route set&#39;s
+    url_helpers receives a route call / asked if it responds to a route.
+    Previously, this was executed unconditionally on boot, which can
+    slow down boot time unnecessarily for larger apps with lots of routes.
+
+    Environments like production that have `config.eager_load = true` will
+    continue to eagerly load routes on boot.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Fri, 09 Aug 2024 06:44:23 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Defer route drawing to the first request, or when url_helpers are called</p>
+
+<p>Executes the first routes reload in middleware, or when a route set’s<br />
+url_helpers receives a route call / asked if it responds to a route.<br />
+Previously, this was executed unconditionally on boot, which can<br />
+slow down boot time unnecessarily for larger apps with lots of routes.</p>
+
+<p>Environments like production that have <code>config.eager_load = true</code> will<br />
+continue to eagerly load routes on boot.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Generate form helpers to use `textarea*` methods instead of `text_area*` methods
 </title>
     <link>https://github.com/rails/rails/issues/52467</link>
