@@ -31,6 +31,29 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Enable query log tags by default on development env
+</title>
+    <link>https://github.com/rails/rails/issues/51342</link>
+    <guid>https://github.com/rails/rails/issues/51342</guid>
+    <description>*   Enable query log tags by default on development env
+
+    This can be used to trace troublesome SQL statements back to the application
+    code that generated these statements. It is also useful when using multiple
+    databases because the query logs can identify which database is being used.
+
+    *Matheus Richard*</description>
+    <pubDate>Sun, 11 Aug 2024 09:11:53 +0000</pubDate>
+    <author>Matheus Richard</author>
+    <content:encoded><![CDATA[<p>Enable query log tags by default on development env</p>
+
+<p>This can be used to trace troublesome SQL statements back to the application<br />
+code that generated these statements. It is also useful when using multiple<br />
+databases because the query logs can identify which database is being used.</p>
+
+<p><em>Matheus Richard</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Defer route drawing to the first request, or when url_helpers are called
 </title>
     <link>https://github.com/rails/rails/issues/52353</link>
@@ -831,6 +854,27 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: SQLite3Adapter: Bulk insert fixtures.
+</title>
+    <link>https://github.com/rails/rails/issues/52562</link>
+    <guid>https://github.com/rails/rails/issues/52562</guid>
+    <description>*   SQLite3Adapter: Bulk insert fixtures.
+
+    Previously one insert command was executed for each fixture, now they are
+    aggregated in a single bulk insert command.
+
+    *Lázaro Nixon*</description>
+    <pubDate>Sun, 11 Aug 2024 07:45:53 +0000</pubDate>
+    <author>Nixon</author>
+    <content:encoded><![CDATA[<p>SQLite3Adapter: Bulk insert fixtures.</p>
+
+<p>Previously one insert command was executed for each fixture, now they are<br />
+aggregated in a single bulk insert command.</p>
+
+<p><em>Lázaro Nixon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: PostgreSQLAdapter: Allow `disable_extension` to be called with schema-qualified name.
 </title>
     <link>https://github.com/rails/rails/issues/52452</link>
@@ -1281,6 +1325,63 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 </code></pre></div></div>
 
 <p><em>Eileen M. Uchitelle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add `escape_html_entities` option to `ActiveSupport::JSON.encode`.
+</title>
+    <link>https://github.com/rails/rails/issues/51272</link>
+    <guid>https://github.com/rails/rails/issues/51272</guid>
+    <description>*   Add `escape_html_entities` option to `ActiveSupport::JSON.encode`.
+
+    This allows for overriding the global configuration found at
+    `ActiveSupport.escape_html_entities_in_json` for specific calls to `to_json`.
+
+    This should be usable from controllers in the following manner:
+    ```ruby
+    class MyController &lt; ApplicationController
+      def index
+        render json: { hello: &quot;world&quot; }, escape_html_entities: false
+      end
+    end
+    ```
+
+    *Nigel Baillie*</description>
+    <pubDate>Sun, 11 Aug 2024 09:34:18 +0000</pubDate>
+    <author>Nigel Baillie</author>
+    <content:encoded><![CDATA[<p>Add <code>escape_html_entities</code> option to <code>ActiveSupport::JSON.encode</code>.</p>
+
+<p>This allows for overriding the global configuration found at<br />
+<code>ActiveSupport.escape_html_entities_in_json</code> for specific calls to <code>to_json</code>.</p>
+
+<p>This should be usable from controllers in the following manner:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">hello: </span><span class="s2">"world"</span> <span class="p">},</span> <span class="ss">escape_html_entities: </span><span class="kp">false</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Nigel Baillie</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Raise when using key which can&#39;t respond to `#to_sym` in `EncryptedConfiguration`.
+</title>
+    <link>https://github.com/rails/rails/issues/51950</link>
+    <guid>https://github.com/rails/rails/issues/51950</guid>
+    <description>*   Raise when using key which can&#39;t respond to `#to_sym` in `EncryptedConfiguration`.
+
+    As is the case when trying to use an Integer or Float as a key, which is unsupported.
+
+    *zzak*</description>
+    <pubDate>Sun, 11 Aug 2024 09:17:26 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Raise when using key which can’t respond to <code>#to_sym</code> in <code>EncryptedConfiguration</code>.</p>
+
+<p>As is the case when trying to use an Integer or Float as a key, which is unsupported.</p>
+
+<p><em>zzak</em></p>
 ]]></content:encoded>
   </item>
   <item>
