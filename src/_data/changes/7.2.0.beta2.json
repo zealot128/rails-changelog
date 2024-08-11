@@ -10,6 +10,16 @@
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Enable query log tags by default on development env\n\n    This can be used to trace troublesome SQL statements back to the application\n    code that generated these statements. It is also useful when using multiple\n    databases because the query logs can identify which database is being used.\n\n    *Matheus Richard*",
+    "project": "railties",
+    "date_merged": 1723367513000,
+    "author": "Matheus Richard",
+    "sha": "e29ad0bcf7620a6a776086628f755d9e5c7d8f2d",
+    "pr": "51342",
+    "merge_sha": "c9c304769f7f9886ab41a11af3c11961ebe18940",
+    "html": "<p>Enable query log tags by default on development env</p>\n\n<p>This can be used to trace troublesome SQL statements back to the application<br />\ncode that generated these statements. It is also useful when using multiple<br />\ndatabases because the query logs can identify which database is being used.</p>\n\n<p><em>Matheus Richard</em></p>\n"
+  },
+  {
     "message": "*   Defer route drawing to the first request, or when url_helpers are called\n\n    Executes the first routes reload in middleware, or when a route set's\n    url_helpers receives a route call / asked if it responds to a route.\n    Previously, this was executed unconditionally on boot, which can\n    slow down boot time unnecessarily for larger apps with lots of routes.\n\n    Environments like production that have `config.eager_load = true` will\n    continue to eagerly load routes on boot.\n\n    *Gannon McGibbon*",
     "project": "railties",
     "date_merged": 1723185863000,
@@ -320,6 +330,16 @@
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
   },
   {
+    "message": "*   SQLite3Adapter: Bulk insert fixtures.\n\n    Previously one insert command was executed for each fixture, now they are\n    aggregated in a single bulk insert command.\n\n    *Lázaro Nixon*",
+    "project": "activerecord",
+    "date_merged": 1723362353000,
+    "author": "Nixon",
+    "sha": "90b1108a646250c735548ebae3f96674313e53ae",
+    "pr": "52562",
+    "merge_sha": "5544762cb33ed28030f98bed73a031f745763275",
+    "html": "<p>SQLite3Adapter: Bulk insert fixtures.</p>\n\n<p>Previously one insert command was executed for each fixture, now they are<br />\naggregated in a single bulk insert command.</p>\n\n<p><em>Lázaro Nixon</em></p>\n"
+  },
+  {
     "message": "*   PostgreSQLAdapter: Allow `disable_extension` to be called with schema-qualified name.\n\n    For parity with `enable_extension`, the `disable_extension` method can be called with a schema-qualified\n    name (e.g. `disable_extension \"myschema.pgcrypto\"`). Note that PostgreSQL's `DROP EXTENSION` does not\n    actually take a schema name (unlike `CREATE EXTENSION`), so the resulting SQL statement will only name\n    the extension, e.g. `DROP EXTENSION IF EXISTS \"pgcrypto\"`.\n\n    *Tony Novak*",
     "project": "activerecord",
     "date_merged": 1723017906000,
@@ -488,6 +508,26 @@
     "pr": "51878",
     "merge_sha": "2281edf99e3583b1ff7ae636906f681d80dab603",
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
+    "message": "*   Add `escape_html_entities` option to `ActiveSupport::JSON.encode`.\n\n    This allows for overriding the global configuration found at\n    `ActiveSupport.escape_html_entities_in_json` for specific calls to `to_json`.\n\n    This should be usable from controllers in the following manner:\n    ```ruby\n    class MyController < ApplicationController\n      def index\n        render json: { hello: \"world\" }, escape_html_entities: false\n      end\n    end\n    ```\n\n    *Nigel Baillie*",
+    "project": "activesupport",
+    "date_merged": 1723368858000,
+    "author": "Nigel Baillie",
+    "sha": "bdbc8889e219814f1dc6bf847e9b88f4312aecf0",
+    "pr": "51272",
+    "merge_sha": "8ebd0a4e1efc65ffc1d6aaa32930c7c1d921feff",
+    "html": "<p>Add <code>escape_html_entities</code> option to <code>ActiveSupport::JSON.encode</code>.</p>\n\n<p>This allows for overriding the global configuration found at<br />\n<code>ActiveSupport.escape_html_entities_in_json</code> for specific calls to <code>to_json</code>.</p>\n\n<p>This should be usable from controllers in the following manner:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">render</span> <span class=\"ss\">json: </span><span class=\"p\">{</span> <span class=\"ss\">hello: </span><span class=\"s2\">\"world\"</span> <span class=\"p\">},</span> <span class=\"ss\">escape_html_entities: </span><span class=\"kp\">false</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Nigel Baillie</em></p>\n"
+  },
+  {
+    "message": "*   Raise when using key which can't respond to `#to_sym` in `EncryptedConfiguration`.\n\n    As is the case when trying to use an Integer or Float as a key, which is unsupported.\n\n    *zzak*",
+    "project": "activesupport",
+    "date_merged": 1723367846000,
+    "author": "zzak",
+    "sha": "1571041bf5fbbfee33f6b4fa276a449221e9cc4c",
+    "pr": "51950",
+    "merge_sha": "bd24e3dd221646fb62d32ba6a9d787e46052e064",
+    "html": "<p>Raise when using key which can’t respond to <code>#to_sym</code> in <code>EncryptedConfiguration</code>.</p>\n\n<p>As is the case when trying to use an Integer or Float as a key, which is unsupported.</p>\n\n<p><em>zzak</em></p>\n"
   },
   {
     "message": "*   Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.\n\n    Previously adding time instances together such as `10.days.ago + 10.days.ago` or `10.days.ago.since(10.days.ago)` produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.\n\n    *Nick Schwaderer*",
