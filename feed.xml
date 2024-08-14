@@ -839,6 +839,21 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Add `connect` route helper.
+</title>
+    <link>https://github.com/rails/rails/issues/52169</link>
+    <guid>https://github.com/rails/rails/issues/52169</guid>
+    <description>*   Add `connect` route helper.
+
+    *Samuel Williams*</description>
+    <pubDate>Wed, 14 Aug 2024 17:32:47 +0000</pubDate>
+    <author>Samuel Williams</author>
+    <content:encoded><![CDATA[<p>Add <code>connect</code> route helper.</p>
+
+<p><em>Samuel Williams</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
 </title>
     <link>https://github.com/rails/rails/issues/52468</link>
@@ -851,6 +866,23 @@ Rails 8.0 defaults.</p>
     <content:encoded><![CDATA[<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>
 
 <p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix `ActiveRecord::Encryption::EncryptedAttributeType#type` to return
+</title>
+    <link>https://github.com/rails/rails/issues/52247</link>
+    <guid>https://github.com/rails/rails/issues/52247</guid>
+    <description>*   Fix `ActiveRecord::Encryption::EncryptedAttributeType#type` to return
+    actual cast type.
+
+    *Vasiliy Ermolovich*</description>
+    <pubDate>Wed, 14 Aug 2024 17:32:47 +0000</pubDate>
+    <author>Vasiliy Ermolovich</author>
+    <content:encoded><![CDATA[<p>Fix <code>ActiveRecord::Encryption::EncryptedAttributeType#type</code> to return<br />
+actual cast type.</p>
+
+<p><em>Vasiliy Ermolovich</em></p>
 ]]></content:encoded>
   </item>
   <item>
