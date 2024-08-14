@@ -320,6 +320,16 @@
     "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
   },
   {
+    "message": "*   Add `connect` route helper.\n\n    *Samuel Williams*",
+    "project": "actionpack",
+    "date_merged": 1723656767000,
+    "author": "Samuel Williams",
+    "sha": "1c988ae869e2e520cba62a9ec2e2eeb619f47512",
+    "pr": "52169",
+    "merge_sha": "455cf48c7e0cb8bc5c35d8be88c0c6ad94ce9f62",
+    "html": "<p>Add <code>connect</code> route helper.</p>\n\n<p><em>Samuel Williams</em></p>\n"
+  },
+  {
     "message": "*   Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.\n\n    *heka1024*",
     "project": "activejob",
     "date_merged": 1722602063000,
@@ -328,6 +338,16 @@
     "pr": "52468",
     "merge_sha": "a0a894cecb3f0ceb3659cdcee73543f31ccf3d78",
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActiveRecord::Encryption::EncryptedAttributeType#type` to return\n    actual cast type.\n\n    *Vasiliy Ermolovich*",
+    "project": "activerecord",
+    "date_merged": 1723656767000,
+    "author": "Vasiliy Ermolovich",
+    "sha": "eaa74eedba945e1bdcedd7fa6ac38c6493edd735",
+    "pr": "52247",
+    "merge_sha": "455cf48c7e0cb8bc5c35d8be88c0c6ad94ce9f62",
+    "html": "<p>Fix <code>ActiveRecord::Encryption::EncryptedAttributeType#type</code> to return<br />\nactual cast type.</p>\n\n<p><em>Vasiliy Ermolovich</em></p>\n"
   },
   {
     "message": "*   SQLite3Adapter: Bulk insert fixtures.\n\n    Previously one insert command was executed for each fixture, now they are\n    aggregated in a single bulk insert command.\n\n    *Lázaro Nixon*",
