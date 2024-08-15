@@ -230,6 +230,16 @@
     "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
   },
   {
+    "message": "*   Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1723745066000,
+    "author": "Gannon McGibbon",
+    "sha": "7d42bf68e23b8281ca47f13e93c29e6ce1b6f117",
+    "pr": "52610",
+    "merge_sha": "36f5a2003f019dc0291ea990e6b1e913eebb20cd",
+    "html": "<p>Remove <code>racc</code> dependency by manually writing <code>ActionDispatch::Journey::Scanner</code>.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.\n\n    *Gannon McGibbon*",
     "project": "actionpack",
     "date_merged": 1723084011000,
