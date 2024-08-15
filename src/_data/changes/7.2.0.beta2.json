@@ -340,6 +340,16 @@
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
   },
   {
+    "message": "*   Include schema name in `enable_extension` statements in `db/schema.rb`.\n\n    The schema dumper will now include the schema name in generated\n    `enable_extension` statements if they differ from the current schema.\n\n    For example, if you have a migration:\n\n    ```ruby\n    enable_extension \"heroku_ext.pgcrypto\"\n    enable_extension \"pg_stat_statements\"\n    ```\n\n    then the generated schema dump will also contain:\n\n    ```ruby\n    enable_extension \"heroku_ext.pgcrypto\"\n    enable_extension \"pg_stat_statements\"\n    ```\n\n    *Tony Novak*",
+    "project": "activerecord",
+    "date_merged": 1723681776000,
+    "author": "Tony Novak",
+    "sha": "2ea8e89fd1b8bb07162a0fe4e5b2f6349d8bad48",
+    "pr": "52313",
+    "merge_sha": "c44d7ae6b1e0292a95a27b7a5573f4dec99e06f0",
+    "html": "<p>Include schema name in <code>enable_extension</code> statements in <code>db/schema.rb</code>.</p>\n\n<p>The schema dumper will now include the schema name in generated<br />\n<code>enable_extension</code> statements if they differ from the current schema.</p>\n\n<p>For example, if you have a migration:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">enable_extension</span> <span class=\"s2\">\"heroku_ext.pgcrypto\"</span>\n<span class=\"n\">enable_extension</span> <span class=\"s2\">\"pg_stat_statements\"</span>\n</code></pre></div></div>\n\n<p>then the generated schema dump will also contain:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">enable_extension</span> <span class=\"s2\">\"heroku_ext.pgcrypto\"</span>\n<span class=\"n\">enable_extension</span> <span class=\"s2\">\"pg_stat_statements\"</span>\n</code></pre></div></div>\n\n<p><em>Tony Novak</em></p>\n"
+  },
+  {
     "message": "*   Fix `ActiveRecord::Encryption::EncryptedAttributeType#type` to return\n    actual cast type.\n\n    *Vasiliy Ermolovich*",
     "project": "activerecord",
     "date_merged": 1723656767000,
