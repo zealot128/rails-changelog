@@ -626,6 +626,21 @@ unknown attribute:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.
+</title>
+    <link>https://github.com/rails/rails/issues/52610</link>
+    <guid>https://github.com/rails/rails/issues/52610</guid>
+    <description>*   Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Thu, 15 Aug 2024 18:04:26 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Remove <code>racc</code> dependency by manually writing <code>ActionDispatch::Journey::Scanner</code>.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.
 </title>
     <link>https://github.com/rails/rails/issues/52525</link>
