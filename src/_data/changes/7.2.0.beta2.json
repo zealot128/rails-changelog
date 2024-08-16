@@ -350,6 +350,26 @@
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
   },
   {
+    "message": "*   Replace `SQLite3::Database#busy_timeout` with `#busy_handler_timeout=`\n\n    Provides a non-GVL-blocking, fair retry interval busy handler implementation\n\n    *Stephen Margheim*",
+    "project": "activerecord",
+    "date_merged": 1723809888000,
+    "author": "Stephen Margheim",
+    "sha": "2976d3767e6572ee1838b50b5f401983918f99c7",
+    "pr": "51958",
+    "merge_sha": "156b9ac638155a00c7cf9d165f1eae258fa77f37",
+    "html": "<p>Replace <code>SQLite3::Database#busy_timeout</code> with <code>#busy_handler_timeout=</code></p>\n\n<p>Provides a non-GVL-blocking, fair retry interval busy handler implementation</p>\n\n<p><em>Stephen Margheim</em></p>\n"
+  },
+  {
+    "message": "*   SQLite3Adapter: Translate `SQLite3::BusyException` into `ActiveRecord::StatementTimeout`.\n\n    *Matthew Nguyen*",
+    "project": "activerecord",
+    "date_merged": 1723808954000,
+    "author": "Matthew Nguyen",
+    "sha": "41c547cb4734d5b21c32ebde78be6a145c9216a3",
+    "pr": "52577",
+    "merge_sha": "8bf495a6226089e0cd67acfb66a59654cf4fe0f7",
+    "html": "<p>SQLite3Adapter: Translate <code>SQLite3::BusyException</code> into <code>ActiveRecord::StatementTimeout</code>.</p>\n\n<p><em>Matthew Nguyen</em></p>\n"
+  },
+  {
     "message": "*   Include schema name in `enable_extension` statements in `db/schema.rb`.\n\n    The schema dumper will now include the schema name in generated\n    `enable_extension` statements if they differ from the current schema.\n\n    For example, if you have a migration:\n\n    ```ruby\n    enable_extension \"heroku_ext.pgcrypto\"\n    enable_extension \"pg_stat_statements\"\n    ```\n\n    then the generated schema dump will also contain:\n\n    ```ruby\n    enable_extension \"heroku_ext.pgcrypto\"\n    enable_extension \"pg_stat_statements\"\n    ```\n\n    *Tony Novak*",
     "project": "activerecord",
     "date_merged": 1723681776000,
