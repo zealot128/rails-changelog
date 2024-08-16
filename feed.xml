@@ -884,6 +884,40 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Replace `SQLite3::Database#busy_timeout` with `#busy_handler_timeout=`
+</title>
+    <link>https://github.com/rails/rails/issues/51958</link>
+    <guid>https://github.com/rails/rails/issues/51958</guid>
+    <description>*   Replace `SQLite3::Database#busy_timeout` with `#busy_handler_timeout=`
+
+    Provides a non-GVL-blocking, fair retry interval busy handler implementation
+
+    *Stephen Margheim*</description>
+    <pubDate>Fri, 16 Aug 2024 12:04:48 +0000</pubDate>
+    <author>Stephen Margheim</author>
+    <content:encoded><![CDATA[<p>Replace <code>SQLite3::Database#busy_timeout</code> with <code>#busy_handler_timeout=</code></p>
+
+<p>Provides a non-GVL-blocking, fair retry interval busy handler implementation</p>
+
+<p><em>Stephen Margheim</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: SQLite3Adapter: Translate `SQLite3::BusyException` into `ActiveRecord::StatementTimeout`.
+</title>
+    <link>https://github.com/rails/rails/issues/52577</link>
+    <guid>https://github.com/rails/rails/issues/52577</guid>
+    <description>*   SQLite3Adapter: Translate `SQLite3::BusyException` into `ActiveRecord::StatementTimeout`.
+
+    *Matthew Nguyen*</description>
+    <pubDate>Fri, 16 Aug 2024 11:49:14 +0000</pubDate>
+    <author>Matthew Nguyen</author>
+    <content:encoded><![CDATA[<p>SQLite3Adapter: Translate <code>SQLite3::BusyException</code> into <code>ActiveRecord::StatementTimeout</code>.</p>
+
+<p><em>Matthew Nguyen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Include schema name in `enable_extension` statements in `db/schema.rb`.
 </title>
     <link>https://github.com/rails/rails/issues/52313</link>
