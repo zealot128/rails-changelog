@@ -884,20 +884,20 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Replace `SQLite3::Database#busy_timeout` with `#busy_handler_timeout=`
+    <title>activerecord: Replace `SQLite3::Database#busy_timeout` with `#busy_handler_timeout=`.
 </title>
-    <link>https://github.com/rails/rails/issues/51958</link>
-    <guid>https://github.com/rails/rails/issues/51958</guid>
-    <description>*   Replace `SQLite3::Database#busy_timeout` with `#busy_handler_timeout=`
+    <link>https://github.com/rails/rails/issues/52636</link>
+    <guid>https://github.com/rails/rails/issues/52636</guid>
+    <description>*   Replace `SQLite3::Database#busy_timeout` with `#busy_handler_timeout=`.
 
-    Provides a non-GVL-blocking, fair retry interval busy handler implementation
+    Provides a non-GVL-blocking, fair retry interval busy handler implementation.
 
     *Stephen Margheim*</description>
-    <pubDate>Fri, 16 Aug 2024 12:04:48 +0000</pubDate>
-    <author>Stephen Margheim</author>
-    <content:encoded><![CDATA[<p>Replace <code>SQLite3::Database#busy_timeout</code> with <code>#busy_handler_timeout=</code></p>
+    <pubDate>Sat, 17 Aug 2024 15:23:46 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Replace <code>SQLite3::Database#busy_timeout</code> with <code>#busy_handler_timeout=</code>.</p>
 
-<p>Provides a non-GVL-blocking, fair retry interval busy handler implementation</p>
+<p>Provides a non-GVL-blocking, fair retry interval busy handler implementation.</p>
 
 <p><em>Stephen Margheim</em></p>
 ]]></content:encoded>
