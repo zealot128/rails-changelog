@@ -180,6 +180,16 @@
     "html": "<p>Introduce <code>ActiveModel::AttributeAssignment#attribute_writer_missing</code></p>\n\n<p>Provide instances with an opportunity to gracefully handle assigning to an<br />\nunknown attribute:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Rectangle</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">AttributeAssignment</span>\n\n  <span class=\"nb\">attr_accessor</span> <span class=\"ss\">:length</span><span class=\"p\">,</span> <span class=\"ss\">:width</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">attribute_writer_missing</span><span class=\"p\">(</span><span class=\"nb\">name</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">)</span>\n    <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">logger</span><span class=\"p\">.</span><span class=\"nf\">warn</span> <span class=\"s2\">\"Tried to assign to unknown attribute </span><span class=\"si\">#{</span><span class=\"nb\">name</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">rectangle</span> <span class=\"o\">=</span> <span class=\"no\">Rectangle</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">rectangle</span><span class=\"p\">.</span><span class=\"nf\">assign_attributes</span><span class=\"p\">(</span><span class=\"ss\">height: </span><span class=\"mi\">10</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; Logs \"Tried to assign to unknown attribute 'height'\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Strip `content` attribute if the key is present but the value is empty\n\n    *Jeremy Green*",
+    "project": "actiontext",
+    "date_merged": 1724264813000,
+    "author": "Jeremy Green",
+    "sha": "9196a5bfe02942a5c66c8b64a173d4ea9c8c8be7",
+    "pr": "52281",
+    "merge_sha": "373dbfdf4110e2ec593fa31602e0dc8a5825cb23",
+    "html": "<p>Strip <code>content</code> attribute if the key is present but the value is empty</p>\n\n<p><em>Jeremy Green</em></p>\n"
+  },
+  {
     "message": "*   Rename `rich_text_area` methods into `rich_textarea`\n\n    Old names are still available as aliases.\n\n    *Sean Doyle*",
     "project": "actiontext",
     "date_merged": 1722446183000,
@@ -348,6 +358,16 @@
     "pr": "52468",
     "merge_sha": "a0a894cecb3f0ceb3659cdcee73543f31ccf3d78",
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   Add support for `ActiveRecord::Point` type casts using `Hash` values\n\n    This allows `ActiveRecord::Point` to be cast or serialized from a hash\n    with `:x` and `:y` keys of numeric values, mirroring the functionality of\n    existing casts for string and array values. Both string and symbol keys are\n    supported.\n\n    ```ruby\n    class PostgresqlPoint < ActiveRecord::Base\n      attribute :x, :point\n      attribute :y, :point\n      attribute :z, :point\n    end\n\n    val = PostgresqlPoint.new({\n      x: '(12.34, -43.21)',\n      y: [12.34, '-43.21'],\n      z: {x: '12.34', y: -43.21}\n    })\n    ActiveRecord::Point.new(12.32, -43.21) == val.x == val.y == val.z\n    ```\n\n    *Stephen Drew*",
+    "project": "activerecord",
+    "date_merged": 1724265407000,
+    "author": "Stephen Drew",
+    "sha": "1823d4ab7a154fcc7b6bdc5491508b0a4cd4ab2b",
+    "pr": "44841",
+    "merge_sha": "af4be52fe411ba9e7bce920e6c210d3c22521532",
+    "html": "<p>Add support for <code>ActiveRecord::Point</code> type casts using <code>Hash</code> values</p>\n\n<p>This allows <code>ActiveRecord::Point</code> to be cast or serialized from a hash<br />\nwith <code>:x</code> and <code>:y</code> keys of numeric values, mirroring the functionality of<br />\nexisting casts for string and array values. Both string and symbol keys are<br />\nsupported.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">PostgresqlPoint</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">attribute</span> <span class=\"ss\">:x</span><span class=\"p\">,</span> <span class=\"ss\">:point</span>\n  <span class=\"n\">attribute</span> <span class=\"ss\">:y</span><span class=\"p\">,</span> <span class=\"ss\">:point</span>\n  <span class=\"n\">attribute</span> <span class=\"ss\">:z</span><span class=\"p\">,</span> <span class=\"ss\">:point</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">val</span> <span class=\"o\">=</span> <span class=\"no\">PostgresqlPoint</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">({</span>\n  <span class=\"ss\">x: </span><span class=\"s1\">'(12.34, -43.21)'</span><span class=\"p\">,</span>\n  <span class=\"ss\">y: </span><span class=\"p\">[</span><span class=\"mf\">12.34</span><span class=\"p\">,</span> <span class=\"s1\">'-43.21'</span><span class=\"p\">],</span>\n  <span class=\"ss\">z: </span><span class=\"p\">{</span><span class=\"ss\">x: </span><span class=\"s1\">'12.34'</span><span class=\"p\">,</span> <span class=\"ss\">y: </span><span class=\"o\">-</span><span class=\"mf\">43.21</span><span class=\"p\">}</span>\n<span class=\"p\">})</span>\n<span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Point</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"mf\">12.32</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mf\">43.21</span><span class=\"p\">)</span> <span class=\"o\">==</span> <span class=\"n\">val</span><span class=\"p\">.</span><span class=\"nf\">x</span> <span class=\"o\">==</span> <span class=\"n\">val</span><span class=\"p\">.</span><span class=\"nf\">y</span> <span class=\"o\">==</span> <span class=\"n\">val</span><span class=\"p\">.</span><span class=\"nf\">z</span>\n</code></pre></div></div>\n\n<p><em>Stephen Drew</em></p>\n"
   },
   {
     "message": "*   Replace `SQLite3::Database#busy_timeout` with `#busy_handler_timeout=`.\n\n    Provides a non-GVL-blocking, fair retry interval busy handler implementation.\n\n    *Stephen Margheim*",
