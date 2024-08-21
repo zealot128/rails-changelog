@@ -539,6 +539,21 @@ unknown attribute:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Strip `content` attribute if the key is present but the value is empty
+</title>
+    <link>https://github.com/rails/rails/issues/52281</link>
+    <guid>https://github.com/rails/rails/issues/52281</guid>
+    <description>*   Strip `content` attribute if the key is present but the value is empty
+
+    *Jeremy Green*</description>
+    <pubDate>Wed, 21 Aug 2024 18:26:53 +0000</pubDate>
+    <author>Jeremy Green</author>
+    <content:encoded><![CDATA[<p>Strip <code>content</code> attribute if the key is present but the value is empty</p>
+
+<p><em>Jeremy Green</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Rename `rich_text_area` methods into `rich_textarea`
 </title>
     <link>https://github.com/rails/rails/issues/52467</link>
@@ -881,6 +896,60 @@ Rails 8.0 defaults.</p>
     <content:encoded><![CDATA[<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>
 
 <p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add support for `ActiveRecord::Point` type casts using `Hash` values
+</title>
+    <link>https://github.com/rails/rails/issues/44841</link>
+    <guid>https://github.com/rails/rails/issues/44841</guid>
+    <description>*   Add support for `ActiveRecord::Point` type casts using `Hash` values
+
+    This allows `ActiveRecord::Point` to be cast or serialized from a hash
+    with `:x` and `:y` keys of numeric values, mirroring the functionality of
+    existing casts for string and array values. Both string and symbol keys are
+    supported.
+
+    ```ruby
+    class PostgresqlPoint &lt; ActiveRecord::Base
+      attribute :x, :point
+      attribute :y, :point
+      attribute :z, :point
+    end
+
+    val = PostgresqlPoint.new({
+      x: &#39;(12.34, -43.21)&#39;,
+      y: [12.34, &#39;-43.21&#39;],
+      z: {x: &#39;12.34&#39;, y: -43.21}
+    })
+    ActiveRecord::Point.new(12.32, -43.21) == val.x == val.y == val.z
+    ```
+
+    *Stephen Drew*</description>
+    <pubDate>Wed, 21 Aug 2024 18:36:47 +0000</pubDate>
+    <author>Stephen Drew</author>
+    <content:encoded><![CDATA[<p>Add support for <code>ActiveRecord::Point</code> type casts using <code>Hash</code> values</p>
+
+<p>This allows <code>ActiveRecord::Point</code> to be cast or serialized from a hash<br />
+with <code>:x</code> and <code>:y</code> keys of numeric values, mirroring the functionality of<br />
+existing casts for string and array values. Both string and symbol keys are<br />
+supported.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PostgresqlPoint</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">attribute</span> <span class="ss">:x</span><span class="p">,</span> <span class="ss">:point</span>
+  <span class="n">attribute</span> <span class="ss">:y</span><span class="p">,</span> <span class="ss">:point</span>
+  <span class="n">attribute</span> <span class="ss">:z</span><span class="p">,</span> <span class="ss">:point</span>
+<span class="k">end</span>
+
+<span class="n">val</span> <span class="o">=</span> <span class="no">PostgresqlPoint</span><span class="p">.</span><span class="nf">new</span><span class="p">({</span>
+  <span class="ss">x: </span><span class="s1">'(12.34, -43.21)'</span><span class="p">,</span>
+  <span class="ss">y: </span><span class="p">[</span><span class="mf">12.34</span><span class="p">,</span> <span class="s1">'-43.21'</span><span class="p">],</span>
+  <span class="ss">z: </span><span class="p">{</span><span class="ss">x: </span><span class="s1">'12.34'</span><span class="p">,</span> <span class="ss">y: </span><span class="o">-</span><span class="mf">43.21</span><span class="p">}</span>
+<span class="p">})</span>
+<span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Point</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mf">12.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.21</span><span class="p">)</span> <span class="o">==</span> <span class="n">val</span><span class="p">.</span><span class="nf">x</span> <span class="o">==</span> <span class="n">val</span><span class="p">.</span><span class="nf">y</span> <span class="o">==</span> <span class="n">val</span><span class="p">.</span><span class="nf">z</span>
+</code></pre></div></div>
+
+<p><em>Stephen Drew</em></p>
 ]]></content:encoded>
   </item>
   <item>
