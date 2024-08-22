@@ -57,8 +57,8 @@ class MergeFinder
         author: merge.first.commit.author.name.force_encoding(Encoding::UTF_8),
         sha: merge.first.commit.id,
         merge_sha: merge_commit&.oid,
-        pr: pr_id || merge_commit&.message[/#(\d+)/, 1],
-        date_merged: (merge_commit || commit).time.to_i * 1000
+        pr: pr_id || merge_commit&.message.to_s[/#(\d+)/, 1],
+        date_merged: (merge_commit&.time || commit&.committed_date).to_i * 1000
       )
     end.compact
   end
