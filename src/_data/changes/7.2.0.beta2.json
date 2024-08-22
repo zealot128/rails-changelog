@@ -180,6 +180,16 @@
     "html": "<p>Introduce <code>ActiveModel::AttributeAssignment#attribute_writer_missing</code></p>\n\n<p>Provide instances with an opportunity to gracefully handle assigning to an<br />\nunknown attribute:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Rectangle</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">AttributeAssignment</span>\n\n  <span class=\"nb\">attr_accessor</span> <span class=\"ss\">:length</span><span class=\"p\">,</span> <span class=\"ss\">:width</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">attribute_writer_missing</span><span class=\"p\">(</span><span class=\"nb\">name</span><span class=\"p\">,</span> <span class=\"n\">value</span><span class=\"p\">)</span>\n    <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">logger</span><span class=\"p\">.</span><span class=\"nf\">warn</span> <span class=\"s2\">\"Tried to assign to unknown attribute </span><span class=\"si\">#{</span><span class=\"nb\">name</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">rectangle</span> <span class=\"o\">=</span> <span class=\"no\">Rectangle</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">rectangle</span><span class=\"p\">.</span><span class=\"nf\">assign_attributes</span><span class=\"p\">(</span><span class=\"ss\">height: </span><span class=\"mi\">10</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; Logs \"Tried to assign to unknown attribute 'height'\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Add `store_if_blank` option to `has_rich_text`\n\n    Pass `store_if_blank: false` to not create `ActionText::RichText` records when saving with a blank attribute, such as from an optional form parameter.\n\n    ```ruby\n    class Message\n      has_rich_text :content, store_if_blank: false\n    end\n\n    Message.create(content: \"hi\") # creates an ActionText::RichText\n    Message.create(content: \"\") # does not create an ActionText::RichText\n    ```\n\n    *Alex Ghiculescu*",
+    "project": "actiontext",
+    "date_merged": 1724279199000,
+    "author": "Alex",
+    "sha": "a0f1d04a7d5cec7def689338d688fd71f8230aff",
+    "pr": "52573",
+    "merge_sha": "6fa5e7abda132b006b19ae6ee5cd32e07f2a9126",
+    "html": "<p>Add <code>store_if_blank</code> option to <code>has_rich_text</code></p>\n\n<p>Pass <code>store_if_blank: false</code> to not create <code>ActionText::RichText</code> records when saving with a blank attribute, such as from an optional form parameter.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Message</span>\n  <span class=\"n\">has_rich_text</span> <span class=\"ss\">:content</span><span class=\"p\">,</span> <span class=\"ss\">store_if_blank: </span><span class=\"kp\">false</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">Message</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"ss\">content: </span><span class=\"s2\">\"hi\"</span><span class=\"p\">)</span> <span class=\"c1\"># creates an ActionText::RichText</span>\n<span class=\"no\">Message</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"ss\">content: </span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># does not create an ActionText::RichText</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   Strip `content` attribute if the key is present but the value is empty\n\n    *Jeremy Green*",
     "project": "actiontext",
     "date_merged": 1724264813000,
@@ -238,6 +248,16 @@
     "pr": "52421",
     "merge_sha": "bcaac3e8c460e44af67b6a84899f024ebe1c8552",
     "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
+  },
+  {
+    "message": "*   Fix `Request#raw_post` raising `NoMethodError` when `rack.input` is `nil`.\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1724271371000,
+    "author": "Hartley McGuire",
+    "sha": "cd3d94a48ad927b1e9567445529c0dc31424dc59",
+    "pr": "52138",
+    "merge_sha": "89f9ca77b806f6c4d58f532693ea723d970976d9",
+    "html": "<p>Fix <code>Request#raw_post</code> raising <code>NoMethodError</code> when <code>rack.input</code> is <code>nil</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.\n\n    *Gannon McGibbon*",
@@ -358,6 +378,16 @@
     "pr": "52468",
     "merge_sha": "a0a894cecb3f0ceb3659cdcee73543f31ccf3d78",
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   Infer default `:inverse_of` option for `delegated_type` definitions.\n\n    ```ruby\n    class Entry < ApplicationRecord\n      delegated_type :entryable, types: %w[ Message ]\n      # => defaults to inverse_of: :entry\n    end\n    ```\n\n    *Sean Doyle*",
+    "project": "activerecord",
+    "date_merged": 1724269032000,
+    "author": "Sean Doyle",
+    "sha": "e9ee137d8b62cb43f664de37a02b1747e530c34c",
+    "pr": "50280",
+    "merge_sha": "dcd4e10698d6832e6f6868792481a0884b9db7b4",
+    "html": "<p>Infer default <code>:inverse_of</code> option for <code>delegated_type</code> definitions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Entry</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">delegated_type</span> <span class=\"ss\">:entryable</span><span class=\"p\">,</span> <span class=\"ss\">types: </span><span class=\"sx\">%w[ Message ]</span>\n  <span class=\"c1\"># =&gt; defaults to inverse_of: :entry</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Add support for `ActiveRecord::Point` type casts using `Hash` values\n\n    This allows `ActiveRecord::Point` to be cast or serialized from a hash\n    with `:x` and `:y` keys of numeric values, mirroring the functionality of\n    existing casts for string and array values. Both string and symbol keys are\n    supported.\n\n    ```ruby\n    class PostgresqlPoint < ActiveRecord::Base\n      attribute :x, :point\n      attribute :y, :point\n      attribute :z, :point\n    end\n\n    val = PostgresqlPoint.new({\n      x: '(12.34, -43.21)',\n      y: [12.34, '-43.21'],\n      z: {x: '12.34', y: -43.21}\n    })\n    ActiveRecord::Point.new(12.32, -43.21) == val.x == val.y == val.z\n    ```\n\n    *Stephen Drew*",
