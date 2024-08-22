@@ -380,6 +380,36 @@
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
   },
   {
+    "message": "*   Support use of alternative database interfaces via the `database_cli` ActiveRecord configuration option.\n\n    ```ruby\n    Rails.application.configure do\n      config.active_record.database_cli = { postgresql: \"pgcli\" }\n    end\n    ```\n\n    *T S Vallender*",
+    "project": "activerecord",
+    "date_merged": 1724349497000,
+    "author": "Trevor Vallender",
+    "sha": "4b2174d67428384a95c1fc908989d2b40487428e",
+    "pr": "52656",
+    "merge_sha": "a59ddc714fa0403cbd8c7ae6abdec2f71ee7b63f",
+    "html": "<p>Support use of alternative database interfaces via the <code>database_cli</code> ActiveRecord configuration option.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">application</span><span class=\"p\">.</span><span class=\"nf\">configure</span> <span class=\"k\">do</span>\n  <span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">database_cli</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"ss\">postgresql: </span><span class=\"s2\">\"pgcli\"</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>T S Vallender</em></p>\n"
+  },
+  {
+    "message": "*   Add support for dumping table inheritance and native partitioning table definitions for PostgeSQL adapter\n\n    *Justin Talbott*",
+    "project": "activerecord",
+    "date_merged": 1724346505000,
+    "author": "justin talbott",
+    "sha": "fba7ef036960fe7a364644ae18db7610aced8c02",
+    "pr": "50475",
+    "merge_sha": "d4df3d5f81344ed07187eaced049f1c59d624c34",
+    "html": "<p>Add support for dumping table inheritance and native partitioning table definitions for PostgeSQL adapter</p>\n\n<p><em>Justin Talbott</em></p>\n"
+  },
+  {
+    "message": "*   Deserialize database values before decryption\n\n    PostgreSQL binary values (`ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Bytea`)\n    need to be deserialized before they are decrypted.\n\n    Additionally ensure that the order of serialization/deserialization is consistent\n    for `serialize :foo` and `encrypts :foo` whichever order they are declared in.\n\n    *Donal McBreen*",
+    "project": "activerecord",
+    "date_merged": 1724346505000,
+    "author": "Donal McBreen",
+    "sha": "9c8390032c85df23d973432b67d025df05c838f7",
+    "pr": "52650",
+    "merge_sha": "d4df3d5f81344ed07187eaced049f1c59d624c34",
+    "html": "<p>Deserialize database values before decryption</p>\n\n<p>PostgreSQL binary values (<code>ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Bytea</code>)<br />\nneed to be deserialized before they are decrypted.</p>\n\n<p>Additionally ensure that the order of serialization/deserialization is consistent<br />\nfor <code>serialize :foo</code> and <code>encrypts :foo</code> whichever order they are declared in.</p>\n\n<p><em>Donal McBreen</em></p>\n"
+  },
+  {
     "message": "*   Infer default `:inverse_of` option for `delegated_type` definitions.\n\n    ```ruby\n    class Entry < ApplicationRecord\n      delegated_type :entryable, types: %w[ Message ]\n      # => defaults to inverse_of: :entry\n    end\n    ```\n\n    *Sean Doyle*",
     "project": "activerecord",
     "date_merged": 1724269032000,
