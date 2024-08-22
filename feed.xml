@@ -950,6 +950,74 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Support use of alternative database interfaces via the `database_cli` ActiveRecord configuration option.
+</title>
+    <link>https://github.com/rails/rails/issues/52656</link>
+    <guid>https://github.com/rails/rails/issues/52656</guid>
+    <description>*   Support use of alternative database interfaces via the `database_cli` ActiveRecord configuration option.
+
+    ```ruby
+    Rails.application.configure do
+      config.active_record.database_cli = { postgresql: &quot;pgcli&quot; }
+    end
+    ```
+
+    *T S Vallender*</description>
+    <pubDate>Thu, 22 Aug 2024 17:58:17 +0000</pubDate>
+    <author>Trevor Vallender</author>
+    <content:encoded><![CDATA[<p>Support use of alternative database interfaces via the <code>database_cli</code> ActiveRecord configuration option.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">active_record</span><span class="p">.</span><span class="nf">database_cli</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">postgresql: </span><span class="s2">"pgcli"</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>T S Vallender</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add support for dumping table inheritance and native partitioning table definitions for PostgeSQL adapter
+</title>
+    <link>https://github.com/rails/rails/issues/50475</link>
+    <guid>https://github.com/rails/rails/issues/50475</guid>
+    <description>*   Add support for dumping table inheritance and native partitioning table definitions for PostgeSQL adapter
+
+    *Justin Talbott*</description>
+    <pubDate>Thu, 22 Aug 2024 17:08:25 +0000</pubDate>
+    <author>justin talbott</author>
+    <content:encoded><![CDATA[<p>Add support for dumping table inheritance and native partitioning table definitions for PostgeSQL adapter</p>
+
+<p><em>Justin Talbott</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deserialize database values before decryption
+</title>
+    <link>https://github.com/rails/rails/issues/52650</link>
+    <guid>https://github.com/rails/rails/issues/52650</guid>
+    <description>*   Deserialize database values before decryption
+
+    PostgreSQL binary values (`ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Bytea`)
+    need to be deserialized before they are decrypted.
+
+    Additionally ensure that the order of serialization/deserialization is consistent
+    for `serialize :foo` and `encrypts :foo` whichever order they are declared in.
+
+    *Donal McBreen*</description>
+    <pubDate>Thu, 22 Aug 2024 17:08:25 +0000</pubDate>
+    <author>Donal McBreen</author>
+    <content:encoded><![CDATA[<p>Deserialize database values before decryption</p>
+
+<p>PostgreSQL binary values (<code>ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Bytea</code>)<br />
+need to be deserialized before they are decrypted.</p>
+
+<p>Additionally ensure that the order of serialization/deserialization is consistent<br />
+for <code>serialize :foo</code> and <code>encrypts :foo</code> whichever order they are declared in.</p>
+
+<p><em>Donal McBreen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Infer default `:inverse_of` option for `delegated_type` definitions.
 </title>
     <link>https://github.com/rails/rails/issues/50280</link>
