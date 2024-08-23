@@ -400,16 +400,6 @@
     "html": "<p>Add support for dumping table inheritance and native partitioning table definitions for PostgeSQL adapter</p>\n\n<p><em>Justin Talbott</em></p>\n"
   },
   {
-    "message": "*   Deserialize database values before decryption\n\n    PostgreSQL binary values (`ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Bytea`)\n    need to be deserialized before they are decrypted.\n\n    Additionally ensure that the order of serialization/deserialization is consistent\n    for `serialize :foo` and `encrypts :foo` whichever order they are declared in.\n\n    *Donal McBreen*",
-    "project": "activerecord",
-    "date_merged": 1724346505000,
-    "author": "Donal McBreen",
-    "sha": "9c8390032c85df23d973432b67d025df05c838f7",
-    "pr": "52650",
-    "merge_sha": "d4df3d5f81344ed07187eaced049f1c59d624c34",
-    "html": "<p>Deserialize database values before decryption</p>\n\n<p>PostgreSQL binary values (<code>ActiveRecord::ConnectionAdapters::PostgreSQL::OID::Bytea</code>)<br />\nneed to be deserialized before they are decrypted.</p>\n\n<p>Additionally ensure that the order of serialization/deserialization is consistent<br />\nfor <code>serialize :foo</code> and <code>encrypts :foo</code> whichever order they are declared in.</p>\n\n<p><em>Donal McBreen</em></p>\n"
-  },
-  {
     "message": "*   Infer default `:inverse_of` option for `delegated_type` definitions.\n\n    ```ruby\n    class Entry < ApplicationRecord\n      delegated_type :entryable, types: %w[ Message ]\n      # => defaults to inverse_of: :entry\n    end\n    ```\n\n    *Sean Doyle*",
     "project": "activerecord",
     "date_merged": 1724269032000,
@@ -648,6 +638,16 @@
     "pr": "51878",
     "merge_sha": "2281edf99e3583b1ff7ae636906f681d80dab603",
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::ErrorReporter#report` now assigns a backtrace to unraised exceptions.\n\n    Previously reporting an un-raised exception would result in an error report without\n    a backtrace. Now it automatically generates one.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1724409254000,
+    "author": "Jean Boussier",
+    "sha": "b1d8cf59d9b3c51fde5dd96ceb829d36b8e28c86",
+    "pr": "52684",
+    "merge_sha": "0794abb6bb95f0904cb0a6a605ddb24863aa809e",
+    "html": "<p><code>ActiveSupport::ErrorReporter#report</code> now assigns a backtrace to unraised exceptions.</p>\n\n<p>Previously reporting an un-raised exception would result in an error report without<br />\na backtrace. Now it automatically generates one.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Add `escape_html_entities` option to `ActiveSupport::JSON.encode`.\n\n    This allows for overriding the global configuration found at\n    `ActiveSupport.escape_html_entities_in_json` for specific calls to `to_json`.\n\n    This should be usable from controllers in the following manner:\n    ```ruby\n    class MyController < ApplicationController\n      def index\n        render json: { hello: \"world\" }, escape_html_entities: false\n      end\n    end\n    ```\n\n    *Nigel Baillie*",
