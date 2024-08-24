@@ -31,6 +31,40 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Deprecate `::STATS_DIRECTORIES`.
+</title>
+    <link>https://github.com/rails/rails/issues/52226</link>
+    <guid>https://github.com/rails/rails/issues/52226</guid>
+    <description>*   Deprecate `::STATS_DIRECTORIES`.
+
+    The global constant `STATS_DIRECTORIES` has been deprecated in favor of
+    `CodeStatistics.add_directory`.
+
+    Add extra directories with `CodeStatistics.add_directory(label, path)`:
+
+    ```ruby
+    require &quot;rails/code_statistics&quot;
+    CodeStatistics.add_directory(&#39;My Directory&#39;, &#39;path/to/dir&#39;)
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 23 Aug 2024 21:10:48 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>::STATS_DIRECTORIES</code>.</p>
+
+<p>The global constant <code>STATS_DIRECTORIES</code> has been deprecated in favor of<br />
+<code>CodeStatistics.add_directory</code>.</p>
+
+<p>Add extra directories with <code>CodeStatistics.add_directory(label, path)</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s2">"rails/code_statistics"</span>
+<span class="no">CodeStatistics</span><span class="p">.</span><span class="nf">add_directory</span><span class="p">(</span><span class="s1">'My Directory'</span><span class="p">,</span> <span class="s1">'path/to/dir'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Enable query log tags by default on development env
 </title>
     <link>https://github.com/rails/rails/issues/51342</link>
