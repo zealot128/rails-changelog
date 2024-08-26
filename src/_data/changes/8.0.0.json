@@ -10,14 +10,14 @@
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
-    "message": "*   Deprecate `::STATS_DIRECTORIES`.\n\n    The global constant `STATS_DIRECTORIES` has been deprecated in favor of\n    `Rails::CodeStatistics.add_directory`.\n\n    Add extra directories with `Rails::CodeStatistics.add_directory(label, path)`:\n\n    ```ruby\n    require \"rails/code_statistics\"\n    Rails::CodeStatistics.add_directory('My Directory', 'path/to/dir')\n    ```\n\n    *Petrik de Heus*",
+    "message": "*   Deprecate `::STATS_DIRECTORIES`.\n\n    The global constant `STATS_DIRECTORIES` has been deprecated in favor of\n    `Rails::CodeStatistics.register_directory`.\n\n    Add extra directories with `Rails::CodeStatistics.register_directory(label, path)`:\n\n    ```ruby\n    require \"rails/code_statistics\"\n    Rails::CodeStatistics.register_directory('My Directory', 'path/to/dir')\n    ```\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1724447448000,
     "author": "Petrik",
     "sha": "271467b013eff6a7b7811191c2f0e302c13a0b34",
     "pr": "52226",
     "merge_sha": "667a2063ed2772b1a5d385a0911679749b7f2a6e",
-    "html": "<p>Deprecate <code>::STATS_DIRECTORIES</code>.</p>\n\n<p>The global constant <code>STATS_DIRECTORIES</code> has been deprecated in favor of<br />\n<code>Rails::CodeStatistics.add_directory</code>.</p>\n\n<p>Add extra directories with <code>Rails::CodeStatistics.add_directory(label, path)</code>:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">require</span> <span class=\"s2\">\"rails/code_statistics\"</span>\n<span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">CodeStatistics</span><span class=\"p\">.</span><span class=\"nf\">add_directory</span><span class=\"p\">(</span><span class=\"s1\">'My Directory'</span><span class=\"p\">,</span> <span class=\"s1\">'path/to/dir'</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+    "html": "<p>Deprecate <code>::STATS_DIRECTORIES</code>.</p>\n\n<p>The global constant <code>STATS_DIRECTORIES</code> has been deprecated in favor of<br />\n<code>Rails::CodeStatistics.register_directory</code>.</p>\n\n<p>Add extra directories with <code>Rails::CodeStatistics.register_directory(label, path)</code>:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">require</span> <span class=\"s2\">\"rails/code_statistics\"</span>\n<span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">CodeStatistics</span><span class=\"p\">.</span><span class=\"nf\">register_directory</span><span class=\"p\">(</span><span class=\"s1\">'My Directory'</span><span class=\"p\">,</span> <span class=\"s1\">'path/to/dir'</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
     "message": "*   Enable query log tags by default on development env\n\n    This can be used to trace troublesome SQL statements back to the application\n    code that generated these statements. It is also useful when using multiple\n    databases because the query logs can identify which database is being used.\n\n    *Matheus Richard*",
@@ -388,6 +388,16 @@
     "pr": "52468",
     "merge_sha": "a0a894cecb3f0ceb3659cdcee73543f31ccf3d78",
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   Add support for SQLite3 full-text-search and other virtual tables.\n\n    Previously, adding sqlite3 virtual tables messed up `schema.rb`.\n\n    Now, virtual tables can safely be added using `create_virtual_table`.\n\n    *Zacharias Knudsen*",
+    "project": "activerecord",
+    "date_merged": 1724694550000,
+    "author": "Zacharias Knudsen",
+    "sha": "1ecb91bb384902d9098761cfbe120b47a416c9c4",
+    "pr": "52354",
+    "merge_sha": "534b4ab2a65048c5eb558af2ef8ddcd93ff8d88d",
+    "html": "<p>Add support for SQLite3 full-text-search and other virtual tables.</p>\n\n<p>Previously, adding sqlite3 virtual tables messed up <code>schema.rb</code>.</p>\n\n<p>Now, virtual tables can safely be added using <code>create_virtual_table</code>.</p>\n\n<p><em>Zacharias Knudsen</em></p>\n"
   },
   {
     "message": "*   Support use of alternative database interfaces via the `database_cli` ActiveRecord configuration option.\n\n    ```ruby\n    Rails.application.configure do\n      config.active_record.database_cli = { postgresql: \"pgcli\" }\n    end\n    ```\n\n    *T S Vallender*",
