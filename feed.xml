@@ -38,13 +38,13 @@ in case you need it.</p>
     <description>*   Deprecate `::STATS_DIRECTORIES`.
 
     The global constant `STATS_DIRECTORIES` has been deprecated in favor of
-    `Rails::CodeStatistics.add_directory`.
+    `Rails::CodeStatistics.register_directory`.
 
-    Add extra directories with `Rails::CodeStatistics.add_directory(label, path)`:
+    Add extra directories with `Rails::CodeStatistics.register_directory(label, path)`:
 
     ```ruby
     require &quot;rails/code_statistics&quot;
-    Rails::CodeStatistics.add_directory(&#39;My Directory&#39;, &#39;path/to/dir&#39;)
+    Rails::CodeStatistics.register_directory(&#39;My Directory&#39;, &#39;path/to/dir&#39;)
     ```
 
     *Petrik de Heus*</description>
@@ -53,12 +53,12 @@ in case you need it.</p>
     <content:encoded><![CDATA[<p>Deprecate <code>::STATS_DIRECTORIES</code>.</p>
 
 <p>The global constant <code>STATS_DIRECTORIES</code> has been deprecated in favor of<br />
-<code>Rails::CodeStatistics.add_directory</code>.</p>
+<code>Rails::CodeStatistics.register_directory</code>.</p>
 
-<p>Add extra directories with <code>Rails::CodeStatistics.add_directory(label, path)</code>:</p>
+<p>Add extra directories with <code>Rails::CodeStatistics.register_directory(label, path)</code>:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s2">"rails/code_statistics"</span>
-<span class="no">Rails</span><span class="o">::</span><span class="no">CodeStatistics</span><span class="p">.</span><span class="nf">add_directory</span><span class="p">(</span><span class="s1">'My Directory'</span><span class="p">,</span> <span class="s1">'path/to/dir'</span><span class="p">)</span>
+<span class="no">Rails</span><span class="o">::</span><span class="no">CodeStatistics</span><span class="p">.</span><span class="nf">register_directory</span><span class="p">(</span><span class="s1">'My Directory'</span><span class="p">,</span> <span class="s1">'path/to/dir'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p><em>Petrik de Heus</em></p>
@@ -981,6 +981,29 @@ Rails 8.0 defaults.</p>
     <content:encoded><![CDATA[<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>
 
 <p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add support for SQLite3 full-text-search and other virtual tables.
+</title>
+    <link>https://github.com/rails/rails/issues/52354</link>
+    <guid>https://github.com/rails/rails/issues/52354</guid>
+    <description>*   Add support for SQLite3 full-text-search and other virtual tables.
+
+    Previously, adding sqlite3 virtual tables messed up `schema.rb`.
+
+    Now, virtual tables can safely be added using `create_virtual_table`.
+
+    *Zacharias Knudsen*</description>
+    <pubDate>Mon, 26 Aug 2024 17:49:10 +0000</pubDate>
+    <author>Zacharias Knudsen</author>
+    <content:encoded><![CDATA[<p>Add support for SQLite3 full-text-search and other virtual tables.</p>
+
+<p>Previously, adding sqlite3 virtual tables messed up <code>schema.rb</code>.</p>
+
+<p>Now, virtual tables can safely be added using <code>create_virtual_table</code>.</p>
+
+<p><em>Zacharias Knudsen</em></p>
 ]]></content:encoded>
   </item>
   <item>
