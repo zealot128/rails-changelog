@@ -400,6 +400,26 @@
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
   },
   {
+    "message": "*   Ensure `ActiveRecord::Encryption.config` is always ready before access.\n\n    Previously, `ActiveRecord::Encryption` configuration was deferred until `ActiveRecord::Base`\n    was loaded. Therefore, accessing `ActiveRecord::Encryption.config` properties before\n    `ActiveRecord::Base` was loaded would give incorrect results.\n\n    `ActiveRecord::Encryption` now has its own loading hook so that its configuration is set as\n    soon as needed.\n\n    When `ActiveRecord::Base` is loaded, even lazily, it in turn triggers the loading of\n    `ActiveRecord::Encryption`, thus preserving the original behavior of having its config ready\n    before any use of `ActiveRecord::Base`.\n\n    *Maxime Réty*",
+    "project": "activerecord",
+    "date_merged": 1724778573000,
+    "author": "maximerety",
+    "sha": "6f7f624b84d8cfa8a1d6166878c902d1fcb0655c",
+    "pr": "52669",
+    "merge_sha": "f24c42d8847e9f78130268405a904510db1d7485",
+    "html": "<p>Ensure <code>ActiveRecord::Encryption.config</code> is always ready before access.</p>\n\n<p>Previously, <code>ActiveRecord::Encryption</code> configuration was deferred until <code>ActiveRecord::Base</code><br />\nwas loaded. Therefore, accessing <code>ActiveRecord::Encryption.config</code> properties before<br />\n<code>ActiveRecord::Base</code> was loaded would give incorrect results.</p>\n\n<p><code>ActiveRecord::Encryption</code> now has its own loading hook so that its configuration is set as<br />\nsoon as needed.</p>\n\n<p>When <code>ActiveRecord::Base</code> is loaded, even lazily, it in turn triggers the loading of<br />\n<code>ActiveRecord::Encryption</code>, thus preserving the original behavior of having its config ready<br />\nbefore any use of <code>ActiveRecord::Base</code>.</p>\n\n<p><em>Maxime Réty</em></p>\n"
+  },
+  {
+    "message": "*   Add `TimeZoneConverter#==` method, so objects will be properly compared by\n    their type, scale, limit & precision.\n\n    Address #52699.\n\n    *Ruy Rocha*",
+    "project": "activerecord",
+    "date_merged": 1724775456000,
+    "author": "Ruy R.",
+    "sha": "71e5dc35c42f720126be3c53c73708148fa4929e",
+    "pr": "52698",
+    "merge_sha": "7059d3c7d97ac95fce83d4c727d94f790b8b68c9",
+    "html": "<p>Add <code>TimeZoneConverter#==</code> method, so objects will be properly compared by<br />\ntheir type, scale, limit &amp; precision.</p>\n\n<p>Address #52699.</p>\n\n<p><em>Ruy Rocha</em></p>\n"
+  },
+  {
     "message": "*   Add support for SQLite3 full-text-search and other virtual tables.\n\n    Previously, adding sqlite3 virtual tables messed up `schema.rb`.\n\n    Now, virtual tables can safely be added using `create_virtual_table`.\n\n    *Zacharias Knudsen*",
     "project": "activerecord",
     "date_merged": 1724694550000,
