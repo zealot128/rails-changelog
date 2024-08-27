@@ -573,6 +573,37 @@ unknown attribute:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Dispatch direct-upload events on attachment uploads
+</title>
+    <link>https://github.com/rails/rails/issues/52680</link>
+    <guid>https://github.com/rails/rails/issues/52680</guid>
+    <description>*   Dispatch direct-upload events on attachment uploads
+
+    When using Action Text&#39;s rich textarea,  it&#39;s possible to attach files to the
+    editor. Previously, that action didn&#39;t dispatch any events, which made it hard
+    to react to the file uploads. For instance, if an upload failed, there was no
+    way to notify the user about it, or remove the attachment from the editor.
+
+    This commits adds new events - `direct-upload:start`, `direct-upload:progress`,
+    and `direct-upload:end` - similar to how Active Storage&#39;s direct uploads work.
+
+    *Matheus Richard*, *Brad Rees*</description>
+    <pubDate>Tue, 27 Aug 2024 00:20:59 +0000</pubDate>
+    <author>Matheus Richard</author>
+    <content:encoded><![CDATA[<p>Dispatch direct-upload events on attachment uploads</p>
+
+<p>When using Action Text’s rich textarea,  it’s possible to attach files to the<br />
+editor. Previously, that action didn’t dispatch any events, which made it hard<br />
+to react to the file uploads. For instance, if an upload failed, there was no<br />
+way to notify the user about it, or remove the attachment from the editor.</p>
+
+<p>This commits adds new events - <code>direct-upload:start</code>, <code>direct-upload:progress</code>,<br />
+and <code>direct-upload:end</code> - similar to how Active Storage’s direct uploads work.</p>
+
+<p><em>Matheus Richard</em>, <em>Brad Rees</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actiontext: Add `store_if_blank` option to `has_rich_text`
 </title>
     <link>https://github.com/rails/rails/issues/52573</link>
