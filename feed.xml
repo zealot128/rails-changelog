@@ -31,6 +31,29 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`
+</title>
+    <link>https://github.com/rails/rails/issues/52266</link>
+    <guid>https://github.com/rails/rails/issues/52266</guid>
+    <description>*   Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`
+
+    When used with the `--devcontainer` flag, these options will use `mariadb` as the database for the
+    Dev Container. The original `mysql` and `trilogy` options will use `mysql`. Users who are not
+    generating a Dev Container do not need to use the new options.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Tue, 27 Aug 2024 20:31:20 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Introduce <code>mariadb-mysql</code> and <code>mariadb-trilogy</code> database options for <code>rails new</code></p>
+
+<p>When used with the <code>--devcontainer</code> flag, these options will use <code>mariadb</code> as the database for the<br />
+Dev Container. The original <code>mysql</code> and <code>trilogy</code> options will use <code>mysql</code>. Users who are not<br />
+generating a Dev Container do not need to use the new options.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Deprecate `::STATS_DIRECTORIES`.
 </title>
     <link>https://github.com/rails/rails/issues/52226</link>
