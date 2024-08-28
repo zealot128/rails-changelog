@@ -10,6 +10,16 @@
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`\n\n    When used with the `--devcontainer` flag, these options will use `mariadb` as the database for the\n    Dev Container. The original `mysql` and `trilogy` options will use `mysql`. Users who are not\n    generating a Dev Container do not need to use the new options.\n\n    *Andrew Novoselac*",
+    "project": "railties",
+    "date_merged": 1724790680000,
+    "author": "Andrew Novoselac",
+    "sha": "2202ddf476aeff470dadbfe992aa224021b66933",
+    "pr": "52266",
+    "merge_sha": "f0fd6ab1259b3bacf0e7e53f3a9b1757a327d822",
+    "html": "<p>Introduce <code>mariadb-mysql</code> and <code>mariadb-trilogy</code> database options for <code>rails new</code></p>\n\n<p>When used with the <code>--devcontainer</code> flag, these options will use <code>mariadb</code> as the database for the<br />\nDev Container. The original <code>mysql</code> and <code>trilogy</code> options will use <code>mysql</code>. Users who are not<br />\ngenerating a Dev Container do not need to use the new options.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `::STATS_DIRECTORIES`.\n\n    The global constant `STATS_DIRECTORIES` has been deprecated in favor of\n    `Rails::CodeStatistics.register_directory`.\n\n    Add extra directories with `Rails::CodeStatistics.register_directory(label, path)`:\n\n    ```ruby\n    require \"rails/code_statistics\"\n    Rails::CodeStatistics.register_directory('My Directory', 'path/to/dir')\n    ```\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1724447448000,
