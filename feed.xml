@@ -1038,6 +1038,25 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Deserialize binary data before decrypting
+</title>
+    <link>https://github.com/rails/rails/issues/52729</link>
+    <guid>https://github.com/rails/rails/issues/52729</guid>
+    <description>*   Deserialize binary data before decrypting
+
+    This ensures that we call `PG::Connection.unescape_bytea` on PostgreSQL before decryption.
+
+    *Donal McBreen*</description>
+    <pubDate>Wed, 28 Aug 2024 19:20:42 +0000</pubDate>
+    <author>Donal McBreen</author>
+    <content:encoded><![CDATA[<p>Deserialize binary data before decrypting</p>
+
+<p>This ensures that we call <code>PG::Connection.unescape_bytea</code> on PostgreSQL before decryption.</p>
+
+<p><em>Donal McBreen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Ensure `ActiveRecord::Encryption.config` is always ready before access.
 </title>
     <link>https://github.com/rails/rails/issues/52669</link>
@@ -1991,6 +2010,21 @@ proc by printing the proc’s source code (MRI only).</p>
     <content:encoded><![CDATA[<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>
 
 <p><em>Jason Kim</em>, <em>John Hawthorn</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Align instrumentation `payload[:key]` in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.
+</title>
+    <link>https://github.com/rails/rails/issues/52736</link>
+    <guid>https://github.com/rails/rails/issues/52736</guid>
+    <description>*   Align instrumentation `payload[:key]` in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.
+
+    *Frederik Erbs Spang Thomsen*</description>
+    <pubDate>Wed, 28 Aug 2024 19:36:28 +0000</pubDate>
+    <author>Frederik Spang</author>
+    <content:encoded><![CDATA[<p>Align instrumentation <code>payload[:key]</code> in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.</p>
+
+<p><em>Frederik Erbs Spang Thomsen</em></p>
 ]]></content:encoded>
   </item>
 </channel>
