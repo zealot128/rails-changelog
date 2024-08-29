@@ -410,6 +410,16 @@
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
   },
   {
+    "message": "*   Deserialize binary data before decrypting\n\n    This ensures that we call `PG::Connection.unescape_bytea` on PostgreSQL before decryption.\n\n    *Donal McBreen*",
+    "project": "activerecord",
+    "date_merged": 1724872842000,
+    "author": "Donal McBreen",
+    "sha": "1d996ee059e248b91f465564e7f00af9a6fdb956",
+    "pr": "52729",
+    "merge_sha": "bac55567585331758d1557ccb6b21c674929744d",
+    "html": "<p>Deserialize binary data before decrypting</p>\n\n<p>This ensures that we call <code>PG::Connection.unescape_bytea</code> on PostgreSQL before decryption.</p>\n\n<p><em>Donal McBreen</em></p>\n"
+  },
+  {
     "message": "*   Ensure `ActiveRecord::Encryption.config` is always ready before access.\n\n    Previously, `ActiveRecord::Encryption` configuration was deferred until `ActiveRecord::Base`\n    was loaded. Therefore, accessing `ActiveRecord::Encryption.config` properties before\n    `ActiveRecord::Base` was loaded would give incorrect results.\n\n    `ActiveRecord::Encryption` now has its own loading hook so that its configuration is set as\n    soon as needed.\n\n    When `ActiveRecord::Base` is loaded, even lazily, it in turn triggers the loading of\n    `ActiveRecord::Encryption`, thus preserving the original behavior of having its config ready\n    before any use of `ActiveRecord::Base`.\n\n    *Maxime Réty*",
     "project": "activerecord",
     "date_merged": 1724778573000,
@@ -788,5 +798,15 @@
     "pr": "52091",
     "merge_sha": "716e4a7d326c36fc44d4a6fcab7a21313ab3b2df",
     "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
+  },
+  {
+    "message": "*   Align instrumentation `payload[:key]` in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.\n\n    *Frederik Erbs Spang Thomsen*",
+    "project": "activesupport",
+    "date_merged": 1724873788000,
+    "author": "Frederik Spang",
+    "sha": "2acfed936105c6df897ca53ce433774f4c242598",
+    "pr": "52736",
+    "merge_sha": "c15f1e2dc50fe18ea4fa7e09ef8be95e0c355eb4",
+    "html": "<p>Align instrumentation <code>payload[:key]</code> in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.</p>\n\n<p><em>Frederik Erbs Spang Thomsen</em></p>\n"
   }
 ]
