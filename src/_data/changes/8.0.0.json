@@ -580,7 +580,7 @@
     "html": "<p>Use SQLite <code>IMMEDIATE</code> transactions when possible.</p>\n\n<p>Transactions run against the SQLite3 adapter default to IMMEDIATE mode to improve concurrency support and avoid busy exceptions.</p>\n\n<p><em>Stephen Margheim</em></p>\n"
   },
   {
-    "message": "*   Raise specific exception when a connection is not defined.\n\n     The new `ConnectionNotDefined` exception provides connection name, shard and role accessors indicating the details of the connection that was requested.\n\n    *Hana Harencarova*, *Matthew Draper*",
+    "message": "*   Raise specific exception when a connection is not defined.\n\n    The new `ConnectionNotDefined` exception provides connection name, shard and role accessors indicating the details of the connection that was requested.\n\n    *Hana Harencarova*, *Matthew Draper*",
     "project": "activerecord",
     "date_merged": 1721163420000,
     "author": "Hana Harencarova",
