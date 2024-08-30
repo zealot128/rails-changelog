@@ -1475,7 +1475,7 @@ the extension, e.g. <code>DROP EXTENSION IF EXISTS "pgcrypto"</code>.</p>
     <guid>https://github.com/rails/rails/issues/52298</guid>
     <description>*   Raise specific exception when a connection is not defined.
 
-     The new `ConnectionNotDefined` exception provides connection name, shard and role accessors indicating the details of the connection that was requested.
+    The new `ConnectionNotDefined` exception provides connection name, shard and role accessors indicating the details of the connection that was requested.
 
     *Hana Harencarova*, *Matthew Draper*</description>
     <pubDate>Tue, 16 Jul 2024 20:57:00 +0000</pubDate>
