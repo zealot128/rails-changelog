@@ -825,44 +825,6 @@ and <code>direct-upload:end</code> - similar to how Active Storage’s direct up
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionpack: Deprecate drawing routes with hash key paths to make routing faster.
-</title>
-    <link>https://github.com/rails/rails/issues/52422</link>
-    <guid>https://github.com/rails/rails/issues/52422</guid>
-    <description>*   Deprecate drawing routes with hash key paths to make routing faster.
-
-    ```ruby
-    # Before
-    get &quot;/users&quot; =&gt; &quot;users#index&quot;
-    post &quot;/logout&quot; =&gt; :sessions
-    mount MyApp =&gt; &quot;/my_app&quot;
-
-    # After
-    get &quot;/users&quot;, to: &quot;users#index&quot;
-    post &quot;/logout&quot;, to: &quot;sessions#logout&quot;
-    mount MyApp, at: &quot;/my_app&quot;
-    ```
-
-    *Gannon McGibbon*</description>
-    <pubDate>Wed, 31 Jul 2024 18:29:27 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Deprecate drawing routes with hash key paths to make routing faster.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
-<span class="n">get</span> <span class="s2">"/users"</span> <span class="o">=&gt;</span> <span class="s2">"users#index"</span>
-<span class="n">post</span> <span class="s2">"/logout"</span> <span class="o">=&gt;</span> <span class="ss">:sessions</span>
-<span class="n">mount</span> <span class="no">MyApp</span> <span class="o">=&gt;</span> <span class="s2">"/my_app"</span>
-
-<span class="c1"># After</span>
-<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
-<span class="n">post</span> <span class="s2">"/logout"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"sessions#logout"</span>
-<span class="n">mount</span> <span class="no">MyApp</span><span class="p">,</span> <span class="ss">at: </span><span class="s2">"/my_app"</span>
-</code></pre></div></div>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>actionpack: Deprecate drawing routes with multiple paths to make routing faster.
 </title>
     <link>https://github.com/rails/rails/issues/52409</link>
