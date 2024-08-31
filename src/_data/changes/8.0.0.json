@@ -320,16 +320,6 @@
     "html": "<p>Allow bots to ignore <code>allow_browser</code>.</p>\n\n<p><em>Matthew Nguyen</em></p>\n"
   },
   {
-    "message": "*   Deprecate drawing routes with hash key paths to make routing faster.\n\n    ```ruby\n    # Before\n    get \"/users\" => \"users#index\"\n    post \"/logout\" => :sessions\n    mount MyApp => \"/my_app\"\n\n    # After\n    get \"/users\", to: \"users#index\"\n    post \"/logout\", to: \"sessions#logout\"\n    mount MyApp, at: \"/my_app\"\n    ```\n\n    *Gannon McGibbon*",
-    "project": "actionpack",
-    "date_merged": 1722450567000,
-    "author": "Gannon McGibbon",
-    "sha": "1b40bfc8ffeeed0ab2471e272eb6be0940b29dd5",
-    "pr": "52422",
-    "merge_sha": "38bc323012e1f9856036e6c06d5787e2352ad747",
-    "html": "<p>Deprecate drawing routes with hash key paths to make routing faster.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/users\"</span> <span class=\"o\">=&gt;</span> <span class=\"s2\">\"users#index\"</span>\n<span class=\"n\">post</span> <span class=\"s2\">\"/logout\"</span> <span class=\"o\">=&gt;</span> <span class=\"ss\">:sessions</span>\n<span class=\"n\">mount</span> <span class=\"no\">MyApp</span> <span class=\"o\">=&gt;</span> <span class=\"s2\">\"/my_app\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/users\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"users#index\"</span>\n<span class=\"n\">post</span> <span class=\"s2\">\"/logout\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"sessions#logout\"</span>\n<span class=\"n\">mount</span> <span class=\"no\">MyApp</span><span class=\"p\">,</span> <span class=\"ss\">at: </span><span class=\"s2\">\"/my_app\"</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
     "message": "*   Deprecate drawing routes with multiple paths to make routing faster.\n    You may use `with_options` or a loop to make drawing multiple paths easier.\n\n    ```ruby\n    # Before\n    get \"/users\", \"/other_path\", to: \"users#index\"\n\n    # After\n    get \"/users\", to: \"users#index\"\n    get \"/other_path\", to: \"users#index\"\n    ```\n\n    *Gannon McGibbon*",
     "project": "actionpack",
     "date_merged": 1722051737000,
