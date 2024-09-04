@@ -10,6 +10,16 @@
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`\n    to silence requests to \"/up\". This prevents the Kamal-required healthchecks from clogging up\n    the production logs.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1725405606000,
+    "author": "David Heinemeier Hansson",
+    "sha": "66a9d113a439e3eb17b3b028dd838b3320a9784d",
+    "pr": "52789",
+    "merge_sha": null,
+    "html": "<p>Add Rails::Rack::SilenceRequest middleware and use it via <code>config.silence_healthcheck_path = path</code><br />\nto silence requests to “/up”. This prevents the Kamal-required healthchecks from clogging up<br />\nthe production logs.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`\n\n    When used with the `--devcontainer` flag, these options will use `mariadb` as the database for the\n    Dev Container. The original `mysql` and `trilogy` options will use `mysql`. Users who are not\n    generating a Dev Container do not need to use the new options.\n\n    *Andrew Novoselac*",
     "project": "railties",
     "date_merged": 1724790680000,
