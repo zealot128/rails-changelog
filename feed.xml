@@ -6,458 +6,6 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>guides: The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from
-</title>
-    <link>https://github.com/rails/rails/issues/52165</link>
-    <guid>https://github.com/rails/rails/issues/52165</guid>
-    <description>*   The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from
-    the `classic` autoloader to Zeitwerk has been deleted.
-
-    The last version of this guide can be found
-    [here](https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html),
-    in case you need it.
-
-    *Petrik de Heus*</description>
-    <pubDate>Thu, 20 Jun 2024 08:47:01 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />
-the <code>classic</code> autoloader to Zeitwerk has been deleted.</p>
-
-<p>The last version of this guide can be found<br />
-<a href="https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html">here</a>,<br />
-in case you need it.</p>
-
-<p><em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`
-</title>
-    <link>https://github.com/rails/rails/issues/52789</link>
-    <guid>https://github.com/rails/rails/issues/52789</guid>
-    <description>*   Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`
-    to silence requests to &quot;/up&quot;. This prevents the Kamal-required healthchecks from clogging up
-    the production logs.
-
-    *DHH*</description>
-    <pubDate>Tue, 03 Sep 2024 23:20:06 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add Rails::Rack::SilenceRequest middleware and use it via <code>config.silence_healthcheck_path = path</code><br />
-to silence requests to “/up”. This prevents the Kamal-required healthchecks from clogging up<br />
-the production logs.</p>
-
-<p><em>DHH</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`
-</title>
-    <link>https://github.com/rails/rails/issues/52266</link>
-    <guid>https://github.com/rails/rails/issues/52266</guid>
-    <description>*   Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`
-
-    When used with the `--devcontainer` flag, these options will use `mariadb` as the database for the
-    Dev Container. The original `mysql` and `trilogy` options will use `mysql`. Users who are not
-    generating a Dev Container do not need to use the new options.
-
-    *Andrew Novoselac*</description>
-    <pubDate>Tue, 27 Aug 2024 20:31:20 +0000</pubDate>
-    <author>Andrew Novoselac</author>
-    <content:encoded><![CDATA[<p>Introduce <code>mariadb-mysql</code> and <code>mariadb-trilogy</code> database options for <code>rails new</code></p>
-
-<p>When used with the <code>--devcontainer</code> flag, these options will use <code>mariadb</code> as the database for the<br />
-Dev Container. The original <code>mysql</code> and <code>trilogy</code> options will use <code>mysql</code>. Users who are not<br />
-generating a Dev Container do not need to use the new options.</p>
-
-<p><em>Andrew Novoselac</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Deprecate `::STATS_DIRECTORIES`.
-</title>
-    <link>https://github.com/rails/rails/issues/52226</link>
-    <guid>https://github.com/rails/rails/issues/52226</guid>
-    <description>*   Deprecate `::STATS_DIRECTORIES`.
-
-    The global constant `STATS_DIRECTORIES` has been deprecated in favor of
-    `Rails::CodeStatistics.register_directory`.
-
-    Add extra directories with `Rails::CodeStatistics.register_directory(label, path)`:
-
-    ```ruby
-    require &quot;rails/code_statistics&quot;
-    Rails::CodeStatistics.register_directory(&#39;My Directory&#39;, &#39;path/to/dir&#39;)
-    ```
-
-    *Petrik de Heus*</description>
-    <pubDate>Fri, 23 Aug 2024 21:10:48 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Deprecate <code>::STATS_DIRECTORIES</code>.</p>
-
-<p>The global constant <code>STATS_DIRECTORIES</code> has been deprecated in favor of<br />
-<code>Rails::CodeStatistics.register_directory</code>.</p>
-
-<p>Add extra directories with <code>Rails::CodeStatistics.register_directory(label, path)</code>:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s2">"rails/code_statistics"</span>
-<span class="no">Rails</span><span class="o">::</span><span class="no">CodeStatistics</span><span class="p">.</span><span class="nf">register_directory</span><span class="p">(</span><span class="s1">'My Directory'</span><span class="p">,</span> <span class="s1">'path/to/dir'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Enable query log tags by default on development env
-</title>
-    <link>https://github.com/rails/rails/issues/51342</link>
-    <guid>https://github.com/rails/rails/issues/51342</guid>
-    <description>*   Enable query log tags by default on development env
-
-    This can be used to trace troublesome SQL statements back to the application
-    code that generated these statements. It is also useful when using multiple
-    databases because the query logs can identify which database is being used.
-
-    *Matheus Richard*</description>
-    <pubDate>Sun, 11 Aug 2024 09:11:53 +0000</pubDate>
-    <author>Matheus Richard</author>
-    <content:encoded><![CDATA[<p>Enable query log tags by default on development env</p>
-
-<p>This can be used to trace troublesome SQL statements back to the application<br />
-code that generated these statements. It is also useful when using multiple<br />
-databases because the query logs can identify which database is being used.</p>
-
-<p><em>Matheus Richard</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Defer route drawing to the first request, or when url_helpers are called
-</title>
-    <link>https://github.com/rails/rails/issues/52353</link>
-    <guid>https://github.com/rails/rails/issues/52353</guid>
-    <description>*   Defer route drawing to the first request, or when url_helpers are called
-
-    Executes the first routes reload in middleware, or when a route set&#39;s
-    url_helpers receives a route call / asked if it responds to a route.
-    Previously, this was executed unconditionally on boot, which can
-    slow down boot time unnecessarily for larger apps with lots of routes.
-
-    Environments like production that have `config.eager_load = true` will
-    continue to eagerly load routes on boot.
-
-    *Gannon McGibbon*</description>
-    <pubDate>Fri, 09 Aug 2024 06:44:23 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Defer route drawing to the first request, or when url_helpers are called</p>
-
-<p>Executes the first routes reload in middleware, or when a route set’s<br />
-url_helpers receives a route call / asked if it responds to a route.<br />
-Previously, this was executed unconditionally on boot, which can<br />
-slow down boot time unnecessarily for larger apps with lots of routes.</p>
-
-<p>Environments like production that have <code>config.eager_load = true</code> will<br />
-continue to eagerly load routes on boot.</p>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Generate form helpers to use `textarea*` methods instead of `text_area*` methods
-</title>
-    <link>https://github.com/rails/rails/issues/52467</link>
-    <guid>https://github.com/rails/rails/issues/52467</guid>
-    <description>*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods
-
-    *Sean Doyle*</description>
-    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Generate form helpers to use <code>textarea*</code> methods instead of <code>text_area*</code> methods</p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.
-</title>
-    <link>https://github.com/rails/rails/issues/52468</link>
-    <guid>https://github.com/rails/rails/issues/52468</guid>
-    <description>*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.
-
-    Generate with...
-
-    ```
-    bin/rails generate authentication
-    ```
-
-    Generated files:
-
-    ```
-    app/models/current.rb
-    app/models/user.rb
-    app/models/session.rb
-    app/controllers/sessions_controller.rb
-    app/controllers/passwords_controller.rb
-    app/mailers/passwords_mailer.rb
-    app/views/sessions/new.html.erb
-    app/views/passwords/new.html.erb
-    app/views/passwords/edit.html.erb
-    app/views/passwords_mailer/reset.html.erb
-    app/views/passwords_mailer/reset.text.erb
-    db/migrate/xxxxxxx_create_users.rb
-    db/migrate/xxxxxxx_create_sessions.rb
-    test/mailers/previews/passwords_mailer_preview.rb
-    ```
-
-    *DHH*</description>
-    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.</p>
-
-<p>Generate with…</p>
-
-<pre><code>bin/rails generate authentication
-</code></pre>
-
-<p>Generated files:</p>
-
-<pre><code>app/models/current.rb
-app/models/user.rb
-app/models/session.rb
-app/controllers/sessions_controller.rb
-app/controllers/passwords_controller.rb
-app/mailers/passwords_mailer.rb
-app/views/sessions/new.html.erb
-app/views/passwords/new.html.erb
-app/views/passwords/edit.html.erb
-app/views/passwords_mailer/reset.html.erb
-app/views/passwords_mailer/reset.text.erb
-db/migrate/xxxxxxx_create_users.rb
-db/migrate/xxxxxxx_create_sessions.rb
-test/mailers/previews/passwords_mailer_preview.rb
-</code></pre>
-
-<p><em>DHH</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add not-null type modifier to migration attributes.
-</title>
-    <link>https://github.com/rails/rails/issues/52327</link>
-    <guid>https://github.com/rails/rails/issues/52327</guid>
-    <description>*   Add not-null type modifier to migration attributes.
-
-    Generating with...
-
-    ```
-    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
-    ```
-
-    Produces:
-
-    ```ruby
-    class CreateUsers &lt; ActiveRecord::Migration[8.0]
-      def change
-        create_table :users do |t|
-          t.string :email_address, null: false
-          t.string :password_digest, null: false
-
-          t.timestamps
-        end
-        add_index :users, :email_address, unique: true
-      end
-    end
-    ```
-
-    *DHH*</description>
-    <pubDate>Tue, 16 Jul 2024 13:00:51 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Add not-null type modifier to migration attributes.</p>
-
-<p>Generating with…</p>
-
-<pre><code>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
-</code></pre>
-
-<p>Produces:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreateUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">8.0</span><span class="p">]</span>
-  <span class="k">def</span> <span class="nf">change</span>
-    <span class="n">create_table</span> <span class="ss">:users</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
-      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:password_digest</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
-
-      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
-    <span class="k">end</span>
-    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p><em>DHH</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add a `script` folder to applications, and a scripts generator.
-</title>
-    <link>https://github.com/rails/rails/issues/52454</link>
-    <guid>https://github.com/rails/rails/issues/52454</guid>
-    <description>*   Add a `script` folder to applications, and a scripts generator.
-
-    The new `script` folder is meant to hold one-off or general purpose scripts,
-    such as data migration scripts, cleanup scripts, etc.
-
-    A new script generator allows you to create such scripts:
-
-    ```
-    bin/rails generate script my_script
-    bin/rails generate script data/backfill
-    ```
-
-    You can run the generated script using:
-
-    ```
-    bundle exec ruby script/my_script.rb
-    bundle exec ruby script/data/backfill.rb
-    ```
-
-    *Jerome Dalbert*, *Haroon Ahmed*</description>
-    <pubDate>Tue, 30 Jul 2024 19:25:16 +0000</pubDate>
-    <author>Xavier Noria</author>
-    <content:encoded><![CDATA[<p>Add a <code>script</code> folder to applications, and a scripts generator.</p>
-
-<p>The new <code>script</code> folder is meant to hold one-off or general purpose scripts,<br />
-such as data migration scripts, cleanup scripts, etc.</p>
-
-<p>A new script generator allows you to create such scripts:</p>
-
-<pre><code>bin/rails generate script my_script
-bin/rails generate script data/backfill
-</code></pre>
-
-<p>You can run the generated script using:</p>
-
-<pre><code>bundle exec ruby script/my_script.rb
-bundle exec ruby script/data/backfill.rb
-</code></pre>
-
-<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Deprecate `bin/rake stats` in favor of `bin/rails stats`.
-</title>
-    <link>https://github.com/rails/rails/issues/52231</link>
-    <guid>https://github.com/rails/rails/issues/52231</guid>
-    <description>*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.
-
-    *Juan Vásquez*</description>
-    <pubDate>Sat, 29 Jun 2024 06:52:05 +0000</pubDate>
-    <author>Juan Vásquez</author>
-    <content:encoded><![CDATA[<p>Deprecate <code>bin/rake stats</code> in favor of <code>bin/rails stats</code>.</p>
-
-<p><em>Juan Vásquez</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
-</title>
-    <link>https://github.com/rails/rails/issues/52115</link>
-    <guid>https://github.com/rails/rails/issues/52115</guid>
-    <description>*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
-
-    *Deepak Mahakale*</description>
-    <pubDate>Thu, 13 Jun 2024 17:22:29 +0000</pubDate>
-    <author>Deepak Mahakale</author>
-    <content:encoded><![CDATA[<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>
-
-<p><em>Deepak Mahakale</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Add Rubocop and GitHub Actions to plugin generator.
-</title>
-    <link>https://github.com/rails/rails/issues/51822</link>
-    <guid>https://github.com/rails/rails/issues/51822</guid>
-    <description>*   Add Rubocop and GitHub Actions to plugin generator.
-    This can be skipped using --skip-rubocop and --skip-ci.
-
-    *Chris Oliver*</description>
-    <pubDate>Thu, 23 May 2024 18:08:58 +0000</pubDate>
-    <author>Chris Oliver</author>
-    <content:encoded><![CDATA[<p>Add Rubocop and GitHub Actions to plugin generator.<br />
-This can be skipped using –skip-rubocop and –skip-ci.</p>
-
-<p><em>Chris Oliver</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
-</title>
-    <link>https://github.com/rails/rails/issues/51798</link>
-    <guid>https://github.com/rails/rails/issues/51798</guid>
-    <description>*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
-    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/
-
-    *DHH*</description>
-    <pubDate>Tue, 14 May 2024 00:37:39 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />
-This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
-
-<p><em>DHH</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.
-</title>
-    <link>https://github.com/rails/rails/issues/52496</link>
-    <guid>https://github.com/rails/rails/issues/52496</guid>
-    <description>*   Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.
-    Replace the characters `&quot;*?&lt;&gt;` with `-` if they exist in the Filename to match the Filename convention of Win OS.
-
-    *Luong Viet Dung(Martin)*</description>
-    <pubDate>Mon, 05 Aug 2024 18:28:33 +0000</pubDate>
-    <author>Martin(Luong Viet Dung)</author>
-    <content:encoded><![CDATA[<p>Improve <code>ActiveStorage::Filename#sanitized</code> method to handle special characters more effectively.<br />
-Replace the characters <code>"*?&lt;&gt;</code> with <code>-</code> if they exist in the Filename to match the Filename convention of Win OS.</p>
-
-<p><em>Luong Viet Dung(Martin)</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Improve InvariableError, UnpreviewableError and UnrepresentableError message.
-</title>
-    <link>https://github.com/rails/rails/issues/52193</link>
-    <guid>https://github.com/rails/rails/issues/52193</guid>
-    <description>*   Improve InvariableError, UnpreviewableError and UnrepresentableError message.
-
-    Include Blob ID and content_type in the messages.
-
-    *Petrik de Heus*</description>
-    <pubDate>Tue, 30 Jul 2024 10:35:59 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Improve InvariableError, UnpreviewableError and UnrepresentableError message.</p>
-
-<p>Include Blob ID and content_type in the messages.</p>
-
-<p><em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Mark proxied files as `immutable` in their Cache-Control header
-</title>
-    <link>https://github.com/rails/rails/issues/52283</link>
-    <guid>https://github.com/rails/rails/issues/52283</guid>
-    <description>*   Mark proxied files as `immutable` in their Cache-Control header
-
-    *Nate Matykiewicz*</description>
-    <pubDate>Sat, 06 Jul 2024 18:08:48 +0000</pubDate>
-    <author>Nate Matykiewicz</author>
-    <content:encoded><![CDATA[<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>
-
-<p><em>Nate Matykiewicz</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activemodel: Add a default token generator for password reset tokens when using `has_secure_password`.
 </title>
     <link>https://github.com/rails/rails/issues/52483</link>
@@ -615,122 +163,6 @@ unknown attribute:</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actiontext: Dispatch direct-upload events on attachment uploads
-</title>
-    <link>https://github.com/rails/rails/issues/52680</link>
-    <guid>https://github.com/rails/rails/issues/52680</guid>
-    <description>*   Dispatch direct-upload events on attachment uploads
-
-    When using Action Text&#39;s rich textarea,  it&#39;s possible to attach files to the
-    editor. Previously, that action didn&#39;t dispatch any events, which made it hard
-    to react to the file uploads. For instance, if an upload failed, there was no
-    way to notify the user about it, or remove the attachment from the editor.
-
-    This commits adds new events - `direct-upload:start`, `direct-upload:progress`,
-    and `direct-upload:end` - similar to how Active Storage&#39;s direct uploads work.
-
-    *Matheus Richard*, *Brad Rees*</description>
-    <pubDate>Tue, 27 Aug 2024 00:20:59 +0000</pubDate>
-    <author>Matheus Richard</author>
-    <content:encoded><![CDATA[<p>Dispatch direct-upload events on attachment uploads</p>
-
-<p>When using Action Text’s rich textarea,  it’s possible to attach files to the<br />
-editor. Previously, that action didn’t dispatch any events, which made it hard<br />
-to react to the file uploads. For instance, if an upload failed, there was no<br />
-way to notify the user about it, or remove the attachment from the editor.</p>
-
-<p>This commits adds new events - <code>direct-upload:start</code>, <code>direct-upload:progress</code>,<br />
-and <code>direct-upload:end</code> - similar to how Active Storage’s direct uploads work.</p>
-
-<p><em>Matheus Richard</em>, <em>Brad Rees</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Add `store_if_blank` option to `has_rich_text`
-</title>
-    <link>https://github.com/rails/rails/issues/52573</link>
-    <guid>https://github.com/rails/rails/issues/52573</guid>
-    <description>*   Add `store_if_blank` option to `has_rich_text`
-
-    Pass `store_if_blank: false` to not create `ActionText::RichText` records when saving with a blank attribute, such as from an optional form parameter.
-
-    ```ruby
-    class Message
-      has_rich_text :content, store_if_blank: false
-    end
-
-    Message.create(content: &quot;hi&quot;) # creates an ActionText::RichText
-    Message.create(content: &quot;&quot;) # does not create an ActionText::RichText
-    ```
-
-    *Alex Ghiculescu*</description>
-    <pubDate>Wed, 21 Aug 2024 22:26:39 +0000</pubDate>
-    <author>Alex</author>
-    <content:encoded><![CDATA[<p>Add <code>store_if_blank</code> option to <code>has_rich_text</code></p>
-
-<p>Pass <code>store_if_blank: false</code> to not create <code>ActionText::RichText</code> records when saving with a blank attribute, such as from an optional form parameter.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Message</span>
-  <span class="n">has_rich_text</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">store_if_blank: </span><span class="kp">false</span>
-<span class="k">end</span>
-
-<span class="no">Message</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">content: </span><span class="s2">"hi"</span><span class="p">)</span> <span class="c1"># creates an ActionText::RichText</span>
-<span class="no">Message</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">content: </span><span class="s2">""</span><span class="p">)</span> <span class="c1"># does not create an ActionText::RichText</span>
-</code></pre></div></div>
-
-<p><em>Alex Ghiculescu</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Strip `content` attribute if the key is present but the value is empty
-</title>
-    <link>https://github.com/rails/rails/issues/52281</link>
-    <guid>https://github.com/rails/rails/issues/52281</guid>
-    <description>*   Strip `content` attribute if the key is present but the value is empty
-
-    *Jeremy Green*</description>
-    <pubDate>Wed, 21 Aug 2024 18:26:53 +0000</pubDate>
-    <author>Jeremy Green</author>
-    <content:encoded><![CDATA[<p>Strip <code>content</code> attribute if the key is present but the value is empty</p>
-
-<p><em>Jeremy Green</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Rename `rich_text_area` methods into `rich_textarea`
-</title>
-    <link>https://github.com/rails/rails/issues/52467</link>
-    <guid>https://github.com/rails/rails/issues/52467</guid>
-    <description>*   Rename `rich_text_area` methods into `rich_textarea`
-
-    Old names are still available as aliases.
-
-    *Sean Doyle*</description>
-    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Rename <code>rich_text_area</code> methods into <code>rich_textarea</code></p>
-
-<p>Old names are still available as aliases.</p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Only sanitize `content` attribute when present in attachments.
-</title>
-    <link>https://github.com/rails/rails/issues/52093</link>
-    <guid>https://github.com/rails/rails/issues/52093</guid>
-    <description>*   Only sanitize `content` attribute when present in attachments.
-
-    *Petrik de Heus*</description>
-    <pubDate>Wed, 12 Jun 2024 18:21:38 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Only sanitize <code>content</code> attribute when present in attachments.</p>
-
-<p><em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>actionview: Rename `text_area` methods into `textarea`
 </title>
     <link>https://github.com/rails/rails/issues/52467</link>
@@ -781,241 +213,6 @@ and <code>direct-upload:end</code> - similar to how Active Storage’s direct up
     <content:encoded><![CDATA[<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>
 
 <p><em>Keith Schacht</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Fix `Request#raw_post` raising `NoMethodError` when `rack.input` is `nil`.
-</title>
-    <link>https://github.com/rails/rails/issues/52138</link>
-    <guid>https://github.com/rails/rails/issues/52138</guid>
-    <description>*   Fix `Request#raw_post` raising `NoMethodError` when `rack.input` is `nil`.
-
-    *Hartley McGuire*</description>
-    <pubDate>Wed, 21 Aug 2024 20:16:11 +0000</pubDate>
-    <author>Hartley McGuire</author>
-    <content:encoded><![CDATA[<p>Fix <code>Request#raw_post</code> raising <code>NoMethodError</code> when <code>rack.input</code> is <code>nil</code>.</p>
-
-<p><em>Hartley McGuire</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.
-</title>
-    <link>https://github.com/rails/rails/issues/52610</link>
-    <guid>https://github.com/rails/rails/issues/52610</guid>
-    <description>*   Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.
-
-    *Gannon McGibbon*</description>
-    <pubDate>Thu, 15 Aug 2024 18:04:26 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Remove <code>racc</code> dependency by manually writing <code>ActionDispatch::Journey::Scanner</code>.</p>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.
-</title>
-    <link>https://github.com/rails/rails/issues/52525</link>
-    <guid>https://github.com/rails/rails/issues/52525</guid>
-    <description>*   Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.
-
-    *Gannon McGibbon*</description>
-    <pubDate>Thu, 08 Aug 2024 02:26:51 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Speed up <code>ActionDispatch::Routing::Mapper::Scope#[]</code> by merging frame hashes.</p>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Allow bots to ignore `allow_browser`.
-</title>
-    <link>https://github.com/rails/rails/issues/52531</link>
-    <guid>https://github.com/rails/rails/issues/52531</guid>
-    <description>*   Allow bots to ignore `allow_browser`.
-
-    *Matthew Nguyen*</description>
-    <pubDate>Wed, 07 Aug 2024 16:29:46 +0000</pubDate>
-    <author>Matthew Nguyen</author>
-    <content:encoded><![CDATA[<p>Allow bots to ignore <code>allow_browser</code>.</p>
-
-<p><em>Matthew Nguyen</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Deprecate drawing routes with multiple paths to make routing faster.
-</title>
-    <link>https://github.com/rails/rails/issues/52409</link>
-    <guid>https://github.com/rails/rails/issues/52409</guid>
-    <description>*   Deprecate drawing routes with multiple paths to make routing faster.
-    You may use `with_options` or a loop to make drawing multiple paths easier.
-
-    ```ruby
-    # Before
-    get &quot;/users&quot;, &quot;/other_path&quot;, to: &quot;users#index&quot;
-
-    # After
-    get &quot;/users&quot;, to: &quot;users#index&quot;
-    get &quot;/other_path&quot;, to: &quot;users#index&quot;
-    ```
-
-    *Gannon McGibbon*</description>
-    <pubDate>Sat, 27 Jul 2024 03:42:17 +0000</pubDate>
-    <author>Gannon McGibbon</author>
-    <content:encoded><![CDATA[<p>Deprecate drawing routes with multiple paths to make routing faster.<br />
-You may use <code>with_options</code> or a loop to make drawing multiple paths easier.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
-<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
-
-<span class="c1"># After</span>
-<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
-<span class="n">get</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
-</code></pre></div></div>
-
-<p><em>Gannon McGibbon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Make `http_cache_forever` use `immutable: true`
-</title>
-    <link>https://github.com/rails/rails/issues/52283</link>
-    <guid>https://github.com/rails/rails/issues/52283</guid>
-    <description>*   Make `http_cache_forever` use `immutable: true`
-
-    *Nate Matykiewicz*</description>
-    <pubDate>Sat, 06 Jul 2024 18:08:48 +0000</pubDate>
-    <author>Nate Matykiewicz</author>
-    <content:encoded><![CDATA[<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>
-
-<p><em>Nate Matykiewicz</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `config.action_dispatch.strict_freshness`.
-</title>
-    <link>https://github.com/rails/rails/issues/52274</link>
-    <guid>https://github.com/rails/rails/issues/52274</guid>
-    <description>*   Add `config.action_dispatch.strict_freshness`.
-
-    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,
-    as specified by RFC 7232, Section 6.
-
-    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of
-    Rails 8.0 defaults.
-
-    *heka1024*</description>
-    <pubDate>Fri, 05 Jul 2024 08:27:46 +0000</pubDate>
-    <author>heka1024</author>
-    <content:encoded><![CDATA[<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>
-
-<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />
-as specified by RFC 7232, Section 6.</p>
-
-<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />
-Rails 8.0 defaults.</p>
-
-<p><em>heka1024</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Support `immutable` directive in Cache-Control
-</title>
-    <link>https://github.com/rails/rails/issues/52197</link>
-    <guid>https://github.com/rails/rails/issues/52197</guid>
-    <description>*   Support `immutable` directive in Cache-Control
-
-    ```ruby
-    expires_in 1.minute, public: true, immutable: true
-    # Cache-Control: public, max-age=60, immutable
-    ```
-
-    *heka1024*</description>
-    <pubDate>Wed, 26 Jun 2024 20:23:19 +0000</pubDate>
-    <author>heka1024</author>
-    <content:encoded><![CDATA[<p>Support <code>immutable</code> directive in Cache-Control</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">expires_in</span> <span class="mi">1</span><span class="p">.</span><span class="nf">minute</span><span class="p">,</span> <span class="ss">public: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">immutable: </span><span class="kp">true</span>
-<span class="c1"># Cache-Control: public, max-age=60, immutable</span>
-</code></pre></div></div>
-
-<p><em>heka1024</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `:wasm_unsafe_eval` mapping for `content_security_policy`
-</title>
-    <link>https://github.com/rails/rails/issues/51944</link>
-    <guid>https://github.com/rails/rails/issues/51944</guid>
-    <description>*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`
-
-    ```ruby
-    # Before
-    policy.script_src &quot;&#39;wasm-unsafe-eval&#39;&quot;
-
-    # After
-    policy.script_src :wasm_unsafe_eval
-    ```
-
-    *Joe Haig*</description>
-    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
-    <author>Cyril Blaecke</author>
-    <content:encoded><![CDATA[<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
-<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="s2">"'wasm-unsafe-eval'"</span>
-
-<span class="c1"># After</span>
-<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="ss">:wasm_unsafe_eval</span>
-</code></pre></div></div>
-
-<p><em>Joe Haig</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `display_capture` and `keyboard_map` in `permissions_policy`
-</title>
-    <link>https://github.com/rails/rails/issues/51944</link>
-    <guid>https://github.com/rails/rails/issues/51944</guid>
-    <description>*   Add `display_capture` and `keyboard_map` in `permissions_policy`
-
-    *Cyril Blaecke*</description>
-    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
-    <author>Cyril Blaecke</author>
-    <content:encoded><![CDATA[<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>
-
-<p><em>Cyril Blaecke</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Add `connect` route helper.
-</title>
-    <link>https://github.com/rails/rails/issues/52169</link>
-    <guid>https://github.com/rails/rails/issues/52169</guid>
-    <description>*   Add `connect` route helper.
-
-    *Samuel Williams*</description>
-    <pubDate>Wed, 14 Aug 2024 17:32:47 +0000</pubDate>
-    <author>Samuel Williams</author>
-    <content:encoded><![CDATA[<p>Add <code>connect</code> route helper.</p>
-
-<p><em>Samuel Williams</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
-</title>
-    <link>https://github.com/rails/rails/issues/52468</link>
-    <guid>https://github.com/rails/rails/issues/52468</guid>
-    <description>*   Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
-
-    *heka1024*</description>
-    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
-    <author>heka1024</author>
-    <content:encoded><![CDATA[<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>
-
-<p><em>heka1024</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -1814,6 +1011,668 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`
+</title>
+    <link>https://github.com/rails/rails/issues/52789</link>
+    <guid>https://github.com/rails/rails/issues/52789</guid>
+    <description>*   Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`
+    to silence requests to &quot;/up&quot;. This prevents the Kamal-required healthchecks from clogging up
+    the production logs.
+
+    *DHH*</description>
+    <pubDate>Wed, 04 Sep 2024 14:34:59 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add Rails::Rack::SilenceRequest middleware and use it via <code>config.silence_healthcheck_path = path</code><br />
+to silence requests to “/up”. This prevents the Kamal-required healthchecks from clogging up<br />
+the production logs.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`
+</title>
+    <link>https://github.com/rails/rails/issues/52266</link>
+    <guid>https://github.com/rails/rails/issues/52266</guid>
+    <description>*   Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`
+
+    When used with the `--devcontainer` flag, these options will use `mariadb` as the database for the
+    Dev Container. The original `mysql` and `trilogy` options will use `mysql`. Users who are not
+    generating a Dev Container do not need to use the new options.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Tue, 27 Aug 2024 20:31:20 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Introduce <code>mariadb-mysql</code> and <code>mariadb-trilogy</code> database options for <code>rails new</code></p>
+
+<p>When used with the <code>--devcontainer</code> flag, these options will use <code>mariadb</code> as the database for the<br />
+Dev Container. The original <code>mysql</code> and <code>trilogy</code> options will use <code>mysql</code>. Users who are not<br />
+generating a Dev Container do not need to use the new options.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Deprecate `::STATS_DIRECTORIES`.
+</title>
+    <link>https://github.com/rails/rails/issues/52226</link>
+    <guid>https://github.com/rails/rails/issues/52226</guid>
+    <description>*   Deprecate `::STATS_DIRECTORIES`.
+
+    The global constant `STATS_DIRECTORIES` has been deprecated in favor of
+    `Rails::CodeStatistics.register_directory`.
+
+    Add extra directories with `Rails::CodeStatistics.register_directory(label, path)`:
+
+    ```ruby
+    require &quot;rails/code_statistics&quot;
+    Rails::CodeStatistics.register_directory(&#39;My Directory&#39;, &#39;path/to/dir&#39;)
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 23 Aug 2024 21:10:48 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>::STATS_DIRECTORIES</code>.</p>
+
+<p>The global constant <code>STATS_DIRECTORIES</code> has been deprecated in favor of<br />
+<code>Rails::CodeStatistics.register_directory</code>.</p>
+
+<p>Add extra directories with <code>Rails::CodeStatistics.register_directory(label, path)</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s2">"rails/code_statistics"</span>
+<span class="no">Rails</span><span class="o">::</span><span class="no">CodeStatistics</span><span class="p">.</span><span class="nf">register_directory</span><span class="p">(</span><span class="s1">'My Directory'</span><span class="p">,</span> <span class="s1">'path/to/dir'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Enable query log tags by default on development env
+</title>
+    <link>https://github.com/rails/rails/issues/51342</link>
+    <guid>https://github.com/rails/rails/issues/51342</guid>
+    <description>*   Enable query log tags by default on development env
+
+    This can be used to trace troublesome SQL statements back to the application
+    code that generated these statements. It is also useful when using multiple
+    databases because the query logs can identify which database is being used.
+
+    *Matheus Richard*</description>
+    <pubDate>Sun, 11 Aug 2024 09:11:53 +0000</pubDate>
+    <author>Matheus Richard</author>
+    <content:encoded><![CDATA[<p>Enable query log tags by default on development env</p>
+
+<p>This can be used to trace troublesome SQL statements back to the application<br />
+code that generated these statements. It is also useful when using multiple<br />
+databases because the query logs can identify which database is being used.</p>
+
+<p><em>Matheus Richard</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Defer route drawing to the first request, or when url_helpers are called
+</title>
+    <link>https://github.com/rails/rails/issues/52353</link>
+    <guid>https://github.com/rails/rails/issues/52353</guid>
+    <description>*   Defer route drawing to the first request, or when url_helpers are called
+
+    Executes the first routes reload in middleware, or when a route set&#39;s
+    url_helpers receives a route call / asked if it responds to a route.
+    Previously, this was executed unconditionally on boot, which can
+    slow down boot time unnecessarily for larger apps with lots of routes.
+
+    Environments like production that have `config.eager_load = true` will
+    continue to eagerly load routes on boot.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Fri, 09 Aug 2024 06:44:23 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Defer route drawing to the first request, or when url_helpers are called</p>
+
+<p>Executes the first routes reload in middleware, or when a route set’s<br />
+url_helpers receives a route call / asked if it responds to a route.<br />
+Previously, this was executed unconditionally on boot, which can<br />
+slow down boot time unnecessarily for larger apps with lots of routes.</p>
+
+<p>Environments like production that have <code>config.eager_load = true</code> will<br />
+continue to eagerly load routes on boot.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Generate form helpers to use `textarea*` methods instead of `text_area*` methods
+</title>
+    <link>https://github.com/rails/rails/issues/52467</link>
+    <guid>https://github.com/rails/rails/issues/52467</guid>
+    <description>*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Generate form helpers to use <code>textarea*</code> methods instead of <code>text_area*</code> methods</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.
+</title>
+    <link>https://github.com/rails/rails/issues/52468</link>
+    <guid>https://github.com/rails/rails/issues/52468</guid>
+    <description>*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.
+
+    Generate with...
+
+    ```
+    bin/rails generate authentication
+    ```
+
+    Generated files:
+
+    ```
+    app/models/current.rb
+    app/models/user.rb
+    app/models/session.rb
+    app/controllers/sessions_controller.rb
+    app/controllers/passwords_controller.rb
+    app/mailers/passwords_mailer.rb
+    app/views/sessions/new.html.erb
+    app/views/passwords/new.html.erb
+    app/views/passwords/edit.html.erb
+    app/views/passwords_mailer/reset.html.erb
+    app/views/passwords_mailer/reset.text.erb
+    db/migrate/xxxxxxx_create_users.rb
+    db/migrate/xxxxxxx_create_sessions.rb
+    test/mailers/previews/passwords_mailer_preview.rb
+    ```
+
+    *DHH*</description>
+    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.</p>
+
+<p>Generate with…</p>
+
+<pre><code>bin/rails generate authentication
+</code></pre>
+
+<p>Generated files:</p>
+
+<pre><code>app/models/current.rb
+app/models/user.rb
+app/models/session.rb
+app/controllers/sessions_controller.rb
+app/controllers/passwords_controller.rb
+app/mailers/passwords_mailer.rb
+app/views/sessions/new.html.erb
+app/views/passwords/new.html.erb
+app/views/passwords/edit.html.erb
+app/views/passwords_mailer/reset.html.erb
+app/views/passwords_mailer/reset.text.erb
+db/migrate/xxxxxxx_create_users.rb
+db/migrate/xxxxxxx_create_sessions.rb
+test/mailers/previews/passwords_mailer_preview.rb
+</code></pre>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add not-null type modifier to migration attributes.
+</title>
+    <link>https://github.com/rails/rails/issues/52327</link>
+    <guid>https://github.com/rails/rails/issues/52327</guid>
+    <description>*   Add not-null type modifier to migration attributes.
+
+    Generating with...
+
+    ```
+    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
+    ```
+
+    Produces:
+
+    ```ruby
+    class CreateUsers &lt; ActiveRecord::Migration[8.0]
+      def change
+        create_table :users do |t|
+          t.string :email_address, null: false
+          t.string :password_digest, null: false
+
+          t.timestamps
+        end
+        add_index :users, :email_address, unique: true
+      end
+    end
+    ```
+
+    *DHH*</description>
+    <pubDate>Tue, 16 Jul 2024 13:00:51 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add not-null type modifier to migration attributes.</p>
+
+<p>Generating with…</p>
+
+<pre><code>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!
+</code></pre>
+
+<p>Produces:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreateUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">8.0</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:users</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:password_digest</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+
+      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+    <span class="k">end</span>
+    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:email_address</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add a `script` folder to applications, and a scripts generator.
+</title>
+    <link>https://github.com/rails/rails/issues/52454</link>
+    <guid>https://github.com/rails/rails/issues/52454</guid>
+    <description>*   Add a `script` folder to applications, and a scripts generator.
+
+    The new `script` folder is meant to hold one-off or general purpose scripts,
+    such as data migration scripts, cleanup scripts, etc.
+
+    A new script generator allows you to create such scripts:
+
+    ```
+    bin/rails generate script my_script
+    bin/rails generate script data/backfill
+    ```
+
+    You can run the generated script using:
+
+    ```
+    bundle exec ruby script/my_script.rb
+    bundle exec ruby script/data/backfill.rb
+    ```
+
+    *Jerome Dalbert*, *Haroon Ahmed*</description>
+    <pubDate>Tue, 30 Jul 2024 19:25:16 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>Add a <code>script</code> folder to applications, and a scripts generator.</p>
+
+<p>The new <code>script</code> folder is meant to hold one-off or general purpose scripts,<br />
+such as data migration scripts, cleanup scripts, etc.</p>
+
+<p>A new script generator allows you to create such scripts:</p>
+
+<pre><code>bin/rails generate script my_script
+bin/rails generate script data/backfill
+</code></pre>
+
+<p>You can run the generated script using:</p>
+
+<pre><code>bundle exec ruby script/my_script.rb
+bundle exec ruby script/data/backfill.rb
+</code></pre>
+
+<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Deprecate `bin/rake stats` in favor of `bin/rails stats`.
+</title>
+    <link>https://github.com/rails/rails/issues/52231</link>
+    <guid>https://github.com/rails/rails/issues/52231</guid>
+    <description>*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.
+
+    *Juan Vásquez*</description>
+    <pubDate>Sat, 29 Jun 2024 06:52:05 +0000</pubDate>
+    <author>Juan Vásquez</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>bin/rake stats</code> in favor of <code>bin/rails stats</code>.</p>
+
+<p><em>Juan Vásquez</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
+</title>
+    <link>https://github.com/rails/rails/issues/52115</link>
+    <guid>https://github.com/rails/rails/issues/52115</guid>
+    <description>*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.
+
+    *Deepak Mahakale*</description>
+    <pubDate>Thu, 13 Jun 2024 17:22:29 +0000</pubDate>
+    <author>Deepak Mahakale</author>
+    <content:encoded><![CDATA[<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>
+
+<p><em>Deepak Mahakale</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add Rubocop and GitHub Actions to plugin generator.
+</title>
+    <link>https://github.com/rails/rails/issues/51822</link>
+    <guid>https://github.com/rails/rails/issues/51822</guid>
+    <description>*   Add Rubocop and GitHub Actions to plugin generator.
+    This can be skipped using --skip-rubocop and --skip-ci.
+
+    *Chris Oliver*</description>
+    <pubDate>Thu, 23 May 2024 18:08:58 +0000</pubDate>
+    <author>Chris Oliver</author>
+    <content:encoded><![CDATA[<p>Add Rubocop and GitHub Actions to plugin generator.<br />
+This can be skipped using –skip-rubocop and –skip-ci.</p>
+
+<p><em>Chris Oliver</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
+</title>
+    <link>https://github.com/rails/rails/issues/51798</link>
+    <guid>https://github.com/rails/rails/issues/51798</guid>
+    <description>*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.
+    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/
+
+    *DHH*</description>
+    <pubDate>Tue, 14 May 2024 00:37:39 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />
+This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
+</title>
+    <link>https://github.com/rails/rails/issues/52468</link>
+    <guid>https://github.com/rails/rails/issues/52468</guid>
+    <description>*   Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
+
+    *heka1024*</description>
+    <pubDate>Fri, 02 Aug 2024 12:34:23 +0000</pubDate>
+    <author>heka1024</author>
+    <content:encoded><![CDATA[<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.
+</title>
+    <link>https://github.com/rails/rails/issues/52496</link>
+    <guid>https://github.com/rails/rails/issues/52496</guid>
+    <description>*   Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.
+    Replace the characters `&quot;*?&lt;&gt;` with `-` if they exist in the Filename to match the Filename convention of Win OS.
+
+    *Luong Viet Dung(Martin)*</description>
+    <pubDate>Mon, 05 Aug 2024 18:28:33 +0000</pubDate>
+    <author>Martin(Luong Viet Dung)</author>
+    <content:encoded><![CDATA[<p>Improve <code>ActiveStorage::Filename#sanitized</code> method to handle special characters more effectively.<br />
+Replace the characters <code>"*?&lt;&gt;</code> with <code>-</code> if they exist in the Filename to match the Filename convention of Win OS.</p>
+
+<p><em>Luong Viet Dung(Martin)</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Improve InvariableError, UnpreviewableError and UnrepresentableError message.
+</title>
+    <link>https://github.com/rails/rails/issues/52193</link>
+    <guid>https://github.com/rails/rails/issues/52193</guid>
+    <description>*   Improve InvariableError, UnpreviewableError and UnrepresentableError message.
+
+    Include Blob ID and content_type in the messages.
+
+    *Petrik de Heus*</description>
+    <pubDate>Tue, 30 Jul 2024 10:35:59 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Improve InvariableError, UnpreviewableError and UnrepresentableError message.</p>
+
+<p>Include Blob ID and content_type in the messages.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Mark proxied files as `immutable` in their Cache-Control header
+</title>
+    <link>https://github.com/rails/rails/issues/52283</link>
+    <guid>https://github.com/rails/rails/issues/52283</guid>
+    <description>*   Mark proxied files as `immutable` in their Cache-Control header
+
+    *Nate Matykiewicz*</description>
+    <pubDate>Sat, 06 Jul 2024 18:08:48 +0000</pubDate>
+    <author>Nate Matykiewicz</author>
+    <content:encoded><![CDATA[<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>
+
+<p><em>Nate Matykiewicz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Fix `Request#raw_post` raising `NoMethodError` when `rack.input` is `nil`.
+</title>
+    <link>https://github.com/rails/rails/issues/52138</link>
+    <guid>https://github.com/rails/rails/issues/52138</guid>
+    <description>*   Fix `Request#raw_post` raising `NoMethodError` when `rack.input` is `nil`.
+
+    *Hartley McGuire*</description>
+    <pubDate>Wed, 21 Aug 2024 20:16:11 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix <code>Request#raw_post</code> raising <code>NoMethodError</code> when <code>rack.input</code> is <code>nil</code>.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.
+</title>
+    <link>https://github.com/rails/rails/issues/52610</link>
+    <guid>https://github.com/rails/rails/issues/52610</guid>
+    <description>*   Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Thu, 15 Aug 2024 18:04:26 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Remove <code>racc</code> dependency by manually writing <code>ActionDispatch::Journey::Scanner</code>.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.
+</title>
+    <link>https://github.com/rails/rails/issues/52525</link>
+    <guid>https://github.com/rails/rails/issues/52525</guid>
+    <description>*   Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Thu, 08 Aug 2024 02:26:51 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Speed up <code>ActionDispatch::Routing::Mapper::Scope#[]</code> by merging frame hashes.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Allow bots to ignore `allow_browser`.
+</title>
+    <link>https://github.com/rails/rails/issues/52531</link>
+    <guid>https://github.com/rails/rails/issues/52531</guid>
+    <description>*   Allow bots to ignore `allow_browser`.
+
+    *Matthew Nguyen*</description>
+    <pubDate>Wed, 07 Aug 2024 16:29:46 +0000</pubDate>
+    <author>Matthew Nguyen</author>
+    <content:encoded><![CDATA[<p>Allow bots to ignore <code>allow_browser</code>.</p>
+
+<p><em>Matthew Nguyen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Deprecate drawing routes with multiple paths to make routing faster.
+</title>
+    <link>https://github.com/rails/rails/issues/52409</link>
+    <guid>https://github.com/rails/rails/issues/52409</guid>
+    <description>*   Deprecate drawing routes with multiple paths to make routing faster.
+    You may use `with_options` or a loop to make drawing multiple paths easier.
+
+    ```ruby
+    # Before
+    get &quot;/users&quot;, &quot;/other_path&quot;, to: &quot;users#index&quot;
+
+    # After
+    get &quot;/users&quot;, to: &quot;users#index&quot;
+    get &quot;/other_path&quot;, to: &quot;users#index&quot;
+    ```
+
+    *Gannon McGibbon*</description>
+    <pubDate>Sat, 27 Jul 2024 03:42:17 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Deprecate drawing routes with multiple paths to make routing faster.<br />
+You may use <code>with_options</code> or a loop to make drawing multiple paths easier.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+
+<span class="c1"># After</span>
+<span class="n">get</span> <span class="s2">"/users"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+<span class="n">get</span> <span class="s2">"/other_path"</span><span class="p">,</span> <span class="ss">to: </span><span class="s2">"users#index"</span>
+</code></pre></div></div>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Make `http_cache_forever` use `immutable: true`
+</title>
+    <link>https://github.com/rails/rails/issues/52283</link>
+    <guid>https://github.com/rails/rails/issues/52283</guid>
+    <description>*   Make `http_cache_forever` use `immutable: true`
+
+    *Nate Matykiewicz*</description>
+    <pubDate>Sat, 06 Jul 2024 18:08:48 +0000</pubDate>
+    <author>Nate Matykiewicz</author>
+    <content:encoded><![CDATA[<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>
+
+<p><em>Nate Matykiewicz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `config.action_dispatch.strict_freshness`.
+</title>
+    <link>https://github.com/rails/rails/issues/52274</link>
+    <guid>https://github.com/rails/rails/issues/52274</guid>
+    <description>*   Add `config.action_dispatch.strict_freshness`.
+
+    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,
+    as specified by RFC 7232, Section 6.
+
+    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of
+    Rails 8.0 defaults.
+
+    *heka1024*</description>
+    <pubDate>Fri, 05 Jul 2024 08:27:46 +0000</pubDate>
+    <author>heka1024</author>
+    <content:encoded><![CDATA[<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>
+
+<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />
+as specified by RFC 7232, Section 6.</p>
+
+<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />
+Rails 8.0 defaults.</p>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Support `immutable` directive in Cache-Control
+</title>
+    <link>https://github.com/rails/rails/issues/52197</link>
+    <guid>https://github.com/rails/rails/issues/52197</guid>
+    <description>*   Support `immutable` directive in Cache-Control
+
+    ```ruby
+    expires_in 1.minute, public: true, immutable: true
+    # Cache-Control: public, max-age=60, immutable
+    ```
+
+    *heka1024*</description>
+    <pubDate>Wed, 26 Jun 2024 20:23:19 +0000</pubDate>
+    <author>heka1024</author>
+    <content:encoded><![CDATA[<p>Support <code>immutable</code> directive in Cache-Control</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">expires_in</span> <span class="mi">1</span><span class="p">.</span><span class="nf">minute</span><span class="p">,</span> <span class="ss">public: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">immutable: </span><span class="kp">true</span>
+<span class="c1"># Cache-Control: public, max-age=60, immutable</span>
+</code></pre></div></div>
+
+<p><em>heka1024</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `:wasm_unsafe_eval` mapping for `content_security_policy`
+</title>
+    <link>https://github.com/rails/rails/issues/51944</link>
+    <guid>https://github.com/rails/rails/issues/51944</guid>
+    <description>*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`
+
+    ```ruby
+    # Before
+    policy.script_src &quot;&#39;wasm-unsafe-eval&#39;&quot;
+
+    # After
+    policy.script_src :wasm_unsafe_eval
+    ```
+
+    *Joe Haig*</description>
+    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
+    <author>Cyril Blaecke</author>
+    <content:encoded><![CDATA[<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="s2">"'wasm-unsafe-eval'"</span>
+
+<span class="c1"># After</span>
+<span class="n">policy</span><span class="p">.</span><span class="nf">script_src</span> <span class="ss">:wasm_unsafe_eval</span>
+</code></pre></div></div>
+
+<p><em>Joe Haig</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `display_capture` and `keyboard_map` in `permissions_policy`
+</title>
+    <link>https://github.com/rails/rails/issues/51944</link>
+    <guid>https://github.com/rails/rails/issues/51944</guid>
+    <description>*   Add `display_capture` and `keyboard_map` in `permissions_policy`
+
+    *Cyril Blaecke*</description>
+    <pubDate>Wed, 29 May 2024 21:18:43 +0000</pubDate>
+    <author>Cyril Blaecke</author>
+    <content:encoded><![CDATA[<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>
+
+<p><em>Cyril Blaecke</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `connect` route helper.
+</title>
+    <link>https://github.com/rails/rails/issues/52169</link>
+    <guid>https://github.com/rails/rails/issues/52169</guid>
+    <description>*   Add `connect` route helper.
+
+    *Samuel Williams*</description>
+    <pubDate>Wed, 14 Aug 2024 17:32:47 +0000</pubDate>
+    <author>Samuel Williams</author>
+    <content:encoded><![CDATA[<p>Add <code>connect</code> route helper.</p>
+
+<p><em>Samuel Williams</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `ActiveSupport::ErrorReporter#report` now assigns a backtrace to unraised exceptions.
 </title>
     <link>https://github.com/rails/rails/issues/52684</link>
@@ -2006,6 +1865,147 @@ proc by printing the proc’s source code (MRI only).</p>
     <content:encoded><![CDATA[<p>Align instrumentation <code>payload[:key]</code> in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.</p>
 
 <p><em>Frederik Erbs Spang Thomsen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Dispatch direct-upload events on attachment uploads
+</title>
+    <link>https://github.com/rails/rails/issues/52680</link>
+    <guid>https://github.com/rails/rails/issues/52680</guid>
+    <description>*   Dispatch direct-upload events on attachment uploads
+
+    When using Action Text&#39;s rich textarea,  it&#39;s possible to attach files to the
+    editor. Previously, that action didn&#39;t dispatch any events, which made it hard
+    to react to the file uploads. For instance, if an upload failed, there was no
+    way to notify the user about it, or remove the attachment from the editor.
+
+    This commits adds new events - `direct-upload:start`, `direct-upload:progress`,
+    and `direct-upload:end` - similar to how Active Storage&#39;s direct uploads work.
+
+    *Matheus Richard*, *Brad Rees*</description>
+    <pubDate>Tue, 27 Aug 2024 00:20:59 +0000</pubDate>
+    <author>Matheus Richard</author>
+    <content:encoded><![CDATA[<p>Dispatch direct-upload events on attachment uploads</p>
+
+<p>When using Action Text’s rich textarea,  it’s possible to attach files to the<br />
+editor. Previously, that action didn’t dispatch any events, which made it hard<br />
+to react to the file uploads. For instance, if an upload failed, there was no<br />
+way to notify the user about it, or remove the attachment from the editor.</p>
+
+<p>This commits adds new events - <code>direct-upload:start</code>, <code>direct-upload:progress</code>,<br />
+and <code>direct-upload:end</code> - similar to how Active Storage’s direct uploads work.</p>
+
+<p><em>Matheus Richard</em>, <em>Brad Rees</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Add `store_if_blank` option to `has_rich_text`
+</title>
+    <link>https://github.com/rails/rails/issues/52573</link>
+    <guid>https://github.com/rails/rails/issues/52573</guid>
+    <description>*   Add `store_if_blank` option to `has_rich_text`
+
+    Pass `store_if_blank: false` to not create `ActionText::RichText` records when saving with a blank attribute, such as from an optional form parameter.
+
+    ```ruby
+    class Message
+      has_rich_text :content, store_if_blank: false
+    end
+
+    Message.create(content: &quot;hi&quot;) # creates an ActionText::RichText
+    Message.create(content: &quot;&quot;) # does not create an ActionText::RichText
+    ```
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Wed, 21 Aug 2024 22:26:39 +0000</pubDate>
+    <author>Alex</author>
+    <content:encoded><![CDATA[<p>Add <code>store_if_blank</code> option to <code>has_rich_text</code></p>
+
+<p>Pass <code>store_if_blank: false</code> to not create <code>ActionText::RichText</code> records when saving with a blank attribute, such as from an optional form parameter.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Message</span>
+  <span class="n">has_rich_text</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">store_if_blank: </span><span class="kp">false</span>
+<span class="k">end</span>
+
+<span class="no">Message</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">content: </span><span class="s2">"hi"</span><span class="p">)</span> <span class="c1"># creates an ActionText::RichText</span>
+<span class="no">Message</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">content: </span><span class="s2">""</span><span class="p">)</span> <span class="c1"># does not create an ActionText::RichText</span>
+</code></pre></div></div>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Strip `content` attribute if the key is present but the value is empty
+</title>
+    <link>https://github.com/rails/rails/issues/52281</link>
+    <guid>https://github.com/rails/rails/issues/52281</guid>
+    <description>*   Strip `content` attribute if the key is present but the value is empty
+
+    *Jeremy Green*</description>
+    <pubDate>Wed, 21 Aug 2024 18:26:53 +0000</pubDate>
+    <author>Jeremy Green</author>
+    <content:encoded><![CDATA[<p>Strip <code>content</code> attribute if the key is present but the value is empty</p>
+
+<p><em>Jeremy Green</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Rename `rich_text_area` methods into `rich_textarea`
+</title>
+    <link>https://github.com/rails/rails/issues/52467</link>
+    <guid>https://github.com/rails/rails/issues/52467</guid>
+    <description>*   Rename `rich_text_area` methods into `rich_textarea`
+
+    Old names are still available as aliases.
+
+    *Sean Doyle*</description>
+    <pubDate>Wed, 31 Jul 2024 17:16:23 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Rename <code>rich_text_area</code> methods into <code>rich_textarea</code></p>
+
+<p>Old names are still available as aliases.</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Only sanitize `content` attribute when present in attachments.
+</title>
+    <link>https://github.com/rails/rails/issues/52093</link>
+    <guid>https://github.com/rails/rails/issues/52093</guid>
+    <description>*   Only sanitize `content` attribute when present in attachments.
+
+    *Petrik de Heus*</description>
+    <pubDate>Wed, 12 Jun 2024 18:21:38 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Only sanitize <code>content</code> attribute when present in attachments.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>guides: The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from
+</title>
+    <link>https://github.com/rails/rails/issues/52165</link>
+    <guid>https://github.com/rails/rails/issues/52165</guid>
+    <description>*   The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from
+    the `classic` autoloader to Zeitwerk has been deleted.
+
+    The last version of this guide can be found
+    [here](https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html),
+    in case you need it.
+
+    *Petrik de Heus*</description>
+    <pubDate>Thu, 20 Jun 2024 08:47:01 +0000</pubDate>
+    <author>Xavier Noria</author>
+    <content:encoded><![CDATA[<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />
+the <code>classic</code> autoloader to Zeitwerk has been deleted.</p>
+
+<p>The last version of this guide can be found<br />
+<a href="https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html">here</a>,<br />
+in case you need it.</p>
+
+<p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
 </channel>
