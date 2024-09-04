@@ -31,6 +31,25 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`
+</title>
+    <link>https://github.com/rails/rails/issues/52789</link>
+    <guid>https://github.com/rails/rails/issues/52789</guid>
+    <description>*   Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`
+    to silence requests to &quot;/up&quot;. This prevents the Kamal-required healthchecks from clogging up
+    the production logs.
+
+    *DHH*</description>
+    <pubDate>Tue, 03 Sep 2024 23:20:06 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add Rails::Rack::SilenceRequest middleware and use it via <code>config.silence_healthcheck_path = path</code><br />
+to silence requests to “/up”. This prevents the Kamal-required healthchecks from clogging up<br />
+the production logs.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`
 </title>
     <link>https://github.com/rails/rails/issues/52266</link>
