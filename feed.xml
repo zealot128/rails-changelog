@@ -1011,6 +1011,21 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Use [Solid Cache](https://github.com/rails/solid_cache) as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.
+</title>
+    <link>https://github.com/rails/rails/issues/52790</link>
+    <guid>https://github.com/rails/rails/issues/52790</guid>
+    <description>*   Use [Solid Cache](https://github.com/rails/solid_cache) as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.
+
+    *DHH*</description>
+    <pubDate>Thu, 05 Sep 2024 04:48:39 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Use <a href="https://github.com/rails/solid_cache">Solid Cache</a> as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`
 </title>
     <link>https://github.com/rails/rails/issues/52789</link>
