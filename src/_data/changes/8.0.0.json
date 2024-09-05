@@ -370,6 +370,16 @@
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
+    "message": "*   Use [Solid Cache](https://github.com/rails/solid_cache) as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1725511719000,
+    "author": "David Heinemeier Hansson",
+    "sha": "28780de1d7fa22c452d479fb9fe4c70858833e0b",
+    "pr": "52790",
+    "merge_sha": "f698d735bfd237a6e36dc56b781bb42367bac503",
+    "html": "<p>Use <a href=\"https://github.com/rails/solid_cache\">Solid Cache</a> as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`\n    to silence requests to \"/up\". This prevents the Kamal-required healthchecks from clogging up\n    the production logs.\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1725460499000,
