@@ -216,6 +216,33 @@ unknown attribute:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Make Active Record asynchronous queries compatible with transactional fixtures.
+</title>
+    <link>https://github.com/rails/rails/issues/52806</link>
+    <guid>https://github.com/rails/rails/issues/52806</guid>
+    <description>*   Make Active Record asynchronous queries compatible with transactional fixtures.
+
+    Previously transactional fixtures would disable asynchronous queries, because transactional
+    fixtures impose all queries use the same connection.
+
+    Now asynchronous queries will use the connection pinned by transactional fixtures, and behave
+    much closer to production.
+
+    *Jean Boussier*</description>
+    <pubDate>Fri, 06 Sep 2024 13:25:16 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Make Active Record asynchronous queries compatible with transactional fixtures.</p>
+
+<p>Previously transactional fixtures would disable asynchronous queries, because transactional<br />
+fixtures impose all queries use the same connection.</p>
+
+<p>Now asynchronous queries will use the connection pinned by transactional fixtures, and behave<br />
+much closer to production.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Deserialize binary data before decrypting
 </title>
     <link>https://github.com/rails/rails/issues/52729</link>
@@ -1011,16 +1038,16 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Use [Solid Queue](https://github.com/rails/solid_queue) as the default Active Job backend in production, configured as a separate cache database in config/database.yml. In a single-server deployment, it&#39;ll run as a Puma plugin. This is configured in `config/deploy.yml` and can easily be changed to use a dedicated jobs machine.
+    <title>railties: Use [Solid Queue](https://github.com/rails/solid_queue) as the default Active Job backend in production, configured as a separate queue database in config/database.yml. In a single-server deployment, it&#39;ll run as a Puma plugin. This is configured in `config/deploy.yml` and can easily be changed to use a dedicated jobs machine.
 </title>
-    <link>https://github.com/rails/rails/issues/52804</link>
-    <guid>https://github.com/rails/rails/issues/52804</guid>
-    <description>*   Use [Solid Queue](https://github.com/rails/solid_queue) as the default Active Job backend in production, configured as a separate cache database in config/database.yml. In a single-server deployment, it&#39;ll run as a Puma plugin. This is configured in `config/deploy.yml` and can easily be changed to use a dedicated jobs machine.
+    <link>https://github.com/rails/rails/issues/52813</link>
+    <guid>https://github.com/rails/rails/issues/52813</guid>
+    <description>*   Use [Solid Queue](https://github.com/rails/solid_queue) as the default Active Job backend in production, configured as a separate queue database in config/database.yml. In a single-server deployment, it&#39;ll run as a Puma plugin. This is configured in `config/deploy.yml` and can easily be changed to use a dedicated jobs machine.
 
     *DHH*</description>
-    <pubDate>Thu, 05 Sep 2024 22:45:52 +0000</pubDate>
-    <author>David Heinemeier Hansson</author>
-    <content:encoded><![CDATA[<p>Use <a href="https://github.com/rails/solid_queue">Solid Queue</a> as the default Active Job backend in production, configured as a separate cache database in config/database.yml. In a single-server deployment, it’ll run as a Puma plugin. This is configured in <code>config/deploy.yml</code> and can easily be changed to use a dedicated jobs machine.</p>
+    <pubDate>Fri, 06 Sep 2024 13:29:24 +0000</pubDate>
+    <author>Wojciech Wnętrzak</author>
+    <content:encoded><![CDATA[<p>Use <a href="https://github.com/rails/solid_queue">Solid Queue</a> as the default Active Job backend in production, configured as a separate queue database in config/database.yml. In a single-server deployment, it’ll run as a Puma plugin. This is configured in <code>config/deploy.yml</code> and can easily be changed to use a dedicated jobs machine.</p>
 
 <p><em>DHH</em></p>
 ]]></content:encoded>
