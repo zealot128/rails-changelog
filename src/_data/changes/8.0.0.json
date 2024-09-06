@@ -370,6 +370,16 @@
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
+    "message": "*   Use [Solid Queue](https://github.com/rails/solid_queue) as the default Active Job backend in production, configured as a separate cache database in config/database.yml. In a single-server deployment, it'll run as a Puma plugin. This is configured in `config/deploy.yml` and can easily be changed to use a dedicated jobs machine.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1725576352000,
+    "author": "David Heinemeier Hansson",
+    "sha": "cf976b0897d63e875236a5c22ac8c6d187195a05",
+    "pr": "52804",
+    "merge_sha": "88dc93e2c045931ebce82af74f17a05bd62dcf53",
+    "html": "<p>Use <a href=\"https://github.com/rails/solid_queue\">Solid Queue</a> as the default Active Job backend in production, configured as a separate cache database in config/database.yml. In a single-server deployment, it’ll run as a Puma plugin. This is configured in <code>config/deploy.yml</code> and can easily be changed to use a dedicated jobs machine.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Use [Solid Cache](https://github.com/rails/solid_cache) as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1725511719000,
@@ -658,6 +668,16 @@
     "pr": "52169",
     "merge_sha": "455cf48c7e0cb8bc5c35d8be88c0c6ad94ce9f62",
     "html": "<p>Add <code>connect</code> route helper.</p>\n\n<p><em>Samuel Williams</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::TimeWithZone#inspect` now uses ISO 8601 style time like `Time#inspect`\n\n    *John Hawthorn*",
+    "project": "activesupport",
+    "date_merged": 1725576352000,
+    "author": "John Hawthorn",
+    "sha": "0b12b98f222e6e17211f6fb22147370f5d6a0067",
+    "pr": "52371",
+    "merge_sha": "88dc93e2c045931ebce82af74f17a05bd62dcf53",
+    "html": "<p><code>ActiveSupport::TimeWithZone#inspect</code> now uses ISO 8601 style time like <code>Time#inspect</code></p>\n\n<p><em>John Hawthorn</em></p>\n"
   },
   {
     "message": "*   `ActiveSupport::ErrorReporter#report` now assigns a backtrace to unraised exceptions.\n\n    Previously reporting an un-raised exception would result in an error report without\n    a backtrace. Now it automatically generates one.\n\n    *Jean Boussier*",
