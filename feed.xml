@@ -1011,6 +1011,21 @@ structured (e.g., PostgreSQL +hstore+/+json+, or MySQL +json+) or declared seria
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Use [Solid Queue](https://github.com/rails/solid_queue) as the default Active Job backend in production, configured as a separate cache database in config/database.yml. In a single-server deployment, it&#39;ll run as a Puma plugin. This is configured in `config/deploy.yml` and can easily be changed to use a dedicated jobs machine.
+</title>
+    <link>https://github.com/rails/rails/issues/52804</link>
+    <guid>https://github.com/rails/rails/issues/52804</guid>
+    <description>*   Use [Solid Queue](https://github.com/rails/solid_queue) as the default Active Job backend in production, configured as a separate cache database in config/database.yml. In a single-server deployment, it&#39;ll run as a Puma plugin. This is configured in `config/deploy.yml` and can easily be changed to use a dedicated jobs machine.
+
+    *DHH*</description>
+    <pubDate>Thu, 05 Sep 2024 22:45:52 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Use <a href="https://github.com/rails/solid_queue">Solid Queue</a> as the default Active Job backend in production, configured as a separate cache database in config/database.yml. In a single-server deployment, it’ll run as a Puma plugin. This is configured in <code>config/deploy.yml</code> and can easily be changed to use a dedicated jobs machine.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Use [Solid Cache](https://github.com/rails/solid_cache) as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.
 </title>
     <link>https://github.com/rails/rails/issues/52790</link>
@@ -1685,6 +1700,21 @@ Rails 8.0 defaults.</p>
     <content:encoded><![CDATA[<p>Add <code>connect</code> route helper.</p>
 
 <p><em>Samuel Williams</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: `ActiveSupport::TimeWithZone#inspect` now uses ISO 8601 style time like `Time#inspect`
+</title>
+    <link>https://github.com/rails/rails/issues/52371</link>
+    <guid>https://github.com/rails/rails/issues/52371</guid>
+    <description>*   `ActiveSupport::TimeWithZone#inspect` now uses ISO 8601 style time like `Time#inspect`
+
+    *John Hawthorn*</description>
+    <pubDate>Thu, 05 Sep 2024 22:45:52 +0000</pubDate>
+    <author>John Hawthorn</author>
+    <content:encoded><![CDATA[<p><code>ActiveSupport::TimeWithZone#inspect</code> now uses ISO 8601 style time like <code>Time#inspect</code></p>
+
+<p><em>John Hawthorn</em></p>
 ]]></content:encoded>
   </item>
   <item>
