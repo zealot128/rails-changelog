@@ -216,6 +216,31 @@ unknown attribute:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Deprecate `unsigned_float` and `unsigned_decimal` short-hand column methods.
+</title>
+    <link>https://github.com/rails/rails/issues/52828</link>
+    <guid>https://github.com/rails/rails/issues/52828</guid>
+    <description>*   Deprecate `unsigned_float` and `unsigned_decimal` short-hand column methods.
+
+    As of MySQL 8.0.17, the UNSIGNED attribute is deprecated for columns of type FLOAT, DOUBLE,
+    and DECIMAL. Consider using a simple CHECK constraint instead for such columns.
+
+    https://dev.mysql.com/doc/refman/8.0/en/numeric-type-syntax.html
+
+    *Ryuta Kamizono*</description>
+    <pubDate>Sat, 07 Sep 2024 18:05:15 +0000</pubDate>
+    <author>Ryuta Kamizono</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>unsigned_float</code> and <code>unsigned_decimal</code> short-hand column methods.</p>
+
+<p>As of MySQL 8.0.17, the UNSIGNED attribute is deprecated for columns of type FLOAT, DOUBLE,<br />
+and DECIMAL. Consider using a simple CHECK constraint instead for such columns.</p>
+
+<p>https://dev.mysql.com/doc/refman/8.0/en/numeric-type-syntax.html</p>
+
+<p><em>Ryuta Kamizono</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Drop MySQL 5.5 support.
 </title>
     <link>https://github.com/rails/rails/issues/52817</link>
