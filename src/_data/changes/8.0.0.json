@@ -70,6 +70,16 @@
     "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
   },
   {
+    "message": "*   Drop MySQL 5.5 support.\n\n    MySQL 5.5 is the only version that does not support datetime with precision,\n    which we have supported in the core. Now we support MySQL 5.6.4 or later, which\n    is the first version to support datetime with precision.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1725685819000,
+    "author": "Ryuta Kamizono",
+    "sha": "6b1515aeb9647f7c5fd98799adedc1b90d019f8d",
+    "pr": "52817",
+    "merge_sha": "dfb2547ce42137acf767469837a91e715830adcf",
+    "html": "<p>Drop MySQL 5.5 support.</p>\n\n<p>MySQL 5.5 is the only version that does not support datetime with precision,<br />\nwhich we have supported in the core. Now we support MySQL 5.6.4 or later, which<br />\nis the first version to support datetime with precision.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Make Active Record asynchronous queries compatible with transactional fixtures.\n\n    Previously transactional fixtures would disable asynchronous queries, because transactional\n    fixtures impose all queries use the same connection.\n\n    Now asynchronous queries will use the connection pinned by transactional fixtures, and behave\n    much closer to production.\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1725629116000,
@@ -568,6 +578,16 @@
     "pr": "52283",
     "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
     "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
+  },
+  {
+    "message": "*   System Testing: Disable Chrome's search engine choice by default in system tests.\n\n    *glaszig*",
+    "project": "actionpack",
+    "date_merged": 1725657734000,
+    "author": "glaszig",
+    "sha": "950907b3d35b7fd07fe409a9fd6f65f4378a1c93",
+    "pr": "52805",
+    "merge_sha": "d2b6ae1f18bc289b85591e7a429c0b85d2bf9a52",
+    "html": "<p>System Testing: Disable Chrome’s search engine choice by default in system tests.</p>\n\n<p><em>glaszig</em></p>\n"
   },
   {
     "message": "*   Fix `Request#raw_post` raising `NoMethodError` when `rack.input` is `nil`.\n\n    *Hartley McGuire*",
