@@ -216,6 +216,29 @@ unknown attribute:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Drop MySQL 5.5 support.
+</title>
+    <link>https://github.com/rails/rails/issues/52817</link>
+    <guid>https://github.com/rails/rails/issues/52817</guid>
+    <description>*   Drop MySQL 5.5 support.
+
+    MySQL 5.5 is the only version that does not support datetime with precision,
+    which we have supported in the core. Now we support MySQL 5.6.4 or later, which
+    is the first version to support datetime with precision.
+
+    *Ryuta Kamizono*</description>
+    <pubDate>Sat, 07 Sep 2024 05:10:19 +0000</pubDate>
+    <author>Ryuta Kamizono</author>
+    <content:encoded><![CDATA[<p>Drop MySQL 5.5 support.</p>
+
+<p>MySQL 5.5 is the only version that does not support datetime with precision,<br />
+which we have supported in the core. Now we support MySQL 5.6.4 or later, which<br />
+is the first version to support datetime with precision.</p>
+
+<p><em>Ryuta Kamizono</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Make Active Record asynchronous queries compatible with transactional fixtures.
 </title>
     <link>https://github.com/rails/rails/issues/52806</link>
@@ -1507,6 +1530,21 @@ Replace the characters <code>"*?&lt;&gt;</code> with <code>-</code> if they exis
     <content:encoded><![CDATA[<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>
 
 <p><em>Nate Matykiewicz</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: System Testing: Disable Chrome&#39;s search engine choice by default in system tests.
+</title>
+    <link>https://github.com/rails/rails/issues/52805</link>
+    <guid>https://github.com/rails/rails/issues/52805</guid>
+    <description>*   System Testing: Disable Chrome&#39;s search engine choice by default in system tests.
+
+    *glaszig*</description>
+    <pubDate>Fri, 06 Sep 2024 21:22:14 +0000</pubDate>
+    <author>glaszig</author>
+    <content:encoded><![CDATA[<p>System Testing: Disable Chrome’s search engine choice by default in system tests.</p>
+
+<p><em>glaszig</em></p>
 ]]></content:encoded>
   </item>
   <item>
