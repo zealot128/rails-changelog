@@ -1608,7 +1608,7 @@ Replace the characters <code>"*?&lt;&gt;</code> with <code>-</code> if they exis
     ```
 
     *Martin Emde*</description>
-    <pubDate>Sat, 07 Sep 2024 22:38:41 +0000</pubDate>
+    <pubDate>Mon, 09 Sep 2024 08:26:31 +0000</pubDate>
     <author>Martin Emde</author>
     <content:encoded><![CDATA[<p>Introduce safer, more explicit params handling method with <code>params#expect</code> such that<br />
 <code>params.expect(table: [ :attr ])</code> replaces <code>params.require(:table).permit(:attr)</code></p>
