@@ -163,6 +163,36 @@ unknown attribute:</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Enable DependencyTracker to evaluate renders with trailing interpolation.
+</title>
+    <link>https://github.com/rails/rails/issues/50944</link>
+    <guid>https://github.com/rails/rails/issues/50944</guid>
+    <description>*   Enable DependencyTracker to evaluate renders with trailing interpolation.
+
+    ```erb
+    &lt;%= render &quot;maintenance_tasks/runs/info/#{run.status}&quot; %&gt;
+    ```
+
+    Previously, the DependencyTracker would ignore this render, but now it will
+    mark all partials in the &quot;maintenance_tasks/runs/info&quot; folder as
+    dependencies.
+
+    *Hartley McGuire*</description>
+    <pubDate>Wed, 11 Sep 2024 05:50:38 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Enable DependencyTracker to evaluate renders with trailing interpolation.</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">render</span> <span class="s2">"maintenance_tasks/runs/info/</span><span class="si">#{</span><span class="n">run</span><span class="p">.</span><span class="nf">status</span><span class="si">}</span><span class="s2">"</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+
+<p>Previously, the DependencyTracker would ignore this render, but now it will<br />
+mark all partials in the “maintenance_tasks/runs/info” folder as<br />
+dependencies.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Rename `text_area` methods into `textarea`
 </title>
     <link>https://github.com/rails/rails/issues/52467</link>
@@ -213,6 +243,35 @@ unknown attribute:</p>
     <content:encoded><![CDATA[<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>
 
 <p><em>Keith Schacht</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix an issue where `.left_outer_joins` used with multiple associations that have
+</title>
+    <link>https://github.com/rails/rails/issues/52850</link>
+    <guid>https://github.com/rails/rails/issues/52850</guid>
+    <description>*   Fix an issue where `.left_outer_joins` used with multiple associations that have
+    the same child association but different parents does not join all parents.
+
+    Previously, using `.left_outer_joins` with the same child association would only join one of the parents.
+
+    Now it will correctly join both parents.
+
+    Fixes #41498.
+
+    *Garrett Blehm*</description>
+    <pubDate>Wed, 11 Sep 2024 05:50:38 +0000</pubDate>
+    <author>Garrett Blehm</author>
+    <content:encoded><![CDATA[<p>Fix an issue where <code>.left_outer_joins</code> used with multiple associations that have<br />
+the same child association but different parents does not join all parents.</p>
+
+<p>Previously, using <code>.left_outer_joins</code> with the same child association would only join one of the parents.</p>
+
+<p>Now it will correctly join both parents.</p>
+
+<p>Fixes #41498.</p>
+
+<p><em>Garrett Blehm</em></p>
 ]]></content:encoded>
   </item>
   <item>
