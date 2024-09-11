@@ -80,6 +80,16 @@
     "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
   },
   {
+    "message": "*   When running `db:migrate` on a fresh database, load the database schema before running migrations.\n\n    *Andrew Novoselac*",
+    "project": "activerecord",
+    "date_merged": 1726076878000,
+    "author": "Andrew Novoselac",
+    "sha": "66aacb6333931c6046185303e49598eaa1fd8475",
+    "pr": "52830",
+    "merge_sha": "95e390156142f94649f11f803eb05cd2bb558e7d",
+    "html": "<p>When running <code>db:migrate</code> on a fresh database, load the database schema before running migrations.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
     "message": "*   Fix an issue where `.left_outer_joins` used with multiple associations that have\n    the same child association but different parents does not join all parents.\n\n    Previously, using `.left_outer_joins` with the same child association would only join one of the parents.\n\n    Now it will correctly join both parents.\n\n    Fixes #41498.\n\n    *Garrett Blehm*",
     "project": "activerecord",
     "date_merged": 1726033838000,
@@ -580,6 +590,16 @@
     "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
   },
   {
+    "message": "*   Deprecate `ActiveStorage::Service::AzureStorageService`.\n\n    *zzak*",
+    "project": "activestorage",
+    "date_merged": 1726070340000,
+    "author": "zzak",
+    "sha": "4dae45c58e142a96906d69772f586275076ac039",
+    "pr": "52863",
+    "merge_sha": "9356db3d4b75e445f6b95c2e7f9d7a8ea04dc0b5",
+    "html": "<p>Deprecate <code>ActiveStorage::Service::AzureStorageService</code>.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
     "message": "*   Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.\n    Replace the characters `\"*?<>` with `-` if they exist in the Filename to match the Filename convention of Win OS.\n\n    *Luong Viet Dung(Martin)*",
     "project": "activestorage",
     "date_merged": 1722882513000,
@@ -740,6 +760,16 @@
     "html": "<p>Add <code>connect</code> route helper.</p>\n\n<p><em>Samuel Williams</em></p>\n"
   },
   {
+    "message": "*   Deprecate `Benchmark.ms` core extension.\n\n    The `benchmark` gem will become bundled in Ruby 3.5\n\n    *Earlopain*",
+    "project": "activesupport",
+    "date_merged": 1726076698000,
+    "author": "Earlopain",
+    "sha": "4cdf757e2e5aaf00aa1f6b3bd4dba57269622733",
+    "pr": "52746",
+    "merge_sha": "f6d10390963cfff88588824341afe4365c0faff3",
+    "html": "<p>Deprecate <code>Benchmark.ms</code> core extension.</p>\n\n<p>The <code>benchmark</code> gem will become bundled in Ruby 3.5</p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
     "message": "*   `ActiveSupport::TimeWithZone#inspect` now uses ISO 8601 style time like `Time#inspect`\n\n    *John Hawthorn*",
     "project": "activesupport",
     "date_merged": 1725576352000,
@@ -848,6 +878,16 @@
     "pr": "52736",
     "merge_sha": "c15f1e2dc50fe18ea4fa7e09ef8be95e0c355eb4",
     "html": "<p>Align instrumentation <code>payload[:key]</code> in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.</p>\n\n<p><em>Frederik Erbs Spang Thomsen</em></p>\n"
+  },
+  {
+    "message": "*   Fix `travel_to` to set usec 0 when `with_usec` is `false` and the given argument String or DateTime.\n\n    *mopp*",
+    "project": "activesupport",
+    "date_merged": 1726072174000,
+    "author": "mopp",
+    "sha": "839ad34305908d14057d96d1375a837815ca87d7",
+    "pr": "52880",
+    "merge_sha": "446daa07462ee7223321bc8602c03b5f1ad0d7cf",
+    "html": "<p>Fix <code>travel_to</code> to set usec 0 when <code>with_usec</code> is <code>false</code> and the given argument String or DateTime.</p>\n\n<p><em>mopp</em></p>\n"
   },
   {
     "message": "*   Dispatch direct-upload events on attachment uploads\n\n    When using Action Text's rich textarea,  it's possible to attach files to the\n    editor. Previously, that action didn't dispatch any events, which made it hard\n    to react to the file uploads. For instance, if an upload failed, there was no\n    way to notify the user about it, or remove the attachment from the editor.\n\n    This commits adds new events - `direct-upload:start`, `direct-upload:progress`,\n    and `direct-upload:end` - similar to how Active Storage's direct uploads work.\n\n    *Matheus Richard*, *Brad Rees*",
