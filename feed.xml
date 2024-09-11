@@ -246,6 +246,21 @@ dependencies.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: When running `db:migrate` on a fresh database, load the database schema before running migrations.
+</title>
+    <link>https://github.com/rails/rails/issues/52830</link>
+    <guid>https://github.com/rails/rails/issues/52830</guid>
+    <description>*   When running `db:migrate` on a fresh database, load the database schema before running migrations.
+
+    *Andrew Novoselac*</description>
+    <pubDate>Wed, 11 Sep 2024 17:47:58 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>When running <code>db:migrate</code> on a fresh database, load the database schema before running migrations.</p>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix an issue where `.left_outer_joins` used with multiple associations that have
 </title>
     <link>https://github.com/rails/rails/issues/52850</link>
@@ -1566,6 +1581,21 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Deprecate `ActiveStorage::Service::AzureStorageService`.
+</title>
+    <link>https://github.com/rails/rails/issues/52863</link>
+    <guid>https://github.com/rails/rails/issues/52863</guid>
+    <description>*   Deprecate `ActiveStorage::Service::AzureStorageService`.
+
+    *zzak*</description>
+    <pubDate>Wed, 11 Sep 2024 15:59:00 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>ActiveStorage::Service::AzureStorageService</code>.</p>
+
+<p><em>zzak</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.
 </title>
     <link>https://github.com/rails/rails/issues/52496</link>
@@ -1951,6 +1981,25 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Deprecate `Benchmark.ms` core extension.
+</title>
+    <link>https://github.com/rails/rails/issues/52746</link>
+    <guid>https://github.com/rails/rails/issues/52746</guid>
+    <description>*   Deprecate `Benchmark.ms` core extension.
+
+    The `benchmark` gem will become bundled in Ruby 3.5
+
+    *Earlopain*</description>
+    <pubDate>Wed, 11 Sep 2024 17:44:58 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>Benchmark.ms</code> core extension.</p>
+
+<p>The <code>benchmark</code> gem will become bundled in Ruby 3.5</p>
+
+<p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `ActiveSupport::TimeWithZone#inspect` now uses ISO 8601 style time like `Time#inspect`
 </title>
     <link>https://github.com/rails/rails/issues/52371</link>
@@ -2158,6 +2207,21 @@ proc by printing the proc’s source code (MRI only).</p>
     <content:encoded><![CDATA[<p>Align instrumentation <code>payload[:key]</code> in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.</p>
 
 <p><em>Frederik Erbs Spang Thomsen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Fix `travel_to` to set usec 0 when `with_usec` is `false` and the given argument String or DateTime.
+</title>
+    <link>https://github.com/rails/rails/issues/52880</link>
+    <guid>https://github.com/rails/rails/issues/52880</guid>
+    <description>*   Fix `travel_to` to set usec 0 when `with_usec` is `false` and the given argument String or DateTime.
+
+    *mopp*</description>
+    <pubDate>Wed, 11 Sep 2024 16:29:34 +0000</pubDate>
+    <author>mopp</author>
+    <content:encoded><![CDATA[<p>Fix <code>travel_to</code> to set usec 0 when <code>with_usec</code> is <code>false</code> and the given argument String or DateTime.</p>
+
+<p><em>mopp</em></p>
 ]]></content:encoded>
   </item>
   <item>
