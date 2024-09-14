@@ -2013,6 +2013,21 @@ Rails 8.0 defaults.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Include options when instrumenting `ActiveSupport::Cache::Store#delete` and `ActiveSupport::Cache::Store#delete_multi`.
+</title>
+    <link>https://github.com/rails/rails/issues/52912</link>
+    <guid>https://github.com/rails/rails/issues/52912</guid>
+    <description>*   Include options when instrumenting `ActiveSupport::Cache::Store#delete` and `ActiveSupport::Cache::Store#delete_multi`.
+
+    *Adam Renberg Tamm*</description>
+    <pubDate>Sat, 14 Sep 2024 17:40:27 +0000</pubDate>
+    <author>Adam Renberg Tamm</author>
+    <content:encoded><![CDATA[<p>Include options when instrumenting <code>ActiveSupport::Cache::Store#delete</code> and <code>ActiveSupport::Cache::Store#delete_multi</code>.</p>
+
+<p><em>Adam Renberg Tamm</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Print test names when running `rails test -v` for parallel tests.
 </title>
     <link>https://github.com/rails/rails/issues/52917</link>
