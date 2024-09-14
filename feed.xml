@@ -246,6 +246,23 @@ dependencies.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add support for PostgreSQL `IF NOT EXISTS` via the `:if_not_exists` option
+</title>
+    <link>https://github.com/rails/rails/issues/52916</link>
+    <guid>https://github.com/rails/rails/issues/52916</guid>
+    <description>*   Add support for PostgreSQL `IF NOT EXISTS` via the `:if_not_exists` option
+    on the `add_enum_value` method.
+
+    *Ariel Rzezak*</description>
+    <pubDate>Sat, 14 Sep 2024 05:01:28 +0000</pubDate>
+    <author>Ariel Rzezak</author>
+    <content:encoded><![CDATA[<p>Add support for PostgreSQL <code>IF NOT EXISTS</code> via the <code>:if_not_exists</code> option<br />
+on the <code>add_enum_value</code> method.</p>
+
+<p><em>Ariel Rzezak</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: When running `db:migrate` on a fresh database, load the database schema before running migrations.
 </title>
     <link>https://github.com/rails/rails/issues/52830</link>
@@ -1993,6 +2010,21 @@ Rails 8.0 defaults.</p>
     <content:encoded><![CDATA[<p>Add <code>connect</code> route helper.</p>
 
 <p><em>Samuel Williams</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Print test names when running `rails test -v` for parallel tests.
+</title>
+    <link>https://github.com/rails/rails/issues/52917</link>
+    <guid>https://github.com/rails/rails/issues/52917</guid>
+    <description>*   Print test names when running `rails test -v` for parallel tests.
+
+    *John Hawthorn*, *Abeid Ahmed*</description>
+    <pubDate>Fri, 13 Sep 2024 22:21:25 +0000</pubDate>
+    <author>John Hawthorn</author>
+    <content:encoded><![CDATA[<p>Print test names when running <code>rails test -v</code> for parallel tests.</p>
+
+<p><em>John Hawthorn</em>, <em>Abeid Ahmed</em></p>
 ]]></content:encoded>
   </item>
   <item>
