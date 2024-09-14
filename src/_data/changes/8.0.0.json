@@ -780,6 +780,16 @@
     "html": "<p>Add <code>connect</code> route helper.</p>\n\n<p><em>Samuel Williams</em></p>\n"
   },
   {
+    "message": "*   Include options when instrumenting `ActiveSupport::Cache::Store#delete` and `ActiveSupport::Cache::Store#delete_multi`.\n\n    *Adam Renberg Tamm*",
+    "project": "activesupport",
+    "date_merged": 1726335627000,
+    "author": "Adam Renberg Tamm",
+    "sha": "83fa6f80898125dfc760b46115f214a6fd779b6a",
+    "pr": "52912",
+    "merge_sha": "6e46b4205506696b18f1a9d6740a39f9cd1b0366",
+    "html": "<p>Include options when instrumenting <code>ActiveSupport::Cache::Store#delete</code> and <code>ActiveSupport::Cache::Store#delete_multi</code>.</p>\n\n<p><em>Adam Renberg Tamm</em></p>\n"
+  },
+  {
     "message": "*   Print test names when running `rails test -v` for parallel tests.\n\n    *John Hawthorn*, *Abeid Ahmed*",
     "project": "activesupport",
     "date_merged": 1726266085000,
