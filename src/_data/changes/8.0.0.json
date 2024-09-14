@@ -80,6 +80,16 @@
     "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
   },
   {
+    "message": "*   Add support for PostgreSQL `IF NOT EXISTS` via the `:if_not_exists` option\n    on the `add_enum_value` method.\n\n    *Ariel Rzezak*",
+    "project": "activerecord",
+    "date_merged": 1726290088000,
+    "author": "Ariel Rzezak",
+    "sha": "17dd4a501e3a9a1c69114994eac68e88772ee6bc",
+    "pr": "52916",
+    "merge_sha": "f79f0b5a23000ede6ad8fe33f49691713f64eced",
+    "html": "<p>Add support for PostgreSQL <code>IF NOT EXISTS</code> via the <code>:if_not_exists</code> option<br />\non the <code>add_enum_value</code> method.</p>\n\n<p><em>Ariel Rzezak</em></p>\n"
+  },
+  {
     "message": "*   When running `db:migrate` on a fresh database, load the database schema before running migrations.\n\n    *Andrew Novoselac*",
     "project": "activerecord",
     "date_merged": 1726076878000,
@@ -768,6 +778,16 @@
     "pr": "52169",
     "merge_sha": "455cf48c7e0cb8bc5c35d8be88c0c6ad94ce9f62",
     "html": "<p>Add <code>connect</code> route helper.</p>\n\n<p><em>Samuel Williams</em></p>\n"
+  },
+  {
+    "message": "*   Print test names when running `rails test -v` for parallel tests.\n\n    *John Hawthorn*, *Abeid Ahmed*",
+    "project": "activesupport",
+    "date_merged": 1726266085000,
+    "author": "John Hawthorn",
+    "sha": "8b0ff4f8949b02884d582dff38927e71c179f3cd",
+    "pr": "52917",
+    "merge_sha": "cefd95bf11c0b075a31bdb64c34f6b4084c1a9ce",
+    "html": "<p>Print test names when running <code>rails test -v</code> for parallel tests.</p>\n\n<p><em>John Hawthorn</em>, <em>Abeid Ahmed</em></p>\n"
   },
   {
     "message": "*   Deprecate `Benchmark.ms` core extension.\n\n    The `benchmark` gem will become bundled in Ruby 3.5\n\n    *Earlopain*",
