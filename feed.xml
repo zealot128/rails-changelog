@@ -1598,6 +1598,23 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activejob: Remove `sucker_punch` as an adapter option [since author himself recommends using AJ&#39;s own AsyncAdapter](https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq).
+</title>
+    <link>https://github.com/rails/rails/issues/52935</link>
+    <guid>https://github.com/rails/rails/issues/52935</guid>
+    <description>*   Remove `sucker_punch` as an adapter option [since author himself recommends using AJ&#39;s own AsyncAdapter](https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq).
+    If you&#39;re using this adapter, change to `adapter: async` for the same functionality.
+
+    *Dino Maric*</description>
+    <pubDate>Sun, 15 Sep 2024 00:12:32 +0000</pubDate>
+    <author>Dino Maric</author>
+    <content:encoded><![CDATA[<p>Remove <code>sucker_punch</code> as an adapter option <a href="https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq">since author himself recommends using AJ’s own AsyncAdapter</a>.<br />
+If you’re using this adapter, change to <code>adapter: async</code> for the same functionality.</p>
+
+<p><em>Dino Maric</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activejob: Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.
 </title>
     <link>https://github.com/rails/rails/issues/52468</link>
