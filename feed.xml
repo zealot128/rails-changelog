@@ -1606,7 +1606,7 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
     If you&#39;re using this adapter, change to `adapter: async` for the same functionality.
 
     *Dino Maric*</description>
-    <pubDate>Sun, 15 Sep 2024 00:12:32 +0000</pubDate>
+    <pubDate>Sun, 15 Sep 2024 15:09:09 +0000</pubDate>
     <author>Dino Maric</author>
     <content:encoded><![CDATA[<p>Remove <code>sucker_punch</code> as an adapter option <a href="https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq">since author himself recommends using AJ’s own AsyncAdapter</a>.<br />
 If you’re using this adapter, change to <code>adapter: async</code> for the same functionality.</p>
