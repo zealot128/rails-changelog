@@ -602,11 +602,11 @@
   {
     "message": "*   Remove `sucker_punch` as an adapter option [since author himself recommends using AJ's own AsyncAdapter](https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq).\n    If you're using this adapter, change to `adapter: async` for the same functionality.\n\n    *Dino Maric*",
     "project": "activejob",
-    "date_merged": 1726359152000,
+    "date_merged": 1726412949000,
     "author": "Dino Maric",
     "sha": "6d1252cf3e65a7720aad5511ff719b44e49fd2a3",
     "pr": "52935",
-    "merge_sha": null,
+    "merge_sha": "81ad0351819322b9842f05a550688cad54e54176",
     "html": "<p>Remove <code>sucker_punch</code> as an adapter option <a href=\"https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq\">since author himself recommends using AJ’s own AsyncAdapter</a>.<br />\nIf you’re using this adapter, change to <code>adapter: async</code> for the same functionality.</p>\n\n<p><em>Dino Maric</em></p>\n"
   },
   {
