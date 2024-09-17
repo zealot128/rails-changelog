@@ -80,6 +80,16 @@
     "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
   },
   {
+    "message": "*   Allow `drop_table` to accept an array of table names.\n\n    This will let you to drop multiple tables in a single call.\n\n    ```ruby\n    ActiveRecord::Base.connection.drop_table(:users, :posts)\n    ```\n\n    *Gabriel Sobrinho*",
+    "project": "activerecord",
+    "date_merged": 1726535991000,
+    "author": "Gabriel Sobrinho",
+    "sha": "1666bad840a17b0b1c0d1d70252928f133bbbdda",
+    "pr": "52773",
+    "merge_sha": "4aa78117fa427ec6d761b81fb1d3877a20703b9e",
+    "html": "<p>Allow <code>drop_table</code> to accept an array of table names.</p>\n\n<p>This will let you to drop multiple tables in a single call.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span><span class=\"p\">.</span><span class=\"nf\">connection</span><span class=\"p\">.</span><span class=\"nf\">drop_table</span><span class=\"p\">(</span><span class=\"ss\">:users</span><span class=\"p\">,</span> <span class=\"ss\">:posts</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Gabriel Sobrinho</em></p>\n"
+  },
+  {
     "message": "*   Add support for PostgreSQL `IF NOT EXISTS` via the `:if_not_exists` option\n    on the `add_enum_value` method.\n\n    *Ariel Rzezak*",
     "project": "activerecord",
     "date_merged": 1726290088000,
@@ -440,6 +450,16 @@
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
+    "message": "*   Do not include redis by default in generated Dev Containers.\n\n    Now that applications use the Solid Queue and Solid Cache gems by default, we do not need to include redis\n    in the Dev Container. We will only include redis if `--skip-solid` is used when generating an app that uses\n    Active Job or Action Cable.\n\n    When generating a Dev Container for an existing app, we will not include redis if either of the solid gems\n    are in use.\n\n    *Andrew Novoselac*",
+    "project": "railties",
+    "date_merged": 1726523290000,
+    "author": "Andrew Novoselac",
+    "sha": "cc94545147d5e32afdc504543a25d3097850826f",
+    "pr": "52934",
+    "merge_sha": "ea3ca6ba0f85db11d0bbb52f2169b310e434381c",
+    "html": "<p>Do not include redis by default in generated Dev Containers.</p>\n\n<p>Now that applications use the Solid Queue and Solid Cache gems by default, we do not need to include redis<br />\nin the Dev Container. We will only include redis if <code>--skip-solid</code> is used when generating an app that uses<br />\nActive Job or Action Cable.</p>\n\n<p>When generating a Dev Container for an existing app, we will not include redis if either of the solid gems<br />\nare in use.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
     "message": "*   Use [Solid Cable](https://github.com/rails/solid_cable) as the default Action Cable adapter in production, configured as a separate queue database in config/database.yml. It keeps messages in a table and continuously polls for updates. This makes it possible to drop the common dependency on Redis, if it isn't needed for any other purpose. Despite polling, the performance of Solid Cable is comparable to Redis in most situations. And in all circumstances, it makes it easier to deploy Rails when Redis is no longer a required dependency for Action Cable functionality.\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1726245826000,
@@ -658,6 +678,16 @@
     "pr": "52283",
     "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
     "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
+  },
+  {
+    "message": "*   Update `ActionController::Live` to use a thread-pool to reuse threads across requests.\n\n    *Adam Renberg Tamm*",
+    "project": "actionpack",
+    "date_merged": 1726526378000,
+    "author": "Adam Renberg Tamm",
+    "sha": "5d08107f2a652b524faade6f589104f16a7c3467",
+    "pr": "52731",
+    "merge_sha": "d30c9c114865011b7d961d79d2c61caf27b272a0",
+    "html": "<p>Update <code>ActionController::Live</code> to use a thread-pool to reuse threads across requests.</p>\n\n<p><em>Adam Renberg Tamm</em></p>\n"
   },
   {
     "message": "*   Introduce safer, more explicit params handling method with `params#expect` such that\n    `params.expect(table: [ :attr ])` replaces `params.require(:table).permit(:attr)`\n\n    Ensures params are filtered with consideration for the expected\n    types of values, improving handling of params and avoiding ignorable\n    errors caused by params tampering.\n\n    ```ruby\n    # If the url is altered to ?person=hacked\n    # Before\n    params.require(:person).permit(:name, :age, pets: [:name])\n    # raises NoMethodError, causing a 500 and potential error reporting\n\n    # After\n    params.expect(person: [ :name, :age, pets: [[:name]] ])\n    # raises ActionController::ParameterMissing, correctly returning a 400 error\n    ```\n\n    You may also notice the new double array `[[:name]]`. In order to\n    declare when a param is expected to be an array of parameter hashes,\n    this new double array syntax is used to explicitly declare an array.\n    `expect` requires you to declare expected arrays in this way, and will\n    ignore arrays that are passed when, for example, `pet: [:name]` is used.\n\n    In order to preserve compatibility, `permit` does not adopt the new\n    double array syntax and is therefore more permissive about unexpected\n    types. Using `expect` everywhere is recommended.\n\n    We suggest replacing `params.require(:person).permit(:name, :age)`\n    with the direct replacement `params.expect(person: [:name, :age])`\n    to prevent external users from manipulating params to trigger 500\n    errors. A 400 error will be returned instead, using public/400.html\n\n    Usage of `params.require(:id)` should likewise be replaced with\n    `params.expect(:id)` which is designed to ensure that `params[:id]`\n    is a scalar and not an array or hash, also requiring the param.\n\n    ```ruby\n    # Before\n    User.find(params.require(:id)) # allows an array, altering behavior\n\n    # After\n    User.find(params.expect(:id)) # expect only returns non-blank permitted scalars (excludes Hash, Array, nil, \"\", etc)\n    ```\n\n    *Martin Emde*",
