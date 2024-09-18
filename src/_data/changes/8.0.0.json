@@ -1,5 +1,595 @@
 [
   {
+    "message": "*   Remove `sucker_punch` as an adapter option [since author himself recommends using AJ's own AsyncAdapter](https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq).\n    If you're using this adapter, change to `adapter: async` for the same functionality.\n\n    *Dino Maric*",
+    "project": "activejob",
+    "date_merged": 1726412949000,
+    "author": "Dino Maric",
+    "sha": "6d1252cf3e65a7720aad5511ff719b44e49fd2a3",
+    "pr": "52935",
+    "merge_sha": "81ad0351819322b9842f05a550688cad54e54176",
+    "html": "<p>Remove <code>sucker_punch</code> as an adapter option <a href=\"https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq\">since author himself recommends using AJ’s own AsyncAdapter</a>.<br />\nIf you’re using this adapter, change to <code>adapter: async</code> for the same functionality.</p>\n\n<p><em>Dino Maric</em></p>\n"
+  },
+  {
+    "message": "*   Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.\n\n    *heka1024*",
+    "project": "activejob",
+    "date_merged": 1722602063000,
+    "author": "heka1024",
+    "sha": "119411a7e7a198f9e3a14d7f1b497a2a41a1ed5f",
+    "pr": "52468",
+    "merge_sha": "a0a894cecb3f0ceb3659cdcee73543f31ccf3d78",
+    "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   Add an `identifier` to the event payload for the ActiveSupport::Notification `transmit_subscription_confirmation.action_cable` and `transmit_subscription_rejection.action_cable`.\n\n    *Keith Schacht*",
+    "project": "actioncable",
+    "date_merged": 1722462576000,
+    "author": "Keith Schacht",
+    "sha": "52189d25d6ebca22e9e530cf31e49842e85ff7dd",
+    "pr": "52421",
+    "merge_sha": "bcaac3e8c460e44af67b6a84899f024ebe1c8552",
+    "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActiveStorage::Service::AzureStorageService`.\n\n    *zzak*",
+    "project": "activestorage",
+    "date_merged": 1726070340000,
+    "author": "zzak",
+    "sha": "4dae45c58e142a96906d69772f586275076ac039",
+    "pr": "52863",
+    "merge_sha": "9356db3d4b75e445f6b95c2e7f9d7a8ea04dc0b5",
+    "html": "<p>Deprecate <code>ActiveStorage::Service::AzureStorageService</code>.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
+    "message": "*   Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.\n    Replace the characters `\"*?<>` with `-` if they exist in the Filename to match the Filename convention of Win OS.\n\n    *Luong Viet Dung(Martin)*",
+    "project": "activestorage",
+    "date_merged": 1722882513000,
+    "author": "Martin(Luong Viet Dung)",
+    "sha": "0d5bbb65a15ff1f70b4cb27c63e502f73ccd78ae",
+    "pr": "52496",
+    "merge_sha": "25f86e2f8bb845603df4a3a6497682b416076420",
+    "html": "<p>Improve <code>ActiveStorage::Filename#sanitized</code> method to handle special characters more effectively.<br />\nReplace the characters <code>\"*?&lt;&gt;</code> with <code>-</code> if they exist in the Filename to match the Filename convention of Win OS.</p>\n\n<p><em>Luong Viet Dung(Martin)</em></p>\n"
+  },
+  {
+    "message": "*   Improve InvariableError, UnpreviewableError and UnrepresentableError message.\n\n    Include Blob ID and content_type in the messages.\n\n    *Petrik de Heus*",
+    "project": "activestorage",
+    "date_merged": 1722335759000,
+    "author": "Petrik",
+    "sha": "240cbd9ca50ff9c8ce891b4c3669473b645cda21",
+    "pr": "52193",
+    "merge_sha": "2038c9d46ab035de31d7a9968b7aa22297b2618a",
+    "html": "<p>Improve InvariableError, UnpreviewableError and UnrepresentableError message.</p>\n\n<p>Include Blob ID and content_type in the messages.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Mark proxied files as `immutable` in their Cache-Control header\n\n    *Nate Matykiewicz*",
+    "project": "activestorage",
+    "date_merged": 1720289328000,
+    "author": "Nate Matykiewicz",
+    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
+    "pr": "52283",
+    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
+    "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
+  },
+  {
+    "message": "*   Do not include redis by default in generated Dev Containers.\n\n    Now that applications use the Solid Queue and Solid Cache gems by default, we do not need to include redis\n    in the Dev Container. We will only include redis if `--skip-solid` is used when generating an app that uses\n    Active Job or Action Cable.\n\n    When generating a Dev Container for an existing app, we will not include redis if either of the solid gems\n    are in use.\n\n    *Andrew Novoselac*",
+    "project": "railties",
+    "date_merged": 1726523290000,
+    "author": "Andrew Novoselac",
+    "sha": "cc94545147d5e32afdc504543a25d3097850826f",
+    "pr": "52934",
+    "merge_sha": "ea3ca6ba0f85db11d0bbb52f2169b310e434381c",
+    "html": "<p>Do not include redis by default in generated Dev Containers.</p>\n\n<p>Now that applications use the Solid Queue and Solid Cache gems by default, we do not need to include redis<br />\nin the Dev Container. We will only include redis if <code>--skip-solid</code> is used when generating an app that uses<br />\nActive Job or Action Cable.</p>\n\n<p>When generating a Dev Container for an existing app, we will not include redis if either of the solid gems<br />\nare in use.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
+    "message": "*   Use [Solid Cable](https://github.com/rails/solid_cable) as the default Action Cable adapter in production, configured as a separate queue database in config/database.yml. It keeps messages in a table and continuously polls for updates. This makes it possible to drop the common dependency on Redis, if it isn't needed for any other purpose. Despite polling, the performance of Solid Cable is comparable to Redis in most situations. And in all circumstances, it makes it easier to deploy Rails when Redis is no longer a required dependency for Action Cable functionality.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1726245826000,
+    "author": "Vipul A M",
+    "sha": "845ac2beec1dc4f7fb3efdc09e540247c27b6f2e",
+    "pr": "52911",
+    "merge_sha": "79f34b97129669e6769423066e15cdb3c55246cb",
+    "html": "<p>Use <a href=\"https://github.com/rails/solid_cable\">Solid Cable</a> as the default Action Cable adapter in production, configured as a separate queue database in config/database.yml. It keeps messages in a table and continuously polls for updates. This makes it possible to drop the common dependency on Redis, if it isn’t needed for any other purpose. Despite polling, the performance of Solid Cable is comparable to Redis in most situations. And in all circumstances, it makes it easier to deploy Rails when Redis is no longer a required dependency for Action Cable functionality.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Use [Solid Queue](https://github.com/rails/solid_queue) as the default Active Job backend in production, configured as a separate queue database in config/database.yml. In a single-server deployment, it'll run as a Puma plugin. This is configured in `config/deploy.yml` and can easily be changed to use a dedicated jobs machine.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1725629364000,
+    "author": "Wojciech Wnętrzak",
+    "sha": "8902ac32c938bc7e695ec7c85089ff378a5b812f",
+    "pr": "52813",
+    "merge_sha": "5385580ac82797167382ffcd79095a4bb973c666",
+    "html": "<p>Use <a href=\"https://github.com/rails/solid_queue\">Solid Queue</a> as the default Active Job backend in production, configured as a separate queue database in config/database.yml. In a single-server deployment, it’ll run as a Puma plugin. This is configured in <code>config/deploy.yml</code> and can easily be changed to use a dedicated jobs machine.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Use [Solid Cache](https://github.com/rails/solid_cache) as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1725511719000,
+    "author": "David Heinemeier Hansson",
+    "sha": "28780de1d7fa22c452d479fb9fe4c70858833e0b",
+    "pr": "52790",
+    "merge_sha": "f698d735bfd237a6e36dc56b781bb42367bac503",
+    "html": "<p>Use <a href=\"https://github.com/rails/solid_cache\">Solid Cache</a> as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`\n    to silence requests to \"/up\". This prevents the Kamal-required health checks from clogging up\n    the production logs.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1725460499000,
+    "author": "David Heinemeier Hansson",
+    "sha": "66a9d113a439e3eb17b3b028dd838b3320a9784d",
+    "pr": "52789",
+    "merge_sha": "bd2b60611460fb68dc40fad2f6bee7344e6d16dd",
+    "html": "<p>Add Rails::Rack::SilenceRequest middleware and use it via <code>config.silence_healthcheck_path = path</code><br />\nto silence requests to “/up”. This prevents the Kamal-required health checks from clogging up<br />\nthe production logs.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`\n\n    When used with the `--devcontainer` flag, these options will use `mariadb` as the database for the\n    Dev Container. The original `mysql` and `trilogy` options will use `mysql`. Users who are not\n    generating a Dev Container do not need to use the new options.\n\n    *Andrew Novoselac*",
+    "project": "railties",
+    "date_merged": 1724790680000,
+    "author": "Andrew Novoselac",
+    "sha": "2202ddf476aeff470dadbfe992aa224021b66933",
+    "pr": "52266",
+    "merge_sha": "f0fd6ab1259b3bacf0e7e53f3a9b1757a327d822",
+    "html": "<p>Introduce <code>mariadb-mysql</code> and <code>mariadb-trilogy</code> database options for <code>rails new</code></p>\n\n<p>When used with the <code>--devcontainer</code> flag, these options will use <code>mariadb</code> as the database for the<br />\nDev Container. The original <code>mysql</code> and <code>trilogy</code> options will use <code>mysql</code>. Users who are not<br />\ngenerating a Dev Container do not need to use the new options.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `::STATS_DIRECTORIES`.\n\n    The global constant `STATS_DIRECTORIES` has been deprecated in favor of\n    `Rails::CodeStatistics.register_directory`.\n\n    Add extra directories with `Rails::CodeStatistics.register_directory(label, path)`:\n\n    ```ruby\n    require \"rails/code_statistics\"\n    Rails::CodeStatistics.register_directory('My Directory', 'path/to/dir')\n    ```\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1724447448000,
+    "author": "Petrik",
+    "sha": "271467b013eff6a7b7811191c2f0e302c13a0b34",
+    "pr": "52226",
+    "merge_sha": "667a2063ed2772b1a5d385a0911679749b7f2a6e",
+    "html": "<p>Deprecate <code>::STATS_DIRECTORIES</code>.</p>\n\n<p>The global constant <code>STATS_DIRECTORIES</code> has been deprecated in favor of<br />\n<code>Rails::CodeStatistics.register_directory</code>.</p>\n\n<p>Add extra directories with <code>Rails::CodeStatistics.register_directory(label, path)</code>:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">require</span> <span class=\"s2\">\"rails/code_statistics\"</span>\n<span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">CodeStatistics</span><span class=\"p\">.</span><span class=\"nf\">register_directory</span><span class=\"p\">(</span><span class=\"s1\">'My Directory'</span><span class=\"p\">,</span> <span class=\"s1\">'path/to/dir'</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Enable query log tags by default on development env\n\n    This can be used to trace troublesome SQL statements back to the application\n    code that generated these statements. It is also useful when using multiple\n    databases because the query logs can identify which database is being used.\n\n    *Matheus Richard*",
+    "project": "railties",
+    "date_merged": 1723367513000,
+    "author": "Matheus Richard",
+    "sha": "e29ad0bcf7620a6a776086628f755d9e5c7d8f2d",
+    "pr": "51342",
+    "merge_sha": "c9c304769f7f9886ab41a11af3c11961ebe18940",
+    "html": "<p>Enable query log tags by default on development env</p>\n\n<p>This can be used to trace troublesome SQL statements back to the application<br />\ncode that generated these statements. It is also useful when using multiple<br />\ndatabases because the query logs can identify which database is being used.</p>\n\n<p><em>Matheus Richard</em></p>\n"
+  },
+  {
+    "message": "*   Defer route drawing to the first request, or when url_helpers are called\n\n    Executes the first routes reload in middleware, or when a route set's\n    url_helpers receives a route call / asked if it responds to a route.\n    Previously, this was executed unconditionally on boot, which can\n    slow down boot time unnecessarily for larger apps with lots of routes.\n\n    Environments like production that have `config.eager_load = true` will\n    continue to eagerly load routes on boot.\n\n    *Gannon McGibbon*",
+    "project": "railties",
+    "date_merged": 1723185863000,
+    "author": "Gannon McGibbon",
+    "sha": "cdb283566c5d5251e2f7e663e655e57e8e10abbc",
+    "pr": "52353",
+    "merge_sha": "9f80efc79119037fc4421d06e94a0d7e076876a4",
+    "html": "<p>Defer route drawing to the first request, or when url_helpers are called</p>\n\n<p>Executes the first routes reload in middleware, or when a route set’s<br />\nurl_helpers receives a route call / asked if it responds to a route.<br />\nPreviously, this was executed unconditionally on boot, which can<br />\nslow down boot time unnecessarily for larger apps with lots of routes.</p>\n\n<p>Environments like production that have <code>config.eager_load = true</code> will<br />\ncontinue to eagerly load routes on boot.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods\n\n    *Sean Doyle*",
+    "project": "railties",
+    "date_merged": 1722446183000,
+    "author": "Sean Doyle",
+    "sha": "f9c51ec385a7b75e212954cd4b22c2da7c1d32f4",
+    "pr": "52467",
+    "merge_sha": "fa476ce275262add84d5b46bfffe078031c55cb8",
+    "html": "<p>Generate form helpers to use <code>textarea*</code> methods instead of <code>text_area*</code> methods</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.\n\n    Generate with...\n\n    ```\n    bin/rails generate authentication\n    ```\n\n    Generated files:\n\n    ```\n    app/models/current.rb\n    app/models/user.rb\n    app/models/session.rb\n    app/controllers/sessions_controller.rb\n    app/controllers/passwords_controller.rb\n    app/mailers/passwords_mailer.rb\n    app/views/sessions/new.html.erb\n    app/views/passwords/new.html.erb\n    app/views/passwords/edit.html.erb\n    app/views/passwords_mailer/reset.html.erb\n    app/views/passwords_mailer/reset.text.erb\n    db/migrate/xxxxxxx_create_users.rb\n    db/migrate/xxxxxxx_create_sessions.rb\n    test/mailers/previews/passwords_mailer_preview.rb\n    ```\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1722602063000,
+    "author": "David Heinemeier Hansson",
+    "sha": "79662081113c7051d29a2b10e60c07875ca48cf4",
+    "pr": "52468",
+    "merge_sha": "a0a894cecb3f0ceb3659cdcee73543f31ccf3d78",
+    "html": "<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.</p>\n\n<p>Generate with…</p>\n\n<pre><code>bin/rails generate authentication\n</code></pre>\n\n<p>Generated files:</p>\n\n<pre><code>app/models/current.rb\napp/models/user.rb\napp/models/session.rb\napp/controllers/sessions_controller.rb\napp/controllers/passwords_controller.rb\napp/mailers/passwords_mailer.rb\napp/views/sessions/new.html.erb\napp/views/passwords/new.html.erb\napp/views/passwords/edit.html.erb\napp/views/passwords_mailer/reset.html.erb\napp/views/passwords_mailer/reset.text.erb\ndb/migrate/xxxxxxx_create_users.rb\ndb/migrate/xxxxxxx_create_sessions.rb\ntest/mailers/previews/passwords_mailer_preview.rb\n</code></pre>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add not-null type modifier to migration attributes.\n\n    Generating with...\n\n    ```\n    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!\n    ```\n\n    Produces:\n\n    ```ruby\n    class CreateUsers < ActiveRecord::Migration[8.0]\n      def change\n        create_table :users do |t|\n          t.string :email_address, null: false\n          t.string :password_digest, null: false\n\n          t.timestamps\n        end\n        add_index :users, :email_address, unique: true\n      end\n    end\n    ```\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1721134851000,
+    "author": "David Heinemeier Hansson",
+    "sha": "2f92b1c94e2a080679ab0ad45abd0bdec24a5349",
+    "pr": "52327",
+    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
+    "html": "<p>Add not-null type modifier to migration attributes.</p>\n\n<p>Generating with…</p>\n\n<pre><code>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!\n</code></pre>\n\n<p>Produces:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">CreateUsers</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Migration</span><span class=\"p\">[</span><span class=\"mf\">8.0</span><span class=\"p\">]</span>\n  <span class=\"k\">def</span> <span class=\"nf\">change</span>\n    <span class=\"n\">create_table</span> <span class=\"ss\">:users</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:email_address</span><span class=\"p\">,</span> <span class=\"ss\">null: </span><span class=\"kp\">false</span>\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:password_digest</span><span class=\"p\">,</span> <span class=\"ss\">null: </span><span class=\"kp\">false</span>\n\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">timestamps</span>\n    <span class=\"k\">end</span>\n    <span class=\"n\">add_index</span> <span class=\"ss\">:users</span><span class=\"p\">,</span> <span class=\"ss\">:email_address</span><span class=\"p\">,</span> <span class=\"ss\">unique: </span><span class=\"kp\">true</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add a `script` folder to applications, and a scripts generator.\n\n    The new `script` folder is meant to hold one-off or general purpose scripts,\n    such as data migration scripts, cleanup scripts, etc.\n\n    A new script generator allows you to create such scripts:\n\n    ```\n    bin/rails generate script my_script\n    bin/rails generate script data/backfill\n    ```\n\n    You can run the generated script using:\n\n    ```\n    bundle exec ruby script/my_script.rb\n    bundle exec ruby script/data/backfill.rb\n    ```\n\n    *Jerome Dalbert*, *Haroon Ahmed*",
+    "project": "railties",
+    "date_merged": 1722367516000,
+    "author": "Xavier Noria",
+    "sha": "a71ec5634387b33fa3c103eba30b317dca76dcac",
+    "pr": "52454",
+    "merge_sha": "9262ca443a2d1f1287e02f175128a080dda0121b",
+    "html": "<p>Add a <code>script</code> folder to applications, and a scripts generator.</p>\n\n<p>The new <code>script</code> folder is meant to hold one-off or general purpose scripts,<br />\nsuch as data migration scripts, cleanup scripts, etc.</p>\n\n<p>A new script generator allows you to create such scripts:</p>\n\n<pre><code>bin/rails generate script my_script\nbin/rails generate script data/backfill\n</code></pre>\n\n<p>You can run the generated script using:</p>\n\n<pre><code>bundle exec ruby script/my_script.rb\nbundle exec ruby script/data/backfill.rb\n</code></pre>\n\n<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.\n\n    *Juan Vásquez*",
+    "project": "railties",
+    "date_merged": 1719643925000,
+    "author": "Juan Vásquez",
+    "sha": "3d737cd8ef0b4cfd89df7cafc17315fe1aa88319",
+    "pr": "52231",
+    "merge_sha": "21280a16164d10cdcc02356787fca46940f27c16",
+    "html": "<p>Deprecate <code>bin/rake stats</code> in favor of <code>bin/rails stats</code>.</p>\n\n<p><em>Juan Vásquez</em></p>\n"
+  },
+  {
+    "message": "*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.\n\n    *Deepak Mahakale*",
+    "project": "railties",
+    "date_merged": 1718299349000,
+    "author": "Deepak Mahakale",
+    "sha": "306d99f8ca7b1dc9f1738b3c8e96061574ac506f",
+    "pr": "52115",
+    "merge_sha": "638f6450977db3be016a954d2685c66309ac8728",
+    "html": "<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>\n\n<p><em>Deepak Mahakale</em></p>\n"
+  },
+  {
+    "message": "*   Add Rubocop and GitHub Actions to plugin generator.\n    This can be skipped using --skip-rubocop and --skip-ci.\n\n    *Chris Oliver*",
+    "project": "railties",
+    "date_merged": 1716487738000,
+    "author": "Chris Oliver",
+    "sha": "7594a73942c6b4e64c50d17b4b0c9867b9fe1440",
+    "pr": "51822",
+    "merge_sha": "c906f75282085bf67b807f4f7b420c6b5019f725",
+    "html": "<p>Add Rubocop and GitHub Actions to plugin generator.<br />\nThis can be skipped using –skip-rubocop and –skip-ci.</p>\n\n<p><em>Chris Oliver</em></p>\n"
+  },
+  {
+    "message": "*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.\n    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1715647059000,
+    "author": "David Heinemeier Hansson",
+    "sha": "bee3fa41ca9137b9e704ea3ab1bdbcfd3c85446b",
+    "pr": "51798",
+    "merge_sha": "2e7dc14943d285626a9e12ad0d1750d3609185be",
+    "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Update `ActionController::Live` to use a thread-pool to reuse threads across requests.\n\n    *Adam Renberg Tamm*",
+    "project": "actionpack",
+    "date_merged": 1726526378000,
+    "author": "Adam Renberg Tamm",
+    "sha": "5d08107f2a652b524faade6f589104f16a7c3467",
+    "pr": "52731",
+    "merge_sha": "d30c9c114865011b7d961d79d2c61caf27b272a0",
+    "html": "<p>Update <code>ActionController::Live</code> to use a thread-pool to reuse threads across requests.</p>\n\n<p><em>Adam Renberg Tamm</em></p>\n"
+  },
+  {
+    "message": "*   Introduce safer, more explicit params handling method with `params#expect` such that\n    `params.expect(table: [ :attr ])` replaces `params.require(:table).permit(:attr)`\n\n    Ensures params are filtered with consideration for the expected\n    types of values, improving handling of params and avoiding ignorable\n    errors caused by params tampering.\n\n    ```ruby\n    # If the url is altered to ?person=hacked\n    # Before\n    params.require(:person).permit(:name, :age, pets: [:name])\n    # raises NoMethodError, causing a 500 and potential error reporting\n\n    # After\n    params.expect(person: [ :name, :age, pets: [[:name]] ])\n    # raises ActionController::ParameterMissing, correctly returning a 400 error\n    ```\n\n    You may also notice the new double array `[[:name]]`. In order to\n    declare when a param is expected to be an array of parameter hashes,\n    this new double array syntax is used to explicitly declare an array.\n    `expect` requires you to declare expected arrays in this way, and will\n    ignore arrays that are passed when, for example, `pet: [:name]` is used.\n\n    In order to preserve compatibility, `permit` does not adopt the new\n    double array syntax and is therefore more permissive about unexpected\n    types. Using `expect` everywhere is recommended.\n\n    We suggest replacing `params.require(:person).permit(:name, :age)`\n    with the direct replacement `params.expect(person: [:name, :age])`\n    to prevent external users from manipulating params to trigger 500\n    errors. A 400 error will be returned instead, using public/400.html\n\n    Usage of `params.require(:id)` should likewise be replaced with\n    `params.expect(:id)` which is designed to ensure that `params[:id]`\n    is a scalar and not an array or hash, also requiring the param.\n\n    ```ruby\n    # Before\n    User.find(params.require(:id)) # allows an array, altering behavior\n\n    # After\n    User.find(params.expect(:id)) # expect only returns non-blank permitted scalars (excludes Hash, Array, nil, \"\", etc)\n    ```\n\n    *Martin Emde*",
+    "project": "actionpack",
+    "date_merged": 1725870391000,
+    "author": "Martin Emde",
+    "sha": "e1d58cfd05ae1cc0bfc1006b7ce973a7730831df",
+    "pr": "51674",
+    "merge_sha": "b148081117d9157b583cac3c87d7ef2e03fe8d89",
+    "html": "<p>Introduce safer, more explicit params handling method with <code>params#expect</code> such that<br />\n<code>params.expect(table: [ :attr ])</code> replaces <code>params.require(:table).permit(:attr)</code></p>\n\n<p>Ensures params are filtered with consideration for the expected<br />\ntypes of values, improving handling of params and avoiding ignorable<br />\nerrors caused by params tampering.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># If the url is altered to ?person=hacked</span>\n<span class=\"c1\"># Before</span>\n<span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:person</span><span class=\"p\">).</span><span class=\"nf\">permit</span><span class=\"p\">(</span><span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:age</span><span class=\"p\">,</span> <span class=\"ss\">pets: </span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">])</span>\n<span class=\"c1\"># raises NoMethodError, causing a 500 and potential error reporting</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">expect</span><span class=\"p\">(</span><span class=\"ss\">person: </span><span class=\"p\">[</span> <span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:age</span><span class=\"p\">,</span> <span class=\"ss\">pets: </span><span class=\"p\">[[</span><span class=\"ss\">:name</span><span class=\"p\">]]</span> <span class=\"p\">])</span>\n<span class=\"c1\"># raises ActionController::ParameterMissing, correctly returning a 400 error</span>\n</code></pre></div></div>\n\n<p>You may also notice the new double array <code>[[:name]]</code>. In order to<br />\ndeclare when a param is expected to be an array of parameter hashes,<br />\nthis new double array syntax is used to explicitly declare an array.<br />\n<code>expect</code> requires you to declare expected arrays in this way, and will<br />\nignore arrays that are passed when, for example, <code>pet: [:name]</code> is used.</p>\n\n<p>In order to preserve compatibility, <code>permit</code> does not adopt the new<br />\ndouble array syntax and is therefore more permissive about unexpected<br />\ntypes. Using <code>expect</code> everywhere is recommended.</p>\n\n<p>We suggest replacing <code>params.require(:person).permit(:name, :age)</code><br />\nwith the direct replacement <code>params.expect(person: [:name, :age])</code><br />\nto prevent external users from manipulating params to trigger 500<br />\nerrors. A 400 error will be returned instead, using public/400.html</p>\n\n<p>Usage of <code>params.require(:id)</code> should likewise be replaced with<br />\n<code>params.expect(:id)</code> which is designed to ensure that <code>params[:id]</code><br />\nis a scalar and not an array or hash, also requiring the param.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">))</span> <span class=\"c1\"># allows an array, altering behavior</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">expect</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">))</span> <span class=\"c1\"># expect only returns non-blank permitted scalars (excludes Hash, Array, nil, \"\", etc)</span>\n</code></pre></div></div>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   System Testing: Disable Chrome's search engine choice by default in system tests.\n\n    *glaszig*",
+    "project": "actionpack",
+    "date_merged": 1725657734000,
+    "author": "glaszig",
+    "sha": "950907b3d35b7fd07fe409a9fd6f65f4378a1c93",
+    "pr": "52805",
+    "merge_sha": "d2b6ae1f18bc289b85591e7a429c0b85d2bf9a52",
+    "html": "<p>System Testing: Disable Chrome’s search engine choice by default in system tests.</p>\n\n<p><em>glaszig</em></p>\n"
+  },
+  {
+    "message": "*   Fix `Request#raw_post` raising `NoMethodError` when `rack.input` is `nil`.\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1724271371000,
+    "author": "Hartley McGuire",
+    "sha": "cd3d94a48ad927b1e9567445529c0dc31424dc59",
+    "pr": "52138",
+    "merge_sha": "89f9ca77b806f6c4d58f532693ea723d970976d9",
+    "html": "<p>Fix <code>Request#raw_post</code> raising <code>NoMethodError</code> when <code>rack.input</code> is <code>nil</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1723745066000,
+    "author": "Gannon McGibbon",
+    "sha": "7d42bf68e23b8281ca47f13e93c29e6ce1b6f117",
+    "pr": "52610",
+    "merge_sha": "36f5a2003f019dc0291ea990e6b1e913eebb20cd",
+    "html": "<p>Remove <code>racc</code> dependency by manually writing <code>ActionDispatch::Journey::Scanner</code>.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1723084011000,
+    "author": "Gannon McGibbon",
+    "sha": "8632cc6a9803bc26af9f3d72fc1415816ef6a649",
+    "pr": "52525",
+    "merge_sha": "a63bef556547fd7effb1ff84e56680c05d6ae3cf",
+    "html": "<p>Speed up <code>ActionDispatch::Routing::Mapper::Scope#[]</code> by merging frame hashes.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Allow bots to ignore `allow_browser`.\n\n    *Matthew Nguyen*",
+    "project": "actionpack",
+    "date_merged": 1723048186000,
+    "author": "Matthew Nguyen",
+    "sha": "b7f2b4c18c10915475b53549c1f5ab24bc728914",
+    "pr": "52531",
+    "merge_sha": "64bb2dc496dfd8da62d656d02c6cb74a1db39478",
+    "html": "<p>Allow bots to ignore <code>allow_browser</code>.</p>\n\n<p><em>Matthew Nguyen</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate drawing routes with multiple paths to make routing faster.\n    You may use `with_options` or a loop to make drawing multiple paths easier.\n\n    ```ruby\n    # Before\n    get \"/users\", \"/other_path\", to: \"users#index\"\n\n    # After\n    get \"/users\", to: \"users#index\"\n    get \"/other_path\", to: \"users#index\"\n    ```\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1722051737000,
+    "author": "Gannon McGibbon",
+    "sha": "c40ff507b4ecf2ec84751e42e171fa1edb44f7cc",
+    "pr": "52409",
+    "merge_sha": "92d92316277ea360cd5fbd7bbba13cf3ad36a9d0",
+    "html": "<p>Deprecate drawing routes with multiple paths to make routing faster.<br />\nYou may use <code>with_options</code> or a loop to make drawing multiple paths easier.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/users\"</span><span class=\"p\">,</span> <span class=\"s2\">\"/other_path\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"users#index\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/users\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"users#index\"</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/other_path\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"users#index\"</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Make `http_cache_forever` use `immutable: true`\n\n    *Nate Matykiewicz*",
+    "project": "actionpack",
+    "date_merged": 1720289328000,
+    "author": "Nate Matykiewicz",
+    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
+    "pr": "52283",
+    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
+    "html": "<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
+  },
+  {
+    "message": "*   Add `config.action_dispatch.strict_freshness`.\n\n    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,\n    as specified by RFC 7232, Section 6.\n\n    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of\n    Rails 8.0 defaults.\n\n    *heka1024*",
+    "project": "actionpack",
+    "date_merged": 1720168066000,
+    "author": "heka1024",
+    "sha": "fc7637103a7edc723b92a1b7fec297eede0c5cb9",
+    "pr": "52274",
+    "merge_sha": "126445239fa6d31ab081414a7d6d8d50fdfcb6ce",
+    "html": "<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>\n\n<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />\nas specified by RFC 7232, Section 6.</p>\n\n<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />\nRails 8.0 defaults.</p>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   Support `immutable` directive in Cache-Control\n\n    ```ruby\n    expires_in 1.minute, public: true, immutable: true\n    # Cache-Control: public, max-age=60, immutable\n    ```\n\n    *heka1024*",
+    "project": "actionpack",
+    "date_merged": 1719433399000,
+    "author": "heka1024",
+    "sha": "d98cfde86a6461148d8dc93665868b7526532e05",
+    "pr": "52197",
+    "merge_sha": "999df686de0d129ad7ad4724b6fff94ee6d6131b",
+    "html": "<p>Support <code>immutable</code> directive in Cache-Control</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">expires_in</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">minute</span><span class=\"p\">,</span> <span class=\"ss\">public: </span><span class=\"kp\">true</span><span class=\"p\">,</span> <span class=\"ss\">immutable: </span><span class=\"kp\">true</span>\n<span class=\"c1\"># Cache-Control: public, max-age=60, immutable</span>\n</code></pre></div></div>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
+    "project": "actionpack",
+    "date_merged": 1717017523000,
+    "author": "Cyril Blaecke",
+    "sha": "6cb41bae10f813799ff85f8b2cda23cab6ae99a9",
+    "pr": "51944",
+    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
+    "html": "<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"s2\">\"'wasm-unsafe-eval'\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"ss\">:wasm_unsafe_eval</span>\n</code></pre></div></div>\n\n<p><em>Joe Haig</em></p>\n"
+  },
+  {
+    "message": "*   Add `display_capture` and `keyboard_map` in `permissions_policy`\n\n    *Cyril Blaecke*",
+    "project": "actionpack",
+    "date_merged": 1717017523000,
+    "author": "Cyril Blaecke",
+    "sha": "cba374995c6b32d30d01371292e313112ac0868e",
+    "pr": "51944",
+    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
+    "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
+  },
+  {
+    "message": "*   Add `connect` route helper.\n\n    *Samuel Williams*",
+    "project": "actionpack",
+    "date_merged": 1723656767000,
+    "author": "Samuel Williams",
+    "sha": "1c988ae869e2e520cba62a9ec2e2eeb619f47512",
+    "pr": "52169",
+    "merge_sha": "455cf48c7e0cb8bc5c35d8be88c0c6ad94ce9f62",
+    "html": "<p>Add <code>connect</code> route helper.</p>\n\n<p><em>Samuel Williams</em></p>\n"
+  },
+  {
+    "message": "*   Dispatch direct-upload events on attachment uploads\n\n    When using Action Text's rich textarea,  it's possible to attach files to the\n    editor. Previously, that action didn't dispatch any events, which made it hard\n    to react to the file uploads. For instance, if an upload failed, there was no\n    way to notify the user about it, or remove the attachment from the editor.\n\n    This commits adds new events - `direct-upload:start`, `direct-upload:progress`,\n    and `direct-upload:end` - similar to how Active Storage's direct uploads work.\n\n    *Matheus Richard*, *Brad Rees*",
+    "project": "actiontext",
+    "date_merged": 1724718059000,
+    "author": "Matheus Richard",
+    "sha": "8f0b9117b79905af7737374c15df871d80411d26",
+    "pr": "52680",
+    "merge_sha": "5a0b2fa5a3be6ffd49fa7f1c3544c1da403c9cb5",
+    "html": "<p>Dispatch direct-upload events on attachment uploads</p>\n\n<p>When using Action Text’s rich textarea,  it’s possible to attach files to the<br />\neditor. Previously, that action didn’t dispatch any events, which made it hard<br />\nto react to the file uploads. For instance, if an upload failed, there was no<br />\nway to notify the user about it, or remove the attachment from the editor.</p>\n\n<p>This commits adds new events - <code>direct-upload:start</code>, <code>direct-upload:progress</code>,<br />\nand <code>direct-upload:end</code> - similar to how Active Storage’s direct uploads work.</p>\n\n<p><em>Matheus Richard</em>, <em>Brad Rees</em></p>\n"
+  },
+  {
+    "message": "*   Add `store_if_blank` option to `has_rich_text`\n\n    Pass `store_if_blank: false` to not create `ActionText::RichText` records when saving with a blank attribute, such as from an optional form parameter.\n\n    ```ruby\n    class Message\n      has_rich_text :content, store_if_blank: false\n    end\n\n    Message.create(content: \"hi\") # creates an ActionText::RichText\n    Message.create(content: \"\") # does not create an ActionText::RichText\n    ```\n\n    *Alex Ghiculescu*",
+    "project": "actiontext",
+    "date_merged": 1724279199000,
+    "author": "Alex",
+    "sha": "a0f1d04a7d5cec7def689338d688fd71f8230aff",
+    "pr": "52573",
+    "merge_sha": "6fa5e7abda132b006b19ae6ee5cd32e07f2a9126",
+    "html": "<p>Add <code>store_if_blank</code> option to <code>has_rich_text</code></p>\n\n<p>Pass <code>store_if_blank: false</code> to not create <code>ActionText::RichText</code> records when saving with a blank attribute, such as from an optional form parameter.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Message</span>\n  <span class=\"n\">has_rich_text</span> <span class=\"ss\">:content</span><span class=\"p\">,</span> <span class=\"ss\">store_if_blank: </span><span class=\"kp\">false</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">Message</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"ss\">content: </span><span class=\"s2\">\"hi\"</span><span class=\"p\">)</span> <span class=\"c1\"># creates an ActionText::RichText</span>\n<span class=\"no\">Message</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"ss\">content: </span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># does not create an ActionText::RichText</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
+    "message": "*   Strip `content` attribute if the key is present but the value is empty\n\n    *Jeremy Green*",
+    "project": "actiontext",
+    "date_merged": 1724264813000,
+    "author": "Jeremy Green",
+    "sha": "9196a5bfe02942a5c66c8b64a173d4ea9c8c8be7",
+    "pr": "52281",
+    "merge_sha": "373dbfdf4110e2ec593fa31602e0dc8a5825cb23",
+    "html": "<p>Strip <code>content</code> attribute if the key is present but the value is empty</p>\n\n<p><em>Jeremy Green</em></p>\n"
+  },
+  {
+    "message": "*   Rename `rich_text_area` methods into `rich_textarea`\n\n    Old names are still available as aliases.\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1722446183000,
+    "author": "Sean Doyle",
+    "sha": "f9c51ec385a7b75e212954cd4b22c2da7c1d32f4",
+    "pr": "52467",
+    "merge_sha": "fa476ce275262add84d5b46bfffe078031c55cb8",
+    "html": "<p>Rename <code>rich_text_area</code> methods into <code>rich_textarea</code></p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
+    "project": "actiontext",
+    "date_merged": 1718216498000,
+    "author": "Petrik",
+    "sha": "52c21f90669ce59adf7deef85a44b6b1a46928fa",
+    "pr": "52093",
+    "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
+    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Include options when instrumenting `ActiveSupport::Cache::Store#delete` and `ActiveSupport::Cache::Store#delete_multi`.\n\n    *Adam Renberg Tamm*",
+    "project": "activesupport",
+    "date_merged": 1726335627000,
+    "author": "Adam Renberg Tamm",
+    "sha": "83fa6f80898125dfc760b46115f214a6fd779b6a",
+    "pr": "52912",
+    "merge_sha": "6e46b4205506696b18f1a9d6740a39f9cd1b0366",
+    "html": "<p>Include options when instrumenting <code>ActiveSupport::Cache::Store#delete</code> and <code>ActiveSupport::Cache::Store#delete_multi</code>.</p>\n\n<p><em>Adam Renberg Tamm</em></p>\n"
+  },
+  {
+    "message": "*   Print test names when running `rails test -v` for parallel tests.\n\n    *John Hawthorn*, *Abeid Ahmed*",
+    "project": "activesupport",
+    "date_merged": 1726266085000,
+    "author": "John Hawthorn",
+    "sha": "8b0ff4f8949b02884d582dff38927e71c179f3cd",
+    "pr": "52917",
+    "merge_sha": "cefd95bf11c0b075a31bdb64c34f6b4084c1a9ce",
+    "html": "<p>Print test names when running <code>rails test -v</code> for parallel tests.</p>\n\n<p><em>John Hawthorn</em>, <em>Abeid Ahmed</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `Benchmark.ms` core extension.\n\n    The `benchmark` gem will become bundled in Ruby 3.5\n\n    *Earlopain*",
+    "project": "activesupport",
+    "date_merged": 1726076698000,
+    "author": "Earlopain",
+    "sha": "4cdf757e2e5aaf00aa1f6b3bd4dba57269622733",
+    "pr": "52746",
+    "merge_sha": "f6d10390963cfff88588824341afe4365c0faff3",
+    "html": "<p>Deprecate <code>Benchmark.ms</code> core extension.</p>\n\n<p>The <code>benchmark</code> gem will become bundled in Ruby 3.5</p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::TimeWithZone#inspect` now uses ISO 8601 style time like `Time#inspect`\n\n    *John Hawthorn*",
+    "project": "activesupport",
+    "date_merged": 1725576352000,
+    "author": "John Hawthorn",
+    "sha": "0b12b98f222e6e17211f6fb22147370f5d6a0067",
+    "pr": "52371",
+    "merge_sha": "88dc93e2c045931ebce82af74f17a05bd62dcf53",
+    "html": "<p><code>ActiveSupport::TimeWithZone#inspect</code> now uses ISO 8601 style time like <code>Time#inspect</code></p>\n\n<p><em>John Hawthorn</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::ErrorReporter#report` now assigns a backtrace to unraised exceptions.\n\n    Previously reporting an un-raised exception would result in an error report without\n    a backtrace. Now it automatically generates one.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1724409254000,
+    "author": "Jean Boussier",
+    "sha": "b1d8cf59d9b3c51fde5dd96ceb829d36b8e28c86",
+    "pr": "52684",
+    "merge_sha": "0794abb6bb95f0904cb0a6a605ddb24863aa809e",
+    "html": "<p><code>ActiveSupport::ErrorReporter#report</code> now assigns a backtrace to unraised exceptions.</p>\n\n<p>Previously reporting an un-raised exception would result in an error report without<br />\na backtrace. Now it automatically generates one.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add `escape_html_entities` option to `ActiveSupport::JSON.encode`.\n\n    This allows for overriding the global configuration found at\n    `ActiveSupport.escape_html_entities_in_json` for specific calls to `to_json`.\n\n    This should be usable from controllers in the following manner:\n    ```ruby\n    class MyController < ApplicationController\n      def index\n        render json: { hello: \"world\" }, escape_html_entities: false\n      end\n    end\n    ```\n\n    *Nigel Baillie*",
+    "project": "activesupport",
+    "date_merged": 1723368858000,
+    "author": "Nigel Baillie",
+    "sha": "bdbc8889e219814f1dc6bf847e9b88f4312aecf0",
+    "pr": "51272",
+    "merge_sha": "8ebd0a4e1efc65ffc1d6aaa32930c7c1d921feff",
+    "html": "<p>Add <code>escape_html_entities</code> option to <code>ActiveSupport::JSON.encode</code>.</p>\n\n<p>This allows for overriding the global configuration found at<br />\n<code>ActiveSupport.escape_html_entities_in_json</code> for specific calls to <code>to_json</code>.</p>\n\n<p>This should be usable from controllers in the following manner:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">render</span> <span class=\"ss\">json: </span><span class=\"p\">{</span> <span class=\"ss\">hello: </span><span class=\"s2\">\"world\"</span> <span class=\"p\">},</span> <span class=\"ss\">escape_html_entities: </span><span class=\"kp\">false</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Nigel Baillie</em></p>\n"
+  },
+  {
+    "message": "*   Raise when using key which can't respond to `#to_sym` in `EncryptedConfiguration`.\n\n    As is the case when trying to use an Integer or Float as a key, which is unsupported.\n\n    *zzak*",
+    "project": "activesupport",
+    "date_merged": 1723367846000,
+    "author": "zzak",
+    "sha": "1571041bf5fbbfee33f6b4fa276a449221e9cc4c",
+    "pr": "51950",
+    "merge_sha": "bd24e3dd221646fb62d32ba6a9d787e46052e064",
+    "html": "<p>Raise when using key which can’t respond to <code>#to_sym</code> in <code>EncryptedConfiguration</code>.</p>\n\n<p>As is the case when trying to use an Integer or Float as a key, which is unsupported.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.\n\n    Previously adding time instances together such as `10.days.ago + 10.days.ago` or `10.days.ago.since(10.days.ago)` produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.\n\n    *Nick Schwaderer*",
+    "project": "activesupport",
+    "date_merged": 1721427926000,
+    "author": "John Hawthorn",
+    "sha": "3df676878a8a9e13f8a0cc9b44f17dada10740e5",
+    "pr": "52370",
+    "merge_sha": "e0a9ef12b39a4871d8f143dae926931b3c3a0919",
+    "html": "<p>Deprecate addition and since between two <code>Time</code> and <code>ActiveSupport::TimeWithZone</code>.</p>\n\n<p>Previously adding time instances together such as <code>10.days.ago + 10.days.ago</code> or <code>10.days.ago.since(10.days.ago)</code> produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
+  },
+  {
+    "message": "*   Support rfc2822 format for Time#to_fs & Date#to_fs.\n\n    *Akshay Birajdar*",
+    "project": "activesupport",
+    "date_merged": 1721134851000,
+    "author": "Akshay Birajdar",
+    "sha": "26575aa19c04e81ef196ff5bd97d9aa2d3ed8417",
+    "pr": "52337",
+    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
+    "html": "<p>Support rfc2822 format for Time#to_fs &amp; Date#to_fs.</p>\n\n<p><em>Akshay Birajdar</em></p>\n"
+  },
+  {
+    "message": "*   Optimize load time for `Railtie#initialize_i18n`. Filter `I18n.load_path`s passed to the file watcher to only those\n    under `Rails.root`. Previously the watcher would grab all available locales, including those in gems\n    which do not require a watcher because they won't change.\n\n    *Nick Schwaderer*",
+    "project": "activesupport",
+    "date_merged": 1720720820000,
+    "author": "Nick Schwaderer",
+    "sha": "e61704612471ae01076ff454c57164127b088d83",
+    "pr": "52271",
+    "merge_sha": "36b2dbfc1d722128c05eb6d6506c7d435ba5b55d",
+    "html": "<p>Optimize load time for <code>Railtie#initialize_i18n</code>. Filter <code>I18n.load_path</code>s passed to the file watcher to only those<br />\nunder <code>Rails.root</code>. Previously the watcher would grab all available locales, including those in gems<br />\nwhich do not require a watcher because they won’t change.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
+  },
+  {
+    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
+    "project": "activesupport",
+    "date_merged": 1718230877000,
+    "author": "Igor Depolli",
+    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
+    "pr": "52072",
+    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
+    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
+  },
+  {
+    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1717923228000,
+    "author": "Richard Böhme",
+    "sha": "38e9695c10f822caaa54e399833c346249660005",
+    "pr": "52036",
+    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
+    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add a new configuration value `:zone` for `ActiveSupport.to_time_preserves_timezone` and rename the previous `true` value to `:offset`. The new default value is `:zone`.\n\n    *Jason Kim*, *John Hawthorn*",
+    "project": "activesupport",
+    "date_merged": 1719432965000,
+    "author": "Jason Kim",
+    "sha": "9dcf17ec4c51722b5ab8146c5a714242cc0716ba",
+    "pr": "52091",
+    "merge_sha": "716e4a7d326c36fc44d4a6fcab7a21313ab3b2df",
+    "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
+  },
+  {
+    "message": "*   Align instrumentation `payload[:key]` in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.\n\n    *Frederik Erbs Spang Thomsen*",
+    "project": "activesupport",
+    "date_merged": 1724873788000,
+    "author": "Frederik Spang",
+    "sha": "2acfed936105c6df897ca53ce433774f4c242598",
+    "pr": "52736",
+    "merge_sha": "c15f1e2dc50fe18ea4fa7e09ef8be95e0c355eb4",
+    "html": "<p>Align instrumentation <code>payload[:key]</code> in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.</p>\n\n<p><em>Frederik Erbs Spang Thomsen</em></p>\n"
+  },
+  {
+    "message": "*   Fix `travel_to` to set usec 0 when `with_usec` is `false` and the given argument String or DateTime.\n\n    *mopp*",
+    "project": "activesupport",
+    "date_merged": 1726072174000,
+    "author": "mopp",
+    "sha": "839ad34305908d14057d96d1375a837815ca87d7",
+    "pr": "52880",
+    "merge_sha": "446daa07462ee7223321bc8602c03b5f1ad0d7cf",
+    "html": "<p>Fix <code>travel_to</code> to set usec 0 when <code>with_usec</code> is <code>false</code> and the given argument String or DateTime.</p>\n\n<p><em>mopp</em></p>\n"
+  },
+  {
+    "message": "*   The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from\n    the `classic` autoloader to Zeitwerk has been deleted.\n\n    The last version of this guide can be found\n    [here](https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html),\n    in case you need it.\n\n    *Petrik de Heus*",
+    "project": "guides",
+    "date_merged": 1718873221000,
+    "author": "Xavier Noria",
+    "sha": "b44820276832200c4d672a5d35cd92aa5797ec0c",
+    "pr": "52165",
+    "merge_sha": "242216803ee73f528b0a74c6bdb367e5b98d8f83",
+    "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Add a default token generator for password reset tokens when using `has_secure_password`.\n\n    ```ruby\n    class User < ApplicationRecord\n      has_secure_password\n    end\n\n    user = User.create!(name: \"david\", password: \"123\", password_confirmation: \"123\")\n    token = user.password_reset_token\n    User.find_by_password_reset_token(token) # returns user\n\n    # 16 minutes later...\n    User.find_by_password_reset_token(token) # returns nil\n\n    # raises ActiveSupport::MessageVerifier::InvalidSignature since the token is expired\n    User.find_by_password_reset_token!(token)\n    ```\n\n    *DHH*",
     "project": "activemodel",
     "date_merged": 1722602063000,
@@ -68,16 +658,6 @@
     "pr": "52432",
     "merge_sha": "c01ee683aa700b109f704a5b6611107fe2dc5476",
     "html": "<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Add an `identifier` to the event payload for the ActiveSupport::Notification `transmit_subscription_confirmation.action_cable` and `transmit_subscription_rejection.action_cable`.\n\n    *Keith Schacht*",
-    "project": "actioncable",
-    "date_merged": 1722462576000,
-    "author": "Keith Schacht",
-    "sha": "52189d25d6ebca22e9e530cf31e49842e85ff7dd",
-    "pr": "52421",
-    "merge_sha": "bcaac3e8c460e44af67b6a84899f024ebe1c8552",
-    "html": "<p>Add an <code>identifier</code> to the event payload for the ActiveSupport::Notification <code>transmit_subscription_confirmation.action_cable</code> and <code>transmit_subscription_rejection.action_cable</code>.</p>\n\n<p><em>Keith Schacht</em></p>\n"
   },
   {
     "message": "*   Allow `drop_table` to accept an array of table names.\n\n    This will let you to drop multiple tables in a single call.\n\n    ```ruby\n    ActiveRecord::Base.connection.drop_table(:users, :posts)\n    ```\n\n    *Gabriel Sobrinho*",
@@ -448,585 +1028,5 @@
     "pr": "51878",
     "merge_sha": "2281edf99e3583b1ff7ae636906f681d80dab603",
     "html": "<p>Add public method for checking if a table is ignored by the schema cache.</p>\n\n<p>Previously, an application would need to reimplement <code>ignored_table?</code> from the schema cache class to check if a table was set to be ignored. This adds a public method to support this and updates the schema cache to use that directly.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"developers\"</span><span class=\"p\">]</span>\n<span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">schema_cache_ignored_table?</span><span class=\"p\">(</span><span class=\"s2\">\"developers\"</span><span class=\"p\">)</span>\n<span class=\"o\">=&gt;</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
-  },
-  {
-    "message": "*   Do not include redis by default in generated Dev Containers.\n\n    Now that applications use the Solid Queue and Solid Cache gems by default, we do not need to include redis\n    in the Dev Container. We will only include redis if `--skip-solid` is used when generating an app that uses\n    Active Job or Action Cable.\n\n    When generating a Dev Container for an existing app, we will not include redis if either of the solid gems\n    are in use.\n\n    *Andrew Novoselac*",
-    "project": "railties",
-    "date_merged": 1726523290000,
-    "author": "Andrew Novoselac",
-    "sha": "cc94545147d5e32afdc504543a25d3097850826f",
-    "pr": "52934",
-    "merge_sha": "ea3ca6ba0f85db11d0bbb52f2169b310e434381c",
-    "html": "<p>Do not include redis by default in generated Dev Containers.</p>\n\n<p>Now that applications use the Solid Queue and Solid Cache gems by default, we do not need to include redis<br />\nin the Dev Container. We will only include redis if <code>--skip-solid</code> is used when generating an app that uses<br />\nActive Job or Action Cable.</p>\n\n<p>When generating a Dev Container for an existing app, we will not include redis if either of the solid gems<br />\nare in use.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
-  },
-  {
-    "message": "*   Use [Solid Cable](https://github.com/rails/solid_cable) as the default Action Cable adapter in production, configured as a separate queue database in config/database.yml. It keeps messages in a table and continuously polls for updates. This makes it possible to drop the common dependency on Redis, if it isn't needed for any other purpose. Despite polling, the performance of Solid Cable is comparable to Redis in most situations. And in all circumstances, it makes it easier to deploy Rails when Redis is no longer a required dependency for Action Cable functionality.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1726245826000,
-    "author": "Vipul A M",
-    "sha": "845ac2beec1dc4f7fb3efdc09e540247c27b6f2e",
-    "pr": "52911",
-    "merge_sha": "79f34b97129669e6769423066e15cdb3c55246cb",
-    "html": "<p>Use <a href=\"https://github.com/rails/solid_cable\">Solid Cable</a> as the default Action Cable adapter in production, configured as a separate queue database in config/database.yml. It keeps messages in a table and continuously polls for updates. This makes it possible to drop the common dependency on Redis, if it isn’t needed for any other purpose. Despite polling, the performance of Solid Cable is comparable to Redis in most situations. And in all circumstances, it makes it easier to deploy Rails when Redis is no longer a required dependency for Action Cable functionality.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Use [Solid Queue](https://github.com/rails/solid_queue) as the default Active Job backend in production, configured as a separate queue database in config/database.yml. In a single-server deployment, it'll run as a Puma plugin. This is configured in `config/deploy.yml` and can easily be changed to use a dedicated jobs machine.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1725629364000,
-    "author": "Wojciech Wnętrzak",
-    "sha": "8902ac32c938bc7e695ec7c85089ff378a5b812f",
-    "pr": "52813",
-    "merge_sha": "5385580ac82797167382ffcd79095a4bb973c666",
-    "html": "<p>Use <a href=\"https://github.com/rails/solid_queue\">Solid Queue</a> as the default Active Job backend in production, configured as a separate queue database in config/database.yml. In a single-server deployment, it’ll run as a Puma plugin. This is configured in <code>config/deploy.yml</code> and can easily be changed to use a dedicated jobs machine.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Use [Solid Cache](https://github.com/rails/solid_cache) as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1725511719000,
-    "author": "David Heinemeier Hansson",
-    "sha": "28780de1d7fa22c452d479fb9fe4c70858833e0b",
-    "pr": "52790",
-    "merge_sha": "f698d735bfd237a6e36dc56b781bb42367bac503",
-    "html": "<p>Use <a href=\"https://github.com/rails/solid_cache\">Solid Cache</a> as the default Rails.cache backend in production, configured as a separate cache database in config/database.yml.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Add Rails::Rack::SilenceRequest middleware and use it via `config.silence_healthcheck_path = path`\n    to silence requests to \"/up\". This prevents the Kamal-required health checks from clogging up\n    the production logs.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1725460499000,
-    "author": "David Heinemeier Hansson",
-    "sha": "66a9d113a439e3eb17b3b028dd838b3320a9784d",
-    "pr": "52789",
-    "merge_sha": "bd2b60611460fb68dc40fad2f6bee7344e6d16dd",
-    "html": "<p>Add Rails::Rack::SilenceRequest middleware and use it via <code>config.silence_healthcheck_path = path</code><br />\nto silence requests to “/up”. This prevents the Kamal-required health checks from clogging up<br />\nthe production logs.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Introduce `mariadb-mysql` and `mariadb-trilogy` database options for `rails new`\n\n    When used with the `--devcontainer` flag, these options will use `mariadb` as the database for the\n    Dev Container. The original `mysql` and `trilogy` options will use `mysql`. Users who are not\n    generating a Dev Container do not need to use the new options.\n\n    *Andrew Novoselac*",
-    "project": "railties",
-    "date_merged": 1724790680000,
-    "author": "Andrew Novoselac",
-    "sha": "2202ddf476aeff470dadbfe992aa224021b66933",
-    "pr": "52266",
-    "merge_sha": "f0fd6ab1259b3bacf0e7e53f3a9b1757a327d822",
-    "html": "<p>Introduce <code>mariadb-mysql</code> and <code>mariadb-trilogy</code> database options for <code>rails new</code></p>\n\n<p>When used with the <code>--devcontainer</code> flag, these options will use <code>mariadb</code> as the database for the<br />\nDev Container. The original <code>mysql</code> and <code>trilogy</code> options will use <code>mysql</code>. Users who are not<br />\ngenerating a Dev Container do not need to use the new options.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate `::STATS_DIRECTORIES`.\n\n    The global constant `STATS_DIRECTORIES` has been deprecated in favor of\n    `Rails::CodeStatistics.register_directory`.\n\n    Add extra directories with `Rails::CodeStatistics.register_directory(label, path)`:\n\n    ```ruby\n    require \"rails/code_statistics\"\n    Rails::CodeStatistics.register_directory('My Directory', 'path/to/dir')\n    ```\n\n    *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1724447448000,
-    "author": "Petrik",
-    "sha": "271467b013eff6a7b7811191c2f0e302c13a0b34",
-    "pr": "52226",
-    "merge_sha": "667a2063ed2772b1a5d385a0911679749b7f2a6e",
-    "html": "<p>Deprecate <code>::STATS_DIRECTORIES</code>.</p>\n\n<p>The global constant <code>STATS_DIRECTORIES</code> has been deprecated in favor of<br />\n<code>Rails::CodeStatistics.register_directory</code>.</p>\n\n<p>Add extra directories with <code>Rails::CodeStatistics.register_directory(label, path)</code>:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">require</span> <span class=\"s2\">\"rails/code_statistics\"</span>\n<span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">CodeStatistics</span><span class=\"p\">.</span><span class=\"nf\">register_directory</span><span class=\"p\">(</span><span class=\"s1\">'My Directory'</span><span class=\"p\">,</span> <span class=\"s1\">'path/to/dir'</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Enable query log tags by default on development env\n\n    This can be used to trace troublesome SQL statements back to the application\n    code that generated these statements. It is also useful when using multiple\n    databases because the query logs can identify which database is being used.\n\n    *Matheus Richard*",
-    "project": "railties",
-    "date_merged": 1723367513000,
-    "author": "Matheus Richard",
-    "sha": "e29ad0bcf7620a6a776086628f755d9e5c7d8f2d",
-    "pr": "51342",
-    "merge_sha": "c9c304769f7f9886ab41a11af3c11961ebe18940",
-    "html": "<p>Enable query log tags by default on development env</p>\n\n<p>This can be used to trace troublesome SQL statements back to the application<br />\ncode that generated these statements. It is also useful when using multiple<br />\ndatabases because the query logs can identify which database is being used.</p>\n\n<p><em>Matheus Richard</em></p>\n"
-  },
-  {
-    "message": "*   Defer route drawing to the first request, or when url_helpers are called\n\n    Executes the first routes reload in middleware, or when a route set's\n    url_helpers receives a route call / asked if it responds to a route.\n    Previously, this was executed unconditionally on boot, which can\n    slow down boot time unnecessarily for larger apps with lots of routes.\n\n    Environments like production that have `config.eager_load = true` will\n    continue to eagerly load routes on boot.\n\n    *Gannon McGibbon*",
-    "project": "railties",
-    "date_merged": 1723185863000,
-    "author": "Gannon McGibbon",
-    "sha": "cdb283566c5d5251e2f7e663e655e57e8e10abbc",
-    "pr": "52353",
-    "merge_sha": "9f80efc79119037fc4421d06e94a0d7e076876a4",
-    "html": "<p>Defer route drawing to the first request, or when url_helpers are called</p>\n\n<p>Executes the first routes reload in middleware, or when a route set’s<br />\nurl_helpers receives a route call / asked if it responds to a route.<br />\nPreviously, this was executed unconditionally on boot, which can<br />\nslow down boot time unnecessarily for larger apps with lots of routes.</p>\n\n<p>Environments like production that have <code>config.eager_load = true</code> will<br />\ncontinue to eagerly load routes on boot.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Generate form helpers to use `textarea*` methods instead of `text_area*` methods\n\n    *Sean Doyle*",
-    "project": "railties",
-    "date_merged": 1722446183000,
-    "author": "Sean Doyle",
-    "sha": "f9c51ec385a7b75e212954cd4b22c2da7c1d32f4",
-    "pr": "52467",
-    "merge_sha": "fa476ce275262add84d5b46bfffe078031c55cb8",
-    "html": "<p>Generate form helpers to use <code>textarea*</code> methods instead of <code>text_area*</code> methods</p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.\n\n    Generate with...\n\n    ```\n    bin/rails generate authentication\n    ```\n\n    Generated files:\n\n    ```\n    app/models/current.rb\n    app/models/user.rb\n    app/models/session.rb\n    app/controllers/sessions_controller.rb\n    app/controllers/passwords_controller.rb\n    app/mailers/passwords_mailer.rb\n    app/views/sessions/new.html.erb\n    app/views/passwords/new.html.erb\n    app/views/passwords/edit.html.erb\n    app/views/passwords_mailer/reset.html.erb\n    app/views/passwords_mailer/reset.text.erb\n    db/migrate/xxxxxxx_create_users.rb\n    db/migrate/xxxxxxx_create_sessions.rb\n    test/mailers/previews/passwords_mailer_preview.rb\n    ```\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1722602063000,
-    "author": "David Heinemeier Hansson",
-    "sha": "79662081113c7051d29a2b10e60c07875ca48cf4",
-    "pr": "52468",
-    "merge_sha": "a0a894cecb3f0ceb3659cdcee73543f31ccf3d78",
-    "html": "<p>Add authentication generator to give a basic start to an authentication system using database-tracked sessions and password reset.</p>\n\n<p>Generate with…</p>\n\n<pre><code>bin/rails generate authentication\n</code></pre>\n\n<p>Generated files:</p>\n\n<pre><code>app/models/current.rb\napp/models/user.rb\napp/models/session.rb\napp/controllers/sessions_controller.rb\napp/controllers/passwords_controller.rb\napp/mailers/passwords_mailer.rb\napp/views/sessions/new.html.erb\napp/views/passwords/new.html.erb\napp/views/passwords/edit.html.erb\napp/views/passwords_mailer/reset.html.erb\napp/views/passwords_mailer/reset.text.erb\ndb/migrate/xxxxxxx_create_users.rb\ndb/migrate/xxxxxxx_create_sessions.rb\ntest/mailers/previews/passwords_mailer_preview.rb\n</code></pre>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Add not-null type modifier to migration attributes.\n\n    Generating with...\n\n    ```\n    bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!\n    ```\n\n    Produces:\n\n    ```ruby\n    class CreateUsers < ActiveRecord::Migration[8.0]\n      def change\n        create_table :users do |t|\n          t.string :email_address, null: false\n          t.string :password_digest, null: false\n\n          t.timestamps\n        end\n        add_index :users, :email_address, unique: true\n      end\n    end\n    ```\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1721134851000,
-    "author": "David Heinemeier Hansson",
-    "sha": "2f92b1c94e2a080679ab0ad45abd0bdec24a5349",
-    "pr": "52327",
-    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
-    "html": "<p>Add not-null type modifier to migration attributes.</p>\n\n<p>Generating with…</p>\n\n<pre><code>bin/rails generate migration CreateUsers email_address:string!:uniq password_digest:string!\n</code></pre>\n\n<p>Produces:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">CreateUsers</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Migration</span><span class=\"p\">[</span><span class=\"mf\">8.0</span><span class=\"p\">]</span>\n  <span class=\"k\">def</span> <span class=\"nf\">change</span>\n    <span class=\"n\">create_table</span> <span class=\"ss\">:users</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:email_address</span><span class=\"p\">,</span> <span class=\"ss\">null: </span><span class=\"kp\">false</span>\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:password_digest</span><span class=\"p\">,</span> <span class=\"ss\">null: </span><span class=\"kp\">false</span>\n\n      <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">timestamps</span>\n    <span class=\"k\">end</span>\n    <span class=\"n\">add_index</span> <span class=\"ss\">:users</span><span class=\"p\">,</span> <span class=\"ss\">:email_address</span><span class=\"p\">,</span> <span class=\"ss\">unique: </span><span class=\"kp\">true</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Add a `script` folder to applications, and a scripts generator.\n\n    The new `script` folder is meant to hold one-off or general purpose scripts,\n    such as data migration scripts, cleanup scripts, etc.\n\n    A new script generator allows you to create such scripts:\n\n    ```\n    bin/rails generate script my_script\n    bin/rails generate script data/backfill\n    ```\n\n    You can run the generated script using:\n\n    ```\n    bundle exec ruby script/my_script.rb\n    bundle exec ruby script/data/backfill.rb\n    ```\n\n    *Jerome Dalbert*, *Haroon Ahmed*",
-    "project": "railties",
-    "date_merged": 1722367516000,
-    "author": "Xavier Noria",
-    "sha": "a71ec5634387b33fa3c103eba30b317dca76dcac",
-    "pr": "52454",
-    "merge_sha": "9262ca443a2d1f1287e02f175128a080dda0121b",
-    "html": "<p>Add a <code>script</code> folder to applications, and a scripts generator.</p>\n\n<p>The new <code>script</code> folder is meant to hold one-off or general purpose scripts,<br />\nsuch as data migration scripts, cleanup scripts, etc.</p>\n\n<p>A new script generator allows you to create such scripts:</p>\n\n<pre><code>bin/rails generate script my_script\nbin/rails generate script data/backfill\n</code></pre>\n\n<p>You can run the generated script using:</p>\n\n<pre><code>bundle exec ruby script/my_script.rb\nbundle exec ruby script/data/backfill.rb\n</code></pre>\n\n<p><em>Jerome Dalbert</em>, <em>Haroon Ahmed</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate `bin/rake stats` in favor of `bin/rails stats`.\n\n    *Juan Vásquez*",
-    "project": "railties",
-    "date_merged": 1719643925000,
-    "author": "Juan Vásquez",
-    "sha": "3d737cd8ef0b4cfd89df7cafc17315fe1aa88319",
-    "pr": "52231",
-    "merge_sha": "21280a16164d10cdcc02356787fca46940f27c16",
-    "html": "<p>Deprecate <code>bin/rake stats</code> in favor of <code>bin/rails stats</code>.</p>\n\n<p><em>Juan Vásquez</em></p>\n"
-  },
-  {
-    "message": "*   Add internal page `/rails/info/notes`, that displays the same information as `bin/rails notes`.\n\n    *Deepak Mahakale*",
-    "project": "railties",
-    "date_merged": 1718299349000,
-    "author": "Deepak Mahakale",
-    "sha": "306d99f8ca7b1dc9f1738b3c8e96061574ac506f",
-    "pr": "52115",
-    "merge_sha": "638f6450977db3be016a954d2685c66309ac8728",
-    "html": "<p>Add internal page <code>/rails/info/notes</code>, that displays the same information as <code>bin/rails notes</code>.</p>\n\n<p><em>Deepak Mahakale</em></p>\n"
-  },
-  {
-    "message": "*   Add Rubocop and GitHub Actions to plugin generator.\n    This can be skipped using --skip-rubocop and --skip-ci.\n\n    *Chris Oliver*",
-    "project": "railties",
-    "date_merged": 1716487738000,
-    "author": "Chris Oliver",
-    "sha": "7594a73942c6b4e64c50d17b4b0c9867b9fe1440",
-    "pr": "51822",
-    "merge_sha": "c906f75282085bf67b807f4f7b420c6b5019f725",
-    "html": "<p>Add Rubocop and GitHub Actions to plugin generator.<br />\nThis can be skipped using –skip-rubocop and –skip-ci.</p>\n\n<p><em>Chris Oliver</em></p>\n"
-  },
-  {
-    "message": "*   Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.\n    This can be skipped using --skip-kamal. See more: https://kamal-deploy.org/\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1715647059000,
-    "author": "David Heinemeier Hansson",
-    "sha": "bee3fa41ca9137b9e704ea3ab1bdbcfd3c85446b",
-    "pr": "51798",
-    "merge_sha": "2e7dc14943d285626a9e12ad0d1750d3609185be",
-    "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Remove `sucker_punch` as an adapter option [since author himself recommends using AJ's own AsyncAdapter](https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq).\n    If you're using this adapter, change to `adapter: async` for the same functionality.\n\n    *Dino Maric*",
-    "project": "activejob",
-    "date_merged": 1726412949000,
-    "author": "Dino Maric",
-    "sha": "6d1252cf3e65a7720aad5511ff719b44e49fd2a3",
-    "pr": "52935",
-    "merge_sha": "81ad0351819322b9842f05a550688cad54e54176",
-    "html": "<p>Remove <code>sucker_punch</code> as an adapter option <a href=\"https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq\">since author himself recommends using AJ’s own AsyncAdapter</a>.<br />\nIf you’re using this adapter, change to <code>adapter: async</code> for the same functionality.</p>\n\n<p><em>Dino Maric</em></p>\n"
-  },
-  {
-    "message": "*   Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.\n\n    *heka1024*",
-    "project": "activejob",
-    "date_merged": 1722602063000,
-    "author": "heka1024",
-    "sha": "119411a7e7a198f9e3a14d7f1b497a2a41a1ed5f",
-    "pr": "52468",
-    "merge_sha": "a0a894cecb3f0ceb3659cdcee73543f31ccf3d78",
-    "html": "<p>Use <code>RAILS_MAX_THREADS</code> in <code>ActiveJob::AsyncAdapter</code>. If it is not set, use 5 as default.</p>\n\n<p><em>heka1024</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate `ActiveStorage::Service::AzureStorageService`.\n\n    *zzak*",
-    "project": "activestorage",
-    "date_merged": 1726070340000,
-    "author": "zzak",
-    "sha": "4dae45c58e142a96906d69772f586275076ac039",
-    "pr": "52863",
-    "merge_sha": "9356db3d4b75e445f6b95c2e7f9d7a8ea04dc0b5",
-    "html": "<p>Deprecate <code>ActiveStorage::Service::AzureStorageService</code>.</p>\n\n<p><em>zzak</em></p>\n"
-  },
-  {
-    "message": "*   Improve `ActiveStorage::Filename#sanitized` method to handle special characters more effectively.\n    Replace the characters `\"*?<>` with `-` if they exist in the Filename to match the Filename convention of Win OS.\n\n    *Luong Viet Dung(Martin)*",
-    "project": "activestorage",
-    "date_merged": 1722882513000,
-    "author": "Martin(Luong Viet Dung)",
-    "sha": "0d5bbb65a15ff1f70b4cb27c63e502f73ccd78ae",
-    "pr": "52496",
-    "merge_sha": "25f86e2f8bb845603df4a3a6497682b416076420",
-    "html": "<p>Improve <code>ActiveStorage::Filename#sanitized</code> method to handle special characters more effectively.<br />\nReplace the characters <code>\"*?&lt;&gt;</code> with <code>-</code> if they exist in the Filename to match the Filename convention of Win OS.</p>\n\n<p><em>Luong Viet Dung(Martin)</em></p>\n"
-  },
-  {
-    "message": "*   Improve InvariableError, UnpreviewableError and UnrepresentableError message.\n\n    Include Blob ID and content_type in the messages.\n\n    *Petrik de Heus*",
-    "project": "activestorage",
-    "date_merged": 1722335759000,
-    "author": "Petrik",
-    "sha": "240cbd9ca50ff9c8ce891b4c3669473b645cda21",
-    "pr": "52193",
-    "merge_sha": "2038c9d46ab035de31d7a9968b7aa22297b2618a",
-    "html": "<p>Improve InvariableError, UnpreviewableError and UnrepresentableError message.</p>\n\n<p>Include Blob ID and content_type in the messages.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Mark proxied files as `immutable` in their Cache-Control header\n\n    *Nate Matykiewicz*",
-    "project": "activestorage",
-    "date_merged": 1720289328000,
-    "author": "Nate Matykiewicz",
-    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
-    "pr": "52283",
-    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
-    "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
-  },
-  {
-    "message": "*   Update `ActionController::Live` to use a thread-pool to reuse threads across requests.\n\n    *Adam Renberg Tamm*",
-    "project": "actionpack",
-    "date_merged": 1726526378000,
-    "author": "Adam Renberg Tamm",
-    "sha": "5d08107f2a652b524faade6f589104f16a7c3467",
-    "pr": "52731",
-    "merge_sha": "d30c9c114865011b7d961d79d2c61caf27b272a0",
-    "html": "<p>Update <code>ActionController::Live</code> to use a thread-pool to reuse threads across requests.</p>\n\n<p><em>Adam Renberg Tamm</em></p>\n"
-  },
-  {
-    "message": "*   Introduce safer, more explicit params handling method with `params#expect` such that\n    `params.expect(table: [ :attr ])` replaces `params.require(:table).permit(:attr)`\n\n    Ensures params are filtered with consideration for the expected\n    types of values, improving handling of params and avoiding ignorable\n    errors caused by params tampering.\n\n    ```ruby\n    # If the url is altered to ?person=hacked\n    # Before\n    params.require(:person).permit(:name, :age, pets: [:name])\n    # raises NoMethodError, causing a 500 and potential error reporting\n\n    # After\n    params.expect(person: [ :name, :age, pets: [[:name]] ])\n    # raises ActionController::ParameterMissing, correctly returning a 400 error\n    ```\n\n    You may also notice the new double array `[[:name]]`. In order to\n    declare when a param is expected to be an array of parameter hashes,\n    this new double array syntax is used to explicitly declare an array.\n    `expect` requires you to declare expected arrays in this way, and will\n    ignore arrays that are passed when, for example, `pet: [:name]` is used.\n\n    In order to preserve compatibility, `permit` does not adopt the new\n    double array syntax and is therefore more permissive about unexpected\n    types. Using `expect` everywhere is recommended.\n\n    We suggest replacing `params.require(:person).permit(:name, :age)`\n    with the direct replacement `params.expect(person: [:name, :age])`\n    to prevent external users from manipulating params to trigger 500\n    errors. A 400 error will be returned instead, using public/400.html\n\n    Usage of `params.require(:id)` should likewise be replaced with\n    `params.expect(:id)` which is designed to ensure that `params[:id]`\n    is a scalar and not an array or hash, also requiring the param.\n\n    ```ruby\n    # Before\n    User.find(params.require(:id)) # allows an array, altering behavior\n\n    # After\n    User.find(params.expect(:id)) # expect only returns non-blank permitted scalars (excludes Hash, Array, nil, \"\", etc)\n    ```\n\n    *Martin Emde*",
-    "project": "actionpack",
-    "date_merged": 1725870391000,
-    "author": "Martin Emde",
-    "sha": "e1d58cfd05ae1cc0bfc1006b7ce973a7730831df",
-    "pr": "51674",
-    "merge_sha": "b148081117d9157b583cac3c87d7ef2e03fe8d89",
-    "html": "<p>Introduce safer, more explicit params handling method with <code>params#expect</code> such that<br />\n<code>params.expect(table: [ :attr ])</code> replaces <code>params.require(:table).permit(:attr)</code></p>\n\n<p>Ensures params are filtered with consideration for the expected<br />\ntypes of values, improving handling of params and avoiding ignorable<br />\nerrors caused by params tampering.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># If the url is altered to ?person=hacked</span>\n<span class=\"c1\"># Before</span>\n<span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:person</span><span class=\"p\">).</span><span class=\"nf\">permit</span><span class=\"p\">(</span><span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:age</span><span class=\"p\">,</span> <span class=\"ss\">pets: </span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">])</span>\n<span class=\"c1\"># raises NoMethodError, causing a 500 and potential error reporting</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">expect</span><span class=\"p\">(</span><span class=\"ss\">person: </span><span class=\"p\">[</span> <span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:age</span><span class=\"p\">,</span> <span class=\"ss\">pets: </span><span class=\"p\">[[</span><span class=\"ss\">:name</span><span class=\"p\">]]</span> <span class=\"p\">])</span>\n<span class=\"c1\"># raises ActionController::ParameterMissing, correctly returning a 400 error</span>\n</code></pre></div></div>\n\n<p>You may also notice the new double array <code>[[:name]]</code>. In order to<br />\ndeclare when a param is expected to be an array of parameter hashes,<br />\nthis new double array syntax is used to explicitly declare an array.<br />\n<code>expect</code> requires you to declare expected arrays in this way, and will<br />\nignore arrays that are passed when, for example, <code>pet: [:name]</code> is used.</p>\n\n<p>In order to preserve compatibility, <code>permit</code> does not adopt the new<br />\ndouble array syntax and is therefore more permissive about unexpected<br />\ntypes. Using <code>expect</code> everywhere is recommended.</p>\n\n<p>We suggest replacing <code>params.require(:person).permit(:name, :age)</code><br />\nwith the direct replacement <code>params.expect(person: [:name, :age])</code><br />\nto prevent external users from manipulating params to trigger 500<br />\nerrors. A 400 error will be returned instead, using public/400.html</p>\n\n<p>Usage of <code>params.require(:id)</code> should likewise be replaced with<br />\n<code>params.expect(:id)</code> which is designed to ensure that <code>params[:id]</code><br />\nis a scalar and not an array or hash, also requiring the param.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">))</span> <span class=\"c1\"># allows an array, altering behavior</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">expect</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">))</span> <span class=\"c1\"># expect only returns non-blank permitted scalars (excludes Hash, Array, nil, \"\", etc)</span>\n</code></pre></div></div>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   System Testing: Disable Chrome's search engine choice by default in system tests.\n\n    *glaszig*",
-    "project": "actionpack",
-    "date_merged": 1725657734000,
-    "author": "glaszig",
-    "sha": "950907b3d35b7fd07fe409a9fd6f65f4378a1c93",
-    "pr": "52805",
-    "merge_sha": "d2b6ae1f18bc289b85591e7a429c0b85d2bf9a52",
-    "html": "<p>System Testing: Disable Chrome’s search engine choice by default in system tests.</p>\n\n<p><em>glaszig</em></p>\n"
-  },
-  {
-    "message": "*   Fix `Request#raw_post` raising `NoMethodError` when `rack.input` is `nil`.\n\n    *Hartley McGuire*",
-    "project": "actionpack",
-    "date_merged": 1724271371000,
-    "author": "Hartley McGuire",
-    "sha": "cd3d94a48ad927b1e9567445529c0dc31424dc59",
-    "pr": "52138",
-    "merge_sha": "89f9ca77b806f6c4d58f532693ea723d970976d9",
-    "html": "<p>Fix <code>Request#raw_post</code> raising <code>NoMethodError</code> when <code>rack.input</code> is <code>nil</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
-  },
-  {
-    "message": "*   Remove `racc` dependency by manually writing `ActionDispatch::Journey::Scanner`.\n\n    *Gannon McGibbon*",
-    "project": "actionpack",
-    "date_merged": 1723745066000,
-    "author": "Gannon McGibbon",
-    "sha": "7d42bf68e23b8281ca47f13e93c29e6ce1b6f117",
-    "pr": "52610",
-    "merge_sha": "36f5a2003f019dc0291ea990e6b1e913eebb20cd",
-    "html": "<p>Remove <code>racc</code> dependency by manually writing <code>ActionDispatch::Journey::Scanner</code>.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Speed up `ActionDispatch::Routing::Mapper::Scope#[]` by merging frame hashes.\n\n    *Gannon McGibbon*",
-    "project": "actionpack",
-    "date_merged": 1723084011000,
-    "author": "Gannon McGibbon",
-    "sha": "8632cc6a9803bc26af9f3d72fc1415816ef6a649",
-    "pr": "52525",
-    "merge_sha": "a63bef556547fd7effb1ff84e56680c05d6ae3cf",
-    "html": "<p>Speed up <code>ActionDispatch::Routing::Mapper::Scope#[]</code> by merging frame hashes.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Allow bots to ignore `allow_browser`.\n\n    *Matthew Nguyen*",
-    "project": "actionpack",
-    "date_merged": 1723048186000,
-    "author": "Matthew Nguyen",
-    "sha": "b7f2b4c18c10915475b53549c1f5ab24bc728914",
-    "pr": "52531",
-    "merge_sha": "64bb2dc496dfd8da62d656d02c6cb74a1db39478",
-    "html": "<p>Allow bots to ignore <code>allow_browser</code>.</p>\n\n<p><em>Matthew Nguyen</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate drawing routes with multiple paths to make routing faster.\n    You may use `with_options` or a loop to make drawing multiple paths easier.\n\n    ```ruby\n    # Before\n    get \"/users\", \"/other_path\", to: \"users#index\"\n\n    # After\n    get \"/users\", to: \"users#index\"\n    get \"/other_path\", to: \"users#index\"\n    ```\n\n    *Gannon McGibbon*",
-    "project": "actionpack",
-    "date_merged": 1722051737000,
-    "author": "Gannon McGibbon",
-    "sha": "c40ff507b4ecf2ec84751e42e171fa1edb44f7cc",
-    "pr": "52409",
-    "merge_sha": "92d92316277ea360cd5fbd7bbba13cf3ad36a9d0",
-    "html": "<p>Deprecate drawing routes with multiple paths to make routing faster.<br />\nYou may use <code>with_options</code> or a loop to make drawing multiple paths easier.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/users\"</span><span class=\"p\">,</span> <span class=\"s2\">\"/other_path\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"users#index\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/users\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"users#index\"</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"/other_path\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"users#index\"</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Make `http_cache_forever` use `immutable: true`\n\n    *Nate Matykiewicz*",
-    "project": "actionpack",
-    "date_merged": 1720289328000,
-    "author": "Nate Matykiewicz",
-    "sha": "78ad54569bd03b253f5623cf576abed1527cd59e",
-    "pr": "52283",
-    "merge_sha": "cacf96ecd053f0a3d64c7bf478dac63f98e6aa6d",
-    "html": "<p>Make <code>http_cache_forever</code> use <code>immutable: true</code></p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
-  },
-  {
-    "message": "*   Add `config.action_dispatch.strict_freshness`.\n\n    When set to `true`, the `ETag` header takes precedence over the `Last-Modified` header when both are present,\n    as specified by RFC 7232, Section 6.\n\n    Defaults to `false` to maintain compatibility with previous versions of Rails, but is enabled as part of\n    Rails 8.0 defaults.\n\n    *heka1024*",
-    "project": "actionpack",
-    "date_merged": 1720168066000,
-    "author": "heka1024",
-    "sha": "fc7637103a7edc723b92a1b7fec297eede0c5cb9",
-    "pr": "52274",
-    "merge_sha": "126445239fa6d31ab081414a7d6d8d50fdfcb6ce",
-    "html": "<p>Add <code>config.action_dispatch.strict_freshness</code>.</p>\n\n<p>When set to <code>true</code>, the <code>ETag</code> header takes precedence over the <code>Last-Modified</code> header when both are present,<br />\nas specified by RFC 7232, Section 6.</p>\n\n<p>Defaults to <code>false</code> to maintain compatibility with previous versions of Rails, but is enabled as part of<br />\nRails 8.0 defaults.</p>\n\n<p><em>heka1024</em></p>\n"
-  },
-  {
-    "message": "*   Support `immutable` directive in Cache-Control\n\n    ```ruby\n    expires_in 1.minute, public: true, immutable: true\n    # Cache-Control: public, max-age=60, immutable\n    ```\n\n    *heka1024*",
-    "project": "actionpack",
-    "date_merged": 1719433399000,
-    "author": "heka1024",
-    "sha": "d98cfde86a6461148d8dc93665868b7526532e05",
-    "pr": "52197",
-    "merge_sha": "999df686de0d129ad7ad4724b6fff94ee6d6131b",
-    "html": "<p>Support <code>immutable</code> directive in Cache-Control</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">expires_in</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">minute</span><span class=\"p\">,</span> <span class=\"ss\">public: </span><span class=\"kp\">true</span><span class=\"p\">,</span> <span class=\"ss\">immutable: </span><span class=\"kp\">true</span>\n<span class=\"c1\"># Cache-Control: public, max-age=60, immutable</span>\n</code></pre></div></div>\n\n<p><em>heka1024</em></p>\n"
-  },
-  {
-    "message": "*   Add `:wasm_unsafe_eval` mapping for `content_security_policy`\n\n    ```ruby\n    # Before\n    policy.script_src \"'wasm-unsafe-eval'\"\n\n    # After\n    policy.script_src :wasm_unsafe_eval\n    ```\n\n    *Joe Haig*",
-    "project": "actionpack",
-    "date_merged": 1717017523000,
-    "author": "Cyril Blaecke",
-    "sha": "6cb41bae10f813799ff85f8b2cda23cab6ae99a9",
-    "pr": "51944",
-    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
-    "html": "<p>Add <code>:wasm_unsafe_eval</code> mapping for <code>content_security_policy</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"s2\">\"'wasm-unsafe-eval'\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">policy</span><span class=\"p\">.</span><span class=\"nf\">script_src</span> <span class=\"ss\">:wasm_unsafe_eval</span>\n</code></pre></div></div>\n\n<p><em>Joe Haig</em></p>\n"
-  },
-  {
-    "message": "*   Add `display_capture` and `keyboard_map` in `permissions_policy`\n\n    *Cyril Blaecke*",
-    "project": "actionpack",
-    "date_merged": 1717017523000,
-    "author": "Cyril Blaecke",
-    "sha": "cba374995c6b32d30d01371292e313112ac0868e",
-    "pr": "51944",
-    "merge_sha": "2bdb4828a8b66a00bd1eebc68023d8182a7cdaa0",
-    "html": "<p>Add <code>display_capture</code> and <code>keyboard_map</code> in <code>permissions_policy</code></p>\n\n<p><em>Cyril Blaecke</em></p>\n"
-  },
-  {
-    "message": "*   Add `connect` route helper.\n\n    *Samuel Williams*",
-    "project": "actionpack",
-    "date_merged": 1723656767000,
-    "author": "Samuel Williams",
-    "sha": "1c988ae869e2e520cba62a9ec2e2eeb619f47512",
-    "pr": "52169",
-    "merge_sha": "455cf48c7e0cb8bc5c35d8be88c0c6ad94ce9f62",
-    "html": "<p>Add <code>connect</code> route helper.</p>\n\n<p><em>Samuel Williams</em></p>\n"
-  },
-  {
-    "message": "*   Include options when instrumenting `ActiveSupport::Cache::Store#delete` and `ActiveSupport::Cache::Store#delete_multi`.\n\n    *Adam Renberg Tamm*",
-    "project": "activesupport",
-    "date_merged": 1726335627000,
-    "author": "Adam Renberg Tamm",
-    "sha": "83fa6f80898125dfc760b46115f214a6fd779b6a",
-    "pr": "52912",
-    "merge_sha": "6e46b4205506696b18f1a9d6740a39f9cd1b0366",
-    "html": "<p>Include options when instrumenting <code>ActiveSupport::Cache::Store#delete</code> and <code>ActiveSupport::Cache::Store#delete_multi</code>.</p>\n\n<p><em>Adam Renberg Tamm</em></p>\n"
-  },
-  {
-    "message": "*   Print test names when running `rails test -v` for parallel tests.\n\n    *John Hawthorn*, *Abeid Ahmed*",
-    "project": "activesupport",
-    "date_merged": 1726266085000,
-    "author": "John Hawthorn",
-    "sha": "8b0ff4f8949b02884d582dff38927e71c179f3cd",
-    "pr": "52917",
-    "merge_sha": "cefd95bf11c0b075a31bdb64c34f6b4084c1a9ce",
-    "html": "<p>Print test names when running <code>rails test -v</code> for parallel tests.</p>\n\n<p><em>John Hawthorn</em>, <em>Abeid Ahmed</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate `Benchmark.ms` core extension.\n\n    The `benchmark` gem will become bundled in Ruby 3.5\n\n    *Earlopain*",
-    "project": "activesupport",
-    "date_merged": 1726076698000,
-    "author": "Earlopain",
-    "sha": "4cdf757e2e5aaf00aa1f6b3bd4dba57269622733",
-    "pr": "52746",
-    "merge_sha": "f6d10390963cfff88588824341afe4365c0faff3",
-    "html": "<p>Deprecate <code>Benchmark.ms</code> core extension.</p>\n\n<p>The <code>benchmark</code> gem will become bundled in Ruby 3.5</p>\n\n<p><em>Earlopain</em></p>\n"
-  },
-  {
-    "message": "*   `ActiveSupport::TimeWithZone#inspect` now uses ISO 8601 style time like `Time#inspect`\n\n    *John Hawthorn*",
-    "project": "activesupport",
-    "date_merged": 1725576352000,
-    "author": "John Hawthorn",
-    "sha": "0b12b98f222e6e17211f6fb22147370f5d6a0067",
-    "pr": "52371",
-    "merge_sha": "88dc93e2c045931ebce82af74f17a05bd62dcf53",
-    "html": "<p><code>ActiveSupport::TimeWithZone#inspect</code> now uses ISO 8601 style time like <code>Time#inspect</code></p>\n\n<p><em>John Hawthorn</em></p>\n"
-  },
-  {
-    "message": "*   `ActiveSupport::ErrorReporter#report` now assigns a backtrace to unraised exceptions.\n\n    Previously reporting an un-raised exception would result in an error report without\n    a backtrace. Now it automatically generates one.\n\n    *Jean Boussier*",
-    "project": "activesupport",
-    "date_merged": 1724409254000,
-    "author": "Jean Boussier",
-    "sha": "b1d8cf59d9b3c51fde5dd96ceb829d36b8e28c86",
-    "pr": "52684",
-    "merge_sha": "0794abb6bb95f0904cb0a6a605ddb24863aa809e",
-    "html": "<p><code>ActiveSupport::ErrorReporter#report</code> now assigns a backtrace to unraised exceptions.</p>\n\n<p>Previously reporting an un-raised exception would result in an error report without<br />\na backtrace. Now it automatically generates one.</p>\n\n<p><em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Add `escape_html_entities` option to `ActiveSupport::JSON.encode`.\n\n    This allows for overriding the global configuration found at\n    `ActiveSupport.escape_html_entities_in_json` for specific calls to `to_json`.\n\n    This should be usable from controllers in the following manner:\n    ```ruby\n    class MyController < ApplicationController\n      def index\n        render json: { hello: \"world\" }, escape_html_entities: false\n      end\n    end\n    ```\n\n    *Nigel Baillie*",
-    "project": "activesupport",
-    "date_merged": 1723368858000,
-    "author": "Nigel Baillie",
-    "sha": "bdbc8889e219814f1dc6bf847e9b88f4312aecf0",
-    "pr": "51272",
-    "merge_sha": "8ebd0a4e1efc65ffc1d6aaa32930c7c1d921feff",
-    "html": "<p>Add <code>escape_html_entities</code> option to <code>ActiveSupport::JSON.encode</code>.</p>\n\n<p>This allows for overriding the global configuration found at<br />\n<code>ActiveSupport.escape_html_entities_in_json</code> for specific calls to <code>to_json</code>.</p>\n\n<p>This should be usable from controllers in the following manner:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">render</span> <span class=\"ss\">json: </span><span class=\"p\">{</span> <span class=\"ss\">hello: </span><span class=\"s2\">\"world\"</span> <span class=\"p\">},</span> <span class=\"ss\">escape_html_entities: </span><span class=\"kp\">false</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Nigel Baillie</em></p>\n"
-  },
-  {
-    "message": "*   Raise when using key which can't respond to `#to_sym` in `EncryptedConfiguration`.\n\n    As is the case when trying to use an Integer or Float as a key, which is unsupported.\n\n    *zzak*",
-    "project": "activesupport",
-    "date_merged": 1723367846000,
-    "author": "zzak",
-    "sha": "1571041bf5fbbfee33f6b4fa276a449221e9cc4c",
-    "pr": "51950",
-    "merge_sha": "bd24e3dd221646fb62d32ba6a9d787e46052e064",
-    "html": "<p>Raise when using key which can’t respond to <code>#to_sym</code> in <code>EncryptedConfiguration</code>.</p>\n\n<p>As is the case when trying to use an Integer or Float as a key, which is unsupported.</p>\n\n<p><em>zzak</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate addition and since between two `Time` and `ActiveSupport::TimeWithZone`.\n\n    Previously adding time instances together such as `10.days.ago + 10.days.ago` or `10.days.ago.since(10.days.ago)` produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.\n\n    *Nick Schwaderer*",
-    "project": "activesupport",
-    "date_merged": 1721427926000,
-    "author": "John Hawthorn",
-    "sha": "3df676878a8a9e13f8a0cc9b44f17dada10740e5",
-    "pr": "52370",
-    "merge_sha": "e0a9ef12b39a4871d8f143dae926931b3c3a0919",
-    "html": "<p>Deprecate addition and since between two <code>Time</code> and <code>ActiveSupport::TimeWithZone</code>.</p>\n\n<p>Previously adding time instances together such as <code>10.days.ago + 10.days.ago</code> or <code>10.days.ago.since(10.days.ago)</code> produced a nonsensical future date. This behavior is deprecated and will be removed in Rails 8.1.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
-  },
-  {
-    "message": "*   Support rfc2822 format for Time#to_fs & Date#to_fs.\n\n    *Akshay Birajdar*",
-    "project": "activesupport",
-    "date_merged": 1721134851000,
-    "author": "Akshay Birajdar",
-    "sha": "26575aa19c04e81ef196ff5bd97d9aa2d3ed8417",
-    "pr": "52337",
-    "merge_sha": "f805b35c1b2cfc9bb303eab8374f9544792f7761",
-    "html": "<p>Support rfc2822 format for Time#to_fs &amp; Date#to_fs.</p>\n\n<p><em>Akshay Birajdar</em></p>\n"
-  },
-  {
-    "message": "*   Optimize load time for `Railtie#initialize_i18n`. Filter `I18n.load_path`s passed to the file watcher to only those\n    under `Rails.root`. Previously the watcher would grab all available locales, including those in gems\n    which do not require a watcher because they won't change.\n\n    *Nick Schwaderer*",
-    "project": "activesupport",
-    "date_merged": 1720720820000,
-    "author": "Nick Schwaderer",
-    "sha": "e61704612471ae01076ff454c57164127b088d83",
-    "pr": "52271",
-    "merge_sha": "36b2dbfc1d722128c05eb6d6506c7d435ba5b55d",
-    "html": "<p>Optimize load time for <code>Railtie#initialize_i18n</code>. Filter <code>I18n.load_path</code>s passed to the file watcher to only those<br />\nunder <code>Rails.root</code>. Previously the watcher would grab all available locales, including those in gems<br />\nwhich do not require a watcher because they won’t change.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
-  },
-  {
-    "message": "*   Add a `filter` option to `in_order_of` to prioritize certain values in the sorting without filtering the results\n    by these values.\n\n    *Igor Depolli*",
-    "project": "activesupport",
-    "date_merged": 1718230877000,
-    "author": "Igor Depolli",
-    "sha": "4813a0f0361c3407a681fa63632a336a9854028b",
-    "pr": "52072",
-    "merge_sha": "827f4ef15cfde1c42d75ed9521023a5c5cfe91d6",
-    "html": "<p>Add a <code>filter</code> option to <code>in_order_of</code> to prioritize certain values in the sorting without filtering the results<br />\nby these values.</p>\n\n<p><em>Igor Depolli</em></p>\n"
-  },
-  {
-    "message": "*   Improve error message when using `assert_difference` or `assert_changes` with a\n    proc by printing the proc's source code (MRI only).\n\n    *Richard Böhme*, *Jean Boussier*",
-    "project": "activesupport",
-    "date_merged": 1717923228000,
-    "author": "Richard Böhme",
-    "sha": "38e9695c10f822caaa54e399833c346249660005",
-    "pr": "52036",
-    "merge_sha": "e3ea4c74124f1de38897732f1ddb1f9a1d57e80d",
-    "html": "<p>Improve error message when using <code>assert_difference</code> or <code>assert_changes</code> with a<br />\nproc by printing the proc’s source code (MRI only).</p>\n\n<p><em>Richard Böhme</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Add a new configuration value `:zone` for `ActiveSupport.to_time_preserves_timezone` and rename the previous `true` value to `:offset`. The new default value is `:zone`.\n\n    *Jason Kim*, *John Hawthorn*",
-    "project": "activesupport",
-    "date_merged": 1719432965000,
-    "author": "Jason Kim",
-    "sha": "9dcf17ec4c51722b5ab8146c5a714242cc0716ba",
-    "pr": "52091",
-    "merge_sha": "716e4a7d326c36fc44d4a6fcab7a21313ab3b2df",
-    "html": "<p>Add a new configuration value <code>:zone</code> for <code>ActiveSupport.to_time_preserves_timezone</code> and rename the previous <code>true</code> value to <code>:offset</code>. The new default value is <code>:zone</code>.</p>\n\n<p><em>Jason Kim</em>, <em>John Hawthorn</em></p>\n"
-  },
-  {
-    "message": "*   Align instrumentation `payload[:key]` in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.\n\n    *Frederik Erbs Spang Thomsen*",
-    "project": "activesupport",
-    "date_merged": 1724873788000,
-    "author": "Frederik Spang",
-    "sha": "2acfed936105c6df897ca53ce433774f4c242598",
-    "pr": "52736",
-    "merge_sha": "c15f1e2dc50fe18ea4fa7e09ef8be95e0c355eb4",
-    "html": "<p>Align instrumentation <code>payload[:key]</code> in ActiveSupport::Cache to follow the same pattern, with namespaced and normalized keys.</p>\n\n<p><em>Frederik Erbs Spang Thomsen</em></p>\n"
-  },
-  {
-    "message": "*   Fix `travel_to` to set usec 0 when `with_usec` is `false` and the given argument String or DateTime.\n\n    *mopp*",
-    "project": "activesupport",
-    "date_merged": 1726072174000,
-    "author": "mopp",
-    "sha": "839ad34305908d14057d96d1375a837815ca87d7",
-    "pr": "52880",
-    "merge_sha": "446daa07462ee7223321bc8602c03b5f1ad0d7cf",
-    "html": "<p>Fix <code>travel_to</code> to set usec 0 when <code>with_usec</code> is <code>false</code> and the given argument String or DateTime.</p>\n\n<p><em>mopp</em></p>\n"
-  },
-  {
-    "message": "*   Dispatch direct-upload events on attachment uploads\n\n    When using Action Text's rich textarea,  it's possible to attach files to the\n    editor. Previously, that action didn't dispatch any events, which made it hard\n    to react to the file uploads. For instance, if an upload failed, there was no\n    way to notify the user about it, or remove the attachment from the editor.\n\n    This commits adds new events - `direct-upload:start`, `direct-upload:progress`,\n    and `direct-upload:end` - similar to how Active Storage's direct uploads work.\n\n    *Matheus Richard*, *Brad Rees*",
-    "project": "actiontext",
-    "date_merged": 1724718059000,
-    "author": "Matheus Richard",
-    "sha": "8f0b9117b79905af7737374c15df871d80411d26",
-    "pr": "52680",
-    "merge_sha": "5a0b2fa5a3be6ffd49fa7f1c3544c1da403c9cb5",
-    "html": "<p>Dispatch direct-upload events on attachment uploads</p>\n\n<p>When using Action Text’s rich textarea,  it’s possible to attach files to the<br />\neditor. Previously, that action didn’t dispatch any events, which made it hard<br />\nto react to the file uploads. For instance, if an upload failed, there was no<br />\nway to notify the user about it, or remove the attachment from the editor.</p>\n\n<p>This commits adds new events - <code>direct-upload:start</code>, <code>direct-upload:progress</code>,<br />\nand <code>direct-upload:end</code> - similar to how Active Storage’s direct uploads work.</p>\n\n<p><em>Matheus Richard</em>, <em>Brad Rees</em></p>\n"
-  },
-  {
-    "message": "*   Add `store_if_blank` option to `has_rich_text`\n\n    Pass `store_if_blank: false` to not create `ActionText::RichText` records when saving with a blank attribute, such as from an optional form parameter.\n\n    ```ruby\n    class Message\n      has_rich_text :content, store_if_blank: false\n    end\n\n    Message.create(content: \"hi\") # creates an ActionText::RichText\n    Message.create(content: \"\") # does not create an ActionText::RichText\n    ```\n\n    *Alex Ghiculescu*",
-    "project": "actiontext",
-    "date_merged": 1724279199000,
-    "author": "Alex",
-    "sha": "a0f1d04a7d5cec7def689338d688fd71f8230aff",
-    "pr": "52573",
-    "merge_sha": "6fa5e7abda132b006b19ae6ee5cd32e07f2a9126",
-    "html": "<p>Add <code>store_if_blank</code> option to <code>has_rich_text</code></p>\n\n<p>Pass <code>store_if_blank: false</code> to not create <code>ActionText::RichText</code> records when saving with a blank attribute, such as from an optional form parameter.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Message</span>\n  <span class=\"n\">has_rich_text</span> <span class=\"ss\">:content</span><span class=\"p\">,</span> <span class=\"ss\">store_if_blank: </span><span class=\"kp\">false</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">Message</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"ss\">content: </span><span class=\"s2\">\"hi\"</span><span class=\"p\">)</span> <span class=\"c1\"># creates an ActionText::RichText</span>\n<span class=\"no\">Message</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"ss\">content: </span><span class=\"s2\">\"\"</span><span class=\"p\">)</span> <span class=\"c1\"># does not create an ActionText::RichText</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
-  },
-  {
-    "message": "*   Strip `content` attribute if the key is present but the value is empty\n\n    *Jeremy Green*",
-    "project": "actiontext",
-    "date_merged": 1724264813000,
-    "author": "Jeremy Green",
-    "sha": "9196a5bfe02942a5c66c8b64a173d4ea9c8c8be7",
-    "pr": "52281",
-    "merge_sha": "373dbfdf4110e2ec593fa31602e0dc8a5825cb23",
-    "html": "<p>Strip <code>content</code> attribute if the key is present but the value is empty</p>\n\n<p><em>Jeremy Green</em></p>\n"
-  },
-  {
-    "message": "*   Rename `rich_text_area` methods into `rich_textarea`\n\n    Old names are still available as aliases.\n\n    *Sean Doyle*",
-    "project": "actiontext",
-    "date_merged": 1722446183000,
-    "author": "Sean Doyle",
-    "sha": "f9c51ec385a7b75e212954cd4b22c2da7c1d32f4",
-    "pr": "52467",
-    "merge_sha": "fa476ce275262add84d5b46bfffe078031c55cb8",
-    "html": "<p>Rename <code>rich_text_area</code> methods into <code>rich_textarea</code></p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Only sanitize `content` attribute when present in attachments.\n\n    *Petrik de Heus*",
-    "project": "actiontext",
-    "date_merged": 1718216498000,
-    "author": "Petrik",
-    "sha": "52c21f90669ce59adf7deef85a44b6b1a46928fa",
-    "pr": "52093",
-    "merge_sha": "d6316963ef49d9509a64adc1cb96630a3326b03c",
-    "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   The guide _Classic to Zeitwerk HOWTO_ that documented how to migrate from\n    the `classic` autoloader to Zeitwerk has been deleted.\n\n    The last version of this guide can be found\n    [here](https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html),\n    in case you need it.\n\n    *Petrik de Heus*",
-    "project": "guides",
-    "date_merged": 1718873221000,
-    "author": "Xavier Noria",
-    "sha": "b44820276832200c4d672a5d35cd92aa5797ec0c",
-    "pr": "52165",
-    "merge_sha": "242216803ee73f528b0a74c6bdb367e5b98d8f83",
-    "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   }
 ]
