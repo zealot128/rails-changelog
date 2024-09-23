@@ -790,16 +790,6 @@
     "html": "<p>Add support for dumping table inheritance and native partitioning table definitions for PostgeSQL adapter</p>\n\n<p><em>Justin Talbott</em></p>\n"
   },
   {
-    "message": "*   Infer default `:inverse_of` option for `delegated_type` definitions.\n\n    ```ruby\n    class Entry < ApplicationRecord\n      delegated_type :entryable, types: %w[ Message ]\n      # => defaults to inverse_of: :entry\n    end\n    ```\n\n    *Sean Doyle*",
-    "project": "activerecord",
-    "date_merged": 1724269032000,
-    "author": "Sean Doyle",
-    "sha": "e9ee137d8b62cb43f664de37a02b1747e530c34c",
-    "pr": "50280",
-    "merge_sha": "dcd4e10698d6832e6f6868792481a0884b9db7b4",
-    "html": "<p>Infer default <code>:inverse_of</code> option for <code>delegated_type</code> definitions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Entry</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">delegated_type</span> <span class=\"ss\">:entryable</span><span class=\"p\">,</span> <span class=\"ss\">types: </span><span class=\"sx\">%w[ Message ]</span>\n  <span class=\"c1\"># =&gt; defaults to inverse_of: :entry</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
     "message": "*   Add support for `ActiveRecord::Point` type casts using `Hash` values\n\n    This allows `ActiveRecord::Point` to be cast or serialized from a hash\n    with `:x` and `:y` keys of numeric values, mirroring the functionality of\n    existing casts for string and array values. Both string and symbol keys are\n    supported.\n\n    ```ruby\n    class PostgresqlPoint < ActiveRecord::Base\n      attribute :x, :point\n      attribute :y, :point\n      attribute :z, :point\n    end\n\n    val = PostgresqlPoint.new({\n      x: '(12.34, -43.21)',\n      y: [12.34, '-43.21'],\n      z: {x: '12.34', y: -43.21}\n    })\n    ActiveRecord::Point.new(12.32, -43.21) == val.x == val.y == val.z\n    ```\n\n    *Stephen Drew*",
     "project": "activerecord",
     "date_merged": 1724265407000,
