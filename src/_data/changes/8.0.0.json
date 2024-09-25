@@ -70,6 +70,16 @@
     "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
   },
   {
+    "message": "*   Remove `require_*` statements from application.css to align with the transition from Sprockets to Propshaft.\n\n    With Propshaft as the default asset pipeline in Rails 8, the require_tree and require_self clauses in application.css are no longer necessary, as they were specific to Sprockets. Additionally, the comment has been updated to clarify that CSS precedence now follows standard cascading order without automatic prioritization by the asset pipeline.\n\n    *Eduardo Alencar*",
+    "project": "railties",
+    "date_merged": 1727286216000,
+    "author": "Eduardo Alencar",
+    "sha": "f1d41c99024e554d7227dbfee0f5b7ca5bb0075b",
+    "pr": "53021",
+    "merge_sha": "1c183ede2df173fb23bce8f8ec3b2a9f75a41237",
+    "html": "<p>Remove <code>require_*</code> statements from application.css to align with the transition from Sprockets to Propshaft.</p>\n\n<p>With Propshaft as the default asset pipeline in Rails 8, the require_tree and require_self clauses in application.css are no longer necessary, as they were specific to Sprockets. Additionally, the comment has been updated to clarify that CSS precedence now follows standard cascading order without automatic prioritization by the asset pipeline.</p>\n\n<p><em>Eduardo Alencar</em></p>\n"
+  },
+  {
     "message": "*   Do not include redis by default in generated Dev Containers.\n\n    Now that applications use the Solid Queue and Solid Cache gems by default, we do not need to include redis\n    in the Dev Container. We will only include redis if `--skip-solid` is used when generating an app that uses\n    Active Job or Action Cable.\n\n    When generating a Dev Container for an existing app, we will not include redis if either of the solid gems\n    are in use.\n\n    *Andrew Novoselac*",
     "project": "railties",
     "date_merged": 1726523290000,
