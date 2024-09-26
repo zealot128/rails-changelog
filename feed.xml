@@ -6,20 +6,22 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>activejob: Remove `sucker_punch` as an adapter option [since author himself recommends using AJ&#39;s own AsyncAdapter](https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq).
+    <title>activejob: Deprecate `sucker_punch` as an adapter option.
 </title>
-    <link>https://github.com/rails/rails/issues/52935</link>
-    <guid>https://github.com/rails/rails/issues/52935</guid>
-    <description>*   Remove `sucker_punch` as an adapter option [since author himself recommends using AJ&#39;s own AsyncAdapter](https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq).
+    <link>https://github.com/rails/rails/issues/52990</link>
+    <guid>https://github.com/rails/rails/issues/52990</guid>
+    <description>*   Deprecate `sucker_punch` as an adapter option.
+
     If you&#39;re using this adapter, change to `adapter: async` for the same functionality.
 
-    *Dino Maric*</description>
-    <pubDate>Sun, 15 Sep 2024 15:09:09 +0000</pubDate>
-    <author>Dino Maric</author>
-    <content:encoded><![CDATA[<p>Remove <code>sucker_punch</code> as an adapter option <a href="https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq">since author himself recommends using AJ’s own AsyncAdapter</a>.<br />
-If you’re using this adapter, change to <code>adapter: async</code> for the same functionality.</p>
+    *Dino Maric, zzak*</description>
+    <pubDate>Thu, 26 Sep 2024 13:39:29 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>sucker_punch</code> as an adapter option.</p>
 
-<p><em>Dino Maric</em></p>
+<p>If you’re using this adapter, change to <code>adapter: async</code> for the same functionality.</p>
+
+<p><em>Dino Maric, zzak</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -1386,6 +1388,21 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activemodel: Make `ActiveModel::Serialization#read_attribute_for_serialization` public
+</title>
+    <link>https://github.com/rails/rails/issues/53042</link>
+    <guid>https://github.com/rails/rails/issues/53042</guid>
+    <description>*   Make `ActiveModel::Serialization#read_attribute_for_serialization` public
+
+    *Sean Doyle*</description>
+    <pubDate>Thu, 26 Sep 2024 13:38:44 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Make <code>ActiveModel::Serialization#read_attribute_for_serialization</code> public</p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Add a default token generator for password reset tokens when using `has_secure_password`.
 </title>
     <link>https://github.com/rails/rails/issues/52483</link>
@@ -1620,7 +1637,7 @@ dependencies.</p>
     This will let you to drop multiple tables in a single call.
 
     ```ruby
-    ActiveRecord::Base.connection.drop_table(:users, :posts)
+    ActiveRecord::Base.lease_connection.drop_table(:users, :posts)
     ```
 
     *Gabriel Sobrinho*</description>
@@ -1630,7 +1647,7 @@ dependencies.</p>
 
 <p>This will let you to drop multiple tables in a single call.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">drop_table</span><span class="p">(</span><span class="ss">:users</span><span class="p">,</span> <span class="ss">:posts</span><span class="p">)</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">lease_connection</span><span class="p">.</span><span class="nf">drop_table</span><span class="p">(</span><span class="ss">:users</span><span class="p">,</span> <span class="ss">:posts</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p><em>Gabriel Sobrinho</em></p>
