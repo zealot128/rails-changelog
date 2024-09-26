@@ -1,13 +1,13 @@
 [
   {
-    "message": "*   Remove `sucker_punch` as an adapter option [since author himself recommends using AJ's own AsyncAdapter](https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq).\n    If you're using this adapter, change to `adapter: async` for the same functionality.\n\n    *Dino Maric*",
+    "message": "*   Deprecate `sucker_punch` as an adapter option.\n\n    If you're using this adapter, change to `adapter: async` for the same functionality.\n\n    *Dino Maric, zzak*",
     "project": "activejob",
-    "date_merged": 1726412949000,
-    "author": "Dino Maric",
-    "sha": "6d1252cf3e65a7720aad5511ff719b44e49fd2a3",
-    "pr": "52935",
-    "merge_sha": "81ad0351819322b9842f05a550688cad54e54176",
-    "html": "<p>Remove <code>sucker_punch</code> as an adapter option <a href=\"https://github.com/brandonhilkert/sucker_punch?tab=readme-ov-file#faq\">since author himself recommends using AJ’s own AsyncAdapter</a>.<br />\nIf you’re using this adapter, change to <code>adapter: async</code> for the same functionality.</p>\n\n<p><em>Dino Maric</em></p>\n"
+    "date_merged": 1727357969000,
+    "author": "zzak",
+    "sha": "61cadf60ca6263ee98fe142dfa866e1bc41d77ab",
+    "pr": "52990",
+    "merge_sha": "06c2a499a1d814ddc03fcdf467ef8bf314d22f1c",
+    "html": "<p>Deprecate <code>sucker_punch</code> as an adapter option.</p>\n\n<p>If you’re using this adapter, change to <code>adapter: async</code> for the same functionality.</p>\n\n<p><em>Dino Maric, zzak</em></p>\n"
   },
   {
     "message": "*   Use `RAILS_MAX_THREADS` in `ActiveJob::AsyncAdapter`. If it is not set, use 5 as default.\n\n    *heka1024*",
@@ -620,6 +620,16 @@
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Make `ActiveModel::Serialization#read_attribute_for_serialization` public\n\n    *Sean Doyle*",
+    "project": "activemodel",
+    "date_merged": 1727357924000,
+    "author": "Sean Doyle",
+    "sha": "ca921395cbe336043dcc4ffe9bcd67acca00c86b",
+    "pr": "53042",
+    "merge_sha": "bcf730e4d9c8b5d34da3e3399ee63749ad143ae8",
+    "html": "<p>Make <code>ActiveModel::Serialization#read_attribute_for_serialization</code> public</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Add a default token generator for password reset tokens when using `has_secure_password`.\n\n    ```ruby\n    class User < ApplicationRecord\n      has_secure_password\n    end\n\n    user = User.create!(name: \"david\", password: \"123\", password_confirmation: \"123\")\n    token = user.password_reset_token\n    User.find_by_password_reset_token(token) # returns user\n\n    # 16 minutes later...\n    User.find_by_password_reset_token(token) # returns nil\n\n    # raises ActiveSupport::MessageVerifier::InvalidSignature since the token is expired\n    User.find_by_password_reset_token!(token)\n    ```\n\n    *DHH*",
     "project": "activemodel",
     "date_merged": 1722602063000,
@@ -690,14 +700,14 @@
     "html": "<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
-    "message": "*   Allow `drop_table` to accept an array of table names.\n\n    This will let you to drop multiple tables in a single call.\n\n    ```ruby\n    ActiveRecord::Base.connection.drop_table(:users, :posts)\n    ```\n\n    *Gabriel Sobrinho*",
+    "message": "*   Allow `drop_table` to accept an array of table names.\n\n    This will let you to drop multiple tables in a single call.\n\n    ```ruby\n    ActiveRecord::Base.lease_connection.drop_table(:users, :posts)\n    ```\n\n    *Gabriel Sobrinho*",
     "project": "activerecord",
     "date_merged": 1726535991000,
     "author": "Gabriel Sobrinho",
     "sha": "1666bad840a17b0b1c0d1d70252928f133bbbdda",
     "pr": "52773",
     "merge_sha": "4aa78117fa427ec6d761b81fb1d3877a20703b9e",
-    "html": "<p>Allow <code>drop_table</code> to accept an array of table names.</p>\n\n<p>This will let you to drop multiple tables in a single call.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span><span class=\"p\">.</span><span class=\"nf\">connection</span><span class=\"p\">.</span><span class=\"nf\">drop_table</span><span class=\"p\">(</span><span class=\"ss\">:users</span><span class=\"p\">,</span> <span class=\"ss\">:posts</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Gabriel Sobrinho</em></p>\n"
+    "html": "<p>Allow <code>drop_table</code> to accept an array of table names.</p>\n\n<p>This will let you to drop multiple tables in a single call.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span><span class=\"p\">.</span><span class=\"nf\">lease_connection</span><span class=\"p\">.</span><span class=\"nf\">drop_table</span><span class=\"p\">(</span><span class=\"ss\">:users</span><span class=\"p\">,</span> <span class=\"ss\">:posts</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Gabriel Sobrinho</em></p>\n"
   },
   {
     "message": "*   Add support for PostgreSQL `IF NOT EXISTS` via the `:if_not_exists` option\n    on the `add_enum_value` method.\n\n    *Ariel Rzezak*",
