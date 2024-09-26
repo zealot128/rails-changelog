@@ -119,6 +119,44 @@ Replace the characters <code>"*?&lt;&gt;</code> with <code>-</code> if they exis
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Exit `rails g` with code 1 if generator could not be found.
+</title>
+    <link>https://github.com/rails/rails/issues/53028</link>
+    <guid>https://github.com/rails/rails/issues/53028</guid>
+    <description>*   Exit `rails g` with code 1 if generator could not be found.
+
+    Previously `rails g` returned 0, which would make it harder to catch typos in scripts calling `rails g`.
+
+    *Christopher Özbek*</description>
+    <pubDate>Thu, 26 Sep 2024 03:57:41 +0000</pubDate>
+    <author>Christopher Özbek</author>
+    <content:encoded><![CDATA[<p>Exit <code>rails g</code> with code 1 if generator could not be found.</p>
+
+<p>Previously <code>rails g</code> returned 0, which would make it harder to catch typos in scripts calling <code>rails g</code>.</p>
+
+<p><em>Christopher Özbek</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Remove `require_*` statements from application.css to align with the transition from Sprockets to Propshaft.
+</title>
+    <link>https://github.com/rails/rails/issues/53021</link>
+    <guid>https://github.com/rails/rails/issues/53021</guid>
+    <description>*   Remove `require_*` statements from application.css to align with the transition from Sprockets to Propshaft.
+
+    With Propshaft as the default asset pipeline in Rails 8, the require_tree and require_self clauses in application.css are no longer necessary, as they were specific to Sprockets. Additionally, the comment has been updated to clarify that CSS precedence now follows standard cascading order without automatic prioritization by the asset pipeline.
+
+    *Eduardo Alencar*</description>
+    <pubDate>Wed, 25 Sep 2024 17:43:36 +0000</pubDate>
+    <author>Eduardo Alencar</author>
+    <content:encoded><![CDATA[<p>Remove <code>require_*</code> statements from application.css to align with the transition from Sprockets to Propshaft.</p>
+
+<p>With Propshaft as the default asset pipeline in Rails 8, the require_tree and require_self clauses in application.css are no longer necessary, as they were specific to Sprockets. Additionally, the comment has been updated to clarify that CSS precedence now follows standard cascading order without automatic prioritization by the asset pipeline.</p>
+
+<p><em>Eduardo Alencar</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Do not include redis by default in generated Dev Containers.
 </title>
     <link>https://github.com/rails/rails/issues/52934</link>
@@ -566,6 +604,21 @@ This can be skipped using –skip-rubocop and –skip-ci.</p>
 This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
 
 <p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Fix non-GET requests not updating cookies in `ActionController::TestCase`.
+</title>
+    <link>https://github.com/rails/rails/issues/52348</link>
+    <guid>https://github.com/rails/rails/issues/52348</guid>
+    <description>*   Fix non-GET requests not updating cookies in `ActionController::TestCase`.
+
+    *Jon Moss*, *Hartley McGuire*</description>
+    <pubDate>Thu, 26 Sep 2024 03:57:41 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix non-GET requests not updating cookies in <code>ActionController::TestCase</code>.</p>
+
+<p><em>Jon Moss</em>, <em>Hartley McGuire</em></p>
 ]]></content:encoded>
   </item>
   <item>
