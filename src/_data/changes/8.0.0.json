@@ -70,6 +70,16 @@
     "html": "<p>Mark proxied files as <code>immutable</code> in their Cache-Control header</p>\n\n<p><em>Nate Matykiewicz</em></p>\n"
   },
   {
+    "message": "*   Exit `rails g` with code 1 if generator could not be found.\n\n    Previously `rails g` returned 0, which would make it harder to catch typos in scripts calling `rails g`.\n\n    *Christopher Özbek*",
+    "project": "railties",
+    "date_merged": 1727323061000,
+    "author": "Christopher Özbek",
+    "sha": "1a36a4a0510ea4f9359a2d9ba10634c6ec350ddb",
+    "pr": "53028",
+    "merge_sha": "b88d9af34fbc1c84ce2769ba02584eab2c28ac6e",
+    "html": "<p>Exit <code>rails g</code> with code 1 if generator could not be found.</p>\n\n<p>Previously <code>rails g</code> returned 0, which would make it harder to catch typos in scripts calling <code>rails g</code>.</p>\n\n<p><em>Christopher Özbek</em></p>\n"
+  },
+  {
     "message": "*   Remove `require_*` statements from application.css to align with the transition from Sprockets to Propshaft.\n\n    With Propshaft as the default asset pipeline in Rails 8, the require_tree and require_self clauses in application.css are no longer necessary, as they were specific to Sprockets. Additionally, the comment has been updated to clarify that CSS precedence now follows standard cascading order without automatic prioritization by the asset pipeline.\n\n    *Eduardo Alencar*",
     "project": "railties",
     "date_merged": 1727286216000,
@@ -248,6 +258,16 @@
     "pr": "51798",
     "merge_sha": "2e7dc14943d285626a9e12ad0d1750d3609185be",
     "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Fix non-GET requests not updating cookies in `ActionController::TestCase`.\n\n    *Jon Moss*, *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1727323061000,
+    "author": "Hartley McGuire",
+    "sha": "7a47f43bfe84eaa71f1d27cb34f8693fd3ce6c5d",
+    "pr": "52348",
+    "merge_sha": "b88d9af34fbc1c84ce2769ba02584eab2c28ac6e",
+    "html": "<p>Fix non-GET requests not updating cookies in <code>ActionController::TestCase</code>.</p>\n\n<p><em>Jon Moss</em>, <em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   Update `ActionController::Live` to use a thread-pool to reuse threads across requests.\n\n    *Adam Renberg Tamm*",
