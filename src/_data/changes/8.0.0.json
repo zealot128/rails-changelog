@@ -700,6 +700,16 @@
     "html": "<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Make Float distinguish between `float4` and `float8` in PostgreSQL.\n\n    Fixes #52742\n\n    *Ryota Kitazawa*, *Takayuki Nagatomi*",
+    "project": "activerecord",
+    "date_merged": 1727681324000,
+    "author": "Takayuki Nagatomi",
+    "sha": "8c6d6a2978c520be320c8a7ab5fa56e1cfc6cdec",
+    "pr": "53107",
+    "merge_sha": "60f3a7342a6d9f4d5f7aa85b9898255be7bf8854",
+    "html": "<p>Make Float distinguish between <code>float4</code> and <code>float8</code> in PostgreSQL.</p>\n\n<p>Fixes #52742</p>\n\n<p><em>Ryota Kitazawa</em>, <em>Takayuki Nagatomi</em></p>\n"
+  },
+  {
     "message": "*   Allow `drop_table` to accept an array of table names.\n\n    This will let you to drop multiple tables in a single call.\n\n    ```ruby\n    ActiveRecord::Base.lease_connection.drop_table(:users, :posts)\n    ```\n\n    *Gabriel Sobrinho*",
     "project": "activerecord",
     "date_merged": 1726535991000,
