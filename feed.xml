@@ -1628,6 +1628,25 @@ dependencies.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Make Float distinguish between `float4` and `float8` in PostgreSQL.
+</title>
+    <link>https://github.com/rails/rails/issues/53107</link>
+    <guid>https://github.com/rails/rails/issues/53107</guid>
+    <description>*   Make Float distinguish between `float4` and `float8` in PostgreSQL.
+
+    Fixes #52742
+
+    *Ryota Kitazawa*, *Takayuki Nagatomi*</description>
+    <pubDate>Mon, 30 Sep 2024 07:28:44 +0000</pubDate>
+    <author>Takayuki Nagatomi</author>
+    <content:encoded><![CDATA[<p>Make Float distinguish between <code>float4</code> and <code>float8</code> in PostgreSQL.</p>
+
+<p>Fixes #52742</p>
+
+<p><em>Ryota Kitazawa</em>, <em>Takayuki Nagatomi</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow `drop_table` to accept an array of table names.
 </title>
     <link>https://github.com/rails/rails/issues/52773</link>
