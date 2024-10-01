@@ -1089,6 +1089,49 @@ and <code>direct-upload:end</code> - similar to how Active Storage’s direct up
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Fix `ActiveSupport::HashWithIndifferentAccess#stringify_keys` to stringify all keys not just symbols.
+</title>
+    <link>https://github.com/rails/rails/issues/53125</link>
+    <guid>https://github.com/rails/rails/issues/53125</guid>
+    <description>*   Fix `ActiveSupport::HashWithIndifferentAccess#stringify_keys` to stringify all keys not just symbols.
+
+    Previously:
+
+    ```ruby
+    { 1 =&gt; 2 }.with_indifferent_access.stringify_keys[1] # =&gt; 2
+    ```
+
+    After this change:
+
+    ```ruby
+    { 1 =&gt; 2 }.with_indifferent_access.stringify_keys[&quot;1&quot;] # =&gt; 2
+    ```
+
+    This change can be seen as a bug fix, but since it behaved like this for a very long time, we&#39;re deciding
+    to not backport the fix and to make the change in a major release.
+
+    *Jean Boussier*</description>
+    <pubDate>Mon, 30 Sep 2024 21:48:13 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Fix <code>ActiveSupport::HashWithIndifferentAccess#stringify_keys</code> to stringify all keys not just symbols.</p>
+
+<p>Previously:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">}.</span><span class="nf">with_indifferent_access</span><span class="p">.</span><span class="nf">stringify_keys</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># =&gt; 2</span>
+</code></pre></div></div>
+
+<p>After this change:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">}.</span><span class="nf">with_indifferent_access</span><span class="p">.</span><span class="nf">stringify_keys</span><span class="p">[</span><span class="s2">"1"</span><span class="p">]</span> <span class="c1"># =&gt; 2</span>
+</code></pre></div></div>
+
+<p>This change can be seen as a bug fix, but since it behaved like this for a very long time, we’re deciding<br />
+to not backport the fix and to make the change in a major release.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Include options when instrumenting `ActiveSupport::Cache::Store#delete` and `ActiveSupport::Cache::Store#delete_multi`.
 </title>
     <link>https://github.com/rails/rails/issues/52912</link>
