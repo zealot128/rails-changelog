@@ -460,6 +460,16 @@
     "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Fix `ActiveSupport::HashWithIndifferentAccess#stringify_keys` to stringify all keys not just symbols.\n\n    Previously:\n\n    ```ruby\n    { 1 => 2 }.with_indifferent_access.stringify_keys[1] # => 2\n    ```\n\n    After this change:\n\n    ```ruby\n    { 1 => 2 }.with_indifferent_access.stringify_keys[\"1\"] # => 2\n    ```\n\n    This change can be seen as a bug fix, but since it behaved like this for a very long time, we're deciding\n    to not backport the fix and to make the change in a major release.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1727732893000,
+    "author": "Jean Boussier",
+    "sha": "e8574542f88695329e7324f864b9048b0ba0da1b",
+    "pr": "53125",
+    "merge_sha": "0ad2334ae71e9a701f77887c8efd428a79a9c187",
+    "html": "<p>Fix <code>ActiveSupport::HashWithIndifferentAccess#stringify_keys</code> to stringify all keys not just symbols.</p>\n\n<p>Previously:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span> <span class=\"mi\">1</span> <span class=\"o\">=&gt;</span> <span class=\"mi\">2</span> <span class=\"p\">}.</span><span class=\"nf\">with_indifferent_access</span><span class=\"p\">.</span><span class=\"nf\">stringify_keys</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span> <span class=\"c1\"># =&gt; 2</span>\n</code></pre></div></div>\n\n<p>After this change:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"p\">{</span> <span class=\"mi\">1</span> <span class=\"o\">=&gt;</span> <span class=\"mi\">2</span> <span class=\"p\">}.</span><span class=\"nf\">with_indifferent_access</span><span class=\"p\">.</span><span class=\"nf\">stringify_keys</span><span class=\"p\">[</span><span class=\"s2\">\"1\"</span><span class=\"p\">]</span> <span class=\"c1\"># =&gt; 2</span>\n</code></pre></div></div>\n\n<p>This change can be seen as a bug fix, but since it behaved like this for a very long time, we’re deciding<br />\nto not backport the fix and to make the change in a major release.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Include options when instrumenting `ActiveSupport::Cache::Store#delete` and `ActiveSupport::Cache::Store#delete_multi`.\n\n    *Adam Renberg Tamm*",
     "project": "activesupport",
     "date_merged": 1726335627000,
