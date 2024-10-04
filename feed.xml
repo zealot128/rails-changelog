@@ -609,6 +609,21 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Raise an `ArgumentError` when invalid `:on` or `:except` options are passed into `#resource` and `#resources`.
+</title>
+    <link>https://github.com/rails/rails/issues/51463</link>
+    <guid>https://github.com/rails/rails/issues/51463</guid>
+    <description>*   Raise an `ArgumentError` when invalid `:on` or `:except` options are passed into `#resource` and `#resources`.
+
+    *Joshua Young*</description>
+    <pubDate>Fri, 04 Oct 2024 14:26:22 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Raise an <code>ArgumentError</code> when invalid <code>:on</code> or <code>:except</code> options are passed into <code>#resource</code> and <code>#resources</code>.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Fix non-GET requests not updating cookies in `ActionController::TestCase`.
 </title>
     <link>https://github.com/rails/rails/issues/52348</link>
@@ -1668,6 +1683,30 @@ dependencies.</p>
 <p>Old names are still available as aliases.</p>
 
 <p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Allow `ActiveRecord::Base#pluck` to accept hash arguments with symbol and string values.
+</title>
+    <link>https://github.com/rails/rails/issues/51676</link>
+    <guid>https://github.com/rails/rails/issues/51676</guid>
+    <description>*   Allow `ActiveRecord::Base#pluck` to accept hash arguments with symbol and string values.
+
+    ```ruby
+    Post.joins(:comments).pluck(:id, comments: :id)
+    Post.joins(:comments).pluck(&quot;id&quot;, &quot;comments&quot; =&gt; &quot;id&quot;)
+    ```
+
+    *Joshua Young*</description>
+    <pubDate>Fri, 04 Oct 2024 13:32:09 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Allow <code>ActiveRecord::Base#pluck</code> to accept hash arguments with symbol and string values.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">joins</span><span class="p">(</span><span class="ss">:comments</span><span class="p">).</span><span class="nf">pluck</span><span class="p">(</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">comments: :id</span><span class="p">)</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">joins</span><span class="p">(</span><span class="ss">:comments</span><span class="p">).</span><span class="nf">pluck</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"comments"</span> <span class="o">=&gt;</span> <span class="s2">"id"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Joshua Young</em></p>
 ]]></content:encoded>
   </item>
   <item>
