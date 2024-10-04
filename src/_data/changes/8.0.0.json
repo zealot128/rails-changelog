@@ -260,6 +260,16 @@
     "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
+    "message": "*   Raise an `ArgumentError` when invalid `:on` or `:except` options are passed into `#resource` and `#resources`.\n\n    *Joshua Young*",
+    "project": "actionpack",
+    "date_merged": 1728051982000,
+    "author": "Joshua Young",
+    "sha": "c7a547feba60fe6ad14b29aae872c5651b4fc2bd",
+    "pr": "51463",
+    "merge_sha": "b4ea44f18c14fb79f01d720c3330f7e7bc7fc79f",
+    "html": "<p>Raise an <code>ArgumentError</code> when invalid <code>:on</code> or <code>:except</code> options are passed into <code>#resource</code> and <code>#resources</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Fix non-GET requests not updating cookies in `ActionController::TestCase`.\n\n    *Jon Moss*, *Hartley McGuire*",
     "project": "actionpack",
     "date_merged": 1727323061000,
@@ -708,6 +718,16 @@
     "pr": "52432",
     "merge_sha": "c01ee683aa700b109f704a5b6611107fe2dc5476",
     "html": "<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Allow `ActiveRecord::Base#pluck` to accept hash arguments with symbol and string values.\n\n    ```ruby\n    Post.joins(:comments).pluck(:id, comments: :id)\n    Post.joins(:comments).pluck(\"id\", \"comments\" => \"id\")\n    ```\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1728048729000,
+    "author": "Joshua Young",
+    "sha": "089c7efb0832000758e6479688f52771092e4871",
+    "pr": "51676",
+    "merge_sha": "4f68f3e1e6c2eaad8256100dad51d308e7e67046",
+    "html": "<p>Allow <code>ActiveRecord::Base#pluck</code> to accept hash arguments with symbol and string values.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">joins</span><span class=\"p\">(</span><span class=\"ss\">:comments</span><span class=\"p\">).</span><span class=\"nf\">pluck</span><span class=\"p\">(</span><span class=\"ss\">:id</span><span class=\"p\">,</span> <span class=\"ss\">comments: :id</span><span class=\"p\">)</span>\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">joins</span><span class=\"p\">(</span><span class=\"ss\">:comments</span><span class=\"p\">).</span><span class=\"nf\">pluck</span><span class=\"p\">(</span><span class=\"s2\">\"id\"</span><span class=\"p\">,</span> <span class=\"s2\">\"comments\"</span> <span class=\"o\">=&gt;</span> <span class=\"s2\">\"id\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Joshua Young</em></p>\n"
   },
   {
     "message": "*   Make Float distinguish between `float4` and `float8` in PostgreSQL.\n\n    Fixes #52742\n\n    *Ryota Kitazawa*, *Takayuki Nagatomi*",
