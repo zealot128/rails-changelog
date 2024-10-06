@@ -1446,6 +1446,42 @@ in case you need it.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activemodel: Add `:except_on` option for validations. Grants the ability to _skip_ validations in specified contexts.
+</title>
+    <link>https://github.com/rails/rails/issues/43495</link>
+    <guid>https://github.com/rails/rails/issues/43495</guid>
+    <description>*   Add `:except_on` option for validations. Grants the ability to _skip_ validations in specified contexts.
+
+    ```ruby
+    class User &lt; ApplicationRecord
+        #...
+        validates :birthday, presence: { except_on: :admin }
+        #...
+    end
+
+    user = User.new(attributes except birthday)
+    user.save(context: :admin)
+    ```
+
+    *Drew Bragg*</description>
+    <pubDate>Sun, 06 Oct 2024 15:43:03 +0000</pubDate>
+    <author>Drew Bragg</author>
+    <content:encoded><![CDATA[<p>Add <code>:except_on</code> option for validations. Grants the ability to <em>skip</em> validations in specified contexts.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+    <span class="c1">#...</span>
+    <span class="n">validates</span> <span class="ss">:birthday</span><span class="p">,</span> <span class="ss">presence: </span><span class="p">{</span> <span class="ss">except_on: :admin</span> <span class="p">}</span>
+    <span class="c1">#...</span>
+<span class="k">end</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">attributes</span> <span class="n">except</span> <span class="n">birthday</span><span class="p">)</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="ss">context: :admin</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Drew Bragg</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Make `ActiveModel::Serialization#read_attribute_for_serialization` public
 </title>
     <link>https://github.com/rails/rails/issues/53042</link>
