@@ -640,6 +640,16 @@
     "html": "<p>The guide <em>Classic to Zeitwerk HOWTO</em> that documented how to migrate from<br />\nthe <code>classic</code> autoloader to Zeitwerk has been deleted.</p>\n\n<p>The last version of this guide can be found<br />\n<a href=\"https://guides.rubyonrails.org/v7.2/classic_to_zeitwerk_howto.html\">here</a>,<br />\nin case you need it.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Add `:except_on` option for validations. Grants the ability to _skip_ validations in specified contexts.\n\n    ```ruby\n    class User < ApplicationRecord\n        #...\n        validates :birthday, presence: { except_on: :admin }\n        #...\n    end\n\n    user = User.new(attributes except birthday)\n    user.save(context: :admin)\n    ```\n\n    *Drew Bragg*",
+    "project": "activemodel",
+    "date_merged": 1728229383000,
+    "author": "Drew Bragg",
+    "sha": "372c64294b3baaf9a691d233c75d6a97a373f483",
+    "pr": "43495",
+    "merge_sha": "70a7dccfea2c7624aca8952226c26c9ed7c2e39a",
+    "html": "<p>Add <code>:except_on</code> option for validations. Grants the ability to <em>skip</em> validations in specified contexts.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n    <span class=\"c1\">#...</span>\n    <span class=\"n\">validates</span> <span class=\"ss\">:birthday</span><span class=\"p\">,</span> <span class=\"ss\">presence: </span><span class=\"p\">{</span> <span class=\"ss\">except_on: :admin</span> <span class=\"p\">}</span>\n    <span class=\"c1\">#...</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"n\">attributes</span> <span class=\"n\">except</span> <span class=\"n\">birthday</span><span class=\"p\">)</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">save</span><span class=\"p\">(</span><span class=\"ss\">context: :admin</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Drew Bragg</em></p>\n"
+  },
+  {
     "message": "*   Make `ActiveModel::Serialization#read_attribute_for_serialization` public\n\n    *Sean Doyle*",
     "project": "activemodel",
     "date_merged": 1727357924000,
