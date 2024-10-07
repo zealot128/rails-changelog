@@ -1722,6 +1722,36 @@ dependencies.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow to save records with polymorphic join tables that have inverse of specified.
+</title>
+    <link>https://github.com/rails/rails/issues/53176</link>
+    <guid>https://github.com/rails/rails/issues/53176</guid>
+    <description>*   Allow to save records with polymorphic join tables that have inverse of specified.
+
+    *Markus Doits*</description>
+    <pubDate>Mon, 07 Oct 2024 05:37:57 +0000</pubDate>
+    <author>Markus Doits</author>
+    <content:encoded><![CDATA[<p>Allow to save records with polymorphic join tables that have inverse of specified.</p>
+
+<p><em>Markus Doits</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Fix association scopes applying on the incorrect join when using a polymorphic `has_many through:`.
+</title>
+    <link>https://github.com/rails/rails/issues/40109</link>
+    <guid>https://github.com/rails/rails/issues/40109</guid>
+    <description>*   Fix association scopes applying on the incorrect join when using a polymorphic `has_many through:`.
+
+    *Joshua Young*</description>
+    <pubDate>Mon, 07 Oct 2024 02:38:22 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Fix association scopes applying on the incorrect join when using a polymorphic <code>has_many through:</code>.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow `ActiveRecord::Base#pluck` to accept hash arguments with symbol and string values.
 </title>
     <link>https://github.com/rails/rails/issues/51676</link>
