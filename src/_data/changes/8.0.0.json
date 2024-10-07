@@ -730,6 +730,26 @@
     "html": "<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Allow to save records with polymorphic join tables that have inverse of specified.\n\n    *Markus Doits*",
+    "project": "activerecord",
+    "date_merged": 1728279477000,
+    "author": "Markus Doits",
+    "sha": "36685b195c8ecf71bde9b573f5fdaf1dda6d7c44",
+    "pr": "53176",
+    "merge_sha": "aacbb5c0f5bdd11f0dee78da03bd6859f0cabeba",
+    "html": "<p>Allow to save records with polymorphic join tables that have inverse of specified.</p>\n\n<p><em>Markus Doits</em></p>\n"
+  },
+  {
+    "message": "*   Fix association scopes applying on the incorrect join when using a polymorphic `has_many through:`.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1728268702000,
+    "author": "Joshua Young",
+    "sha": "0d012faabe8287a74437e45302911e5e964014fe",
+    "pr": "40109",
+    "merge_sha": "967c33d493e5295a157e0b6c985947607715979a",
+    "html": "<p>Fix association scopes applying on the incorrect join when using a polymorphic <code>has_many through:</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Allow `ActiveRecord::Base#pluck` to accept hash arguments with symbol and string values.\n\n    ```ruby\n    Post.joins(:comments).pluck(:id, comments: :id)\n    Post.joins(:comments).pluck(\"id\", \"comments\" => \"id\")\n    ```\n\n    *Joshua Young*",
     "project": "activerecord",
     "date_merged": 1728048729000,
