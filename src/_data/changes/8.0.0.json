@@ -260,14 +260,14 @@
     "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
-    "message": "*   Raise an `ArgumentError` when invalid `:on` or `:except` options are passed into `#resource` and `#resources`.\n\n    *Joshua Young*",
+    "message": "*   Raise an `ArgumentError` when invalid `:only` or `:except` options are passed into `#resource` and `#resources`.\n\n    *Joshua Young*",
     "project": "actionpack",
-    "date_merged": 1728051982000,
+    "date_merged": 1728290413000,
     "author": "Joshua Young",
-    "sha": "c7a547feba60fe6ad14b29aae872c5651b4fc2bd",
-    "pr": "51463",
-    "merge_sha": "b4ea44f18c14fb79f01d720c3330f7e7bc7fc79f",
-    "html": "<p>Raise an <code>ArgumentError</code> when invalid <code>:on</code> or <code>:except</code> options are passed into <code>#resource</code> and <code>#resources</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
+    "sha": "f559c32f7f495efa000f391ce04c3ebffdad101f",
+    "pr": "51464",
+    "merge_sha": "a2f2dc8afd38b2d4ebd0170a75be2910fd7e4e45",
+    "html": "<p>Raise an <code>ArgumentError</code> when invalid <code>:only</code> or <code>:except</code> options are passed into <code>#resource</code> and <code>#resources</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
   },
   {
     "message": "*   Fix non-GET requests not updating cookies in `ActionController::TestCase`.\n\n    *Jon Moss*, *Hartley McGuire*",
