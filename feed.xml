@@ -609,16 +609,16 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionpack: Raise an `ArgumentError` when invalid `:on` or `:except` options are passed into `#resource` and `#resources`.
+    <title>actionpack: Raise an `ArgumentError` when invalid `:only` or `:except` options are passed into `#resource` and `#resources`.
 </title>
-    <link>https://github.com/rails/rails/issues/51463</link>
-    <guid>https://github.com/rails/rails/issues/51463</guid>
-    <description>*   Raise an `ArgumentError` when invalid `:on` or `:except` options are passed into `#resource` and `#resources`.
+    <link>https://github.com/rails/rails/issues/51464</link>
+    <guid>https://github.com/rails/rails/issues/51464</guid>
+    <description>*   Raise an `ArgumentError` when invalid `:only` or `:except` options are passed into `#resource` and `#resources`.
 
     *Joshua Young*</description>
-    <pubDate>Fri, 04 Oct 2024 14:26:22 +0000</pubDate>
+    <pubDate>Mon, 07 Oct 2024 08:40:13 +0000</pubDate>
     <author>Joshua Young</author>
-    <content:encoded><![CDATA[<p>Raise an <code>ArgumentError</code> when invalid <code>:on</code> or <code>:except</code> options are passed into <code>#resource</code> and <code>#resources</code>.</p>
+    <content:encoded><![CDATA[<p>Raise an <code>ArgumentError</code> when invalid <code>:only</code> or <code>:except</code> options are passed into <code>#resource</code> and <code>#resources</code>.</p>
 
 <p><em>Joshua Young</em></p>
 ]]></content:encoded>
