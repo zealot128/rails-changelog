@@ -609,6 +609,42 @@ This can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Update `ActionController::AllowBrowser` to support passing method names to `:block`
+</title>
+    <link>https://github.com/rails/rails/issues/53158</link>
+    <guid>https://github.com/rails/rails/issues/53158</guid>
+    <description>*   Update `ActionController::AllowBrowser` to support passing method names to `:block`
+
+    ```ruby
+    class ApplicationController &lt; ActionController::Base
+      allow_browser versions: :modern, block: :handle_outdated_browser
+
+      private
+        def handle_outdated_browser
+          render file: Rails.root.join(&quot;public/custom-error.html&quot;), status: :not_acceptable
+        end
+    end
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Tue, 08 Oct 2024 20:14:37 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Update <code>ActionController::AllowBrowser</code> to support passing method names to <code>:block</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">allow_browser</span> <span class="ss">versions: :modern</span><span class="p">,</span> <span class="ss">block: :handle_outdated_browser</span>
+
+  <span class="kp">private</span>
+    <span class="k">def</span> <span class="nf">handle_outdated_browser</span>
+      <span class="n">render</span> <span class="ss">file: </span><span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"public/custom-error.html"</span><span class="p">),</span> <span class="ss">status: :not_acceptable</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Raise an `ArgumentError` when invalid `:only` or `:except` options are passed into `#resource` and `#resources`.
 </title>
     <link>https://github.com/rails/rails/issues/51464</link>
