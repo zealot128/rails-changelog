@@ -260,6 +260,16 @@
     "html": "<p>Use Kamal for deployment by default, which includes generating a Rails-specific config/deploy.yml.<br />\nThis can be skipped using –skip-kamal. See more: https://kamal-deploy.org/</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
+    "message": "*   Update `ActionController::AllowBrowser` to support passing method names to `:block`\n\n    ```ruby\n    class ApplicationController < ActionController::Base\n      allow_browser versions: :modern, block: :handle_outdated_browser\n\n      private\n        def handle_outdated_browser\n          render file: Rails.root.join(\"public/custom-error.html\"), status: :not_acceptable\n        end\n    end\n    ```\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1728418477000,
+    "author": "Sean Doyle",
+    "sha": "d21fb64fa4d4f61fdcb7e5427d522b0eff9b4cc5",
+    "pr": "53158",
+    "merge_sha": "a8f86fcbc9d490366f660ff43f76167dfb7f019c",
+    "html": "<p>Update <code>ActionController::AllowBrowser</code> to support passing method names to <code>:block</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ApplicationController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">allow_browser</span> <span class=\"ss\">versions: :modern</span><span class=\"p\">,</span> <span class=\"ss\">block: :handle_outdated_browser</span>\n\n  <span class=\"kp\">private</span>\n    <span class=\"k\">def</span> <span class=\"nf\">handle_outdated_browser</span>\n      <span class=\"n\">render</span> <span class=\"ss\">file: </span><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">.</span><span class=\"nf\">join</span><span class=\"p\">(</span><span class=\"s2\">\"public/custom-error.html\"</span><span class=\"p\">),</span> <span class=\"ss\">status: :not_acceptable</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Raise an `ArgumentError` when invalid `:only` or `:except` options are passed into `#resource` and `#resources`.\n\n    *Joshua Young*",
     "project": "actionpack",
     "date_merged": 1728290413000,
