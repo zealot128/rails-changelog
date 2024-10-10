@@ -960,6 +960,16 @@
     "html": "<p>Rename <code>check_box*</code> methods into <code>checkbox*</code>.</p>\n\n<p>Old names are still available as aliases.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
+    "message": "*   Don't execute i18n watcher on boot. It shouldn't catch any file changes initially,\n    and unnecessarily slows down boot of applications with lots of translations.\n\n    *Gannon McGibbon*, *David Stosik*",
+    "project": "activesupport",
+    "date_merged": 1728535026000,
+    "author": "Gannon McGibbon",
+    "sha": "b4afdb0df62e0042518d67a6544c95e2707a422d",
+    "pr": "53259",
+    "merge_sha": "299b6510348606380c21cc6e599c99409f6ec19a",
+    "html": "<p>Don’t execute i18n watcher on boot. It shouldn’t catch any file changes initially,<br />\nand unnecessarily slows down boot of applications with lots of translations.</p>\n\n<p><em>Gannon McGibbon</em>, <em>David Stosik</em></p>\n"
+  },
+  {
     "message": "*   Fix `ActiveSupport::HashWithIndifferentAccess#stringify_keys` to stringify all keys not just symbols.\n\n    Previously:\n\n    ```ruby\n    { 1 => 2 }.with_indifferent_access.stringify_keys[1] # => 2\n    ```\n\n    After this change:\n\n    ```ruby\n    { 1 => 2 }.with_indifferent_access.stringify_keys[\"1\"] # => 2\n    ```\n\n    This change can be seen as a bug fix, but since it behaved like this for a very long time, we're deciding\n    to not backport the fix and to make the change in a major release.\n\n    *Jean Boussier*",
     "project": "activesupport",
     "date_merged": 1727732893000,
