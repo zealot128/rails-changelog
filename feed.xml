@@ -2409,6 +2409,23 @@ dependencies.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Don&#39;t execute i18n watcher on boot. It shouldn&#39;t catch any file changes initially,
+</title>
+    <link>https://github.com/rails/rails/issues/53259</link>
+    <guid>https://github.com/rails/rails/issues/53259</guid>
+    <description>*   Don&#39;t execute i18n watcher on boot. It shouldn&#39;t catch any file changes initially,
+    and unnecessarily slows down boot of applications with lots of translations.
+
+    *Gannon McGibbon*, *David Stosik*</description>
+    <pubDate>Thu, 10 Oct 2024 04:37:06 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Don’t execute i18n watcher on boot. It shouldn’t catch any file changes initially,<br />
+and unnecessarily slows down boot of applications with lots of translations.</p>
+
+<p><em>Gannon McGibbon</em>, <em>David Stosik</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Fix `ActiveSupport::HashWithIndifferentAccess#stringify_keys` to stringify all keys not just symbols.
 </title>
     <link>https://github.com/rails/rails/issues/53125</link>
