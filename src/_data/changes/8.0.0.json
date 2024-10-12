@@ -520,14 +520,14 @@
     "html": "<p>Fix incorrect SQL query when passing an empty hash to <code>ActiveRecord::Base.insert</code>.</p>\n\n<p><em>David Stosik</em></p>\n"
   },
   {
-    "message": "*   Allow to save records with polymorphic join tables that have inverse of specified.\n\n    *Markus Doits*",
+    "message": "*   Allow to save records with polymorphic join tables that have `inverse_of`\n    specified.\n\n    *Markus Doits*",
     "project": "activerecord",
-    "date_merged": 1728279477000,
-    "author": "Markus Doits",
-    "sha": "36685b195c8ecf71bde9b573f5fdaf1dda6d7c44",
-    "pr": "53176",
-    "merge_sha": "aacbb5c0f5bdd11f0dee78da03bd6859f0cabeba",
-    "html": "<p>Allow to save records with polymorphic join tables that have inverse of specified.</p>\n\n<p><em>Markus Doits</em></p>\n"
+    "date_merged": 1728757185000,
+    "author": "Hartley McGuire",
+    "sha": "53bd1224f2e9a8938ab5c8ab73a94b447a82594f",
+    "pr": "53282",
+    "merge_sha": "1c759a2bc2decd84dcb1ab4b62bd917359f0997e",
+    "html": "<p>Allow to save records with polymorphic join tables that have <code>inverse_of</code><br />\nspecified.</p>\n\n<p><em>Markus Doits</em></p>\n"
   },
   {
     "message": "*   Fix association scopes applying on the incorrect join when using a polymorphic `has_many through:`.\n\n    *Joshua Young*",
