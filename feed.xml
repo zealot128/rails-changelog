@@ -1314,16 +1314,18 @@ and <code>direct-upload:end</code> - similar to how Active Storage’s direct up
 ]]></content:encoded>
   </item>
   <item>
-    <title>activerecord: Allow to save records with polymorphic join tables that have inverse of specified.
+    <title>activerecord: Allow to save records with polymorphic join tables that have `inverse_of`
 </title>
-    <link>https://github.com/rails/rails/issues/53176</link>
-    <guid>https://github.com/rails/rails/issues/53176</guid>
-    <description>*   Allow to save records with polymorphic join tables that have inverse of specified.
+    <link>https://github.com/rails/rails/issues/53282</link>
+    <guid>https://github.com/rails/rails/issues/53282</guid>
+    <description>*   Allow to save records with polymorphic join tables that have `inverse_of`
+    specified.
 
     *Markus Doits*</description>
-    <pubDate>Mon, 07 Oct 2024 05:37:57 +0000</pubDate>
-    <author>Markus Doits</author>
-    <content:encoded><![CDATA[<p>Allow to save records with polymorphic join tables that have inverse of specified.</p>
+    <pubDate>Sat, 12 Oct 2024 18:19:45 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Allow to save records with polymorphic join tables that have <code>inverse_of</code><br />
+specified.</p>
 
 <p><em>Markus Doits</em></p>
 ]]></content:encoded>
