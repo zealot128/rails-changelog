@@ -570,6 +570,16 @@
     "html": "<p>Only sanitize <code>content</code> attribute when present in attachments.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Improve `ActionController::TestCase` to expose a binary encoded `request.body`.\n\n    The rack spec clearly states:\n\n    > The input stream is an IO-like object which contains the raw HTTP POST data.\n    > When applicable, its external encoding must be “ASCII-8BIT” and it must be opened in binary mode.\n\n    Until now its encoding was generally UTF-8, which doesn't accurately reflect production\n    behavior.\n\n    *Jean Boussier*",
+    "project": "actionpack",
+    "date_merged": 1728940219000,
+    "author": "Jean Boussier",
+    "sha": "bf6db28e463565d40d3d0d11d7c7cb36466dd874",
+    "pr": "53298",
+    "merge_sha": "3f1f217b673acb0a509eb12bf3e205b2e1b1e02a",
+    "html": "<p>Improve <code>ActionController::TestCase</code> to expose a binary encoded <code>request.body</code>.</p>\n\n<p>The rack spec clearly states:</p>\n\n<blockquote>\n  <p>The input stream is an IO-like object which contains the raw HTTP POST data.<br />\nWhen applicable, its external encoding must be “ASCII-8BIT” and it must be opened in binary mode.</p>\n</blockquote>\n\n<p>Until now its encoding was generally UTF-8, which doesn’t accurately reflect production<br />\nbehavior.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Update `ActionController::AllowBrowser` to support passing method names to `:block`\n\n    ```ruby\n    class ApplicationController < ActionController::Base\n      allow_browser versions: :modern, block: :handle_outdated_browser\n\n      private\n        def handle_outdated_browser\n          render file: Rails.root.join(\"public/custom-error.html\"), status: :not_acceptable\n        end\n    end\n    ```\n\n    *Sean Doyle*",
     "project": "actionpack",
     "date_merged": 1728418477000,
