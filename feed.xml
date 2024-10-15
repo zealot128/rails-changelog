@@ -1440,6 +1440,39 @@ and <code>direct-upload:end</code> - similar to how Active Storage’s direct up
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Improve `ActionController::TestCase` to expose a binary encoded `request.body`.
+</title>
+    <link>https://github.com/rails/rails/issues/53298</link>
+    <guid>https://github.com/rails/rails/issues/53298</guid>
+    <description>*   Improve `ActionController::TestCase` to expose a binary encoded `request.body`.
+
+    The rack spec clearly states:
+
+    &gt; The input stream is an IO-like object which contains the raw HTTP POST data.
+    &gt; When applicable, its external encoding must be “ASCII-8BIT” and it must be opened in binary mode.
+
+    Until now its encoding was generally UTF-8, which doesn&#39;t accurately reflect production
+    behavior.
+
+    *Jean Boussier*</description>
+    <pubDate>Mon, 14 Oct 2024 21:10:19 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Improve <code>ActionController::TestCase</code> to expose a binary encoded <code>request.body</code>.</p>
+
+<p>The rack spec clearly states:</p>
+
+<blockquote>
+  <p>The input stream is an IO-like object which contains the raw HTTP POST data.<br />
+When applicable, its external encoding must be “ASCII-8BIT” and it must be opened in binary mode.</p>
+</blockquote>
+
+<p>Until now its encoding was generally UTF-8, which doesn’t accurately reflect production<br />
+behavior.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Update `ActionController::AllowBrowser` to support passing method names to `:block`
 </title>
     <link>https://github.com/rails/rails/issues/53158</link>
