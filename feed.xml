@@ -5,6 +5,43 @@
 <link>https://zealot128.github.io/rails-changelog</link>
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>activesupport: `ActiveSupport::JSON.encode` supports CIDR notation.
+</title>
+    <link>https://github.com/rails/rails/issues/53393</link>
+    <guid>https://github.com/rails/rails/issues/53393</guid>
+    <description>*   `ActiveSupport::JSON.encode` supports CIDR notation.
+
+    Previously:
+
+    ```ruby
+    ActiveSupport::JSON.encode(IPAddr.new(&quot;172.16.0.0/24&quot;)) # =&gt; &quot;\&quot;172.16.0.0\&quot;&quot;
+    ```
+
+    After this change:
+
+    ```ruby
+    ActiveSupport::JSON.encode(IPAddr.new(&quot;172.16.0.0/24&quot;)) # =&gt; &quot;\&quot;172.16.0.0/24\&quot;&quot;
+    ```
+
+    *Taketo Takashima*</description>
+    <pubDate>Mon, 21 Oct 2024 23:47:55 +0000</pubDate>
+    <author>Taketo Takashima</author>
+    <content:encoded><![CDATA[<p><code>ActiveSupport::JSON.encode</code> supports CIDR notation.</p>
+
+<p>Previously:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveSupport</span><span class="o">::</span><span class="no">JSON</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="no">IPAddr</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"172.16.0.0/24"</span><span class="p">))</span> <span class="c1"># =&gt; "\"172.16.0.0\""</span>
+</code></pre></div></div>
+
+<p>After this change:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveSupport</span><span class="o">::</span><span class="no">JSON</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="no">IPAddr</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"172.16.0.0/24"</span><span class="p">))</span> <span class="c1"># =&gt; "\"172.16.0.0/24\""</span>
+</code></pre></div></div>
+
+<p><em>Taketo Takashima</em></p>
+]]></content:encoded>
+  </item>
 </channel>
 </rss>
 
