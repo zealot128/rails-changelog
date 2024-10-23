@@ -1,0 +1,12 @@
+[
+  {
+    "message": "*   `ActiveSupport::JSON.encode` supports CIDR notation.\n\n    Previously:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0\\\"\"\n    ```\n\n    After this change:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0/24\\\"\"\n    ```\n\n    *Taketo Takashima*",
+    "project": "activesupport",
+    "date_merged": 1729554475000,
+    "author": "Taketo Takashima",
+    "sha": "a11e7c263859e28468cd4cdcfadea4608e41ba66",
+    "pr": "53393",
+    "merge_sha": "546ca81125749e43e30de20684913a8385deafb9",
+    "html": "<p><code>ActiveSupport::JSON.encode</code> supports CIDR notation.</p>\n\n<p>Previously:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">encode</span><span class=\"p\">(</span><span class=\"no\">IPAddr</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"172.16.0.0/24\"</span><span class=\"p\">))</span> <span class=\"c1\"># =&gt; \"\\\"172.16.0.0\\\"\"</span>\n</code></pre></div></div>\n\n<p>After this change:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">encode</span><span class=\"p\">(</span><span class=\"no\">IPAddr</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"172.16.0.0/24\"</span><span class=\"p\">))</span> <span class=\"c1\"># =&gt; \"\\\"172.16.0.0/24\\\"\"</span>\n</code></pre></div></div>\n\n<p><em>Taketo Takashima</em></p>\n"
+  }
+]
