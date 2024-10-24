@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   `PG::UnableToSend: no connection to the server` is now retryable as a connection-related exception\n\n    *Kazuma Watanabe*",
+    "project": "activerecord",
+    "date_merged": 1729756158000,
+    "author": "wata727",
+    "sha": "d0edda3315455660a387fb3cd6313b589a235e3a",
+    "pr": "53400",
+    "merge_sha": "7fac5d14d00fcc8dc60b49729abe78223ad3bf00",
+    "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
+  },
+  {
     "message": "*   `ActiveSupport::JSON.encode` supports CIDR notation.\n\n    Previously:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0\\\"\"\n    ```\n\n    After this change:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0/24\\\"\"\n    ```\n\n    *Taketo Takashima*",
     "project": "activesupport",
     "date_merged": 1729554475000,
