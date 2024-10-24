@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: `PG::UnableToSend: no connection to the server` is now retryable as a connection-related exception
+</title>
+    <link>https://github.com/rails/rails/issues/53400</link>
+    <guid>https://github.com/rails/rails/issues/53400</guid>
+    <description>*   `PG::UnableToSend: no connection to the server` is now retryable as a connection-related exception
+
+    *Kazuma Watanabe*</description>
+    <pubDate>Thu, 24 Oct 2024 07:49:18 +0000</pubDate>
+    <author>wata727</author>
+    <content:encoded><![CDATA[<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>
+
+<p><em>Kazuma Watanabe</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `ActiveSupport::JSON.encode` supports CIDR notation.
 </title>
     <link>https://github.com/rails/rails/issues/53393</link>
