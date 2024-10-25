@@ -21,6 +21,25 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: `ActiveSupport::CurrentAttributes#attributes` now will return a new hash object on each call.
+</title>
+    <link>https://github.com/rails/rails/issues/53440</link>
+    <guid>https://github.com/rails/rails/issues/53440</guid>
+    <description>*   `ActiveSupport::CurrentAttributes#attributes` now will return a new hash object on each call.
+
+    Previously, the same hash object was returned each time that method was called.
+
+    *fatkodima*</description>
+    <pubDate>Thu, 24 Oct 2024 22:05:01 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p><code>ActiveSupport::CurrentAttributes#attributes</code> now will return a new hash object on each call.</p>
+
+<p>Previously, the same hash object was returned each time that method was called.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `ActiveSupport::JSON.encode` supports CIDR notation.
 </title>
     <link>https://github.com/rails/rails/issues/53393</link>
