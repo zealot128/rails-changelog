@@ -10,6 +10,16 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   `ActiveSupport::CurrentAttributes#attributes` now will return a new hash object on each call.\n\n    Previously, the same hash object was returned each time that method was called.\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1729807501000,
+    "author": "fatkodima",
+    "sha": "90a96b8eb814463049b2cb47c899dd24c5eba369",
+    "pr": "53440",
+    "merge_sha": "c8ad2b2abfc1b8c01e27457a237f90aff0003403",
+    "html": "<p><code>ActiveSupport::CurrentAttributes#attributes</code> now will return a new hash object on each call.</p>\n\n<p>Previously, the same hash object was returned each time that method was called.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   `ActiveSupport::JSON.encode` supports CIDR notation.\n\n    Previously:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0\\\"\"\n    ```\n\n    After this change:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0/24\\\"\"\n    ```\n\n    *Taketo Takashima*",
     "project": "activesupport",
     "date_merged": 1729554475000,
