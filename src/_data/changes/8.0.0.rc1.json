@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   NULLS NOT DISTINCT works with UNIQUE CONSTRAINT as well as UNIQUE INDEX.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1729999169000,
+    "author": "Ryuta Kamizono",
+    "sha": "38489e43f2c865f888f9b5af0219a8280fc54429",
+    "pr": "53456",
+    "merge_sha": "e6429269fd5a8a7d728557f4e7d7f82c0ad1478c",
+    "html": "<p>NULLS NOT DISTINCT works with UNIQUE CONSTRAINT as well as UNIQUE INDEX.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   `PG::UnableToSend: no connection to the server` is now retryable as a connection-related exception\n\n    *Kazuma Watanabe*",
     "project": "activerecord",
     "date_merged": 1729756158000,
