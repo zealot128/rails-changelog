@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: NULLS NOT DISTINCT works with UNIQUE CONSTRAINT as well as UNIQUE INDEX.
+</title>
+    <link>https://github.com/rails/rails/issues/53456</link>
+    <guid>https://github.com/rails/rails/issues/53456</guid>
+    <description>*   NULLS NOT DISTINCT works with UNIQUE CONSTRAINT as well as UNIQUE INDEX.
+
+    *Ryuta Kamizono*</description>
+    <pubDate>Sun, 27 Oct 2024 03:19:29 +0000</pubDate>
+    <author>Ryuta Kamizono</author>
+    <content:encoded><![CDATA[<p>NULLS NOT DISTINCT works with UNIQUE CONSTRAINT as well as UNIQUE INDEX.</p>
+
+<p><em>Ryuta Kamizono</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `PG::UnableToSend: no connection to the server` is now retryable as a connection-related exception
 </title>
     <link>https://github.com/rails/rails/issues/53400</link>
