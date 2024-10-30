@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Cast `query_cache` value when using URL configuration.\n\n    *zzak*",
+    "project": "activerecord",
+    "date_merged": 1730292324000,
+    "author": "zzak",
+    "sha": "af9b0f2be4c677772bca5c0b0d947bcd7b8d2fe4",
+    "pr": "53491",
+    "merge_sha": "a807d585fadff5d1964a32088100017e41cc5c5d",
+    "html": "<p>Cast <code>query_cache</code> value when using URL configuration.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
     "message": "*   NULLS NOT DISTINCT works with UNIQUE CONSTRAINT as well as UNIQUE INDEX.\n\n    *Ryuta Kamizono*",
     "project": "activerecord",
     "date_merged": 1729999169000,
