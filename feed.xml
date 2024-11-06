@@ -6,6 +6,42 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Add support for enabling or disabling transactional tests per database.
+</title>
+    <link>https://github.com/rails/rails/issues/53139</link>
+    <guid>https://github.com/rails/rails/issues/53139</guid>
+    <description>*   Add support for enabling or disabling transactional tests per database.
+
+    A test class can now override the default `use_transactional_tests` setting
+    for individual databases, which can be useful if some databases need their
+    current state to be accessible to an external process while tests are running.
+
+    ```ruby
+    class MostlyTransactionalTest &lt; ActiveSupport::TestCase
+      self.use_transactional_tests = true
+      skip_transactional_tests_for_database :shared
+    end
+    ```
+
+    *Matthew Cheetham*, *Morgan Mareve*</description>
+    <pubDate>Wed, 06 Nov 2024 15:31:32 +0000</pubDate>
+    <author>Matthew John Cheetham</author>
+    <content:encoded><![CDATA[<p>Add support for enabling or disabling transactional tests per database.</p>
+
+<p>A test class can now override the default <code>use_transactional_tests</code> setting<br />
+for individual databases, which can be useful if some databases need their<br />
+current state to be accessible to an external process while tests are running.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MostlyTransactionalTest</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">use_transactional_tests</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="n">skip_transactional_tests_for_database</span> <span class="ss">:shared</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Matthew Cheetham</em>, <em>Morgan Mareve</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Cast `query_cache` value when using URL configuration.
 </title>
     <link>https://github.com/rails/rails/issues/53491</link>
