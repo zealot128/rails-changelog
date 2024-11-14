@@ -6,6 +6,25 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activerecord: Fix `sum` when performing a grouped calculation.
+</title>
+    <link>https://github.com/rails/rails/issues/53625</link>
+    <guid>https://github.com/rails/rails/issues/53625</guid>
+    <description>*   Fix `sum` when performing a grouped calculation.
+
+    `User.group(:friendly).sum` no longer worked. This is fixed.
+
+    *Edouard Chin*</description>
+    <pubDate>Thu, 14 Nov 2024 03:56:47 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p>Fix <code>sum</code> when performing a grouped calculation.</p>
+
+<p><code>User.group(:friendly).sum</code> no longer worked. This is fixed.</p>
+
+<p><em>Edouard Chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add support for enabling or disabling transactional tests per database.
 </title>
     <link>https://github.com/rails/rails/issues/53139</link>
