@@ -106,6 +106,36 @@ current state to be accessible to an external process while tests are running.</
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
+</title>
+    <link>https://github.com/rails/rails/issues/53512</link>
+    <guid>https://github.com/rails/rails/issues/53512</guid>
+    <description>*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
+
+    *brendon*</description>
+    <pubDate>Fri, 15 Nov 2024 11:28:47 +0000</pubDate>
+    <author>Brendon Muir</author>
+    <content:encoded><![CDATA[<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>
+
+<p><em>brendon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Add `ActiveSupport::Testing::NotificationAssertions` module to help with testing `ActiveSupport::Notifications`.
+</title>
+    <link>https://github.com/rails/rails/issues/53065</link>
+    <guid>https://github.com/rails/rails/issues/53065</guid>
+    <description>*   Add `ActiveSupport::Testing::NotificationAssertions` module to help with testing `ActiveSupport::Notifications`.
+
+    *Nicholas La Roux*, *Yishu See*, *Sean Doyle*</description>
+    <pubDate>Fri, 15 Nov 2024 15:31:58 +0000</pubDate>
+    <author>Nicholas La Roux</author>
+    <content:encoded><![CDATA[<p>Add <code>ActiveSupport::Testing::NotificationAssertions</code> module to help with testing <code>ActiveSupport::Notifications</code>.</p>
+
+<p><em>Nicholas La Roux</em>, <em>Yishu See</em>, <em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `ActiveSupport::CurrentAttributes#attributes` now will return a new hash object on each call.
 </title>
     <link>https://github.com/rails/rails/issues/53440</link>
