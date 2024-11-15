@@ -50,6 +50,26 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.\n\n    *brendon*",
+    "project": "actionview",
+    "date_merged": 1731670127000,
+    "author": "Brendon Muir",
+    "sha": "09daec64ac5189799718d8805311ac1458021910",
+    "pr": "53512",
+    "merge_sha": "e5ad9e789966a2743da8f81b6ed5e80f2575a8d1",
+    "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
+  },
+  {
+    "message": "*   Add `ActiveSupport::Testing::NotificationAssertions` module to help with testing `ActiveSupport::Notifications`.\n\n    *Nicholas La Roux*, *Yishu See*, *Sean Doyle*",
+    "project": "activesupport",
+    "date_merged": 1731684718000,
+    "author": "Nicholas La Roux",
+    "sha": "5cfe5e639a95ea6067a2e5aca97ccbbb36abb1d3",
+    "pr": "53065",
+    "merge_sha": "c57da03e94a58e42abbb891597608898585b057b",
+    "html": "<p>Add <code>ActiveSupport::Testing::NotificationAssertions</code> module to help with testing <code>ActiveSupport::Notifications</code>.</p>\n\n<p><em>Nicholas La Roux</em>, <em>Yishu See</em>, <em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   `ActiveSupport::CurrentAttributes#attributes` now will return a new hash object on each call.\n\n    Previously, the same hash object was returned each time that method was called.\n\n    *fatkodima*",
     "project": "activesupport",
     "date_merged": 1729807501000,
