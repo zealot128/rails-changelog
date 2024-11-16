@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Only include PermissionsPolicy::Middleware if policy is configured.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1731706201000,
+    "author": "Petrik",
+    "sha": "987977c2809e57dc7f4d6e90d6aaa25e6a52f927",
+    "pr": "53621",
+    "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
+    "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Fix `sum` when performing a grouped calculation.\n\n    `User.group(:friendly).sum` no longer worked. This is fixed.\n\n    *Edouard Chin*",
     "project": "activerecord",
     "date_merged": 1731556607000,
