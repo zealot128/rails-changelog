@@ -6,6 +6,36 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>actionpack: Allow setting content type with a symbol of the Mime type.
+</title>
+    <link>https://github.com/rails/rails/issues/53236</link>
+    <guid>https://github.com/rails/rails/issues/53236</guid>
+    <description>*   Allow setting content type with a symbol of the Mime type.
+
+    ```ruby
+    # Before
+    response.content_type = &quot;text/html&quot;
+
+    # After
+    response.content_type = :html
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Sat, 16 Nov 2024 10:36:32 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Allow setting content type with a symbol of the Mime type.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="s2">"text/html"</span>
+
+<span class="c1"># After</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="ss">:html</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Only include PermissionsPolicy::Middleware if policy is configured.
 </title>
     <link>https://github.com/rails/rails/issues/53621</link>
@@ -18,6 +48,49 @@
     <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Allow to reset cache counters for multiple records.
+</title>
+    <link>https://github.com/rails/rails/issues/44971</link>
+    <guid>https://github.com/rails/rails/issues/44971</guid>
+    <description>*   Allow to reset cache counters for multiple records.
+
+    ```
+    Aircraft.reset_counters([1, 2, 3], :wheels_count)
+    ```
+
+    It produces much fewer queries compared to the custom implementation using looping over ids.
+    Previously: `O(ids.size * counters.size)` queries, now: `O(ids.size + counters.size)` queries.
+
+    *fatkodima*</description>
+    <pubDate>Sat, 16 Nov 2024 18:00:12 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Allow to reset cache counters for multiple records.</p>
+
+<pre><code>Aircraft.reset_counters([1, 2, 3], :wheels_count)
+</code></pre>
+
+<p>It produces much fewer queries compared to the custom implementation using looping over ids.<br />
+Previously: <code>O(ids.size * counters.size)</code> queries, now: <code>O(ids.size + counters.size)</code> queries.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `affected_rows` to `sql.active_record` Notification.
+</title>
+    <link>https://github.com/rails/rails/issues/53277</link>
+    <guid>https://github.com/rails/rails/issues/53277</guid>
+    <description>*   Add `affected_rows` to `sql.active_record` Notification.
+
+    *Hartley McGuire*</description>
+    <pubDate>Sat, 16 Nov 2024 10:29:41 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Add <code>affected_rows</code> to <code>sql.active_record</code> Notification.</p>
+
+<p><em>Hartley McGuire</em></p>
 ]]></content:encoded>
   </item>
   <item>
