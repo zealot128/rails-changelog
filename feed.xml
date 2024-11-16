@@ -6,6 +6,21 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>railties: Only include PermissionsPolicy::Middleware if policy is configured.
+</title>
+    <link>https://github.com/rails/rails/issues/53621</link>
+    <guid>https://github.com/rails/rails/issues/53621</guid>
+    <description>*   Only include PermissionsPolicy::Middleware if policy is configured.
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 15 Nov 2024 21:30:01 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix `sum` when performing a grouped calculation.
 </title>
     <link>https://github.com/rails/rails/issues/53625</link>
