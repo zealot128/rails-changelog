@@ -209,6 +209,21 @@ current state to be accessible to an external process while tests are running.</
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.
+</title>
+    <link>https://github.com/rails/rails/issues/53655</link>
+    <guid>https://github.com/rails/rails/issues/53655</guid>
+    <description>*   Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.
+
+    *Martin Emde*</description>
+    <pubDate>Sun, 17 Nov 2024 15:11:19 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>Fix a bug in <code>ERB::Util.tokenize</code> that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.</p>
+
+<p><em>Martin Emde</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Add `ActiveSupport::Testing::NotificationAssertions` module to help with testing `ActiveSupport::Notifications`.
 </title>
     <link>https://github.com/rails/rails/issues/53065</link>
