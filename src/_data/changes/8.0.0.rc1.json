@@ -100,6 +100,16 @@
     "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
   },
   {
+    "message": "*   Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.\n\n    *Martin Emde*",
+    "project": "activesupport",
+    "date_merged": 1731856279000,
+    "author": "Martin Emde",
+    "sha": "30010bb7eb31a9f251c7e519528c0fe0a68c7f3a",
+    "pr": "53655",
+    "merge_sha": "51f3fa68f75ecaec114c5eacfb99a4a8ed260844",
+    "html": "<p>Fix a bug in <code>ERB::Util.tokenize</code> that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
     "message": "*   Add `ActiveSupport::Testing::NotificationAssertions` module to help with testing `ActiveSupport::Notifications`.\n\n    *Nicholas La Roux*, *Yishu See*, *Sean Doyle*",
     "project": "activesupport",
     "date_merged": 1731684718000,
