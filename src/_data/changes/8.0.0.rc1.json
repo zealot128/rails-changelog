@@ -90,6 +90,26 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Fix a crash in ERB template error highlighting when the error occurs on a\n    line in the compiled template that is past the end of the source template.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732254580000,
+    "author": "Martin Emde",
+    "sha": "5857b8f83ca51a38151bb107a03684320505421d",
+    "pr": "53696",
+    "merge_sha": "8cab71cd0441043ba1c3c201ef8b8282d6f13b63",
+    "html": "<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />\nline in the compiled template that is past the end of the source template.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Improve reliability of ERB template error highlighting.\n    Fix infinite loops and crashes in highlighting and\n    improve tolerance for alternate ERB handlers.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732218987000,
+    "author": "Martin Emde",
+    "sha": "aaebc8635123537f60db62763e6d80489098060d",
+    "pr": "53657",
+    "merge_sha": "9add4d9786266cbebcc44c07963ceb589de9ce79",
+    "html": "<p>Improve reliability of ERB template error highlighting.<br />\nFix infinite loops and crashes in highlighting and<br />\nimprove tolerance for alternate ERB handlers.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
     "message": "*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.\n\n    *brendon*",
     "project": "actionview",
     "date_merged": 1731670127000,
