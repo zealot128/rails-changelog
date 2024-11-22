@@ -194,6 +194,42 @@ current state to be accessible to an external process while tests are running.</
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Fix a crash in ERB template error highlighting when the error occurs on a
+</title>
+    <link>https://github.com/rails/rails/issues/53696</link>
+    <guid>https://github.com/rails/rails/issues/53696</guid>
+    <description>*   Fix a crash in ERB template error highlighting when the error occurs on a
+    line in the compiled template that is past the end of the source template.
+
+    *Martin Emde*</description>
+    <pubDate>Fri, 22 Nov 2024 05:49:40 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />
+line in the compiled template that is past the end of the source template.</p>
+
+<p><em>Martin Emde</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Improve reliability of ERB template error highlighting.
+</title>
+    <link>https://github.com/rails/rails/issues/53657</link>
+    <guid>https://github.com/rails/rails/issues/53657</guid>
+    <description>*   Improve reliability of ERB template error highlighting.
+    Fix infinite loops and crashes in highlighting and
+    improve tolerance for alternate ERB handlers.
+
+    *Martin Emde*</description>
+    <pubDate>Thu, 21 Nov 2024 19:56:27 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>Improve reliability of ERB template error highlighting.<br />
+Fix infinite loops and crashes in highlighting and<br />
+improve tolerance for alternate ERB handlers.</p>
+
+<p><em>Martin Emde</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
 </title>
     <link>https://github.com/rails/rails/issues/53512</link>
