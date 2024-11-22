@@ -158,5 +158,15 @@
     "pr": "53393",
     "merge_sha": "546ca81125749e43e30de20684913a8385deafb9",
     "html": "<p><code>ActiveSupport::JSON.encode</code> supports CIDR notation.</p>\n\n<p>Previously:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">encode</span><span class=\"p\">(</span><span class=\"no\">IPAddr</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"172.16.0.0/24\"</span><span class=\"p\">))</span> <span class=\"c1\"># =&gt; \"\\\"172.16.0.0\\\"\"</span>\n</code></pre></div></div>\n\n<p>After this change:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">encode</span><span class=\"p\">(</span><span class=\"no\">IPAddr</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"172.16.0.0/24\"</span><span class=\"p\">))</span> <span class=\"c1\"># =&gt; \"\\\"172.16.0.0/24\\\"\"</span>\n</code></pre></div></div>\n\n<p><em>Taketo Takashima</em></p>\n"
+  },
+  {
+    "message": "*   Make `ActiveSupport::FileUpdateChecker` faster when checking many file-extensions.\n\n    *Jonathan del Strother*",
+    "project": "activesupport",
+    "date_merged": 1732272149000,
+    "author": "Jonathan del Strother",
+    "sha": "cea72800784fd3d3e2e7432ace0604cd90908ddb",
+    "pr": "53680",
+    "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
+    "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   }
 ]
