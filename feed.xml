@@ -330,6 +330,21 @@ improve tolerance for alternate ERB handlers.</p>
 <p><em>Taketo Takashima</em></p>
 ]]></content:encoded>
   </item>
+  <item>
+    <title>activesupport: Make `ActiveSupport::FileUpdateChecker` faster when checking many file-extensions.
+</title>
+    <link>https://github.com/rails/rails/issues/53680</link>
+    <guid>https://github.com/rails/rails/issues/53680</guid>
+    <description>*   Make `ActiveSupport::FileUpdateChecker` faster when checking many file-extensions.
+
+    *Jonathan del Strother*</description>
+    <pubDate>Fri, 22 Nov 2024 10:42:29 +0000</pubDate>
+    <author>Jonathan del Strother</author>
+    <content:encoded><![CDATA[<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>
+
+<p><em>Jonathan del Strother</em></p>
+]]></content:encoded>
+  </item>
 </channel>
 </rss>
 
