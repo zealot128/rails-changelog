@@ -10,6 +10,16 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environment tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1732617959000,
+    "author": "Ali Ismayilov",
+    "sha": "76e2b7e529e6c8cc42de00c94408d008655385bb",
+    "pr": "53746",
+    "merge_sha": "723ca0c0a757e27ab23e60cd65767606b7f6c202",
+    "html": "<p>Don’t enable YJIT in development and test environments</p>\n\n<p>Development and test environment tend to reload code and redefine methods (e.g. mocking),<br />\nhence YJIT isn’t generally faster in these environments.</p>\n\n<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Only include PermissionsPolicy::Middleware if policy is configured.\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1731706201000,
