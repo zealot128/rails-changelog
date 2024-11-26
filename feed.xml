@@ -36,6 +36,27 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Don&#39;t enable YJIT in development and test environments
+</title>
+    <link>https://github.com/rails/rails/issues/53746</link>
+    <guid>https://github.com/rails/rails/issues/53746</guid>
+    <description>*   Don&#39;t enable YJIT in development and test environments
+
+    Development and test environment tend to reload code and redefine methods (e.g. mocking),
+    hence YJIT isn&#39;t generally faster in these environments.
+
+    *Ali Ismayilov*, *Jean Boussier*</description>
+    <pubDate>Tue, 26 Nov 2024 10:45:59 +0000</pubDate>
+    <author>Ali Ismayilov</author>
+    <content:encoded><![CDATA[<p>Don’t enable YJIT in development and test environments</p>
+
+<p>Development and test environment tend to reload code and redefine methods (e.g. mocking),<br />
+hence YJIT isn’t generally faster in these environments.</p>
+
+<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Only include PermissionsPolicy::Middleware if policy is configured.
 </title>
     <link>https://github.com/rails/rails/issues/53621</link>
