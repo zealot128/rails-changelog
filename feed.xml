@@ -72,6 +72,33 @@ hence YJIT isn’t generally faster in these environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Remember when a database connection has recently been verified (for
+</title>
+    <link>https://github.com/rails/rails/issues/53672</link>
+    <guid>https://github.com/rails/rails/issues/53672</guid>
+    <description>*   Remember when a database connection has recently been verified (for
+    two seconds, by default), to avoid repeated reverifications during a
+    single request.
+
+    This should recreate a similar rate of verification as in Rails 7.1,
+    where connections are leased for the duration of a request, and thus
+    only verified once.
+
+    *Matthew Draper*</description>
+    <pubDate>Thu, 28 Nov 2024 05:42:57 +0000</pubDate>
+    <author>Matthew Draper</author>
+    <content:encoded><![CDATA[<p>Remember when a database connection has recently been verified (for<br />
+two seconds, by default), to avoid repeated reverifications during a<br />
+single request.</p>
+
+<p>This should recreate a similar rate of verification as in Rails 7.1,<br />
+where connections are leased for the duration of a request, and thus<br />
+only verified once.</p>
+
+<p><em>Matthew Draper</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow to reset cache counters for multiple records.
 </title>
     <link>https://github.com/rails/rails/issues/44971</link>
