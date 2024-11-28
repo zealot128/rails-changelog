@@ -30,6 +30,16 @@
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Remember when a database connection has recently been verified (for\n    two seconds, by default), to avoid repeated reverifications during a\n    single request.\n\n    This should recreate a similar rate of verification as in Rails 7.1,\n    where connections are leased for the duration of a request, and thus\n    only verified once.\n\n    *Matthew Draper*",
+    "project": "activerecord",
+    "date_merged": 1732772577000,
+    "author": "Matthew Draper",
+    "sha": "a4cefc19b1810ba0048f635f53e4a986da921973",
+    "pr": "53672",
+    "merge_sha": "8b544b2689f97f57c97bee59f45920bd99bda047",
+    "html": "<p>Remember when a database connection has recently been verified (for<br />\ntwo seconds, by default), to avoid repeated reverifications during a<br />\nsingle request.</p>\n\n<p>This should recreate a similar rate of verification as in Rails 7.1,<br />\nwhere connections are leased for the duration of a request, and thus<br />\nonly verified once.</p>\n\n<p><em>Matthew Draper</em></p>\n"
+  },
+  {
     "message": "*   Allow to reset cache counters for multiple records.\n\n    ```\n    Aircraft.reset_counters([1, 2, 3], :wheels_count)\n    ```\n\n    It produces much fewer queries compared to the custom implementation using looping over ids.\n    Previously: `O(ids.size * counters.size)` queries, now: `O(ids.size + counters.size)` queries.\n\n    *fatkodima*",
     "project": "activerecord",
     "date_merged": 1731780012000,
