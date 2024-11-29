@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   In ExceptionWrapper, match backtrace lines with built templates more often,\n    allowing improved highlighting of errors within do-end blocks in templates.\n    Fix for Ruby 3.4 to match new method labels in backtrace.\n\n    *Martin Emde*",
+    "project": "actionpack",
+    "date_merged": 1732819839000,
+    "author": "Martin Emde",
+    "sha": "1f9295ed06a0e84a2561b8ae48a1baafb0981c62",
+    "pr": "53763",
+    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
+    "html": "<p>In ExceptionWrapper, match backtrace lines with built templates more often,<br />\nallowing improved highlighting of errors within do-end blocks in templates.<br />\nFix for Ruby 3.4 to match new method labels in backtrace.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
     "message": "*   Allow setting content type with a symbol of the Mime type.\n\n    ```ruby\n    # Before\n    response.content_type = \"text/html\"\n\n    # After\n    response.content_type = :html\n    ```\n\n    *Petrik de Heus*",
     "project": "actionpack",
     "date_merged": 1731753392000,
@@ -110,6 +120,16 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Improve error highlighting of multi-line methods in ERB templates or\n    templates where the error occurs within a do-end block.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732819839000,
+    "author": "Martin Emde",
+    "sha": "a74d26378b665bf1a1a6c125f878000251102dbb",
+    "pr": "53763",
+    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
+    "html": "<p>Improve error highlighting of multi-line methods in ERB templates or<br />\ntemplates where the error occurs within a do-end block.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
     "message": "*   Fix a crash in ERB template error highlighting when the error occurs on a\n    line in the compiled template that is past the end of the source template.\n\n    *Martin Emde*",
     "project": "actionview",
     "date_merged": 1732254580000,
@@ -138,6 +158,16 @@
     "pr": "53512",
     "merge_sha": "e5ad9e789966a2743da8f81b6ed5e80f2575a8d1",
     "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
+  },
+  {
+    "message": "*   Alter `ERB::Util.tokenize` to return :PLAIN token with full input string when string doesn't contain ERB tags.\n\n    *Martin Emde*",
+    "project": "activesupport",
+    "date_merged": 1732819839000,
+    "author": "Martin Emde",
+    "sha": "58b2d73f13d0f79b5ca618127edca3eea05114f1",
+    "pr": "53763",
+    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
+    "html": "<p>Alter <code>ERB::Util.tokenize</code> to return :PLAIN token with full input string when string doesn’t contain ERB tags.</p>\n\n<p><em>Martin Emde</em></p>\n"
   },
   {
     "message": "*   Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.\n\n    *Martin Emde*",
@@ -188,5 +218,15 @@
     "pr": "53680",
     "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
+    "message": "*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.\n\n    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic\n    `NameError` to make it easily possible for adapters to tell if the `NameError`\n    was raised during job execution or deserialization.\n\n    *Earlopain*",
+    "project": "activejob",
+    "date_merged": 1732822493000,
+    "author": "Earlopain",
+    "sha": "5a04667a89b41da272214e53c0111e7d5b2d3219",
+    "pr": "53770",
+    "merge_sha": "e15be8c98e39a96d33be9331f9649bade402f9bf",
+    "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   }
 ]
