@@ -40,6 +40,16 @@
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Use `_N` as a parallel tests databases suffixes\n\n    Peviously, `-N` was used as a suffix. This can cause problems for RDBMSes\n    which do not support dashes in database names.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1733128168000,
+    "author": "fatkodima",
+    "sha": "e04a9085fdef1ef87bbf27a96cd719ff15cb5b78",
+    "pr": "53790",
+    "merge_sha": "4060253ea7bf1a04c7b2368ffc17ddcf991997f9",
+    "html": "<p>Use <code>_N</code> as a parallel tests databases suffixes</p>\n\n<p>Peviously, <code>-N</code> was used as a suffix. This can cause problems for RDBMSes<br />\nwhich do not support dashes in database names.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Remember when a database connection has recently been verified (for\n    two seconds, by default), to avoid repeated reverifications during a\n    single request.\n\n    This should recreate a similar rate of verification as in Rails 7.1,\n    where connections are leased for the duration of a request, and thus\n    only verified once.\n\n    *Matthew Draper*",
     "project": "activerecord",
     "date_merged": 1732772577000,
