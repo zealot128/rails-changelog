@@ -91,6 +91,27 @@ hence YJIT isn’t generally faster in these environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Use `_N` as a parallel tests databases suffixes
+</title>
+    <link>https://github.com/rails/rails/issues/53790</link>
+    <guid>https://github.com/rails/rails/issues/53790</guid>
+    <description>*   Use `_N` as a parallel tests databases suffixes
+
+    Peviously, `-N` was used as a suffix. This can cause problems for RDBMSes
+    which do not support dashes in database names.
+
+    *fatkodima*</description>
+    <pubDate>Mon, 02 Dec 2024 08:29:28 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Use <code>_N</code> as a parallel tests databases suffixes</p>
+
+<p>Peviously, <code>-N</code> was used as a suffix. This can cause problems for RDBMSes<br />
+which do not support dashes in database names.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Remember when a database connection has recently been verified (for
 </title>
     <link>https://github.com/rails/rails/issues/53672</link>
