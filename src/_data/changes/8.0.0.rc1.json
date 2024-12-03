@@ -40,6 +40,16 @@
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Reset relations after `insert_all`/`upsert_all`.\n\n    Bulk insert/upsert methods will now call `reset` if used on a relation, matching the behavior of `update_all`.\n\n    *Milo Winningham*",
+    "project": "activerecord",
+    "date_merged": 1733206087000,
+    "author": "Milo Winningham",
+    "sha": "a0591974a88b8e8eebe27fa011cb8aa84d998298",
+    "pr": "45943",
+    "merge_sha": "eb06dce17f6be8911b2e2f0b0f28c37dd207d202",
+    "html": "<p>Reset relations after <code>insert_all</code>/<code>upsert_all</code>.</p>\n\n<p>Bulk insert/upsert methods will now call <code>reset</code> if used on a relation, matching the behavior of <code>update_all</code>.</p>\n\n<p><em>Milo Winningham</em></p>\n"
+  },
+  {
     "message": "*   Use `_N` as a parallel tests databases suffixes\n\n    Peviously, `-N` was used as a suffix. This can cause problems for RDBMSes\n    which do not support dashes in database names.\n\n    *fatkodima*",
     "project": "activerecord",
     "date_merged": 1733128168000,
