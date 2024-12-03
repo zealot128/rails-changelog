@@ -91,6 +91,25 @@ hence YJIT isn’t generally faster in these environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Reset relations after `insert_all`/`upsert_all`.
+</title>
+    <link>https://github.com/rails/rails/issues/45943</link>
+    <guid>https://github.com/rails/rails/issues/45943</guid>
+    <description>*   Reset relations after `insert_all`/`upsert_all`.
+
+    Bulk insert/upsert methods will now call `reset` if used on a relation, matching the behavior of `update_all`.
+
+    *Milo Winningham*</description>
+    <pubDate>Tue, 03 Dec 2024 06:08:07 +0000</pubDate>
+    <author>Milo Winningham</author>
+    <content:encoded><![CDATA[<p>Reset relations after <code>insert_all</code>/<code>upsert_all</code>.</p>
+
+<p>Bulk insert/upsert methods will now call <code>reset</code> if used on a relation, matching the behavior of <code>update_all</code>.</p>
+
+<p><em>Milo Winningham</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Use `_N` as a parallel tests databases suffixes
 </title>
     <link>https://github.com/rails/rails/issues/53790</link>
