@@ -91,6 +91,44 @@ hence YJIT isn’t generally faster in these environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: `ActiveRecord::Middleware::ShardSelector` supports granular database connection switching.
+</title>
+    <link>https://github.com/rails/rails/issues/53783</link>
+    <guid>https://github.com/rails/rails/issues/53783</guid>
+    <description>*   `ActiveRecord::Middleware::ShardSelector` supports granular database connection switching.
+
+    A new configuration option, `class_name:`, is introduced to
+    `config.active_record.shard_selector` to allow an application to specify the abstract connection
+    class to be switched by the shard selection middleware. The default class is
+    `ActiveRecord::Base`.
+
+    For example, this configuration tells `ShardSelector` to switch shards using
+    `AnimalsRecord.connected_to`:
+
+    ```
+    config.active_record.shard_selector = { class_name: &quot;AnimalsRecord&quot; }
+    ```
+
+    *Mike Dalessio*</description>
+    <pubDate>Tue, 03 Dec 2024 21:46:53 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Middleware::ShardSelector</code> supports granular database connection switching.</p>
+
+<p>A new configuration option, <code>class_name:</code>, is introduced to<br />
+<code>config.active_record.shard_selector</code> to allow an application to specify the abstract connection<br />
+class to be switched by the shard selection middleware. The default class is<br />
+<code>ActiveRecord::Base</code>.</p>
+
+<p>For example, this configuration tells <code>ShardSelector</code> to switch shards using<br />
+<code>AnimalsRecord.connected_to</code>:</p>
+
+<pre><code>config.active_record.shard_selector = { class_name: "AnimalsRecord" }
+</code></pre>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Reset relations after `insert_all`/`upsert_all`.
 </title>
     <link>https://github.com/rails/rails/issues/45943</link>
