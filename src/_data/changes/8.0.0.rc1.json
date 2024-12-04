@@ -40,6 +40,16 @@
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   `ActiveRecord::Middleware::ShardSelector` supports granular database connection switching.\n\n    A new configuration option, `class_name:`, is introduced to\n    `config.active_record.shard_selector` to allow an application to specify the abstract connection\n    class to be switched by the shard selection middleware. The default class is\n    `ActiveRecord::Base`.\n\n    For example, this configuration tells `ShardSelector` to switch shards using\n    `AnimalsRecord.connected_to`:\n\n    ```\n    config.active_record.shard_selector = { class_name: \"AnimalsRecord\" }\n    ```\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1733262413000,
+    "author": "Mike Dalessio",
+    "sha": "58480682ede0291055b64f627b53fab07c459a81",
+    "pr": "53783",
+    "merge_sha": "4dd8fb30986f7b1f824ebad5d5ec7620685071d4",
+    "html": "<p><code>ActiveRecord::Middleware::ShardSelector</code> supports granular database connection switching.</p>\n\n<p>A new configuration option, <code>class_name:</code>, is introduced to<br />\n<code>config.active_record.shard_selector</code> to allow an application to specify the abstract connection<br />\nclass to be switched by the shard selection middleware. The default class is<br />\n<code>ActiveRecord::Base</code>.</p>\n\n<p>For example, this configuration tells <code>ShardSelector</code> to switch shards using<br />\n<code>AnimalsRecord.connected_to</code>:</p>\n\n<pre><code>config.active_record.shard_selector = { class_name: \"AnimalsRecord\" }\n</code></pre>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Reset relations after `insert_all`/`upsert_all`.\n\n    Bulk insert/upsert methods will now call `reset` if used on a relation, matching the behavior of `update_all`.\n\n    *Milo Winningham*",
     "project": "activerecord",
     "date_merged": 1733206087000,
