@@ -91,6 +91,46 @@ hence YJIT isn’t generally faster in these environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: SQLite extensions can be configured in `config/database.yml`.
+</title>
+    <link>https://github.com/rails/rails/issues/53827</link>
+    <guid>https://github.com/rails/rails/issues/53827</guid>
+    <description>*   SQLite extensions can be configured in `config/database.yml`.
+
+    The database configuration option `extensions:` allows an application to load SQLite extensions
+    when using `sqlite3` &gt;= v2.4.0. The array members may be filesystem paths or the names of
+    modules that respond to `.to_path`:
+
+    ``` yaml
+    development:
+      adapter: sqlite3
+      extensions:
+        - SQLean::UUID                     # module name responding to `.to_path`
+        - .sqlpkg/nalgeon/crypto/crypto.so # or a filesystem path
+        - &lt;%= AppExtensions.location %&gt;    # or ruby code returning a path
+    ```
+
+    *Mike Dalessio*</description>
+    <pubDate>Wed, 04 Dec 2024 20:34:42 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>SQLite extensions can be configured in <code>config/database.yml</code>.</p>
+
+<p>The database configuration option <code>extensions:</code> allows an application to load SQLite extensions<br />
+when using <code>sqlite3</code> &gt;= v2.4.0. The array members may be filesystem paths or the names of<br />
+modules that respond to <code>.to_path</code>:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">development</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">sqlite3</span>
+  <span class="na">extensions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">SQLean::UUID</span>                     <span class="c1"># module name responding to `.to_path`</span>
+    <span class="pi">-</span> <span class="s">.sqlpkg/nalgeon/crypto/crypto.so</span> <span class="c1"># or a filesystem path</span>
+    <span class="pi">-</span> <span class="s">&lt;%= AppExtensions.location %&gt;</span>    <span class="c1"># or ruby code returning a path</span>
+</code></pre></div></div>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `ActiveRecord::Middleware::ShardSelector` supports granular database connection switching.
 </title>
     <link>https://github.com/rails/rails/issues/53783</link>
