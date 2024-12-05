@@ -40,6 +40,16 @@
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   SQLite extensions can be configured in `config/database.yml`.\n\n    The database configuration option `extensions:` allows an application to load SQLite extensions\n    when using `sqlite3` >= v2.4.0. The array members may be filesystem paths or the names of\n    modules that respond to `.to_path`:\n\n    ``` yaml\n    development:\n      adapter: sqlite3\n      extensions:\n        - SQLean::UUID                     # module name responding to `.to_path`\n        - .sqlpkg/nalgeon/crypto/crypto.so # or a filesystem path\n        - <%= AppExtensions.location %>    # or ruby code returning a path\n    ```\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1733344482000,
+    "author": "Mike Dalessio",
+    "sha": "b599d4cea0b1688493837e7895b54f35e84049f7",
+    "pr": "53827",
+    "merge_sha": "91d456366638ac6c3f6dec38670c8ada5e7c69b1",
+    "html": "<p>SQLite extensions can be configured in <code>config/database.yml</code>.</p>\n\n<p>The database configuration option <code>extensions:</code> allows an application to load SQLite extensions<br />\nwhen using <code>sqlite3</code> &gt;= v2.4.0. The array members may be filesystem paths or the names of<br />\nmodules that respond to <code>.to_path</code>:</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">development</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">sqlite3</span>\n  <span class=\"na\">extensions</span><span class=\"pi\">:</span>\n    <span class=\"pi\">-</span> <span class=\"s\">SQLean::UUID</span>                     <span class=\"c1\"># module name responding to `.to_path`</span>\n    <span class=\"pi\">-</span> <span class=\"s\">.sqlpkg/nalgeon/crypto/crypto.so</span> <span class=\"c1\"># or a filesystem path</span>\n    <span class=\"pi\">-</span> <span class=\"s\">&lt;%= AppExtensions.location %&gt;</span>    <span class=\"c1\"># or ruby code returning a path</span>\n</code></pre></div></div>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   `ActiveRecord::Middleware::ShardSelector` supports granular database connection switching.\n\n    A new configuration option, `class_name:`, is introduced to\n    `config.active_record.shard_selector` to allow an application to specify the abstract connection\n    class to be switched by the shard selection middleware. The default class is\n    `ActiveRecord::Base`.\n\n    For example, this configuration tells `ShardSelector` to switch shards using\n    `AnimalsRecord.connected_to`:\n\n    ```\n    config.active_record.shard_selector = { class_name: \"AnimalsRecord\" }\n    ```\n\n    *Mike Dalessio*",
     "project": "activerecord",
     "date_merged": 1733262413000,
