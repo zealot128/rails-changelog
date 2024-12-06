@@ -447,6 +447,23 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Avoid wrapping redis in a `ConnectionPool` when using `ActiveSupport::Cache::RedisCacheStore` if the `:redis`
+</title>
+    <link>https://github.com/rails/rails/issues/53845</link>
+    <guid>https://github.com/rails/rails/issues/53845</guid>
+    <description>*   Avoid wrapping redis in a `ConnectionPool` when using `ActiveSupport::Cache::RedisCacheStore` if the `:redis`
+    option is already a `ConnectionPool`.
+
+    *Joshua Young*</description>
+    <pubDate>Fri, 06 Dec 2024 08:19:55 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Avoid wrapping redis in a <code>ConnectionPool</code> when using <code>ActiveSupport::Cache::RedisCacheStore</code> if the <code>:redis</code><br />
+option is already a <code>ConnectionPool</code>.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Alter `ERB::Util.tokenize` to return :PLAIN token with full input string when string doesn&#39;t contain ERB tags.
 </title>
     <link>https://github.com/rails/rails/issues/53763</link>
@@ -560,6 +577,25 @@ improve tolerance for alternate ERB handlers.</p>
     <content:encoded><![CDATA[<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>
 
 <p><em>Jonathan del Strother</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
+</title>
+    <link>https://github.com/rails/rails/issues/53859</link>
+    <guid>https://github.com/rails/rails/issues/53859</guid>
+    <description>*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
+
+    This was inconsistent with a regular `ActiveJob::Base#perform_later`.
+
+    *fatkodima*</description>
+    <pubDate>Fri, 06 Dec 2024 12:51:45 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>
+
+<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>
+
+<p><em>fatkodima</em></p>
 ]]></content:encoded>
   </item>
   <item>
