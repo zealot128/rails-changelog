@@ -200,6 +200,16 @@
     "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
   },
   {
+    "message": "*   Avoid wrapping redis in a `ConnectionPool` when using `ActiveSupport::Cache::RedisCacheStore` if the `:redis`\n    option is already a `ConnectionPool`.\n\n    *Joshua Young*",
+    "project": "activesupport",
+    "date_merged": 1733473195000,
+    "author": "Joshua Young",
+    "sha": "ffa9f3bc899da5b3818a74d435436256052fc4eb",
+    "pr": "53845",
+    "merge_sha": "31c060c38225d36a73b5d4787cccc0cb7e1c944a",
+    "html": "<p>Avoid wrapping redis in a <code>ConnectionPool</code> when using <code>ActiveSupport::Cache::RedisCacheStore</code> if the <code>:redis</code><br />\noption is already a <code>ConnectionPool</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Alter `ERB::Util.tokenize` to return :PLAIN token with full input string when string doesn't contain ERB tags.\n\n    *Martin Emde*",
     "project": "activesupport",
     "date_merged": 1732819839000,
@@ -258,6 +268,16 @@
     "pr": "53680",
     "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
+    "message": "*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.\n\n    This was inconsistent with a regular `ActiveJob::Base#perform_later`.\n\n    *fatkodima*",
+    "project": "activejob",
+    "date_merged": 1733489505000,
+    "author": "fatkodima",
+    "sha": "f70cca178f35f703245de62c74d078f54fd17572",
+    "pr": "53859",
+    "merge_sha": "31aec233a17a44cb4666aa074243f0961798ed46",
+    "html": "<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>\n\n<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
     "message": "*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.\n\n    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic\n    `NameError` to make it easily possible for adapters to tell if the `NameError`\n    was raised during job execution or deserialization.\n\n    *Earlopain*",
