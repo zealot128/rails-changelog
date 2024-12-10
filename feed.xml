@@ -91,6 +91,21 @@ hence YJIT isn’t generally faster in these environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actiontext: Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
+</title>
+    <link>https://github.com/rails/rails/issues/53847</link>
+    <guid>https://github.com/rails/rails/issues/53847</guid>
+    <description>*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
+
+    *Sean Doyle*</description>
+    <pubDate>Mon, 09 Dec 2024 22:56:25 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: SQLite extensions can be configured in `config/database.yml`.
 </title>
     <link>https://github.com/rails/rails/issues/53827</link>
