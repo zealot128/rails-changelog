@@ -106,6 +106,21 @@ hence YJIT isn’t generally faster in these environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix MySQL default functions getting dropped when changing a column&#39;s nullability.
+</title>
+    <link>https://github.com/rails/rails/issues/53838</link>
+    <guid>https://github.com/rails/rails/issues/53838</guid>
+    <description>*   Fix MySQL default functions getting dropped when changing a column&#39;s nullability.
+
+    *Bastian Bartmann*</description>
+    <pubDate>Tue, 10 Dec 2024 09:04:19 +0000</pubDate>
+    <author>Bastian Bartmann</author>
+    <content:encoded><![CDATA[<p>Fix MySQL default functions getting dropped when changing a column’s nullability.</p>
+
+<p><em>Bastian Bartmann</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: SQLite extensions can be configured in `config/database.yml`.
 </title>
     <link>https://github.com/rails/rails/issues/53827</link>
