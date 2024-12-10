@@ -50,6 +50,16 @@
     "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix MySQL default functions getting dropped when changing a column's nullability.\n\n    *Bastian Bartmann*",
+    "project": "activerecord",
+    "date_merged": 1733821459000,
+    "author": "Bastian Bartmann",
+    "sha": "ffa9d6dfbbb465ac36246c0de28e0a4ff5312738",
+    "pr": "53838",
+    "merge_sha": "ab3b87e536fc27004629aa5f32bdbe5353626111",
+    "html": "<p>Fix MySQL default functions getting dropped when changing a column’s nullability.</p>\n\n<p><em>Bastian Bartmann</em></p>\n"
+  },
+  {
     "message": "*   SQLite extensions can be configured in `config/database.yml`.\n\n    The database configuration option `extensions:` allows an application to load SQLite extensions\n    when using `sqlite3` >= v2.4.0. The array members may be filesystem paths or the names of\n    modules that respond to `.to_path`:\n\n    ``` yaml\n    development:\n      adapter: sqlite3\n      extensions:\n        - SQLean::UUID                     # module name responding to `.to_path`\n        - .sqlpkg/nalgeon/crypto/crypto.so # or a filesystem path\n        - <%= AppExtensions.location %>    # or ruby code returning a path\n    ```\n\n    *Mike Dalessio*",
     "project": "activerecord",
     "date_merged": 1733344482000,
