@@ -40,6 +40,16 @@
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1733784985000,
+    "author": "Sean Doyle",
+    "sha": "0eb9fa47168db84e79f5a200af470acca3ba8c31",
+    "pr": "53847",
+    "merge_sha": "0efc3e899a0cade4e1b7c626d1df043dadf2d2a2",
+    "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   SQLite extensions can be configured in `config/database.yml`.\n\n    The database configuration option `extensions:` allows an application to load SQLite extensions\n    when using `sqlite3` >= v2.4.0. The array members may be filesystem paths or the names of\n    modules that respond to `.to_path`:\n\n    ``` yaml\n    development:\n      adapter: sqlite3\n      extensions:\n        - SQLean::UUID                     # module name responding to `.to_path`\n        - .sqlpkg/nalgeon/crypto/crypto.so # or a filesystem path\n        - <%= AppExtensions.location %>    # or ruby code returning a path\n    ```\n\n    *Mike Dalessio*",
     "project": "activerecord",
     "date_merged": 1733344482000,
