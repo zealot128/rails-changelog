@@ -6,6 +6,131 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>activejob: Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
+</title>
+    <link>https://github.com/rails/rails/issues/53859</link>
+    <guid>https://github.com/rails/rails/issues/53859</guid>
+    <description>*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
+
+    This was inconsistent with a regular `ActiveJob::Base#perform_later`.
+
+    *fatkodima*</description>
+    <pubDate>Fri, 06 Dec 2024 12:51:45 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>
+
+<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>
+
+<p><em>fatkodima</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activejob: Raise a more specific error during deserialization when a previously serialized job class is now unknown.
+</title>
+    <link>https://github.com/rails/rails/issues/53770</link>
+    <guid>https://github.com/rails/rails/issues/53770</guid>
+    <description>*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.
+
+    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic
+    `NameError` to make it easily possible for adapters to tell if the `NameError`
+    was raised during job execution or deserialization.
+
+    *Earlopain*</description>
+    <pubDate>Thu, 28 Nov 2024 19:34:53 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>
+
+<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />
+<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />
+was raised during job execution or deserialization.</p>
+
+<p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actiontext: Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
+</title>
+    <link>https://github.com/rails/rails/issues/53847</link>
+    <guid>https://github.com/rails/rails/issues/53847</guid>
+    <description>*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
+
+    *Sean Doyle*</description>
+    <pubDate>Mon, 09 Dec 2024 22:56:25 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Improve error highlighting of multi-line methods in ERB templates or
+</title>
+    <link>https://github.com/rails/rails/issues/53763</link>
+    <guid>https://github.com/rails/rails/issues/53763</guid>
+    <description>*   Improve error highlighting of multi-line methods in ERB templates or
+    templates where the error occurs within a do-end block.
+
+    *Martin Emde*</description>
+    <pubDate>Thu, 28 Nov 2024 18:50:39 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>Improve error highlighting of multi-line methods in ERB templates or<br />
+templates where the error occurs within a do-end block.</p>
+
+<p><em>Martin Emde</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Fix a crash in ERB template error highlighting when the error occurs on a
+</title>
+    <link>https://github.com/rails/rails/issues/53696</link>
+    <guid>https://github.com/rails/rails/issues/53696</guid>
+    <description>*   Fix a crash in ERB template error highlighting when the error occurs on a
+    line in the compiled template that is past the end of the source template.
+
+    *Martin Emde*</description>
+    <pubDate>Fri, 22 Nov 2024 05:49:40 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />
+line in the compiled template that is past the end of the source template.</p>
+
+<p><em>Martin Emde</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Improve reliability of ERB template error highlighting.
+</title>
+    <link>https://github.com/rails/rails/issues/53657</link>
+    <guid>https://github.com/rails/rails/issues/53657</guid>
+    <description>*   Improve reliability of ERB template error highlighting.
+    Fix infinite loops and crashes in highlighting and
+    improve tolerance for alternate ERB handlers.
+
+    *Martin Emde*</description>
+    <pubDate>Thu, 21 Nov 2024 19:56:27 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>Improve reliability of ERB template error highlighting.<br />
+Fix infinite loops and crashes in highlighting and<br />
+improve tolerance for alternate ERB handlers.</p>
+
+<p><em>Martin Emde</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
+</title>
+    <link>https://github.com/rails/rails/issues/53512</link>
+    <guid>https://github.com/rails/rails/issues/53512</guid>
+    <description>*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
+
+    *brendon*</description>
+    <pubDate>Fri, 15 Nov 2024 11:28:47 +0000</pubDate>
+    <author>Brendon Muir</author>
+    <content:encoded><![CDATA[<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>
+
+<p><em>brendon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`
 </title>
     <link>https://github.com/rails/rails/issues/53887</link>
@@ -45,106 +170,6 @@
 <span class="n">user</span><span class="p">.</span><span class="nf">email</span> <span class="o">=</span>    <span class="s2">" CRUISE-CONTROL@EXAMPLE.COM</span><span class="se">\n</span><span class="s2">"</span>
 <span class="n">user</span><span class="p">.</span><span class="nf">email</span> <span class="c1"># =&gt; "cruise-control@example.com"</span>
 </code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: In ExceptionWrapper, match backtrace lines with built templates more often,
-</title>
-    <link>https://github.com/rails/rails/issues/53763</link>
-    <guid>https://github.com/rails/rails/issues/53763</guid>
-    <description>*   In ExceptionWrapper, match backtrace lines with built templates more often,
-    allowing improved highlighting of errors within do-end blocks in templates.
-    Fix for Ruby 3.4 to match new method labels in backtrace.
-
-    *Martin Emde*</description>
-    <pubDate>Thu, 28 Nov 2024 18:50:39 +0000</pubDate>
-    <author>Martin Emde</author>
-    <content:encoded><![CDATA[<p>In ExceptionWrapper, match backtrace lines with built templates more often,<br />
-allowing improved highlighting of errors within do-end blocks in templates.<br />
-Fix for Ruby 3.4 to match new method labels in backtrace.</p>
-
-<p><em>Martin Emde</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionpack: Allow setting content type with a symbol of the Mime type.
-</title>
-    <link>https://github.com/rails/rails/issues/53236</link>
-    <guid>https://github.com/rails/rails/issues/53236</guid>
-    <description>*   Allow setting content type with a symbol of the Mime type.
-
-    ```ruby
-    # Before
-    response.content_type = &quot;text/html&quot;
-
-    # After
-    response.content_type = :html
-    ```
-
-    *Petrik de Heus*</description>
-    <pubDate>Sat, 16 Nov 2024 10:36:32 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Allow setting content type with a symbol of the Mime type.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
-<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="s2">"text/html"</span>
-
-<span class="c1"># After</span>
-<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="ss">:html</span>
-</code></pre></div></div>
-
-<p><em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Don&#39;t enable YJIT in development and test environments
-</title>
-    <link>https://github.com/rails/rails/issues/53746</link>
-    <guid>https://github.com/rails/rails/issues/53746</guid>
-    <description>*   Don&#39;t enable YJIT in development and test environments
-
-    Development and test environment tend to reload code and redefine methods (e.g. mocking),
-    hence YJIT isn&#39;t generally faster in these environments.
-
-    *Ali Ismayilov*, *Jean Boussier*</description>
-    <pubDate>Tue, 26 Nov 2024 10:45:59 +0000</pubDate>
-    <author>Ali Ismayilov</author>
-    <content:encoded><![CDATA[<p>Don’t enable YJIT in development and test environments</p>
-
-<p>Development and test environment tend to reload code and redefine methods (e.g. mocking),<br />
-hence YJIT isn’t generally faster in these environments.</p>
-
-<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Only include PermissionsPolicy::Middleware if policy is configured.
-</title>
-    <link>https://github.com/rails/rails/issues/53621</link>
-    <guid>https://github.com/rails/rails/issues/53621</guid>
-    <description>*   Only include PermissionsPolicy::Middleware if policy is configured.
-
-    *Petrik de Heus*</description>
-    <pubDate>Fri, 15 Nov 2024 21:30:01 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
-
-<p><em>Petrik de Heus</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
-</title>
-    <link>https://github.com/rails/rails/issues/53847</link>
-    <guid>https://github.com/rails/rails/issues/53847</guid>
-    <description>*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
-
-    *Sean Doyle*</description>
-    <pubDate>Mon, 09 Dec 2024 22:56:25 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>
 
 <p><em>Sean Doyle</em></p>
 ]]></content:encoded>
@@ -453,71 +478,39 @@ current state to be accessible to an external process while tests are running.</
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Improve error highlighting of multi-line methods in ERB templates or
+    <title>railties: Don&#39;t enable YJIT in development and test environments
 </title>
-    <link>https://github.com/rails/rails/issues/53763</link>
-    <guid>https://github.com/rails/rails/issues/53763</guid>
-    <description>*   Improve error highlighting of multi-line methods in ERB templates or
-    templates where the error occurs within a do-end block.
+    <link>https://github.com/rails/rails/issues/53746</link>
+    <guid>https://github.com/rails/rails/issues/53746</guid>
+    <description>*   Don&#39;t enable YJIT in development and test environments
 
-    *Martin Emde*</description>
-    <pubDate>Thu, 28 Nov 2024 18:50:39 +0000</pubDate>
-    <author>Martin Emde</author>
-    <content:encoded><![CDATA[<p>Improve error highlighting of multi-line methods in ERB templates or<br />
-templates where the error occurs within a do-end block.</p>
+    Development and test environment tend to reload code and redefine methods (e.g. mocking),
+    hence YJIT isn&#39;t generally faster in these environments.
 
-<p><em>Martin Emde</em></p>
+    *Ali Ismayilov*, *Jean Boussier*</description>
+    <pubDate>Tue, 26 Nov 2024 10:45:59 +0000</pubDate>
+    <author>Ali Ismayilov</author>
+    <content:encoded><![CDATA[<p>Don’t enable YJIT in development and test environments</p>
+
+<p>Development and test environment tend to reload code and redefine methods (e.g. mocking),<br />
+hence YJIT isn’t generally faster in these environments.</p>
+
+<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionview: Fix a crash in ERB template error highlighting when the error occurs on a
+    <title>railties: Only include PermissionsPolicy::Middleware if policy is configured.
 </title>
-    <link>https://github.com/rails/rails/issues/53696</link>
-    <guid>https://github.com/rails/rails/issues/53696</guid>
-    <description>*   Fix a crash in ERB template error highlighting when the error occurs on a
-    line in the compiled template that is past the end of the source template.
+    <link>https://github.com/rails/rails/issues/53621</link>
+    <guid>https://github.com/rails/rails/issues/53621</guid>
+    <description>*   Only include PermissionsPolicy::Middleware if policy is configured.
 
-    *Martin Emde*</description>
-    <pubDate>Fri, 22 Nov 2024 05:49:40 +0000</pubDate>
-    <author>Martin Emde</author>
-    <content:encoded><![CDATA[<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />
-line in the compiled template that is past the end of the source template.</p>
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 15 Nov 2024 21:30:01 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
 
-<p><em>Martin Emde</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Improve reliability of ERB template error highlighting.
-</title>
-    <link>https://github.com/rails/rails/issues/53657</link>
-    <guid>https://github.com/rails/rails/issues/53657</guid>
-    <description>*   Improve reliability of ERB template error highlighting.
-    Fix infinite loops and crashes in highlighting and
-    improve tolerance for alternate ERB handlers.
-
-    *Martin Emde*</description>
-    <pubDate>Thu, 21 Nov 2024 19:56:27 +0000</pubDate>
-    <author>Martin Emde</author>
-    <content:encoded><![CDATA[<p>Improve reliability of ERB template error highlighting.<br />
-Fix infinite loops and crashes in highlighting and<br />
-improve tolerance for alternate ERB handlers.</p>
-
-<p><em>Martin Emde</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
-</title>
-    <link>https://github.com/rails/rails/issues/53512</link>
-    <guid>https://github.com/rails/rails/issues/53512</guid>
-    <description>*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
-
-    *brendon*</description>
-    <pubDate>Fri, 15 Nov 2024 11:28:47 +0000</pubDate>
-    <author>Brendon Muir</author>
-    <content:encoded><![CDATA[<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>
-
-<p><em>brendon</em></p>
+<p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -654,45 +647,52 @@ option is already a <code>ConnectionPool</code>.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activejob: Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
+    <title>actionpack: In ExceptionWrapper, match backtrace lines with built templates more often,
 </title>
-    <link>https://github.com/rails/rails/issues/53859</link>
-    <guid>https://github.com/rails/rails/issues/53859</guid>
-    <description>*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
+    <link>https://github.com/rails/rails/issues/53763</link>
+    <guid>https://github.com/rails/rails/issues/53763</guid>
+    <description>*   In ExceptionWrapper, match backtrace lines with built templates more often,
+    allowing improved highlighting of errors within do-end blocks in templates.
+    Fix for Ruby 3.4 to match new method labels in backtrace.
 
-    This was inconsistent with a regular `ActiveJob::Base#perform_later`.
+    *Martin Emde*</description>
+    <pubDate>Thu, 28 Nov 2024 18:50:39 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>In ExceptionWrapper, match backtrace lines with built templates more often,<br />
+allowing improved highlighting of errors within do-end blocks in templates.<br />
+Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 
-    *fatkodima*</description>
-    <pubDate>Fri, 06 Dec 2024 12:51:45 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>
-
-<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>
-
-<p><em>fatkodima</em></p>
+<p><em>Martin Emde</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activejob: Raise a more specific error during deserialization when a previously serialized job class is now unknown.
+    <title>actionpack: Allow setting content type with a symbol of the Mime type.
 </title>
-    <link>https://github.com/rails/rails/issues/53770</link>
-    <guid>https://github.com/rails/rails/issues/53770</guid>
-    <description>*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.
+    <link>https://github.com/rails/rails/issues/53236</link>
+    <guid>https://github.com/rails/rails/issues/53236</guid>
+    <description>*   Allow setting content type with a symbol of the Mime type.
 
-    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic
-    `NameError` to make it easily possible for adapters to tell if the `NameError`
-    was raised during job execution or deserialization.
+    ```ruby
+    # Before
+    response.content_type = &quot;text/html&quot;
 
-    *Earlopain*</description>
-    <pubDate>Thu, 28 Nov 2024 19:34:53 +0000</pubDate>
-    <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>
+    # After
+    response.content_type = :html
+    ```
 
-<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />
-<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />
-was raised during job execution or deserialization.</p>
+    *Petrik de Heus*</description>
+    <pubDate>Sat, 16 Nov 2024 10:36:32 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Allow setting content type with a symbol of the Mime type.</p>
 
-<p><em>Earlopain</em></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="s2">"text/html"</span>
+
+<span class="c1"># After</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="ss">:html</span>
+</code></pre></div></div>
+
+<p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
 </channel>
