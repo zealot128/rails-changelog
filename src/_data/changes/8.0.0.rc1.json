@@ -80,6 +80,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Serialized attributes can now be marked as comparable.\n\n    A not rare issue when working with serialized attributes is that the serialized representation of an object\n    can change over time. Either because you are migrating from one serializer to the other (e.g. YAML to JSON or to msgpack),\n    or because the serializer used subtly changed its output.\n\n    One example is libyaml that used to have some extra trailing whitespaces, and recently fixed that.\n    When this sorts of thing happen, you end up with lots of records that report being changed even though\n    they aren't, which in the best case leads to a lot more writes to the database and in the worst case lead to nasty bugs.\n\n    The solution is to instead compare the deserialized representation of the object, however Active Record\n    can't assume the deserialized object has a working `==` method. Hence why this new functionality is opt-in.\n\n    ```ruby\n    serialize :config, type: Hash, coder: JSON, comparable: true\n    ```\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1734180452000,
+    "author": "Jean Boussier",
+    "sha": "6a71a2ffea9f77228e3e13d5b3becac17449f2d8",
+    "pr": "53946",
+    "merge_sha": "9424179306c9c7eb70d7fa4eca9994c4285e6ac6",
+    "html": "<p>Serialized attributes can now be marked as comparable.</p>\n\n<p>A not rare issue when working with serialized attributes is that the serialized representation of an object<br />\ncan change over time. Either because you are migrating from one serializer to the other (e.g. YAML to JSON or to msgpack),<br />\nor because the serializer used subtly changed its output.</p>\n\n<p>One example is libyaml that used to have some extra trailing whitespaces, and recently fixed that.<br />\nWhen this sorts of thing happen, you end up with lots of records that report being changed even though<br />\nthey aren’t, which in the best case leads to a lot more writes to the database and in the worst case lead to nasty bugs.</p>\n\n<p>The solution is to instead compare the deserialized representation of the object, however Active Record<br />\ncan’t assume the deserialized object has a working <code>==</code> method. Hence why this new functionality is opt-in.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">serialize</span> <span class=\"ss\">:config</span><span class=\"p\">,</span> <span class=\"ss\">type: </span><span class=\"no\">Hash</span><span class=\"p\">,</span> <span class=\"ss\">coder: </span><span class=\"no\">JSON</span><span class=\"p\">,</span> <span class=\"ss\">comparable: </span><span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Fix MySQL default functions getting dropped when changing a column's nullability.\n\n    *Bastian Bartmann*",
     "project": "activerecord",
     "date_merged": 1733821459000,
@@ -298,6 +308,16 @@
     "pr": "53680",
     "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
+    "message": "*   Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.\n\n    Newly generated session ids use 128 bits of randomness, which is more than\n    enough to ensure collisions can't happen, but if you need to harden sessions\n    even more, you can enable this option to check in the session store that the id\n    is indeed free you can enable that option. This however incurs an extra write\n    on session creation.\n\n    *Shia*",
+    "project": "actionpack",
+    "date_merged": 1734167903000,
+    "author": "Shia",
+    "sha": "4f63fde5de0c46acaad8d5119ecb8e44ae69ff4f",
+    "pr": "53918",
+    "merge_sha": "6a88a104909660f91a0c6a62ca23e2a8de667477",
+    "html": "<p>Add <code>check_collisions</code> option to <code>ActionDispatch::Session::CacheStore</code>.</p>\n\n<p>Newly generated session ids use 128 bits of randomness, which is more than<br />\nenough to ensure collisions can’t happen, but if you need to harden sessions<br />\neven more, you can enable this option to check in the session store that the id<br />\nis indeed free you can enable that option. This however incurs an extra write<br />\non session creation.</p>\n\n<p><em>Shia</em></p>\n"
   },
   {
     "message": "*   In ExceptionWrapper, match backtrace lines with built templates more often,\n    allowing improved highlighting of errors within do-end blocks in templates.\n    Fix for Ruby 3.4 to match new method labels in backtrace.\n\n    *Martin Emde*",
