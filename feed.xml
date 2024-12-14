@@ -175,6 +175,50 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Serialized attributes can now be marked as comparable.
+</title>
+    <link>https://github.com/rails/rails/issues/53946</link>
+    <guid>https://github.com/rails/rails/issues/53946</guid>
+    <description>*   Serialized attributes can now be marked as comparable.
+
+    A not rare issue when working with serialized attributes is that the serialized representation of an object
+    can change over time. Either because you are migrating from one serializer to the other (e.g. YAML to JSON or to msgpack),
+    or because the serializer used subtly changed its output.
+
+    One example is libyaml that used to have some extra trailing whitespaces, and recently fixed that.
+    When this sorts of thing happen, you end up with lots of records that report being changed even though
+    they aren&#39;t, which in the best case leads to a lot more writes to the database and in the worst case lead to nasty bugs.
+
+    The solution is to instead compare the deserialized representation of the object, however Active Record
+    can&#39;t assume the deserialized object has a working `==` method. Hence why this new functionality is opt-in.
+
+    ```ruby
+    serialize :config, type: Hash, coder: JSON, comparable: true
+    ```
+
+    *Jean Boussier*</description>
+    <pubDate>Sat, 14 Dec 2024 12:47:32 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Serialized attributes can now be marked as comparable.</p>
+
+<p>A not rare issue when working with serialized attributes is that the serialized representation of an object<br />
+can change over time. Either because you are migrating from one serializer to the other (e.g. YAML to JSON or to msgpack),<br />
+or because the serializer used subtly changed its output.</p>
+
+<p>One example is libyaml that used to have some extra trailing whitespaces, and recently fixed that.<br />
+When this sorts of thing happen, you end up with lots of records that report being changed even though<br />
+they aren’t, which in the best case leads to a lot more writes to the database and in the worst case lead to nasty bugs.</p>
+
+<p>The solution is to instead compare the deserialized representation of the object, however Active Record<br />
+can’t assume the deserialized object has a working <code>==</code> method. Hence why this new functionality is opt-in.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">serialize</span> <span class="ss">:config</span><span class="p">,</span> <span class="ss">type: </span><span class="no">Hash</span><span class="p">,</span> <span class="ss">coder: </span><span class="no">JSON</span><span class="p">,</span> <span class="ss">comparable: </span><span class="kp">true</span>
+</code></pre></div></div>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix MySQL default functions getting dropped when changing a column&#39;s nullability.
 </title>
     <link>https://github.com/rails/rails/issues/53838</link>
@@ -644,6 +688,33 @@ option is already a <code>ConnectionPool</code>.</p>
     <content:encoded><![CDATA[<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>
 
 <p><em>Jonathan del Strother</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.
+</title>
+    <link>https://github.com/rails/rails/issues/53918</link>
+    <guid>https://github.com/rails/rails/issues/53918</guid>
+    <description>*   Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.
+
+    Newly generated session ids use 128 bits of randomness, which is more than
+    enough to ensure collisions can&#39;t happen, but if you need to harden sessions
+    even more, you can enable this option to check in the session store that the id
+    is indeed free you can enable that option. This however incurs an extra write
+    on session creation.
+
+    *Shia*</description>
+    <pubDate>Sat, 14 Dec 2024 09:18:23 +0000</pubDate>
+    <author>Shia</author>
+    <content:encoded><![CDATA[<p>Add <code>check_collisions</code> option to <code>ActionDispatch::Session::CacheStore</code>.</p>
+
+<p>Newly generated session ids use 128 bits of randomness, which is more than<br />
+enough to ensure collisions can’t happen, but if you need to harden sessions<br />
+even more, you can enable this option to check in the session store that the id<br />
+is indeed free you can enable that option. This however incurs an extra write<br />
+on session creation.</p>
+
+<p><em>Shia</em></p>
 ]]></content:encoded>
   </item>
   <item>
