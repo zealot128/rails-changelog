@@ -131,50 +131,6 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activemodel: Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`
-</title>
-    <link>https://github.com/rails/rails/issues/53887</link>
-    <guid>https://github.com/rails/rails/issues/53887</guid>
-    <description>*   Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`
-
-    ```ruby
-    class User
-      include ActiveModel::Attributes
-      include ActiveModel::Attributes::Normalization
-
-      attribute :email, :string
-
-      normalizes :email, with: -&gt; email { email.strip.downcase }
-    end
-
-    user = User.new
-    user.email =    &quot; CRUISE-CONTROL@EXAMPLE.COM\n&quot;
-    user.email # =&gt; &quot;cruise-control@example.com&quot;
-    ```
-
-    *Sean Doyle*</description>
-    <pubDate>Thu, 12 Dec 2024 18:09:48 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span>
-  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span>
-  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span><span class="o">::</span><span class="no">Normalization</span>
-
-  <span class="n">attribute</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:string</span>
-
-  <span class="n">normalizes</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">with: </span><span class="o">-&gt;</span> <span class="n">email</span> <span class="p">{</span> <span class="n">email</span><span class="p">.</span><span class="nf">strip</span><span class="p">.</span><span class="nf">downcase</span> <span class="p">}</span>
-<span class="k">end</span>
-
-<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span>
-<span class="n">user</span><span class="p">.</span><span class="nf">email</span> <span class="o">=</span>    <span class="s2">" CRUISE-CONTROL@EXAMPLE.COM</span><span class="se">\n</span><span class="s2">"</span>
-<span class="n">user</span><span class="p">.</span><span class="nf">email</span> <span class="c1"># =&gt; "cruise-control@example.com"</span>
-</code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activerecord: Serialized attributes can now be marked as comparable.
 </title>
     <link>https://github.com/rails/rails/issues/53946</link>
