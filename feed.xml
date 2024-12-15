@@ -131,6 +131,40 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>guides: In the Active Job bug report template set the queue adapter to the
+</title>
+    <link>https://github.com/rails/rails/issues/53963</link>
+    <guid>https://github.com/rails/rails/issues/53963</guid>
+    <description>*   In the Active Job bug report template set the queue adapter to the
+    test adapter so that `assert_enqueued_with` can pass.
+
+    *Andrew White*</description>
+    <pubDate>Sun, 15 Dec 2024 16:23:17 +0000</pubDate>
+    <author>Andrew White</author>
+    <content:encoded><![CDATA[<p>In the Active Job bug report template set the queue adapter to the<br />
+test adapter so that <code>assert_enqueued_with</code> can pass.</p>
+
+<p><em>Andrew White</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>guides: Ensure all bug report templates set `config.secret_key_base` to avoid
+</title>
+    <link>https://github.com/rails/rails/issues/53963</link>
+    <guid>https://github.com/rails/rails/issues/53963</guid>
+    <description>*   Ensure all bug report templates set `config.secret_key_base` to avoid
+    generation of `tmp/local_secret.txt` files when running the report template.
+
+    *Andrew White*</description>
+    <pubDate>Sun, 15 Dec 2024 16:23:17 +0000</pubDate>
+    <author>Andrew White</author>
+    <content:encoded><![CDATA[<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />
+generation of <code>tmp/local_secret.txt</code> files when running the report template.</p>
+
+<p><em>Andrew White</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Serialized attributes can now be marked as comparable.
 </title>
     <link>https://github.com/rails/rails/issues/53946</link>
@@ -511,6 +545,25 @@ hence YJIT isn’t generally faster in these environments.</p>
     <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: `nil.to_query(&quot;key&quot;)` now returns `key`.
+</title>
+    <link>https://github.com/rails/rails/issues/53962</link>
+    <guid>https://github.com/rails/rails/issues/53962</guid>
+    <description>*   `nil.to_query(&quot;key&quot;)` now returns `key`.
+
+    Previously it would return `key=`, preventing round tripping with `Rack::Utils.parse_nested_query`.
+
+    *Erol Fornoles*</description>
+    <pubDate>Sun, 15 Dec 2024 15:40:58 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p><code>nil.to_query("key")</code> now returns <code>key</code>.</p>
+
+<p>Previously it would return <code>key=</code>, preventing round tripping with <code>Rack::Utils.parse_nested_query</code>.</p>
+
+<p><em>Erol Fornoles</em></p>
 ]]></content:encoded>
   </item>
   <item>
