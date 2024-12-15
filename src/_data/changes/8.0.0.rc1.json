@@ -70,6 +70,26 @@
     "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
   },
   {
+    "message": "*   In the Active Job bug report template set the queue adapter to the\n    test adapter so that `assert_enqueued_with` can pass.\n\n    *Andrew White*",
+    "project": "guides",
+    "date_merged": 1734279797000,
+    "author": "Andrew White",
+    "sha": "8e0a3914cab6b564d7dbcbfec35184c3132a7116",
+    "pr": "53963",
+    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
+    "html": "<p>In the Active Job bug report template set the queue adapter to the<br />\ntest adapter so that <code>assert_enqueued_with</code> can pass.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
+    "message": "*   Ensure all bug report templates set `config.secret_key_base` to avoid\n    generation of `tmp/local_secret.txt` files when running the report template.\n\n    *Andrew White*",
+    "project": "guides",
+    "date_merged": 1734279797000,
+    "author": "Andrew White",
+    "sha": "f17f2d1decf460033e46ba9c50a4924e9290a86f",
+    "pr": "53963",
+    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
+    "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
     "message": "*   Serialized attributes can now be marked as comparable.\n\n    A not rare issue when working with serialized attributes is that the serialized representation of an object\n    can change over time. Either because you are migrating from one serializer to the other (e.g. YAML to JSON or to msgpack),\n    or because the serializer used subtly changed its output.\n\n    One example is libyaml that used to have some extra trailing whitespaces, and recently fixed that.\n    When this sorts of thing happen, you end up with lots of records that report being changed even though\n    they aren't, which in the best case leads to a lot more writes to the database and in the worst case lead to nasty bugs.\n\n    The solution is to instead compare the deserialized representation of the object, however Active Record\n    can't assume the deserialized object has a working `==` method. Hence why this new functionality is opt-in.\n\n    ```ruby\n    serialize :config, type: Hash, coder: JSON, comparable: true\n    ```\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1734180452000,
@@ -228,6 +248,16 @@
     "pr": "53621",
     "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   `nil.to_query(\"key\")` now returns `key`.\n\n    Previously it would return `key=`, preventing round tripping with `Rack::Utils.parse_nested_query`.\n\n    *Erol Fornoles*",
+    "project": "activesupport",
+    "date_merged": 1734277258000,
+    "author": "Jean Boussier",
+    "sha": "2952e9a85d0a8a7f5057ef1f8aded9b7c0905327",
+    "pr": "53962",
+    "merge_sha": "abdbff56db0c0142027b3d674dd71b15f72da561",
+    "html": "<p><code>nil.to_query(\"key\")</code> now returns <code>key</code>.</p>\n\n<p>Previously it would return <code>key=</code>, preventing round tripping with <code>Rack::Utils.parse_nested_query</code>.</p>\n\n<p><em>Erol Fornoles</em></p>\n"
   },
   {
     "message": "*   Avoid wrapping redis in a `ConnectionPool` when using `ActiveSupport::Cache::RedisCacheStore` if the `:redis`\n    option is already a `ConnectionPool`.\n\n    *Joshua Young*",
