@@ -165,6 +165,37 @@ generation of <code>tmp/local_secret.txt</code> files when running the report te
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: A Blob will no longer autosave associated Attachment.
+</title>
+    <link>https://github.com/rails/rails/issues/53623</link>
+    <guid>https://github.com/rails/rails/issues/53623</guid>
+    <description>*   A Blob will no longer autosave associated Attachment.
+
+    This fixes an issue where a record with an attachment would have
+    its dirty attributes reset, preventing your `after commit` callbacks
+    on that record to behave as expected.
+
+    Note that this change doesn&#39;t require any changes on your application
+    and is supposed to be internal. Active Storage Attachment will continue
+    to be autosaved (through a different relation).
+
+    *Edouard-chin*</description>
+    <pubDate>Thu, 19 Dec 2024 09:39:50 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p>A Blob will no longer autosave associated Attachment.</p>
+
+<p>This fixes an issue where a record with an attachment would have<br />
+its dirty attributes reset, preventing your <code>after commit</code> callbacks<br />
+on that record to behave as expected.</p>
+
+<p>Note that this change doesn’t require any changes on your application<br />
+and is supposed to be internal. Active Storage Attachment will continue<br />
+to be autosaved (through a different relation).</p>
+
+<p><em>Edouard-chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Serialized attributes can now be marked as comparable.
 </title>
     <link>https://github.com/rails/rails/issues/53946</link>
