@@ -90,6 +90,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   A Blob will no longer autosave associated Attachment.\n\n    This fixes an issue where a record with an attachment would have\n    its dirty attributes reset, preventing your `after commit` callbacks\n    on that record to behave as expected.\n\n    Note that this change doesn't require any changes on your application\n    and is supposed to be internal. Active Storage Attachment will continue\n    to be autosaved (through a different relation).\n\n    *Edouard-chin*",
+    "project": "activestorage",
+    "date_merged": 1734601190000,
+    "author": "Edouard CHIN",
+    "sha": "e70f504271864e32a5f27a35fe0d0865f5d95527",
+    "pr": "53623",
+    "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
+    "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+  },
+  {
     "message": "*   Serialized attributes can now be marked as comparable.\n\n    A not rare issue when working with serialized attributes is that the serialized representation of an object\n    can change over time. Either because you are migrating from one serializer to the other (e.g. YAML to JSON or to msgpack),\n    or because the serializer used subtly changed its output.\n\n    One example is libyaml that used to have some extra trailing whitespaces, and recently fixed that.\n    When this sorts of thing happen, you end up with lots of records that report being changed even though\n    they aren't, which in the best case leads to a lot more writes to the database and in the worst case lead to nasty bugs.\n\n    The solution is to instead compare the deserialized representation of the object, however Active Record\n    can't assume the deserialized object has a working `==` method. Hence why this new functionality is opt-in.\n\n    ```ruby\n    serialize :config, type: Hash, coder: JSON, comparable: true\n    ```\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1734180452000,
