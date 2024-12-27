@@ -100,6 +100,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Introduce versions formatter for the schema dumper.\n\n    It is now possible to override how schema dumper formats versions information inside the\n    `structure.sql` file. Currently, the versions are simply sorted in the decreasing order.\n    Within large teams, this can potentially cause many merge conflicts near the top of the list.\n\n    Now, the custom formatter can be provided with a custom sorting logic (e.g. by hash values\n    of the versions), which can greatly reduce the number of conflicts.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1735304063000,
+    "author": "fatkodima",
+    "sha": "0cc1842d3844411f77d9e6fbb6980ff2fbfaf868",
+    "pr": "53797",
+    "merge_sha": "0bded31622d4f4e126fb43aad742fbcaecf76cf8",
+    "html": "<p>Introduce versions formatter for the schema dumper.</p>\n\n<p>It is now possible to override how schema dumper formats versions information inside the<br />\n<code>structure.sql</code> file. Currently, the versions are simply sorted in the decreasing order.<br />\nWithin large teams, this can potentially cause many merge conflicts near the top of the list.</p>\n\n<p>Now, the custom formatter can be provided with a custom sorting logic (e.g. by hash values<br />\nof the versions), which can greatly reduce the number of conflicts.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Serialized attributes can now be marked as comparable.\n\n    A not rare issue when working with serialized attributes is that the serialized representation of an object\n    can change over time. Either because you are migrating from one serializer to the other (e.g. YAML to JSON or to msgpack),\n    or because the serializer used subtly changed its output.\n\n    One example is libyaml that used to have some extra trailing whitespaces, and recently fixed that.\n    When this sorts of thing happen, you end up with lots of records that report being changed even though\n    they aren't, which in the best case leads to a lot more writes to the database and in the worst case lead to nasty bugs.\n\n    The solution is to instead compare the deserialized representation of the object, however Active Record\n    can't assume the deserialized object has a working `==` method. Hence why this new functionality is opt-in.\n\n    ```ruby\n    serialize :config, type: Hash, coder: JSON, comparable: true\n    ```\n\n    *Jean Boussier*",
     "project": "activerecord",
     "date_merged": 1734180452000,
