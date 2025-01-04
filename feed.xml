@@ -165,6 +165,27 @@ generation of <code>tmp/local_secret.txt</code> files when running the report te
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.
+</title>
+    <link>https://github.com/rails/rails/issues/54040</link>
+    <guid>https://github.com/rails/rails/issues/54040</guid>
+    <description>*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.
+
+    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`
+    is found to be disabled because of OpenSSL FIPS mode.
+
+    *Matt Pasquini*, *Jean Boussier*</description>
+    <pubDate>Sat, 04 Jan 2025 12:09:08 +0000</pubDate>
+    <author>Matt Pasquini</author>
+    <content:encoded><![CDATA[<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>
+
+<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />
+is found to be disabled because of OpenSSL FIPS mode.</p>
+
+<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: A Blob will no longer autosave associated Attachment.
 </title>
     <link>https://github.com/rails/rails/issues/53623</link>
