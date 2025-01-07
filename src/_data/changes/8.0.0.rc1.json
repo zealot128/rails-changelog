@@ -30,6 +30,26 @@
     "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Layouts have access to local variables passed to `render`.\n\n    This fixes #31680 which was a regression in Rails 5.1.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1736197671000,
+    "author": "Mike Dalessio",
+    "sha": "b35a9b6fc63246adbe98d141997f37434ad037ad",
+    "pr": "54020",
+    "merge_sha": "593d9d90972df11aea1a1d7bb8a5f5f84a1d1f27",
+    "html": "<p>Layouts have access to local variables passed to <code>render</code>.</p>\n\n<p>This fixes #31680 which was a regression in Rails 5.1.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Argument errors related to strict locals in templates now raise an\n    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.\n\n    Previously, any `ArgumentError` raised during template rendering was swallowed during strict\n    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper\n    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an\n    unrelated backtrace, making it difficult to debug templates.\n\n    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original\n    backtrace for developers.\n\n    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing\n    code that rescues `ArgumentError` will continue to work.\n\n    Fixes #52227.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1736195112000,
+    "author": "Mike Dalessio",
+    "sha": "c868503d313873edcd262c4d605c06d2d1ed703a",
+    "pr": "54133",
+    "merge_sha": "bc601a9ffe4d48045b9bfeec23e9e579a5709c7c",
+    "html": "<p>Argument errors related to strict locals in templates now raise an<br />\n<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>\n\n<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />\nlocal error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />\nmethod invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />\nunrelated backtrace, making it difficult to debug templates.</p>\n\n<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />\nbacktrace for developers.</p>\n\n<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />\ncode that rescues <code>ArgumentError</code> will continue to work.</p>\n\n<p>Fixes #52227.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Improve error highlighting of multi-line methods in ERB templates or\n    templates where the error occurs within a do-end block.\n\n    *Martin Emde*",
     "project": "actionview",
     "date_merged": 1732819839000,
