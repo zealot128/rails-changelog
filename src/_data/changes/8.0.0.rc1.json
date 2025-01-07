@@ -90,6 +90,16 @@
     "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
   },
   {
+    "message": "*   Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`\n\n    ```ruby\n    class User\n      include ActiveModel::Attributes\n      include ActiveModel::Attributes::Normalization\n\n      attribute :email, :string\n\n      normalizes :email, with: -> email { email.strip.downcase }\n    end\n\n    user = User.new\n    user.email =    \" CRUISE-CONTROL@EXAMPLE.COM\\n\"\n    user.email # => \"cruise-control@example.com\"\n    ```\n\n    *Sean Doyle*",
+    "project": "activemodel",
+    "date_merged": 1736266443000,
+    "author": "Sean Doyle",
+    "sha": "599c9af7e1990a98e9bbaffa03a4b4d0b2f622ee",
+    "pr": "53955",
+    "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
+    "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   In the Active Job bug report template set the queue adapter to the\n    test adapter so that `assert_enqueued_with` can pass.\n\n    *Andrew White*",
     "project": "guides",
     "date_merged": 1734279797000,
@@ -128,6 +138,16 @@
     "pr": "53623",
     "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+  },
+  {
+    "message": "*   The table columns inside `schema.rb` are now sorted alphabetically.\n\n    Previously they'd be sorted by creation order, which can cause merge conflicts when two\n    branches modify the same table concurrently.\n\n    *John Duff*",
+    "project": "activerecord",
+    "date_merged": 1736248377000,
+    "author": "John Duff",
+    "sha": "e403adf8720a77b9481eb6f4e4b3e39cc91356d5",
+    "pr": "53281",
+    "merge_sha": "1edb8083b8d0de1ba9c09502d28add96ac20d659",
+    "html": "<p>The table columns inside <code>schema.rb</code> are now sorted alphabetically.</p>\n\n<p>Previously they’d be sorted by creation order, which can cause merge conflicts when two<br />\nbranches modify the same table concurrently.</p>\n\n<p><em>John Duff</em></p>\n"
   },
   {
     "message": "*   Introduce versions formatter for the schema dumper.\n\n    It is now possible to override how schema dumper formats versions information inside the\n    `structure.sql` file. Currently, the versions are simply sorted in the decreasing order.\n    Within large teams, this can potentially cause many merge conflicts near the top of the list.\n\n    Now, the custom formatter can be provided with a custom sorting logic (e.g. by hash values\n    of the versions), which can greatly reduce the number of conflicts.\n\n    *fatkodima*",
@@ -280,6 +300,26 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1736274652000,
+    "author": "Steve Polito",
+    "sha": "f0f0a818ad34e9ab930db8981b03d65708e2659d",
+    "pr": "52230",
+    "merge_sha": "1914a7437270f1e74d31494675c9fddf244a7cf5",
+    "html": "<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Colorize the Rails console prompt even on non standard environments.\n\n    *Lorenzo Zabot*",
+    "project": "railties",
+    "date_merged": 1736267051000,
+    "author": "Lorenzo Zabot",
+    "sha": "b097cfbbb9c5c31b0ede2b8caae28dabf7aa9850",
+    "pr": "53027",
+    "merge_sha": "c8335e118ba14562d4755ba2dd28171996fea297",
+    "html": "<p>Colorize the Rails console prompt even on non standard environments.</p>\n\n<p><em>Lorenzo Zabot</em></p>\n"
+  },
+  {
     "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environment tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
     "project": "railties",
     "date_merged": 1732617959000,
@@ -298,6 +338,16 @@
     "pr": "53621",
     "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActiveSupport::Configurable`\n\n    *Sean Doyle*",
+    "project": "activesupport",
+    "date_merged": 1736272637000,
+    "author": "Sean Doyle",
+    "sha": "da2fbb2ed3139989a41017dbe685e3ac1dcf5c64",
+    "pr": "53970",
+    "merge_sha": "1719d250961c74686ee3eceba47896bc1058dac5",
+    "html": "<p>Deprecate <code>ActiveSupport::Configurable</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   `nil.to_query(\"key\")` now returns `key`.\n\n    Previously it would return `key=`, preventing round tripping with `Rack::Utils.parse_nested_query`.\n\n    *Erol Fornoles*",
