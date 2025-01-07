@@ -63,6 +63,68 @@ was raised during job execution or deserialization.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Layouts have access to local variables passed to `render`.
+</title>
+    <link>https://github.com/rails/rails/issues/54020</link>
+    <guid>https://github.com/rails/rails/issues/54020</guid>
+    <description>*   Layouts have access to local variables passed to `render`.
+
+    This fixes #31680 which was a regression in Rails 5.1.
+
+    *Mike Dalessio*</description>
+    <pubDate>Mon, 06 Jan 2025 21:07:51 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Layouts have access to local variables passed to <code>render</code>.</p>
+
+<p>This fixes #31680 which was a regression in Rails 5.1.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Argument errors related to strict locals in templates now raise an
+</title>
+    <link>https://github.com/rails/rails/issues/54133</link>
+    <guid>https://github.com/rails/rails/issues/54133</guid>
+    <description>*   Argument errors related to strict locals in templates now raise an
+    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.
+
+    Previously, any `ArgumentError` raised during template rendering was swallowed during strict
+    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper
+    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an
+    unrelated backtrace, making it difficult to debug templates.
+
+    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original
+    backtrace for developers.
+
+    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing
+    code that rescues `ArgumentError` will continue to work.
+
+    Fixes #52227.
+
+    *Mike Dalessio*</description>
+    <pubDate>Mon, 06 Jan 2025 20:25:12 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Argument errors related to strict locals in templates now raise an<br />
+<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>
+
+<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />
+local error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />
+method invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />
+unrelated backtrace, making it difficult to debug templates.</p>
+
+<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />
+backtrace for developers.</p>
+
+<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />
+code that rescues <code>ArgumentError</code> will continue to work.</p>
+
+<p>Fixes #52227.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Improve error highlighting of multi-line methods in ERB templates or
 </title>
     <link>https://github.com/rails/rails/issues/53763</link>
