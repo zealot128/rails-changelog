@@ -193,6 +193,50 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activemodel: Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`
+</title>
+    <link>https://github.com/rails/rails/issues/53955</link>
+    <guid>https://github.com/rails/rails/issues/53955</guid>
+    <description>*   Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`
+
+    ```ruby
+    class User
+      include ActiveModel::Attributes
+      include ActiveModel::Attributes::Normalization
+
+      attribute :email, :string
+
+      normalizes :email, with: -&gt; email { email.strip.downcase }
+    end
+
+    user = User.new
+    user.email =    &quot; CRUISE-CONTROL@EXAMPLE.COM\n&quot;
+    user.email # =&gt; &quot;cruise-control@example.com&quot;
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Tue, 07 Jan 2025 16:14:03 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span>
+  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span>
+  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Attributes</span><span class="o">::</span><span class="no">Normalization</span>
+
+  <span class="n">attribute</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:string</span>
+
+  <span class="n">normalizes</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">with: </span><span class="o">-&gt;</span> <span class="n">email</span> <span class="p">{</span> <span class="n">email</span><span class="p">.</span><span class="nf">strip</span><span class="p">.</span><span class="nf">downcase</span> <span class="p">}</span>
+<span class="k">end</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">email</span> <span class="o">=</span>    <span class="s2">" CRUISE-CONTROL@EXAMPLE.COM</span><span class="se">\n</span><span class="s2">"</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">email</span> <span class="c1"># =&gt; "cruise-control@example.com"</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>guides: In the Active Job bug report template set the queue adapter to the
 </title>
     <link>https://github.com/rails/rails/issues/53963</link>
@@ -276,6 +320,27 @@ and is supposed to be internal. Active Storage Attachment will continue<br />
 to be autosaved (through a different relation).</p>
 
 <p><em>Edouard-chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: The table columns inside `schema.rb` are now sorted alphabetically.
+</title>
+    <link>https://github.com/rails/rails/issues/53281</link>
+    <guid>https://github.com/rails/rails/issues/53281</guid>
+    <description>*   The table columns inside `schema.rb` are now sorted alphabetically.
+
+    Previously they&#39;d be sorted by creation order, which can cause merge conflicts when two
+    branches modify the same table concurrently.
+
+    *John Duff*</description>
+    <pubDate>Tue, 07 Jan 2025 11:12:57 +0000</pubDate>
+    <author>John Duff</author>
+    <content:encoded><![CDATA[<p>The table columns inside <code>schema.rb</code> are now sorted alphabetically.</p>
+
+<p>Previously they’d be sorted by creation order, which can cause merge conflicts when two<br />
+branches modify the same table concurrently.</p>
+
+<p><em>John Duff</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -655,6 +720,36 @@ current state to be accessible to an external process while tests are running.</
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files
+</title>
+    <link>https://github.com/rails/rails/issues/52230</link>
+    <guid>https://github.com/rails/rails/issues/52230</guid>
+    <description>*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files
+
+    *Steve Polito*</description>
+    <pubDate>Tue, 07 Jan 2025 18:30:52 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Colorize the Rails console prompt even on non standard environments.
+</title>
+    <link>https://github.com/rails/rails/issues/53027</link>
+    <guid>https://github.com/rails/rails/issues/53027</guid>
+    <description>*   Colorize the Rails console prompt even on non standard environments.
+
+    *Lorenzo Zabot*</description>
+    <pubDate>Tue, 07 Jan 2025 16:24:11 +0000</pubDate>
+    <author>Lorenzo Zabot</author>
+    <content:encoded><![CDATA[<p>Colorize the Rails console prompt even on non standard environments.</p>
+
+<p><em>Lorenzo Zabot</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Don&#39;t enable YJIT in development and test environments
 </title>
     <link>https://github.com/rails/rails/issues/53746</link>
@@ -688,6 +783,21 @@ hence YJIT isn’t generally faster in these environments.</p>
     <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Deprecate `ActiveSupport::Configurable`
+</title>
+    <link>https://github.com/rails/rails/issues/53970</link>
+    <guid>https://github.com/rails/rails/issues/53970</guid>
+    <description>*   Deprecate `ActiveSupport::Configurable`
+
+    *Sean Doyle*</description>
+    <pubDate>Tue, 07 Jan 2025 17:57:17 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>ActiveSupport::Configurable</code></p>
+
+<p><em>Sean Doyle</em></p>
 ]]></content:encoded>
   </item>
   <item>
