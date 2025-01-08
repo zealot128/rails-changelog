@@ -63,6 +63,23 @@ was raised during job execution or deserialization.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Respect `html_options[:form]` when `collection_checkboxes` generates the
+</title>
+    <link>https://github.com/rails/rails/issues/51746</link>
+    <guid>https://github.com/rails/rails/issues/51746</guid>
+    <description>*   Respect `html_options[:form]` when `collection_checkboxes` generates the
+    hidden `&lt;input&gt;`.
+
+    *Riccardo Odone*</description>
+    <pubDate>Wed, 08 Jan 2025 16:03:11 +0000</pubDate>
+    <author>3v0k4</author>
+    <content:encoded><![CDATA[<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />
+hidden <code>&lt;input&gt;</code>.</p>
+
+<p><em>Riccardo Odone</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionview: Layouts have access to local variables passed to `render`.
 </title>
     <link>https://github.com/rails/rails/issues/54020</link>
@@ -756,7 +773,7 @@ current state to be accessible to an external process while tests are running.</
     <guid>https://github.com/rails/rails/issues/53746</guid>
     <description>*   Don&#39;t enable YJIT in development and test environments
 
-    Development and test environment tend to reload code and redefine methods (e.g. mocking),
+    Development and test environments tend to reload code and redefine methods (e.g. mocking),
     hence YJIT isn&#39;t generally faster in these environments.
 
     *Ali Ismayilov*, *Jean Boussier*</description>
@@ -764,7 +781,7 @@ current state to be accessible to an external process while tests are running.</
     <author>Ali Ismayilov</author>
     <content:encoded><![CDATA[<p>Don’t enable YJIT in development and test environments</p>
 
-<p>Development and test environment tend to reload code and redefine methods (e.g. mocking),<br />
+<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />
 hence YJIT isn’t generally faster in these environments.</p>
 
 <p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>
@@ -783,6 +800,27 @@ hence YJIT isn’t generally faster in these environments.</p>
     <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: Deprecate `String#mb_chars` and `ActiveSupport::Multibyte::Chars`.
+</title>
+    <link>https://github.com/rails/rails/issues/54081</link>
+    <guid>https://github.com/rails/rails/issues/54081</guid>
+    <description>*   Deprecate `String#mb_chars` and `ActiveSupport::Multibyte::Chars`.
+
+    These APIs are a relic of the Ruby 1.8 days when Ruby strings weren&#39;t encoding
+    aware. There is no legitimate reasons to need these APIs today.
+
+    *Jean Boussier*</description>
+    <pubDate>Wed, 08 Jan 2025 10:01:56 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Deprecate <code>String#mb_chars</code> and <code>ActiveSupport::Multibyte::Chars</code>.</p>
+
+<p>These APIs are a relic of the Ruby 1.8 days when Ruby strings weren’t encoding<br />
+aware. There is no legitimate reasons to need these APIs today.</p>
+
+<p><em>Jean Boussier</em></p>
 ]]></content:encoded>
   </item>
   <item>
