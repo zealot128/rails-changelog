@@ -30,6 +30,16 @@
     "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Respect `html_options[:form]` when `collection_checkboxes` generates the\n    hidden `<input>`.\n\n    *Riccardo Odone*",
+    "project": "actionview",
+    "date_merged": 1736352191000,
+    "author": "3v0k4",
+    "sha": "d4702f99e69e0c327419e7791dce5b969e361d89",
+    "pr": "51746",
+    "merge_sha": "f978e1dc7ca5bc570a21f8007e06a3a57ca93566",
+    "html": "<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />\nhidden <code>&lt;input&gt;</code>.</p>\n\n<p><em>Riccardo Odone</em></p>\n"
+  },
+  {
     "message": "*   Layouts have access to local variables passed to `render`.\n\n    This fixes #31680 which was a regression in Rails 5.1.\n\n    *Mike Dalessio*",
     "project": "actionview",
     "date_merged": 1736197671000,
@@ -320,14 +330,14 @@
     "html": "<p>Colorize the Rails console prompt even on non standard environments.</p>\n\n<p><em>Lorenzo Zabot</em></p>\n"
   },
   {
-    "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environment tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
+    "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environments tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
     "project": "railties",
     "date_merged": 1732617959000,
     "author": "Ali Ismayilov",
     "sha": "76e2b7e529e6c8cc42de00c94408d008655385bb",
     "pr": "53746",
     "merge_sha": "723ca0c0a757e27ab23e60cd65767606b7f6c202",
-    "html": "<p>Don’t enable YJIT in development and test environments</p>\n\n<p>Development and test environment tend to reload code and redefine methods (e.g. mocking),<br />\nhence YJIT isn’t generally faster in these environments.</p>\n\n<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>\n"
+    "html": "<p>Don’t enable YJIT in development and test environments</p>\n\n<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />\nhence YJIT isn’t generally faster in these environments.</p>\n\n<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Only include PermissionsPolicy::Middleware if policy is configured.\n\n    *Petrik de Heus*",
@@ -338,6 +348,16 @@
     "pr": "53621",
     "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `String#mb_chars` and `ActiveSupport::Multibyte::Chars`.\n\n    These APIs are a relic of the Ruby 1.8 days when Ruby strings weren't encoding\n    aware. There is no legitimate reasons to need these APIs today.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1736330516000,
+    "author": "Jean Boussier",
+    "sha": "ebbbc488dbd88e3b27ced1178cc194332541e982",
+    "pr": "54081",
+    "merge_sha": "aaa111f4c39b441b45d8b1b1408ee0052ed27d9e",
+    "html": "<p>Deprecate <code>String#mb_chars</code> and <code>ActiveSupport::Multibyte::Chars</code>.</p>\n\n<p>These APIs are a relic of the Ruby 1.8 days when Ruby strings weren’t encoding<br />\naware. There is no legitimate reasons to need these APIs today.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Deprecate `ActiveSupport::Configurable`\n\n    *Sean Doyle*",
