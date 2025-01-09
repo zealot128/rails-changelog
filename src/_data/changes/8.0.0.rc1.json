@@ -350,6 +350,16 @@
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   `ActiveSupport::Testing::NotificationAssertions`'s `assert_notification` now matches against payload subsets by default.\n\n    Previously the following assertion would fail due to excess key vals in the notification payload. Now with payload subset matching, it will pass.\n\n    ```ruby\n    assert_notification(\"post.submitted\", title: \"Cool Post\") do\n      ActiveSupport::Notifications.instrument(\"post.submitted\", title: \"Cool Post\", body: \"Cool Body\")\n    end\n    ```\n\n    Additionally, you can now persist a matched notification for more customized assertions.\n\n    ```ruby\n    notification = assert_notification(\"post.submitted\", title: \"Cool Post\") do\n      ActiveSupport::Notifications.instrument(\"post.submitted\", title: \"Cool Post\", body: Body.new(\"Cool Body\"))\n    end\n\n    assert_instance_of(Body, notification.payload[:body])\n    ```\n\n    *Nicholas La Roux*",
+    "project": "activesupport",
+    "date_merged": 1736379614000,
+    "author": "Nicholas La Roux",
+    "sha": "72eaf25eaed3a75b2fd8eb1c6365e432805b4122",
+    "pr": "54126",
+    "merge_sha": "da32425a0864f6da7bdd2a8d3a43027fbfb2a504",
+    "html": "<p><code>ActiveSupport::Testing::NotificationAssertions</code>’s <code>assert_notification</code> now matches against payload subsets by default.</p>\n\n<p>Previously the following assertion would fail due to excess key vals in the notification payload. Now with payload subset matching, it will pass.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_notification</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">instrument</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">,</span> <span class=\"ss\">body: </span><span class=\"s2\">\"Cool Body\"</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Additionally, you can now persist a matched notification for more customized assertions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">notification</span> <span class=\"o\">=</span> <span class=\"n\">assert_notification</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">instrument</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">,</span> <span class=\"ss\">body: </span><span class=\"no\">Body</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"Cool Body\"</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">assert_instance_of</span><span class=\"p\">(</span><span class=\"no\">Body</span><span class=\"p\">,</span> <span class=\"n\">notification</span><span class=\"p\">.</span><span class=\"nf\">payload</span><span class=\"p\">[</span><span class=\"ss\">:body</span><span class=\"p\">])</span>\n</code></pre></div></div>\n\n<p><em>Nicholas La Roux</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `String#mb_chars` and `ActiveSupport::Multibyte::Chars`.\n\n    These APIs are a relic of the Ruby 1.8 days when Ruby strings weren't encoding\n    aware. There is no legitimate reasons to need these APIs today.\n\n    *Jean Boussier*",
     "project": "activesupport",
     "date_merged": 1736330516000,
@@ -448,6 +458,16 @@
     "pr": "53680",
     "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
+    "message": "*   Add resource name to the `ArgumentError` that's raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`\n\n    This makes it easier to locate the source of the problem, especially for routes drawn by gems.\n\n    Before:\n    ```\n    :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n    ```\n\n    After:\n    ```\n    Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n    ```\n\n    *Jeremy Green*",
+    "project": "actionpack",
+    "date_merged": 1736371445000,
+    "author": "Jeremy Green",
+    "sha": "a4305e17773939c21621754112a382b0a4b83ad6",
+    "pr": "54163",
+    "merge_sha": "1387af8e5f0b3e89d0c448af2f852b96b1f0f6fa",
+    "html": "<p>Add resource name to the <code>ArgumentError</code> that’s raised when invalid <code>:only</code> or <code>:except</code> options are given to <code>#resource</code> or <code>#resources</code></p>\n\n<p>This makes it easier to locate the source of the problem, especially for routes drawn by gems.</p>\n\n<p>Before:</p>\n<pre><code>:only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n</code></pre>\n\n<p>After:</p>\n<pre><code>Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n</code></pre>\n\n<p><em>Jeremy Green</em></p>\n"
   },
   {
     "message": "*   Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.\n\n    Newly generated session ids use 128 bits of randomness, which is more than\n    enough to ensure collisions can't happen, but if you need to harden sessions\n    even more, you can enable this option to check in the session store that the id\n    is indeed free you can enable that option. This however incurs an extra write\n    on session creation.\n\n    *Shia*",
