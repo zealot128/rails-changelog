@@ -803,6 +803,55 @@ hence YJIT isn’t generally faster in these environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: `ActiveSupport::Testing::NotificationAssertions`&#39;s `assert_notification` now matches against payload subsets by default.
+</title>
+    <link>https://github.com/rails/rails/issues/54126</link>
+    <guid>https://github.com/rails/rails/issues/54126</guid>
+    <description>*   `ActiveSupport::Testing::NotificationAssertions`&#39;s `assert_notification` now matches against payload subsets by default.
+
+    Previously the following assertion would fail due to excess key vals in the notification payload. Now with payload subset matching, it will pass.
+
+    ```ruby
+    assert_notification(&quot;post.submitted&quot;, title: &quot;Cool Post&quot;) do
+      ActiveSupport::Notifications.instrument(&quot;post.submitted&quot;, title: &quot;Cool Post&quot;, body: &quot;Cool Body&quot;)
+    end
+    ```
+
+    Additionally, you can now persist a matched notification for more customized assertions.
+
+    ```ruby
+    notification = assert_notification(&quot;post.submitted&quot;, title: &quot;Cool Post&quot;) do
+      ActiveSupport::Notifications.instrument(&quot;post.submitted&quot;, title: &quot;Cool Post&quot;, body: Body.new(&quot;Cool Body&quot;))
+    end
+
+    assert_instance_of(Body, notification.payload[:body])
+    ```
+
+    *Nicholas La Roux*</description>
+    <pubDate>Wed, 08 Jan 2025 23:40:14 +0000</pubDate>
+    <author>Nicholas La Roux</author>
+    <content:encoded><![CDATA[<p><code>ActiveSupport::Testing::NotificationAssertions</code>’s <code>assert_notification</code> now matches against payload subsets by default.</p>
+
+<p>Previously the following assertion would fail due to excess key vals in the notification payload. Now with payload subset matching, it will pass.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assert_notification</span><span class="p">(</span><span class="s2">"post.submitted"</span><span class="p">,</span> <span class="ss">title: </span><span class="s2">"Cool Post"</span><span class="p">)</span> <span class="k">do</span>
+  <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Notifications</span><span class="p">.</span><span class="nf">instrument</span><span class="p">(</span><span class="s2">"post.submitted"</span><span class="p">,</span> <span class="ss">title: </span><span class="s2">"Cool Post"</span><span class="p">,</span> <span class="ss">body: </span><span class="s2">"Cool Body"</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Additionally, you can now persist a matched notification for more customized assertions.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">notification</span> <span class="o">=</span> <span class="n">assert_notification</span><span class="p">(</span><span class="s2">"post.submitted"</span><span class="p">,</span> <span class="ss">title: </span><span class="s2">"Cool Post"</span><span class="p">)</span> <span class="k">do</span>
+  <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Notifications</span><span class="p">.</span><span class="nf">instrument</span><span class="p">(</span><span class="s2">"post.submitted"</span><span class="p">,</span> <span class="ss">title: </span><span class="s2">"Cool Post"</span><span class="p">,</span> <span class="ss">body: </span><span class="no">Body</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Cool Body"</span><span class="p">))</span>
+<span class="k">end</span>
+
+<span class="n">assert_instance_of</span><span class="p">(</span><span class="no">Body</span><span class="p">,</span> <span class="n">notification</span><span class="p">.</span><span class="nf">payload</span><span class="p">[</span><span class="ss">:body</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p><em>Nicholas La Roux</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Deprecate `String#mb_chars` and `ActiveSupport::Multibyte::Chars`.
 </title>
     <link>https://github.com/rails/rails/issues/54081</link>
@@ -988,6 +1037,43 @@ option is already a <code>ConnectionPool</code>.</p>
     <content:encoded><![CDATA[<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>
 
 <p><em>Jonathan del Strother</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add resource name to the `ArgumentError` that&#39;s raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`
+</title>
+    <link>https://github.com/rails/rails/issues/54163</link>
+    <guid>https://github.com/rails/rails/issues/54163</guid>
+    <description>*   Add resource name to the `ArgumentError` that&#39;s raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`
+
+    This makes it easier to locate the source of the problem, especially for routes drawn by gems.
+
+    Before:
+    ```
+    :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
+    ```
+
+    After:
+    ```
+    Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
+    ```
+
+    *Jeremy Green*</description>
+    <pubDate>Wed, 08 Jan 2025 21:24:05 +0000</pubDate>
+    <author>Jeremy Green</author>
+    <content:encoded><![CDATA[<p>Add resource name to the <code>ArgumentError</code> that’s raised when invalid <code>:only</code> or <code>:except</code> options are given to <code>#resource</code> or <code>#resources</code></p>
+
+<p>This makes it easier to locate the source of the problem, especially for routes drawn by gems.</p>
+
+<p>Before:</p>
+<pre><code>:only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
+</code></pre>
+
+<p>After:</p>
+<pre><code>Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
+</code></pre>
+
+<p><em>Jeremy Green</em></p>
 ]]></content:encoded>
   </item>
   <item>
