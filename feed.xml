@@ -288,6 +288,38 @@ generation of <code>tmp/local_secret.txt</code> files when running the report te
 ]]></content:encoded>
   </item>
   <item>
+    <title>activestorage: Delegate `ActiveStorage::Filename#to_str` to `#to_s`
+</title>
+    <link>https://github.com/rails/rails/issues/54185</link>
+    <guid>https://github.com/rails/rails/issues/54185</guid>
+    <description>*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`
+
+    Supports checking String equality:
+
+    ```ruby
+    filename = ActiveStorage::Filename.new(&quot;file.txt&quot;)
+    filename == &quot;file.txt&quot; # =&gt; true
+    filename in &quot;file.txt&quot; # =&gt; true
+    &quot;file.txt&quot; == filename # =&gt; true
+    ```
+
+    *Sean Doyle*</description>
+    <pubDate>Fri, 10 Jan 2025 19:15:09 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>
+
+<p>Supports checking String equality:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filename</span> <span class="o">=</span> <span class="no">ActiveStorage</span><span class="o">::</span><span class="no">Filename</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"file.txt"</span><span class="p">)</span>
+<span class="n">filename</span> <span class="o">==</span> <span class="s2">"file.txt"</span> <span class="c1"># =&gt; true</span>
+<span class="n">filename</span> <span class="k">in</span> <span class="s2">"file.txt"</span> <span class="c1"># =&gt; true</span>
+<span class="s2">"file.txt"</span> <span class="o">==</span> <span class="n">filename</span> <span class="c1"># =&gt; true</span>
+</code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activestorage: Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.
 </title>
     <link>https://github.com/rails/rails/issues/54040</link>
