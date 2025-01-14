@@ -372,6 +372,52 @@ to be autosaved (through a different relation).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Enable automatically retrying idempotent `#exists?` queries on connection
+</title>
+    <link>https://github.com/rails/rails/issues/54243</link>
+    <guid>https://github.com/rails/rails/issues/54243</guid>
+    <description>*   Enable automatically retrying idempotent `#exists?` queries on connection
+    errors.
+
+    *Hartley McGuire*, *classidied*</description>
+    <pubDate>Tue, 14 Jan 2025 17:51:07 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Enable automatically retrying idempotent <code>#exists?</code> queries on connection<br />
+errors.</p>
+
+<p><em>Hartley McGuire</em>, <em>classidied</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Deprecate usage of unsupported methods in conjunction with `update_all`:
+</title>
+    <link>https://github.com/rails/rails/issues/54231</link>
+    <guid>https://github.com/rails/rails/issues/54231</guid>
+    <description>*   Deprecate usage of unsupported methods in conjunction with `update_all`:
+
+    `update_all` will now print a deprecation message if a query includes either `WITH`,
+    `WITH RECURSIVE` or `DISTINCT` statements. Those were never supported and were ignored
+    when generating the SQL query.
+
+    An error will be raised in a future Rails release. This behaviour will be consistent
+    with `delete_all` which currently raises an error for unsupported statements.
+
+    *Edouard Chin*</description>
+    <pubDate>Tue, 14 Jan 2025 08:48:04 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p>Deprecate usage of unsupported methods in conjunction with <code>update_all</code>:</p>
+
+<p><code>update_all</code> will now print a deprecation message if a query includes either <code>WITH</code>,<br />
+<code>WITH RECURSIVE</code> or <code>DISTINCT</code> statements. Those were never supported and were ignored<br />
+when generating the SQL query.</p>
+
+<p>An error will be raised in a future Rails release. This behaviour will be consistent<br />
+with <code>delete_all</code> which currently raises an error for unsupported statements.</p>
+
+<p><em>Edouard Chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: The table columns inside `schema.rb` are now sorted alphabetically.
 </title>
     <link>https://github.com/rails/rails/issues/53281</link>
@@ -766,6 +812,27 @@ current state to be accessible to an external process while tests are running.</
     <content:encoded><![CDATA[<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>
 
 <p><em>Kazuma Watanabe</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: The authentication generator&#39;s `SessionsController` sets the `Clear-Site-Data` header on logout.
+</title>
+    <link>https://github.com/rails/rails/issues/54230</link>
+    <guid>https://github.com/rails/rails/issues/54230</guid>
+    <description>*   The authentication generator&#39;s `SessionsController` sets the `Clear-Site-Data` header on logout.
+
+    By default the header will be set to `&quot;cache&quot;,&quot;storage&quot;` to help prevent data leakage after
+    logout via the browser&#39;s &quot;back/forward cache&quot;.
+
+    *Mike Dalessio*</description>
+    <pubDate>Tue, 14 Jan 2025 08:57:01 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>The authentication generator’s <code>SessionsController</code> sets the <code>Clear-Site-Data</code> header on logout.</p>
+
+<p>By default the header will be set to <code>"cache","storage"</code> to help prevent data leakage after<br />
+logout via the browser’s “back/forward cache”.</p>
+
+<p><em>Mike Dalessio</em></p>
 ]]></content:encoded>
   </item>
   <item>
