@@ -160,6 +160,26 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Enable automatically retrying idempotent `#exists?` queries on connection\n    errors.\n\n    *Hartley McGuire*, *classidied*",
+    "project": "activerecord",
+    "date_merged": 1736877067000,
+    "author": "Hartley McGuire",
+    "sha": "be42d45578d9f002cd3e6cd60ba0466392ae5d4a",
+    "pr": "54243",
+    "merge_sha": "116a5e4309a189f9111c85334c418856b81cd91a",
+    "html": "<p>Enable automatically retrying idempotent <code>#exists?</code> queries on connection<br />\nerrors.</p>\n\n<p><em>Hartley McGuire</em>, <em>classidied</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate usage of unsupported methods in conjunction with `update_all`:\n\n    `update_all` will now print a deprecation message if a query includes either `WITH`,\n    `WITH RECURSIVE` or `DISTINCT` statements. Those were never supported and were ignored\n    when generating the SQL query.\n\n    An error will be raised in a future Rails release. This behaviour will be consistent\n    with `delete_all` which currently raises an error for unsupported statements.\n\n    *Edouard Chin*",
+    "project": "activerecord",
+    "date_merged": 1736844484000,
+    "author": "Edouard CHIN",
+    "sha": "1585064d71ccee48e52940a723867758740233b8",
+    "pr": "54231",
+    "merge_sha": "3b6b6c25ffa44279b967378bce97bc4a169eb29d",
+    "html": "<p>Deprecate usage of unsupported methods in conjunction with <code>update_all</code>:</p>\n\n<p><code>update_all</code> will now print a deprecation message if a query includes either <code>WITH</code>,<br />\n<code>WITH RECURSIVE</code> or <code>DISTINCT</code> statements. Those were never supported and were ignored<br />\nwhen generating the SQL query.</p>\n\n<p>An error will be raised in a future Rails release. This behaviour will be consistent<br />\nwith <code>delete_all</code> which currently raises an error for unsupported statements.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
     "message": "*   The table columns inside `schema.rb` are now sorted alphabetically.\n\n    Previously they'd be sorted by creation order, which can cause merge conflicts when two\n    branches modify the same table concurrently.\n\n    *John Duff*",
     "project": "activerecord",
     "date_merged": 1736248377000,
@@ -318,6 +338,16 @@
     "pr": "53400",
     "merge_sha": "7fac5d14d00fcc8dc60b49729abe78223ad3bf00",
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
+  },
+  {
+    "message": "*   The authentication generator's `SessionsController` sets the `Clear-Site-Data` header on logout.\n\n    By default the header will be set to `\"cache\",\"storage\"` to help prevent data leakage after\n    logout via the browser's \"back/forward cache\".\n\n    *Mike Dalessio*",
+    "project": "railties",
+    "date_merged": 1736845021000,
+    "author": "Mike Dalessio",
+    "sha": "d51e570d5f67835cee1cc883a2fa89e7808e1c87",
+    "pr": "54230",
+    "merge_sha": "2fe5f62aefe4fcd179ab47b4f4622f1fa93daeef",
+    "html": "<p>The authentication generator’s <code>SessionsController</code> sets the <code>Clear-Site-Data</code> header on logout.</p>\n\n<p>By default the header will be set to <code>\"cache\",\"storage\"</code> to help prevent data leakage after<br />\nlogout via the browser’s “back/forward cache”.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
     "message": "*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files\n\n    *Steve Polito*",
