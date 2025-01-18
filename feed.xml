@@ -372,6 +372,23 @@ to be autosaved (through a different relation).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Change the payload name of `sql.active_record` notification for eager
+</title>
+    <link>https://github.com/rails/rails/issues/54278</link>
+    <guid>https://github.com/rails/rails/issues/54278</guid>
+    <description>*   Change the payload name of `sql.active_record` notification for eager
+    loading from &quot;SQL&quot; to &quot;#{model.name} Eager Load&quot;.
+
+    *zzak*</description>
+    <pubDate>Fri, 17 Jan 2025 19:43:00 +0000</pubDate>
+    <author>zzak</author>
+    <content:encoded><![CDATA[<p>Change the payload name of <code>sql.active_record</code> notification for eager<br />
+loading from “SQL” to “#{model.name} Eager Load”.</p>
+
+<p><em>zzak</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Enable automatically retrying idempotent `#exists?` queries on connection
 </title>
     <link>https://github.com/rails/rails/issues/54243</link>
@@ -812,6 +829,57 @@ current state to be accessible to an external process while tests are running.</
     <content:encoded><![CDATA[<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>
 
 <p><em>Kazuma Watanabe</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add `application-name` metadata to application layout
+</title>
+    <link>https://github.com/rails/rails/issues/54257</link>
+    <guid>https://github.com/rails/rails/issues/54257</guid>
+    <description>*   Add `application-name` metadata to application layout
+
+    The following metatag will be added to `app/views/layouts/application.html.erb`
+
+    ```html
+    &lt;meta name=&quot;application-name&quot; content=&quot;Name of Rails Application&quot;&gt;
+    ```
+
+    *Steve Polito*</description>
+    <pubDate>Fri, 17 Jan 2025 21:07:43 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Add <code>application-name</code> metadata to application layout</p>
+
+<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"application-name"</span> <span class="na">content=</span><span class="s">"Name of Rails Application"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Use `secret_key_base` from ENV or credentials when present locally.
+</title>
+    <link>https://github.com/rails/rails/issues/53705</link>
+    <guid>https://github.com/rails/rails/issues/53705</guid>
+    <description>*   Use `secret_key_base` from ENV or credentials when present locally.
+
+    When ENV[&quot;SECRET_KEY_BASE&quot;] or
+    `Rails.application.credentials.secret_key_base` is set for test or
+    development, it is used for the `Rails.config.secret_key_base`,
+    instead of generating a `tmp/local_secret.txt` file.
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 17 Jan 2025 20:03:05 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>
+
+<p>When ENV[“SECRET_KEY_BASE”] or<br />
+<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />
+development, it is used for the <code>Rails.config.secret_key_base</code>,<br />
+instead of generating a <code>tmp/local_secret.txt</code> file.</p>
+
+<p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
   <item>
