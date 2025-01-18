@@ -160,6 +160,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Change the payload name of `sql.active_record` notification for eager\n    loading from \"SQL\" to \"#{model.name} Eager Load\".\n\n    *zzak*",
+    "project": "activerecord",
+    "date_merged": 1737142980000,
+    "author": "zzak",
+    "sha": "d71310553e5360a93a32f91e5f99ec851cb7afc5",
+    "pr": "54278",
+    "merge_sha": "b458ed824c290f77a656accc457700c45733f4aa",
+    "html": "<p>Change the payload name of <code>sql.active_record</code> notification for eager<br />\nloading from “SQL” to “#{model.name} Eager Load”.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
     "message": "*   Enable automatically retrying idempotent `#exists?` queries on connection\n    errors.\n\n    *Hartley McGuire*, *classidied*",
     "project": "activerecord",
     "date_merged": 1736877067000,
@@ -338,6 +348,26 @@
     "pr": "53400",
     "merge_sha": "7fac5d14d00fcc8dc60b49729abe78223ad3bf00",
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
+  },
+  {
+    "message": "*   Add `application-name` metadata to application layout\n\n    The following metatag will be added to `app/views/layouts/application.html.erb`\n\n    ```html\n    <meta name=\"application-name\" content=\"Name of Rails Application\">\n    ```\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1737148063000,
+    "author": "Steve Polito",
+    "sha": "9144324cb92da6a461be40fc02a532aef1b29194",
+    "pr": "54257",
+    "merge_sha": "abb7035e08c07bb4e2941c1c27003609ce81e77b",
+    "html": "<p>Add <code>application-name</code> metadata to application layout</p>\n\n<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>\n\n<div class=\"language-html highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nt\">&lt;meta</span> <span class=\"na\">name=</span><span class=\"s\">\"application-name\"</span> <span class=\"na\">content=</span><span class=\"s\">\"Name of Rails Application\"</span><span class=\"nt\">&gt;</span>\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Use `secret_key_base` from ENV or credentials when present locally.\n\n    When ENV[\"SECRET_KEY_BASE\"] or\n    `Rails.application.credentials.secret_key_base` is set for test or\n    development, it is used for the `Rails.config.secret_key_base`,\n    instead of generating a `tmp/local_secret.txt` file.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1737144185000,
+    "author": "Petrik",
+    "sha": "8c5978c886d1511aecfa2f029478a03c91e7db75",
+    "pr": "53705",
+    "merge_sha": "4f2b9fe06a7ca5c44aab7abbab0353ed6d013d05",
+    "html": "<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>\n\n<p>When ENV[“SECRET_KEY_BASE”] or<br />\n<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />\ndevelopment, it is used for the <code>Rails.config.secret_key_base</code>,<br />\ninstead of generating a <code>tmp/local_secret.txt</code> file.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
     "message": "*   The authentication generator's `SessionsController` sets the `Clear-Site-Data` header on logout.\n\n    By default the header will be set to `\"cache\",\"storage\"` to help prevent data leakage after\n    logout via the browser's \"back/forward cache\".\n\n    *Mike Dalessio*",
