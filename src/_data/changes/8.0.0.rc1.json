@@ -160,6 +160,26 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Deprecate using `insert_all`/`upsert_all` with unpersisted records in associations.\n\n    Using these methods on associations containing unpersisted records will now\n    show a deprecation warning, as the unpersisted records will be lost after\n    the operation. This will become an error in Rails 8.2.\n\n    *Nick Schwaderer*",
+    "project": "activerecord",
+    "date_merged": 1737397236000,
+    "author": "Nick Schwaderer",
+    "sha": "5eeb9a76ff0445bdfdfd000c7474d80b9ba8bf49",
+    "pr": "53920",
+    "merge_sha": "b1d19454df2f5eb055254811bbbac0c6e997da3f",
+    "html": "<p>Deprecate using <code>insert_all</code>/<code>upsert_all</code> with unpersisted records in associations.</p>\n\n<p>Using these methods on associations containing unpersisted records will now<br />\nshow a deprecation warning, as the unpersisted records will be lost after<br />\nthe operation. This will become an error in Rails 8.2.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
+  },
+  {
+    "message": "*   Make column name optional for `index_exists?`.\n\n    This aligns well with `remove_index` signature as well, where\n    index name doesn't need to be derived from the column names.\n\n    *Ali Ismayiliov*",
+    "project": "activerecord",
+    "date_merged": 1737364831000,
+    "author": "Ali Ismayilov",
+    "sha": "08a0b4d49849605cf29498d113b12eedbb2ae49f",
+    "pr": "54298",
+    "merge_sha": "2e382ef0f6e9f2549ecc316212f1b0289d4162f7",
+    "html": "<p>Make column name optional for <code>index_exists?</code>.</p>\n\n<p>This aligns well with <code>remove_index</code> signature as well, where<br />\nindex name doesn’t need to be derived from the column names.</p>\n\n<p><em>Ali Ismayiliov</em></p>\n"
+  },
+  {
     "message": "*   Change the payload name of `sql.active_record` notification for eager\n    loading from \"SQL\" to \"#{model.name} Eager Load\".\n\n    *zzak*",
     "project": "activerecord",
     "date_merged": 1737142980000,
