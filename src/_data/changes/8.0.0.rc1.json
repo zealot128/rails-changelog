@@ -160,6 +160,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   `ActiveRecord::Coder::JSON` can be instantiated\n\n    Options can now be passed to `ActiveRecord::Coder::JSON` when instantiating the coder. This allows:\n    ```ruby\n    serialize :config, coder: ActiveRecord::Coder::JSON.new(symbolize_names: true)\n    ```\n    *matthaigh27*",
+    "project": "activerecord",
+    "date_merged": 1737456235000,
+    "author": "matt haigh",
+    "sha": "65426afea6141bb489ee02d1513fe2c14b700700",
+    "pr": "54172",
+    "merge_sha": "eb503d80bf0030d9d66a576214dc21a467a1bc53",
+    "html": "<p><code>ActiveRecord::Coder::JSON</code> can be instantiated</p>\n\n<p>Options can now be passed to <code>ActiveRecord::Coder::JSON</code> when instantiating the coder. This allows:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">serialize</span> <span class=\"ss\">:config</span><span class=\"p\">,</span> <span class=\"ss\">coder: </span><span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Coder</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">symbolize_names: </span><span class=\"kp\">true</span><span class=\"p\">)</span>\n</code></pre></div></div>\n<p><em>matthaigh27</em></p>\n"
+  },
+  {
     "message": "*   Deprecate using `insert_all`/`upsert_all` with unpersisted records in associations.\n\n    Using these methods on associations containing unpersisted records will now\n    show a deprecation warning, as the unpersisted records will be lost after\n    the operation.\n\n    *Nick Schwaderer*",
     "project": "activerecord",
     "date_merged": 1737397236000,
@@ -438,6 +448,16 @@
     "pr": "53621",
     "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::JSON` now accepts options\n\n    It is now possible to pass options to `ActiveSupport::JSON`:\n    ```ruby\n    ActiveSupport::JSON.decode('{\"key\": \"value\"}', symbolize_names: true) # => { key: \"value\" }\n    ```\n\n    *matthaigh27*",
+    "project": "activesupport",
+    "date_merged": 1737456235000,
+    "author": "matt haigh",
+    "sha": "65426afea6141bb489ee02d1513fe2c14b700700",
+    "pr": "54172",
+    "merge_sha": "eb503d80bf0030d9d66a576214dc21a467a1bc53",
+    "html": "<p><code>ActiveSupport::JSON</code> now accepts options</p>\n\n<p>It is now possible to pass options to <code>ActiveSupport::JSON</code>:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">decode</span><span class=\"p\">(</span><span class=\"s1\">'{\"key\": \"value\"}'</span><span class=\"p\">,</span> <span class=\"ss\">symbolize_names: </span><span class=\"kp\">true</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; { key: \"value\" }</span>\n</code></pre></div></div>\n\n<p><em>matthaigh27</em></p>\n"
   },
   {
     "message": "*   `ActiveSupport::Testing::NotificationAssertions`'s `assert_notification` now matches against payload subsets by default.\n\n    Previously the following assertion would fail due to excess key vals in the notification payload. Now with payload subset matching, it will pass.\n\n    ```ruby\n    assert_notification(\"post.submitted\", title: \"Cool Post\") do\n      ActiveSupport::Notifications.instrument(\"post.submitted\", title: \"Cool Post\", body: \"Cool Body\")\n    end\n    ```\n\n    Additionally, you can now persist a matched notification for more customized assertions.\n\n    ```ruby\n    notification = assert_notification(\"post.submitted\", title: \"Cool Post\") do\n      ActiveSupport::Notifications.instrument(\"post.submitted\", title: \"Cool Post\", body: Body.new(\"Cool Body\"))\n    end\n\n    assert_instance_of(Body, notification.payload[:body])\n    ```\n\n    *Nicholas La Roux*",
