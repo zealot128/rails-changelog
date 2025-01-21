@@ -372,6 +372,28 @@ to be autosaved (through a different relation).</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: `ActiveRecord::Coder::JSON` can be instantiated
+</title>
+    <link>https://github.com/rails/rails/issues/54172</link>
+    <guid>https://github.com/rails/rails/issues/54172</guid>
+    <description>*   `ActiveRecord::Coder::JSON` can be instantiated
+
+    Options can now be passed to `ActiveRecord::Coder::JSON` when instantiating the coder. This allows:
+    ```ruby
+    serialize :config, coder: ActiveRecord::Coder::JSON.new(symbolize_names: true)
+    ```
+    *matthaigh27*</description>
+    <pubDate>Tue, 21 Jan 2025 10:43:55 +0000</pubDate>
+    <author>matt haigh</author>
+    <content:encoded><![CDATA[<p><code>ActiveRecord::Coder::JSON</code> can be instantiated</p>
+
+<p>Options can now be passed to <code>ActiveRecord::Coder::JSON</code> when instantiating the coder. This allows:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">serialize</span> <span class="ss">:config</span><span class="p">,</span> <span class="ss">coder: </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Coder</span><span class="o">::</span><span class="no">JSON</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">symbolize_names: </span><span class="kp">true</span><span class="p">)</span>
+</code></pre></div></div>
+<p><em>matthaigh27</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Deprecate using `insert_all`/`upsert_all` with unpersisted records in associations.
 </title>
     <link>https://github.com/rails/rails/issues/53920</link>
@@ -1011,6 +1033,30 @@ hence YJIT isn’t generally faster in these environments.</p>
     <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: `ActiveSupport::JSON` now accepts options
+</title>
+    <link>https://github.com/rails/rails/issues/54172</link>
+    <guid>https://github.com/rails/rails/issues/54172</guid>
+    <description>*   `ActiveSupport::JSON` now accepts options
+
+    It is now possible to pass options to `ActiveSupport::JSON`:
+    ```ruby
+    ActiveSupport::JSON.decode(&#39;{&quot;key&quot;: &quot;value&quot;}&#39;, symbolize_names: true) # =&gt; { key: &quot;value&quot; }
+    ```
+
+    *matthaigh27*</description>
+    <pubDate>Tue, 21 Jan 2025 10:43:55 +0000</pubDate>
+    <author>matt haigh</author>
+    <content:encoded><![CDATA[<p><code>ActiveSupport::JSON</code> now accepts options</p>
+
+<p>It is now possible to pass options to <code>ActiveSupport::JSON</code>:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveSupport</span><span class="o">::</span><span class="no">JSON</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="s1">'{"key": "value"}'</span><span class="p">,</span> <span class="ss">symbolize_names: </span><span class="kp">true</span><span class="p">)</span> <span class="c1"># =&gt; { key: "value" }</span>
+</code></pre></div></div>
+
+<p><em>matthaigh27</em></p>
 ]]></content:encoded>
   </item>
   <item>
