@@ -1036,6 +1036,34 @@ hence YJIT isn’t generally faster in these environments.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Allow the `#freeze_time` testing helper to accept a date or time argument.
+</title>
+    <link>https://github.com/rails/rails/issues/54303</link>
+    <guid>https://github.com/rails/rails/issues/54303</guid>
+    <description>*   Allow the `#freeze_time` testing helper to accept a date or time argument.
+
+    ```ruby
+    Time.current # =&gt; Sun, 09 Jul 2024 15:34:49 EST -05:00
+    freeze_time Time.current + 1.day
+    sleep 1
+    Time.current # =&gt; Mon, 10 Jul 2024 15:34:49 EST -05:00
+    ```
+
+    *Joshua Young*</description>
+    <pubDate>Wed, 22 Jan 2025 20:43:41 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Allow the <code>#freeze_time</code> testing helper to accept a date or time argument.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Time</span><span class="p">.</span><span class="nf">current</span> <span class="c1"># =&gt; Sun, 09 Jul 2024 15:34:49 EST -05:00</span>
+<span class="n">freeze_time</span> <span class="no">Time</span><span class="p">.</span><span class="nf">current</span> <span class="o">+</span> <span class="mi">1</span><span class="p">.</span><span class="nf">day</span>
+<span class="nb">sleep</span> <span class="mi">1</span>
+<span class="no">Time</span><span class="p">.</span><span class="nf">current</span> <span class="c1"># =&gt; Mon, 10 Jul 2024 15:34:49 EST -05:00</span>
+</code></pre></div></div>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `ActiveSupport::JSON` now accepts options
 </title>
     <link>https://github.com/rails/rails/issues/54172</link>
