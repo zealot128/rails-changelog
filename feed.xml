@@ -6,210 +6,6 @@
 <description>Changelog for Rails</description>
 <atom:link href="https://zealot128.github.io/rails-changelog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>activejob: Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
-</title>
-    <link>https://github.com/rails/rails/issues/53859</link>
-    <guid>https://github.com/rails/rails/issues/53859</guid>
-    <description>*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
-
-    This was inconsistent with a regular `ActiveJob::Base#perform_later`.
-
-    *fatkodima*</description>
-    <pubDate>Fri, 06 Dec 2024 12:51:45 +0000</pubDate>
-    <author>fatkodima</author>
-    <content:encoded><![CDATA[<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>
-
-<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>
-
-<p><em>fatkodima</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activejob: Raise a more specific error during deserialization when a previously serialized job class is now unknown.
-</title>
-    <link>https://github.com/rails/rails/issues/53770</link>
-    <guid>https://github.com/rails/rails/issues/53770</guid>
-    <description>*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.
-
-    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic
-    `NameError` to make it easily possible for adapters to tell if the `NameError`
-    was raised during job execution or deserialization.
-
-    *Earlopain*</description>
-    <pubDate>Thu, 28 Nov 2024 19:34:53 +0000</pubDate>
-    <author>Earlopain</author>
-    <content:encoded><![CDATA[<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>
-
-<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />
-<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />
-was raised during job execution or deserialization.</p>
-
-<p><em>Earlopain</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actiontext: Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
-</title>
-    <link>https://github.com/rails/rails/issues/53847</link>
-    <guid>https://github.com/rails/rails/issues/53847</guid>
-    <description>*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
-
-    *Sean Doyle*</description>
-    <pubDate>Mon, 09 Dec 2024 22:56:25 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Respect `html_options[:form]` when `collection_checkboxes` generates the
-</title>
-    <link>https://github.com/rails/rails/issues/51746</link>
-    <guid>https://github.com/rails/rails/issues/51746</guid>
-    <description>*   Respect `html_options[:form]` when `collection_checkboxes` generates the
-    hidden `&lt;input&gt;`.
-
-    *Riccardo Odone*</description>
-    <pubDate>Wed, 08 Jan 2025 16:03:11 +0000</pubDate>
-    <author>3v0k4</author>
-    <content:encoded><![CDATA[<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />
-hidden <code>&lt;input&gt;</code>.</p>
-
-<p><em>Riccardo Odone</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Layouts have access to local variables passed to `render`.
-</title>
-    <link>https://github.com/rails/rails/issues/54020</link>
-    <guid>https://github.com/rails/rails/issues/54020</guid>
-    <description>*   Layouts have access to local variables passed to `render`.
-
-    This fixes #31680 which was a regression in Rails 5.1.
-
-    *Mike Dalessio*</description>
-    <pubDate>Mon, 06 Jan 2025 21:07:51 +0000</pubDate>
-    <author>Mike Dalessio</author>
-    <content:encoded><![CDATA[<p>Layouts have access to local variables passed to <code>render</code>.</p>
-
-<p>This fixes #31680 which was a regression in Rails 5.1.</p>
-
-<p><em>Mike Dalessio</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Argument errors related to strict locals in templates now raise an
-</title>
-    <link>https://github.com/rails/rails/issues/54133</link>
-    <guid>https://github.com/rails/rails/issues/54133</guid>
-    <description>*   Argument errors related to strict locals in templates now raise an
-    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.
-
-    Previously, any `ArgumentError` raised during template rendering was swallowed during strict
-    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper
-    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an
-    unrelated backtrace, making it difficult to debug templates.
-
-    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original
-    backtrace for developers.
-
-    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing
-    code that rescues `ArgumentError` will continue to work.
-
-    Fixes #52227.
-
-    *Mike Dalessio*</description>
-    <pubDate>Mon, 06 Jan 2025 20:25:12 +0000</pubDate>
-    <author>Mike Dalessio</author>
-    <content:encoded><![CDATA[<p>Argument errors related to strict locals in templates now raise an<br />
-<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>
-
-<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />
-local error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />
-method invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />
-unrelated backtrace, making it difficult to debug templates.</p>
-
-<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />
-backtrace for developers.</p>
-
-<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />
-code that rescues <code>ArgumentError</code> will continue to work.</p>
-
-<p>Fixes #52227.</p>
-
-<p><em>Mike Dalessio</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Improve error highlighting of multi-line methods in ERB templates or
-</title>
-    <link>https://github.com/rails/rails/issues/53763</link>
-    <guid>https://github.com/rails/rails/issues/53763</guid>
-    <description>*   Improve error highlighting of multi-line methods in ERB templates or
-    templates where the error occurs within a do-end block.
-
-    *Martin Emde*</description>
-    <pubDate>Thu, 28 Nov 2024 18:50:39 +0000</pubDate>
-    <author>Martin Emde</author>
-    <content:encoded><![CDATA[<p>Improve error highlighting of multi-line methods in ERB templates or<br />
-templates where the error occurs within a do-end block.</p>
-
-<p><em>Martin Emde</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Fix a crash in ERB template error highlighting when the error occurs on a
-</title>
-    <link>https://github.com/rails/rails/issues/53696</link>
-    <guid>https://github.com/rails/rails/issues/53696</guid>
-    <description>*   Fix a crash in ERB template error highlighting when the error occurs on a
-    line in the compiled template that is past the end of the source template.
-
-    *Martin Emde*</description>
-    <pubDate>Fri, 22 Nov 2024 05:49:40 +0000</pubDate>
-    <author>Martin Emde</author>
-    <content:encoded><![CDATA[<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />
-line in the compiled template that is past the end of the source template.</p>
-
-<p><em>Martin Emde</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Improve reliability of ERB template error highlighting.
-</title>
-    <link>https://github.com/rails/rails/issues/53657</link>
-    <guid>https://github.com/rails/rails/issues/53657</guid>
-    <description>*   Improve reliability of ERB template error highlighting.
-    Fix infinite loops and crashes in highlighting and
-    improve tolerance for alternate ERB handlers.
-
-    *Martin Emde*</description>
-    <pubDate>Thu, 21 Nov 2024 19:56:27 +0000</pubDate>
-    <author>Martin Emde</author>
-    <content:encoded><![CDATA[<p>Improve reliability of ERB template error highlighting.<br />
-Fix infinite loops and crashes in highlighting and<br />
-improve tolerance for alternate ERB handlers.</p>
-
-<p><em>Martin Emde</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>actionview: Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
-</title>
-    <link>https://github.com/rails/rails/issues/53512</link>
-    <guid>https://github.com/rails/rails/issues/53512</guid>
-    <description>*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
-
-    *brendon*</description>
-    <pubDate>Fri, 15 Nov 2024 11:28:47 +0000</pubDate>
-    <author>Brendon Muir</author>
-    <content:encoded><![CDATA[<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>
-
-<p><em>brendon</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>activemodel: Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`
 </title>
     <link>https://github.com/rails/rails/issues/53955</link>
@@ -251,124 +47,6 @@ improve tolerance for alternate ERB handlers.</p>
 </code></pre></div></div>
 
 <p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>guides: In the Active Job bug report template set the queue adapter to the
-</title>
-    <link>https://github.com/rails/rails/issues/53963</link>
-    <guid>https://github.com/rails/rails/issues/53963</guid>
-    <description>*   In the Active Job bug report template set the queue adapter to the
-    test adapter so that `assert_enqueued_with` can pass.
-
-    *Andrew White*</description>
-    <pubDate>Sun, 15 Dec 2024 16:23:17 +0000</pubDate>
-    <author>Andrew White</author>
-    <content:encoded><![CDATA[<p>In the Active Job bug report template set the queue adapter to the<br />
-test adapter so that <code>assert_enqueued_with</code> can pass.</p>
-
-<p><em>Andrew White</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>guides: Ensure all bug report templates set `config.secret_key_base` to avoid
-</title>
-    <link>https://github.com/rails/rails/issues/53963</link>
-    <guid>https://github.com/rails/rails/issues/53963</guid>
-    <description>*   Ensure all bug report templates set `config.secret_key_base` to avoid
-    generation of `tmp/local_secret.txt` files when running the report template.
-
-    *Andrew White*</description>
-    <pubDate>Sun, 15 Dec 2024 16:23:17 +0000</pubDate>
-    <author>Andrew White</author>
-    <content:encoded><![CDATA[<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />
-generation of <code>tmp/local_secret.txt</code> files when running the report template.</p>
-
-<p><em>Andrew White</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Delegate `ActiveStorage::Filename#to_str` to `#to_s`
-</title>
-    <link>https://github.com/rails/rails/issues/54185</link>
-    <guid>https://github.com/rails/rails/issues/54185</guid>
-    <description>*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`
-
-    Supports checking String equality:
-
-    ```ruby
-    filename = ActiveStorage::Filename.new(&quot;file.txt&quot;)
-    filename == &quot;file.txt&quot; # =&gt; true
-    filename in &quot;file.txt&quot; # =&gt; true
-    &quot;file.txt&quot; == filename # =&gt; true
-    ```
-
-    *Sean Doyle*</description>
-    <pubDate>Fri, 10 Jan 2025 19:15:09 +0000</pubDate>
-    <author>Sean Doyle</author>
-    <content:encoded><![CDATA[<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>
-
-<p>Supports checking String equality:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filename</span> <span class="o">=</span> <span class="no">ActiveStorage</span><span class="o">::</span><span class="no">Filename</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"file.txt"</span><span class="p">)</span>
-<span class="n">filename</span> <span class="o">==</span> <span class="s2">"file.txt"</span> <span class="c1"># =&gt; true</span>
-<span class="n">filename</span> <span class="k">in</span> <span class="s2">"file.txt"</span> <span class="c1"># =&gt; true</span>
-<span class="s2">"file.txt"</span> <span class="o">==</span> <span class="n">filename</span> <span class="c1"># =&gt; true</span>
-</code></pre></div></div>
-
-<p><em>Sean Doyle</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.
-</title>
-    <link>https://github.com/rails/rails/issues/54040</link>
-    <guid>https://github.com/rails/rails/issues/54040</guid>
-    <description>*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.
-
-    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`
-    is found to be disabled because of OpenSSL FIPS mode.
-
-    *Matt Pasquini*, *Jean Boussier*</description>
-    <pubDate>Sat, 04 Jan 2025 12:09:08 +0000</pubDate>
-    <author>Matt Pasquini</author>
-    <content:encoded><![CDATA[<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>
-
-<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />
-is found to be disabled because of OpenSSL FIPS mode.</p>
-
-<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>activestorage: A Blob will no longer autosave associated Attachment.
-</title>
-    <link>https://github.com/rails/rails/issues/53623</link>
-    <guid>https://github.com/rails/rails/issues/53623</guid>
-    <description>*   A Blob will no longer autosave associated Attachment.
-
-    This fixes an issue where a record with an attachment would have
-    its dirty attributes reset, preventing your `after commit` callbacks
-    on that record to behave as expected.
-
-    Note that this change doesn&#39;t require any changes on your application
-    and is supposed to be internal. Active Storage Attachment will continue
-    to be autosaved (through a different relation).
-
-    *Edouard-chin*</description>
-    <pubDate>Thu, 19 Dec 2024 09:39:50 +0000</pubDate>
-    <author>Edouard CHIN</author>
-    <content:encoded><![CDATA[<p>A Blob will no longer autosave associated Attachment.</p>
-
-<p>This fixes an issue where a record with an attachment would have<br />
-its dirty attributes reset, preventing your <code>after commit</code> callbacks<br />
-on that record to behave as expected.</p>
-
-<p>Note that this change doesn’t require any changes on your application<br />
-and is supposed to be internal. Active Storage Attachment will continue<br />
-to be autosaved (through a different relation).</p>
-
-<p><em>Edouard-chin</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -898,141 +576,158 @@ current state to be accessible to an external process while tests are running.</
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Add `application-name` metadata to application layout
+    <title>actionpack: Add resource name to the `ArgumentError` that&#39;s raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`
 </title>
-    <link>https://github.com/rails/rails/issues/54257</link>
-    <guid>https://github.com/rails/rails/issues/54257</guid>
-    <description>*   Add `application-name` metadata to application layout
+    <link>https://github.com/rails/rails/issues/54163</link>
+    <guid>https://github.com/rails/rails/issues/54163</guid>
+    <description>*   Add resource name to the `ArgumentError` that&#39;s raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`
 
-    The following metatag will be added to `app/views/layouts/application.html.erb`
+    This makes it easier to locate the source of the problem, especially for routes drawn by gems.
 
-    ```html
-    &lt;meta name=&quot;application-name&quot; content=&quot;Name of Rails Application&quot;&gt;
+    Before:
+    ```
+    :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
     ```
 
-    *Steve Polito*</description>
-    <pubDate>Fri, 17 Jan 2025 21:07:43 +0000</pubDate>
-    <author>Steve Polito</author>
-    <content:encoded><![CDATA[<p>Add <code>application-name</code> metadata to application layout</p>
+    After:
+    ```
+    Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
+    ```
 
-<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>
+    *Jeremy Green*</description>
+    <pubDate>Wed, 08 Jan 2025 21:24:05 +0000</pubDate>
+    <author>Jeremy Green</author>
+    <content:encoded><![CDATA[<p>Add resource name to the <code>ArgumentError</code> that’s raised when invalid <code>:only</code> or <code>:except</code> options are given to <code>#resource</code> or <code>#resources</code></p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"application-name"</span> <span class="na">content=</span><span class="s">"Name of Rails Application"</span><span class="nt">&gt;</span>
+<p>This makes it easier to locate the source of the problem, especially for routes drawn by gems.</p>
+
+<p>Before:</p>
+<pre><code>:only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
+</code></pre>
+
+<p>After:</p>
+<pre><code>Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
+</code></pre>
+
+<p><em>Jeremy Green</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.
+</title>
+    <link>https://github.com/rails/rails/issues/53918</link>
+    <guid>https://github.com/rails/rails/issues/53918</guid>
+    <description>*   Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.
+
+    Newly generated session ids use 128 bits of randomness, which is more than
+    enough to ensure collisions can&#39;t happen, but if you need to harden sessions
+    even more, you can enable this option to check in the session store that the id
+    is indeed free you can enable that option. This however incurs an extra write
+    on session creation.
+
+    *Shia*</description>
+    <pubDate>Sat, 14 Dec 2024 09:18:23 +0000</pubDate>
+    <author>Shia</author>
+    <content:encoded><![CDATA[<p>Add <code>check_collisions</code> option to <code>ActionDispatch::Session::CacheStore</code>.</p>
+
+<p>Newly generated session ids use 128 bits of randomness, which is more than<br />
+enough to ensure collisions can’t happen, but if you need to harden sessions<br />
+even more, you can enable this option to check in the session store that the id<br />
+is indeed free you can enable that option. This however incurs an extra write<br />
+on session creation.</p>
+
+<p><em>Shia</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: In ExceptionWrapper, match backtrace lines with built templates more often,
+</title>
+    <link>https://github.com/rails/rails/issues/53763</link>
+    <guid>https://github.com/rails/rails/issues/53763</guid>
+    <description>*   In ExceptionWrapper, match backtrace lines with built templates more often,
+    allowing improved highlighting of errors within do-end blocks in templates.
+    Fix for Ruby 3.4 to match new method labels in backtrace.
+
+    *Martin Emde*</description>
+    <pubDate>Thu, 28 Nov 2024 18:50:39 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>In ExceptionWrapper, match backtrace lines with built templates more often,<br />
+allowing improved highlighting of errors within do-end blocks in templates.<br />
+Fix for Ruby 3.4 to match new method labels in backtrace.</p>
+
+<p><em>Martin Emde</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionpack: Allow setting content type with a symbol of the Mime type.
+</title>
+    <link>https://github.com/rails/rails/issues/53236</link>
+    <guid>https://github.com/rails/rails/issues/53236</guid>
+    <description>*   Allow setting content type with a symbol of the Mime type.
+
+    ```ruby
+    # Before
+    response.content_type = &quot;text/html&quot;
+
+    # After
+    response.content_type = :html
+    ```
+
+    *Petrik de Heus*</description>
+    <pubDate>Sat, 16 Nov 2024 10:36:32 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Allow setting content type with a symbol of the Mime type.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="s2">"text/html"</span>
+
+<span class="c1"># After</span>
+<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="ss">:html</span>
 </code></pre></div></div>
 
-<p><em>Steve Polito</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Use `secret_key_base` from ENV or credentials when present locally.
-</title>
-    <link>https://github.com/rails/rails/issues/53705</link>
-    <guid>https://github.com/rails/rails/issues/53705</guid>
-    <description>*   Use `secret_key_base` from ENV or credentials when present locally.
-
-    When ENV[&quot;SECRET_KEY_BASE&quot;] or
-    `Rails.application.credentials.secret_key_base` is set for test or
-    development, it is used for the `Rails.config.secret_key_base`,
-    instead of generating a `tmp/local_secret.txt` file.
-
-    *Petrik de Heus*</description>
-    <pubDate>Fri, 17 Jan 2025 20:03:05 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>
-
-<p>When ENV[“SECRET_KEY_BASE”] or<br />
-<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />
-development, it is used for the <code>Rails.config.secret_key_base</code>,<br />
-instead of generating a <code>tmp/local_secret.txt</code> file.</p>
-
 <p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: The authentication generator&#39;s `SessionsController` sets the `Clear-Site-Data` header on logout.
+    <title>activejob: Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
 </title>
-    <link>https://github.com/rails/rails/issues/54230</link>
-    <guid>https://github.com/rails/rails/issues/54230</guid>
-    <description>*   The authentication generator&#39;s `SessionsController` sets the `Clear-Site-Data` header on logout.
+    <link>https://github.com/rails/rails/issues/53859</link>
+    <guid>https://github.com/rails/rails/issues/53859</guid>
+    <description>*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.
 
-    By default the header will be set to `&quot;cache&quot;,&quot;storage&quot;` to help prevent data leakage after
-    logout via the browser&#39;s &quot;back/forward cache&quot;.
+    This was inconsistent with a regular `ActiveJob::Base#perform_later`.
 
-    *Mike Dalessio*</description>
-    <pubDate>Tue, 14 Jan 2025 08:57:01 +0000</pubDate>
-    <author>Mike Dalessio</author>
-    <content:encoded><![CDATA[<p>The authentication generator’s <code>SessionsController</code> sets the <code>Clear-Site-Data</code> header on logout.</p>
+    *fatkodima*</description>
+    <pubDate>Fri, 06 Dec 2024 12:51:45 +0000</pubDate>
+    <author>fatkodima</author>
+    <content:encoded><![CDATA[<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>
 
-<p>By default the header will be set to <code>"cache","storage"</code> to help prevent data leakage after<br />
-logout via the browser’s “back/forward cache”.</p>
+<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>
 
-<p><em>Mike Dalessio</em></p>
+<p><em>fatkodima</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files
+    <title>activejob: Raise a more specific error during deserialization when a previously serialized job class is now unknown.
 </title>
-    <link>https://github.com/rails/rails/issues/52230</link>
-    <guid>https://github.com/rails/rails/issues/52230</guid>
-    <description>*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files
+    <link>https://github.com/rails/rails/issues/53770</link>
+    <guid>https://github.com/rails/rails/issues/53770</guid>
+    <description>*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.
 
-    *Steve Polito*</description>
-    <pubDate>Tue, 07 Jan 2025 18:30:52 +0000</pubDate>
-    <author>Steve Polito</author>
-    <content:encoded><![CDATA[<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>
+    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic
+    `NameError` to make it easily possible for adapters to tell if the `NameError`
+    was raised during job execution or deserialization.
 
-<p><em>Steve Polito</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Colorize the Rails console prompt even on non standard environments.
-</title>
-    <link>https://github.com/rails/rails/issues/53027</link>
-    <guid>https://github.com/rails/rails/issues/53027</guid>
-    <description>*   Colorize the Rails console prompt even on non standard environments.
+    *Earlopain*</description>
+    <pubDate>Thu, 28 Nov 2024 19:34:53 +0000</pubDate>
+    <author>Earlopain</author>
+    <content:encoded><![CDATA[<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>
 
-    *Lorenzo Zabot*</description>
-    <pubDate>Tue, 07 Jan 2025 16:24:11 +0000</pubDate>
-    <author>Lorenzo Zabot</author>
-    <content:encoded><![CDATA[<p>Colorize the Rails console prompt even on non standard environments.</p>
+<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />
+<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />
+was raised during job execution or deserialization.</p>
 
-<p><em>Lorenzo Zabot</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Don&#39;t enable YJIT in development and test environments
-</title>
-    <link>https://github.com/rails/rails/issues/53746</link>
-    <guid>https://github.com/rails/rails/issues/53746</guid>
-    <description>*   Don&#39;t enable YJIT in development and test environments
-
-    Development and test environments tend to reload code and redefine methods (e.g. mocking),
-    hence YJIT isn&#39;t generally faster in these environments.
-
-    *Ali Ismayilov*, *Jean Boussier*</description>
-    <pubDate>Tue, 26 Nov 2024 10:45:59 +0000</pubDate>
-    <author>Ali Ismayilov</author>
-    <content:encoded><![CDATA[<p>Don’t enable YJIT in development and test environments</p>
-
-<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />
-hence YJIT isn’t generally faster in these environments.</p>
-
-<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>
-]]></content:encoded>
-  </item>
-  <item>
-    <title>railties: Only include PermissionsPolicy::Middleware if policy is configured.
-</title>
-    <link>https://github.com/rails/rails/issues/53621</link>
-    <guid>https://github.com/rails/rails/issues/53621</guid>
-    <description>*   Only include PermissionsPolicy::Middleware if policy is configured.
-
-    *Petrik de Heus*</description>
-    <pubDate>Fri, 15 Nov 2024 21:30:01 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
-
-<p><em>Petrik de Heus</em></p>
+<p><em>Earlopain</em></p>
 ]]></content:encoded>
   </item>
   <item>
@@ -1325,114 +1020,419 @@ option is already a <code>ConnectionPool</code>.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionpack: Add resource name to the `ArgumentError` that&#39;s raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`
+    <title>guides: In the Active Job bug report template set the queue adapter to the
 </title>
-    <link>https://github.com/rails/rails/issues/54163</link>
-    <guid>https://github.com/rails/rails/issues/54163</guid>
-    <description>*   Add resource name to the `ArgumentError` that&#39;s raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`
+    <link>https://github.com/rails/rails/issues/53963</link>
+    <guid>https://github.com/rails/rails/issues/53963</guid>
+    <description>*   In the Active Job bug report template set the queue adapter to the
+    test adapter so that `assert_enqueued_with` can pass.
 
-    This makes it easier to locate the source of the problem, especially for routes drawn by gems.
+    *Andrew White*</description>
+    <pubDate>Sun, 15 Dec 2024 16:23:17 +0000</pubDate>
+    <author>Andrew White</author>
+    <content:encoded><![CDATA[<p>In the Active Job bug report template set the queue adapter to the<br />
+test adapter so that <code>assert_enqueued_with</code> can pass.</p>
 
-    Before:
-    ```
-    :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
-    ```
-
-    After:
-    ```
-    Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
-    ```
-
-    *Jeremy Green*</description>
-    <pubDate>Wed, 08 Jan 2025 21:24:05 +0000</pubDate>
-    <author>Jeremy Green</author>
-    <content:encoded><![CDATA[<p>Add resource name to the <code>ArgumentError</code> that’s raised when invalid <code>:only</code> or <code>:except</code> options are given to <code>#resource</code> or <code>#resources</code></p>
-
-<p>This makes it easier to locate the source of the problem, especially for routes drawn by gems.</p>
-
-<p>Before:</p>
-<pre><code>:only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
-</code></pre>
-
-<p>After:</p>
-<pre><code>Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]
-</code></pre>
-
-<p><em>Jeremy Green</em></p>
+<p><em>Andrew White</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionpack: Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.
+    <title>guides: Ensure all bug report templates set `config.secret_key_base` to avoid
 </title>
-    <link>https://github.com/rails/rails/issues/53918</link>
-    <guid>https://github.com/rails/rails/issues/53918</guid>
-    <description>*   Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.
+    <link>https://github.com/rails/rails/issues/53963</link>
+    <guid>https://github.com/rails/rails/issues/53963</guid>
+    <description>*   Ensure all bug report templates set `config.secret_key_base` to avoid
+    generation of `tmp/local_secret.txt` files when running the report template.
 
-    Newly generated session ids use 128 bits of randomness, which is more than
-    enough to ensure collisions can&#39;t happen, but if you need to harden sessions
-    even more, you can enable this option to check in the session store that the id
-    is indeed free you can enable that option. This however incurs an extra write
-    on session creation.
+    *Andrew White*</description>
+    <pubDate>Sun, 15 Dec 2024 16:23:17 +0000</pubDate>
+    <author>Andrew White</author>
+    <content:encoded><![CDATA[<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />
+generation of <code>tmp/local_secret.txt</code> files when running the report template.</p>
 
-    *Shia*</description>
-    <pubDate>Sat, 14 Dec 2024 09:18:23 +0000</pubDate>
-    <author>Shia</author>
-    <content:encoded><![CDATA[<p>Add <code>check_collisions</code> option to <code>ActionDispatch::Session::CacheStore</code>.</p>
-
-<p>Newly generated session ids use 128 bits of randomness, which is more than<br />
-enough to ensure collisions can’t happen, but if you need to harden sessions<br />
-even more, you can enable this option to check in the session store that the id<br />
-is indeed free you can enable that option. This however incurs an extra write<br />
-on session creation.</p>
-
-<p><em>Shia</em></p>
+<p><em>Andrew White</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionpack: In ExceptionWrapper, match backtrace lines with built templates more often,
+    <title>actiontext: Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
+</title>
+    <link>https://github.com/rails/rails/issues/53847</link>
+    <guid>https://github.com/rails/rails/issues/53847</guid>
+    <description>*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`
+
+    *Sean Doyle*</description>
+    <pubDate>Mon, 09 Dec 2024 22:56:25 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Respect `html_options[:form]` when `collection_checkboxes` generates the
+</title>
+    <link>https://github.com/rails/rails/issues/51746</link>
+    <guid>https://github.com/rails/rails/issues/51746</guid>
+    <description>*   Respect `html_options[:form]` when `collection_checkboxes` generates the
+    hidden `&lt;input&gt;`.
+
+    *Riccardo Odone*</description>
+    <pubDate>Wed, 08 Jan 2025 16:03:11 +0000</pubDate>
+    <author>3v0k4</author>
+    <content:encoded><![CDATA[<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />
+hidden <code>&lt;input&gt;</code>.</p>
+
+<p><em>Riccardo Odone</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Layouts have access to local variables passed to `render`.
+</title>
+    <link>https://github.com/rails/rails/issues/54020</link>
+    <guid>https://github.com/rails/rails/issues/54020</guid>
+    <description>*   Layouts have access to local variables passed to `render`.
+
+    This fixes #31680 which was a regression in Rails 5.1.
+
+    *Mike Dalessio*</description>
+    <pubDate>Mon, 06 Jan 2025 21:07:51 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Layouts have access to local variables passed to <code>render</code>.</p>
+
+<p>This fixes #31680 which was a regression in Rails 5.1.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Argument errors related to strict locals in templates now raise an
+</title>
+    <link>https://github.com/rails/rails/issues/54133</link>
+    <guid>https://github.com/rails/rails/issues/54133</guid>
+    <description>*   Argument errors related to strict locals in templates now raise an
+    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.
+
+    Previously, any `ArgumentError` raised during template rendering was swallowed during strict
+    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper
+    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an
+    unrelated backtrace, making it difficult to debug templates.
+
+    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original
+    backtrace for developers.
+
+    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing
+    code that rescues `ArgumentError` will continue to work.
+
+    Fixes #52227.
+
+    *Mike Dalessio*</description>
+    <pubDate>Mon, 06 Jan 2025 20:25:12 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Argument errors related to strict locals in templates now raise an<br />
+<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>
+
+<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />
+local error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />
+method invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />
+unrelated backtrace, making it difficult to debug templates.</p>
+
+<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />
+backtrace for developers.</p>
+
+<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />
+code that rescues <code>ArgumentError</code> will continue to work.</p>
+
+<p>Fixes #52227.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Improve error highlighting of multi-line methods in ERB templates or
 </title>
     <link>https://github.com/rails/rails/issues/53763</link>
     <guid>https://github.com/rails/rails/issues/53763</guid>
-    <description>*   In ExceptionWrapper, match backtrace lines with built templates more often,
-    allowing improved highlighting of errors within do-end blocks in templates.
-    Fix for Ruby 3.4 to match new method labels in backtrace.
+    <description>*   Improve error highlighting of multi-line methods in ERB templates or
+    templates where the error occurs within a do-end block.
 
     *Martin Emde*</description>
     <pubDate>Thu, 28 Nov 2024 18:50:39 +0000</pubDate>
     <author>Martin Emde</author>
-    <content:encoded><![CDATA[<p>In ExceptionWrapper, match backtrace lines with built templates more often,<br />
-allowing improved highlighting of errors within do-end blocks in templates.<br />
-Fix for Ruby 3.4 to match new method labels in backtrace.</p>
+    <content:encoded><![CDATA[<p>Improve error highlighting of multi-line methods in ERB templates or<br />
+templates where the error occurs within a do-end block.</p>
 
 <p><em>Martin Emde</em></p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>actionpack: Allow setting content type with a symbol of the Mime type.
+    <title>actionview: Fix a crash in ERB template error highlighting when the error occurs on a
 </title>
-    <link>https://github.com/rails/rails/issues/53236</link>
-    <guid>https://github.com/rails/rails/issues/53236</guid>
-    <description>*   Allow setting content type with a symbol of the Mime type.
+    <link>https://github.com/rails/rails/issues/53696</link>
+    <guid>https://github.com/rails/rails/issues/53696</guid>
+    <description>*   Fix a crash in ERB template error highlighting when the error occurs on a
+    line in the compiled template that is past the end of the source template.
+
+    *Martin Emde*</description>
+    <pubDate>Fri, 22 Nov 2024 05:49:40 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />
+line in the compiled template that is past the end of the source template.</p>
+
+<p><em>Martin Emde</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Improve reliability of ERB template error highlighting.
+</title>
+    <link>https://github.com/rails/rails/issues/53657</link>
+    <guid>https://github.com/rails/rails/issues/53657</guid>
+    <description>*   Improve reliability of ERB template error highlighting.
+    Fix infinite loops and crashes in highlighting and
+    improve tolerance for alternate ERB handlers.
+
+    *Martin Emde*</description>
+    <pubDate>Thu, 21 Nov 2024 19:56:27 +0000</pubDate>
+    <author>Martin Emde</author>
+    <content:encoded><![CDATA[<p>Improve reliability of ERB template error highlighting.<br />
+Fix infinite loops and crashes in highlighting and<br />
+improve tolerance for alternate ERB handlers.</p>
+
+<p><em>Martin Emde</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionview: Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
+</title>
+    <link>https://github.com/rails/rails/issues/53512</link>
+    <guid>https://github.com/rails/rails/issues/53512</guid>
+    <description>*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.
+
+    *brendon*</description>
+    <pubDate>Fri, 15 Nov 2024 11:28:47 +0000</pubDate>
+    <author>Brendon Muir</author>
+    <content:encoded><![CDATA[<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>
+
+<p><em>brendon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Delegate `ActiveStorage::Filename#to_str` to `#to_s`
+</title>
+    <link>https://github.com/rails/rails/issues/54185</link>
+    <guid>https://github.com/rails/rails/issues/54185</guid>
+    <description>*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`
+
+    Supports checking String equality:
 
     ```ruby
-    # Before
-    response.content_type = &quot;text/html&quot;
-
-    # After
-    response.content_type = :html
+    filename = ActiveStorage::Filename.new(&quot;file.txt&quot;)
+    filename == &quot;file.txt&quot; # =&gt; true
+    filename in &quot;file.txt&quot; # =&gt; true
+    &quot;file.txt&quot; == filename # =&gt; true
     ```
 
-    *Petrik de Heus*</description>
-    <pubDate>Sat, 16 Nov 2024 10:36:32 +0000</pubDate>
-    <author>Petrik</author>
-    <content:encoded><![CDATA[<p>Allow setting content type with a symbol of the Mime type.</p>
+    *Sean Doyle*</description>
+    <pubDate>Fri, 10 Jan 2025 19:15:09 +0000</pubDate>
+    <author>Sean Doyle</author>
+    <content:encoded><![CDATA[<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before</span>
-<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="s2">"text/html"</span>
+<p>Supports checking String equality:</p>
 
-<span class="c1"># After</span>
-<span class="n">response</span><span class="p">.</span><span class="nf">content_type</span> <span class="o">=</span> <span class="ss">:html</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filename</span> <span class="o">=</span> <span class="no">ActiveStorage</span><span class="o">::</span><span class="no">Filename</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"file.txt"</span><span class="p">)</span>
+<span class="n">filename</span> <span class="o">==</span> <span class="s2">"file.txt"</span> <span class="c1"># =&gt; true</span>
+<span class="n">filename</span> <span class="k">in</span> <span class="s2">"file.txt"</span> <span class="c1"># =&gt; true</span>
+<span class="s2">"file.txt"</span> <span class="o">==</span> <span class="n">filename</span> <span class="c1"># =&gt; true</span>
 </code></pre></div></div>
+
+<p><em>Sean Doyle</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.
+</title>
+    <link>https://github.com/rails/rails/issues/54040</link>
+    <guid>https://github.com/rails/rails/issues/54040</guid>
+    <description>*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.
+
+    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`
+    is found to be disabled because of OpenSSL FIPS mode.
+
+    *Matt Pasquini*, *Jean Boussier*</description>
+    <pubDate>Sat, 04 Jan 2025 12:09:08 +0000</pubDate>
+    <author>Matt Pasquini</author>
+    <content:encoded><![CDATA[<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>
+
+<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />
+is found to be disabled because of OpenSSL FIPS mode.</p>
+
+<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activestorage: A Blob will no longer autosave associated Attachment.
+</title>
+    <link>https://github.com/rails/rails/issues/53623</link>
+    <guid>https://github.com/rails/rails/issues/53623</guid>
+    <description>*   A Blob will no longer autosave associated Attachment.
+
+    This fixes an issue where a record with an attachment would have
+    its dirty attributes reset, preventing your `after commit` callbacks
+    on that record to behave as expected.
+
+    Note that this change doesn&#39;t require any changes on your application
+    and is supposed to be internal. Active Storage Attachment will continue
+    to be autosaved (through a different relation).
+
+    *Edouard-chin*</description>
+    <pubDate>Thu, 19 Dec 2024 09:39:50 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p>A Blob will no longer autosave associated Attachment.</p>
+
+<p>This fixes an issue where a record with an attachment would have<br />
+its dirty attributes reset, preventing your <code>after commit</code> callbacks<br />
+on that record to behave as expected.</p>
+
+<p>Note that this change doesn’t require any changes on your application<br />
+and is supposed to be internal. Active Storage Attachment will continue<br />
+to be autosaved (through a different relation).</p>
+
+<p><em>Edouard-chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Add `application-name` metadata to application layout
+</title>
+    <link>https://github.com/rails/rails/issues/54257</link>
+    <guid>https://github.com/rails/rails/issues/54257</guid>
+    <description>*   Add `application-name` metadata to application layout
+
+    The following metatag will be added to `app/views/layouts/application.html.erb`
+
+    ```html
+    &lt;meta name=&quot;application-name&quot; content=&quot;Name of Rails Application&quot;&gt;
+    ```
+
+    *Steve Polito*</description>
+    <pubDate>Fri, 17 Jan 2025 21:07:43 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Add <code>application-name</code> metadata to application layout</p>
+
+<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"application-name"</span> <span class="na">content=</span><span class="s">"Name of Rails Application"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Use `secret_key_base` from ENV or credentials when present locally.
+</title>
+    <link>https://github.com/rails/rails/issues/53705</link>
+    <guid>https://github.com/rails/rails/issues/53705</guid>
+    <description>*   Use `secret_key_base` from ENV or credentials when present locally.
+
+    When ENV[&quot;SECRET_KEY_BASE&quot;] or
+    `Rails.application.credentials.secret_key_base` is set for test or
+    development, it is used for the `Rails.config.secret_key_base`,
+    instead of generating a `tmp/local_secret.txt` file.
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 17 Jan 2025 20:03:05 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>
+
+<p>When ENV[“SECRET_KEY_BASE”] or<br />
+<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />
+development, it is used for the <code>Rails.config.secret_key_base</code>,<br />
+instead of generating a <code>tmp/local_secret.txt</code> file.</p>
+
+<p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: The authentication generator&#39;s `SessionsController` sets the `Clear-Site-Data` header on logout.
+</title>
+    <link>https://github.com/rails/rails/issues/54230</link>
+    <guid>https://github.com/rails/rails/issues/54230</guid>
+    <description>*   The authentication generator&#39;s `SessionsController` sets the `Clear-Site-Data` header on logout.
+
+    By default the header will be set to `&quot;cache&quot;,&quot;storage&quot;` to help prevent data leakage after
+    logout via the browser&#39;s &quot;back/forward cache&quot;.
+
+    *Mike Dalessio*</description>
+    <pubDate>Tue, 14 Jan 2025 08:57:01 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>The authentication generator’s <code>SessionsController</code> sets the <code>Clear-Site-Data</code> header on logout.</p>
+
+<p>By default the header will be set to <code>"cache","storage"</code> to help prevent data leakage after<br />
+logout via the browser’s “back/forward cache”.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files
+</title>
+    <link>https://github.com/rails/rails/issues/52230</link>
+    <guid>https://github.com/rails/rails/issues/52230</guid>
+    <description>*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files
+
+    *Steve Polito*</description>
+    <pubDate>Tue, 07 Jan 2025 18:30:52 +0000</pubDate>
+    <author>Steve Polito</author>
+    <content:encoded><![CDATA[<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>
+
+<p><em>Steve Polito</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Colorize the Rails console prompt even on non standard environments.
+</title>
+    <link>https://github.com/rails/rails/issues/53027</link>
+    <guid>https://github.com/rails/rails/issues/53027</guid>
+    <description>*   Colorize the Rails console prompt even on non standard environments.
+
+    *Lorenzo Zabot*</description>
+    <pubDate>Tue, 07 Jan 2025 16:24:11 +0000</pubDate>
+    <author>Lorenzo Zabot</author>
+    <content:encoded><![CDATA[<p>Colorize the Rails console prompt even on non standard environments.</p>
+
+<p><em>Lorenzo Zabot</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Don&#39;t enable YJIT in development and test environments
+</title>
+    <link>https://github.com/rails/rails/issues/53746</link>
+    <guid>https://github.com/rails/rails/issues/53746</guid>
+    <description>*   Don&#39;t enable YJIT in development and test environments
+
+    Development and test environments tend to reload code and redefine methods (e.g. mocking),
+    hence YJIT isn&#39;t generally faster in these environments.
+
+    *Ali Ismayilov*, *Jean Boussier*</description>
+    <pubDate>Tue, 26 Nov 2024 10:45:59 +0000</pubDate>
+    <author>Ali Ismayilov</author>
+    <content:encoded><![CDATA[<p>Don’t enable YJIT in development and test environments</p>
+
+<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />
+hence YJIT isn’t generally faster in these environments.</p>
+
+<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Only include PermissionsPolicy::Middleware if policy is configured.
+</title>
+    <link>https://github.com/rails/rails/issues/53621</link>
+    <guid>https://github.com/rails/rails/issues/53621</guid>
+    <description>*   Only include PermissionsPolicy::Middleware if policy is configured.
+
+    *Petrik de Heus*</description>
+    <pubDate>Fri, 15 Nov 2024 21:30:01 +0000</pubDate>
+    <author>Petrik</author>
+    <content:encoded><![CDATA[<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>
 
 <p><em>Petrik de Heus</em></p>
 ]]></content:encoded>
