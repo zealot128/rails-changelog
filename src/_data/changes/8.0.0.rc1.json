@@ -10,6 +10,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Eliminate queries loading dumped schema cache on Postgres\n\n    Improve resiliency by avoiding needing to open a database connection to load the\n    type map while defining attribute methods at boot when a schema cache file is\n    configured on PostgreSQL databases.\n\n    *James Coleman*",
+    "project": "activerecord",
+    "date_merged": 1737674292000,
+    "author": "jcoleman",
+    "sha": "9ad36e067222478090b36a985090475bb03e398c",
+    "pr": "54333",
+    "merge_sha": "e82b645262b2c4e499428d95cbb99e0352c977eb",
+    "html": "<p>Eliminate queries loading dumped schema cache on Postgres</p>\n\n<p>Improve resiliency by avoiding needing to open a database connection to load the<br />\ntype map while defining attribute methods at boot when a schema cache file is<br />\nconfigured on PostgreSQL databases.</p>\n\n<p><em>James Coleman</em></p>\n"
+  },
+  {
     "message": "*   `ActiveRecord::Coder::JSON` can be instantiated\n\n    Options can now be passed to `ActiveRecord::Coder::JSON` when instantiating the coder. This allows:\n    ```ruby\n    serialize :config, coder: ActiveRecord::Coder::JSON.new(symbolize_names: true)\n    ```\n    *matthaigh27*",
     "project": "activerecord",
     "date_merged": 1737456235000,
