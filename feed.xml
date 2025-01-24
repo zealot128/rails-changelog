@@ -50,6 +50,29 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Eliminate queries loading dumped schema cache on Postgres
+</title>
+    <link>https://github.com/rails/rails/issues/54333</link>
+    <guid>https://github.com/rails/rails/issues/54333</guid>
+    <description>*   Eliminate queries loading dumped schema cache on Postgres
+
+    Improve resiliency by avoiding needing to open a database connection to load the
+    type map while defining attribute methods at boot when a schema cache file is
+    configured on PostgreSQL databases.
+
+    *James Coleman*</description>
+    <pubDate>Thu, 23 Jan 2025 23:18:12 +0000</pubDate>
+    <author>jcoleman</author>
+    <content:encoded><![CDATA[<p>Eliminate queries loading dumped schema cache on Postgres</p>
+
+<p>Improve resiliency by avoiding needing to open a database connection to load the<br />
+type map while defining attribute methods at boot when a schema cache file is<br />
+configured on PostgreSQL databases.</p>
+
+<p><em>James Coleman</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: `ActiveRecord::Coder::JSON` can be instantiated
 </title>
     <link>https://github.com/rails/rails/issues/54172</link>
