@@ -50,6 +50,42 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix SQL notifications sometimes not sent when using async queries.
+</title>
+    <link>https://github.com/rails/rails/issues/54344</link>
+    <guid>https://github.com/rails/rails/issues/54344</guid>
+    <description>*   Fix SQL notifications sometimes not sent when using async queries.
+
+    ```ruby
+    Post.async_count
+    ActiveSupport::Notifications.subscribed(-&gt;(*) { &quot;Will never reach here&quot; }) do
+      Post.count
+    end
+    ```
+
+    In rare circumstances and under the right race condition, Active Support notifications
+    would no longer be dispatched after using an asynchronous query.
+    This is now fixed.
+
+    *Edouard Chin*</description>
+    <pubDate>Fri, 24 Jan 2025 21:19:22 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p>Fix SQL notifications sometimes not sent when using async queries.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">async_count</span>
+<span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Notifications</span><span class="p">.</span><span class="nf">subscribed</span><span class="p">(</span><span class="o">-&gt;</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"Will never reach here"</span> <span class="p">})</span> <span class="k">do</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">count</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>In rare circumstances and under the right race condition, Active Support notifications<br />
+would no longer be dispatched after using an asynchronous query.<br />
+This is now fixed.</p>
+
+<p><em>Edouard Chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Eliminate queries loading dumped schema cache on Postgres
 </title>
     <link>https://github.com/rails/rails/issues/54333</link>
@@ -1320,6 +1356,27 @@ and is supposed to be internal. Active Storage Attachment will continue<br />
 to be autosaved (through a different relation).</p>
 
 <p><em>Edouard-chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Update `rails new --minimal` option
+</title>
+    <link>https://github.com/rails/rails/issues/54313</link>
+    <guid>https://github.com/rails/rails/issues/54313</guid>
+    <description>*   Update `rails new --minimal` option
+
+    Extend the `--minimal` flag to exlcude recently added features:
+    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.
+
+    *eelcoj*</description>
+    <pubDate>Fri, 24 Jan 2025 20:48:43 +0000</pubDate>
+    <author>eelco</author>
+    <content:encoded><![CDATA[<p>Update <code>rails new --minimal</code> option</p>
+
+<p>Extend the <code>--minimal</code> flag to exlcude recently added features:<br />
+<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>
+
+<p><em>eelcoj</em></p>
 ]]></content:encoded>
   </item>
   <item>
