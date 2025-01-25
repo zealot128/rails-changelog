@@ -10,6 +10,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix SQL notifications sometimes not sent when using async queries.\n\n    ```ruby\n    Post.async_count\n    ActiveSupport::Notifications.subscribed(->(*) { \"Will never reach here\" }) do\n      Post.count\n    end\n    ```\n\n    In rare circumstances and under the right race condition, Active Support notifications\n    would no longer be dispatched after using an asynchronous query.\n    This is now fixed.\n\n    *Edouard Chin*",
+    "project": "activerecord",
+    "date_merged": 1737753562000,
+    "author": "Edouard CHIN",
+    "sha": "dc522a3e6933e014c691e06c5d866d6351d6640d",
+    "pr": "54344",
+    "merge_sha": "2ca006fb7fe881c225c000d9ab11e2a3554b70fa",
+    "html": "<p>Fix SQL notifications sometimes not sent when using async queries.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">async_count</span>\n<span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">subscribed</span><span class=\"p\">(</span><span class=\"o\">-&gt;</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"s2\">\"Will never reach here\"</span> <span class=\"p\">})</span> <span class=\"k\">do</span>\n  <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">count</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>In rare circumstances and under the right race condition, Active Support notifications<br />\nwould no longer be dispatched after using an asynchronous query.<br />\nThis is now fixed.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
     "message": "*   Eliminate queries loading dumped schema cache on Postgres\n\n    Improve resiliency by avoiding needing to open a database connection to load the\n    type map while defining attribute methods at boot when a schema cache file is\n    configured on PostgreSQL databases.\n\n    *James Coleman*",
     "project": "activerecord",
     "date_merged": 1737674292000,
@@ -558,6 +568,16 @@
     "pr": "53623",
     "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+  },
+  {
+    "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exlcude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
+    "project": "railties",
+    "date_merged": 1737751723000,
+    "author": "eelco",
+    "sha": "dad07631d99c96f015162d3cab83c41111adf401",
+    "pr": "54313",
+    "merge_sha": "cd171d69fa03e0a09133089eca672831d447d02a",
+    "html": "<p>Update <code>rails new --minimal</code> option</p>\n\n<p>Extend the <code>--minimal</code> flag to exlcude recently added features:<br />\n<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>\n\n<p><em>eelcoj</em></p>\n"
   },
   {
     "message": "*   Add `application-name` metadata to application layout\n\n    The following metatag will be added to `app/views/layouts/application.html.erb`\n\n    ```html\n    <meta name=\"application-name\" content=\"Name of Rails Application\">\n    ```\n\n    *Steve Polito*",
