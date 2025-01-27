@@ -10,6 +10,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   PoolConfig no longer keeps a reference to the connection class.\n\n    Keeping a reference to the class caused subtle issues when combined with reloading in\n    development. Fixes #54343.\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1737998581000,
+    "author": "Mike Dalessio",
+    "sha": "2a90dbcdf6738a544bc2062823c56040feadabe0",
+    "pr": "54366",
+    "merge_sha": "b8b00ef28b60dab47d546f104109948ae560c5ad",
+    "html": "<p>PoolConfig no longer keeps a reference to the connection class.</p>\n\n<p>Keeping a reference to the class caused subtle issues when combined with reloading in<br />\ndevelopment. Fixes #54343.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Fix SQL notifications sometimes not sent when using async queries.\n\n    ```ruby\n    Post.async_count\n    ActiveSupport::Notifications.subscribed(->(*) { \"Will never reach here\" }) do\n      Post.count\n    end\n    ```\n\n    In rare circumstances and under the right race condition, Active Support notifications\n    would no longer be dispatched after using an asynchronous query.\n    This is now fixed.\n\n    *Edouard Chin*",
     "project": "activerecord",
     "date_merged": 1737753562000,
@@ -458,6 +468,16 @@
     "pr": "53963",
     "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
+    "message": "*   Add `reply_to_address` extension method on `Mail::Message`.\n\n    *Mr0grog*",
+    "project": "actionmailbox",
+    "date_merged": 1737972229000,
+    "author": "Rob Brackett",
+    "sha": "ac583204ba548557981b6890a6fc2c3975d24ee9",
+    "pr": "53513",
+    "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
+    "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
   },
   {
     "message": "*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`\n\n    *Sean Doyle*",
