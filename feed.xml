@@ -50,6 +50,27 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: PoolConfig no longer keeps a reference to the connection class.
+</title>
+    <link>https://github.com/rails/rails/issues/54366</link>
+    <guid>https://github.com/rails/rails/issues/54366</guid>
+    <description>*   PoolConfig no longer keeps a reference to the connection class.
+
+    Keeping a reference to the class caused subtle issues when combined with reloading in
+    development. Fixes #54343.
+
+    *Mike Dalessio*</description>
+    <pubDate>Mon, 27 Jan 2025 17:23:01 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>PoolConfig no longer keeps a reference to the connection class.</p>
+
+<p>Keeping a reference to the class caused subtle issues when combined with reloading in<br />
+development. Fixes #54343.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix SQL notifications sometimes not sent when using async queries.
 </title>
     <link>https://github.com/rails/rails/issues/54344</link>
@@ -1110,6 +1131,21 @@ test adapter so that <code>assert_enqueued_with</code> can pass.</p>
 generation of <code>tmp/local_secret.txt</code> files when running the report template.</p>
 
 <p><em>Andrew White</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>actionmailbox: Add `reply_to_address` extension method on `Mail::Message`.
+</title>
+    <link>https://github.com/rails/rails/issues/53513</link>
+    <guid>https://github.com/rails/rails/issues/53513</guid>
+    <description>*   Add `reply_to_address` extension method on `Mail::Message`.
+
+    *Mr0grog*</description>
+    <pubDate>Mon, 27 Jan 2025 10:03:49 +0000</pubDate>
+    <author>Rob Brackett</author>
+    <content:encoded><![CDATA[<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>
+
+<p><em>Mr0grog</em></p>
 ]]></content:encoded>
   </item>
   <item>
