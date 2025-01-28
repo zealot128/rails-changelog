@@ -656,6 +656,31 @@ current state to be accessible to an external process while tests are running.</
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Fix `Rails.application.reload_routes!` from clearing almost all routes.
+</title>
+    <link>https://github.com/rails/rails/issues/54306</link>
+    <guid>https://github.com/rails/rails/issues/54306</guid>
+    <description>*   Fix `Rails.application.reload_routes!` from clearing almost all routes.
+
+    When calling `Rails.application.reload_routes!` inside a middleware of
+    a Rake task, it was possible under certain conditions that all routes would be cleared.
+    If ran inside a middleware, this would result in getting a 404 on most page you visit.
+    This issue was only happening in development.
+
+    *Edouard Chin*</description>
+    <pubDate>Mon, 27 Jan 2025 20:15:44 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p>Fix <code>Rails.application.reload_routes!</code> from clearing almost all routes.</p>
+
+<p>When calling <code>Rails.application.reload_routes!</code> inside a middleware of<br />
+a Rake task, it was possible under certain conditions that all routes would be cleared.<br />
+If ran inside a middleware, this would result in getting a 404 on most page you visit.<br />
+This issue was only happening in development.</p>
+
+<p><em>Edouard Chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Add resource name to the `ArgumentError` that&#39;s raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`
 </title>
     <link>https://github.com/rails/rails/issues/54163</link>
