@@ -1492,27 +1492,6 @@ instead of generating a <code>tmp/local_secret.txt</code> file.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>railties: The authentication generator&#39;s `SessionsController` sets the `Clear-Site-Data` header on logout.
-</title>
-    <link>https://github.com/rails/rails/issues/54230</link>
-    <guid>https://github.com/rails/rails/issues/54230</guid>
-    <description>*   The authentication generator&#39;s `SessionsController` sets the `Clear-Site-Data` header on logout.
-
-    By default the header will be set to `&quot;cache&quot;,&quot;storage&quot;` to help prevent data leakage after
-    logout via the browser&#39;s &quot;back/forward cache&quot;.
-
-    *Mike Dalessio*</description>
-    <pubDate>Tue, 14 Jan 2025 08:57:01 +0000</pubDate>
-    <author>Mike Dalessio</author>
-    <content:encoded><![CDATA[<p>The authentication generator’s <code>SessionsController</code> sets the <code>Clear-Site-Data</code> header on logout.</p>
-
-<p>By default the header will be set to <code>"cache","storage"</code> to help prevent data leakage after<br />
-logout via the browser’s “back/forward cache”.</p>
-
-<p><em>Mike Dalessio</em></p>
-]]></content:encoded>
-  </item>
-  <item>
     <title>railties: Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files
 </title>
     <link>https://github.com/rails/rails/issues/52230</link>
