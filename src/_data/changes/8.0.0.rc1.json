@@ -260,6 +260,16 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Fix `Rails.application.reload_routes!` from clearing almost all routes.\n\n    When calling `Rails.application.reload_routes!` inside a middleware of\n    a Rake task, it was possible under certain conditions that all routes would be cleared.\n    If ran inside a middleware, this would result in getting a 404 on most page you visit.\n    This issue was only happening in development.\n\n    *Edouard Chin*",
+    "project": "actionpack",
+    "date_merged": 1738008944000,
+    "author": "Edouard CHIN",
+    "sha": "b40d92eca1f3a07f72a3068b3eebdd41bbd670a1",
+    "pr": "54306",
+    "merge_sha": "d804d25f332da07570de84dd271a4db3c20e5571",
+    "html": "<p>Fix <code>Rails.application.reload_routes!</code> from clearing almost all routes.</p>\n\n<p>When calling <code>Rails.application.reload_routes!</code> inside a middleware of<br />\na Rake task, it was possible under certain conditions that all routes would be cleared.<br />\nIf ran inside a middleware, this would result in getting a 404 on most page you visit.<br />\nThis issue was only happening in development.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
     "message": "*   Add resource name to the `ArgumentError` that's raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`\n\n    This makes it easier to locate the source of the problem, especially for routes drawn by gems.\n\n    Before:\n    ```\n    :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n    ```\n\n    After:\n    ```\n    Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n    ```\n\n    *Jeremy Green*",
     "project": "actionpack",
     "date_merged": 1736371445000,
