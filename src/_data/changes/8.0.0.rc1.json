@@ -630,16 +630,6 @@
     "html": "<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>\n\n<p>When ENV[“SECRET_KEY_BASE”] or<br />\n<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />\ndevelopment, it is used for the <code>Rails.config.secret_key_base</code>,<br />\ninstead of generating a <code>tmp/local_secret.txt</code> file.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
-    "message": "*   The authentication generator's `SessionsController` sets the `Clear-Site-Data` header on logout.\n\n    By default the header will be set to `\"cache\",\"storage\"` to help prevent data leakage after\n    logout via the browser's \"back/forward cache\".\n\n    *Mike Dalessio*",
-    "project": "railties",
-    "date_merged": 1736845021000,
-    "author": "Mike Dalessio",
-    "sha": "d51e570d5f67835cee1cc883a2fa89e7808e1c87",
-    "pr": "54230",
-    "merge_sha": "2fe5f62aefe4fcd179ab47b4f4622f1fa93daeef",
-    "html": "<p>The authentication generator’s <code>SessionsController</code> sets the <code>Clear-Site-Data</code> header on logout.</p>\n\n<p>By default the header will be set to <code>\"cache\",\"storage\"</code> to help prevent data leakage after<br />\nlogout via the browser’s “back/forward cache”.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
     "message": "*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files\n\n    *Steve Polito*",
     "project": "railties",
     "date_merged": 1736274652000,
