@@ -50,6 +50,27 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Introduce a before-fork hook in `ActiveSupport::Testing::Parallelization` to clear existing
+</title>
+    <link>https://github.com/rails/rails/issues/54376</link>
+    <guid>https://github.com/rails/rails/issues/54376</guid>
+    <description>*   Introduce a before-fork hook in `ActiveSupport::Testing::Parallelization` to clear existing
+    connections, to avoid fork-safety issues with the mysql2 adapter.
+
+    Fixes #41776
+
+    *Mike Dalessio*, *Donal McBreen*</description>
+    <pubDate>Wed, 29 Jan 2025 13:47:11 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Introduce a before-fork hook in <code>ActiveSupport::Testing::Parallelization</code> to clear existing<br />
+connections, to avoid fork-safety issues with the mysql2 adapter.</p>
+
+<p>Fixes #41776</p>
+
+<p><em>Mike Dalessio</em>, <em>Donal McBreen</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: PoolConfig no longer keeps a reference to the connection class.
 </title>
     <link>https://github.com/rails/rails/issues/54366</link>
@@ -833,6 +854,23 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 was raised during job execution or deserialization.</p>
 
 <p><em>Earlopain</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activesupport: `ActiveSupport::Testing::Parallelization.before_fork_hook` allows declaration of callbacks that
+</title>
+    <link>https://github.com/rails/rails/issues/54376</link>
+    <guid>https://github.com/rails/rails/issues/54376</guid>
+    <description>*   `ActiveSupport::Testing::Parallelization.before_fork_hook` allows declaration of callbacks that
+    are invoked immediately before forking test workers.
+
+    *Mike Dalessio*</description>
+    <pubDate>Wed, 29 Jan 2025 13:47:11 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p><code>ActiveSupport::Testing::Parallelization.before_fork_hook</code> allows declaration of callbacks that<br />
+are invoked immediately before forking test workers.</p>
+
+<p><em>Mike Dalessio</em></p>
 ]]></content:encoded>
   </item>
   <item>
