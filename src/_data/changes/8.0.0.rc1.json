@@ -10,6 +10,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Better support UPDATE with JOIN for Postgresql and SQLite3\n\n    Previously when generating update queries with one or more JOIN clauses,\n    Active Record would use a sub query which would prevent to reference the joined\n    tables in the `SET` clause, for instance:\n\n    ```ruby\n    Comment.joins(:post).update_all(\"title = posts.title\")\n    ```\n\n    This is now supported as long as the relation doesn't also use a `LIMIT`, `ORDER` or\n    `GROUP BY` clause. This was supported by the MySQL adapter for a long time.\n\n    *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1738839257000,
+    "author": "Jean Boussier",
+    "sha": "a6bc4b2c138d2ff44f3a56492453af2dee78a954",
+    "pr": "53950",
+    "merge_sha": "c50d860c940e2dba003962f87f60a1bcdf3186ce",
+    "html": "<p>Better support UPDATE with JOIN for Postgresql and SQLite3</p>\n\n<p>Previously when generating update queries with one or more JOIN clauses,<br />\nActive Record would use a sub query which would prevent to reference the joined<br />\ntables in the <code>SET</code> clause, for instance:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Comment</span><span class=\"p\">.</span><span class=\"nf\">joins</span><span class=\"p\">(</span><span class=\"ss\">:post</span><span class=\"p\">).</span><span class=\"nf\">update_all</span><span class=\"p\">(</span><span class=\"s2\">\"title = posts.title\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>This is now supported as long as the relation doesn’t also use a <code>LIMIT</code>, <code>ORDER</code> or<br />\n<code>GROUP BY</code> clause. This was supported by the MySQL adapter for a long time.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Introduce a before-fork hook in `ActiveSupport::Testing::Parallelization` to clear existing\n    connections, to avoid fork-safety issues with the mysql2 adapter.\n\n    Fixes #41776\n\n    *Mike Dalessio*, *Donal McBreen*",
     "project": "activerecord",
     "date_merged": 1738158431000,
@@ -618,6 +628,16 @@
     "pr": "53623",
     "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+  },
+  {
+    "message": "*   Rate limit password resets in authentication generator\n\n    This helps mitigate abuse from attackers spamming the password reset form.\n\n    *Chris Oliver*",
+    "project": "railties",
+    "date_merged": 1738836333000,
+    "author": "Chris Oliver",
+    "sha": "92533b1569ba710e166fe6bf2a3249d115a74ad6",
+    "pr": "54442",
+    "merge_sha": "4e5a13a55b5960c9a35afdcecd1120bc926d377c",
+    "html": "<p>Rate limit password resets in authentication generator</p>\n\n<p>This helps mitigate abuse from attackers spamming the password reset form.</p>\n\n<p><em>Chris Oliver</em></p>\n"
   },
   {
     "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exlcude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
