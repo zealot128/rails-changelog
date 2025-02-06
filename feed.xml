@@ -50,6 +50,42 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Better support UPDATE with JOIN for Postgresql and SQLite3
+</title>
+    <link>https://github.com/rails/rails/issues/53950</link>
+    <guid>https://github.com/rails/rails/issues/53950</guid>
+    <description>*   Better support UPDATE with JOIN for Postgresql and SQLite3
+
+    Previously when generating update queries with one or more JOIN clauses,
+    Active Record would use a sub query which would prevent to reference the joined
+    tables in the `SET` clause, for instance:
+
+    ```ruby
+    Comment.joins(:post).update_all(&quot;title = posts.title&quot;)
+    ```
+
+    This is now supported as long as the relation doesn&#39;t also use a `LIMIT`, `ORDER` or
+    `GROUP BY` clause. This was supported by the MySQL adapter for a long time.
+
+    *Jean Boussier*</description>
+    <pubDate>Thu, 06 Feb 2025 10:54:17 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Better support UPDATE with JOIN for Postgresql and SQLite3</p>
+
+<p>Previously when generating update queries with one or more JOIN clauses,<br />
+Active Record would use a sub query which would prevent to reference the joined<br />
+tables in the <code>SET</code> clause, for instance:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Comment</span><span class="p">.</span><span class="nf">joins</span><span class="p">(</span><span class="ss">:post</span><span class="p">).</span><span class="nf">update_all</span><span class="p">(</span><span class="s2">"title = posts.title"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This is now supported as long as the relation doesn’t also use a <code>LIMIT</code>, <code>ORDER</code> or<br />
+<code>GROUP BY</code> clause. This was supported by the MySQL adapter for a long time.</p>
+
+<p><em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Introduce a before-fork hook in `ActiveSupport::Testing::Parallelization` to clear existing
 </title>
     <link>https://github.com/rails/rails/issues/54376</link>
@@ -1455,6 +1491,25 @@ and is supposed to be internal. Active Storage Attachment will continue<br />
 to be autosaved (through a different relation).</p>
 
 <p><em>Edouard-chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>railties: Rate limit password resets in authentication generator
+</title>
+    <link>https://github.com/rails/rails/issues/54442</link>
+    <guid>https://github.com/rails/rails/issues/54442</guid>
+    <description>*   Rate limit password resets in authentication generator
+
+    This helps mitigate abuse from attackers spamming the password reset form.
+
+    *Chris Oliver*</description>
+    <pubDate>Thu, 06 Feb 2025 10:05:33 +0000</pubDate>
+    <author>Chris Oliver</author>
+    <content:encoded><![CDATA[<p>Rate limit password resets in authentication generator</p>
+
+<p>This helps mitigate abuse from attackers spamming the password reset form.</p>
+
+<p><em>Chris Oliver</em></p>
 ]]></content:encoded>
   </item>
   <item>
