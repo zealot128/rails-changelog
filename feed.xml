@@ -88,16 +88,14 @@ errors.</p>
     <guid>https://github.com/rails/rails/issues/54454</guid>
     <description>*   Add `allow_retry` to `sql.active_record` instrumentation.
 
-    This enables identifying queries which are and are not automatically
-    retryable on connection errors.
+    This enables identifying queries which queries are automatically retryable on connection errors.
 
     *Hartley McGuire*</description>
     <pubDate>Thu, 06 Feb 2025 20:01:42 +0000</pubDate>
     <author>Hartley McGuire</author>
     <content:encoded><![CDATA[<p>Add <code>allow_retry</code> to <code>sql.active_record</code> instrumentation.</p>
 
-<p>This enables identifying queries which are and are not automatically<br />
-retryable on connection errors.</p>
+<p>This enables identifying queries which queries are automatically retryable on connection errors.</p>
 
 <p><em>Hartley McGuire</em></p>
 ]]></content:encoded>
