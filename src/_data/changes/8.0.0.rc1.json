@@ -30,14 +30,14 @@
     "html": "<p>Enable automatically retrying idempotent association queries on connection<br />\nerrors.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
-    "message": "*   Add `allow_retry` to `sql.active_record` instrumentation.\n\n    This enables identifying queries which are and are not automatically\n    retryable on connection errors.\n\n    *Hartley McGuire*",
+    "message": "*   Add `allow_retry` to `sql.active_record` instrumentation.\n\n    This enables identifying queries which queries are automatically retryable on connection errors.\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1738872102000,
     "author": "Hartley McGuire",
     "sha": "48ee7db3d1875bb337e8e0d47603d6b27bb092a8",
     "pr": "54454",
     "merge_sha": "fc01241bc0c9b0c6c23621531a657c4db68cf715",
-    "html": "<p>Add <code>allow_retry</code> to <code>sql.active_record</code> instrumentation.</p>\n\n<p>This enables identifying queries which are and are not automatically<br />\nretryable on connection errors.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+    "html": "<p>Add <code>allow_retry</code> to <code>sql.active_record</code> instrumentation.</p>\n\n<p>This enables identifying queries which queries are automatically retryable on connection errors.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
     "message": "*   Better support UPDATE with JOIN for Postgresql and SQLite3\n\n    Previously when generating update queries with one or more JOIN clauses,\n    Active Record would use a sub query which would prevent to reference the joined\n    tables in the `SET` clause, for instance:\n\n    ```ruby\n    Comment.joins(:post).update_all(\"title = posts.title\")\n    ```\n\n    This is now supported as long as the relation doesn't also use a `LIMIT`, `ORDER` or\n    `GROUP BY` clause. This was supported by the MySQL adapter for a long time.\n\n    *Jean Boussier*",
