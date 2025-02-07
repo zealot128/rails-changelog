@@ -50,6 +50,59 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix migrating multiple databases with `ActiveRecord::PendingMigration` action.
+</title>
+    <link>https://github.com/rails/rails/issues/54456</link>
+    <guid>https://github.com/rails/rails/issues/54456</guid>
+    <description>*   Fix migrating multiple databases with `ActiveRecord::PendingMigration` action.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Thu, 06 Feb 2025 21:29:52 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Fix migrating multiple databases with <code>ActiveRecord::PendingMigration</code> action.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Enable automatically retrying idempotent association queries on connection
+</title>
+    <link>https://github.com/rails/rails/issues/54436</link>
+    <guid>https://github.com/rails/rails/issues/54436</guid>
+    <description>*   Enable automatically retrying idempotent association queries on connection
+    errors.
+
+    *Hartley McGuire*</description>
+    <pubDate>Thu, 06 Feb 2025 20:15:53 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Enable automatically retrying idempotent association queries on connection<br />
+errors.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Add `allow_retry` to `sql.active_record` instrumentation.
+</title>
+    <link>https://github.com/rails/rails/issues/54454</link>
+    <guid>https://github.com/rails/rails/issues/54454</guid>
+    <description>*   Add `allow_retry` to `sql.active_record` instrumentation.
+
+    This enables identifying queries which are and are not automatically
+    retryable on connection errors.
+
+    *Hartley McGuire*</description>
+    <pubDate>Thu, 06 Feb 2025 20:01:42 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Add <code>allow_retry</code> to <code>sql.active_record</code> instrumentation.</p>
+
+<p>This enables identifying queries which are and are not automatically<br />
+retryable on connection errors.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Better support UPDATE with JOIN for Postgresql and SQLite3
 </title>
     <link>https://github.com/rails/rails/issues/53950</link>
