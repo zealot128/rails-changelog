@@ -380,6 +380,16 @@
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
+    "message": "*   Change execution wrapping to report all exceptions, including `Exception`.\n\n    If a more serious error like `SystemStackError` or `NoMemoryError` happens,\n    the error reporter should be able to report these kinds of exceptions.\n\n    *Gannon McGibbon*",
+    "project": "activesupport",
+    "date_merged": 1739010300000,
+    "author": "Jean Boussier",
+    "sha": "36dd3d100f63633254b99d4c9d4af0198fa40f9a",
+    "pr": "54469",
+    "merge_sha": "d35672eaaa3d930aeccf34286b7ba79f92c62052",
+    "html": "<p>Change execution wrapping to report all exceptions, including <code>Exception</code>.</p>\n\n<p>If a more serious error like <code>SystemStackError</code> or <code>NoMemoryError</code> happens,<br />\nthe error reporter should be able to report these kinds of exceptions.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   `ActiveSupport::Testing::Parallelization.before_fork_hook` allows declaration of callbacks that\n    are invoked immediately before forking test workers.\n\n    *Mike Dalessio*",
     "project": "activesupport",
     "date_merged": 1738158431000,
