@@ -944,6 +944,27 @@ was raised during job execution or deserialization.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Change execution wrapping to report all exceptions, including `Exception`.
+</title>
+    <link>https://github.com/rails/rails/issues/54469</link>
+    <guid>https://github.com/rails/rails/issues/54469</guid>
+    <description>*   Change execution wrapping to report all exceptions, including `Exception`.
+
+    If a more serious error like `SystemStackError` or `NoMemoryError` happens,
+    the error reporter should be able to report these kinds of exceptions.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Sat, 08 Feb 2025 10:25:00 +0000</pubDate>
+    <author>Jean Boussier</author>
+    <content:encoded><![CDATA[<p>Change execution wrapping to report all exceptions, including <code>Exception</code>.</p>
+
+<p>If a more serious error like <code>SystemStackError</code> or <code>NoMemoryError</code> happens,<br />
+the error reporter should be able to report these kinds of exceptions.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: `ActiveSupport::Testing::Parallelization.before_fork_hook` allows declaration of callbacks that
 </title>
     <link>https://github.com/rails/rails/issues/54376</link>
