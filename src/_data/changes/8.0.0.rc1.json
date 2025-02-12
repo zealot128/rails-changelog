@@ -1,13 +1,23 @@
 [
   {
-    "message": "*   Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`\n\n    ```ruby\n    class User\n      include ActiveModel::Attributes\n      include ActiveModel::Attributes::Normalization\n\n      attribute :email, :string\n\n      normalizes :email, with: -> email { email.strip.downcase }\n    end\n\n    user = User.new\n    user.email =    \" CRUISE-CONTROL@EXAMPLE.COM\\n\"\n    user.email # => \"cruise-control@example.com\"\n    ```\n\n    *Sean Doyle*",
-    "project": "activemodel",
-    "date_merged": 1736266443000,
-    "author": "Sean Doyle",
-    "sha": "599c9af7e1990a98e9bbaffa03a4b4d0b2f622ee",
-    "pr": "53955",
-    "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
-    "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+    "message": "*   In the Active Job bug report template set the queue adapter to the\n    test adapter so that `assert_enqueued_with` can pass.\n\n    *Andrew White*",
+    "project": "guides",
+    "date_merged": 1734279797000,
+    "author": "Andrew White",
+    "sha": "8e0a3914cab6b564d7dbcbfec35184c3132a7116",
+    "pr": "53963",
+    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
+    "html": "<p>In the Active Job bug report template set the queue adapter to the<br />\ntest adapter so that <code>assert_enqueued_with</code> can pass.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
+    "message": "*   Ensure all bug report templates set `config.secret_key_base` to avoid\n    generation of `tmp/local_secret.txt` files when running the report template.\n\n    *Andrew White*",
+    "project": "guides",
+    "date_merged": 1734279797000,
+    "author": "Andrew White",
+    "sha": "f17f2d1decf460033e46ba9c50a4924e9290a86f",
+    "pr": "53963",
+    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
+    "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
     "message": "*   Fix using the `SQLite3Adapter`'s `dbconsole` method outside of a Rails application.\n\n    *Hartley McGuire*",
@@ -320,6 +330,166 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Rate limit password resets in authentication generator\n\n    This helps mitigate abuse from attackers spamming the password reset form.\n\n    *Chris Oliver*",
+    "project": "railties",
+    "date_merged": 1738836333000,
+    "author": "Chris Oliver",
+    "sha": "92533b1569ba710e166fe6bf2a3249d115a74ad6",
+    "pr": "54442",
+    "merge_sha": "4e5a13a55b5960c9a35afdcecd1120bc926d377c",
+    "html": "<p>Rate limit password resets in authentication generator</p>\n\n<p>This helps mitigate abuse from attackers spamming the password reset form.</p>\n\n<p><em>Chris Oliver</em></p>\n"
+  },
+  {
+    "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exlcude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
+    "project": "railties",
+    "date_merged": 1737751723000,
+    "author": "eelco",
+    "sha": "dad07631d99c96f015162d3cab83c41111adf401",
+    "pr": "54313",
+    "merge_sha": "cd171d69fa03e0a09133089eca672831d447d02a",
+    "html": "<p>Update <code>rails new --minimal</code> option</p>\n\n<p>Extend the <code>--minimal</code> flag to exlcude recently added features:<br />\n<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>\n\n<p><em>eelcoj</em></p>\n"
+  },
+  {
+    "message": "*   Add `application-name` metadata to application layout\n\n    The following metatag will be added to `app/views/layouts/application.html.erb`\n\n    ```html\n    <meta name=\"application-name\" content=\"Name of Rails Application\">\n    ```\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1737148063000,
+    "author": "Steve Polito",
+    "sha": "9144324cb92da6a461be40fc02a532aef1b29194",
+    "pr": "54257",
+    "merge_sha": "abb7035e08c07bb4e2941c1c27003609ce81e77b",
+    "html": "<p>Add <code>application-name</code> metadata to application layout</p>\n\n<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>\n\n<div class=\"language-html highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nt\">&lt;meta</span> <span class=\"na\">name=</span><span class=\"s\">\"application-name\"</span> <span class=\"na\">content=</span><span class=\"s\">\"Name of Rails Application\"</span><span class=\"nt\">&gt;</span>\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Use `secret_key_base` from ENV or credentials when present locally.\n\n    When ENV[\"SECRET_KEY_BASE\"] or\n    `Rails.application.credentials.secret_key_base` is set for test or\n    development, it is used for the `Rails.config.secret_key_base`,\n    instead of generating a `tmp/local_secret.txt` file.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1737144185000,
+    "author": "Petrik",
+    "sha": "8c5978c886d1511aecfa2f029478a03c91e7db75",
+    "pr": "53705",
+    "merge_sha": "4f2b9fe06a7ca5c44aab7abbab0353ed6d013d05",
+    "html": "<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>\n\n<p>When ENV[“SECRET_KEY_BASE”] or<br />\n<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />\ndevelopment, it is used for the <code>Rails.config.secret_key_base</code>,<br />\ninstead of generating a <code>tmp/local_secret.txt</code> file.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1736274652000,
+    "author": "Steve Polito",
+    "sha": "f0f0a818ad34e9ab930db8981b03d65708e2659d",
+    "pr": "52230",
+    "merge_sha": "1914a7437270f1e74d31494675c9fddf244a7cf5",
+    "html": "<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Colorize the Rails console prompt even on non standard environments.\n\n    *Lorenzo Zabot*",
+    "project": "railties",
+    "date_merged": 1736267051000,
+    "author": "Lorenzo Zabot",
+    "sha": "b097cfbbb9c5c31b0ede2b8caae28dabf7aa9850",
+    "pr": "53027",
+    "merge_sha": "c8335e118ba14562d4755ba2dd28171996fea297",
+    "html": "<p>Colorize the Rails console prompt even on non standard environments.</p>\n\n<p><em>Lorenzo Zabot</em></p>\n"
+  },
+  {
+    "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environments tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1732617959000,
+    "author": "Ali Ismayilov",
+    "sha": "76e2b7e529e6c8cc42de00c94408d008655385bb",
+    "pr": "53746",
+    "merge_sha": "723ca0c0a757e27ab23e60cd65767606b7f6c202",
+    "html": "<p>Don’t enable YJIT in development and test environments</p>\n\n<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />\nhence YJIT isn’t generally faster in these environments.</p>\n\n<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Only include PermissionsPolicy::Middleware if policy is configured.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1731706201000,
+    "author": "Petrik",
+    "sha": "987977c2809e57dc7f4d6e90d6aaa25e6a52f927",
+    "pr": "53621",
+    "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
+    "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Respect `html_options[:form]` when `collection_checkboxes` generates the\n    hidden `<input>`.\n\n    *Riccardo Odone*",
+    "project": "actionview",
+    "date_merged": 1736352191000,
+    "author": "3v0k4",
+    "sha": "d4702f99e69e0c327419e7791dce5b969e361d89",
+    "pr": "51746",
+    "merge_sha": "f978e1dc7ca5bc570a21f8007e06a3a57ca93566",
+    "html": "<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />\nhidden <code>&lt;input&gt;</code>.</p>\n\n<p><em>Riccardo Odone</em></p>\n"
+  },
+  {
+    "message": "*   Layouts have access to local variables passed to `render`.\n\n    This fixes #31680 which was a regression in Rails 5.1.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1736197671000,
+    "author": "Mike Dalessio",
+    "sha": "b35a9b6fc63246adbe98d141997f37434ad037ad",
+    "pr": "54020",
+    "merge_sha": "593d9d90972df11aea1a1d7bb8a5f5f84a1d1f27",
+    "html": "<p>Layouts have access to local variables passed to <code>render</code>.</p>\n\n<p>This fixes #31680 which was a regression in Rails 5.1.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Argument errors related to strict locals in templates now raise an\n    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.\n\n    Previously, any `ArgumentError` raised during template rendering was swallowed during strict\n    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper\n    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an\n    unrelated backtrace, making it difficult to debug templates.\n\n    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original\n    backtrace for developers.\n\n    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing\n    code that rescues `ArgumentError` will continue to work.\n\n    Fixes #52227.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1736195112000,
+    "author": "Mike Dalessio",
+    "sha": "c868503d313873edcd262c4d605c06d2d1ed703a",
+    "pr": "54133",
+    "merge_sha": "bc601a9ffe4d48045b9bfeec23e9e579a5709c7c",
+    "html": "<p>Argument errors related to strict locals in templates now raise an<br />\n<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>\n\n<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />\nlocal error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />\nmethod invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />\nunrelated backtrace, making it difficult to debug templates.</p>\n\n<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />\nbacktrace for developers.</p>\n\n<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />\ncode that rescues <code>ArgumentError</code> will continue to work.</p>\n\n<p>Fixes #52227.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Improve error highlighting of multi-line methods in ERB templates or\n    templates where the error occurs within a do-end block.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732819839000,
+    "author": "Martin Emde",
+    "sha": "a74d26378b665bf1a1a6c125f878000251102dbb",
+    "pr": "53763",
+    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
+    "html": "<p>Improve error highlighting of multi-line methods in ERB templates or<br />\ntemplates where the error occurs within a do-end block.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Fix a crash in ERB template error highlighting when the error occurs on a\n    line in the compiled template that is past the end of the source template.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732254580000,
+    "author": "Martin Emde",
+    "sha": "5857b8f83ca51a38151bb107a03684320505421d",
+    "pr": "53696",
+    "merge_sha": "8cab71cd0441043ba1c3c201ef8b8282d6f13b63",
+    "html": "<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />\nline in the compiled template that is past the end of the source template.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Improve reliability of ERB template error highlighting.\n    Fix infinite loops and crashes in highlighting and\n    improve tolerance for alternate ERB handlers.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732218987000,
+    "author": "Martin Emde",
+    "sha": "aaebc8635123537f60db62763e6d80489098060d",
+    "pr": "53657",
+    "merge_sha": "9add4d9786266cbebcc44c07963ceb589de9ce79",
+    "html": "<p>Improve reliability of ERB template error highlighting.<br />\nFix infinite loops and crashes in highlighting and<br />\nimprove tolerance for alternate ERB handlers.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.\n\n    *brendon*",
+    "project": "actionview",
+    "date_merged": 1731670127000,
+    "author": "Brendon Muir",
+    "sha": "09daec64ac5189799718d8805311ac1458021910",
+    "pr": "53512",
+    "merge_sha": "e5ad9e789966a2743da8f81b6ed5e80f2575a8d1",
+    "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
+  },
+  {
+    "message": "*   Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`\n\n    ```ruby\n    class User\n      include ActiveModel::Attributes\n      include ActiveModel::Attributes::Normalization\n\n      attribute :email, :string\n\n      normalizes :email, with: -> email { email.strip.downcase }\n    end\n\n    user = User.new\n    user.email =    \" CRUISE-CONTROL@EXAMPLE.COM\\n\"\n    user.email # => \"cruise-control@example.com\"\n    ```\n\n    *Sean Doyle*",
+    "project": "activemodel",
+    "date_merged": 1736266443000,
+    "author": "Sean Doyle",
+    "sha": "599c9af7e1990a98e9bbaffa03a4b4d0b2f622ee",
+    "pr": "53955",
+    "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
+    "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Fix `Rails.application.reload_routes!` from clearing almost all routes.\n\n    When calling `Rails.application.reload_routes!` inside a middleware of\n    a Rake task, it was possible under certain conditions that all routes would be cleared.\n    If ran inside a middleware, this would result in getting a 404 on most page you visit.\n    This issue was only happening in development.\n\n    *Edouard Chin*",
     "project": "actionpack",
     "date_merged": 1738008944000,
@@ -368,6 +538,46 @@
     "pr": "53236",
     "merge_sha": "ed72523a86fb6010e056667f294fee34ba276aed",
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`\n\n    Supports checking String equality:\n\n    ```ruby\n    filename = ActiveStorage::Filename.new(\"file.txt\")\n    filename == \"file.txt\" # => true\n    filename in \"file.txt\" # => true\n    \"file.txt\" == filename # => true\n    ```\n\n    *Sean Doyle*",
+    "project": "activestorage",
+    "date_merged": 1736536509000,
+    "author": "Sean Doyle",
+    "sha": "73133fa37f52204fe797d58d508806e5517f04b3",
+    "pr": "54185",
+    "merge_sha": "7ec153158e418c8c51bdee170fc06795db3a61ed",
+    "html": "<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>\n\n<p>Supports checking String equality:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">filename</span> <span class=\"o\">=</span> <span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Filename</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"file.txt\"</span><span class=\"p\">)</span>\n<span class=\"n\">filename</span> <span class=\"o\">==</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">filename</span> <span class=\"k\">in</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"s2\">\"file.txt\"</span> <span class=\"o\">==</span> <span class=\"n\">filename</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.\n\n    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`\n    is found to be disabled because of OpenSSL FIPS mode.\n\n    *Matt Pasquini*, *Jean Boussier*",
+    "project": "activestorage",
+    "date_merged": 1735992548000,
+    "author": "Matt Pasquini",
+    "sha": "bbc0cf1712da74d52874a4e012321b5e27e85e39",
+    "pr": "54040",
+    "merge_sha": "e64e5d31cdeafee142e32e604b513a39de779651",
+    "html": "<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>\n\n<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />\nis found to be disabled because of OpenSSL FIPS mode.</p>\n\n<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   A Blob will no longer autosave associated Attachment.\n\n    This fixes an issue where a record with an attachment would have\n    its dirty attributes reset, preventing your `after commit` callbacks\n    on that record to behave as expected.\n\n    Note that this change doesn't require any changes on your application\n    and is supposed to be internal. Active Storage Attachment will continue\n    to be autosaved (through a different relation).\n\n    *Edouard-chin*",
+    "project": "activestorage",
+    "date_merged": 1734601190000,
+    "author": "Edouard CHIN",
+    "sha": "e70f504271864e32a5f27a35fe0d0865f5d95527",
+    "pr": "53623",
+    "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
+    "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+  },
+  {
+    "message": "*   Add `reply_to_address` extension method on `Mail::Message`.\n\n    *Mr0grog*",
+    "project": "actionmailbox",
+    "date_merged": 1737972229000,
+    "author": "Rob Brackett",
+    "sha": "ac583204ba548557981b6890a6fc2c3975d24ee9",
+    "pr": "53513",
+    "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
+    "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
   },
   {
     "message": "*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.\n\n    This was inconsistent with a regular `ActiveJob::Base#perform_later`.\n\n    *fatkodima*",
@@ -540,36 +750,6 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
-    "message": "*   In the Active Job bug report template set the queue adapter to the\n    test adapter so that `assert_enqueued_with` can pass.\n\n    *Andrew White*",
-    "project": "guides",
-    "date_merged": 1734279797000,
-    "author": "Andrew White",
-    "sha": "8e0a3914cab6b564d7dbcbfec35184c3132a7116",
-    "pr": "53963",
-    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
-    "html": "<p>In the Active Job bug report template set the queue adapter to the<br />\ntest adapter so that <code>assert_enqueued_with</code> can pass.</p>\n\n<p><em>Andrew White</em></p>\n"
-  },
-  {
-    "message": "*   Ensure all bug report templates set `config.secret_key_base` to avoid\n    generation of `tmp/local_secret.txt` files when running the report template.\n\n    *Andrew White*",
-    "project": "guides",
-    "date_merged": 1734279797000,
-    "author": "Andrew White",
-    "sha": "f17f2d1decf460033e46ba9c50a4924e9290a86f",
-    "pr": "53963",
-    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
-    "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
-  },
-  {
-    "message": "*   Add `reply_to_address` extension method on `Mail::Message`.\n\n    *Mr0grog*",
-    "project": "actionmailbox",
-    "date_merged": 1737972229000,
-    "author": "Rob Brackett",
-    "sha": "ac583204ba548557981b6890a6fc2c3975d24ee9",
-    "pr": "53513",
-    "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
-    "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
-  },
-  {
     "message": "*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`\n\n    *Sean Doyle*",
     "project": "actiontext",
     "date_merged": 1733784985000,
@@ -578,185 +758,5 @@
     "pr": "53847",
     "merge_sha": "0efc3e899a0cade4e1b7c626d1df043dadf2d2a2",
     "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Respect `html_options[:form]` when `collection_checkboxes` generates the\n    hidden `<input>`.\n\n    *Riccardo Odone*",
-    "project": "actionview",
-    "date_merged": 1736352191000,
-    "author": "3v0k4",
-    "sha": "d4702f99e69e0c327419e7791dce5b969e361d89",
-    "pr": "51746",
-    "merge_sha": "f978e1dc7ca5bc570a21f8007e06a3a57ca93566",
-    "html": "<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />\nhidden <code>&lt;input&gt;</code>.</p>\n\n<p><em>Riccardo Odone</em></p>\n"
-  },
-  {
-    "message": "*   Layouts have access to local variables passed to `render`.\n\n    This fixes #31680 which was a regression in Rails 5.1.\n\n    *Mike Dalessio*",
-    "project": "actionview",
-    "date_merged": 1736197671000,
-    "author": "Mike Dalessio",
-    "sha": "b35a9b6fc63246adbe98d141997f37434ad037ad",
-    "pr": "54020",
-    "merge_sha": "593d9d90972df11aea1a1d7bb8a5f5f84a1d1f27",
-    "html": "<p>Layouts have access to local variables passed to <code>render</code>.</p>\n\n<p>This fixes #31680 which was a regression in Rails 5.1.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Argument errors related to strict locals in templates now raise an\n    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.\n\n    Previously, any `ArgumentError` raised during template rendering was swallowed during strict\n    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper\n    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an\n    unrelated backtrace, making it difficult to debug templates.\n\n    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original\n    backtrace for developers.\n\n    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing\n    code that rescues `ArgumentError` will continue to work.\n\n    Fixes #52227.\n\n    *Mike Dalessio*",
-    "project": "actionview",
-    "date_merged": 1736195112000,
-    "author": "Mike Dalessio",
-    "sha": "c868503d313873edcd262c4d605c06d2d1ed703a",
-    "pr": "54133",
-    "merge_sha": "bc601a9ffe4d48045b9bfeec23e9e579a5709c7c",
-    "html": "<p>Argument errors related to strict locals in templates now raise an<br />\n<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>\n\n<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />\nlocal error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />\nmethod invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />\nunrelated backtrace, making it difficult to debug templates.</p>\n\n<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />\nbacktrace for developers.</p>\n\n<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />\ncode that rescues <code>ArgumentError</code> will continue to work.</p>\n\n<p>Fixes #52227.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Improve error highlighting of multi-line methods in ERB templates or\n    templates where the error occurs within a do-end block.\n\n    *Martin Emde*",
-    "project": "actionview",
-    "date_merged": 1732819839000,
-    "author": "Martin Emde",
-    "sha": "a74d26378b665bf1a1a6c125f878000251102dbb",
-    "pr": "53763",
-    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
-    "html": "<p>Improve error highlighting of multi-line methods in ERB templates or<br />\ntemplates where the error occurs within a do-end block.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Fix a crash in ERB template error highlighting when the error occurs on a\n    line in the compiled template that is past the end of the source template.\n\n    *Martin Emde*",
-    "project": "actionview",
-    "date_merged": 1732254580000,
-    "author": "Martin Emde",
-    "sha": "5857b8f83ca51a38151bb107a03684320505421d",
-    "pr": "53696",
-    "merge_sha": "8cab71cd0441043ba1c3c201ef8b8282d6f13b63",
-    "html": "<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />\nline in the compiled template that is past the end of the source template.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Improve reliability of ERB template error highlighting.\n    Fix infinite loops and crashes in highlighting and\n    improve tolerance for alternate ERB handlers.\n\n    *Martin Emde*",
-    "project": "actionview",
-    "date_merged": 1732218987000,
-    "author": "Martin Emde",
-    "sha": "aaebc8635123537f60db62763e6d80489098060d",
-    "pr": "53657",
-    "merge_sha": "9add4d9786266cbebcc44c07963ceb589de9ce79",
-    "html": "<p>Improve reliability of ERB template error highlighting.<br />\nFix infinite loops and crashes in highlighting and<br />\nimprove tolerance for alternate ERB handlers.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.\n\n    *brendon*",
-    "project": "actionview",
-    "date_merged": 1731670127000,
-    "author": "Brendon Muir",
-    "sha": "09daec64ac5189799718d8805311ac1458021910",
-    "pr": "53512",
-    "merge_sha": "e5ad9e789966a2743da8f81b6ed5e80f2575a8d1",
-    "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
-  },
-  {
-    "message": "*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`\n\n    Supports checking String equality:\n\n    ```ruby\n    filename = ActiveStorage::Filename.new(\"file.txt\")\n    filename == \"file.txt\" # => true\n    filename in \"file.txt\" # => true\n    \"file.txt\" == filename # => true\n    ```\n\n    *Sean Doyle*",
-    "project": "activestorage",
-    "date_merged": 1736536509000,
-    "author": "Sean Doyle",
-    "sha": "73133fa37f52204fe797d58d508806e5517f04b3",
-    "pr": "54185",
-    "merge_sha": "7ec153158e418c8c51bdee170fc06795db3a61ed",
-    "html": "<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>\n\n<p>Supports checking String equality:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">filename</span> <span class=\"o\">=</span> <span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Filename</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"file.txt\"</span><span class=\"p\">)</span>\n<span class=\"n\">filename</span> <span class=\"o\">==</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">filename</span> <span class=\"k\">in</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"s2\">\"file.txt\"</span> <span class=\"o\">==</span> <span class=\"n\">filename</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.\n\n    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`\n    is found to be disabled because of OpenSSL FIPS mode.\n\n    *Matt Pasquini*, *Jean Boussier*",
-    "project": "activestorage",
-    "date_merged": 1735992548000,
-    "author": "Matt Pasquini",
-    "sha": "bbc0cf1712da74d52874a4e012321b5e27e85e39",
-    "pr": "54040",
-    "merge_sha": "e64e5d31cdeafee142e32e604b513a39de779651",
-    "html": "<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>\n\n<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />\nis found to be disabled because of OpenSSL FIPS mode.</p>\n\n<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   A Blob will no longer autosave associated Attachment.\n\n    This fixes an issue where a record with an attachment would have\n    its dirty attributes reset, preventing your `after commit` callbacks\n    on that record to behave as expected.\n\n    Note that this change doesn't require any changes on your application\n    and is supposed to be internal. Active Storage Attachment will continue\n    to be autosaved (through a different relation).\n\n    *Edouard-chin*",
-    "project": "activestorage",
-    "date_merged": 1734601190000,
-    "author": "Edouard CHIN",
-    "sha": "e70f504271864e32a5f27a35fe0d0865f5d95527",
-    "pr": "53623",
-    "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
-    "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
-  },
-  {
-    "message": "*   Rate limit password resets in authentication generator\n\n    This helps mitigate abuse from attackers spamming the password reset form.\n\n    *Chris Oliver*",
-    "project": "railties",
-    "date_merged": 1738836333000,
-    "author": "Chris Oliver",
-    "sha": "92533b1569ba710e166fe6bf2a3249d115a74ad6",
-    "pr": "54442",
-    "merge_sha": "4e5a13a55b5960c9a35afdcecd1120bc926d377c",
-    "html": "<p>Rate limit password resets in authentication generator</p>\n\n<p>This helps mitigate abuse from attackers spamming the password reset form.</p>\n\n<p><em>Chris Oliver</em></p>\n"
-  },
-  {
-    "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exlcude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
-    "project": "railties",
-    "date_merged": 1737751723000,
-    "author": "eelco",
-    "sha": "dad07631d99c96f015162d3cab83c41111adf401",
-    "pr": "54313",
-    "merge_sha": "cd171d69fa03e0a09133089eca672831d447d02a",
-    "html": "<p>Update <code>rails new --minimal</code> option</p>\n\n<p>Extend the <code>--minimal</code> flag to exlcude recently added features:<br />\n<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>\n\n<p><em>eelcoj</em></p>\n"
-  },
-  {
-    "message": "*   Add `application-name` metadata to application layout\n\n    The following metatag will be added to `app/views/layouts/application.html.erb`\n\n    ```html\n    <meta name=\"application-name\" content=\"Name of Rails Application\">\n    ```\n\n    *Steve Polito*",
-    "project": "railties",
-    "date_merged": 1737148063000,
-    "author": "Steve Polito",
-    "sha": "9144324cb92da6a461be40fc02a532aef1b29194",
-    "pr": "54257",
-    "merge_sha": "abb7035e08c07bb4e2941c1c27003609ce81e77b",
-    "html": "<p>Add <code>application-name</code> metadata to application layout</p>\n\n<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>\n\n<div class=\"language-html highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nt\">&lt;meta</span> <span class=\"na\">name=</span><span class=\"s\">\"application-name\"</span> <span class=\"na\">content=</span><span class=\"s\">\"Name of Rails Application\"</span><span class=\"nt\">&gt;</span>\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
-  },
-  {
-    "message": "*   Use `secret_key_base` from ENV or credentials when present locally.\n\n    When ENV[\"SECRET_KEY_BASE\"] or\n    `Rails.application.credentials.secret_key_base` is set for test or\n    development, it is used for the `Rails.config.secret_key_base`,\n    instead of generating a `tmp/local_secret.txt` file.\n\n    *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1737144185000,
-    "author": "Petrik",
-    "sha": "8c5978c886d1511aecfa2f029478a03c91e7db75",
-    "pr": "53705",
-    "merge_sha": "4f2b9fe06a7ca5c44aab7abbab0353ed6d013d05",
-    "html": "<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>\n\n<p>When ENV[“SECRET_KEY_BASE”] or<br />\n<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />\ndevelopment, it is used for the <code>Rails.config.secret_key_base</code>,<br />\ninstead of generating a <code>tmp/local_secret.txt</code> file.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files\n\n    *Steve Polito*",
-    "project": "railties",
-    "date_merged": 1736274652000,
-    "author": "Steve Polito",
-    "sha": "f0f0a818ad34e9ab930db8981b03d65708e2659d",
-    "pr": "52230",
-    "merge_sha": "1914a7437270f1e74d31494675c9fddf244a7cf5",
-    "html": "<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>\n\n<p><em>Steve Polito</em></p>\n"
-  },
-  {
-    "message": "*   Colorize the Rails console prompt even on non standard environments.\n\n    *Lorenzo Zabot*",
-    "project": "railties",
-    "date_merged": 1736267051000,
-    "author": "Lorenzo Zabot",
-    "sha": "b097cfbbb9c5c31b0ede2b8caae28dabf7aa9850",
-    "pr": "53027",
-    "merge_sha": "c8335e118ba14562d4755ba2dd28171996fea297",
-    "html": "<p>Colorize the Rails console prompt even on non standard environments.</p>\n\n<p><em>Lorenzo Zabot</em></p>\n"
-  },
-  {
-    "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environments tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
-    "project": "railties",
-    "date_merged": 1732617959000,
-    "author": "Ali Ismayilov",
-    "sha": "76e2b7e529e6c8cc42de00c94408d008655385bb",
-    "pr": "53746",
-    "merge_sha": "723ca0c0a757e27ab23e60cd65767606b7f6c202",
-    "html": "<p>Don’t enable YJIT in development and test environments</p>\n\n<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />\nhence YJIT isn’t generally faster in these environments.</p>\n\n<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Only include PermissionsPolicy::Middleware if policy is configured.\n\n    *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1731706201000,
-    "author": "Petrik",
-    "sha": "987977c2809e57dc7f4d6e90d6aaa25e6a52f927",
-    "pr": "53621",
-    "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
-    "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   }
 ]
