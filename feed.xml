@@ -50,6 +50,21 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Fix using the `SQLite3Adapter`&#39;s `dbconsole` method outside of a Rails application.
+</title>
+    <link>https://github.com/rails/rails/issues/54498</link>
+    <guid>https://github.com/rails/rails/issues/54498</guid>
+    <description>*   Fix using the `SQLite3Adapter`&#39;s `dbconsole` method outside of a Rails application.
+
+    *Hartley McGuire*</description>
+    <pubDate>Wed, 12 Feb 2025 05:38:03 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Fix using the <code>SQLite3Adapter</code>’s <code>dbconsole</code> method outside of a Rails application.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Fix migrating multiple databases with `ActiveRecord::PendingMigration` action.
 </title>
     <link>https://github.com/rails/rails/issues/54456</link>
