@@ -20,6 +20,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Raise `ActiveRecord::ReadOnlyError` when pessimistically locking with a readonly role.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1740128305000,
+    "author": "Joshua Young",
+    "sha": "42e989154ddf80c1f0dcf21197f49650bb771dba",
+    "pr": "53758",
+    "merge_sha": "324fccf4f98f8c8b8583361edaa53301800e4c64",
+    "html": "<p>Raise <code>ActiveRecord::ReadOnlyError</code> when pessimistically locking with a readonly role.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Fix using the `SQLite3Adapter`'s `dbconsole` method outside of a Rails application.\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1739338683000,
@@ -578,6 +588,16 @@
     "pr": "53513",
     "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
     "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
+  },
+  {
+    "message": "*   Add `report:` option to `ActiveJob::Base#retry_on` and `#discard_on`\n\n    When the `report:` option is passed, errors will be reported to the error reporter\n    before being retried / discarded.\n\n    *Andrew Novoselac*",
+    "project": "activejob",
+    "date_merged": 1740129016000,
+    "author": "andrew.novoselac@shopify.com",
+    "sha": "3ff8c45e7b525c6b947d6f4f3350366b0d7e97ed",
+    "pr": "54541",
+    "merge_sha": "7df1b84335298140116a59cad1bffea6c6a91747",
+    "html": "<p>Add <code>report:</code> option to <code>ActiveJob::Base#retry_on</code> and <code>#discard_on</code></p>\n\n<p>When the <code>report:</code> option is passed, errors will be reported to the error reporter<br />\nbefore being retried / discarded.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
   },
   {
     "message": "*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.\n\n    This was inconsistent with a regular `ActiveJob::Base#perform_later`.\n\n    *fatkodima*",
