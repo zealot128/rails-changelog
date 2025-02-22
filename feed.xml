@@ -1132,6 +1132,40 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: The Cookie Serializer can now serialize an Active Support SafeBuffer when using message pack.
+</title>
+    <link>https://github.com/rails/rails/issues/54584</link>
+    <guid>https://github.com/rails/rails/issues/54584</guid>
+    <description>*   The Cookie Serializer can now serialize an Active Support SafeBuffer when using message pack.
+
+    Such code would previously produce an error if an application was using messagepack as its cookie serializer.
+
+    ```ruby
+    class PostController &lt; ApplicationController
+      def index
+        flash.notice = t(:hello_html) # This would try to serialize a SafeBuffer, which was not possible.
+      end
+    end
+    ```
+
+    *Edouard Chin*</description>
+    <pubDate>Sat, 22 Feb 2025 09:31:45 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p>The Cookie Serializer can now serialize an Active Support SafeBuffer when using message pack.</p>
+
+<p>Such code would previously produce an error if an application was using messagepack as its cookie serializer.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PostController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="n">flash</span><span class="p">.</span><span class="nf">notice</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="ss">:hello_html</span><span class="p">)</span> <span class="c1"># This would try to serialize a SafeBuffer, which was not possible.</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Edouard Chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Fix `Rails.application.reload_routes!` from clearing almost all routes.
 </title>
     <link>https://github.com/rails/rails/issues/54306</link>
