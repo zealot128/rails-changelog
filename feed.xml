@@ -40,6 +40,21 @@ generation of <code>tmp/local_secret.txt</code> files when running the report te
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Add column types to `ActiveRecord::Result` for SQLite3.
+</title>
+    <link>https://github.com/rails/rails/issues/54594</link>
+    <guid>https://github.com/rails/rails/issues/54594</guid>
+    <description>*   Add column types to `ActiveRecord::Result` for SQLite3.
+
+    *Andrew Kane*</description>
+    <pubDate>Sun, 23 Feb 2025 09:14:23 +0000</pubDate>
+    <author>Andrew Kane</author>
+    <content:encoded><![CDATA[<p>Add column types to <code>ActiveRecord::Result</code> for SQLite3.</p>
+
+<p><em>Andrew Kane</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Raise `ActiveRecord::ReadOnlyError` when pessimistically locking with a readonly role.
 </title>
     <link>https://github.com/rails/rails/issues/53758</link>
