@@ -20,6 +20,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Add column types to `ActiveRecord::Result` for SQLite3.\n\n    *Andrew Kane*",
+    "project": "activerecord",
+    "date_merged": 1740302063000,
+    "author": "Andrew Kane",
+    "sha": "6d9f72b2af680cf319d7b44c2359f0f0c12a562f",
+    "pr": "54594",
+    "merge_sha": "e36deb7c0527680a89782de624ee600ca8b9ae74",
+    "html": "<p>Add column types to <code>ActiveRecord::Result</code> for SQLite3.</p>\n\n<p><em>Andrew Kane</em></p>\n"
+  },
+  {
     "message": "*   Raise `ActiveRecord::ReadOnlyError` when pessimistically locking with a readonly role.\n\n    *Joshua Young*",
     "project": "activerecord",
     "date_merged": 1740128305000,
