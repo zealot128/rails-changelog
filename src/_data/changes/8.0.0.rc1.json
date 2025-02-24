@@ -20,6 +20,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Respect `implicit_order_column` in `ActiveRecord::Relation#reverse_order`.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1740402496000,
+    "author": "Joshua Young",
+    "sha": "e724ad0615ff6dc4d7f64e359eab8f3187deab3e",
+    "pr": "54607",
+    "merge_sha": "04775277406fe6bb26e7c8052d2459c568a780d8",
+    "html": "<p>Respect <code>implicit_order_column</code> in <code>ActiveRecord::Relation#reverse_order</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Add column types to `ActiveRecord::Result` for SQLite3.\n\n    *Andrew Kane*",
     "project": "activerecord",
     "date_merged": 1740302063000,
