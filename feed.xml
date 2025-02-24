@@ -40,6 +40,21 @@ generation of <code>tmp/local_secret.txt</code> files when running the report te
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Respect `implicit_order_column` in `ActiveRecord::Relation#reverse_order`.
+</title>
+    <link>https://github.com/rails/rails/issues/54607</link>
+    <guid>https://github.com/rails/rails/issues/54607</guid>
+    <description>*   Respect `implicit_order_column` in `ActiveRecord::Relation#reverse_order`.
+
+    *Joshua Young*</description>
+    <pubDate>Mon, 24 Feb 2025 13:08:16 +0000</pubDate>
+    <author>Joshua Young</author>
+    <content:encoded><![CDATA[<p>Respect <code>implicit_order_column</code> in <code>ActiveRecord::Relation#reverse_order</code>.</p>
+
+<p><em>Joshua Young</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Add column types to `ActiveRecord::Result` for SQLite3.
 </title>
     <link>https://github.com/rails/rails/issues/54594</link>
