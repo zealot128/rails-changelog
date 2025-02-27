@@ -562,6 +562,23 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when
+</title>
+    <link>https://github.com/rails/rails/issues/53708</link>
+    <guid>https://github.com/rails/rails/issues/53708</guid>
+    <description>*   Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when
+    running `rails g authentication`. Simplifies authentication in integration tests.
+
+    *Bijan Rahnema*</description>
+    <pubDate>Thu, 27 Feb 2025 14:16:47 +0000</pubDate>
+    <author>Bijan Rahnema</author>
+    <content:encoded><![CDATA[<p>Add a <code>SessionTestHelper</code> module with <code>sign_in_as(user)</code> and <code>sign_out</code> test helpers when<br />
+running <code>rails g authentication</code>. Simplifies authentication in integration tests.</p>
+
+<p><em>Bijan Rahnema</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Rate limit password resets in authentication generator
 </title>
     <link>https://github.com/rails/rails/issues/54442</link>
