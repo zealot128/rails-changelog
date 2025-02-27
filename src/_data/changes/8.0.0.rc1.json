@@ -250,6 +250,16 @@
     "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
   },
   {
+    "message": "*   Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when\n    running `rails g authentication`. Simplifies authentication in integration tests.\n\n    *Bijan Rahnema*",
+    "project": "railties",
+    "date_merged": 1740665807000,
+    "author": "Bijan Rahnema",
+    "sha": "800976975253be2912d09a80757ee70a2bb1e984",
+    "pr": "53708",
+    "merge_sha": null,
+    "html": "<p>Add a <code>SessionTestHelper</code> module with <code>sign_in_as(user)</code> and <code>sign_out</code> test helpers when<br />\nrunning <code>rails g authentication</code>. Simplifies authentication in integration tests.</p>\n\n<p><em>Bijan Rahnema</em></p>\n"
+  },
+  {
     "message": "*   Rate limit password resets in authentication generator\n\n    This helps mitigate abuse from attackers spamming the password reset form.\n\n    *Chris Oliver*",
     "project": "railties",
     "date_merged": 1738836333000,
