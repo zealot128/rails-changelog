@@ -73,7 +73,7 @@
 
     When reporting an error, the error context middleware will be called with the reported error
     and base execution context. The stack may mutate the context hash. The mutated context will
-    then be passed to error subscribers.
+    then be passed to error subscribers. Middleware receives the same parameters as `ErrorReporter#report`.
 
     *Andrew Novoselac*, *Sam Schmidt*</description>
     <pubDate>Wed, 26 Feb 2025 20:17:35 +0000</pubDate>
@@ -82,7 +82,7 @@
 
 <p>When reporting an error, the error context middleware will be called with the reported error<br />
 and base execution context. The stack may mutate the context hash. The mutated context will<br />
-then be passed to error subscribers.</p>
+then be passed to error subscribers. Middleware receives the same parameters as <code>ErrorReporter#report</code>.</p>
 
 <p><em>Andrew Novoselac</em>, <em>Sam Schmidt</em></p>
 ]]></content:encoded>
@@ -570,7 +570,7 @@ improve tolerance for alternate ERB handlers.</p>
     running `rails g authentication`. Simplifies authentication in integration tests.
 
     *Bijan Rahnema*</description>
-    <pubDate>Thu, 27 Feb 2025 14:16:47 +0000</pubDate>
+    <pubDate>Fri, 28 Feb 2025 08:46:08 +0000</pubDate>
     <author>Bijan Rahnema</author>
     <content:encoded><![CDATA[<p>Add a <code>SessionTestHelper</code> module with <code>sign_in_as(user)</code> and <code>sign_out</code> test helpers when<br />
 running <code>rails g authentication</code>. Simplifies authentication in integration tests.</p>
