@@ -20,14 +20,14 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
-    "message": "*   Introduce ActiveSupport::ErrorReporter#add_middleware\n\n    When reporting an error, the error context middleware will be called with the reported error\n    and base execution context. The stack may mutate the context hash. The mutated context will\n    then be passed to error subscribers.\n\n    *Andrew Novoselac*, *Sam Schmidt*",
+    "message": "*   Introduce ActiveSupport::ErrorReporter#add_middleware\n\n    When reporting an error, the error context middleware will be called with the reported error\n    and base execution context. The stack may mutate the context hash. The mutated context will\n    then be passed to error subscribers. Middleware receives the same parameters as `ErrorReporter#report`.\n\n    *Andrew Novoselac*, *Sam Schmidt*",
     "project": "activesupport",
     "date_merged": 1740601055000,
     "author": "andrew.novoselac@shopify.com",
     "sha": "0b8e08330fdaa9cc0daaa5f974ca6ca1b2f9dede",
     "pr": "54512",
     "merge_sha": "cff159f8584fbe7c062dd2743abe6f8ec66bfd13",
-    "html": "<p>Introduce ActiveSupport::ErrorReporter#add_middleware</p>\n\n<p>When reporting an error, the error context middleware will be called with the reported error<br />\nand base execution context. The stack may mutate the context hash. The mutated context will<br />\nthen be passed to error subscribers.</p>\n\n<p><em>Andrew Novoselac</em>, <em>Sam Schmidt</em></p>\n"
+    "html": "<p>Introduce ActiveSupport::ErrorReporter#add_middleware</p>\n\n<p>When reporting an error, the error context middleware will be called with the reported error<br />\nand base execution context. The stack may mutate the context hash. The mutated context will<br />\nthen be passed to error subscribers. Middleware receives the same parameters as <code>ErrorReporter#report</code>.</p>\n\n<p><em>Andrew Novoselac</em>, <em>Sam Schmidt</em></p>\n"
   },
   {
     "message": "*   Change execution wrapping to report all exceptions, including `Exception`.\n\n    If a more serious error like `SystemStackError` or `NoMemoryError` happens,\n    the error reporter should be able to report these kinds of exceptions.\n\n    *Gannon McGibbon*",
@@ -252,11 +252,11 @@
   {
     "message": "*   Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when\n    running `rails g authentication`. Simplifies authentication in integration tests.\n\n    *Bijan Rahnema*",
     "project": "railties",
-    "date_merged": 1740665807000,
+    "date_merged": 1740732368000,
     "author": "Bijan Rahnema",
     "sha": "800976975253be2912d09a80757ee70a2bb1e984",
     "pr": "53708",
-    "merge_sha": null,
+    "merge_sha": "271dbd5d5c0bf62c972b7dd4891c6410ca87a22d",
     "html": "<p>Add a <code>SessionTestHelper</code> module with <code>sign_in_as(user)</code> and <code>sign_out</code> test helpers when<br />\nrunning <code>rails g authentication</code>. Simplifies authentication in integration tests.</p>\n\n<p><em>Bijan Rahnema</em></p>\n"
   },
   {
