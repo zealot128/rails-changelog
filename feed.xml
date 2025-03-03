@@ -562,6 +562,21 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionview: Add a new configuration `content_security_policy_nonce_auto` for automatically adding a nonce to the tags affected by the directives specified by the `content_security_policy_nonce_directives` configuration option.
+</title>
+    <link>https://github.com/rails/rails/issues/53835</link>
+    <guid>https://github.com/rails/rails/issues/53835</guid>
+    <description>*   Add a new configuration `content_security_policy_nonce_auto` for automatically adding a nonce to the tags affected by the directives specified by the `content_security_policy_nonce_directives` configuration option.
+
+    *francktrouillez*</description>
+    <pubDate>Mon, 03 Mar 2025 09:25:11 +0000</pubDate>
+    <author>Franck TROUILLEZ</author>
+    <content:encoded><![CDATA[<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>
+
+<p><em>francktrouillez</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when
 </title>
     <link>https://github.com/rails/rails/issues/53708</link>
