@@ -250,6 +250,16 @@
     "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
   },
   {
+    "message": "*   Add a new configuration `content_security_policy_nonce_auto` for automatically adding a nonce to the tags affected by the directives specified by the `content_security_policy_nonce_directives` configuration option.\n\n    *francktrouillez*",
+    "project": "actionview",
+    "date_merged": 1740993911000,
+    "author": "Franck TROUILLEZ",
+    "sha": "c7162d640b4e0d1031939496f86d043af38a7a03",
+    "pr": "53835",
+    "merge_sha": null,
+    "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
+  },
+  {
     "message": "*   Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when\n    running `rails g authentication`. Simplifies authentication in integration tests.\n\n    *Bijan Rahnema*",
     "project": "railties",
     "date_merged": 1740732368000,
