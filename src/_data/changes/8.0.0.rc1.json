@@ -252,11 +252,11 @@
   {
     "message": "*   Add a new configuration `content_security_policy_nonce_auto` for automatically adding a nonce to the tags affected by the directives specified by the `content_security_policy_nonce_directives` configuration option.\n\n    *francktrouillez*",
     "project": "actionview",
-    "date_merged": 1740993911000,
+    "date_merged": 1741086415000,
     "author": "Franck TROUILLEZ",
     "sha": "c7162d640b4e0d1031939496f86d043af38a7a03",
     "pr": "53835",
-    "merge_sha": null,
+    "merge_sha": "7a031e38921bac41a6a97bbba861b406caebe164",
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
