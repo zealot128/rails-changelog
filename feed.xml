@@ -569,7 +569,7 @@ improve tolerance for alternate ERB handlers.</p>
     <description>*   Add a new configuration `content_security_policy_nonce_auto` for automatically adding a nonce to the tags affected by the directives specified by the `content_security_policy_nonce_directives` configuration option.
 
     *francktrouillez*</description>
-    <pubDate>Mon, 03 Mar 2025 09:25:11 +0000</pubDate>
+    <pubDate>Tue, 04 Mar 2025 11:06:55 +0000</pubDate>
     <author>Franck TROUILLEZ</author>
     <content:encoded><![CDATA[<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>
 
