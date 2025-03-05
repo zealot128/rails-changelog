@@ -577,6 +577,27 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Rails no longer generates a `bin/bundle` binstub when creating new applications.
+</title>
+    <link>https://github.com/rails/rails/issues/54687</link>
+    <guid>https://github.com/rails/rails/issues/54687</guid>
+    <description>*   Rails no longer generates a `bin/bundle` binstub when creating new applications.
+
+    The `bin/bundle` binstub used to help activate the right version of bundler.
+    This is no longer necessary as this mechanism is now part of Rubygem itself.
+
+    *Edouard Chin*</description>
+    <pubDate>Wed, 05 Mar 2025 05:03:55 +0000</pubDate>
+    <author>Edouard CHIN</author>
+    <content:encoded><![CDATA[<p>Rails no longer generates a <code>bin/bundle</code> binstub when creating new applications.</p>
+
+<p>The <code>bin/bundle</code> binstub used to help activate the right version of bundler.<br />
+This is no longer necessary as this mechanism is now part of Rubygem itself.</p>
+
+<p><em>Edouard Chin</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when
 </title>
     <link>https://github.com/rails/rails/issues/53708</link>
