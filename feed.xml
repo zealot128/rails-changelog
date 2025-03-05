@@ -21,6 +21,21 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activemodel: Add `except_on:` option for validation callbacks.
+</title>
+    <link>https://github.com/rails/rails/issues/54665</link>
+    <guid>https://github.com/rails/rails/issues/54665</guid>
+    <description>*   Add `except_on:` option for validation callbacks.
+
+    *Ben Sheldon*</description>
+    <pubDate>Wed, 05 Mar 2025 08:51:56 +0000</pubDate>
+    <author>Ben Sheldon [he/him]</author>
+    <content:encoded><![CDATA[<p>Add <code>except_on:</code> option for validation callbacks.</p>
+
+<p><em>Ben Sheldon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activemodel: Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`
 </title>
     <link>https://github.com/rails/rails/issues/53955</link>
@@ -975,6 +990,34 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 </code></pre></div></div>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Allow setting the `schema_format` via database configuration.
+</title>
+    <link>https://github.com/rails/rails/issues/53666</link>
+    <guid>https://github.com/rails/rails/issues/53666</guid>
+    <description>*   Allow setting the `schema_format` via database configuration.
+
+    ```
+    primary:
+      schema_format: ruby
+    ```
+
+    Useful for multi-database setups when apps require different formats per-database.
+
+    *T S Vallender*</description>
+    <pubDate>Wed, 05 Mar 2025 17:20:16 +0000</pubDate>
+    <author>eileencodes</author>
+    <content:encoded><![CDATA[<p>Allow setting the <code>schema_format</code> via database configuration.</p>
+
+<pre><code>primary:
+  schema_format: ruby
+</code></pre>
+
+<p>Useful for multi-database setups when apps require different formats per-database.</p>
+
+<p><em>T S Vallender</em></p>
 ]]></content:encoded>
   </item>
   <item>
