@@ -10,6 +10,16 @@
     "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
   },
   {
+    "message": "*   Add `except_on:` option for validation callbacks.\n\n    *Ben Sheldon*",
+    "project": "activemodel",
+    "date_merged": 1741164716000,
+    "author": "Ben Sheldon [he/him]",
+    "sha": "87be3c33cfc43888fb9aa3c9e41e3ce4ff722439",
+    "pr": "54665",
+    "merge_sha": "a59db85fb8f0be684fb22abf0e53ba13701ac9c1",
+    "html": "<p>Add <code>except_on:</code> option for validation callbacks.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
+  },
+  {
     "message": "*   Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`\n\n    ```ruby\n    class User\n      include ActiveModel::Attributes\n      include ActiveModel::Attributes::Normalization\n\n      attribute :email, :string\n\n      normalizes :email, with: -> email { email.strip.downcase }\n    end\n\n    user = User.new\n    user.email =    \" CRUISE-CONTROL@EXAMPLE.COM\\n\"\n    user.email # => \"cruise-control@example.com\"\n    ```\n\n    *Sean Doyle*",
     "project": "activemodel",
     "date_merged": 1736266443000,
@@ -438,6 +448,16 @@
     "pr": "53236",
     "merge_sha": "ed72523a86fb6010e056667f294fee34ba276aed",
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Allow setting the `schema_format` via database configuration.\n\n    ```\n    primary:\n      schema_format: ruby\n    ```\n\n    Useful for multi-database setups when apps require different formats per-database.\n\n    *T S Vallender*",
+    "project": "activerecord",
+    "date_merged": 1741195216000,
+    "author": "eileencodes",
+    "sha": "bd16ad7844076f0c662793d499ab741cf8b43781",
+    "pr": "53666",
+    "merge_sha": "c218fb6cd2bdd67771aac5bfce8097e43c05a26c",
+    "html": "<p>Allow setting the <code>schema_format</code> via database configuration.</p>\n\n<pre><code>primary:\n  schema_format: ruby\n</code></pre>\n\n<p>Useful for multi-database setups when apps require different formats per-database.</p>\n\n<p><em>T S Vallender</em></p>\n"
   },
   {
     "message": "*   Support disabling indexes for MySQL v8.0.0+ and MariaDB v10.6.0+\n\n    MySQL 8.0.0 added an option to disable indexes from being used by the query\n    optimizer by making them \"invisible\". This allows the index to still be maintained\n    and updated but no queries will be permitted to use it. This can be useful for adding\n    new invisible indexes or making existing indexes invisible before dropping them\n    to ensure queries are not negatively affected.\n    See https://dev.mysql.com/blog-archive/mysql-8-0-invisible-indexes/ for more details.\n\n    MariaDB 10.6.0 also added support for this feature by allowing indexes to be \"ignored\"\n    in queries. See https://mariadb.com/kb/en/ignored-indexes/ for more details.\n\n    Active Record now supports this option for MySQL 8.0.0+ and MariaDB 10.6.0+ for\n    index creation and alteration where the new index option `enabled: true/false` can be\n    passed to column and index methods as below:\n\n    ```ruby\n    add_index :users, :email, enabled: false\n    enable_index :users, :email\n    add_column :users, :dob, :string, index: { enabled: false }\n\n    change_table :users do |t|\n      t.index :name, enabled: false\n      t.index :dob\n      t.disable_index :dob\n      t.column :username, :string, index: { enabled: false }\n      t.references :account, index: { enabled: false }\n    end\n\n    create_table :users do |t|\n      t.string :name, index: { enabled: false }\n      t.string :email\n      t.index :email, enabled: false\n    end\n    ```\n\n    *Merve Taner*",
