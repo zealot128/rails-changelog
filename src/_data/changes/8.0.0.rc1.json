@@ -260,6 +260,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Rails no longer generates a `bin/bundle` binstub when creating new applications.\n\n    The `bin/bundle` binstub used to help activate the right version of bundler.\n    This is no longer necessary as this mechanism is now part of Rubygem itself.\n\n    *Edouard Chin*",
+    "project": "railties",
+    "date_merged": 1741151035000,
+    "author": "Edouard CHIN",
+    "sha": "7549ba77254f038b1ca6304a0be6cbda8e2a09c4",
+    "pr": "54687",
+    "merge_sha": "7b8ea0bb5c04f7de73661162a71de38f7843e29a",
+    "html": "<p>Rails no longer generates a <code>bin/bundle</code> binstub when creating new applications.</p>\n\n<p>The <code>bin/bundle</code> binstub used to help activate the right version of bundler.<br />\nThis is no longer necessary as this mechanism is now part of Rubygem itself.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
     "message": "*   Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when\n    running `rails g authentication`. Simplifies authentication in integration tests.\n\n    *Bijan Rahnema*",
     "project": "railties",
     "date_merged": 1740732368000,
