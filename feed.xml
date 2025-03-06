@@ -592,6 +592,21 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.
+</title>
+    <link>https://github.com/rails/rails/issues/54695</link>
+    <guid>https://github.com/rails/rails/issues/54695</guid>
+    <description>*   Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.
+
+    *DHH*</description>
+    <pubDate>Thu, 06 Mar 2025 13:07:06 +0000</pubDate>
+    <author>David Heinemeier Hansson</author>
+    <content:encoded><![CDATA[<p>Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.</p>
+
+<p><em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Rails no longer generates a `bin/bundle` binstub when creating new applications.
 </title>
     <link>https://github.com/rails/rails/issues/54687</link>
