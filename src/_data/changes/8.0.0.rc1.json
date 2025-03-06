@@ -270,6 +270,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1741266426000,
+    "author": "David Heinemeier Hansson",
+    "sha": "bdaab704416e3df86a9d4e86970fc45e6d79f065",
+    "pr": "54695",
+    "merge_sha": "c36a258f5cb1656903dcf66087cba2a768cf0b0c",
+    "html": "<p>Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Rails no longer generates a `bin/bundle` binstub when creating new applications.\n\n    The `bin/bundle` binstub used to help activate the right version of bundler.\n    This is no longer necessary as this mechanism is now part of Rubygem itself.\n\n    *Edouard Chin*",
     "project": "railties",
     "date_merged": 1741151035000,
