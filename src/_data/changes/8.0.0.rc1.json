@@ -270,6 +270,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Generate session controller tests when running the authentication generator.\n\n    *Jerome Dalbert*",
+    "project": "railties",
+    "date_merged": 1741367514000,
+    "author": "Jerome Dalbert",
+    "sha": "1dba10c7fb53af9dcebd3451cf121967960144b3",
+    "pr": "53726",
+    "merge_sha": null,
+    "html": "<p>Generate session controller tests when running the authentication generator.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
+  },
+  {
     "message": "*   Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1741266426000,
