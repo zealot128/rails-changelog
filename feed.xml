@@ -592,6 +592,21 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Generate session controller tests when running the authentication generator.
+</title>
+    <link>https://github.com/rails/rails/issues/53726</link>
+    <guid>https://github.com/rails/rails/issues/53726</guid>
+    <description>*   Generate session controller tests when running the authentication generator.
+
+    *Jerome Dalbert*</description>
+    <pubDate>Fri, 07 Mar 2025 17:11:54 +0000</pubDate>
+    <author>Jerome Dalbert</author>
+    <content:encoded><![CDATA[<p>Generate session controller tests when running the authentication generator.</p>
+
+<p><em>Jerome Dalbert</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.
 </title>
     <link>https://github.com/rails/rails/issues/54695</link>
