@@ -592,6 +592,48 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Introduce `bin/ci` for running your tests, style checks, and security audits locally or in the cloud.
+</title>
+    <link>https://github.com/rails/rails/issues/54693</link>
+    <guid>https://github.com/rails/rails/issues/54693</guid>
+    <description>*   Introduce `bin/ci` for running your tests, style checks, and security audits locally or in the cloud.
+
+    The specific steps are defined by a new DSL in `config/ci.rb`.
+
+    ```ruby
+    ActiveSupport::ContinuousIntegration.run do
+      step &quot;Setup&quot;, &quot;bin/setup --skip-server&quot;
+      step &quot;Style: Ruby&quot;, &quot;bin/rubocop&quot;
+      step &quot;Security: Gem audit&quot;, &quot;bin/bundler-audit&quot;
+      step &quot;Tests: Rails&quot;, &quot;bin/rails test test:system&quot;
+    end
+    ```
+
+    Optionally use [gh-signoff](https://github.com/basecamp/gh-signoff) to
+    set a green PR status - ready for merge.
+
+    *Jeremy Daer*, *DHH*</description>
+    <pubDate>Sat, 08 Mar 2025 09:37:23 +0000</pubDate>
+    <author>Jeremy Daer</author>
+    <content:encoded><![CDATA[<p>Introduce <code>bin/ci</code> for running your tests, style checks, and security audits locally or in the cloud.</p>
+
+<p>The specific steps are defined by a new DSL in <code>config/ci.rb</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveSupport</span><span class="o">::</span><span class="no">ContinuousIntegration</span><span class="p">.</span><span class="nf">run</span> <span class="k">do</span>
+  <span class="n">step</span> <span class="s2">"Setup"</span><span class="p">,</span> <span class="s2">"bin/setup --skip-server"</span>
+  <span class="n">step</span> <span class="s2">"Style: Ruby"</span><span class="p">,</span> <span class="s2">"bin/rubocop"</span>
+  <span class="n">step</span> <span class="s2">"Security: Gem audit"</span><span class="p">,</span> <span class="s2">"bin/bundler-audit"</span>
+  <span class="n">step</span> <span class="s2">"Tests: Rails"</span><span class="p">,</span> <span class="s2">"bin/rails test test:system"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Optionally use <a href="https://github.com/basecamp/gh-signoff">gh-signoff</a> to<br />
+set a green PR status - ready for merge.</p>
+
+<p><em>Jeremy Daer</em>, <em>DHH</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Generate session controller tests when running the authentication generator.
 </title>
     <link>https://github.com/rails/rails/issues/53726</link>
