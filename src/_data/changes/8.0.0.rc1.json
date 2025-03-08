@@ -270,6 +270,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Introduce `bin/ci` for running your tests, style checks, and security audits locally or in the cloud.\n\n    The specific steps are defined by a new DSL in `config/ci.rb`.\n\n    ```ruby\n    ActiveSupport::ContinuousIntegration.run do\n      step \"Setup\", \"bin/setup --skip-server\"\n      step \"Style: Ruby\", \"bin/rubocop\"\n      step \"Security: Gem audit\", \"bin/bundler-audit\"\n      step \"Tests: Rails\", \"bin/rails test test:system\"\n    end\n    ```\n\n    Optionally use [gh-signoff](https://github.com/basecamp/gh-signoff) to\n    set a green PR status - ready for merge.\n\n    *Jeremy Daer*, *DHH*",
+    "project": "railties",
+    "date_merged": 1741426643000,
+    "author": "Jeremy Daer",
+    "sha": "bcd5c93609c5854399dfb960b3666d318f469eb8",
+    "pr": "54693",
+    "merge_sha": null,
+    "html": "<p>Introduce <code>bin/ci</code> for running your tests, style checks, and security audits locally or in the cloud.</p>\n\n<p>The specific steps are defined by a new DSL in <code>config/ci.rb</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">ContinuousIntegration</span><span class=\"p\">.</span><span class=\"nf\">run</span> <span class=\"k\">do</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Setup\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/setup --skip-server\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Style: Ruby\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rubocop\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Security: Gem audit\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/bundler-audit\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Tests: Rails\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rails test test:system\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Optionally use <a href=\"https://github.com/basecamp/gh-signoff\">gh-signoff</a> to<br />\nset a green PR status - ready for merge.</p>\n\n<p><em>Jeremy Daer</em>, <em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Generate session controller tests when running the authentication generator.\n\n    *Jerome Dalbert*",
     "project": "railties",
     "date_merged": 1741387412000,
