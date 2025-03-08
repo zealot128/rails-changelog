@@ -272,11 +272,11 @@
   {
     "message": "*   Generate session controller tests when running the authentication generator.\n\n    *Jerome Dalbert*",
     "project": "railties",
-    "date_merged": 1741367514000,
+    "date_merged": 1741387412000,
     "author": "Jerome Dalbert",
     "sha": "1dba10c7fb53af9dcebd3451cf121967960144b3",
     "pr": "53726",
-    "merge_sha": null,
+    "merge_sha": "ba6f20aa62d3456e06cee4621718066e57337aab",
     "html": "<p>Generate session controller tests when running the authentication generator.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
   },
   {
@@ -408,6 +408,16 @@
     "pr": "53963",
     "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
+    "message": "*   Raise `AbstractController::DoubleRenderError` if `head` is called after rendering.\n\n    After this change, invoking `head` will lead to an error if response body is already set:\n\n    ```ruby\n    class PostController < ApplicationController\n      def index\n        render locals: {}\n        head :ok\n      end\n    end\n    ```\n\n    *Iaroslav Kurbatov*",
+    "project": "actionpack",
+    "date_merged": 1741387779000,
+    "author": "viralpraxis",
+    "sha": "1e3968e673b5ff94ea5976f2421ecc977a813355",
+    "pr": "54655",
+    "merge_sha": "2470d5b6d326b771ce9bd8d3e7b2728e5603e55c",
+    "html": "<p>Raise <code>AbstractController::DoubleRenderError</code> if <code>head</code> is called after rendering.</p>\n\n<p>After this change, invoking <code>head</code> will lead to an error if response body is already set:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">PostController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">render</span> <span class=\"ss\">locals: </span><span class=\"p\">{}</span>\n    <span class=\"n\">head</span> <span class=\"ss\">:ok</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Iaroslav Kurbatov</em></p>\n"
   },
   {
     "message": "*   The Cookie Serializer can now serialize an Active Support SafeBuffer when using message pack.\n\n    Such code would previously produce an error if an application was using messagepack as its cookie serializer.\n\n    ```ruby\n    class PostController < ApplicationController\n      def index\n        flash.notice = t(:hello_html) # This would try to serialize a SafeBuffer, which was not possible.\n      end\n    end\n    ```\n\n    *Edouard Chin*",
