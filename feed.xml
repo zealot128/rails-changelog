@@ -613,7 +613,7 @@ improve tolerance for alternate ERB handlers.</p>
     set a green PR status - ready for merge.
 
     *Jeremy Daer*, *DHH*</description>
-    <pubDate>Sat, 08 Mar 2025 09:37:23 +0000</pubDate>
+    <pubDate>Sun, 09 Mar 2025 10:10:59 +0000</pubDate>
     <author>Jeremy Daer</author>
     <content:encoded><![CDATA[<p>Introduce <code>bin/ci</code> for running your tests, style checks, and security audits locally or in the cloud.</p>
 
