@@ -592,6 +592,23 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Skip generating mailer-related files in authentication generator if the application does
+</title>
+    <link>https://github.com/rails/rails/issues/54686</link>
+    <guid>https://github.com/rails/rails/issues/54686</guid>
+    <description>*   Skip generating mailer-related files in authentication generator if the application does
+    not use ActionMailer
+
+    *Rami Massoud*</description>
+    <pubDate>Tue, 11 Mar 2025 19:27:05 +0000</pubDate>
+    <author>Rami Massoud</author>
+    <content:encoded><![CDATA[<p>Skip generating mailer-related files in authentication generator if the application does<br />
+not use ActionMailer</p>
+
+<p><em>Rami Massoud</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Introduce `bin/ci` for running your tests, style checks, and security audits locally or in the cloud.
 </title>
     <link>https://github.com/rails/rails/issues/54693</link>
@@ -1098,6 +1115,33 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 </code></pre></div></div>
 
 <p><em>Petrik de Heus</em></p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>activerecord: Allow bypassing primary key/constraint addition in `implicit_order_column`
+</title>
+    <link>https://github.com/rails/rails/issues/54679</link>
+    <guid>https://github.com/rails/rails/issues/54679</guid>
+    <description>*   Allow bypassing primary key/constraint addition in `implicit_order_column`
+
+    When specifying multiple columns in an array for `implicit_order_column`, adding
+    `nil` as the last element will prevent appending the primary key to order
+    conditions. This allows more precise control of indexes used by
+    generated queries. It should be noted that this feature does introduce the risk
+    of API misbehavior if the specified columns are not fully unique.
+
+    *Issy Long*</description>
+    <pubDate>Wed, 12 Mar 2025 02:32:31 +0000</pubDate>
+    <author>Issy Long</author>
+    <content:encoded><![CDATA[<p>Allow bypassing primary key/constraint addition in <code>implicit_order_column</code></p>
+
+<p>When specifying multiple columns in an array for <code>implicit_order_column</code>, adding<br />
+<code>nil</code> as the last element will prevent appending the primary key to order<br />
+conditions. This allows more precise control of indexes used by<br />
+generated queries. It should be noted that this feature does introduce the risk<br />
+of API misbehavior if the specified columns are not fully unique.</p>
+
+<p><em>Issy Long</em></p>
 ]]></content:encoded>
   </item>
   <item>
