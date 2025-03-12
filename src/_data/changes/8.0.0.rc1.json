@@ -270,6 +270,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Skip generating mailer-related files in authentication generator if the application does\n    not use ActionMailer\n\n    *Rami Massoud*",
+    "project": "railties",
+    "date_merged": 1741721225000,
+    "author": "Rami Massoud",
+    "sha": "e87af0f3235ca555f7864de9bb44da1d464d012d",
+    "pr": "54686",
+    "merge_sha": "af7ed3cae208d777fe993e37f7502f7ba1058dae",
+    "html": "<p>Skip generating mailer-related files in authentication generator if the application does<br />\nnot use ActionMailer</p>\n\n<p><em>Rami Massoud</em></p>\n"
+  },
+  {
     "message": "*   Introduce `bin/ci` for running your tests, style checks, and security audits locally or in the cloud.\n\n    The specific steps are defined by a new DSL in `config/ci.rb`.\n\n    ```ruby\n    ActiveSupport::ContinuousIntegration.run do\n      step \"Setup\", \"bin/setup --skip-server\"\n      step \"Style: Ruby\", \"bin/rubocop\"\n      step \"Security: Gem audit\", \"bin/bundler-audit\"\n      step \"Tests: Rails\", \"bin/rails test test:system\"\n    end\n    ```\n\n    Optionally use [gh-signoff](https://github.com/basecamp/gh-signoff) to\n    set a green PR status - ready for merge.\n\n    *Jeremy Daer*, *DHH*",
     "project": "railties",
     "date_merged": 1741515059000,
@@ -488,6 +498,16 @@
     "pr": "53236",
     "merge_sha": "ed72523a86fb6010e056667f294fee34ba276aed",
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Allow bypassing primary key/constraint addition in `implicit_order_column`\n\n    When specifying multiple columns in an array for `implicit_order_column`, adding\n    `nil` as the last element will prevent appending the primary key to order\n    conditions. This allows more precise control of indexes used by\n    generated queries. It should be noted that this feature does introduce the risk\n    of API misbehavior if the specified columns are not fully unique.\n\n    *Issy Long*",
+    "project": "activerecord",
+    "date_merged": 1741746751000,
+    "author": "Issy Long",
+    "sha": "c327b19b94a384b298d498fa19c93e68b3add7f9",
+    "pr": "54679",
+    "merge_sha": "a4065fb3686b219acc88a4a016d8f237e4cb5971",
+    "html": "<p>Allow bypassing primary key/constraint addition in <code>implicit_order_column</code></p>\n\n<p>When specifying multiple columns in an array for <code>implicit_order_column</code>, adding<br />\n<code>nil</code> as the last element will prevent appending the primary key to order<br />\nconditions. This allows more precise control of indexes used by<br />\ngenerated queries. It should be noted that this feature does introduce the risk<br />\nof API misbehavior if the specified columns are not fully unique.</p>\n\n<p><em>Issy Long</em></p>\n"
   },
   {
     "message": "*   Allow setting the `schema_format` via database configuration.\n\n    ```\n    primary:\n      schema_format: ruby\n    ```\n\n    Useful for multi-database setups when apps require different formats per-database.\n\n    *T S Vallender*",
