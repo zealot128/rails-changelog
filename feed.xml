@@ -592,6 +592,21 @@ improve tolerance for alternate ERB handlers.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>railties: Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.
+</title>
+    <link>https://github.com/rails/rails/issues/54754</link>
+    <guid>https://github.com/rails/rails/issues/54754</guid>
+    <description>*   Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.
+
+    *Lovro Bikić*</description>
+    <pubDate>Fri, 14 Mar 2025 13:17:05 +0000</pubDate>
+    <author>Lovro Bikic</author>
+    <content:encoded><![CDATA[<p>Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.</p>
+
+<p><em>Lovro Bikić</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>railties: Skip generating mailer-related files in authentication generator if the application does
 </title>
     <link>https://github.com/rails/rails/issues/54686</link>
