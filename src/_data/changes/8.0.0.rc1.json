@@ -270,6 +270,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.\n\n    *Lovro Bikić*",
+    "project": "railties",
+    "date_merged": 1741958225000,
+    "author": "Lovro Bikic",
+    "sha": "ceb06782622b3dcaaf9bd0e95fa188f4d20f7949",
+    "pr": "54754",
+    "merge_sha": "951ea8f75d9bf6d2999df2f0497347976dce9476",
+    "html": "<p>Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.</p>\n\n<p><em>Lovro Bikić</em></p>\n"
+  },
+  {
     "message": "*   Skip generating mailer-related files in authentication generator if the application does\n    not use ActionMailer\n\n    *Rami Massoud*",
     "project": "railties",
     "date_merged": 1741721225000,
