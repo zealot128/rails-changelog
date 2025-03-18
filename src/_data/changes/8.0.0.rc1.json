@@ -440,6 +440,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Load lazy route sets before inserting test routes\n\n    Without loading lazy route sets early, we miss `after_routes_loaded` callbacks, or risk\n    invoking them with the test routes instead of the real ones if another load is triggered by an engine.\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1742316034000,
+    "author": "Gannon McGibbon",
+    "sha": "4c629b67deb6b6f184ba301e37045950df383a64",
+    "pr": "54777",
+    "merge_sha": "e9d7ca5e0b834ff2ce3d43965deac670ff8ac790",
+    "html": "<p>Load lazy route sets before inserting test routes</p>\n\n<p>Without loading lazy route sets early, we miss <code>after_routes_loaded</code> callbacks, or risk<br />\ninvoking them with the test routes instead of the real ones if another load is triggered by an engine.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Raise `AbstractController::DoubleRenderError` if `head` is called after rendering.\n\n    After this change, invoking `head` will lead to an error if response body is already set:\n\n    ```ruby\n    class PostController < ApplicationController\n      def index\n        render locals: {}\n        head :ok\n      end\n    end\n    ```\n\n    *Iaroslav Kurbatov*",
     "project": "actionpack",
     "date_merged": 1741387779000,
