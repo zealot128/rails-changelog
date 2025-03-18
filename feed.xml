@@ -925,6 +925,27 @@ generation of <code>tmp/local_secret.txt</code> files when running the report te
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Load lazy route sets before inserting test routes
+</title>
+    <link>https://github.com/rails/rails/issues/54777</link>
+    <guid>https://github.com/rails/rails/issues/54777</guid>
+    <description>*   Load lazy route sets before inserting test routes
+
+    Without loading lazy route sets early, we miss `after_routes_loaded` callbacks, or risk
+    invoking them with the test routes instead of the real ones if another load is triggered by an engine.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Tue, 18 Mar 2025 16:40:34 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Load lazy route sets before inserting test routes</p>
+
+<p>Without loading lazy route sets early, we miss <code>after_routes_loaded</code> callbacks, or risk<br />
+invoking them with the test routes instead of the real ones if another load is triggered by an engine.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Raise `AbstractController::DoubleRenderError` if `head` is called after rendering.
 </title>
     <link>https://github.com/rails/rails/issues/54655</link>
