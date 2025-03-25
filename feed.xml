@@ -80,6 +80,50 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Introduce ActiveSupport::Testing::ErrorReporterAssertions#capture_error_reports
+</title>
+    <link>https://github.com/rails/rails/issues/54809</link>
+    <guid>https://github.com/rails/rails/issues/54809</guid>
+    <description>*   Introduce ActiveSupport::Testing::ErrorReporterAssertions#capture_error_reports
+
+    Captures all reported errors from within the block that match the given
+    error class.
+
+    ```ruby
+    reports = capture_error_reports(IOError) do
+      Rails.error.report(IOError.new(&quot;Oops&quot;))
+      Rails.error.report(IOError.new(&quot;Oh no&quot;))
+      Rails.error.report(StandardError.new)
+    end
+
+    assert_equal 2, reports.size
+    assert_equal &quot;Oops&quot;, reports.first.error.message
+    assert_equal &quot;Oh no&quot;, reports.last.error.message
+    ```
+
+    *Andrew Novoselac*</description>
+    <pubDate>Tue, 25 Mar 2025 12:51:11 +0000</pubDate>
+    <author>Andrew Novoselac</author>
+    <content:encoded><![CDATA[<p>Introduce ActiveSupport::Testing::ErrorReporterAssertions#capture_error_reports</p>
+
+<p>Captures all reported errors from within the block that match the given<br />
+error class.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reports</span> <span class="o">=</span> <span class="n">capture_error_reports</span><span class="p">(</span><span class="no">IOError</span><span class="p">)</span> <span class="k">do</span>
+  <span class="no">Rails</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="no">IOError</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Oops"</span><span class="p">))</span>
+  <span class="no">Rails</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="no">IOError</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Oh no"</span><span class="p">))</span>
+  <span class="no">Rails</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="no">StandardError</span><span class="p">.</span><span class="nf">new</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">assert_equal</span> <span class="mi">2</span><span class="p">,</span> <span class="n">reports</span><span class="p">.</span><span class="nf">size</span>
+<span class="n">assert_equal</span> <span class="s2">"Oops"</span><span class="p">,</span> <span class="n">reports</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">message</span>
+<span class="n">assert_equal</span> <span class="s2">"Oh no"</span><span class="p">,</span> <span class="n">reports</span><span class="p">.</span><span class="nf">last</span><span class="p">.</span><span class="nf">error</span><span class="p">.</span><span class="nf">message</span>
+</code></pre></div></div>
+
+<p><em>Andrew Novoselac</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Introduce ActiveSupport::ErrorReporter#add_middleware
 </title>
     <link>https://github.com/rails/rails/issues/54512</link>
