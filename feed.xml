@@ -969,6 +969,60 @@ generation of <code>tmp/local_secret.txt</code> files when running the report te
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: The JSON renderer doesn&#39;t escape HTML entities or Unicode line separators anymore.
+</title>
+    <link>https://github.com/rails/rails/issues/54643</link>
+    <guid>https://github.com/rails/rails/issues/54643</guid>
+    <description>*   The JSON renderer doesn&#39;t escape HTML entities or Unicode line separators anymore.
+
+    Using `render json:` will no longer escape `&lt;`, `&gt;`, `&amp;`, `U+2028` and `U+2029` characters that can cause errors
+    when the resulting JSON is embedded in JavaScript, or vulnerabilities when the resulting JSON is embedded in HTML.
+
+    Since the renderer is used to return a JSON document as `application/json`, it&#39;s typically not necessary to escape
+    those characters, and it improves performance.
+
+    Escaping will still occur when the `:callback` option is set, since the JSON is used as JavaScript code in this
+    situation (JSONP).
+
+    You can use the `:escape` option or set `config.action_controller.escape_json_responses` to `true` to restore the
+    escaping behavior.
+
+    ```ruby
+    class PostsController &lt; ApplicationController
+      def index
+        render json: Post.last(30), escape: true
+      end
+    end
+    ```
+
+    *Étienne Barrié*, *Jean Boussier*</description>
+    <pubDate>Thu, 27 Mar 2025 08:50:59 +0000</pubDate>
+    <author>Étienne Barrié</author>
+    <content:encoded><![CDATA[<p>The JSON renderer doesn’t escape HTML entities or Unicode line separators anymore.</p>
+
+<p>Using <code>render json:</code> will no longer escape <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>U+2028</code> and <code>U+2029</code> characters that can cause errors<br />
+when the resulting JSON is embedded in JavaScript, or vulnerabilities when the resulting JSON is embedded in HTML.</p>
+
+<p>Since the renderer is used to return a JSON document as <code>application/json</code>, it’s typically not necessary to escape<br />
+those characters, and it improves performance.</p>
+
+<p>Escaping will still occur when the <code>:callback</code> option is set, since the JSON is used as JavaScript code in this<br />
+situation (JSONP).</p>
+
+<p>You can use the <code>:escape</code> option or set <code>config.action_controller.escape_json_responses</code> to <code>true</code> to restore the<br />
+escaping behavior.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PostsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="n">render</span> <span class="ss">json: </span><span class="no">Post</span><span class="p">.</span><span class="nf">last</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span> <span class="ss">escape: </span><span class="kp">true</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Étienne Barrié</em>, <em>Jean Boussier</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Load lazy route sets before inserting test routes
 </title>
     <link>https://github.com/rails/rails/issues/54777</link>
