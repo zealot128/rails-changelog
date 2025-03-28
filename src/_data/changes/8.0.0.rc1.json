@@ -540,6 +540,16 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Prepend `extra_flags` in postgres' `structure_load`\n\n    When specifying `structure_load_flags` with a postgres adapter, the flags\n    were appended to the default flags, instead of prepended.\n    This caused issues with flags not being taken into account by postgres.\n\n    *Alice Loeser*",
+    "project": "activerecord",
+    "date_merged": 1743149246000,
+    "author": "Alice Loeser",
+    "sha": "6718aeb244b62bb8a369b8318f31a9469cd6aaf1",
+    "pr": "54805",
+    "merge_sha": "e2f36ff105602d365002a664a599bbbafd8241dc",
+    "html": "<p>Prepend <code>extra_flags</code> in postgres’ <code>structure_load</code></p>\n\n<p>When specifying <code>structure_load_flags</code> with a postgres adapter, the flags<br />\nwere appended to the default flags, instead of prepended.<br />\nThis caused issues with flags not being taken into account by postgres.</p>\n\n<p><em>Alice Loeser</em></p>\n"
+  },
+  {
     "message": "*   Allow bypassing primary key/constraint addition in `implicit_order_column`\n\n    When specifying multiple columns in an array for `implicit_order_column`, adding\n    `nil` as the last element will prevent appending the primary key to order\n    conditions. This allows more precise control of indexes used by\n    generated queries. It should be noted that this feature does introduce the risk\n    of API misbehavior if the specified columns are not fully unique.\n\n    *Issy Long*",
     "project": "activerecord",
     "date_merged": 1741746751000,
