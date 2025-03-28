@@ -1252,6 +1252,29 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Prepend `extra_flags` in postgres&#39; `structure_load`
+</title>
+    <link>https://github.com/rails/rails/issues/54805</link>
+    <guid>https://github.com/rails/rails/issues/54805</guid>
+    <description>*   Prepend `extra_flags` in postgres&#39; `structure_load`
+
+    When specifying `structure_load_flags` with a postgres adapter, the flags
+    were appended to the default flags, instead of prepended.
+    This caused issues with flags not being taken into account by postgres.
+
+    *Alice Loeser*</description>
+    <pubDate>Fri, 28 Mar 2025 08:07:26 +0000</pubDate>
+    <author>Alice Loeser</author>
+    <content:encoded><![CDATA[<p>Prepend <code>extra_flags</code> in postgres’ <code>structure_load</code></p>
+
+<p>When specifying <code>structure_load_flags</code> with a postgres adapter, the flags<br />
+were appended to the default flags, instead of prepended.<br />
+This caused issues with flags not being taken into account by postgres.</p>
+
+<p><em>Alice Loeser</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow bypassing primary key/constraint addition in `implicit_order_column`
 </title>
     <link>https://github.com/rails/rails/issues/54679</link>
