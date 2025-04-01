@@ -450,6 +450,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Include cookie name when calculating maximum allowed size.\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1743492989000,
+    "author": "Hartley McGuire",
+    "sha": "69a1e070c84ad63bd676f95021eca785e0502f80",
+    "pr": "54843",
+    "merge_sha": "a77a35872c159374e376c789ab2b4ba9f44a7318",
+    "html": "<p>Include cookie name when calculating maximum allowed size.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Implement `must-understand` directive according to RFC 9111.\n\n    The `must-understand` directive indicates that a cache must understand the semantics of the response status code, or discard the response. This directive is enforced to be used only with `no-store` to ensure proper cache behavior.\n\n    ```ruby\n    class ArticlesController < ApplicationController\n      def show\n        @article = Article.find(params[:id])\n\n        if @article.special_format?\n          must_understand\n          render status: 203 # Non-Authoritative Information\n        else\n          fresh_when @article\n        end\n      end\n    end\n    ```\n\n    *heka1024*",
     "project": "actionpack",
     "date_merged": 1743408334000,
