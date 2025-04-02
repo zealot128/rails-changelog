@@ -80,6 +80,34 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Add `Cache#read_counter` and `Cache#write_counter`
+</title>
+    <link>https://github.com/rails/rails/issues/54855</link>
+    <guid>https://github.com/rails/rails/issues/54855</guid>
+    <description>*   Add `Cache#read_counter` and `Cache#write_counter`
+
+    ```ruby
+    Rails.cache.write_counter(&quot;foo&quot;, 1)
+    Rails.cache.read_counter(&quot;foo&quot;) # =&gt; 1
+    Rails.cache.increment(&quot;foo&quot;)
+    Rails.cache.read_counter(&quot;foo&quot;) # =&gt; 2
+    ```
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Wed, 02 Apr 2025 08:49:12 +0000</pubDate>
+    <author>Alex</author>
+    <content:encoded><![CDATA[<p>Add <code>Cache#read_counter</code> and <code>Cache#write_counter</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">write_counter</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">read_counter</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)</span> <span class="c1"># =&gt; 1</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">increment</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">read_counter</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)</span> <span class="c1"># =&gt; 2</span>
+</code></pre></div></div>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Introduce ActiveSupport::Testing::ErrorReporterAssertions#capture_error_reports
 </title>
     <link>https://github.com/rails/rails/issues/54809</link>
@@ -373,16 +401,16 @@ option is already a <code>ConnectionPool</code>.</p>
 ]]></content:encoded>
   </item>
   <item>
-    <title>activesupport: Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.
+    <title>activesupport: Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceded by multibyte characters.
 </title>
-    <link>https://github.com/rails/rails/issues/53655</link>
-    <guid>https://github.com/rails/rails/issues/53655</guid>
-    <description>*   Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.
+    <link>https://github.com/rails/rails/issues/54852</link>
+    <guid>https://github.com/rails/rails/issues/54852</guid>
+    <description>*   Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceded by multibyte characters.
 
     *Martin Emde*</description>
-    <pubDate>Sun, 17 Nov 2024 15:11:19 +0000</pubDate>
-    <author>Martin Emde</author>
-    <content:encoded><![CDATA[<p>Fix a bug in <code>ERB::Util.tokenize</code> that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.</p>
+    <pubDate>Wed, 02 Apr 2025 08:54:08 +0000</pubDate>
+    <author>John Bampton</author>
+    <content:encoded><![CDATA[<p>Fix a bug in <code>ERB::Util.tokenize</code> that causes incorrect tokenization when ERB tags are preceded by multibyte characters.</p>
 
 <p><em>Martin Emde</em></p>
 ]]></content:encoded>
@@ -803,7 +831,7 @@ running <code>rails g authentication</code>. Simplifies authentication in integr
     <guid>https://github.com/rails/rails/issues/54313</guid>
     <description>*   Update `rails new --minimal` option
 
-    Extend the `--minimal` flag to exlcude recently added features:
+    Extend the `--minimal` flag to exclude recently added features:
     `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.
 
     *eelcoj*</description>
@@ -811,7 +839,7 @@ running <code>rails g authentication</code>. Simplifies authentication in integr
     <author>eelco</author>
     <content:encoded><![CDATA[<p>Update <code>rails new --minimal</code> option</p>
 
-<p>Extend the <code>--minimal</code> flag to exlcude recently added features:<br />
+<p>Extend the <code>--minimal</code> flag to exclude recently added features:<br />
 <code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>
 
 <p><em>eelcoj</em></p>
