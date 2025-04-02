@@ -30,6 +30,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Add `Cache#read_counter` and `Cache#write_counter`\n\n    ```ruby\n    Rails.cache.write_counter(\"foo\", 1)\n    Rails.cache.read_counter(\"foo\") # => 1\n    Rails.cache.increment(\"foo\")\n    Rails.cache.read_counter(\"foo\") # => 2\n    ```\n\n    *Alex Ghiculescu*",
+    "project": "activesupport",
+    "date_merged": 1743583752000,
+    "author": "Alex",
+    "sha": "a7dcbdee9c4a6ddfa7ff97d14a4ac546ae7cd255",
+    "pr": "54855",
+    "merge_sha": "5d4057b667c7f4bcf8adb1c4901efb1fd8f9438f",
+    "html": "<p>Add <code>Cache#read_counter</code> and <code>Cache#write_counter</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">write_counter</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">read_counter</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; 1</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">increment</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">read_counter</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; 2</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
     "message": "*   Introduce ActiveSupport::Testing::ErrorReporterAssertions#capture_error_reports\n\n    Captures all reported errors from within the block that match the given\n    error class.\n\n    ```ruby\n    reports = capture_error_reports(IOError) do\n      Rails.error.report(IOError.new(\"Oops\"))\n      Rails.error.report(IOError.new(\"Oh no\"))\n      Rails.error.report(StandardError.new)\n    end\n\n    assert_equal 2, reports.size\n    assert_equal \"Oops\", reports.first.error.message\n    assert_equal \"Oh no\", reports.last.error.message\n    ```\n\n    *Andrew Novoselac*",
     "project": "activesupport",
     "date_merged": 1742907071000,
@@ -150,14 +160,14 @@
     "html": "<p>Alter <code>ERB::Util.tokenize</code> to return :PLAIN token with full input string when string doesn’t contain ERB tags.</p>\n\n<p><em>Martin Emde</em></p>\n"
   },
   {
-    "message": "*   Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.\n\n    *Martin Emde*",
+    "message": "*   Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceded by multibyte characters.\n\n    *Martin Emde*",
     "project": "activesupport",
-    "date_merged": 1731856279000,
-    "author": "Martin Emde",
-    "sha": "30010bb7eb31a9f251c7e519528c0fe0a68c7f3a",
-    "pr": "53655",
-    "merge_sha": "51f3fa68f75ecaec114c5eacfb99a4a8ed260844",
-    "html": "<p>Fix a bug in <code>ERB::Util.tokenize</code> that causes incorrect tokenization when ERB tags are preceeded by multibyte characters.</p>\n\n<p><em>Martin Emde</em></p>\n"
+    "date_merged": 1743584048000,
+    "author": "John Bampton",
+    "sha": "5db3ed5ba91b409c9af2513ea753165b010953a8",
+    "pr": "54852",
+    "merge_sha": "0c90b26a53bd67173756553dc8c05d73cd48a0fd",
+    "html": "<p>Fix a bug in <code>ERB::Util.tokenize</code> that causes incorrect tokenization when ERB tags are preceded by multibyte characters.</p>\n\n<p><em>Martin Emde</em></p>\n"
   },
   {
     "message": "*   Add `ActiveSupport::Testing::NotificationAssertions` module to help with testing `ActiveSupport::Notifications`.\n\n    *Nicholas La Roux*, *Yishu See*, *Sean Doyle*",
@@ -360,14 +370,14 @@
     "html": "<p>Rate limit password resets in authentication generator</p>\n\n<p>This helps mitigate abuse from attackers spamming the password reset form.</p>\n\n<p><em>Chris Oliver</em></p>\n"
   },
   {
-    "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exlcude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
+    "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exclude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
     "project": "railties",
     "date_merged": 1737751723000,
     "author": "eelco",
     "sha": "dad07631d99c96f015162d3cab83c41111adf401",
     "pr": "54313",
     "merge_sha": "cd171d69fa03e0a09133089eca672831d447d02a",
-    "html": "<p>Update <code>rails new --minimal</code> option</p>\n\n<p>Extend the <code>--minimal</code> flag to exlcude recently added features:<br />\n<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>\n\n<p><em>eelcoj</em></p>\n"
+    "html": "<p>Update <code>rails new --minimal</code> option</p>\n\n<p>Extend the <code>--minimal</code> flag to exclude recently added features:<br />\n<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>\n\n<p><em>eelcoj</em></p>\n"
   },
   {
     "message": "*   Add `application-name` metadata to application layout\n\n    The following metatag will be added to `app/views/layouts/application.html.erb`\n\n    ```html\n    <meta name=\"application-name\" content=\"Name of Rails Application\">\n    ```\n\n    *Steve Polito*",
