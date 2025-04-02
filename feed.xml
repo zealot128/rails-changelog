@@ -969,6 +969,21 @@ generation of <code>tmp/local_secret.txt</code> files when running the report te
 ]]></content:encoded>
   </item>
   <item>
+    <title>actionpack: Include cookie name when calculating maximum allowed size.
+</title>
+    <link>https://github.com/rails/rails/issues/54843</link>
+    <guid>https://github.com/rails/rails/issues/54843</guid>
+    <description>*   Include cookie name when calculating maximum allowed size.
+
+    *Hartley McGuire*</description>
+    <pubDate>Tue, 01 Apr 2025 07:36:29 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Include cookie name when calculating maximum allowed size.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>actionpack: Implement `must-understand` directive according to RFC 9111.
 </title>
     <link>https://github.com/rails/rails/issues/54833</link>
