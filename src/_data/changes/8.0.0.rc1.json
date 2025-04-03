@@ -30,6 +30,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Use `UNLINK` command instead of `DEL` in `ActiveSupport::Cache::RedisCacheStore` for non-blocking deletion.\n\n    *Aron Roh*",
+    "project": "activesupport",
+    "date_merged": 1743703328000,
+    "author": "roharon",
+    "sha": "76ec98d0173ba8aef83adb7d660c453a518d5e46",
+    "pr": "54861",
+    "merge_sha": "e0452e80137c396c93465cf98f8eda43026346c7",
+    "html": "<p>Use <code>UNLINK</code> command instead of <code>DEL</code> in <code>ActiveSupport::Cache::RedisCacheStore</code> for non-blocking deletion.</p>\n\n<p><em>Aron Roh</em></p>\n"
+  },
+  {
     "message": "*   Add `Cache#read_counter` and `Cache#write_counter`\n\n    ```ruby\n    Rails.cache.write_counter(\"foo\", 1)\n    Rails.cache.read_counter(\"foo\") # => 1\n    Rails.cache.increment(\"foo\")\n    Rails.cache.read_counter(\"foo\") # => 2\n    ```\n\n    *Alex Ghiculescu*",
     "project": "activesupport",
     "date_merged": 1743583752000,
