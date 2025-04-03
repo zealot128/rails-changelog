@@ -80,6 +80,21 @@
 ]]></content:encoded>
   </item>
   <item>
+    <title>activesupport: Use `UNLINK` command instead of `DEL` in `ActiveSupport::Cache::RedisCacheStore` for non-blocking deletion.
+</title>
+    <link>https://github.com/rails/rails/issues/54861</link>
+    <guid>https://github.com/rails/rails/issues/54861</guid>
+    <description>*   Use `UNLINK` command instead of `DEL` in `ActiveSupport::Cache::RedisCacheStore` for non-blocking deletion.
+
+    *Aron Roh*</description>
+    <pubDate>Thu, 03 Apr 2025 18:02:08 +0000</pubDate>
+    <author>roharon</author>
+    <content:encoded><![CDATA[<p>Use <code>UNLINK</code> command instead of <code>DEL</code> in <code>ActiveSupport::Cache::RedisCacheStore</code> for non-blocking deletion.</p>
+
+<p><em>Aron Roh</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activesupport: Add `Cache#read_counter` and `Cache#write_counter`
 </title>
     <link>https://github.com/rails/rails/issues/54855</link>
