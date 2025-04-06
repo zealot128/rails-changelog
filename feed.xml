@@ -1358,6 +1358,166 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow signed ID verifiers to be configurable via `Rails.application.message_verifiers`
+</title>
+    <link>https://github.com/rails/rails/issues/54422</link>
+    <guid>https://github.com/rails/rails/issues/54422</guid>
+    <description>*   Allow signed ID verifiers to be configurable via `Rails.application.message_verifiers`
+
+    Prior to this change, the primary way to configure signed ID verifiers was
+    to set `signed_id_verifier` on each model class:
+
+      ```ruby
+      Post.signed_id_verifier = ActiveSupport::MessageVerifier.new(...)
+      Comment.signed_id_verifier = ActiveSupport::MessageVerifier.new(...)
+      ```
+
+    And if the developer did not set `signed_id_verifier`, a verifier would be
+    instantiated with a secret derived from `secret_key_base` and the following
+    options:
+
+      ```ruby
+      { digest: &quot;SHA256&quot;, serializer: JSON, url_safe: true }
+      ```
+
+    Thus it was cumbersome to rotate configuration for all verifiers.
+
+    This change defines a new Rails config: [`config.active_record.use_legacy_signed_id_verifier`][].
+    The default value is `:generate_and_verify`, which preserves the previous
+    behavior. However, when set to `:verify`, signed ID verifiers will use
+    configuration from `Rails.application.message_verifiers` (specifically,
+    `Rails.application.message_verifiers[&quot;active_record/signed_id&quot;]`) to
+    generate and verify signed IDs, but will also verify signed IDs using the
+    older configuration.
+
+    To avoid complication, the new behavior only applies when `signed_id_verifier_secret`
+    is not set on a model class or any of its ancestors. Additionally,
+    `signed_id_verifier_secret` is now deprecated. If you are currently setting
+    `signed_id_verifier_secret` on a model class, you can set `signed_id_verifier`
+    instead:
+
+      ```ruby
+      # BEFORE
+      Post.signed_id_verifier_secret = &quot;my secret&quot;
+
+      # AFTER
+      Post.signed_id_verifier = ActiveSupport::MessageVerifier.new(&quot;my secret&quot;, digest: &quot;SHA256&quot;, serializer: JSON, url_safe: true)
+      ```
+
+    To ease migration, `signed_id_verifier` has also been changed to behave as a
+    `class_attribute` (i.e. inheritable), but _only when `signed_id_verifier_secret`
+    is not set_:
+
+      ```ruby
+      # BEFORE
+      ActiveRecord::Base.signed_id_verifier = ActiveSupport::MessageVerifier.new(...)
+      Post.signed_id_verifier == ActiveRecord::Base.signed_id_verifier # =&gt; false
+
+      # AFTER
+      ActiveRecord::Base.signed_id_verifier = ActiveSupport::MessageVerifier.new(...)
+      Post.signed_id_verifier == ActiveRecord::Base.signed_id_verifier # =&gt; true
+
+      Post.signed_id_verifier_secret = &quot;my secret&quot; # =&gt; deprecation warning
+      Post.signed_id_verifier == ActiveRecord::Base.signed_id_verifier # =&gt; false
+      ```
+
+    Note, however, that it is recommended to eventually migrate from
+    model-specific verifiers to a unified configuration managed by
+    `Rails.application.message_verifiers`. `ActiveSupport::MessageVerifier#rotate`
+    can facilitate that transition. For example:
+
+      ```ruby
+      # BEFORE
+      # Generate and verify signed Post IDs using Post-specific configuration
+      Post.signed_id_verifier = ActiveSupport::MessageVerifier.new(&quot;post secret&quot;, ...)
+
+      # AFTER
+      # Generate and verify signed Post IDs using the unified configuration
+      Post.signed_id_verifier = Post.signed_id_verifier.dup
+      # Fall back to Post-specific configuration when verifying signed IDs
+      Post.signed_id_verifier.rotate(&quot;post secret&quot;, ...)
+      ```
+
+    [`config.active_record.use_legacy_signed_id_verifier`]: https://guides.rubyonrails.org/v8.1/configuring.html#config-active-record-use-legacy-signed-id-verifier
+
+    *Ali Sepehri*, *Jonathan Hefner*</description>
+    <pubDate>Sun, 06 Apr 2025 17:41:07 +0000</pubDate>
+    <author>Ali Sepehri</author>
+    <content:encoded><![CDATA[<p>Allow signed ID verifiers to be configurable via <code>Rails.application.message_verifiers</code></p>
+
+<p>Prior to this change, the primary way to configure signed ID verifiers was<br />
+to set <code>signed_id_verifier</code> on each model class:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageVerifier</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+  <span class="no">Comment</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageVerifier</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>And if the developer did not set <code>signed_id_verifier</code>, a verifier would be<br />
+instantiated with a secret derived from <code>secret_key_base</code> and the following<br />
+options:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">{</span> <span class="ss">digest: </span><span class="s2">"SHA256"</span><span class="p">,</span> <span class="ss">serializer: </span><span class="no">JSON</span><span class="p">,</span> <span class="ss">url_safe: </span><span class="kp">true</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Thus it was cumbersome to rotate configuration for all verifiers.</p>
+
+<p>This change defines a new Rails config: <a href="https://guides.rubyonrails.org/v8.1/configuring.html#config-active-record-use-legacy-signed-id-verifier"><code>config.active_record.use_legacy_signed_id_verifier</code></a>.<br />
+The default value is <code>:generate_and_verify</code>, which preserves the previous<br />
+behavior. However, when set to <code>:verify</code>, signed ID verifiers will use<br />
+configuration from <code>Rails.application.message_verifiers</code> (specifically,<br />
+<code>Rails.application.message_verifiers["active_record/signed_id"]</code>) to<br />
+generate and verify signed IDs, but will also verify signed IDs using the<br />
+older configuration.</p>
+
+<p>To avoid complication, the new behavior only applies when <code>signed_id_verifier_secret</code><br />
+is not set on a model class or any of its ancestors. Additionally,<br />
+<code>signed_id_verifier_secret</code> is now deprecated. If you are currently setting<br />
+<code>signed_id_verifier_secret</code> on a model class, you can set <code>signed_id_verifier</code><br />
+instead:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># BEFORE</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier_secret</span> <span class="o">=</span> <span class="s2">"my secret"</span>
+
+  <span class="c1"># AFTER</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageVerifier</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"my secret"</span><span class="p">,</span> <span class="ss">digest: </span><span class="s2">"SHA256"</span><span class="p">,</span> <span class="ss">serializer: </span><span class="no">JSON</span><span class="p">,</span> <span class="ss">url_safe: </span><span class="kp">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>To ease migration, <code>signed_id_verifier</code> has also been changed to behave as a<br />
+<code>class_attribute</code> (i.e. inheritable), but <em>only when <code>signed_id_verifier_secret</code><br />
+is not set</em>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># BEFORE</span>
+  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageVerifier</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">==</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="c1"># =&gt; false</span>
+
+  <span class="c1"># AFTER</span>
+  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageVerifier</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">==</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="c1"># =&gt; true</span>
+
+  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier_secret</span> <span class="o">=</span> <span class="s2">"my secret"</span> <span class="c1"># =&gt; deprecation warning</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">==</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="c1"># =&gt; false</span>
+</code></pre></div></div>
+
+<p>Note, however, that it is recommended to eventually migrate from<br />
+model-specific verifiers to a unified configuration managed by<br />
+<code>Rails.application.message_verifiers</code>. <code>ActiveSupport::MessageVerifier#rotate</code><br />
+can facilitate that transition. For example:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># BEFORE</span>
+  <span class="c1"># Generate and verify signed Post IDs using Post-specific configuration</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">MessageVerifier</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"post secret"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+
+  <span class="c1"># AFTER</span>
+  <span class="c1"># Generate and verify signed Post IDs using the unified configuration</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier</span><span class="p">.</span><span class="nf">dup</span>
+  <span class="c1"># Fall back to Post-specific configuration when verifying signed IDs</span>
+  <span class="no">Post</span><span class="p">.</span><span class="nf">signed_id_verifier</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="s2">"post secret"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Ali Sepehri</em>, <em>Jonathan Hefner</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Prepend `extra_flags` in postgres&#39; `structure_load`
 </title>
     <link>https://github.com/rails/rails/issues/54805</link>
