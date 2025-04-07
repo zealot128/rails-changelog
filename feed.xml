@@ -1358,6 +1358,21 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Model generator no longer needs a database connection to validate column types.
+</title>
+    <link>https://github.com/rails/rails/issues/54875</link>
+    <guid>https://github.com/rails/rails/issues/54875</guid>
+    <description>*   Model generator no longer needs a database connection to validate column types.
+
+    *Mike Dalessio*</description>
+    <pubDate>Mon, 07 Apr 2025 07:39:33 +0000</pubDate>
+    <author>Mike Dalessio</author>
+    <content:encoded><![CDATA[<p>Model generator no longer needs a database connection to validate column types.</p>
+
+<p><em>Mike Dalessio</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow signed ID verifiers to be configurable via `Rails.application.message_verifiers`
 </title>
     <link>https://github.com/rails/rails/issues/54422</link>
