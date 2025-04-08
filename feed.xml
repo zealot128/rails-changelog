@@ -1358,6 +1358,57 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Encryption now supports `support_unencrypted_data: true` being set per-attribute.
+</title>
+    <link>https://github.com/rails/rails/issues/51100</link>
+    <guid>https://github.com/rails/rails/issues/51100</guid>
+    <description>*   Encryption now supports `support_unencrypted_data: true` being set per-attribute.
+
+    Previously this only worked if `ActiveRecord::Encryption.config.support_unencrypted_data == true`.
+    Now, if the global config is turned off, you can still opt in for a specific attribute.
+
+    ```ruby
+    # ActiveRecord::Encryption.config.support_unencrypted_data = true
+    class User &lt; ActiveRecord::Base
+      encrypts :name, support_unencrypted_data: false # only supports encrypted data
+      encrypts :email # supports encrypted or unencrypted data
+    end
+    ```
+
+    ```ruby
+    # ActiveRecord::Encryption.config.support_unencrypted_data = false
+    class User &lt; ActiveRecord::Base
+      encrypts :name, support_unencrypted_data: true # supports encrypted or unencrypted data
+      encrypts :email  # only supports encrypted data
+    end
+    ```
+
+    *Alex Ghiculescu*</description>
+    <pubDate>Tue, 08 Apr 2025 06:39:59 +0000</pubDate>
+    <author>Alex Ghiculescu</author>
+    <content:encoded><![CDATA[<p>Encryption now supports <code>support_unencrypted_data: true</code> being set per-attribute.</p>
+
+<p>Previously this only worked if <code>ActiveRecord::Encryption.config.support_unencrypted_data == true</code>.<br />
+Now, if the global config is turned off, you can still opt in for a specific attribute.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ActiveRecord::Encryption.config.support_unencrypted_data = true</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">encrypts</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">support_unencrypted_data: </span><span class="kp">false</span> <span class="c1"># only supports encrypted data</span>
+  <span class="n">encrypts</span> <span class="ss">:email</span> <span class="c1"># supports encrypted or unencrypted data</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ActiveRecord::Encryption.config.support_unencrypted_data = false</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">encrypts</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">support_unencrypted_data: </span><span class="kp">true</span> <span class="c1"># supports encrypted or unencrypted data</span>
+  <span class="n">encrypts</span> <span class="ss">:email</span>  <span class="c1"># only supports encrypted data</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><em>Alex Ghiculescu</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Model generator no longer needs a database connection to validate column types.
 </title>
     <link>https://github.com/rails/rails/issues/54875</link>
