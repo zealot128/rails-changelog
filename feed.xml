@@ -1358,6 +1358,29 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Allow allocated Active Records to lookup associations.
+</title>
+    <link>https://github.com/rails/rails/issues/54892</link>
+    <guid>https://github.com/rails/rails/issues/54892</guid>
+    <description>*   Allow allocated Active Records to lookup associations.
+
+    Previously, the association cache isn&#39;t setup on allocated record objects, so association
+    lookups will crash. Test frameworks like mocha use allocate to check for stubbable instance
+    methods, which can trigger an association lookup.
+
+    *Gannon McGibbon*</description>
+    <pubDate>Wed, 09 Apr 2025 03:44:25 +0000</pubDate>
+    <author>Gannon McGibbon</author>
+    <content:encoded><![CDATA[<p>Allow allocated Active Records to lookup associations.</p>
+
+<p>Previously, the association cache isn’t setup on allocated record objects, so association<br />
+lookups will crash. Test frameworks like mocha use allocate to check for stubbable instance<br />
+methods, which can trigger an association lookup.</p>
+
+<p><em>Gannon McGibbon</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Encryption now supports `support_unencrypted_data: true` being set per-attribute.
 </title>
     <link>https://github.com/rails/rails/issues/51100</link>
@@ -1384,7 +1407,7 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
     ```
 
     *Alex Ghiculescu*</description>
-    <pubDate>Tue, 08 Apr 2025 06:39:59 +0000</pubDate>
+    <pubDate>Wed, 09 Apr 2025 03:44:25 +0000</pubDate>
     <author>Alex Ghiculescu</author>
     <content:encoded><![CDATA[<p>Encryption now supports <code>support_unencrypted_data: true</code> being set per-attribute.</p>
 
