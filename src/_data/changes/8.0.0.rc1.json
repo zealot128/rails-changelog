@@ -580,13 +580,23 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Allow allocated Active Records to lookup associations.\n\n    Previously, the association cache isn't setup on allocated record objects, so association\n    lookups will crash. Test frameworks like mocha use allocate to check for stubbable instance\n    methods, which can trigger an association lookup.\n\n    *Gannon McGibbon*",
+    "project": "activerecord",
+    "date_merged": 1744170265000,
+    "author": "Gannon McGibbon",
+    "sha": "678dd800c6d85af7c8bf38cab604f6f43cfb551b",
+    "pr": "54892",
+    "merge_sha": "1d1790b04d3930d65c2436bbe1d381af821d0ef4",
+    "html": "<p>Allow allocated Active Records to lookup associations.</p>\n\n<p>Previously, the association cache isn’t setup on allocated record objects, so association<br />\nlookups will crash. Test frameworks like mocha use allocate to check for stubbable instance<br />\nmethods, which can trigger an association lookup.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Encryption now supports `support_unencrypted_data: true` being set per-attribute.\n\n    Previously this only worked if `ActiveRecord::Encryption.config.support_unencrypted_data == true`.\n    Now, if the global config is turned off, you can still opt in for a specific attribute.\n\n    ```ruby\n    # ActiveRecord::Encryption.config.support_unencrypted_data = true\n    class User < ActiveRecord::Base\n      encrypts :name, support_unencrypted_data: false # only supports encrypted data\n      encrypts :email # supports encrypted or unencrypted data\n    end\n    ```\n\n    ```ruby\n    # ActiveRecord::Encryption.config.support_unencrypted_data = false\n    class User < ActiveRecord::Base\n      encrypts :name, support_unencrypted_data: true # supports encrypted or unencrypted data\n      encrypts :email  # only supports encrypted data\n    end\n    ```\n\n    *Alex Ghiculescu*",
     "project": "activerecord",
-    "date_merged": 1744094399000,
+    "date_merged": 1744170265000,
     "author": "Alex Ghiculescu",
     "sha": "c3c33947160e473a3d41555f8cf3aee7f3a48c76",
     "pr": "51100",
-    "merge_sha": null,
+    "merge_sha": "1d1790b04d3930d65c2436bbe1d381af821d0ef4",
     "html": "<p>Encryption now supports <code>support_unencrypted_data: true</code> being set per-attribute.</p>\n\n<p>Previously this only worked if <code>ActiveRecord::Encryption.config.support_unencrypted_data == true</code>.<br />\nNow, if the global config is turned off, you can still opt in for a specific attribute.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># ActiveRecord::Encryption.config.support_unencrypted_data = true</span>\n<span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">encrypts</span> <span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">support_unencrypted_data: </span><span class=\"kp\">false</span> <span class=\"c1\"># only supports encrypted data</span>\n  <span class=\"n\">encrypts</span> <span class=\"ss\">:email</span> <span class=\"c1\"># supports encrypted or unencrypted data</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># ActiveRecord::Encryption.config.support_unencrypted_data = false</span>\n<span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">encrypts</span> <span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">support_unencrypted_data: </span><span class=\"kp\">true</span> <span class=\"c1\"># supports encrypted or unencrypted data</span>\n  <span class=\"n\">encrypts</span> <span class=\"ss\">:email</span>  <span class=\"c1\"># only supports encrypted data</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
   },
   {
