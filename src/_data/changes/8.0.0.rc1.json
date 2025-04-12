@@ -580,6 +580,16 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Bump minimum supported SQLite to 3.23.0.\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1744405291000,
+    "author": "Hartley McGuire",
+    "sha": "0fe8b8b76edce256676c4aba72ef86a7249a1b8d",
+    "pr": "54907",
+    "merge_sha": "c70378b4fdd256b9910cfc2a73e14ed4eb395658",
+    "html": "<p>Bump minimum supported SQLite to 3.23.0.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Allow allocated Active Records to lookup associations.\n\n    Previously, the association cache isn't setup on allocated record objects, so association\n    lookups will crash. Test frameworks like mocha use allocate to check for stubbable instance\n    methods, which can trigger an association lookup.\n\n    *Gannon McGibbon*",
     "project": "activerecord",
     "date_merged": 1744170265000,
