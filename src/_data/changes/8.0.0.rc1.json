@@ -580,6 +580,16 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Use `TRUE` and `FALSE` for SQLite queries with boolean columns.\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1744450365000,
+    "author": "Hartley McGuire",
+    "sha": "34bebf383e18243a1cdadc461e3a84c66125cb9b",
+    "pr": "54911",
+    "merge_sha": "d051ec18d70941e599573b23b50b6278994b3910",
+    "html": "<p>Use <code>TRUE</code> and <code>FALSE</code> for SQLite queries with boolean columns.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Bump minimum supported SQLite to 3.23.0.\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1744405291000,
