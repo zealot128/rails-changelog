@@ -1358,6 +1358,21 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Bump minimum supported SQLite to 3.23.0.
+</title>
+    <link>https://github.com/rails/rails/issues/54907</link>
+    <guid>https://github.com/rails/rails/issues/54907</guid>
+    <description>*   Bump minimum supported SQLite to 3.23.0.
+
+    *Hartley McGuire*</description>
+    <pubDate>Fri, 11 Apr 2025 21:01:31 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Bump minimum supported SQLite to 3.23.0.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Allow allocated Active Records to lookup associations.
 </title>
     <link>https://github.com/rails/rails/issues/54892</link>
