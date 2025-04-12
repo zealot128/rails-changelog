@@ -1358,6 +1358,21 @@ Fix for Ruby 3.4 to match new method labels in backtrace.</p>
 ]]></content:encoded>
   </item>
   <item>
+    <title>activerecord: Use `TRUE` and `FALSE` for SQLite queries with boolean columns.
+</title>
+    <link>https://github.com/rails/rails/issues/54911</link>
+    <guid>https://github.com/rails/rails/issues/54911</guid>
+    <description>*   Use `TRUE` and `FALSE` for SQLite queries with boolean columns.
+
+    *Hartley McGuire*</description>
+    <pubDate>Sat, 12 Apr 2025 09:32:45 +0000</pubDate>
+    <author>Hartley McGuire</author>
+    <content:encoded><![CDATA[<p>Use <code>TRUE</code> and <code>FALSE</code> for SQLite queries with boolean columns.</p>
+
+<p><em>Hartley McGuire</em></p>
+]]></content:encoded>
+  </item>
+  <item>
     <title>activerecord: Bump minimum supported SQLite to 3.23.0.
 </title>
     <link>https://github.com/rails/rails/issues/54907</link>
