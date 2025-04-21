@@ -310,6 +310,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Add --reset option to bin/setup which will call db:reset as part of the setup.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1745243625000,
+    "author": "David Heinemeier Hansson",
+    "sha": "e9ee790d694298b8a48d44cd089934e6c8bc7597",
+    "pr": "54952",
+    "merge_sha": null,
+    "html": "<p>Add –reset option to bin/setup which will call db:reset as part of the setup.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.\n\n    *Lovro Bikić*",
     "project": "railties",
     "date_merged": 1741958225000,
