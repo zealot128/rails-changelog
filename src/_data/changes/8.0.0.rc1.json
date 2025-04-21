@@ -482,11 +482,11 @@
   {
     "message": "*   Add assert_in_body/assert_not_in_body as the simplest way to check if a piece of text is in the response body.\n\n    *DHH*",
     "project": "actionpack",
-    "date_merged": 1745048556000,
+    "date_merged": 1745192416000,
     "author": "David Heinemeier Hansson",
     "sha": "8b00d0985f88a3f151dd21e8dfdaf6d1c2f497b0",
     "pr": "54938",
-    "merge_sha": null,
+    "merge_sha": "f081b087cf9b4263a3b3a92910a043966d9f7d65",
     "html": "<p>Add assert_in_body/assert_not_in_body as the simplest way to check if a piece of text is in the response body.</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
