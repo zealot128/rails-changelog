@@ -310,6 +310,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Add a load hook `active_record_database_configurations` for `ActiveRecord::DatabaseConfigurations`\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1745502256000,
+    "author": "Mike Dalessio",
+    "sha": "3f0d13d6eea08766e74f429f6cea63a687061d3c",
+    "pr": "54959",
+    "merge_sha": "8213c22db3dc99dbd7d27c0448ce8de04d16d458",
+    "html": "<p>Add a load hook <code>active_record_database_configurations</code> for <code>ActiveRecord::DatabaseConfigurations</code></p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Use `TRUE` and `FALSE` for SQLite queries with boolean columns.\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1744450365000,
