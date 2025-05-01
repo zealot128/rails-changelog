@@ -770,6 +770,16 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Add public API for `before_fork_hook` in parallel testing.\n\n    Introduces a public API for calling the before fork hooks implemented by parallel testing.\n\n    ```ruby\n    parallelize_before_fork do\n        # perform an action before test processes are forked\n    end\n    ```\n\n    *Eileen M. Uchitelle*",
+    "project": "activesupport",
+    "date_merged": 1746119789000,
+    "author": "eileencodes",
+    "sha": "5696682601815fbf1408e4f8a8028cc0a5f86989",
+    "pr": "54985",
+    "merge_sha": "22b86f371464e300d43194d7fc0c312ac1f387a3",
+    "html": "<p>Add public API for <code>before_fork_hook</code> in parallel testing.</p>\n\n<p>Introduces a public API for calling the before fork hooks implemented by parallel testing.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">parallelize_before_fork</span> <span class=\"k\">do</span>\n    <span class=\"c1\"># perform an action before test processes are forked</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
     "message": "*   Implement ability to skip creating parallel testing databases.\n\n    With parallel testing, Rails will create a database per process. If this isn't\n    desirable or you would like to implement databases handling on your own, you can\n    now turn off this default behavior.\n\n    To skip creating a database per process, you can change it via the\n    `parallelize` method:\n\n    ```ruby\n    parallelize(workers: 10, parallelize_databases: false)\n    ```\n\n    or via the application configuration:\n\n    ```ruby\n    config.active_support.parallelize_databases = false\n    ```\n\n    *Eileen M. Uchitelle*",
     "project": "activesupport",
     "date_merged": 1746045110000,
