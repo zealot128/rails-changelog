@@ -770,6 +770,16 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Implement ability to skip creating parallel testing databases.\n\n    With parallel testing, Rails will create a database per process. If this isn't\n    desirable or you would like to implement databases handling on your own, you can\n    now turn off this default behavior.\n\n    To skip creating a database per process, you can change it via the\n    `parallelize` method:\n\n    ```ruby\n    parallelize(workers: 10, parallelize_databases: false)\n    ```\n\n    or via the application configuration:\n\n    ```ruby\n    config.active_support.parallelize_databases = false\n    ```\n\n    *Eileen M. Uchitelle*",
+    "project": "activesupport",
+    "date_merged": 1746045110000,
+    "author": "eileencodes",
+    "sha": "1f98fd2bbe04d38fea5138c3401ed481bdb38520",
+    "pr": "54984",
+    "merge_sha": "0367cbf265ff25546230d2f668aa887e09995509",
+    "html": "<p>Implement ability to skip creating parallel testing databases.</p>\n\n<p>With parallel testing, Rails will create a database per process. If this isn’t<br />\ndesirable or you would like to implement databases handling on your own, you can<br />\nnow turn off this default behavior.</p>\n\n<p>To skip creating a database per process, you can change it via the<br />\n<code>parallelize</code> method:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">parallelize</span><span class=\"p\">(</span><span class=\"ss\">workers: </span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"ss\">parallelize_databases: </span><span class=\"kp\">false</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>or via the application configuration:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_support</span><span class=\"p\">.</span><span class=\"nf\">parallelize_databases</span> <span class=\"o\">=</span> <span class=\"kp\">false</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
     "message": "*   Allow to configure maximum cache key sizes\n\n    When the key exceeds the configured limit (250 bytes by default), it will be truncated and\n    the digest of the rest of the key appended to it.\n\n    Note that previously `ActiveSupport::Cache::RedisCacheStore` allowed up to 1kb cache keys before\n    truncation, which is now reduced to 250 bytes.\n\n    ```ruby\n    config.cache_store = :redis_cache_store, { max_key_size: 64 }\n    ```\n\n    *fatkodima*",
     "project": "activesupport",
     "date_merged": 1744717025000,
