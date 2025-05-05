@@ -1020,6 +1020,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Defer invocation of ActiveJob enqueue callbacks until after commit when\n    `enqueue_after_transaction_commit` is enabled.\n\n    *Will Roever*",
+    "project": "activejob",
+    "date_merged": 1746429358000,
+    "author": "Will Roever",
+    "sha": "423dcce5b6dd203b280cfd822b4564f6efbe0904",
+    "pr": "55004",
+    "merge_sha": "96a2f03a2a82e91ab4438b625ba47bd8ed917b45",
+    "html": "<p>Defer invocation of ActiveJob enqueue callbacks until after commit when<br />\n<code>enqueue_after_transaction_commit</code> is enabled.</p>\n\n<p><em>Will Roever</em></p>\n"
+  },
+  {
     "message": "*   Add `report:` option to `ActiveJob::Base#retry_on` and `#discard_on`\n\n    When the `report:` option is passed, errors will be reported to the error reporter\n    before being retried / discarded.\n\n    *Andrew Novoselac*",
     "project": "activejob",
     "date_merged": 1740129016000,
