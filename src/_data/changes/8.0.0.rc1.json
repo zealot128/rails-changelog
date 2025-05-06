@@ -310,6 +310,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Enable passing retryable SqlLiterals to `#where`.\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1746484555000,
+    "author": "Hartley McGuire",
+    "sha": "a2928dd9d987ce76609811904c4e3cb18abace9e",
+    "pr": "54951",
+    "merge_sha": "730367e18069531db4c61b533690d6bd829e3091",
+    "html": "<p>Enable passing retryable SqlLiterals to <code>#where</code>.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Set default for primary keys in `insert_all`/`upsert_all`.\n\n    Previously in Postgres, updating and inserting new records in one upsert wasn't possible\n    due to null primary key values. `nil` primary key values passed into `insert_all`/`upsert_all`\n    are now implicitly set to the default insert value specified by adapter.\n\n    *Jenny Shen*",
     "project": "activerecord",
     "date_merged": 1745868835000,
