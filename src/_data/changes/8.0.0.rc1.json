@@ -1000,6 +1000,16 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
+    "message": "*   The Trix dependency is now satisfied by a gem, `action_text-trix`, rather than vendored\n    files. This allows applications to bump Trix versions independently of Rails\n    releases. Effectively this also upgrades Trix to `>= 2.1.15`.\n\n    *Mike Dalessio*",
+    "project": "actiontext",
+    "date_merged": 1747163309000,
+    "author": "Mike Dalessio",
+    "sha": "d0d2d31f62cae9bdc9360b9f179b4311377e9957",
+    "pr": "55058",
+    "merge_sha": "a3b37ff166a925f7e069c9068f7ee92808da6e82",
+    "html": "<p>The Trix dependency is now satisfied by a gem, <code>action_text-trix</code>, rather than vendored<br />\nfiles. This allows applications to bump Trix versions independently of Rails<br />\nreleases. Effectively this also upgrades Trix to <code>&gt;= 2.1.15</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`\n\n    *Sean Doyle*",
     "project": "actiontext",
     "date_merged": 1733784985000,
