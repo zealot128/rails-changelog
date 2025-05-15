@@ -310,6 +310,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Add `affected_rows` to `ActiveRecord::Result`.\n\n    *Jenny Shen*",
+    "project": "activerecord",
+    "date_merged": 1747331726000,
+    "author": "Jenny Shen",
+    "sha": "d4f8806344bd554a4f0703620af7429667c0aa6d",
+    "pr": "55060",
+    "merge_sha": "11d285e1479a1e43e86aa4b1abaf88e23e6d25d9",
+    "html": "<p>Add <code>affected_rows</code> to <code>ActiveRecord::Result</code>.</p>\n\n<p><em>Jenny Shen</em></p>\n"
+  },
+  {
     "message": "*   Enable passing retryable SqlLiterals to `#where`.\n\n    *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1746484555000,
