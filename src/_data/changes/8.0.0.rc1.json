@@ -1,313 +1,43 @@
 [
   {
-    "message": "*   Add `reply_to_address` extension method on `Mail::Message`.\n\n    *Mr0grog*",
-    "project": "actionmailbox",
-    "date_merged": 1737972229000,
-    "author": "Rob Brackett",
-    "sha": "ac583204ba548557981b6890a6fc2c3975d24ee9",
-    "pr": "53513",
-    "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
-    "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
+    "message": "*   Defer invocation of ActiveJob enqueue callbacks until after commit when\n    `enqueue_after_transaction_commit` is enabled.\n\n    *Will Roever*",
+    "project": "activejob",
+    "date_merged": 1746429358000,
+    "author": "Will Roever",
+    "sha": "423dcce5b6dd203b280cfd822b4564f6efbe0904",
+    "pr": "55004",
+    "merge_sha": "96a2f03a2a82e91ab4438b625ba47bd8ed917b45",
+    "html": "<p>Defer invocation of ActiveJob enqueue callbacks until after commit when<br />\n<code>enqueue_after_transaction_commit</code> is enabled.</p>\n\n<p><em>Will Roever</em></p>\n"
   },
   {
-    "message": "*   Allow setting nil as subscription connection identifier for Redis.\n\n    *Nguyen Nguyen*",
-    "project": "actioncable",
-    "date_merged": 1744900575000,
-    "author": "bubiche",
-    "sha": "fe5c76846ccc19d19eafe2e41b11e04850146e69",
-    "pr": "54931",
-    "merge_sha": "17cde11cd13cf07a7d6c712cb1593881496abacb",
-    "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
+    "message": "*   Add `report:` option to `ActiveJob::Base#retry_on` and `#discard_on`\n\n    When the `report:` option is passed, errors will be reported to the error reporter\n    before being retried / discarded.\n\n    *Andrew Novoselac*",
+    "project": "activejob",
+    "date_merged": 1740129016000,
+    "author": "andrew.novoselac@shopify.com",
+    "sha": "3ff8c45e7b525c6b947d6f4f3350366b0d7e97ed",
+    "pr": "54541",
+    "merge_sha": "7df1b84335298140116a59cad1bffea6c6a91747",
+    "html": "<p>Add <code>report:</code> option to <code>ActiveJob::Base#retry_on</code> and <code>#discard_on</code></p>\n\n<p>When the <code>report:</code> option is passed, errors will be reported to the error reporter<br />\nbefore being retried / discarded.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
   },
   {
-    "message": "*   Add --reset option to bin/setup which will call db:reset as part of the setup.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1745308409000,
-    "author": "David Heinemeier Hansson",
-    "sha": "e9ee790d694298b8a48d44cd089934e6c8bc7597",
-    "pr": "54952",
-    "merge_sha": "d1baeac634160b3c7e0e48b4666021b873cf8729",
-    "html": "<p>Add –reset option to bin/setup which will call db:reset as part of the setup.</p>\n\n<p><em>DHH</em></p>\n"
+    "message": "*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.\n\n    This was inconsistent with a regular `ActiveJob::Base#perform_later`.\n\n    *fatkodima*",
+    "project": "activejob",
+    "date_merged": 1733489505000,
+    "author": "fatkodima",
+    "sha": "f70cca178f35f703245de62c74d078f54fd17572",
+    "pr": "53859",
+    "merge_sha": "31aec233a17a44cb4666aa074243f0961798ed46",
+    "html": "<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>\n\n<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>\n\n<p><em>fatkodima</em></p>\n"
   },
   {
-    "message": "*   Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.\n\n    *Lovro Bikić*",
-    "project": "railties",
-    "date_merged": 1741958225000,
-    "author": "Lovro Bikic",
-    "sha": "ceb06782622b3dcaaf9bd0e95fa188f4d20f7949",
-    "pr": "54754",
-    "merge_sha": "951ea8f75d9bf6d2999df2f0497347976dce9476",
-    "html": "<p>Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.</p>\n\n<p><em>Lovro Bikić</em></p>\n"
-  },
-  {
-    "message": "*   Skip generating mailer-related files in authentication generator if the application does\n    not use ActionMailer\n\n    *Rami Massoud*",
-    "project": "railties",
-    "date_merged": 1741721225000,
-    "author": "Rami Massoud",
-    "sha": "e87af0f3235ca555f7864de9bb44da1d464d012d",
-    "pr": "54686",
-    "merge_sha": "af7ed3cae208d777fe993e37f7502f7ba1058dae",
-    "html": "<p>Skip generating mailer-related files in authentication generator if the application does<br />\nnot use ActionMailer</p>\n\n<p><em>Rami Massoud</em></p>\n"
-  },
-  {
-    "message": "*   Introduce `bin/ci` for running your tests, style checks, and security audits locally or in the cloud.\n\n    The specific steps are defined by a new DSL in `config/ci.rb`.\n\n    ```ruby\n    ActiveSupport::ContinuousIntegration.run do\n      step \"Setup\", \"bin/setup --skip-server\"\n      step \"Style: Ruby\", \"bin/rubocop\"\n      step \"Security: Gem audit\", \"bin/bundler-audit\"\n      step \"Tests: Rails\", \"bin/rails test test:system\"\n    end\n    ```\n\n    Optionally use [gh-signoff](https://github.com/basecamp/gh-signoff) to\n    set a green PR status - ready for merge.\n\n    *Jeremy Daer*, *DHH*",
-    "project": "railties",
-    "date_merged": 1741515059000,
-    "author": "Jeremy Daer",
-    "sha": "bcd5c93609c5854399dfb960b3666d318f469eb8",
-    "pr": "54693",
-    "merge_sha": "23956c7f94dffbddf257c0abb93231eb2be69d5e",
-    "html": "<p>Introduce <code>bin/ci</code> for running your tests, style checks, and security audits locally or in the cloud.</p>\n\n<p>The specific steps are defined by a new DSL in <code>config/ci.rb</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">ContinuousIntegration</span><span class=\"p\">.</span><span class=\"nf\">run</span> <span class=\"k\">do</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Setup\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/setup --skip-server\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Style: Ruby\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rubocop\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Security: Gem audit\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/bundler-audit\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Tests: Rails\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rails test test:system\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Optionally use <a href=\"https://github.com/basecamp/gh-signoff\">gh-signoff</a> to<br />\nset a green PR status - ready for merge.</p>\n\n<p><em>Jeremy Daer</em>, <em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Generate session controller tests when running the authentication generator.\n\n    *Jerome Dalbert*",
-    "project": "railties",
-    "date_merged": 1741387412000,
-    "author": "Jerome Dalbert",
-    "sha": "1dba10c7fb53af9dcebd3451cf121967960144b3",
-    "pr": "53726",
-    "merge_sha": "ba6f20aa62d3456e06cee4621718066e57337aab",
-    "html": "<p>Generate session controller tests when running the authentication generator.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
-  },
-  {
-    "message": "*   Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1741266426000,
-    "author": "David Heinemeier Hansson",
-    "sha": "bdaab704416e3df86a9d4e86970fc45e6d79f065",
-    "pr": "54695",
-    "merge_sha": "c36a258f5cb1656903dcf66087cba2a768cf0b0c",
-    "html": "<p>Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Rails no longer generates a `bin/bundle` binstub when creating new applications.\n\n    The `bin/bundle` binstub used to help activate the right version of bundler.\n    This is no longer necessary as this mechanism is now part of Rubygem itself.\n\n    *Edouard Chin*",
-    "project": "railties",
-    "date_merged": 1741151035000,
-    "author": "Edouard CHIN",
-    "sha": "7549ba77254f038b1ca6304a0be6cbda8e2a09c4",
-    "pr": "54687",
-    "merge_sha": "7b8ea0bb5c04f7de73661162a71de38f7843e29a",
-    "html": "<p>Rails no longer generates a <code>bin/bundle</code> binstub when creating new applications.</p>\n\n<p>The <code>bin/bundle</code> binstub used to help activate the right version of bundler.<br />\nThis is no longer necessary as this mechanism is now part of Rubygem itself.</p>\n\n<p><em>Edouard Chin</em></p>\n"
-  },
-  {
-    "message": "*   Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when\n    running `rails g authentication`. Simplifies authentication in integration tests.\n\n    *Bijan Rahnema*",
-    "project": "railties",
-    "date_merged": 1740732368000,
-    "author": "Bijan Rahnema",
-    "sha": "800976975253be2912d09a80757ee70a2bb1e984",
-    "pr": "53708",
-    "merge_sha": "271dbd5d5c0bf62c972b7dd4891c6410ca87a22d",
-    "html": "<p>Add a <code>SessionTestHelper</code> module with <code>sign_in_as(user)</code> and <code>sign_out</code> test helpers when<br />\nrunning <code>rails g authentication</code>. Simplifies authentication in integration tests.</p>\n\n<p><em>Bijan Rahnema</em></p>\n"
-  },
-  {
-    "message": "*   Rate limit password resets in authentication generator\n\n    This helps mitigate abuse from attackers spamming the password reset form.\n\n    *Chris Oliver*",
-    "project": "railties",
-    "date_merged": 1738836333000,
-    "author": "Chris Oliver",
-    "sha": "92533b1569ba710e166fe6bf2a3249d115a74ad6",
-    "pr": "54442",
-    "merge_sha": "4e5a13a55b5960c9a35afdcecd1120bc926d377c",
-    "html": "<p>Rate limit password resets in authentication generator</p>\n\n<p>This helps mitigate abuse from attackers spamming the password reset form.</p>\n\n<p><em>Chris Oliver</em></p>\n"
-  },
-  {
-    "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exclude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
-    "project": "railties",
-    "date_merged": 1737751723000,
-    "author": "eelco",
-    "sha": "dad07631d99c96f015162d3cab83c41111adf401",
-    "pr": "54313",
-    "merge_sha": "cd171d69fa03e0a09133089eca672831d447d02a",
-    "html": "<p>Update <code>rails new --minimal</code> option</p>\n\n<p>Extend the <code>--minimal</code> flag to exclude recently added features:<br />\n<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>\n\n<p><em>eelcoj</em></p>\n"
-  },
-  {
-    "message": "*   Add `application-name` metadata to application layout\n\n    The following metatag will be added to `app/views/layouts/application.html.erb`\n\n    ```html\n    <meta name=\"application-name\" content=\"Name of Rails Application\">\n    ```\n\n    *Steve Polito*",
-    "project": "railties",
-    "date_merged": 1737148063000,
-    "author": "Steve Polito",
-    "sha": "9144324cb92da6a461be40fc02a532aef1b29194",
-    "pr": "54257",
-    "merge_sha": "abb7035e08c07bb4e2941c1c27003609ce81e77b",
-    "html": "<p>Add <code>application-name</code> metadata to application layout</p>\n\n<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>\n\n<div class=\"language-html highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nt\">&lt;meta</span> <span class=\"na\">name=</span><span class=\"s\">\"application-name\"</span> <span class=\"na\">content=</span><span class=\"s\">\"Name of Rails Application\"</span><span class=\"nt\">&gt;</span>\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
-  },
-  {
-    "message": "*   Use `secret_key_base` from ENV or credentials when present locally.\n\n    When ENV[\"SECRET_KEY_BASE\"] or\n    `Rails.application.credentials.secret_key_base` is set for test or\n    development, it is used for the `Rails.config.secret_key_base`,\n    instead of generating a `tmp/local_secret.txt` file.\n\n    *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1737144185000,
-    "author": "Petrik",
-    "sha": "8c5978c886d1511aecfa2f029478a03c91e7db75",
-    "pr": "53705",
-    "merge_sha": "4f2b9fe06a7ca5c44aab7abbab0353ed6d013d05",
-    "html": "<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>\n\n<p>When ENV[“SECRET_KEY_BASE”] or<br />\n<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />\ndevelopment, it is used for the <code>Rails.config.secret_key_base</code>,<br />\ninstead of generating a <code>tmp/local_secret.txt</code> file.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files\n\n    *Steve Polito*",
-    "project": "railties",
-    "date_merged": 1736274652000,
-    "author": "Steve Polito",
-    "sha": "f0f0a818ad34e9ab930db8981b03d65708e2659d",
-    "pr": "52230",
-    "merge_sha": "1914a7437270f1e74d31494675c9fddf244a7cf5",
-    "html": "<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>\n\n<p><em>Steve Polito</em></p>\n"
-  },
-  {
-    "message": "*   Colorize the Rails console prompt even on non standard environments.\n\n    *Lorenzo Zabot*",
-    "project": "railties",
-    "date_merged": 1736267051000,
-    "author": "Lorenzo Zabot",
-    "sha": "b097cfbbb9c5c31b0ede2b8caae28dabf7aa9850",
-    "pr": "53027",
-    "merge_sha": "c8335e118ba14562d4755ba2dd28171996fea297",
-    "html": "<p>Colorize the Rails console prompt even on non standard environments.</p>\n\n<p><em>Lorenzo Zabot</em></p>\n"
-  },
-  {
-    "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environments tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
-    "project": "railties",
-    "date_merged": 1732617959000,
-    "author": "Ali Ismayilov",
-    "sha": "76e2b7e529e6c8cc42de00c94408d008655385bb",
-    "pr": "53746",
-    "merge_sha": "723ca0c0a757e27ab23e60cd65767606b7f6c202",
-    "html": "<p>Don’t enable YJIT in development and test environments</p>\n\n<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />\nhence YJIT isn’t generally faster in these environments.</p>\n\n<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Only include PermissionsPolicy::Middleware if policy is configured.\n\n    *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1731706201000,
-    "author": "Petrik",
-    "sha": "987977c2809e57dc7f4d6e90d6aaa25e6a52f927",
-    "pr": "53621",
-    "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
-    "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`\n\n    Supports checking String equality:\n\n    ```ruby\n    filename = ActiveStorage::Filename.new(\"file.txt\")\n    filename == \"file.txt\" # => true\n    filename in \"file.txt\" # => true\n    \"file.txt\" == filename # => true\n    ```\n\n    *Sean Doyle*",
-    "project": "activestorage",
-    "date_merged": 1736536509000,
-    "author": "Sean Doyle",
-    "sha": "73133fa37f52204fe797d58d508806e5517f04b3",
-    "pr": "54185",
-    "merge_sha": "7ec153158e418c8c51bdee170fc06795db3a61ed",
-    "html": "<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>\n\n<p>Supports checking String equality:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">filename</span> <span class=\"o\">=</span> <span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Filename</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"file.txt\"</span><span class=\"p\">)</span>\n<span class=\"n\">filename</span> <span class=\"o\">==</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">filename</span> <span class=\"k\">in</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"s2\">\"file.txt\"</span> <span class=\"o\">==</span> <span class=\"n\">filename</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.\n\n    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`\n    is found to be disabled because of OpenSSL FIPS mode.\n\n    *Matt Pasquini*, *Jean Boussier*",
-    "project": "activestorage",
-    "date_merged": 1735992548000,
-    "author": "Matt Pasquini",
-    "sha": "bbc0cf1712da74d52874a4e012321b5e27e85e39",
-    "pr": "54040",
-    "merge_sha": "e64e5d31cdeafee142e32e604b513a39de779651",
-    "html": "<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>\n\n<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />\nis found to be disabled because of OpenSSL FIPS mode.</p>\n\n<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   A Blob will no longer autosave associated Attachment.\n\n    This fixes an issue where a record with an attachment would have\n    its dirty attributes reset, preventing your `after commit` callbacks\n    on that record to behave as expected.\n\n    Note that this change doesn't require any changes on your application\n    and is supposed to be internal. Active Storage Attachment will continue\n    to be autosaved (through a different relation).\n\n    *Edouard-chin*",
-    "project": "activestorage",
-    "date_merged": 1734601190000,
-    "author": "Edouard CHIN",
-    "sha": "e70f504271864e32a5f27a35fe0d0865f5d95527",
-    "pr": "53623",
-    "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
-    "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
-  },
-  {
-    "message": "*   In the Active Job bug report template set the queue adapter to the\n    test adapter so that `assert_enqueued_with` can pass.\n\n    *Andrew White*",
-    "project": "guides",
-    "date_merged": 1734279797000,
-    "author": "Andrew White",
-    "sha": "8e0a3914cab6b564d7dbcbfec35184c3132a7116",
-    "pr": "53963",
-    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
-    "html": "<p>In the Active Job bug report template set the queue adapter to the<br />\ntest adapter so that <code>assert_enqueued_with</code> can pass.</p>\n\n<p><em>Andrew White</em></p>\n"
-  },
-  {
-    "message": "*   Ensure all bug report templates set `config.secret_key_base` to avoid\n    generation of `tmp/local_secret.txt` files when running the report template.\n\n    *Andrew White*",
-    "project": "guides",
-    "date_merged": 1734279797000,
-    "author": "Andrew White",
-    "sha": "f17f2d1decf460033e46ba9c50a4924e9290a86f",
-    "pr": "53963",
-    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
-    "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
-  },
-  {
-    "message": "*   Respect `html_options[:form]` when `collection_checkboxes` generates the\n    hidden `<input>`.\n\n    *Riccardo Odone*",
-    "project": "actionview",
-    "date_merged": 1736352191000,
-    "author": "3v0k4",
-    "sha": "d4702f99e69e0c327419e7791dce5b969e361d89",
-    "pr": "51746",
-    "merge_sha": "f978e1dc7ca5bc570a21f8007e06a3a57ca93566",
-    "html": "<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />\nhidden <code>&lt;input&gt;</code>.</p>\n\n<p><em>Riccardo Odone</em></p>\n"
-  },
-  {
-    "message": "*   Layouts have access to local variables passed to `render`.\n\n    This fixes #31680 which was a regression in Rails 5.1.\n\n    *Mike Dalessio*",
-    "project": "actionview",
-    "date_merged": 1736197671000,
-    "author": "Mike Dalessio",
-    "sha": "b35a9b6fc63246adbe98d141997f37434ad037ad",
-    "pr": "54020",
-    "merge_sha": "593d9d90972df11aea1a1d7bb8a5f5f84a1d1f27",
-    "html": "<p>Layouts have access to local variables passed to <code>render</code>.</p>\n\n<p>This fixes #31680 which was a regression in Rails 5.1.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Argument errors related to strict locals in templates now raise an\n    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.\n\n    Previously, any `ArgumentError` raised during template rendering was swallowed during strict\n    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper\n    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an\n    unrelated backtrace, making it difficult to debug templates.\n\n    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original\n    backtrace for developers.\n\n    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing\n    code that rescues `ArgumentError` will continue to work.\n\n    Fixes #52227.\n\n    *Mike Dalessio*",
-    "project": "actionview",
-    "date_merged": 1736195112000,
-    "author": "Mike Dalessio",
-    "sha": "c868503d313873edcd262c4d605c06d2d1ed703a",
-    "pr": "54133",
-    "merge_sha": "bc601a9ffe4d48045b9bfeec23e9e579a5709c7c",
-    "html": "<p>Argument errors related to strict locals in templates now raise an<br />\n<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>\n\n<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />\nlocal error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />\nmethod invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />\nunrelated backtrace, making it difficult to debug templates.</p>\n\n<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />\nbacktrace for developers.</p>\n\n<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />\ncode that rescues <code>ArgumentError</code> will continue to work.</p>\n\n<p>Fixes #52227.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Improve error highlighting of multi-line methods in ERB templates or\n    templates where the error occurs within a do-end block.\n\n    *Martin Emde*",
-    "project": "actionview",
-    "date_merged": 1732819839000,
-    "author": "Martin Emde",
-    "sha": "a74d26378b665bf1a1a6c125f878000251102dbb",
-    "pr": "53763",
-    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
-    "html": "<p>Improve error highlighting of multi-line methods in ERB templates or<br />\ntemplates where the error occurs within a do-end block.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Fix a crash in ERB template error highlighting when the error occurs on a\n    line in the compiled template that is past the end of the source template.\n\n    *Martin Emde*",
-    "project": "actionview",
-    "date_merged": 1732254580000,
-    "author": "Martin Emde",
-    "sha": "5857b8f83ca51a38151bb107a03684320505421d",
-    "pr": "53696",
-    "merge_sha": "8cab71cd0441043ba1c3c201ef8b8282d6f13b63",
-    "html": "<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />\nline in the compiled template that is past the end of the source template.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Improve reliability of ERB template error highlighting.\n    Fix infinite loops and crashes in highlighting and\n    improve tolerance for alternate ERB handlers.\n\n    *Martin Emde*",
-    "project": "actionview",
-    "date_merged": 1732218987000,
-    "author": "Martin Emde",
-    "sha": "aaebc8635123537f60db62763e6d80489098060d",
-    "pr": "53657",
-    "merge_sha": "9add4d9786266cbebcc44c07963ceb589de9ce79",
-    "html": "<p>Improve reliability of ERB template error highlighting.<br />\nFix infinite loops and crashes in highlighting and<br />\nimprove tolerance for alternate ERB handlers.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.\n\n    *brendon*",
-    "project": "actionview",
-    "date_merged": 1731670127000,
-    "author": "Brendon Muir",
-    "sha": "09daec64ac5189799718d8805311ac1458021910",
-    "pr": "53512",
-    "merge_sha": "e5ad9e789966a2743da8f81b6ed5e80f2575a8d1",
-    "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
-  },
-  {
-    "message": "*   Add a new configuration `content_security_policy_nonce_auto` for automatically adding a nonce to the tags affected by the directives specified by the `content_security_policy_nonce_directives` configuration option.\n\n    *francktrouillez*",
-    "project": "actionview",
-    "date_merged": 1741086415000,
-    "author": "Franck TROUILLEZ",
-    "sha": "c7162d640b4e0d1031939496f86d043af38a7a03",
-    "pr": "53835",
-    "merge_sha": "7a031e38921bac41a6a97bbba861b406caebe164",
-    "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
+    "message": "*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.\n\n    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic\n    `NameError` to make it easily possible for adapters to tell if the `NameError`\n    was raised during job execution or deserialization.\n\n    *Earlopain*",
+    "project": "activejob",
+    "date_merged": 1732822493000,
+    "author": "Earlopain",
+    "sha": "5a04667a89b41da272214e53c0111e7d5b2d3219",
+    "pr": "53770",
+    "merge_sha": "e15be8c98e39a96d33be9331f9649bade402f9bf",
+    "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
     "message": "*   Add `affected_rows` to `ActiveRecord::Result`.\n\n    *Jenny Shen*",
@@ -790,6 +520,266 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Respect `html_options[:form]` when `collection_checkboxes` generates the\n    hidden `<input>`.\n\n    *Riccardo Odone*",
+    "project": "actionview",
+    "date_merged": 1736352191000,
+    "author": "3v0k4",
+    "sha": "d4702f99e69e0c327419e7791dce5b969e361d89",
+    "pr": "51746",
+    "merge_sha": "f978e1dc7ca5bc570a21f8007e06a3a57ca93566",
+    "html": "<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />\nhidden <code>&lt;input&gt;</code>.</p>\n\n<p><em>Riccardo Odone</em></p>\n"
+  },
+  {
+    "message": "*   Layouts have access to local variables passed to `render`.\n\n    This fixes #31680 which was a regression in Rails 5.1.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1736197671000,
+    "author": "Mike Dalessio",
+    "sha": "b35a9b6fc63246adbe98d141997f37434ad037ad",
+    "pr": "54020",
+    "merge_sha": "593d9d90972df11aea1a1d7bb8a5f5f84a1d1f27",
+    "html": "<p>Layouts have access to local variables passed to <code>render</code>.</p>\n\n<p>This fixes #31680 which was a regression in Rails 5.1.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Argument errors related to strict locals in templates now raise an\n    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.\n\n    Previously, any `ArgumentError` raised during template rendering was swallowed during strict\n    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper\n    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an\n    unrelated backtrace, making it difficult to debug templates.\n\n    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original\n    backtrace for developers.\n\n    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing\n    code that rescues `ArgumentError` will continue to work.\n\n    Fixes #52227.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1736195112000,
+    "author": "Mike Dalessio",
+    "sha": "c868503d313873edcd262c4d605c06d2d1ed703a",
+    "pr": "54133",
+    "merge_sha": "bc601a9ffe4d48045b9bfeec23e9e579a5709c7c",
+    "html": "<p>Argument errors related to strict locals in templates now raise an<br />\n<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>\n\n<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />\nlocal error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />\nmethod invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />\nunrelated backtrace, making it difficult to debug templates.</p>\n\n<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />\nbacktrace for developers.</p>\n\n<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />\ncode that rescues <code>ArgumentError</code> will continue to work.</p>\n\n<p>Fixes #52227.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Improve error highlighting of multi-line methods in ERB templates or\n    templates where the error occurs within a do-end block.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732819839000,
+    "author": "Martin Emde",
+    "sha": "a74d26378b665bf1a1a6c125f878000251102dbb",
+    "pr": "53763",
+    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
+    "html": "<p>Improve error highlighting of multi-line methods in ERB templates or<br />\ntemplates where the error occurs within a do-end block.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Fix a crash in ERB template error highlighting when the error occurs on a\n    line in the compiled template that is past the end of the source template.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732254580000,
+    "author": "Martin Emde",
+    "sha": "5857b8f83ca51a38151bb107a03684320505421d",
+    "pr": "53696",
+    "merge_sha": "8cab71cd0441043ba1c3c201ef8b8282d6f13b63",
+    "html": "<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />\nline in the compiled template that is past the end of the source template.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Improve reliability of ERB template error highlighting.\n    Fix infinite loops and crashes in highlighting and\n    improve tolerance for alternate ERB handlers.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732218987000,
+    "author": "Martin Emde",
+    "sha": "aaebc8635123537f60db62763e6d80489098060d",
+    "pr": "53657",
+    "merge_sha": "9add4d9786266cbebcc44c07963ceb589de9ce79",
+    "html": "<p>Improve reliability of ERB template error highlighting.<br />\nFix infinite loops and crashes in highlighting and<br />\nimprove tolerance for alternate ERB handlers.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.\n\n    *brendon*",
+    "project": "actionview",
+    "date_merged": 1731670127000,
+    "author": "Brendon Muir",
+    "sha": "09daec64ac5189799718d8805311ac1458021910",
+    "pr": "53512",
+    "merge_sha": "e5ad9e789966a2743da8f81b6ed5e80f2575a8d1",
+    "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
+  },
+  {
+    "message": "*   Add a new configuration `content_security_policy_nonce_auto` for automatically adding a nonce to the tags affected by the directives specified by the `content_security_policy_nonce_directives` configuration option.\n\n    *francktrouillez*",
+    "project": "actionview",
+    "date_merged": 1741086415000,
+    "author": "Franck TROUILLEZ",
+    "sha": "c7162d640b4e0d1031939496f86d043af38a7a03",
+    "pr": "53835",
+    "merge_sha": "7a031e38921bac41a6a97bbba861b406caebe164",
+    "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
+  },
+  {
+    "message": "*   Allow setting nil as subscription connection identifier for Redis.\n\n    *Nguyen Nguyen*",
+    "project": "actioncable",
+    "date_merged": 1744900575000,
+    "author": "bubiche",
+    "sha": "fe5c76846ccc19d19eafe2e41b11e04850146e69",
+    "pr": "54931",
+    "merge_sha": "17cde11cd13cf07a7d6c712cb1593881496abacb",
+    "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
+  },
+  {
+    "message": "*   Add `reply_to_address` extension method on `Mail::Message`.\n\n    *Mr0grog*",
+    "project": "actionmailbox",
+    "date_merged": 1737972229000,
+    "author": "Rob Brackett",
+    "sha": "ac583204ba548557981b6890a6fc2c3975d24ee9",
+    "pr": "53513",
+    "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
+    "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
+  },
+  {
+    "message": "*   Add comprehensive support for HTTP Cache-Control request directives according to RFC 9111.\n\n    Provides a `request.cache_control_directives` object that gives access to request cache directives:\n\n    ```ruby\n    # Boolean directives\n    request.cache_control_directives.only_if_cached?  # => true/false\n    request.cache_control_directives.no_cache?        # => true/false\n    request.cache_control_directives.no_store?        # => true/false\n    request.cache_control_directives.no_transform?    # => true/false\n\n    # Value directives\n    request.cache_control_directives.max_age          # => integer or nil\n    request.cache_control_directives.max_stale        # => integer or nil (or true for valueless max-stale)\n    request.cache_control_directives.min_fresh        # => integer or nil\n    request.cache_control_directives.stale_if_error   # => integer or nil\n\n    # Special helpers for max-stale\n    request.cache_control_directives.max_stale?         # => true if max-stale present (with or without value)\n    request.cache_control_directives.max_stale_unlimited? # => true only for valueless max-stale\n    ```\n\n    Example usage:\n\n    ```ruby\n    def show\n      if request.cache_control_directives.only_if_cached?\n        @article = Article.find_cached(params[:id])\n        return head(:gateway_timeout) if @article.nil?\n      else\n        @article = Article.find(params[:id])\n      end\n\n      render :show\n    end\n    ```\n\n    *egg528*",
+    "project": "actionpack",
+    "date_merged": 1747120151000,
+    "author": "egg528",
+    "sha": "55b54a33f7e6e2e51e23ead6ec3309576b5b8dd6",
+    "pr": "55033",
+    "merge_sha": "0da7aaf5526a417924afc5f986348831197c9038",
+    "html": "<p>Add comprehensive support for HTTP Cache-Control request directives according to RFC 9111.</p>\n\n<p>Provides a <code>request.cache_control_directives</code> object that gives access to request cache directives:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Boolean directives</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">only_if_cached?</span>  <span class=\"c1\"># =&gt; true/false</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">no_cache?</span>        <span class=\"c1\"># =&gt; true/false</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">no_store?</span>        <span class=\"c1\"># =&gt; true/false</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">no_transform?</span>    <span class=\"c1\"># =&gt; true/false</span>\n\n<span class=\"c1\"># Value directives</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">max_age</span>          <span class=\"c1\"># =&gt; integer or nil</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">max_stale</span>        <span class=\"c1\"># =&gt; integer or nil (or true for valueless max-stale)</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">min_fresh</span>        <span class=\"c1\"># =&gt; integer or nil</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">stale_if_error</span>   <span class=\"c1\"># =&gt; integer or nil</span>\n\n<span class=\"c1\"># Special helpers for max-stale</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">max_stale?</span>         <span class=\"c1\"># =&gt; true if max-stale present (with or without value)</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">max_stale_unlimited?</span> <span class=\"c1\"># =&gt; true only for valueless max-stale</span>\n</code></pre></div></div>\n\n<p>Example usage:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">def</span> <span class=\"nf\">show</span>\n  <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">only_if_cached?</span>\n    <span class=\"vi\">@article</span> <span class=\"o\">=</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">find_cached</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n    <span class=\"k\">return</span> <span class=\"n\">head</span><span class=\"p\">(</span><span class=\"ss\">:gateway_timeout</span><span class=\"p\">)</span> <span class=\"k\">if</span> <span class=\"vi\">@article</span><span class=\"p\">.</span><span class=\"nf\">nil?</span>\n  <span class=\"k\">else</span>\n    <span class=\"vi\">@article</span> <span class=\"o\">=</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"n\">render</span> <span class=\"ss\">:show</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>egg528</em></p>\n"
+  },
+  {
+    "message": "*   Add assert_in_body/assert_not_in_body as the simplest way to check if a piece of text is in the response body.\n\n    *DHH*",
+    "project": "actionpack",
+    "date_merged": 1745192416000,
+    "author": "David Heinemeier Hansson",
+    "sha": "8b00d0985f88a3f151dd21e8dfdaf6d1c2f497b0",
+    "pr": "54938",
+    "merge_sha": "f081b087cf9b4263a3b3a92910a043966d9f7d65",
+    "html": "<p>Add assert_in_body/assert_not_in_body as the simplest way to check if a piece of text is in the response body.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Include cookie name when calculating maximum allowed size.\n\n    *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1743492989000,
+    "author": "Hartley McGuire",
+    "sha": "69a1e070c84ad63bd676f95021eca785e0502f80",
+    "pr": "54843",
+    "merge_sha": "a77a35872c159374e376c789ab2b4ba9f44a7318",
+    "html": "<p>Include cookie name when calculating maximum allowed size.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Implement `must-understand` directive according to RFC 9111.\n\n    The `must-understand` directive indicates that a cache must understand the semantics of the response status code, or discard the response. This directive is enforced to be used only with `no-store` to ensure proper cache behavior.\n\n    ```ruby\n    class ArticlesController < ApplicationController\n      def show\n        @article = Article.find(params[:id])\n\n        if @article.special_format?\n          must_understand\n          render status: 203 # Non-Authoritative Information\n        else\n          fresh_when @article\n        end\n      end\n    end\n    ```\n\n    *heka1024*",
+    "project": "actionpack",
+    "date_merged": 1743408334000,
+    "author": "heka1024",
+    "sha": "245234dd84e692414e797f9da2c901fdb5ff0db6",
+    "pr": "54833",
+    "merge_sha": "1c094d762d25805cc2d110ee2f7b54b33352e293",
+    "html": "<p>Implement <code>must-understand</code> directive according to RFC 9111.</p>\n\n<p>The <code>must-understand</code> directive indicates that a cache must understand the semantics of the response status code, or discard the response. This directive is enforced to be used only with <code>no-store</code> to ensure proper cache behavior.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ArticlesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@article</span> <span class=\"o\">=</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"k\">if</span> <span class=\"vi\">@article</span><span class=\"p\">.</span><span class=\"nf\">special_format?</span>\n      <span class=\"n\">must_understand</span>\n      <span class=\"n\">render</span> <span class=\"ss\">status: </span><span class=\"mi\">203</span> <span class=\"c1\"># Non-Authoritative Information</span>\n    <span class=\"k\">else</span>\n      <span class=\"n\">fresh_when</span> <span class=\"vi\">@article</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>heka1024</em></p>\n"
+  },
+  {
+    "message": "*   The JSON renderer doesn't escape HTML entities or Unicode line separators anymore.\n\n    Using `render json:` will no longer escape `<`, `>`, `&`, `U+2028` and `U+2029` characters that can cause errors\n    when the resulting JSON is embedded in JavaScript, or vulnerabilities when the resulting JSON is embedded in HTML.\n\n    Since the renderer is used to return a JSON document as `application/json`, it's typically not necessary to escape\n    those characters, and it improves performance.\n\n    Escaping will still occur when the `:callback` option is set, since the JSON is used as JavaScript code in this\n    situation (JSONP).\n\n    You can use the `:escape` option or set `config.action_controller.escape_json_responses` to `true` to restore the\n    escaping behavior.\n\n    ```ruby\n    class PostsController < ApplicationController\n      def index\n        render json: Post.last(30), escape: true\n      end\n    end\n    ```\n\n    *Étienne Barrié*, *Jean Boussier*",
+    "project": "actionpack",
+    "date_merged": 1743065459000,
+    "author": "Étienne Barrié",
+    "sha": "f0b8238f60d084c0ed643ecfba382ec97b5eedf2",
+    "pr": "54643",
+    "merge_sha": "d61a69c629e256fd57b0b40177db885f187d9208",
+    "html": "<p>The JSON renderer doesn’t escape HTML entities or Unicode line separators anymore.</p>\n\n<p>Using <code>render json:</code> will no longer escape <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>U+2028</code> and <code>U+2029</code> characters that can cause errors<br />\nwhen the resulting JSON is embedded in JavaScript, or vulnerabilities when the resulting JSON is embedded in HTML.</p>\n\n<p>Since the renderer is used to return a JSON document as <code>application/json</code>, it’s typically not necessary to escape<br />\nthose characters, and it improves performance.</p>\n\n<p>Escaping will still occur when the <code>:callback</code> option is set, since the JSON is used as JavaScript code in this<br />\nsituation (JSONP).</p>\n\n<p>You can use the <code>:escape</code> option or set <code>config.action_controller.escape_json_responses</code> to <code>true</code> to restore the<br />\nescaping behavior.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">PostsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">render</span> <span class=\"ss\">json: </span><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">last</span><span class=\"p\">(</span><span class=\"mi\">30</span><span class=\"p\">),</span> <span class=\"ss\">escape: </span><span class=\"kp\">true</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Étienne Barrié</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Load lazy route sets before inserting test routes\n\n    Without loading lazy route sets early, we miss `after_routes_loaded` callbacks, or risk\n    invoking them with the test routes instead of the real ones if another load is triggered by an engine.\n\n    *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1742316034000,
+    "author": "Gannon McGibbon",
+    "sha": "4c629b67deb6b6f184ba301e37045950df383a64",
+    "pr": "54777",
+    "merge_sha": "e9d7ca5e0b834ff2ce3d43965deac670ff8ac790",
+    "html": "<p>Load lazy route sets before inserting test routes</p>\n\n<p>Without loading lazy route sets early, we miss <code>after_routes_loaded</code> callbacks, or risk<br />\ninvoking them with the test routes instead of the real ones if another load is triggered by an engine.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Raise `AbstractController::DoubleRenderError` if `head` is called after rendering.\n\n    After this change, invoking `head` will lead to an error if response body is already set:\n\n    ```ruby\n    class PostController < ApplicationController\n      def index\n        render locals: {}\n        head :ok\n      end\n    end\n    ```\n\n    *Iaroslav Kurbatov*",
+    "project": "actionpack",
+    "date_merged": 1741387779000,
+    "author": "viralpraxis",
+    "sha": "1e3968e673b5ff94ea5976f2421ecc977a813355",
+    "pr": "54655",
+    "merge_sha": "2470d5b6d326b771ce9bd8d3e7b2728e5603e55c",
+    "html": "<p>Raise <code>AbstractController::DoubleRenderError</code> if <code>head</code> is called after rendering.</p>\n\n<p>After this change, invoking <code>head</code> will lead to an error if response body is already set:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">PostController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">render</span> <span class=\"ss\">locals: </span><span class=\"p\">{}</span>\n    <span class=\"n\">head</span> <span class=\"ss\">:ok</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Iaroslav Kurbatov</em></p>\n"
+  },
+  {
+    "message": "*   The Cookie Serializer can now serialize an Active Support SafeBuffer when using message pack.\n\n    Such code would previously produce an error if an application was using messagepack as its cookie serializer.\n\n    ```ruby\n    class PostController < ApplicationController\n      def index\n        flash.notice = t(:hello_html) # This would try to serialize a SafeBuffer, which was not possible.\n      end\n    end\n    ```\n\n    *Edouard Chin*",
+    "project": "actionpack",
+    "date_merged": 1740216705000,
+    "author": "Edouard CHIN",
+    "sha": "ae3eecb341b41724d69faed9b0f8f4f2fc624f7b",
+    "pr": "54584",
+    "merge_sha": "61bd6a7dd1d01538080e35fb594160fe8dcf2539",
+    "html": "<p>The Cookie Serializer can now serialize an Active Support SafeBuffer when using message pack.</p>\n\n<p>Such code would previously produce an error if an application was using messagepack as its cookie serializer.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">PostController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">flash</span><span class=\"p\">.</span><span class=\"nf\">notice</span> <span class=\"o\">=</span> <span class=\"n\">t</span><span class=\"p\">(</span><span class=\"ss\">:hello_html</span><span class=\"p\">)</span> <span class=\"c1\"># This would try to serialize a SafeBuffer, which was not possible.</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
+    "message": "*   Fix `Rails.application.reload_routes!` from clearing almost all routes.\n\n    When calling `Rails.application.reload_routes!` inside a middleware of\n    a Rake task, it was possible under certain conditions that all routes would be cleared.\n    If ran inside a middleware, this would result in getting a 404 on most page you visit.\n    This issue was only happening in development.\n\n    *Edouard Chin*",
+    "project": "actionpack",
+    "date_merged": 1738008944000,
+    "author": "Edouard CHIN",
+    "sha": "b40d92eca1f3a07f72a3068b3eebdd41bbd670a1",
+    "pr": "54306",
+    "merge_sha": "d804d25f332da07570de84dd271a4db3c20e5571",
+    "html": "<p>Fix <code>Rails.application.reload_routes!</code> from clearing almost all routes.</p>\n\n<p>When calling <code>Rails.application.reload_routes!</code> inside a middleware of<br />\na Rake task, it was possible under certain conditions that all routes would be cleared.<br />\nIf ran inside a middleware, this would result in getting a 404 on most page you visit.<br />\nThis issue was only happening in development.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
+    "message": "*   Add resource name to the `ArgumentError` that's raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`\n\n    This makes it easier to locate the source of the problem, especially for routes drawn by gems.\n\n    Before:\n    ```\n    :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n    ```\n\n    After:\n    ```\n    Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n    ```\n\n    *Jeremy Green*",
+    "project": "actionpack",
+    "date_merged": 1736371445000,
+    "author": "Jeremy Green",
+    "sha": "a4305e17773939c21621754112a382b0a4b83ad6",
+    "pr": "54163",
+    "merge_sha": "1387af8e5f0b3e89d0c448af2f852b96b1f0f6fa",
+    "html": "<p>Add resource name to the <code>ArgumentError</code> that’s raised when invalid <code>:only</code> or <code>:except</code> options are given to <code>#resource</code> or <code>#resources</code></p>\n\n<p>This makes it easier to locate the source of the problem, especially for routes drawn by gems.</p>\n\n<p>Before:</p>\n<pre><code>:only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n</code></pre>\n\n<p>After:</p>\n<pre><code>Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n</code></pre>\n\n<p><em>Jeremy Green</em></p>\n"
+  },
+  {
+    "message": "*   Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.\n\n    Newly generated session ids use 128 bits of randomness, which is more than\n    enough to ensure collisions can't happen, but if you need to harden sessions\n    even more, you can enable this option to check in the session store that the id\n    is indeed free you can enable that option. This however incurs an extra write\n    on session creation.\n\n    *Shia*",
+    "project": "actionpack",
+    "date_merged": 1734167903000,
+    "author": "Shia",
+    "sha": "4f63fde5de0c46acaad8d5119ecb8e44ae69ff4f",
+    "pr": "53918",
+    "merge_sha": "6a88a104909660f91a0c6a62ca23e2a8de667477",
+    "html": "<p>Add <code>check_collisions</code> option to <code>ActionDispatch::Session::CacheStore</code>.</p>\n\n<p>Newly generated session ids use 128 bits of randomness, which is more than<br />\nenough to ensure collisions can’t happen, but if you need to harden sessions<br />\neven more, you can enable this option to check in the session store that the id<br />\nis indeed free you can enable that option. This however incurs an extra write<br />\non session creation.</p>\n\n<p><em>Shia</em></p>\n"
+  },
+  {
+    "message": "*   In ExceptionWrapper, match backtrace lines with built templates more often,\n    allowing improved highlighting of errors within do-end blocks in templates.\n    Fix for Ruby 3.4 to match new method labels in backtrace.\n\n    *Martin Emde*",
+    "project": "actionpack",
+    "date_merged": 1732819839000,
+    "author": "Martin Emde",
+    "sha": "1f9295ed06a0e84a2561b8ae48a1baafb0981c62",
+    "pr": "53763",
+    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
+    "html": "<p>In ExceptionWrapper, match backtrace lines with built templates more often,<br />\nallowing improved highlighting of errors within do-end blocks in templates.<br />\nFix for Ruby 3.4 to match new method labels in backtrace.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Allow setting content type with a symbol of the Mime type.\n\n    ```ruby\n    # Before\n    response.content_type = \"text/html\"\n\n    # After\n    response.content_type = :html\n    ```\n\n    *Petrik de Heus*",
+    "project": "actionpack",
+    "date_merged": 1731753392000,
+    "author": "Petrik",
+    "sha": "18cb9092526cfd2dd44b199b152c7f66ad1d2b50",
+    "pr": "53236",
+    "merge_sha": "ed72523a86fb6010e056667f294fee34ba276aed",
+    "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`\n\n    Supports checking String equality:\n\n    ```ruby\n    filename = ActiveStorage::Filename.new(\"file.txt\")\n    filename == \"file.txt\" # => true\n    filename in \"file.txt\" # => true\n    \"file.txt\" == filename # => true\n    ```\n\n    *Sean Doyle*",
+    "project": "activestorage",
+    "date_merged": 1736536509000,
+    "author": "Sean Doyle",
+    "sha": "73133fa37f52204fe797d58d508806e5517f04b3",
+    "pr": "54185",
+    "merge_sha": "7ec153158e418c8c51bdee170fc06795db3a61ed",
+    "html": "<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>\n\n<p>Supports checking String equality:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">filename</span> <span class=\"o\">=</span> <span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Filename</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"file.txt\"</span><span class=\"p\">)</span>\n<span class=\"n\">filename</span> <span class=\"o\">==</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">filename</span> <span class=\"k\">in</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"s2\">\"file.txt\"</span> <span class=\"o\">==</span> <span class=\"n\">filename</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.\n\n    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`\n    is found to be disabled because of OpenSSL FIPS mode.\n\n    *Matt Pasquini*, *Jean Boussier*",
+    "project": "activestorage",
+    "date_merged": 1735992548000,
+    "author": "Matt Pasquini",
+    "sha": "bbc0cf1712da74d52874a4e012321b5e27e85e39",
+    "pr": "54040",
+    "merge_sha": "e64e5d31cdeafee142e32e604b513a39de779651",
+    "html": "<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>\n\n<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />\nis found to be disabled because of OpenSSL FIPS mode.</p>\n\n<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   A Blob will no longer autosave associated Attachment.\n\n    This fixes an issue where a record with an attachment would have\n    its dirty attributes reset, preventing your `after commit` callbacks\n    on that record to behave as expected.\n\n    Note that this change doesn't require any changes on your application\n    and is supposed to be internal. Active Storage Attachment will continue\n    to be autosaved (through a different relation).\n\n    *Edouard-chin*",
+    "project": "activestorage",
+    "date_merged": 1734601190000,
+    "author": "Edouard CHIN",
+    "sha": "e70f504271864e32a5f27a35fe0d0865f5d95527",
+    "pr": "53623",
+    "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
+    "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+  },
+  {
     "message": "*   Add public API for `before_fork_hook` in parallel testing.\n\n    Introduces a public API for calling the before fork hooks implemented by parallel testing.\n\n    ```ruby\n    parallelize_before_fork do\n        # perform an action before test processes are forked\n    end\n    ```\n\n    *Eileen M. Uchitelle*",
     "project": "activesupport",
     "date_merged": 1746119789000,
@@ -1010,6 +1000,186 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
+    "message": "*   In the Active Job bug report template set the queue adapter to the\n    test adapter so that `assert_enqueued_with` can pass.\n\n    *Andrew White*",
+    "project": "guides",
+    "date_merged": 1734279797000,
+    "author": "Andrew White",
+    "sha": "8e0a3914cab6b564d7dbcbfec35184c3132a7116",
+    "pr": "53963",
+    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
+    "html": "<p>In the Active Job bug report template set the queue adapter to the<br />\ntest adapter so that <code>assert_enqueued_with</code> can pass.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
+    "message": "*   Ensure all bug report templates set `config.secret_key_base` to avoid\n    generation of `tmp/local_secret.txt` files when running the report template.\n\n    *Andrew White*",
+    "project": "guides",
+    "date_merged": 1734279797000,
+    "author": "Andrew White",
+    "sha": "f17f2d1decf460033e46ba9c50a4924e9290a86f",
+    "pr": "53963",
+    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
+    "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
+    "message": "*   Add --reset option to bin/setup which will call db:reset as part of the setup.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1745308409000,
+    "author": "David Heinemeier Hansson",
+    "sha": "e9ee790d694298b8a48d44cd089934e6c8bc7597",
+    "pr": "54952",
+    "merge_sha": "d1baeac634160b3c7e0e48b4666021b873cf8729",
+    "html": "<p>Add –reset option to bin/setup which will call db:reset as part of the setup.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.\n\n    *Lovro Bikić*",
+    "project": "railties",
+    "date_merged": 1741958225000,
+    "author": "Lovro Bikic",
+    "sha": "ceb06782622b3dcaaf9bd0e95fa188f4d20f7949",
+    "pr": "54754",
+    "merge_sha": "951ea8f75d9bf6d2999df2f0497347976dce9476",
+    "html": "<p>Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.</p>\n\n<p><em>Lovro Bikić</em></p>\n"
+  },
+  {
+    "message": "*   Skip generating mailer-related files in authentication generator if the application does\n    not use ActionMailer\n\n    *Rami Massoud*",
+    "project": "railties",
+    "date_merged": 1741721225000,
+    "author": "Rami Massoud",
+    "sha": "e87af0f3235ca555f7864de9bb44da1d464d012d",
+    "pr": "54686",
+    "merge_sha": "af7ed3cae208d777fe993e37f7502f7ba1058dae",
+    "html": "<p>Skip generating mailer-related files in authentication generator if the application does<br />\nnot use ActionMailer</p>\n\n<p><em>Rami Massoud</em></p>\n"
+  },
+  {
+    "message": "*   Introduce `bin/ci` for running your tests, style checks, and security audits locally or in the cloud.\n\n    The specific steps are defined by a new DSL in `config/ci.rb`.\n\n    ```ruby\n    ActiveSupport::ContinuousIntegration.run do\n      step \"Setup\", \"bin/setup --skip-server\"\n      step \"Style: Ruby\", \"bin/rubocop\"\n      step \"Security: Gem audit\", \"bin/bundler-audit\"\n      step \"Tests: Rails\", \"bin/rails test test:system\"\n    end\n    ```\n\n    Optionally use [gh-signoff](https://github.com/basecamp/gh-signoff) to\n    set a green PR status - ready for merge.\n\n    *Jeremy Daer*, *DHH*",
+    "project": "railties",
+    "date_merged": 1741515059000,
+    "author": "Jeremy Daer",
+    "sha": "bcd5c93609c5854399dfb960b3666d318f469eb8",
+    "pr": "54693",
+    "merge_sha": "23956c7f94dffbddf257c0abb93231eb2be69d5e",
+    "html": "<p>Introduce <code>bin/ci</code> for running your tests, style checks, and security audits locally or in the cloud.</p>\n\n<p>The specific steps are defined by a new DSL in <code>config/ci.rb</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">ContinuousIntegration</span><span class=\"p\">.</span><span class=\"nf\">run</span> <span class=\"k\">do</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Setup\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/setup --skip-server\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Style: Ruby\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rubocop\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Security: Gem audit\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/bundler-audit\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Tests: Rails\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rails test test:system\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Optionally use <a href=\"https://github.com/basecamp/gh-signoff\">gh-signoff</a> to<br />\nset a green PR status - ready for merge.</p>\n\n<p><em>Jeremy Daer</em>, <em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Generate session controller tests when running the authentication generator.\n\n    *Jerome Dalbert*",
+    "project": "railties",
+    "date_merged": 1741387412000,
+    "author": "Jerome Dalbert",
+    "sha": "1dba10c7fb53af9dcebd3451cf121967960144b3",
+    "pr": "53726",
+    "merge_sha": "ba6f20aa62d3456e06cee4621718066e57337aab",
+    "html": "<p>Generate session controller tests when running the authentication generator.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
+  },
+  {
+    "message": "*   Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1741266426000,
+    "author": "David Heinemeier Hansson",
+    "sha": "bdaab704416e3df86a9d4e86970fc45e6d79f065",
+    "pr": "54695",
+    "merge_sha": "c36a258f5cb1656903dcf66087cba2a768cf0b0c",
+    "html": "<p>Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Rails no longer generates a `bin/bundle` binstub when creating new applications.\n\n    The `bin/bundle` binstub used to help activate the right version of bundler.\n    This is no longer necessary as this mechanism is now part of Rubygem itself.\n\n    *Edouard Chin*",
+    "project": "railties",
+    "date_merged": 1741151035000,
+    "author": "Edouard CHIN",
+    "sha": "7549ba77254f038b1ca6304a0be6cbda8e2a09c4",
+    "pr": "54687",
+    "merge_sha": "7b8ea0bb5c04f7de73661162a71de38f7843e29a",
+    "html": "<p>Rails no longer generates a <code>bin/bundle</code> binstub when creating new applications.</p>\n\n<p>The <code>bin/bundle</code> binstub used to help activate the right version of bundler.<br />\nThis is no longer necessary as this mechanism is now part of Rubygem itself.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
+    "message": "*   Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when\n    running `rails g authentication`. Simplifies authentication in integration tests.\n\n    *Bijan Rahnema*",
+    "project": "railties",
+    "date_merged": 1740732368000,
+    "author": "Bijan Rahnema",
+    "sha": "800976975253be2912d09a80757ee70a2bb1e984",
+    "pr": "53708",
+    "merge_sha": "271dbd5d5c0bf62c972b7dd4891c6410ca87a22d",
+    "html": "<p>Add a <code>SessionTestHelper</code> module with <code>sign_in_as(user)</code> and <code>sign_out</code> test helpers when<br />\nrunning <code>rails g authentication</code>. Simplifies authentication in integration tests.</p>\n\n<p><em>Bijan Rahnema</em></p>\n"
+  },
+  {
+    "message": "*   Rate limit password resets in authentication generator\n\n    This helps mitigate abuse from attackers spamming the password reset form.\n\n    *Chris Oliver*",
+    "project": "railties",
+    "date_merged": 1738836333000,
+    "author": "Chris Oliver",
+    "sha": "92533b1569ba710e166fe6bf2a3249d115a74ad6",
+    "pr": "54442",
+    "merge_sha": "4e5a13a55b5960c9a35afdcecd1120bc926d377c",
+    "html": "<p>Rate limit password resets in authentication generator</p>\n\n<p>This helps mitigate abuse from attackers spamming the password reset form.</p>\n\n<p><em>Chris Oliver</em></p>\n"
+  },
+  {
+    "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exclude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
+    "project": "railties",
+    "date_merged": 1737751723000,
+    "author": "eelco",
+    "sha": "dad07631d99c96f015162d3cab83c41111adf401",
+    "pr": "54313",
+    "merge_sha": "cd171d69fa03e0a09133089eca672831d447d02a",
+    "html": "<p>Update <code>rails new --minimal</code> option</p>\n\n<p>Extend the <code>--minimal</code> flag to exclude recently added features:<br />\n<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>\n\n<p><em>eelcoj</em></p>\n"
+  },
+  {
+    "message": "*   Add `application-name` metadata to application layout\n\n    The following metatag will be added to `app/views/layouts/application.html.erb`\n\n    ```html\n    <meta name=\"application-name\" content=\"Name of Rails Application\">\n    ```\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1737148063000,
+    "author": "Steve Polito",
+    "sha": "9144324cb92da6a461be40fc02a532aef1b29194",
+    "pr": "54257",
+    "merge_sha": "abb7035e08c07bb4e2941c1c27003609ce81e77b",
+    "html": "<p>Add <code>application-name</code> metadata to application layout</p>\n\n<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>\n\n<div class=\"language-html highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nt\">&lt;meta</span> <span class=\"na\">name=</span><span class=\"s\">\"application-name\"</span> <span class=\"na\">content=</span><span class=\"s\">\"Name of Rails Application\"</span><span class=\"nt\">&gt;</span>\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Use `secret_key_base` from ENV or credentials when present locally.\n\n    When ENV[\"SECRET_KEY_BASE\"] or\n    `Rails.application.credentials.secret_key_base` is set for test or\n    development, it is used for the `Rails.config.secret_key_base`,\n    instead of generating a `tmp/local_secret.txt` file.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1737144185000,
+    "author": "Petrik",
+    "sha": "8c5978c886d1511aecfa2f029478a03c91e7db75",
+    "pr": "53705",
+    "merge_sha": "4f2b9fe06a7ca5c44aab7abbab0353ed6d013d05",
+    "html": "<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>\n\n<p>When ENV[“SECRET_KEY_BASE”] or<br />\n<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />\ndevelopment, it is used for the <code>Rails.config.secret_key_base</code>,<br />\ninstead of generating a <code>tmp/local_secret.txt</code> file.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1736274652000,
+    "author": "Steve Polito",
+    "sha": "f0f0a818ad34e9ab930db8981b03d65708e2659d",
+    "pr": "52230",
+    "merge_sha": "1914a7437270f1e74d31494675c9fddf244a7cf5",
+    "html": "<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Colorize the Rails console prompt even on non standard environments.\n\n    *Lorenzo Zabot*",
+    "project": "railties",
+    "date_merged": 1736267051000,
+    "author": "Lorenzo Zabot",
+    "sha": "b097cfbbb9c5c31b0ede2b8caae28dabf7aa9850",
+    "pr": "53027",
+    "merge_sha": "c8335e118ba14562d4755ba2dd28171996fea297",
+    "html": "<p>Colorize the Rails console prompt even on non standard environments.</p>\n\n<p><em>Lorenzo Zabot</em></p>\n"
+  },
+  {
+    "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environments tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1732617959000,
+    "author": "Ali Ismayilov",
+    "sha": "76e2b7e529e6c8cc42de00c94408d008655385bb",
+    "pr": "53746",
+    "merge_sha": "723ca0c0a757e27ab23e60cd65767606b7f6c202",
+    "html": "<p>Don’t enable YJIT in development and test environments</p>\n\n<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />\nhence YJIT isn’t generally faster in these environments.</p>\n\n<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Only include PermissionsPolicy::Middleware if policy is configured.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1731706201000,
+    "author": "Petrik",
+    "sha": "987977c2809e57dc7f4d6e90d6aaa25e6a52f927",
+    "pr": "53621",
+    "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
+    "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   The Trix dependency is now satisfied by a gem, `action_text-trix`, rather than vendored\n    files. This allows applications to bump Trix versions independently of Rails\n    releases. Effectively this also upgrades Trix to `>= 2.1.15`.\n\n    *Mike Dalessio*",
     "project": "actiontext",
     "date_merged": 1747163309000,
@@ -1048,175 +1218,5 @@
     "pr": "53955",
     "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Defer invocation of ActiveJob enqueue callbacks until after commit when\n    `enqueue_after_transaction_commit` is enabled.\n\n    *Will Roever*",
-    "project": "activejob",
-    "date_merged": 1746429358000,
-    "author": "Will Roever",
-    "sha": "423dcce5b6dd203b280cfd822b4564f6efbe0904",
-    "pr": "55004",
-    "merge_sha": "96a2f03a2a82e91ab4438b625ba47bd8ed917b45",
-    "html": "<p>Defer invocation of ActiveJob enqueue callbacks until after commit when<br />\n<code>enqueue_after_transaction_commit</code> is enabled.</p>\n\n<p><em>Will Roever</em></p>\n"
-  },
-  {
-    "message": "*   Add `report:` option to `ActiveJob::Base#retry_on` and `#discard_on`\n\n    When the `report:` option is passed, errors will be reported to the error reporter\n    before being retried / discarded.\n\n    *Andrew Novoselac*",
-    "project": "activejob",
-    "date_merged": 1740129016000,
-    "author": "andrew.novoselac@shopify.com",
-    "sha": "3ff8c45e7b525c6b947d6f4f3350366b0d7e97ed",
-    "pr": "54541",
-    "merge_sha": "7df1b84335298140116a59cad1bffea6c6a91747",
-    "html": "<p>Add <code>report:</code> option to <code>ActiveJob::Base#retry_on</code> and <code>#discard_on</code></p>\n\n<p>When the <code>report:</code> option is passed, errors will be reported to the error reporter<br />\nbefore being retried / discarded.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
-  },
-  {
-    "message": "*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.\n\n    This was inconsistent with a regular `ActiveJob::Base#perform_later`.\n\n    *fatkodima*",
-    "project": "activejob",
-    "date_merged": 1733489505000,
-    "author": "fatkodima",
-    "sha": "f70cca178f35f703245de62c74d078f54fd17572",
-    "pr": "53859",
-    "merge_sha": "31aec233a17a44cb4666aa074243f0961798ed46",
-    "html": "<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>\n\n<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>\n\n<p><em>fatkodima</em></p>\n"
-  },
-  {
-    "message": "*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.\n\n    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic\n    `NameError` to make it easily possible for adapters to tell if the `NameError`\n    was raised during job execution or deserialization.\n\n    *Earlopain*",
-    "project": "activejob",
-    "date_merged": 1732822493000,
-    "author": "Earlopain",
-    "sha": "5a04667a89b41da272214e53c0111e7d5b2d3219",
-    "pr": "53770",
-    "merge_sha": "e15be8c98e39a96d33be9331f9649bade402f9bf",
-    "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
-  },
-  {
-    "message": "*   Add comprehensive support for HTTP Cache-Control request directives according to RFC 9111.\n\n    Provides a `request.cache_control_directives` object that gives access to request cache directives:\n\n    ```ruby\n    # Boolean directives\n    request.cache_control_directives.only_if_cached?  # => true/false\n    request.cache_control_directives.no_cache?        # => true/false\n    request.cache_control_directives.no_store?        # => true/false\n    request.cache_control_directives.no_transform?    # => true/false\n\n    # Value directives\n    request.cache_control_directives.max_age          # => integer or nil\n    request.cache_control_directives.max_stale        # => integer or nil (or true for valueless max-stale)\n    request.cache_control_directives.min_fresh        # => integer or nil\n    request.cache_control_directives.stale_if_error   # => integer or nil\n\n    # Special helpers for max-stale\n    request.cache_control_directives.max_stale?         # => true if max-stale present (with or without value)\n    request.cache_control_directives.max_stale_unlimited? # => true only for valueless max-stale\n    ```\n\n    Example usage:\n\n    ```ruby\n    def show\n      if request.cache_control_directives.only_if_cached?\n        @article = Article.find_cached(params[:id])\n        return head(:gateway_timeout) if @article.nil?\n      else\n        @article = Article.find(params[:id])\n      end\n\n      render :show\n    end\n    ```\n\n    *egg528*",
-    "project": "actionpack",
-    "date_merged": 1747120151000,
-    "author": "egg528",
-    "sha": "55b54a33f7e6e2e51e23ead6ec3309576b5b8dd6",
-    "pr": "55033",
-    "merge_sha": "0da7aaf5526a417924afc5f986348831197c9038",
-    "html": "<p>Add comprehensive support for HTTP Cache-Control request directives according to RFC 9111.</p>\n\n<p>Provides a <code>request.cache_control_directives</code> object that gives access to request cache directives:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Boolean directives</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">only_if_cached?</span>  <span class=\"c1\"># =&gt; true/false</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">no_cache?</span>        <span class=\"c1\"># =&gt; true/false</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">no_store?</span>        <span class=\"c1\"># =&gt; true/false</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">no_transform?</span>    <span class=\"c1\"># =&gt; true/false</span>\n\n<span class=\"c1\"># Value directives</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">max_age</span>          <span class=\"c1\"># =&gt; integer or nil</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">max_stale</span>        <span class=\"c1\"># =&gt; integer or nil (or true for valueless max-stale)</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">min_fresh</span>        <span class=\"c1\"># =&gt; integer or nil</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">stale_if_error</span>   <span class=\"c1\"># =&gt; integer or nil</span>\n\n<span class=\"c1\"># Special helpers for max-stale</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">max_stale?</span>         <span class=\"c1\"># =&gt; true if max-stale present (with or without value)</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">max_stale_unlimited?</span> <span class=\"c1\"># =&gt; true only for valueless max-stale</span>\n</code></pre></div></div>\n\n<p>Example usage:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">def</span> <span class=\"nf\">show</span>\n  <span class=\"k\">if</span> <span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">cache_control_directives</span><span class=\"p\">.</span><span class=\"nf\">only_if_cached?</span>\n    <span class=\"vi\">@article</span> <span class=\"o\">=</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">find_cached</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n    <span class=\"k\">return</span> <span class=\"n\">head</span><span class=\"p\">(</span><span class=\"ss\">:gateway_timeout</span><span class=\"p\">)</span> <span class=\"k\">if</span> <span class=\"vi\">@article</span><span class=\"p\">.</span><span class=\"nf\">nil?</span>\n  <span class=\"k\">else</span>\n    <span class=\"vi\">@article</span> <span class=\"o\">=</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"n\">render</span> <span class=\"ss\">:show</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>egg528</em></p>\n"
-  },
-  {
-    "message": "*   Add assert_in_body/assert_not_in_body as the simplest way to check if a piece of text is in the response body.\n\n    *DHH*",
-    "project": "actionpack",
-    "date_merged": 1745192416000,
-    "author": "David Heinemeier Hansson",
-    "sha": "8b00d0985f88a3f151dd21e8dfdaf6d1c2f497b0",
-    "pr": "54938",
-    "merge_sha": "f081b087cf9b4263a3b3a92910a043966d9f7d65",
-    "html": "<p>Add assert_in_body/assert_not_in_body as the simplest way to check if a piece of text is in the response body.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Include cookie name when calculating maximum allowed size.\n\n    *Hartley McGuire*",
-    "project": "actionpack",
-    "date_merged": 1743492989000,
-    "author": "Hartley McGuire",
-    "sha": "69a1e070c84ad63bd676f95021eca785e0502f80",
-    "pr": "54843",
-    "merge_sha": "a77a35872c159374e376c789ab2b4ba9f44a7318",
-    "html": "<p>Include cookie name when calculating maximum allowed size.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
-  },
-  {
-    "message": "*   Implement `must-understand` directive according to RFC 9111.\n\n    The `must-understand` directive indicates that a cache must understand the semantics of the response status code, or discard the response. This directive is enforced to be used only with `no-store` to ensure proper cache behavior.\n\n    ```ruby\n    class ArticlesController < ApplicationController\n      def show\n        @article = Article.find(params[:id])\n\n        if @article.special_format?\n          must_understand\n          render status: 203 # Non-Authoritative Information\n        else\n          fresh_when @article\n        end\n      end\n    end\n    ```\n\n    *heka1024*",
-    "project": "actionpack",
-    "date_merged": 1743408334000,
-    "author": "heka1024",
-    "sha": "245234dd84e692414e797f9da2c901fdb5ff0db6",
-    "pr": "54833",
-    "merge_sha": "1c094d762d25805cc2d110ee2f7b54b33352e293",
-    "html": "<p>Implement <code>must-understand</code> directive according to RFC 9111.</p>\n\n<p>The <code>must-understand</code> directive indicates that a cache must understand the semantics of the response status code, or discard the response. This directive is enforced to be used only with <code>no-store</code> to ensure proper cache behavior.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ArticlesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@article</span> <span class=\"o\">=</span> <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"k\">if</span> <span class=\"vi\">@article</span><span class=\"p\">.</span><span class=\"nf\">special_format?</span>\n      <span class=\"n\">must_understand</span>\n      <span class=\"n\">render</span> <span class=\"ss\">status: </span><span class=\"mi\">203</span> <span class=\"c1\"># Non-Authoritative Information</span>\n    <span class=\"k\">else</span>\n      <span class=\"n\">fresh_when</span> <span class=\"vi\">@article</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>heka1024</em></p>\n"
-  },
-  {
-    "message": "*   The JSON renderer doesn't escape HTML entities or Unicode line separators anymore.\n\n    Using `render json:` will no longer escape `<`, `>`, `&`, `U+2028` and `U+2029` characters that can cause errors\n    when the resulting JSON is embedded in JavaScript, or vulnerabilities when the resulting JSON is embedded in HTML.\n\n    Since the renderer is used to return a JSON document as `application/json`, it's typically not necessary to escape\n    those characters, and it improves performance.\n\n    Escaping will still occur when the `:callback` option is set, since the JSON is used as JavaScript code in this\n    situation (JSONP).\n\n    You can use the `:escape` option or set `config.action_controller.escape_json_responses` to `true` to restore the\n    escaping behavior.\n\n    ```ruby\n    class PostsController < ApplicationController\n      def index\n        render json: Post.last(30), escape: true\n      end\n    end\n    ```\n\n    *Étienne Barrié*, *Jean Boussier*",
-    "project": "actionpack",
-    "date_merged": 1743065459000,
-    "author": "Étienne Barrié",
-    "sha": "f0b8238f60d084c0ed643ecfba382ec97b5eedf2",
-    "pr": "54643",
-    "merge_sha": "d61a69c629e256fd57b0b40177db885f187d9208",
-    "html": "<p>The JSON renderer doesn’t escape HTML entities or Unicode line separators anymore.</p>\n\n<p>Using <code>render json:</code> will no longer escape <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>U+2028</code> and <code>U+2029</code> characters that can cause errors<br />\nwhen the resulting JSON is embedded in JavaScript, or vulnerabilities when the resulting JSON is embedded in HTML.</p>\n\n<p>Since the renderer is used to return a JSON document as <code>application/json</code>, it’s typically not necessary to escape<br />\nthose characters, and it improves performance.</p>\n\n<p>Escaping will still occur when the <code>:callback</code> option is set, since the JSON is used as JavaScript code in this<br />\nsituation (JSONP).</p>\n\n<p>You can use the <code>:escape</code> option or set <code>config.action_controller.escape_json_responses</code> to <code>true</code> to restore the<br />\nescaping behavior.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">PostsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">render</span> <span class=\"ss\">json: </span><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">last</span><span class=\"p\">(</span><span class=\"mi\">30</span><span class=\"p\">),</span> <span class=\"ss\">escape: </span><span class=\"kp\">true</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Étienne Barrié</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Load lazy route sets before inserting test routes\n\n    Without loading lazy route sets early, we miss `after_routes_loaded` callbacks, or risk\n    invoking them with the test routes instead of the real ones if another load is triggered by an engine.\n\n    *Gannon McGibbon*",
-    "project": "actionpack",
-    "date_merged": 1742316034000,
-    "author": "Gannon McGibbon",
-    "sha": "4c629b67deb6b6f184ba301e37045950df383a64",
-    "pr": "54777",
-    "merge_sha": "e9d7ca5e0b834ff2ce3d43965deac670ff8ac790",
-    "html": "<p>Load lazy route sets before inserting test routes</p>\n\n<p>Without loading lazy route sets early, we miss <code>after_routes_loaded</code> callbacks, or risk<br />\ninvoking them with the test routes instead of the real ones if another load is triggered by an engine.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Raise `AbstractController::DoubleRenderError` if `head` is called after rendering.\n\n    After this change, invoking `head` will lead to an error if response body is already set:\n\n    ```ruby\n    class PostController < ApplicationController\n      def index\n        render locals: {}\n        head :ok\n      end\n    end\n    ```\n\n    *Iaroslav Kurbatov*",
-    "project": "actionpack",
-    "date_merged": 1741387779000,
-    "author": "viralpraxis",
-    "sha": "1e3968e673b5ff94ea5976f2421ecc977a813355",
-    "pr": "54655",
-    "merge_sha": "2470d5b6d326b771ce9bd8d3e7b2728e5603e55c",
-    "html": "<p>Raise <code>AbstractController::DoubleRenderError</code> if <code>head</code> is called after rendering.</p>\n\n<p>After this change, invoking <code>head</code> will lead to an error if response body is already set:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">PostController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">render</span> <span class=\"ss\">locals: </span><span class=\"p\">{}</span>\n    <span class=\"n\">head</span> <span class=\"ss\">:ok</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Iaroslav Kurbatov</em></p>\n"
-  },
-  {
-    "message": "*   The Cookie Serializer can now serialize an Active Support SafeBuffer when using message pack.\n\n    Such code would previously produce an error if an application was using messagepack as its cookie serializer.\n\n    ```ruby\n    class PostController < ApplicationController\n      def index\n        flash.notice = t(:hello_html) # This would try to serialize a SafeBuffer, which was not possible.\n      end\n    end\n    ```\n\n    *Edouard Chin*",
-    "project": "actionpack",
-    "date_merged": 1740216705000,
-    "author": "Edouard CHIN",
-    "sha": "ae3eecb341b41724d69faed9b0f8f4f2fc624f7b",
-    "pr": "54584",
-    "merge_sha": "61bd6a7dd1d01538080e35fb594160fe8dcf2539",
-    "html": "<p>The Cookie Serializer can now serialize an Active Support SafeBuffer when using message pack.</p>\n\n<p>Such code would previously produce an error if an application was using messagepack as its cookie serializer.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">PostController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"k\">def</span> <span class=\"nf\">index</span>\n    <span class=\"n\">flash</span><span class=\"p\">.</span><span class=\"nf\">notice</span> <span class=\"o\">=</span> <span class=\"n\">t</span><span class=\"p\">(</span><span class=\"ss\">:hello_html</span><span class=\"p\">)</span> <span class=\"c1\"># This would try to serialize a SafeBuffer, which was not possible.</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Edouard Chin</em></p>\n"
-  },
-  {
-    "message": "*   Fix `Rails.application.reload_routes!` from clearing almost all routes.\n\n    When calling `Rails.application.reload_routes!` inside a middleware of\n    a Rake task, it was possible under certain conditions that all routes would be cleared.\n    If ran inside a middleware, this would result in getting a 404 on most page you visit.\n    This issue was only happening in development.\n\n    *Edouard Chin*",
-    "project": "actionpack",
-    "date_merged": 1738008944000,
-    "author": "Edouard CHIN",
-    "sha": "b40d92eca1f3a07f72a3068b3eebdd41bbd670a1",
-    "pr": "54306",
-    "merge_sha": "d804d25f332da07570de84dd271a4db3c20e5571",
-    "html": "<p>Fix <code>Rails.application.reload_routes!</code> from clearing almost all routes.</p>\n\n<p>When calling <code>Rails.application.reload_routes!</code> inside a middleware of<br />\na Rake task, it was possible under certain conditions that all routes would be cleared.<br />\nIf ran inside a middleware, this would result in getting a 404 on most page you visit.<br />\nThis issue was only happening in development.</p>\n\n<p><em>Edouard Chin</em></p>\n"
-  },
-  {
-    "message": "*   Add resource name to the `ArgumentError` that's raised when invalid `:only` or `:except` options are given to `#resource` or `#resources`\n\n    This makes it easier to locate the source of the problem, especially for routes drawn by gems.\n\n    Before:\n    ```\n    :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n    ```\n\n    After:\n    ```\n    Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n    ```\n\n    *Jeremy Green*",
-    "project": "actionpack",
-    "date_merged": 1736371445000,
-    "author": "Jeremy Green",
-    "sha": "a4305e17773939c21621754112a382b0a4b83ad6",
-    "pr": "54163",
-    "merge_sha": "1387af8e5f0b3e89d0c448af2f852b96b1f0f6fa",
-    "html": "<p>Add resource name to the <code>ArgumentError</code> that’s raised when invalid <code>:only</code> or <code>:except</code> options are given to <code>#resource</code> or <code>#resources</code></p>\n\n<p>This makes it easier to locate the source of the problem, especially for routes drawn by gems.</p>\n\n<p>Before:</p>\n<pre><code>:only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n</code></pre>\n\n<p>After:</p>\n<pre><code>Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n</code></pre>\n\n<p><em>Jeremy Green</em></p>\n"
-  },
-  {
-    "message": "*   Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.\n\n    Newly generated session ids use 128 bits of randomness, which is more than\n    enough to ensure collisions can't happen, but if you need to harden sessions\n    even more, you can enable this option to check in the session store that the id\n    is indeed free you can enable that option. This however incurs an extra write\n    on session creation.\n\n    *Shia*",
-    "project": "actionpack",
-    "date_merged": 1734167903000,
-    "author": "Shia",
-    "sha": "4f63fde5de0c46acaad8d5119ecb8e44ae69ff4f",
-    "pr": "53918",
-    "merge_sha": "6a88a104909660f91a0c6a62ca23e2a8de667477",
-    "html": "<p>Add <code>check_collisions</code> option to <code>ActionDispatch::Session::CacheStore</code>.</p>\n\n<p>Newly generated session ids use 128 bits of randomness, which is more than<br />\nenough to ensure collisions can’t happen, but if you need to harden sessions<br />\neven more, you can enable this option to check in the session store that the id<br />\nis indeed free you can enable that option. This however incurs an extra write<br />\non session creation.</p>\n\n<p><em>Shia</em></p>\n"
-  },
-  {
-    "message": "*   In ExceptionWrapper, match backtrace lines with built templates more often,\n    allowing improved highlighting of errors within do-end blocks in templates.\n    Fix for Ruby 3.4 to match new method labels in backtrace.\n\n    *Martin Emde*",
-    "project": "actionpack",
-    "date_merged": 1732819839000,
-    "author": "Martin Emde",
-    "sha": "1f9295ed06a0e84a2561b8ae48a1baafb0981c62",
-    "pr": "53763",
-    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
-    "html": "<p>In ExceptionWrapper, match backtrace lines with built templates more often,<br />\nallowing improved highlighting of errors within do-end blocks in templates.<br />\nFix for Ruby 3.4 to match new method labels in backtrace.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Allow setting content type with a symbol of the Mime type.\n\n    ```ruby\n    # Before\n    response.content_type = \"text/html\"\n\n    # After\n    response.content_type = :html\n    ```\n\n    *Petrik de Heus*",
-    "project": "actionpack",
-    "date_merged": 1731753392000,
-    "author": "Petrik",
-    "sha": "18cb9092526cfd2dd44b199b152c7f66ad1d2b50",
-    "pr": "53236",
-    "merge_sha": "ed72523a86fb6010e056667f294fee34ba276aed",
-    "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   }
 ]
