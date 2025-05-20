@@ -40,6 +40,16 @@
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
+    "message": "*   Add support for multiple databases to `db:migrate:reset`.\n\n    *Joé Dupuis*",
+    "project": "activerecord",
+    "date_merged": 1747702606000,
+    "author": "Joé Dupuis",
+    "sha": "9cb9b4cef9ad3d0ddc98ac0bbee380ad754d7ad7",
+    "pr": "55077",
+    "merge_sha": "d1baada0da5a52686e45ceae5705bcac883802ca",
+    "html": "<p>Add support for multiple databases to <code>db:migrate:reset</code>.</p>\n\n<p><em>Joé Dupuis</em></p>\n"
+  },
+  {
     "message": "*   Add `affected_rows` to `ActiveRecord::Result`.\n\n    *Jenny Shen*",
     "project": "activerecord",
     "date_merged": 1747331726000,
