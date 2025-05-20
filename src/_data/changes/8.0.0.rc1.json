@@ -40,6 +40,16 @@
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
+    "message": "*   `:class_name` is now invalid in polymorphic `belongs_to` associations.\n\n    Reason is `:class_name` does not make sense in those associations because\n    the class name of target records is dynamic and stored in the type column.\n\n    Existing polymorphic associations setting this option can just delete it.\n    While it did not raise, it had no effect anyway.\n\n    *Xavier Noria*",
+    "project": "activerecord",
+    "date_merged": 1747755955000,
+    "author": "Xavier Noria",
+    "sha": "9eb52bfbcdc58c56a5776c7c061adf86676fd87a",
+    "pr": "55085",
+    "merge_sha": "3b8d4da1417c808758402e821811a2f41769f860",
+    "html": "<p><code>:class_name</code> is now invalid in polymorphic <code>belongs_to</code> associations.</p>\n\n<p>Reason is <code>:class_name</code> does not make sense in those associations because<br />\nthe class name of target records is dynamic and stored in the type column.</p>\n\n<p>Existing polymorphic associations setting this option can just delete it.<br />\nWhile it did not raise, it had no effect anyway.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
     "message": "*   Add support for multiple databases to `db:migrate:reset`.\n\n    *Joé Dupuis*",
     "project": "activerecord",
     "date_merged": 1747702606000,
