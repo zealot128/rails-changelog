@@ -1040,6 +1040,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Remove unnecessary `ruby-version` input from `ruby/setup-ruby`\n\n    *TangRufus*",
+    "project": "railties",
+    "date_merged": 1748278305000,
+    "author": "TangRufus",
+    "sha": "29857357cbe4ce32c02789efe1f0be5f5d4958aa",
+    "pr": "55120",
+    "merge_sha": "b7520a13adda46c0cc5f3fb4a4c1726633af2bba",
+    "html": "<p>Remove unnecessary <code>ruby-version</code> input from <code>ruby/setup-ruby</code></p>\n\n<p><em>TangRufus</em></p>\n"
+  },
+  {
     "message": "*   Add --reset option to bin/setup which will call db:reset as part of the setup.\n\n    *DHH*",
     "project": "railties",
     "date_merged": 1745308409000,
