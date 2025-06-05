@@ -1,5 +1,25 @@
 [
   {
+    "message": "*   Allow setting nil as subscription connection identifier for Redis.\n\n    *Nguyen Nguyen*",
+    "project": "actioncable",
+    "date_merged": 1744900575000,
+    "author": "bubiche",
+    "sha": "fe5c76846ccc19d19eafe2e41b11e04850146e69",
+    "pr": "54931",
+    "merge_sha": "17cde11cd13cf07a7d6c712cb1593881496abacb",
+    "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
+  },
+  {
+    "message": "*   Add `reply_to_address` extension method on `Mail::Message`.\n\n    *Mr0grog*",
+    "project": "actionmailbox",
+    "date_merged": 1737972229000,
+    "author": "Rob Brackett",
+    "sha": "ac583204ba548557981b6890a6fc2c3975d24ee9",
+    "pr": "53513",
+    "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
+    "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
+  },
+  {
     "message": "*   Allow jobs to the interrupted and resumed with Continuations\n\n    A job can use Continuations by including the `ActiveJob::Continuable`\n    concern. Continuations split jobs into steps. When the queuing system\n    is shutting down jobs can be interrupted and their progress saved.\n\n    ```ruby\n    class ProcessImportJob\n      include ActiveJob::Continuable\n\n      def perform(import_id)\n        @import = Import.find(import_id)\n\n        # block format\n        step :initialize do\n          @import.initialize\n        end\n\n        # step with cursor, the cursor is saved when the job is interrupted\n        step :process do |step|\n          @import.records.find_each(start: step.cursor) do |record|\n            record.process\n            step.advance! from: record.id\n          end\n        end\n\n        # method format\n        step :finalize\n\n        private\n          def finalize\n            @import.finalize\n          end\n      end\n    end\n    ```\n\n    *Donal McBreen*",
     "project": "activejob",
     "date_merged": 1748854953000,
@@ -550,6 +570,176 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
+    "message": "*   Remove unnecessary `ruby-version` input from `ruby/setup-ruby`\n\n    *TangRufus*",
+    "project": "railties",
+    "date_merged": 1748278305000,
+    "author": "TangRufus",
+    "sha": "29857357cbe4ce32c02789efe1f0be5f5d4958aa",
+    "pr": "55120",
+    "merge_sha": "b7520a13adda46c0cc5f3fb4a4c1726633af2bba",
+    "html": "<p>Remove unnecessary <code>ruby-version</code> input from <code>ruby/setup-ruby</code></p>\n\n<p><em>TangRufus</em></p>\n"
+  },
+  {
+    "message": "*   Add --reset option to bin/setup which will call db:reset as part of the setup.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1745308409000,
+    "author": "David Heinemeier Hansson",
+    "sha": "e9ee790d694298b8a48d44cd089934e6c8bc7597",
+    "pr": "54952",
+    "merge_sha": "d1baeac634160b3c7e0e48b4666021b873cf8729",
+    "html": "<p>Add –reset option to bin/setup which will call db:reset as part of the setup.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.\n\n    *Lovro Bikić*",
+    "project": "railties",
+    "date_merged": 1741958225000,
+    "author": "Lovro Bikic",
+    "sha": "ceb06782622b3dcaaf9bd0e95fa188f4d20f7949",
+    "pr": "54754",
+    "merge_sha": "951ea8f75d9bf6d2999df2f0497347976dce9476",
+    "html": "<p>Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.</p>\n\n<p><em>Lovro Bikić</em></p>\n"
+  },
+  {
+    "message": "*   Skip generating mailer-related files in authentication generator if the application does\n    not use ActionMailer\n\n    *Rami Massoud*",
+    "project": "railties",
+    "date_merged": 1741721225000,
+    "author": "Rami Massoud",
+    "sha": "e87af0f3235ca555f7864de9bb44da1d464d012d",
+    "pr": "54686",
+    "merge_sha": "af7ed3cae208d777fe993e37f7502f7ba1058dae",
+    "html": "<p>Skip generating mailer-related files in authentication generator if the application does<br />\nnot use ActionMailer</p>\n\n<p><em>Rami Massoud</em></p>\n"
+  },
+  {
+    "message": "*   Introduce `bin/ci` for running your tests, style checks, and security audits locally or in the cloud.\n\n    The specific steps are defined by a new DSL in `config/ci.rb`.\n\n    ```ruby\n    ActiveSupport::ContinuousIntegration.run do\n      step \"Setup\", \"bin/setup --skip-server\"\n      step \"Style: Ruby\", \"bin/rubocop\"\n      step \"Security: Gem audit\", \"bin/bundler-audit\"\n      step \"Tests: Rails\", \"bin/rails test test:system\"\n    end\n    ```\n\n    Optionally use [gh-signoff](https://github.com/basecamp/gh-signoff) to\n    set a green PR status - ready for merge.\n\n    *Jeremy Daer*, *DHH*",
+    "project": "railties",
+    "date_merged": 1741515059000,
+    "author": "Jeremy Daer",
+    "sha": "bcd5c93609c5854399dfb960b3666d318f469eb8",
+    "pr": "54693",
+    "merge_sha": "23956c7f94dffbddf257c0abb93231eb2be69d5e",
+    "html": "<p>Introduce <code>bin/ci</code> for running your tests, style checks, and security audits locally or in the cloud.</p>\n\n<p>The specific steps are defined by a new DSL in <code>config/ci.rb</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">ContinuousIntegration</span><span class=\"p\">.</span><span class=\"nf\">run</span> <span class=\"k\">do</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Setup\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/setup --skip-server\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Style: Ruby\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rubocop\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Security: Gem audit\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/bundler-audit\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Tests: Rails\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rails test test:system\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Optionally use <a href=\"https://github.com/basecamp/gh-signoff\">gh-signoff</a> to<br />\nset a green PR status - ready for merge.</p>\n\n<p><em>Jeremy Daer</em>, <em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Generate session controller tests when running the authentication generator.\n\n    *Jerome Dalbert*",
+    "project": "railties",
+    "date_merged": 1741387412000,
+    "author": "Jerome Dalbert",
+    "sha": "1dba10c7fb53af9dcebd3451cf121967960144b3",
+    "pr": "53726",
+    "merge_sha": "ba6f20aa62d3456e06cee4621718066e57337aab",
+    "html": "<p>Generate session controller tests when running the authentication generator.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
+  },
+  {
+    "message": "*   Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1741266426000,
+    "author": "David Heinemeier Hansson",
+    "sha": "bdaab704416e3df86a9d4e86970fc45e6d79f065",
+    "pr": "54695",
+    "merge_sha": "c36a258f5cb1656903dcf66087cba2a768cf0b0c",
+    "html": "<p>Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Rails no longer generates a `bin/bundle` binstub when creating new applications.\n\n    The `bin/bundle` binstub used to help activate the right version of bundler.\n    This is no longer necessary as this mechanism is now part of Rubygem itself.\n\n    *Edouard Chin*",
+    "project": "railties",
+    "date_merged": 1741151035000,
+    "author": "Edouard CHIN",
+    "sha": "7549ba77254f038b1ca6304a0be6cbda8e2a09c4",
+    "pr": "54687",
+    "merge_sha": "7b8ea0bb5c04f7de73661162a71de38f7843e29a",
+    "html": "<p>Rails no longer generates a <code>bin/bundle</code> binstub when creating new applications.</p>\n\n<p>The <code>bin/bundle</code> binstub used to help activate the right version of bundler.<br />\nThis is no longer necessary as this mechanism is now part of Rubygem itself.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
+    "message": "*   Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when\n    running `rails g authentication`. Simplifies authentication in integration tests.\n\n    *Bijan Rahnema*",
+    "project": "railties",
+    "date_merged": 1740732368000,
+    "author": "Bijan Rahnema",
+    "sha": "800976975253be2912d09a80757ee70a2bb1e984",
+    "pr": "53708",
+    "merge_sha": "271dbd5d5c0bf62c972b7dd4891c6410ca87a22d",
+    "html": "<p>Add a <code>SessionTestHelper</code> module with <code>sign_in_as(user)</code> and <code>sign_out</code> test helpers when<br />\nrunning <code>rails g authentication</code>. Simplifies authentication in integration tests.</p>\n\n<p><em>Bijan Rahnema</em></p>\n"
+  },
+  {
+    "message": "*   Rate limit password resets in authentication generator\n\n    This helps mitigate abuse from attackers spamming the password reset form.\n\n    *Chris Oliver*",
+    "project": "railties",
+    "date_merged": 1738836333000,
+    "author": "Chris Oliver",
+    "sha": "92533b1569ba710e166fe6bf2a3249d115a74ad6",
+    "pr": "54442",
+    "merge_sha": "4e5a13a55b5960c9a35afdcecd1120bc926d377c",
+    "html": "<p>Rate limit password resets in authentication generator</p>\n\n<p>This helps mitigate abuse from attackers spamming the password reset form.</p>\n\n<p><em>Chris Oliver</em></p>\n"
+  },
+  {
+    "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exclude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
+    "project": "railties",
+    "date_merged": 1737751723000,
+    "author": "eelco",
+    "sha": "dad07631d99c96f015162d3cab83c41111adf401",
+    "pr": "54313",
+    "merge_sha": "cd171d69fa03e0a09133089eca672831d447d02a",
+    "html": "<p>Update <code>rails new --minimal</code> option</p>\n\n<p>Extend the <code>--minimal</code> flag to exclude recently added features:<br />\n<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>\n\n<p><em>eelcoj</em></p>\n"
+  },
+  {
+    "message": "*   Add `application-name` metadata to application layout\n\n    The following metatag will be added to `app/views/layouts/application.html.erb`\n\n    ```html\n    <meta name=\"application-name\" content=\"Name of Rails Application\">\n    ```\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1737148063000,
+    "author": "Steve Polito",
+    "sha": "9144324cb92da6a461be40fc02a532aef1b29194",
+    "pr": "54257",
+    "merge_sha": "abb7035e08c07bb4e2941c1c27003609ce81e77b",
+    "html": "<p>Add <code>application-name</code> metadata to application layout</p>\n\n<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>\n\n<div class=\"language-html highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nt\">&lt;meta</span> <span class=\"na\">name=</span><span class=\"s\">\"application-name\"</span> <span class=\"na\">content=</span><span class=\"s\">\"Name of Rails Application\"</span><span class=\"nt\">&gt;</span>\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Use `secret_key_base` from ENV or credentials when present locally.\n\n    When ENV[\"SECRET_KEY_BASE\"] or\n    `Rails.application.credentials.secret_key_base` is set for test or\n    development, it is used for the `Rails.config.secret_key_base`,\n    instead of generating a `tmp/local_secret.txt` file.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1737144185000,
+    "author": "Petrik",
+    "sha": "8c5978c886d1511aecfa2f029478a03c91e7db75",
+    "pr": "53705",
+    "merge_sha": "4f2b9fe06a7ca5c44aab7abbab0353ed6d013d05",
+    "html": "<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>\n\n<p>When ENV[“SECRET_KEY_BASE”] or<br />\n<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />\ndevelopment, it is used for the <code>Rails.config.secret_key_base</code>,<br />\ninstead of generating a <code>tmp/local_secret.txt</code> file.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1736274652000,
+    "author": "Steve Polito",
+    "sha": "f0f0a818ad34e9ab930db8981b03d65708e2659d",
+    "pr": "52230",
+    "merge_sha": "1914a7437270f1e74d31494675c9fddf244a7cf5",
+    "html": "<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Colorize the Rails console prompt even on non standard environments.\n\n    *Lorenzo Zabot*",
+    "project": "railties",
+    "date_merged": 1736267051000,
+    "author": "Lorenzo Zabot",
+    "sha": "b097cfbbb9c5c31b0ede2b8caae28dabf7aa9850",
+    "pr": "53027",
+    "merge_sha": "c8335e118ba14562d4755ba2dd28171996fea297",
+    "html": "<p>Colorize the Rails console prompt even on non standard environments.</p>\n\n<p><em>Lorenzo Zabot</em></p>\n"
+  },
+  {
+    "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environments tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1732617959000,
+    "author": "Ali Ismayilov",
+    "sha": "76e2b7e529e6c8cc42de00c94408d008655385bb",
+    "pr": "53746",
+    "merge_sha": "723ca0c0a757e27ab23e60cd65767606b7f6c202",
+    "html": "<p>Don’t enable YJIT in development and test environments</p>\n\n<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />\nhence YJIT isn’t generally faster in these environments.</p>\n\n<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Only include PermissionsPolicy::Middleware if policy is configured.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1731706201000,
+    "author": "Petrik",
+    "sha": "987977c2809e57dc7f4d6e90d6aaa25e6a52f927",
+    "pr": "53621",
+    "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
+    "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Respect `html_options[:form]` when `collection_checkboxes` generates the\n    hidden `<input>`.\n\n    *Riccardo Odone*",
     "project": "actionview",
     "date_merged": 1736352191000,
@@ -630,24 +820,24 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
-    "message": "*   Allow setting nil as subscription connection identifier for Redis.\n\n    *Nguyen Nguyen*",
-    "project": "actioncable",
-    "date_merged": 1744900575000,
-    "author": "bubiche",
-    "sha": "fe5c76846ccc19d19eafe2e41b11e04850146e69",
-    "pr": "54931",
-    "merge_sha": "17cde11cd13cf07a7d6c712cb1593881496abacb",
-    "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
+    "message": "*   Add `except_on:` option for validation callbacks.\n\n    *Ben Sheldon*",
+    "project": "activemodel",
+    "date_merged": 1741164716000,
+    "author": "Ben Sheldon [he/him]",
+    "sha": "87be3c33cfc43888fb9aa3c9e41e3ce4ff722439",
+    "pr": "54665",
+    "merge_sha": "a59db85fb8f0be684fb22abf0e53ba13701ac9c1",
+    "html": "<p>Add <code>except_on:</code> option for validation callbacks.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
   },
   {
-    "message": "*   Add `reply_to_address` extension method on `Mail::Message`.\n\n    *Mr0grog*",
-    "project": "actionmailbox",
-    "date_merged": 1737972229000,
-    "author": "Rob Brackett",
-    "sha": "ac583204ba548557981b6890a6fc2c3975d24ee9",
-    "pr": "53513",
-    "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
-    "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
+    "message": "*   Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`\n\n    ```ruby\n    class User\n      include ActiveModel::Attributes\n      include ActiveModel::Attributes::Normalization\n\n      attribute :email, :string\n\n      normalizes :email, with: -> email { email.strip.downcase }\n    end\n\n    user = User.new\n    user.email =    \" CRUISE-CONTROL@EXAMPLE.COM\\n\"\n    user.email # => \"cruise-control@example.com\"\n    ```\n\n    *Sean Doyle*",
+    "project": "activemodel",
+    "date_merged": 1736266443000,
+    "author": "Sean Doyle",
+    "sha": "599c9af7e1990a98e9bbaffa03a4b4d0b2f622ee",
+    "pr": "53955",
+    "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
+    "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Add comprehensive support for HTTP Cache-Control request directives according to RFC 9111.\n\n    Provides a `request.cache_control_directives` object that gives access to request cache directives:\n\n    ```ruby\n    # Boolean directives\n    request.cache_control_directives.only_if_cached?  # => true/false\n    request.cache_control_directives.no_cache?        # => true/false\n    request.cache_control_directives.no_store?        # => true/false\n    request.cache_control_directives.no_transform?    # => true/false\n\n    # Value directives\n    request.cache_control_directives.max_age          # => integer or nil\n    request.cache_control_directives.max_stale        # => integer or nil (or true for valueless max-stale)\n    request.cache_control_directives.min_fresh        # => integer or nil\n    request.cache_control_directives.stale_if_error   # => integer or nil\n\n    # Special helpers for max-stale\n    request.cache_control_directives.max_stale?         # => true if max-stale present (with or without value)\n    request.cache_control_directives.max_stale_unlimited? # => true only for valueless max-stale\n    ```\n\n    Example usage:\n\n    ```ruby\n    def show\n      if request.cache_control_directives.only_if_cached?\n        @article = Article.find_cached(params[:id])\n        return head(:gateway_timeout) if @article.nil?\n      else\n        @article = Article.find(params[:id])\n      end\n\n      render :show\n    end\n    ```\n\n    *egg528*",
@@ -780,44 +970,54 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
-    "message": "*   Direct upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
-    "project": "activestorage",
+    "message": "*   In the Active Job bug report template set the queue adapter to the\n    test adapter so that `assert_enqueued_with` can pass.\n\n    *Andrew White*",
+    "project": "guides",
+    "date_merged": 1734279797000,
+    "author": "Andrew White",
+    "sha": "8e0a3914cab6b564d7dbcbfec35184c3132a7116",
+    "pr": "53963",
+    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
+    "html": "<p>In the Active Job bug report template set the queue adapter to the<br />\ntest adapter so that <code>assert_enqueued_with</code> can pass.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
+    "message": "*   Ensure all bug report templates set `config.secret_key_base` to avoid\n    generation of `tmp/local_secret.txt` files when running the report template.\n\n    *Andrew White*",
+    "project": "guides",
+    "date_merged": 1734279797000,
+    "author": "Andrew White",
+    "sha": "f17f2d1decf460033e46ba9c50a4924e9290a86f",
+    "pr": "53963",
+    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
+    "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
+    "message": "*   Attachment upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
+    "project": "actiontext",
     "date_merged": 1749074905000,
     "author": "Jeremy Daer",
     "sha": "606ba30ad4b7663ea5c171cf688cfcddd995b2d7",
     "pr": "55157",
     "merge_sha": null,
-    "html": "<p>Direct upload progress accounts for server processing time.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
+    "html": "<p>Attachment upload progress accounts for server processing time.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
-    "message": "*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`\n\n    Supports checking String equality:\n\n    ```ruby\n    filename = ActiveStorage::Filename.new(\"file.txt\")\n    filename == \"file.txt\" # => true\n    filename in \"file.txt\" # => true\n    \"file.txt\" == filename # => true\n    ```\n\n    *Sean Doyle*",
-    "project": "activestorage",
-    "date_merged": 1736536509000,
+    "message": "*   The Trix dependency is now satisfied by a gem, `action_text-trix`, rather than vendored\n    files. This allows applications to bump Trix versions independently of Rails\n    releases. Effectively this also upgrades Trix to `>= 2.1.15`.\n\n    *Mike Dalessio*",
+    "project": "actiontext",
+    "date_merged": 1747163309000,
+    "author": "Mike Dalessio",
+    "sha": "d0d2d31f62cae9bdc9360b9f179b4311377e9957",
+    "pr": "55058",
+    "merge_sha": "a3b37ff166a925f7e069c9068f7ee92808da6e82",
+    "html": "<p>The Trix dependency is now satisfied by a gem, <code>action_text-trix</code>, rather than vendored<br />\nfiles. This allows applications to bump Trix versions independently of Rails<br />\nreleases. Effectively this also upgrades Trix to <code>&gt;= 2.1.15</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1733784985000,
     "author": "Sean Doyle",
-    "sha": "73133fa37f52204fe797d58d508806e5517f04b3",
-    "pr": "54185",
-    "merge_sha": "7ec153158e418c8c51bdee170fc06795db3a61ed",
-    "html": "<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>\n\n<p>Supports checking String equality:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">filename</span> <span class=\"o\">=</span> <span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Filename</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"file.txt\"</span><span class=\"p\">)</span>\n<span class=\"n\">filename</span> <span class=\"o\">==</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">filename</span> <span class=\"k\">in</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"s2\">\"file.txt\"</span> <span class=\"o\">==</span> <span class=\"n\">filename</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.\n\n    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`\n    is found to be disabled because of OpenSSL FIPS mode.\n\n    *Matt Pasquini*, *Jean Boussier*",
-    "project": "activestorage",
-    "date_merged": 1735992548000,
-    "author": "Matt Pasquini",
-    "sha": "bbc0cf1712da74d52874a4e012321b5e27e85e39",
-    "pr": "54040",
-    "merge_sha": "e64e5d31cdeafee142e32e604b513a39de779651",
-    "html": "<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>\n\n<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />\nis found to be disabled because of OpenSSL FIPS mode.</p>\n\n<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   A Blob will no longer autosave associated Attachment.\n\n    This fixes an issue where a record with an attachment would have\n    its dirty attributes reset, preventing your `after commit` callbacks\n    on that record to behave as expected.\n\n    Note that this change doesn't require any changes on your application\n    and is supposed to be internal. Active Storage Attachment will continue\n    to be autosaved (through a different relation).\n\n    *Edouard-chin*",
-    "project": "activestorage",
-    "date_merged": 1734601190000,
-    "author": "Edouard CHIN",
-    "sha": "e70f504271864e32a5f27a35fe0d0865f5d95527",
-    "pr": "53623",
-    "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
-    "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+    "sha": "0eb9fa47168db84e79f5a200af470acca3ba8c31",
+    "pr": "53847",
+    "merge_sha": "0efc3e899a0cade4e1b7c626d1df043dadf2d2a2",
+    "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Always clear `CurrentAttribute` instances.\n\n    Previously `CurrentAttribute` instance would be reset at the end of requests.\n    Meaning its attributes would be re-initialized.\n\n    This is problematic because it assume these objects don't hold any state\n    other than their declared attribute, which isn't always the case, and\n    can lead to state leak across request.\n\n    Now `CurrentAttribute` instances are abandonned at the end of a request,\n    and a new instance is created at the start of the next request.\n\n    *Jean Boussier*, *Janko Marohnić*",
@@ -1050,243 +1250,43 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
-    "message": "*   In the Active Job bug report template set the queue adapter to the\n    test adapter so that `assert_enqueued_with` can pass.\n\n    *Andrew White*",
-    "project": "guides",
-    "date_merged": 1734279797000,
-    "author": "Andrew White",
-    "sha": "8e0a3914cab6b564d7dbcbfec35184c3132a7116",
-    "pr": "53963",
-    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
-    "html": "<p>In the Active Job bug report template set the queue adapter to the<br />\ntest adapter so that <code>assert_enqueued_with</code> can pass.</p>\n\n<p><em>Andrew White</em></p>\n"
-  },
-  {
-    "message": "*   Ensure all bug report templates set `config.secret_key_base` to avoid\n    generation of `tmp/local_secret.txt` files when running the report template.\n\n    *Andrew White*",
-    "project": "guides",
-    "date_merged": 1734279797000,
-    "author": "Andrew White",
-    "sha": "f17f2d1decf460033e46ba9c50a4924e9290a86f",
-    "pr": "53963",
-    "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
-    "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
-  },
-  {
-    "message": "*   Remove unnecessary `ruby-version` input from `ruby/setup-ruby`\n\n    *TangRufus*",
-    "project": "railties",
-    "date_merged": 1748278305000,
-    "author": "TangRufus",
-    "sha": "29857357cbe4ce32c02789efe1f0be5f5d4958aa",
-    "pr": "55120",
-    "merge_sha": "b7520a13adda46c0cc5f3fb4a4c1726633af2bba",
-    "html": "<p>Remove unnecessary <code>ruby-version</code> input from <code>ruby/setup-ruby</code></p>\n\n<p><em>TangRufus</em></p>\n"
-  },
-  {
-    "message": "*   Add --reset option to bin/setup which will call db:reset as part of the setup.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1745308409000,
-    "author": "David Heinemeier Hansson",
-    "sha": "e9ee790d694298b8a48d44cd089934e6c8bc7597",
-    "pr": "54952",
-    "merge_sha": "d1baeac634160b3c7e0e48b4666021b873cf8729",
-    "html": "<p>Add –reset option to bin/setup which will call db:reset as part of the setup.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.\n\n    *Lovro Bikić*",
-    "project": "railties",
-    "date_merged": 1741958225000,
-    "author": "Lovro Bikic",
-    "sha": "ceb06782622b3dcaaf9bd0e95fa188f4d20f7949",
-    "pr": "54754",
-    "merge_sha": "951ea8f75d9bf6d2999df2f0497347976dce9476",
-    "html": "<p>Add RuboCop cache restoration to RuboCop job in GitHub Actions workflow templates.</p>\n\n<p><em>Lovro Bikić</em></p>\n"
-  },
-  {
-    "message": "*   Skip generating mailer-related files in authentication generator if the application does\n    not use ActionMailer\n\n    *Rami Massoud*",
-    "project": "railties",
-    "date_merged": 1741721225000,
-    "author": "Rami Massoud",
-    "sha": "e87af0f3235ca555f7864de9bb44da1d464d012d",
-    "pr": "54686",
-    "merge_sha": "af7ed3cae208d777fe993e37f7502f7ba1058dae",
-    "html": "<p>Skip generating mailer-related files in authentication generator if the application does<br />\nnot use ActionMailer</p>\n\n<p><em>Rami Massoud</em></p>\n"
-  },
-  {
-    "message": "*   Introduce `bin/ci` for running your tests, style checks, and security audits locally or in the cloud.\n\n    The specific steps are defined by a new DSL in `config/ci.rb`.\n\n    ```ruby\n    ActiveSupport::ContinuousIntegration.run do\n      step \"Setup\", \"bin/setup --skip-server\"\n      step \"Style: Ruby\", \"bin/rubocop\"\n      step \"Security: Gem audit\", \"bin/bundler-audit\"\n      step \"Tests: Rails\", \"bin/rails test test:system\"\n    end\n    ```\n\n    Optionally use [gh-signoff](https://github.com/basecamp/gh-signoff) to\n    set a green PR status - ready for merge.\n\n    *Jeremy Daer*, *DHH*",
-    "project": "railties",
-    "date_merged": 1741515059000,
-    "author": "Jeremy Daer",
-    "sha": "bcd5c93609c5854399dfb960b3666d318f469eb8",
-    "pr": "54693",
-    "merge_sha": "23956c7f94dffbddf257c0abb93231eb2be69d5e",
-    "html": "<p>Introduce <code>bin/ci</code> for running your tests, style checks, and security audits locally or in the cloud.</p>\n\n<p>The specific steps are defined by a new DSL in <code>config/ci.rb</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">ContinuousIntegration</span><span class=\"p\">.</span><span class=\"nf\">run</span> <span class=\"k\">do</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Setup\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/setup --skip-server\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Style: Ruby\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rubocop\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Security: Gem audit\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/bundler-audit\"</span>\n  <span class=\"n\">step</span> <span class=\"s2\">\"Tests: Rails\"</span><span class=\"p\">,</span> <span class=\"s2\">\"bin/rails test test:system\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Optionally use <a href=\"https://github.com/basecamp/gh-signoff\">gh-signoff</a> to<br />\nset a green PR status - ready for merge.</p>\n\n<p><em>Jeremy Daer</em>, <em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Generate session controller tests when running the authentication generator.\n\n    *Jerome Dalbert*",
-    "project": "railties",
-    "date_merged": 1741387412000,
-    "author": "Jerome Dalbert",
-    "sha": "1dba10c7fb53af9dcebd3451cf121967960144b3",
-    "pr": "53726",
-    "merge_sha": "ba6f20aa62d3456e06cee4621718066e57337aab",
-    "html": "<p>Generate session controller tests when running the authentication generator.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
-  },
-  {
-    "message": "*   Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1741266426000,
-    "author": "David Heinemeier Hansson",
-    "sha": "bdaab704416e3df86a9d4e86970fc45e6d79f065",
-    "pr": "54695",
-    "merge_sha": "c36a258f5cb1656903dcf66087cba2a768cf0b0c",
-    "html": "<p>Add bin/bundler-audit and config/bundler-audit.yml for discovering and managing known security problems with app gems.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Rails no longer generates a `bin/bundle` binstub when creating new applications.\n\n    The `bin/bundle` binstub used to help activate the right version of bundler.\n    This is no longer necessary as this mechanism is now part of Rubygem itself.\n\n    *Edouard Chin*",
-    "project": "railties",
-    "date_merged": 1741151035000,
-    "author": "Edouard CHIN",
-    "sha": "7549ba77254f038b1ca6304a0be6cbda8e2a09c4",
-    "pr": "54687",
-    "merge_sha": "7b8ea0bb5c04f7de73661162a71de38f7843e29a",
-    "html": "<p>Rails no longer generates a <code>bin/bundle</code> binstub when creating new applications.</p>\n\n<p>The <code>bin/bundle</code> binstub used to help activate the right version of bundler.<br />\nThis is no longer necessary as this mechanism is now part of Rubygem itself.</p>\n\n<p><em>Edouard Chin</em></p>\n"
-  },
-  {
-    "message": "*   Add a `SessionTestHelper` module with `sign_in_as(user)` and `sign_out` test helpers when\n    running `rails g authentication`. Simplifies authentication in integration tests.\n\n    *Bijan Rahnema*",
-    "project": "railties",
-    "date_merged": 1740732368000,
-    "author": "Bijan Rahnema",
-    "sha": "800976975253be2912d09a80757ee70a2bb1e984",
-    "pr": "53708",
-    "merge_sha": "271dbd5d5c0bf62c972b7dd4891c6410ca87a22d",
-    "html": "<p>Add a <code>SessionTestHelper</code> module with <code>sign_in_as(user)</code> and <code>sign_out</code> test helpers when<br />\nrunning <code>rails g authentication</code>. Simplifies authentication in integration tests.</p>\n\n<p><em>Bijan Rahnema</em></p>\n"
-  },
-  {
-    "message": "*   Rate limit password resets in authentication generator\n\n    This helps mitigate abuse from attackers spamming the password reset form.\n\n    *Chris Oliver*",
-    "project": "railties",
-    "date_merged": 1738836333000,
-    "author": "Chris Oliver",
-    "sha": "92533b1569ba710e166fe6bf2a3249d115a74ad6",
-    "pr": "54442",
-    "merge_sha": "4e5a13a55b5960c9a35afdcecd1120bc926d377c",
-    "html": "<p>Rate limit password resets in authentication generator</p>\n\n<p>This helps mitigate abuse from attackers spamming the password reset form.</p>\n\n<p><em>Chris Oliver</em></p>\n"
-  },
-  {
-    "message": "*   Update `rails new --minimal` option\n\n    Extend the `--minimal` flag to exclude recently added features:\n    `skip_brakeman`, `skip_ci`, `skip_docker`, `skip_kamal`, `skip_rubocop`, `skip_solid` and `skip_thruster`.\n\n    *eelcoj*",
-    "project": "railties",
-    "date_merged": 1737751723000,
-    "author": "eelco",
-    "sha": "dad07631d99c96f015162d3cab83c41111adf401",
-    "pr": "54313",
-    "merge_sha": "cd171d69fa03e0a09133089eca672831d447d02a",
-    "html": "<p>Update <code>rails new --minimal</code> option</p>\n\n<p>Extend the <code>--minimal</code> flag to exclude recently added features:<br />\n<code>skip_brakeman</code>, <code>skip_ci</code>, <code>skip_docker</code>, <code>skip_kamal</code>, <code>skip_rubocop</code>, <code>skip_solid</code> and <code>skip_thruster</code>.</p>\n\n<p><em>eelcoj</em></p>\n"
-  },
-  {
-    "message": "*   Add `application-name` metadata to application layout\n\n    The following metatag will be added to `app/views/layouts/application.html.erb`\n\n    ```html\n    <meta name=\"application-name\" content=\"Name of Rails Application\">\n    ```\n\n    *Steve Polito*",
-    "project": "railties",
-    "date_merged": 1737148063000,
-    "author": "Steve Polito",
-    "sha": "9144324cb92da6a461be40fc02a532aef1b29194",
-    "pr": "54257",
-    "merge_sha": "abb7035e08c07bb4e2941c1c27003609ce81e77b",
-    "html": "<p>Add <code>application-name</code> metadata to application layout</p>\n\n<p>The following metatag will be added to <code>app/views/layouts/application.html.erb</code></p>\n\n<div class=\"language-html highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nt\">&lt;meta</span> <span class=\"na\">name=</span><span class=\"s\">\"application-name\"</span> <span class=\"na\">content=</span><span class=\"s\">\"Name of Rails Application\"</span><span class=\"nt\">&gt;</span>\n</code></pre></div></div>\n\n<p><em>Steve Polito</em></p>\n"
-  },
-  {
-    "message": "*   Use `secret_key_base` from ENV or credentials when present locally.\n\n    When ENV[\"SECRET_KEY_BASE\"] or\n    `Rails.application.credentials.secret_key_base` is set for test or\n    development, it is used for the `Rails.config.secret_key_base`,\n    instead of generating a `tmp/local_secret.txt` file.\n\n    *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1737144185000,
-    "author": "Petrik",
-    "sha": "8c5978c886d1511aecfa2f029478a03c91e7db75",
-    "pr": "53705",
-    "merge_sha": "4f2b9fe06a7ca5c44aab7abbab0353ed6d013d05",
-    "html": "<p>Use <code>secret_key_base</code> from ENV or credentials when present locally.</p>\n\n<p>When ENV[“SECRET_KEY_BASE”] or<br />\n<code>Rails.application.credentials.secret_key_base</code> is set for test or<br />\ndevelopment, it is used for the <code>Rails.config.secret_key_base</code>,<br />\ninstead of generating a <code>tmp/local_secret.txt</code> file.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Introduce `RAILS_MASTER_KEY` placeholder in generated ci.yml files\n\n    *Steve Polito*",
-    "project": "railties",
-    "date_merged": 1736274652000,
-    "author": "Steve Polito",
-    "sha": "f0f0a818ad34e9ab930db8981b03d65708e2659d",
-    "pr": "52230",
-    "merge_sha": "1914a7437270f1e74d31494675c9fddf244a7cf5",
-    "html": "<p>Introduce <code>RAILS_MASTER_KEY</code> placeholder in generated ci.yml files</p>\n\n<p><em>Steve Polito</em></p>\n"
-  },
-  {
-    "message": "*   Colorize the Rails console prompt even on non standard environments.\n\n    *Lorenzo Zabot*",
-    "project": "railties",
-    "date_merged": 1736267051000,
-    "author": "Lorenzo Zabot",
-    "sha": "b097cfbbb9c5c31b0ede2b8caae28dabf7aa9850",
-    "pr": "53027",
-    "merge_sha": "c8335e118ba14562d4755ba2dd28171996fea297",
-    "html": "<p>Colorize the Rails console prompt even on non standard environments.</p>\n\n<p><em>Lorenzo Zabot</em></p>\n"
-  },
-  {
-    "message": "*   Don't enable YJIT in development and test environments\n\n    Development and test environments tend to reload code and redefine methods (e.g. mocking),\n    hence YJIT isn't generally faster in these environments.\n\n    *Ali Ismayilov*, *Jean Boussier*",
-    "project": "railties",
-    "date_merged": 1732617959000,
-    "author": "Ali Ismayilov",
-    "sha": "76e2b7e529e6c8cc42de00c94408d008655385bb",
-    "pr": "53746",
-    "merge_sha": "723ca0c0a757e27ab23e60cd65767606b7f6c202",
-    "html": "<p>Don’t enable YJIT in development and test environments</p>\n\n<p>Development and test environments tend to reload code and redefine methods (e.g. mocking),<br />\nhence YJIT isn’t generally faster in these environments.</p>\n\n<p><em>Ali Ismayilov</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Only include PermissionsPolicy::Middleware if policy is configured.\n\n    *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1731706201000,
-    "author": "Petrik",
-    "sha": "987977c2809e57dc7f4d6e90d6aaa25e6a52f927",
-    "pr": "53621",
-    "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
-    "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Attachment upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
-    "project": "actiontext",
+    "message": "*   Direct upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
+    "project": "activestorage",
     "date_merged": 1749074905000,
     "author": "Jeremy Daer",
     "sha": "606ba30ad4b7663ea5c171cf688cfcddd995b2d7",
     "pr": "55157",
     "merge_sha": null,
-    "html": "<p>Attachment upload progress accounts for server processing time.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
+    "html": "<p>Direct upload progress accounts for server processing time.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
-    "message": "*   The Trix dependency is now satisfied by a gem, `action_text-trix`, rather than vendored\n    files. This allows applications to bump Trix versions independently of Rails\n    releases. Effectively this also upgrades Trix to `>= 2.1.15`.\n\n    *Mike Dalessio*",
-    "project": "actiontext",
-    "date_merged": 1747163309000,
-    "author": "Mike Dalessio",
-    "sha": "d0d2d31f62cae9bdc9360b9f179b4311377e9957",
-    "pr": "55058",
-    "merge_sha": "a3b37ff166a925f7e069c9068f7ee92808da6e82",
-    "html": "<p>The Trix dependency is now satisfied by a gem, <code>action_text-trix</code>, rather than vendored<br />\nfiles. This allows applications to bump Trix versions independently of Rails<br />\nreleases. Effectively this also upgrades Trix to <code>&gt;= 2.1.15</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Change `ActionText::RichText#embeds` assignment from `before_save` to `before_validation`\n\n    *Sean Doyle*",
-    "project": "actiontext",
-    "date_merged": 1733784985000,
+    "message": "*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`\n\n    Supports checking String equality:\n\n    ```ruby\n    filename = ActiveStorage::Filename.new(\"file.txt\")\n    filename == \"file.txt\" # => true\n    filename in \"file.txt\" # => true\n    \"file.txt\" == filename # => true\n    ```\n\n    *Sean Doyle*",
+    "project": "activestorage",
+    "date_merged": 1736536509000,
     "author": "Sean Doyle",
-    "sha": "0eb9fa47168db84e79f5a200af470acca3ba8c31",
-    "pr": "53847",
-    "merge_sha": "0efc3e899a0cade4e1b7c626d1df043dadf2d2a2",
-    "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+    "sha": "73133fa37f52204fe797d58d508806e5517f04b3",
+    "pr": "54185",
+    "merge_sha": "7ec153158e418c8c51bdee170fc06795db3a61ed",
+    "html": "<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>\n\n<p>Supports checking String equality:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">filename</span> <span class=\"o\">=</span> <span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Filename</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"file.txt\"</span><span class=\"p\">)</span>\n<span class=\"n\">filename</span> <span class=\"o\">==</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">filename</span> <span class=\"k\">in</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"s2\">\"file.txt\"</span> <span class=\"o\">==</span> <span class=\"n\">filename</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
-    "message": "*   Add `except_on:` option for validation callbacks.\n\n    *Ben Sheldon*",
-    "project": "activemodel",
-    "date_merged": 1741164716000,
-    "author": "Ben Sheldon [he/him]",
-    "sha": "87be3c33cfc43888fb9aa3c9e41e3ce4ff722439",
-    "pr": "54665",
-    "merge_sha": "a59db85fb8f0be684fb22abf0e53ba13701ac9c1",
-    "html": "<p>Add <code>except_on:</code> option for validation callbacks.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
+    "message": "*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.\n\n    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`\n    is found to be disabled because of OpenSSL FIPS mode.\n\n    *Matt Pasquini*, *Jean Boussier*",
+    "project": "activestorage",
+    "date_merged": 1735992548000,
+    "author": "Matt Pasquini",
+    "sha": "bbc0cf1712da74d52874a4e012321b5e27e85e39",
+    "pr": "54040",
+    "merge_sha": "e64e5d31cdeafee142e32e604b513a39de779651",
+    "html": "<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>\n\n<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />\nis found to be disabled because of OpenSSL FIPS mode.</p>\n\n<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>\n"
   },
   {
-    "message": "*   Backport `ActiveRecord::Normalization` to `ActiveModel::Attributes::Normalization`\n\n    ```ruby\n    class User\n      include ActiveModel::Attributes\n      include ActiveModel::Attributes::Normalization\n\n      attribute :email, :string\n\n      normalizes :email, with: -> email { email.strip.downcase }\n    end\n\n    user = User.new\n    user.email =    \" CRUISE-CONTROL@EXAMPLE.COM\\n\"\n    user.email # => \"cruise-control@example.com\"\n    ```\n\n    *Sean Doyle*",
-    "project": "activemodel",
-    "date_merged": 1736266443000,
-    "author": "Sean Doyle",
-    "sha": "599c9af7e1990a98e9bbaffa03a4b4d0b2f622ee",
-    "pr": "53955",
-    "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
-    "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+    "message": "*   A Blob will no longer autosave associated Attachment.\n\n    This fixes an issue where a record with an attachment would have\n    its dirty attributes reset, preventing your `after commit` callbacks\n    on that record to behave as expected.\n\n    Note that this change doesn't require any changes on your application\n    and is supposed to be internal. Active Storage Attachment will continue\n    to be autosaved (through a different relation).\n\n    *Edouard-chin*",
+    "project": "activestorage",
+    "date_merged": 1734601190000,
+    "author": "Edouard CHIN",
+    "sha": "e70f504271864e32a5f27a35fe0d0865f5d95527",
+    "pr": "53623",
+    "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
+    "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   }
 ]
