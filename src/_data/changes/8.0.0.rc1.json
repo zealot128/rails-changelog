@@ -780,6 +780,16 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Direct upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
+    "project": "activestorage",
+    "date_merged": 1749074905000,
+    "author": "Jeremy Daer",
+    "sha": "606ba30ad4b7663ea5c171cf688cfcddd995b2d7",
+    "pr": "55157",
+    "merge_sha": null,
+    "html": "<p>Direct upload progress accounts for server processing time.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
+  },
+  {
     "message": "*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`\n\n    Supports checking String equality:\n\n    ```ruby\n    filename = ActiveStorage::Filename.new(\"file.txt\")\n    filename == \"file.txt\" # => true\n    filename in \"file.txt\" # => true\n    \"file.txt\" == filename # => true\n    ```\n\n    *Sean Doyle*",
     "project": "activestorage",
     "date_merged": 1736536509000,
@@ -1228,6 +1238,16 @@
     "pr": "53621",
     "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Attachment upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
+    "project": "actiontext",
+    "date_merged": 1749074905000,
+    "author": "Jeremy Daer",
+    "sha": "606ba30ad4b7663ea5c171cf688cfcddd995b2d7",
+    "pr": "55157",
+    "merge_sha": null,
+    "html": "<p>Attachment upload progress accounts for server processing time.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
     "message": "*   The Trix dependency is now satisfied by a gem, `action_text-trix`, rather than vendored\n    files. This allows applications to bump Trix versions independently of Rails\n    releases. Effectively this also upgrades Trix to `>= 2.1.15`.\n\n    *Mike Dalessio*",
