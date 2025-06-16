@@ -70,6 +70,16 @@
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
+    "message": "*   Fix checking whether an unpersisted record is `include?`d in a strictly\n    loaded `has_and_belongs_to_many` association.\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1750089250000,
+    "author": "Hartley McGuire",
+    "sha": "82e9029bbf63a33b69f007927979c5564a6afe9e",
+    "pr": "55198",
+    "merge_sha": null,
+    "html": "<p>Fix checking whether an unpersisted record is <code>include?</code>d in a strictly<br />\nloaded <code>has_and_belongs_to_many</code> association.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Add ability to change transaction isolation for all pools within a block.\n\n    This functionality is useful if your application needs to change the database\n    transaction isolation for a request or action.\n\n    Calling `ActiveRecord.with_transaction_isolation_level(level) {}` in an around filter or\n    middleware will set the transaction isolation for all pools accessed within the block,\n    but not for the pools that aren't.\n\n    This works with explicit and implicit transactions:\n\n    ```ruby\n    ActiveRecord.with_transaction_isolation_level(:read_committed) do\n      Tag.transaction do # opens a transaction explicitly\n        Tag.create!\n      end\n    end\n    ```\n\n    ```ruby\n    ActiveRecord.with_transaction_isolation_level(:read_committed) do\n      Tag.create! # opens a transaction implicitly\n    end\n    ```\n\n    *Eileen M. Uchitelle*",
     "project": "activerecord",
     "date_merged": 1749581645000,
