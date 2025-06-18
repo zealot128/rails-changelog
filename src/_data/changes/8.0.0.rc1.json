@@ -70,13 +70,23 @@
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
+    "message": "*   Use ntuples to populate row_count instead of count for Postgres\n\n    *Jonathan Calvert*",
+    "project": "activerecord",
+    "date_merged": 1750188907000,
+    "author": "Jonathan Calvert",
+    "sha": "a890d401eb8896e1c07b84562bbe0fd354f7fa5a",
+    "pr": "55200",
+    "merge_sha": "0c7a1c0ade907c51e977e89e1818f73d3b5fbf16",
+    "html": "<p>Use ntuples to populate row_count instead of count for Postgres</p>\n\n<p><em>Jonathan Calvert</em></p>\n"
+  },
+  {
     "message": "*   Fix checking whether an unpersisted record is `include?`d in a strictly\n    loaded `has_and_belongs_to_many` association.\n\n    *Hartley McGuire*",
     "project": "activerecord",
-    "date_merged": 1750089250000,
+    "date_merged": 1750188907000,
     "author": "Hartley McGuire",
     "sha": "82e9029bbf63a33b69f007927979c5564a6afe9e",
     "pr": "55198",
-    "merge_sha": null,
+    "merge_sha": "0c7a1c0ade907c51e977e89e1818f73d3b5fbf16",
     "html": "<p>Fix checking whether an unpersisted record is <code>include?</code>d in a strictly<br />\nloaded <code>has_and_belongs_to_many</code> association.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
