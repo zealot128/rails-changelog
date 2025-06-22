@@ -1060,6 +1060,16 @@
     "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_frame` returns\n    the first clean frame of the caller's backtrace, or `nil`. Useful when you\n    want to report the application-level location where something happened.\n\n    *Xavier Noria*",
+    "project": "activesupport",
+    "date_merged": 1750542698000,
+    "author": "Xavier Noria",
+    "sha": "ea66b1c750fd2984167382039d77802930865712",
+    "pr": "55222",
+    "merge_sha": "276b655f3606cf81b26464d135db9f24bacc1f0f",
+    "html": "<p>The new method <code>ActiveSupport::BacktraceCleaner#first_clean_frame</code> returns<br />\nthe first clean frame of the caller’s backtrace, or <code>nil</code>. Useful when you<br />\nwant to report the application-level location where something happened.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
     "message": "*   Always clear `CurrentAttribute` instances.\n\n    Previously `CurrentAttribute` instance would be reset at the end of requests.\n    Meaning its attributes would be re-initialized.\n\n    This is problematic because it assume these objects don't hold any state\n    other than their declared attribute, which isn't always the case, and\n    can lead to state leak across request.\n\n    Now `CurrentAttribute` instances are abandonned at the end of a request,\n    and a new instance is created at the start of the next request.\n\n    *Jean Boussier*, *Janko Marohnić*",
     "project": "activesupport",
     "date_merged": 1748869152000,
