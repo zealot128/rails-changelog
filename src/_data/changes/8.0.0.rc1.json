@@ -1060,14 +1060,34 @@
     "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
-    "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_frame` returns\n    the first clean frame of the caller's backtrace, or `nil`. Useful when you\n    want to report the application-level location where something happened.\n\n    *Xavier Noria*",
+    "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_location`\n    returns the first clean location of the caller's call stack, or `nil`.\n    Locations are `Thread::Backtrace::Location` objects. Useful when you want to\n    report the application-level location where something happened as an object.\n\n    *Xavier Noria*",
+    "project": "activesupport",
+    "date_merged": 1750693355000,
+    "author": "Xavier Noria",
+    "sha": "a0ea187d777ac4423f7b0e4ba641acd6175f01e5",
+    "pr": "55230",
+    "merge_sha": "05f0b1614d82424a7507caaec5cf701d3a8c2b21",
+    "html": "<p>The new method <code>ActiveSupport::BacktraceCleaner#first_clean_location</code><br />\nreturns the first clean location of the caller’s call stack, or <code>nil</code>.<br />\nLocations are <code>Thread::Backtrace::Location</code> objects. Useful when you want to<br />\nreport the application-level location where something happened as an object.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
+    "message": "*   FileUpdateChecker and EventedFileUpdateChecker ignore changes in Gem.path now.\n\n    *Ermolaev Andrey*, *zzak*",
+    "project": "activesupport",
+    "date_merged": 1750669405000,
+    "author": "Ermolaev Andrey",
+    "sha": "d5a3063ab9549a6da5b2af4f36b2d9cd1c98e516",
+    "pr": "54129",
+    "merge_sha": "c5bb138e43390a191ddb7aa4e0f46e7af8563dcc",
+    "html": "<p>FileUpdateChecker and EventedFileUpdateChecker ignore changes in Gem.path now.</p>\n\n<p><em>Ermolaev Andrey</em>, <em>zzak</em></p>\n"
+  },
+  {
+    "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_frame` returns\n    the first clean frame of the caller's backtrace, or `nil`. Useful when you\n    want to report the application-level frame where something happened as a\n    string.\n\n    *Xavier Noria*",
     "project": "activesupport",
     "date_merged": 1750542698000,
     "author": "Xavier Noria",
     "sha": "ea66b1c750fd2984167382039d77802930865712",
     "pr": "55222",
     "merge_sha": "276b655f3606cf81b26464d135db9f24bacc1f0f",
-    "html": "<p>The new method <code>ActiveSupport::BacktraceCleaner#first_clean_frame</code> returns<br />\nthe first clean frame of the caller’s backtrace, or <code>nil</code>. Useful when you<br />\nwant to report the application-level location where something happened.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+    "html": "<p>The new method <code>ActiveSupport::BacktraceCleaner#first_clean_frame</code> returns<br />\nthe first clean frame of the caller’s backtrace, or <code>nil</code>. Useful when you<br />\nwant to report the application-level frame where something happened as a<br />\nstring.</p>\n\n<p><em>Xavier Noria</em></p>\n"
   },
   {
     "message": "*   Always clear `CurrentAttribute` instances.\n\n    Previously `CurrentAttribute` instance would be reset at the end of requests.\n    Meaning its attributes would be re-initialized.\n\n    This is problematic because it assume these objects don't hold any state\n    other than their declared attribute, which isn't always the case, and\n    can lead to state leak across request.\n\n    Now `CurrentAttribute` instances are abandonned at the end of a request,\n    and a new instance is created at the start of the next request.\n\n    *Jean Boussier*, *Janko Marohnić*",
