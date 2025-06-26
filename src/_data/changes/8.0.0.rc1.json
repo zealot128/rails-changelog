@@ -1060,6 +1060,16 @@
     "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Improve `CurrentAttribute` and `ExecutionContext` state managment in test cases.\n\n    Previously these two global state would be entirely cleared out whenever calling\n    into code that is wrapped by the Rails executor, typically Action Controller or\n    Active Job helpers:\n\n    ```ruby\n    test \"#index works\" do\n      CurrentUser.id = 42\n      get :index\n      CurrentUser.id == nil\n    end\n    ```\n\n    Now re-entering the executor properly save and restore that state.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1750948820000,
+    "author": "Jean Boussier",
+    "sha": "d43dc9af18766f91eb450e1c6b8c8c5e64f925e6",
+    "pr": "55247",
+    "merge_sha": "99f918b15de469b8648f30231e0788c06598c294",
+    "html": "<p>Improve <code>CurrentAttribute</code> and <code>ExecutionContext</code> state managment in test cases.</p>\n\n<p>Previously these two global state would be entirely cleared out whenever calling<br />\ninto code that is wrapped by the Rails executor, typically Action Controller or<br />\nActive Job helpers:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"#index works\"</span> <span class=\"k\">do</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">=</span> <span class=\"mi\">42</span>\n  <span class=\"n\">get</span> <span class=\"ss\">:index</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">==</span> <span class=\"kp\">nil</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Now re-entering the executor properly save and restore that state.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_location`\n    returns the first clean location of the caller's call stack, or `nil`.\n    Locations are `Thread::Backtrace::Location` objects. Useful when you want to\n    report the application-level location where something happened as an object.\n\n    *Xavier Noria*",
     "project": "activesupport",
     "date_merged": 1750693355000,
