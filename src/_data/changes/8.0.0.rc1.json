@@ -810,14 +810,24 @@
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
   },
   {
-    "message": "*   Improve `CurrentAttribute` and `ExecutionContext` state managment in test cases.\n\n    Previously these two global state would be entirely cleared out whenever calling\n    into code that is wrapped by the Rails executor, typically Action Controller or\n    Active Job helpers:\n\n    ```ruby\n    test \"#index works\" do\n      CurrentUser.id = 42\n      get :index\n      CurrentUser.id == nil\n    end\n    ```\n\n    Now re-entering the executor properly save and restore that state.\n\n    *Jean Boussier*",
+    "message": "*   Given an array of `Thread::Backtrace::Location` objects, the new method\n    `ActiveSupport::BacktraceCleaner#clean_locations` returns an array with the\n    clean ones:\n\n    ```ruby\n    clean_locations = backtrace_cleaner.clean_locations(caller_locations)\n    ```\n\n    Filters and silencers receive strings as usual. However, the `path`\n    attributes of the locations in the returned array are the original,\n    unfiltered ones, since locations are immutable.\n\n    *Xavier Noria*",
     "project": "activesupport",
-    "date_merged": 1750948820000,
-    "author": "Jean Boussier",
-    "sha": "d43dc9af18766f91eb450e1c6b8c8c5e64f925e6",
-    "pr": "55247",
-    "merge_sha": "99f918b15de469b8648f30231e0788c06598c294",
-    "html": "<p>Improve <code>CurrentAttribute</code> and <code>ExecutionContext</code> state managment in test cases.</p>\n\n<p>Previously these two global state would be entirely cleared out whenever calling<br />\ninto code that is wrapped by the Rails executor, typically Action Controller or<br />\nActive Job helpers:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"#index works\"</span> <span class=\"k\">do</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">=</span> <span class=\"mi\">42</span>\n  <span class=\"n\">get</span> <span class=\"ss\">:index</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">==</span> <span class=\"kp\">nil</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Now re-entering the executor properly save and restore that state.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+    "date_merged": 1751038342000,
+    "author": "Xavier Noria",
+    "sha": "5c456627237559596334c2c7d1d7585ba5fff147",
+    "pr": "55255",
+    "merge_sha": "9f0cb5a62590a0c23e98806c963ce542a135ed25",
+    "html": "<p>Given an array of <code>Thread::Backtrace::Location</code> objects, the new method<br />\n<code>ActiveSupport::BacktraceCleaner#clean_locations</code> returns an array with the<br />\nclean ones:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">clean_locations</span> <span class=\"o\">=</span> <span class=\"n\">backtrace_cleaner</span><span class=\"p\">.</span><span class=\"nf\">clean_locations</span><span class=\"p\">(</span><span class=\"n\">caller_locations</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Filters and silencers receive strings as usual. However, the <code>path</code><br />\nattributes of the locations in the returned array are the original,<br />\nunfiltered ones, since locations are immutable.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
+    "message": "*   Improve `CurrentAttributes` and `ExecutionContext` state managment in test cases.\n\n    Previously these two global state would be entirely cleared out whenever calling\n    into code that is wrapped by the Rails executor, typically Action Controller or\n    Active Job helpers:\n\n    ```ruby\n    test \"#index works\" do\n      CurrentUser.id = 42\n      get :index\n      CurrentUser.id == nil\n    end\n    ```\n\n    Now re-entering the executor properly save and restore that state.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1751045828000,
+    "author": "Petrik",
+    "sha": "d3e80a4380f5a7c2aabc9907a434827708b14bd7",
+    "pr": "55256",
+    "merge_sha": "2b987c367001cbca34df24639c1f567d7517602b",
+    "html": "<p>Improve <code>CurrentAttributes</code> and <code>ExecutionContext</code> state managment in test cases.</p>\n\n<p>Previously these two global state would be entirely cleared out whenever calling<br />\ninto code that is wrapped by the Rails executor, typically Action Controller or<br />\nActive Job helpers:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"#index works\"</span> <span class=\"k\">do</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">=</span> <span class=\"mi\">42</span>\n  <span class=\"n\">get</span> <span class=\"ss\">:index</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">==</span> <span class=\"kp\">nil</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Now re-entering the executor properly save and restore that state.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_location`\n    returns the first clean location of the caller's call stack, or `nil`.\n    Locations are `Thread::Backtrace::Location` objects. Useful when you want to\n    report the application-level location where something happened as an object.\n\n    *Xavier Noria*",
@@ -850,14 +860,14 @@
     "html": "<p>The new method <code>ActiveSupport::BacktraceCleaner#first_clean_frame</code> returns<br />\nthe first clean frame of the caller’s backtrace, or <code>nil</code>. Useful when you<br />\nwant to report the application-level frame where something happened as a<br />\nstring.</p>\n\n<p><em>Xavier Noria</em></p>\n"
   },
   {
-    "message": "*   Always clear `CurrentAttribute` instances.\n\n    Previously `CurrentAttribute` instance would be reset at the end of requests.\n    Meaning its attributes would be re-initialized.\n\n    This is problematic because it assume these objects don't hold any state\n    other than their declared attribute, which isn't always the case, and\n    can lead to state leak across request.\n\n    Now `CurrentAttribute` instances are abandonned at the end of a request,\n    and a new instance is created at the start of the next request.\n\n    *Jean Boussier*, *Janko Marohnić*",
+    "message": "*   Always clear `CurrentAttributes` instances.\n\n    Previously `CurrentAttributes` instance would be reset at the end of requests.\n    Meaning its attributes would be re-initialized.\n\n    This is problematic because it assume these objects don't hold any state\n    other than their declared attribute, which isn't always the case, and\n    can lead to state leak across request.\n\n    Now `CurrentAttributes` instances are abandoned at the end of a request,\n    and a new instance is created at the start of the next request.\n\n    *Jean Boussier*, *Janko Marohnić*",
     "project": "activesupport",
-    "date_merged": 1748869152000,
-    "author": "Jean Boussier",
-    "sha": "475877fc5e2fffbb80c654c5248b5eb6a5cf587d",
-    "pr": "55139",
-    "merge_sha": "e31e7614ced6047983c78ee90fb1579220ceab7e",
-    "html": "<p>Always clear <code>CurrentAttribute</code> instances.</p>\n\n<p>Previously <code>CurrentAttribute</code> instance would be reset at the end of requests.<br />\nMeaning its attributes would be re-initialized.</p>\n\n<p>This is problematic because it assume these objects don’t hold any state<br />\nother than their declared attribute, which isn’t always the case, and<br />\ncan lead to state leak across request.</p>\n\n<p>Now <code>CurrentAttribute</code> instances are abandonned at the end of a request,<br />\nand a new instance is created at the start of the next request.</p>\n\n<p><em>Jean Boussier</em>, <em>Janko Marohnić</em></p>\n"
+    "date_merged": 1751045828000,
+    "author": "Petrik",
+    "sha": "d3e80a4380f5a7c2aabc9907a434827708b14bd7",
+    "pr": "55256",
+    "merge_sha": "2b987c367001cbca34df24639c1f567d7517602b",
+    "html": "<p>Always clear <code>CurrentAttributes</code> instances.</p>\n\n<p>Previously <code>CurrentAttributes</code> instance would be reset at the end of requests.<br />\nMeaning its attributes would be re-initialized.</p>\n\n<p>This is problematic because it assume these objects don’t hold any state<br />\nother than their declared attribute, which isn’t always the case, and<br />\ncan lead to state leak across request.</p>\n\n<p>Now <code>CurrentAttributes</code> instances are abandoned at the end of a request,<br />\nand a new instance is created at the start of the next request.</p>\n\n<p><em>Jean Boussier</em>, <em>Janko Marohnić</em></p>\n"
   },
   {
     "message": "*   Add public API for `before_fork_hook` in parallel testing.\n\n    Introduces a public API for calling the before fork hooks implemented by parallel testing.\n\n    ```ruby\n    parallelize_before_fork do\n        # perform an action before test processes are forked\n    end\n    ```\n\n    *Eileen M. Uchitelle*",
