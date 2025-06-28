@@ -280,6 +280,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   PostgreSQL adapter create DB now supports `locale_provider` and `locale`.\n\n    *Bengt-Ove Hollaender*",
+    "project": "activerecord",
+    "date_merged": 1751121904000,
+    "author": "Bengt-Ove Hollaender",
+    "sha": "fa2b2b1b310676955215115e987a4a974ef796e7",
+    "pr": "55030",
+    "merge_sha": "36601bbb02bc3570f5609db2127c77afca575d6c",
+    "html": "<p>PostgreSQL adapter create DB now supports <code>locale_provider</code> and <code>locale</code>.</p>\n\n<p><em>Bengt-Ove Hollaender</em></p>\n"
+  },
+  {
     "message": "*   Use ntuples to populate row_count instead of count for Postgres\n\n    *Jonathan Calvert*",
     "project": "activerecord",
     "date_merged": 1750188907000,
