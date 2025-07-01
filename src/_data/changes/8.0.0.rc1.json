@@ -240,6 +240,16 @@
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Only add browser restrictions for a new Rails app when using importmap.\n\n    *Lucas Dohmen*",
+    "project": "railties",
+    "date_merged": 1751353879000,
+    "author": "Lucas Dohmen",
+    "sha": "dd20e840d5965e090a941e1b401f81dbf1ab29ab",
+    "pr": "55263",
+    "merge_sha": "3a84d8c4cb170b76301dac723db9b462c3eac341",
+    "html": "<p>Only add browser restrictions for a new Rails app when using importmap.</p>\n\n<p><em>Lucas Dohmen</em></p>\n"
+  },
+  {
     "message": "*   Direct upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
     "project": "activestorage",
     "date_merged": 1749154771000,
@@ -1098,6 +1108,16 @@
     "pr": "53680",
     "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
+    "message": "*   Add `dom_target` helper to create `dom_id`-like strings from an unlimited\n    number of objects.\n\n    *Ben Sheldon*",
+    "project": "actionview",
+    "date_merged": 1751357292000,
+    "author": "Ben Sheldon [he/him]",
+    "sha": "c8e485651fedc093ab150b7fd43cbeed3ed59549",
+    "pr": "55204",
+    "merge_sha": "985e75fa93dd5d365b31162d52e0549748a1f145",
+    "html": "<p>Add <code>dom_target</code> helper to create <code>dom_id</code>-like strings from an unlimited<br />\nnumber of objects.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
   },
   {
     "message": "*   Respect `html_options[:form]` when `collection_checkboxes` generates the\n    hidden `<input>`.\n\n    *Riccardo Odone*",
