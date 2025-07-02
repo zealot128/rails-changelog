@@ -290,6 +290,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Implement support for deprecating associations:\n\n    ```ruby\n    has_many :posts, deprecated: true\n    ```\n\n    With that, Active Record will report any usage of the `posts` association.\n\n    Three reporting modes are supported (`:warn`, `:raise`, and `:notify`), and\n    backtraces can be enabled or disabled. Defaults are `:warn` mode and\n    disabled backtraces.\n\n    Please, check the docs for further details.\n\n    *Xavier Noria*",
+    "project": "activerecord",
+    "date_merged": 1751448844000,
+    "author": "Xavier Noria",
+    "sha": "fbd6755e4bee1fc811ca895d220b69258dfb4c76",
+    "pr": "55285",
+    "merge_sha": "769d486f93d5ae16c4ee83400549a94d5397942c",
+    "html": "<p>Implement support for deprecating associations:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">has_many</span> <span class=\"ss\">:posts</span><span class=\"p\">,</span> <span class=\"ss\">deprecated: </span><span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p>With that, Active Record will report any usage of the <code>posts</code> association.</p>\n\n<p>Three reporting modes are supported (<code>:warn</code>, <code>:raise</code>, and <code>:notify</code>), and<br />\nbacktraces can be enabled or disabled. Defaults are <code>:warn</code> mode and<br />\ndisabled backtraces.</p>\n\n<p>Please, check the docs for further details.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
     "message": "*   PostgreSQL adapter create DB now supports `locale_provider` and `locale`.\n\n    *Bengt-Ove Hollaender*",
     "project": "activerecord",
     "date_merged": 1751121904000,
