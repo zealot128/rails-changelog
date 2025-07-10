@@ -290,6 +290,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Include current character length in error messages for index and table name length validations.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1752106656000,
+    "author": "Joshua Young",
+    "sha": "c2e252706a62a37211d3641572e803688120e69c",
+    "pr": "55313",
+    "merge_sha": "ce465600b86a44d32eb049abf7db8928898039be",
+    "html": "<p>Include current character length in error messages for index and table name length validations.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Add `rename_schema` method for PostgreSQL.\n\n    *T S Vallender*",
     "project": "activerecord",
     "date_merged": 1751962018000,
