@@ -1280,6 +1280,16 @@
     "html": "<p>Change <code>ActionText::RichText#embeds</code> assignment from <code>before_save</code> to <code>before_validation</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Always check query string keys for valid encoding just like values are checked.\n\n    *Casper Smits*",
+    "project": "actionpack",
+    "date_merged": 1752218972000,
+    "author": "Casper Smits",
+    "sha": "48a4dc6a9552b8f44fcd9b78b7b4db1e249af0d8",
+    "pr": "55319",
+    "merge_sha": "8f42c2b4a1a13a90035cbb9b67ec7b931265105e",
+    "html": "<p>Always check query string keys for valid encoding just like values are checked.</p>\n\n<p><em>Casper Smits</em></p>\n"
+  },
+  {
     "message": "*   Always return empty body for HEAD requests in `PublicExceptions` and\n    `DebugExceptions`.\n\n    This is required by `Rack::Lint` (per RFC9110).\n\n    *Hartley McGuire*",
     "project": "actionpack",
     "date_merged": 1749154771000,
