@@ -250,6 +250,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Optimize Active Record batching further when using ranges.\n\n    Tested on a PostgreSQL table with 10M records and batches of 10k records, the generation\n    of relations for the 1000 batches was `4.8x` faster (`6.8s` vs. `1.4s`), used `900x`\n    less bandwidth (`180MB` vs. `0.2MB`) and allocated `45x` less memory (`490MB` vs. `11MB`).\n\n    *Maxime Réty*, *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1752327999000,
+    "author": "maximerety",
+    "sha": "c097bf6c24443323da8fe64030dd963951121dea",
+    "pr": "51243",
+    "merge_sha": "97dac99b5e80cc0aab3764e86fbcd12f4c316112",
+    "html": "<p>Optimize Active Record batching further when using ranges.</p>\n\n<p>Tested on a PostgreSQL table with 10M records and batches of 10k records, the generation<br />\nof relations for the 1000 batches was <code>4.8x</code> faster (<code>6.8s</code> vs. <code>1.4s</code>), used <code>900x</code><br />\nless bandwidth (<code>180MB</code> vs. <code>0.2MB</code>) and allocated <code>45x</code> less memory (<code>490MB</code> vs. <code>11MB</code>).</p>\n\n<p><em>Maxime Réty</em>, <em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Include current character length in error messages for index and table name length validations.\n\n    *Joshua Young*",
     "project": "activerecord",
     "date_merged": 1752106656000,
