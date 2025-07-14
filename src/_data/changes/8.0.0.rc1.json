@@ -660,14 +660,14 @@
     "html": "<p>Enable automatically retrying idempotent <code>#exists?</code> queries on connection<br />\nerrors.</p>\n\n<p><em>Hartley McGuire</em>, <em>classidied</em></p>\n"
   },
   {
-    "message": "*   Deprecate usage of unsupported methods in conjunction with `update_all`:\n\n    `update_all` will now print a deprecation message if a query includes either `WITH`,\n    `WITH RECURSIVE` or `DISTINCT` statements. Those were never supported and were ignored\n    when generating the SQL query.\n\n    An error will be raised in a future Rails release. This behaviour will be consistent\n    with `delete_all` which currently raises an error for unsupported statements.\n\n    *Edouard Chin*",
+    "message": "*   Deprecate usage of unsupported methods in conjunction with `update_all`:\n\n    `update_all` will now print a deprecation message if a query includes either `WITH`,\n    `WITH RECURSIVE` or `DISTINCT` statements. Those were never supported and were ignored\n    when generating the SQL query.\n\n    An error will be raised in a future Rails release. This behavior will be consistent\n    with `delete_all` which currently raises an error for unsupported statements.\n\n    *Edouard Chin*",
     "project": "activerecord",
     "date_merged": 1736844484000,
     "author": "Edouard CHIN",
     "sha": "1585064d71ccee48e52940a723867758740233b8",
     "pr": "54231",
     "merge_sha": "3b6b6c25ffa44279b967378bce97bc4a169eb29d",
-    "html": "<p>Deprecate usage of unsupported methods in conjunction with <code>update_all</code>:</p>\n\n<p><code>update_all</code> will now print a deprecation message if a query includes either <code>WITH</code>,<br />\n<code>WITH RECURSIVE</code> or <code>DISTINCT</code> statements. Those were never supported and were ignored<br />\nwhen generating the SQL query.</p>\n\n<p>An error will be raised in a future Rails release. This behaviour will be consistent<br />\nwith <code>delete_all</code> which currently raises an error for unsupported statements.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+    "html": "<p>Deprecate usage of unsupported methods in conjunction with <code>update_all</code>:</p>\n\n<p><code>update_all</code> will now print a deprecation message if a query includes either <code>WITH</code>,<br />\n<code>WITH RECURSIVE</code> or <code>DISTINCT</code> statements. Those were never supported and were ignored<br />\nwhen generating the SQL query.</p>\n\n<p>An error will be raised in a future Rails release. This behavior will be consistent<br />\nwith <code>delete_all</code> which currently raises an error for unsupported statements.</p>\n\n<p><em>Edouard Chin</em></p>\n"
   },
   {
     "message": "*   The table columns inside `schema.rb` are now sorted alphabetically.\n\n    Previously they'd be sorted by creation order, which can cause merge conflicts when two\n    branches modify the same table concurrently.\n\n    *John Duff*",
