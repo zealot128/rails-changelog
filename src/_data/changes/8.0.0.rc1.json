@@ -250,6 +250,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Add `:touch` option to `update_column`/`update_columns` methods.\n\n    ```ruby\n    # Will update :updated_at/:updated_on alongside :nice column.\n    user.update_column(:nice, true, touch: true)\n\n    # Will update :updated_at/:updated_on alongside :last_ip column\n    user.update_columns(last_ip: request.remote_ip, touch: true)\n    ```\n\n    *Dmitrii Ivliev*",
+    "project": "activerecord",
+    "date_merged": 1752582145000,
+    "author": "Dmitriy Ivliev",
+    "sha": "1419ca5ea21b077ddab805e86d67d4484c9b8132",
+    "pr": "51455",
+    "merge_sha": "3963a13103121f43f188d2a1d1e871c421c42d24",
+    "html": "<p>Add <code>:touch</code> option to <code>update_column</code>/<code>update_columns</code> methods.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Will update :updated_at/:updated_on alongside :nice column.</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">update_column</span><span class=\"p\">(</span><span class=\"ss\">:nice</span><span class=\"p\">,</span> <span class=\"kp\">true</span><span class=\"p\">,</span> <span class=\"ss\">touch: </span><span class=\"kp\">true</span><span class=\"p\">)</span>\n\n<span class=\"c1\"># Will update :updated_at/:updated_on alongside :last_ip column</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">update_columns</span><span class=\"p\">(</span><span class=\"ss\">last_ip: </span><span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">remote_ip</span><span class=\"p\">,</span> <span class=\"ss\">touch: </span><span class=\"kp\">true</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Dmitrii Ivliev</em></p>\n"
+  },
+  {
     "message": "*   Optimize Active Record batching further when using ranges.\n\n    Tested on a PostgreSQL table with 10M records and batches of 10k records, the generation\n    of relations for the 1000 batches was `4.8x` faster (`6.8s` vs. `1.4s`), used `900x`\n    less bandwidth (`180MB` vs. `0.2MB`) and allocated `45x` less memory (`490MB` vs. `11MB`).\n\n    *Maxime Réty*, *fatkodima*",
     "project": "activerecord",
     "date_merged": 1752327999000,
@@ -328,6 +338,16 @@
     "pr": "55176",
     "merge_sha": "a3652114fa1b78bcff55e8e1b4a815bade3cb7cd",
     "html": "<p>Add ability to change transaction isolation for all pools within a block.</p>\n\n<p>This functionality is useful if your application needs to change the database<br />\ntransaction isolation for a request or action.</p>\n\n<p>Calling <code>ActiveRecord.with_transaction_isolation_level(level) {}</code> in an around filter or<br />\nmiddleware will set the transaction isolation for all pools accessed within the block,<br />\nbut not for the pools that aren’t.</p>\n\n<p>This works with explicit and implicit transactions:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">with_transaction_isolation_level</span><span class=\"p\">(</span><span class=\"ss\">:read_committed</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">Tag</span><span class=\"p\">.</span><span class=\"nf\">transaction</span> <span class=\"k\">do</span> <span class=\"c1\"># opens a transaction explicitly</span>\n    <span class=\"no\">Tag</span><span class=\"p\">.</span><span class=\"nf\">create!</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveRecord</span><span class=\"p\">.</span><span class=\"nf\">with_transaction_isolation_level</span><span class=\"p\">(</span><span class=\"ss\">:read_committed</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">Tag</span><span class=\"p\">.</span><span class=\"nf\">create!</span> <span class=\"c1\"># opens a transaction implicitly</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
+    "message": "*   Raise `ActiveRecord::MissingRequiredOrderError` when order dependent finder methods (e.g. `#first`, `#last`) are\n    called without `order` values on the relation, and the model does not have any order columns (`implicit_order_column`,\n    `query_constraints`, or `primary_key`) to fall back on.\n\n    This change will be introduced with a new framework default for Rails 8.1, and the current behavior of not raising\n    an error has been deprecated with the aim of removing the configuration option in Rails 8.2.\n\n    ```ruby\n    config.active_record.raise_on_missing_required_finder_order_columns = true\n    ```\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1752569644000,
+    "author": "Joshua Young",
+    "sha": "8fad423815bbc82f0031c08ed4abe8852fb9416b",
+    "pr": "54591",
+    "merge_sha": "79711deddfe0cf5dccb6015057210ab20dbcfc36",
+    "html": "<p>Raise <code>ActiveRecord::MissingRequiredOrderError</code> when order dependent finder methods (e.g. <code>#first</code>, <code>#last</code>) are<br />\ncalled without <code>order</code> values on the relation, and the model does not have any order columns (<code>implicit_order_column</code>,<br />\n<code>query_constraints</code>, or <code>primary_key</code>) to fall back on.</p>\n\n<p>This change will be introduced with a new framework default for Rails 8.1, and the current behavior of not raising<br />\nan error has been deprecated with the aim of removing the configuration option in Rails 8.2.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">raise_on_missing_required_finder_order_columns</span> <span class=\"o\">=</span> <span class=\"kp\">true</span>\n</code></pre></div></div>\n\n<p><em>Joshua Young</em></p>\n"
   },
   {
     "message": "*   `:class_name` is now invalid in polymorphic `belongs_to` associations.\n\n    Reason is `:class_name` does not make sense in those associations because\n    the class name of target records is dynamic and stored in the type column.\n\n    Existing polymorphic associations setting this option can just delete it.\n    While it did not raise, it had no effect anyway.\n\n    *Xavier Noria*",
@@ -1278,6 +1298,16 @@
     "pr": "53955",
     "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Allow to open source file with a crash from the browser.\n\n    *Igor Kasyanchuk*",
+    "project": "actionpack",
+    "date_merged": 1752585168000,
+    "author": "Igor Kasyanchuk",
+    "sha": "b22fd5a519f92e5c51c62e3b74b4407e492b89e2",
+    "pr": "55295",
+    "merge_sha": "56a9a0dc4b852eecb635dc5b0585ab2ae88b8e98",
+    "html": "<p>Allow to open source file with a crash from the browser.</p>\n\n<p><em>Igor Kasyanchuk</em></p>\n"
   },
   {
     "message": "*   Always check query string keys for valid encoding just like values are checked.\n\n    *Casper Smits*",
