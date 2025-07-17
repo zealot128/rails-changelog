@@ -250,6 +250,26 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Fix `#merge` with `#or` or `#and` and a mixture of attributes and SQL strings resulting in an incorrect query.\n\n    ```ruby\n    base = Comment.joins(:post).where(user_id: 1).where(\"recent = 1\")\n    puts base.merge(base.where(draft: true).or(Post.where(archived: true))).to_sql\n    ```\n\n    Before:\n\n    ```SQL\n    SELECT \"comments\".* FROM \"comments\"\n    INNER JOIN \"posts\" ON \"posts\".\"id\" = \"comments\".\"post_id\"\n    WHERE (recent = 1)\n    AND (\n      \"comments\".\"user_id\" = 1\n      AND (recent = 1)\n      AND \"comments\".\"draft\" = 1\n      OR \"posts\".\"archived\" = 1\n    )\n    ```\n\n    After:\n\n    ```SQL\n    SELECT \"comments\".* FROM \"comments\"\n    INNER JOIN \"posts\" ON \"posts\".\"id\" = \"comments\".\"post_id\"\n    WHERE \"comments\".\"user_id\" = 1\n    AND (recent = 1)\n    AND (\n      \"comments\".\"user_id\" = 1\n      AND (recent = 1)\n      AND \"comments\".\"draft\" = 1\n      OR \"posts\".\"archived\" = 1\n    )\n    ```\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1752759682000,
+    "author": "Joshua Young",
+    "sha": "8641f7f46a80c7843f65d5f589e4469b5c7fd4cd",
+    "pr": "52530",
+    "merge_sha": "2bb6b67437f535608898dc3505861f5d1b06b1ac",
+    "html": "<p>Fix <code>#merge</code> with <code>#or</code> or <code>#and</code> and a mixture of attributes and SQL strings resulting in an incorrect query.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">base</span> <span class=\"o\">=</span> <span class=\"no\">Comment</span><span class=\"p\">.</span><span class=\"nf\">joins</span><span class=\"p\">(</span><span class=\"ss\">:post</span><span class=\"p\">).</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"ss\">user_id: </span><span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"s2\">\"recent = 1\"</span><span class=\"p\">)</span>\n<span class=\"nb\">puts</span> <span class=\"n\">base</span><span class=\"p\">.</span><span class=\"nf\">merge</span><span class=\"p\">(</span><span class=\"n\">base</span><span class=\"p\">.</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"ss\">draft: </span><span class=\"kp\">true</span><span class=\"p\">).</span><span class=\"nf\">or</span><span class=\"p\">(</span><span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"ss\">archived: </span><span class=\"kp\">true</span><span class=\"p\">))).</span><span class=\"nf\">to_sql</span>\n</code></pre></div></div>\n\n<p>Before:</p>\n\n<pre><code class=\"language-SQL\">SELECT \"comments\".* FROM \"comments\"\nINNER JOIN \"posts\" ON \"posts\".\"id\" = \"comments\".\"post_id\"\nWHERE (recent = 1)\nAND (\n  \"comments\".\"user_id\" = 1\n  AND (recent = 1)\n  AND \"comments\".\"draft\" = 1\n  OR \"posts\".\"archived\" = 1\n)\n</code></pre>\n\n<p>After:</p>\n\n<pre><code class=\"language-SQL\">SELECT \"comments\".* FROM \"comments\"\nINNER JOIN \"posts\" ON \"posts\".\"id\" = \"comments\".\"post_id\"\nWHERE \"comments\".\"user_id\" = 1\nAND (recent = 1)\nAND (\n  \"comments\".\"user_id\" = 1\n  AND (recent = 1)\n  AND \"comments\".\"draft\" = 1\n  OR \"posts\".\"archived\" = 1\n)\n</code></pre>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Make schema dumper to account for `ActiveRecord.dump_schemas` when dumping in `:ruby` format.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1752739274000,
+    "author": "fatkodima",
+    "sha": "e841859e7b9f781c6dc5e29c73c18c6dd229c8d5",
+    "pr": "50020",
+    "merge_sha": "b78637ef590de0ec51194da8d714f36213888bd4",
+    "html": "<p>Make schema dumper to account for <code>ActiveRecord.dump_schemas</code> when dumping in <code>:ruby</code> format.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Add `:touch` option to `update_column`/`update_columns` methods.\n\n    ```ruby\n    # Will update :updated_at/:updated_on alongside :nice column.\n    user.update_column(:nice, true, touch: true)\n\n    # Will update :updated_at/:updated_on alongside :last_ip column\n    user.update_columns(last_ip: request.remote_ip, touch: true)\n    ```\n\n    *Dmitrii Ivliev*",
     "project": "activerecord",
     "date_merged": 1752582145000,
@@ -1428,6 +1448,16 @@
     "pr": "54163",
     "merge_sha": "1387af8e5f0b3e89d0c448af2f852b96b1f0f6fa",
     "html": "<p>Add resource name to the <code>ArgumentError</code> that’s raised when invalid <code>:only</code> or <code>:except</code> options are given to <code>#resource</code> or <code>#resources</code></p>\n\n<p>This makes it easier to locate the source of the problem, especially for routes drawn by gems.</p>\n\n<p>Before:</p>\n<pre><code>:only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n</code></pre>\n\n<p>After:</p>\n<pre><code>Route `resources :products` - :only and :except must include only [:index, :create, :new, :show, :update, :destroy, :edit], but also included [:foo, :bar]\n</code></pre>\n\n<p><em>Jeremy Green</em></p>\n"
+  },
+  {
+    "message": "*   A route pointing to a non-existing controller now returns a 500 instead of a 404.\n\n    A controller not existing isn't a routing error that should result\n    in a 404, but a programming error that should result in a 500 and\n    be reported.\n\n    Until recently, this was hard to untangle because of the support\n    for dynamic `:controller` segment in routes, but since this is\n    deprecated and will be removed in Rails 8.1, we can now easily\n    not consider missing controllers as routing errors.\n\n    *Jean Boussier*",
+    "project": "actionpack",
+    "date_merged": 1752756250000,
+    "author": "Jean Boussier",
+    "sha": "a1bfeee2cb5cdf3fb2345e2f33cb12fc57031773",
+    "pr": "53964",
+    "merge_sha": "3da8993738ea32fe56819fe46d6d5920c5a87a92",
+    "html": "<p>A route pointing to a non-existing controller now returns a 500 instead of a 404.</p>\n\n<p>A controller not existing isn’t a routing error that should result<br />\nin a 404, but a programming error that should result in a 500 and<br />\nbe reported.</p>\n\n<p>Until recently, this was hard to untangle because of the support<br />\nfor dynamic <code>:controller</code> segment in routes, but since this is<br />\ndeprecated and will be removed in Rails 8.1, we can now easily<br />\nnot consider missing controllers as routing errors.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Add `check_collisions` option to `ActionDispatch::Session::CacheStore`.\n\n    Newly generated session ids use 128 bits of randomness, which is more than\n    enough to ensure collisions can't happen, but if you need to harden sessions\n    even more, you can enable this option to check in the session store that the id\n    is indeed free you can enable that option. This however incurs an extra write\n    on session creation.\n\n    *Shia*",
