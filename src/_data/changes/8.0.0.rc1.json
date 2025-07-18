@@ -210,6 +210,16 @@
     "html": "<p>Only add browser restrictions for a new Rails app when using importmap.</p>\n\n<p><em>Lucas Dohmen</em></p>\n"
   },
   {
+    "message": "*   Remove unnecessary calls to the GCP metadata server.\n\n    Calling Google::Auth.get_application_default triggers an explicit call to\n    the metadata server - given it was being called for significant number of\n    file operations, it can lead to considerable tail latencies and even metadata\n    server overloads. Instead, it's preferable (and significantly more efficient)\n    that applications use:\n\n    ```ruby\n    Google::Apis::RequestOptions.default.authorization = Google::Auth.get_application_default(...)\n    ```\n\n    In the cases applications do not set that, the GCP libraries automatically determine credentials.\n\n    This also enables using credentials other than those of the associated GCP\n    service account like when using impersonation.\n\n    *Alex Coomans*",
+    "project": "activestorage",
+    "date_merged": 1752827160000,
+    "author": "Alex Coomans",
+    "sha": "bd573b02494d56e5586ccee27aa7a4129024dd4a",
+    "pr": "55353",
+    "merge_sha": "3642c825099f7d5e8acfcc788d75eda7438845a2",
+    "html": "<p>Remove unnecessary calls to the GCP metadata server.</p>\n\n<p>Calling Google::Auth.get_application_default triggers an explicit call to<br />\nthe metadata server - given it was being called for significant number of<br />\nfile operations, it can lead to considerable tail latencies and even metadata<br />\nserver overloads. Instead, it’s preferable (and significantly more efficient)<br />\nthat applications use:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Google</span><span class=\"o\">::</span><span class=\"no\">Apis</span><span class=\"o\">::</span><span class=\"no\">RequestOptions</span><span class=\"p\">.</span><span class=\"nf\">default</span><span class=\"p\">.</span><span class=\"nf\">authorization</span> <span class=\"o\">=</span> <span class=\"no\">Google</span><span class=\"o\">::</span><span class=\"no\">Auth</span><span class=\"p\">.</span><span class=\"nf\">get_application_default</span><span class=\"p\">(</span><span class=\"o\">...</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>In the cases applications do not set that, the GCP libraries automatically determine credentials.</p>\n\n<p>This also enables using credentials other than those of the associated GCP<br />\nservice account like when using impersonation.</p>\n\n<p><em>Alex Coomans</em></p>\n"
+  },
+  {
     "message": "*   Direct upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
     "project": "activestorage",
     "date_merged": 1749154771000,
