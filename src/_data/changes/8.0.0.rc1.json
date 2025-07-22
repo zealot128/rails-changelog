@@ -30,6 +30,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Broaden the `.gitignore` entry when adding a credentials key to ignore all key files.\n\n    *Greg Molnar*",
+    "project": "railties",
+    "date_merged": 1753133000000,
+    "author": "zzak",
+    "sha": "da58f63360dea72bc8846b5eb4b40307897b3a22",
+    "pr": "55380",
+    "merge_sha": "5ea256b79acb6dbc8ef7c30f43ecad14c91924db",
+    "html": "<p>Broaden the <code>.gitignore</code> entry when adding a credentials key to ignore all key files.</p>\n\n<p><em>Greg Molnar</em></p>\n"
+  },
+  {
     "message": "*   Remove unnecessary `ruby-version` input from `ruby/setup-ruby`\n\n    *TangRufus*",
     "project": "railties",
     "date_merged": 1748278305000,
@@ -938,6 +948,16 @@
     "pr": "53770",
     "merge_sha": "e15be8c98e39a96d33be9331f9649bade402f9bf",
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
+    "message": "*   Make `nonce: false` remove the nonce attribute from `javascript_tag`, `javascript_include_tag`, and `stylesheet_link_tag`.\n\n    *francktrouillez*",
+    "project": "actionview",
+    "date_merged": 1753153469000,
+    "author": "Franck Trouillez",
+    "sha": "71a41f82b8ebc10eab5dd84f2f3db166d253242f",
+    "pr": "54724",
+    "merge_sha": "5d3a54f1558a6145aa66554e577a635b3c09d9b7",
+    "html": "<p>Make <code>nonce: false</code> remove the nonce attribute from <code>javascript_tag</code>, <code>javascript_include_tag</code>, and <code>stylesheet_link_tag</code>.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
     "message": "*   Add `dom_target` helper to create `dom_id`-like strings from an unlimited\n    number of objects.\n\n    *Ben Sheldon*",
