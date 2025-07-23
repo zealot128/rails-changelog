@@ -30,6 +30,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Generate static BCrypt password digests in fixtures instead of dynamic ERB expressions.\n\n    Previously, fixtures with password digest attributes used `<%= BCrypt::Password.create(\"secret\") %>`,\n    which regenerated the hash on each test run. Now generates a static hash with a comment\n    showing how to recreate it.\n\n    *Nate Smith*, *Cassia Scheffer*",
+    "project": "railties",
+    "date_merged": 1753282660000,
+    "author": "Cassia Scheffer",
+    "sha": "8e196bb39d593639714a026bea71ce94c4eac235",
+    "pr": "55387",
+    "merge_sha": "e30dc59ed21edff160d011b45fbdd6195fa4ee34",
+    "html": "<p>Generate static BCrypt password digests in fixtures instead of dynamic ERB expressions.</p>\n\n<p>Previously, fixtures with password digest attributes used <code>&lt;%= BCrypt::Password.create(\"secret\") %&gt;</code>,<br />\nwhich regenerated the hash on each test run. Now generates a static hash with a comment<br />\nshowing how to recreate it.</p>\n\n<p><em>Nate Smith</em>, <em>Cassia Scheffer</em></p>\n"
+  },
+  {
     "message": "*   Broaden the `.gitignore` entry when adding a credentials key to ignore all key files.\n\n    *Greg Molnar*",
     "project": "railties",
     "date_merged": 1753133000000,
