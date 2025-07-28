@@ -980,6 +980,16 @@
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
+    "message": "*   Introduce `relative_time_in_words` helper\n\n    ```ruby\n    relative_time_in_words(3.minutes.from_now) # => \"in 3 minutes\"\n    relative_time_in_words(3.minutes.ago) # => \"3 minutes ago\"\n    relative_time_in_words(10.seconds.ago, include_seconds: true) # => \"less than 10 seconds ago\"\n    ```\n\n    *Matheus Richard*",
+    "project": "actionview",
+    "date_merged": 1753709807000,
+    "author": "Matheus Richard",
+    "sha": "46c5bc706a61c5099f357d92c8ee675160d050a5",
+    "pr": "55405",
+    "merge_sha": "3e544829dab80e68c150fcb2868b6579b2ace2c8",
+    "html": "<p>Introduce <code>relative_time_in_words</code> helper</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">relative_time_in_words</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">.</span><span class=\"nf\">from_now</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"in 3 minutes\"</span>\n<span class=\"n\">relative_time_in_words</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">.</span><span class=\"nf\">ago</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"3 minutes ago\"</span>\n<span class=\"n\">relative_time_in_words</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">.</span><span class=\"nf\">seconds</span><span class=\"p\">.</span><span class=\"nf\">ago</span><span class=\"p\">,</span> <span class=\"ss\">include_seconds: </span><span class=\"kp\">true</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"less than 10 seconds ago\"</span>\n</code></pre></div></div>\n\n<p><em>Matheus Richard</em></p>\n"
+  },
+  {
     "message": "*   Make `nonce: false` remove the nonce attribute from `javascript_tag`, `javascript_include_tag`, and `stylesheet_link_tag`.\n\n    *francktrouillez*",
     "project": "actionview",
     "date_merged": 1753153469000,
