@@ -1400,6 +1400,26 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Allow hosts redirects from `hosts` Rails configuration\n\n    ```ruby\n    config.action_controller.allowed_redirect_hosts << \"example.com\"\n    ```\n\n    *Kevin Robatel*",
+    "project": "actionpack",
+    "date_merged": 1753866776000,
+    "author": "Kevin Robatel",
+    "sha": "acc1124b1587e783c0ed19970c1f6b8818192126",
+    "pr": "55420",
+    "merge_sha": "fd6e86ce3845d90c8256ccd28044dd5d1c14526c",
+    "html": "<p>Allow hosts redirects from <code>hosts</code> Rails configuration</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">action_controller</span><span class=\"p\">.</span><span class=\"nf\">allowed_redirect_hosts</span> <span class=\"o\">&lt;&lt;</span> <span class=\"s2\">\"example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Kevin Robatel</em></p>\n"
+  },
+  {
+    "message": "*   `rate_limit.action_controller` notification has additional payload\n\n    additional values: count, to, within, by, name, cache_key\n\n    *Jonathan Rochkind*",
+    "project": "actionpack",
+    "date_merged": 1753864884000,
+    "author": "Jonathan Rochkind",
+    "sha": "920309ab89a3d94918f1c9115f5264016440f81d",
+    "pr": "55418",
+    "merge_sha": "f551712ea80b6a23a0a7c65a46bf2b50f2fc4bc3",
+    "html": "<p><code>rate_limit.action_controller</code> notification has additional payload</p>\n\n<p>additional values: count, to, within, by, name, cache_key</p>\n\n<p><em>Jonathan Rochkind</em></p>\n"
+  },
+  {
     "message": "*   Add JSON support to the built-in health controller.\n\n    The health controller now responds to JSON requests with a structured response\n    containing status and timestamp information. This makes it easier for monitoring\n    tools and load balancers to consume health check data programmatically.\n\n    ```ruby\n    # /up.json\n    {\n      \"status\": \"up\",\n      \"timestamp\": \"2025-09-19T12:00:00Z\"\n    }\n    ```\n\n    *Francesco Loreti*, *Juan Vásquez*",
     "project": "actionpack",
     "date_merged": 1753201601000,
