@@ -30,6 +30,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Add command `rails credentials:fetch PATH` to get the value of a credential from the credentials file.\n\n    ```bash\n    $ bin/rails credentials:fetch kamal_registry/password\n    ```\n\n    *Matthew Nguyen*, *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1754297979000,
+    "author": "Matthew Nguyen",
+    "sha": "ccf22d60e4da6954e39cd40c87ffb9d6f271953a",
+    "pr": "53119",
+    "merge_sha": "9a64857d7002554b0af94158de386def5bfef9d3",
+    "html": "<p>Add command <code>rails credentials:fetch PATH</code> to get the value of a credential from the credentials file.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>bin/rails credentials:fetch kamal_registry/password\n</code></pre></div></div>\n\n<p><em>Matthew Nguyen</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Generate static BCrypt password digests in fixtures instead of dynamic ERB expressions.\n\n    Previously, fixtures with password digest attributes used `<%= BCrypt::Password.create(\"secret\") %>`,\n    which regenerated the hash on each test run. Now generates a static hash with a comment\n    showing how to recreate it.\n\n    *Nate Smith*, *Cassia Scheffer*",
     "project": "railties",
     "date_merged": 1753282660000,
