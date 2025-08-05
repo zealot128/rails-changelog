@@ -1410,6 +1410,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Add support for `rack.response_finished` callbacks in ActionDispatch::Executor.\n\n    The executor middleware now supports deferring completion callbacks to later\n    in the request lifecycle by utilizing Rack's `rack.response_finished` mechanism,\n    when available. This enables applications to define `rack.response_finished` callbacks\n    that may rely on state that would be cleaned up by the executor's completion callbacks.\n\n    *Adrianna Chang*, *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1754410285000,
+    "author": "Adrianna Chang",
+    "sha": "9a57dbd58283f47163701f4884e04fa4fe4489ef",
+    "pr": "55425",
+    "merge_sha": "936e161a78c750f1c54701cd7f89f7a5f3c4e195",
+    "html": "<p>Add support for <code>rack.response_finished</code> callbacks in ActionDispatch::Executor.</p>\n\n<p>The executor middleware now supports deferring completion callbacks to later<br />\nin the request lifecycle by utilizing Rack’s <code>rack.response_finished</code> mechanism,<br />\nwhen available. This enables applications to define <code>rack.response_finished</code> callbacks<br />\nthat may rely on state that would be cleaned up by the executor’s completion callbacks.</p>\n\n<p><em>Adrianna Chang</em>, <em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Produce a log when `rescue_from` is invoked.\n\n    *Steven Webb*, *Jean Boussier*",
     "project": "actionpack",
     "date_merged": 1753948120000,
