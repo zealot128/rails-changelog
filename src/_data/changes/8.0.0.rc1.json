@@ -990,6 +990,16 @@
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
+    "message": "*   Enable configuring the strategy for tracking dependencies between Action\n    View templates.\n\n    The existing `:regex` strategy is kept as the default, but with\n    `load_defaults 8.1` the strategy will be `:ruby` (using a real Ruby parser).\n\n    *Hartley McGuire*",
+    "project": "actionview",
+    "date_merged": 1754498553000,
+    "author": "Hartley McGuire",
+    "sha": "89fddd354ecc89572af5f3a460b789d31894d0db",
+    "pr": "55194",
+    "merge_sha": "ab756d9d370cbb38fdf891a98cedf8575c98bf8c",
+    "html": "<p>Enable configuring the strategy for tracking dependencies between Action<br />\nView templates.</p>\n\n<p>The existing <code>:regex</code> strategy is kept as the default, but with<br />\n<code>load_defaults 8.1</code> the strategy will be <code>:ruby</code> (using a real Ruby parser).</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Introduce `relative_time_in_words` helper\n\n    ```ruby\n    relative_time_in_words(3.minutes.from_now) # => \"in 3 minutes\"\n    relative_time_in_words(3.minutes.ago) # => \"3 minutes ago\"\n    relative_time_in_words(10.seconds.ago, include_seconds: true) # => \"less than 10 seconds ago\"\n    ```\n\n    *Matheus Richard*",
     "project": "actionview",
     "date_merged": 1753709807000,
