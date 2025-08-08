@@ -1110,6 +1110,16 @@
     "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
   },
   {
+    "message": "*   Make `ActiveSupport::Logger` `#freeze`-friendly.\n\n    *Joshua Young*",
+    "project": "activesupport",
+    "date_merged": 1754603002000,
+    "author": "Joshua Young",
+    "sha": "fc18795f3ff88432454dfe10f8d093e862b483d0",
+    "pr": "55460",
+    "merge_sha": "67e7f9e55fde51689656aa197e825bb1614d8c15",
+    "html": "<p>Make <code>ActiveSupport::Logger</code> <code>#freeze</code>-friendly.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Make `ActiveSupport::Gzip.compress` deterministic based on input.\n\n    `ActiveSupport::Gzip.compress` used to include a timestamp in the output,\n    causing consecutive calls with the same input data to have different output\n    if called during different seconds. It now always sets the timestamp to `0`\n    so that the output is identical for any given input.\n\n    *Rob Brackett*",
     "project": "activesupport",
     "date_merged": 1753168818000,
