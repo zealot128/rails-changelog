@@ -1,5 +1,135 @@
 [
   {
+    "message": "*   Enable configuring the strategy for tracking dependencies between Action\n    View templates.\n\n    The existing `:regex` strategy is kept as the default, but with\n    `load_defaults 8.1` the strategy will be `:ruby` (using a real Ruby parser).\n\n    *Hartley McGuire*",
+    "project": "actionview",
+    "date_merged": 1754498553000,
+    "author": "Hartley McGuire",
+    "sha": "89fddd354ecc89572af5f3a460b789d31894d0db",
+    "pr": "55194",
+    "merge_sha": "ab756d9d370cbb38fdf891a98cedf8575c98bf8c",
+    "html": "<p>Enable configuring the strategy for tracking dependencies between Action<br />\nView templates.</p>\n\n<p>The existing <code>:regex</code> strategy is kept as the default, but with<br />\n<code>load_defaults 8.1</code> the strategy will be <code>:ruby</code> (using a real Ruby parser).</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Introduce `relative_time_in_words` helper\n\n    ```ruby\n    relative_time_in_words(3.minutes.from_now) # => \"in 3 minutes\"\n    relative_time_in_words(3.minutes.ago) # => \"3 minutes ago\"\n    relative_time_in_words(10.seconds.ago, include_seconds: true) # => \"less than 10 seconds ago\"\n    ```\n\n    *Matheus Richard*",
+    "project": "actionview",
+    "date_merged": 1753709807000,
+    "author": "Matheus Richard",
+    "sha": "46c5bc706a61c5099f357d92c8ee675160d050a5",
+    "pr": "55405",
+    "merge_sha": "3e544829dab80e68c150fcb2868b6579b2ace2c8",
+    "html": "<p>Introduce <code>relative_time_in_words</code> helper</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">relative_time_in_words</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">.</span><span class=\"nf\">from_now</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"in 3 minutes\"</span>\n<span class=\"n\">relative_time_in_words</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">.</span><span class=\"nf\">ago</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"3 minutes ago\"</span>\n<span class=\"n\">relative_time_in_words</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">.</span><span class=\"nf\">seconds</span><span class=\"p\">.</span><span class=\"nf\">ago</span><span class=\"p\">,</span> <span class=\"ss\">include_seconds: </span><span class=\"kp\">true</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"less than 10 seconds ago\"</span>\n</code></pre></div></div>\n\n<p><em>Matheus Richard</em></p>\n"
+  },
+  {
+    "message": "*   Make `nonce: false` remove the nonce attribute from `javascript_tag`, `javascript_include_tag`, and `stylesheet_link_tag`.\n\n    *francktrouillez*",
+    "project": "actionview",
+    "date_merged": 1753153469000,
+    "author": "Franck Trouillez",
+    "sha": "71a41f82b8ebc10eab5dd84f2f3db166d253242f",
+    "pr": "54724",
+    "merge_sha": "5d3a54f1558a6145aa66554e577a635b3c09d9b7",
+    "html": "<p>Make <code>nonce: false</code> remove the nonce attribute from <code>javascript_tag</code>, <code>javascript_include_tag</code>, and <code>stylesheet_link_tag</code>.</p>\n\n<p><em>francktrouillez</em></p>\n"
+  },
+  {
+    "message": "*   Add `dom_target` helper to create `dom_id`-like strings from an unlimited\n    number of objects.\n\n    *Ben Sheldon*",
+    "project": "actionview",
+    "date_merged": 1751357292000,
+    "author": "Ben Sheldon [he/him]",
+    "sha": "c8e485651fedc093ab150b7fd43cbeed3ed59549",
+    "pr": "55204",
+    "merge_sha": "985e75fa93dd5d365b31162d52e0549748a1f145",
+    "html": "<p>Add <code>dom_target</code> helper to create <code>dom_id</code>-like strings from an unlimited<br />\nnumber of objects.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
+  },
+  {
+    "message": "*   Respect `html_options[:form]` when `collection_checkboxes` generates the\n    hidden `<input>`.\n\n    *Riccardo Odone*",
+    "project": "actionview",
+    "date_merged": 1736352191000,
+    "author": "3v0k4",
+    "sha": "d4702f99e69e0c327419e7791dce5b969e361d89",
+    "pr": "51746",
+    "merge_sha": "f978e1dc7ca5bc570a21f8007e06a3a57ca93566",
+    "html": "<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />\nhidden <code>&lt;input&gt;</code>.</p>\n\n<p><em>Riccardo Odone</em></p>\n"
+  },
+  {
+    "message": "*   Layouts have access to local variables passed to `render`.\n\n    This fixes #31680 which was a regression in Rails 5.1.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1736197671000,
+    "author": "Mike Dalessio",
+    "sha": "b35a9b6fc63246adbe98d141997f37434ad037ad",
+    "pr": "54020",
+    "merge_sha": "593d9d90972df11aea1a1d7bb8a5f5f84a1d1f27",
+    "html": "<p>Layouts have access to local variables passed to <code>render</code>.</p>\n\n<p>This fixes #31680 which was a regression in Rails 5.1.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Argument errors related to strict locals in templates now raise an\n    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.\n\n    Previously, any `ArgumentError` raised during template rendering was swallowed during strict\n    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper\n    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an\n    unrelated backtrace, making it difficult to debug templates.\n\n    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original\n    backtrace for developers.\n\n    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing\n    code that rescues `ArgumentError` will continue to work.\n\n    Fixes #52227.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1736195112000,
+    "author": "Mike Dalessio",
+    "sha": "c868503d313873edcd262c4d605c06d2d1ed703a",
+    "pr": "54133",
+    "merge_sha": "bc601a9ffe4d48045b9bfeec23e9e579a5709c7c",
+    "html": "<p>Argument errors related to strict locals in templates now raise an<br />\n<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>\n\n<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />\nlocal error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />\nmethod invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />\nunrelated backtrace, making it difficult to debug templates.</p>\n\n<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />\nbacktrace for developers.</p>\n\n<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />\ncode that rescues <code>ArgumentError</code> will continue to work.</p>\n\n<p>Fixes #52227.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Improve error highlighting of multi-line methods in ERB templates or\n    templates where the error occurs within a do-end block.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732819839000,
+    "author": "Martin Emde",
+    "sha": "a74d26378b665bf1a1a6c125f878000251102dbb",
+    "pr": "53763",
+    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
+    "html": "<p>Improve error highlighting of multi-line methods in ERB templates or<br />\ntemplates where the error occurs within a do-end block.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Fix a crash in ERB template error highlighting when the error occurs on a\n    line in the compiled template that is past the end of the source template.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732254580000,
+    "author": "Martin Emde",
+    "sha": "5857b8f83ca51a38151bb107a03684320505421d",
+    "pr": "53696",
+    "merge_sha": "8cab71cd0441043ba1c3c201ef8b8282d6f13b63",
+    "html": "<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />\nline in the compiled template that is past the end of the source template.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Improve reliability of ERB template error highlighting.\n    Fix infinite loops and crashes in highlighting and\n    improve tolerance for alternate ERB handlers.\n\n    *Martin Emde*",
+    "project": "actionview",
+    "date_merged": 1732218987000,
+    "author": "Martin Emde",
+    "sha": "aaebc8635123537f60db62763e6d80489098060d",
+    "pr": "53657",
+    "merge_sha": "9add4d9786266cbebcc44c07963ceb589de9ce79",
+    "html": "<p>Improve reliability of ERB template error highlighting.<br />\nFix infinite loops and crashes in highlighting and<br />\nimprove tolerance for alternate ERB handlers.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.\n\n    *brendon*",
+    "project": "actionview",
+    "date_merged": 1731670127000,
+    "author": "Brendon Muir",
+    "sha": "09daec64ac5189799718d8805311ac1458021910",
+    "pr": "53512",
+    "merge_sha": "e5ad9e789966a2743da8f81b6ed5e80f2575a8d1",
+    "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
+  },
+  {
+    "message": "*   Add a new configuration `content_security_policy_nonce_auto` for automatically adding a nonce to the tags affected by the directives specified by the `content_security_policy_nonce_directives` configuration option.\n\n    *francktrouillez*",
+    "project": "actionview",
+    "date_merged": 1741086415000,
+    "author": "Franck TROUILLEZ",
+    "sha": "c7162d640b4e0d1031939496f86d043af38a7a03",
+    "pr": "53835",
+    "merge_sha": "7a031e38921bac41a6a97bbba861b406caebe164",
+    "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
+  },
+  {
+    "message": "*   Add `reply_to_address` extension method on `Mail::Message`.\n\n    *Mr0grog*",
+    "project": "actionmailbox",
+    "date_merged": 1737972229000,
+    "author": "Rob Brackett",
+    "sha": "ac583204ba548557981b6890a6fc2c3975d24ee9",
+    "pr": "53513",
+    "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
+    "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
+  },
+  {
     "message": "*   Allow setting nil as subscription connection identifier for Redis.\n\n    *Nguyen Nguyen*",
     "project": "actioncable",
     "date_merged": 1744900575000,
@@ -8,6 +138,56 @@
     "pr": "54931",
     "merge_sha": "17cde11cd13cf07a7d6c712cb1593881496abacb",
     "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
+  },
+  {
+    "message": "*   Allow jobs to the interrupted and resumed with Continuations\n\n    A job can use Continuations by including the `ActiveJob::Continuable`\n    concern. Continuations split jobs into steps. When the queuing system\n    is shutting down jobs can be interrupted and their progress saved.\n\n    ```ruby\n    class ProcessImportJob\n      include ActiveJob::Continuable\n\n      def perform(import_id)\n        @import = Import.find(import_id)\n\n        # block format\n        step :initialize do\n          @import.initialize\n        end\n\n        # step with cursor, the cursor is saved when the job is interrupted\n        step :process do |step|\n          @import.records.find_each(start: step.cursor) do |record|\n            record.process\n            step.advance! from: record.id\n          end\n        end\n\n        # method format\n        step :finalize\n\n        private\n          def finalize\n            @import.finalize\n          end\n      end\n    end\n    ```\n\n    *Donal McBreen*",
+    "project": "activejob",
+    "date_merged": 1748854953000,
+    "author": "Donal McBreen",
+    "sha": "0ac3fba6ee5f7d1680024a4925eee6069095487b",
+    "pr": "55127",
+    "merge_sha": "80650283b5710a0035d7ed05da21b43ce11e8417",
+    "html": "<p>Allow jobs to the interrupted and resumed with Continuations</p>\n\n<p>A job can use Continuations by including the <code>ActiveJob::Continuable</code><br />\nconcern. Continuations split jobs into steps. When the queuing system<br />\nis shutting down jobs can be interrupted and their progress saved.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ProcessImportJob</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Continuable</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span><span class=\"p\">(</span><span class=\"n\">import_id</span><span class=\"p\">)</span>\n    <span class=\"vi\">@import</span> <span class=\"o\">=</span> <span class=\"no\">Import</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">import_id</span><span class=\"p\">)</span>\n\n    <span class=\"c1\"># block format</span>\n    <span class=\"n\">step</span> <span class=\"ss\">:initialize</span> <span class=\"k\">do</span>\n      <span class=\"vi\">@import</span><span class=\"p\">.</span><span class=\"nf\">initialize</span>\n    <span class=\"k\">end</span>\n\n    <span class=\"c1\"># step with cursor, the cursor is saved when the job is interrupted</span>\n    <span class=\"n\">step</span> <span class=\"ss\">:process</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">step</span><span class=\"o\">|</span>\n      <span class=\"vi\">@import</span><span class=\"p\">.</span><span class=\"nf\">records</span><span class=\"p\">.</span><span class=\"nf\">find_each</span><span class=\"p\">(</span><span class=\"ss\">start: </span><span class=\"n\">step</span><span class=\"p\">.</span><span class=\"nf\">cursor</span><span class=\"p\">)</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">record</span><span class=\"o\">|</span>\n        <span class=\"n\">record</span><span class=\"p\">.</span><span class=\"nf\">process</span>\n        <span class=\"n\">step</span><span class=\"p\">.</span><span class=\"nf\">advance!</span> <span class=\"ss\">from: </span><span class=\"n\">record</span><span class=\"p\">.</span><span class=\"nf\">id</span>\n      <span class=\"k\">end</span>\n    <span class=\"k\">end</span>\n\n    <span class=\"c1\"># method format</span>\n    <span class=\"n\">step</span> <span class=\"ss\">:finalize</span>\n\n    <span class=\"kp\">private</span>\n      <span class=\"k\">def</span> <span class=\"nf\">finalize</span>\n        <span class=\"vi\">@import</span><span class=\"p\">.</span><span class=\"nf\">finalize</span>\n      <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Donal McBreen</em></p>\n"
+  },
+  {
+    "message": "*   Defer invocation of ActiveJob enqueue callbacks until after commit when\n    `enqueue_after_transaction_commit` is enabled.\n\n    *Will Roever*",
+    "project": "activejob",
+    "date_merged": 1746429358000,
+    "author": "Will Roever",
+    "sha": "423dcce5b6dd203b280cfd822b4564f6efbe0904",
+    "pr": "55004",
+    "merge_sha": "96a2f03a2a82e91ab4438b625ba47bd8ed917b45",
+    "html": "<p>Defer invocation of ActiveJob enqueue callbacks until after commit when<br />\n<code>enqueue_after_transaction_commit</code> is enabled.</p>\n\n<p><em>Will Roever</em></p>\n"
+  },
+  {
+    "message": "*   Add `report:` option to `ActiveJob::Base#retry_on` and `#discard_on`\n\n    When the `report:` option is passed, errors will be reported to the error reporter\n    before being retried / discarded.\n\n    *Andrew Novoselac*",
+    "project": "activejob",
+    "date_merged": 1740129016000,
+    "author": "andrew.novoselac@shopify.com",
+    "sha": "3ff8c45e7b525c6b947d6f4f3350366b0d7e97ed",
+    "pr": "54541",
+    "merge_sha": "7df1b84335298140116a59cad1bffea6c6a91747",
+    "html": "<p>Add <code>report:</code> option to <code>ActiveJob::Base#retry_on</code> and <code>#discard_on</code></p>\n\n<p>When the <code>report:</code> option is passed, errors will be reported to the error reporter<br />\nbefore being retried / discarded.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
+    "message": "*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.\n\n    This was inconsistent with a regular `ActiveJob::Base#perform_later`.\n\n    *fatkodima*",
+    "project": "activejob",
+    "date_merged": 1733489505000,
+    "author": "fatkodima",
+    "sha": "f70cca178f35f703245de62c74d078f54fd17572",
+    "pr": "53859",
+    "merge_sha": "31aec233a17a44cb4666aa074243f0961798ed46",
+    "html": "<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>\n\n<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.\n\n    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic\n    `NameError` to make it easily possible for adapters to tell if the `NameError`\n    was raised during job execution or deserialization.\n\n    *Earlopain*",
+    "project": "activejob",
+    "date_merged": 1732822493000,
+    "author": "Earlopain",
+    "sha": "5a04667a89b41da272214e53c0111e7d5b2d3219",
+    "pr": "53770",
+    "merge_sha": "e15be8c98e39a96d33be9331f9649bade402f9bf",
+    "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
     "message": "*   In the Active Job bug report template set the queue adapter to the\n    test adapter so that `assert_enqueued_with` can pass.\n\n    *Andrew White*",
@@ -28,6 +208,356 @@
     "pr": "53963",
     "merge_sha": "92de92ae375657785b31756cdf9c38cfe0e8db49",
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
+  },
+  {
+    "message": "*   Remove unnecessary calls to the GCP metadata server.\n\n    Calling Google::Auth.get_application_default triggers an explicit call to\n    the metadata server - given it was being called for significant number of\n    file operations, it can lead to considerable tail latencies and even metadata\n    server overloads. Instead, it's preferable (and significantly more efficient)\n    that applications use:\n\n    ```ruby\n    Google::Apis::RequestOptions.default.authorization = Google::Auth.get_application_default(...)\n    ```\n\n    In the cases applications do not set that, the GCP libraries automatically determine credentials.\n\n    This also enables using credentials other than those of the associated GCP\n    service account like when using impersonation.\n\n    *Alex Coomans*",
+    "project": "activestorage",
+    "date_merged": 1752827160000,
+    "author": "Alex Coomans",
+    "sha": "bd573b02494d56e5586ccee27aa7a4129024dd4a",
+    "pr": "55353",
+    "merge_sha": "3642c825099f7d5e8acfcc788d75eda7438845a2",
+    "html": "<p>Remove unnecessary calls to the GCP metadata server.</p>\n\n<p>Calling Google::Auth.get_application_default triggers an explicit call to<br />\nthe metadata server - given it was being called for significant number of<br />\nfile operations, it can lead to considerable tail latencies and even metadata<br />\nserver overloads. Instead, it’s preferable (and significantly more efficient)<br />\nthat applications use:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Google</span><span class=\"o\">::</span><span class=\"no\">Apis</span><span class=\"o\">::</span><span class=\"no\">RequestOptions</span><span class=\"p\">.</span><span class=\"nf\">default</span><span class=\"p\">.</span><span class=\"nf\">authorization</span> <span class=\"o\">=</span> <span class=\"no\">Google</span><span class=\"o\">::</span><span class=\"no\">Auth</span><span class=\"p\">.</span><span class=\"nf\">get_application_default</span><span class=\"p\">(</span><span class=\"o\">...</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>In the cases applications do not set that, the GCP libraries automatically determine credentials.</p>\n\n<p>This also enables using credentials other than those of the associated GCP<br />\nservice account like when using impersonation.</p>\n\n<p><em>Alex Coomans</em></p>\n"
+  },
+  {
+    "message": "*   Direct upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
+    "project": "activestorage",
+    "date_merged": 1749154771000,
+    "author": "Jeremy Daer",
+    "sha": "606ba30ad4b7663ea5c171cf688cfcddd995b2d7",
+    "pr": "55157",
+    "merge_sha": "4b7fb1d14b954d2348d2065ff955466479509656",
+    "html": "<p>Direct upload progress accounts for server processing time.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
+  },
+  {
+    "message": "*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`\n\n    Supports checking String equality:\n\n    ```ruby\n    filename = ActiveStorage::Filename.new(\"file.txt\")\n    filename == \"file.txt\" # => true\n    filename in \"file.txt\" # => true\n    \"file.txt\" == filename # => true\n    ```\n\n    *Sean Doyle*",
+    "project": "activestorage",
+    "date_merged": 1736536509000,
+    "author": "Sean Doyle",
+    "sha": "73133fa37f52204fe797d58d508806e5517f04b3",
+    "pr": "54185",
+    "merge_sha": "7ec153158e418c8c51bdee170fc06795db3a61ed",
+    "html": "<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>\n\n<p>Supports checking String equality:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">filename</span> <span class=\"o\">=</span> <span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Filename</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"file.txt\"</span><span class=\"p\">)</span>\n<span class=\"n\">filename</span> <span class=\"o\">==</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">filename</span> <span class=\"k\">in</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"s2\">\"file.txt\"</span> <span class=\"o\">==</span> <span class=\"n\">filename</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.\n\n    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`\n    is found to be disabled because of OpenSSL FIPS mode.\n\n    *Matt Pasquini*, *Jean Boussier*",
+    "project": "activestorage",
+    "date_merged": 1735992548000,
+    "author": "Matt Pasquini",
+    "sha": "bbc0cf1712da74d52874a4e012321b5e27e85e39",
+    "pr": "54040",
+    "merge_sha": "e64e5d31cdeafee142e32e604b513a39de779651",
+    "html": "<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>\n\n<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />\nis found to be disabled because of OpenSSL FIPS mode.</p>\n\n<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   A Blob will no longer autosave associated Attachment.\n\n    This fixes an issue where a record with an attachment would have\n    its dirty attributes reset, preventing your `after commit` callbacks\n    on that record to behave as expected.\n\n    Note that this change doesn't require any changes on your application\n    and is supposed to be internal. Active Storage Attachment will continue\n    to be autosaved (through a different relation).\n\n    *Edouard-chin*",
+    "project": "activestorage",
+    "date_merged": 1734601190000,
+    "author": "Edouard CHIN",
+    "sha": "e70f504271864e32a5f27a35fe0d0865f5d95527",
+    "pr": "53623",
+    "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
+    "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+  },
+  {
+    "message": "*   Make `ActiveSupport::Logger` `#freeze`-friendly.\n\n    *Joshua Young*",
+    "project": "activesupport",
+    "date_merged": 1754603002000,
+    "author": "Joshua Young",
+    "sha": "fc18795f3ff88432454dfe10f8d093e862b483d0",
+    "pr": "55460",
+    "merge_sha": "67e7f9e55fde51689656aa197e825bb1614d8c15",
+    "html": "<p>Make <code>ActiveSupport::Logger</code> <code>#freeze</code>-friendly.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Make `ActiveSupport::Gzip.compress` deterministic based on input.\n\n    `ActiveSupport::Gzip.compress` used to include a timestamp in the output,\n    causing consecutive calls with the same input data to have different output\n    if called during different seconds. It now always sets the timestamp to `0`\n    so that the output is identical for any given input.\n\n    *Rob Brackett*",
+    "project": "activesupport",
+    "date_merged": 1753168818000,
+    "author": "Rob Brackett",
+    "sha": "97a4d4f919761a2df7a060576baa2d93c7cba4c7",
+    "pr": "55382",
+    "merge_sha": "8cb4f8ceffe375f64052579cd7a580bfdaf36d61",
+    "html": "<p>Make <code>ActiveSupport::Gzip.compress</code> deterministic based on input.</p>\n\n<p><code>ActiveSupport::Gzip.compress</code> used to include a timestamp in the output,<br />\ncausing consecutive calls with the same input data to have different output<br />\nif called during different seconds. It now always sets the timestamp to <code>0</code><br />\nso that the output is identical for any given input.</p>\n\n<p><em>Rob Brackett</em></p>\n"
+  },
+  {
+    "message": "*   Given an array of `Thread::Backtrace::Location` objects, the new method\n    `ActiveSupport::BacktraceCleaner#clean_locations` returns an array with the\n    clean ones:\n\n    ```ruby\n    clean_locations = backtrace_cleaner.clean_locations(caller_locations)\n    ```\n\n    Filters and silencers receive strings as usual. However, the `path`\n    attributes of the locations in the returned array are the original,\n    unfiltered ones, since locations are immutable.\n\n    *Xavier Noria*",
+    "project": "activesupport",
+    "date_merged": 1751038342000,
+    "author": "Xavier Noria",
+    "sha": "5c456627237559596334c2c7d1d7585ba5fff147",
+    "pr": "55255",
+    "merge_sha": "9f0cb5a62590a0c23e98806c963ce542a135ed25",
+    "html": "<p>Given an array of <code>Thread::Backtrace::Location</code> objects, the new method<br />\n<code>ActiveSupport::BacktraceCleaner#clean_locations</code> returns an array with the<br />\nclean ones:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">clean_locations</span> <span class=\"o\">=</span> <span class=\"n\">backtrace_cleaner</span><span class=\"p\">.</span><span class=\"nf\">clean_locations</span><span class=\"p\">(</span><span class=\"n\">caller_locations</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Filters and silencers receive strings as usual. However, the <code>path</code><br />\nattributes of the locations in the returned array are the original,<br />\nunfiltered ones, since locations are immutable.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
+    "message": "*   Improve `CurrentAttributes` and `ExecutionContext` state managment in test cases.\n\n    Previously these two global state would be entirely cleared out whenever calling\n    into code that is wrapped by the Rails executor, typically Action Controller or\n    Active Job helpers:\n\n    ```ruby\n    test \"#index works\" do\n      CurrentUser.id = 42\n      get :index\n      CurrentUser.id == nil\n    end\n    ```\n\n    Now re-entering the executor properly save and restore that state.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1751045828000,
+    "author": "Petrik",
+    "sha": "d3e80a4380f5a7c2aabc9907a434827708b14bd7",
+    "pr": "55256",
+    "merge_sha": "2b987c367001cbca34df24639c1f567d7517602b",
+    "html": "<p>Improve <code>CurrentAttributes</code> and <code>ExecutionContext</code> state managment in test cases.</p>\n\n<p>Previously these two global state would be entirely cleared out whenever calling<br />\ninto code that is wrapped by the Rails executor, typically Action Controller or<br />\nActive Job helpers:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"#index works\"</span> <span class=\"k\">do</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">=</span> <span class=\"mi\">42</span>\n  <span class=\"n\">get</span> <span class=\"ss\">:index</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">==</span> <span class=\"kp\">nil</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Now re-entering the executor properly save and restore that state.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_location`\n    returns the first clean location of the caller's call stack, or `nil`.\n    Locations are `Thread::Backtrace::Location` objects. Useful when you want to\n    report the application-level location where something happened as an object.\n\n    *Xavier Noria*",
+    "project": "activesupport",
+    "date_merged": 1750693355000,
+    "author": "Xavier Noria",
+    "sha": "a0ea187d777ac4423f7b0e4ba641acd6175f01e5",
+    "pr": "55230",
+    "merge_sha": "05f0b1614d82424a7507caaec5cf701d3a8c2b21",
+    "html": "<p>The new method <code>ActiveSupport::BacktraceCleaner#first_clean_location</code><br />\nreturns the first clean location of the caller’s call stack, or <code>nil</code>.<br />\nLocations are <code>Thread::Backtrace::Location</code> objects. Useful when you want to<br />\nreport the application-level location where something happened as an object.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
+    "message": "*   FileUpdateChecker and EventedFileUpdateChecker ignore changes in Gem.path now.\n\n    *Ermolaev Andrey*, *zzak*",
+    "project": "activesupport",
+    "date_merged": 1750669405000,
+    "author": "Ermolaev Andrey",
+    "sha": "d5a3063ab9549a6da5b2af4f36b2d9cd1c98e516",
+    "pr": "54129",
+    "merge_sha": "c5bb138e43390a191ddb7aa4e0f46e7af8563dcc",
+    "html": "<p>FileUpdateChecker and EventedFileUpdateChecker ignore changes in Gem.path now.</p>\n\n<p><em>Ermolaev Andrey</em>, <em>zzak</em></p>\n"
+  },
+  {
+    "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_frame` returns\n    the first clean frame of the caller's backtrace, or `nil`. Useful when you\n    want to report the application-level frame where something happened as a\n    string.\n\n    *Xavier Noria*",
+    "project": "activesupport",
+    "date_merged": 1750542698000,
+    "author": "Xavier Noria",
+    "sha": "ea66b1c750fd2984167382039d77802930865712",
+    "pr": "55222",
+    "merge_sha": "276b655f3606cf81b26464d135db9f24bacc1f0f",
+    "html": "<p>The new method <code>ActiveSupport::BacktraceCleaner#first_clean_frame</code> returns<br />\nthe first clean frame of the caller’s backtrace, or <code>nil</code>. Useful when you<br />\nwant to report the application-level frame where something happened as a<br />\nstring.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
+    "message": "*   Always clear `CurrentAttributes` instances.\n\n    Previously `CurrentAttributes` instance would be reset at the end of requests.\n    Meaning its attributes would be re-initialized.\n\n    This is problematic because it assume these objects don't hold any state\n    other than their declared attribute, which isn't always the case, and\n    can lead to state leak across request.\n\n    Now `CurrentAttributes` instances are abandoned at the end of a request,\n    and a new instance is created at the start of the next request.\n\n    *Jean Boussier*, *Janko Marohnić*",
+    "project": "activesupport",
+    "date_merged": 1751045828000,
+    "author": "Petrik",
+    "sha": "d3e80a4380f5a7c2aabc9907a434827708b14bd7",
+    "pr": "55256",
+    "merge_sha": "2b987c367001cbca34df24639c1f567d7517602b",
+    "html": "<p>Always clear <code>CurrentAttributes</code> instances.</p>\n\n<p>Previously <code>CurrentAttributes</code> instance would be reset at the end of requests.<br />\nMeaning its attributes would be re-initialized.</p>\n\n<p>This is problematic because it assume these objects don’t hold any state<br />\nother than their declared attribute, which isn’t always the case, and<br />\ncan lead to state leak across request.</p>\n\n<p>Now <code>CurrentAttributes</code> instances are abandoned at the end of a request,<br />\nand a new instance is created at the start of the next request.</p>\n\n<p><em>Jean Boussier</em>, <em>Janko Marohnić</em></p>\n"
+  },
+  {
+    "message": "*   Add public API for `before_fork_hook` in parallel testing.\n\n    Introduces a public API for calling the before fork hooks implemented by parallel testing.\n\n    ```ruby\n    parallelize_before_fork do\n        # perform an action before test processes are forked\n    end\n    ```\n\n    *Eileen M. Uchitelle*",
+    "project": "activesupport",
+    "date_merged": 1746119789000,
+    "author": "eileencodes",
+    "sha": "5696682601815fbf1408e4f8a8028cc0a5f86989",
+    "pr": "54985",
+    "merge_sha": "22b86f371464e300d43194d7fc0c312ac1f387a3",
+    "html": "<p>Add public API for <code>before_fork_hook</code> in parallel testing.</p>\n\n<p>Introduces a public API for calling the before fork hooks implemented by parallel testing.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">parallelize_before_fork</span> <span class=\"k\">do</span>\n    <span class=\"c1\"># perform an action before test processes are forked</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
+    "message": "*   Implement ability to skip creating parallel testing databases.\n\n    With parallel testing, Rails will create a database per process. If this isn't\n    desirable or you would like to implement databases handling on your own, you can\n    now turn off this default behavior.\n\n    To skip creating a database per process, you can change it via the\n    `parallelize` method:\n\n    ```ruby\n    parallelize(workers: 10, parallelize_databases: false)\n    ```\n\n    or via the application configuration:\n\n    ```ruby\n    config.active_support.parallelize_databases = false\n    ```\n\n    *Eileen M. Uchitelle*",
+    "project": "activesupport",
+    "date_merged": 1746045110000,
+    "author": "eileencodes",
+    "sha": "1f98fd2bbe04d38fea5138c3401ed481bdb38520",
+    "pr": "54984",
+    "merge_sha": "0367cbf265ff25546230d2f668aa887e09995509",
+    "html": "<p>Implement ability to skip creating parallel testing databases.</p>\n\n<p>With parallel testing, Rails will create a database per process. If this isn’t<br />\ndesirable or you would like to implement databases handling on your own, you can<br />\nnow turn off this default behavior.</p>\n\n<p>To skip creating a database per process, you can change it via the<br />\n<code>parallelize</code> method:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">parallelize</span><span class=\"p\">(</span><span class=\"ss\">workers: </span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"ss\">parallelize_databases: </span><span class=\"kp\">false</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>or via the application configuration:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_support</span><span class=\"p\">.</span><span class=\"nf\">parallelize_databases</span> <span class=\"o\">=</span> <span class=\"kp\">false</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
+    "message": "*   Allow to configure maximum cache key sizes\n\n    When the key exceeds the configured limit (250 bytes by default), it will be truncated and\n    the digest of the rest of the key appended to it.\n\n    Note that previously `ActiveSupport::Cache::RedisCacheStore` allowed up to 1kb cache keys before\n    truncation, which is now reduced to 250 bytes.\n\n    ```ruby\n    config.cache_store = :redis_cache_store, { max_key_size: 64 }\n    ```\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1744717025000,
+    "author": "fatkodima",
+    "sha": "14de5c940fea09f1d9af666ae757a9ad9b1df652",
+    "pr": "54915",
+    "merge_sha": "722d676f5d66698c703da751621cb516ce1802cc",
+    "html": "<p>Allow to configure maximum cache key sizes</p>\n\n<p>When the key exceeds the configured limit (250 bytes by default), it will be truncated and<br />\nthe digest of the rest of the key appended to it.</p>\n\n<p>Note that previously <code>ActiveSupport::Cache::RedisCacheStore</code> allowed up to 1kb cache keys before<br />\ntruncation, which is now reduced to 250 bytes.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">cache_store</span> <span class=\"o\">=</span> <span class=\"ss\">:redis_cache_store</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"ss\">max_key_size: </span><span class=\"mi\">64</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Use `UNLINK` command instead of `DEL` in `ActiveSupport::Cache::RedisCacheStore` for non-blocking deletion.\n\n    *Aron Roh*",
+    "project": "activesupport",
+    "date_merged": 1743703328000,
+    "author": "roharon",
+    "sha": "76ec98d0173ba8aef83adb7d660c453a518d5e46",
+    "pr": "54861",
+    "merge_sha": "e0452e80137c396c93465cf98f8eda43026346c7",
+    "html": "<p>Use <code>UNLINK</code> command instead of <code>DEL</code> in <code>ActiveSupport::Cache::RedisCacheStore</code> for non-blocking deletion.</p>\n\n<p><em>Aron Roh</em></p>\n"
+  },
+  {
+    "message": "*   Add `Cache#read_counter` and `Cache#write_counter`\n\n    ```ruby\n    Rails.cache.write_counter(\"foo\", 1)\n    Rails.cache.read_counter(\"foo\") # => 1\n    Rails.cache.increment(\"foo\")\n    Rails.cache.read_counter(\"foo\") # => 2\n    ```\n\n    *Alex Ghiculescu*",
+    "project": "activesupport",
+    "date_merged": 1743583752000,
+    "author": "Alex",
+    "sha": "a7dcbdee9c4a6ddfa7ff97d14a4ac546ae7cd255",
+    "pr": "54855",
+    "merge_sha": "5d4057b667c7f4bcf8adb1c4901efb1fd8f9438f",
+    "html": "<p>Add <code>Cache#read_counter</code> and <code>Cache#write_counter</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">write_counter</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">read_counter</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; 1</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">increment</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">read_counter</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; 2</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
+  },
+  {
+    "message": "*   Introduce ActiveSupport::Testing::ErrorReporterAssertions#capture_error_reports\n\n    Captures all reported errors from within the block that match the given\n    error class.\n\n    ```ruby\n    reports = capture_error_reports(IOError) do\n      Rails.error.report(IOError.new(\"Oops\"))\n      Rails.error.report(IOError.new(\"Oh no\"))\n      Rails.error.report(StandardError.new)\n    end\n\n    assert_equal 2, reports.size\n    assert_equal \"Oops\", reports.first.error.message\n    assert_equal \"Oh no\", reports.last.error.message\n    ```\n\n    *Andrew Novoselac*",
+    "project": "activesupport",
+    "date_merged": 1742907071000,
+    "author": "Andrew Novoselac",
+    "sha": "22dd98adf868e0883ba8aaa0f7e1dc856a9689f8",
+    "pr": "54809",
+    "merge_sha": "76efa0ff4b1ec9631262dbf7e0406c85cd4c2584",
+    "html": "<p>Introduce ActiveSupport::Testing::ErrorReporterAssertions#capture_error_reports</p>\n\n<p>Captures all reported errors from within the block that match the given<br />\nerror class.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">reports</span> <span class=\"o\">=</span> <span class=\"n\">capture_error_reports</span><span class=\"p\">(</span><span class=\"no\">IOError</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">report</span><span class=\"p\">(</span><span class=\"no\">IOError</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"Oops\"</span><span class=\"p\">))</span>\n  <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">report</span><span class=\"p\">(</span><span class=\"no\">IOError</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"Oh no\"</span><span class=\"p\">))</span>\n  <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">report</span><span class=\"p\">(</span><span class=\"no\">StandardError</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">assert_equal</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">reports</span><span class=\"p\">.</span><span class=\"nf\">size</span>\n<span class=\"n\">assert_equal</span> <span class=\"s2\">\"Oops\"</span><span class=\"p\">,</span> <span class=\"n\">reports</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">message</span>\n<span class=\"n\">assert_equal</span> <span class=\"s2\">\"Oh no\"</span><span class=\"p\">,</span> <span class=\"n\">reports</span><span class=\"p\">.</span><span class=\"nf\">last</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">message</span>\n</code></pre></div></div>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
+    "message": "*   Introduce ActiveSupport::ErrorReporter#add_middleware\n\n    When reporting an error, the error context middleware will be called with the reported error\n    and base execution context. The stack may mutate the context hash. The mutated context will\n    then be passed to error subscribers. Middleware receives the same parameters as `ErrorReporter#report`.\n\n    *Andrew Novoselac*, *Sam Schmidt*",
+    "project": "activesupport",
+    "date_merged": 1740601055000,
+    "author": "andrew.novoselac@shopify.com",
+    "sha": "0b8e08330fdaa9cc0daaa5f974ca6ca1b2f9dede",
+    "pr": "54512",
+    "merge_sha": "cff159f8584fbe7c062dd2743abe6f8ec66bfd13",
+    "html": "<p>Introduce ActiveSupport::ErrorReporter#add_middleware</p>\n\n<p>When reporting an error, the error context middleware will be called with the reported error<br />\nand base execution context. The stack may mutate the context hash. The mutated context will<br />\nthen be passed to error subscribers. Middleware receives the same parameters as <code>ErrorReporter#report</code>.</p>\n\n<p><em>Andrew Novoselac</em>, <em>Sam Schmidt</em></p>\n"
+  },
+  {
+    "message": "*   Change execution wrapping to report all exceptions, including `Exception`.\n\n    If a more serious error like `SystemStackError` or `NoMemoryError` happens,\n    the error reporter should be able to report these kinds of exceptions.\n\n    *Gannon McGibbon*",
+    "project": "activesupport",
+    "date_merged": 1739010300000,
+    "author": "Jean Boussier",
+    "sha": "36dd3d100f63633254b99d4c9d4af0198fa40f9a",
+    "pr": "54469",
+    "merge_sha": "d35672eaaa3d930aeccf34286b7ba79f92c62052",
+    "html": "<p>Change execution wrapping to report all exceptions, including <code>Exception</code>.</p>\n\n<p>If a more serious error like <code>SystemStackError</code> or <code>NoMemoryError</code> happens,<br />\nthe error reporter should be able to report these kinds of exceptions.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::Testing::Parallelization.before_fork_hook` allows declaration of callbacks that\n    are invoked immediately before forking test workers.\n\n    *Mike Dalessio*",
+    "project": "activesupport",
+    "date_merged": 1738158431000,
+    "author": "Mike Dalessio",
+    "sha": "1709940bface730191e94a8cfd5720f1ad0bf34e",
+    "pr": "54376",
+    "merge_sha": "f132ba641a2720376f00071556fc85cbb2a6965f",
+    "html": "<p><code>ActiveSupport::Testing::Parallelization.before_fork_hook</code> allows declaration of callbacks that<br />\nare invoked immediately before forking test workers.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Allow the `#freeze_time` testing helper to accept a date or time argument.\n\n    ```ruby\n    Time.current # => Sun, 09 Jul 2024 15:34:49 EST -05:00\n    freeze_time Time.current + 1.day\n    sleep 1\n    Time.current # => Mon, 10 Jul 2024 15:34:49 EST -05:00\n    ```\n\n    *Joshua Young*",
+    "project": "activesupport",
+    "date_merged": 1737578621000,
+    "author": "Joshua Young",
+    "sha": "a1b1edf1c5053a73d528e438a693bb04d62b0259",
+    "pr": "54303",
+    "merge_sha": "a274d4f942e3a9508caea1074d7c539cec2152c5",
+    "html": "<p>Allow the <code>#freeze_time</code> testing helper to accept a date or time argument.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">current</span> <span class=\"c1\"># =&gt; Sun, 09 Jul 2024 15:34:49 EST -05:00</span>\n<span class=\"n\">freeze_time</span> <span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">current</span> <span class=\"o\">+</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">day</span>\n<span class=\"nb\">sleep</span> <span class=\"mi\">1</span>\n<span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">current</span> <span class=\"c1\"># =&gt; Mon, 10 Jul 2024 15:34:49 EST -05:00</span>\n</code></pre></div></div>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::JSON` now accepts options\n\n    It is now possible to pass options to `ActiveSupport::JSON`:\n    ```ruby\n    ActiveSupport::JSON.decode('{\"key\": \"value\"}', symbolize_names: true) # => { key: \"value\" }\n    ```\n\n    *matthaigh27*",
+    "project": "activesupport",
+    "date_merged": 1737456235000,
+    "author": "matt haigh",
+    "sha": "65426afea6141bb489ee02d1513fe2c14b700700",
+    "pr": "54172",
+    "merge_sha": "eb503d80bf0030d9d66a576214dc21a467a1bc53",
+    "html": "<p><code>ActiveSupport::JSON</code> now accepts options</p>\n\n<p>It is now possible to pass options to <code>ActiveSupport::JSON</code>:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">decode</span><span class=\"p\">(</span><span class=\"s1\">'{\"key\": \"value\"}'</span><span class=\"p\">,</span> <span class=\"ss\">symbolize_names: </span><span class=\"kp\">true</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; { key: \"value\" }</span>\n</code></pre></div></div>\n\n<p><em>matthaigh27</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::Testing::NotificationAssertions`'s `assert_notification` now matches against payload subsets by default.\n\n    Previously the following assertion would fail due to excess key vals in the notification payload. Now with payload subset matching, it will pass.\n\n    ```ruby\n    assert_notification(\"post.submitted\", title: \"Cool Post\") do\n      ActiveSupport::Notifications.instrument(\"post.submitted\", title: \"Cool Post\", body: \"Cool Body\")\n    end\n    ```\n\n    Additionally, you can now persist a matched notification for more customized assertions.\n\n    ```ruby\n    notification = assert_notification(\"post.submitted\", title: \"Cool Post\") do\n      ActiveSupport::Notifications.instrument(\"post.submitted\", title: \"Cool Post\", body: Body.new(\"Cool Body\"))\n    end\n\n    assert_instance_of(Body, notification.payload[:body])\n    ```\n\n    *Nicholas La Roux*",
+    "project": "activesupport",
+    "date_merged": 1736379614000,
+    "author": "Nicholas La Roux",
+    "sha": "72eaf25eaed3a75b2fd8eb1c6365e432805b4122",
+    "pr": "54126",
+    "merge_sha": "da32425a0864f6da7bdd2a8d3a43027fbfb2a504",
+    "html": "<p><code>ActiveSupport::Testing::NotificationAssertions</code>’s <code>assert_notification</code> now matches against payload subsets by default.</p>\n\n<p>Previously the following assertion would fail due to excess key vals in the notification payload. Now with payload subset matching, it will pass.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_notification</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">instrument</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">,</span> <span class=\"ss\">body: </span><span class=\"s2\">\"Cool Body\"</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Additionally, you can now persist a matched notification for more customized assertions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">notification</span> <span class=\"o\">=</span> <span class=\"n\">assert_notification</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">instrument</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">,</span> <span class=\"ss\">body: </span><span class=\"no\">Body</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"Cool Body\"</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">assert_instance_of</span><span class=\"p\">(</span><span class=\"no\">Body</span><span class=\"p\">,</span> <span class=\"n\">notification</span><span class=\"p\">.</span><span class=\"nf\">payload</span><span class=\"p\">[</span><span class=\"ss\">:body</span><span class=\"p\">])</span>\n</code></pre></div></div>\n\n<p><em>Nicholas La Roux</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `String#mb_chars` and `ActiveSupport::Multibyte::Chars`.\n\n    These APIs are a relic of the Ruby 1.8 days when Ruby strings weren't encoding\n    aware. There is no legitimate reasons to need these APIs today.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1736330516000,
+    "author": "Jean Boussier",
+    "sha": "ebbbc488dbd88e3b27ced1178cc194332541e982",
+    "pr": "54081",
+    "merge_sha": "aaa111f4c39b441b45d8b1b1408ee0052ed27d9e",
+    "html": "<p>Deprecate <code>String#mb_chars</code> and <code>ActiveSupport::Multibyte::Chars</code>.</p>\n\n<p>These APIs are a relic of the Ruby 1.8 days when Ruby strings weren’t encoding<br />\naware. There is no legitimate reasons to need these APIs today.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActiveSupport::Configurable`\n\n    *Sean Doyle*",
+    "project": "activesupport",
+    "date_merged": 1736272637000,
+    "author": "Sean Doyle",
+    "sha": "da2fbb2ed3139989a41017dbe685e3ac1dcf5c64",
+    "pr": "53970",
+    "merge_sha": "1719d250961c74686ee3eceba47896bc1058dac5",
+    "html": "<p>Deprecate <code>ActiveSupport::Configurable</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   `nil.to_query(\"key\")` now returns `key`.\n\n    Previously it would return `key=`, preventing round tripping with `Rack::Utils.parse_nested_query`.\n\n    *Erol Fornoles*",
+    "project": "activesupport",
+    "date_merged": 1734277258000,
+    "author": "Jean Boussier",
+    "sha": "2952e9a85d0a8a7f5057ef1f8aded9b7c0905327",
+    "pr": "53962",
+    "merge_sha": "abdbff56db0c0142027b3d674dd71b15f72da561",
+    "html": "<p><code>nil.to_query(\"key\")</code> now returns <code>key</code>.</p>\n\n<p>Previously it would return <code>key=</code>, preventing round tripping with <code>Rack::Utils.parse_nested_query</code>.</p>\n\n<p><em>Erol Fornoles</em></p>\n"
+  },
+  {
+    "message": "*   Avoid wrapping redis in a `ConnectionPool` when using `ActiveSupport::Cache::RedisCacheStore` if the `:redis`\n    option is already a `ConnectionPool`.\n\n    *Joshua Young*",
+    "project": "activesupport",
+    "date_merged": 1733473195000,
+    "author": "Joshua Young",
+    "sha": "ffa9f3bc899da5b3818a74d435436256052fc4eb",
+    "pr": "53845",
+    "merge_sha": "31c060c38225d36a73b5d4787cccc0cb7e1c944a",
+    "html": "<p>Avoid wrapping redis in a <code>ConnectionPool</code> when using <code>ActiveSupport::Cache::RedisCacheStore</code> if the <code>:redis</code><br />\noption is already a <code>ConnectionPool</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Alter `ERB::Util.tokenize` to return :PLAIN token with full input string when string doesn't contain ERB tags.\n\n    *Martin Emde*",
+    "project": "activesupport",
+    "date_merged": 1732819839000,
+    "author": "Martin Emde",
+    "sha": "58b2d73f13d0f79b5ca618127edca3eea05114f1",
+    "pr": "53763",
+    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
+    "html": "<p>Alter <code>ERB::Util.tokenize</code> to return :PLAIN token with full input string when string doesn’t contain ERB tags.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceded by multibyte characters.\n\n    *Martin Emde*",
+    "project": "activesupport",
+    "date_merged": 1743584048000,
+    "author": "John Bampton",
+    "sha": "5db3ed5ba91b409c9af2513ea753165b010953a8",
+    "pr": "54852",
+    "merge_sha": "0c90b26a53bd67173756553dc8c05d73cd48a0fd",
+    "html": "<p>Fix a bug in <code>ERB::Util.tokenize</code> that causes incorrect tokenization when ERB tags are preceded by multibyte characters.</p>\n\n<p><em>Martin Emde</em></p>\n"
+  },
+  {
+    "message": "*   Add `ActiveSupport::Testing::NotificationAssertions` module to help with testing `ActiveSupport::Notifications`.\n\n    *Nicholas La Roux*, *Yishu See*, *Sean Doyle*",
+    "project": "activesupport",
+    "date_merged": 1731684718000,
+    "author": "Nicholas La Roux",
+    "sha": "5cfe5e639a95ea6067a2e5aca97ccbbb36abb1d3",
+    "pr": "53065",
+    "merge_sha": "c57da03e94a58e42abbb891597608898585b057b",
+    "html": "<p>Add <code>ActiveSupport::Testing::NotificationAssertions</code> module to help with testing <code>ActiveSupport::Notifications</code>.</p>\n\n<p><em>Nicholas La Roux</em>, <em>Yishu See</em>, <em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::CurrentAttributes#attributes` now will return a new hash object on each call.\n\n    Previously, the same hash object was returned each time that method was called.\n\n    *fatkodima*",
+    "project": "activesupport",
+    "date_merged": 1729807501000,
+    "author": "fatkodima",
+    "sha": "90a96b8eb814463049b2cb47c899dd24c5eba369",
+    "pr": "53440",
+    "merge_sha": "c8ad2b2abfc1b8c01e27457a237f90aff0003403",
+    "html": "<p><code>ActiveSupport::CurrentAttributes#attributes</code> now will return a new hash object on each call.</p>\n\n<p>Previously, the same hash object was returned each time that method was called.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveSupport::JSON.encode` supports CIDR notation.\n\n    Previously:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0\\\"\"\n    ```\n\n    After this change:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0/24\\\"\"\n    ```\n\n    *Taketo Takashima*",
+    "project": "activesupport",
+    "date_merged": 1729554475000,
+    "author": "Taketo Takashima",
+    "sha": "a11e7c263859e28468cd4cdcfadea4608e41ba66",
+    "pr": "53393",
+    "merge_sha": "546ca81125749e43e30de20684913a8385deafb9",
+    "html": "<p><code>ActiveSupport::JSON.encode</code> supports CIDR notation.</p>\n\n<p>Previously:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">encode</span><span class=\"p\">(</span><span class=\"no\">IPAddr</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"172.16.0.0/24\"</span><span class=\"p\">))</span> <span class=\"c1\"># =&gt; \"\\\"172.16.0.0\\\"\"</span>\n</code></pre></div></div>\n\n<p>After this change:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">encode</span><span class=\"p\">(</span><span class=\"no\">IPAddr</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"172.16.0.0/24\"</span><span class=\"p\">))</span> <span class=\"c1\"># =&gt; \"\\\"172.16.0.0/24\\\"\"</span>\n</code></pre></div></div>\n\n<p><em>Taketo Takashima</em></p>\n"
+  },
+  {
+    "message": "*   Make `ActiveSupport::FileUpdateChecker` faster when checking many file-extensions.\n\n    *Jonathan del Strother*",
+    "project": "activesupport",
+    "date_merged": 1732272149000,
+    "author": "Jonathan del Strother",
+    "sha": "cea72800784fd3d3e2e7432ace0604cd90908ddb",
+    "pr": "53680",
+    "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
+    "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
     "message": "*   Add command `rails credentials:fetch PATH` to get the value of a credential from the credentials file.\n\n    ```bash\n    $ bin/rails credentials:fetch kamal_registry/password\n    ```\n\n    *Matthew Nguyen*, *Jean Boussier*",
@@ -238,56 +768,6 @@
     "pr": "55263",
     "merge_sha": "3a84d8c4cb170b76301dac723db9b462c3eac341",
     "html": "<p>Only add browser restrictions for a new Rails app when using importmap.</p>\n\n<p><em>Lucas Dohmen</em></p>\n"
-  },
-  {
-    "message": "*   Remove unnecessary calls to the GCP metadata server.\n\n    Calling Google::Auth.get_application_default triggers an explicit call to\n    the metadata server - given it was being called for significant number of\n    file operations, it can lead to considerable tail latencies and even metadata\n    server overloads. Instead, it's preferable (and significantly more efficient)\n    that applications use:\n\n    ```ruby\n    Google::Apis::RequestOptions.default.authorization = Google::Auth.get_application_default(...)\n    ```\n\n    In the cases applications do not set that, the GCP libraries automatically determine credentials.\n\n    This also enables using credentials other than those of the associated GCP\n    service account like when using impersonation.\n\n    *Alex Coomans*",
-    "project": "activestorage",
-    "date_merged": 1752827160000,
-    "author": "Alex Coomans",
-    "sha": "bd573b02494d56e5586ccee27aa7a4129024dd4a",
-    "pr": "55353",
-    "merge_sha": "3642c825099f7d5e8acfcc788d75eda7438845a2",
-    "html": "<p>Remove unnecessary calls to the GCP metadata server.</p>\n\n<p>Calling Google::Auth.get_application_default triggers an explicit call to<br />\nthe metadata server - given it was being called for significant number of<br />\nfile operations, it can lead to considerable tail latencies and even metadata<br />\nserver overloads. Instead, it’s preferable (and significantly more efficient)<br />\nthat applications use:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Google</span><span class=\"o\">::</span><span class=\"no\">Apis</span><span class=\"o\">::</span><span class=\"no\">RequestOptions</span><span class=\"p\">.</span><span class=\"nf\">default</span><span class=\"p\">.</span><span class=\"nf\">authorization</span> <span class=\"o\">=</span> <span class=\"no\">Google</span><span class=\"o\">::</span><span class=\"no\">Auth</span><span class=\"p\">.</span><span class=\"nf\">get_application_default</span><span class=\"p\">(</span><span class=\"o\">...</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>In the cases applications do not set that, the GCP libraries automatically determine credentials.</p>\n\n<p>This also enables using credentials other than those of the associated GCP<br />\nservice account like when using impersonation.</p>\n\n<p><em>Alex Coomans</em></p>\n"
-  },
-  {
-    "message": "*   Direct upload progress accounts for server processing time.\n\n    *Jeremy Daer*",
-    "project": "activestorage",
-    "date_merged": 1749154771000,
-    "author": "Jeremy Daer",
-    "sha": "606ba30ad4b7663ea5c171cf688cfcddd995b2d7",
-    "pr": "55157",
-    "merge_sha": "4b7fb1d14b954d2348d2065ff955466479509656",
-    "html": "<p>Direct upload progress accounts for server processing time.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
-  },
-  {
-    "message": "*   Delegate `ActiveStorage::Filename#to_str` to `#to_s`\n\n    Supports checking String equality:\n\n    ```ruby\n    filename = ActiveStorage::Filename.new(\"file.txt\")\n    filename == \"file.txt\" # => true\n    filename in \"file.txt\" # => true\n    \"file.txt\" == filename # => true\n    ```\n\n    *Sean Doyle*",
-    "project": "activestorage",
-    "date_merged": 1736536509000,
-    "author": "Sean Doyle",
-    "sha": "73133fa37f52204fe797d58d508806e5517f04b3",
-    "pr": "54185",
-    "merge_sha": "7ec153158e418c8c51bdee170fc06795db3a61ed",
-    "html": "<p>Delegate <code>ActiveStorage::Filename#to_str</code> to <code>#to_s</code></p>\n\n<p>Supports checking String equality:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">filename</span> <span class=\"o\">=</span> <span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Filename</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"file.txt\"</span><span class=\"p\">)</span>\n<span class=\"n\">filename</span> <span class=\"o\">==</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"n\">filename</span> <span class=\"k\">in</span> <span class=\"s2\">\"file.txt\"</span> <span class=\"c1\"># =&gt; true</span>\n<span class=\"s2\">\"file.txt\"</span> <span class=\"o\">==</span> <span class=\"n\">filename</span> <span class=\"c1\"># =&gt; true</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Add support for alternative MD5 implementation through `config.active_storage.checksum_implementation`.\n\n    Also automatically degrade to using the slower `Digest::MD5` implementation if `OpenSSL::Digest::MD5`\n    is found to be disabled because of OpenSSL FIPS mode.\n\n    *Matt Pasquini*, *Jean Boussier*",
-    "project": "activestorage",
-    "date_merged": 1735992548000,
-    "author": "Matt Pasquini",
-    "sha": "bbc0cf1712da74d52874a4e012321b5e27e85e39",
-    "pr": "54040",
-    "merge_sha": "e64e5d31cdeafee142e32e604b513a39de779651",
-    "html": "<p>Add support for alternative MD5 implementation through <code>config.active_storage.checksum_implementation</code>.</p>\n\n<p>Also automatically degrade to using the slower <code>Digest::MD5</code> implementation if <code>OpenSSL::Digest::MD5</code><br />\nis found to be disabled because of OpenSSL FIPS mode.</p>\n\n<p><em>Matt Pasquini</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   A Blob will no longer autosave associated Attachment.\n\n    This fixes an issue where a record with an attachment would have\n    its dirty attributes reset, preventing your `after commit` callbacks\n    on that record to behave as expected.\n\n    Note that this change doesn't require any changes on your application\n    and is supposed to be internal. Active Storage Attachment will continue\n    to be autosaved (through a different relation).\n\n    *Edouard-chin*",
-    "project": "activestorage",
-    "date_merged": 1734601190000,
-    "author": "Edouard CHIN",
-    "sha": "e70f504271864e32a5f27a35fe0d0865f5d95527",
-    "pr": "53623",
-    "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
-    "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
     "message": "*   Add `connection.current_transaction.isolation` API to check current transaction's isolation level.\n\n    Returns the isolation level if it was explicitly set via the `isolation:` parameter\n    or through `ActiveRecord.with_transaction_isolation_level`, otherwise returns `nil`.\n    Nested transactions return the parent transaction's isolation level.\n\n    ```ruby\n    # Returns nil when no transaction\n    User.connection.current_transaction.isolation # => nil\n\n    # Returns explicitly set isolation level\n    User.transaction(isolation: :serializable) do\n      User.connection.current_transaction.isolation # => :serializable\n    end\n\n    # Returns nil when isolation not explicitly set\n    User.transaction do\n      User.connection.current_transaction.isolation # => nil\n    end\n\n    # Nested transactions inherit parent's isolation\n    User.transaction(isolation: :read_committed) do\n      User.transaction do\n        User.connection.current_transaction.isolation # => :read_committed\n      end\n    end\n    ```\n\n    *Kir Shatrov*",
@@ -928,486 +1408,6 @@
     "pr": "53400",
     "merge_sha": "7fac5d14d00fcc8dc60b49729abe78223ad3bf00",
     "html": "<p><code>PG::UnableToSend: no connection to the server</code> is now retryable as a connection-related exception</p>\n\n<p><em>Kazuma Watanabe</em></p>\n"
-  },
-  {
-    "message": "*   Add `reply_to_address` extension method on `Mail::Message`.\n\n    *Mr0grog*",
-    "project": "actionmailbox",
-    "date_merged": 1737972229000,
-    "author": "Rob Brackett",
-    "sha": "ac583204ba548557981b6890a6fc2c3975d24ee9",
-    "pr": "53513",
-    "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
-    "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
-  },
-  {
-    "message": "*   Allow jobs to the interrupted and resumed with Continuations\n\n    A job can use Continuations by including the `ActiveJob::Continuable`\n    concern. Continuations split jobs into steps. When the queuing system\n    is shutting down jobs can be interrupted and their progress saved.\n\n    ```ruby\n    class ProcessImportJob\n      include ActiveJob::Continuable\n\n      def perform(import_id)\n        @import = Import.find(import_id)\n\n        # block format\n        step :initialize do\n          @import.initialize\n        end\n\n        # step with cursor, the cursor is saved when the job is interrupted\n        step :process do |step|\n          @import.records.find_each(start: step.cursor) do |record|\n            record.process\n            step.advance! from: record.id\n          end\n        end\n\n        # method format\n        step :finalize\n\n        private\n          def finalize\n            @import.finalize\n          end\n      end\n    end\n    ```\n\n    *Donal McBreen*",
-    "project": "activejob",
-    "date_merged": 1748854953000,
-    "author": "Donal McBreen",
-    "sha": "0ac3fba6ee5f7d1680024a4925eee6069095487b",
-    "pr": "55127",
-    "merge_sha": "80650283b5710a0035d7ed05da21b43ce11e8417",
-    "html": "<p>Allow jobs to the interrupted and resumed with Continuations</p>\n\n<p>A job can use Continuations by including the <code>ActiveJob::Continuable</code><br />\nconcern. Continuations split jobs into steps. When the queuing system<br />\nis shutting down jobs can be interrupted and their progress saved.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">ProcessImportJob</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Continuable</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span><span class=\"p\">(</span><span class=\"n\">import_id</span><span class=\"p\">)</span>\n    <span class=\"vi\">@import</span> <span class=\"o\">=</span> <span class=\"no\">Import</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">import_id</span><span class=\"p\">)</span>\n\n    <span class=\"c1\"># block format</span>\n    <span class=\"n\">step</span> <span class=\"ss\">:initialize</span> <span class=\"k\">do</span>\n      <span class=\"vi\">@import</span><span class=\"p\">.</span><span class=\"nf\">initialize</span>\n    <span class=\"k\">end</span>\n\n    <span class=\"c1\"># step with cursor, the cursor is saved when the job is interrupted</span>\n    <span class=\"n\">step</span> <span class=\"ss\">:process</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">step</span><span class=\"o\">|</span>\n      <span class=\"vi\">@import</span><span class=\"p\">.</span><span class=\"nf\">records</span><span class=\"p\">.</span><span class=\"nf\">find_each</span><span class=\"p\">(</span><span class=\"ss\">start: </span><span class=\"n\">step</span><span class=\"p\">.</span><span class=\"nf\">cursor</span><span class=\"p\">)</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">record</span><span class=\"o\">|</span>\n        <span class=\"n\">record</span><span class=\"p\">.</span><span class=\"nf\">process</span>\n        <span class=\"n\">step</span><span class=\"p\">.</span><span class=\"nf\">advance!</span> <span class=\"ss\">from: </span><span class=\"n\">record</span><span class=\"p\">.</span><span class=\"nf\">id</span>\n      <span class=\"k\">end</span>\n    <span class=\"k\">end</span>\n\n    <span class=\"c1\"># method format</span>\n    <span class=\"n\">step</span> <span class=\"ss\">:finalize</span>\n\n    <span class=\"kp\">private</span>\n      <span class=\"k\">def</span> <span class=\"nf\">finalize</span>\n        <span class=\"vi\">@import</span><span class=\"p\">.</span><span class=\"nf\">finalize</span>\n      <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Donal McBreen</em></p>\n"
-  },
-  {
-    "message": "*   Defer invocation of ActiveJob enqueue callbacks until after commit when\n    `enqueue_after_transaction_commit` is enabled.\n\n    *Will Roever*",
-    "project": "activejob",
-    "date_merged": 1746429358000,
-    "author": "Will Roever",
-    "sha": "423dcce5b6dd203b280cfd822b4564f6efbe0904",
-    "pr": "55004",
-    "merge_sha": "96a2f03a2a82e91ab4438b625ba47bd8ed917b45",
-    "html": "<p>Defer invocation of ActiveJob enqueue callbacks until after commit when<br />\n<code>enqueue_after_transaction_commit</code> is enabled.</p>\n\n<p><em>Will Roever</em></p>\n"
-  },
-  {
-    "message": "*   Add `report:` option to `ActiveJob::Base#retry_on` and `#discard_on`\n\n    When the `report:` option is passed, errors will be reported to the error reporter\n    before being retried / discarded.\n\n    *Andrew Novoselac*",
-    "project": "activejob",
-    "date_merged": 1740129016000,
-    "author": "andrew.novoselac@shopify.com",
-    "sha": "3ff8c45e7b525c6b947d6f4f3350366b0d7e97ed",
-    "pr": "54541",
-    "merge_sha": "7df1b84335298140116a59cad1bffea6c6a91747",
-    "html": "<p>Add <code>report:</code> option to <code>ActiveJob::Base#retry_on</code> and <code>#discard_on</code></p>\n\n<p>When the <code>report:</code> option is passed, errors will be reported to the error reporter<br />\nbefore being retried / discarded.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
-  },
-  {
-    "message": "*   Accept a block for `ActiveJob::ConfiguredJob#perform_later`.\n\n    This was inconsistent with a regular `ActiveJob::Base#perform_later`.\n\n    *fatkodima*",
-    "project": "activejob",
-    "date_merged": 1733489505000,
-    "author": "fatkodima",
-    "sha": "f70cca178f35f703245de62c74d078f54fd17572",
-    "pr": "53859",
-    "merge_sha": "31aec233a17a44cb4666aa074243f0961798ed46",
-    "html": "<p>Accept a block for <code>ActiveJob::ConfiguredJob#perform_later</code>.</p>\n\n<p>This was inconsistent with a regular <code>ActiveJob::Base#perform_later</code>.</p>\n\n<p><em>fatkodima</em></p>\n"
-  },
-  {
-    "message": "*   Raise a more specific error during deserialization when a previously serialized job class is now unknown.\n\n    `ActiveJob::UnknownJobClassError` will be raised instead of a more generic\n    `NameError` to make it easily possible for adapters to tell if the `NameError`\n    was raised during job execution or deserialization.\n\n    *Earlopain*",
-    "project": "activejob",
-    "date_merged": 1732822493000,
-    "author": "Earlopain",
-    "sha": "5a04667a89b41da272214e53c0111e7d5b2d3219",
-    "pr": "53770",
-    "merge_sha": "e15be8c98e39a96d33be9331f9649bade402f9bf",
-    "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
-  },
-  {
-    "message": "*   Enable configuring the strategy for tracking dependencies between Action\n    View templates.\n\n    The existing `:regex` strategy is kept as the default, but with\n    `load_defaults 8.1` the strategy will be `:ruby` (using a real Ruby parser).\n\n    *Hartley McGuire*",
-    "project": "actionview",
-    "date_merged": 1754498553000,
-    "author": "Hartley McGuire",
-    "sha": "89fddd354ecc89572af5f3a460b789d31894d0db",
-    "pr": "55194",
-    "merge_sha": "ab756d9d370cbb38fdf891a98cedf8575c98bf8c",
-    "html": "<p>Enable configuring the strategy for tracking dependencies between Action<br />\nView templates.</p>\n\n<p>The existing <code>:regex</code> strategy is kept as the default, but with<br />\n<code>load_defaults 8.1</code> the strategy will be <code>:ruby</code> (using a real Ruby parser).</p>\n\n<p><em>Hartley McGuire</em></p>\n"
-  },
-  {
-    "message": "*   Introduce `relative_time_in_words` helper\n\n    ```ruby\n    relative_time_in_words(3.minutes.from_now) # => \"in 3 minutes\"\n    relative_time_in_words(3.minutes.ago) # => \"3 minutes ago\"\n    relative_time_in_words(10.seconds.ago, include_seconds: true) # => \"less than 10 seconds ago\"\n    ```\n\n    *Matheus Richard*",
-    "project": "actionview",
-    "date_merged": 1753709807000,
-    "author": "Matheus Richard",
-    "sha": "46c5bc706a61c5099f357d92c8ee675160d050a5",
-    "pr": "55405",
-    "merge_sha": "3e544829dab80e68c150fcb2868b6579b2ace2c8",
-    "html": "<p>Introduce <code>relative_time_in_words</code> helper</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">relative_time_in_words</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">.</span><span class=\"nf\">from_now</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"in 3 minutes\"</span>\n<span class=\"n\">relative_time_in_words</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">.</span><span class=\"nf\">minutes</span><span class=\"p\">.</span><span class=\"nf\">ago</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"3 minutes ago\"</span>\n<span class=\"n\">relative_time_in_words</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">.</span><span class=\"nf\">seconds</span><span class=\"p\">.</span><span class=\"nf\">ago</span><span class=\"p\">,</span> <span class=\"ss\">include_seconds: </span><span class=\"kp\">true</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; \"less than 10 seconds ago\"</span>\n</code></pre></div></div>\n\n<p><em>Matheus Richard</em></p>\n"
-  },
-  {
-    "message": "*   Make `nonce: false` remove the nonce attribute from `javascript_tag`, `javascript_include_tag`, and `stylesheet_link_tag`.\n\n    *francktrouillez*",
-    "project": "actionview",
-    "date_merged": 1753153469000,
-    "author": "Franck Trouillez",
-    "sha": "71a41f82b8ebc10eab5dd84f2f3db166d253242f",
-    "pr": "54724",
-    "merge_sha": "5d3a54f1558a6145aa66554e577a635b3c09d9b7",
-    "html": "<p>Make <code>nonce: false</code> remove the nonce attribute from <code>javascript_tag</code>, <code>javascript_include_tag</code>, and <code>stylesheet_link_tag</code>.</p>\n\n<p><em>francktrouillez</em></p>\n"
-  },
-  {
-    "message": "*   Add `dom_target` helper to create `dom_id`-like strings from an unlimited\n    number of objects.\n\n    *Ben Sheldon*",
-    "project": "actionview",
-    "date_merged": 1751357292000,
-    "author": "Ben Sheldon [he/him]",
-    "sha": "c8e485651fedc093ab150b7fd43cbeed3ed59549",
-    "pr": "55204",
-    "merge_sha": "985e75fa93dd5d365b31162d52e0549748a1f145",
-    "html": "<p>Add <code>dom_target</code> helper to create <code>dom_id</code>-like strings from an unlimited<br />\nnumber of objects.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
-  },
-  {
-    "message": "*   Respect `html_options[:form]` when `collection_checkboxes` generates the\n    hidden `<input>`.\n\n    *Riccardo Odone*",
-    "project": "actionview",
-    "date_merged": 1736352191000,
-    "author": "3v0k4",
-    "sha": "d4702f99e69e0c327419e7791dce5b969e361d89",
-    "pr": "51746",
-    "merge_sha": "f978e1dc7ca5bc570a21f8007e06a3a57ca93566",
-    "html": "<p>Respect <code>html_options[:form]</code> when <code>collection_checkboxes</code> generates the<br />\nhidden <code>&lt;input&gt;</code>.</p>\n\n<p><em>Riccardo Odone</em></p>\n"
-  },
-  {
-    "message": "*   Layouts have access to local variables passed to `render`.\n\n    This fixes #31680 which was a regression in Rails 5.1.\n\n    *Mike Dalessio*",
-    "project": "actionview",
-    "date_merged": 1736197671000,
-    "author": "Mike Dalessio",
-    "sha": "b35a9b6fc63246adbe98d141997f37434ad037ad",
-    "pr": "54020",
-    "merge_sha": "593d9d90972df11aea1a1d7bb8a5f5f84a1d1f27",
-    "html": "<p>Layouts have access to local variables passed to <code>render</code>.</p>\n\n<p>This fixes #31680 which was a regression in Rails 5.1.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Argument errors related to strict locals in templates now raise an\n    `ActionView::StrictLocalsError`, and all other argument errors are reraised as-is.\n\n    Previously, any `ArgumentError` raised during template rendering was swallowed during strict\n    local error handling, so that an `ArgumentError` unrelated to strict locals (e.g., a helper\n    method invoked with incorrect arguments) would be replaced by a similar `ArgumentError` with an\n    unrelated backtrace, making it difficult to debug templates.\n\n    Now, any `ArgumentError` unrelated to strict locals is reraised, preserving the original\n    backtrace for developers.\n\n    Also note that `ActionView::StrictLocalsError` is a subclass of `ArgumentError`, so any existing\n    code that rescues `ArgumentError` will continue to work.\n\n    Fixes #52227.\n\n    *Mike Dalessio*",
-    "project": "actionview",
-    "date_merged": 1736195112000,
-    "author": "Mike Dalessio",
-    "sha": "c868503d313873edcd262c4d605c06d2d1ed703a",
-    "pr": "54133",
-    "merge_sha": "bc601a9ffe4d48045b9bfeec23e9e579a5709c7c",
-    "html": "<p>Argument errors related to strict locals in templates now raise an<br />\n<code>ActionView::StrictLocalsError</code>, and all other argument errors are reraised as-is.</p>\n\n<p>Previously, any <code>ArgumentError</code> raised during template rendering was swallowed during strict<br />\nlocal error handling, so that an <code>ArgumentError</code> unrelated to strict locals (e.g., a helper<br />\nmethod invoked with incorrect arguments) would be replaced by a similar <code>ArgumentError</code> with an<br />\nunrelated backtrace, making it difficult to debug templates.</p>\n\n<p>Now, any <code>ArgumentError</code> unrelated to strict locals is reraised, preserving the original<br />\nbacktrace for developers.</p>\n\n<p>Also note that <code>ActionView::StrictLocalsError</code> is a subclass of <code>ArgumentError</code>, so any existing<br />\ncode that rescues <code>ArgumentError</code> will continue to work.</p>\n\n<p>Fixes #52227.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Improve error highlighting of multi-line methods in ERB templates or\n    templates where the error occurs within a do-end block.\n\n    *Martin Emde*",
-    "project": "actionview",
-    "date_merged": 1732819839000,
-    "author": "Martin Emde",
-    "sha": "a74d26378b665bf1a1a6c125f878000251102dbb",
-    "pr": "53763",
-    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
-    "html": "<p>Improve error highlighting of multi-line methods in ERB templates or<br />\ntemplates where the error occurs within a do-end block.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Fix a crash in ERB template error highlighting when the error occurs on a\n    line in the compiled template that is past the end of the source template.\n\n    *Martin Emde*",
-    "project": "actionview",
-    "date_merged": 1732254580000,
-    "author": "Martin Emde",
-    "sha": "5857b8f83ca51a38151bb107a03684320505421d",
-    "pr": "53696",
-    "merge_sha": "8cab71cd0441043ba1c3c201ef8b8282d6f13b63",
-    "html": "<p>Fix a crash in ERB template error highlighting when the error occurs on a<br />\nline in the compiled template that is past the end of the source template.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Improve reliability of ERB template error highlighting.\n    Fix infinite loops and crashes in highlighting and\n    improve tolerance for alternate ERB handlers.\n\n    *Martin Emde*",
-    "project": "actionview",
-    "date_merged": 1732218987000,
-    "author": "Martin Emde",
-    "sha": "aaebc8635123537f60db62763e6d80489098060d",
-    "pr": "53657",
-    "merge_sha": "9add4d9786266cbebcc44c07963ceb589de9ce79",
-    "html": "<p>Improve reliability of ERB template error highlighting.<br />\nFix infinite loops and crashes in highlighting and<br />\nimprove tolerance for alternate ERB handlers.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Allow `hidden_field` and `hidden_field_tag` to accept a custom autocomplete value.\n\n    *brendon*",
-    "project": "actionview",
-    "date_merged": 1731670127000,
-    "author": "Brendon Muir",
-    "sha": "09daec64ac5189799718d8805311ac1458021910",
-    "pr": "53512",
-    "merge_sha": "e5ad9e789966a2743da8f81b6ed5e80f2575a8d1",
-    "html": "<p>Allow <code>hidden_field</code> and <code>hidden_field_tag</code> to accept a custom autocomplete value.</p>\n\n<p><em>brendon</em></p>\n"
-  },
-  {
-    "message": "*   Add a new configuration `content_security_policy_nonce_auto` for automatically adding a nonce to the tags affected by the directives specified by the `content_security_policy_nonce_directives` configuration option.\n\n    *francktrouillez*",
-    "project": "actionview",
-    "date_merged": 1741086415000,
-    "author": "Franck TROUILLEZ",
-    "sha": "c7162d640b4e0d1031939496f86d043af38a7a03",
-    "pr": "53835",
-    "merge_sha": "7a031e38921bac41a6a97bbba861b406caebe164",
-    "html": "<p>Add a new configuration <code>content_security_policy_nonce_auto</code> for automatically adding a nonce to the tags affected by the directives specified by the <code>content_security_policy_nonce_directives</code> configuration option.</p>\n\n<p><em>francktrouillez</em></p>\n"
-  },
-  {
-    "message": "*   Make `ActiveSupport::Logger` `#freeze`-friendly.\n\n    *Joshua Young*",
-    "project": "activesupport",
-    "date_merged": 1754603002000,
-    "author": "Joshua Young",
-    "sha": "fc18795f3ff88432454dfe10f8d093e862b483d0",
-    "pr": "55460",
-    "merge_sha": "67e7f9e55fde51689656aa197e825bb1614d8c15",
-    "html": "<p>Make <code>ActiveSupport::Logger</code> <code>#freeze</code>-friendly.</p>\n\n<p><em>Joshua Young</em></p>\n"
-  },
-  {
-    "message": "*   Make `ActiveSupport::Gzip.compress` deterministic based on input.\n\n    `ActiveSupport::Gzip.compress` used to include a timestamp in the output,\n    causing consecutive calls with the same input data to have different output\n    if called during different seconds. It now always sets the timestamp to `0`\n    so that the output is identical for any given input.\n\n    *Rob Brackett*",
-    "project": "activesupport",
-    "date_merged": 1753168818000,
-    "author": "Rob Brackett",
-    "sha": "97a4d4f919761a2df7a060576baa2d93c7cba4c7",
-    "pr": "55382",
-    "merge_sha": "8cb4f8ceffe375f64052579cd7a580bfdaf36d61",
-    "html": "<p>Make <code>ActiveSupport::Gzip.compress</code> deterministic based on input.</p>\n\n<p><code>ActiveSupport::Gzip.compress</code> used to include a timestamp in the output,<br />\ncausing consecutive calls with the same input data to have different output<br />\nif called during different seconds. It now always sets the timestamp to <code>0</code><br />\nso that the output is identical for any given input.</p>\n\n<p><em>Rob Brackett</em></p>\n"
-  },
-  {
-    "message": "*   Given an array of `Thread::Backtrace::Location` objects, the new method\n    `ActiveSupport::BacktraceCleaner#clean_locations` returns an array with the\n    clean ones:\n\n    ```ruby\n    clean_locations = backtrace_cleaner.clean_locations(caller_locations)\n    ```\n\n    Filters and silencers receive strings as usual. However, the `path`\n    attributes of the locations in the returned array are the original,\n    unfiltered ones, since locations are immutable.\n\n    *Xavier Noria*",
-    "project": "activesupport",
-    "date_merged": 1751038342000,
-    "author": "Xavier Noria",
-    "sha": "5c456627237559596334c2c7d1d7585ba5fff147",
-    "pr": "55255",
-    "merge_sha": "9f0cb5a62590a0c23e98806c963ce542a135ed25",
-    "html": "<p>Given an array of <code>Thread::Backtrace::Location</code> objects, the new method<br />\n<code>ActiveSupport::BacktraceCleaner#clean_locations</code> returns an array with the<br />\nclean ones:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">clean_locations</span> <span class=\"o\">=</span> <span class=\"n\">backtrace_cleaner</span><span class=\"p\">.</span><span class=\"nf\">clean_locations</span><span class=\"p\">(</span><span class=\"n\">caller_locations</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Filters and silencers receive strings as usual. However, the <code>path</code><br />\nattributes of the locations in the returned array are the original,<br />\nunfiltered ones, since locations are immutable.</p>\n\n<p><em>Xavier Noria</em></p>\n"
-  },
-  {
-    "message": "*   Improve `CurrentAttributes` and `ExecutionContext` state managment in test cases.\n\n    Previously these two global state would be entirely cleared out whenever calling\n    into code that is wrapped by the Rails executor, typically Action Controller or\n    Active Job helpers:\n\n    ```ruby\n    test \"#index works\" do\n      CurrentUser.id = 42\n      get :index\n      CurrentUser.id == nil\n    end\n    ```\n\n    Now re-entering the executor properly save and restore that state.\n\n    *Jean Boussier*",
-    "project": "activesupport",
-    "date_merged": 1751045828000,
-    "author": "Petrik",
-    "sha": "d3e80a4380f5a7c2aabc9907a434827708b14bd7",
-    "pr": "55256",
-    "merge_sha": "2b987c367001cbca34df24639c1f567d7517602b",
-    "html": "<p>Improve <code>CurrentAttributes</code> and <code>ExecutionContext</code> state managment in test cases.</p>\n\n<p>Previously these two global state would be entirely cleared out whenever calling<br />\ninto code that is wrapped by the Rails executor, typically Action Controller or<br />\nActive Job helpers:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"#index works\"</span> <span class=\"k\">do</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">=</span> <span class=\"mi\">42</span>\n  <span class=\"n\">get</span> <span class=\"ss\">:index</span>\n  <span class=\"no\">CurrentUser</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"o\">==</span> <span class=\"kp\">nil</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Now re-entering the executor properly save and restore that state.</p>\n\n<p><em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_location`\n    returns the first clean location of the caller's call stack, or `nil`.\n    Locations are `Thread::Backtrace::Location` objects. Useful when you want to\n    report the application-level location where something happened as an object.\n\n    *Xavier Noria*",
-    "project": "activesupport",
-    "date_merged": 1750693355000,
-    "author": "Xavier Noria",
-    "sha": "a0ea187d777ac4423f7b0e4ba641acd6175f01e5",
-    "pr": "55230",
-    "merge_sha": "05f0b1614d82424a7507caaec5cf701d3a8c2b21",
-    "html": "<p>The new method <code>ActiveSupport::BacktraceCleaner#first_clean_location</code><br />\nreturns the first clean location of the caller’s call stack, or <code>nil</code>.<br />\nLocations are <code>Thread::Backtrace::Location</code> objects. Useful when you want to<br />\nreport the application-level location where something happened as an object.</p>\n\n<p><em>Xavier Noria</em></p>\n"
-  },
-  {
-    "message": "*   FileUpdateChecker and EventedFileUpdateChecker ignore changes in Gem.path now.\n\n    *Ermolaev Andrey*, *zzak*",
-    "project": "activesupport",
-    "date_merged": 1750669405000,
-    "author": "Ermolaev Andrey",
-    "sha": "d5a3063ab9549a6da5b2af4f36b2d9cd1c98e516",
-    "pr": "54129",
-    "merge_sha": "c5bb138e43390a191ddb7aa4e0f46e7af8563dcc",
-    "html": "<p>FileUpdateChecker and EventedFileUpdateChecker ignore changes in Gem.path now.</p>\n\n<p><em>Ermolaev Andrey</em>, <em>zzak</em></p>\n"
-  },
-  {
-    "message": "*   The new method `ActiveSupport::BacktraceCleaner#first_clean_frame` returns\n    the first clean frame of the caller's backtrace, or `nil`. Useful when you\n    want to report the application-level frame where something happened as a\n    string.\n\n    *Xavier Noria*",
-    "project": "activesupport",
-    "date_merged": 1750542698000,
-    "author": "Xavier Noria",
-    "sha": "ea66b1c750fd2984167382039d77802930865712",
-    "pr": "55222",
-    "merge_sha": "276b655f3606cf81b26464d135db9f24bacc1f0f",
-    "html": "<p>The new method <code>ActiveSupport::BacktraceCleaner#first_clean_frame</code> returns<br />\nthe first clean frame of the caller’s backtrace, or <code>nil</code>. Useful when you<br />\nwant to report the application-level frame where something happened as a<br />\nstring.</p>\n\n<p><em>Xavier Noria</em></p>\n"
-  },
-  {
-    "message": "*   Always clear `CurrentAttributes` instances.\n\n    Previously `CurrentAttributes` instance would be reset at the end of requests.\n    Meaning its attributes would be re-initialized.\n\n    This is problematic because it assume these objects don't hold any state\n    other than their declared attribute, which isn't always the case, and\n    can lead to state leak across request.\n\n    Now `CurrentAttributes` instances are abandoned at the end of a request,\n    and a new instance is created at the start of the next request.\n\n    *Jean Boussier*, *Janko Marohnić*",
-    "project": "activesupport",
-    "date_merged": 1751045828000,
-    "author": "Petrik",
-    "sha": "d3e80a4380f5a7c2aabc9907a434827708b14bd7",
-    "pr": "55256",
-    "merge_sha": "2b987c367001cbca34df24639c1f567d7517602b",
-    "html": "<p>Always clear <code>CurrentAttributes</code> instances.</p>\n\n<p>Previously <code>CurrentAttributes</code> instance would be reset at the end of requests.<br />\nMeaning its attributes would be re-initialized.</p>\n\n<p>This is problematic because it assume these objects don’t hold any state<br />\nother than their declared attribute, which isn’t always the case, and<br />\ncan lead to state leak across request.</p>\n\n<p>Now <code>CurrentAttributes</code> instances are abandoned at the end of a request,<br />\nand a new instance is created at the start of the next request.</p>\n\n<p><em>Jean Boussier</em>, <em>Janko Marohnić</em></p>\n"
-  },
-  {
-    "message": "*   Add public API for `before_fork_hook` in parallel testing.\n\n    Introduces a public API for calling the before fork hooks implemented by parallel testing.\n\n    ```ruby\n    parallelize_before_fork do\n        # perform an action before test processes are forked\n    end\n    ```\n\n    *Eileen M. Uchitelle*",
-    "project": "activesupport",
-    "date_merged": 1746119789000,
-    "author": "eileencodes",
-    "sha": "5696682601815fbf1408e4f8a8028cc0a5f86989",
-    "pr": "54985",
-    "merge_sha": "22b86f371464e300d43194d7fc0c312ac1f387a3",
-    "html": "<p>Add public API for <code>before_fork_hook</code> in parallel testing.</p>\n\n<p>Introduces a public API for calling the before fork hooks implemented by parallel testing.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">parallelize_before_fork</span> <span class=\"k\">do</span>\n    <span class=\"c1\"># perform an action before test processes are forked</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
-  },
-  {
-    "message": "*   Implement ability to skip creating parallel testing databases.\n\n    With parallel testing, Rails will create a database per process. If this isn't\n    desirable or you would like to implement databases handling on your own, you can\n    now turn off this default behavior.\n\n    To skip creating a database per process, you can change it via the\n    `parallelize` method:\n\n    ```ruby\n    parallelize(workers: 10, parallelize_databases: false)\n    ```\n\n    or via the application configuration:\n\n    ```ruby\n    config.active_support.parallelize_databases = false\n    ```\n\n    *Eileen M. Uchitelle*",
-    "project": "activesupport",
-    "date_merged": 1746045110000,
-    "author": "eileencodes",
-    "sha": "1f98fd2bbe04d38fea5138c3401ed481bdb38520",
-    "pr": "54984",
-    "merge_sha": "0367cbf265ff25546230d2f668aa887e09995509",
-    "html": "<p>Implement ability to skip creating parallel testing databases.</p>\n\n<p>With parallel testing, Rails will create a database per process. If this isn’t<br />\ndesirable or you would like to implement databases handling on your own, you can<br />\nnow turn off this default behavior.</p>\n\n<p>To skip creating a database per process, you can change it via the<br />\n<code>parallelize</code> method:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">parallelize</span><span class=\"p\">(</span><span class=\"ss\">workers: </span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"ss\">parallelize_databases: </span><span class=\"kp\">false</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>or via the application configuration:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_support</span><span class=\"p\">.</span><span class=\"nf\">parallelize_databases</span> <span class=\"o\">=</span> <span class=\"kp\">false</span>\n</code></pre></div></div>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
-  },
-  {
-    "message": "*   Allow to configure maximum cache key sizes\n\n    When the key exceeds the configured limit (250 bytes by default), it will be truncated and\n    the digest of the rest of the key appended to it.\n\n    Note that previously `ActiveSupport::Cache::RedisCacheStore` allowed up to 1kb cache keys before\n    truncation, which is now reduced to 250 bytes.\n\n    ```ruby\n    config.cache_store = :redis_cache_store, { max_key_size: 64 }\n    ```\n\n    *fatkodima*",
-    "project": "activesupport",
-    "date_merged": 1744717025000,
-    "author": "fatkodima",
-    "sha": "14de5c940fea09f1d9af666ae757a9ad9b1df652",
-    "pr": "54915",
-    "merge_sha": "722d676f5d66698c703da751621cb516ce1802cc",
-    "html": "<p>Allow to configure maximum cache key sizes</p>\n\n<p>When the key exceeds the configured limit (250 bytes by default), it will be truncated and<br />\nthe digest of the rest of the key appended to it.</p>\n\n<p>Note that previously <code>ActiveSupport::Cache::RedisCacheStore</code> allowed up to 1kb cache keys before<br />\ntruncation, which is now reduced to 250 bytes.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">cache_store</span> <span class=\"o\">=</span> <span class=\"ss\">:redis_cache_store</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"ss\">max_key_size: </span><span class=\"mi\">64</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
-  },
-  {
-    "message": "*   Use `UNLINK` command instead of `DEL` in `ActiveSupport::Cache::RedisCacheStore` for non-blocking deletion.\n\n    *Aron Roh*",
-    "project": "activesupport",
-    "date_merged": 1743703328000,
-    "author": "roharon",
-    "sha": "76ec98d0173ba8aef83adb7d660c453a518d5e46",
-    "pr": "54861",
-    "merge_sha": "e0452e80137c396c93465cf98f8eda43026346c7",
-    "html": "<p>Use <code>UNLINK</code> command instead of <code>DEL</code> in <code>ActiveSupport::Cache::RedisCacheStore</code> for non-blocking deletion.</p>\n\n<p><em>Aron Roh</em></p>\n"
-  },
-  {
-    "message": "*   Add `Cache#read_counter` and `Cache#write_counter`\n\n    ```ruby\n    Rails.cache.write_counter(\"foo\", 1)\n    Rails.cache.read_counter(\"foo\") # => 1\n    Rails.cache.increment(\"foo\")\n    Rails.cache.read_counter(\"foo\") # => 2\n    ```\n\n    *Alex Ghiculescu*",
-    "project": "activesupport",
-    "date_merged": 1743583752000,
-    "author": "Alex",
-    "sha": "a7dcbdee9c4a6ddfa7ff97d14a4ac546ae7cd255",
-    "pr": "54855",
-    "merge_sha": "5d4057b667c7f4bcf8adb1c4901efb1fd8f9438f",
-    "html": "<p>Add <code>Cache#read_counter</code> and <code>Cache#write_counter</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">write_counter</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">read_counter</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; 1</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">increment</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">read_counter</span><span class=\"p\">(</span><span class=\"s2\">\"foo\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; 2</span>\n</code></pre></div></div>\n\n<p><em>Alex Ghiculescu</em></p>\n"
-  },
-  {
-    "message": "*   Introduce ActiveSupport::Testing::ErrorReporterAssertions#capture_error_reports\n\n    Captures all reported errors from within the block that match the given\n    error class.\n\n    ```ruby\n    reports = capture_error_reports(IOError) do\n      Rails.error.report(IOError.new(\"Oops\"))\n      Rails.error.report(IOError.new(\"Oh no\"))\n      Rails.error.report(StandardError.new)\n    end\n\n    assert_equal 2, reports.size\n    assert_equal \"Oops\", reports.first.error.message\n    assert_equal \"Oh no\", reports.last.error.message\n    ```\n\n    *Andrew Novoselac*",
-    "project": "activesupport",
-    "date_merged": 1742907071000,
-    "author": "Andrew Novoselac",
-    "sha": "22dd98adf868e0883ba8aaa0f7e1dc856a9689f8",
-    "pr": "54809",
-    "merge_sha": "76efa0ff4b1ec9631262dbf7e0406c85cd4c2584",
-    "html": "<p>Introduce ActiveSupport::Testing::ErrorReporterAssertions#capture_error_reports</p>\n\n<p>Captures all reported errors from within the block that match the given<br />\nerror class.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">reports</span> <span class=\"o\">=</span> <span class=\"n\">capture_error_reports</span><span class=\"p\">(</span><span class=\"no\">IOError</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">report</span><span class=\"p\">(</span><span class=\"no\">IOError</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"Oops\"</span><span class=\"p\">))</span>\n  <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">report</span><span class=\"p\">(</span><span class=\"no\">IOError</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"Oh no\"</span><span class=\"p\">))</span>\n  <span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">report</span><span class=\"p\">(</span><span class=\"no\">StandardError</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">assert_equal</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">reports</span><span class=\"p\">.</span><span class=\"nf\">size</span>\n<span class=\"n\">assert_equal</span> <span class=\"s2\">\"Oops\"</span><span class=\"p\">,</span> <span class=\"n\">reports</span><span class=\"p\">.</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">message</span>\n<span class=\"n\">assert_equal</span> <span class=\"s2\">\"Oh no\"</span><span class=\"p\">,</span> <span class=\"n\">reports</span><span class=\"p\">.</span><span class=\"nf\">last</span><span class=\"p\">.</span><span class=\"nf\">error</span><span class=\"p\">.</span><span class=\"nf\">message</span>\n</code></pre></div></div>\n\n<p><em>Andrew Novoselac</em></p>\n"
-  },
-  {
-    "message": "*   Introduce ActiveSupport::ErrorReporter#add_middleware\n\n    When reporting an error, the error context middleware will be called with the reported error\n    and base execution context. The stack may mutate the context hash. The mutated context will\n    then be passed to error subscribers. Middleware receives the same parameters as `ErrorReporter#report`.\n\n    *Andrew Novoselac*, *Sam Schmidt*",
-    "project": "activesupport",
-    "date_merged": 1740601055000,
-    "author": "andrew.novoselac@shopify.com",
-    "sha": "0b8e08330fdaa9cc0daaa5f974ca6ca1b2f9dede",
-    "pr": "54512",
-    "merge_sha": "cff159f8584fbe7c062dd2743abe6f8ec66bfd13",
-    "html": "<p>Introduce ActiveSupport::ErrorReporter#add_middleware</p>\n\n<p>When reporting an error, the error context middleware will be called with the reported error<br />\nand base execution context. The stack may mutate the context hash. The mutated context will<br />\nthen be passed to error subscribers. Middleware receives the same parameters as <code>ErrorReporter#report</code>.</p>\n\n<p><em>Andrew Novoselac</em>, <em>Sam Schmidt</em></p>\n"
-  },
-  {
-    "message": "*   Change execution wrapping to report all exceptions, including `Exception`.\n\n    If a more serious error like `SystemStackError` or `NoMemoryError` happens,\n    the error reporter should be able to report these kinds of exceptions.\n\n    *Gannon McGibbon*",
-    "project": "activesupport",
-    "date_merged": 1739010300000,
-    "author": "Jean Boussier",
-    "sha": "36dd3d100f63633254b99d4c9d4af0198fa40f9a",
-    "pr": "54469",
-    "merge_sha": "d35672eaaa3d930aeccf34286b7ba79f92c62052",
-    "html": "<p>Change execution wrapping to report all exceptions, including <code>Exception</code>.</p>\n\n<p>If a more serious error like <code>SystemStackError</code> or <code>NoMemoryError</code> happens,<br />\nthe error reporter should be able to report these kinds of exceptions.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   `ActiveSupport::Testing::Parallelization.before_fork_hook` allows declaration of callbacks that\n    are invoked immediately before forking test workers.\n\n    *Mike Dalessio*",
-    "project": "activesupport",
-    "date_merged": 1738158431000,
-    "author": "Mike Dalessio",
-    "sha": "1709940bface730191e94a8cfd5720f1ad0bf34e",
-    "pr": "54376",
-    "merge_sha": "f132ba641a2720376f00071556fc85cbb2a6965f",
-    "html": "<p><code>ActiveSupport::Testing::Parallelization.before_fork_hook</code> allows declaration of callbacks that<br />\nare invoked immediately before forking test workers.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Allow the `#freeze_time` testing helper to accept a date or time argument.\n\n    ```ruby\n    Time.current # => Sun, 09 Jul 2024 15:34:49 EST -05:00\n    freeze_time Time.current + 1.day\n    sleep 1\n    Time.current # => Mon, 10 Jul 2024 15:34:49 EST -05:00\n    ```\n\n    *Joshua Young*",
-    "project": "activesupport",
-    "date_merged": 1737578621000,
-    "author": "Joshua Young",
-    "sha": "a1b1edf1c5053a73d528e438a693bb04d62b0259",
-    "pr": "54303",
-    "merge_sha": "a274d4f942e3a9508caea1074d7c539cec2152c5",
-    "html": "<p>Allow the <code>#freeze_time</code> testing helper to accept a date or time argument.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">current</span> <span class=\"c1\"># =&gt; Sun, 09 Jul 2024 15:34:49 EST -05:00</span>\n<span class=\"n\">freeze_time</span> <span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">current</span> <span class=\"o\">+</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">day</span>\n<span class=\"nb\">sleep</span> <span class=\"mi\">1</span>\n<span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">current</span> <span class=\"c1\"># =&gt; Mon, 10 Jul 2024 15:34:49 EST -05:00</span>\n</code></pre></div></div>\n\n<p><em>Joshua Young</em></p>\n"
-  },
-  {
-    "message": "*   `ActiveSupport::JSON` now accepts options\n\n    It is now possible to pass options to `ActiveSupport::JSON`:\n    ```ruby\n    ActiveSupport::JSON.decode('{\"key\": \"value\"}', symbolize_names: true) # => { key: \"value\" }\n    ```\n\n    *matthaigh27*",
-    "project": "activesupport",
-    "date_merged": 1737456235000,
-    "author": "matt haigh",
-    "sha": "65426afea6141bb489ee02d1513fe2c14b700700",
-    "pr": "54172",
-    "merge_sha": "eb503d80bf0030d9d66a576214dc21a467a1bc53",
-    "html": "<p><code>ActiveSupport::JSON</code> now accepts options</p>\n\n<p>It is now possible to pass options to <code>ActiveSupport::JSON</code>:</p>\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">decode</span><span class=\"p\">(</span><span class=\"s1\">'{\"key\": \"value\"}'</span><span class=\"p\">,</span> <span class=\"ss\">symbolize_names: </span><span class=\"kp\">true</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; { key: \"value\" }</span>\n</code></pre></div></div>\n\n<p><em>matthaigh27</em></p>\n"
-  },
-  {
-    "message": "*   `ActiveSupport::Testing::NotificationAssertions`'s `assert_notification` now matches against payload subsets by default.\n\n    Previously the following assertion would fail due to excess key vals in the notification payload. Now with payload subset matching, it will pass.\n\n    ```ruby\n    assert_notification(\"post.submitted\", title: \"Cool Post\") do\n      ActiveSupport::Notifications.instrument(\"post.submitted\", title: \"Cool Post\", body: \"Cool Body\")\n    end\n    ```\n\n    Additionally, you can now persist a matched notification for more customized assertions.\n\n    ```ruby\n    notification = assert_notification(\"post.submitted\", title: \"Cool Post\") do\n      ActiveSupport::Notifications.instrument(\"post.submitted\", title: \"Cool Post\", body: Body.new(\"Cool Body\"))\n    end\n\n    assert_instance_of(Body, notification.payload[:body])\n    ```\n\n    *Nicholas La Roux*",
-    "project": "activesupport",
-    "date_merged": 1736379614000,
-    "author": "Nicholas La Roux",
-    "sha": "72eaf25eaed3a75b2fd8eb1c6365e432805b4122",
-    "pr": "54126",
-    "merge_sha": "da32425a0864f6da7bdd2a8d3a43027fbfb2a504",
-    "html": "<p><code>ActiveSupport::Testing::NotificationAssertions</code>’s <code>assert_notification</code> now matches against payload subsets by default.</p>\n\n<p>Previously the following assertion would fail due to excess key vals in the notification payload. Now with payload subset matching, it will pass.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_notification</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">instrument</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">,</span> <span class=\"ss\">body: </span><span class=\"s2\">\"Cool Body\"</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Additionally, you can now persist a matched notification for more customized assertions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">notification</span> <span class=\"o\">=</span> <span class=\"n\">assert_notification</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">Notifications</span><span class=\"p\">.</span><span class=\"nf\">instrument</span><span class=\"p\">(</span><span class=\"s2\">\"post.submitted\"</span><span class=\"p\">,</span> <span class=\"ss\">title: </span><span class=\"s2\">\"Cool Post\"</span><span class=\"p\">,</span> <span class=\"ss\">body: </span><span class=\"no\">Body</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"Cool Body\"</span><span class=\"p\">))</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">assert_instance_of</span><span class=\"p\">(</span><span class=\"no\">Body</span><span class=\"p\">,</span> <span class=\"n\">notification</span><span class=\"p\">.</span><span class=\"nf\">payload</span><span class=\"p\">[</span><span class=\"ss\">:body</span><span class=\"p\">])</span>\n</code></pre></div></div>\n\n<p><em>Nicholas La Roux</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate `String#mb_chars` and `ActiveSupport::Multibyte::Chars`.\n\n    These APIs are a relic of the Ruby 1.8 days when Ruby strings weren't encoding\n    aware. There is no legitimate reasons to need these APIs today.\n\n    *Jean Boussier*",
-    "project": "activesupport",
-    "date_merged": 1736330516000,
-    "author": "Jean Boussier",
-    "sha": "ebbbc488dbd88e3b27ced1178cc194332541e982",
-    "pr": "54081",
-    "merge_sha": "aaa111f4c39b441b45d8b1b1408ee0052ed27d9e",
-    "html": "<p>Deprecate <code>String#mb_chars</code> and <code>ActiveSupport::Multibyte::Chars</code>.</p>\n\n<p>These APIs are a relic of the Ruby 1.8 days when Ruby strings weren’t encoding<br />\naware. There is no legitimate reasons to need these APIs today.</p>\n\n<p><em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate `ActiveSupport::Configurable`\n\n    *Sean Doyle*",
-    "project": "activesupport",
-    "date_merged": 1736272637000,
-    "author": "Sean Doyle",
-    "sha": "da2fbb2ed3139989a41017dbe685e3ac1dcf5c64",
-    "pr": "53970",
-    "merge_sha": "1719d250961c74686ee3eceba47896bc1058dac5",
-    "html": "<p>Deprecate <code>ActiveSupport::Configurable</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   `nil.to_query(\"key\")` now returns `key`.\n\n    Previously it would return `key=`, preventing round tripping with `Rack::Utils.parse_nested_query`.\n\n    *Erol Fornoles*",
-    "project": "activesupport",
-    "date_merged": 1734277258000,
-    "author": "Jean Boussier",
-    "sha": "2952e9a85d0a8a7f5057ef1f8aded9b7c0905327",
-    "pr": "53962",
-    "merge_sha": "abdbff56db0c0142027b3d674dd71b15f72da561",
-    "html": "<p><code>nil.to_query(\"key\")</code> now returns <code>key</code>.</p>\n\n<p>Previously it would return <code>key=</code>, preventing round tripping with <code>Rack::Utils.parse_nested_query</code>.</p>\n\n<p><em>Erol Fornoles</em></p>\n"
-  },
-  {
-    "message": "*   Avoid wrapping redis in a `ConnectionPool` when using `ActiveSupport::Cache::RedisCacheStore` if the `:redis`\n    option is already a `ConnectionPool`.\n\n    *Joshua Young*",
-    "project": "activesupport",
-    "date_merged": 1733473195000,
-    "author": "Joshua Young",
-    "sha": "ffa9f3bc899da5b3818a74d435436256052fc4eb",
-    "pr": "53845",
-    "merge_sha": "31c060c38225d36a73b5d4787cccc0cb7e1c944a",
-    "html": "<p>Avoid wrapping redis in a <code>ConnectionPool</code> when using <code>ActiveSupport::Cache::RedisCacheStore</code> if the <code>:redis</code><br />\noption is already a <code>ConnectionPool</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
-  },
-  {
-    "message": "*   Alter `ERB::Util.tokenize` to return :PLAIN token with full input string when string doesn't contain ERB tags.\n\n    *Martin Emde*",
-    "project": "activesupport",
-    "date_merged": 1732819839000,
-    "author": "Martin Emde",
-    "sha": "58b2d73f13d0f79b5ca618127edca3eea05114f1",
-    "pr": "53763",
-    "merge_sha": "a87bbdf3a716ef7987d0738afd8426ffa6dae2ec",
-    "html": "<p>Alter <code>ERB::Util.tokenize</code> to return :PLAIN token with full input string when string doesn’t contain ERB tags.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Fix a bug in `ERB::Util.tokenize` that causes incorrect tokenization when ERB tags are preceded by multibyte characters.\n\n    *Martin Emde*",
-    "project": "activesupport",
-    "date_merged": 1743584048000,
-    "author": "John Bampton",
-    "sha": "5db3ed5ba91b409c9af2513ea753165b010953a8",
-    "pr": "54852",
-    "merge_sha": "0c90b26a53bd67173756553dc8c05d73cd48a0fd",
-    "html": "<p>Fix a bug in <code>ERB::Util.tokenize</code> that causes incorrect tokenization when ERB tags are preceded by multibyte characters.</p>\n\n<p><em>Martin Emde</em></p>\n"
-  },
-  {
-    "message": "*   Add `ActiveSupport::Testing::NotificationAssertions` module to help with testing `ActiveSupport::Notifications`.\n\n    *Nicholas La Roux*, *Yishu See*, *Sean Doyle*",
-    "project": "activesupport",
-    "date_merged": 1731684718000,
-    "author": "Nicholas La Roux",
-    "sha": "5cfe5e639a95ea6067a2e5aca97ccbbb36abb1d3",
-    "pr": "53065",
-    "merge_sha": "c57da03e94a58e42abbb891597608898585b057b",
-    "html": "<p>Add <code>ActiveSupport::Testing::NotificationAssertions</code> module to help with testing <code>ActiveSupport::Notifications</code>.</p>\n\n<p><em>Nicholas La Roux</em>, <em>Yishu See</em>, <em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   `ActiveSupport::CurrentAttributes#attributes` now will return a new hash object on each call.\n\n    Previously, the same hash object was returned each time that method was called.\n\n    *fatkodima*",
-    "project": "activesupport",
-    "date_merged": 1729807501000,
-    "author": "fatkodima",
-    "sha": "90a96b8eb814463049b2cb47c899dd24c5eba369",
-    "pr": "53440",
-    "merge_sha": "c8ad2b2abfc1b8c01e27457a237f90aff0003403",
-    "html": "<p><code>ActiveSupport::CurrentAttributes#attributes</code> now will return a new hash object on each call.</p>\n\n<p>Previously, the same hash object was returned each time that method was called.</p>\n\n<p><em>fatkodima</em></p>\n"
-  },
-  {
-    "message": "*   `ActiveSupport::JSON.encode` supports CIDR notation.\n\n    Previously:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0\\\"\"\n    ```\n\n    After this change:\n\n    ```ruby\n    ActiveSupport::JSON.encode(IPAddr.new(\"172.16.0.0/24\")) # => \"\\\"172.16.0.0/24\\\"\"\n    ```\n\n    *Taketo Takashima*",
-    "project": "activesupport",
-    "date_merged": 1729554475000,
-    "author": "Taketo Takashima",
-    "sha": "a11e7c263859e28468cd4cdcfadea4608e41ba66",
-    "pr": "53393",
-    "merge_sha": "546ca81125749e43e30de20684913a8385deafb9",
-    "html": "<p><code>ActiveSupport::JSON.encode</code> supports CIDR notation.</p>\n\n<p>Previously:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">encode</span><span class=\"p\">(</span><span class=\"no\">IPAddr</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"172.16.0.0/24\"</span><span class=\"p\">))</span> <span class=\"c1\"># =&gt; \"\\\"172.16.0.0\\\"\"</span>\n</code></pre></div></div>\n\n<p>After this change:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">JSON</span><span class=\"p\">.</span><span class=\"nf\">encode</span><span class=\"p\">(</span><span class=\"no\">IPAddr</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"s2\">\"172.16.0.0/24\"</span><span class=\"p\">))</span> <span class=\"c1\"># =&gt; \"\\\"172.16.0.0/24\\\"\"</span>\n</code></pre></div></div>\n\n<p><em>Taketo Takashima</em></p>\n"
-  },
-  {
-    "message": "*   Make `ActiveSupport::FileUpdateChecker` faster when checking many file-extensions.\n\n    *Jonathan del Strother*",
-    "project": "activesupport",
-    "date_merged": 1732272149000,
-    "author": "Jonathan del Strother",
-    "sha": "cea72800784fd3d3e2e7432ace0604cd90908ddb",
-    "pr": "53680",
-    "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
-    "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
     "message": "*   Add `except_on:` option for validation callbacks.\n\n    *Ben Sheldon*",
