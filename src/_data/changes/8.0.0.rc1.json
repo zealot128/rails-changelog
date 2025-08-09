@@ -560,14 +560,24 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
-    "message": "*   Add command `rails credentials:fetch PATH` to get the value of a credential from the credentials file.\n\n    ```bash\n    $ bin/rails credentials:fetch kamal_registry/password\n    ```\n\n    *Matthew Nguyen*, *Jean Boussier*",
+    "message": "*   Add `deliver_all_later` to enqueue multiple emails at once.\n\n    ```ruby\n    user_emails = User.all.map { |user| Notifier.welcome(user) }\n    ActionMailer.deliver_all_later(user_emails)\n\n    # use a custom queue\n    ActionMailer.deliver_all_later(user_emails, queue: :my_queue)\n    ```\n\n    This can greatly reduce the number of round-trips to the queue datastore.\n    For queue adapters that do not implement the `enqueue_all` method, we\n    fall back to enqueuing email jobs indvidually.\n\n    *fatkodima*",
+    "project": "actionmailer",
+    "date_merged": 1754763784000,
+    "author": "fatkodima",
+    "sha": "df040a2eeb238985a60013fb3dd48eaaf4f47bd2",
+    "pr": "55448",
+    "merge_sha": "982f96d205c37b854c820b163a3d9c7649dd0235",
+    "html": "<p>Add <code>deliver_all_later</code> to enqueue multiple emails at once.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">user_emails</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">.</span><span class=\"nf\">map</span> <span class=\"p\">{</span> <span class=\"o\">|</span><span class=\"n\">user</span><span class=\"o\">|</span> <span class=\"no\">Notifier</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n<span class=\"no\">ActionMailer</span><span class=\"p\">.</span><span class=\"nf\">deliver_all_later</span><span class=\"p\">(</span><span class=\"n\">user_emails</span><span class=\"p\">)</span>\n\n<span class=\"c1\"># use a custom queue</span>\n<span class=\"no\">ActionMailer</span><span class=\"p\">.</span><span class=\"nf\">deliver_all_later</span><span class=\"p\">(</span><span class=\"n\">user_emails</span><span class=\"p\">,</span> <span class=\"ss\">queue: :my_queue</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>This can greatly reduce the number of round-trips to the queue datastore.<br />\nFor queue adapters that do not implement the <code>enqueue_all</code> method, we<br />\nfall back to enqueuing email jobs indvidually.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Add command `rails credentials:fetch PATH` to get the value of a credential from the credentials file.\n\n    ```bash\n    $ bin/rails credentials:fetch kamal_registry.password\n    ```\n\n    *Matthew Nguyen*, *Jean Boussier*",
     "project": "railties",
     "date_merged": 1754297979000,
     "author": "Matthew Nguyen",
     "sha": "ccf22d60e4da6954e39cd40c87ffb9d6f271953a",
     "pr": "53119",
     "merge_sha": "9a64857d7002554b0af94158de386def5bfef9d3",
-    "html": "<p>Add command <code>rails credentials:fetch PATH</code> to get the value of a credential from the credentials file.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>bin/rails credentials:fetch kamal_registry/password\n</code></pre></div></div>\n\n<p><em>Matthew Nguyen</em>, <em>Jean Boussier</em></p>\n"
+    "html": "<p>Add command <code>rails credentials:fetch PATH</code> to get the value of a credential from the credentials file.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>bin/rails credentials:fetch kamal_registry.password\n</code></pre></div></div>\n\n<p><em>Matthew Nguyen</em>, <em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Generate static BCrypt password digests in fixtures instead of dynamic ERB expressions.\n\n    Previously, fixtures with password digest attributes used `<%= BCrypt::Password.create(\"secret\") %>`,\n    which regenerated the hash on each test run. Now generates a static hash with a comment\n    showing how to recreate it.\n\n    *Nate Smith*, *Cassia Scheffer*",
