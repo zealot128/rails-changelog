@@ -280,6 +280,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Add `assert_events_reported` test helper for `ActiveSupport::EventReporter`.\n\n    This new assertion allows testing multiple events in a single block, regardless of order:\n\n    ```ruby\n    assert_events_reported([\n      { name: \"user.created\", payload: { id: 123 } },\n      { name: \"email.sent\", payload: { to: \"user@example.com\" } }\n    ]) do\n      create_user_and_send_welcome_email\n    end\n    ```\n\n    *George Ma*",
+    "project": "activesupport",
+    "date_merged": 1755270130000,
+    "author": "George Ma",
+    "sha": "3e2f61dc015921d81471c73753fc79d4b00f497d",
+    "pr": "55497",
+    "merge_sha": "4f595868f95c63849653446e5ab7a96f191974d3",
+    "html": "<p>Add <code>assert_events_reported</code> test helper for <code>ActiveSupport::EventReporter</code>.</p>\n\n<p>This new assertion allows testing multiple events in a single block, regardless of order:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">assert_events_reported</span><span class=\"p\">([</span>\n  <span class=\"p\">{</span> <span class=\"ss\">name: </span><span class=\"s2\">\"user.created\"</span><span class=\"p\">,</span> <span class=\"ss\">payload: </span><span class=\"p\">{</span> <span class=\"ss\">id: </span><span class=\"mi\">123</span> <span class=\"p\">}</span> <span class=\"p\">},</span>\n  <span class=\"p\">{</span> <span class=\"ss\">name: </span><span class=\"s2\">\"email.sent\"</span><span class=\"p\">,</span> <span class=\"ss\">payload: </span><span class=\"p\">{</span> <span class=\"ss\">to: </span><span class=\"s2\">\"user@example.com\"</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n<span class=\"p\">])</span> <span class=\"k\">do</span>\n  <span class=\"n\">create_user_and_send_welcome_email</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>George Ma</em></p>\n"
+  },
+  {
     "message": "*   Add `ActiveSupport::TimeZone#standard_name` method.\n\n    ``` ruby\n    zone = ActiveSupport::TimeZone['Hawaii']\n    # Old way\n    ActiveSupport::TimeZone::MAPPING[zone.name]\n    # New way\n    zone.standard_name # => 'Pacific/Honolulu'\n    ```\n\n    *Bogdan Gusiev*",
     "project": "activesupport",
     "date_merged": 1755122592000,
