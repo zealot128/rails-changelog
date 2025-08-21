@@ -830,6 +830,16 @@
     "html": "<p>Only add browser restrictions for a new Rails app when using importmap.</p>\n\n<p><em>Lucas Dohmen</em></p>\n"
   },
   {
+    "message": "*   Attributes filtered by `filter_attributes` will now also be filtered by `filter_parameters`\n    so sensitive information is not leaked.\n\n    *Jill Klang*",
+    "project": "activerecord",
+    "date_merged": 1755725045000,
+    "author": "Jill Klang",
+    "sha": "df9e361c5f6b25f1adb2ced1e654c6692734810d",
+    "pr": "55251",
+    "merge_sha": "f180cab5eef6532d4a3fb20dec46626660c398ed",
+    "html": "<p>Attributes filtered by <code>filter_attributes</code> will now also be filtered by <code>filter_parameters</code><br />\nso sensitive information is not leaked.</p>\n\n<p><em>Jill Klang</em></p>\n"
+  },
+  {
     "message": "*   Add `connection.current_transaction.isolation` API to check current transaction's isolation level.\n\n    Returns the isolation level if it was explicitly set via the `isolation:` parameter\n    or through `ActiveRecord.with_transaction_isolation_level`, otherwise returns `nil`.\n    Nested transactions return the parent transaction's isolation level.\n\n    ```ruby\n    # Returns nil when no transaction\n    User.connection.current_transaction.isolation # => nil\n\n    # Returns explicitly set isolation level\n    User.transaction(isolation: :serializable) do\n      User.connection.current_transaction.isolation # => :serializable\n    end\n\n    # Returns nil when isolation not explicitly set\n    User.transaction do\n      User.connection.current_transaction.isolation # => nil\n    end\n\n    # Nested transactions inherit parent's isolation\n    User.transaction(isolation: :read_committed) do\n      User.transaction do\n        User.connection.current_transaction.isolation # => :read_committed\n      end\n    end\n    ```\n\n    *Kir Shatrov*",
     "project": "activerecord",
     "date_merged": 1753518038000,
