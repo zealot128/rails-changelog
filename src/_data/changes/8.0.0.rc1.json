@@ -840,6 +840,16 @@
     "html": "<p>Only add browser restrictions for a new Rails app when using importmap.</p>\n\n<p><em>Lucas Dohmen</em></p>\n"
   },
   {
+    "message": "*   Add `ActiveRecord::ExclusionViolation` error class for exclusion constraint violations.\n\n    When an exclusion constraint is violated in PostgreSQL, the error will now be raised\n    as `ActiveRecord::ExclusionViolation` instead of the generic `ActiveRecord::StatementInvalid`,\n    making it easier to handle these specific constraint violations in application code.\n\n    This follows the same pattern as other constraint violation error classes like\n    `RecordNotUnique` for unique constraint violations and `InvalidForeignKey` for\n    foreign key constraint violations.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1756087653000,
+    "author": "Ryuta Kamizono",
+    "sha": "8835117c0a643d631d112ca0fdd4e0ff64722dc4",
+    "pr": "55545",
+    "merge_sha": "5a4cc7ae68d6dc0790a1a9154cb19a35a1a0910e",
+    "html": "<p>Add <code>ActiveRecord::ExclusionViolation</code> error class for exclusion constraint violations.</p>\n\n<p>When an exclusion constraint is violated in PostgreSQL, the error will now be raised<br />\nas <code>ActiveRecord::ExclusionViolation</code> instead of the generic <code>ActiveRecord::StatementInvalid</code>,<br />\nmaking it easier to handle these specific constraint violations in application code.</p>\n\n<p>This follows the same pattern as other constraint violation error classes like<br />\n<code>RecordNotUnique</code> for unique constraint violations and <code>InvalidForeignKey</code> for<br />\nforeign key constraint violations.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Attributes filtered by `filter_attributes` will now also be filtered by `filter_parameters`\n    so sensitive information is not leaked.\n\n    *Jill Klang*",
     "project": "activerecord",
     "date_merged": 1755725045000,
