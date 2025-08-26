@@ -290,6 +290,16 @@
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
   },
   {
+    "message": "*   Make the cache of `ActiveSupport::Cache::Strategy::LocalCache::Middleware` updatable.\n\n    If the cache client at `Rails.cache` of a booted application changes, the corresponding\n    mounted middleware needs to update in order for request-local caches to be setup properly.\n    Otherwise, redundant cache operations will erroneously hit the datastore.\n\n    *Gannon McGibbon*",
+    "project": "activesupport",
+    "date_merged": 1756189854000,
+    "author": "Gannon McGibbon",
+    "sha": "cb9b414fb106c51d9e3891025c3b8c449712dc0e",
+    "pr": "55553",
+    "merge_sha": "331f3d585f898311870b793b66621cfa77eb986d",
+    "html": "<p>Make the cache of <code>ActiveSupport::Cache::Strategy::LocalCache::Middleware</code> updatable.</p>\n\n<p>If the cache client at <code>Rails.cache</code> of a booted application changes, the corresponding<br />\nmounted middleware needs to update in order for request-local caches to be setup properly.<br />\nOtherwise, redundant cache operations will erroneously hit the datastore.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Add `assert_events_reported` test helper for `ActiveSupport::EventReporter`.\n\n    This new assertion allows testing multiple events in a single block, regardless of order:\n\n    ```ruby\n    assert_events_reported([\n      { name: \"user.created\", payload: { id: 123 } },\n      { name: \"email.sent\", payload: { to: \"user@example.com\" } }\n    ]) do\n      create_user_and_send_welcome_email\n    end\n    ```\n\n    *George Ma*",
     "project": "activesupport",
     "date_merged": 1755270130000,
