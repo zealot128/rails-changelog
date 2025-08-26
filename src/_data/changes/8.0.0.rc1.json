@@ -850,6 +850,16 @@
     "html": "<p>Only add browser restrictions for a new Rails app when using importmap.</p>\n\n<p><em>Lucas Dohmen</em></p>\n"
   },
   {
+    "message": "*   Add `ActiveRecord::CheckViolation` error class for check constraint violations.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1756207107000,
+    "author": "Ryuta Kamizono",
+    "sha": "2cffe069f26c95c14ba1136b45e504696b8c4e97",
+    "pr": "55551",
+    "merge_sha": "4256e620570bf1dc86a597618065ec18a1efa9df",
+    "html": "<p>Add <code>ActiveRecord::CheckViolation</code> error class for check constraint violations.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Add `ActiveRecord::ExclusionViolation` error class for exclusion constraint violations.\n\n    When an exclusion constraint is violated in PostgreSQL, the error will now be raised\n    as `ActiveRecord::ExclusionViolation` instead of the generic `ActiveRecord::StatementInvalid`,\n    making it easier to handle these specific constraint violations in application code.\n\n    This follows the same pattern as other constraint violation error classes like\n    `RecordNotUnique` for unique constraint violations and `InvalidForeignKey` for\n    foreign key constraint violations.\n\n    *Ryuta Kamizono*",
     "project": "activerecord",
     "date_merged": 1756087653000,
