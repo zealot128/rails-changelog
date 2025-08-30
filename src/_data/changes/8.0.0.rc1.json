@@ -30,6 +30,16 @@
     "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
   },
   {
+    "message": "*   Add .md/.markdown as Markdown extensions and add a default `markdown:` renderer:\n\n    ```ruby\n    class Page\n      def to_markdown\n        body\n      end\n    end\n\n    class PagesController < ActionController::Base\n      def show\n        @page = Page.find(params[:id])\n\n        respond_to do |format|\n          format.html\n          format.md { render markdown: @page }\n        end\n      end\n    end\n    ```\n\n    *DHH*",
+    "project": "actionpack",
+    "date_merged": 1756540118000,
+    "author": "David Heinemeier Hansson",
+    "sha": "3fb706eb17e972507e101113df16df0a12ad3c9f",
+    "pr": "55511",
+    "merge_sha": "55fbd4a114fabd1f3b0f38e34e60824514de9976",
+    "html": "<p>Add .md/.markdown as Markdown extensions and add a default <code>markdown:</code> renderer:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Page</span>\n  <span class=\"k\">def</span> <span class=\"nf\">to_markdown</span>\n    <span class=\"n\">body</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">PagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@page</span> <span class=\"o\">=</span> <span class=\"no\">Page</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"n\">respond_to</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"nb\">format</span><span class=\"o\">|</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">html</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">md</span> <span class=\"p\">{</span> <span class=\"n\">render</span> <span class=\"ss\">markdown: </span><span class=\"vi\">@page</span> <span class=\"p\">}</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Add headers to engine routes inspection command\n\n    *Petrik de Heus*",
     "project": "actionpack",
     "date_merged": 1756124593000,
@@ -278,6 +288,16 @@
     "pr": "53236",
     "merge_sha": "ed72523a86fb6010e056667f294fee34ba276aed",
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Add `ActiveSupport::Cache::Store#namespace=` and `#namespace`.\n\n    Can be used as an alternative to `Store#clear` in some situations such as parallel\n    testing.\n\n    *Nick Schwaderer*",
+    "project": "activesupport",
+    "date_merged": 1756540118000,
+    "author": "Nick Schwaderer",
+    "sha": "b6023059689263a95cbf22b2c2c7ca3d3d29c3b0",
+    "pr": "55580",
+    "merge_sha": "55fbd4a114fabd1f3b0f38e34e60824514de9976",
+    "html": "<p>Add <code>ActiveSupport::Cache::Store#namespace=</code> and <code>#namespace</code>.</p>\n\n<p>Can be used as an alternative to <code>Store#clear</code> in some situations such as parallel<br />\ntesting.</p>\n\n<p><em>Nick Schwaderer</em></p>\n"
   },
   {
     "message": "*   Create `parallel_worker_id` helper for running parallel tests. This allows users to\n    know which worker they are currently running in.\n\n    *Nick Schwaderer*",
@@ -888,6 +908,16 @@
     "pr": "53513",
     "merge_sha": "59a42a9e41ce76d65f8323b901f5ca1933024d4d",
     "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveJob::Serializers::ObjectSerializers#klass` method is now public.\n\n    Custom Active Job serializers must have a public `#klass` method too.\n    The returned class will be index allowing for faster serialization.\n\n    *Jean Boussier*",
+    "project": "activejob",
+    "date_merged": 1756577981000,
+    "author": "Jean Boussier",
+    "sha": "b6c472accd371de359f9ddd13c1f24e14e0d3019",
+    "pr": "55583",
+    "merge_sha": "8cc65d9c55d0c1a0fdc208dcf2ad168c7405e148",
+    "html": "<p><code>ActiveJob::Serializers::ObjectSerializers#klass</code> method is now public.</p>\n\n<p>Custom Active Job serializers must have a public <code>#klass</code> method too.<br />\nThe returned class will be index allowing for faster serialization.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Allow jobs to the interrupted and resumed with Continuations\n\n    A job can use Continuations by including the `ActiveJob::Continuable`\n    concern. Continuations split jobs into steps. When the queuing system\n    is shutting down jobs can be interrupted and their progress saved.\n\n    ```ruby\n    class ProcessImportJob\n      include ActiveJob::Continuable\n\n      def perform(import_id)\n        @import = Import.find(import_id)\n\n        # block format\n        step :initialize do\n          @import.initialize\n        end\n\n        # step with cursor, the cursor is saved when the job is interrupted\n        step :process do |step|\n          @import.records.find_each(start: step.cursor) do |record|\n            record.process\n            step.advance! from: record.id\n          end\n        end\n\n        # method format\n        step :finalize\n\n        private\n          def finalize\n            @import.finalize\n          end\n      end\n    end\n    ```\n\n    *Donal McBreen*",
