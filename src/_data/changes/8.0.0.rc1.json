@@ -30,6 +30,16 @@
     "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
   },
   {
+    "message": "*   Raise `ActionController::TooManyRequests` error from `ActionController::RateLimiting`\n\n    Requests that exceed the rate limit raise an `ActionController::TooManyRequests` error.\n    By default, Action Dispatch rescues the error and responds with a `429 Too Many Requests` status.\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1756822284000,
+    "author": "Sean Doyle",
+    "sha": "73ecd0ced634e5177496677a2986ec3731c7e2ee",
+    "pr": "55501",
+    "merge_sha": "1ced226437872515239044a1dc1d81a8453ae291",
+    "html": "<p>Raise <code>ActionController::TooManyRequests</code> error from <code>ActionController::RateLimiting</code></p>\n\n<p>Requests that exceed the rate limit raise an <code>ActionController::TooManyRequests</code> error.<br />\nBy default, Action Dispatch rescues the error and responds with a <code>429 Too Many Requests</code> status.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Add .md/.markdown as Markdown extensions and add a default `markdown:` renderer:\n\n    ```ruby\n    class Page\n      def to_markdown\n        body\n      end\n    end\n\n    class PagesController < ActionController::Base\n      def show\n        @page = Page.find(params[:id])\n\n        respond_to do |format|\n          format.html\n          format.md { render markdown: @page }\n        end\n      end\n    end\n    ```\n\n    *DHH*",
     "project": "actionpack",
     "date_merged": 1756540118000,
@@ -848,16 +858,6 @@
     "pr": "53621",
     "merge_sha": "5a112f85638b75f2c461c2802ce1224235c910b7",
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Only add browser restrictions for a new Rails app when using importmap.\n\n    *Lucas Dohmen*",
-    "project": "railties",
-    "date_merged": 1751353879000,
-    "author": "Lucas Dohmen",
-    "sha": "dd20e840d5965e090a941e1b401f81dbf1ab29ab",
-    "pr": "55263",
-    "merge_sha": "3a84d8c4cb170b76301dac723db9b462c3eac341",
-    "html": "<p>Only add browser restrictions for a new Rails app when using importmap.</p>\n\n<p><em>Lucas Dohmen</em></p>\n"
   },
   {
     "message": "*   Forward `fill_in_rich_text_area` options to Capybara\n\n    ```ruby\n    fill_in_rich_textarea \"Rich text editor\", id: \"trix_editor_1\", with: \"Hello world!\"\n    ```\n\n    *Sean Doyle*",
