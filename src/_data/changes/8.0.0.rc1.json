@@ -30,6 +30,46 @@
     "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
   },
   {
+    "message": "*   Remove deprecated support to a route to multiple paths.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "d1f523dbfb8b1c1d8ebf79f3ddc6bf809f4e8c32",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Remove deprecated support to a route to multiple paths.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support for using semicolons as a query string separator.\n\n    Before:\n\n    ```ruby\n    ActionDispatch::QueryParser.each_pair(\"foo=bar;baz=quux\").to_a\n    # => [[\"foo\", \"bar\"], [\"baz\", \"quux\"]]\n    ```\n\n    After:\n\n    ```ruby\n    ActionDispatch::QueryParser.each_pair(\"foo=bar;baz=quux\").to_a\n    # => [[\"foo\", \"bar;baz=quux\"]]\n    ```\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "25e4b067726b22580dc18b4728e339fe0c1b27da",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Remove deprecated support for using semicolons as a query string separator.</p>\n\n<p>Before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActionDispatch</span><span class=\"o\">::</span><span class=\"no\">QueryParser</span><span class=\"p\">.</span><span class=\"nf\">each_pair</span><span class=\"p\">(</span><span class=\"s2\">\"foo=bar;baz=quux\"</span><span class=\"p\">).</span><span class=\"nf\">to_a</span>\n<span class=\"c1\"># =&gt; [[\"foo\", \"bar\"], [\"baz\", \"quux\"]]</span>\n</code></pre></div></div>\n\n<p>After:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActionDispatch</span><span class=\"o\">::</span><span class=\"no\">QueryParser</span><span class=\"p\">.</span><span class=\"nf\">each_pair</span><span class=\"p\">(</span><span class=\"s2\">\"foo=bar;baz=quux\"</span><span class=\"p\">).</span><span class=\"nf\">to_a</span>\n<span class=\"c1\"># =&gt; [[\"foo\", \"bar;baz=quux\"]]</span>\n</code></pre></div></div>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support to skipping over leading brackets in parameter names in the parameter parser.\n\n    Before:\n\n    ```ruby\n    ActionDispatch::ParamBuilder.from_query_string(\"[foo]=bar\") # => { \"foo\" => \"bar\" }\n    ActionDispatch::ParamBuilder.from_query_string(\"[foo][bar]=baz\") # => { \"foo\" => { \"bar\" => \"baz\" } }\n    ```\n\n    After:\n\n    ```ruby\n    ActionDispatch::ParamBuilder.from_query_string(\"[foo]=bar\") # => { \"[foo]\" => \"bar\" }\n    ActionDispatch::ParamBuilder.from_query_string(\"[foo][bar]=baz\") # => { \"[foo]\" => { \"bar\" => \"baz\" } }\n    ```\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "303b8f7f9b018689377ac06f8988c0d8f5e6029a",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Remove deprecated support to skipping over leading brackets in parameter names in the parameter parser.</p>\n\n<p>Before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActionDispatch</span><span class=\"o\">::</span><span class=\"no\">ParamBuilder</span><span class=\"p\">.</span><span class=\"nf\">from_query_string</span><span class=\"p\">(</span><span class=\"s2\">\"[foo]=bar\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; { \"foo\" =&gt; \"bar\" }</span>\n<span class=\"no\">ActionDispatch</span><span class=\"o\">::</span><span class=\"no\">ParamBuilder</span><span class=\"p\">.</span><span class=\"nf\">from_query_string</span><span class=\"p\">(</span><span class=\"s2\">\"[foo][bar]=baz\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; { \"foo\" =&gt; { \"bar\" =&gt; \"baz\" } }</span>\n</code></pre></div></div>\n\n<p>After:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActionDispatch</span><span class=\"o\">::</span><span class=\"no\">ParamBuilder</span><span class=\"p\">.</span><span class=\"nf\">from_query_string</span><span class=\"p\">(</span><span class=\"s2\">\"[foo]=bar\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; { \"[foo]\" =&gt; \"bar\" }</span>\n<span class=\"no\">ActionDispatch</span><span class=\"o\">::</span><span class=\"no\">ParamBuilder</span><span class=\"p\">.</span><span class=\"nf\">from_query_string</span><span class=\"p\">(</span><span class=\"s2\">\"[foo][bar]=baz\"</span><span class=\"p\">)</span> <span class=\"c1\"># =&gt; { \"[foo]\" =&gt; { \"bar\" =&gt; \"baz\" } }</span>\n</code></pre></div></div>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `Rails.application.config.action_dispatch.ignore_leading_brackets`.\n\n    *Rafael Mendonça França*",
+    "project": "actionpack",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "303b8f7f9b018689377ac06f8988c0d8f5e6029a",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Deprecate <code>Rails.application.config.action_dispatch.ignore_leading_brackets</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Raise `ActionController::TooManyRequests` error from `ActionController::RateLimiting`\n\n    Requests that exceed the rate limit raise an `ActionController::TooManyRequests` error.\n    By default, Action Dispatch rescues the error and responds with a `429 Too Many Requests` status.\n\n    *Sean Doyle*",
     "project": "actionpack",
     "date_merged": 1756822284000,
@@ -910,6 +950,46 @@
     "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
   },
   {
+    "message": "*   Deprecate built-in `sidekiq` adapter.\n\n    If you're using this adapter, upgrade to `sidekiq` 7.3.3 or later to use the `sidekiq` gem's adapter.\n\n    *fatkodima*",
+    "project": "activejob",
+    "date_merged": 1756986453000,
+    "author": "fatkodima",
+    "sha": "d9e3f0190b0026bfecc2d962f8f3cd6875e73987",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Deprecate built-in <code>sidekiq</code> adapter.</p>\n\n<p>If you’re using this adapter, upgrade to <code>sidekiq</code> 7.3.3 or later to use the <code>sidekiq</code> gem’s adapter.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated internal `SuckerPunch` adapter in favor of the adapter included with the `sucker_punch` gem.\n\n    *Rafael Mendonça França*",
+    "project": "activejob",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "634f90b883ef0e4af5ba32bba7ca55a7efbe4701",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Remove deprecated internal <code>SuckerPunch</code> adapter in favor of the adapter included with the <code>sucker_punch</code> gem.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove support to set `ActiveJob::Base.enqueue_after_transaction_commit` to `:never`, `:always` and `:default`.\n\n    *Rafael Mendonça França*",
+    "project": "activejob",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "f9e51b7f84ed45f4b5cef9114b9da9079de01541",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Remove support to set <code>ActiveJob::Base.enqueue_after_transaction_commit</code> to <code>:never</code>, <code>:always</code> and <code>:default</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `Rails.application.config.active_job.enqueue_after_transaction_commit`.\n\n    *Rafael Mendonça França*",
+    "project": "activejob",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "f9e51b7f84ed45f4b5cef9114b9da9079de01541",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Remove deprecated <code>Rails.application.config.active_job.enqueue_after_transaction_commit</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   `ActiveJob::Serializers::ObjectSerializers#klass` method is now public.\n\n    Custom Active Job serializers must have a public `#klass` method too.\n    The returned class will be index allowing for faster serialization.\n\n    *Jean Boussier*",
     "project": "activejob",
     "date_merged": 1756577981000,
@@ -968,6 +1048,16 @@
     "pr": "53770",
     "merge_sha": "e15be8c98e39a96d33be9331f9649bade402f9bf",
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `:azure` storage service.\n\n    *Rafael Mendonça França*",
+    "project": "activestorage",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "f3e06703619cf13de78638580c175b0586bfa201",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Remove deprecated <code>:azure</code> storage service.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Remove unnecessary calls to the GCP metadata server.\n\n    Calling Google::Auth.get_application_default triggers an explicit call to\n    the metadata server - given it was being called for significant number of\n    file operations, it can lead to considerable tail latencies and even metadata\n    server overloads. Instead, it's preferable (and significantly more efficient)\n    that applications use:\n\n    ```ruby\n    Google::Apis::RequestOptions.default.authorization = Google::Auth.get_application_default(...)\n    ```\n\n    In the cases applications do not set that, the GCP libraries automatically determine credentials.\n\n    This also enables using credentials other than those of the associated GCP\n    service account like when using impersonation.\n\n    *Alex Coomans*",
@@ -1178,6 +1268,36 @@
     "pr": "53955",
     "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `:unsigned_float` and `:unsigned_decimal` column methods for MySQL.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "6edb68791dd5c02581d49558e652fcccaf870edd",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Remove deprecated <code>:unsigned_float</code> and <code>:unsigned_decimal</code> column methods for MySQL.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `:retries` option for the SQLite3 adapter.\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1756986453000,
+    "author": "Rafael Mendonça França",
+    "sha": "54a1dc70f2f124c2e93813e2afc69bfcb6a3cfff",
+    "pr": "53058",
+    "merge_sha": "73f223bb2dfddd0aa39d7f7042aef22c6742d21c",
+    "html": "<p>Remove deprecated <code>:retries</code> option for the SQLite3 adapter.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Introduce new database configuration options `keepalive`, `max_age`, and\n    `min_connections` -- and rename `pool` to `max_connections` to match.\n\n    There are no changes to default behavior, but these allow for more specific\n    control over pool behavior.\n\n    *Matthew Draper*, *Chris AtLee*, *Rachael Wright-Munn*",
+    "project": "activerecord",
+    "date_merged": 1756972814000,
+    "author": "ChaelCodes",
+    "sha": "79285ed010cefe46b53fa1feeb5adfecf75d6245",
+    "pr": "54175",
+    "merge_sha": "5cf4733f58373dfddb704caf7aa5827716c58ef0",
+    "html": "<p>Introduce new database configuration options <code>keepalive</code>, <code>max_age</code>, and<br />\n<code>min_connections</code> – and rename <code>pool</code> to <code>max_connections</code> to match.</p>\n\n<p>There are no changes to default behavior, but these allow for more specific<br />\ncontrol over pool behavior.</p>\n\n<p><em>Matthew Draper</em>, <em>Chris AtLee</em>, <em>Rachael Wright-Munn</em></p>\n"
   },
   {
     "message": "*   Move `LIMIT` validation from query generation to when `limit()` is called.\n\n    *Hartley McGuire*, *Shuyang*",
