@@ -30,6 +30,16 @@
     "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
   },
   {
+    "message": "*   Allow `action_controller.logger` to be disabled by setting it to `nil` or `false` instead of always defaulting to `Rails.logger`.\n\n    *Roberto Miranda*",
+    "project": "actionpack",
+    "date_merged": 1757341801000,
+    "author": "Roberto Miranda",
+    "sha": "5336601860fa8b9ea4aef35cd713e42fda3fff37",
+    "pr": "55625",
+    "merge_sha": "c6272da25fa823d26f8469ffef3a9dc7a1225d2c",
+    "html": "<p>Allow <code>action_controller.logger</code> to be disabled by setting it to <code>nil</code> or <code>false</code> instead of always defaulting to <code>Rails.logger</code>.</p>\n\n<p><em>Roberto Miranda</em></p>\n"
+  },
+  {
     "message": "*   Remove deprecated support to a route to multiple paths.\n\n    *Rafael Mendonça França*",
     "project": "actionpack",
     "date_merged": 1756986453000,
@@ -698,6 +708,16 @@
     "pr": "53680",
     "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
+    "message": "*   Reverted the incorrect default `config.public_file_server.headers` config.\n\n    If you created a new application using Rails `8.1.0.beta1`, make sure to regenerate\n    `config/environments/production.rb`, or to manually edit the `config.public_file_server.headers`\n    configuration to just be:\n\n    ```ruby\n    # Cache assets for far-future expiry since they are all digest stamped.\n    config.public_file_server.headers = { \"cache-control\" => \"public, max-age=#{1.year.to_i}\" }\n    ```\n\n    *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1757318237000,
+    "author": "Jean Boussier",
+    "sha": "24fed7df9db53ae81af095657a2b5db0b2ccd945",
+    "pr": "53683",
+    "merge_sha": "83aec03da6e5dcb0d64ac40c0a51ec3b9f06de29",
+    "html": "<p>Reverted the incorrect default <code>config.public_file_server.headers</code> config.</p>\n\n<p>If you created a new application using Rails <code>8.1.0.beta1</code>, make sure to regenerate<br />\n<code>config/environments/production.rb</code>, or to manually edit the <code>config.public_file_server.headers</code><br />\nconfiguration to just be:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Cache assets for far-future expiry since they are all digest stamped.</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">public_file_server</span><span class=\"p\">.</span><span class=\"nf\">headers</span> <span class=\"o\">=</span> <span class=\"p\">{</span> <span class=\"s2\">\"cache-control\"</span> <span class=\"o\">=&gt;</span> <span class=\"s2\">\"public, max-age=</span><span class=\"si\">#{</span><span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">year</span><span class=\"p\">.</span><span class=\"nf\">to_i</span><span class=\"si\">}</span><span class=\"s2\">\"</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Add command `rails credentials:fetch PATH` to get the value of a credential from the credentials file.\n\n    ```bash\n    $ bin/rails credentials:fetch kamal_registry.password\n    ```\n\n    *Matthew Nguyen*, *Jean Boussier*",
