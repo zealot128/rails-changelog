@@ -710,6 +710,16 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
+    "message": "*   Exclude `asset_path` configuration from Kamal `deploy.yml` for API applications.\n\n    API applications don't serve assets, so the `asset_path` configuration in `deploy.yml`\n    is not needed and can cause 404 errors on in-flight requests. The asset_path is now\n    only included for regular Rails applications that serve assets.\n\n    *Saiqul Haq*",
+    "project": "railties",
+    "date_merged": 1757517158000,
+    "author": "Saiqul Haq",
+    "sha": "941fbe2a057f825533fdc87b16d2a6a104051ece",
+    "pr": "55646",
+    "merge_sha": "681c86674fa16996e4563b93aab4e9c494f6a651",
+    "html": "<p>Exclude <code>asset_path</code> configuration from Kamal <code>deploy.yml</code> for API applications.</p>\n\n<p>API applications don’t serve assets, so the <code>asset_path</code> configuration in <code>deploy.yml</code><br />\nis not needed and can cause 404 errors on in-flight requests. The asset_path is now<br />\nonly included for regular Rails applications that serve assets.</p>\n\n<p><em>Saiqul Haq</em></p>\n"
+  },
+  {
     "message": "*   Reverted the incorrect default `config.public_file_server.headers` config.\n\n    If you created a new application using Rails `8.1.0.beta1`, make sure to regenerate\n    `config/environments/production.rb`, or to manually edit the `config.public_file_server.headers`\n    configuration to just be:\n\n    ```ruby\n    # Cache assets for far-future expiry since they are all digest stamped.\n    config.public_file_server.headers = { \"cache-control\" => \"public, max-age=#{1.year.to_i}\" }\n    ```\n\n    *Jean Boussier*",
     "project": "railties",
     "date_merged": 1757318237000,
