@@ -720,6 +720,16 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
+    "message": "*   Show engine routes in `/rails/info/routes` as well.\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1757599232000,
+    "author": "Petrik",
+    "sha": "14940f28da495fe39ad86aa001d351839d9f6c5c",
+    "pr": "55635",
+    "merge_sha": "aedfc4af7625312bfdec087a0d03e5ad5da80027",
+    "html": "<p>Show engine routes in <code>/rails/info/routes</code> as well.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Exclude `asset_path` configuration from Kamal `deploy.yml` for API applications.\n\n    API applications don't serve assets, so the `asset_path` configuration in `deploy.yml`\n    is not needed and can cause 404 errors on in-flight requests. The asset_path is now\n    only included for regular Rails applications that serve assets.\n\n    *Saiqul Haq*",
     "project": "railties",
     "date_merged": 1757517158000,
