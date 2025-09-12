@@ -30,6 +30,16 @@
     "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
   },
   {
+    "message": "*   Update `ActionController::Metal::RateLimiting` to support passing method names to `:by` and `:with`\n\n    ```ruby\n    class SignupsController < ApplicationController\n      rate_limit to: 10, within: 1.minute, with: :redirect_with_flash\n\n      private\n        def redirect_with_flash\n          redirect_to root_url, alert: \"Too many requests!\"\n        end\n    end\n    ```\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1757689314000,
+    "author": "Sean Doyle",
+    "sha": "63166fe6233527ddbe16f741a5a49d8b0854cdc3",
+    "pr": "53146",
+    "merge_sha": "04e51dc97159845e1dc61a5c31721ac891eb8967",
+    "html": "<p>Update <code>ActionController::Metal::RateLimiting</code> to support passing method names to <code>:by</code> and <code>:with</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">SignupsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">minute</span><span class=\"p\">,</span> <span class=\"ss\">with: :redirect_with_flash</span>\n\n  <span class=\"kp\">private</span>\n    <span class=\"k\">def</span> <span class=\"nf\">redirect_with_flash</span>\n      <span class=\"n\">redirect_to</span> <span class=\"n\">root_url</span><span class=\"p\">,</span> <span class=\"ss\">alert: </span><span class=\"s2\">\"Too many requests!\"</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Optimize `ActionDispatch::Http::URL.build_host_url` when protocol is included in host.\n\n    When using URL helpers with a host that includes the protocol (e.g., `{ host: \"https://example.com\" }`),\n    skip unnecessary protocol normalization and string duplication since the extracted protocol is already\n    in the correct format. This eliminates 2 string allocations per URL generation and provides a ~10%\n    performance improvement for this case.\n\n    *Joshua Young*, *Hartley McGuire*",
     "project": "actionpack",
     "date_merged": 1757559731000,
