@@ -960,6 +960,16 @@
     "html": "<p>Only include PermissionsPolicy::Middleware if policy is configured.</p>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Generalize `:rich_text_area` Capybara selector\n\n    Prepare for more Action Text-capable WYSIWYG editors by making\n    `:rich_text_area` rely on the presence of `[role=\"textbox\"]` and\n    `[contenteditable]` HTML attributes rather than a `<trix-editor>` element.\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1757726643000,
+    "author": "Sean Doyle",
+    "sha": "3bf6ebbebd9f28e54433cfcf5435fcbe7d69aa1c",
+    "pr": "55666",
+    "merge_sha": "1e468c3efc1d9f04e18b9b71c69cffde757d432a",
+    "html": "<p>Generalize <code>:rich_text_area</code> Capybara selector</p>\n\n<p>Prepare for more Action Text-capable WYSIWYG editors by making<br />\n<code>:rich_text_area</code> rely on the presence of <code>[role=\"textbox\"]</code> and<br />\n<code>[contenteditable]</code> HTML attributes rather than a <code>&lt;trix-editor&gt;</code> element.</p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Forward `fill_in_rich_text_area` options to Capybara\n\n    ```ruby\n    fill_in_rich_textarea \"Rich text editor\", id: \"trix_editor_1\", with: \"Hello world!\"\n    ```\n\n    *Sean Doyle*",
     "project": "actiontext",
     "date_merged": 1755106490000,
