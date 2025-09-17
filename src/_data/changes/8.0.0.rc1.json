@@ -30,6 +30,16 @@
     "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
   },
   {
+    "message": "*   URL helpers for engines mounted at the application root handle `SCRIPT_NAME` correctly.\n\n    Fixed an issue where `SCRIPT_NAME` is not applied to paths generated for routes in an engine\n    mounted at \"/\".\n\n    *Mike Dalessio*",
+    "project": "actionpack",
+    "date_merged": 1758057931000,
+    "author": "Mike Dalessio",
+    "sha": "d8795bd762ab2716b6e7fd07a403566b28159cdc",
+    "pr": "55668",
+    "merge_sha": null,
+    "html": "<p>URL helpers for engines mounted at the application root handle <code>SCRIPT_NAME</code> correctly.</p>\n\n<p>Fixed an issue where <code>SCRIPT_NAME</code> is not applied to paths generated for routes in an engine<br />\nmounted at “/”.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Update `ActionController::Metal::RateLimiting` to support passing method names to `:by` and `:with`\n\n    ```ruby\n    class SignupsController < ApplicationController\n      rate_limit to: 10, within: 1.minute, with: :redirect_with_flash\n\n      private\n        def redirect_with_flash\n          redirect_to root_url, alert: \"Too many requests!\"\n        end\n    end\n    ```\n\n    *Sean Doyle*",
     "project": "actionpack",
     "date_merged": 1757689314000,
