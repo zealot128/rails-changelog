@@ -32,11 +32,11 @@
   {
     "message": "*   URL helpers for engines mounted at the application root handle `SCRIPT_NAME` correctly.\n\n    Fixed an issue where `SCRIPT_NAME` is not applied to paths generated for routes in an engine\n    mounted at \"/\".\n\n    *Mike Dalessio*",
     "project": "actionpack",
-    "date_merged": 1758057931000,
+    "date_merged": 1758177967000,
     "author": "Mike Dalessio",
     "sha": "d8795bd762ab2716b6e7fd07a403566b28159cdc",
     "pr": "55668",
-    "merge_sha": null,
+    "merge_sha": "ad4b14d11590c2852ef3df9297cbbd72c6778251",
     "html": "<p>URL helpers for engines mounted at the application root handle <code>SCRIPT_NAME</code> correctly.</p>\n\n<p>Fixed an issue where <code>SCRIPT_NAME</code> is not applied to paths generated for routes in an engine<br />\nmounted at “/”.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
@@ -1130,6 +1130,16 @@
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
+    "message": "*   Allow analyzers and variant transformer to be fully configurable\n\n    ```ruby\n    # ActiveStorage.analyzers can be set to an empty array:\n    config.active_storage.analyzers = []\n    # => ActiveStorage.analyzers = []\n\n    # or use custom analyzer:\n    config.active_storage.analyzers = [ CustomAnalyzer ]\n    # => ActiveStorage.analyzers = [ CustomAnalyzer ]\n    ```\n\n    If no configuration is provided, it will use the default analyzers.\n\n    You can also disable variant processor to remove warnings on startup about missing gems.\n\n    ```ruby\n    config.active_storage.variant_processor = :disabled\n    ```\n\n    *zzak*, *Alexandre Ruban*",
+    "project": "activestorage",
+    "date_merged": 1758188064000,
+    "author": "zzak",
+    "sha": "367445d037b8f0d0baea684d14c0343ee29e8da1",
+    "pr": "55303",
+    "merge_sha": "93c00a8c74c24a3da40d30b6d0c3c667b8ebe9ba",
+    "html": "<p>Allow analyzers and variant transformer to be fully configurable</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># ActiveStorage.analyzers can be set to an empty array:</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_storage</span><span class=\"p\">.</span><span class=\"nf\">analyzers</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n<span class=\"c1\"># =&gt; ActiveStorage.analyzers = []</span>\n\n<span class=\"c1\"># or use custom analyzer:</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_storage</span><span class=\"p\">.</span><span class=\"nf\">analyzers</span> <span class=\"o\">=</span> <span class=\"p\">[</span> <span class=\"no\">CustomAnalyzer</span> <span class=\"p\">]</span>\n<span class=\"c1\"># =&gt; ActiveStorage.analyzers = [ CustomAnalyzer ]</span>\n</code></pre></div></div>\n\n<p>If no configuration is provided, it will use the default analyzers.</p>\n\n<p>You can also disable variant processor to remove warnings on startup about missing gems.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_storage</span><span class=\"p\">.</span><span class=\"nf\">variant_processor</span> <span class=\"o\">=</span> <span class=\"ss\">:disabled</span>\n</code></pre></div></div>\n\n<p><em>zzak</em>, <em>Alexandre Ruban</em></p>\n"
+  },
+  {
     "message": "*   Remove deprecated `:azure` storage service.\n\n    *Rafael Mendonça França*",
     "project": "activestorage",
     "date_merged": 1756986453000,
@@ -1370,6 +1380,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix time attribute dirty tracking with timezone conversions.\n\n    Time-only attributes now maintain a fixed date of 2000-01-01 during timezone conversions,\n    preventing them from being incorrectly marked as changed due to date shifts.\n\n    This fixes an issue where time attributes would be marked as changed when setting the same time value\n    due to timezone conversion causing internal date shifts.\n\n    *Prateek Choudhary*",
+    "project": "activerecord",
+    "date_merged": 1758198822000,
+    "author": "Prateek Choudhary",
+    "sha": "8eeaa38dcb0d0126df836693b6557842d7ba449b",
+    "pr": "55298",
+    "merge_sha": "4c39e96bfa57ca8697f5154eae28df120bfc8510",
+    "html": "<p>Fix time attribute dirty tracking with timezone conversions.</p>\n\n<p>Time-only attributes now maintain a fixed date of 2000-01-01 during timezone conversions,<br />\npreventing them from being incorrectly marked as changed due to date shifts.</p>\n\n<p>This fixes an issue where time attributes would be marked as changed when setting the same time value<br />\ndue to timezone conversion causing internal date shifts.</p>\n\n<p><em>Prateek Choudhary</em></p>\n"
+  },
+  {
     "message": "*   Skip calling `PG::Connection#cancel` in `cancel_any_running_query`\n    when using libpq >= 18 with pg < 1.6.0, due to incompatibility.\n    Rollback still runs, but may take longer.\n\n    *Yasuo Honda*, *Lars Kanis*",
     "project": "activerecord",
     "date_merged": 1757061824000,
@@ -1378,6 +1398,16 @@
     "pr": "55540",
     "merge_sha": "28ace5b9c8fc97e86d883a54842e3bdee9e218ec",
     "html": "<p>Skip calling <code>PG::Connection#cancel</code> in <code>cancel_any_running_query</code><br />\nwhen using libpq &gt;= 18 with pg &lt; 1.6.0, due to incompatibility.<br />\nRollback still runs, but may take longer.</p>\n\n<p><em>Yasuo Honda</em>, <em>Lars Kanis</em></p>\n"
+  },
+  {
+    "message": "*   Don't add `id_value` attribute alias when attribute/column with that name already exists.\n\n    *Rob Lewis*",
+    "project": "activerecord",
+    "date_merged": 1758177967000,
+    "author": "Rob Lewis",
+    "sha": "f9a257fc186581ee54d880c04ec001444372dc04",
+    "pr": "55691",
+    "merge_sha": "ad4b14d11590c2852ef3df9297cbbd72c6778251",
+    "html": "<p>Don’t add <code>id_value</code> attribute alias when attribute/column with that name already exists.</p>\n\n<p><em>Rob Lewis</em></p>\n"
   },
   {
     "message": "*   Remove deprecated `:unsigned_float` and `:unsigned_decimal` column methods for MySQL.\n\n    *Rafael Mendonça França*",
