@@ -1380,6 +1380,16 @@
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix query cache for pinned connections in multi threaded transactional tests\n\n    When a pinned connection is used across separate threads, they now use a separate cache store\n    for each thread.\n\n    This improve accuracy of system tests, and any test using multiple threads.\n\n    *Heinrich Lee Yu*, *Jean Boussier*",
+    "project": "activerecord",
+    "date_merged": 1758275391000,
+    "author": "Heinrich Lee Yu",
+    "sha": "8c1db574e8de135a9d3de887e4d6436ec6792363",
+    "pr": "55703",
+    "merge_sha": "6cca34340a3079ce89a8d6ef3ae5e09d70dea27a",
+    "html": "<p>Fix query cache for pinned connections in multi threaded transactional tests</p>\n\n<p>When a pinned connection is used across separate threads, they now use a separate cache store<br />\nfor each thread.</p>\n\n<p>This improve accuracy of system tests, and any test using multiple threads.</p>\n\n<p><em>Heinrich Lee Yu</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Fix time attribute dirty tracking with timezone conversions.\n\n    Time-only attributes now maintain a fixed date of 2000-01-01 during timezone conversions,\n    preventing them from being incorrectly marked as changed due to date shifts.\n\n    This fixes an issue where time attributes would be marked as changed when setting the same time value\n    due to timezone conversion causing internal date shifts.\n\n    *Prateek Choudhary*",
     "project": "activerecord",
     "date_merged": 1758198822000,
