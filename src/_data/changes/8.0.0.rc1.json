@@ -380,6 +380,16 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   `ActiveSupport::FileUpdateChecker` does not depend on `Time.now` to prevent unecessary reloads with time travel test helpers\n\n    *Jan Grodowski*",
+    "project": "activesupport",
+    "date_merged": 1758312712000,
+    "author": "Jan Grodowski",
+    "sha": "321b3402f8ed1ce31bdd3c4368161ba9e6139c20",
+    "pr": "55708",
+    "merge_sha": "a86199e54c4256327ace2d46de836560ce84b7af",
+    "html": "<p><code>ActiveSupport::FileUpdateChecker</code> does not depend on <code>Time.now</code> to prevent unecessary reloads with time travel test helpers</p>\n\n<p><em>Jan Grodowski</em></p>\n"
+  },
+  {
     "message": "*   Add `ActiveSupport::Cache::Store#namespace=` and `#namespace`.\n\n    Can be used as an alternative to `Store#clear` in some situations such as parallel\n    testing.\n\n    *Nick Schwaderer*",
     "project": "activesupport",
     "date_merged": 1756540118000,
@@ -1378,6 +1388,26 @@
     "pr": "53955",
     "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add `ActiveRecord::Base.only_columns`\n\n    Similar in use case to `ignored_columns` but listing columns to consider rather than the ones\n    to ignore.\n\n    Can be useful when working with a legacy or shared database schema, or to make safe schema change\n    in two deploys rather than three.\n\n    *Anton Kandratski*",
+    "project": "activerecord",
+    "date_merged": 1758318692000,
+    "author": "Anton Kandratski",
+    "sha": "2d60f36ff57a7b0cb38cca274b02906d136877ae",
+    "pr": "55121",
+    "merge_sha": "1f3494d6327eb7f9025862bc3362cbed97b668c1",
+    "html": "<p>Add <code>ActiveRecord::Base.only_columns</code></p>\n\n<p>Similar in use case to <code>ignored_columns</code> but listing columns to consider rather than the ones<br />\nto ignore.</p>\n\n<p>Can be useful when working with a legacy or shared database schema, or to make safe schema change<br />\nin two deploys rather than three.</p>\n\n<p><em>Anton Kandratski</em></p>\n"
+  },
+  {
+    "message": "*   Use `PG::Connection#close_prepared` (protocol level Close) to deallocate\n    prepared statements when available.\n\n    To enable its use, you must have pg >= 1.6.0, libpq >= 17, and a PostgreSQL\n    database version >= 17.\n\n    *Hartley McGuire*, *Andrew Jackson*",
+    "project": "activerecord",
+    "date_merged": 1758317850000,
+    "author": "Hartley McGuire",
+    "sha": "ed9b92e48347c7e5c94941e81cd59ea495196ffa",
+    "pr": "55683",
+    "merge_sha": "f5058b6f6c58633377fb717aea9737ee11f2cf61",
+    "html": "<p>Use <code>PG::Connection#close_prepared</code> (protocol level Close) to deallocate<br />\nprepared statements when available.</p>\n\n<p>To enable its use, you must have pg &gt;= 1.6.0, libpq &gt;= 17, and a PostgreSQL<br />\ndatabase version &gt;= 17.</p>\n\n<p><em>Hartley McGuire</em>, <em>Andrew Jackson</em></p>\n"
   },
   {
     "message": "*   Fix query cache for pinned connections in multi threaded transactional tests\n\n    When a pinned connection is used across separate threads, they now use a separate cache store\n    for each thread.\n\n    This improve accuracy of system tests, and any test using multiple threads.\n\n    *Heinrich Lee Yu*, *Jean Boussier*",
