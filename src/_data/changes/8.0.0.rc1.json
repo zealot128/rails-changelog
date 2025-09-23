@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Add structured events for Action Mailer:\n    - `action_mailer.delivery_error`\n    - `action_mailer.delivered`\n    - `action_mailer.delivery_skipped`\n    - `action_mailer.processed`\n\n    *Gannon McGibbon*",
+    "project": "actionmailer",
+    "date_merged": 1758651738000,
+    "author": "Gannon McGibbon",
+    "sha": "a486b99a4f48d61171cb345a8e03d7436e825984",
+    "pr": "55690",
+    "merge_sha": "a8a0d295e3c522916020f40627ca5ddf1f4990bd",
+    "html": "<p>Add structured events for Action Mailer:</p>\n<ul>\n  <li><code>action_mailer.delivery_error</code></li>\n  <li><code>action_mailer.delivered</code></li>\n  <li><code>action_mailer.delivery_skipped</code></li>\n  <li><code>action_mailer.processed</code></li>\n</ul>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Add `deliver_all_later` to enqueue multiple emails at once.\n\n    ```ruby\n    user_emails = User.all.map { |user| Notifier.welcome(user) }\n    ActionMailer.deliver_all_later(user_emails)\n\n    # use a custom queue\n    ActionMailer.deliver_all_later(user_emails, queue: :my_queue)\n    ```\n\n    This can greatly reduce the number of round-trips to the queue datastore.\n    For queue adapters that do not implement the `enqueue_all` method, we\n    fall back to enqueuing email jobs indvidually.\n\n    *fatkodima*",
     "project": "actionmailer",
     "date_merged": 1754763784000,
@@ -28,6 +38,16 @@
     "pr": "54931",
     "merge_sha": "17cde11cd13cf07a7d6c712cb1593881496abacb",
     "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
+  },
+  {
+    "message": "*   Add structured events for Action Pack and Action Dispatch:\n    - `action_dispatch.redirect`\n    - `action_controller.request_started`\n    - `action_controller.request_completed`\n    - `action_controller.callback_halted`\n    - `action_controller.rescue_from_handled`\n    - `action_controller.file_sent`\n    - `action_controller.redirected`\n    - `action_controller.data_sent`\n    - `action_controller.unpermitted_parameters`\n    - `action_controller.fragment_cache`\n\n    *Adrianna Chang*",
+    "project": "actionpack",
+    "date_merged": 1758651738000,
+    "author": "Adrianna Chang",
+    "sha": "d6cb07bf333256bc1e536cb3d3f42991da7aa41c",
+    "pr": "55690",
+    "merge_sha": "a8a0d295e3c522916020f40627ca5ddf1f4990bd",
+    "html": "<p>Add structured events for Action Pack and Action Dispatch:</p>\n<ul>\n  <li><code>action_dispatch.redirect</code></li>\n  <li><code>action_controller.request_started</code></li>\n  <li><code>action_controller.request_completed</code></li>\n  <li><code>action_controller.callback_halted</code></li>\n  <li><code>action_controller.rescue_from_handled</code></li>\n  <li><code>action_controller.file_sent</code></li>\n  <li><code>action_controller.redirected</code></li>\n  <li><code>action_controller.data_sent</code></li>\n  <li><code>action_controller.unpermitted_parameters</code></li>\n  <li><code>action_controller.fragment_cache</code></li>\n</ul>\n\n<p><em>Adrianna Chang</em></p>\n"
   },
   {
     "message": "*   URL helpers for engines mounted at the application root handle `SCRIPT_NAME` correctly.\n\n    Fixed an issue where `SCRIPT_NAME` is not applied to paths generated for routes in an engine\n    mounted at \"/\".\n\n    *Mike Dalessio*",
@@ -378,6 +398,16 @@
     "pr": "53236",
     "merge_sha": "ed72523a86fb6010e056667f294fee34ba276aed",
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Add `ActiveSupport::StructuredEventSubscriber` for consuming notifications and\n    emitting structured event logs. Events may be emitted with the `#emit_event`\n    or `#emit_debug_event` methods.\n\n    ```ruby\n    class MyStructuredEventSubscriber < ActiveSupport::StructuredEventSubscriber\n      def notification(event)\n        emit_event(\"my.notification\", data: 1)\n      end\n    end\n    ```\n\n    *Adrianna Chang*",
+    "project": "activesupport",
+    "date_merged": 1758651738000,
+    "author": "Adrianna Chang",
+    "sha": "b8eb11e9852659ca3f33287c86e88e9a5f819ef3",
+    "pr": "55690",
+    "merge_sha": "a8a0d295e3c522916020f40627ca5ddf1f4990bd",
+    "html": "<p>Add <code>ActiveSupport::StructuredEventSubscriber</code> for consuming notifications and<br />\nemitting structured event logs. Events may be emitted with the <code>#emit_event</code><br />\nor <code>#emit_debug_event</code> methods.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyStructuredEventSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">StructuredEventSubscriber</span>\n  <span class=\"k\">def</span> <span class=\"nf\">notification</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">emit_event</span><span class=\"p\">(</span><span class=\"s2\">\"my.notification\"</span><span class=\"p\">,</span> <span class=\"ss\">data: </span><span class=\"mi\">1</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Adrianna Chang</em></p>\n"
   },
   {
     "message": "*   `ActiveSupport::FileUpdateChecker` does not depend on `Time.now` to prevent unecessary reloads with time travel test helpers\n\n    *Jan Grodowski*",
@@ -750,6 +780,16 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
+    "message": "*   Optionally skip bundler-audit.\n\n    Skips adding the `bin/bundler-audit` & `config/bundler-audit.yml` if the gem is not installed when `bin/rails app:update` runs.\n\n    Passes an option to `--skip-bundler-audit` when new apps are generated & adds that same option to the `--minimal` generator flag.\n\n    *Jill Klang*",
+    "project": "railties",
+    "date_merged": 1758652195000,
+    "author": "Jill Klang",
+    "sha": "0a0addc0e9f1d0bb0406066f9e2a23c3b45ec3cf",
+    "pr": "55714",
+    "merge_sha": "dec9fd9c41018fe707e1acc89e4a586492fa32d7",
+    "html": "<p>Optionally skip bundler-audit.</p>\n\n<p>Skips adding the <code>bin/bundler-audit</code> &amp; <code>config/bundler-audit.yml</code> if the gem is not installed when <code>bin/rails app:update</code> runs.</p>\n\n<p>Passes an option to <code>--skip-bundler-audit</code> when new apps are generated &amp; adds that same option to the <code>--minimal</code> generator flag.</p>\n\n<p><em>Jill Klang</em></p>\n"
+  },
+  {
     "message": "*   Show engine routes in `/rails/info/routes` as well.\n\n    *Petrik de Heus*",
     "project": "railties",
     "date_merged": 1757599232000,
@@ -1040,6 +1080,16 @@
     "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
   },
   {
+    "message": "*   Add structured events for Active Job:\n    - `active_job.enqueue_failed`\n    - `active_job.enqueue_aborted`\n    - `active_job.enqueued`\n    - `active_job.bulk_enqueued`\n    - `active_job.started`\n    - `active_job.failed`\n    - `active_job.aborted`\n    - `active_job.completed`\n    - `active_job.retry_scheduled`\n    - `active_job.retry_stopped`\n    - `active_job.discarded`\n    - `active_job.interrupt`\n    - `active_job.resume`\n    - `active_job.step_skipped`\n    - `active_job.step_resumed`\n    - `active_job.step_started`\n    - `active_job.step_interrupted`\n    - `active_job.step_errored`\n    - `active_job.step`\n\n    *Adrianna Chang*",
+    "project": "activejob",
+    "date_merged": 1758651738000,
+    "author": "Adrianna Chang",
+    "sha": "1a25283bb156a1fe9aeb822a03d1872bc49a8e11",
+    "pr": "55690",
+    "merge_sha": "a8a0d295e3c522916020f40627ca5ddf1f4990bd",
+    "html": "<p>Add structured events for Active Job:</p>\n<ul>\n  <li><code>active_job.enqueue_failed</code></li>\n  <li><code>active_job.enqueue_aborted</code></li>\n  <li><code>active_job.enqueued</code></li>\n  <li><code>active_job.bulk_enqueued</code></li>\n  <li><code>active_job.started</code></li>\n  <li><code>active_job.failed</code></li>\n  <li><code>active_job.aborted</code></li>\n  <li><code>active_job.completed</code></li>\n  <li><code>active_job.retry_scheduled</code></li>\n  <li><code>active_job.retry_stopped</code></li>\n  <li><code>active_job.discarded</code></li>\n  <li><code>active_job.interrupt</code></li>\n  <li><code>active_job.resume</code></li>\n  <li><code>active_job.step_skipped</code></li>\n  <li><code>active_job.step_resumed</code></li>\n  <li><code>active_job.step_started</code></li>\n  <li><code>active_job.step_interrupted</code></li>\n  <li><code>active_job.step_errored</code></li>\n  <li><code>active_job.step</code></li>\n</ul>\n\n<p><em>Adrianna Chang</em></p>\n"
+  },
+  {
     "message": "*   Deprecate built-in `sidekiq` adapter.\n\n    If you're using this adapter, upgrade to `sidekiq` 7.3.3 or later to use the `sidekiq` gem's adapter.\n\n    *fatkodima*",
     "project": "activejob",
     "date_merged": 1756986453000,
@@ -1140,6 +1190,16 @@
     "html": "<p>Raise a more specific error during deserialization when a previously serialized job class is now unknown.</p>\n\n<p><code>ActiveJob::UnknownJobClassError</code> will be raised instead of a more generic<br />\n<code>NameError</code> to make it easily possible for adapters to tell if the <code>NameError</code><br />\nwas raised during job execution or deserialization.</p>\n\n<p><em>Earlopain</em></p>\n"
   },
   {
+    "message": "*   Add structured events for Active Storage:\n    - `active_storage.service_upload`\n    - `active_storage.service_download`\n    - `active_storage.service_streaming_download`\n    - `active_storage.preview`\n    - `active_storage.service_delete`\n    - `active_storage.service_delete_prefixed`\n    - `active_storage.service_exist`\n    - `active_storage.service_url`\n    - `active_storage.service_mirror`\n\n    *Gannon McGibbon*",
+    "project": "activestorage",
+    "date_merged": 1758651738000,
+    "author": "Gannon McGibbon",
+    "sha": "ef36303324a0525d61fb19ad895b10df11f2332d",
+    "pr": "55690",
+    "merge_sha": "a8a0d295e3c522916020f40627ca5ddf1f4990bd",
+    "html": "<p>Add structured events for Active Storage:</p>\n<ul>\n  <li><code>active_storage.service_upload</code></li>\n  <li><code>active_storage.service_download</code></li>\n  <li><code>active_storage.service_streaming_download</code></li>\n  <li><code>active_storage.preview</code></li>\n  <li><code>active_storage.service_delete</code></li>\n  <li><code>active_storage.service_delete_prefixed</code></li>\n  <li><code>active_storage.service_exist</code></li>\n  <li><code>active_storage.service_url</code></li>\n  <li><code>active_storage.service_mirror</code></li>\n</ul>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Allow analyzers and variant transformer to be fully configurable\n\n    ```ruby\n    # ActiveStorage.analyzers can be set to an empty array:\n    config.active_storage.analyzers = []\n    # => ActiveStorage.analyzers = []\n\n    # or use custom analyzer:\n    config.active_storage.analyzers = [ CustomAnalyzer ]\n    # => ActiveStorage.analyzers = [ CustomAnalyzer ]\n    ```\n\n    If no configuration is provided, it will use the default analyzers.\n\n    You can also disable variant processor to remove warnings on startup about missing gems.\n\n    ```ruby\n    config.active_storage.variant_processor = :disabled\n    ```\n\n    *zzak*, *Alexandre Ruban*",
     "project": "activestorage",
     "date_merged": 1758188064000,
@@ -1208,6 +1268,16 @@
     "pr": "53623",
     "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+  },
+  {
+    "message": "*   Add structured events for Action View:\n    - `action_view.render_template`\n    - `action_view.render_partial`\n    - `action_view.render_layout`\n    - `action_view.render_collection`\n    - `action_view.render_start`\n\n    *Gannon McGibbon*",
+    "project": "actionview",
+    "date_merged": 1758651738000,
+    "author": "Gannon McGibbon",
+    "sha": "333d51bebfee74b2bfd7c8f02291d1f598b1ed4a",
+    "pr": "55690",
+    "merge_sha": "a8a0d295e3c522916020f40627ca5ddf1f4990bd",
+    "html": "<p>Add structured events for Action View:</p>\n<ul>\n  <li><code>action_view.render_template</code></li>\n  <li><code>action_view.render_partial</code></li>\n  <li><code>action_view.render_layout</code></li>\n  <li><code>action_view.render_collection</code></li>\n  <li><code>action_view.render_start</code></li>\n</ul>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
     "message": "*   Fix label with `for` option not getting prefixed by form `namespace` value\n\n    *Abeid Ahmed*, *Hartley McGuire*",
@@ -1398,6 +1468,16 @@
     "pr": "53955",
     "merge_sha": "05003428cb05ef0d4dba1754fc055a22aa533227",
     "html": "<p>Backport <code>ActiveRecord::Normalization</code> to <code>ActiveModel::Attributes::Normalization</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Attributes</span><span class=\"o\">::</span><span class=\"no\">Normalization</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n\n  <span class=\"n\">normalizes</span> <span class=\"ss\">:email</span><span class=\"p\">,</span> <span class=\"ss\">with: </span><span class=\"o\">-&gt;</span> <span class=\"n\">email</span> <span class=\"p\">{</span> <span class=\"n\">email</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">.</span><span class=\"nf\">downcase</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"o\">=</span>    <span class=\"s2\">\" CRUISE-CONTROL@EXAMPLE.COM</span><span class=\"se\">\\n</span><span class=\"s2\">\"</span>\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">email</span> <span class=\"c1\"># =&gt; \"cruise-control@example.com\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add structured events for Active Record:\n    - `active_record.strict_loading_violation`\n    - `active_record.sql`\n\n    *Gannon McGibbon*",
+    "project": "activerecord",
+    "date_merged": 1758651738000,
+    "author": "Gannon McGibbon",
+    "sha": "163f7b76037a1ad3ca477b61c243bb8aa6d076fc",
+    "pr": "55690",
+    "merge_sha": "a8a0d295e3c522916020f40627ca5ddf1f4990bd",
+    "html": "<p>Add structured events for Active Record:</p>\n<ul>\n  <li><code>active_record.strict_loading_violation</code></li>\n  <li><code>active_record.sql</code></li>\n</ul>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
     "message": "*   Add support for integer shard keys.\n    ```ruby\n    # Now accepts symbols as shard keys.\n    ActiveRecord::Base.connects_to(shards: {\n      1: { writing: :primary_shard_one, reading: :primary_shard_one },\n      2: { writing: :primary_shard_two, reading: :primary_shard_two},\n    })\n\n    ActiveRecord::Base.connected_to(shard: 1) do\n      # ..\n    end\n    ```\n\n    *Nony Dutton*",
