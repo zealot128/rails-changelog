@@ -40,6 +40,16 @@
     "html": "<p>Allow setting nil as subscription connection identifier for Redis.</p>\n\n<p><em>Nguyen Nguyen</em></p>\n"
   },
   {
+    "message": "*   Add engine route filtering and better formatting in `bin/rails routes`.\n\n    Allow engine routes to be filterable in the routing inspector, and\n    improve formatting of engine routing output.\n\n    Before:\n    ```\n    > bin/rails routes -e engine_only\n    No routes were found for this grep pattern.\n    For more information about routes, see the Rails guide: https://guides.rubyonrails.org/routing.html.\n    ```\n\n    After:\n    ```\n    > bin/rails routes -e engine_only\n    Routes for application:\n    No routes were found for this grep pattern.\n    For more information about routes, see the Rails guide: https://guides.rubyonrails.org/routing.html.\n\n    Routes for Test::Engine:\n    Prefix Verb URI Pattern       Controller#Action\n    engine GET  /engine_only(.:format) a#b\n    ```\n\n    *Dennis Paagman*, *Gannon McGibbon*",
+    "project": "actionpack",
+    "date_merged": 1758728583000,
+    "author": "Gannon McGibbon",
+    "sha": "2831cd0a0aa2a1aba663a27e700deb7af20b807d",
+    "pr": "55752",
+    "merge_sha": "5280b8e50cebccf733466cdeb736b2abdc2906c7",
+    "html": "<p>Add engine route filtering and better formatting in <code>bin/rails routes</code>.</p>\n\n<p>Allow engine routes to be filterable in the routing inspector, and<br />\nimprove formatting of engine routing output.</p>\n\n<p>Before:</p>\n<pre><code>&gt; bin/rails routes -e engine_only\nNo routes were found for this grep pattern.\nFor more information about routes, see the Rails guide: https://guides.rubyonrails.org/routing.html.\n</code></pre>\n\n<p>After:</p>\n<pre><code>&gt; bin/rails routes -e engine_only\nRoutes for application:\nNo routes were found for this grep pattern.\nFor more information about routes, see the Rails guide: https://guides.rubyonrails.org/routing.html.\n\nRoutes for Test::Engine:\nPrefix Verb URI Pattern       Controller#Action\nengine GET  /engine_only(.:format) a#b\n</code></pre>\n\n<p><em>Dennis Paagman</em>, <em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   Add structured events for Action Pack and Action Dispatch:\n    - `action_dispatch.redirect`\n    - `action_controller.request_started`\n    - `action_controller.request_completed`\n    - `action_controller.callback_halted`\n    - `action_controller.rescue_from_handled`\n    - `action_controller.file_sent`\n    - `action_controller.redirected`\n    - `action_controller.data_sent`\n    - `action_controller.unpermitted_parameters`\n    - `action_controller.fragment_cache`\n\n    *Adrianna Chang*",
     "project": "actionpack",
     "date_merged": 1758651738000,
@@ -778,6 +788,16 @@
     "pr": "53680",
     "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
+    "message": "*   Don't generate system tests by default.\n\n    Rails scaffold generator will no longer generate system tests by default. To enable this pass `--system-tests=true` or generate them with `bin/rails generate system_test name_of_test`.\n\n    *Eileen M. Uchitelle*",
+    "project": "railties",
+    "date_merged": 1758729107000,
+    "author": "eileencodes",
+    "sha": "45dff95effecbe85b4435ede5ee90ad21643abab",
+    "pr": "55743",
+    "merge_sha": "9e9f1ea3ce41361cf9c28f93105849d7196225f9",
+    "html": "<p>Don’t generate system tests by default.</p>\n\n<p>Rails scaffold generator will no longer generate system tests by default. To enable this pass <code>--system-tests=true</code> or generate them with <code>bin/rails generate system_test name_of_test</code>.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
   },
   {
     "message": "*   Optionally skip bundler-audit.\n\n    Skips adding the `bin/bundler-audit` & `config/bundler-audit.yml` if the gem is not installed when `bin/rails app:update` runs.\n\n    Passes an option to `--skip-bundler-audit` when new apps are generated & adds that same option to the `--minimal` generator flag.\n\n    *Jill Klang*",
