@@ -1,13 +1,13 @@
 [
   {
-    "message": "*   Add structured events for Action Mailer:\n    - `action_mailer.delivery_error`\n    - `action_mailer.delivered`\n    - `action_mailer.delivery_skipped`\n    - `action_mailer.processed`\n\n    *Gannon McGibbon*",
+    "message": "*   Add structured events for Action Mailer:\n    - `action_mailer.delivered`\n    - `action_mailer.processed`\n\n    *Gannon McGibbon*",
     "project": "actionmailer",
     "date_merged": 1758651738000,
     "author": "Gannon McGibbon",
     "sha": "a486b99a4f48d61171cb345a8e03d7436e825984",
     "pr": "55690",
     "merge_sha": "a8a0d295e3c522916020f40627ca5ddf1f4990bd",
-    "html": "<p>Add structured events for Action Mailer:</p>\n<ul>\n  <li><code>action_mailer.delivery_error</code></li>\n  <li><code>action_mailer.delivered</code></li>\n  <li><code>action_mailer.delivery_skipped</code></li>\n  <li><code>action_mailer.processed</code></li>\n</ul>\n\n<p><em>Gannon McGibbon</em></p>\n"
+    "html": "<p>Add structured events for Action Mailer:</p>\n<ul>\n  <li><code>action_mailer.delivered</code></li>\n  <li><code>action_mailer.processed</code></li>\n</ul>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
     "message": "*   Add `deliver_all_later` to enqueue multiple emails at once.\n\n    ```ruby\n    user_emails = User.all.map { |user| Notifier.welcome(user) }\n    ActionMailer.deliver_all_later(user_emails)\n\n    # use a custom queue\n    ActionMailer.deliver_all_later(user_emails, queue: :my_queue)\n    ```\n\n    This can greatly reduce the number of round-trips to the queue datastore.\n    For queue adapters that do not implement the `enqueue_all` method, we\n    fall back to enqueuing email jobs indvidually.\n\n    *fatkodima*",
@@ -1080,14 +1080,14 @@
     "html": "<p>Add <code>reply_to_address</code> extension method on <code>Mail::Message</code>.</p>\n\n<p><em>Mr0grog</em></p>\n"
   },
   {
-    "message": "*   Add structured events for Active Job:\n    - `active_job.enqueue_failed`\n    - `active_job.enqueue_aborted`\n    - `active_job.enqueued`\n    - `active_job.bulk_enqueued`\n    - `active_job.started`\n    - `active_job.failed`\n    - `active_job.aborted`\n    - `active_job.completed`\n    - `active_job.retry_scheduled`\n    - `active_job.retry_stopped`\n    - `active_job.discarded`\n    - `active_job.interrupt`\n    - `active_job.resume`\n    - `active_job.step_skipped`\n    - `active_job.step_resumed`\n    - `active_job.step_started`\n    - `active_job.step_interrupted`\n    - `active_job.step_errored`\n    - `active_job.step`\n\n    *Adrianna Chang*",
+    "message": "*   Add structured events for Active Job:\n    - `active_job.enqueued`\n    - `active_job.bulk_enqueued`\n    - `active_job.started`\n    - `active_job.completed`\n    - `active_job.retry_scheduled`\n    - `active_job.retry_stopped`\n    - `active_job.discarded`\n    - `active_job.interrupt`\n    - `active_job.resume`\n    - `active_job.step_skipped`\n    - `active_job.step_started`\n    - `active_job.step`\n\n    *Adrianna Chang*",
     "project": "activejob",
     "date_merged": 1758651738000,
     "author": "Adrianna Chang",
     "sha": "1a25283bb156a1fe9aeb822a03d1872bc49a8e11",
     "pr": "55690",
     "merge_sha": "a8a0d295e3c522916020f40627ca5ddf1f4990bd",
-    "html": "<p>Add structured events for Active Job:</p>\n<ul>\n  <li><code>active_job.enqueue_failed</code></li>\n  <li><code>active_job.enqueue_aborted</code></li>\n  <li><code>active_job.enqueued</code></li>\n  <li><code>active_job.bulk_enqueued</code></li>\n  <li><code>active_job.started</code></li>\n  <li><code>active_job.failed</code></li>\n  <li><code>active_job.aborted</code></li>\n  <li><code>active_job.completed</code></li>\n  <li><code>active_job.retry_scheduled</code></li>\n  <li><code>active_job.retry_stopped</code></li>\n  <li><code>active_job.discarded</code></li>\n  <li><code>active_job.interrupt</code></li>\n  <li><code>active_job.resume</code></li>\n  <li><code>active_job.step_skipped</code></li>\n  <li><code>active_job.step_resumed</code></li>\n  <li><code>active_job.step_started</code></li>\n  <li><code>active_job.step_interrupted</code></li>\n  <li><code>active_job.step_errored</code></li>\n  <li><code>active_job.step</code></li>\n</ul>\n\n<p><em>Adrianna Chang</em></p>\n"
+    "html": "<p>Add structured events for Active Job:</p>\n<ul>\n  <li><code>active_job.enqueued</code></li>\n  <li><code>active_job.bulk_enqueued</code></li>\n  <li><code>active_job.started</code></li>\n  <li><code>active_job.completed</code></li>\n  <li><code>active_job.retry_scheduled</code></li>\n  <li><code>active_job.retry_stopped</code></li>\n  <li><code>active_job.discarded</code></li>\n  <li><code>active_job.interrupt</code></li>\n  <li><code>active_job.resume</code></li>\n  <li><code>active_job.step_skipped</code></li>\n  <li><code>active_job.step_started</code></li>\n  <li><code>active_job.step</code></li>\n</ul>\n\n<p><em>Adrianna Chang</em></p>\n"
   },
   {
     "message": "*   Deprecate built-in `sidekiq` adapter.\n\n    If you're using this adapter, upgrade to `sidekiq` 7.3.3 or later to use the `sidekiq` gem's adapter.\n\n    *fatkodima*",
