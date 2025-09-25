@@ -1040,6 +1040,16 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
+    "message": "*   Optimize schema dumping to prevent duplicate file generation.\n\n    `ActiveRecord::Tasks::DatabaseTasks.dump_all` now tracks which schema files\n    have already been dumped and skips dumping the same file multiple times.\n    This improves performance when multiple database configurations share the\n    same schema dump path.\n\n    *Mikey Gough*, *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1758815213000,
+    "author": "Mikey Gough",
+    "sha": "83e1bd0a5cc42a339a039e30ebfd3fc6274b0597",
+    "pr": "55713",
+    "merge_sha": "ce6a244a47a94f74969a5d29c90b03376e303c2f",
+    "html": "<p>Optimize schema dumping to prevent duplicate file generation.</p>\n\n<p><code>ActiveRecord::Tasks::DatabaseTasks.dump_all</code> now tracks which schema files<br />\nhave already been dumped and skips dumping the same file multiple times.<br />\nThis improves performance when multiple database configurations share the<br />\nsame schema dump path.</p>\n\n<p><em>Mikey Gough</em>, <em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Add structured events for Active Record:\n    - `active_record.strict_loading_violation`\n    - `active_record.sql`\n\n    *Gannon McGibbon*",
     "project": "activerecord",
     "date_merged": 1758651738000,
