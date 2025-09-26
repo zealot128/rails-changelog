@@ -280,6 +280,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Add `action_dispatch.verbose_redirect_logs` setting that logs where redirects were called from.\n\n    Similar to `active_record.verbose_query_logs` and `active_job.verbose_enqueue_logs`, this adds a line in your logs that shows where a redirect was called from.\n\n    Example:\n\n    ```\n    Redirected to http://localhost:3000/posts/1\n    ↳ app/controllers/posts_controller.rb:32:in `block (2 levels) in create'\n    ```\n\n    *Dennis Paagman*",
+    "project": "actionpack",
+    "date_merged": 1758875288000,
+    "author": "Dennis Paagman",
+    "sha": "39425b1009dab86d41c5f826cb0c96c38c623a9d",
+    "pr": "52297",
+    "merge_sha": "f1537e6cc3451e1ca6c5ab271d01c6bca20e115b",
+    "html": "<p>Add <code>action_dispatch.verbose_redirect_logs</code> setting that logs where redirects were called from.</p>\n\n<p>Similar to <code>active_record.verbose_query_logs</code> and <code>active_job.verbose_enqueue_logs</code>, this adds a line in your logs that shows where a redirect was called from.</p>\n\n<p>Example:</p>\n\n<pre><code>Redirected to http://localhost:3000/posts/1\n↳ app/controllers/posts_controller.rb:32:in `block (2 levels) in create'\n</code></pre>\n\n<p><em>Dennis Paagman</em></p>\n"
+  },
+  {
     "message": "*   Add engine route filtering and better formatting in `bin/rails routes`.\n\n    Allow engine routes to be filterable in the routing inspector, and\n    improve formatting of engine routing output.\n\n    Before:\n    ```\n    > bin/rails routes -e engine_only\n    No routes were found for this grep pattern.\n    For more information about routes, see the Rails guide: https://guides.rubyonrails.org/routing.html.\n    ```\n\n    After:\n    ```\n    > bin/rails routes -e engine_only\n    Routes for application:\n    No routes were found for this grep pattern.\n    For more information about routes, see the Rails guide: https://guides.rubyonrails.org/routing.html.\n\n    Routes for Test::Engine:\n    Prefix Verb URI Pattern       Controller#Action\n    engine GET  /engine_only(.:format) a#b\n    ```\n\n    *Dennis Paagman*, *Gannon McGibbon*",
     "project": "actionpack",
     "date_merged": 1758728583000,
@@ -1038,6 +1048,16 @@
     "pr": "53680",
     "merge_sha": "b7165a33649d9e4132730feb6fbd39d4ed49dc0d",
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
+  },
+  {
+    "message": "*   Add replicas to test database parallelization setup.\n\n    Setup and configuration of databases for parallel testing now includes replicas.\n\n    This fixes an issue when using a replica database, database selector middleware,\n    and non-transactional tests, where integration tests running in parallel would select\n    the base test database, i.e. `db_test`, instead of the numbered parallel worker database,\n    i.e. `db_test_{n}`.\n\n    *Adam Maas*",
+    "project": "activerecord",
+    "date_merged": 1758907471000,
+    "author": "Adam Maas",
+    "sha": "26d54e979b9d9df7b7ddc68843f6edf4f1ed5822",
+    "pr": "55769",
+    "merge_sha": "914b5a4f14e847d9d57e89ab2157f5687e72dd83",
+    "html": "<p>Add replicas to test database parallelization setup.</p>\n\n<p>Setup and configuration of databases for parallel testing now includes replicas.</p>\n\n<p>This fixes an issue when using a replica database, database selector middleware,<br />\nand non-transactional tests, where integration tests running in parallel would select<br />\nthe base test database, i.e. <code>db_test</code>, instead of the numbered parallel worker database,<br />\ni.e. <code>db_test_{n}</code>.</p>\n\n<p><em>Adam Maas</em></p>\n"
   },
   {
     "message": "*   Support virtual (not persisted) generated columns on PostgreSQL 18+\n\n    PostgreSQL 18 introduces virtual (not persisted) generated columns,\n    which are now the default unless the `stored: true` option is explicitly specified on PostgreSQL 18+.\n\n    ```ruby\n    create_table :users do |t|\n      t.string :name\n      t.virtual :lower_name,  type: :string,  as: \"LOWER(name)\", stored: false\n      t.virtual :name_length, type: :integer, as: \"LENGTH(name)\"\n    end\n    ```\n\n    *Yasuo Honda*",
