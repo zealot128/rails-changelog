@@ -1040,6 +1040,16 @@
     "html": "<p>Make <code>ActiveSupport::FileUpdateChecker</code> faster when checking many file-extensions.</p>\n\n<p><em>Jonathan del Strother</em></p>\n"
   },
   {
+    "message": "*   Support virtual (not persisted) generated columns on PostgreSQL 18+\n\n    PostgreSQL 18 introduces virtual (not persisted) generated columns,\n    which are now the default unless the `stored: true` option is explicitly specified on PostgreSQL 18+.\n\n    ```ruby\n    create_table :users do |t|\n      t.string :name\n      t.virtual :lower_name,  type: :string,  as: \"LOWER(name)\", stored: false\n      t.virtual :name_length, type: :integer, as: \"LENGTH(name)\"\n    end\n    ```\n\n    *Yasuo Honda*",
+    "project": "activerecord",
+    "date_merged": 1758862606000,
+    "author": "Yasuo Honda",
+    "sha": "c2b5be9a72dc314df26275926e0e7c89ea0c17f7",
+    "pr": "55142",
+    "merge_sha": "54bfb6f617573ecc5524e3a1eff60df85f577a9e",
+    "html": "<p>Support virtual (not persisted) generated columns on PostgreSQL 18+</p>\n\n<p>PostgreSQL 18 introduces virtual (not persisted) generated columns,<br />\nwhich are now the default unless the <code>stored: true</code> option is explicitly specified on PostgreSQL 18+.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">create_table</span> <span class=\"ss\">:users</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">string</span> <span class=\"ss\">:name</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">virtual</span> <span class=\"ss\">:lower_name</span><span class=\"p\">,</span>  <span class=\"ss\">type: :string</span><span class=\"p\">,</span>  <span class=\"ss\">as: </span><span class=\"s2\">\"LOWER(name)\"</span><span class=\"p\">,</span> <span class=\"ss\">stored: </span><span class=\"kp\">false</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">virtual</span> <span class=\"ss\">:name_length</span><span class=\"p\">,</span> <span class=\"ss\">type: :integer</span><span class=\"p\">,</span> <span class=\"ss\">as: </span><span class=\"s2\">\"LENGTH(name)\"</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
     "message": "*   Optimize schema dumping to prevent duplicate file generation.\n\n    `ActiveRecord::Tasks::DatabaseTasks.dump_all` now tracks which schema files\n    have already been dumped and skips dumping the same file multiple times.\n    This improves performance when multiple database configurations share the\n    same schema dump path.\n\n    *Mikey Gough*, *Hartley McGuire*",
     "project": "activerecord",
     "date_merged": 1758815213000,
