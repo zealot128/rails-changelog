@@ -660,6 +660,16 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Fix `NameError` when `class_attribute` is defined on instance singleton classes.\n\n    Previously, calling `class_attribute` on an instance's singleton class would raise\n    a `NameError` when accessing the attribute through the instance.\n\n    ```ruby\n    object = MyClass.new\n    object.singleton_class.class_attribute :foo, default: \"bar\"\n    object.foo # previously raised NameError, now returns \"bar\"\n    ```\n\n    *Joshua Young*",
+    "project": "activesupport",
+    "date_merged": 1758961527000,
+    "author": "Joshua Young",
+    "sha": "f2024b09d713fde3cd23e2b08dadd719afa98c88",
+    "pr": "55776",
+    "merge_sha": "1772a54dc44e97b10f64173b46ce291f88e3cf5b",
+    "html": "<p>Fix <code>NameError</code> when <code>class_attribute</code> is defined on instance singleton classes.</p>\n\n<p>Previously, calling <code>class_attribute</code> on an instance’s singleton class would raise<br />\na <code>NameError</code> when accessing the attribute through the instance.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">object</span> <span class=\"o\">=</span> <span class=\"no\">MyClass</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"n\">object</span><span class=\"p\">.</span><span class=\"nf\">singleton_class</span><span class=\"p\">.</span><span class=\"nf\">class_attribute</span> <span class=\"ss\">:foo</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"s2\">\"bar\"</span>\n<span class=\"n\">object</span><span class=\"p\">.</span><span class=\"nf\">foo</span> <span class=\"c1\"># previously raised NameError, now returns \"bar\"</span>\n</code></pre></div></div>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Introduce `ActiveSupport::Testing::EventReporterAssertions#with_debug_event_reporting`\n    to enable event reporter debug mode in tests.\n\n    The previous way to enable debug mode is by using `#with_debug` on the\n    event reporter itself, which is too verbose. This new helper will help\n    clear up any confusion on how to test debug events.\n\n    *Gannon McGibbon*",
     "project": "activesupport",
     "date_merged": 1758740515000,
