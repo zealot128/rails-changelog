@@ -660,6 +660,26 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Fix parallel tests hanging when worker processes die abruptly.\n\n    Previously, if a worker process was killed (e.g., OOM killed, `kill -9`) during parallel\n    test execution, the test suite would hang forever waiting for the dead worker.\n\n    *Joshua Young*",
+    "project": "activesupport",
+    "date_merged": 1759150513000,
+    "author": "Joshua Young",
+    "sha": "5399166e864227d11d3b894eef78398442aa161e",
+    "pr": "55513",
+    "merge_sha": "cf6b3107753a762b27bfcf9eefcfd9feb43f0242",
+    "html": "<p>Fix parallel tests hanging when worker processes die abruptly.</p>\n\n<p>Previously, if a worker process was killed (e.g., OOM killed, <code>kill -9</code>) during parallel<br />\ntest execution, the test suite would hang forever waiting for the dead worker.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Add `config.active_support.escape_js_separators_in_json`.\n\n    Introduce a new framework default to skip escaping LINE SEPARATOR (U+2028) and PARAGRAPH SEPARATOR (U+2029) in JSON.\n\n    Historically these characters were not valid inside JavaScript literal strings but that changed in ECMAScript 2019.\n    As such it's no longer a concern in modern browsers: https://caniuse.com/mdn-javascript_builtins_json_json_superset.\n\n    *Étienne Barrié*, *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1759145575000,
+    "author": "Étienne Barrié",
+    "sha": "943a31c500c62e3f81d7997a7586fb9bd1b5cd5f",
+    "pr": "55800",
+    "merge_sha": "33a9744167abc1f1da14e88c61cad140d3ca630f",
+    "html": "<p>Add <code>config.active_support.escape_js_separators_in_json</code>.</p>\n\n<p>Introduce a new framework default to skip escaping LINE SEPARATOR (U+2028) and PARAGRAPH SEPARATOR (U+2029) in JSON.</p>\n\n<p>Historically these characters were not valid inside JavaScript literal strings but that changed in ECMAScript 2019.<br />\nAs such it’s no longer a concern in modern browsers: https://caniuse.com/mdn-javascript_builtins_json_json_superset.</p>\n\n<p><em>Étienne Barrié</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Fix `NameError` when `class_attribute` is defined on instance singleton classes.\n\n    Previously, calling `class_attribute` on an instance's singleton class would raise\n    a `NameError` when accessing the attribute through the instance.\n\n    ```ruby\n    object = MyClass.new\n    object.singleton_class.class_attribute :foo, default: \"bar\"\n    object.foo # previously raised NameError, now returns \"bar\"\n    ```\n\n    *Joshua Young*",
     "project": "activesupport",
     "date_merged": 1758961527000,
