@@ -280,6 +280,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   `remote_ip` will no longer ignore IPs in X-Forwarded-For headers if they\n    are accompanied by port information.\n\n    *Duncan Brown*, *Prevenios Marinos*, *Masafumi Koba*, *Adam Daniels*",
+    "project": "actionpack",
+    "date_merged": 1759774146000,
+    "author": "Duncan Brown",
+    "sha": "2d084af8444a7b6b868c7cbb256172007871e78d",
+    "pr": "49894",
+    "merge_sha": "9c1e365662d54f410907448e48a69dde5b5d276f",
+    "html": "<p><code>remote_ip</code> will no longer ignore IPs in X-Forwarded-For headers if they<br />\nare accompanied by port information.</p>\n\n<p><em>Duncan Brown</em>, <em>Prevenios Marinos</em>, <em>Masafumi Koba</em>, <em>Adam Daniels</em></p>\n"
+  },
+  {
     "message": "*   Add `action_dispatch.verbose_redirect_logs` setting that logs where redirects were called from.\n\n    Similar to `active_record.verbose_query_logs` and `active_job.verbose_enqueue_logs`, this adds a line in your logs that shows where a redirect was called from.\n\n    Example:\n\n    ```\n    Redirected to http://localhost:3000/posts/1\n    ↳ app/controllers/posts_controller.rb:32:in `block (2 levels) in create'\n    ```\n\n    *Dennis Paagman*",
     "project": "actionpack",
     "date_merged": 1758875288000,
@@ -2088,6 +2098,16 @@
     "pr": "53623",
     "merge_sha": "cfc6c5656f10452f354cd5bd28dd4ae020834a40",
     "html": "<p>A Blob will no longer autosave associated Attachment.</p>\n\n<p>This fixes an issue where a record with an attachment would have<br />\nits dirty attributes reset, preventing your <code>after commit</code> callbacks<br />\non that record to behave as expected.</p>\n\n<p>Note that this change doesn’t require any changes on your application<br />\nand is supposed to be internal. Active Storage Attachment will continue<br />\nto be autosaved (through a different relation).</p>\n\n<p><em>Edouard-chin</em></p>\n"
+  },
+  {
+    "message": "*   Add `reset_token: { expires_in: ... }` option to `has_secure_password`.\n\n    Allows configuring the expiry duration of password reset tokens (default remains 15 minutes for backwards compatibility).\n\n    ```ruby\n    has_secure_password reset_token: { expires_in: 1.hour }\n    ```\n\n    *Jevin Sew*, *Abeid Ahmed*",
+    "project": "activemodel",
+    "date_merged": 1759735941000,
+    "author": "Jevin Sew",
+    "sha": "ee29930f58bf125763aeecedaa5048d95f3f1d4b",
+    "pr": "55574",
+    "merge_sha": "d0486d0aefc8a487a20a582868df7e0662fd3520",
+    "html": "<p>Add <code>reset_token: { expires_in: ... }</code> option to <code>has_secure_password</code>.</p>\n\n<p>Allows configuring the expiry duration of password reset tokens (default remains 15 minutes for backwards compatibility).</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">has_secure_password</span> <span class=\"ss\">reset_token: </span><span class=\"p\">{</span> <span class=\"ss\">expires_in: </span><span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">hour</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p><em>Jevin Sew</em>, <em>Abeid Ahmed</em></p>\n"
   },
   {
     "message": "*   Add `except_on:` option for validation callbacks.\n\n    *Ben Sheldon*",
