@@ -290,6 +290,16 @@
     "html": "<p>Ensure all bug report templates set <code>config.secret_key_base</code> to avoid<br />\ngeneration of <code>tmp/local_secret.txt</code> files when running the report template.</p>\n\n<p><em>Andrew White</em></p>\n"
   },
   {
+    "message": "*   Add link-local IP ranges to `ActionDispatch::RemoteIp` default proxies.\n\n    Link-local addresses (`169.254.0.0/16` for IPv4 and `fe80::/10` for IPv6)\n    are now included in the default trusted proxy list, similar to private IP ranges.\n\n    *Adam Daniels*",
+    "project": "actionpack",
+    "date_merged": 1759829838000,
+    "author": "Adam Daniels",
+    "sha": "0a6abea2089bd33844d103fa2b5d23bc57e45b0d",
+    "pr": "55821",
+    "merge_sha": "5d258574168692c7921637c47dd92498e8879855",
+    "html": "<p>Add link-local IP ranges to <code>ActionDispatch::RemoteIp</code> default proxies.</p>\n\n<p>Link-local addresses (<code>169.254.0.0/16</code> for IPv4 and <code>fe80::/10</code> for IPv6)<br />\nare now included in the default trusted proxy list, similar to private IP ranges.</p>\n\n<p><em>Adam Daniels</em></p>\n"
+  },
+  {
     "message": "*   `remote_ip` will no longer ignore IPs in X-Forwarded-For headers if they\n    are accompanied by port information.\n\n    *Duncan Brown*, *Prevenios Marinos*, *Masafumi Koba*, *Adam Daniels*",
     "project": "actionpack",
     "date_merged": 1759774146000,
@@ -678,6 +688,16 @@
     "pr": "53236",
     "merge_sha": "ed72523a86fb6010e056667f294fee34ba276aed",
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Standardize event name formatting in `assert_event_reported` error messages.\n\n    The event name in failure messages now uses `.inspect` (e.g., `name: \"user.created\"`)\n    to match `assert_events_reported` and provide type clarity between strings and symbols.\n    This only affects tests that assert on the failure message format itself.\n\n    *George Ma*",
+    "project": "activesupport",
+    "date_merged": 1759855747000,
+    "author": "George Ma",
+    "sha": "d95fc7175e50b298b40c416ff0f9fcfa4ca3448a",
+    "pr": "55859",
+    "merge_sha": "65c74a97146060f727a070ec93a456a677f75ed7",
+    "html": "<p>Standardize event name formatting in <code>assert_event_reported</code> error messages.</p>\n\n<p>The event name in failure messages now uses <code>.inspect</code> (e.g., <code>name: \"user.created\"</code>)<br />\nto match <code>assert_events_reported</code> and provide type clarity between strings and symbols.<br />\nThis only affects tests that assert on the failure message format itself.</p>\n\n<p><em>George Ma</em></p>\n"
   },
   {
     "message": "*   Fix `Enumerable#sole` to return the full tuple instead of just the first element of the tuple.\n\n    *Olivier Bellone*",
