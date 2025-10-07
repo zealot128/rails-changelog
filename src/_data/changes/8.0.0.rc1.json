@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   The BEGIN template annotation/comment was previously printed on the same line as the following element. We now insert a newline inside the comment so it spans two lines without adding visible whitespace to the HTML output to enhance readability.\n\n    Before:\n    ```\n    <!-- BEGIN /Users/siaw23/Desktop/rails/actionview/test/fixtures/actionpack/test/greeting.html.erb --><p>This is grand!</p>\n    ```\n\n    After:\n    ```\n    <!-- BEGIN /Users/siaw23/Desktop/rails/actionview/test/fixtures/actionpack/test/greeting.html.erb\n    --><p>This is grand!</p>\n    ```\n    *Emmanuel Hayford*",
+    "project": "actionview",
+    "date_merged": 1759796444000,
+    "author": "Emmanuel Hayford",
+    "sha": "4ae5bfc3a04db36d0f274b272eb68d6136ffb63b",
+    "pr": "53731",
+    "merge_sha": "2ea1d9bd035e9f41d535d673efbaf4173441ab34",
+    "html": "<p>The BEGIN template annotation/comment was previously printed on the same line as the following element. We now insert a newline inside the comment so it spans two lines without adding visible whitespace to the HTML output to enhance readability.</p>\n\n<p>Before:</p>\n<pre><code>&lt;!-- BEGIN /Users/siaw23/Desktop/rails/actionview/test/fixtures/actionpack/test/greeting.html.erb --&gt;&lt;p&gt;This is grand!&lt;/p&gt;\n</code></pre>\n\n<p>After:</p>\n<pre><code>&lt;!-- BEGIN /Users/siaw23/Desktop/rails/actionview/test/fixtures/actionpack/test/greeting.html.erb\n--&gt;&lt;p&gt;This is grand!&lt;/p&gt;\n</code></pre>\n<p><em>Emmanuel Hayford</em></p>\n"
+  },
+  {
     "message": "*   Add structured events for Action View:\n    - `action_view.render_template`\n    - `action_view.render_partial`\n    - `action_view.render_layout`\n    - `action_view.render_collection`\n    - `action_view.render_start`\n\n    *Gannon McGibbon*",
     "project": "actionview",
     "date_merged": 1758651738000,
