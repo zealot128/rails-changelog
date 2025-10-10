@@ -690,6 +690,56 @@
     "html": "<p>Allow setting content type with a symbol of the Mime type.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"s2\">\"text/html\"</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">response</span><span class=\"p\">.</span><span class=\"nf\">content_type</span> <span class=\"o\">=</span> <span class=\"ss\">:html</span>\n</code></pre></div></div>\n\n<p><em>Petrik de Heus</em></p>\n"
   },
   {
+    "message": "*   Remove deprecated passing a Time object to `Time#since`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1760059059000,
+    "author": "Rafael Mendonça França",
+    "sha": "a855714642a1e3b3740cf8608c72fa7a6177f107",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Remove deprecated passing a Time object to <code>Time#since</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `Benchmark.ms` method. It is now defined in the `benchmark` gem.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1760059058000,
+    "author": "Rafael Mendonça França",
+    "sha": "632b2c5128581731c2451459081176a43f474f74",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Remove deprecated <code>Benchmark.ms</code> method. It is now defined in the <code>benchmark</code> gem.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated addition for `Time` instances with `ActiveSupport::TimeWithZone`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1760058224000,
+    "author": "Rafael Mendonça França",
+    "sha": "93d370c722898c5fadfaf8fa87dc434d4a3fea59",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Remove deprecated addition for <code>Time</code> instances with <code>ActiveSupport::TimeWithZone</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated support for `to_time` to preserve the system local time. It will now always preserve the receiver\n    timezone.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1760058223000,
+    "author": "Rafael Mendonça França",
+    "sha": "c79dc282d687cff1c5dc81e19d27257dca5e6a80",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Remove deprecated support for <code>to_time</code> to preserve the system local time. It will now always preserve the receiver<br />\ntimezone.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `config.active_support.to_time_preserves_timezone`.\n\n    *Rafael Mendonça França*",
+    "project": "activesupport",
+    "date_merged": 1760058223000,
+    "author": "Rafael Mendonça França",
+    "sha": "c79dc282d687cff1c5dc81e19d27257dca5e6a80",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Deprecate <code>config.active_support.to_time_preserves_timezone</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
     "message": "*   Standardize event name formatting in `assert_event_reported` error messages.\n\n    The event name in failure messages now uses `.inspect` (e.g., `name: \"user.created\"`)\n    to match `assert_events_reported` and provide type clarity between strings and symbols.\n    This only affects tests that assert on the failure message format itself.\n\n    *George Ma*",
     "project": "activesupport",
     "date_merged": 1759855747000,
@@ -2178,6 +2228,36 @@
     "pr": "55448",
     "merge_sha": "982f96d205c37b854c820b163a3d9c7649dd0235",
     "html": "<p>Add <code>deliver_all_later</code> to enqueue multiple emails at once.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">user_emails</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">all</span><span class=\"p\">.</span><span class=\"nf\">map</span> <span class=\"p\">{</span> <span class=\"o\">|</span><span class=\"n\">user</span><span class=\"o\">|</span> <span class=\"no\">Notifier</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"n\">user</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n<span class=\"no\">ActionMailer</span><span class=\"p\">.</span><span class=\"nf\">deliver_all_later</span><span class=\"p\">(</span><span class=\"n\">user_emails</span><span class=\"p\">)</span>\n\n<span class=\"c1\"># use a custom queue</span>\n<span class=\"no\">ActionMailer</span><span class=\"p\">.</span><span class=\"nf\">deliver_all_later</span><span class=\"p\">(</span><span class=\"n\">user_emails</span><span class=\"p\">,</span> <span class=\"ss\">queue: :my_queue</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>This can greatly reduce the number of round-trips to the queue datastore.<br />\nFor queue adapters that do not implement the <code>enqueue_all</code> method, we<br />\nfall back to enqueuing email jobs indvidually.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `STATS_DIRECTORIES`.\n\n    *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1760059062000,
+    "author": "Rafael Mendonça França",
+    "sha": "d4b2d78c0c95e0a37d088cd378d27522073fd738",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Remove deprecated <code>STATS_DIRECTORIES</code>.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `bin/rake stats` command.\n\n    *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1760059061000,
+    "author": "Rafael Mendonça França",
+    "sha": "cf7d5e47a91ec68333cd18a02704471bedd047ac",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Remove deprecated <code>bin/rake stats</code> command.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Remove deprecated `rails/console/methods.rb` file.\n\n    *Rafael Mendonça França*",
+    "project": "railties",
+    "date_merged": 1760059060000,
+    "author": "Rafael Mendonça França",
+    "sha": "9fc9e118fe796dcb26ff383eaa0876d1f351fb7f",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Remove deprecated <code>rails/console/methods.rb</code> file.</p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
   },
   {
     "message": "*   Don't generate system tests by default.\n\n    Rails scaffold generator will no longer generate system tests by default. To enable this pass `--system-tests=true` or generate them with `bin/rails generate system_test name_of_test`.\n\n    *Eileen M. Uchitelle*",
