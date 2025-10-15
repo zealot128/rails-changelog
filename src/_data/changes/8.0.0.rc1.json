@@ -1,5 +1,55 @@
 [
   {
+    "message": "*   Add `key:` and `expires_in:` options under `cached:` to `render` when used with `collection:`\n\n    *Jarrett Lusso*",
+    "project": "actionview",
+    "date_merged": 1760538522000,
+    "author": "Jarrett Lusso",
+    "sha": "e60b82402439f4b0d8a9b9b0a7a0178239ba5de1",
+    "pr": "51579",
+    "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
+    "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
+  },
+  {
+    "message": "*   Fix negative scopes for enums to include records with `nil` values.\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1760548122000,
+    "author": "fatkodima",
+    "sha": "d81fbf33bc9c478fca57252255cbd0013fe137b6",
+    "pr": "55912",
+    "merge_sha": "177186ab1c6361e9d95e7fc7751d569563c7f547",
+    "html": "<p>Fix negative scopes for enums to include records with <code>nil</code> values.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Improve support for SQLite database URIs.\n\n    The `db:create` and `db:drop` tasks now correctly handle SQLite database URIs, and the\n    SQLite3Adapter will create the parent directory if it does not exist.\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1760539324000,
+    "author": "Mike Dalessio",
+    "sha": "f1f60dc12779f4237a5cbb4ba28428952813ba86",
+    "pr": "55896",
+    "merge_sha": "384420e95c537a8c7b28a0c301118bd0abd66d09",
+    "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Report unhandled exceptions to the Error Reporter when running rake tasks via Rails command.\n\n    *Akimichi Tanei*",
+    "project": "railties",
+    "date_merged": 1760546378000,
+    "author": "kakudooo",
+    "sha": "b379af17488a1d75d4218317c839e6b653ab3d05",
+    "pr": "55913",
+    "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
+    "html": "<p>Report unhandled exceptions to the Error Reporter when running rake tasks via Rails command.</p>\n\n<p><em>Akimichi Tanei</em></p>\n"
+  },
+  {
+    "message": "*   Show help hint when starting `bin/rails console`\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1760537290000,
+    "author": "Petrik",
+    "sha": "e0ae228272f36cedca8ecff18f6cf6d0e58e5691",
+    "pr": "55910",
+    "merge_sha": "039cb87b806141677ddc85b697d7860d74a9e022",
+    "html": "<p>Show help hint when starting <code>bin/rails console</code></p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Persist `/rails/info/routes` search query and results between page reloads.\n\n    *Ryan Kulp*",
     "project": "railties",
     "date_merged": 1760505109000,
@@ -8,5 +58,15 @@
     "pr": "55903",
     "merge_sha": "87ecc56aed72c9fe57b79b2a83c8f94656bf4878",
     "html": "<p>Persist <code>/rails/info/routes</code> search query and results between page reloads.</p>\n\n<p><em>Ryan Kulp</em></p>\n"
+  },
+  {
+    "message": "*   Add `--update` option to the `bin/bundler-audit` script.\n\n    *Julien ANNE*",
+    "project": "railties",
+    "date_merged": 1760546378000,
+    "author": "Julien ANNE",
+    "sha": "a7d6dc30b69a0144acb2eef8e9cd5dae56d8a628",
+    "pr": "55913",
+    "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
+    "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
   }
 ]
