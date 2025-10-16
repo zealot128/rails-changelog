@@ -10,6 +10,16 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Submit test requests using `as: :html` with `Content-Type: x-www-form-urlencoded`\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1760626310000,
+    "author": "Sean Doyle",
+    "sha": "eac1f55425de30c614cb1410c19e13921bfeb164",
+    "pr": "50390",
+    "merge_sha": "c941680274902f2778840344344e552c5160c65b",
+    "html": "<p>Submit test requests using <code>as: :html</code> with <code>Content-Type: x-www-form-urlencoded</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Fix negative scopes for enums to include records with `nil` values.\n\n    *fatkodima*",
     "project": "activerecord",
     "date_merged": 1760548122000,
@@ -28,6 +38,36 @@
     "pr": "55896",
     "merge_sha": "384420e95c537a8c7b28a0c301118bd0abd66d09",
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   `ActiveStorage::Blob#open` can now be used without passing a block, like `Tempfile.open`. When using this form the\n    returned temporary file must be unlinked manually.\n\n    *Bart de Water*",
+    "project": "activestorage",
+    "date_merged": 1760633630000,
+    "author": "Bart de Water",
+    "sha": "89ea0311033f362d8ddf85629bf34e78eba501f4",
+    "pr": "49990",
+    "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
+    "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Add error type support arguments to `ActiveModel::Errors#messages_for` and `ActiveModel::Errors#full_messages_for`\n\n    ```ruby\n    person = Person.create()\n    person.errors.full_messages_for(:name, :invalid)\n    # => [\"Name is invalid\"]\n\n    person.errors.messages_for(:name, :invalid)\n    # => [\"is invalid\"]\n    ```\n\n    *Eugene Bezludny*",
+    "project": "activemodel",
+    "date_merged": 1760634701000,
+    "author": "Eugene",
+    "sha": "6ff7803661ac7ef18416ba1c4bc72861c009b420",
+    "pr": "53096",
+    "merge_sha": "b8c36437be134d99779306396ff910603ecf6982",
+    "html": "<p>Add error type support arguments to <code>ActiveModel::Errors#messages_for</code> and <code>ActiveModel::Errors#full_messages_for</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">person</span> <span class=\"o\">=</span> <span class=\"no\">Person</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">()</span>\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">errors</span><span class=\"p\">.</span><span class=\"nf\">full_messages_for</span><span class=\"p\">(</span><span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:invalid</span><span class=\"p\">)</span>\n<span class=\"c1\"># =&gt; [\"Name is invalid\"]</span>\n\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">errors</span><span class=\"p\">.</span><span class=\"nf\">messages_for</span><span class=\"p\">(</span><span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:invalid</span><span class=\"p\">)</span>\n<span class=\"c1\"># =&gt; [\"is invalid\"]</span>\n</code></pre></div></div>\n\n<p><em>Eugene Bezludny</em></p>\n"
+  },
+  {
+    "message": "*   Make `ActiveModel::Serialization#read_attribute_for_serialization` public\n\n    *Sean Doyle*",
+    "project": "activemodel",
+    "date_merged": 1760634701000,
+    "author": "Eugene",
+    "sha": "6ff7803661ac7ef18416ba1c4bc72861c009b420",
+    "pr": "53096",
+    "merge_sha": "b8c36437be134d99779306396ff910603ecf6982",
+    "html": "<p>Make <code>ActiveModel::Serialization#read_attribute_for_serialization</code> public</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Add `assert_part` and `assert_no_part` to `ActionMailer::TestCase`\n\n    ```ruby\n    test \"assert MyMailer.welcome HTML and text parts\" do\n      mail = MyMailer.welcome(\"Hello, world\")\n\n      assert_part :text, mail do |text|\n        assert_includes text, \"Hello, world\"\n      end\n      assert_part :html, mail do |html|\n        assert_dom html.root, \"p\", \"Hello, world\"\n      end\n    end\n    ```\n\n    *Sean Doyle*",
