@@ -30,6 +30,36 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Add `assert_part` and `assert_no_part` to `ActionMailer::TestCase`\n\n    ```ruby\n    test \"assert MyMailer.welcome HTML and text parts\" do\n      mail = MyMailer.welcome(\"Hello, world\")\n\n      assert_part :text, mail do |text|\n        assert_includes text, \"Hello, world\"\n      end\n      assert_part :html, mail do |html|\n        assert_dom html.root, \"p\", \"Hello, world\"\n      end\n    end\n    ```\n\n    *Sean Doyle*",
+    "project": "actionmailer",
+    "date_merged": 1760564922000,
+    "author": "Sean Doyle",
+    "sha": "8ee4ae23c9dbbe4f497b2d6332808194510b3a96",
+    "pr": "55348",
+    "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
+    "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   `Rails::Application::RoutesReloader` uses the configured `Rails.application.config.file_watcher`\n\n    *Jan Grodowski*",
+    "project": "railties",
+    "date_merged": 1760577092000,
+    "author": "Jan Grodowski",
+    "sha": "d77afd2321f9b3604d52b7ad1c10750af3306329",
+    "pr": "55708",
+    "merge_sha": "c1c824ebca5c8efe65d902efe6ff83d45da33cf0",
+    "html": "<p><code>Rails::Application::RoutesReloader</code> uses the configured <code>Rails.application.config.file_watcher</code></p>\n\n<p><em>Jan Grodowski</em></p>\n"
+  },
+  {
+    "message": "*   Add structured event for Rails deprecations, when `config.active_support.deprecation` is set to `:notify`.\n\n    *zzak*",
+    "project": "railties",
+    "date_merged": 1760570830000,
+    "author": "zzak",
+    "sha": "7e8fa100fae0b952e5792592d55c0e8dad77899c",
+    "pr": "55838",
+    "merge_sha": "e8bcceb0200ba84b1c3d0121633329129e3bfe79",
+    "html": "<p>Add structured event for Rails deprecations, when <code>config.active_support.deprecation</code> is set to <code>:notify</code>.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
     "message": "*   Report unhandled exceptions to the Error Reporter when running rake tasks via Rails command.\n\n    *Akimichi Tanei*",
     "project": "railties",
     "date_merged": 1760546378000,
