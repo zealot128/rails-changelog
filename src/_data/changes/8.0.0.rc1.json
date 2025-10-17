@@ -80,6 +80,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Add environment config file existence check\n\n    `Rails::Application` will raise an error if unable to load any environment file.\n\n    *Daniel Niknam*",
+    "project": "railties",
+    "date_merged": 1760681596000,
+    "author": "Daniel",
+    "sha": "5cffb7cf7ef2f653d7e1b83fc944730b37a019ba",
+    "pr": "55813",
+    "merge_sha": "a03a5281c17722c2825b68a16268258f59ca862f",
+    "html": "<p>Add environment config file existence check</p>\n\n<p><code>Rails::Application</code> will raise an error if unable to load any environment file.</p>\n\n<p><em>Daniel Niknam</em></p>\n"
+  },
+  {
     "message": "*   `Rails::Application::RoutesReloader` uses the configured `Rails.application.config.file_watcher`\n\n    *Jan Grodowski*",
     "project": "railties",
     "date_merged": 1760577092000,
