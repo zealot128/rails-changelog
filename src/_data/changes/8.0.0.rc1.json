@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Raise specific exception when a prohibited shard change is attempted.\n\n    The new `ShardSwapProhibitedError` exception allows applications and\n    connection-related libraries to more easily recover from this specific\n    scenario. Previously an `ArgumentError` was raised, so the new exception\n    subclasses `ArgumentError` for backwards compatibility.\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1760855316000,
+    "author": "Mike Dalessio",
+    "sha": "d803405d01dbbbed349d9c69f893ed1482239fe0",
+    "pr": "55933",
+    "merge_sha": "44b6847ead440f8ab5b17e3a0036fb4e75c6e2d4",
+    "html": "<p>Raise specific exception when a prohibited shard change is attempted.</p>\n\n<p>The new <code>ShardSwapProhibitedError</code> exception allows applications and<br />\nconnection-related libraries to more easily recover from this specific<br />\nscenario. Previously an <code>ArgumentError</code> was raised, so the new exception<br />\nsubclasses <code>ArgumentError</code> for backwards compatibility.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Fix SQLite3 data loss during table alterations with CASCADE foreign keys.\n\n    When altering a table in SQLite3 that is referenced by child tables with\n    `ON DELETE CASCADE` foreign keys, ActiveRecord would silently delete all\n    data from the child tables. This occurred because SQLite requires table\n    recreation for schema changes, and during this process the original table\n    is temporarily dropped, triggering CASCADE deletes on child tables.\n\n    The root cause was incorrect ordering of operations. The original code\n    wrapped `disable_referential_integrity` inside a transaction, but\n    `PRAGMA foreign_keys` cannot be modified inside a transaction in SQLite -\n    attempting to do so simply has no effect. This meant foreign keys remained\n    enabled during table recreation, causing CASCADE deletes to fire.\n\n    The fix reverses the order to follow the official SQLite 12-step ALTER TABLE\n    procedure: `disable_referential_integrity` now wraps the transaction instead\n    of being wrapped by it. This ensures foreign keys are properly disabled\n    before the transaction starts and re-enabled after it commits, preventing\n    CASCADE deletes while maintaining data integrity through atomic transactions.\n\n    *Ruy Rocha*",
     "project": "activerecord",
     "date_merged": 1760684387000,
