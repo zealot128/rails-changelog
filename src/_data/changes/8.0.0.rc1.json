@@ -1,5 +1,35 @@
 [
   {
+    "message": "*   Add `key:` and `expires_in:` options under `cached:` to `render` when used with `collection:`\n\n    *Jarrett Lusso*",
+    "project": "actionview",
+    "date_merged": 1760538522000,
+    "author": "Jarrett Lusso",
+    "sha": "e60b82402439f4b0d8a9b9b0a7a0178239ba5de1",
+    "pr": "51579",
+    "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
+    "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
+  },
+  {
+    "message": "*   Define `ActionController::Parameters#deconstruct_keys` to support pattern matching\n\n    ```ruby\n    if params in { search:, page: }\n      Article.search(search).limit(page)\n    else\n      …\n    end\n\n    case (value = params[:string_or_hash_with_nested_key])\n    in String\n      # do something with a String `value`…\n    in { nested_key: }\n      # do something with `nested_key` or `value`\n    else\n      # …\n    end\n    ```\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1760713024000,
+    "author": "Sean Doyle",
+    "sha": "89081b34e372afaff004d0288b7e8e94e136b4df",
+    "pr": "55789",
+    "merge_sha": "7c05e442d5dc24cc8692836d0412d7366a2d226f",
+    "html": "<p>Define <code>ActionController::Parameters#deconstruct_keys</code> to support pattern matching</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">if</span> <span class=\"n\">params</span> <span class=\"k\">in</span> <span class=\"p\">{</span> <span class=\"n\">search</span><span class=\"p\">:,</span> <span class=\"ss\">page: </span><span class=\"p\">}</span>\n  <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">search</span><span class=\"p\">(</span><span class=\"n\">search</span><span class=\"p\">).</span><span class=\"nf\">limit</span><span class=\"p\">(</span><span class=\"n\">page</span><span class=\"p\">)</span>\n<span class=\"k\">else</span>\n  <span class=\"err\">…</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">case</span> <span class=\"p\">(</span><span class=\"n\">value</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:string_or_hash_with_nested_key</span><span class=\"p\">])</span>\n<span class=\"k\">in</span> <span class=\"no\">String</span>\n  <span class=\"c1\"># do something with a String `value`…</span>\n<span class=\"k\">in</span> <span class=\"p\">{</span> <span class=\"ss\">nested_key: </span><span class=\"p\">}</span>\n  <span class=\"c1\"># do something with `nested_key` or `value`</span>\n<span class=\"k\">else</span>\n  <span class=\"c1\"># …</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Submit test requests using `as: :html` with `Content-Type: x-www-form-urlencoded`\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1760626310000,
+    "author": "Sean Doyle",
+    "sha": "eac1f55425de30c614cb1410c19e13921bfeb164",
+    "pr": "50390",
+    "merge_sha": "c941680274902f2778840344344e552c5160c65b",
+    "html": "<p>Submit test requests using <code>as: :html</code> with <code>Content-Type: x-www-form-urlencoded</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Raise specific exception when a prohibited shard change is attempted.\n\n    The new `ShardSwapProhibitedError` exception allows applications and\n    connection-related libraries to more easily recover from this specific\n    scenario. Previously an `ArgumentError` was raised, so the new exception\n    subclasses `ArgumentError` for backwards compatibility.\n\n    *Mike Dalessio*",
     "project": "activerecord",
     "date_merged": 1760855316000,
@@ -40,6 +70,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   `ActiveStorage::Blob#open` can now be used without passing a block, like `Tempfile.open`. When using this form the\n    returned temporary file must be unlinked manually.\n\n    *Bart de Water*",
+    "project": "activestorage",
+    "date_merged": 1760633630000,
+    "author": "Bart de Water",
+    "sha": "89ea0311033f362d8ddf85629bf34e78eba501f4",
+    "pr": "49990",
+    "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
+    "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
     "message": "*   Add error type support arguments to `ActiveModel::Errors#messages_for` and `ActiveModel::Errors#full_messages_for`\n\n    ```ruby\n    person = Person.create()\n    person.errors.full_messages_for(:name, :invalid)\n    # => [\"Name is invalid\"]\n\n    person.errors.messages_for(:name, :invalid)\n    # => [\"is invalid\"]\n    ```\n\n    *Eugene Bezludny*",
     "project": "activemodel",
     "date_merged": 1760634701000,
@@ -68,16 +108,6 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   `ActiveStorage::Blob#open` can now be used without passing a block, like `Tempfile.open`. When using this form the\n    returned temporary file must be unlinked manually.\n\n    *Bart de Water*",
-    "project": "activestorage",
-    "date_merged": 1760633630000,
-    "author": "Bart de Water",
-    "sha": "89ea0311033f362d8ddf85629bf34e78eba501f4",
-    "pr": "49990",
-    "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
-    "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
     "message": "*   Add environment config file existence check\n\n    `Rails::Application` will raise an error if unable to load any environment file.\n\n    *Daniel Niknam*",
@@ -148,35 +178,5 @@
     "pr": "55913",
     "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
     "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
-  },
-  {
-    "message": "*   Define `ActionController::Parameters#deconstruct_keys` to support pattern matching\n\n    ```ruby\n    if params in { search:, page: }\n      Article.search(search).limit(page)\n    else\n      …\n    end\n\n    case (value = params[:string_or_hash_with_nested_key])\n    in String\n      # do something with a String `value`…\n    in { nested_key: }\n      # do something with `nested_key` or `value`\n    else\n      # …\n    end\n    ```\n\n    *Sean Doyle*",
-    "project": "actionpack",
-    "date_merged": 1760713024000,
-    "author": "Sean Doyle",
-    "sha": "89081b34e372afaff004d0288b7e8e94e136b4df",
-    "pr": "55789",
-    "merge_sha": "7c05e442d5dc24cc8692836d0412d7366a2d226f",
-    "html": "<p>Define <code>ActionController::Parameters#deconstruct_keys</code> to support pattern matching</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">if</span> <span class=\"n\">params</span> <span class=\"k\">in</span> <span class=\"p\">{</span> <span class=\"n\">search</span><span class=\"p\">:,</span> <span class=\"ss\">page: </span><span class=\"p\">}</span>\n  <span class=\"no\">Article</span><span class=\"p\">.</span><span class=\"nf\">search</span><span class=\"p\">(</span><span class=\"n\">search</span><span class=\"p\">).</span><span class=\"nf\">limit</span><span class=\"p\">(</span><span class=\"n\">page</span><span class=\"p\">)</span>\n<span class=\"k\">else</span>\n  <span class=\"err\">…</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">case</span> <span class=\"p\">(</span><span class=\"n\">value</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:string_or_hash_with_nested_key</span><span class=\"p\">])</span>\n<span class=\"k\">in</span> <span class=\"no\">String</span>\n  <span class=\"c1\"># do something with a String `value`…</span>\n<span class=\"k\">in</span> <span class=\"p\">{</span> <span class=\"ss\">nested_key: </span><span class=\"p\">}</span>\n  <span class=\"c1\"># do something with `nested_key` or `value`</span>\n<span class=\"k\">else</span>\n  <span class=\"c1\"># …</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Submit test requests using `as: :html` with `Content-Type: x-www-form-urlencoded`\n\n    *Sean Doyle*",
-    "project": "actionpack",
-    "date_merged": 1760626310000,
-    "author": "Sean Doyle",
-    "sha": "eac1f55425de30c614cb1410c19e13921bfeb164",
-    "pr": "50390",
-    "merge_sha": "c941680274902f2778840344344e552c5160c65b",
-    "html": "<p>Submit test requests using <code>as: :html</code> with <code>Content-Type: x-www-form-urlencoded</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
-  },
-  {
-    "message": "*   Add `key:` and `expires_in:` options under `cached:` to `render` when used with `collection:`\n\n    *Jarrett Lusso*",
-    "project": "actionview",
-    "date_merged": 1760538522000,
-    "author": "Jarrett Lusso",
-    "sha": "e60b82402439f4b0d8a9b9b0a7a0178239ba5de1",
-    "pr": "51579",
-    "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
-    "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   }
 ]
