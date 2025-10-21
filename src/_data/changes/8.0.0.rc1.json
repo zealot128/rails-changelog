@@ -30,6 +30,16 @@
     "html": "<p>Submit test requests using <code>as: :html</code> with <code>Content-Type: x-www-form-urlencoded</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   PostgreSQL enable drop database FORCE option.\n\n    One of the benefits of developing with MySQL is that it allows dropping the\n    current database without first disconnecting clients. As a result developers\n    can use `bin/rails db:reset` and similar, without first shutting down\n    instances of the app, Rails consoles, background workers, etc. By default\n    PostgreSQL fails to drop a database when clients are connected and displays\n    the following error:\n\n      > PG::ObjectInUse: ERROR:  database \"xyz\" is being accessed by other users (PG::ObjectInUse)\n\n    This is frustrating when working in development where the database may be\n    dropped frequently.\n\n    PostgreSQL 13 added the `FORCE` option to the `DROP DATABASE` statement\n    ([PostgreSQL docs](https://www.postgresql.org/docs/current/sql-dropdatabase.html))\n    which automatically disconnects clients before dropping the database.\n    This option is automatically enabled for supported PostgreSQL versions.\n\n    *Steven Webb*",
+    "project": "activerecord",
+    "date_merged": 1761060234000,
+    "author": "Steven Webb",
+    "sha": "3e19d69fe1462a9eec3352b29bbfc9ba84f52837",
+    "pr": "55941",
+    "merge_sha": "ab352ef32e679246835034e4f4bbde03b463b049",
+    "html": "<p>PostgreSQL enable drop database FORCE option.</p>\n\n<p>One of the benefits of developing with MySQL is that it allows dropping the<br />\ncurrent database without first disconnecting clients. As a result developers<br />\ncan use <code>bin/rails db:reset</code> and similar, without first shutting down<br />\ninstances of the app, Rails consoles, background workers, etc. By default<br />\nPostgreSQL fails to drop a database when clients are connected and displays<br />\nthe following error:</p>\n\n<blockquote>\n  <p>PG::ObjectInUse: ERROR:  database “xyz” is being accessed by other users (PG::ObjectInUse)</p>\n</blockquote>\n\n<p>This is frustrating when working in development where the database may be<br />\ndropped frequently.</p>\n\n<p>PostgreSQL 13 added the <code>FORCE</code> option to the <code>DROP DATABASE</code> statement<br />\n(<a href=\"https://www.postgresql.org/docs/current/sql-dropdatabase.html\">PostgreSQL docs</a>)<br />\nwhich automatically disconnects clients before dropping the database.<br />\nThis option is automatically enabled for supported PostgreSQL versions.</p>\n\n<p><em>Steven Webb</em></p>\n"
+  },
+  {
     "message": "*   Raise specific exception when a prohibited shard change is attempted.\n\n    The new `ShardSwapProhibitedError` exception allows applications and\n    connection-related libraries to more easily recover from this specific\n    scenario. Previously an `ArgumentError` was raised, so the new exception\n    subclasses `ArgumentError` for backwards compatibility.\n\n    *Mike Dalessio*",
     "project": "activerecord",
     "date_merged": 1760855316000,
@@ -92,11 +102,11 @@
   {
     "message": "*   Make `ActiveModel::Serializers::JSON#from_json` compatible with `#assign_attributes`\n\n    *Sean Doyle*",
     "project": "activemodel",
-    "date_merged": 1761027921000,
+    "date_merged": 1761037784000,
     "author": "Ryuta Kamizono",
     "sha": "729e7169301cb35eb287a9724d6244edb3b2840d",
     "pr": "51781",
-    "merge_sha": null,
+    "merge_sha": "4b7bf2617d190b7769393e975a2449f8cde12145",
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
