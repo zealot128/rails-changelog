@@ -90,14 +90,14 @@
     "html": "<p>Add error type support arguments to <code>ActiveModel::Errors#messages_for</code> and <code>ActiveModel::Errors#full_messages_for</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">person</span> <span class=\"o\">=</span> <span class=\"no\">Person</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">()</span>\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">errors</span><span class=\"p\">.</span><span class=\"nf\">full_messages_for</span><span class=\"p\">(</span><span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:invalid</span><span class=\"p\">)</span>\n<span class=\"c1\"># =&gt; [\"Name is invalid\"]</span>\n\n<span class=\"n\">person</span><span class=\"p\">.</span><span class=\"nf\">errors</span><span class=\"p\">.</span><span class=\"nf\">messages_for</span><span class=\"p\">(</span><span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:invalid</span><span class=\"p\">)</span>\n<span class=\"c1\"># =&gt; [\"is invalid\"]</span>\n</code></pre></div></div>\n\n<p><em>Eugene Bezludny</em></p>\n"
   },
   {
-    "message": "*   Make `ActiveModel::Serialization#read_attribute_for_serialization` public\n\n    *Sean Doyle*",
+    "message": "*   Make `ActiveModel::Serializers::JSON#from_json` compatible with `#assign_attributes`\n\n    *Sean Doyle*",
     "project": "activemodel",
-    "date_merged": 1760634701000,
-    "author": "Eugene",
-    "sha": "6ff7803661ac7ef18416ba1c4bc72861c009b420",
-    "pr": "53096",
-    "merge_sha": "b8c36437be134d99779306396ff910603ecf6982",
-    "html": "<p>Make <code>ActiveModel::Serialization#read_attribute_for_serialization</code> public</p>\n\n<p><em>Sean Doyle</em></p>\n"
+    "date_merged": 1761027921000,
+    "author": "Ryuta Kamizono",
+    "sha": "729e7169301cb35eb287a9724d6244edb3b2840d",
+    "pr": "51781",
+    "merge_sha": null,
+    "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Add `assert_part` and `assert_no_part` to `ActionMailer::TestCase`\n\n    ```ruby\n    test \"assert MyMailer.welcome HTML and text parts\" do\n      mail = MyMailer.welcome(\"Hello, world\")\n\n      assert_part :text, mail do |text|\n        assert_includes text, \"Hello, world\"\n      end\n      assert_part :html, mail do |html|\n        assert_dom html.root, \"p\", \"Hello, world\"\n      end\n    end\n    ```\n\n    *Sean Doyle*",
