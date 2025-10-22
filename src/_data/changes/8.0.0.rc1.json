@@ -30,6 +30,16 @@
     "html": "<p>Submit test requests using <code>as: :html</code> with <code>Content-Type: x-www-form-urlencoded</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Fix upsert_all when using repeated timestamp attributes.\n\n    *Gannon McGibbon*",
+    "project": "activerecord",
+    "date_merged": 1761093810000,
+    "author": "Gannon McGibbon",
+    "sha": "b2af211679b1f38da99245189afd5e57eb3144ff",
+    "pr": "55960",
+    "merge_sha": "88abbd35e5958d26108f2894b56ffa1fa01e4dc2",
+    "html": "<p>Fix upsert_all when using repeated timestamp attributes.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   PostgreSQL enable drop database FORCE option.\n\n    One of the benefits of developing with MySQL is that it allows dropping the\n    current database without first disconnecting clients. As a result developers\n    can use `bin/rails db:reset` and similar, without first shutting down\n    instances of the app, Rails consoles, background workers, etc. By default\n    PostgreSQL fails to drop a database when clients are connected and displays\n    the following error:\n\n      > PG::ObjectInUse: ERROR:  database \"xyz\" is being accessed by other users (PG::ObjectInUse)\n\n    This is frustrating when working in development where the database may be\n    dropped frequently.\n\n    PostgreSQL 13 added the `FORCE` option to the `DROP DATABASE` statement\n    ([PostgreSQL docs](https://www.postgresql.org/docs/current/sql-dropdatabase.html))\n    which automatically disconnects clients before dropping the database.\n    This option is automatically enabled for supported PostgreSQL versions.\n\n    *Steven Webb*",
     "project": "activerecord",
     "date_merged": 1761060234000,
