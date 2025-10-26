@@ -140,6 +140,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Do not assume and force SSL in production by default when using Kamal, to allow for out of the box Kamal deployments.\n\n    It is still recommended to assume and force SSL in production as soon as you can.\n\n    *Jerome Dalbert*",
+    "project": "railties",
+    "date_merged": 1761481596000,
+    "author": "Jerome Dalbert",
+    "sha": "a445c5bf71264033c1727d1a111c622919129b79",
+    "pr": "56010",
+    "merge_sha": null,
+    "html": "<p>Do not assume and force SSL in production by default when using Kamal, to allow for out of the box Kamal deployments.</p>\n\n<p>It is still recommended to assume and force SSL in production as soon as you can.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
+  },
+  {
     "message": "*   Add environment config file existence check\n\n    `Rails::Application` will raise an error if unable to load any environment file.\n\n    *Daniel Niknam*",
     "project": "railties",
     "date_merged": 1760681596000,
