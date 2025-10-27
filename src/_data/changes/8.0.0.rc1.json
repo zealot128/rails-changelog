@@ -142,11 +142,11 @@
   {
     "message": "*   Do not assume and force SSL in production by default when using Kamal, to allow for out of the box Kamal deployments.\n\n    It is still recommended to assume and force SSL in production as soon as you can.\n\n    *Jerome Dalbert*",
     "project": "railties",
-    "date_merged": 1761481596000,
+    "date_merged": 1761522877000,
     "author": "Jerome Dalbert",
     "sha": "a445c5bf71264033c1727d1a111c622919129b79",
     "pr": "56010",
-    "merge_sha": null,
+    "merge_sha": "a262ba0c2012cd4c6b53f6c3dd3d46d110797406",
     "html": "<p>Do not assume and force SSL in production by default when using Kamal, to allow for out of the box Kamal deployments.</p>\n\n<p>It is still recommended to assume and force SSL in production as soon as you can.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
   },
   {
