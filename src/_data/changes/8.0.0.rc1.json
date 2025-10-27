@@ -110,6 +110,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Allow passing method name or proc to `allow_nil` and `allow_blank`\n\n    ```ruby\n    class EnrollmentForm\n      include ActiveModel::Validations\n\n      attr_accessor :course\n\n      validates :course,\n                inclusion: { in: :open_courses },\n                allow_nil: :saving_progress?\n    end\n    ```\n\n    *Richard Lynch*",
+    "project": "activemodel",
+    "date_merged": 1761578910000,
+    "author": "Richard Lynch",
+    "sha": "382d866b4ace4dfb4b24b631de4054ab7b1ba007",
+    "pr": "55309",
+    "merge_sha": "c5e237c5f0f7c79e3049b052db1fc443aece5692",
+    "html": "<p>Allow passing method name or proc to <code>allow_nil</code> and <code>allow_blank</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">EnrollmentForm</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Validations</span>\n\n  <span class=\"nb\">attr_accessor</span> <span class=\"ss\">:course</span>\n\n  <span class=\"n\">validates</span> <span class=\"ss\">:course</span><span class=\"p\">,</span>\n            <span class=\"ss\">inclusion: </span><span class=\"p\">{</span> <span class=\"ss\">in: :open_courses</span> <span class=\"p\">},</span>\n            <span class=\"ss\">allow_nil: :saving_progress?</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Richard Lynch</em></p>\n"
+  },
+  {
     "message": "*   Add error type support arguments to `ActiveModel::Errors#messages_for` and `ActiveModel::Errors#full_messages_for`\n\n    ```ruby\n    person = Person.create()\n    person.errors.full_messages_for(:name, :invalid)\n    # => [\"Name is invalid\"]\n\n    person.errors.messages_for(:name, :invalid)\n    # => [\"is invalid\"]\n    ```\n\n    *Eugene Bezludny*",
     "project": "activemodel",
     "date_merged": 1760634701000,
