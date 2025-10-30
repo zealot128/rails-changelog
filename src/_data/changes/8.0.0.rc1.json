@@ -30,6 +30,16 @@
     "html": "<p>Submit test requests using <code>as: :html</code> with <code>Content-Type: x-www-form-urlencoded</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Add a detailed failure summary to `ActiveSupport::ContinuousIntegration`.\n\n    *Mike Dalessio*",
+    "project": "activesupport",
+    "date_merged": 1761837714000,
+    "author": "Mike Dalessio",
+    "sha": "9fa56dd0d22abaa6ec030bd6fe22978c8ba43565",
+    "pr": "56049",
+    "merge_sha": null,
+    "html": "<p>Add a detailed failure summary to <code>ActiveSupport::ContinuousIntegration</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Introduce `ActiveSupport::EventReporter::LogSubscriber` structured event logging.\n\n    ```ruby\n    class MyLogSubscriber < ActiveSupport::EventReporter::LogSubscriber\n      self.namespace = \"test\"\n\n      def something(event)\n        info { \"Event #{event[:name]} emitted.\" }\n      end\n    end\n    ```\n\n    *Gannon McGibbon*",
     "project": "activesupport",
     "date_merged": 1761235631000,
