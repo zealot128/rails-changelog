@@ -32,11 +32,11 @@
   {
     "message": "*   Add a detailed failure summary to `ActiveSupport::ContinuousIntegration`.\n\n    *Mike Dalessio*",
     "project": "activesupport",
-    "date_merged": 1761837714000,
+    "date_merged": 1761863062000,
     "author": "Mike Dalessio",
     "sha": "9fa56dd0d22abaa6ec030bd6fe22978c8ba43565",
     "pr": "56049",
-    "merge_sha": null,
+    "merge_sha": "2a4596b6ab75988109e363bc739c4a8f7b36b1ab",
     "html": "<p>Add a detailed failure summary to <code>ActiveSupport::ContinuousIntegration</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
@@ -48,6 +48,16 @@
     "pr": "55900",
     "merge_sha": "54264bde59c6e327694ad8b3923d4ebda60bd562",
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Database-specific shard swap prohibition\n\n    In #43485 (v7.0.0), shard swapping prohibition was introduced as a global\n    switch that applied to all databases.\n\n    For the use case of a multi-database application, the global prohibition is\n    overly broad, and so with this change the method `prohibit_shard_swapping`\n    will scope the prohibition to the same connection class (i.e.,\n    `connection_specification_name`). This allows an application to prohibit\n    shard swapping on a specific database while allowing it on all others.\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1761863335000,
+    "author": "Mike Dalessio",
+    "sha": "12151847718ffe1252a87c173b06fbea3a4aff97",
+    "pr": "55927",
+    "merge_sha": "ab4b78cbea38e826c39ea6be8b2e58f75742fad1",
+    "html": "<p>Database-specific shard swap prohibition</p>\n\n<p>In #43485 (v7.0.0), shard swapping prohibition was introduced as a global<br />\nswitch that applied to all databases.</p>\n\n<p>For the use case of a multi-database application, the global prohibition is<br />\noverly broad, and so with this change the method <code>prohibit_shard_swapping</code><br />\nwill scope the prohibition to the same connection class (i.e.,<br />\n<code>connection_specification_name</code>). This allows an application to prohibit<br />\nshard swapping on a specific database while allowing it on all others.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
     "message": "*   Fix upsert_all when using repeated timestamp attributes.\n\n    *Gannon McGibbon*",
@@ -118,6 +128,16 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   `has_secure_password` can support different password hashing algorithms (if defined) using the `:algorithm` option:\n\n    ```ruby\n    class CustomPassword\n      def hash_password(unencrypted_password)\n        CustomHashingLibrary.create(unencrypted_password)\n      end\n\n      def verify_password(password, digest)\n        CustomHashingLibrary.verify(password, digest)\n      end\n\n      def password_salt(digest)\n        CustomHashingLibrary.salt(digest)\n      end\n\n      def validate(record, attribute)\n        # ...\n      end\n\n      def algorithm_name\n        :custom\n      end\n    end\n    ```\n\n    ```ruby\n    class User < ActiveRecord::Base\n      has_secure_password algorithm: CustomPassword.new\n    end\n    ```\n\n    *Justin Bull, Lucas Mazza*",
+    "project": "activemodel",
+    "date_merged": 1761885538000,
+    "author": "Lucas Mazza",
+    "sha": "a18d2466008891870f6f1957ecec14bee4689bd7",
+    "pr": "56041",
+    "merge_sha": "cddcba97c369e12e2573af5af9eda16e6f530a29",
+    "html": "<p><code>has_secure_password</code> can support different password hashing algorithms (if defined) using the <code>:algorithm</code> option:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">CustomPassword</span>\n  <span class=\"k\">def</span> <span class=\"nf\">hash_password</span><span class=\"p\">(</span><span class=\"n\">unencrypted_password</span><span class=\"p\">)</span>\n    <span class=\"no\">CustomHashingLibrary</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"n\">unencrypted_password</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">verify_password</span><span class=\"p\">(</span><span class=\"n\">password</span><span class=\"p\">,</span> <span class=\"n\">digest</span><span class=\"p\">)</span>\n    <span class=\"no\">CustomHashingLibrary</span><span class=\"p\">.</span><span class=\"nf\">verify</span><span class=\"p\">(</span><span class=\"n\">password</span><span class=\"p\">,</span> <span class=\"n\">digest</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">password_salt</span><span class=\"p\">(</span><span class=\"n\">digest</span><span class=\"p\">)</span>\n    <span class=\"no\">CustomHashingLibrary</span><span class=\"p\">.</span><span class=\"nf\">salt</span><span class=\"p\">(</span><span class=\"n\">digest</span><span class=\"p\">)</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">validate</span><span class=\"p\">(</span><span class=\"n\">record</span><span class=\"p\">,</span> <span class=\"n\">attribute</span><span class=\"p\">)</span>\n    <span class=\"c1\"># ...</span>\n  <span class=\"k\">end</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">algorithm_name</span>\n    <span class=\"ss\">:custom</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">has_secure_password</span> <span class=\"ss\">algorithm: </span><span class=\"no\">CustomPassword</span><span class=\"p\">.</span><span class=\"nf\">new</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Justin Bull, Lucas Mazza</em></p>\n"
   },
   {
     "message": "*   Allow passing method name or proc to `allow_nil` and `allow_blank`\n\n    ```ruby\n    class EnrollmentForm\n      include ActiveModel::Validations\n\n      attr_accessor :course\n\n      validates :course,\n                inclusion: { in: :open_courses },\n                allow_nil: :saving_progress?\n    end\n    ```\n\n    *Richard Lynch*",
