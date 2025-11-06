@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Add ability to pass a block when rendering collection. The block will be executed for each rendered element in the collection.\n\n    *Vincent Robert*",
+    "project": "actionview",
+    "date_merged": 1762396518000,
+    "author": "Vincent Robert",
+    "sha": "107ee64909b978476b318e36f317cfa2a747d1ad",
+    "pr": "56044",
+    "merge_sha": "b8cbbecfecddaaee4ef94d420edd8c7b1fb9bbad",
+    "html": "<p>Add ability to pass a block when rendering collection. The block will be executed for each rendered element in the collection.</p>\n\n<p><em>Vincent Robert</em></p>\n"
+  },
+  {
     "message": "*   Add `key:` and `expires_in:` options under `cached:` to `render` when used with `collection:`\n\n    *Jarrett Lusso*",
     "project": "actionview",
     "date_merged": 1760538522000,
