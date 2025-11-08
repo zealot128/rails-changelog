@@ -220,6 +220,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Update the `.node-version` file conditionally generated for new applications to 22.21.1\n\n    *Taketo Takashima*",
+    "project": "railties",
+    "date_merged": 1762549887000,
+    "author": "Taketo Takashima",
+    "sha": "92c7069b91562e5091b8a59953a3d6a6f25d472b",
+    "pr": "56106",
+    "merge_sha": "a22491daf9a12df8ea9d4bd91de12bf397c4a549",
+    "html": "<p>Update the <code>.node-version</code> file conditionally generated for new applications to 22.21.1</p>\n\n<p><em>Taketo Takashima</em></p>\n"
+  },
+  {
     "message": "*   Do not assume and force SSL in production by default when using Kamal, to allow for out of the box Kamal deployments.\n\n    It is still recommended to assume and force SSL in production as soon as you can.\n\n    *Jerome Dalbert*",
     "project": "railties",
     "date_merged": 1761522877000,
