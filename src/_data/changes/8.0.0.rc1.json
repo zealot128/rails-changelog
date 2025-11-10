@@ -140,6 +140,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Fix using custom serializers with `ActiveJob::Arguments.serialize` when\n    `ActiveJob::Base` hasn't been loaded.\n\n    *Hartley McGuire*",
+    "project": "activejob",
+    "date_merged": 1762718670000,
+    "author": "Hartley McGuire",
+    "sha": "c0dc92e9e95d9d650d15ff94038e809bbf804c6b",
+    "pr": "56093",
+    "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
+    "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   `ActiveStorage::Blob#open` can now be used without passing a block, like `Tempfile.open`. When using this form the\n    returned temporary file must be unlinked manually.\n\n    *Bart de Water*",
     "project": "activestorage",
     "date_merged": 1760633630000,
