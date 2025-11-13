@@ -20,6 +20,16 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Support dynamic `to:` and `within:` options in `rate_limit`.\n\n    The `to:` and `within:` options now accept callables (lambdas or procs) and\n    method names (as symbols), in addition to static values. This allows for\n    dynamic rate limiting based on user attributes or other runtime conditions.\n\n    ```ruby\n    class APIController < ApplicationController\n      rate_limit to: :max_requests, within: :time_window, by: -> { current_user.id }\n\n      private\n        def max_requests\n          current_user.premium? ? 1000 : 100\n        end\n\n        def time_window\n          current_user.premium? ? 1.hour : 1.minute\n        end\n    end\n    ```\n\n    *Murilo Duarte*",
+    "project": "actionpack",
+    "date_merged": 1762982591000,
+    "author": "Murilo Duarte",
+    "sha": "ac29e7d61cc93b832289120625633ac72635b552",
+    "pr": "56128",
+    "merge_sha": "88ddc0e1c3ce62e9a9e217ae899099688fd6a176",
+    "html": "<p>Support dynamic <code>to:</code> and <code>within:</code> options in <code>rate_limit</code>.</p>\n\n<p>The <code>to:</code> and <code>within:</code> options now accept callables (lambdas or procs) and<br />\nmethod names (as symbols), in addition to static values. This allows for<br />\ndynamic rate limiting based on user attributes or other runtime conditions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">APIController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: :max_requests</span><span class=\"p\">,</span> <span class=\"ss\">within: :time_window</span><span class=\"p\">,</span> <span class=\"ss\">by: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">current_user</span><span class=\"p\">.</span><span class=\"nf\">id</span> <span class=\"p\">}</span>\n\n  <span class=\"kp\">private</span>\n    <span class=\"k\">def</span> <span class=\"nf\">max_requests</span>\n      <span class=\"n\">current_user</span><span class=\"p\">.</span><span class=\"nf\">premium?</span> <span class=\"p\">?</span> <span class=\"mi\">1000</span> <span class=\"p\">:</span> <span class=\"mi\">100</span>\n    <span class=\"k\">end</span>\n\n    <span class=\"k\">def</span> <span class=\"nf\">time_window</span>\n      <span class=\"n\">current_user</span><span class=\"p\">.</span><span class=\"nf\">premium?</span> <span class=\"p\">?</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">hour</span> <span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">.</span><span class=\"nf\">minute</span>\n    <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Murilo Duarte</em></p>\n"
+  },
+  {
     "message": "*   Define `ActionController::Parameters#deconstruct_keys` to support pattern matching\n\n    ```ruby\n    if params in { search:, page: }\n      Article.search(search).limit(page)\n    else\n      …\n    end\n\n    case (value = params[:string_or_hash_with_nested_key])\n    in String\n      # do something with a String `value`…\n    in { nested_key: }\n      # do something with `nested_key` or `value`\n    else\n      # …\n    end\n    ```\n\n    *Sean Doyle*",
     "project": "actionpack",
     "date_merged": 1760713024000,
@@ -158,6 +168,16 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Changes `ActiveModel::Validations#read_attribute_for_validation` to return `nil` if the record doesn't\n    respond to the attribute instead of raising an error.\n\n    This change allows adding errors to custom attributes with symbol messages.\n\n    ```ruby\n    user = User.new # User model has no `address` attribute\n\n    user.errors.add(:address, :invalid)\n\n    user.errors.messages\n    ```\n\n    Previously, calling `messages` would raise an error because `address` attribute can't be read.\n    Now it returns the localized error message.\n\n    *Lovro Bikić*",
+    "project": "activemodel",
+    "date_merged": 1762981403000,
+    "author": "Lovro Bikic",
+    "sha": "2451ceca45254545edd6da9d5f0e0c33aa3e43b1",
+    "pr": "56130",
+    "merge_sha": "18ad31860e2a6a060d7ab4bdcc23b895576fef06",
+    "html": "<p>Changes <code>ActiveModel::Validations#read_attribute_for_validation</code> to return <code>nil</code> if the record doesn’t<br />\nrespond to the attribute instead of raising an error.</p>\n\n<p>This change allows adding errors to custom attributes with symbol messages.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">user</span> <span class=\"o\">=</span> <span class=\"no\">User</span><span class=\"p\">.</span><span class=\"nf\">new</span> <span class=\"c1\"># User model has no `address` attribute</span>\n\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">errors</span><span class=\"p\">.</span><span class=\"nf\">add</span><span class=\"p\">(</span><span class=\"ss\">:address</span><span class=\"p\">,</span> <span class=\"ss\">:invalid</span><span class=\"p\">)</span>\n\n<span class=\"n\">user</span><span class=\"p\">.</span><span class=\"nf\">errors</span><span class=\"p\">.</span><span class=\"nf\">messages</span>\n</code></pre></div></div>\n\n<p>Previously, calling <code>messages</code> would raise an error because <code>address</code> attribute can’t be read.<br />\nNow it returns the localized error message.</p>\n\n<p><em>Lovro Bikić</em></p>\n"
   },
   {
     "message": "*   Add built-in Argon2 support for `has_secure_password`.\n\n    `has_secure_password` now supports Argon2 as a built-in algorithm:\n\n    ```ruby\n    class User < ActiveRecord::Base\n      has_secure_password algorithm: :argon2\n    end\n    ```\n\n    To use Argon2, add `gem \"argon2\", \"~> 2.3\"` to your Gemfile.\n\n    Argon2 has no password length limit, unlike BCrypt's 72-byte restriction.\n\n    *Justin Bull*, *Guillermo Iguaran*",
