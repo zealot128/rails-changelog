@@ -50,6 +50,16 @@
     "html": "<p>Submit test requests using <code>as: :html</code> with <code>Content-Type: x-www-form-urlencoded</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Implement LocalCache strategy on `ActiveSupport::Cache::MemoryStore`. The memory store\n    needs to respond to the same interface as other cache stores (e.g. `ActiveSupport::NullStore`).\n\n    *Mikey Gough*",
+    "project": "activesupport",
+    "date_merged": 1763093057000,
+    "author": "Mikey Gough",
+    "sha": "b366627c418a16e04a7f30accf0a30d7b1eed626",
+    "pr": "56152",
+    "merge_sha": "45c58d971427d1e73392e58ba8a03b3dd750ffbd",
+    "html": "<p>Implement LocalCache strategy on <code>ActiveSupport::Cache::MemoryStore</code>. The memory store<br />\nneeds to respond to the same interface as other cache stores (e.g. <code>ActiveSupport::NullStore</code>).</p>\n\n<p><em>Mikey Gough</em></p>\n"
+  },
+  {
     "message": "*   Add a detailed failure summary to `ActiveSupport::ContinuousIntegration`.\n\n    *Mike Dalessio*",
     "project": "activesupport",
     "date_merged": 1761863062000,
