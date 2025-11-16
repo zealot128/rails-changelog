@@ -20,6 +20,16 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Support `text/markdown` format in `DebugExceptions` middleware.\n\n    When `text/markdown` is requested via the Accept header, error responses\n    are returned with `Content-Type: text/markdown` instead of HTML.\n    The existing text templates are reused for markdown output, allowing\n    CLI tools and other clients to receive byte-efficient error information.\n\n    *Guillermo Iguaran*",
+    "project": "actionpack",
+    "date_merged": 1763309717000,
+    "author": "Guillermo Iguaran",
+    "sha": "6f731298fb9e95e6f7eb8f6a4a0af588789bb700",
+    "pr": "56180",
+    "merge_sha": "77191f5afb9c39aa5968219047ae69cdb2f48b14",
+    "html": "<p>Support <code>text/markdown</code> format in <code>DebugExceptions</code> middleware.</p>\n\n<p>When <code>text/markdown</code> is requested via the Accept header, error responses<br />\nare returned with <code>Content-Type: text/markdown</code> instead of HTML.<br />\nThe existing text templates are reused for markdown output, allowing<br />\nCLI tools and other clients to receive byte-efficient error information.</p>\n\n<p><em>Guillermo Iguaran</em></p>\n"
+  },
+  {
     "message": "*   Support dynamic `to:` and `within:` options in `rate_limit`.\n\n    The `to:` and `within:` options now accept callables (lambdas or procs) and\n    method names (as symbols), in addition to static values. This allows for\n    dynamic rate limiting based on user attributes or other runtime conditions.\n\n    ```ruby\n    class APIController < ApplicationController\n      rate_limit to: :max_requests, within: :time_window, by: -> { current_user.id }\n\n      private\n        def max_requests\n          current_user.premium? ? 1000 : 100\n        end\n\n        def time_window\n          current_user.premium? ? 1.hour : 1.minute\n        end\n    end\n    ```\n\n    *Murilo Duarte*",
     "project": "actionpack",
     "date_merged": 1762982591000,
