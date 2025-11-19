@@ -60,6 +60,16 @@
     "html": "<p>Submit test requests using <code>as: :html</code> with <code>Content-Type: x-www-form-urlencoded</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Add a fast failure mode to `ActiveSupport::ContinuousIntegration` that stops the rest of\n    the run after a step fails. Invoke by running `bin/ci --fail-fast` or `bin/ci -f`.\n\n    *Dennis Paagman*",
+    "project": "activesupport",
+    "date_merged": 1763503867000,
+    "author": "Dennis Paagman",
+    "sha": "673bfc45f3d603455e7ac04921984f71a6b4c399",
+    "pr": "56194",
+    "merge_sha": "cf4e3c508adf930eb70e4b3e6e16d2ca83b7e9b3",
+    "html": "<p>Add a fast failure mode to <code>ActiveSupport::ContinuousIntegration</code> that stops the rest of<br />\nthe run after a step fails. Invoke by running <code>bin/ci --fail-fast</code> or <code>bin/ci -f</code>.</p>\n\n<p><em>Dennis Paagman</em></p>\n"
+  },
+  {
     "message": "*   Implement LocalCache strategy on `ActiveSupport::Cache::MemoryStore`. The memory store\n    needs to respond to the same interface as other cache stores (e.g. `ActiveSupport::NullStore`).\n\n    *Mikey Gough*",
     "project": "activesupport",
     "date_merged": 1763093057000,
