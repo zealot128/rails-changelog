@@ -100,6 +100,16 @@
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Allow either explain format syntax for EXPLAIN queries.\n\n    MySQL uses FORMAT=JSON whereas Postgres uses FORMAT JSON. We should be\n    able to accept both formats as options.\n\n    *Gannon McGibbon*",
+    "project": "activerecord",
+    "date_merged": 1763590671000,
+    "author": "Gannon McGibbon",
+    "sha": "ef8c56337059e44851e26ca0ff40ab5ad64a0532",
+    "pr": "56198",
+    "merge_sha": "990198b7b5f4a3a3d0d59bc1bcac58efa405f527",
+    "html": "<p>Allow either explain format syntax for EXPLAIN queries.</p>\n\n<p>MySQL uses FORMAT=JSON whereas Postgres uses FORMAT JSON. We should be<br />\nable to accept both formats as options.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
     "message": "*   On MySQL parallel test database table reset to use `DELETE` instead of `TRUNCATE`.\n\n    Truncating on MySQL is very slow even on empty or nearly empty tables.\n\n    As a result of this change auto increment counters are now no longer reset between test\n    runs on MySQL and the `SKIP_TEST_DATABASE_TRUNCATE` environment variable no longer has\n    any effect.\n\n    *Donal McBreen*",
     "project": "activerecord",
     "date_merged": 1763022915000,
