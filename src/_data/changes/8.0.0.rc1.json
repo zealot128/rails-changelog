@@ -310,6 +310,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Add a new internal route in development to respond to chromium devtools GET request.\n\n    This allows the app folder to be easily connected as a workspace in chromium-based browsers.\n\n    *coorasse*",
+    "project": "railties",
+    "date_merged": 1764339478000,
+    "author": "Alessandro Rodi",
+    "sha": "20ee196124633a2ce61c78182b879bd27d4c3636",
+    "pr": "56245",
+    "merge_sha": "d7932901236d1fd6f21037bfba63164ade186dad",
+    "html": "<p>Add a new internal route in development to respond to chromium devtools GET request.</p>\n\n<p>This allows the app folder to be easily connected as a workspace in chromium-based browsers.</p>\n\n<p><em>coorasse</em></p>\n"
+  },
+  {
     "message": "*   Set `config.rake_eager_load` in generated test environment to match `config.eager_load` behavior in CI.\n\n    This ensures eager loading works consistently in CI when rake tasks invoke the `:environment` task before tests run.\n\n    *Trevor Turk*",
     "project": "railties",
     "date_merged": 1763866294000,
