@@ -60,6 +60,16 @@
     "html": "<p>Submit test requests using <code>as: :html</code> with <code>Content-Type: x-www-form-urlencoded</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Add `SecureRandom.base32` for generating case-insensitive keys that are unambiguous to humans.\n\n    *Stanko Krtalic Rusendic & Miha Rekar*",
+    "project": "activesupport",
+    "date_merged": 1764872352000,
+    "author": "Stanko Krtalić",
+    "sha": "7a3bae88c9000b3e24980e93597d6381f1c49cf4",
+    "pr": "56288",
+    "merge_sha": "630a479cce92247e88af04c90a88abb4883743a0",
+    "html": "<p>Add <code>SecureRandom.base32</code> for generating case-insensitive keys that are unambiguous to humans.</p>\n\n<p><em>Stanko Krtalic Rusendic &amp; Miha Rekar</em></p>\n"
+  },
+  {
     "message": "*   Add a fast failure mode to `ActiveSupport::ContinuousIntegration` that stops the rest of\n    the run after a step fails. Invoke by running `bin/ci --fail-fast` or `bin/ci -f`.\n\n    *Dennis Paagman*",
     "project": "activesupport",
     "date_merged": 1763503867000,
