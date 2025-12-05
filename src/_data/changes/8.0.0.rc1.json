@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Fix tag parameter content being overwritten instead of combined with tag block content.\n    Before `tag.div(\"Hello \") { \"World\" }` would just return `<div>World</div>`, now it returns `<div>Hello World</div>`.\n\n    *DHH*",
+    "project": "actionview",
+    "date_merged": 1764893543000,
+    "author": "David Heinemeier Hansson",
+    "sha": "3c3f6c8a253c8a0f346695374f927c9ab32fbefb",
+    "pr": "56293",
+    "merge_sha": "1c2dac84a387598397ed52705d92f17050bea749",
+    "html": "<p>Fix tag parameter content being overwritten instead of combined with tag block content.<br />\nBefore <code>tag.div(\"Hello \") { \"World\" }</code> would just return <code>&lt;div&gt;World&lt;/div&gt;</code>, now it returns <code>&lt;div&gt;Hello World&lt;/div&gt;</code>.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Add ability to pass a block when rendering collection. The block will be executed for each rendered element in the collection.\n\n    *Vincent Robert*",
     "project": "actionview",
     "date_merged": 1762396518000,
@@ -18,6 +28,16 @@
     "pr": "51579",
     "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
+  },
+  {
+    "message": "*   Validate `RemoteImage` URLs at creation time.\n\n    `RemoteImage.from_node` now validates the URL before creating a `RemoteImage` object, using the\n    same regex that `AssetUrlHelper` uses during rendering. URLs like \"image.png\" that would\n    previously have been passed to the asset pipeline and raised a `ActionView::Template::Error` are\n    rejected early, and gracefully fail by resulting in a `MissingAttachable`.\n\n    *Mike Dalessio*",
+    "project": "actiontext",
+    "date_merged": 1764908725000,
+    "author": "Mike Dalessio",
+    "sha": "d9fc166d097d0b14db72551e22c45544a3b888c2",
+    "pr": "56283",
+    "merge_sha": "b6a07894d6920c5444e5a8dca2f4dc2d0b5a9fb2",
+    "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
     "message": "*   Support `text/markdown` format in `DebugExceptions` middleware.\n\n    When `text/markdown` is requested via the Accept header, error responses\n    are returned with `Content-Type: text/markdown` instead of HTML.\n    The existing text templates are reused for markdown output, allowing\n    CLI tools and other clients to receive byte-efficient error information.\n\n    *Guillermo Iguaran*",
@@ -108,6 +128,16 @@
     "pr": "55900",
     "merge_sha": "54264bde59c6e327694ad8b3923d4ebda60bd562",
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Allow `schema_dump` configuration to be an absolute path.\n\n    Previously, the `schema_dump` configuration was always joined with the\n    `db_dir` path. Now, if an absolute path is provided, it will be used as-is.\n\n    *Mike Dalessio*",
+    "project": "activerecord",
+    "date_merged": 1764916139000,
+    "author": "Mike Dalessio",
+    "sha": "f3a76716ddcaa2faa09ae75e39ada064ae1d44ab",
+    "pr": "56290",
+    "merge_sha": null,
+    "html": "<p>Allow <code>schema_dump</code> configuration to be an absolute path.</p>\n\n<p>Previously, the <code>schema_dump</code> configuration was always joined with the<br />\n<code>db_dir</code> path. Now, if an absolute path is provided, it will be used as-is.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
     "message": "*   Decode PostgreSQL bytea and money columns when they appear in direct\n    query results.\n\n    bytea columns are now decoded to binary-encoded Strings, and money columns\n    are decoded to BigDecimal instead of String.\n\n    ```ruby\n    ActiveRecord::Base.connection\n         .select_value(\"select '\\\\x48656c6c6f'::bytea\").encoding #=> Encoding::BINARY\n\n    ActiveRecord::Base.connection\n         .select_value(\"select '12.34'::money\").class #=> BigDecimal\n    ```\n\n    *Matthew Draper*",
