@@ -30,6 +30,16 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Deprecate Trix-specific classes, modules, and methods\n\n    * `ActionText::Attachable#to_trix_content_attachment_partial_path`. Override\n      `#to_editor_content_attachment_partial_path` instead.\n    * `ActionText::Attachments::TrixConversion`\n    * `ActionText::Content#to_trix_html`.\n    * `ActionText::RichText#to_trix_html`.\n    * `ActionText::TrixAttachment`\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1764952372000,
+    "author": "Sean Doyle",
+    "sha": "cb0fd2254acb8b7c1c9354ef34538ba51bf28d1f",
+    "pr": "51238",
+    "merge_sha": null,
+    "html": "<p>Deprecate Trix-specific classes, modules, and methods</p>\n\n<ul>\n  <li><code>ActionText::Attachable#to_trix_content_attachment_partial_path</code>. Override<br />\n<code>#to_editor_content_attachment_partial_path</code> instead.</li>\n  <li><code>ActionText::Attachments::TrixConversion</code></li>\n  <li><code>ActionText::Content#to_trix_html</code>.</li>\n  <li><code>ActionText::RichText#to_trix_html</code>.</li>\n  <li><code>ActionText::TrixAttachment</code></li>\n</ul>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Validate `RemoteImage` URLs at creation time.\n\n    `RemoteImage.from_node` now validates the URL before creating a `RemoteImage` object, using the\n    same regex that `AssetUrlHelper` uses during rendering. URLs like \"image.png\" that would\n    previously have been passed to the asset pipeline and raised a `ActionView::Template::Error` are\n    rejected early, and gracefully fail by resulting in a `MissingAttachable`.\n\n    *Mike Dalessio*",
     "project": "actiontext",
     "date_merged": 1764908725000,
@@ -132,11 +142,11 @@
   {
     "message": "*   Allow `schema_dump` configuration to be an absolute path.\n\n    Previously, the `schema_dump` configuration was always joined with the\n    `db_dir` path. Now, if an absolute path is provided, it will be used as-is.\n\n    *Mike Dalessio*",
     "project": "activerecord",
-    "date_merged": 1764916139000,
+    "date_merged": 1764919887000,
     "author": "Mike Dalessio",
     "sha": "f3a76716ddcaa2faa09ae75e39ada064ae1d44ab",
     "pr": "56290",
-    "merge_sha": null,
+    "merge_sha": "abf88889b92e53e9775288d79fd611942f928b2d",
     "html": "<p>Allow <code>schema_dump</code> configuration to be an absolute path.</p>\n\n<p>Previously, the <code>schema_dump</code> configuration was always joined with the<br />\n<code>db_dir</code> path. Now, if an absolute path is provided, it will be used as-is.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
@@ -268,6 +278,26 @@
     "pr": "56093",
     "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Introduce immediate variants that are generated immediately on attachment\n\n    The new `process` option determines when variants are created:\n\n    - `:lazily` (default) - Variants are created dynamically when requested\n    - `:later` (replaces `preprocessed: true`) - Variants are created after attachment, in a background job\n    - `:immediately` (new) - Variants are created along with the attachment\n\n    ```ruby\n    has_one_attached :avatar do |attachable|\n      attachable.variant :thumb, resize_to_limit: [100, 100], process: :immediately\n    end\n    ```\n\n    The `preprocessed: true` option is deprecated in favor of `process: :later`.\n\n    *Tom Rossi*",
+    "project": "activestorage",
+    "date_merged": 1764919887000,
+    "author": "Tom Rossi",
+    "sha": "3d105fc346fbb3121bbcf6340f2b19104bf326f0",
+    "pr": "51951",
+    "merge_sha": "abf88889b92e53e9775288d79fd611942f928b2d",
+    "html": "<p>Introduce immediate variants that are generated immediately on attachment</p>\n\n<p>The new <code>process</code> option determines when variants are created:</p>\n\n<ul>\n  <li><code>:lazily</code> (default) - Variants are created dynamically when requested</li>\n  <li><code>:later</code> (replaces <code>preprocessed: true</code>) - Variants are created after attachment, in a background job</li>\n  <li><code>:immediately</code> (new) - Variants are created along with the attachment</li>\n</ul>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">has_one_attached</span> <span class=\"ss\">:avatar</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">attachable</span><span class=\"o\">|</span>\n  <span class=\"n\">attachable</span><span class=\"p\">.</span><span class=\"nf\">variant</span> <span class=\"ss\">:thumb</span><span class=\"p\">,</span> <span class=\"ss\">resize_to_limit: </span><span class=\"p\">[</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">],</span> <span class=\"ss\">process: :immediately</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>The <code>preprocessed: true</code> option is deprecated in favor of <code>process: :later</code>.</p>\n\n<p><em>Tom Rossi</em></p>\n"
+  },
+  {
+    "message": "*   Make `Variant#processed?` and `VariantWithRecord#processed?` public so apps can check variant generation status.\n\n    *Tom Rossi*",
+    "project": "activestorage",
+    "date_merged": 1764919887000,
+    "author": "Tom Rossi",
+    "sha": "3d105fc346fbb3121bbcf6340f2b19104bf326f0",
+    "pr": "51951",
+    "merge_sha": "abf88889b92e53e9775288d79fd611942f928b2d",
+    "html": "<p>Make <code>Variant#processed?</code> and <code>VariantWithRecord#processed?</code> public so apps can check variant generation status.</p>\n\n<p><em>Tom Rossi</em></p>\n"
   },
   {
     "message": "*   `ActiveStorage::Blob#open` can now be used without passing a block, like `Tempfile.open`. When using this form the\n    returned temporary file must be unlinked manually.\n\n    *Bart de Water*",
