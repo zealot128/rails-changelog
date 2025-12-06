@@ -142,11 +142,11 @@
   {
     "message": "*   Fix bug when `current_transaction.isolation` would not have been reset in test env.\n\n    Additionally, extending the change in [#55549](https://github.com/rails/rails/pull/55549)\n    to handle `requires_new: true`.\n\n    *Kir Shatrov*",
     "project": "activerecord",
-    "date_merged": 1764979475000,
+    "date_merged": 1765006584000,
     "author": "Kir Shatrov",
     "sha": "8e9bb59923ae1a13f7ab986a0275111f1cde099f",
     "pr": "56208",
-    "merge_sha": null,
+    "merge_sha": "f9c10631d1e8b2d9d1651412781aedb9db10fe24",
     "html": "<p>Fix bug when <code>current_transaction.isolation</code> would not have been reset in test env.</p>\n\n<p>Additionally, extending the change in <a href=\"https://github.com/rails/rails/pull/55549\">#55549</a><br />\nto handle <code>requires_new: true</code>.</p>\n\n<p><em>Kir Shatrov</em></p>\n"
   },
   {
@@ -408,6 +408,16 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Wrap console command with an executor by default\n\n    This can be disabled with `-w` or `--skip_executor`, same as runner.\n\n    *zzak*",
+    "project": "railties",
+    "date_merged": 1765006584000,
+    "author": "zzak",
+    "sha": "07f34c9cc47b769de526a118a7b4b794078c672e",
+    "pr": "56297",
+    "merge_sha": "f9c10631d1e8b2d9d1651412781aedb9db10fe24",
+    "html": "<p>Wrap console command with an executor by default</p>\n\n<p>This can be disabled with <code>-w</code> or <code>--skip_executor</code>, same as runner.</p>\n\n<p><em>zzak</em></p>\n"
   },
   {
     "message": "*   Add a new internal route in development to respond to chromium devtools GET request.\n\n    This allows the app folder to be easily connected as a workspace in chromium-based browsers.\n\n    *coorasse*",
