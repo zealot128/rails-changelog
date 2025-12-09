@@ -50,6 +50,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Emit a structured event when `action_on_open_redirect` is set to `:notify`\n    in addition to the existing Active Support Notification.\n\n    *Adrianna Chang*, *Hartley McGuire*",
+    "project": "actionpack",
+    "date_merged": 1765242077000,
+    "author": "Hartley McGuire",
+    "sha": "33a08842e178c69cbbce5047343ae89926755073",
+    "pr": "56019",
+    "merge_sha": "c6535e87ee5aaeafe5285ec17ce15c38b77bc52b",
+    "html": "<p>Emit a structured event when <code>action_on_open_redirect</code> is set to <code>:notify</code><br />\nin addition to the existing Active Support Notification.</p>\n\n<p><em>Adrianna Chang</em>, <em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Support `text/markdown` format in `DebugExceptions` middleware.\n\n    When `text/markdown` is requested via the Accept header, error responses\n    are returned with `Content-Type: text/markdown` instead of HTML.\n    The existing text templates are reused for markdown output, allowing\n    CLI tools and other clients to receive byte-efficient error information.\n\n    *Guillermo Iguaran*",
     "project": "actionpack",
     "date_merged": 1763309717000,
