@@ -102,11 +102,11 @@
   {
     "message": "*   Make flaky parallel tests easier to diagnose by deterministically assigning\n    tests to workers.\n\n    Rails assigns tests to workers in round-robin order so the same `--seed`\n    and worker count will result in the same sequence of tests running on each\n    worker (whether processes or threads) increasing the odds of reproducing\n    test failures caused by test interdependence.\n\n    This can make test runtime slower and spikier when one worker gets most of\n    the slow tests. Enable `work_stealing: true` to allow idle workers to steal\n    tests from busy workers in deterministic order, smoothing out runtime at the\n    cost of less reproducible flaky-test failures.\n\n    *Jeremy Daer*",
     "project": "activesupport",
-    "date_merged": 1765313698000,
+    "date_merged": 1765349289000,
     "author": "Jeremy Daer",
     "sha": "926edf5d51c5a0cd2698810fc6abd04525eb1a3b",
     "pr": "56175",
-    "merge_sha": null,
+    "merge_sha": "420fd9a7a4b7fab11e7f98a5a445ddeee5fa1026",
     "html": "<p>Make flaky parallel tests easier to diagnose by deterministically assigning<br />\ntests to workers.</p>\n\n<p>Rails assigns tests to workers in round-robin order so the same <code>--seed</code><br />\nand worker count will result in the same sequence of tests running on each<br />\nworker (whether processes or threads) increasing the odds of reproducing<br />\ntest failures caused by test interdependence.</p>\n\n<p>This can make test runtime slower and spikier when one worker gets most of<br />\nthe slow tests. Enable <code>work_stealing: true</code> to allow idle workers to steal<br />\ntests from busy workers in deterministic order, smoothing out runtime at the<br />\ncost of less reproducible flaky-test failures.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
@@ -330,33 +330,33 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
-    "message": "*   Eagerly analyze attachments with immediate variants\n\n    Attachments with `process: :immediately` variants now eagerly analyze\n    during validation, making metadata like image dimensions available for\n    custom validations.\n\n    *Jeremy Daer*",
+    "message": "*   Analyze attachments before validation\n\n    Attachment metadata (width, height, duration, etc.) is now available for\n    model validations:\n\n    ```ruby\n    class User < ApplicationRecord\n      has_one_attached :avatar\n\n      validate :validate_avatar_dimensions, if: -> { avatar.attached? }\n\n      def validate_avatar_dimensions\n        if avatar.metadata[:width] < 200 || avatar.metadata[:height] < 200\n          errors.add(:avatar, \"must be at least 200x200\")\n        end\n      end\n    end\n    ```\n\n    Configure when analysis is performed:\n\n    * `analyze: :immediately` (default in 8.2) - Analyze before validation\n    * `analyze: :later` - Analyze after upload from local IO or via background job\n    * `analyze: :lazily` - Skip automatic analysis; analyze on-demand\n\n    ```ruby\n    has_one_attached :document, analyze: :later\n    has_many_attached :files, analyze: :lazily\n\n    # Or set the global default:\n    config.active_storage.analyze = :later\n    ```\n\n    Direct uploads bypass the server so the file isn't locally available\n    for analysis. In this case, `:immediately` falls back to `:later`,\n    analyzing via background job after upload completes. Metadata isn't\n    available for validation; validate on the client side instead.\n\n    *Jeremy Daer*",
     "project": "activestorage",
-    "date_merged": 1765335922000,
+    "date_merged": 1765353414000,
     "author": "Jeremy Daer",
-    "sha": "c12afb920b891527180cefc9c0971a356ae5d7b2",
-    "pr": "56327",
+    "sha": "01e5a0c65d012baede7f2084615a0c7a8b294ae9",
+    "pr": "56335",
     "merge_sha": null,
-    "html": "<p>Eagerly analyze attachments with immediate variants</p>\n\n<p>Attachments with <code>process: :immediately</code> variants now eagerly analyze<br />\nduring validation, making metadata like image dimensions available for<br />\ncustom validations.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
+    "html": "<p>Analyze attachments before validation</p>\n\n<p>Attachment metadata (width, height, duration, etc.) is now available for<br />\nmodel validations:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">has_one_attached</span> <span class=\"ss\">:avatar</span>\n\n  <span class=\"n\">validate</span> <span class=\"ss\">:validate_avatar_dimensions</span><span class=\"p\">,</span> <span class=\"ss\">if: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">avatar</span><span class=\"p\">.</span><span class=\"nf\">attached?</span> <span class=\"p\">}</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">validate_avatar_dimensions</span>\n    <span class=\"k\">if</span> <span class=\"n\">avatar</span><span class=\"p\">.</span><span class=\"nf\">metadata</span><span class=\"p\">[</span><span class=\"ss\">:width</span><span class=\"p\">]</span> <span class=\"o\">&lt;</span> <span class=\"mi\">200</span> <span class=\"o\">||</span> <span class=\"n\">avatar</span><span class=\"p\">.</span><span class=\"nf\">metadata</span><span class=\"p\">[</span><span class=\"ss\">:height</span><span class=\"p\">]</span> <span class=\"o\">&lt;</span> <span class=\"mi\">200</span>\n      <span class=\"n\">errors</span><span class=\"p\">.</span><span class=\"nf\">add</span><span class=\"p\">(</span><span class=\"ss\">:avatar</span><span class=\"p\">,</span> <span class=\"s2\">\"must be at least 200x200\"</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Configure when analysis is performed:</p>\n\n<ul>\n  <li><code>analyze: :immediately</code> (default in 8.2) - Analyze before validation</li>\n  <li><code>analyze: :later</code> - Analyze after upload from local IO or via background job</li>\n  <li><code>analyze: :lazily</code> - Skip automatic analysis; analyze on-demand</li>\n</ul>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">has_one_attached</span> <span class=\"ss\">:document</span><span class=\"p\">,</span> <span class=\"ss\">analyze: :later</span>\n<span class=\"n\">has_many_attached</span> <span class=\"ss\">:files</span><span class=\"p\">,</span> <span class=\"ss\">analyze: :lazily</span>\n\n<span class=\"c1\"># Or set the global default:</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_storage</span><span class=\"p\">.</span><span class=\"nf\">analyze</span> <span class=\"o\">=</span> <span class=\"ss\">:later</span>\n</code></pre></div></div>\n\n<p>Direct uploads bypass the server so the file isn’t locally available<br />\nfor analysis. In this case, <code>:immediately</code> falls back to <code>:later</code>,<br />\nanalyzing via background job after upload completes. Metadata isn’t<br />\navailable for validation; validate on the client side instead.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
     "message": "*   Use local files for immediate variant processing and analysis\n\n    `process: :immediately` variants and blob analysis use local files\n    directly instead of re-downloading after upload.\n\n    Applies when attaching uploadable io, not when attaching an existing Blob.\n\n    *Jeremy Daer*",
     "project": "activestorage",
-    "date_merged": 1765335922000,
+    "date_merged": 1765349289000,
     "author": "Jeremy Daer",
     "sha": "c12afb920b891527180cefc9c0971a356ae5d7b2",
     "pr": "56327",
-    "merge_sha": null,
+    "merge_sha": "420fd9a7a4b7fab11e7f98a5a445ddeee5fa1026",
     "html": "<p>Use local files for immediate variant processing and analysis</p>\n\n<p><code>process: :immediately</code> variants and blob analysis use local files<br />\ndirectly instead of re-downloading after upload.</p>\n\n<p>Applies when attaching uploadable io, not when attaching an existing Blob.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
     "message": "*   Introduce `ActiveStorage::Attachment` upload callbacks\n\n    `after_upload` fires after an attachment's blob is uploaded, enabling\n    analysis and processing to run deterministically rather than assuming\n    after-commit callback execution ordering.\n\n    ```ruby\n    ActiveStorage::Attachment.after_upload do\n      # Your custom logic here\n    end\n    ```\n\n    *Jeremy Daer*",
     "project": "activestorage",
-    "date_merged": 1765335922000,
+    "date_merged": 1765349289000,
     "author": "Jeremy Daer",
     "sha": "c12afb920b891527180cefc9c0971a356ae5d7b2",
     "pr": "56327",
-    "merge_sha": null,
+    "merge_sha": "420fd9a7a4b7fab11e7f98a5a445ddeee5fa1026",
     "html": "<p>Introduce <code>ActiveStorage::Attachment</code> upload callbacks</p>\n\n<p><code>after_upload</code> fires after an attachment’s blob is uploaded, enabling<br />\nanalysis and processing to run deterministically rather than assuming<br />\nafter-commit callback execution ordering.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Attachment</span><span class=\"p\">.</span><span class=\"nf\">after_upload</span> <span class=\"k\">do</span>\n  <span class=\"c1\"># Your custom logic here</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
@@ -478,6 +478,16 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add `Rails::CodeStatistics#register_extension` to register file extensions for `rails stats`\n\n    ```ruby\n    Rails::CodeStatistics.register_extension(\"txt\")\n    ```\n\n    *Taketo Takashima*",
+    "project": "railties",
+    "date_merged": 1765353146000,
+    "author": "Taketo Takashima",
+    "sha": "bae568c80735bf3dcebcd693293527dbdd5111cc",
+    "pr": "56017",
+    "merge_sha": "d33d5092c77b08b5302e28dbae61e894a6976d1c",
+    "html": "<p>Add <code>Rails::CodeStatistics#register_extension</code> to register file extensions for <code>rails stats</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">CodeStatistics</span><span class=\"p\">.</span><span class=\"nf\">register_extension</span><span class=\"p\">(</span><span class=\"s2\">\"txt\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Taketo Takashima</em></p>\n"
   },
   {
     "message": "*   Wrap console command with an executor by default\n\n    This can be disabled with `-w` or `--skip_executor`, same as runner.\n\n    *zzak*",
