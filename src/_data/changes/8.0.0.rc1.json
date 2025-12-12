@@ -500,6 +500,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Do not clean directories directly under the application root with `Rails::BacktraceCleaner`\n\n    Improved `Rails.backtrace_cleaner` so that most paths located directly under the application's root directory are no longer silenced.\n\n    *alpaca-tc*",
+    "project": "railties",
+    "date_merged": 1765526415000,
+    "author": "alpaca-tc",
+    "sha": "0ed41b849b86a5d352aa7bbba4b5b69217807338",
+    "pr": "56333",
+    "merge_sha": "96fba42a598f2c138682de29212ecfb44ca46265",
+    "html": "<p>Do not clean directories directly under the application root with <code>Rails::BacktraceCleaner</code></p>\n\n<p>Improved <code>Rails.backtrace_cleaner</code> so that most paths located directly under the application’s root directory are no longer silenced.</p>\n\n<p><em>alpaca-tc</em></p>\n"
+  },
+  {
     "message": "*   Add `Rails::CodeStatistics#register_extension` to register file extensions for `rails stats`\n\n    ```ruby\n    Rails::CodeStatistics.register_extension(\"txt\")\n    ```\n\n    *Taketo Takashima*",
     "project": "railties",
     "date_merged": 1765353146000,
