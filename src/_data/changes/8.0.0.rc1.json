@@ -50,6 +50,26 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Active Support notifications for CSRF warnings.\n\n    Switches from direct logging to event-driven logging, allowing others to\n    subscribe to and act on CSRF events:\n\n    - `csrf_token_fallback.action_controller`\n    - `csrf_request_blocked.action_controller`\n    - `csrf_javascript_blocked.action_controller`\n\n    *Jeremy Daer*",
+    "project": "actionpack",
+    "date_merged": 1765597243000,
+    "author": "Jeremy Daer",
+    "sha": "daa6fae39931088e60c553b52bdcbf6a65264340",
+    "pr": "56355",
+    "merge_sha": "07c919c179be1c53d6b8aa84fe86f40d43c622ce",
+    "html": "<p>Active Support notifications for CSRF warnings.</p>\n\n<p>Switches from direct logging to event-driven logging, allowing others to<br />\nsubscribe to and act on CSRF events:</p>\n\n<ul>\n  <li><code>csrf_token_fallback.action_controller</code></li>\n  <li><code>csrf_request_blocked.action_controller</code></li>\n  <li><code>csrf_javascript_blocked.action_controller</code></li>\n</ul>\n\n<p><em>Jeremy Daer</em></p>\n"
+  },
+  {
+    "message": "*   Modern header-based CSRF protection.\n\n    Modern browsers send the `Sec-Fetch-Site` header to indicate the relationship\n    between request initiator and target origins. Rails now uses this header to\n    verify same-origin requests without requiring authenticity tokens.\n\n    Two verification strategies are available via `protect_from_forgery using:`:\n\n    * `:header_only` - Uses `Sec-Fetch-Site` header only. Rejects requests\n      without a valid header. Default for new Rails 8.2 applications.\n\n    * `:header_or_legacy_token` - Uses `Sec-Fetch-Site` header when present,\n      falls back to authenticity token verification for older browsers.\n\n    Configure trusted origins for legitimate cross-site requests (OAuth callbacks,\n    third-party embeds) with `trusted_origins:`:\n\n    ```ruby\n    protect_from_forgery trusted_origins: %w[ https://accounts.google.com ]\n    ```\n\n    `InvalidAuthenticityToken` is deprecated in favor of `InvalidCrossOriginRequest`.\n\n    *Rosa Gutierrez*",
+    "project": "actionpack",
+    "date_merged": 1765581146000,
+    "author": "Jeremy Daer",
+    "sha": "1a5c584a8a3cbc8e30b3a6d7cd27dd2ae504b57b",
+    "pr": "56350",
+    "merge_sha": "d274ddaf7cedc9e5029c112450cb0048dc1ae2a1",
+    "html": "<p>Modern header-based CSRF protection.</p>\n\n<p>Modern browsers send the <code>Sec-Fetch-Site</code> header to indicate the relationship<br />\nbetween request initiator and target origins. Rails now uses this header to<br />\nverify same-origin requests without requiring authenticity tokens.</p>\n\n<p>Two verification strategies are available via <code>protect_from_forgery using:</code>:</p>\n\n<ul>\n  <li>\n    <p><code>:header_only</code> - Uses <code>Sec-Fetch-Site</code> header only. Rejects requests<br />\nwithout a valid header. Default for new Rails 8.2 applications.</p>\n  </li>\n  <li>\n    <p><code>:header_or_legacy_token</code> - Uses <code>Sec-Fetch-Site</code> header when present,<br />\nfalls back to authenticity token verification for older browsers.</p>\n  </li>\n</ul>\n\n<p>Configure trusted origins for legitimate cross-site requests (OAuth callbacks,<br />\nthird-party embeds) with <code>trusted_origins:</code>:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">protect_from_forgery</span> <span class=\"ss\">trusted_origins: </span><span class=\"sx\">%w[ https://accounts.google.com ]</span>\n</code></pre></div></div>\n\n<p><code>InvalidAuthenticityToken</code> is deprecated in favor of <code>InvalidCrossOriginRequest</code>.</p>\n\n<p><em>Rosa Gutierrez</em></p>\n"
+  },
+  {
     "message": "*   Fix `action_dispatch_request` early load hook call when building\n    Rails app middleware.\n\n    *Gannon McGibbon*",
     "project": "actionpack",
     "date_merged": 1765502177000,
