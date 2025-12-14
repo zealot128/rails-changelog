@@ -50,6 +50,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Add controller action source location to routes inspector.\n\n    The routes inspector now shows where controller actions are defined.\n    In `rails routes --expanded`, a new \"Action Location\" field displays\n    the file and line number of each action method.\n\n    On the routing error page, when `RAILS_EDITOR` or `EDITOR` is set,\n    a clickable ✏️ icon appears next to each Controller#Action that opens\n    the action directly in the editor.\n\n    *Guillermo Iguaran*",
+    "project": "actionpack",
+    "date_merged": 1765704018000,
+    "author": "Guillermo Iguaran",
+    "sha": "fbe1dac24840e38519ca74096af8fc2d75e4f573",
+    "pr": "56361",
+    "merge_sha": "7ec52e52001bac43688008a9e47de82422582eff",
+    "html": "<p>Add controller action source location to routes inspector.</p>\n\n<p>The routes inspector now shows where controller actions are defined.<br />\nIn <code>rails routes --expanded</code>, a new “Action Location” field displays<br />\nthe file and line number of each action method.</p>\n\n<p>On the routing error page, when <code>RAILS_EDITOR</code> or <code>EDITOR</code> is set,<br />\na clickable ✏️ icon appears next to each Controller#Action that opens<br />\nthe action directly in the editor.</p>\n\n<p><em>Guillermo Iguaran</em></p>\n"
+  },
+  {
     "message": "*   Active Support notifications for CSRF warnings.\n\n    Switches from direct logging to event-driven logging, allowing others to\n    subscribe to and act on CSRF events:\n\n    - `csrf_token_fallback.action_controller`\n    - `csrf_request_blocked.action_controller`\n    - `csrf_javascript_blocked.action_controller`\n\n    *Jeremy Daer*",
     "project": "actionpack",
     "date_merged": 1765597243000,
