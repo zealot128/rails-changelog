@@ -50,6 +50,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Add `config.action_controller.live.streaming_excluded_keys` to control execution state sharing in ActionController::Live.\n\n    When using ActionController::Live, actions are executed in a separate thread that shares\n    state from the parent thread. This new configuration allows applications to opt-out specific\n    state keys that should not be shared.\n\n    This is useful when streaming inside a `connected_to` block, where you may want\n    the streaming thread to use its own database connection context.\n\n    ```ruby\n    # config/application.rb\n    config.action_controller.live.streaming_excluded_keys = [:active_record_connected_to_stack]\n    ```\n\n    By default, all keys are shared.\n\n    *Eileen M. Uchitelle*",
+    "project": "actionpack",
+    "date_merged": 1766002879000,
+    "author": "eileencodes",
+    "sha": "c66a7628e223653df7937824867133a2e23452f5",
+    "pr": "56393",
+    "merge_sha": "7570743002134c8afc99afe107adb34dcda90494",
+    "html": "<p>Add <code>config.action_controller.live.streaming_excluded_keys</code> to control execution state sharing in ActionController::Live.</p>\n\n<p>When using ActionController::Live, actions are executed in a separate thread that shares<br />\nstate from the parent thread. This new configuration allows applications to opt-out specific<br />\nstate keys that should not be shared.</p>\n\n<p>This is useful when streaming inside a <code>connected_to</code> block, where you may want<br />\nthe streaming thread to use its own database connection context.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># config/application.rb</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">action_controller</span><span class=\"p\">.</span><span class=\"nf\">live</span><span class=\"p\">.</span><span class=\"nf\">streaming_excluded_keys</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"ss\">:active_record_connected_to_stack</span><span class=\"p\">]</span>\n</code></pre></div></div>\n\n<p>By default, all keys are shared.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
     "message": "*   Add controller action source location to routes inspector.\n\n    The routes inspector now shows where controller actions are defined.\n    In `rails routes --expanded`, a new \"Action Location\" field displays\n    the file and line number of each action method.\n\n    On the routing error page, when `RAILS_EDITOR` or `EDITOR` is set,\n    a clickable ✏️ icon appears next to each Controller#Action that opens\n    the action directly in the editor.\n\n    *Guillermo Iguaran*",
     "project": "actionpack",
     "date_merged": 1765704018000,
