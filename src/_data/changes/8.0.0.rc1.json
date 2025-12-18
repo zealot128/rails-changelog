@@ -50,6 +50,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Yield key to `ActionController::Parameters#fetch` block\n\n    ```ruby\n    key = params.fetch(:missing) { |missing_key| missing_key }\n    key # => :missing\n\n    key = params.fetch(\"missing\") { |missing_key| missing_key }\n    key # => \"missing\"\n    ```\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1766082423000,
+    "author": "Sean Doyle",
+    "sha": "0c580127dd3ddef143f4196baf90decf8564de58",
+    "pr": "56400",
+    "merge_sha": "3b7cdb542f389deab359702bf38877dd7eb9f825",
+    "html": "<p>Yield key to <code>ActionController::Parameters#fetch</code> block</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">fetch</span><span class=\"p\">(</span><span class=\"ss\">:missing</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"o\">|</span><span class=\"n\">missing_key</span><span class=\"o\">|</span> <span class=\"n\">missing_key</span> <span class=\"p\">}</span>\n<span class=\"n\">key</span> <span class=\"c1\"># =&gt; :missing</span>\n\n<span class=\"n\">key</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">fetch</span><span class=\"p\">(</span><span class=\"s2\">\"missing\"</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"o\">|</span><span class=\"n\">missing_key</span><span class=\"o\">|</span> <span class=\"n\">missing_key</span> <span class=\"p\">}</span>\n<span class=\"n\">key</span> <span class=\"c1\"># =&gt; \"missing\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Add `config.action_controller.live.streaming_excluded_keys` to control execution state sharing in ActionController::Live.\n\n    When using ActionController::Live, actions are executed in a separate thread that shares\n    state from the parent thread. This new configuration allows applications to opt-out specific\n    state keys that should not be shared.\n\n    This is useful when streaming inside a `connected_to` block, where you may want\n    the streaming thread to use its own database connection context.\n\n    ```ruby\n    # config/application.rb\n    config.action_controller.live.streaming_excluded_keys = [:active_record_connected_to_stack]\n    ```\n\n    By default, all keys are shared.\n\n    *Eileen M. Uchitelle*",
     "project": "actionpack",
     "date_merged": 1766002879000,
