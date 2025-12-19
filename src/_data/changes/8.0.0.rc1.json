@@ -550,6 +550,26 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Add `Rails.app` as alias for `Rails.application`. Particularly helpful when accessing nested accessors inside application code,\n    like when using `Rails.app.credentials`.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1766123497000,
+    "author": "David Heinemeier Hansson",
+    "sha": "53abf01e86723c2e4cf9d35ae626933ca5122ec5",
+    "pr": "56403",
+    "merge_sha": "a84c99b1a6a80d0be5059626941deea09c898446",
+    "html": "<p>Add <code>Rails.app</code> as alias for <code>Rails.application</code>. Particularly helpful when accessing nested accessors inside application code,<br />\nlike when using <code>Rails.app.credentials</code>.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Remove duplicate unique index for token migrations\n\n    *zzak*, *Dan Bota*",
+    "project": "railties",
+    "date_merged": 1766088909000,
+    "author": "zzak",
+    "sha": "de419d7ad8844b03016e78f640ee0523d35b0ad1",
+    "pr": "56398",
+    "merge_sha": "45ab692176ea18728fcf0b01f0a22e30d672a5d6",
+    "html": "<p>Remove duplicate unique index for token migrations</p>\n\n<p><em>zzak</em>, <em>Dan Bota</em></p>\n"
+  },
+  {
     "message": "*   Do not clean directories directly under the application root with `Rails::BacktraceCleaner`\n\n    Improved `Rails.backtrace_cleaner` so that most paths located directly under the application's root directory are no longer silenced.\n\n    *alpaca-tc*",
     "project": "railties",
     "date_merged": 1765526415000,
