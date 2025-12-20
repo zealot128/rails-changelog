@@ -390,6 +390,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Deprecate built-in `sneakers` adapter.\n\n    *Dino Maric*",
+    "project": "activejob",
+    "date_merged": 1766179212000,
+    "author": "Dino Maric",
+    "sha": "82dba697895a80a7ca7a3a0043adf3df11468eb0",
+    "pr": "53335",
+    "merge_sha": "69058497070e5d51315728cbd7327e8f1f039474",
+    "html": "<p>Deprecate built-in <code>sneakers</code> adapter.</p>\n\n<p><em>Dino Maric</em></p>\n"
+  },
+  {
     "message": "*   Fix using custom serializers with `ActiveJob::Arguments.serialize` when\n    `ActiveJob::Base` hasn't been loaded.\n\n    *Hartley McGuire*",
     "project": "activejob",
     "date_merged": 1762718670000,
