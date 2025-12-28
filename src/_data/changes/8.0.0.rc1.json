@@ -50,6 +50,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Add `ActionDispatch::Request#bearer_token` to extract the bearer token from the Authorization header.\n    Bearer tokens are commonly used for API and MCP requests.\n\n    *DHH*",
+    "project": "actionpack",
+    "date_merged": 1766939689000,
+    "author": "David Heinemeier Hansson",
+    "sha": "2533c938acb97c2b44e6600fc0d35962e7ba9c7d",
+    "pr": "56474",
+    "merge_sha": null,
+    "html": "<p>Add <code>ActionDispatch::Request#bearer_token</code> to extract the bearer token from the Authorization header.<br />\nBearer tokens are commonly used for API and MCP requests.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
     "message": "*   Add block support to `ActionController::Parameters#merge`\n\n    `ActionController::Parameters#merge` now accepts a block to resolve conflicts,\n    consistent with `Hash#merge` and `Parameters#merge!`.\n\n    ```ruby\n    params1 = ActionController::Parameters.new(a: 1, b: 2)\n    params2 = ActionController::Parameters.new(b: 3, c: 4)\n    params1.merge(params2) { |key, old_val, new_val| old_val + new_val }\n    # => #<ActionController::Parameters {\"a\"=>1, \"b\"=>5, \"c\"=>4} permitted: false>\n    ```\n\n    *Said Kaldybaev*",
     "project": "actionpack",
     "date_merged": 1766305952000,
