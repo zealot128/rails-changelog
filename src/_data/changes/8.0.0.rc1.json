@@ -52,11 +52,11 @@
   {
     "message": "*   Add `ActionDispatch::Request#bearer_token` to extract the bearer token from the Authorization header.\n    Bearer tokens are commonly used for API and MCP requests.\n\n    *DHH*",
     "project": "actionpack",
-    "date_merged": 1766939689000,
+    "date_merged": 1766968051000,
     "author": "David Heinemeier Hansson",
     "sha": "2533c938acb97c2b44e6600fc0d35962e7ba9c7d",
     "pr": "56474",
-    "merge_sha": null,
+    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
     "html": "<p>Add <code>ActionDispatch::Request#bearer_token</code> to extract the bearer token from the Authorization header.<br />\nBearer tokens are commonly used for API and MCP requests.</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
@@ -432,21 +432,21 @@
   {
     "message": "*   Jobs are now enqueued after transaction commit.\n\n    This fixes that jobs would surprisingly run against uncommitted and\n    rolled-back records.\n\n    New Rails 8.2 apps (and apps upgrading to `config.load_defaults \"8.2\"`)\n    have `config.active_job.enqueue_after_transaction_commit = true` by default.\n    Uncomment the setting in `config/initializers/new_framework_defaults_8_2.rb`\n    to opt in.\n\n    *mugitti9*",
     "project": "activejob",
-    "date_merged": 1766899556000,
+    "date_merged": 1766968051000,
     "author": "Shuta Mugikura",
     "sha": "a477a3273c3c71305cc8ae1835638dc75184ad9d",
     "pr": "55788",
-    "merge_sha": null,
+    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
     "html": "<p>Jobs are now enqueued after transaction commit.</p>\n\n<p>This fixes that jobs would surprisingly run against uncommitted and<br />\nrolled-back records.</p>\n\n<p>New Rails 8.2 apps (and apps upgrading to <code>config.load_defaults \"8.2\"</code>)<br />\nhave <code>config.active_job.enqueue_after_transaction_commit = true</code> by default.<br />\nUncomment the setting in <code>config/initializers/new_framework_defaults_8_2.rb</code><br />\nto opt in.</p>\n\n<p><em>mugitti9</em></p>\n"
   },
   {
     "message": "*   Un-deprecate the global `config.active_job.enqueue_after_transaction_commit`\n    toggle for app-wide overrides. It was deprecated in Rails 8.0 (when the\n    symbol values were removed) and made non-functional in 8.1. It now works\n    as a boolean config again.\n\n    *Jeremy Daer*",
     "project": "activejob",
-    "date_merged": 1766899556000,
+    "date_merged": 1766968051000,
     "author": "Shuta Mugikura",
     "sha": "a477a3273c3c71305cc8ae1835638dc75184ad9d",
     "pr": "55788",
-    "merge_sha": null,
+    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
     "html": "<p>Un-deprecate the global <code>config.active_job.enqueue_after_transaction_commit</code><br />\ntoggle for app-wide overrides. It was deprecated in Rails 8.0 (when the<br />\nsymbol values were removed) and made non-functional in 8.1. It now works<br />\nas a boolean config again.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
@@ -622,21 +622,21 @@
   {
     "message": "*   Add `Rails.app.creds` to provide combined access to credentials stored in either ENV or the encrypted credentials file,\n    and in development also .env credentials. Provides a new require/option API for accessing these values. Examples:\n\n    ```ruby\n    Rails.app.creds.require(:db_host) # ENV.fetch(\"DB_HOST\") || Rails.app.credentials.require(:db_host)\n    Rails.app.creds.require(:aws, :access_key_id) # ENV.fetch(\"AWS__ACCESS_KEY_ID\") || Rails.app.credentials.require(:aws, :access_key_id)\n    Rails.app.creds.option(:cache_host) # ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host)\n    Rails.app.creds.option(:cache_host, default: \"cache-host-1\") # ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"\n    Rails.app.creds.option(:cache_host, default: -> { \"cache-host-1\" }) # ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"\n    ```\n\n    It's also possible to assign your own combined configuration, if you need to use a different backend than just ENVs + encrypted files:\n\n    ```ruby\n    Rails.app.creds = ActiveSupport::CombinedConfiguration.new(Rails.app.envs, OnePasswordConfiguration.new)\n    ```\n\n    *DHH*",
     "project": "railties",
-    "date_merged": 1766883337000,
+    "date_merged": 1766968051000,
     "author": "David Heinemeier Hansson",
     "sha": "80570a6dd73d632738ed86561b10d33217c6fa7e",
     "pr": "56455",
-    "merge_sha": null,
+    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
     "html": "<p>Add <code>Rails.app.creds</code> to provide combined access to credentials stored in either ENV or the encrypted credentials file,<br />\nand in development also .env credentials. Provides a new require/option API for accessing these values. Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:db_host</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"DB_HOST\") || Rails.app.credentials.require(:db_host)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:aws</span><span class=\"p\">,</span> <span class=\"ss\">:access_key_id</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"AWS__ACCESS_KEY_ID\") || Rails.app.credentials.require(:aws, :access_key_id)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">)</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"s2\">\"cache-host-1\"</span><span class=\"p\">)</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"s2\">\"cache-host-1\"</span> <span class=\"p\">})</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"</span>\n</code></pre></div></div>\n\n<p>It’s also possible to assign your own combined configuration, if you need to use a different backend than just ENVs + encrypted files:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span> <span class=\"o\">=</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">CombinedConfiguration</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">,</span> <span class=\"no\">OnePasswordConfiguration</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
   },
   {
     "message": "*   Add `Rails.app.dotenvs` to provide access to .env variables through symbol-based lookup with explicit methods\n    for required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.\n\n    It supports both variable interpolation with ${VAR} and command interpolation with $(echo \"hello\"). Otherwise the same as `Rails.app.envs`.\n\n    *DHH*",
     "project": "railties",
-    "date_merged": 1766883337000,
+    "date_merged": 1766968051000,
     "author": "David Heinemeier Hansson",
     "sha": "80570a6dd73d632738ed86561b10d33217c6fa7e",
     "pr": "56455",
-    "merge_sha": null,
+    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
     "html": "<p>Add <code>Rails.app.dotenvs</code> to provide access to .env variables through symbol-based lookup with explicit methods<br />\nfor required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.</p>\n\n<p>It supports both variable interpolation with ${VAR} and command interpolation with $(echo “hello”). Otherwise the same as <code>Rails.app.envs</code>.</p>\n\n<p><em>DHH</em></p>\n"
   },
   {
