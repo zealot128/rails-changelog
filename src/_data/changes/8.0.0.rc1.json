@@ -430,6 +430,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Deprecate built-in `backburner` adapter.\n\n    *Dino Maric, Nathan Esquenazi, Earlopain*",
+    "project": "activejob",
+    "date_merged": 1767459618000,
+    "author": "Dino Maric",
+    "sha": "2dc4a97f91c3456ff95de6e2f8f27a8afeab9190",
+    "pr": "53334",
+    "merge_sha": "debeab22780607f22b976d8608d26fc2b997e256",
+    "html": "<p>Deprecate built-in <code>backburner</code> adapter.</p>\n\n<p><em>Dino Maric, Nathan Esquenazi, Earlopain</em></p>\n"
+  },
+  {
     "message": "*   Jobs are now enqueued after transaction commit.\n\n    This fixes that jobs would surprisingly run against uncommitted and\n    rolled-back records.\n\n    New Rails 8.2 apps (and apps upgrading to `config.load_defaults \"8.2\"`)\n    have `config.active_job.enqueue_after_transaction_commit = true` by default.\n    Uncomment the setting in `config/initializers/new_framework_defaults_8_2.rb`\n    to opt in.\n\n    *mugitti9*",
     "project": "activejob",
     "date_merged": 1766968051000,
