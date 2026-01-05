@@ -430,6 +430,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Remove deprecated `sidekiq` Active Job adapter.\n\n    The adapter is available in the `sidekiq` gem.\n\n    *Wojciech Wnętrzak*",
+    "project": "activejob",
+    "date_merged": 1767621671000,
+    "author": "Wojciech Wnętrzak",
+    "sha": "10c24f2481c55a8f215f7a0dcfa4126a702f5b82",
+    "pr": "56518",
+    "merge_sha": "63d2a1c9283d73195b6d8bf3f563cee3bbf8b64b",
+    "html": "<p>Remove deprecated <code>sidekiq</code> Active Job adapter.</p>\n\n<p>The adapter is available in the <code>sidekiq</code> gem.</p>\n\n<p><em>Wojciech Wnętrzak</em></p>\n"
+  },
+  {
     "message": "*   Deprecate built-in `delayed_job` adapter.\n\n    If you're using this adapter, upgrade to `delayed_job` 4.2.0 or later to use the `delayed_job` gem's adapter.\n\n    *Dino Maric, David Genord II, Wojciech Wnętrzak*",
     "project": "activejob",
     "date_merged": 1767554953000,
