@@ -500,6 +500,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Move responsibility for checksums storage service\n\n    The storage service should implement calculating and\n    validating checksums.\n\n    *Matt Pasquini*",
+    "project": "activestorage",
+    "date_merged": 1767685498000,
+    "author": "Matt Pasquini",
+    "sha": "d1e31dd4f983b93d5b3e8941b18774d736deec50",
+    "pr": "54468",
+    "merge_sha": "9990b2e72bc172fa9cc3d1dcc605305dc161fb46",
+    "html": "<p>Move responsibility for checksums storage service</p>\n\n<p>The storage service should implement calculating and<br />\nvalidating checksums.</p>\n\n<p><em>Matt Pasquini</em></p>\n"
+  },
+  {
     "message": "*   Analyze attachments before validation\n\n    Attachment metadata (width, height, duration, etc.) is now available for\n    model validations:\n\n    ```ruby\n    class User < ApplicationRecord\n      has_one_attached :avatar\n\n      validate :validate_avatar_dimensions, if: -> { avatar.attached? }\n\n      def validate_avatar_dimensions\n        if avatar.metadata[:width] < 200 || avatar.metadata[:height] < 200\n          errors.add(:avatar, \"must be at least 200x200\")\n        end\n      end\n    end\n    ```\n\n    Configure when analysis is performed:\n\n    * `analyze: :immediately` (default in 8.2) - Analyze before validation\n    * `analyze: :later` - Analyze after upload from local IO or via background job\n    * `analyze: :lazily` - Skip automatic analysis; analyze on-demand\n\n    ```ruby\n    has_one_attached :document, analyze: :later\n    has_many_attached :files, analyze: :lazily\n\n    # Or set the global default:\n    config.active_storage.analyze = :later\n    ```\n\n    Direct uploads bypass the server so the file isn't locally available\n    for analysis. In this case, `:immediately` falls back to `:later`,\n    analyzing via background job after upload completes. Metadata isn't\n    available for validation; validate on the client side instead.\n\n    *Jeremy Daer*",
     "project": "activestorage",
     "date_merged": 1765442250000,
