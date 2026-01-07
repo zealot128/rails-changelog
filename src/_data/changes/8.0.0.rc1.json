@@ -500,6 +500,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Restore ADC when signing URLs with IAM for GCS\n\n    ADC was previously used for automatic authorization when signing URLs with IAM.\n    Now it is again, but the auth client is memoized so that new credentials are only\n    requested when the current ones expire. Other auth methods can now be used\n    instead by setting the authorization on `ActiveStorage::Service::GCSService#iam_client`.\n\n    ```ruby\n    ActiveStorage::Blob.service.iam_client.authorization = Google::Auth::ImpersonatedServiceAccountCredentials.new(options)\n    ```\n\n    This is safer than setting `Google::Apis::RequestOptions.default.authorization`\n    because it only applies to Active Storage and does not affect other Google API\n    clients.\n\n    *Justin Malčić*",
+    "project": "activestorage",
+    "date_merged": 1767796720000,
+    "author": "Justin Malčić",
+    "sha": "950765904cf6562593b70f506cae48e448c2544c",
+    "pr": "56012",
+    "merge_sha": "e6da5b5d790816bd0b1f9c979621b24b6b595980",
+    "html": "<p>Restore ADC when signing URLs with IAM for GCS</p>\n\n<p>ADC was previously used for automatic authorization when signing URLs with IAM.<br />\nNow it is again, but the auth client is memoized so that new credentials are only<br />\nrequested when the current ones expire. Other auth methods can now be used<br />\ninstead by setting the authorization on <code>ActiveStorage::Service::GCSService#iam_client</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Blob</span><span class=\"p\">.</span><span class=\"nf\">service</span><span class=\"p\">.</span><span class=\"nf\">iam_client</span><span class=\"p\">.</span><span class=\"nf\">authorization</span> <span class=\"o\">=</span> <span class=\"no\">Google</span><span class=\"o\">::</span><span class=\"no\">Auth</span><span class=\"o\">::</span><span class=\"no\">ImpersonatedServiceAccountCredentials</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"n\">options</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>This is safer than setting <code>Google::Apis::RequestOptions.default.authorization</code><br />\nbecause it only applies to Active Storage and does not affect other Google API<br />\nclients.</p>\n\n<p><em>Justin Malčić</em></p>\n"
+  },
+  {
     "message": "*   Move responsibility for checksums storage service\n\n    The storage service should implement calculating and\n    validating checksums.\n\n    *Matt Pasquini*",
     "project": "activestorage",
     "date_merged": 1767685498000,
