@@ -50,6 +50,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Deprecate calling `protect_from_forgery` without specifying a strategy.\n\n    When `protect_from_forgery` is called without the `:with` option, it currently defaults to\n    `:null_session`. This is inconsistent with `config.action_controller.default_protect_from_forgery`,\n    which uses `:exception`.\n\n    A new configuration option `config.action_controller.default_protect_from_forgery_with` has been\n    added to allow applications to configure the default strategy. It currently defaults to `:null_session`\n    for backwards compatibility, but will change to `:exception` in a future version of Rails.\n\n    Applications can opt into the new behavior now by setting:\n\n    ```ruby\n    config.action_controller.default_protect_from_forgery_with = :exception\n    ```\n\n    To silence the deprecation warning without changing behavior, explicitly pass the strategy:\n\n    ```ruby\n    protect_from_forgery with: :null_session\n    ```\n\n    *Said Kaldybaev*",
+    "project": "actionpack",
+    "date_merged": 1767913550000,
+    "author": "Said Kaldybaev",
+    "sha": "61996576ca235a7c635eae67af11a655476d9595",
+    "pr": "56561",
+    "merge_sha": "734418ca9322f3112653f3024b3ebdb1389685e9",
+    "html": "<p>Deprecate calling <code>protect_from_forgery</code> without specifying a strategy.</p>\n\n<p>When <code>protect_from_forgery</code> is called without the <code>:with</code> option, it currently defaults to<br />\n<code>:null_session</code>. This is inconsistent with <code>config.action_controller.default_protect_from_forgery</code>,<br />\nwhich uses <code>:exception</code>.</p>\n\n<p>A new configuration option <code>config.action_controller.default_protect_from_forgery_with</code> has been<br />\nadded to allow applications to configure the default strategy. It currently defaults to <code>:null_session</code><br />\nfor backwards compatibility, but will change to <code>:exception</code> in a future version of Rails.</p>\n\n<p>Applications can opt into the new behavior now by setting:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">action_controller</span><span class=\"p\">.</span><span class=\"nf\">default_protect_from_forgery_with</span> <span class=\"o\">=</span> <span class=\"ss\">:exception</span>\n</code></pre></div></div>\n\n<p>To silence the deprecation warning without changing behavior, explicitly pass the strategy:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">protect_from_forgery</span> <span class=\"ss\">with: :null_session</span>\n</code></pre></div></div>\n\n<p><em>Said Kaldybaev</em></p>\n"
+  },
+  {
     "message": "*   Add `ActionDispatch::Request#bearer_token` to extract the bearer token from the Authorization header.\n    Bearer tokens are commonly used for API and MCP requests.\n\n    *DHH*",
     "project": "actionpack",
     "date_merged": 1766968051000,
@@ -278,6 +288,16 @@
     "pr": "55900",
     "merge_sha": "54264bde59c6e327694ad8b3923d4ebda60bd562",
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Fix PostgreSQL schema dumping to handle schema-qualified table names in foreign_key references that span different schemas.\n\n        # before\n        add_foreign_key \"hst.event_log_attributes\", \"hst.event_logs\" # emits correctly because they're in the same schema (hst)\n        add_foreign_key \"hst.event_log_attributes\", \"hst.usr.user_profiles\", column: \"created_by_id\" # emits hst.user.* when user.* is expected\n\n        # after\n        add_foreign_key \"hst.event_log_attributes\", \"hst.event_logs\"\n        add_foreign_key \"hst.event_log_attributes\", \"usr.user_profiles\", column: \"created_by_id\"\n\n    *Chiperific*",
+    "project": "activerecord",
+    "date_merged": 1767906103000,
+    "author": "Chip",
+    "sha": "23efba233c6a47217a0f655520b84064e9fd24c9",
+    "pr": "56556",
+    "merge_sha": "38cb8fd04a347d79266e37db5de3dac2aa62f49d",
+    "html": "<p>Fix PostgreSQL schema dumping to handle schema-qualified table names in foreign_key references that span different schemas.</p>\n\n<pre><code># before\nadd_foreign_key \"hst.event_log_attributes\", \"hst.event_logs\" # emits correctly because they're in the same schema (hst)\nadd_foreign_key \"hst.event_log_attributes\", \"hst.usr.user_profiles\", column: \"created_by_id\" # emits hst.user.* when user.* is expected\n\n# after\nadd_foreign_key \"hst.event_log_attributes\", \"hst.event_logs\"\nadd_foreign_key \"hst.event_log_attributes\", \"usr.user_profiles\", column: \"created_by_id\"\n</code></pre>\n\n<p><em>Chiperific</em></p>\n"
   },
   {
     "message": "*   Add `PostgreSQLAdapter.register_type_mapping` for custom SQL type registration.\n\n    Third-party gems can now register custom type mappings without prepending\n    internal methods:\n\n        ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.register_type_mapping do |type_map|\n          type_map.register_type(\"geometry\") do |oid, fmod, sql_type|\n            MyGeometryType.new(sql_type)\n          end\n        end\n\n    Callbacks execute in registration order.\n\n    *Abdelkader Boudih*",
@@ -678,6 +698,16 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add `libvips` to generated `ci.yml`\n\n    Conditionally adds `libvips` to `ci.yml`.\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1767908417000,
+    "author": "Steve Polito",
+    "sha": "7d82790ab7d867ef43cf61b964fceb21d5929d88",
+    "pr": "56523",
+    "merge_sha": "f298895a0a6c0e6527e084428acf91b73f62b73b",
+    "html": "<p>Add <code>libvips</code> to generated <code>ci.yml</code></p>\n\n<p>Conditionally adds <code>libvips</code> to <code>ci.yml</code>.</p>\n\n<p><em>Steve Polito</em></p>\n"
   },
   {
     "message": "*   Add `Rails.app.revision` to provide a version identifier for error reporting, monitoring, cache keys, etc.\n\n    ```ruby\n    Rails.app.revision # => \"3d31d593e6cf0f82fa9bd0338b635af2f30d627b\"\n    ```\n\n    By default it looks for a `REVISION` file at the root of the application, if absent it tries to extract\n    the revision from the local git repository.\n\n    If none of that is adequate, it can be set in the application config:\n\n    ```ruby\n    # config/application.rb\n    module MyApp\n      class Application < Rails::Application\n        config.revision = ENV[\"GIT_SHA\"]\n      end\n    end\n    ```\n\n    *Abdelkader Boudih*, *Jean Boussier*",
