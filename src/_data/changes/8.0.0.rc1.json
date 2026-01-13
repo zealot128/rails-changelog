@@ -50,6 +50,26 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Avoid loading `ActionController::Live` early in initializer, and introduce\n    `action_controller_live` load hook.\n\n    *Adrianna Chang*",
+    "project": "actionpack",
+    "date_merged": 1768255468000,
+    "author": "Adrianna Chang",
+    "sha": "f9c82c3f2ac5cb85831462d5f40e94337b4ce660",
+    "pr": "56558",
+    "merge_sha": "7c8ab91f5072cec351c814b835d6e488f7d2b85f",
+    "html": "<p>Avoid loading <code>ActionController::Live</code> early in initializer, and introduce<br />\n<code>action_controller_live</code> load hook.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
+  },
+  {
+    "message": "*   Make CSRF header-only protection compatible with local installs using HTTP\n\n    In local installations that don't use HTTPS and where the app is\n    accessed within a local network, requests won't be performed from a\n    secure context. In this case, the browser won't send the\n    `Sec-Fetch-Site` header. This means non-GET requests will be rejected\n    because CSRF protection will fail when using the header-only approach.\n\n    With this change, we allow these requests with missing `Sec-Fetch-Site`\n    headers if:\n\n    - They happen over HTTP\n    - The app is not configured to force SSL\n\n    The `Origin` check always happens in any case.\n\n    *Rosa Gutierrez*",
+    "project": "actionpack",
+    "date_merged": 1768249793000,
+    "author": "Rosa Gutierrez",
+    "sha": "88b5c78d38a103b56a1835fd0c6416e68ab2e0bb",
+    "pr": "56580",
+    "merge_sha": "ff6f9ccfa15dfc9f8aaaf4a2e18417f3b4f437b6",
+    "html": "<p>Make CSRF header-only protection compatible with local installs using HTTP</p>\n\n<p>In local installations that don’t use HTTPS and where the app is<br />\naccessed within a local network, requests won’t be performed from a<br />\nsecure context. In this case, the browser won’t send the<br />\n<code>Sec-Fetch-Site</code> header. This means non-GET requests will be rejected<br />\nbecause CSRF protection will fail when using the header-only approach.</p>\n\n<p>With this change, we allow these requests with missing <code>Sec-Fetch-Site</code><br />\nheaders if:</p>\n\n<ul>\n  <li>They happen over HTTP</li>\n  <li>The app is not configured to force SSL</li>\n</ul>\n\n<p>The <code>Origin</code> check always happens in any case.</p>\n\n<p><em>Rosa Gutierrez</em></p>\n"
+  },
+  {
     "message": "*   Deprecate calling `protect_from_forgery` without specifying a strategy.\n\n    When `protect_from_forgery` is called without the `:with` option, it currently defaults to\n    `:null_session`. This is inconsistent with `config.action_controller.default_protect_from_forgery`,\n    which uses `:exception`.\n\n    A new configuration option `config.action_controller.default_protect_from_forgery_with` has been\n    added to allow applications to configure the default strategy. It currently defaults to `:null_session`\n    for backwards compatibility, but will change to `:exception` in a future version of Rails.\n\n    Applications can opt into the new behavior now by setting:\n\n    ```ruby\n    config.action_controller.default_protect_from_forgery_with = :exception\n    ```\n\n    To silence the deprecation warning without changing behavior, explicitly pass the strategy:\n\n    ```ruby\n    protect_from_forgery with: :null_session\n    ```\n\n    *Said Kaldybaev*",
     "project": "actionpack",
     "date_merged": 1767913550000,
