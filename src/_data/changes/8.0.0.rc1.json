@@ -480,6 +480,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Deprecate built-in `queue_classic` Active Job adapter.\n\n    *Harun Sabljaković, Wojciech Wnętrzak*",
+    "project": "activejob",
+    "date_merged": 1768596681000,
+    "author": "Wojciech Wnętrzak",
+    "sha": "25697edd807ae998bc2dac6fd4b0029f48f7e53d",
+    "pr": "56629",
+    "merge_sha": "85734dfb9886259e642495e2673f7dee51c3bc8a",
+    "html": "<p>Deprecate built-in <code>queue_classic</code> Active Job adapter.</p>\n\n<p><em>Harun Sabljaković, Wojciech Wnętrzak</em></p>\n"
+  },
+  {
     "message": "*   Allow `retry_on` `wait` procs to accept the error as a second argument.\n\n    Procs with arity 1 continue to receive only the execution count.\n\n    ```ruby\n    class RemoteServiceJob < ActiveJob::Base\n      retry_on CustomError, wait: ->(executions, error) { error.retry_after || executions * 2 }\n\n      def perform\n        # ...\n      end\n    end\n    ```\n\n    *JP Camara*",
     "project": "activejob",
     "date_merged": 1768404047000,
