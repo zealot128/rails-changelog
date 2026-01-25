@@ -780,6 +780,16 @@
     "html": "<p>Detect JavaScript package manager from lockfiles in generators.</p>\n\n<p>Rails generators now automatically detect bun, pnpm, npm, or yarn by looking<br />\nfor project lockfiles instead of hardcoding <code>yarn</code>.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Disable the Active Record query cache in the console by default when using the executor.\n\n    The query cache is now off by default in the console. Pass `--query-cache` to enable it for the session.\n\n    *Cam Allen*",
+    "project": "railties",
+    "date_merged": 1769334079000,
+    "author": "Cam Allen",
+    "sha": "d8df2a13aa980fc58fe233fb6b596c4648c4837c",
+    "pr": "56678",
+    "merge_sha": "2d1b2bce3a8dd0c1606f723dfbc45277214b9c7a",
+    "html": "<p>Disable the Active Record query cache in the console by default when using the executor.</p>\n\n<p>The query cache is now off by default in the console. Pass <code>--query-cache</code> to enable it for the session.</p>\n\n<p><em>Cam Allen</em></p>\n"
+  },
+  {
     "message": "*   Console `reload!` will reset the console's executor, when present.\n\n    *Ben Sheldon*",
     "project": "railties",
     "date_merged": 1768725811000,
