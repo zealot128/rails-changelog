@@ -40,6 +40,16 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Make `ActionText::Attachable#read_attribute_for_serialization` public.\n\n    *Sally Hall*",
+    "project": "actiontext",
+    "date_merged": 1769924098000,
+    "author": "Sally Hall",
+    "sha": "805723ace44f4d7951d37c4a576463e5efd5c41c",
+    "pr": "56681",
+    "merge_sha": "e31e6585fa2c6b39fd64891d90794e9493f5e23a",
+    "html": "<p>Make <code>ActionText::Attachable#read_attribute_for_serialization</code> public.</p>\n\n<p><em>Sally Hall</em></p>\n"
+  },
+  {
     "message": "*   Install generator now detects which JS package manager to use when\n    installing javascript dependencies for the editor.\n\n    *David Lowenfels*",
     "project": "actiontext",
     "date_merged": 1769228288000,
@@ -338,6 +348,16 @@
     "pr": "55900",
     "merge_sha": "54264bde59c6e327694ad8b3923d4ebda60bd562",
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Add `unique_by` option to `insert_all!`.\n\n    *Chedli Bourguiba*",
+    "project": "activerecord",
+    "date_merged": 1769924248000,
+    "author": "chaadow",
+    "sha": "a09a1633747eed594ddbe37b592a93feb99162a0",
+    "pr": "56454",
+    "merge_sha": "03fd08a62790d279361cf67de135e1fea85986ea",
+    "html": "<p>Add <code>unique_by</code> option to <code>insert_all!</code>.</p>\n\n<p><em>Chedli Bourguiba</em></p>\n"
   },
   {
     "message": "*   Fix PostgreSQL schema dumping to handle schema-qualified table names in foreign_key references that span different schemas.\n\n        # before\n        add_foreign_key \"hst.event_log_attributes\", \"hst.event_logs\" # emits correctly because they're in the same schema (hst)\n        add_foreign_key \"hst.event_log_attributes\", \"hst.usr.user_profiles\", column: \"created_by_id\" # emits hst.user.* when user.* is expected\n\n        # after\n        add_foreign_key \"hst.event_log_attributes\", \"hst.event_logs\"\n        add_foreign_key \"hst.event_log_attributes\", \"usr.user_profiles\", column: \"created_by_id\"\n\n    *Chiperific*",
