@@ -80,6 +80,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Make `event_backtrace` attribute in `rescue_from_handled.action_controller` notifications the full backtrace, when `config.action_controller.rescue_from_event_backtrace` is `:array`.\n\n    This also affects `action_controller.rescue_from_handled` events.\n\n    *zzak*",
+    "project": "actionpack",
+    "date_merged": 1769975342000,
+    "author": "zzak",
+    "sha": "506e574f752754618aa0acd2ac13f7f905bc7e90",
+    "pr": "56426",
+    "merge_sha": "99f37d08feecf47e9eb7546172a844c99ddb87f1",
+    "html": "<p>Make <code>event_backtrace</code> attribute in <code>rescue_from_handled.action_controller</code> notifications the full backtrace, when <code>config.action_controller.rescue_from_event_backtrace</code> is <code>:array</code>.</p>\n\n<p>This also affects <code>action_controller.rescue_from_handled</code> events.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
     "message": "*   Avoid loading `ActionController::Live` early in initializer, and introduce\n    `action_controller_live` load hook.\n\n    *Adrianna Chang*",
     "project": "actionpack",
     "date_merged": 1768255468000,
