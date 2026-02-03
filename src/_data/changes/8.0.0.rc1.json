@@ -360,14 +360,24 @@
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
-    "message": "*   Speedup `ActiveRecord::Migration.maintain_test_schema!` when using multiple databases.\n\n    Previously, Active Record would inneficiently connect twice to each databases, now it only\n    connects once per database to reverify the schema.\n\n    *Iliana Hadzhiatanasova*",
+    "message": "*   Pass sql query to query log tags.\n\n    ```ruby\n    config.active_record.query_log_tags = [\n      sql_length: ->(context) { context[:sql].length }\n    ]\n    ```\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1770066770000,
+    "author": "fatkodima",
+    "sha": "2a0692717f4ec7bb91cfd6b4fe049f7ca1339cc9",
+    "pr": "56683",
+    "merge_sha": "3a46e8e1f4d4bdd1a4404e0e07065706f0f8e8dd",
+    "html": "<p>Pass sql query to query log tags.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">query_log_tags</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n  <span class=\"ss\">sql_length: </span><span class=\"o\">-&gt;</span><span class=\"p\">(</span><span class=\"n\">context</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"n\">context</span><span class=\"p\">[</span><span class=\"ss\">:sql</span><span class=\"p\">].</span><span class=\"nf\">length</span> <span class=\"p\">}</span>\n<span class=\"p\">]</span>\n</code></pre></div></div>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
+    "message": "*   Speedup `ActiveRecord::Migration.maintain_test_schema!` when using multiple databases.\n\n    Previously, Active Record would inefficiently connect twice to each database, now it only\n    connects once per database to reverify the schema.\n\n    *Iliana Hadzhiatanasova*",
     "project": "activerecord",
     "date_merged": 1770026434000,
     "author": "Iliana Hadzhiatanasova",
     "sha": "7d739cbd75718b5b99fdc612a40f02d5a76a1b0c",
     "pr": "56695",
     "merge_sha": "76fcc3a31daf57df1fa8b067a7823880605392e7",
-    "html": "<p>Speedup <code>ActiveRecord::Migration.maintain_test_schema!</code> when using multiple databases.</p>\n\n<p>Previously, Active Record would inneficiently connect twice to each databases, now it only<br />\nconnects once per database to reverify the schema.</p>\n\n<p><em>Iliana Hadzhiatanasova</em></p>\n"
+    "html": "<p>Speedup <code>ActiveRecord::Migration.maintain_test_schema!</code> when using multiple databases.</p>\n\n<p>Previously, Active Record would inefficiently connect twice to each database, now it only<br />\nconnects once per database to reverify the schema.</p>\n\n<p><em>Iliana Hadzhiatanasova</em></p>\n"
   },
   {
     "message": "*   Add `unique_by` option to `insert_all!`.\n\n    *Chedli Bourguiba*",
