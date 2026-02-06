@@ -830,6 +830,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   `Rails.app.revision` now checks `ENV[\"REVISION\"]` before falling back to the `REVISION` file or git.\n\n    *Jonathan Baker*",
+    "project": "railties",
+    "date_merged": 1770374902000,
+    "author": "Jonathan Baker",
+    "sha": "abc084255e7b122c1c09d56ac6182cfec12a5f0a",
+    "pr": "56742",
+    "merge_sha": "cf7baffae5721a70ff3f14a3862b27ddfff00bfd",
+    "html": "<p><code>Rails.app.revision</code> now checks <code>ENV[\"REVISION\"]</code> before falling back to the <code>REVISION</code> file or git.</p>\n\n<p><em>Jonathan Baker</em></p>\n"
+  },
+  {
     "message": "*   Detect JavaScript package manager from lockfiles in generators.\n\n    Rails generators now automatically detect bun, pnpm, npm, or yarn by looking\n    for project lockfiles instead of hardcoding `yarn`.\n\n    *David Lowenfels*",
     "project": "railties",
     "date_merged": 1769025268000,
