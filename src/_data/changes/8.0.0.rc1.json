@@ -910,6 +910,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Avoid issuing a `ROLLBACK` statement following `TransactionRollbackError` during `COMMIT`.\n\n    This prevents the unnecessary \"WARNING: there is no transaction in progress\" log spilled to stderr directly from libpq.\n\n    *Sorah Fukumori*",
+    "project": "activerecord",
+    "date_merged": 1771221581000,
+    "author": "Sorah Fukumori",
+    "sha": "321cd43f390134a576cddd4298c53047f47a243f",
+    "pr": "56717",
+    "merge_sha": "5a2cfa3ea6d6153d4989a0c4942b7ce0b2535f33",
+    "html": "<p>Avoid issuing a <code>ROLLBACK</code> statement following <code>TransactionRollbackError</code> during <code>COMMIT</code>.</p>\n\n<p>This prevents the unnecessary “WARNING: there is no transaction in progress” log spilled to stderr directly from libpq.</p>\n\n<p><em>Sorah Fukumori</em></p>\n"
+  },
+  {
     "message": "*   Add `implicit_persistence_transaction` hook for customizing transaction behavior.\n\n    A new protected method `implicit_persistence_transaction` has been added that wraps\n    persistence operations (`save`, `destroy`, `touch`) in a transaction. This method can be\n    overridden in models to customize transaction behavior, such as setting a specific isolation\n    level or skipping transaction creation when one is already open.\n\n    Example skipping transaction creation if one is already open:\n\n    ```ruby\n    class Account < ApplicationRecord\n      private\n        def implicit_persistence_transaction(connection, &block)\n          if connection.transaction_open?\n            yield\n          else\n            super\n          end\n        end\n    end\n    ```\n\n    *Israel P Valverde*",
     "project": "activerecord",
     "date_merged": 1770646006000,
