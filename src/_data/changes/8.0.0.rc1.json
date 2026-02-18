@@ -270,6 +270,16 @@
     "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
   },
   {
+    "message": "*   Introduce `this_week?`, `this_month?`, and `this_year?` methods to Date/Time\n\n    Similar to `today?`, `tomorrow?`, and `yesterday?`, these methods are useful to\n    query time instances against the current period.\n\n    ```ruby\n    unless post.created_at.this_week?\n      link_to \"See week recap\", week_recap_path(date)\n    end\n    ```\n\n    *Matheus Richard*",
+    "project": "activesupport",
+    "date_merged": 1771420235000,
+    "author": "Matheus Richard",
+    "sha": "12e24eaf2f0a9613e015653f013dd131317d9bf5",
+    "pr": "55770",
+    "merge_sha": null,
+    "html": "<p>Introduce <code>this_week?</code>, <code>this_month?</code>, and <code>this_year?</code> methods to Date/Time</p>\n\n<p>Similar to <code>today?</code>, <code>tomorrow?</code>, and <code>yesterday?</code>, these methods are useful to<br />\nquery time instances against the current period.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">unless</span> <span class=\"n\">post</span><span class=\"p\">.</span><span class=\"nf\">created_at</span><span class=\"p\">.</span><span class=\"nf\">this_week?</span>\n  <span class=\"n\">link_to</span> <span class=\"s2\">\"See week recap\"</span><span class=\"p\">,</span> <span class=\"n\">week_recap_path</span><span class=\"p\">(</span><span class=\"n\">date</span><span class=\"p\">)</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Matheus Richard</em></p>\n"
+  },
+  {
     "message": "*   Removed the deprecated `ActiveSupport::Multibyte::Chars` class.\n\n    As well as `String#mb_chars`\n\n    *Jean Boussier*",
     "project": "activesupport",
     "date_merged": 1770887049000,
