@@ -680,6 +680,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Add `content_type` option to HTTP authentication methods.\n\n    `request_http_basic_authentication`, `request_http_digest_authentication`,\n    and `request_http_token_authentication` now accept a `content_type`\n    parameter to control the Content-Type of the 401 response. The default\n    behavior is unchanged.\n\n    ```ruby\n    http_basic_authenticate_with(\n      name: \"admin\", password: \"secret\",\n      message: '{\"error\":\"Access denied\"}',\n      content_type: \"application/json\"\n    )\n    ```\n\n    *Iliana Hadzhiatanasova*",
+    "project": "actionpack",
+    "date_merged": 1772111590000,
+    "author": "Iliana Hadzhiatanasova",
+    "sha": "8384ce1511cb9880910e2f98bd106cfb549cbaa5",
+    "pr": "56887",
+    "merge_sha": "805429182cbaeff8664c5a311dfb53552b53c93b",
+    "html": "<p>Add <code>content_type</code> option to HTTP authentication methods.</p>\n\n<p><code>request_http_basic_authentication</code>, <code>request_http_digest_authentication</code>,<br />\nand <code>request_http_token_authentication</code> now accept a <code>content_type</code><br />\nparameter to control the Content-Type of the 401 response. The default<br />\nbehavior is unchanged.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">http_basic_authenticate_with</span><span class=\"p\">(</span>\n  <span class=\"ss\">name: </span><span class=\"s2\">\"admin\"</span><span class=\"p\">,</span> <span class=\"ss\">password: </span><span class=\"s2\">\"secret\"</span><span class=\"p\">,</span>\n  <span class=\"ss\">message: </span><span class=\"s1\">'{\"error\":\"Access denied\"}'</span><span class=\"p\">,</span>\n  <span class=\"ss\">content_type: </span><span class=\"s2\">\"application/json\"</span>\n<span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Iliana Hadzhiatanasova</em></p>\n"
+  },
+  {
     "message": "*   Add `RAILS_HOST_APP_PATH` environment variable to support editor links in devcontainer/Docker environments.\n\n    When Rails runs inside a container, file paths in error pages are container-internal paths\n    that don't exist on the host machine. Setting `RAILS_HOST_APP_PATH` to the host's application\n    path enables proper translation of container paths to host paths for editor links.\n\n    Example in `.devcontainer/devcontainer.json`:\n\n    ```json\n    {\n      \"containerEnv\": {\n        \"EDITOR\": \"code\",\n        \"RAILS_HOST_APP_PATH\": \"${localWorkspaceFolder}\"\n      }\n    }\n    ```\n\n    This allows the \"open in editor\" feature to work correctly when developing in containers.\n\n    *Victor Cobos*",
     "project": "actionpack",
     "date_merged": 1771931035000,
