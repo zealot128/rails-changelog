@@ -520,6 +520,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Render `MissingAttachable` as \"☒\" in plain text.\n\n    Previously, `Content#to_plain_text` would replace a `MissingAttachable` with a blank string.\n    Now it renders the same \"☒\" character used in the HTML representation.\n\n    *Mike Dalessio*",
+    "project": "actiontext",
+    "date_merged": 1772069757000,
+    "author": "Mike Dalessio",
+    "sha": "91df2c34799694fc4d7d40e918da7ec813a386f2",
+    "pr": "56854",
+    "merge_sha": "0bd4abb696a8517d22a1c7444781134e0f222b6e",
+    "html": "<p>Render <code>MissingAttachable</code> as “☒” in plain text.</p>\n\n<p>Previously, <code>Content#to_plain_text</code> would replace a <code>MissingAttachable</code> with a blank string.<br />\nNow it renders the same “☒” character used in the HTML representation.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Add `to_markdown` to Action Text, mirroring `to_plain_text`.\n\n    Converts rich text content to Markdown, supporting headings, bold, italic,\n    strikethrough, inline code, code blocks, blockquotes, ordered and unordered\n    lists, links, tables, and attachments. Custom attachment representations can be\n    provided by implementing `attachable_markdown_representation` on the\n    attachable model.\n\n        message = Message.create!(content: \"<h1>Hello</h1><p>This is <strong>bold</strong></p>\")\n        message.content.to_markdown # => \"# Hello\\n\\nThis is **bold**\"\n\n    *Mike Dalessio*",
     "project": "actiontext",
     "date_merged": 1771941532000,
