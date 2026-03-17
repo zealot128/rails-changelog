@@ -552,11 +552,11 @@
   {
     "message": "*   Support block children in editor elements alongside value.\n\n    Blocks were introduced in #55827, but only as an alternative to the value\n    argument: the block was captured and used as the initial editor content,\n    making it either value OR block — not both.\n\n    The block semantics are now changed so that blocks render as DOM children of\n    the editor element instead. Value and block are now independent: value flows\n    into the editor's content binding (the hidden input for Trix, the value\n    attribute for custom editors), while the block renders as inner DOM children\n    — useful for embedding custom elements such as prompt menus or toolbar\n    extensions.\n\n    This enables other editors like Lexxy to use the block form for configuration\n    — injecting child elements into the editor tag — while the rich text value is\n    preserved separately.\n\n    Trix preserves the original block-as-initial-value contract by capturing the\n    block in `TrixEditor::Tag#render_in` when no value is present, keeping its\n    hidden input populated as before.\n\n    *Jorge Manrubia*",
     "project": "actiontext",
-    "date_merged": 1773649427000,
+    "date_merged": 1773704701000,
     "author": "Jorge Manrubia",
     "sha": "642fc047dea9acf9e009e736cb0c770c2742b30e",
     "pr": "56926",
-    "merge_sha": null,
+    "merge_sha": "c629bb2f525b9de884df99de956e5ac46c79096e",
     "html": "<p>Support block children in editor elements alongside value.</p>\n\n<p>Blocks were introduced in #55827, but only as an alternative to the value<br />\nargument: the block was captured and used as the initial editor content,<br />\nmaking it either value OR block — not both.</p>\n\n<p>The block semantics are now changed so that blocks render as DOM children of<br />\nthe editor element instead. Value and block are now independent: value flows<br />\ninto the editor’s content binding (the hidden input for Trix, the value<br />\nattribute for custom editors), while the block renders as inner DOM children<br />\n— useful for embedding custom elements such as prompt menus or toolbar<br />\nextensions.</p>\n\n<p>This enables other editors like Lexxy to use the block form for configuration<br />\n— injecting child elements into the editor tag — while the rich text value is<br />\npreserved separately.</p>\n\n<p>Trix preserves the original block-as-initial-value contract by capturing the<br />\nblock in <code>TrixEditor::Tag#render_in</code> when no value is present, keeping its<br />\nhidden input populated as before.</p>\n\n<p><em>Jorge Manrubia</em></p>\n"
   },
   {
