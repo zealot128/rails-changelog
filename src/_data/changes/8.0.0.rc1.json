@@ -1010,6 +1010,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Batch SQL statements when creating tables to improve performance.\n\n    *Andrew Novoselac*",
+    "project": "activerecord",
+    "date_merged": 1773903509000,
+    "author": "Andrew Novoselac",
+    "sha": "8fdb8e0f1667ae3d69030206eea42dbaf3dd29eb",
+    "pr": "57000",
+    "merge_sha": "44d79388bfd5282b086da95f91408a73eb1dbf17",
+    "html": "<p>Batch SQL statements when creating tables to improve performance.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
+  },
+  {
     "message": "*   Support PostgreSQL `RESET` on readonly queries.\n\n    ```ruby\n    ActiveRecord::Base.connected_to(role: :reading, prevent_writes: true) do\n      ActiveRecord::Base.with_connection do |c|\n        c.execute(\"SET statement_timeout = '7s'\")\n        # some queries\n        c.execute(\"RESET statement_timeout\")\n        # => no longer raises ActiveRecord::ReadOnlyError\n      end\n    end\n    ```\n\n    *Francesco Rodriguez*",
     "project": "activerecord",
     "date_merged": 1773400970000,
