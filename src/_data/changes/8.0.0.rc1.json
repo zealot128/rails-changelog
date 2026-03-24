@@ -440,6 +440,16 @@
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Skip blank attribute names in tag helpers to avoid generating invalid HTML.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1774304480000,
+    "author": "Mike Dalessio",
+    "sha": "12db70157c45a4b47a6f53ddad1217674fb2bb32",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Skip blank attribute names in tag helpers to avoid generating invalid HTML.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Fix tag parameter content being overwritten instead of combined with tag block content.\n    Before `tag.div(\"Hello \") { \"World\" }` would just return `<div>World</div>`, now it returns `<div>Hello World</div>`.\n\n    *DHH*",
     "project": "actionview",
     "date_merged": 1764893543000,
@@ -468,6 +478,36 @@
     "pr": "51579",
     "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
+  },
+  {
+    "message": "*   Configurable maxmimum streaming chunk size\n\n    Makes sure that byte ranges for blobs don't exceed 100mb by default.\n    Content ranges that are too big can result in denial of service.\n\n    *Gannon McGibbon*",
+    "project": "activestorage",
+    "date_merged": 1774304480000,
+    "author": "Gannon McGibbon",
+    "sha": "5b66fcf531bba92e4a91ae4aac219099d28177d2",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Configurable maxmimum streaming chunk size</p>\n\n<p>Makes sure that byte ranges for blobs don’t exceed 100mb by default.<br />\nContent ranges that are too big can result in denial of service.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Prevent path traversal in `DiskService`.\n\n    `DiskService#path_for` now raises an `InvalidKeyError` when passed keys with dot segments (\".\",\n    \"..\"), or if the resolved path is outside the storage root directory.\n\n    `#path_for` also now consistently raises `InvalidKeyError` if the key is invalid in any way, for\n    example containing null bytes or having an incompatible encoding. Previously, the exception\n    raised may have been `ArgumentError` or `Encoding::CompatibilityError`.\n\n    `DiskController` now explicitly rescues `InvalidKeyError` with appropriate HTTP status codes.\n\n    *Mike Dalessio*",
+    "project": "activestorage",
+    "date_merged": 1774304480000,
+    "author": "Mike Dalessio",
+    "sha": "1a5e2f6a4140954fd99c875c362c45d15e25204c",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Prevent path traversal in <code>DiskService</code>.</p>\n\n<p><code>DiskService#path_for</code> now raises an <code>InvalidKeyError</code> when passed keys with dot segments (“.”,<br />\n“..”), or if the resolved path is outside the storage root directory.</p>\n\n<p><code>#path_for</code> also now consistently raises <code>InvalidKeyError</code> if the key is invalid in any way, for<br />\nexample containing null bytes or having an incompatible encoding. Previously, the exception<br />\nraised may have been <code>ArgumentError</code> or <code>Encoding::CompatibilityError</code>.</p>\n\n<p><code>DiskController</code> now explicitly rescues <code>InvalidKeyError</code> with appropriate HTTP status codes.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Prevent glob injection in `DiskService#delete_prefixed`.\n\n    Escape glob metacharacters in the resolved path before passing to `Dir.glob`.\n\n    Note that this change breaks any existing code that is relying on `delete_prefixed` to expand\n    glob metacharacters. This change presumes that is unintended behavior (as other storage services\n    do not respect these metacharacters).\n\n    *Mike Dalessio*",
+    "project": "activestorage",
+    "date_merged": 1774304480000,
+    "author": "Mike Dalessio",
+    "sha": "8fdf7da36dcf6587014bbbfed329439303c29e17",
+    "pr": null,
+    "merge_sha": null,
+    "html": "<p>Prevent glob injection in <code>DiskService#delete_prefixed</code>.</p>\n\n<p>Escape glob metacharacters in the resolved path before passing to <code>Dir.glob</code>.</p>\n\n<p>Note that this change breaks any existing code that is relying on <code>delete_prefixed</code> to expand<br />\nglob metacharacters. This change presumes that is unintended behavior (as other storage services<br />\ndo not respect these metacharacters).</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
     "message": "*   Restore ADC when signing URLs with IAM for GCS\n\n    ADC was previously used for automatic authorization when signing URLs with IAM.\n    Now it is again, but the auth client is memoized so that new credentials are only\n    requested when the current ones expire. Other auth methods can now be used\n    instead by setting the authorization on `ActiveStorage::Service::GCSService#iam_client`.\n\n    ```ruby\n    ActiveStorage::Blob.service.iam_client.authorization = Google::Auth::ImpersonatedServiceAccountCredentials.new(options)\n    ```\n\n    This is safer than setting `Google::Apis::RequestOptions.default.authorization`\n    because it only applies to Active Storage and does not affect other Google API\n    clients.\n\n    *Justin Malčić*",
