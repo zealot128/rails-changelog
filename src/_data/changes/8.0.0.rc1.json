@@ -150,6 +150,26 @@
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Deprecate the `schema_order` option in PostgreSQL database configurations.\n\n    Use `schema_search_path` instead. The `schema_order` alias will be\n    removed in Rails 8.3.\n\n    *Eileen M. Uchitelle*",
+    "project": "activerecord",
+    "date_merged": 1774643742000,
+    "author": "eileencodes",
+    "sha": "504a89103bcca84ad21de4bcaabce72008591efd",
+    "pr": "57080",
+    "merge_sha": "b2ae96f7a1ca32b18a02cc2556c76c5217156737",
+    "html": "<p>Deprecate the <code>schema_order</code> option in PostgreSQL database configurations.</p>\n\n<p>Use <code>schema_search_path</code> instead. The <code>schema_order</code> alias will be<br />\nremoved in Rails 8.3.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate the `strict` option in MySQL database configurations.\n\n    The `strict` option for MySQL will be removed in Rails 8.3 because it is the default behavior.\n\n    To change the default behavior of `strict`, use `variables: { sql_mode: \"...\" }` to configure `sql_mode` directly.\n\n\n    `strict: false` can be replaced with `variables: { sql_mode: \"\" }`, and `strict: :default` can be replaced with `variables: { sql_mode: :default }`.\n\n    *Eileen M. Uchitelle*",
+    "project": "activerecord",
+    "date_merged": 1774637662000,
+    "author": "eileencodes",
+    "sha": "38c2945d6b94fd21d3010a6b92912bca8d7b0ce6",
+    "pr": "57077",
+    "merge_sha": "c8e3f85eddac1ff201ec35c4a200c72797493ef5",
+    "html": "<p>Deprecate the <code>strict</code> option in MySQL database configurations.</p>\n\n<p>The <code>strict</code> option for MySQL will be removed in Rails 8.3 because it is the default behavior.</p>\n\n<p>To change the default behavior of <code>strict</code>, use <code>variables: { sql_mode: \"...\" }</code> to configure <code>sql_mode</code> directly.</p>\n\n<p><code>strict: false</code> can be replaced with <code>variables: { sql_mode: \"\" }</code>, and <code>strict: :default</code> can be replaced with <code>variables: { sql_mode: :default }</code>.</p>\n\n<p><em>Eileen M. Uchitelle</em></p>\n"
+  },
+  {
     "message": "*   Allow configuring `SET` queriers for the PostgreSQL and MySQL adapters.\n\n    Individual settings can be skipped by setting them to `false` in\n    `database.yml`, which is useful when connecting through a load balancer or\n    proxy that handles configuration:\n\n    PostgreSQL example:\n\n    ```yaml\n    production:\n      adapter: postgresql\n      standard_conforming_strings: false\n      intervalstyle: false\n      min_messages: false\n      schema_search_path: false\n    ```\n\n    MySQL example:\n\n    ```yaml\n    production:\n      adapter: mysql2\n      wait_timeout: false\n      variables:\n        sql_mode: false\n    ```\n\n    Also deprecates `set_standard_conforming_strings` — it is now handled\n    automatically through the consolidated settings hash.\n\n    *Eileen M. Uchitelle*, *Matthew Draper*",
     "project": "activerecord",
     "date_merged": 1774623086000,
