@@ -450,6 +450,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Add `ActionDispatch::Request#safe_method?` and `#unsafe_method?`.\n\n    `safe_method?` returns true for HTTP methods that are defined as safe per\n    [RFC 9110 §9.2.1](https://httpwg.org/specs/rfc9110.html#safe.methods):\n    GET, HEAD, OPTIONS, and TRACE. `unsafe_method?` is the inverse.\n\n    ```ruby\n    request.safe_method?   # => true for GET, HEAD, OPTIONS, TRACE\n    request.unsafe_method? # => true for POST, PUT, PATCH, DELETE\n    ```\n\n    *Joseph Hale*",
+    "project": "actionpack",
+    "date_merged": 1775504145000,
+    "author": "Joseph Hale",
+    "sha": "59942bdb61cb32a925d007d461b076844eef0bd8",
+    "pr": "57124",
+    "merge_sha": "c02e1149a518c78c3cc1328ae8c8e72b32bc6b80",
+    "html": "<p>Add <code>ActionDispatch::Request#safe_method?</code> and <code>#unsafe_method?</code>.</p>\n\n<p><code>safe_method?</code> returns true for HTTP methods that are defined as safe per<br />\n<a href=\"https://httpwg.org/specs/rfc9110.html#safe.methods\">RFC 9110 §9.2.1</a>:<br />\nGET, HEAD, OPTIONS, and TRACE. <code>unsafe_method?</code> is the inverse.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">safe_method?</span>   <span class=\"c1\"># =&gt; true for GET, HEAD, OPTIONS, TRACE</span>\n<span class=\"n\">request</span><span class=\"p\">.</span><span class=\"nf\">unsafe_method?</span> <span class=\"c1\"># =&gt; true for POST, PUT, PATCH, DELETE</span>\n</code></pre></div></div>\n\n<p><em>Joseph Hale</em></p>\n"
+  },
+  {
     "message": "*   Add `content_type` option to HTTP authentication methods.\n\n    `request_http_basic_authentication`, `request_http_digest_authentication`,\n    and `request_http_token_authentication` now accept a `content_type`\n    parameter to control the Content-Type of the 401 response. The default\n    behavior is unchanged.\n\n    ```ruby\n    http_basic_authenticate_with(\n      name: \"admin\", password: \"secret\",\n      message: '{\"error\":\"Access denied\"}',\n      content_type: \"application/json\"\n    )\n    ```\n\n    *Iliana Hadzhiatanasova*",
     "project": "actionpack",
     "date_merged": 1772111590000,
