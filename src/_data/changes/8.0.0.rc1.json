@@ -1100,6 +1100,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Serve static CSS and HTML files with `charset=utf-8` in the Content-Type header.\n\n    Static CSS and HTML files served by `ActionDispatch::Static` now include\n    `; charset=utf-8` in their Content-Type response header, fixing browser\n    encoding issues with CSS files containing non-ASCII characters.\n\n    *Mike Dalessio*",
+    "project": "actionpack",
+    "date_merged": 1776262722000,
+    "author": "Mike Dalessio",
+    "sha": "9e8b9498cc6928449b6d38a6ce67632b09398fe6",
+    "pr": "57188",
+    "merge_sha": "dc6c3a54e15749a2c1b79fbee2e5caca700673f4",
+    "html": "<p>Serve static CSS and HTML files with <code>charset=utf-8</code> in the Content-Type header.</p>\n\n<p>Static CSS and HTML files served by <code>ActionDispatch::Static</code> now include<br />\n<code>; charset=utf-8</code> in their Content-Type response header, fixing browser<br />\nencoding issues with CSS files containing non-ASCII characters.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Add `query:` and `body:` kwargs to integration test request helpers.\n\n    `params:` was ambiguous for GET requests with `as: :json` — unclear\n    whether params should go in the query string or request body. This\n    caused failures in API-only apps which exclude `Rack::MethodOverride`.\n\n    Use `query:` to explicitly send params in the URL query string (any\n    HTTP method), and `body:` to send an encoded request body. They can\n    be combined.\n\n    `params:` retains existing behavior: GET → query string,\n    other methods → request body.\n\n        get  \"/search\", query: { q: \"rails\" }, as: :json\n        post \"/search\", query: { page: 1 }, body: { filters: {} }, as: :json\n\n    Fixes #57131.\n\n    *Denis Savchuk*",
     "project": "actionpack",
     "date_merged": 1775714685000,
