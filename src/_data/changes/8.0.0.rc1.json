@@ -460,6 +460,16 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Add offline fallback page to the PWA scaffold.\n\n    New Rails apps now include an `app/views/pwa/offline.html.erb` template and\n    a commented `get \"offline\"` route in `config/routes.rb`, alongside the existing\n    manifest and service worker. The service worker template also includes a\n    commented example for caching and serving the offline page.\n\n    *Juan Vasquez*",
+    "project": "railties",
+    "date_merged": 1776352008000,
+    "author": "Juan Vásquez",
+    "sha": "5cc560f370dbc86c7a902b099f5de6a7e9d2be92",
+    "pr": "57184",
+    "merge_sha": null,
+    "html": "<p>Add offline fallback page to the PWA scaffold.</p>\n\n<p>New Rails apps now include an <code>app/views/pwa/offline.html.erb</code> template and<br />\na commented <code>get \"offline\"</code> route in <code>config/routes.rb</code>, alongside the existing<br />\nmanifest and service worker. The service worker template also includes a<br />\ncommented example for caching and serving the offline page.</p>\n\n<p><em>Juan Vasquez</em></p>\n"
+  },
+  {
     "message": "*   Add `bin/rails query` command for running read-only database queries.\n\n    Supports ActiveRecord expressions and raw SQL with JSON output.\n    Connects to the reading replica role by default and prevents writes.\n    Includes subcommands for schema introspection, model listing, and EXPLAIN.\n\n    ```bash\n    $ bin/rails query \"Account.where(plan: 'premium').limit(10)\"\n    $ bin/rails query --sql \"SELECT COUNT(*) FROM accounts\"\n    $ bin/rails query schema accounts\n    $ bin/rails query models\n    $ bin/rails query explain \"Account.where(plan: 'premium')\"\n    ```\n\n    *Lewis Buckley*",
     "project": "railties",
     "date_merged": 1776279968000,
