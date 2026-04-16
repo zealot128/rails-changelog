@@ -460,6 +460,16 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Add `bin/rails query` command for running read-only database queries.\n\n    Supports ActiveRecord expressions and raw SQL with JSON output.\n    Connects to the reading replica role by default and prevents writes.\n    Includes subcommands for schema introspection, model listing, and EXPLAIN.\n\n    ```bash\n    $ bin/rails query \"Account.where(plan: 'premium').limit(10)\"\n    $ bin/rails query --sql \"SELECT COUNT(*) FROM accounts\"\n    $ bin/rails query schema accounts\n    $ bin/rails query models\n    $ bin/rails query explain \"Account.where(plan: 'premium')\"\n    ```\n\n    *Lewis Buckley*",
+    "project": "railties",
+    "date_merged": 1776279968000,
+    "author": "Lewis Buckley",
+    "sha": "94f5040c0ee1b303bab4e7ac054e871a07ccc8af",
+    "pr": "57156",
+    "merge_sha": "450e18fe3e7da7fe9ab0162d910f93cb68f486ab",
+    "html": "<p>Add <code>bin/rails query</code> command for running read-only database queries.</p>\n\n<p>Supports ActiveRecord expressions and raw SQL with JSON output.<br />\nConnects to the reading replica role by default and prevents writes.<br />\nIncludes subcommands for schema introspection, model listing, and EXPLAIN.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>bin/rails query <span class=\"s2\">\"Account.where(plan: 'premium').limit(10)\"</span>\n<span class=\"nv\">$ </span>bin/rails query <span class=\"nt\">--sql</span> <span class=\"s2\">\"SELECT COUNT(*) FROM accounts\"</span>\n<span class=\"nv\">$ </span>bin/rails query schema accounts\n<span class=\"nv\">$ </span>bin/rails query models\n<span class=\"nv\">$ </span>bin/rails query explain <span class=\"s2\">\"Account.where(plan: 'premium')\"</span>\n</code></pre></div></div>\n\n<p><em>Lewis Buckley</em></p>\n"
+  },
+  {
     "message": "*   Avoid adding `Rack::Sendfile` to the middleware stack if `config.action_dispatch.x_sendfile_header` is `nil`.\n\n    The middleware behave as a noop in such case so it's pointless to have it in the stack.\n\n    *Jean Boussier*",
     "project": "railties",
     "date_merged": 1772450069000,
