@@ -462,11 +462,11 @@
   {
     "message": "*   Add offline fallback page to the PWA scaffold.\n\n    New Rails apps now include an `app/views/pwa/offline.html.erb` template and\n    a commented `get \"offline\"` route in `config/routes.rb`, alongside the existing\n    manifest and service worker. The service worker template also includes a\n    commented example for caching and serving the offline page.\n\n    *Juan Vasquez*",
     "project": "railties",
-    "date_merged": 1776352008000,
+    "date_merged": 1776371965000,
     "author": "Juan Vásquez",
     "sha": "5cc560f370dbc86c7a902b099f5de6a7e9d2be92",
     "pr": "57184",
-    "merge_sha": null,
+    "merge_sha": "f61b57f3018fe30ce874883a9a8db18b2146b737",
     "html": "<p>Add offline fallback page to the PWA scaffold.</p>\n\n<p>New Rails apps now include an <code>app/views/pwa/offline.html.erb</code> template and<br />\na commented <code>get \"offline\"</code> route in <code>config/routes.rb</code>, alongside the existing<br />\nmanifest and service worker. The service worker template also includes a<br />\ncommented example for caching and serving the offline page.</p>\n\n<p><em>Juan Vasquez</em></p>\n"
   },
   {
