@@ -120,6 +120,16 @@
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Let `add_column` raise `ArgumentError` if `:null` is set to a true value\n    when defining a primary key.\n\n    Primary keys get a `NOT NULL` constraint unconditionally. In particular,\n    `null: true` was being ignored, thus not doing what the user specified.\n    We should rather raise to let the user know the call is invalid.\n\n    *Xavier Noria*",
+    "project": "activerecord",
+    "date_merged": 1776471439000,
+    "author": "Xavier Noria",
+    "sha": "40f1831398d1b8880357f700ed10c1dcb3e9e0b7",
+    "pr": "57204",
+    "merge_sha": "cfa4e1b475472c7980a42dd810f237951db5108a",
+    "html": "<p>Let <code>add_column</code> raise <code>ArgumentError</code> if <code>:null</code> is set to a true value<br />\nwhen defining a primary key.</p>\n\n<p>Primary keys get a <code>NOT NULL</code> constraint unconditionally. In particular,<br />\n<code>null: true</code> was being ignored, thus not doing what the user specified.<br />\nWe should rather raise to let the user know the call is invalid.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
     "message": "*   Deprecate the `schema_order` option in PostgreSQL database configurations.\n\n    Use `schema_search_path` instead. The `schema_order` alias will be\n    removed in Rails 8.3.\n\n    *Eileen M. Uchitelle*",
     "project": "activerecord",
     "date_merged": 1774643742000,
