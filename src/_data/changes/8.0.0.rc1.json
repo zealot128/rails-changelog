@@ -1,5 +1,65 @@
 [
   {
+    "message": "*   Deprecate `Mail::Address.wrap` because it isn't used.\n\n    *Gannon McGibbon*",
+    "project": "actionmailbox",
+    "date_merged": 1770835947000,
+    "author": "Gannon McGibbon",
+    "sha": "8a83cc08cdcd231acda775dcf90bf69e16734e97",
+    "pr": "56778",
+    "merge_sha": "752e4fdf014efa7c0f1d0595486c31403405f097",
+    "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Add `assert_part` and `assert_no_part` to `ActionMailer::TestCase`\n\n    ```ruby\n    test \"assert MyMailer.welcome HTML and text parts\" do\n      mail = MyMailer.welcome(\"Hello, world\")\n\n      assert_part :text, mail do |text|\n        assert_includes text, \"Hello, world\"\n      end\n      assert_part :html, mail do |html|\n        assert_dom html.root, \"p\", \"Hello, world\"\n      end\n    end\n    ```\n\n    *Sean Doyle*",
+    "project": "actionmailer",
+    "date_merged": 1760564922000,
+    "author": "Sean Doyle",
+    "sha": "8ee4ae23c9dbbe4f497b2d6332808194510b3a96",
+    "pr": "55348",
+    "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
+    "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Skip blank attribute names in tag helpers to avoid generating invalid HTML.\n\n    *Mike Dalessio*",
+    "project": "actionview",
+    "date_merged": 1774517729000,
+    "author": "Mike Dalessio",
+    "sha": "12db70157c45a4b47a6f53ddad1217674fb2bb32",
+    "pr": "57069",
+    "merge_sha": "fe4629354c44f664da9be8c7e9bab6011c3a5e86",
+    "html": "<p>Skip blank attribute names in tag helpers to avoid generating invalid HTML.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Fix tag parameter content being overwritten instead of combined with tag block content.\n    Before `tag.div(\"Hello \") { \"World\" }` would just return `<div>World</div>`, now it returns `<div>Hello World</div>`.\n\n    *DHH*",
+    "project": "actionview",
+    "date_merged": 1764893543000,
+    "author": "David Heinemeier Hansson",
+    "sha": "3c3f6c8a253c8a0f346695374f927c9ab32fbefb",
+    "pr": "56293",
+    "merge_sha": "1c2dac84a387598397ed52705d92f17050bea749",
+    "html": "<p>Fix tag parameter content being overwritten instead of combined with tag block content.<br />\nBefore <code>tag.div(\"Hello \") { \"World\" }</code> would just return <code>&lt;div&gt;World&lt;/div&gt;</code>, now it returns <code>&lt;div&gt;Hello World&lt;/div&gt;</code>.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add ability to pass a block when rendering collection. The block will be executed for each rendered element in the collection.\n\n    *Vincent Robert*",
+    "project": "actionview",
+    "date_merged": 1762396518000,
+    "author": "Vincent Robert",
+    "sha": "107ee64909b978476b318e36f317cfa2a747d1ad",
+    "pr": "56044",
+    "merge_sha": "b8cbbecfecddaaee4ef94d420edd8c7b1fb9bbad",
+    "html": "<p>Add ability to pass a block when rendering collection. The block will be executed for each rendered element in the collection.</p>\n\n<p><em>Vincent Robert</em></p>\n"
+  },
+  {
+    "message": "*   Add `key:` and `expires_in:` options under `cached:` to `render` when used with `collection:`\n\n    *Jarrett Lusso*",
+    "project": "actionview",
+    "date_merged": 1760538522000,
+    "author": "Jarrett Lusso",
+    "sha": "e60b82402439f4b0d8a9b9b0a7a0178239ba5de1",
+    "pr": "51579",
+    "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
+    "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
+  },
+  {
     "message": "*   Fix Action Cable origin check to respect `X-Forwarded-Host` behind reverse proxies.\n\n    The `allow_same_origin_as_host` check previously compared against the raw\n    `HTTP_HOST` header, which fails when a proxy forwards requests with a\n    different internal host. It now uses `request.host_with_port`, consistent\n    with the rest of Rails.\n\n    *Jordan Brough*",
     "project": "actioncable",
     "date_merged": 1775681534000,
@@ -20,14 +80,74 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
-    "message": "*   Add `assert_part` and `assert_no_part` to `ActionMailer::TestCase`\n\n    ```ruby\n    test \"assert MyMailer.welcome HTML and text parts\" do\n      mail = MyMailer.welcome(\"Hello, world\")\n\n      assert_part :text, mail do |text|\n        assert_includes text, \"Hello, world\"\n      end\n      assert_part :html, mail do |html|\n        assert_dom html.root, \"p\", \"Hello, world\"\n      end\n    end\n    ```\n\n    *Sean Doyle*",
-    "project": "actionmailer",
-    "date_merged": 1760564922000,
+    "message": "*   Support block children in editor elements alongside value.\n\n    Blocks were introduced in #55827, but only as an alternative to the value\n    argument: the block was captured and used as the initial editor content,\n    making it either value OR block — not both.\n\n    The block semantics are now changed so that blocks render as DOM children of\n    the editor element instead. Value and block are now independent: value flows\n    into the editor's content binding (the hidden input for Trix, the value\n    attribute for custom editors), while the block renders as inner DOM children\n    — useful for embedding custom elements such as prompt menus or toolbar\n    extensions.\n\n    This enables other editors like Lexxy to use the block form for configuration\n    — injecting child elements into the editor tag — while the rich text value is\n    preserved separately.\n\n    Trix preserves the original block-as-initial-value contract by capturing the\n    block in `TrixEditor::Tag#render_in` when no value is present, keeping its\n    hidden input populated as before.\n\n    *Jorge Manrubia*",
+    "project": "actiontext",
+    "date_merged": 1773704701000,
+    "author": "Jorge Manrubia",
+    "sha": "642fc047dea9acf9e009e736cb0c770c2742b30e",
+    "pr": "56926",
+    "merge_sha": "c629bb2f525b9de884df99de956e5ac46c79096e",
+    "html": "<p>Support block children in editor elements alongside value.</p>\n\n<p>Blocks were introduced in #55827, but only as an alternative to the value<br />\nargument: the block was captured and used as the initial editor content,<br />\nmaking it either value OR block — not both.</p>\n\n<p>The block semantics are now changed so that blocks render as DOM children of<br />\nthe editor element instead. Value and block are now independent: value flows<br />\ninto the editor’s content binding (the hidden input for Trix, the value<br />\nattribute for custom editors), while the block renders as inner DOM children<br />\n— useful for embedding custom elements such as prompt menus or toolbar<br />\nextensions.</p>\n\n<p>This enables other editors like Lexxy to use the block form for configuration<br />\n— injecting child elements into the editor tag — while the rich text value is<br />\npreserved separately.</p>\n\n<p>Trix preserves the original block-as-initial-value contract by capturing the<br />\nblock in <code>TrixEditor::Tag#render_in</code> when no value is present, keeping its<br />\nhidden input populated as before.</p>\n\n<p><em>Jorge Manrubia</em></p>\n"
+  },
+  {
+    "message": "*   Render `MissingAttachable` as \"☒\" in plain text.\n\n    Previously, `Content#to_plain_text` would replace a `MissingAttachable` with a blank string.\n    Now it renders the same \"☒\" character used in the HTML representation.\n\n    *Mike Dalessio*",
+    "project": "actiontext",
+    "date_merged": 1772069757000,
+    "author": "Mike Dalessio",
+    "sha": "91df2c34799694fc4d7d40e918da7ec813a386f2",
+    "pr": "56854",
+    "merge_sha": "0bd4abb696a8517d22a1c7444781134e0f222b6e",
+    "html": "<p>Render <code>MissingAttachable</code> as “☒” in plain text.</p>\n\n<p>Previously, <code>Content#to_plain_text</code> would replace a <code>MissingAttachable</code> with a blank string.<br />\nNow it renders the same “☒” character used in the HTML representation.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Add `to_markdown` to Action Text, mirroring `to_plain_text`.\n\n    Converts rich text content to Markdown, supporting headings, bold, italic,\n    strikethrough, inline code, code blocks, blockquotes, ordered and unordered\n    lists, links, tables, and attachments. Custom attachment representations can be\n    provided by implementing `attachable_markdown_representation` on the\n    attachable model.\n\n        message = Message.create!(content: \"<h1>Hello</h1><p>This is <strong>bold</strong></p>\")\n        message.content.to_markdown # => \"# Hello\\n\\nThis is **bold**\"\n\n    *Mike Dalessio*",
+    "project": "actiontext",
+    "date_merged": 1771941532000,
+    "author": "Mike Dalessio",
+    "sha": "e63f38458b93f13a92287c505845dbd8e782dcc1",
+    "pr": "56858",
+    "merge_sha": "442408e26a06823288d8c94ecb46e1f866819481",
+    "html": "<p>Add <code>to_markdown</code> to Action Text, mirroring <code>to_plain_text</code>.</p>\n\n<p>Converts rich text content to Markdown, supporting headings, bold, italic,<br />\nstrikethrough, inline code, code blocks, blockquotes, ordered and unordered<br />\nlists, links, tables, and attachments. Custom attachment representations can be<br />\nprovided by implementing <code>attachable_markdown_representation</code> on the<br />\nattachable model.</p>\n\n<pre><code>message = Message.create!(content: \"&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;This is &lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;\")\nmessage.content.to_markdown # =&gt; \"# Hello\\n\\nThis is **bold**\"\n</code></pre>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Make `ActionText::Attachable#read_attribute_for_serialization` public.\n\n    *Sally Hall*",
+    "project": "actiontext",
+    "date_merged": 1769924098000,
+    "author": "Sally Hall",
+    "sha": "805723ace44f4d7951d37c4a576463e5efd5c41c",
+    "pr": "56681",
+    "merge_sha": "e31e6585fa2c6b39fd64891d90794e9493f5e23a",
+    "html": "<p>Make <code>ActionText::Attachable#read_attribute_for_serialization</code> public.</p>\n\n<p><em>Sally Hall</em></p>\n"
+  },
+  {
+    "message": "*   Install generator now detects which JS package manager to use when\n    installing javascript dependencies for the editor.\n\n    *David Lowenfels*",
+    "project": "actiontext",
+    "date_merged": 1769228288000,
+    "author": "zzak",
+    "sha": "823b148b96070f3c05755b051dc72ad1e044ad12",
+    "pr": "56672",
+    "merge_sha": "038c3ededefb7242e444d886714d87fe4feeee71",
+    "html": "<p>Install generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies for the editor.</p>\n\n<p><em>David Lowenfels</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate Trix-specific classes, modules, and methods\n\n    * `ActionText::Attachable#to_trix_content_attachment_partial_path`. Override\n      `#to_editor_content_attachment_partial_path` instead.\n    * `ActionText::Attachments::TrixConversion`\n    * `ActionText::Content#to_trix_html`.\n    * `ActionText::RichText#to_trix_html`.\n    * `ActionText::TrixAttachment`\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1764972174000,
     "author": "Sean Doyle",
-    "sha": "8ee4ae23c9dbbe4f497b2d6332808194510b3a96",
-    "pr": "55348",
-    "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
-    "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+    "sha": "cb0fd2254acb8b7c1c9354ef34538ba51bf28d1f",
+    "pr": "51238",
+    "merge_sha": "38a74b851cb6cd170cd1c0eea32058857144b6d9",
+    "html": "<p>Deprecate Trix-specific classes, modules, and methods</p>\n\n<ul>\n  <li><code>ActionText::Attachable#to_trix_content_attachment_partial_path</code>. Override<br />\n<code>#to_editor_content_attachment_partial_path</code> instead.</li>\n  <li><code>ActionText::Attachments::TrixConversion</code></li>\n  <li><code>ActionText::Content#to_trix_html</code>.</li>\n  <li><code>ActionText::RichText#to_trix_html</code>.</li>\n  <li><code>ActionText::TrixAttachment</code></li>\n</ul>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Validate `RemoteImage` URLs at creation time.\n\n    `RemoteImage.from_node` now validates the URL before creating a `RemoteImage` object, using the\n    same regex that `AssetUrlHelper` uses during rendering. URLs like \"image.png\" that would\n    previously have been passed to the asset pipeline and raised a `ActionView::Template::Error` are\n    rejected early, and gracefully fail by resulting in a `MissingAttachable`.\n\n    *Mike Dalessio*",
+    "project": "actiontext",
+    "date_merged": 1764908725000,
+    "author": "Mike Dalessio",
+    "sha": "d9fc166d097d0b14db72551e22c45544a3b888c2",
+    "pr": "56283",
+    "merge_sha": "b6a07894d6920c5444e5a8dca2f4dc2d0b5a9fb2",
+    "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
     "message": "*   Combine `:if`, `:unless`, and `:on` options when specified at both the\n    `validates` level and the per-validator level, instead of the per-validator\n    options silently replacing the top-level ones.\n\n    Before, `validates :title, presence: { if: :local? }, if: :global?` would\n    only check `local?`, ignoring `global?` entirely. Now both conditions must\n    pass for the validation to run.\n\n    Fixes #55761.\n\n    *Denis Savchuk*",
@@ -118,6 +238,306 @@
     "pr": "51781",
     "merge_sha": "4b7bf2617d190b7769393e975a2449f8cde12145",
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Enable Ruby `frozen_string_literal` by default.\n\n    New Rails apps now include a `config/bootsnap.rb` file that enables frozen string\n    literals. This only impact the application code, not the dependencies.\n\n    It is also possible to enable it for dependencies for reduce allocations, but\n    some older gems may not yet be compatible. If you do attempt this and run into\n    incompatibilites please do report it on the corresponding gem bug tracker.\n\n    Additionally, `.rubocop.yml` is configured to assume frozen string literals\n    are enabled, if you decide not to enable frozen string literals for your application,\n    make sureto update the rubocop configuration accordingly.\n\n    *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1777331891000,
+    "author": "Jean Boussier",
+    "sha": "11785aad5fbb5fecdf2532fe163611128484cb73",
+    "pr": "57252",
+    "merge_sha": "304cf93155134a031a57758f7b9ad300fb32f120",
+    "html": "<p>Enable Ruby <code>frozen_string_literal</code> by default.</p>\n\n<p>New Rails apps now include a <code>config/bootsnap.rb</code> file that enables frozen string<br />\nliterals. This only impact the application code, not the dependencies.</p>\n\n<p>It is also possible to enable it for dependencies for reduce allocations, but<br />\nsome older gems may not yet be compatible. If you do attempt this and run into<br />\nincompatibilites please do report it on the corresponding gem bug tracker.</p>\n\n<p>Additionally, <code>.rubocop.yml</code> is configured to assume frozen string literals<br />\nare enabled, if you decide not to enable frozen string literals for your application,<br />\nmake sureto update the rubocop configuration accordingly.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add offline fallback page to the PWA scaffold.\n\n    New Rails apps now include an `app/views/pwa/offline.html.erb` template and\n    a commented `get \"offline\"` route in `config/routes.rb`, alongside the existing\n    manifest and service worker. The service worker template also includes a\n    commented example for caching and serving the offline page.\n\n    *Juan Vasquez*",
+    "project": "railties",
+    "date_merged": 1776371965000,
+    "author": "Juan Vásquez",
+    "sha": "5cc560f370dbc86c7a902b099f5de6a7e9d2be92",
+    "pr": "57184",
+    "merge_sha": "f61b57f3018fe30ce874883a9a8db18b2146b737",
+    "html": "<p>Add offline fallback page to the PWA scaffold.</p>\n\n<p>New Rails apps now include an <code>app/views/pwa/offline.html.erb</code> template and<br />\na commented <code>get \"offline\"</code> route in <code>config/routes.rb</code>, alongside the existing<br />\nmanifest and service worker. The service worker template also includes a<br />\ncommented example for caching and serving the offline page.</p>\n\n<p><em>Juan Vasquez</em></p>\n"
+  },
+  {
+    "message": "*   Add `bin/rails query` command for running read-only database queries.\n\n    Supports ActiveRecord expressions and raw SQL with JSON output.\n    Connects to the reading replica role by default and prevents writes.\n    Includes subcommands for schema introspection, model listing, and EXPLAIN.\n\n    ```bash\n    $ bin/rails query \"Account.where(plan: 'premium').limit(10)\"\n    $ bin/rails query --sql \"SELECT COUNT(*) FROM accounts\"\n    $ bin/rails query schema accounts\n    $ bin/rails query models\n    $ bin/rails query explain \"Account.where(plan: 'premium')\"\n    ```\n\n    *Lewis Buckley*",
+    "project": "railties",
+    "date_merged": 1776279968000,
+    "author": "Lewis Buckley",
+    "sha": "94f5040c0ee1b303bab4e7ac054e871a07ccc8af",
+    "pr": "57156",
+    "merge_sha": "450e18fe3e7da7fe9ab0162d910f93cb68f486ab",
+    "html": "<p>Add <code>bin/rails query</code> command for running read-only database queries.</p>\n\n<p>Supports ActiveRecord expressions and raw SQL with JSON output.<br />\nConnects to the reading replica role by default and prevents writes.<br />\nIncludes subcommands for schema introspection, model listing, and EXPLAIN.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>bin/rails query <span class=\"s2\">\"Account.where(plan: 'premium').limit(10)\"</span>\n<span class=\"nv\">$ </span>bin/rails query <span class=\"nt\">--sql</span> <span class=\"s2\">\"SELECT COUNT(*) FROM accounts\"</span>\n<span class=\"nv\">$ </span>bin/rails query schema accounts\n<span class=\"nv\">$ </span>bin/rails query models\n<span class=\"nv\">$ </span>bin/rails query explain <span class=\"s2\">\"Account.where(plan: 'premium')\"</span>\n</code></pre></div></div>\n\n<p><em>Lewis Buckley</em></p>\n"
+  },
+  {
+    "message": "*   Avoid adding `Rack::Sendfile` to the middleware stack if `config.action_dispatch.x_sendfile_header` is `nil`.\n\n    The middleware behave as a noop in such case so it's pointless to have it in the stack.\n\n    *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1772450069000,
+    "author": "Jean Boussier",
+    "sha": "b37aeee32f29b879f7bc6e1d91fda7e5f845160b",
+    "pr": "56915",
+    "merge_sha": "afd103d69abb7441da3d2ac5c737f8de3e678779",
+    "html": "<p>Avoid adding <code>Rack::Sendfile</code> to the middleware stack if <code>config.action_dispatch.x_sendfile_header</code> is <code>nil</code>.</p>\n\n<p>The middleware behave as a noop in such case so it’s pointless to have it in the stack.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Set read-only permissions for GitHub Actions workflow generated by rails new\n\n    *Taketo Takashima*",
+    "project": "railties",
+    "date_merged": 1772445846000,
+    "author": "Taketo Takashima",
+    "sha": "7a9a418b65b26d7236a9446c3e96e8407122dc58",
+    "pr": "56913",
+    "merge_sha": "cd23cff77cd803b854f15a0f9fe7de8b0c24a785",
+    "html": "<p>Set read-only permissions for GitHub Actions workflow generated by rails new</p>\n\n<p><em>Taketo Takashima</em></p>\n"
+  },
+  {
+    "message": "*   `Rails.app.revision` now checks `ENV[\"REVISION\"]` before falling back to the `REVISION` file or git.\n\n    *Jonathan Baker*",
+    "project": "railties",
+    "date_merged": 1770374902000,
+    "author": "Jonathan Baker",
+    "sha": "abc084255e7b122c1c09d56ac6182cfec12a5f0a",
+    "pr": "56742",
+    "merge_sha": "cf7baffae5721a70ff3f14a3862b27ddfff00bfd",
+    "html": "<p><code>Rails.app.revision</code> now checks <code>ENV[\"REVISION\"]</code> before falling back to the <code>REVISION</code> file or git.</p>\n\n<p><em>Jonathan Baker</em></p>\n"
+  },
+  {
+    "message": "*   Detect JavaScript package manager from lockfiles in generators.\n\n    Rails generators now automatically detect bun, pnpm, npm, or yarn by looking\n    for project lockfiles instead of hardcoding `yarn`.\n\n    *David Lowenfels*",
+    "project": "railties",
+    "date_merged": 1769025268000,
+    "author": "David Löwenfels",
+    "sha": "4a135f129a3b5ff5b4849decd178ba1bccd7c50f",
+    "pr": "56636",
+    "merge_sha": "6f9cbce21d8ec2de86c37b5a37073bac6d5f1d83",
+    "html": "<p>Detect JavaScript package manager from lockfiles in generators.</p>\n\n<p>Rails generators now automatically detect bun, pnpm, npm, or yarn by looking<br />\nfor project lockfiles instead of hardcoding <code>yarn</code>.</p>\n\n<p><em>David Lowenfels</em></p>\n"
+  },
+  {
+    "message": "*   Disable the Active Record query cache in the console by default when using the executor.\n\n    The query cache is now off by default in the console. Pass `--query-cache` to enable it for the session.\n\n    *Cam Allen*",
+    "project": "railties",
+    "date_merged": 1769334079000,
+    "author": "Cam Allen",
+    "sha": "d8df2a13aa980fc58fe233fb6b596c4648c4837c",
+    "pr": "56678",
+    "merge_sha": "2d1b2bce3a8dd0c1606f723dfbc45277214b9c7a",
+    "html": "<p>Disable the Active Record query cache in the console by default when using the executor.</p>\n\n<p>The query cache is now off by default in the console. Pass <code>--query-cache</code> to enable it for the session.</p>\n\n<p><em>Cam Allen</em></p>\n"
+  },
+  {
+    "message": "*   Console `reload!` will reset the console's executor, when present.\n\n    *Ben Sheldon*",
+    "project": "railties",
+    "date_merged": 1768725811000,
+    "author": "Ben Sheldon [he/him]",
+    "sha": "eac2c629b4e8b8de2da78b8a22eb984898081266",
+    "pr": "56639",
+    "merge_sha": "bd27d4731d5f805a6feea2ca8f1615e581d64be7",
+    "html": "<p>Console <code>reload!</code> will reset the console’s executor, when present.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
+  },
+  {
+    "message": "*   Add `libvips` to generated `ci.yml`\n\n    Conditionally adds `libvips` to `ci.yml`.\n\n    *Steve Polito*",
+    "project": "railties",
+    "date_merged": 1767908417000,
+    "author": "Steve Polito",
+    "sha": "7d82790ab7d867ef43cf61b964fceb21d5929d88",
+    "pr": "56523",
+    "merge_sha": "f298895a0a6c0e6527e084428acf91b73f62b73b",
+    "html": "<p>Add <code>libvips</code> to generated <code>ci.yml</code></p>\n\n<p>Conditionally adds <code>libvips</code> to <code>ci.yml</code>.</p>\n\n<p><em>Steve Polito</em></p>\n"
+  },
+  {
+    "message": "*   Add `Rails.app.revision` to provide a version identifier for error reporting, monitoring, cache keys, etc.\n\n    ```ruby\n    Rails.app.revision # => \"3d31d593e6cf0f82fa9bd0338b635af2f30d627b\"\n    ```\n\n    By default it looks for a `REVISION` file at the root of the application, if absent it tries to extract\n    the revision from the local git repository.\n\n    If none of that is adequate, it can be set in the application config:\n\n    ```ruby\n    # config/application.rb\n    module MyApp\n      class Application < Rails::Application\n        config.revision = ENV[\"GIT_SHA\"]\n      end\n    end\n    ```\n\n    *Abdelkader Boudih*, *Jean Boussier*",
+    "project": "railties",
+    "date_merged": 1767180660000,
+    "author": "Jean Boussier",
+    "sha": "a82c877c953fbdee725e08f1322f46f33de5748b",
+    "pr": "56490",
+    "merge_sha": "aa1bee96f565b2f894e4b9eef434990ecfaaa833",
+    "html": "<p>Add <code>Rails.app.revision</code> to provide a version identifier for error reporting, monitoring, cache keys, etc.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">revision</span> <span class=\"c1\"># =&gt; \"3d31d593e6cf0f82fa9bd0338b635af2f30d627b\"</span>\n</code></pre></div></div>\n\n<p>By default it looks for a <code>REVISION</code> file at the root of the application, if absent it tries to extract<br />\nthe revision from the local git repository.</p>\n\n<p>If none of that is adequate, it can be set in the application config:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># config/application.rb</span>\n<span class=\"k\">module</span> <span class=\"nn\">MyApp</span>\n  <span class=\"k\">class</span> <span class=\"nc\">Application</span> <span class=\"o\">&lt;</span> <span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">Application</span>\n    <span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">revision</span> <span class=\"o\">=</span> <span class=\"no\">ENV</span><span class=\"p\">[</span><span class=\"s2\">\"GIT_SHA\"</span><span class=\"p\">]</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Abdelkader Boudih</em>, <em>Jean Boussier</em></p>\n"
+  },
+  {
+    "message": "*   Add `Rails.app.creds` to provide combined access to credentials stored in either ENV or the encrypted credentials file,\n    and in development also .env credentials. Provides a new require/option API for accessing these values. Examples:\n\n    ```ruby\n    Rails.app.creds.require(:db_host) # ENV.fetch(\"DB_HOST\") || Rails.app.credentials.require(:db_host)\n    Rails.app.creds.require(:aws, :access_key_id) # ENV.fetch(\"AWS__ACCESS_KEY_ID\") || Rails.app.credentials.require(:aws, :access_key_id)\n    Rails.app.creds.option(:cache_host) # ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host)\n    Rails.app.creds.option(:cache_host, default: \"cache-host-1\") # ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"\n    Rails.app.creds.option(:cache_host, default: -> { \"cache-host-1\" }) # ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"\n    ```\n\n    It's also possible to assign your own combined configuration, if you need to use a different backend than just ENVs + encrypted files:\n\n    ```ruby\n    Rails.app.creds = ActiveSupport::CombinedConfiguration.new(Rails.app.envs, OnePasswordConfiguration.new)\n    ```\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1766968051000,
+    "author": "David Heinemeier Hansson",
+    "sha": "80570a6dd73d632738ed86561b10d33217c6fa7e",
+    "pr": "56455",
+    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
+    "html": "<p>Add <code>Rails.app.creds</code> to provide combined access to credentials stored in either ENV or the encrypted credentials file,<br />\nand in development also .env credentials. Provides a new require/option API for accessing these values. Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:db_host</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"DB_HOST\") || Rails.app.credentials.require(:db_host)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:aws</span><span class=\"p\">,</span> <span class=\"ss\">:access_key_id</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"AWS__ACCESS_KEY_ID\") || Rails.app.credentials.require(:aws, :access_key_id)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">)</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"s2\">\"cache-host-1\"</span><span class=\"p\">)</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"s2\">\"cache-host-1\"</span> <span class=\"p\">})</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"</span>\n</code></pre></div></div>\n\n<p>It’s also possible to assign your own combined configuration, if you need to use a different backend than just ENVs + encrypted files:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span> <span class=\"o\">=</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">CombinedConfiguration</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">,</span> <span class=\"no\">OnePasswordConfiguration</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add `Rails.app.dotenvs` to provide access to .env variables through symbol-based lookup with explicit methods\n    for required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.\n\n    It supports both variable interpolation with ${VAR} and command interpolation with $(echo \"hello\"). Otherwise the same as `Rails.app.envs`.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1766968051000,
+    "author": "David Heinemeier Hansson",
+    "sha": "80570a6dd73d632738ed86561b10d33217c6fa7e",
+    "pr": "56455",
+    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
+    "html": "<p>Add <code>Rails.app.dotenvs</code> to provide access to .env variables through symbol-based lookup with explicit methods<br />\nfor required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.</p>\n\n<p>It supports both variable interpolation with ${VAR} and command interpolation with $(echo “hello”). Otherwise the same as <code>Rails.app.envs</code>.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add `Rails.app.envs` to provide access to ENV variables through symbol-based lookup with explicit methods\n    for required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.\n\n    ```ruby\n    Rails.app.envs.require(:db_password) # ENV,fetch(\"DB_PASSWORD\")\n    Rails.app.envs.require(:aws, :access_key_id) # ENV.fetch(\"AWS__ACCESS_KEY_ID\")\n    Rails.app.envs.option(:cache_host) # ENV[\"CACHE_HOST\"]\n    Rails.app.envs.option(:cache_host, default: \"cache-host-1\") # ENV.fetch(\"CACHE_HOST\", \"cache-host-1\")\n    Rails.app.envs.option(:cache_host, default: -> { HostProvider.cache }) # ENV.fetch(\"CACHE_HOST\") { HostProvider.cache }\n    ```\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1766305386000,
+    "author": "David Heinemeier Hansson",
+    "sha": "aeec2cdbae9c4e3eecace19b3d6f788c24d3ac9b",
+    "pr": "56404",
+    "merge_sha": "446d72140fb6fa0ff980080acec9fbc996a2a659",
+    "html": "<p>Add <code>Rails.app.envs</code> to provide access to ENV variables through symbol-based lookup with explicit methods<br />\nfor required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:db_password</span><span class=\"p\">)</span> <span class=\"c1\"># ENV,fetch(\"DB_PASSWORD\")</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:aws</span><span class=\"p\">,</span> <span class=\"ss\">:access_key_id</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"AWS__ACCESS_KEY_ID\")</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">)</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"]</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"s2\">\"cache-host-1\"</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"CACHE_HOST\", \"cache-host-1\")</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"no\">HostProvider</span><span class=\"p\">.</span><span class=\"nf\">cache</span> <span class=\"p\">})</span> <span class=\"c1\"># ENV.fetch(\"CACHE_HOST\") { HostProvider.cache }</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Add `Rails.app` as alias for `Rails.application`. Particularly helpful when accessing nested accessors inside application code,\n    like when using `Rails.app.credentials`.\n\n    *DHH*",
+    "project": "railties",
+    "date_merged": 1766123497000,
+    "author": "David Heinemeier Hansson",
+    "sha": "53abf01e86723c2e4cf9d35ae626933ca5122ec5",
+    "pr": "56403",
+    "merge_sha": "a84c99b1a6a80d0be5059626941deea09c898446",
+    "html": "<p>Add <code>Rails.app</code> as alias for <code>Rails.application</code>. Particularly helpful when accessing nested accessors inside application code,<br />\nlike when using <code>Rails.app.credentials</code>.</p>\n\n<p><em>DHH</em></p>\n"
+  },
+  {
+    "message": "*   Remove duplicate unique index for token migrations\n\n    *zzak*, *Dan Bota*",
+    "project": "railties",
+    "date_merged": 1766088909000,
+    "author": "zzak",
+    "sha": "de419d7ad8844b03016e78f640ee0523d35b0ad1",
+    "pr": "56398",
+    "merge_sha": "45ab692176ea18728fcf0b01f0a22e30d672a5d6",
+    "html": "<p>Remove duplicate unique index for token migrations</p>\n\n<p><em>zzak</em>, <em>Dan Bota</em></p>\n"
+  },
+  {
+    "message": "*   Do not clean directories directly under the application root with `Rails::BacktraceCleaner`\n\n    Improved `Rails.backtrace_cleaner` so that most paths located directly under the application's root directory are no longer silenced.\n\n    *alpaca-tc*",
+    "project": "railties",
+    "date_merged": 1765526415000,
+    "author": "alpaca-tc",
+    "sha": "0ed41b849b86a5d352aa7bbba4b5b69217807338",
+    "pr": "56333",
+    "merge_sha": "96fba42a598f2c138682de29212ecfb44ca46265",
+    "html": "<p>Do not clean directories directly under the application root with <code>Rails::BacktraceCleaner</code></p>\n\n<p>Improved <code>Rails.backtrace_cleaner</code> so that most paths located directly under the application’s root directory are no longer silenced.</p>\n\n<p><em>alpaca-tc</em></p>\n"
+  },
+  {
+    "message": "*   Add `Rails::CodeStatistics#register_extension` to register file extensions for `rails stats`\n\n    ```ruby\n    Rails::CodeStatistics.register_extension(\"txt\")\n    ```\n\n    *Taketo Takashima*",
+    "project": "railties",
+    "date_merged": 1765353146000,
+    "author": "Taketo Takashima",
+    "sha": "bae568c80735bf3dcebcd693293527dbdd5111cc",
+    "pr": "56017",
+    "merge_sha": "d33d5092c77b08b5302e28dbae61e894a6976d1c",
+    "html": "<p>Add <code>Rails::CodeStatistics#register_extension</code> to register file extensions for <code>rails stats</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">CodeStatistics</span><span class=\"p\">.</span><span class=\"nf\">register_extension</span><span class=\"p\">(</span><span class=\"s2\">\"txt\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Taketo Takashima</em></p>\n"
+  },
+  {
+    "message": "*   Wrap console command with an executor by default\n\n    This can be disabled with `-w` or `--skip_executor`, same as runner.\n\n    *zzak*",
+    "project": "railties",
+    "date_merged": 1765006584000,
+    "author": "zzak",
+    "sha": "07f34c9cc47b769de526a118a7b4b794078c672e",
+    "pr": "56297",
+    "merge_sha": "f9c10631d1e8b2d9d1651412781aedb9db10fe24",
+    "html": "<p>Wrap console command with an executor by default</p>\n\n<p>This can be disabled with <code>-w</code> or <code>--skip_executor</code>, same as runner.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
+    "message": "*   Add a new internal route in development to respond to chromium devtools GET request.\n\n    This allows the app folder to be easily connected as a workspace in chromium-based browsers.\n\n    *coorasse*",
+    "project": "railties",
+    "date_merged": 1764339478000,
+    "author": "Alessandro Rodi",
+    "sha": "20ee196124633a2ce61c78182b879bd27d4c3636",
+    "pr": "56245",
+    "merge_sha": "d7932901236d1fd6f21037bfba63164ade186dad",
+    "html": "<p>Add a new internal route in development to respond to chromium devtools GET request.</p>\n\n<p>This allows the app folder to be easily connected as a workspace in chromium-based browsers.</p>\n\n<p><em>coorasse</em></p>\n"
+  },
+  {
+    "message": "*   Set `config.rake_eager_load` in generated test environment to match `config.eager_load` behavior in CI.\n\n    This ensures eager loading works consistently in CI when rake tasks invoke the `:environment` task before tests run.\n\n    *Trevor Turk*",
+    "project": "railties",
+    "date_merged": 1763866294000,
+    "author": "Trevor Turk",
+    "sha": "8cd94614ab635f427c7040cd9a3c29395019c8e9",
+    "pr": "56212",
+    "merge_sha": "da3a1e09ace78ffec8feabc32091bc3a78d82d12",
+    "html": "<p>Set <code>config.rake_eager_load</code> in generated test environment to match <code>config.eager_load</code> behavior in CI.</p>\n\n<p>This ensures eager loading works consistently in CI when rake tasks invoke the <code>:environment</code> task before tests run.</p>\n\n<p><em>Trevor Turk</em></p>\n"
+  },
+  {
+    "message": "*   Update the `.node-version` file conditionally generated for new applications to 22.21.1\n\n    *Taketo Takashima*",
+    "project": "railties",
+    "date_merged": 1762549887000,
+    "author": "Taketo Takashima",
+    "sha": "92c7069b91562e5091b8a59953a3d6a6f25d472b",
+    "pr": "56106",
+    "merge_sha": "a22491daf9a12df8ea9d4bd91de12bf397c4a549",
+    "html": "<p>Update the <code>.node-version</code> file conditionally generated for new applications to 22.21.1</p>\n\n<p><em>Taketo Takashima</em></p>\n"
+  },
+  {
+    "message": "*   Do not assume and force SSL in production by default when using Kamal, to allow for out of the box Kamal deployments.\n\n    It is still recommended to assume and force SSL in production as soon as you can.\n\n    *Jerome Dalbert*",
+    "project": "railties",
+    "date_merged": 1761522877000,
+    "author": "Jerome Dalbert",
+    "sha": "a445c5bf71264033c1727d1a111c622919129b79",
+    "pr": "56010",
+    "merge_sha": "a262ba0c2012cd4c6b53f6c3dd3d46d110797406",
+    "html": "<p>Do not assume and force SSL in production by default when using Kamal, to allow for out of the box Kamal deployments.</p>\n\n<p>It is still recommended to assume and force SSL in production as soon as you can.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
+  },
+  {
+    "message": "*   Add environment config file existence check\n\n    `Rails::Application` will raise an error if unable to load any environment file.\n\n    *Daniel Niknam*",
+    "project": "railties",
+    "date_merged": 1760681596000,
+    "author": "Daniel",
+    "sha": "5cffb7cf7ef2f653d7e1b83fc944730b37a019ba",
+    "pr": "55813",
+    "merge_sha": "a03a5281c17722c2825b68a16268258f59ca862f",
+    "html": "<p>Add environment config file existence check</p>\n\n<p><code>Rails::Application</code> will raise an error if unable to load any environment file.</p>\n\n<p><em>Daniel Niknam</em></p>\n"
+  },
+  {
+    "message": "*   `Rails::Application::RoutesReloader` uses the configured `Rails.application.config.file_watcher`\n\n    *Jan Grodowski*",
+    "project": "railties",
+    "date_merged": 1760577092000,
+    "author": "Jan Grodowski",
+    "sha": "d77afd2321f9b3604d52b7ad1c10750af3306329",
+    "pr": "55708",
+    "merge_sha": "c1c824ebca5c8efe65d902efe6ff83d45da33cf0",
+    "html": "<p><code>Rails::Application::RoutesReloader</code> uses the configured <code>Rails.application.config.file_watcher</code></p>\n\n<p><em>Jan Grodowski</em></p>\n"
+  },
+  {
+    "message": "*   Add structured event for Rails deprecations, when `config.active_support.deprecation` is set to `:notify`.\n\n    *zzak*",
+    "project": "railties",
+    "date_merged": 1760570830000,
+    "author": "zzak",
+    "sha": "7e8fa100fae0b952e5792592d55c0e8dad77899c",
+    "pr": "55838",
+    "merge_sha": "e8bcceb0200ba84b1c3d0121633329129e3bfe79",
+    "html": "<p>Add structured event for Rails deprecations, when <code>config.active_support.deprecation</code> is set to <code>:notify</code>.</p>\n\n<p><em>zzak</em></p>\n"
+  },
+  {
+    "message": "*   Report unhandled exceptions to the Error Reporter when running rake tasks via Rails command.\n\n    *Akimichi Tanei*",
+    "project": "railties",
+    "date_merged": 1760546378000,
+    "author": "kakudooo",
+    "sha": "b379af17488a1d75d4218317c839e6b653ab3d05",
+    "pr": "55913",
+    "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
+    "html": "<p>Report unhandled exceptions to the Error Reporter when running rake tasks via Rails command.</p>\n\n<p><em>Akimichi Tanei</em></p>\n"
+  },
+  {
+    "message": "*   Show help hint when starting `bin/rails console`\n\n    *Petrik de Heus*",
+    "project": "railties",
+    "date_merged": 1760537290000,
+    "author": "Petrik",
+    "sha": "e0ae228272f36cedca8ecff18f6cf6d0e58e5691",
+    "pr": "55910",
+    "merge_sha": "039cb87b806141677ddc85b697d7860d74a9e022",
+    "html": "<p>Show help hint when starting <code>bin/rails console</code></p>\n\n<p><em>Petrik de Heus</em></p>\n"
+  },
+  {
+    "message": "*   Persist `/rails/info/routes` search query and results between page reloads.\n\n    *Ryan Kulp*",
+    "project": "railties",
+    "date_merged": 1760505109000,
+    "author": "Ryan Kulp",
+    "sha": "9ca59b0c9468466ad3a4e5472a63f4e99add23a6",
+    "pr": "55903",
+    "merge_sha": "87ecc56aed72c9fe57b79b2a83c8f94656bf4878",
+    "html": "<p>Persist <code>/rails/info/routes</code> search query and results between page reloads.</p>\n\n<p><em>Ryan Kulp</em></p>\n"
+  },
+  {
+    "message": "*   Add `--update` option to the `bin/bundler-audit` script.\n\n    *Julien ANNE*",
+    "project": "railties",
+    "date_merged": 1760546378000,
+    "author": "Julien ANNE",
+    "sha": "a7d6dc30b69a0144acb2eef8e9cd5dae56d8a628",
+    "pr": "55913",
+    "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
+    "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
   },
   {
     "message": "*   Bump the minimum PostgreSQL version to 10.0.\n\n    As part of this change, `supports_pgcrypto_uuid?` is deprecated because\n    `pgcrypto` provides `gen_random_uuid()` since PostgreSQL 9.4, which is\n    below the new 10.0 minimum.\n\n    *Yasuo Honda*",
@@ -430,454 +850,114 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
-    "message": "*   Deprecate `Mail::Address.wrap` because it isn't used.\n\n    *Gannon McGibbon*",
-    "project": "actionmailbox",
-    "date_merged": 1770835947000,
-    "author": "Gannon McGibbon",
-    "sha": "8a83cc08cdcd231acda775dcf90bf69e16734e97",
-    "pr": "56778",
-    "merge_sha": "752e4fdf014efa7c0f1d0595486c31403405f097",
-    "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+    "message": "*   Configurable maximum streaming chunk size\n\n    Makes sure that byte ranges for blobs don't exceed 100mb by default.\n    Content ranges that are too big can result in denial of service.\n\n    *Gannon McGibbon*",
+    "project": "activestorage",
+    "date_merged": 1775710733000,
+    "author": "rimedelis",
+    "sha": "9fac5feb6fd1c7509ace89cc8cfc76985afae956",
+    "pr": "57160",
+    "merge_sha": "386941ef146e572b0b35dc0d26f216a6fd078075",
+    "html": "<p>Configurable maximum streaming chunk size</p>\n\n<p>Makes sure that byte ranges for blobs don’t exceed 100mb by default.<br />\nContent ranges that are too big can result in denial of service.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
-    "message": "*   Skip blank attribute names in tag helpers to avoid generating invalid HTML.\n\n    *Mike Dalessio*",
-    "project": "actionview",
+    "message": "*   Prevent path traversal in `DiskService`.\n\n    `DiskService#path_for` now raises an `InvalidKeyError` when passed keys with dot segments (\".\",\n    \"..\"), or if the resolved path is outside the storage root directory.\n\n    `#path_for` also now consistently raises `InvalidKeyError` if the key is invalid in any way, for\n    example containing null bytes or having an incompatible encoding. Previously, the exception\n    raised may have been `ArgumentError` or `Encoding::CompatibilityError`.\n\n    `DiskController` now explicitly rescues `InvalidKeyError` with appropriate HTTP status codes.\n\n    *Mike Dalessio*",
+    "project": "activestorage",
     "date_merged": 1774517729000,
     "author": "Mike Dalessio",
-    "sha": "12db70157c45a4b47a6f53ddad1217674fb2bb32",
+    "sha": "1a5e2f6a4140954fd99c875c362c45d15e25204c",
     "pr": "57069",
     "merge_sha": "fe4629354c44f664da9be8c7e9bab6011c3a5e86",
-    "html": "<p>Skip blank attribute names in tag helpers to avoid generating invalid HTML.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+    "html": "<p>Prevent path traversal in <code>DiskService</code>.</p>\n\n<p><code>DiskService#path_for</code> now raises an <code>InvalidKeyError</code> when passed keys with dot segments (“.”,<br />\n“..”), or if the resolved path is outside the storage root directory.</p>\n\n<p><code>#path_for</code> also now consistently raises <code>InvalidKeyError</code> if the key is invalid in any way, for<br />\nexample containing null bytes or having an incompatible encoding. Previously, the exception<br />\nraised may have been <code>ArgumentError</code> or <code>Encoding::CompatibilityError</code>.</p>\n\n<p><code>DiskController</code> now explicitly rescues <code>InvalidKeyError</code> with appropriate HTTP status codes.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
-    "message": "*   Fix tag parameter content being overwritten instead of combined with tag block content.\n    Before `tag.div(\"Hello \") { \"World\" }` would just return `<div>World</div>`, now it returns `<div>Hello World</div>`.\n\n    *DHH*",
-    "project": "actionview",
-    "date_merged": 1764893543000,
-    "author": "David Heinemeier Hansson",
-    "sha": "3c3f6c8a253c8a0f346695374f927c9ab32fbefb",
-    "pr": "56293",
-    "merge_sha": "1c2dac84a387598397ed52705d92f17050bea749",
-    "html": "<p>Fix tag parameter content being overwritten instead of combined with tag block content.<br />\nBefore <code>tag.div(\"Hello \") { \"World\" }</code> would just return <code>&lt;div&gt;World&lt;/div&gt;</code>, now it returns <code>&lt;div&gt;Hello World&lt;/div&gt;</code>.</p>\n\n<p><em>DHH</em></p>\n"
+    "message": "*   Prevent glob injection in `DiskService#delete_prefixed`.\n\n    Escape glob metacharacters in the resolved path before passing to `Dir.glob`.\n\n    Note that this change breaks any existing code that is relying on `delete_prefixed` to expand\n    glob metacharacters. This change presumes that is unintended behavior (as other storage services\n    do not respect these metacharacters).\n\n    *Mike Dalessio*",
+    "project": "activestorage",
+    "date_merged": 1774517729000,
+    "author": "Mike Dalessio",
+    "sha": "8fdf7da36dcf6587014bbbfed329439303c29e17",
+    "pr": "57069",
+    "merge_sha": "fe4629354c44f664da9be8c7e9bab6011c3a5e86",
+    "html": "<p>Prevent glob injection in <code>DiskService#delete_prefixed</code>.</p>\n\n<p>Escape glob metacharacters in the resolved path before passing to <code>Dir.glob</code>.</p>\n\n<p>Note that this change breaks any existing code that is relying on <code>delete_prefixed</code> to expand<br />\nglob metacharacters. This change presumes that is unintended behavior (as other storage services<br />\ndo not respect these metacharacters).</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
-    "message": "*   Add ability to pass a block when rendering collection. The block will be executed for each rendered element in the collection.\n\n    *Vincent Robert*",
-    "project": "actionview",
-    "date_merged": 1762396518000,
-    "author": "Vincent Robert",
-    "sha": "107ee64909b978476b318e36f317cfa2a747d1ad",
-    "pr": "56044",
-    "merge_sha": "b8cbbecfecddaaee4ef94d420edd8c7b1fb9bbad",
-    "html": "<p>Add ability to pass a block when rendering collection. The block will be executed for each rendered element in the collection.</p>\n\n<p><em>Vincent Robert</em></p>\n"
+    "message": "*   Restore ADC when signing URLs with IAM for GCS\n\n    ADC was previously used for automatic authorization when signing URLs with IAM.\n    Now it is again, but the auth client is memoized so that new credentials are only\n    requested when the current ones expire. Other auth methods can now be used\n    instead by setting the authorization on `ActiveStorage::Service::GCSService#iam_client`.\n\n    ```ruby\n    ActiveStorage::Blob.service.iam_client.authorization = Google::Auth::ImpersonatedServiceAccountCredentials.new(options)\n    ```\n\n    This is safer than setting `Google::Apis::RequestOptions.default.authorization`\n    because it only applies to Active Storage and does not affect other Google API\n    clients.\n\n    *Justin Malčić*",
+    "project": "activestorage",
+    "date_merged": 1767796720000,
+    "author": "Justin Malčić",
+    "sha": "950765904cf6562593b70f506cae48e448c2544c",
+    "pr": "56012",
+    "merge_sha": "e6da5b5d790816bd0b1f9c979621b24b6b595980",
+    "html": "<p>Restore ADC when signing URLs with IAM for GCS</p>\n\n<p>ADC was previously used for automatic authorization when signing URLs with IAM.<br />\nNow it is again, but the auth client is memoized so that new credentials are only<br />\nrequested when the current ones expire. Other auth methods can now be used<br />\ninstead by setting the authorization on <code>ActiveStorage::Service::GCSService#iam_client</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Blob</span><span class=\"p\">.</span><span class=\"nf\">service</span><span class=\"p\">.</span><span class=\"nf\">iam_client</span><span class=\"p\">.</span><span class=\"nf\">authorization</span> <span class=\"o\">=</span> <span class=\"no\">Google</span><span class=\"o\">::</span><span class=\"no\">Auth</span><span class=\"o\">::</span><span class=\"no\">ImpersonatedServiceAccountCredentials</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"n\">options</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>This is safer than setting <code>Google::Apis::RequestOptions.default.authorization</code><br />\nbecause it only applies to Active Storage and does not affect other Google API<br />\nclients.</p>\n\n<p><em>Justin Malčić</em></p>\n"
   },
   {
-    "message": "*   Add `key:` and `expires_in:` options under `cached:` to `render` when used with `collection:`\n\n    *Jarrett Lusso*",
-    "project": "actionview",
-    "date_merged": 1760538522000,
-    "author": "Jarrett Lusso",
-    "sha": "e60b82402439f4b0d8a9b9b0a7a0178239ba5de1",
-    "pr": "51579",
-    "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
-    "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
+    "message": "*   Move responsibility for checksums storage service\n\n    The storage service should implement calculating and\n    validating checksums.\n\n    *Matt Pasquini*",
+    "project": "activestorage",
+    "date_merged": 1767685498000,
+    "author": "Matt Pasquini",
+    "sha": "d1e31dd4f983b93d5b3e8941b18774d736deec50",
+    "pr": "54468",
+    "merge_sha": "9990b2e72bc172fa9cc3d1dcc605305dc161fb46",
+    "html": "<p>Move responsibility for checksums storage service</p>\n\n<p>The storage service should implement calculating and<br />\nvalidating checksums.</p>\n\n<p><em>Matt Pasquini</em></p>\n"
   },
   {
-    "message": "*   Enable Ruby `frozen_string_literal` by default.\n\n    New Rails apps now include a `config/bootsnap.rb` file that enables frozen string\n    literals. This only impact the application code, not the dependencies.\n\n    It is also possible to enable it for dependencies for reduce allocations, but\n    some older gems may not yet be compatible. If you do attempt this and run into\n    incompatibilites please do report it on the corresponding gem bug tracker.\n\n    Additionally, `.rubocop.yml` is configured to assume frozen string literals\n    are enabled, if you decide not to enable frozen string literals for your application,\n    make sureto update the rubocop configuration accordingly.\n\n    *Jean Boussier*",
-    "project": "railties",
-    "date_merged": 1777331891000,
-    "author": "Jean Boussier",
-    "sha": "11785aad5fbb5fecdf2532fe163611128484cb73",
-    "pr": "57252",
-    "merge_sha": "304cf93155134a031a57758f7b9ad300fb32f120",
-    "html": "<p>Enable Ruby <code>frozen_string_literal</code> by default.</p>\n\n<p>New Rails apps now include a <code>config/bootsnap.rb</code> file that enables frozen string<br />\nliterals. This only impact the application code, not the dependencies.</p>\n\n<p>It is also possible to enable it for dependencies for reduce allocations, but<br />\nsome older gems may not yet be compatible. If you do attempt this and run into<br />\nincompatibilites please do report it on the corresponding gem bug tracker.</p>\n\n<p>Additionally, <code>.rubocop.yml</code> is configured to assume frozen string literals<br />\nare enabled, if you decide not to enable frozen string literals for your application,<br />\nmake sureto update the rubocop configuration accordingly.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+    "message": "*   Analyze attachments before validation\n\n    Attachment metadata (width, height, duration, etc.) is now available for\n    model validations:\n\n    ```ruby\n    class User < ApplicationRecord\n      has_one_attached :avatar\n\n      validate :validate_avatar_dimensions, if: -> { avatar.attached? }\n\n      def validate_avatar_dimensions\n        if avatar.metadata[:width] < 200 || avatar.metadata[:height] < 200\n          errors.add(:avatar, \"must be at least 200x200\")\n        end\n      end\n    end\n    ```\n\n    Configure when analysis is performed:\n\n    * `analyze: :immediately` (default in 8.2) - Analyze before validation\n    * `analyze: :later` - Analyze after upload from local IO or via background job\n    * `analyze: :lazily` - Skip automatic analysis; analyze on-demand\n\n    ```ruby\n    has_one_attached :document, analyze: :later\n    has_many_attached :files, analyze: :lazily\n\n    # Or set the global default:\n    config.active_storage.analyze = :later\n    ```\n\n    Direct uploads bypass the server so the file isn't locally available\n    for analysis. In this case, `:immediately` falls back to `:later`,\n    analyzing via background job after upload completes. Metadata isn't\n    available for validation; validate on the client side instead.\n\n    *Jeremy Daer*",
+    "project": "activestorage",
+    "date_merged": 1765442250000,
+    "author": "Jeremy Daer",
+    "sha": "01e5a0c65d012baede7f2084615a0c7a8b294ae9",
+    "pr": "56335",
+    "merge_sha": "e2d407dd8bf3747923d68fbc06b676c27aff9f03",
+    "html": "<p>Analyze attachments before validation</p>\n\n<p>Attachment metadata (width, height, duration, etc.) is now available for<br />\nmodel validations:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">has_one_attached</span> <span class=\"ss\">:avatar</span>\n\n  <span class=\"n\">validate</span> <span class=\"ss\">:validate_avatar_dimensions</span><span class=\"p\">,</span> <span class=\"ss\">if: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">avatar</span><span class=\"p\">.</span><span class=\"nf\">attached?</span> <span class=\"p\">}</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">validate_avatar_dimensions</span>\n    <span class=\"k\">if</span> <span class=\"n\">avatar</span><span class=\"p\">.</span><span class=\"nf\">metadata</span><span class=\"p\">[</span><span class=\"ss\">:width</span><span class=\"p\">]</span> <span class=\"o\">&lt;</span> <span class=\"mi\">200</span> <span class=\"o\">||</span> <span class=\"n\">avatar</span><span class=\"p\">.</span><span class=\"nf\">metadata</span><span class=\"p\">[</span><span class=\"ss\">:height</span><span class=\"p\">]</span> <span class=\"o\">&lt;</span> <span class=\"mi\">200</span>\n      <span class=\"n\">errors</span><span class=\"p\">.</span><span class=\"nf\">add</span><span class=\"p\">(</span><span class=\"ss\">:avatar</span><span class=\"p\">,</span> <span class=\"s2\">\"must be at least 200x200\"</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Configure when analysis is performed:</p>\n\n<ul>\n  <li><code>analyze: :immediately</code> (default in 8.2) - Analyze before validation</li>\n  <li><code>analyze: :later</code> - Analyze after upload from local IO or via background job</li>\n  <li><code>analyze: :lazily</code> - Skip automatic analysis; analyze on-demand</li>\n</ul>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">has_one_attached</span> <span class=\"ss\">:document</span><span class=\"p\">,</span> <span class=\"ss\">analyze: :later</span>\n<span class=\"n\">has_many_attached</span> <span class=\"ss\">:files</span><span class=\"p\">,</span> <span class=\"ss\">analyze: :lazily</span>\n\n<span class=\"c1\"># Or set the global default:</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_storage</span><span class=\"p\">.</span><span class=\"nf\">analyze</span> <span class=\"o\">=</span> <span class=\"ss\">:later</span>\n</code></pre></div></div>\n\n<p>Direct uploads bypass the server so the file isn’t locally available<br />\nfor analysis. In this case, <code>:immediately</code> falls back to <code>:later</code>,<br />\nanalyzing via background job after upload completes. Metadata isn’t<br />\navailable for validation; validate on the client side instead.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
-    "message": "*   Add offline fallback page to the PWA scaffold.\n\n    New Rails apps now include an `app/views/pwa/offline.html.erb` template and\n    a commented `get \"offline\"` route in `config/routes.rb`, alongside the existing\n    manifest and service worker. The service worker template also includes a\n    commented example for caching and serving the offline page.\n\n    *Juan Vasquez*",
-    "project": "railties",
-    "date_merged": 1776371965000,
-    "author": "Juan Vásquez",
-    "sha": "5cc560f370dbc86c7a902b099f5de6a7e9d2be92",
-    "pr": "57184",
-    "merge_sha": "f61b57f3018fe30ce874883a9a8db18b2146b737",
-    "html": "<p>Add offline fallback page to the PWA scaffold.</p>\n\n<p>New Rails apps now include an <code>app/views/pwa/offline.html.erb</code> template and<br />\na commented <code>get \"offline\"</code> route in <code>config/routes.rb</code>, alongside the existing<br />\nmanifest and service worker. The service worker template also includes a<br />\ncommented example for caching and serving the offline page.</p>\n\n<p><em>Juan Vasquez</em></p>\n"
+    "message": "*   Use local files for immediate variant processing and analysis\n\n    `process: :immediately` variants and blob analysis use local files\n    directly instead of re-downloading after upload.\n\n    Applies when attaching uploadable io, not when attaching an existing Blob.\n\n    *Jeremy Daer*",
+    "project": "activestorage",
+    "date_merged": 1765349289000,
+    "author": "Jeremy Daer",
+    "sha": "c12afb920b891527180cefc9c0971a356ae5d7b2",
+    "pr": "56327",
+    "merge_sha": "420fd9a7a4b7fab11e7f98a5a445ddeee5fa1026",
+    "html": "<p>Use local files for immediate variant processing and analysis</p>\n\n<p><code>process: :immediately</code> variants and blob analysis use local files<br />\ndirectly instead of re-downloading after upload.</p>\n\n<p>Applies when attaching uploadable io, not when attaching an existing Blob.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
-    "message": "*   Add `bin/rails query` command for running read-only database queries.\n\n    Supports ActiveRecord expressions and raw SQL with JSON output.\n    Connects to the reading replica role by default and prevents writes.\n    Includes subcommands for schema introspection, model listing, and EXPLAIN.\n\n    ```bash\n    $ bin/rails query \"Account.where(plan: 'premium').limit(10)\"\n    $ bin/rails query --sql \"SELECT COUNT(*) FROM accounts\"\n    $ bin/rails query schema accounts\n    $ bin/rails query models\n    $ bin/rails query explain \"Account.where(plan: 'premium')\"\n    ```\n\n    *Lewis Buckley*",
-    "project": "railties",
-    "date_merged": 1776279968000,
-    "author": "Lewis Buckley",
-    "sha": "94f5040c0ee1b303bab4e7ac054e871a07ccc8af",
-    "pr": "57156",
-    "merge_sha": "450e18fe3e7da7fe9ab0162d910f93cb68f486ab",
-    "html": "<p>Add <code>bin/rails query</code> command for running read-only database queries.</p>\n\n<p>Supports ActiveRecord expressions and raw SQL with JSON output.<br />\nConnects to the reading replica role by default and prevents writes.<br />\nIncludes subcommands for schema introspection, model listing, and EXPLAIN.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nv\">$ </span>bin/rails query <span class=\"s2\">\"Account.where(plan: 'premium').limit(10)\"</span>\n<span class=\"nv\">$ </span>bin/rails query <span class=\"nt\">--sql</span> <span class=\"s2\">\"SELECT COUNT(*) FROM accounts\"</span>\n<span class=\"nv\">$ </span>bin/rails query schema accounts\n<span class=\"nv\">$ </span>bin/rails query models\n<span class=\"nv\">$ </span>bin/rails query explain <span class=\"s2\">\"Account.where(plan: 'premium')\"</span>\n</code></pre></div></div>\n\n<p><em>Lewis Buckley</em></p>\n"
+    "message": "*   Introduce `ActiveStorage::Attachment` upload callbacks\n\n    `after_upload` fires after an attachment's blob is uploaded, enabling\n    analysis and processing to run deterministically rather than assuming\n    after-commit callback execution ordering.\n\n    ```ruby\n    ActiveStorage::Attachment.after_upload do\n      # Your custom logic here\n    end\n    ```\n\n    *Jeremy Daer*",
+    "project": "activestorage",
+    "date_merged": 1765349289000,
+    "author": "Jeremy Daer",
+    "sha": "c12afb920b891527180cefc9c0971a356ae5d7b2",
+    "pr": "56327",
+    "merge_sha": "420fd9a7a4b7fab11e7f98a5a445ddeee5fa1026",
+    "html": "<p>Introduce <code>ActiveStorage::Attachment</code> upload callbacks</p>\n\n<p><code>after_upload</code> fires after an attachment’s blob is uploaded, enabling<br />\nanalysis and processing to run deterministically rather than assuming<br />\nafter-commit callback execution ordering.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Attachment</span><span class=\"p\">.</span><span class=\"nf\">after_upload</span> <span class=\"k\">do</span>\n  <span class=\"c1\"># Your custom logic here</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jeremy Daer</em></p>\n"
   },
   {
-    "message": "*   Avoid adding `Rack::Sendfile` to the middleware stack if `config.action_dispatch.x_sendfile_header` is `nil`.\n\n    The middleware behave as a noop in such case so it's pointless to have it in the stack.\n\n    *Jean Boussier*",
-    "project": "railties",
-    "date_merged": 1772450069000,
-    "author": "Jean Boussier",
-    "sha": "b37aeee32f29b879f7bc6e1d91fda7e5f845160b",
-    "pr": "56915",
-    "merge_sha": "afd103d69abb7441da3d2ac5c737f8de3e678779",
-    "html": "<p>Avoid adding <code>Rack::Sendfile</code> to the middleware stack if <code>config.action_dispatch.x_sendfile_header</code> is <code>nil</code>.</p>\n\n<p>The middleware behave as a noop in such case so it’s pointless to have it in the stack.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+    "message": "*   Introduce immediate variants that are generated immediately on attachment\n\n    The new `process` option determines when variants are created:\n\n    - `:lazily` (default) - Variants are created dynamically when requested\n    - `:later` (replaces `preprocessed: true`) - Variants are created after attachment, in a background job\n    - `:immediately` (new) - Variants are created along with the attachment\n\n    ```ruby\n    has_one_attached :avatar do |attachable|\n      attachable.variant :thumb, resize_to_limit: [100, 100], process: :immediately\n    end\n    ```\n\n    The `preprocessed: true` option is deprecated in favor of `process: :later`.\n\n    *Tom Rossi*",
+    "project": "activestorage",
+    "date_merged": 1764919887000,
+    "author": "Tom Rossi",
+    "sha": "3d105fc346fbb3121bbcf6340f2b19104bf326f0",
+    "pr": "51951",
+    "merge_sha": "abf88889b92e53e9775288d79fd611942f928b2d",
+    "html": "<p>Introduce immediate variants that are generated immediately on attachment</p>\n\n<p>The new <code>process</code> option determines when variants are created:</p>\n\n<ul>\n  <li><code>:lazily</code> (default) - Variants are created dynamically when requested</li>\n  <li><code>:later</code> (replaces <code>preprocessed: true</code>) - Variants are created after attachment, in a background job</li>\n  <li><code>:immediately</code> (new) - Variants are created along with the attachment</li>\n</ul>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">has_one_attached</span> <span class=\"ss\">:avatar</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">attachable</span><span class=\"o\">|</span>\n  <span class=\"n\">attachable</span><span class=\"p\">.</span><span class=\"nf\">variant</span> <span class=\"ss\">:thumb</span><span class=\"p\">,</span> <span class=\"ss\">resize_to_limit: </span><span class=\"p\">[</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">],</span> <span class=\"ss\">process: :immediately</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>The <code>preprocessed: true</code> option is deprecated in favor of <code>process: :later</code>.</p>\n\n<p><em>Tom Rossi</em></p>\n"
   },
   {
-    "message": "*   Set read-only permissions for GitHub Actions workflow generated by rails new\n\n    *Taketo Takashima*",
-    "project": "railties",
-    "date_merged": 1772445846000,
-    "author": "Taketo Takashima",
-    "sha": "7a9a418b65b26d7236a9446c3e96e8407122dc58",
-    "pr": "56913",
-    "merge_sha": "cd23cff77cd803b854f15a0f9fe7de8b0c24a785",
-    "html": "<p>Set read-only permissions for GitHub Actions workflow generated by rails new</p>\n\n<p><em>Taketo Takashima</em></p>\n"
+    "message": "*   Make `Variant#processed?` and `VariantWithRecord#processed?` public so apps can check variant generation status.\n\n    *Tom Rossi*",
+    "project": "activestorage",
+    "date_merged": 1764919887000,
+    "author": "Tom Rossi",
+    "sha": "3d105fc346fbb3121bbcf6340f2b19104bf326f0",
+    "pr": "51951",
+    "merge_sha": "abf88889b92e53e9775288d79fd611942f928b2d",
+    "html": "<p>Make <code>Variant#processed?</code> and <code>VariantWithRecord#processed?</code> public so apps can check variant generation status.</p>\n\n<p><em>Tom Rossi</em></p>\n"
   },
   {
-    "message": "*   `Rails.app.revision` now checks `ENV[\"REVISION\"]` before falling back to the `REVISION` file or git.\n\n    *Jonathan Baker*",
-    "project": "railties",
-    "date_merged": 1770374902000,
-    "author": "Jonathan Baker",
-    "sha": "abc084255e7b122c1c09d56ac6182cfec12a5f0a",
-    "pr": "56742",
-    "merge_sha": "cf7baffae5721a70ff3f14a3862b27ddfff00bfd",
-    "html": "<p><code>Rails.app.revision</code> now checks <code>ENV[\"REVISION\"]</code> before falling back to the <code>REVISION</code> file or git.</p>\n\n<p><em>Jonathan Baker</em></p>\n"
-  },
-  {
-    "message": "*   Detect JavaScript package manager from lockfiles in generators.\n\n    Rails generators now automatically detect bun, pnpm, npm, or yarn by looking\n    for project lockfiles instead of hardcoding `yarn`.\n\n    *David Lowenfels*",
-    "project": "railties",
-    "date_merged": 1769025268000,
-    "author": "David Löwenfels",
-    "sha": "4a135f129a3b5ff5b4849decd178ba1bccd7c50f",
-    "pr": "56636",
-    "merge_sha": "6f9cbce21d8ec2de86c37b5a37073bac6d5f1d83",
-    "html": "<p>Detect JavaScript package manager from lockfiles in generators.</p>\n\n<p>Rails generators now automatically detect bun, pnpm, npm, or yarn by looking<br />\nfor project lockfiles instead of hardcoding <code>yarn</code>.</p>\n\n<p><em>David Lowenfels</em></p>\n"
-  },
-  {
-    "message": "*   Disable the Active Record query cache in the console by default when using the executor.\n\n    The query cache is now off by default in the console. Pass `--query-cache` to enable it for the session.\n\n    *Cam Allen*",
-    "project": "railties",
-    "date_merged": 1769334079000,
-    "author": "Cam Allen",
-    "sha": "d8df2a13aa980fc58fe233fb6b596c4648c4837c",
-    "pr": "56678",
-    "merge_sha": "2d1b2bce3a8dd0c1606f723dfbc45277214b9c7a",
-    "html": "<p>Disable the Active Record query cache in the console by default when using the executor.</p>\n\n<p>The query cache is now off by default in the console. Pass <code>--query-cache</code> to enable it for the session.</p>\n\n<p><em>Cam Allen</em></p>\n"
-  },
-  {
-    "message": "*   Console `reload!` will reset the console's executor, when present.\n\n    *Ben Sheldon*",
-    "project": "railties",
-    "date_merged": 1768725811000,
-    "author": "Ben Sheldon [he/him]",
-    "sha": "eac2c629b4e8b8de2da78b8a22eb984898081266",
-    "pr": "56639",
-    "merge_sha": "bd27d4731d5f805a6feea2ca8f1615e581d64be7",
-    "html": "<p>Console <code>reload!</code> will reset the console’s executor, when present.</p>\n\n<p><em>Ben Sheldon</em></p>\n"
-  },
-  {
-    "message": "*   Add `libvips` to generated `ci.yml`\n\n    Conditionally adds `libvips` to `ci.yml`.\n\n    *Steve Polito*",
-    "project": "railties",
-    "date_merged": 1767908417000,
-    "author": "Steve Polito",
-    "sha": "7d82790ab7d867ef43cf61b964fceb21d5929d88",
-    "pr": "56523",
-    "merge_sha": "f298895a0a6c0e6527e084428acf91b73f62b73b",
-    "html": "<p>Add <code>libvips</code> to generated <code>ci.yml</code></p>\n\n<p>Conditionally adds <code>libvips</code> to <code>ci.yml</code>.</p>\n\n<p><em>Steve Polito</em></p>\n"
-  },
-  {
-    "message": "*   Add `Rails.app.revision` to provide a version identifier for error reporting, monitoring, cache keys, etc.\n\n    ```ruby\n    Rails.app.revision # => \"3d31d593e6cf0f82fa9bd0338b635af2f30d627b\"\n    ```\n\n    By default it looks for a `REVISION` file at the root of the application, if absent it tries to extract\n    the revision from the local git repository.\n\n    If none of that is adequate, it can be set in the application config:\n\n    ```ruby\n    # config/application.rb\n    module MyApp\n      class Application < Rails::Application\n        config.revision = ENV[\"GIT_SHA\"]\n      end\n    end\n    ```\n\n    *Abdelkader Boudih*, *Jean Boussier*",
-    "project": "railties",
-    "date_merged": 1767180660000,
-    "author": "Jean Boussier",
-    "sha": "a82c877c953fbdee725e08f1322f46f33de5748b",
-    "pr": "56490",
-    "merge_sha": "aa1bee96f565b2f894e4b9eef434990ecfaaa833",
-    "html": "<p>Add <code>Rails.app.revision</code> to provide a version identifier for error reporting, monitoring, cache keys, etc.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">revision</span> <span class=\"c1\"># =&gt; \"3d31d593e6cf0f82fa9bd0338b635af2f30d627b\"</span>\n</code></pre></div></div>\n\n<p>By default it looks for a <code>REVISION</code> file at the root of the application, if absent it tries to extract<br />\nthe revision from the local git repository.</p>\n\n<p>If none of that is adequate, it can be set in the application config:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># config/application.rb</span>\n<span class=\"k\">module</span> <span class=\"nn\">MyApp</span>\n  <span class=\"k\">class</span> <span class=\"nc\">Application</span> <span class=\"o\">&lt;</span> <span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">Application</span>\n    <span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">revision</span> <span class=\"o\">=</span> <span class=\"no\">ENV</span><span class=\"p\">[</span><span class=\"s2\">\"GIT_SHA\"</span><span class=\"p\">]</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Abdelkader Boudih</em>, <em>Jean Boussier</em></p>\n"
-  },
-  {
-    "message": "*   Add `Rails.app.creds` to provide combined access to credentials stored in either ENV or the encrypted credentials file,\n    and in development also .env credentials. Provides a new require/option API for accessing these values. Examples:\n\n    ```ruby\n    Rails.app.creds.require(:db_host) # ENV.fetch(\"DB_HOST\") || Rails.app.credentials.require(:db_host)\n    Rails.app.creds.require(:aws, :access_key_id) # ENV.fetch(\"AWS__ACCESS_KEY_ID\") || Rails.app.credentials.require(:aws, :access_key_id)\n    Rails.app.creds.option(:cache_host) # ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host)\n    Rails.app.creds.option(:cache_host, default: \"cache-host-1\") # ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"\n    Rails.app.creds.option(:cache_host, default: -> { \"cache-host-1\" }) # ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"\n    ```\n\n    It's also possible to assign your own combined configuration, if you need to use a different backend than just ENVs + encrypted files:\n\n    ```ruby\n    Rails.app.creds = ActiveSupport::CombinedConfiguration.new(Rails.app.envs, OnePasswordConfiguration.new)\n    ```\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1766968051000,
-    "author": "David Heinemeier Hansson",
-    "sha": "80570a6dd73d632738ed86561b10d33217c6fa7e",
-    "pr": "56455",
-    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
-    "html": "<p>Add <code>Rails.app.creds</code> to provide combined access to credentials stored in either ENV or the encrypted credentials file,<br />\nand in development also .env credentials. Provides a new require/option API for accessing these values. Examples:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:db_host</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"DB_HOST\") || Rails.app.credentials.require(:db_host)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:aws</span><span class=\"p\">,</span> <span class=\"ss\">:access_key_id</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"AWS__ACCESS_KEY_ID\") || Rails.app.credentials.require(:aws, :access_key_id)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">)</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"s2\">\"cache-host-1\"</span><span class=\"p\">)</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"s2\">\"cache-host-1\"</span> <span class=\"p\">})</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"] || Rails.app.credentials.option(:cache_host) || \"cache-host-1\"</span>\n</code></pre></div></div>\n\n<p>It’s also possible to assign your own combined configuration, if you need to use a different backend than just ENVs + encrypted files:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">creds</span> <span class=\"o\">=</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">CombinedConfiguration</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">,</span> <span class=\"no\">OnePasswordConfiguration</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Add `Rails.app.dotenvs` to provide access to .env variables through symbol-based lookup with explicit methods\n    for required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.\n\n    It supports both variable interpolation with ${VAR} and command interpolation with $(echo \"hello\"). Otherwise the same as `Rails.app.envs`.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1766968051000,
-    "author": "David Heinemeier Hansson",
-    "sha": "80570a6dd73d632738ed86561b10d33217c6fa7e",
-    "pr": "56455",
-    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
-    "html": "<p>Add <code>Rails.app.dotenvs</code> to provide access to .env variables through symbol-based lookup with explicit methods<br />\nfor required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.</p>\n\n<p>It supports both variable interpolation with ${VAR} and command interpolation with $(echo “hello”). Otherwise the same as <code>Rails.app.envs</code>.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Add `Rails.app.envs` to provide access to ENV variables through symbol-based lookup with explicit methods\n    for required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.\n\n    ```ruby\n    Rails.app.envs.require(:db_password) # ENV,fetch(\"DB_PASSWORD\")\n    Rails.app.envs.require(:aws, :access_key_id) # ENV.fetch(\"AWS__ACCESS_KEY_ID\")\n    Rails.app.envs.option(:cache_host) # ENV[\"CACHE_HOST\"]\n    Rails.app.envs.option(:cache_host, default: \"cache-host-1\") # ENV.fetch(\"CACHE_HOST\", \"cache-host-1\")\n    Rails.app.envs.option(:cache_host, default: -> { HostProvider.cache }) # ENV.fetch(\"CACHE_HOST\") { HostProvider.cache }\n    ```\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1766305386000,
-    "author": "David Heinemeier Hansson",
-    "sha": "aeec2cdbae9c4e3eecace19b3d6f788c24d3ac9b",
-    "pr": "56404",
-    "merge_sha": "446d72140fb6fa0ff980080acec9fbc996a2a659",
-    "html": "<p>Add <code>Rails.app.envs</code> to provide access to ENV variables through symbol-based lookup with explicit methods<br />\nfor required and optional values. This is the same interface offered by #credentials and can be accessed in a combined manner via #creds.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:db_password</span><span class=\"p\">)</span> <span class=\"c1\"># ENV,fetch(\"DB_PASSWORD\")</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">require</span><span class=\"p\">(</span><span class=\"ss\">:aws</span><span class=\"p\">,</span> <span class=\"ss\">:access_key_id</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"AWS__ACCESS_KEY_ID\")</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">)</span> <span class=\"c1\"># ENV[\"CACHE_HOST\"]</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"s2\">\"cache-host-1\"</span><span class=\"p\">)</span> <span class=\"c1\"># ENV.fetch(\"CACHE_HOST\", \"cache-host-1\")</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">app</span><span class=\"p\">.</span><span class=\"nf\">envs</span><span class=\"p\">.</span><span class=\"nf\">option</span><span class=\"p\">(</span><span class=\"ss\">:cache_host</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"no\">HostProvider</span><span class=\"p\">.</span><span class=\"nf\">cache</span> <span class=\"p\">})</span> <span class=\"c1\"># ENV.fetch(\"CACHE_HOST\") { HostProvider.cache }</span>\n</code></pre></div></div>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Add `Rails.app` as alias for `Rails.application`. Particularly helpful when accessing nested accessors inside application code,\n    like when using `Rails.app.credentials`.\n\n    *DHH*",
-    "project": "railties",
-    "date_merged": 1766123497000,
-    "author": "David Heinemeier Hansson",
-    "sha": "53abf01e86723c2e4cf9d35ae626933ca5122ec5",
-    "pr": "56403",
-    "merge_sha": "a84c99b1a6a80d0be5059626941deea09c898446",
-    "html": "<p>Add <code>Rails.app</code> as alias for <code>Rails.application</code>. Particularly helpful when accessing nested accessors inside application code,<br />\nlike when using <code>Rails.app.credentials</code>.</p>\n\n<p><em>DHH</em></p>\n"
-  },
-  {
-    "message": "*   Remove duplicate unique index for token migrations\n\n    *zzak*, *Dan Bota*",
-    "project": "railties",
-    "date_merged": 1766088909000,
-    "author": "zzak",
-    "sha": "de419d7ad8844b03016e78f640ee0523d35b0ad1",
-    "pr": "56398",
-    "merge_sha": "45ab692176ea18728fcf0b01f0a22e30d672a5d6",
-    "html": "<p>Remove duplicate unique index for token migrations</p>\n\n<p><em>zzak</em>, <em>Dan Bota</em></p>\n"
-  },
-  {
-    "message": "*   Do not clean directories directly under the application root with `Rails::BacktraceCleaner`\n\n    Improved `Rails.backtrace_cleaner` so that most paths located directly under the application's root directory are no longer silenced.\n\n    *alpaca-tc*",
-    "project": "railties",
-    "date_merged": 1765526415000,
-    "author": "alpaca-tc",
-    "sha": "0ed41b849b86a5d352aa7bbba4b5b69217807338",
-    "pr": "56333",
-    "merge_sha": "96fba42a598f2c138682de29212ecfb44ca46265",
-    "html": "<p>Do not clean directories directly under the application root with <code>Rails::BacktraceCleaner</code></p>\n\n<p>Improved <code>Rails.backtrace_cleaner</code> so that most paths located directly under the application’s root directory are no longer silenced.</p>\n\n<p><em>alpaca-tc</em></p>\n"
-  },
-  {
-    "message": "*   Add `Rails::CodeStatistics#register_extension` to register file extensions for `rails stats`\n\n    ```ruby\n    Rails::CodeStatistics.register_extension(\"txt\")\n    ```\n\n    *Taketo Takashima*",
-    "project": "railties",
-    "date_merged": 1765353146000,
-    "author": "Taketo Takashima",
-    "sha": "bae568c80735bf3dcebcd693293527dbdd5111cc",
-    "pr": "56017",
-    "merge_sha": "d33d5092c77b08b5302e28dbae61e894a6976d1c",
-    "html": "<p>Add <code>Rails::CodeStatistics#register_extension</code> to register file extensions for <code>rails stats</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"o\">::</span><span class=\"no\">CodeStatistics</span><span class=\"p\">.</span><span class=\"nf\">register_extension</span><span class=\"p\">(</span><span class=\"s2\">\"txt\"</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p><em>Taketo Takashima</em></p>\n"
-  },
-  {
-    "message": "*   Wrap console command with an executor by default\n\n    This can be disabled with `-w` or `--skip_executor`, same as runner.\n\n    *zzak*",
-    "project": "railties",
-    "date_merged": 1765006584000,
-    "author": "zzak",
-    "sha": "07f34c9cc47b769de526a118a7b4b794078c672e",
-    "pr": "56297",
-    "merge_sha": "f9c10631d1e8b2d9d1651412781aedb9db10fe24",
-    "html": "<p>Wrap console command with an executor by default</p>\n\n<p>This can be disabled with <code>-w</code> or <code>--skip_executor</code>, same as runner.</p>\n\n<p><em>zzak</em></p>\n"
-  },
-  {
-    "message": "*   Add a new internal route in development to respond to chromium devtools GET request.\n\n    This allows the app folder to be easily connected as a workspace in chromium-based browsers.\n\n    *coorasse*",
-    "project": "railties",
-    "date_merged": 1764339478000,
-    "author": "Alessandro Rodi",
-    "sha": "20ee196124633a2ce61c78182b879bd27d4c3636",
-    "pr": "56245",
-    "merge_sha": "d7932901236d1fd6f21037bfba63164ade186dad",
-    "html": "<p>Add a new internal route in development to respond to chromium devtools GET request.</p>\n\n<p>This allows the app folder to be easily connected as a workspace in chromium-based browsers.</p>\n\n<p><em>coorasse</em></p>\n"
-  },
-  {
-    "message": "*   Set `config.rake_eager_load` in generated test environment to match `config.eager_load` behavior in CI.\n\n    This ensures eager loading works consistently in CI when rake tasks invoke the `:environment` task before tests run.\n\n    *Trevor Turk*",
-    "project": "railties",
-    "date_merged": 1763866294000,
-    "author": "Trevor Turk",
-    "sha": "8cd94614ab635f427c7040cd9a3c29395019c8e9",
-    "pr": "56212",
-    "merge_sha": "da3a1e09ace78ffec8feabc32091bc3a78d82d12",
-    "html": "<p>Set <code>config.rake_eager_load</code> in generated test environment to match <code>config.eager_load</code> behavior in CI.</p>\n\n<p>This ensures eager loading works consistently in CI when rake tasks invoke the <code>:environment</code> task before tests run.</p>\n\n<p><em>Trevor Turk</em></p>\n"
-  },
-  {
-    "message": "*   Update the `.node-version` file conditionally generated for new applications to 22.21.1\n\n    *Taketo Takashima*",
-    "project": "railties",
-    "date_merged": 1762549887000,
-    "author": "Taketo Takashima",
-    "sha": "92c7069b91562e5091b8a59953a3d6a6f25d472b",
-    "pr": "56106",
-    "merge_sha": "a22491daf9a12df8ea9d4bd91de12bf397c4a549",
-    "html": "<p>Update the <code>.node-version</code> file conditionally generated for new applications to 22.21.1</p>\n\n<p><em>Taketo Takashima</em></p>\n"
-  },
-  {
-    "message": "*   Do not assume and force SSL in production by default when using Kamal, to allow for out of the box Kamal deployments.\n\n    It is still recommended to assume and force SSL in production as soon as you can.\n\n    *Jerome Dalbert*",
-    "project": "railties",
-    "date_merged": 1761522877000,
-    "author": "Jerome Dalbert",
-    "sha": "a445c5bf71264033c1727d1a111c622919129b79",
-    "pr": "56010",
-    "merge_sha": "a262ba0c2012cd4c6b53f6c3dd3d46d110797406",
-    "html": "<p>Do not assume and force SSL in production by default when using Kamal, to allow for out of the box Kamal deployments.</p>\n\n<p>It is still recommended to assume and force SSL in production as soon as you can.</p>\n\n<p><em>Jerome Dalbert</em></p>\n"
-  },
-  {
-    "message": "*   Add environment config file existence check\n\n    `Rails::Application` will raise an error if unable to load any environment file.\n\n    *Daniel Niknam*",
-    "project": "railties",
-    "date_merged": 1760681596000,
-    "author": "Daniel",
-    "sha": "5cffb7cf7ef2f653d7e1b83fc944730b37a019ba",
-    "pr": "55813",
-    "merge_sha": "a03a5281c17722c2825b68a16268258f59ca862f",
-    "html": "<p>Add environment config file existence check</p>\n\n<p><code>Rails::Application</code> will raise an error if unable to load any environment file.</p>\n\n<p><em>Daniel Niknam</em></p>\n"
-  },
-  {
-    "message": "*   `Rails::Application::RoutesReloader` uses the configured `Rails.application.config.file_watcher`\n\n    *Jan Grodowski*",
-    "project": "railties",
-    "date_merged": 1760577092000,
-    "author": "Jan Grodowski",
-    "sha": "d77afd2321f9b3604d52b7ad1c10750af3306329",
-    "pr": "55708",
-    "merge_sha": "c1c824ebca5c8efe65d902efe6ff83d45da33cf0",
-    "html": "<p><code>Rails::Application::RoutesReloader</code> uses the configured <code>Rails.application.config.file_watcher</code></p>\n\n<p><em>Jan Grodowski</em></p>\n"
-  },
-  {
-    "message": "*   Add structured event for Rails deprecations, when `config.active_support.deprecation` is set to `:notify`.\n\n    *zzak*",
-    "project": "railties",
-    "date_merged": 1760570830000,
-    "author": "zzak",
-    "sha": "7e8fa100fae0b952e5792592d55c0e8dad77899c",
-    "pr": "55838",
-    "merge_sha": "e8bcceb0200ba84b1c3d0121633329129e3bfe79",
-    "html": "<p>Add structured event for Rails deprecations, when <code>config.active_support.deprecation</code> is set to <code>:notify</code>.</p>\n\n<p><em>zzak</em></p>\n"
-  },
-  {
-    "message": "*   Report unhandled exceptions to the Error Reporter when running rake tasks via Rails command.\n\n    *Akimichi Tanei*",
-    "project": "railties",
-    "date_merged": 1760546378000,
-    "author": "kakudooo",
-    "sha": "b379af17488a1d75d4218317c839e6b653ab3d05",
-    "pr": "55913",
-    "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
-    "html": "<p>Report unhandled exceptions to the Error Reporter when running rake tasks via Rails command.</p>\n\n<p><em>Akimichi Tanei</em></p>\n"
-  },
-  {
-    "message": "*   Show help hint when starting `bin/rails console`\n\n    *Petrik de Heus*",
-    "project": "railties",
-    "date_merged": 1760537290000,
-    "author": "Petrik",
-    "sha": "e0ae228272f36cedca8ecff18f6cf6d0e58e5691",
-    "pr": "55910",
-    "merge_sha": "039cb87b806141677ddc85b697d7860d74a9e022",
-    "html": "<p>Show help hint when starting <code>bin/rails console</code></p>\n\n<p><em>Petrik de Heus</em></p>\n"
-  },
-  {
-    "message": "*   Persist `/rails/info/routes` search query and results between page reloads.\n\n    *Ryan Kulp*",
-    "project": "railties",
-    "date_merged": 1760505109000,
-    "author": "Ryan Kulp",
-    "sha": "9ca59b0c9468466ad3a4e5472a63f4e99add23a6",
-    "pr": "55903",
-    "merge_sha": "87ecc56aed72c9fe57b79b2a83c8f94656bf4878",
-    "html": "<p>Persist <code>/rails/info/routes</code> search query and results between page reloads.</p>\n\n<p><em>Ryan Kulp</em></p>\n"
-  },
-  {
-    "message": "*   Add `--update` option to the `bin/bundler-audit` script.\n\n    *Julien ANNE*",
-    "project": "railties",
-    "date_merged": 1760546378000,
-    "author": "Julien ANNE",
-    "sha": "a7d6dc30b69a0144acb2eef8e9cd5dae56d8a628",
-    "pr": "55913",
-    "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
-    "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate built-in `queue_classic` Active Job adapter.\n\n    *Harun Sabljaković, Wojciech Wnętrzak*",
-    "project": "activejob",
-    "date_merged": 1768596681000,
-    "author": "Wojciech Wnętrzak",
-    "sha": "25697edd807ae998bc2dac6fd4b0029f48f7e53d",
-    "pr": "56629",
-    "merge_sha": "85734dfb9886259e642495e2673f7dee51c3bc8a",
-    "html": "<p>Deprecate built-in <code>queue_classic</code> Active Job adapter.</p>\n\n<p><em>Harun Sabljaković, Wojciech Wnętrzak</em></p>\n"
-  },
-  {
-    "message": "*   Allow `retry_on` `wait` procs to accept the error as a second argument.\n\n    Procs with arity 1 continue to receive only the execution count.\n\n    ```ruby\n    class RemoteServiceJob < ActiveJob::Base\n      retry_on CustomError, wait: ->(executions, error) { error.retry_after || executions * 2 }\n\n      def perform\n        # ...\n      end\n    end\n    ```\n\n    *JP Camara*",
-    "project": "activejob",
-    "date_merged": 1768404047000,
-    "author": "JP Camara",
-    "sha": "6cb134830e6a64c64e1c906c4b95ca6bae51385e",
-    "pr": "56601",
-    "merge_sha": "8a078fb39f6b9915a73754937c0f3275f59157cc",
-    "html": "<p>Allow <code>retry_on</code> <code>wait</code> procs to accept the error as a second argument.</p>\n\n<p>Procs with arity 1 continue to receive only the execution count.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">RemoteServiceJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">retry_on</span> <span class=\"no\">CustomError</span><span class=\"p\">,</span> <span class=\"ss\">wait: </span><span class=\"o\">-&gt;</span><span class=\"p\">(</span><span class=\"n\">executions</span><span class=\"p\">,</span> <span class=\"n\">error</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"n\">error</span><span class=\"p\">.</span><span class=\"nf\">retry_after</span> <span class=\"o\">||</span> <span class=\"n\">executions</span> <span class=\"o\">*</span> <span class=\"mi\">2</span> <span class=\"p\">}</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span>\n    <span class=\"c1\"># ...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>JP Camara</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate built-in `resque` adapter.\n\n    If you're using this adapter, upgrade to `resque` 3.0 or later to use the `resque` gem's adapter.\n\n    *zzak, Wojciech Wnętrzak*",
-    "project": "activejob",
-    "date_merged": 1768398797000,
-    "author": "Wojciech Wnętrzak",
-    "sha": "813b51e67737ffd7bba825dcd56966f0e1aa5c77",
-    "pr": "56587",
-    "merge_sha": "5df7fad3ff1aee99f3a96aefe9c570494957ef31",
-    "html": "<p>Deprecate built-in <code>resque</code> adapter.</p>\n\n<p>If you’re using this adapter, upgrade to <code>resque</code> 3.0 or later to use the <code>resque</code> gem’s adapter.</p>\n\n<p><em>zzak, Wojciech Wnętrzak</em></p>\n"
-  },
-  {
-    "message": "*   Remove deprecated `sidekiq` Active Job adapter.\n\n    The adapter is available in the `sidekiq` gem.\n\n    *Wojciech Wnętrzak*",
-    "project": "activejob",
-    "date_merged": 1767621671000,
-    "author": "Wojciech Wnętrzak",
-    "sha": "10c24f2481c55a8f215f7a0dcfa4126a702f5b82",
-    "pr": "56518",
-    "merge_sha": "63d2a1c9283d73195b6d8bf3f563cee3bbf8b64b",
-    "html": "<p>Remove deprecated <code>sidekiq</code> Active Job adapter.</p>\n\n<p>The adapter is available in the <code>sidekiq</code> gem.</p>\n\n<p><em>Wojciech Wnętrzak</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate built-in `delayed_job` adapter.\n\n    If you're using this adapter, upgrade to `delayed_job` 4.2.0 or later to use the `delayed_job` gem's adapter.\n\n    *Dino Maric, David Genord II, Wojciech Wnętrzak*",
-    "project": "activejob",
-    "date_merged": 1767554953000,
-    "author": "Wojciech Wnętrzak",
-    "sha": "8f8964c1e252aa0822e3d7f62d486eb9ae0af190",
-    "pr": "56506",
-    "merge_sha": "4fe64db8be21b00662363bb119e1764e044272c0",
-    "html": "<p>Deprecate built-in <code>delayed_job</code> adapter.</p>\n\n<p>If you’re using this adapter, upgrade to <code>delayed_job</code> 4.2.0 or later to use the <code>delayed_job</code> gem’s adapter.</p>\n\n<p><em>Dino Maric, David Genord II, Wojciech Wnętrzak</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate built-in `backburner` adapter.\n\n    *Dino Maric, Nathan Esquenazi, Earlopain*",
-    "project": "activejob",
-    "date_merged": 1767459618000,
-    "author": "Dino Maric",
-    "sha": "2dc4a97f91c3456ff95de6e2f8f27a8afeab9190",
-    "pr": "53334",
-    "merge_sha": "debeab22780607f22b976d8608d26fc2b997e256",
-    "html": "<p>Deprecate built-in <code>backburner</code> adapter.</p>\n\n<p><em>Dino Maric, Nathan Esquenazi, Earlopain</em></p>\n"
-  },
-  {
-    "message": "*   Jobs are now enqueued after transaction commit.\n\n    This fixes that jobs would surprisingly run against uncommitted and\n    rolled-back records.\n\n    New Rails 8.2 apps (and apps upgrading to `config.load_defaults \"8.2\"`)\n    have `config.active_job.enqueue_after_transaction_commit = true` by default.\n    Uncomment the setting in `config/initializers/new_framework_defaults_8_2.rb`\n    to opt in.\n\n    *mugitti9*",
-    "project": "activejob",
-    "date_merged": 1766968051000,
-    "author": "Shuta Mugikura",
-    "sha": "a477a3273c3c71305cc8ae1835638dc75184ad9d",
-    "pr": "55788",
-    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
-    "html": "<p>Jobs are now enqueued after transaction commit.</p>\n\n<p>This fixes that jobs would surprisingly run against uncommitted and<br />\nrolled-back records.</p>\n\n<p>New Rails 8.2 apps (and apps upgrading to <code>config.load_defaults \"8.2\"</code>)<br />\nhave <code>config.active_job.enqueue_after_transaction_commit = true</code> by default.<br />\nUncomment the setting in <code>config/initializers/new_framework_defaults_8_2.rb</code><br />\nto opt in.</p>\n\n<p><em>mugitti9</em></p>\n"
-  },
-  {
-    "message": "*   Un-deprecate the global `config.active_job.enqueue_after_transaction_commit`\n    toggle for app-wide overrides. It was deprecated in Rails 8.0 (when the\n    symbol values were removed) and made non-functional in 8.1. It now works\n    as a boolean config again.\n\n    *Jeremy Daer*",
-    "project": "activejob",
-    "date_merged": 1766968051000,
-    "author": "Shuta Mugikura",
-    "sha": "a477a3273c3c71305cc8ae1835638dc75184ad9d",
-    "pr": "55788",
-    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
-    "html": "<p>Un-deprecate the global <code>config.active_job.enqueue_after_transaction_commit</code><br />\ntoggle for app-wide overrides. It was deprecated in Rails 8.0 (when the<br />\nsymbol values were removed) and made non-functional in 8.1. It now works<br />\nas a boolean config again.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate built-in `sneakers` adapter.\n\n    *Dino Maric*",
-    "project": "activejob",
-    "date_merged": 1766179212000,
-    "author": "Dino Maric",
-    "sha": "82dba697895a80a7ca7a3a0043adf3df11468eb0",
-    "pr": "53335",
-    "merge_sha": "69058497070e5d51315728cbd7327e8f1f039474",
-    "html": "<p>Deprecate built-in <code>sneakers</code> adapter.</p>\n\n<p><em>Dino Maric</em></p>\n"
-  },
-  {
-    "message": "*   Fix using custom serializers with `ActiveJob::Arguments.serialize` when\n    `ActiveJob::Base` hasn't been loaded.\n\n    *Hartley McGuire*",
-    "project": "activejob",
-    "date_merged": 1762718670000,
-    "author": "Hartley McGuire",
-    "sha": "c0dc92e9e95d9d650d15ff94038e809bbf804c6b",
-    "pr": "56093",
-    "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
-    "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+    "message": "*   `ActiveStorage::Blob#open` can now be used without passing a block, like `Tempfile.open`. When using this form the\n    returned temporary file must be unlinked manually.\n\n    *Bart de Water*",
+    "project": "activestorage",
+    "date_merged": 1760633630000,
+    "author": "Bart de Water",
+    "sha": "89ea0311033f362d8ddf85629bf34e78eba501f4",
+    "pr": "49990",
+    "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
+    "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
     "message": "*   Add `prepend: true` option to `ActiveSupport::Notifications.subscribe`.\n\n      When `prepend: true` is passed, the subscriber is added to the front of\n      the subscriber list for the given event, ensuring it runs before any\n      previously registered subscribers. This allows mutating the event payload\n      before other subscribers process it.\n\n      ```ruby\n      ActiveSupport::Notifications.subscribe(\"sql.active_record\", prepend: true) do |event|\n        event.payload[:name] = \"[IDC] #{event.payload[:name]}\"\n      end\n      ```\n\n      *Jean Boussier*, *Federico Carrocera*",
@@ -1038,116 +1118,6 @@
     "pr": "55900",
     "merge_sha": "54264bde59c6e327694ad8b3923d4ebda60bd562",
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Configurable maximum streaming chunk size\n\n    Makes sure that byte ranges for blobs don't exceed 100mb by default.\n    Content ranges that are too big can result in denial of service.\n\n    *Gannon McGibbon*",
-    "project": "activestorage",
-    "date_merged": 1775710733000,
-    "author": "rimedelis",
-    "sha": "9fac5feb6fd1c7509ace89cc8cfc76985afae956",
-    "pr": "57160",
-    "merge_sha": "386941ef146e572b0b35dc0d26f216a6fd078075",
-    "html": "<p>Configurable maximum streaming chunk size</p>\n\n<p>Makes sure that byte ranges for blobs don’t exceed 100mb by default.<br />\nContent ranges that are too big can result in denial of service.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
-  },
-  {
-    "message": "*   Prevent path traversal in `DiskService`.\n\n    `DiskService#path_for` now raises an `InvalidKeyError` when passed keys with dot segments (\".\",\n    \"..\"), or if the resolved path is outside the storage root directory.\n\n    `#path_for` also now consistently raises `InvalidKeyError` if the key is invalid in any way, for\n    example containing null bytes or having an incompatible encoding. Previously, the exception\n    raised may have been `ArgumentError` or `Encoding::CompatibilityError`.\n\n    `DiskController` now explicitly rescues `InvalidKeyError` with appropriate HTTP status codes.\n\n    *Mike Dalessio*",
-    "project": "activestorage",
-    "date_merged": 1774517729000,
-    "author": "Mike Dalessio",
-    "sha": "1a5e2f6a4140954fd99c875c362c45d15e25204c",
-    "pr": "57069",
-    "merge_sha": "fe4629354c44f664da9be8c7e9bab6011c3a5e86",
-    "html": "<p>Prevent path traversal in <code>DiskService</code>.</p>\n\n<p><code>DiskService#path_for</code> now raises an <code>InvalidKeyError</code> when passed keys with dot segments (“.”,<br />\n“..”), or if the resolved path is outside the storage root directory.</p>\n\n<p><code>#path_for</code> also now consistently raises <code>InvalidKeyError</code> if the key is invalid in any way, for<br />\nexample containing null bytes or having an incompatible encoding. Previously, the exception<br />\nraised may have been <code>ArgumentError</code> or <code>Encoding::CompatibilityError</code>.</p>\n\n<p><code>DiskController</code> now explicitly rescues <code>InvalidKeyError</code> with appropriate HTTP status codes.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Prevent glob injection in `DiskService#delete_prefixed`.\n\n    Escape glob metacharacters in the resolved path before passing to `Dir.glob`.\n\n    Note that this change breaks any existing code that is relying on `delete_prefixed` to expand\n    glob metacharacters. This change presumes that is unintended behavior (as other storage services\n    do not respect these metacharacters).\n\n    *Mike Dalessio*",
-    "project": "activestorage",
-    "date_merged": 1774517729000,
-    "author": "Mike Dalessio",
-    "sha": "8fdf7da36dcf6587014bbbfed329439303c29e17",
-    "pr": "57069",
-    "merge_sha": "fe4629354c44f664da9be8c7e9bab6011c3a5e86",
-    "html": "<p>Prevent glob injection in <code>DiskService#delete_prefixed</code>.</p>\n\n<p>Escape glob metacharacters in the resolved path before passing to <code>Dir.glob</code>.</p>\n\n<p>Note that this change breaks any existing code that is relying on <code>delete_prefixed</code> to expand<br />\nglob metacharacters. This change presumes that is unintended behavior (as other storage services<br />\ndo not respect these metacharacters).</p>\n\n<p><em>Mike Dalessio</em></p>\n"
-  },
-  {
-    "message": "*   Restore ADC when signing URLs with IAM for GCS\n\n    ADC was previously used for automatic authorization when signing URLs with IAM.\n    Now it is again, but the auth client is memoized so that new credentials are only\n    requested when the current ones expire. Other auth methods can now be used\n    instead by setting the authorization on `ActiveStorage::Service::GCSService#iam_client`.\n\n    ```ruby\n    ActiveStorage::Blob.service.iam_client.authorization = Google::Auth::ImpersonatedServiceAccountCredentials.new(options)\n    ```\n\n    This is safer than setting `Google::Apis::RequestOptions.default.authorization`\n    because it only applies to Active Storage and does not affect other Google API\n    clients.\n\n    *Justin Malčić*",
-    "project": "activestorage",
-    "date_merged": 1767796720000,
-    "author": "Justin Malčić",
-    "sha": "950765904cf6562593b70f506cae48e448c2544c",
-    "pr": "56012",
-    "merge_sha": "e6da5b5d790816bd0b1f9c979621b24b6b595980",
-    "html": "<p>Restore ADC when signing URLs with IAM for GCS</p>\n\n<p>ADC was previously used for automatic authorization when signing URLs with IAM.<br />\nNow it is again, but the auth client is memoized so that new credentials are only<br />\nrequested when the current ones expire. Other auth methods can now be used<br />\ninstead by setting the authorization on <code>ActiveStorage::Service::GCSService#iam_client</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Blob</span><span class=\"p\">.</span><span class=\"nf\">service</span><span class=\"p\">.</span><span class=\"nf\">iam_client</span><span class=\"p\">.</span><span class=\"nf\">authorization</span> <span class=\"o\">=</span> <span class=\"no\">Google</span><span class=\"o\">::</span><span class=\"no\">Auth</span><span class=\"o\">::</span><span class=\"no\">ImpersonatedServiceAccountCredentials</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"n\">options</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>This is safer than setting <code>Google::Apis::RequestOptions.default.authorization</code><br />\nbecause it only applies to Active Storage and does not affect other Google API<br />\nclients.</p>\n\n<p><em>Justin Malčić</em></p>\n"
-  },
-  {
-    "message": "*   Move responsibility for checksums storage service\n\n    The storage service should implement calculating and\n    validating checksums.\n\n    *Matt Pasquini*",
-    "project": "activestorage",
-    "date_merged": 1767685498000,
-    "author": "Matt Pasquini",
-    "sha": "d1e31dd4f983b93d5b3e8941b18774d736deec50",
-    "pr": "54468",
-    "merge_sha": "9990b2e72bc172fa9cc3d1dcc605305dc161fb46",
-    "html": "<p>Move responsibility for checksums storage service</p>\n\n<p>The storage service should implement calculating and<br />\nvalidating checksums.</p>\n\n<p><em>Matt Pasquini</em></p>\n"
-  },
-  {
-    "message": "*   Analyze attachments before validation\n\n    Attachment metadata (width, height, duration, etc.) is now available for\n    model validations:\n\n    ```ruby\n    class User < ApplicationRecord\n      has_one_attached :avatar\n\n      validate :validate_avatar_dimensions, if: -> { avatar.attached? }\n\n      def validate_avatar_dimensions\n        if avatar.metadata[:width] < 200 || avatar.metadata[:height] < 200\n          errors.add(:avatar, \"must be at least 200x200\")\n        end\n      end\n    end\n    ```\n\n    Configure when analysis is performed:\n\n    * `analyze: :immediately` (default in 8.2) - Analyze before validation\n    * `analyze: :later` - Analyze after upload from local IO or via background job\n    * `analyze: :lazily` - Skip automatic analysis; analyze on-demand\n\n    ```ruby\n    has_one_attached :document, analyze: :later\n    has_many_attached :files, analyze: :lazily\n\n    # Or set the global default:\n    config.active_storage.analyze = :later\n    ```\n\n    Direct uploads bypass the server so the file isn't locally available\n    for analysis. In this case, `:immediately` falls back to `:later`,\n    analyzing via background job after upload completes. Metadata isn't\n    available for validation; validate on the client side instead.\n\n    *Jeremy Daer*",
-    "project": "activestorage",
-    "date_merged": 1765442250000,
-    "author": "Jeremy Daer",
-    "sha": "01e5a0c65d012baede7f2084615a0c7a8b294ae9",
-    "pr": "56335",
-    "merge_sha": "e2d407dd8bf3747923d68fbc06b676c27aff9f03",
-    "html": "<p>Analyze attachments before validation</p>\n\n<p>Attachment metadata (width, height, duration, etc.) is now available for<br />\nmodel validations:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">User</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">has_one_attached</span> <span class=\"ss\">:avatar</span>\n\n  <span class=\"n\">validate</span> <span class=\"ss\">:validate_avatar_dimensions</span><span class=\"p\">,</span> <span class=\"ss\">if: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">avatar</span><span class=\"p\">.</span><span class=\"nf\">attached?</span> <span class=\"p\">}</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">validate_avatar_dimensions</span>\n    <span class=\"k\">if</span> <span class=\"n\">avatar</span><span class=\"p\">.</span><span class=\"nf\">metadata</span><span class=\"p\">[</span><span class=\"ss\">:width</span><span class=\"p\">]</span> <span class=\"o\">&lt;</span> <span class=\"mi\">200</span> <span class=\"o\">||</span> <span class=\"n\">avatar</span><span class=\"p\">.</span><span class=\"nf\">metadata</span><span class=\"p\">[</span><span class=\"ss\">:height</span><span class=\"p\">]</span> <span class=\"o\">&lt;</span> <span class=\"mi\">200</span>\n      <span class=\"n\">errors</span><span class=\"p\">.</span><span class=\"nf\">add</span><span class=\"p\">(</span><span class=\"ss\">:avatar</span><span class=\"p\">,</span> <span class=\"s2\">\"must be at least 200x200\"</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>Configure when analysis is performed:</p>\n\n<ul>\n  <li><code>analyze: :immediately</code> (default in 8.2) - Analyze before validation</li>\n  <li><code>analyze: :later</code> - Analyze after upload from local IO or via background job</li>\n  <li><code>analyze: :lazily</code> - Skip automatic analysis; analyze on-demand</li>\n</ul>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">has_one_attached</span> <span class=\"ss\">:document</span><span class=\"p\">,</span> <span class=\"ss\">analyze: :later</span>\n<span class=\"n\">has_many_attached</span> <span class=\"ss\">:files</span><span class=\"p\">,</span> <span class=\"ss\">analyze: :lazily</span>\n\n<span class=\"c1\"># Or set the global default:</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_storage</span><span class=\"p\">.</span><span class=\"nf\">analyze</span> <span class=\"o\">=</span> <span class=\"ss\">:later</span>\n</code></pre></div></div>\n\n<p>Direct uploads bypass the server so the file isn’t locally available<br />\nfor analysis. In this case, <code>:immediately</code> falls back to <code>:later</code>,<br />\nanalyzing via background job after upload completes. Metadata isn’t<br />\navailable for validation; validate on the client side instead.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
-  },
-  {
-    "message": "*   Use local files for immediate variant processing and analysis\n\n    `process: :immediately` variants and blob analysis use local files\n    directly instead of re-downloading after upload.\n\n    Applies when attaching uploadable io, not when attaching an existing Blob.\n\n    *Jeremy Daer*",
-    "project": "activestorage",
-    "date_merged": 1765349289000,
-    "author": "Jeremy Daer",
-    "sha": "c12afb920b891527180cefc9c0971a356ae5d7b2",
-    "pr": "56327",
-    "merge_sha": "420fd9a7a4b7fab11e7f98a5a445ddeee5fa1026",
-    "html": "<p>Use local files for immediate variant processing and analysis</p>\n\n<p><code>process: :immediately</code> variants and blob analysis use local files<br />\ndirectly instead of re-downloading after upload.</p>\n\n<p>Applies when attaching uploadable io, not when attaching an existing Blob.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
-  },
-  {
-    "message": "*   Introduce `ActiveStorage::Attachment` upload callbacks\n\n    `after_upload` fires after an attachment's blob is uploaded, enabling\n    analysis and processing to run deterministically rather than assuming\n    after-commit callback execution ordering.\n\n    ```ruby\n    ActiveStorage::Attachment.after_upload do\n      # Your custom logic here\n    end\n    ```\n\n    *Jeremy Daer*",
-    "project": "activestorage",
-    "date_merged": 1765349289000,
-    "author": "Jeremy Daer",
-    "sha": "c12afb920b891527180cefc9c0971a356ae5d7b2",
-    "pr": "56327",
-    "merge_sha": "420fd9a7a4b7fab11e7f98a5a445ddeee5fa1026",
-    "html": "<p>Introduce <code>ActiveStorage::Attachment</code> upload callbacks</p>\n\n<p><code>after_upload</code> fires after an attachment’s blob is uploaded, enabling<br />\nanalysis and processing to run deterministically rather than assuming<br />\nafter-commit callback execution ordering.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveStorage</span><span class=\"o\">::</span><span class=\"no\">Attachment</span><span class=\"p\">.</span><span class=\"nf\">after_upload</span> <span class=\"k\">do</span>\n  <span class=\"c1\"># Your custom logic here</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Jeremy Daer</em></p>\n"
-  },
-  {
-    "message": "*   Introduce immediate variants that are generated immediately on attachment\n\n    The new `process` option determines when variants are created:\n\n    - `:lazily` (default) - Variants are created dynamically when requested\n    - `:later` (replaces `preprocessed: true`) - Variants are created after attachment, in a background job\n    - `:immediately` (new) - Variants are created along with the attachment\n\n    ```ruby\n    has_one_attached :avatar do |attachable|\n      attachable.variant :thumb, resize_to_limit: [100, 100], process: :immediately\n    end\n    ```\n\n    The `preprocessed: true` option is deprecated in favor of `process: :later`.\n\n    *Tom Rossi*",
-    "project": "activestorage",
-    "date_merged": 1764919887000,
-    "author": "Tom Rossi",
-    "sha": "3d105fc346fbb3121bbcf6340f2b19104bf326f0",
-    "pr": "51951",
-    "merge_sha": "abf88889b92e53e9775288d79fd611942f928b2d",
-    "html": "<p>Introduce immediate variants that are generated immediately on attachment</p>\n\n<p>The new <code>process</code> option determines when variants are created:</p>\n\n<ul>\n  <li><code>:lazily</code> (default) - Variants are created dynamically when requested</li>\n  <li><code>:later</code> (replaces <code>preprocessed: true</code>) - Variants are created after attachment, in a background job</li>\n  <li><code>:immediately</code> (new) - Variants are created along with the attachment</li>\n</ul>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">has_one_attached</span> <span class=\"ss\">:avatar</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">attachable</span><span class=\"o\">|</span>\n  <span class=\"n\">attachable</span><span class=\"p\">.</span><span class=\"nf\">variant</span> <span class=\"ss\">:thumb</span><span class=\"p\">,</span> <span class=\"ss\">resize_to_limit: </span><span class=\"p\">[</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"mi\">100</span><span class=\"p\">],</span> <span class=\"ss\">process: :immediately</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p>The <code>preprocessed: true</code> option is deprecated in favor of <code>process: :later</code>.</p>\n\n<p><em>Tom Rossi</em></p>\n"
-  },
-  {
-    "message": "*   Make `Variant#processed?` and `VariantWithRecord#processed?` public so apps can check variant generation status.\n\n    *Tom Rossi*",
-    "project": "activestorage",
-    "date_merged": 1764919887000,
-    "author": "Tom Rossi",
-    "sha": "3d105fc346fbb3121bbcf6340f2b19104bf326f0",
-    "pr": "51951",
-    "merge_sha": "abf88889b92e53e9775288d79fd611942f928b2d",
-    "html": "<p>Make <code>Variant#processed?</code> and <code>VariantWithRecord#processed?</code> public so apps can check variant generation status.</p>\n\n<p><em>Tom Rossi</em></p>\n"
-  },
-  {
-    "message": "*   `ActiveStorage::Blob#open` can now be used without passing a block, like `Tempfile.open`. When using this form the\n    returned temporary file must be unlinked manually.\n\n    *Bart de Water*",
-    "project": "activestorage",
-    "date_merged": 1760633630000,
-    "author": "Bart de Water",
-    "sha": "89ea0311033f362d8ddf85629bf34e78eba501f4",
-    "pr": "49990",
-    "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
-    "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
     "message": "*   Serve static CSS and HTML files with `charset=utf-8` in the Content-Type header.\n\n    Static CSS and HTML files served by `ActionDispatch::Static` now include\n    `; charset=utf-8` in their Content-Type response header, fixing browser\n    encoding issues with CSS files containing non-ASCII characters.\n\n    *Mike Dalessio*",
@@ -1380,73 +1350,103 @@
     "html": "<p>Add <code>svg:</code> renderer:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Page</span>\n  <span class=\"k\">def</span> <span class=\"nf\">to_svg</span>\n    <span class=\"n\">body</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">PagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@page</span> <span class=\"o\">=</span> <span class=\"no\">Page</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"n\">respond_to</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"nb\">format</span><span class=\"o\">|</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">html</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">svg</span> <span class=\"p\">{</span> <span class=\"n\">render</span> <span class=\"ss\">svg: </span><span class=\"vi\">@page</span> <span class=\"p\">}</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Thiago Youssef</em></p>\n"
   },
   {
-    "message": "*   Support block children in editor elements alongside value.\n\n    Blocks were introduced in #55827, but only as an alternative to the value\n    argument: the block was captured and used as the initial editor content,\n    making it either value OR block — not both.\n\n    The block semantics are now changed so that blocks render as DOM children of\n    the editor element instead. Value and block are now independent: value flows\n    into the editor's content binding (the hidden input for Trix, the value\n    attribute for custom editors), while the block renders as inner DOM children\n    — useful for embedding custom elements such as prompt menus or toolbar\n    extensions.\n\n    This enables other editors like Lexxy to use the block form for configuration\n    — injecting child elements into the editor tag — while the rich text value is\n    preserved separately.\n\n    Trix preserves the original block-as-initial-value contract by capturing the\n    block in `TrixEditor::Tag#render_in` when no value is present, keeping its\n    hidden input populated as before.\n\n    *Jorge Manrubia*",
-    "project": "actiontext",
-    "date_merged": 1773704701000,
-    "author": "Jorge Manrubia",
-    "sha": "642fc047dea9acf9e009e736cb0c770c2742b30e",
-    "pr": "56926",
-    "merge_sha": "c629bb2f525b9de884df99de956e5ac46c79096e",
-    "html": "<p>Support block children in editor elements alongside value.</p>\n\n<p>Blocks were introduced in #55827, but only as an alternative to the value<br />\nargument: the block was captured and used as the initial editor content,<br />\nmaking it either value OR block — not both.</p>\n\n<p>The block semantics are now changed so that blocks render as DOM children of<br />\nthe editor element instead. Value and block are now independent: value flows<br />\ninto the editor’s content binding (the hidden input for Trix, the value<br />\nattribute for custom editors), while the block renders as inner DOM children<br />\n— useful for embedding custom elements such as prompt menus or toolbar<br />\nextensions.</p>\n\n<p>This enables other editors like Lexxy to use the block form for configuration<br />\n— injecting child elements into the editor tag — while the rich text value is<br />\npreserved separately.</p>\n\n<p>Trix preserves the original block-as-initial-value contract by capturing the<br />\nblock in <code>TrixEditor::Tag#render_in</code> when no value is present, keeping its<br />\nhidden input populated as before.</p>\n\n<p><em>Jorge Manrubia</em></p>\n"
+    "message": "*   Deprecate built-in `queue_classic` Active Job adapter.\n\n    *Harun Sabljaković, Wojciech Wnętrzak*",
+    "project": "activejob",
+    "date_merged": 1768596681000,
+    "author": "Wojciech Wnętrzak",
+    "sha": "25697edd807ae998bc2dac6fd4b0029f48f7e53d",
+    "pr": "56629",
+    "merge_sha": "85734dfb9886259e642495e2673f7dee51c3bc8a",
+    "html": "<p>Deprecate built-in <code>queue_classic</code> Active Job adapter.</p>\n\n<p><em>Harun Sabljaković, Wojciech Wnętrzak</em></p>\n"
   },
   {
-    "message": "*   Render `MissingAttachable` as \"☒\" in plain text.\n\n    Previously, `Content#to_plain_text` would replace a `MissingAttachable` with a blank string.\n    Now it renders the same \"☒\" character used in the HTML representation.\n\n    *Mike Dalessio*",
-    "project": "actiontext",
-    "date_merged": 1772069757000,
-    "author": "Mike Dalessio",
-    "sha": "91df2c34799694fc4d7d40e918da7ec813a386f2",
-    "pr": "56854",
-    "merge_sha": "0bd4abb696a8517d22a1c7444781134e0f222b6e",
-    "html": "<p>Render <code>MissingAttachable</code> as “☒” in plain text.</p>\n\n<p>Previously, <code>Content#to_plain_text</code> would replace a <code>MissingAttachable</code> with a blank string.<br />\nNow it renders the same “☒” character used in the HTML representation.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+    "message": "*   Allow `retry_on` `wait` procs to accept the error as a second argument.\n\n    Procs with arity 1 continue to receive only the execution count.\n\n    ```ruby\n    class RemoteServiceJob < ActiveJob::Base\n      retry_on CustomError, wait: ->(executions, error) { error.retry_after || executions * 2 }\n\n      def perform\n        # ...\n      end\n    end\n    ```\n\n    *JP Camara*",
+    "project": "activejob",
+    "date_merged": 1768404047000,
+    "author": "JP Camara",
+    "sha": "6cb134830e6a64c64e1c906c4b95ca6bae51385e",
+    "pr": "56601",
+    "merge_sha": "8a078fb39f6b9915a73754937c0f3275f59157cc",
+    "html": "<p>Allow <code>retry_on</code> <code>wait</code> procs to accept the error as a second argument.</p>\n\n<p>Procs with arity 1 continue to receive only the execution count.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">RemoteServiceJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">retry_on</span> <span class=\"no\">CustomError</span><span class=\"p\">,</span> <span class=\"ss\">wait: </span><span class=\"o\">-&gt;</span><span class=\"p\">(</span><span class=\"n\">executions</span><span class=\"p\">,</span> <span class=\"n\">error</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"n\">error</span><span class=\"p\">.</span><span class=\"nf\">retry_after</span> <span class=\"o\">||</span> <span class=\"n\">executions</span> <span class=\"o\">*</span> <span class=\"mi\">2</span> <span class=\"p\">}</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span>\n    <span class=\"c1\"># ...</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>JP Camara</em></p>\n"
   },
   {
-    "message": "*   Add `to_markdown` to Action Text, mirroring `to_plain_text`.\n\n    Converts rich text content to Markdown, supporting headings, bold, italic,\n    strikethrough, inline code, code blocks, blockquotes, ordered and unordered\n    lists, links, tables, and attachments. Custom attachment representations can be\n    provided by implementing `attachable_markdown_representation` on the\n    attachable model.\n\n        message = Message.create!(content: \"<h1>Hello</h1><p>This is <strong>bold</strong></p>\")\n        message.content.to_markdown # => \"# Hello\\n\\nThis is **bold**\"\n\n    *Mike Dalessio*",
-    "project": "actiontext",
-    "date_merged": 1771941532000,
-    "author": "Mike Dalessio",
-    "sha": "e63f38458b93f13a92287c505845dbd8e782dcc1",
-    "pr": "56858",
-    "merge_sha": "442408e26a06823288d8c94ecb46e1f866819481",
-    "html": "<p>Add <code>to_markdown</code> to Action Text, mirroring <code>to_plain_text</code>.</p>\n\n<p>Converts rich text content to Markdown, supporting headings, bold, italic,<br />\nstrikethrough, inline code, code blocks, blockquotes, ordered and unordered<br />\nlists, links, tables, and attachments. Custom attachment representations can be<br />\nprovided by implementing <code>attachable_markdown_representation</code> on the<br />\nattachable model.</p>\n\n<pre><code>message = Message.create!(content: \"&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;This is &lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;\")\nmessage.content.to_markdown # =&gt; \"# Hello\\n\\nThis is **bold**\"\n</code></pre>\n\n<p><em>Mike Dalessio</em></p>\n"
+    "message": "*   Deprecate built-in `resque` adapter.\n\n    If you're using this adapter, upgrade to `resque` 3.0 or later to use the `resque` gem's adapter.\n\n    *zzak, Wojciech Wnętrzak*",
+    "project": "activejob",
+    "date_merged": 1768398797000,
+    "author": "Wojciech Wnętrzak",
+    "sha": "813b51e67737ffd7bba825dcd56966f0e1aa5c77",
+    "pr": "56587",
+    "merge_sha": "5df7fad3ff1aee99f3a96aefe9c570494957ef31",
+    "html": "<p>Deprecate built-in <code>resque</code> adapter.</p>\n\n<p>If you’re using this adapter, upgrade to <code>resque</code> 3.0 or later to use the <code>resque</code> gem’s adapter.</p>\n\n<p><em>zzak, Wojciech Wnętrzak</em></p>\n"
   },
   {
-    "message": "*   Make `ActionText::Attachable#read_attribute_for_serialization` public.\n\n    *Sally Hall*",
-    "project": "actiontext",
-    "date_merged": 1769924098000,
-    "author": "Sally Hall",
-    "sha": "805723ace44f4d7951d37c4a576463e5efd5c41c",
-    "pr": "56681",
-    "merge_sha": "e31e6585fa2c6b39fd64891d90794e9493f5e23a",
-    "html": "<p>Make <code>ActionText::Attachable#read_attribute_for_serialization</code> public.</p>\n\n<p><em>Sally Hall</em></p>\n"
+    "message": "*   Remove deprecated `sidekiq` Active Job adapter.\n\n    The adapter is available in the `sidekiq` gem.\n\n    *Wojciech Wnętrzak*",
+    "project": "activejob",
+    "date_merged": 1767621671000,
+    "author": "Wojciech Wnętrzak",
+    "sha": "10c24f2481c55a8f215f7a0dcfa4126a702f5b82",
+    "pr": "56518",
+    "merge_sha": "63d2a1c9283d73195b6d8bf3f563cee3bbf8b64b",
+    "html": "<p>Remove deprecated <code>sidekiq</code> Active Job adapter.</p>\n\n<p>The adapter is available in the <code>sidekiq</code> gem.</p>\n\n<p><em>Wojciech Wnętrzak</em></p>\n"
   },
   {
-    "message": "*   Install generator now detects which JS package manager to use when\n    installing javascript dependencies for the editor.\n\n    *David Lowenfels*",
-    "project": "actiontext",
-    "date_merged": 1769228288000,
-    "author": "zzak",
-    "sha": "823b148b96070f3c05755b051dc72ad1e044ad12",
-    "pr": "56672",
-    "merge_sha": "038c3ededefb7242e444d886714d87fe4feeee71",
-    "html": "<p>Install generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies for the editor.</p>\n\n<p><em>David Lowenfels</em></p>\n"
+    "message": "*   Deprecate built-in `delayed_job` adapter.\n\n    If you're using this adapter, upgrade to `delayed_job` 4.2.0 or later to use the `delayed_job` gem's adapter.\n\n    *Dino Maric, David Genord II, Wojciech Wnętrzak*",
+    "project": "activejob",
+    "date_merged": 1767554953000,
+    "author": "Wojciech Wnętrzak",
+    "sha": "8f8964c1e252aa0822e3d7f62d486eb9ae0af190",
+    "pr": "56506",
+    "merge_sha": "4fe64db8be21b00662363bb119e1764e044272c0",
+    "html": "<p>Deprecate built-in <code>delayed_job</code> adapter.</p>\n\n<p>If you’re using this adapter, upgrade to <code>delayed_job</code> 4.2.0 or later to use the <code>delayed_job</code> gem’s adapter.</p>\n\n<p><em>Dino Maric, David Genord II, Wojciech Wnętrzak</em></p>\n"
   },
   {
-    "message": "*   Deprecate Trix-specific classes, modules, and methods\n\n    * `ActionText::Attachable#to_trix_content_attachment_partial_path`. Override\n      `#to_editor_content_attachment_partial_path` instead.\n    * `ActionText::Attachments::TrixConversion`\n    * `ActionText::Content#to_trix_html`.\n    * `ActionText::RichText#to_trix_html`.\n    * `ActionText::TrixAttachment`\n\n    *Sean Doyle*",
-    "project": "actiontext",
-    "date_merged": 1764972174000,
-    "author": "Sean Doyle",
-    "sha": "cb0fd2254acb8b7c1c9354ef34538ba51bf28d1f",
-    "pr": "51238",
-    "merge_sha": "38a74b851cb6cd170cd1c0eea32058857144b6d9",
-    "html": "<p>Deprecate Trix-specific classes, modules, and methods</p>\n\n<ul>\n  <li><code>ActionText::Attachable#to_trix_content_attachment_partial_path</code>. Override<br />\n<code>#to_editor_content_attachment_partial_path</code> instead.</li>\n  <li><code>ActionText::Attachments::TrixConversion</code></li>\n  <li><code>ActionText::Content#to_trix_html</code>.</li>\n  <li><code>ActionText::RichText#to_trix_html</code>.</li>\n  <li><code>ActionText::TrixAttachment</code></li>\n</ul>\n\n<p><em>Sean Doyle</em></p>\n"
+    "message": "*   Deprecate built-in `backburner` adapter.\n\n    *Dino Maric, Nathan Esquenazi, Earlopain*",
+    "project": "activejob",
+    "date_merged": 1767459618000,
+    "author": "Dino Maric",
+    "sha": "2dc4a97f91c3456ff95de6e2f8f27a8afeab9190",
+    "pr": "53334",
+    "merge_sha": "debeab22780607f22b976d8608d26fc2b997e256",
+    "html": "<p>Deprecate built-in <code>backburner</code> adapter.</p>\n\n<p><em>Dino Maric, Nathan Esquenazi, Earlopain</em></p>\n"
   },
   {
-    "message": "*   Validate `RemoteImage` URLs at creation time.\n\n    `RemoteImage.from_node` now validates the URL before creating a `RemoteImage` object, using the\n    same regex that `AssetUrlHelper` uses during rendering. URLs like \"image.png\" that would\n    previously have been passed to the asset pipeline and raised a `ActionView::Template::Error` are\n    rejected early, and gracefully fail by resulting in a `MissingAttachable`.\n\n    *Mike Dalessio*",
-    "project": "actiontext",
-    "date_merged": 1764908725000,
-    "author": "Mike Dalessio",
-    "sha": "d9fc166d097d0b14db72551e22c45544a3b888c2",
-    "pr": "56283",
-    "merge_sha": "b6a07894d6920c5444e5a8dca2f4dc2d0b5a9fb2",
-    "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+    "message": "*   Jobs are now enqueued after transaction commit.\n\n    This fixes that jobs would surprisingly run against uncommitted and\n    rolled-back records.\n\n    New Rails 8.2 apps (and apps upgrading to `config.load_defaults \"8.2\"`)\n    have `config.active_job.enqueue_after_transaction_commit = true` by default.\n    Uncomment the setting in `config/initializers/new_framework_defaults_8_2.rb`\n    to opt in.\n\n    *mugitti9*",
+    "project": "activejob",
+    "date_merged": 1766968051000,
+    "author": "Shuta Mugikura",
+    "sha": "a477a3273c3c71305cc8ae1835638dc75184ad9d",
+    "pr": "55788",
+    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
+    "html": "<p>Jobs are now enqueued after transaction commit.</p>\n\n<p>This fixes that jobs would surprisingly run against uncommitted and<br />\nrolled-back records.</p>\n\n<p>New Rails 8.2 apps (and apps upgrading to <code>config.load_defaults \"8.2\"</code>)<br />\nhave <code>config.active_job.enqueue_after_transaction_commit = true</code> by default.<br />\nUncomment the setting in <code>config/initializers/new_framework_defaults_8_2.rb</code><br />\nto opt in.</p>\n\n<p><em>mugitti9</em></p>\n"
+  },
+  {
+    "message": "*   Un-deprecate the global `config.active_job.enqueue_after_transaction_commit`\n    toggle for app-wide overrides. It was deprecated in Rails 8.0 (when the\n    symbol values were removed) and made non-functional in 8.1. It now works\n    as a boolean config again.\n\n    *Jeremy Daer*",
+    "project": "activejob",
+    "date_merged": 1766968051000,
+    "author": "Shuta Mugikura",
+    "sha": "a477a3273c3c71305cc8ae1835638dc75184ad9d",
+    "pr": "55788",
+    "merge_sha": "dea53bcc63dd01f1f34a2c1bb0ea36ae774a48cf",
+    "html": "<p>Un-deprecate the global <code>config.active_job.enqueue_after_transaction_commit</code><br />\ntoggle for app-wide overrides. It was deprecated in Rails 8.0 (when the<br />\nsymbol values were removed) and made non-functional in 8.1. It now works<br />\nas a boolean config again.</p>\n\n<p><em>Jeremy Daer</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate built-in `sneakers` adapter.\n\n    *Dino Maric*",
+    "project": "activejob",
+    "date_merged": 1766179212000,
+    "author": "Dino Maric",
+    "sha": "82dba697895a80a7ca7a3a0043adf3df11468eb0",
+    "pr": "53335",
+    "merge_sha": "69058497070e5d51315728cbd7327e8f1f039474",
+    "html": "<p>Deprecate built-in <code>sneakers</code> adapter.</p>\n\n<p><em>Dino Maric</em></p>\n"
+  },
+  {
+    "message": "*   Fix using custom serializers with `ActiveJob::Arguments.serialize` when\n    `ActiveJob::Base` hasn't been loaded.\n\n    *Hartley McGuire*",
+    "project": "activejob",
+    "date_merged": 1762718670000,
+    "author": "Hartley McGuire",
+    "sha": "c0dc92e9e95d9d650d15ff94038e809bbf804c6b",
+    "pr": "56093",
+    "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
+    "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   }
 ]
