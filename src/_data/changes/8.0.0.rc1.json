@@ -440,6 +440,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Defer the View watcher build until view paths are actually registered.\n\n    *Hugo Vacher*",
+    "project": "actionview",
+    "date_merged": 1777664197000,
+    "author": "Hugo Vacher",
+    "sha": "bcb575d52316031761dce46db5013def40698964",
+    "pr": "57269",
+    "merge_sha": "9551fc16f0341ba390431846132df845895aa7bd",
+    "html": "<p>Defer the View watcher build until view paths are actually registered.</p>\n\n<p><em>Hugo Vacher</em></p>\n"
+  },
+  {
     "message": "*   Skip blank attribute names in tag helpers to avoid generating invalid HTML.\n\n    *Mike Dalessio*",
     "project": "actionview",
     "date_merged": 1774517729000,
