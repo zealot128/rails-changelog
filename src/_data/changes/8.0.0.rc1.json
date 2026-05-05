@@ -120,6 +120,16 @@
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Include record ID in error when uniqueness validation fails\n\n    When a uniqueness validation fails, the `errors.details` hash for the attribute\n    now includes an `:existing_id` key, holding the ID of the record that caused\n    the conflict.\n\n    ```ruby\n    # Before\n    errors.details[:name]\n    # => [{error: :taken, value: \"John Doe\"}]\n\n    # After\n    errors.details[:name]\n    # => [{error: :taken, value: \"John Doe\", existing_id: 123}]\n    ```\n\n    *Bruno Vicenzo*",
+    "project": "activerecord",
+    "date_merged": 1778001715000,
+    "author": "Bruno Vicenzo",
+    "sha": "03a3ed8397c199ab1f7a154e04c446453f595d74",
+    "pr": "55826",
+    "merge_sha": "a236d193eed73f477681baec974033c7abe5225f",
+    "html": "<p>Include record ID in error when uniqueness validation fails</p>\n\n<p>When a uniqueness validation fails, the <code>errors.details</code> hash for the attribute<br />\nnow includes an <code>:existing_id</code> key, holding the ID of the record that caused<br />\nthe conflict.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># Before</span>\n<span class=\"n\">errors</span><span class=\"p\">.</span><span class=\"nf\">details</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span>\n<span class=\"c1\"># =&gt; [{error: :taken, value: \"John Doe\"}]</span>\n\n<span class=\"c1\"># After</span>\n<span class=\"n\">errors</span><span class=\"p\">.</span><span class=\"nf\">details</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span>\n<span class=\"c1\"># =&gt; [{error: :taken, value: \"John Doe\", existing_id: 123}]</span>\n</code></pre></div></div>\n\n<p><em>Bruno Vicenzo</em></p>\n"
+  },
+  {
     "message": "*   Bump the minimum PostgreSQL version to 10.0.\n\n    As part of this change, `supports_pgcrypto_uuid?` is deprecated because\n    `pgcrypto` provides `gen_random_uuid()` since PostgreSQL 9.4, which is\n    below the new 10.0 minimum.\n\n    *Yasuo Honda*",
     "project": "activerecord",
     "date_merged": 1776831778000,
@@ -440,6 +450,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Render `Hash` and keyword options as dasherized HTML attributes\n\n    ```ruby\n    tag.button \"POST to /clicked\", hx: { post: \"/clicked\", swap: :outerHTML, data: { json: true } }\n\n    # => <button hx-post=\"/clicked\" hx-swap=\"outerHTML\" hx-data=\"{&quot;json&quot;:true}\">POST to /clicked</button>\n    ```\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1778004446000,
+    "author": "Sean Doyle",
+    "sha": "b3dcad2f5060f504b7ba7cf3a8436cec01683619",
+    "pr": "50320",
+    "merge_sha": "c0544141d978ab58217499f3a548b437bb7fd180",
+    "html": "<p>Render <code>Hash</code> and keyword options as dasherized HTML attributes</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">tag</span><span class=\"p\">.</span><span class=\"nf\">button</span> <span class=\"s2\">\"POST to /clicked\"</span><span class=\"p\">,</span> <span class=\"ss\">hx: </span><span class=\"p\">{</span> <span class=\"ss\">post: </span><span class=\"s2\">\"/clicked\"</span><span class=\"p\">,</span> <span class=\"ss\">swap: :outerHTML</span><span class=\"p\">,</span> <span class=\"ss\">data: </span><span class=\"p\">{</span> <span class=\"ss\">json: </span><span class=\"kp\">true</span> <span class=\"p\">}</span> <span class=\"p\">}</span>\n\n<span class=\"c1\"># =&gt; &lt;button hx-post=\"/clicked\" hx-swap=\"outerHTML\" hx-data=\"{&amp;quot;json&amp;quot;:true}\"&gt;POST to /clicked&lt;/button&gt;</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   `ViewReloader#deactivate` removes the `file_system_resolver_hooks` callback\n    so forked processes that clear reloaders no longer trigger filesystem scans\n    on every `prepend_view_path`.\n\n    *Dave Ariens*",
     "project": "actionview",
     "date_merged": 1777924863000,
@@ -498,6 +518,16 @@
     "pr": "51579",
     "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
+  },
+  {
+    "message": "*   Skip `CreateUsers` migration when the User model already exists in the authentication generator.\n\n    *John Topley*",
+    "project": "railties",
+    "date_merged": 1777997298000,
+    "author": "John",
+    "sha": "a03898a2edcc7fea342680acf6a491d304af78ce",
+    "pr": "57162",
+    "merge_sha": "a6da178e498e4838c0db2d564f2604269d4c723f",
+    "html": "<p>Skip <code>CreateUsers</code> migration when the User model already exists in the authentication generator.</p>\n\n<p><em>John Topley</em></p>\n"
   },
   {
     "message": "*   `app.reloaders` is now a `ReloadersCollection` that calls `deactivate`\n    on each reloader when `clear` or `delete` is called, giving reloaders a\n    chance to clean up external state.\n\n    *Dave Ariens*",
@@ -810,6 +840,16 @@
     "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
   },
   {
+    "message": "*   Add `ActiveJob::Attributes` for declaring typed attributes that persist across\n    job serialization and deserialization. It is included by `ActiveJob::Continuable`\n    but can also be used standalone.\n\n    It uses the Active Model Attributes API to define typed, defaulted\n    attributes on jobs. Attribute values are automatically included in the\n    serialized job data and restored on deserialization, eliminating the need\n    to manually override `serialize` and `deserialize`.\n\n    This is especially useful with `ActiveJob::Continuable`, where a job may be\n    interrupted and resumed and attributes are preserved across resumptions.\n\n    ```ruby\n    class SubmitEnrollmentJob < ApplicationJob\n      include ActiveJob::Continuable\n\n      attribute :payment_token, :string\n      attribute :billing_profile_id, :integer\n\n      def perform(enrollment)\n        step(:tokenize_payment_instrument) do\n          self.payment_token = PaymentGateway.tokenize(enrollment.user.payment_instrument)\n        end\n\n        step(:create_billing_profile) do\n          self.billing_profile_id = BillingProfileApi.create(customer_id: enrollment.user_id)\n        end\n\n        step(:submit_enrollment) do\n          submission_id = EnrollmentApi.submit(enrollment, billing_profile_id)\n          enrollment.update!(status: 'processing', submission_id: submission_id)\n        end\n      end\n    end\n    ```\n\n    *Bart de Water*",
+    "project": "activejob",
+    "date_merged": 1777998707000,
+    "author": "Bart de Water",
+    "sha": "d84636118e2f150f95f95d85a161a082e62474df",
+    "pr": "57208",
+    "merge_sha": "af8246f288971311aa4d841c4ca3eb4afb09ef83",
+    "html": "<p>Add <code>ActiveJob::Attributes</code> for declaring typed attributes that persist across<br />\njob serialization and deserialization. It is included by <code>ActiveJob::Continuable</code><br />\nbut can also be used standalone.</p>\n\n<p>It uses the Active Model Attributes API to define typed, defaulted<br />\nattributes on jobs. Attribute values are automatically included in the<br />\nserialized job data and restored on deserialization, eliminating the need<br />\nto manually override <code>serialize</code> and <code>deserialize</code>.</p>\n\n<p>This is especially useful with <code>ActiveJob::Continuable</code>, where a job may be<br />\ninterrupted and resumed and attributes are preserved across resumptions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">SubmitEnrollmentJob</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationJob</span>\n  <span class=\"kp\">include</span> <span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Continuable</span>\n\n  <span class=\"n\">attribute</span> <span class=\"ss\">:payment_token</span><span class=\"p\">,</span> <span class=\"ss\">:string</span>\n  <span class=\"n\">attribute</span> <span class=\"ss\">:billing_profile_id</span><span class=\"p\">,</span> <span class=\"ss\">:integer</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">perform</span><span class=\"p\">(</span><span class=\"n\">enrollment</span><span class=\"p\">)</span>\n    <span class=\"n\">step</span><span class=\"p\">(</span><span class=\"ss\">:tokenize_payment_instrument</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n      <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">payment_token</span> <span class=\"o\">=</span> <span class=\"no\">PaymentGateway</span><span class=\"p\">.</span><span class=\"nf\">tokenize</span><span class=\"p\">(</span><span class=\"n\">enrollment</span><span class=\"p\">.</span><span class=\"nf\">user</span><span class=\"p\">.</span><span class=\"nf\">payment_instrument</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n\n    <span class=\"n\">step</span><span class=\"p\">(</span><span class=\"ss\">:create_billing_profile</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n      <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">billing_profile_id</span> <span class=\"o\">=</span> <span class=\"no\">BillingProfileApi</span><span class=\"p\">.</span><span class=\"nf\">create</span><span class=\"p\">(</span><span class=\"ss\">customer_id: </span><span class=\"n\">enrollment</span><span class=\"p\">.</span><span class=\"nf\">user_id</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n\n    <span class=\"n\">step</span><span class=\"p\">(</span><span class=\"ss\">:submit_enrollment</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n      <span class=\"n\">submission_id</span> <span class=\"o\">=</span> <span class=\"no\">EnrollmentApi</span><span class=\"p\">.</span><span class=\"nf\">submit</span><span class=\"p\">(</span><span class=\"n\">enrollment</span><span class=\"p\">,</span> <span class=\"n\">billing_profile_id</span><span class=\"p\">)</span>\n      <span class=\"n\">enrollment</span><span class=\"p\">.</span><span class=\"nf\">update!</span><span class=\"p\">(</span><span class=\"ss\">status: </span><span class=\"s1\">'processing'</span><span class=\"p\">,</span> <span class=\"ss\">submission_id: </span><span class=\"n\">submission_id</span><span class=\"p\">)</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
     "message": "*   Deprecate built-in `queue_classic` Active Job adapter.\n\n    *Harun Sabljaković, Wojciech Wnętrzak*",
     "project": "activejob",
     "date_merged": 1768596681000,
@@ -1068,6 +1108,16 @@
     "pr": "55900",
     "merge_sha": "54264bde59c6e327694ad8b3923d4ebda60bd562",
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Define `as_json` on `ActiveStorage::Attached::One` and `ActiveStorage::Attached::Many`.\n\n    The proxies hold a back-reference to the owning record in `@record`. Without an explicit\n    `as_json`, the default `Object#as_json` fall back serialized `instance_values`, which made\n    `record.to_json` recurse infinitely whenever the attached name collided with a model\n    attribute (e.g. an `ignored_columns` column brought back by `select('*')`).\n\n    `Attached::One#as_json` now returns the attachment record's JSON when attached and `nil`\n    otherwise. `Attached::Many#as_json` returns the attachment records' JSON as an array.\n\n    *Renxiang Cai*",
+    "project": "activestorage",
+    "date_merged": 1777997316000,
+    "author": "merely",
+    "sha": "f3e0cfc8a954d1e2f016e675784123e65eaebe33",
+    "pr": "57288",
+    "merge_sha": "5ea6cd6b8f713859255630acc2355d577e2e3c73",
+    "html": "<p>Define <code>as_json</code> on <code>ActiveStorage::Attached::One</code> and <code>ActiveStorage::Attached::Many</code>.</p>\n\n<p>The proxies hold a back-reference to the owning record in <code>@record</code>. Without an explicit<br />\n<code>as_json</code>, the default <code>Object#as_json</code> fall back serialized <code>instance_values</code>, which made<br />\n<code>record.to_json</code> recurse infinitely whenever the attached name collided with a model<br />\nattribute (e.g. an <code>ignored_columns</code> column brought back by <code>select('*')</code>).</p>\n\n<p><code>Attached::One#as_json</code> now returns the attachment record’s JSON when attached and <code>nil</code><br />\notherwise. <code>Attached::Many#as_json</code> returns the attachment records’ JSON as an array.</p>\n\n<p><em>Renxiang Cai</em></p>\n"
   },
   {
     "message": "*   Configurable maximum streaming chunk size\n\n    Makes sure that byte ranges for blobs don't exceed 100mb by default.\n    Content ranges that are too big can result in denial of service.\n\n    *Gannon McGibbon*",
