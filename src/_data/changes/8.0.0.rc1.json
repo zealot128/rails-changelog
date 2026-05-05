@@ -440,6 +440,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   `ViewReloader#deactivate` removes the `file_system_resolver_hooks` callback\n    so forked processes that clear reloaders no longer trigger filesystem scans\n    on every `prepend_view_path`.\n\n    *Dave Ariens*",
+    "project": "actionview",
+    "date_merged": 1777924863000,
+    "author": "Monorail CI check running in Buildkite",
+    "sha": "8b754b56c901e4839cb6999c3624bfd5c3d9cc0c",
+    "pr": "57285",
+    "merge_sha": "fac8810bcdec7b796a471b56a6dcbaa6648e2984",
+    "html": "<p><code>ViewReloader#deactivate</code> removes the <code>file_system_resolver_hooks</code> callback<br />\nso forked processes that clear reloaders no longer trigger filesystem scans<br />\non every <code>prepend_view_path</code>.</p>\n\n<p><em>Dave Ariens</em></p>\n"
+  },
+  {
     "message": "*   Defer the View watcher build until view paths are actually registered.\n\n    *Hugo Vacher*",
     "project": "actionview",
     "date_merged": 1777664197000,
@@ -488,6 +498,16 @@
     "pr": "51579",
     "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
+  },
+  {
+    "message": "*   `app.reloaders` is now a `ReloadersCollection` that calls `deactivate`\n    on each reloader when `clear` or `delete` is called, giving reloaders a\n    chance to clean up external state.\n\n    *Dave Ariens*",
+    "project": "railties",
+    "date_merged": 1777924863000,
+    "author": "Monorail CI check running in Buildkite",
+    "sha": "8b754b56c901e4839cb6999c3624bfd5c3d9cc0c",
+    "pr": "57285",
+    "merge_sha": "fac8810bcdec7b796a471b56a6dcbaa6648e2984",
+    "html": "<p><code>app.reloaders</code> is now a <code>ReloadersCollection</code> that calls <code>deactivate</code><br />\non each reloader when <code>clear</code> or <code>delete</code> is called, giving reloaders a<br />\nchance to clean up external state.</p>\n\n<p><em>Dave Ariens</em></p>\n"
   },
   {
     "message": "*   Enable Ruby `frozen_string_literal` by default.\n\n    New Rails apps now include a `config/bootsnap.rb` file that enables frozen string\n    literals. This only impact the application code, not the dependencies.\n\n    It is also possible to enable it for dependencies for reduce allocations, but\n    some older gems may not yet be compatible. If you do attempt this and run into\n    incompatibilites please do report it on the corresponding gem bug tracker.\n\n    Additionally, `.rubocop.yml` is configured to assume frozen string literals\n    are enabled, if you decide not to enable frozen string literals for your application,\n    make sure to update the rubocop configuration accordingly.\n\n    *Jean Boussier*",
