@@ -460,6 +460,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Add `datalist_tag` to create `datalist` form elements.\n\n    Example:\n\n        datalist_tag('countries_datalist', ['Argentina', ['Brazil', { class: 'brazilian_option' }],\n                     ['Chile', 'CL', { disabled: true }]], { class: 'sa-countries-sample' })\n        => <datalist id=\"countries_datalist\" class=\"sa-countries-sample\">\n             <option value=\"Argentina\">Argentina</option>\n             <option value=\"Brazil\" class=\"brazilian_option\">Brazil</option>\n             <option value=\"CL\" disabled=\"disabled\">Chile</option>\n           </datalist>\n\n    *Willian Gustavo Veiga*",
+    "project": "actionview",
+    "date_merged": 1778105491000,
+    "author": "Willian Gustavo Veiga",
+    "sha": "68f84c47c7b86f87e8de21d3c3365a7037ad331b",
+    "pr": "52137",
+    "merge_sha": "ce3fb7af108d5ee31c06e3765a6694eace0677c4",
+    "html": "<p>Add <code>datalist_tag</code> to create <code>datalist</code> form elements.</p>\n\n<p>Example:</p>\n\n<pre><code>datalist_tag('countries_datalist', ['Argentina', ['Brazil', { class: 'brazilian_option' }],\n             ['Chile', 'CL', { disabled: true }]], { class: 'sa-countries-sample' })\n=&gt; &lt;datalist id=\"countries_datalist\" class=\"sa-countries-sample\"&gt;\n     &lt;option value=\"Argentina\"&gt;Argentina&lt;/option&gt;\n     &lt;option value=\"Brazil\" class=\"brazilian_option\"&gt;Brazil&lt;/option&gt;\n     &lt;option value=\"CL\" disabled=\"disabled\"&gt;Chile&lt;/option&gt;\n   &lt;/datalist&gt;\n</code></pre>\n\n<p><em>Willian Gustavo Veiga</em></p>\n"
+  },
+  {
     "message": "*   Render `Hash` and keyword options as dasherized HTML attributes\n\n    ```ruby\n    tag.button \"POST to /clicked\", hx: { post: \"/clicked\", swap: :outerHTML, data: { json: true } }\n\n    # => <button hx-post=\"/clicked\" hx-swap=\"outerHTML\" hx-data=\"{&quot;json&quot;:true}\">POST to /clicked</button>\n    ```\n\n    *Sean Doyle*",
     "project": "actionview",
     "date_merged": 1778004446000,
@@ -1258,6 +1268,16 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Add `ActionController::Parameters#fetch_values` for fetching multiple parameter values\n\n    ```ruby\n    params = ActionController::Parameters.new(name: \"Francesco\", age: 22)\n    name, age = params.fetch_values(:name, :age)\n    # => [\"Francesco\", 22]\n\n    # With default values via block\n    name, email = params.fetch_values(:name, :email) { |key| \"default_#{key}\" }\n    # => [\"Francesco\", \"default_email\"]\n    ```\n\n    *Said Kaldybaev*",
+    "project": "actionpack",
+    "date_merged": 1778103895000,
+    "author": "Said Kaldybaev",
+    "sha": "c62863584a6b47445f744a49a4a3624d60f991f4",
+    "pr": "56384",
+    "merge_sha": "1fcdb74c44fda2581e5fe769d73a0b3cb74d6927",
+    "html": "<p>Add <code>ActionController::Parameters#fetch_values</code> for fetching multiple parameter values</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">params</span> <span class=\"o\">=</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Parameters</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">name: </span><span class=\"s2\">\"Francesco\"</span><span class=\"p\">,</span> <span class=\"ss\">age: </span><span class=\"mi\">22</span><span class=\"p\">)</span>\n<span class=\"nb\">name</span><span class=\"p\">,</span> <span class=\"n\">age</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">fetch_values</span><span class=\"p\">(</span><span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:age</span><span class=\"p\">)</span>\n<span class=\"c1\"># =&gt; [\"Francesco\", 22]</span>\n\n<span class=\"c1\"># With default values via block</span>\n<span class=\"nb\">name</span><span class=\"p\">,</span> <span class=\"n\">email</span> <span class=\"o\">=</span> <span class=\"n\">params</span><span class=\"p\">.</span><span class=\"nf\">fetch_values</span><span class=\"p\">(</span><span class=\"ss\">:name</span><span class=\"p\">,</span> <span class=\"ss\">:email</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"o\">|</span><span class=\"n\">key</span><span class=\"o\">|</span> <span class=\"s2\">\"default_</span><span class=\"si\">#{</span><span class=\"n\">key</span><span class=\"si\">}</span><span class=\"s2\">\"</span> <span class=\"p\">}</span>\n<span class=\"c1\"># =&gt; [\"Francesco\", \"default_email\"]</span>\n</code></pre></div></div>\n\n<p><em>Said Kaldybaev</em></p>\n"
   },
   {
     "message": "*   Serve static CSS and HTML files with `charset=utf-8` in the Content-Type header.\n\n    Static CSS and HTML files served by `ActionDispatch::Static` now include\n    `; charset=utf-8` in their Content-Type response header, fixing browser\n    encoding issues with CSS files containing non-ASCII characters.\n\n    *Mike Dalessio*",
