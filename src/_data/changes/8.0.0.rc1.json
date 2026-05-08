@@ -470,6 +470,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Add `f.datalist` to `FormBuilder`\n\n    Example:\n\n        <%= form_with model: @post do |f| %>\n           <%# Wire the input to the datalist using the same derived id: %>\n           <%= f.text_field :country, list: f.field_id(:country, :datalist) %>\n           <%= f.datalist  :country, [\"Argentina\", \"Brazil\", \"Chile\"] %>\n        <% end %>\n\n          Produces:\n          <input list=\"post_country_datalist\" type=\"text\"\n                 name=\"post[country]\" id=\"post_country\" />\n          <datalist id=\"post_country_datalist\">\n            <option value=\"Argentina\">Argentina</option>\n            <option value=\"Brazil\">Brazil</option>\n            <option value=\"Chile\">Chile</option>\n          </datalist>\n\n      *Tahsin Hasan*",
+    "project": "actionview",
+    "date_merged": 1778183992000,
+    "author": "Tahsin Hasan",
+    "sha": "bd5bf49f7c59e858242d67633c8a14696a2581fc",
+    "pr": "57318",
+    "merge_sha": "98c27e698ff733f2b78af64a7824966f5900a858",
+    "html": "<p>Add <code>f.datalist</code> to <code>FormBuilder</code></p>\n\n<p>Example:</p>\n\n<pre><code>&lt;%= form_with model: @post do |f| %&gt;\n   &lt;%# Wire the input to the datalist using the same derived id: %&gt;\n   &lt;%= f.text_field :country, list: f.field_id(:country, :datalist) %&gt;\n   &lt;%= f.datalist  :country, [\"Argentina\", \"Brazil\", \"Chile\"] %&gt;\n&lt;% end %&gt;\n\n  Produces:\n  &lt;input list=\"post_country_datalist\" type=\"text\"\n         name=\"post[country]\" id=\"post_country\" /&gt;\n  &lt;datalist id=\"post_country_datalist\"&gt;\n    &lt;option value=\"Argentina\"&gt;Argentina&lt;/option&gt;\n    &lt;option value=\"Brazil\"&gt;Brazil&lt;/option&gt;\n    &lt;option value=\"Chile\"&gt;Chile&lt;/option&gt;\n  &lt;/datalist&gt;\n</code></pre>\n\n<p><em>Tahsin Hasan</em></p>\n"
+  },
+  {
     "message": "*   Add `datalist_tag` to create `datalist` form elements.\n\n    Example:\n\n        datalist_tag('countries_datalist', ['Argentina', ['Brazil', { class: 'brazilian_option' }],\n                     ['Chile', 'CL', { disabled: true }]], { class: 'sa-countries-sample' })\n        => <datalist id=\"countries_datalist\" class=\"sa-countries-sample\">\n             <option value=\"Argentina\">Argentina</option>\n             <option value=\"Brazil\" class=\"brazilian_option\">Brazil</option>\n             <option value=\"CL\" disabled=\"disabled\">Chile</option>\n           </datalist>\n\n    *Willian Gustavo Veiga*",
     "project": "actionview",
     "date_merged": 1778105491000,
@@ -978,6 +988,16 @@
     "pr": "56093",
     "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Add `delete: true` option to `Rails.cache.read` for atomic read-and-delete (only supported by Redis cache store).\n\n    Uses the Redis [GETDEL](https://redis.io/docs/latest/commands/getdel/) command to atomically return a cached value and remove\n    it in a single operation. Useful for single-use values like OTP codes or\n    one-time tokens.\n\n    ```ruby\n    Rails.cache.write(\"otp\", \"123456\")\n    Rails.cache.read(\"otp\", delete: true)  # => \"123456\"\n    Rails.cache.read(\"otp\")                # => nil\n    ```\n\n    *Glauco Custodio*",
+    "project": "activesupport",
+    "date_merged": 1778181379000,
+    "author": "Glauco Custodio",
+    "sha": "4680e7d3e17576c368393ceb33cef687fdc7c2db",
+    "pr": "56807",
+    "merge_sha": "2e120eded5bc31b0696ca5c6ab8425be69cfac0b",
+    "html": "<p>Add <code>delete: true</code> option to <code>Rails.cache.read</code> for atomic read-and-delete (only supported by Redis cache store).</p>\n\n<p>Uses the Redis <a href=\"https://redis.io/docs/latest/commands/getdel/\">GETDEL</a> command to atomically return a cached value and remove<br />\nit in a single operation. Useful for single-use values like OTP codes or<br />\none-time tokens.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">write</span><span class=\"p\">(</span><span class=\"s2\">\"otp\"</span><span class=\"p\">,</span> <span class=\"s2\">\"123456\"</span><span class=\"p\">)</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">read</span><span class=\"p\">(</span><span class=\"s2\">\"otp\"</span><span class=\"p\">,</span> <span class=\"ss\">delete: </span><span class=\"kp\">true</span><span class=\"p\">)</span>  <span class=\"c1\"># =&gt; \"123456\"</span>\n<span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">cache</span><span class=\"p\">.</span><span class=\"nf\">read</span><span class=\"p\">(</span><span class=\"s2\">\"otp\"</span><span class=\"p\">)</span>                <span class=\"c1\"># =&gt; nil</span>\n</code></pre></div></div>\n\n<p><em>Glauco Custodio</em></p>\n"
   },
   {
     "message": "*   Introduce `ActiveSupport::TestCase.around`\n\n    Add a callback, which runs between `TestCase#setup` and `TestCase#teardown`.\n    Yields the test class instance and the test case to the block:\n\n    ```ruby\n    class ClientTest < ActiveSupport::TestCase\n      around do |test_case, block|\n        Client.with(stubbed: true, &block)\n      end\n    end\n    ```\n\n    *Sean Doyle*",
