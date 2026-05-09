@@ -120,6 +120,26 @@
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Move the defaulting of `prevent_writes` to `true` when using the `reading` role into the parameters\n    of the role switching methods, and raise an `ArgumentError` if `prevent_writes: false` is provided\n    with the `reading` role.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1778274497000,
+    "author": "Joshua Young",
+    "sha": "3fc67500610a01df29f6a6b5ac808866d322cefd",
+    "pr": "55134",
+    "merge_sha": "5b47dd4ed905b0f9b5b4351fe0bdb4ea7ba92d63",
+    "html": "<p>Move the defaulting of <code>prevent_writes</code> to <code>true</code> when using the <code>reading</code> role into the parameters<br />\nof the role switching methods, and raise an <code>ArgumentError</code> if <code>prevent_writes: false</code> is provided<br />\nwith the <code>reading</code> role.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
+    "message": "*   Fix incorrect callback execution order when `config.active_record.run_after_transaction_callbacks_in_order_defined = true`\n    and using `after_commit` and `after_rollback` callbacks with `prepend: true`.\n\n    *Joshua Young*",
+    "project": "activerecord",
+    "date_merged": 1778270642000,
+    "author": "Joshua Young",
+    "sha": "c76649e0be8976a5ae5f658e3432142bf7bd1ee6",
+    "pr": "50118",
+    "merge_sha": "7fe4981e6dac44bef34bc999a9798983cb8f3bde",
+    "html": "<p>Fix incorrect callback execution order when <code>config.active_record.run_after_transaction_callbacks_in_order_defined = true</code><br />\nand using <code>after_commit</code> and <code>after_rollback</code> callbacks with <code>prepend: true</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Accept encryption credentials as ENV\n\n    Taking advantage of Rails.apps.creds (#56455), the `primary_key`, `deterministic_key` and\n    `key_derivation_salt` required by ActiveRecord::Encryption can now also be provided through\n    environment variables named `ACTIVE_RECORD_ENCRYPTION__PRIMARY_KEY`,\n    `ACTIVE_RECORD_ENCRYPTION__DETERMINISTIC_KEY`, `ACTIVE_RECORD_ENCRYPTION__KEY_DERIVATION_SALT`.\n\n    *Claudio Baccigalupo*",
     "project": "activerecord",
     "date_merged": 1778159598000,
@@ -1170,6 +1190,16 @@
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Allow configuring Active Storage base controller parent class\n\n    This enables users to change the parent class for\n    `ActiveStorage::BaseController`, including the option to inherit from\n    `ActionController::API` for api-only apps.\n\n    *Andrew White*, *Santiago Bartesaghi*, *zzak*",
+    "project": "activestorage",
+    "date_merged": 1778275726000,
+    "author": "zzak",
+    "sha": "63f9f6e80d7086e05af93e87ebfc23c124a05722",
+    "pr": "54189",
+    "merge_sha": "7ff3bd0cef6dae8191704a2ec1ef60524d0d6c26",
+    "html": "<p>Allow configuring Active Storage base controller parent class</p>\n\n<p>This enables users to change the parent class for<br />\n<code>ActiveStorage::BaseController</code>, including the option to inherit from<br />\n<code>ActionController::API</code> for api-only apps.</p>\n\n<p><em>Andrew White</em>, <em>Santiago Bartesaghi</em>, <em>zzak</em></p>\n"
+  },
+  {
     "message": "*   Fix image analyzer reporting wrong dimensions for EXIF orientations involving a mirror.\n\n    `rotated_image?` was swapping width/height for orientations 2 and 4 (flip-only, no 90°\n    rotation), which do not change portrait/landscape orientation. It was also missing orientations\n    5 and 7 (flip + 90° rotation), which do require a swap. Only orientations 5, 6, 7, and 8\n    involve a 90° or 270° rotation and should trigger a dimension swap.\n\n    *Bogdan Gusiev*",
     "project": "activestorage",
     "date_merged": 1778091978000,
@@ -1298,6 +1328,16 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Support multiple arguments in `ActionController::Parameters#merge` and `#merge!`\n\n    Both methods now accept multiple hashes, matching Ruby's `Hash#merge` behavior.\n\n    ```ruby\n    params1 = ActionController::Parameters.new(a: 1)\n    params2 = ActionController::Parameters.new(b: 2)\n    params1.merge(params2, { c: 3 })\n    # => #<ActionController::Parameters {\"a\"=>1, \"b\"=>2, \"c\"=>3} permitted: false>\n    ```\n\n    *Bernie Chiu*",
+    "project": "actionpack",
+    "date_merged": 1778276848000,
+    "author": "Bernie Chiu",
+    "sha": "376568d31ec02e9de69a7acc49182710a9514307",
+    "pr": "56575",
+    "merge_sha": "b911b8a272f15f7d9bea0ac6c0c60c2a7a2e7270",
+    "html": "<p>Support multiple arguments in <code>ActionController::Parameters#merge</code> and <code>#merge!</code></p>\n\n<p>Both methods now accept multiple hashes, matching Ruby’s <code>Hash#merge</code> behavior.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">params1</span> <span class=\"o\">=</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Parameters</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">a: </span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">params2</span> <span class=\"o\">=</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Parameters</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">b: </span><span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"n\">params1</span><span class=\"p\">.</span><span class=\"nf\">merge</span><span class=\"p\">(</span><span class=\"n\">params2</span><span class=\"p\">,</span> <span class=\"p\">{</span> <span class=\"ss\">c: </span><span class=\"mi\">3</span> <span class=\"p\">})</span>\n<span class=\"c1\"># =&gt; #&lt;ActionController::Parameters {\"a\"=&gt;1, \"b\"=&gt;2, \"c\"=&gt;3} permitted: false&gt;</span>\n</code></pre></div></div>\n\n<p><em>Bernie Chiu</em></p>\n"
   },
   {
     "message": "*   Add `ActionController::Parameters#fetch_values` for fetching multiple parameter values\n\n    ```ruby\n    params = ActionController::Parameters.new(name: \"Francesco\", age: 22)\n    name, age = params.fetch_values(:name, :age)\n    # => [\"Francesco\", 22]\n\n    # With default values via block\n    name, email = params.fetch_values(:name, :email) { |key| \"default_#{key}\" }\n    # => [\"Francesco\", \"default_email\"]\n    ```\n\n    *Said Kaldybaev*",
