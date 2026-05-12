@@ -1020,6 +1020,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Add `start_day` argument to `this_week?` for consistency with `all_week`\n\n    `this_week?` now accepts an optional `start_day` argument, matching the\n    existing interface of `all_week`, `beginning_of_week`, and `end_of_week`.\n\n        date.this_week?              # Uses Date.beginning_of_week (default)\n        date.this_week?(:sunday)     # Checks against Sun-Sat week\n\n    *Kenta Ishizaki*",
+    "project": "activesupport",
+    "date_merged": 1778610141000,
+    "author": "Kenta Ishizaki",
+    "sha": "6f4f137043d97c76d9bbd0e270ed78da579e34b0",
+    "pr": "56872",
+    "merge_sha": "0602c5c21050924d66c307eecd23959483ab95a9",
+    "html": "<p>Add <code>start_day</code> argument to <code>this_week?</code> for consistency with <code>all_week</code></p>\n\n<p><code>this_week?</code> now accepts an optional <code>start_day</code> argument, matching the<br />\nexisting interface of <code>all_week</code>, <code>beginning_of_week</code>, and <code>end_of_week</code>.</p>\n\n<pre><code>date.this_week?              # Uses Date.beginning_of_week (default)\ndate.this_week?(:sunday)     # Checks against Sun-Sat week\n</code></pre>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Add `delete: true` option to `Rails.cache.read` for atomic read-and-delete (only supported by Redis cache store).\n\n    Uses the Redis [GETDEL](https://redis.io/docs/latest/commands/getdel/) command to atomically return a cached value and remove\n    it in a single operation. Useful for single-use values like OTP codes or\n    one-time tokens.\n\n    ```ruby\n    Rails.cache.write(\"otp\", \"123456\")\n    Rails.cache.read(\"otp\", delete: true)  # => \"123456\"\n    Rails.cache.read(\"otp\")                # => nil\n    ```\n\n    *Glauco Custodio*",
     "project": "activesupport",
     "date_merged": 1778181379000,
