@@ -490,6 +490,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Pass render options and block to calls to `#render_in`\n\n    ```ruby\n    class Greeting\n      def render_in(view_context, **)\n        if block_given?\n          view_context.render(html: yield)\n        else\n          view_context.render(inline: <<~ERB.strip, **)\n            Hello <%= local_assigns[:name] || \"World\" %>\n          ERB\n        end\n      end\n    end\n\n    render(Greeting.new)                                        # => \"Hello, World\"\n    render(Greeting.new, name: \"Local\")                         # => \"Hello, Local\"\n    render(renderable: Greeting.new, locals: { name: \"Local\" }) # => \"Hello, Local\"\n    render(Greeting.new) { \"Hello, Block\" }                     # => \"Hello, Block\"\n    ```\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1778539512000,
+    "author": "Sean Doyle",
+    "sha": "d24d0b7187b6568d76972d61ce91eea698503797",
+    "pr": "50623",
+    "merge_sha": "f26f56ed4e19dea9119fcfe067eff36b7f0b5dc5",
+    "html": "<p>Pass render options and block to calls to <code>#render_in</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Greeting</span>\n  <span class=\"k\">def</span> <span class=\"nf\">render_in</span><span class=\"p\">(</span><span class=\"n\">view_context</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"p\">)</span>\n    <span class=\"k\">if</span> <span class=\"nb\">block_given?</span>\n      <span class=\"n\">view_context</span><span class=\"p\">.</span><span class=\"nf\">render</span><span class=\"p\">(</span><span class=\"ss\">html: </span><span class=\"k\">yield</span><span class=\"p\">)</span>\n    <span class=\"k\">else</span>\n      <span class=\"n\">view_context</span><span class=\"p\">.</span><span class=\"nf\">render</span><span class=\"p\">(</span><span class=\"ss\">inline: </span><span class=\"o\">&lt;&lt;~</span><span class=\"no\">ERB</span><span class=\"p\">.</span><span class=\"nf\">strip</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"p\">)</span><span class=\"sh\">\n        Hello &lt;%= local_assigns[:name] || \"World\" %&gt;\n</span><span class=\"no\">      ERB</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">render</span><span class=\"p\">(</span><span class=\"no\">Greeting</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">)</span>                                        <span class=\"c1\"># =&gt; \"Hello, World\"</span>\n<span class=\"n\">render</span><span class=\"p\">(</span><span class=\"no\">Greeting</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">,</span> <span class=\"ss\">name: </span><span class=\"s2\">\"Local\"</span><span class=\"p\">)</span>                         <span class=\"c1\"># =&gt; \"Hello, Local\"</span>\n<span class=\"n\">render</span><span class=\"p\">(</span><span class=\"ss\">renderable: </span><span class=\"no\">Greeting</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">,</span> <span class=\"ss\">locals: </span><span class=\"p\">{</span> <span class=\"ss\">name: </span><span class=\"s2\">\"Local\"</span> <span class=\"p\">})</span> <span class=\"c1\"># =&gt; \"Hello, Local\"</span>\n<span class=\"n\">render</span><span class=\"p\">(</span><span class=\"no\">Greeting</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"s2\">\"Hello, Block\"</span> <span class=\"p\">}</span>                     <span class=\"c1\"># =&gt; \"Hello, Block\"</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Add `f.datalist` to `FormBuilder`\n\n    Example:\n\n        <%= form_with model: @post do |f| %>\n           <%# Wire the input to the datalist using the same derived id: %>\n           <%= f.text_field :country, list: f.field_id(:country, :datalist) %>\n           <%= f.datalist  :country, [\"Argentina\", \"Brazil\", \"Chile\"] %>\n        <% end %>\n\n          Produces:\n          <input list=\"post_country_datalist\" type=\"text\"\n                 name=\"post[country]\" id=\"post_country\" />\n          <datalist id=\"post_country_datalist\">\n            <option value=\"Argentina\">Argentina</option>\n            <option value=\"Brazil\">Brazil</option>\n            <option value=\"Chile\">Chile</option>\n          </datalist>\n\n      *Tahsin Hasan*",
     "project": "actionview",
     "date_merged": 1778183992000,
@@ -1190,6 +1200,16 @@
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Correct unexpected behavior resulting from dependent: :purge when using\n    has_one_attached or has_many_attached. Fixes #36423.\n\n    *Mark Oveson*",
+    "project": "activestorage",
+    "date_merged": 1778537415000,
+    "author": "Mark Oveson",
+    "sha": "bae458450a2b6439af438bdf733348c5c67912b5",
+    "pr": "36433",
+    "merge_sha": "ada3a6e7613d80a311bbd2809a00ea746633e134",
+    "html": "<p>Correct unexpected behavior resulting from dependent: :purge when using<br />\nhas_one_attached or has_many_attached. Fixes #36423.</p>\n\n<p><em>Mark Oveson</em></p>\n"
+  },
+  {
     "message": "*   Allow configuring Active Storage base controller parent class\n\n    This enables users to change the parent class for\n    `ActiveStorage::BaseController`, including the option to inherit from\n    `ActionController::API` for api-only apps.\n\n    *Andrew White*, *Santiago Bartesaghi*, *zzak*",
     "project": "activestorage",
     "date_merged": 1778275726000,
@@ -1328,6 +1348,16 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Accept render options and block in `render` calls made with `:renderable`\n\n    ```ruby\n    class Greeting\n      def render_in(view_context, **)\n        if block_given?\n          view_context.render(html: yield)\n        else\n          view_context.render(inline: <<~ERB.strip, **)\n            Hello, <%= local_assigns[:name] || \"World\" %>\n          ERB\n        end\n      end\n    end\n\n    ApplicationController.render(Greeting.new)                                        # => \"Hello, World\"\n    ApplicationController.render(Greeting.new) { \"Hello, Block\" }                     # => \"Hello, Block\"\n    ApplicationController.render(renderable: Greeting.new)                            # => \"Hello, World\"\n    ApplicationController.render(renderable: Greeting.new, locals: { name: \"Local\" }) # => \"Hello, Local\"\n\n    *Sean Doyle*",
+    "project": "actionpack",
+    "date_merged": 1778539512000,
+    "author": "Sean Doyle",
+    "sha": "d24d0b7187b6568d76972d61ce91eea698503797",
+    "pr": "50623",
+    "merge_sha": "f26f56ed4e19dea9119fcfe067eff36b7f0b5dc5",
+    "html": "<p>Accept render options and block in <code>render</code> calls made with <code>:renderable</code></p>\n\n<p>```ruby<br />\nclass Greeting<br />\n  def render_in(view_context, **)<br />\n    if block_given?<br />\n      view_context.render(html: yield)<br />\n    else<br />\n      view_context.render(inline: «~ERB.strip, **)<br />\n        Hello, &lt;%= local_assigns[:name] || “World” %&gt;<br />\n      ERB<br />\n    end<br />\n  end<br />\nend</p>\n\n<p>ApplicationController.render(Greeting.new)                                        # =&gt; “Hello, World”<br />\nApplicationController.render(Greeting.new) { “Hello, Block” }                     # =&gt; “Hello, Block”<br />\nApplicationController.render(renderable: Greeting.new)                            # =&gt; “Hello, World”<br />\nApplicationController.render(renderable: Greeting.new, locals: { name: “Local” }) # =&gt; “Hello, Local”</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Support multiple arguments in `ActionController::Parameters#merge` and `#merge!`\n\n    Both methods now accept multiple hashes, matching Ruby's `Hash#merge` behavior.\n\n    ```ruby\n    params1 = ActionController::Parameters.new(a: 1)\n    params2 = ActionController::Parameters.new(b: 2)\n    params1.merge(params2, { c: 3 })\n    # => #<ActionController::Parameters {\"a\"=>1, \"b\"=>2, \"c\"=>3} permitted: false>\n    ```\n\n    *Bernie Chiu*",
