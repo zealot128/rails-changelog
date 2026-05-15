@@ -130,6 +130,56 @@
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Deprecated `ActiveRecord::ConnectionAdapters::Column#auto_populated?` in favor of\n    `auto_populated_on_insert?`\n\n    *Rafael Mendonça França*",
+    "project": "activerecord",
+    "date_merged": 1778800683000,
+    "author": "Rafael Mendonça França",
+    "sha": "de7b8c8eed5573de435943a3b334147164135918",
+    "pr": "48628",
+    "merge_sha": "7f2e541d4bf21df06ed72d79b0d8ce4b1b5f8bdf",
+    "html": "<p>Deprecated <code>ActiveRecord::ConnectionAdapters::Column#auto_populated?</code> in favor of<br />\n<code>auto_populated_on_insert?</code></p>\n\n<p><em>Rafael Mendonça França</em></p>\n"
+  },
+  {
+    "message": "*   Reload virtual columns on update in PostgreSQL\n\n    Automatically reload virtual columns on `update` when using PostgreSQL. This is done by issuing a single\n    UPDATE query that includes a RETURNING clause.\n\n    Given a `Post` model represented by the following schema:\n\n    ```ruby\n    create_table :posts do |t|\n      t.integer :upvotes_count\n      t.integer :downvotes_count\n      t.virtual :total_votes_count, type: :integer, as: \"upvotes_count + downvotes_count\", stored: true\n    end\n    ```\n\n    `total_votes_count` will reflect the sum of upvotes and downvotes after `update` is successfully called.\n    Prior to this change calling `reload` would have been necessary to obtain the new value calculated by\n    the database.\n\n    ```ruby\n    post = Post.find(1)\n    post.update(upvotes_count: 2, downvotes_count: 2)\n    # Calling `post.reload` no longer necessary\n    post.total_votes => 4\n    ```\n\n    *Alex Baldwin*",
+    "project": "activerecord",
+    "date_merged": 1778800683000,
+    "author": "Alex Baldwin",
+    "sha": "77eef9a3cf3aebb0e77504a51351f7b308f99eae",
+    "pr": "48628",
+    "merge_sha": "7f2e541d4bf21df06ed72d79b0d8ce4b1b5f8bdf",
+    "html": "<p>Reload virtual columns on update in PostgreSQL</p>\n\n<p>Automatically reload virtual columns on <code>update</code> when using PostgreSQL. This is done by issuing a single<br />\nUPDATE query that includes a RETURNING clause.</p>\n\n<p>Given a <code>Post</code> model represented by the following schema:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">create_table</span> <span class=\"ss\">:posts</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">integer</span> <span class=\"ss\">:upvotes_count</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">integer</span> <span class=\"ss\">:downvotes_count</span>\n  <span class=\"n\">t</span><span class=\"p\">.</span><span class=\"nf\">virtual</span> <span class=\"ss\">:total_votes_count</span><span class=\"p\">,</span> <span class=\"ss\">type: :integer</span><span class=\"p\">,</span> <span class=\"ss\">as: </span><span class=\"s2\">\"upvotes_count + downvotes_count\"</span><span class=\"p\">,</span> <span class=\"ss\">stored: </span><span class=\"kp\">true</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><code>total_votes_count</code> will reflect the sum of upvotes and downvotes after <code>update</code> is successfully called.<br />\nPrior to this change calling <code>reload</code> would have been necessary to obtain the new value calculated by<br />\nthe database.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">post</span> <span class=\"o\">=</span> <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"n\">post</span><span class=\"p\">.</span><span class=\"nf\">update</span><span class=\"p\">(</span><span class=\"ss\">upvotes_count: </span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"ss\">downvotes_count: </span><span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"c1\"># Calling `post.reload` no longer necessary</span>\n<span class=\"n\">post</span><span class=\"p\">.</span><span class=\"nf\">total_votes</span> <span class=\"o\">=&gt;</span> <span class=\"mi\">4</span>\n</code></pre></div></div>\n\n<p><em>Alex Baldwin</em></p>\n"
+  },
+  {
+    "message": "*   Reset the optimistic locking column when a transaction is rolled back.\n\n    Previously, when a record with optimistic locking was successfully saved\n    inside a transaction that later rolled back, the in-memory `lock_version`\n    was left at the incremented value while the database row was reverted to\n    the previous one. Saving the same instance again then raised\n    `ActiveRecord::StaleObjectError` because the WHERE clause used the\n    incremented value that no longer existed in the database.\n\n    The locking column is now restored from the snapshot taken at the start\n    of the transaction, so retrying a save on the same record after a\n    rollback works without an explicit `reload`.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1778799203000,
+    "author": "Kenta Ishizaki",
+    "sha": "aee44d1d64263d7904f59e488e1e069d89328c4a",
+    "pr": "57363",
+    "merge_sha": "0d8dbd2deb7b0c83234d874dbcebac51bd612674",
+    "html": "<p>Reset the optimistic locking column when a transaction is rolled back.</p>\n\n<p>Previously, when a record with optimistic locking was successfully saved<br />\ninside a transaction that later rolled back, the in-memory <code>lock_version</code><br />\nwas left at the incremented value while the database row was reverted to<br />\nthe previous one. Saving the same instance again then raised<br />\n<code>ActiveRecord::StaleObjectError</code> because the WHERE clause used the<br />\nincremented value that no longer existed in the database.</p>\n\n<p>The locking column is now restored from the snapshot taken at the start<br />\nof the transaction, so retrying a save on the same record after a<br />\nrollback works without an explicit <code>reload</code>.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Fix handling of expressions in array syntax for `add_index`.\n\n    This change allows passing expressions in array syntax for `add_index` method.\n    For example, `add_index :users, [ \"lower(email)\" ]` now works the same as\n    `add_index :users, \"lower(email)\"`.\n\n    ```ruby\n    # This now works properly:\n    add_index :users, [ \"lower(email)\" ]\n\n    # As does this:\n    add_index :users, [ \"lower(email)\", :status ]\n    ```\n\n    *Alexandre Camillo*",
+    "project": "activerecord",
+    "date_merged": 1778794244000,
+    "author": "Alexandre Camillo",
+    "sha": "bd564e0e899de241817788462fe024f91383da95",
+    "pr": "55099",
+    "merge_sha": "193d17069e10af666df85178e45b95a724033691",
+    "html": "<p>Fix handling of expressions in array syntax for <code>add_index</code>.</p>\n\n<p>This change allows passing expressions in array syntax for <code>add_index</code> method.<br />\nFor example, <code>add_index :users, [ \"lower(email)\" ]</code> now works the same as<br />\n<code>add_index :users, \"lower(email)\"</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># This now works properly:</span>\n<span class=\"n\">add_index</span> <span class=\"ss\">:users</span><span class=\"p\">,</span> <span class=\"p\">[</span> <span class=\"s2\">\"lower(email)\"</span> <span class=\"p\">]</span>\n\n<span class=\"c1\"># As does this:</span>\n<span class=\"n\">add_index</span> <span class=\"ss\">:users</span><span class=\"p\">,</span> <span class=\"p\">[</span> <span class=\"s2\">\"lower(email)\"</span><span class=\"p\">,</span> <span class=\"ss\">:status</span> <span class=\"p\">]</span>\n</code></pre></div></div>\n\n<p><em>Alexandre Camillo</em></p>\n"
+  },
+  {
+    "message": "*   Fix `strict_loading` violations ignored when using `pluck`\n\n    *Johnson Chan*",
+    "project": "activerecord",
+    "date_merged": 1778789489000,
+    "author": "shes50103",
+    "sha": "67309702f654546f36ed76fda464db5efc29c2c0",
+    "pr": "51524",
+    "merge_sha": "b0ed7ac93ce29c81a9345a3adbbce251b7c77ed8",
+    "html": "<p>Fix <code>strict_loading</code> violations ignored when using <code>pluck</code></p>\n\n<p><em>Johnson Chan</em></p>\n"
+  },
+  {
     "message": "*   Move the defaulting of `prevent_writes` to `true` when using the `reading` role into the parameters\n    of the role switching methods, and raise an `ArgumentError` if `prevent_writes: false` is provided\n    with the `reading` role.\n\n    *Joshua Young*",
     "project": "activerecord",
     "date_merged": 1778274497000,
@@ -598,6 +648,16 @@
     "pr": "51579",
     "merge_sha": "b560ff43134402b74cd811459a3b2a6e5abdce8b",
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
+  },
+  {
+    "message": "*   Remove `new_framework_defaults` during `app:update` when `config.load_defaults`\n    already targets the current Rails version.\n\n    *Rune Philosof*",
+    "project": "railties",
+    "date_merged": 1778794943000,
+    "author": "Rune Philosof",
+    "sha": "9b70341df79e39f2348212b57fc362cb949c5ef0",
+    "pr": "57313",
+    "merge_sha": "5d6b8a4d4a0f14550d333ac1e5fd869bf81e9af3",
+    "html": "<p>Remove <code>new_framework_defaults</code> during <code>app:update</code> when <code>config.load_defaults</code><br />\nalready targets the current Rails version.</p>\n\n<p><em>Rune Philosof</em></p>\n"
   },
   {
     "message": "*   Enable `config.asset_host` to read from environment by default\n\n    This makes it so no code changes are needed in order to setup a CDN to\n    serve static assets.\n\n    ```\n    config.asset_host = ENV[\"CDN_HOST\"]\n    ```\n\n    *Steve Polito*",
@@ -1230,6 +1290,16 @@
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Implement `attach!` as a bang counterpart to `attach`.\n\n    This method raises an exception if the attachment was not saved, similar\n    to how `save!` raises an exception if an Active Record object is found to\n    be invalid prior to be persisted.\n\n    *Quentin de Metz*",
+    "project": "activestorage",
+    "date_merged": 1778792991000,
+    "author": "Quentin de Metz",
+    "sha": "431d1b0bdb21ed94666caecc3e1652da4cc30e73",
+    "pr": "54416",
+    "merge_sha": "abdf7a907e10b51ff0f8e3a4cfa1cdee94f93df2",
+    "html": "<p>Implement <code>attach!</code> as a bang counterpart to <code>attach</code>.</p>\n\n<p>This method raises an exception if the attachment was not saved, similar<br />\nto how <code>save!</code> raises an exception if an Active Record object is found to<br />\nbe invalid prior to be persisted.</p>\n\n<p><em>Quentin de Metz</em></p>\n"
+  },
+  {
     "message": "*   Correct unexpected behavior resulting from dependent: :purge when using\n    has_one_attached or has_many_attached. Fixes #36423.\n\n    *Mark Oveson*",
     "project": "activestorage",
     "date_merged": 1778537415000,
@@ -1638,6 +1708,16 @@
     "pr": "56345",
     "merge_sha": "e2d407dd8bf3747923d68fbc06b676c27aff9f03",
     "html": "<p>Add <code>svg:</code> renderer:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Page</span>\n  <span class=\"k\">def</span> <span class=\"nf\">to_svg</span>\n    <span class=\"n\">body</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">PagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@page</span> <span class=\"o\">=</span> <span class=\"no\">Page</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"n\">respond_to</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"nb\">format</span><span class=\"o\">|</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">html</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">svg</span> <span class=\"p\">{</span> <span class=\"n\">render</span> <span class=\"ss\">svg: </span><span class=\"vi\">@page</span> <span class=\"p\">}</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Thiago Youssef</em></p>\n"
+  },
+  {
+    "message": "*   Dispatch all Active Storage `direct-upload:`-prefixed events\n\n    Add support for `direct-upload:before-blob-request` and `direct-upload:before-storage-request`.\n\n    Add `id` and `file` properties for parity with Active Storage.\n\n    *Sean Doyle*",
+    "project": "actiontext",
+    "date_merged": 1778799229000,
+    "author": "Sean Doyle",
+    "sha": "14f7f8d1985b4410ef39b3c02aea5ff0b3b03704",
+    "pr": "53812",
+    "merge_sha": "bbed97946eba7f2f0e517d170a2269f38f64b53c",
+    "html": "<p>Dispatch all Active Storage <code>direct-upload:</code>-prefixed events</p>\n\n<p>Add support for <code>direct-upload:before-blob-request</code> and <code>direct-upload:before-storage-request</code>.</p>\n\n<p>Add <code>id</code> and <code>file</code> properties for parity with Active Storage.</p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   Support block children in editor elements alongside value.\n\n    Blocks were introduced in #55827, but only as an alternative to the value\n    argument: the block was captured and used as the initial editor content,\n    making it either value OR block — not both.\n\n    The block semantics are now changed so that blocks render as DOM children of\n    the editor element instead. Value and block are now independent: value flows\n    into the editor's content binding (the hidden input for Trix, the value\n    attribute for custom editors), while the block renders as inner DOM children\n    — useful for embedding custom elements such as prompt menus or toolbar\n    extensions.\n\n    This enables other editors like Lexxy to use the block form for configuration\n    — injecting child elements into the editor tag — while the rich text value is\n    preserved separately.\n\n    Trix preserves the original block-as-initial-value contract by capturing the\n    block in `TrixEditor::Tag#render_in` when no value is present, keeping its\n    hidden input populated as before.\n\n    *Jorge Manrubia*",
