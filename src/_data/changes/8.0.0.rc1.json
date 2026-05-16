@@ -260,6 +260,16 @@
     "html": "<p>Add <code>svg:</code> renderer:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Page</span>\n  <span class=\"k\">def</span> <span class=\"nf\">to_svg</span>\n    <span class=\"n\">body</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">PagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@page</span> <span class=\"o\">=</span> <span class=\"no\">Page</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"n\">respond_to</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"nb\">format</span><span class=\"o\">|</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">html</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">svg</span> <span class=\"p\">{</span> <span class=\"n\">render</span> <span class=\"ss\">svg: </span><span class=\"vi\">@page</span> <span class=\"p\">}</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Thiago Youssef</em></p>\n"
   },
   {
+    "message": "*   Revert alphabetical sorting of table columns inside `schema.rb`.\n\n    Alphabetical sorting of table columns inside the schema creates improper production tables when using `db:prepare`.\n\n    *Bert McCutchen*",
+    "project": "activerecord",
+    "date_merged": 1778881407000,
+    "author": "Bert McCutchen",
+    "sha": "21bedd80512effd4c23c7f3d9bafe7a72d5a8c43",
+    "pr": "56842",
+    "merge_sha": "5ec3ca825fbdd6fdd62c93dbd7603b98af7fa58d",
+    "html": "<p>Revert alphabetical sorting of table columns inside <code>schema.rb</code>.</p>\n\n<p>Alphabetical sorting of table columns inside the schema creates improper production tables when using <code>db:prepare</code>.</p>\n\n<p><em>Bert McCutchen</em></p>\n"
+  },
+  {
     "message": "*   Deprecated `ActiveRecord::ConnectionAdapters::Column#auto_populated?` in favor of\n    `auto_populated_on_insert?`\n\n    *Rafael Mendonça França*",
     "project": "activerecord",
     "date_merged": 1778800683000,
