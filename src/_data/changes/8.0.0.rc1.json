@@ -260,6 +260,16 @@
     "html": "<p>Add <code>svg:</code> renderer:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Page</span>\n  <span class=\"k\">def</span> <span class=\"nf\">to_svg</span>\n    <span class=\"n\">body</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">PagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@page</span> <span class=\"o\">=</span> <span class=\"no\">Page</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"n\">respond_to</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"nb\">format</span><span class=\"o\">|</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">html</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">svg</span> <span class=\"p\">{</span> <span class=\"n\">render</span> <span class=\"ss\">svg: </span><span class=\"vi\">@page</span> <span class=\"p\">}</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Thiago Youssef</em></p>\n"
   },
   {
+    "message": "*   Fix `ActiveRecord::QueryMethods#in_order_of` when passing an out-of-range Integer\n\n    To match the behavior of the `Enumerable` version, `in_order_of` now ignores an out-of-range Integer.\n\n    *tejanium*",
+    "project": "activerecord",
+    "date_merged": 1779020361000,
+    "author": "Teja Sophista",
+    "sha": "be1772bd9918a6274a97826d3b84d18c9ed627b4",
+    "pr": "44746",
+    "merge_sha": "7de0b52050a18b96507120dfb5da80ca59193993",
+    "html": "<p>Fix <code>ActiveRecord::QueryMethods#in_order_of</code> when passing an out-of-range Integer</p>\n\n<p>To match the behavior of the <code>Enumerable</code> version, <code>in_order_of</code> now ignores an out-of-range Integer.</p>\n\n<p><em>tejanium</em></p>\n"
+  },
+  {
     "message": "*   Revert alphabetical sorting of table columns inside `schema.rb`.\n\n    Alphabetical sorting of table columns inside the schema creates improper production tables when using `db:prepare`.\n\n    *Bert McCutchen*",
     "project": "activerecord",
     "date_merged": 1778881407000,
