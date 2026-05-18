@@ -260,6 +260,16 @@
     "html": "<p>Add <code>svg:</code> renderer:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Page</span>\n  <span class=\"k\">def</span> <span class=\"nf\">to_svg</span>\n    <span class=\"n\">body</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">PagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@page</span> <span class=\"o\">=</span> <span class=\"no\">Page</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"n\">respond_to</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"nb\">format</span><span class=\"o\">|</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">html</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">svg</span> <span class=\"p\">{</span> <span class=\"n\">render</span> <span class=\"ss\">svg: </span><span class=\"vi\">@page</span> <span class=\"p\">}</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Thiago Youssef</em></p>\n"
   },
   {
+    "message": "*   Expose `cursor`, `order` and `use_ranges` attributes for `BatchEnumerator`\n\n    *fatkodima*",
+    "project": "activerecord",
+    "date_merged": 1779048708000,
+    "author": "fatkodima",
+    "sha": "5c110405c91d3888178899d1ffe6c169e625035c",
+    "pr": "54587",
+    "merge_sha": "cd3068893f0bb46384d398ee13a66caca1f1fdb2",
+    "html": "<p>Expose <code>cursor</code>, <code>order</code> and <code>use_ranges</code> attributes for <code>BatchEnumerator</code></p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Fix `ActiveRecord::QueryMethods#in_order_of` when passing an out-of-range Integer\n\n    To match the behavior of the `Enumerable` version, `in_order_of` now ignores an out-of-range Integer.\n\n    *tejanium*",
     "project": "activerecord",
     "date_merged": 1779020361000,
@@ -798,6 +808,16 @@
     "pr": "56093",
     "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Add a helper to get the combined byte size of blobs attached via `has_many_attached`.\n\n    ```ruby\n    document.images.byte_size # => 2048\n    ```\n\n    *Sandip Mane*, *fatkodima*",
+    "project": "activestorage",
+    "date_merged": 1779047631000,
+    "author": "Sandip Mane",
+    "sha": "7376be3e02bfa31a1aa85126dd15eea5676aee49",
+    "pr": "45201",
+    "merge_sha": "0bbe43aefdee4934fd325780a55c2eec27cc62e2",
+    "html": "<p>Add a helper to get the combined byte size of blobs attached via <code>has_many_attached</code>.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">document</span><span class=\"p\">.</span><span class=\"nf\">images</span><span class=\"p\">.</span><span class=\"nf\">byte_size</span> <span class=\"c1\"># =&gt; 2048</span>\n</code></pre></div></div>\n\n<p><em>Sandip Mane</em>, <em>fatkodima</em></p>\n"
   },
   {
     "message": "*   Implement `attach!` as a bang counterpart to `attach`.\n\n    This method raises an exception if the attachment was not saved, similar\n    to how `save!` raises an exception if an Active Record object is found to\n    be invalid prior to be persisted.\n\n    *Quentin de Metz*",
