@@ -810,6 +810,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Preserve attachment changes when converting record to another class using STI.\n\n    *fatkodima*",
+    "project": "activestorage",
+    "date_merged": 1779123118000,
+    "author": "fatkodima",
+    "sha": "34168a10042b4d95a0f23afc4be9fcd236c5eec9",
+    "pr": "46486",
+    "merge_sha": "127183d8fc44a9fb52542f7650c1ccc2eaa97f29",
+    "html": "<p>Preserve attachment changes when converting record to another class using STI.</p>\n\n<p><em>fatkodima</em></p>\n"
+  },
+  {
     "message": "*   Add a helper to get the combined byte size of blobs attached via `has_many_attached`.\n\n    ```ruby\n    document.images.byte_size # => 2048\n    ```\n\n    *Sandip Mane*, *fatkodima*",
     "project": "activestorage",
     "date_merged": 1779047631000,
