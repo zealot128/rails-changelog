@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   `http_cache_forever` now accept an optional `last_modified:` keyword parameter.\n\n    It still defaults to January 1st 2011, but you now can subtitute it for a relevant\n    time if there is one.\n\n    *Jean Boussier*",
+    "project": "actionpack",
+    "date_merged": 1779184509000,
+    "author": "Jean Boussier",
+    "sha": "048683577ce064309433f83b95e4b0f75566db81",
+    "pr": "57388",
+    "merge_sha": "40c996a3ddadb3aaf0bfa20fcb81625475ada3bc",
+    "html": "<p><code>http_cache_forever</code> now accept an optional <code>last_modified:</code> keyword parameter.</p>\n\n<p>It still defaults to January 1st 2011, but you now can subtitute it for a relevant<br />\ntime if there is one.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Accept render options and block in `render` calls made with `:renderable`\n\n    ```ruby\n    class Greeting\n      def render_in(view_context, **)\n        if block_given?\n          view_context.render(html: yield)\n        else\n          view_context.render(inline: <<~ERB.strip, **)\n            Hello, <%= local_assigns[:name] || \"World\" %>\n          ERB\n        end\n      end\n    end\n\n    ApplicationController.render(Greeting.new)                                        # => \"Hello, World\"\n    ApplicationController.render(Greeting.new) { \"Hello, Block\" }                     # => \"Hello, Block\"\n    ApplicationController.render(renderable: Greeting.new)                            # => \"Hello, World\"\n    ApplicationController.render(renderable: Greeting.new, locals: { name: \"Local\" }) # => \"Hello, Local\"\n\n    *Sean Doyle*",
     "project": "actionpack",
     "date_merged": 1778539512000,
@@ -258,6 +268,16 @@
     "pr": "56345",
     "merge_sha": "e2d407dd8bf3747923d68fbc06b676c27aff9f03",
     "html": "<p>Add <code>svg:</code> renderer:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Page</span>\n  <span class=\"k\">def</span> <span class=\"nf\">to_svg</span>\n    <span class=\"n\">body</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">PagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@page</span> <span class=\"o\">=</span> <span class=\"no\">Page</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"n\">respond_to</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"nb\">format</span><span class=\"o\">|</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">html</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">svg</span> <span class=\"p\">{</span> <span class=\"n\">render</span> <span class=\"ss\">svg: </span><span class=\"vi\">@page</span> <span class=\"p\">}</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Thiago Youssef</em></p>\n"
+  },
+  {
+    "message": "*   Add `enforced:` option to `add_foreign_key` and `change_foreign_key` for PostgreSQL 18.4+.\n\n    `NOT ENFORCED` foreign keys are available since PostgreSQL 18.0, but `DEFERRABLE`\n    was lost on them until 18.4 (\"Fix loss of deferrability of foreign-key triggers\",\n    https://www.postgresql.org/docs/release/18.4/). Rails therefore requires PostgreSQL\n    18.4 or later for this feature.\n\n    When `enforced: false` is passed to `add_foreign_key`, the constraint is created as `NOT ENFORCED`,\n    meaning PostgreSQL skips referential integrity checks during DML.\n    PostgreSQL marks `NOT ENFORCED` constraints as `NOT VALID` internally (and `VALIDATE CONSTRAINT`\n    does not apply to them), so the schema dumper outputs both\n    `enforced: false` and `validate: false`.\n\n    `change_foreign_key` toggles the enforced status of an existing foreign key. Without\n    this method, users would need to issue raw `ALTER TABLE ... ALTER CONSTRAINT` SQL\n    to disable enforcement temporarily (e.g., for bulk DML that loads the referenced\n    and referencing tables in arbitrary order) and then re-enable it.\n\n    ```ruby\n    add_foreign_key :articles, :authors, enforced: false\n    # => ALTER TABLE \"articles\" ADD CONSTRAINT ... FOREIGN KEY (\"author_id\") REFERENCES \"authors\" (\"id\") NOT ENFORCED\n\n    change_foreign_key :articles, :authors, enforced: true\n    # => ALTER TABLE \"articles\" ALTER CONSTRAINT \"fk_rails_...\" ENFORCED\n\n    change_foreign_key :articles, :authors, enforced: false\n    # => ALTER TABLE \"articles\" ALTER CONSTRAINT \"fk_rails_...\" NOT ENFORCED\n    ```\n\n    *Yasuo Honda*",
+    "project": "activerecord",
+    "date_merged": 1779201131000,
+    "author": "Yasuo Honda",
+    "sha": "6cb88eae59c05185ec7fdde9addb347819e4df44",
+    "pr": "57377",
+    "merge_sha": "3469de6d1cb4e2e1a329f23ff66b4e60518d55ee",
+    "html": "<p>Add <code>enforced:</code> option to <code>add_foreign_key</code> and <code>change_foreign_key</code> for PostgreSQL 18.4+.</p>\n\n<p><code>NOT ENFORCED</code> foreign keys are available since PostgreSQL 18.0, but <code>DEFERRABLE</code><br />\nwas lost on them until 18.4 (“Fix loss of deferrability of foreign-key triggers”,<br />\nhttps://www.postgresql.org/docs/release/18.4/). Rails therefore requires PostgreSQL<br />\n18.4 or later for this feature.</p>\n\n<p>When <code>enforced: false</code> is passed to <code>add_foreign_key</code>, the constraint is created as <code>NOT ENFORCED</code>,<br />\nmeaning PostgreSQL skips referential integrity checks during DML.<br />\nPostgreSQL marks <code>NOT ENFORCED</code> constraints as <code>NOT VALID</code> internally (and <code>VALIDATE CONSTRAINT</code><br />\ndoes not apply to them), so the schema dumper outputs both<br />\n<code>enforced: false</code> and <code>validate: false</code>.</p>\n\n<p><code>change_foreign_key</code> toggles the enforced status of an existing foreign key. Without<br />\nthis method, users would need to issue raw <code>ALTER TABLE ... ALTER CONSTRAINT</code> SQL<br />\nto disable enforcement temporarily (e.g., for bulk DML that loads the referenced<br />\nand referencing tables in arbitrary order) and then re-enable it.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">add_foreign_key</span> <span class=\"ss\">:articles</span><span class=\"p\">,</span> <span class=\"ss\">:authors</span><span class=\"p\">,</span> <span class=\"ss\">enforced: </span><span class=\"kp\">false</span>\n<span class=\"c1\"># =&gt; ALTER TABLE \"articles\" ADD CONSTRAINT ... FOREIGN KEY (\"author_id\") REFERENCES \"authors\" (\"id\") NOT ENFORCED</span>\n\n<span class=\"n\">change_foreign_key</span> <span class=\"ss\">:articles</span><span class=\"p\">,</span> <span class=\"ss\">:authors</span><span class=\"p\">,</span> <span class=\"ss\">enforced: </span><span class=\"kp\">true</span>\n<span class=\"c1\"># =&gt; ALTER TABLE \"articles\" ALTER CONSTRAINT \"fk_rails_...\" ENFORCED</span>\n\n<span class=\"n\">change_foreign_key</span> <span class=\"ss\">:articles</span><span class=\"p\">,</span> <span class=\"ss\">:authors</span><span class=\"p\">,</span> <span class=\"ss\">enforced: </span><span class=\"kp\">false</span>\n<span class=\"c1\"># =&gt; ALTER TABLE \"articles\" ALTER CONSTRAINT \"fk_rails_...\" NOT ENFORCED</span>\n</code></pre></div></div>\n\n<p><em>Yasuo Honda</em></p>\n"
   },
   {
     "message": "*   Expose `cursor`, `order` and `use_ranges` attributes for `BatchEnumerator`\n\n    *fatkodima*",
@@ -810,6 +830,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   ActiveStorage ProxyController now set relevant `Last-Modified`\n\n    It is now set to `Blob#created_at` instead of being hardcoded to January 1st 2011.\n\n    *Jean Boussier*",
+    "project": "activestorage",
+    "date_merged": 1779184509000,
+    "author": "Jean Boussier",
+    "sha": "bb4b312b2f22df65c06472206a47d0369bc2413b",
+    "pr": "57388",
+    "merge_sha": "40c996a3ddadb3aaf0bfa20fcb81625475ada3bc",
+    "html": "<p>ActiveStorage ProxyController now set relevant <code>Last-Modified</code></p>\n\n<p>It is now set to <code>Blob#created_at</code> instead of being hardcoded to January 1st 2011.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Preserve attachment changes when converting record to another class using STI.\n\n    *fatkodima*",
     "project": "activestorage",
     "date_merged": 1779123118000,
@@ -988,6 +1018,16 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Support proc and symbol for `NumericalityValidator`s `:in` option\n\n    ```ruby\n    validates_numericality_of :price, in: ->(o) { 0..o.max_price }\n    ```\n\n    or\n\n    ```ruby\n    validates_numericality_of :price, in: :price_range\n\n    def price_range\n      0..max_price\n    end\n    ```\n\n    *Thomas Sevestre*",
+    "project": "activemodel",
+    "date_merged": 1779187459000,
+    "author": "Thomas",
+    "sha": "5c09ff6107864aa4ef4610bb714c730d217ebc23",
+    "pr": "46262",
+    "merge_sha": "196ecd78bdf54ebdc37a57091c3a43e6fb75e819",
+    "html": "<p>Support proc and symbol for <code>NumericalityValidator</code>s <code>:in</code> option</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_numericality_of</span> <span class=\"ss\">:price</span><span class=\"p\">,</span> <span class=\"ss\">in: </span><span class=\"o\">-&gt;</span><span class=\"p\">(</span><span class=\"n\">o</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"mi\">0</span><span class=\"o\">..</span><span class=\"n\">o</span><span class=\"p\">.</span><span class=\"nf\">max_price</span> <span class=\"p\">}</span>\n</code></pre></div></div>\n\n<p>or</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_numericality_of</span> <span class=\"ss\">:price</span><span class=\"p\">,</span> <span class=\"ss\">in: :price_range</span>\n\n<span class=\"k\">def</span> <span class=\"nf\">price_range</span>\n  <span class=\"mi\">0</span><span class=\"o\">..</span><span class=\"n\">max_price</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Thomas Sevestre</em></p>\n"
   },
   {
     "message": "*   Combine `:if`, `:unless`, and `:on` options when specified at both the\n    `validates` level and the per-validator level, instead of the per-validator\n    options silently replacing the top-level ones.\n\n    Before, `validates :title, presence: { if: :local? }, if: :global?` would\n    only check `local?`, ignoring `global?` entirely. Now both conditions must\n    pass for the validation to run.\n\n    Fixes #55761.\n\n    *Denis Savchuk*",
