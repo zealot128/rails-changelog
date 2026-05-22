@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Release the executor state eagerly on rack hijack in\n    `ActionDispatch::Executor`.\n\n    The executor completed its state via the response body's `close`\n    callback (or `rack.response_finished` where available). For WebSocket\n    upgrades and full rack hijack the body becomes a long-lived streaming\n    connection, so `close` never fires until the socket closes. Under\n    Puma this was masked because Action Cable's hijack detaches to a\n    worker pool; under fiber-scheduled servers (e.g. Falcon) the request\n    fiber stays inline and the reloader share is held until the client\n    disconnects, blocking every subsequent reload.\n\n    The executor now detects hijacked responses -- HTTP 101 upgrades and\n    `rack.hijack_io` -- and completes the state immediately rather than\n    waiting on body close.\n\n    *Joel Junström*",
+    "project": "actionpack",
+    "date_merged": 1779391746000,
+    "author": "Joel Junström",
+    "sha": "ad13be4b75d04c8211bff4e00ab17c2a31dce237",
+    "pr": "57425",
+    "merge_sha": "2098a9b1c180f699e55e4cd2d03aa46d538dccb9",
+    "html": "<p>Release the executor state eagerly on rack hijack in<br />\n<code>ActionDispatch::Executor</code>.</p>\n\n<p>The executor completed its state via the response body’s <code>close</code><br />\ncallback (or <code>rack.response_finished</code> where available). For WebSocket<br />\nupgrades and full rack hijack the body becomes a long-lived streaming<br />\nconnection, so <code>close</code> never fires until the socket closes. Under<br />\nPuma this was masked because Action Cable’s hijack detaches to a<br />\nworker pool; under fiber-scheduled servers (e.g. Falcon) the request<br />\nfiber stays inline and the reloader share is held until the client<br />\ndisconnects, blocking every subsequent reload.</p>\n\n<p>The executor now detects hijacked responses – HTTP 101 upgrades and<br />\n<code>rack.hijack_io</code> – and completes the state immediately rather than<br />\nwaiting on body close.</p>\n\n<p><em>Joel Junström</em></p>\n"
+  },
+  {
     "message": "*   Add `ActionController::Parameters#deep_transform_values` and `deep_transform_values!`.\n\n    Mirrors the existing `deep_transform_keys` / `deep_transform_keys!` pair,\n    and matches `Hash#deep_transform_values` from Active Support. The block is\n    yielded only for leaf values; nested hashes, arrays, and `Parameters`\n    instances are traversed automatically. The returned instance carries the\n    same `permitted?` status as the receiver.\n\n    Previously, transforming every nested value required dropping out of the\n    strong-parameters guardrails:\n\n    ```ruby\n    params.to_unsafe_h.deep_transform_values { |v| v.is_a?(String) ? v.strip : v }\n    ```\n\n    With this addition, the same transformation keeps the result inside\n    `ActionController::Parameters`, so it still has to be filtered through\n    `permit` / `expect` before mass assignment:\n\n    ```ruby\n    params = ActionController::Parameters.new(\n      user: { email: \"  ALICE@EXAMPLE.COM  \", profile: { bio: \"  Hello world  \" } }\n    )\n    params.deep_transform_values { |v| v.is_a?(String) ? v.strip.downcase : v }\n    # => #<ActionController::Parameters {\"user\"=>#<ActionController::Parameters {\"email\"=>\"alice@example.com\", \"profile\"=>#<ActionController::Parameters {\"bio\"=>\"hello world\"} permitted: false>} permitted: false>} permitted: false>\n    ```\n\n    *Edil Talantbek uulu*",
     "project": "actionpack",
     "date_merged": 1779309518000,
@@ -278,6 +288,66 @@
     "pr": "56345",
     "merge_sha": "e2d407dd8bf3747923d68fbc06b676c27aff9f03",
     "html": "<p>Add <code>svg:</code> renderer:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Page</span>\n  <span class=\"k\">def</span> <span class=\"nf\">to_svg</span>\n    <span class=\"n\">body</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">PagesController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActionController</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"k\">def</span> <span class=\"nf\">show</span>\n    <span class=\"vi\">@page</span> <span class=\"o\">=</span> <span class=\"no\">Page</span><span class=\"p\">.</span><span class=\"nf\">find</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"p\">[</span><span class=\"ss\">:id</span><span class=\"p\">])</span>\n\n    <span class=\"n\">respond_to</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"nb\">format</span><span class=\"o\">|</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">html</span>\n      <span class=\"nb\">format</span><span class=\"p\">.</span><span class=\"nf\">svg</span> <span class=\"p\">{</span> <span class=\"n\">render</span> <span class=\"ss\">svg: </span><span class=\"vi\">@page</span> <span class=\"p\">}</span>\n    <span class=\"k\">end</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Thiago Youssef</em></p>\n"
+  },
+  {
+    "message": "*   Add the latest standardized features to `permissions_policy`\n\n    Add the following features that have been standardized since the list was last updated:\n\n    * `attribution-reporting`\n    * `battery`\n    * `bluetooth`\n    * `ch-ua`\n    * `ch-ua-arch`\n    * `ch-ua-bitness`\n    * `ch-ua-full-version`\n    * `ch-ua-full-version-list`\n    * `ch-ua-high-entropy-values`\n    * `ch-ua-mobile`\n    * `ch-ua-model`\n    * `ch-ua-platform`\n    * `ch-ua-platform-version`\n    * `ch-ua-wow64`\n    * `compute-pressure`\n    * `cross-origin-isolated`\n    * `direct-sockets`\n    * `execution-while-not-rendered`\n    * `execution-while-out-of-viewport`\n    * `identity-credentials-get`\n    * `mediasession`\n    * `navigation-override`\n    * `otp-credentials`\n    * `publickey-credentials-get`\n    * `storage-access`\n    * `window-management`\n    * `xr-spatial-tracking`\n\n    *Ruben Arakelyan*",
+    "project": "actionpack",
+    "date_merged": 1779381755000,
+    "author": "Ruben Arakelyan",
+    "sha": "47896e742e6afd3e0f8cdf8504dd6d35b3667d9b",
+    "pr": "57404",
+    "merge_sha": "3dadd10c72f161460626002f152ae426b582c64e",
+    "html": "<p>Add the latest standardized features to <code>permissions_policy</code></p>\n\n<p>Add the following features that have been standardized since the list was last updated:</p>\n\n<ul>\n  <li><code>attribution-reporting</code></li>\n  <li><code>battery</code></li>\n  <li><code>bluetooth</code></li>\n  <li><code>ch-ua</code></li>\n  <li><code>ch-ua-arch</code></li>\n  <li><code>ch-ua-bitness</code></li>\n  <li><code>ch-ua-full-version</code></li>\n  <li><code>ch-ua-full-version-list</code></li>\n  <li><code>ch-ua-high-entropy-values</code></li>\n  <li><code>ch-ua-mobile</code></li>\n  <li><code>ch-ua-model</code></li>\n  <li><code>ch-ua-platform</code></li>\n  <li><code>ch-ua-platform-version</code></li>\n  <li><code>ch-ua-wow64</code></li>\n  <li><code>compute-pressure</code></li>\n  <li><code>cross-origin-isolated</code></li>\n  <li><code>direct-sockets</code></li>\n  <li><code>execution-while-not-rendered</code></li>\n  <li><code>execution-while-out-of-viewport</code></li>\n  <li><code>identity-credentials-get</code></li>\n  <li><code>mediasession</code></li>\n  <li><code>navigation-override</code></li>\n  <li><code>otp-credentials</code></li>\n  <li><code>publickey-credentials-get</code></li>\n  <li><code>storage-access</code></li>\n  <li><code>window-management</code></li>\n  <li><code>xr-spatial-tracking</code></li>\n</ul>\n\n<p><em>Ruben Arakelyan</em></p>\n"
+  },
+  {
+    "message": "*   Allow `create_join_table` to accept a primary key.\n\n    This is useful for databases like PostgreSQL where logical replication requires primary\n    keys on all tables.\n\n    ```ruby\n    create_join_table :assemblies, :parts, primary_key: [:assembly_id, :part_id]\n    ```\n\n    This generates a join table with a composite primary key on both foreign key columns.\n\n    *Genadi Samokovarov*",
+    "project": "activerecord",
+    "date_merged": 1779473357000,
+    "author": "Genadi Samokovarov",
+    "sha": "8aab53e31290a1d42414dd66d14519fda1941d7f",
+    "pr": "56195",
+    "merge_sha": "5fe9381d23ad05ed618dc52e816b5bea6d404b67",
+    "html": "<p>Allow <code>create_join_table</code> to accept a primary key.</p>\n\n<p>This is useful for databases like PostgreSQL where logical replication requires primary<br />\nkeys on all tables.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">create_join_table</span> <span class=\"ss\">:assemblies</span><span class=\"p\">,</span> <span class=\"ss\">:parts</span><span class=\"p\">,</span> <span class=\"ss\">primary_key: </span><span class=\"p\">[</span><span class=\"ss\">:assembly_id</span><span class=\"p\">,</span> <span class=\"ss\">:part_id</span><span class=\"p\">]</span>\n</code></pre></div></div>\n\n<p>This generates a join table with a composite primary key on both foreign key columns.</p>\n\n<p><em>Genadi Samokovarov</em></p>\n"
+  },
+  {
+    "message": "*   Fix Active Record Pool Reaper thread leak after `Parallelization#shutdown`.\n\n    After parallelized test runs, the parent process leaked the Active Record Pool\n    Reaper thread, holding open connection pools and file descriptors for up to\n    `reaping_frequency` seconds (or indefinitely if never reaped).\n\n    Three fixes: `Parallelization#shutdown` now calls `run_cleanup_hooks`;\n    Active Record registers a cleanup hook that discards all connection pools; and\n    `ConnectionPool#discard!` now calls `Reaper.discard_pool`, which immediately\n    kills and joins the reaper thread when no pools remain at that frequency.\n\n    *Ruy Rocha*",
+    "project": "activerecord",
+    "date_merged": 1779422485000,
+    "author": "Ruy Rocha",
+    "sha": "9499672c6675f5198c5e9727ae4a4588646430ae",
+    "pr": "57406",
+    "merge_sha": "e6fa1024102f927c226352cf5265235682f240bb",
+    "html": "<p>Fix Active Record Pool Reaper thread leak after <code>Parallelization#shutdown</code>.</p>\n\n<p>After parallelized test runs, the parent process leaked the Active Record Pool<br />\nReaper thread, holding open connection pools and file descriptors for up to<br />\n<code>reaping_frequency</code> seconds (or indefinitely if never reaped).</p>\n\n<p>Three fixes: <code>Parallelization#shutdown</code> now calls <code>run_cleanup_hooks</code>;<br />\nActive Record registers a cleanup hook that discards all connection pools; and<br />\n<code>ConnectionPool#discard!</code> now calls <code>Reaper.discard_pool</code>, which immediately<br />\nkills and joins the reaper thread when no pools remain at that frequency.</p>\n\n<p><em>Ruy Rocha</em></p>\n"
+  },
+  {
+    "message": "*   Reset `lock_version` after a nested savepoint rollback.\n\n    When a record was saved inside a `transaction(requires_new: true)` block\n    that later rolled back, the in-memory `lock_version` was left at the\n    incremented value while the database row was reverted by the savepoint.\n    Saving the same instance again raised `ActiveRecord::StaleObjectError`\n    because the WHERE clause used the bumped value that no longer existed in\n    the database.\n\n    Restore the locking column from the snapshot on savepoint rollback in\n    addition to the outermost transaction rollback handled in #57363.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1779392420000,
+    "author": "Kenta Ishizaki",
+    "sha": "533653f9972a53b1491adfe40ffd65de77f9b3d0",
+    "pr": "57400",
+    "merge_sha": "1188705fe428b5a4b2c13230ba8dd00f206a5f09",
+    "html": "<p>Reset <code>lock_version</code> after a nested savepoint rollback.</p>\n\n<p>When a record was saved inside a <code>transaction(requires_new: true)</code> block<br />\nthat later rolled back, the in-memory <code>lock_version</code> was left at the<br />\nincremented value while the database row was reverted by the savepoint.<br />\nSaving the same instance again raised <code>ActiveRecord::StaleObjectError</code><br />\nbecause the WHERE clause used the bumped value that no longer existed in<br />\nthe database.</p>\n\n<p>Restore the locking column from the snapshot on savepoint rollback in<br />\naddition to the outermost transaction rollback handled in #57363.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Fix duplicate `WHERE` conditions in `create_or_find_by`.\n\n    When `create_or_find_by` catches a `RecordNotUnique` error and retries the query, it now uses `rewhere` and `take!` to prevent duplicating existing scope conditions.\n\n    *Yavor Dashev*",
+    "project": "activerecord",
+    "date_merged": 1779389868000,
+    "author": "Yavor Dashev",
+    "sha": "2ce7755fa59bb65048b6dbe0b58e8daa8bf053b9",
+    "pr": "57223",
+    "merge_sha": "93c0385f93f2210cee7ca973f5ef07018a959718",
+    "html": "<p>Fix duplicate <code>WHERE</code> conditions in <code>create_or_find_by</code>.</p>\n\n<p>When <code>create_or_find_by</code> catches a <code>RecordNotUnique</code> error and retries the query, it now uses <code>rewhere</code> and <code>take!</code> to prevent duplicating existing scope conditions.</p>\n\n<p><em>Yavor Dashev</em></p>\n"
+  },
+  {
+    "message": "*   Allow to pass array values to `in_order_of`\n\n    Passing arrays allows to group records and order those groups with another query:\n\n    ```rb\n    Posts\n      .in_order_of(:state, [[:published, :canceled], :archived])\n      .order(created_at: :desc)\n    # =>\n    # SELECT \"posts\".* FROM \"posts\" WHERE \"posts\".\"state\" IN (1, 2, 3)\n    # ORDER BY CASE\n    #   WHEN \"posts\".\"state\" IN (1, 2) THEN 1\n    #   WHEN \"posts\".\"state\" = 3 THEN 2\n    #  END ASC, \"posts\".\"created_at\" DESC\n    ```\n\n    *Markus Doits*",
+    "project": "activerecord",
+    "date_merged": 1779369037000,
+    "author": "Markus Doits",
+    "sha": "b111ee76f44e4fe3ec18fd7d208e43dd60392bc8",
+    "pr": "52871",
+    "merge_sha": "e34516de818087ab3e3bb92fc0cb3c8cc6617a26",
+    "html": "<p>Allow to pass array values to <code>in_order_of</code></p>\n\n<p>Passing arrays allows to group records and order those groups with another query:</p>\n\n<div class=\"language-rb highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Posts</span>\n  <span class=\"p\">.</span><span class=\"nf\">in_order_of</span><span class=\"p\">(</span><span class=\"ss\">:state</span><span class=\"p\">,</span> <span class=\"p\">[[</span><span class=\"ss\">:published</span><span class=\"p\">,</span> <span class=\"ss\">:canceled</span><span class=\"p\">],</span> <span class=\"ss\">:archived</span><span class=\"p\">])</span>\n  <span class=\"p\">.</span><span class=\"nf\">order</span><span class=\"p\">(</span><span class=\"ss\">created_at: :desc</span><span class=\"p\">)</span>\n<span class=\"c1\"># =&gt;</span>\n<span class=\"c1\"># SELECT \"posts\".* FROM \"posts\" WHERE \"posts\".\"state\" IN (1, 2, 3)</span>\n<span class=\"c1\"># ORDER BY CASE</span>\n<span class=\"c1\">#   WHEN \"posts\".\"state\" IN (1, 2) THEN 1</span>\n<span class=\"c1\">#   WHEN \"posts\".\"state\" = 3 THEN 2</span>\n<span class=\"c1\">#  END ASC, \"posts\".\"created_at\" DESC</span>\n</code></pre></div></div>\n\n<p><em>Markus Doits</em></p>\n"
   },
   {
     "message": "*   On PostgreSQL 18.4+, `disable_referential_integrity` uses `NOT ENFORCED`/`ENFORCED`\n    instead of `DISABLE TRIGGER ALL`/`ENABLE TRIGGER ALL`, requiring only table ownership\n    rather than superuser privileges. Only currently `ENFORCED` foreign keys are toggled;\n    intentionally `NOT ENFORCED` foreign keys are left unchanged.\n\n    Unlike `ENABLE TRIGGER ALL`, restoring `ENFORCED` checks existing rows against the\n    constraint, so FK violations raise `ActiveRecord::InvalidForeignKey` rather than\n    `RuntimeError`. The toggle and restore run in a single transaction so a restoration\n    failure rolls back the initial `NOT ENFORCED` toggle too — preventing originally-\n    `ENFORCED` constraints from being left in a `NOT ENFORCED` state indistinguishable\n    from intentional ones.\n\n    Fixtures sharing FK relationships must be passed together to\n    `FixtureSet.create_fixtures` to ensure all referenced rows are present when\n    enforcement is restored.\n\n    `check_all_foreign_keys_valid!` skips `NOT ENFORCED` constraints on PostgreSQL 18.4+,\n    as `VALIDATE CONSTRAINT` cannot be applied to them.\n\n    Unlike `SET CONSTRAINTS ALL DEFERRED` (the approach attempted in rails/rails#27636\n    and reverted), `NOT ENFORCED` also suppresses referential actions such as\n    `ON DELETE CASCADE`, `SET NULL`, and `SET DEFAULT`.\n\n    *Yasuo Honda*",
@@ -858,6 +928,36 @@
     "pr": "56093",
     "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Parallelize `exist?` checks and uploads in `MirrorService#mirror` using\n    the existing internal thread pool. With N mirrors, wall time drops from\n    O(N) to O(1) network round-trips for both phases.\n\n    *Denis Savchuk*",
+    "project": "activestorage",
+    "date_merged": 1779393962000,
+    "author": "Denis Savchuk",
+    "sha": "e5121ca3a08953018b5fc03c5f52d0576efc7310",
+    "pr": "57171",
+    "merge_sha": "bf0dec9546476548d5dc3b01684f0008ea85b4e3",
+    "html": "<p>Parallelize <code>exist?</code> checks and uploads in <code>MirrorService#mirror</code> using<br />\nthe existing internal thread pool. With N mirrors, wall time drops from<br />\nO(N) to O(1) network round-trips for both phases.</p>\n\n<p><em>Denis Savchuk</em></p>\n"
+  },
+  {
+    "message": "*   Fix `MirrorService#mirror` raising `ActiveStorage::IntegrityError` when\n    mirroring without a checksum (e.g., `track_variants: false`).\n\n    *Denis Savchuk*",
+    "project": "activestorage",
+    "date_merged": 1779391202000,
+    "author": "Denis Savchuk",
+    "sha": "67b134ff325ff816347c561677c5a169a392b7df",
+    "pr": "57170",
+    "merge_sha": "b3134c15aea7151401fcde78bcee08e89180837c",
+    "html": "<p>Fix <code>MirrorService#mirror</code> raising <code>ActiveStorage::IntegrityError</code> when<br />\nmirroring without a checksum (e.g., <code>track_variants: false</code>).</p>\n\n<p><em>Denis Savchuk</em></p>\n"
+  },
+  {
+    "message": "*   Don't bump `lock_version` on attachment records' parents during blob analysis.\n\n    `ActiveStorage::AnalyzeJob` writes only to `Blob#metadata`. The cascade\n    that touches attached records (and their parents) exists for cache-key\n    invalidation; when those records use optimistic locking, the previous\n    behavior bumped `lock_version`, causing concurrent form edits to raise\n    spurious `ActiveRecord::StaleObjectError`s. The `updated_at` cascade is\n    preserved; the `lock_version` bump on this code path is now suppressed.\n\n    Fixes #55764.\n\n    *Greg Pavlik*",
+    "project": "activestorage",
+    "date_merged": 1779388205000,
+    "author": "Greg Pavlik",
+    "sha": "3bfe0edd993cbfc460498e64153ec0d9b7090c78",
+    "pr": "57284",
+    "merge_sha": "104b13b2da3c8f1546ecc0eeb183e88318b203d8",
+    "html": "<p>Don’t bump <code>lock_version</code> on attachment records’ parents during blob analysis.</p>\n\n<p><code>ActiveStorage::AnalyzeJob</code> writes only to <code>Blob#metadata</code>. The cascade<br />\nthat touches attached records (and their parents) exists for cache-key<br />\ninvalidation; when those records use optimistic locking, the previous<br />\nbehavior bumped <code>lock_version</code>, causing concurrent form edits to raise<br />\nspurious <code>ActiveRecord::StaleObjectError</code>s. The <code>updated_at</code> cascade is<br />\npreserved; the <code>lock_version</code> bump on this code path is now suppressed.</p>\n\n<p>Fixes #55764.</p>\n\n<p><em>Greg Pavlik</em></p>\n"
   },
   {
     "message": "*   Accept Tempfile as ActiveStorage attachable.\n\n    ```ruby\n    tempfile = Tempfile.open([\"users\", \".csv\"])\n    write_csv_to(tempfile)\n    export.csv.attach(tempfile)\n    ```\n\n    *Shouichi Kamiya*",
@@ -1640,6 +1740,16 @@
     "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
   },
   {
+    "message": "*   Fix `ActiveSupport::Concurrency::ShareLock` to honor `isolation_level`.\n\n    Lock ownership was keyed on `Thread.current`. Under\n    `config.active_support.isolation_level = :fiber`, all request fibers\n    on the same thread were treated as a single owner, and the reloader\n    interlock could admit an exclusive `:unload` while another fiber\n    still held a share — clearing autoloaded constants mid-request.\n\n    `ShareLock` now keys ownership on\n    `ActiveSupport::IsolatedExecutionState.context`, the same scope used\n    by `CurrentAttributes` and other per-execution state. Behavior under\n    `:thread` isolation is unchanged.\n\n    *Joel Junström*",
+    "project": "activesupport",
+    "date_merged": 1779391971000,
+    "author": "Joel Junström",
+    "sha": "c940e53198be4f5e98fe4a8af3133c708a590edd",
+    "pr": "57423",
+    "merge_sha": "0b99f0b9b1b90c359807a405aadc9a3a4e4765de",
+    "html": "<p>Fix <code>ActiveSupport::Concurrency::ShareLock</code> to honor <code>isolation_level</code>.</p>\n\n<p>Lock ownership was keyed on <code>Thread.current</code>. Under<br />\n<code>config.active_support.isolation_level = :fiber</code>, all request fibers<br />\non the same thread were treated as a single owner, and the reloader<br />\ninterlock could admit an exclusive <code>:unload</code> while another fiber<br />\nstill held a share — clearing autoloaded constants mid-request.</p>\n\n<p><code>ShareLock</code> now keys ownership on<br />\n<code>ActiveSupport::IsolatedExecutionState.context</code>, the same scope used<br />\nby <code>CurrentAttributes</code> and other per-execution state. Behavior under<br />\n<code>:thread</code> isolation is unchanged.</p>\n\n<p><em>Joel Junström</em></p>\n"
+  },
+  {
     "message": "*   Introduce `ActiveSupport::TimeFormats` and `ActiveSupport::DateFormats`\n    for registering custom date formats.\n\n    This allows adding custom date formats to `to_fs` without modifying the\n    global `Time::DATE_FORMATS` or `Date::DATE_FORMATS` hashes. Custom formats\n    are added via `ActiveSupport::TimeFormats.register` or\n    `ActiveSupport::DateFormats.register`, and will only be available to\n    `Time#to_fs`, and `Date#to_fs` respectively.\n\n    At the same time, the existing `Time::DATE_FORMATS` and `Date::DATE_FORMATS`\n    constants are still supported for backward compatibility, but they are now\n    deprecated and will be removed in the next version of Rails. This encourages\n    users to migrate to the new approach for better encapsulation and to avoid\n    potential conflicts with other libraries that may also modify the global\n    date formats.\n\n    ```ruby\n    ActiveSupport::TimeFormats.register(:month_and_year, '%B %Y')\n    ActiveSupport::DateFormats.register(\n      :short_ordinal,\n      ->(date) { date.strftime(\"%B #{date.day.ordinalize}\") }\n    )\n\n    Time.now.to_fs(:month_and_year) # => \"February 2024\"\n    Date.today.to_fs(:short_ordinal)  # => \"February 21st\"\n    ```\n\n    *Ufuk Kayserilioglu*",
     "project": "activesupport",
     "date_merged": 1779310073000,
@@ -1848,6 +1958,16 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Fix `collection_radio_buttons` and `collection_check_boxes` generating\n    a label `for` attribute that does not match the input `id` when a\n    collection value is `nil`.\n\n    *Kenta Ishizaki*",
+    "project": "actionview",
+    "date_merged": 1779400387000,
+    "author": "Kenta Ishizaki",
+    "sha": "257d286501b06e229b91563f9c7e2048004b7cc9",
+    "pr": "57209",
+    "merge_sha": "8dedc689b593e0d510189e373aeb52f0e0331798",
+    "html": "<p>Fix <code>collection_radio_buttons</code> and <code>collection_check_boxes</code> generating<br />\na label <code>for</code> attribute that does not match the input <code>id</code> when a<br />\ncollection value is <code>nil</code>.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
   },
   {
     "message": "*   Pass render options and block to calls to `#render_in`\n\n    ```ruby\n    class Greeting\n      def render_in(view_context, **)\n        if block_given?\n          view_context.render(html: yield)\n        else\n          view_context.render(inline: <<~ERB.strip, **)\n            Hello <%= local_assigns[:name] || \"World\" %>\n          ERB\n        end\n      end\n    end\n\n    render(Greeting.new)                                        # => \"Hello, World\"\n    render(Greeting.new, name: \"Local\")                         # => \"Hello, Local\"\n    render(renderable: Greeting.new, locals: { name: \"Local\" }) # => \"Hello, Local\"\n    render(Greeting.new) { \"Hello, Block\" }                     # => \"Hello, Block\"\n    ```\n\n    *Sean Doyle*",
