@@ -1320,6 +1320,26 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Return `422 Unprocessable Content` for Mandrill events payloads that don't parse to a JSON array of objects.\n\n    Previously, valid JSON of the wrong shape (e.g. `null`, a scalar, an object, or an array containing non-objects)\n    raised an unhandled `NoMethodError` and resulted in a 500. This now matches the existing behavior for invalid JSON.\n\n    *Nesan Vettivel*",
+    "project": "actionmailbox",
+    "date_merged": 1779533372000,
+    "author": "Nesan Vettivel",
+    "sha": "8503367754b3b31c201ce098135c81fa54c136fb",
+    "pr": "57452",
+    "merge_sha": "bae388d48fe797635ee0385ee7dec1865957717e",
+    "html": "<p>Return <code>422 Unprocessable Content</code> for Mandrill events payloads that don’t parse to a JSON array of objects.</p>\n\n<p>Previously, valid JSON of the wrong shape (e.g. <code>null</code>, a scalar, an object, or an array containing non-objects)<br />\nraised an unhandled <code>NoMethodError</code> and resulted in a 500. This now matches the existing behavior for invalid JSON.</p>\n\n<p><em>Nesan Vettivel</em></p>\n"
+  },
+  {
+    "message": "*   Return `422 Unprocessable Content` for malformed SendGrid envelopes.\n\n    *Andrii Furmanets*",
+    "project": "actionmailbox",
+    "date_merged": 1779534452000,
+    "author": "Andrii Furmanets",
+    "sha": "2df5aef78cdb3a9008a624075234dea5e05216fa",
+    "pr": "57334",
+    "merge_sha": "8196221aa4b9955d37ef4b8b8376aecf019c07c7",
+    "html": "<p>Return <code>422 Unprocessable Content</code> for malformed SendGrid envelopes.</p>\n\n<p><em>Andrii Furmanets</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `Mail::Address.wrap` because it isn't used.\n\n    *Gannon McGibbon*",
     "project": "actionmailbox",
     "date_merged": 1770835947000,
