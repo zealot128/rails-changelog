@@ -300,6 +300,26 @@
     "html": "<p>Add the latest standardized features to <code>permissions_policy</code></p>\n\n<p>Add the following features that have been standardized since the list was last updated:</p>\n\n<ul>\n  <li><code>attribution-reporting</code></li>\n  <li><code>battery</code></li>\n  <li><code>bluetooth</code></li>\n  <li><code>ch-ua</code></li>\n  <li><code>ch-ua-arch</code></li>\n  <li><code>ch-ua-bitness</code></li>\n  <li><code>ch-ua-full-version</code></li>\n  <li><code>ch-ua-full-version-list</code></li>\n  <li><code>ch-ua-high-entropy-values</code></li>\n  <li><code>ch-ua-mobile</code></li>\n  <li><code>ch-ua-model</code></li>\n  <li><code>ch-ua-platform</code></li>\n  <li><code>ch-ua-platform-version</code></li>\n  <li><code>ch-ua-wow64</code></li>\n  <li><code>compute-pressure</code></li>\n  <li><code>cross-origin-isolated</code></li>\n  <li><code>direct-sockets</code></li>\n  <li><code>execution-while-not-rendered</code></li>\n  <li><code>execution-while-out-of-viewport</code></li>\n  <li><code>identity-credentials-get</code></li>\n  <li><code>mediasession</code></li>\n  <li><code>navigation-override</code></li>\n  <li><code>otp-credentials</code></li>\n  <li><code>publickey-credentials-get</code></li>\n  <li><code>storage-access</code></li>\n  <li><code>window-management</code></li>\n  <li><code>xr-spatial-tracking</code></li>\n</ul>\n\n<p><em>Ruben Arakelyan</em></p>\n"
   },
   {
+    "message": "*   Include the list of valid values in the `ArgumentError` raised when assigning\n    an invalid value to an enum attribute.\n\n    ```ruby\n    Book.new(status: \"bogus\")\n    # ArgumentError: 'bogus' is not a valid status. Valid values are: \"proposed\", \"written\", \"published\"\n    ```\n\n    *Hammad Khan*",
+    "project": "activerecord",
+    "date_merged": 1779488955000,
+    "author": "hammadxcm",
+    "sha": "fcf4393f045302df4937ee1e5f5525c3515136d0",
+    "pr": "57446",
+    "merge_sha": "53fc866b05a7c5ea5b6080f900a7248489231746",
+    "html": "<p>Include the list of valid values in the <code>ArgumentError</code> raised when assigning<br />\nan invalid value to an enum attribute.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Book</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"ss\">status: </span><span class=\"s2\">\"bogus\"</span><span class=\"p\">)</span>\n<span class=\"c1\"># ArgumentError: 'bogus' is not a valid status. Valid values are: \"proposed\", \"written\", \"published\"</span>\n</code></pre></div></div>\n\n<p><em>Hammad Khan</em></p>\n"
+  },
+  {
+    "message": "*   Include the mismatched keys in the error raised by `insert_all` / `upsert_all`\n    when the inserted objects have inconsistent attributes.\n\n    ```ruby\n    Book.insert_all [{ name: \"Rework\", author_id: 1 }, { name: \"Remote\", author_id: 1, isbn: \"x\" }]\n    # ArgumentError: All objects being inserted must have the same keys (extra: [:isbn])\n    ```\n\n    *Hammad Khan*",
+    "project": "activerecord",
+    "date_merged": 1779485951000,
+    "author": "hammadxcm",
+    "sha": "a0491b59f30b1a3b5e12f3d68023d1b5144c8e8a",
+    "pr": "57447",
+    "merge_sha": "cd9db101a2e14caee952469e0c61cf42f9611f61",
+    "html": "<p>Include the mismatched keys in the error raised by <code>insert_all</code> / <code>upsert_all</code><br />\nwhen the inserted objects have inconsistent attributes.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Book</span><span class=\"p\">.</span><span class=\"nf\">insert_all</span> <span class=\"p\">[{</span> <span class=\"ss\">name: </span><span class=\"s2\">\"Rework\"</span><span class=\"p\">,</span> <span class=\"ss\">author_id: </span><span class=\"mi\">1</span> <span class=\"p\">},</span> <span class=\"p\">{</span> <span class=\"ss\">name: </span><span class=\"s2\">\"Remote\"</span><span class=\"p\">,</span> <span class=\"ss\">author_id: </span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"ss\">isbn: </span><span class=\"s2\">\"x\"</span> <span class=\"p\">}]</span>\n<span class=\"c1\"># ArgumentError: All objects being inserted must have the same keys (extra: [:isbn])</span>\n</code></pre></div></div>\n\n<p><em>Hammad Khan</em></p>\n"
+  },
+  {
     "message": "*   Allow `create_join_table` to accept a primary key.\n\n    This is useful for databases like PostgreSQL where logical replication requires primary\n    keys on all tables.\n\n    ```ruby\n    create_join_table :assemblies, :parts, primary_key: [:assembly_id, :part_id]\n    ```\n\n    This generates a join table with a composite primary key on both foreign key columns.\n\n    *Genadi Samokovarov*",
     "project": "activerecord",
     "date_merged": 1779473357000,
@@ -1388,6 +1408,16 @@
     "pr": "56283",
     "merge_sha": "b6a07894d6920c5444e5a8dca2f4dc2d0b5a9fb2",
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Validate subcommand in `rails plugin` command.\n\n    `rails plugin foo bar` silently ignored the invalid subcommand \"foo\"\n    and proceeded to create a plugin named \"bar\". Now it prints an error\n    and exits with status 1.\n\n    Fixes #57430.\n\n    *Ruy Rocha*",
+    "project": "railties",
+    "date_merged": 1779484913000,
+    "author": "Ruy Rocha",
+    "sha": "adc0f4a9a412b55b5e3afd47b4110b7ad1dee959",
+    "pr": "57431",
+    "merge_sha": "c94d43d5c0aec02a330e336bb9d1917acb0d0843",
+    "html": "<p>Validate subcommand in <code>rails plugin</code> command.</p>\n\n<p><code>rails plugin foo bar</code> silently ignored the invalid subcommand “foo”<br />\nand proceeded to create a plugin named “bar”. Now it prints an error<br />\nand exits with status 1.</p>\n\n<p>Fixes #57430.</p>\n\n<p><em>Ruy Rocha</em></p>\n"
   },
   {
     "message": "*   Prevent the internal development welcome route from being duplicated on route reloads.\n\n    *Elliot Temple*",
