@@ -950,6 +950,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Prevent `ActiveStorage.touch_attachment_records = false` from crashing the attachment of a Blob.\n\n    When `ActiveStorage.touch_attachment_records` was set to `false`, attaching a existing Blob to a Record\n    would raise an error. This is now fixed.\n\n    *Edouard Chin*",
+    "project": "activestorage",
+    "date_merged": 1779798273000,
+    "author": "Edouard CHIN",
+    "sha": "072f108ff983a46aa0a2ad0ca4003ca6b732e960",
+    "pr": "55156",
+    "merge_sha": "b5270673a754808984f7cc1afb36c0b72cb1ed3f",
+    "html": "<p>Prevent <code>ActiveStorage.touch_attachment_records = false</code> from crashing the attachment of a Blob.</p>\n\n<p>When <code>ActiveStorage.touch_attachment_records</code> was set to <code>false</code>, attaching a existing Blob to a Record<br />\nwould raise an error. This is now fixed.</p>\n\n<p><em>Edouard Chin</em></p>\n"
+  },
+  {
     "message": "*   Parallelize `exist?` checks and uploads in `MirrorService#mirror` using\n    the existing internal thread pool. With N mirrors, wall time drops from\n    O(N) to O(1) network round-trips for both phases.\n\n    *Denis Savchuk*",
     "project": "activestorage",
     "date_merged": 1779393962000,
