@@ -300,6 +300,16 @@
     "html": "<p>Add the latest standardized features to <code>permissions_policy</code></p>\n\n<p>Add the following features that have been standardized since the list was last updated:</p>\n\n<ul>\n  <li><code>attribution-reporting</code></li>\n  <li><code>battery</code></li>\n  <li><code>bluetooth</code></li>\n  <li><code>ch-ua</code></li>\n  <li><code>ch-ua-arch</code></li>\n  <li><code>ch-ua-bitness</code></li>\n  <li><code>ch-ua-full-version</code></li>\n  <li><code>ch-ua-full-version-list</code></li>\n  <li><code>ch-ua-high-entropy-values</code></li>\n  <li><code>ch-ua-mobile</code></li>\n  <li><code>ch-ua-model</code></li>\n  <li><code>ch-ua-platform</code></li>\n  <li><code>ch-ua-platform-version</code></li>\n  <li><code>ch-ua-wow64</code></li>\n  <li><code>compute-pressure</code></li>\n  <li><code>cross-origin-isolated</code></li>\n  <li><code>direct-sockets</code></li>\n  <li><code>execution-while-not-rendered</code></li>\n  <li><code>execution-while-out-of-viewport</code></li>\n  <li><code>identity-credentials-get</code></li>\n  <li><code>mediasession</code></li>\n  <li><code>navigation-override</code></li>\n  <li><code>otp-credentials</code></li>\n  <li><code>publickey-credentials-get</code></li>\n  <li><code>storage-access</code></li>\n  <li><code>window-management</code></li>\n  <li><code>xr-spatial-tracking</code></li>\n</ul>\n\n<p><em>Ruben Arakelyan</em></p>\n"
   },
   {
+    "message": "*   Raise `ActiveRecord::MultiparameterAssignmentErrors` instead of `NoMethodError`\n    when assigning a malformed multiparameter attribute name.\n\n    A key routed to the multiparameter code path but missing a closing parenthesis\n    (e.g. `\"written_on(\"`) used to crash with `NoMethodError: undefined method\n    'first' for nil` inside `find_parameter_position`. It now raises the same\n    `MultiparameterAssignmentErrors` already used for other invalid multiparameter\n    input, so callers can rescue a single documented error class.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1779832293000,
+    "author": "Kenta Ishizaki",
+    "sha": "1ba1e627a5bf660dd96380d16848bbe854ee3e93",
+    "pr": "57243",
+    "merge_sha": "28d72c7c8cfb1e0003a7f16c0e26e4736b840302",
+    "html": "<p>Raise <code>ActiveRecord::MultiparameterAssignmentErrors</code> instead of <code>NoMethodError</code><br />\nwhen assigning a malformed multiparameter attribute name.</p>\n\n<p>A key routed to the multiparameter code path but missing a closing parenthesis<br />\n(e.g. <code>\"written_on(\"</code>) used to crash with <code>NoMethodError: undefined method\n'first' for nil</code> inside <code>find_parameter_position</code>. It now raises the same<br />\n<code>MultiparameterAssignmentErrors</code> already used for other invalid multiparameter<br />\ninput, so callers can rescue a single documented error class.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Include the list of valid values in the `ArgumentError` raised when assigning\n    an invalid value to an enum attribute.\n\n    ```ruby\n    Book.new(status: \"bogus\")\n    # ArgumentError: 'bogus' is not a valid status. Valid values are: \"proposed\", \"written\", \"published\"\n    ```\n\n    *Hammad Khan*",
     "project": "activerecord",
     "date_merged": 1779488955000,
@@ -840,6 +850,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Allow queue adapters to inspect a job when deciding whether to interrupt at\n    a checkpoint, and to optionally return a specific interruption reason.\n\n    Queue adapters that implement `stopping?` must accept the job as an\n    optional positional argument, i.e. `def stopping?(job = nil)`, in order to\n    work with this version and older versions of Rails. A `true` return value\n    will use 'stopping' as the interruption reason, any other truthy value will\n    be used as-is.\n\n    *Bart de Water*",
+    "project": "activejob",
+    "date_merged": 1779833625000,
+    "author": "Bart de Water",
+    "sha": "6d1c401dc7c73e2a39ffbd42a22678cbbcf23d17",
+    "pr": "57472",
+    "merge_sha": "4319ca7259c644e0b4d01cbeaa0470798662d0a2",
+    "html": "<p>Allow queue adapters to inspect a job when deciding whether to interrupt at<br />\na checkpoint, and to optionally return a specific interruption reason.</p>\n\n<p>Queue adapters that implement <code>stopping?</code> must accept the job as an<br />\noptional positional argument, i.e. <code>def stopping?(job = nil)</code>, in order to<br />\nwork with this version and older versions of Rails. A <code>true</code> return value<br />\nwill use ‘stopping’ as the interruption reason, any other truthy value will<br />\nbe used as-is.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
     "message": "*   Add `ActiveJob::Attributes` for declaring typed attributes that persist across\n    job serialization and deserialization. It is included by `ActiveJob::Continuable`\n    but can also be used standalone.\n\n    It uses the Active Model Attributes API to define typed, defaulted\n    attributes on jobs. Attribute values are automatically included in the\n    serialized job data and restored on deserialization, eliminating the need\n    to manually override `serialize` and `deserialize`.\n\n    This is especially useful with `ActiveJob::Continuable`, where a job may be\n    interrupted and resumed and attributes are preserved across resumptions.\n\n    ```ruby\n    class SubmitEnrollmentJob < ApplicationJob\n      include ActiveJob::Continuable\n\n      attribute :payment_token, :string\n      attribute :billing_profile_id, :integer\n\n      def perform(enrollment)\n        step(:tokenize_payment_instrument) do\n          self.payment_token = PaymentGateway.tokenize(enrollment.user.payment_instrument)\n        end\n\n        step(:create_billing_profile) do\n          self.billing_profile_id = BillingProfileApi.create(customer_id: enrollment.user_id)\n        end\n\n        step(:submit_enrollment) do\n          submission_id = EnrollmentApi.submit(enrollment, billing_profile_id)\n          enrollment.update!(status: 'processing', submission_id: submission_id)\n        end\n      end\n    end\n    ```\n\n    *Bart de Water*",
     "project": "activejob",
     "date_merged": 1777998707000,
@@ -1330,6 +1350,16 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Return `422 Unprocessable Content` for Mandrill inbound events that are missing a raw message.\n\n    *Andrii Furmanets*",
+    "project": "actionmailbox",
+    "date_merged": 1779831291000,
+    "author": "Andrii Furmanets",
+    "sha": "5b68bf2b3cca32edf888a8733ce8f6d1445295a5",
+    "pr": "57462",
+    "merge_sha": "6b6c72c8348abe057585c7cf080378f215c67d79",
+    "html": "<p>Return <code>422 Unprocessable Content</code> for Mandrill inbound events that are missing a raw message.</p>\n\n<p><em>Andrii Furmanets</em></p>\n"
+  },
+  {
     "message": "*   Return `422 Unprocessable Content` for Mandrill events payloads that don't parse to a JSON array of objects.\n\n    Previously, valid JSON of the wrong shape (e.g. `null`, a scalar, an object, or an array containing non-objects)\n    raised an unhandled `NoMethodError` and resulted in a 500. This now matches the existing behavior for invalid JSON.\n\n    *Nesan Vettivel*",
     "project": "actionmailbox",
     "date_merged": 1779533372000,
@@ -1798,6 +1828,16 @@
     "pr": "55913",
     "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
     "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
+  },
+  {
+    "message": "*   Duplicate the `context` hash passed to `ActiveSupport::ErrorReport#handle` for each subscriber.\n    This prevents mutations done on the `context` by one subscriber from effecting the others.\n\n    *Andrew Novoselac*",
+    "project": "activesupport",
+    "date_merged": 1779833390000,
+    "author": "andrew.novoselac@shopify.com",
+    "sha": "d9e293ee196c42349f0f2ea4596b5af692057f31",
+    "pr": "54542",
+    "merge_sha": "6a4574eb90739a68343e9c0fee3afb9a8210e0eb",
+    "html": "<p>Duplicate the <code>context</code> hash passed to <code>ActiveSupport::ErrorReport#handle</code> for each subscriber.<br />\nThis prevents mutations done on the <code>context</code> by one subscriber from effecting the others.</p>\n\n<p><em>Andrew Novoselac</em></p>\n"
   },
   {
     "message": "*   Fix `ActiveSupport::Concurrency::ShareLock` to honor `isolation_level`.\n\n    Lock ownership was keyed on `Thread.current`. Under\n    `config.active_support.isolation_level = :fiber`, all request fibers\n    on the same thread were treated as a single owner, and the reloader\n    interlock could admit an exclusive `:unload` while another fiber\n    still held a share — clearing autoloaded constants mid-request.\n\n    `ShareLock` now keys ownership on\n    `ActiveSupport::IsolatedExecutionState.context`, the same scope used\n    by `CurrentAttributes` and other per-execution state. Behavior under\n    `:thread` isolation is unchanged.\n\n    *Joel Junström*",
