@@ -110,6 +110,16 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Respect calls to `#reject` in `before_subscribe` callbacks.\n\n    It doesn't call `#subscribed` if a `before_subscribe` callback calls `#reject`.\n\n    *Joshua Young*",
+    "project": "actioncable",
+    "date_merged": 1780005500000,
+    "author": "Joshua Young",
+    "sha": "5b1fefe5aa6816d4b2154186cdfa004eca7432d1",
+    "pr": "52229",
+    "merge_sha": "3f9406c9a39f80797d0cdf661d49ee83241cf22f",
+    "html": "<p>Respect calls to <code>#reject</code> in <code>before_subscribe</code> callbacks.</p>\n\n<p>It doesn’t call <code>#subscribed</code> if a <code>before_subscribe</code> callback calls <code>#reject</code>.</p>\n\n<p><em>Joshua Young</em></p>\n"
+  },
+  {
     "message": "*   Extract low-level Action Cable server responsibilities into `ActionCable::Server`\n    abstractions.\n\n    This refactoring separates socket handling, concurrency primitives, and\n    other transport-specific behavior from application-level connections and\n    channels. It makes Action Cable more flexible as a framework and opens the\n    door to alternative server implementations without changing user-facing\n    channel and connection code.\n\n    *Vladimir Dementyev*",
     "project": "actioncable",
     "date_merged": 1779988671000,
@@ -970,6 +980,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Add `#default_order` query method and association option which can be used to order records when no other order is specified.\n\n    This extends the functionality offered by `#implicit_order_column` to scopes and associations.\n\n    Usage:\n\n    ```ruby\n    class Post < ApplicationRecord\n      has_many :comments, default_order: :likes\n      # .. or ..\n      has_many :comments, -> { default_order(:likes) }\n    end\n\n    post = Post.first\n\n    post.comments # comments ordered by `likes`\n    post.comments.order(:created_at) # comments ordered by `created_at`\n    ```\n\n    *Dan Ungureanu*",
+    "project": "activerecord",
+    "date_merged": 1780008043000,
+    "author": "Dan Ungureanu",
+    "sha": "aa765903715640e53bcfb9b9541de1b2a32ebe2b",
+    "pr": "39525",
+    "merge_sha": "3e150a707a8e8257291bd59eea77f4e508d8bd15",
+    "html": "<p>Add <code>#default_order</code> query method and association option which can be used to order records when no other order is specified.</p>\n\n<p>This extends the functionality offered by <code>#implicit_order_column</code> to scopes and associations.</p>\n\n<p>Usage:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Post</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n  <span class=\"n\">has_many</span> <span class=\"ss\">:comments</span><span class=\"p\">,</span> <span class=\"ss\">default_order: :likes</span>\n  <span class=\"c1\"># .. or ..</span>\n  <span class=\"n\">has_many</span> <span class=\"ss\">:comments</span><span class=\"p\">,</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">default_order</span><span class=\"p\">(</span><span class=\"ss\">:likes</span><span class=\"p\">)</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n\n<span class=\"n\">post</span> <span class=\"o\">=</span> <span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">first</span>\n\n<span class=\"n\">post</span><span class=\"p\">.</span><span class=\"nf\">comments</span> <span class=\"c1\"># comments ordered by `likes`</span>\n<span class=\"n\">post</span><span class=\"p\">.</span><span class=\"nf\">comments</span><span class=\"p\">.</span><span class=\"nf\">order</span><span class=\"p\">(</span><span class=\"ss\">:created_at</span><span class=\"p\">)</span> <span class=\"c1\"># comments ordered by `created_at`</span>\n</code></pre></div></div>\n\n<p><em>Dan Ungureanu</em></p>\n"
+  },
+  {
     "message": "*   Raise `ActiveRecord::MultiparameterAssignmentErrors` instead of `NoMethodError`\n    when assigning a malformed multiparameter attribute name.\n\n    A key routed to the multiparameter code path but missing a closing parenthesis\n    (e.g. `\"written_on(\"`) used to crash with `NoMethodError: undefined method\n    'first' for nil` inside `find_parameter_position`. It now raises the same\n    `MultiparameterAssignmentErrors` already used for other invalid multiparameter\n    input, so callers can rescue a single documented error class.\n\n    *Kenta Ishizaki*",
     "project": "activerecord",
     "date_merged": 1779832293000,
@@ -1528,6 +1548,16 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add shims for `Ractor` shareability methods so framework code can call them\n    unconditionally regardless of the Ruby version.\n\n    When `Ractor` is not defined, or the underlying method is not available, the\n    shim is a no-op that simply returns its argument (or the given block).\n    Otherwise the call is forwarded to the matching `Ractor` class method.\n\n    ```ruby\n    ractor_make_shareable(obj)        # => Ractor.make_shareable(obj)        or obj\n    ractor_shareable?(obj)            # => Ractor.shareable?(obj)            or obj\n    ractor_shareable_proc   { ... }   # => Ractor.shareable_proc   { ... }   or the block\n    ractor_shareable_lambda { ... }   # => Ractor.shareable_lambda { ... }   or the block\n    ```\n\n    *Andrew Novoselac*",
+    "project": "activesupport",
+    "date_merged": 1780002701000,
+    "author": "Andrew Novoselac",
+    "sha": "c941db66abfd60274c4213c46a79c1a4d7802142",
+    "pr": "57467",
+    "merge_sha": "e65f484fc1bd6e86233c5a71a8ef68f6d1ee50f8",
+    "html": "<p>Add shims for <code>Ractor</code> shareability methods so framework code can call them<br />\nunconditionally regardless of the Ruby version.</p>\n\n<p>When <code>Ractor</code> is not defined, or the underlying method is not available, the<br />\nshim is a no-op that simply returns its argument (or the given block).<br />\nOtherwise the call is forwarded to the matching <code>Ractor</code> class method.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">ractor_make_shareable</span><span class=\"p\">(</span><span class=\"n\">obj</span><span class=\"p\">)</span>        <span class=\"c1\"># =&gt; Ractor.make_shareable(obj)        or obj</span>\n<span class=\"n\">ractor_shareable?</span><span class=\"p\">(</span><span class=\"n\">obj</span><span class=\"p\">)</span>            <span class=\"c1\"># =&gt; Ractor.shareable?(obj)            or obj</span>\n<span class=\"n\">ractor_shareable_proc</span>   <span class=\"p\">{</span> <span class=\"o\">...</span> <span class=\"p\">}</span>   <span class=\"c1\"># =&gt; Ractor.shareable_proc   { ... }   or the block</span>\n<span class=\"n\">ractor_shareable_lambda</span> <span class=\"p\">{</span> <span class=\"o\">...</span> <span class=\"p\">}</span>   <span class=\"c1\"># =&gt; Ractor.shareable_lambda { ... }   or the block</span>\n</code></pre></div></div>\n\n<p><em>Andrew Novoselac</em></p>\n"
   },
   {
     "message": "*   Fix `NumberHelper` raising `FloatDomainError` for `Infinity` / `NaN` with\n    `significant: true`.\n\n    `number_to_rounded(Float::INFINITY, precision: 3, significant: true)` (and\n    its callers `number_to_percentage`, `number_to_currency`, etc.) raised\n    `FloatDomainError` because `RoundingHelper#digit_count` called\n    `Math.log10(Float::INFINITY).floor`. The non-`significant` path already\n    formatted these values as `\"Inf\"` / `\"-Inf\"` / `\"NaN\"`; the two paths now\n    agree.\n\n    *Kenta Ishizaki*",
