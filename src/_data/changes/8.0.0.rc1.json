@@ -980,6 +980,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Fix deadlock when pool-less connection materializes while fetching database\n    server version.\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1780085806000,
+    "author": "Hartley McGuire",
+    "sha": "ca472c165cdc1ff5c1d690814f0c10130c84da2d",
+    "pr": "57506",
+    "merge_sha": "d2a0d991762d3aafafc28f7f6bd114ef33c21adf",
+    "html": "<p>Fix deadlock when pool-less connection materializes while fetching database<br />\nserver version.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Add `#default_order` query method and association option which can be used to order records when no other order is specified.\n\n    This extends the functionality offered by `#implicit_order_column` to scopes and associations.\n\n    Usage:\n\n    ```ruby\n    class Post < ApplicationRecord\n      has_many :comments, default_order: :likes\n      # .. or ..\n      has_many :comments, -> { default_order(:likes) }\n    end\n\n    post = Post.first\n\n    post.comments # comments ordered by `likes`\n    post.comments.order(:created_at) # comments ordered by `created_at`\n    ```\n\n    *Dan Ungureanu*",
     "project": "activerecord",
     "date_merged": 1780008043000,
