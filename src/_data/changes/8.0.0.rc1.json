@@ -410,6 +410,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Rate limiting calls `cache_key` on `by:` if the object responds to it.\n\n    ```ruby\n    class CommentsController < ApplicationController\n      # Cache key in the store would be `rate-limit:comments:user/1`\n      rate_limit to: 2, within: 2.seconds, by: -> { current_user }\n    end\n    ```\n\n    *Daniel Sabourin*",
+    "project": "actionpack",
+    "date_merged": 1780227228000,
+    "author": "Daniel Sabourin",
+    "sha": "740c642240c532df4d55bf2e5c3565fce4bd8c6d",
+    "pr": "55555",
+    "merge_sha": "57fd078804974e2803005b45500ae7d03dc48476",
+    "html": "<p>Rate limiting calls <code>cache_key</code> on <code>by:</code> if the object responds to it.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">CommentsController</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationController</span>\n  <span class=\"c1\"># Cache key in the store would be `rate-limit:comments:user/1`</span>\n  <span class=\"n\">rate_limit</span> <span class=\"ss\">to: </span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"ss\">within: </span><span class=\"mi\">2</span><span class=\"p\">.</span><span class=\"nf\">seconds</span><span class=\"p\">,</span> <span class=\"ss\">by: </span><span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">current_user</span> <span class=\"p\">}</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Daniel Sabourin</em></p>\n"
+  },
+  {
     "message": "*   Add a configuration for `ActionDispatch::ExceptionWrapper.silent_exceptions` at `config.action_dispatch.silent_exceptions`.\n\n    Exceptions on this list do not fall back to framework-level backtraces when there is no application backtrace.\n\n    *Andrew Novoselac*",
     "project": "actionpack",
     "date_merged": 1779988723000,
@@ -978,6 +988,16 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Respect `schema_search_path` on `rails dbconsole` for PostgreSQL.\n\n    *Gabriel Sobrinho*",
+    "project": "activerecord",
+    "date_merged": 1780220849000,
+    "author": "Gabriel Sobrinho",
+    "sha": "8624339b8f18d86a559e8964530e563611514e80",
+    "pr": "55388",
+    "merge_sha": "6d5c14cbb7e22604b6647662969c65f3625b9d8c",
+    "html": "<p>Respect <code>schema_search_path</code> on <code>rails dbconsole</code> for PostgreSQL.</p>\n\n<p><em>Gabriel Sobrinho</em></p>\n"
   },
   {
     "message": "*   Preserve IPv6 prefix when dumping PostgreSQL `cidr` / `inet` defaults to `schema.rb`.\n\n    The schema dumper used to omit the prefix whenever it equaled `/32`, which\n    is the full mask for IPv4 but not for IPv6. As a result, an IPv6 default\n    such as `\"::/32\"` was written as `\"::\"` in `schema.rb` and reloaded as\n    `::/128`, silently dropping the subnet information. The prefix is now only\n    omitted when it covers the full address (`/32` for IPv4, `/128` for IPv6).\n\n    *Kenta Ishizaki*",
