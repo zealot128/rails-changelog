@@ -990,6 +990,36 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Fix collection association `ids=` writers (e.g. `author.book_ids=`) raising\n    `ActiveRecord::RecordNotFound` for existing records when a composite primary\n    key model is assigned string ids (the shape ids take from request params).\n\n    Each id component is now cast against its own column type, instead of casting\n    the whole tuple against an array of column names, which `type_for_attribute`\n    can't resolve to a real type (so the cast was a no-op and the string ids\n    never matched the loaded records).\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780343865000,
+    "author": "Kenta Ishizaki",
+    "sha": "7ce8b3a09657db176a4d500aac989976b88c1c60",
+    "pr": "57531",
+    "merge_sha": "7a163c886e648b5813b706ebff0dcc819f8ad75f",
+    "html": "<p>Fix collection association <code>ids=</code> writers (e.g. <code>author.book_ids=</code>) raising<br />\n<code>ActiveRecord::RecordNotFound</code> for existing records when a composite primary<br />\nkey model is assigned string ids (the shape ids take from request params).</p>\n\n<p>Each id component is now cast against its own column type, instead of casting<br />\nthe whole tuple against an array of column names, which <code>type_for_attribute</code><br />\ncan’t resolve to a real type (so the cast was a no-op and the string ids<br />\nnever matched the loaded records).</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Fix `find` with multiple composite primary key ids passed as strings\n    silently returning `[]`.\n\n    `Model.find([[\"1\", \"10\"], [\"1\", \"20\"]])` (the shape ids take when they come\n    from request parameters) returned an empty array instead of the records and\n    without raising `RecordNotFound`. The ids were cast against the array of key\n    column names as a whole — which is a no-op — so the string tuples never\n    compared equal to the records' integer ids when ordering the result. Each\n    component is now cast against its own column type, matching the documented\n    coercion already performed for single-column keys.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780341362000,
+    "author": "Kenta Ishizaki",
+    "sha": "6873d3f44973b566e3ce105183b7a6b7aa60e9f6",
+    "pr": "57530",
+    "merge_sha": "ed23d5e89b8b856fd8ad510a310cd273f35ba04b",
+    "html": "<p>Fix <code>find</code> with multiple composite primary key ids passed as strings<br />\nsilently returning <code>[]</code>.</p>\n\n<p><code>Model.find([[\"1\", \"10\"], [\"1\", \"20\"]])</code> (the shape ids take when they come<br />\nfrom request parameters) returned an empty array instead of the records and<br />\nwithout raising <code>RecordNotFound</code>. The ids were cast against the array of key<br />\ncolumn names as a whole — which is a no-op — so the string tuples never<br />\ncompared equal to the records’ integer ids when ordering the result. Each<br />\ncomponent is now cast against its own column type, matching the documented<br />\ncoercion already performed for single-column keys.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Fix PostgreSQL `daterange` / `tsrange` / `tstzrange` schema dump producing\n    invalid Ruby.\n\n    The schema dumper used to render range defaults via `Range#inspect`, which\n    falls back to `Date#inspect` / `Time#inspect` for the bounds. The resulting\n    `schema.rb` literal (for example `default: Mon, 01 Jan 2024..Wed, 01 Jan 2025`)\n    raised a `SyntaxError` on `db:schema:load`. The bounds are now rendered via\n    the subtype's `type_cast_for_schema`, so date and timestamp range defaults\n    round-trip through `schema.rb` like any other column.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780337042000,
+    "author": "Kenta Ishizaki",
+    "sha": "a40e5954bb37d2f9717260e7f515f819984758d1",
+    "pr": "57439",
+    "merge_sha": "7de619f45b3ce0598d13304127ce6a8e63813c5f",
+    "html": "<p>Fix PostgreSQL <code>daterange</code> / <code>tsrange</code> / <code>tstzrange</code> schema dump producing<br />\ninvalid Ruby.</p>\n\n<p>The schema dumper used to render range defaults via <code>Range#inspect</code>, which<br />\nfalls back to <code>Date#inspect</code> / <code>Time#inspect</code> for the bounds. The resulting<br />\n<code>schema.rb</code> literal (for example <code>default: Mon, 01 Jan 2024..Wed, 01 Jan 2025</code>)<br />\nraised a <code>SyntaxError</code> on <code>db:schema:load</code>. The bounds are now rendered via<br />\nthe subtype’s <code>type_cast_for_schema</code>, so date and timestamp range defaults<br />\nround-trip through <code>schema.rb</code> like any other column.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Respect `schema_search_path` on `rails dbconsole` for PostgreSQL.\n\n    *Gabriel Sobrinho*",
     "project": "activerecord",
     "date_merged": 1780220849000,
@@ -1590,14 +1620,14 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
-    "message": "*   Add shims for `Ractor` shareability methods so framework code can call them\n    unconditionally regardless of the Ruby version.\n\n    When `Ractor` is not defined, or the underlying method is not available, the\n    shim is a no-op that simply returns its argument (or the given block).\n    Otherwise the call is forwarded to the matching `Ractor` class method.\n\n    ```ruby\n    ractor_make_shareable(obj)        # => Ractor.make_shareable(obj)        or obj\n    ractor_shareable?(obj)            # => Ractor.shareable?(obj)            or obj\n    ractor_shareable_proc   { ... }   # => Ractor.shareable_proc   { ... }   or the block\n    ractor_shareable_lambda { ... }   # => Ractor.shareable_lambda { ... }   or the block\n    ```\n\n    *Andrew Novoselac*",
+    "message": "*   `ActiveSupport::Cache::RedisCacheStore` entirely reimplemented.\n\n    Now depends on the much lighter `redis-client >= 0.28.0` instead of `redis >= 4.0.1`.\n\n    The change shouldn't be noticeable unless the cache is configured with the `:redis` argument.\n    In such case it will keep working for now, but will issue a deprecation warning.\n\n    Prefer configuring Redis Cache Store with an `:url` argument instead, but if you need advanced options\n    not supported by Redis Cache Store constructor, you can alternatively pass a custom `RedisClient::Config` instance\n    via the `:client` argument.\n\n    *Jean Boussier*",
     "project": "activesupport",
-    "date_merged": 1780002701000,
-    "author": "Andrew Novoselac",
-    "sha": "c941db66abfd60274c4213c46a79c1a4d7802142",
-    "pr": "57467",
-    "merge_sha": "e65f484fc1bd6e86233c5a71a8ef68f6d1ee50f8",
-    "html": "<p>Add shims for <code>Ractor</code> shareability methods so framework code can call them<br />\nunconditionally regardless of the Ruby version.</p>\n\n<p>When <code>Ractor</code> is not defined, or the underlying method is not available, the<br />\nshim is a no-op that simply returns its argument (or the given block).<br />\nOtherwise the call is forwarded to the matching <code>Ractor</code> class method.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">ractor_make_shareable</span><span class=\"p\">(</span><span class=\"n\">obj</span><span class=\"p\">)</span>        <span class=\"c1\"># =&gt; Ractor.make_shareable(obj)        or obj</span>\n<span class=\"n\">ractor_shareable?</span><span class=\"p\">(</span><span class=\"n\">obj</span><span class=\"p\">)</span>            <span class=\"c1\"># =&gt; Ractor.shareable?(obj)            or obj</span>\n<span class=\"n\">ractor_shareable_proc</span>   <span class=\"p\">{</span> <span class=\"o\">...</span> <span class=\"p\">}</span>   <span class=\"c1\"># =&gt; Ractor.shareable_proc   { ... }   or the block</span>\n<span class=\"n\">ractor_shareable_lambda</span> <span class=\"p\">{</span> <span class=\"o\">...</span> <span class=\"p\">}</span>   <span class=\"c1\"># =&gt; Ractor.shareable_lambda { ... }   or the block</span>\n</code></pre></div></div>\n\n<p><em>Andrew Novoselac</em></p>\n"
+    "date_merged": 1780333222000,
+    "author": "Jean Boussier",
+    "sha": "5843a7b7f29d710bf7442d0dd93e5b172fe1d276",
+    "pr": "57004",
+    "merge_sha": "57d32a367aefffa7897e76e8dffd99c0c51c2c47",
+    "html": "<p><code>ActiveSupport::Cache::RedisCacheStore</code> entirely reimplemented.</p>\n\n<p>Now depends on the much lighter <code>redis-client &gt;= 0.28.0</code> instead of <code>redis &gt;= 4.0.1</code>.</p>\n\n<p>The change shouldn’t be noticeable unless the cache is configured with the <code>:redis</code> argument.<br />\nIn such case it will keep working for now, but will issue a deprecation warning.</p>\n\n<p>Prefer configuring Redis Cache Store with an <code>:url</code> argument instead, but if you need advanced options<br />\nnot supported by Redis Cache Store constructor, you can alternatively pass a custom <code>RedisClient::Config</code> instance<br />\nvia the <code>:client</code> argument.</p>\n\n<p><em>Jean Boussier</em></p>\n"
   },
   {
     "message": "*   Fix `NumberHelper` raising `FloatDomainError` for `Infinity` / `NaN` with\n    `significant: true`.\n\n    `number_to_rounded(Float::INFINITY, precision: 3, significant: true)` (and\n    its callers `number_to_percentage`, `number_to_currency`, etc.) raised\n    `FloatDomainError` because `RoundingHelper#digit_count` called\n    `Math.log10(Float::INFINITY).floor`. The non-`significant` path already\n    formatted these values as `\"Inf\"` / `\"-Inf\"` / `\"NaN\"`; the two paths now\n    agree.\n\n    *Kenta Ishizaki*",
