@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Fix `ActionView::TestCase#render` to reset `rendered`.\n    The behavior was changed when memoization was added in #51093. Now it once again conforms to the documentation.\n\n    *Jeroen Versteeg*",
+    "project": "actionview",
+    "date_merged": 1780422096000,
+    "author": "Jeroen Versteeg",
+    "sha": "0e9941946c749eaa4977d007fab332a68f766fc8",
+    "pr": "56422",
+    "merge_sha": "4d855efe915d0c92acb37a80660f814da75b7382",
+    "html": "<p>Fix <code>ActionView::TestCase#render</code> to reset <code>rendered</code>.<br />\nThe behavior was changed when memoization was added in #51093. Now it once again conforms to the documentation.</p>\n\n<p><em>Jeroen Versteeg</em></p>\n"
+  },
+  {
     "message": "*   Fix `FormBuilder#to_partial_path` returning `nil` for subclasses whose\n    name does not end in `Builder`.\n\n    *Kenta Ishizaki*",
     "project": "actionview",
     "date_merged": 1780345054000,
@@ -1008,6 +1018,26 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Fix grouped calculations (e.g. `count`) grouped by a `belongs_to` association\n    that points to a composite primary key model.\n\n    `Book.group(:order).count`, where `Book belongs_to :order` and `Order` has a\n    composite primary key, raised `ArgumentError: Expected corresponding value\n    for [\"shop_id\", \"id\"] to be an Array`. The grouped result is now keyed by the\n    associated records as it already is for single-column keys.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780422203000,
+    "author": "Kenta Ishizaki",
+    "sha": "c2cdaedae44679a27cd96ff355a624e00251d3db",
+    "pr": "57532",
+    "merge_sha": "6d57544ecbf18d5a44eb820ff3be7f38f4743d54",
+    "html": "<p>Fix grouped calculations (e.g. <code>count</code>) grouped by a <code>belongs_to</code> association<br />\nthat points to a composite primary key model.</p>\n\n<p><code>Book.group(:order).count</code>, where <code>Book belongs_to :order</code> and <code>Order</code> has a<br />\ncomposite primary key, raised <code>ArgumentError: Expected corresponding value\nfor [\"shop_id\", \"id\"] to be an Array</code>. The grouped result is now keyed by the<br />\nassociated records as it already is for single-column keys.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Fix `has_many`/`has_one :through` associations with `disable_joins: true`\n    silently returning an empty result when the source points to a composite\n    primary key model.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780395347000,
+    "author": "Kenta Ishizaki",
+    "sha": "79d4a88c1079fd28ec997b15f29a8ff19ad60042",
+    "pr": "57534",
+    "merge_sha": "a81db6a33489d673a80dbe476e87b76bee9e9896",
+    "html": "<p>Fix <code>has_many</code>/<code>has_one :through</code> associations with <code>disable_joins: true</code><br />\nsilently returning an empty result when the source points to a composite<br />\nprimary key model.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
   },
   {
     "message": "*   Fix collection association `ids=` writers (e.g. `author.book_ids=`) raising\n    `ActiveRecord::RecordNotFound` for existing records when a composite primary\n    key model is assigned string ids (the shape ids take from request params).\n\n    Each id component is now cast against its own column type, instead of casting\n    the whole tuple against an array of column names, which `type_for_attribute`\n    can't resolve to a real type (so the cast was a no-op and the string ids\n    never matched the loaded records).\n\n    *Kenta Ishizaki*",
