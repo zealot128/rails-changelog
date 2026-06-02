@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Fix `FormBuilder#to_partial_path` returning `nil` for subclasses whose\n    name does not end in `Builder`.\n\n    *Kenta Ishizaki*",
+    "project": "actionview",
+    "date_merged": 1780345054000,
+    "author": "Kenta Ishizaki",
+    "sha": "b841f2a34ea53fa5d6338ab086e78e9e6e0f3112",
+    "pr": "57469",
+    "merge_sha": "6cc46b7eb3599190ee1a08f1515596f0b23b8d69",
+    "html": "<p>Fix <code>FormBuilder#to_partial_path</code> returning <code>nil</code> for subclasses whose<br />\nname does not end in <code>Builder</code>.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Fix `collection_radio_buttons` and `collection_check_boxes` generating\n    a label `for` attribute that does not match the input `id` when a\n    collection value is `nil`.\n\n    *Kenta Ishizaki*",
     "project": "actionview",
     "date_merged": 1779400387000,
@@ -738,6 +748,16 @@
     "pr": "57404",
     "merge_sha": "3dadd10c72f161460626002f152ae426b582c64e",
     "html": "<p>Add the latest standardized features to <code>permissions_policy</code></p>\n\n<p>Add the following features that have been standardized since the list was last updated:</p>\n\n<ul>\n  <li><code>attribution-reporting</code></li>\n  <li><code>battery</code></li>\n  <li><code>bluetooth</code></li>\n  <li><code>ch-ua</code></li>\n  <li><code>ch-ua-arch</code></li>\n  <li><code>ch-ua-bitness</code></li>\n  <li><code>ch-ua-full-version</code></li>\n  <li><code>ch-ua-full-version-list</code></li>\n  <li><code>ch-ua-high-entropy-values</code></li>\n  <li><code>ch-ua-mobile</code></li>\n  <li><code>ch-ua-model</code></li>\n  <li><code>ch-ua-platform</code></li>\n  <li><code>ch-ua-platform-version</code></li>\n  <li><code>ch-ua-wow64</code></li>\n  <li><code>compute-pressure</code></li>\n  <li><code>cross-origin-isolated</code></li>\n  <li><code>direct-sockets</code></li>\n  <li><code>execution-while-not-rendered</code></li>\n  <li><code>execution-while-out-of-viewport</code></li>\n  <li><code>identity-credentials-get</code></li>\n  <li><code>mediasession</code></li>\n  <li><code>navigation-override</code></li>\n  <li><code>otp-credentials</code></li>\n  <li><code>publickey-credentials-get</code></li>\n  <li><code>storage-access</code></li>\n  <li><code>window-management</code></li>\n  <li><code>xr-spatial-tracking</code></li>\n</ul>\n\n<p><em>Ruben Arakelyan</em></p>\n"
+  },
+  {
+    "message": "*   Update Active Storage for ImageProcessing 2.0.\n\n    ImageProcessing 2.0 now requires adding `ruby-vips` or `mini_magick` gems explicitly to the Gemfile.\n\n    *Janko Marohnić*",
+    "project": "activestorage",
+    "date_merged": 1780347395000,
+    "author": "Janko Marohnić",
+    "sha": "244549b36b7b5814a387b4449d447429ff833235",
+    "pr": "57403",
+    "merge_sha": "6c75e6d5663afa4278ee593c2d6c20c1ee396e32",
+    "html": "<p>Update Active Storage for ImageProcessing 2.0.</p>\n\n<p>ImageProcessing 2.0 now requires adding <code>ruby-vips</code> or <code>mini_magick</code> gems explicitly to the Gemfile.</p>\n\n<p><em>Janko Marohnić</em></p>\n"
   },
   {
     "message": "*   Prevent `ActiveStorage.touch_attachment_records = false` from crashing the attachment of a Blob.\n\n    When `ActiveStorage.touch_attachment_records` was set to `false`, attaching a existing Blob to a Record\n    would raise an error. This is now fixed.\n\n    *Edouard Chin*",
