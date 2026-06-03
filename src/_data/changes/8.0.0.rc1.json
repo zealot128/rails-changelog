@@ -1020,6 +1020,26 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Fix `rename_index` to preserve a partial index's `WHERE` for SQLite and older MySQL/MariaDB versions.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780509372000,
+    "author": "Kenta Ishizaki",
+    "sha": "302f49baa61109f6a2186372bdbd087a3e8710c4",
+    "pr": "57565",
+    "merge_sha": "e4d1cc35ab0a96353cdf698a6255af81bcbe3194",
+    "html": "<p>Fix <code>rename_index</code> to preserve a partial index’s <code>WHERE</code> for SQLite and older MySQL/MariaDB versions.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Fix PostgreSQL `foreign_keys` returning a corrupted `to_table` for a foreign key\n    that references a table in a quoted schema.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780505586000,
+    "author": "Kenta Ishizaki",
+    "sha": "9906b99317de80ce6b859c0cfbff2a9fa4db06bc",
+    "pr": "57561",
+    "merge_sha": "a5972fb0f982b00ed53910ee2fbd1944e32d7ea3",
+    "html": "<p>Fix PostgreSQL <code>foreign_keys</code> returning a corrupted <code>to_table</code> for a foreign key<br />\nthat references a table in a quoted schema.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Fix grouped calculations (e.g. `count`) grouped by a `belongs_to` association\n    that points to a composite primary key model.\n\n    `Book.group(:order).count`, where `Book belongs_to :order` and `Order` has a\n    composite primary key, raised `ArgumentError: Expected corresponding value\n    for [\"shop_id\", \"id\"] to be an Array`. The grouped result is now keyed by the\n    associated records as it already is for single-column keys.\n\n    *Kenta Ishizaki*",
     "project": "activerecord",
     "date_merged": 1780422203000,
