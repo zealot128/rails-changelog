@@ -1020,6 +1020,26 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Fix `reset_column_sequences!` for tables in quoted schemas.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780525342000,
+    "author": "Kenta Ishizaki",
+    "sha": "48c80c1d6c71505ce33c714583d2b285a326bffa",
+    "pr": "57563",
+    "merge_sha": "2fde0a29f17f17026010c234fe53827f164af70b",
+    "html": "<p>Fix <code>reset_column_sequences!</code> for tables in quoted schemas.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Fix `accepts_nested_attributes_for` `:limit` miscounting a single-record hash.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780521327000,
+    "author": "Kenta Ishizaki",
+    "sha": "9f4650dd4304252fecd82e0e53c884eb72eea0dd",
+    "pr": "57560",
+    "merge_sha": "8959b63707960e75807a9fd6b5361e39d07f1d90",
+    "html": "<p>Fix <code>accepts_nested_attributes_for</code> <code>:limit</code> miscounting a single-record hash.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Fix `rename_index` to preserve a partial index's `WHERE` for SQLite and older MySQL/MariaDB versions.\n\n    *Kenta Ishizaki*",
     "project": "activerecord",
     "date_merged": 1780509372000,
