@@ -1020,6 +1020,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Fix `update_attribute`/`update_attribute!` to raise for a readonly attribute referenced by an alias.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780589327000,
+    "author": "Kenta Ishizaki",
+    "sha": "0f5f52f6fd8c9ae7c4acfbf8da6d27af725c7e8c",
+    "pr": "57576",
+    "merge_sha": "c184aff8f1d4a081e6b913eb4f39170344df5d5a",
+    "html": "<p>Fix <code>update_attribute</code>/<code>update_attribute!</code> to raise for a readonly attribute referenced by an alias.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Fix `reset_column_sequences!` for tables in quoted schemas.\n\n    *Kenta Ishizaki*",
     "project": "activerecord",
     "date_merged": 1780525342000,
