@@ -1020,6 +1020,46 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Fix `ActiveRecord::MessagePack` serialization raising `NoMethodError`\n    for any record with a populated `time` column, which made such records\n    uncacheable through the MessagePack cache serializer.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780636179000,
+    "author": "Kenta Ishizaki",
+    "sha": "32c92f34cbf13eb781b08aa76f94587e15a5bd35",
+    "pr": "57566",
+    "merge_sha": "ea44445cb439c119da6b35841258366ee6de9ee0",
+    "html": "<p>Fix <code>ActiveRecord::MessagePack</code> serialization raising <code>NoMethodError</code><br />\nfor any record with a populated <code>time</code> column, which made such records<br />\nuncacheable through the MessagePack cache serializer.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Fix replacing or clearing a polymorphic `has_one` leaving a stale type column\n    on the removed record.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780635111000,
+    "author": "Kenta Ishizaki",
+    "sha": "be49d61b1a8644200f9ede6fde7c51927047d6c7",
+    "pr": "57575",
+    "merge_sha": "8ba425d4673c68d30297d6f1368e4dfbc87d63a4",
+    "html": "<p>Fix replacing or clearing a polymorphic <code>has_one</code> leaving a stale type column<br />\non the removed record.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Add `sql_notifications` connection configuration option to disable SQL\n    notifications for specific database connections.\n\n    Libraries like Solid Cache and Solid Queue that use separate database\n    connections via `connects_to` can suppress internal SQL notification\n    overhead by setting `sql_notifications: false` in `database.yml`:\n\n    ```yaml\n    cache:\n      adapter: postgresql\n      database: myapp_cache\n      sql_notifications: false\n    ```\n\n    *Rosa Gutierrez*",
+    "project": "activerecord",
+    "date_merged": 1780623898000,
+    "author": "Rosa Gutierrez",
+    "sha": "c1c9a63ca7c82d63fe032987fc53af999d1ee3fd",
+    "pr": "56899",
+    "merge_sha": "060b4889de318d39e0d534afa516c36059a2bcb7",
+    "html": "<p>Add <code>sql_notifications</code> connection configuration option to disable SQL<br />\nnotifications for specific database connections.</p>\n\n<p>Libraries like Solid Cache and Solid Queue that use separate database<br />\nconnections via <code>connects_to</code> can suppress internal SQL notification<br />\noverhead by setting <code>sql_notifications: false</code> in <code>database.yml</code>:</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">cache</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">postgresql</span>\n  <span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">myapp_cache</span>\n  <span class=\"na\">sql_notifications</span><span class=\"pi\">:</span> <span class=\"no\">false</span>\n</code></pre></div></div>\n\n<p><em>Rosa Gutierrez</em></p>\n"
+  },
+  {
+    "message": "*   Allow the query log tags format to be configured per connection pool.\n\n    A `query_log_tags_format` key in a `database.yml` entry overrides the global\n    `config.active_record.query_log_tags_format` for connections in that pool, so\n    different databases can emit `:legacy` or `:sqlcommenter` formatted comments.\n\n    ```yaml\n    production:\n      primary:\n        database: primary\n      analytics:\n        database: analytics\n        query_log_tags_format: sqlcommenter\n    ```\n\n    *Hartley McGuire*",
+    "project": "activerecord",
+    "date_merged": 1780609937000,
+    "author": "Hartley McGuire",
+    "sha": "d51aae40feef00d40ef85d82418e3022dd3c43eb",
+    "pr": "57570",
+    "merge_sha": "f716f5ef8abb7238393030e2b41959a84b5ad1bc",
+    "html": "<p>Allow the query log tags format to be configured per connection pool.</p>\n\n<p>A <code>query_log_tags_format</code> key in a <code>database.yml</code> entry overrides the global<br />\n<code>config.active_record.query_log_tags_format</code> for connections in that pool, so<br />\ndifferent databases can emit <code>:legacy</code> or <code>:sqlcommenter</code> formatted comments.</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">production</span><span class=\"pi\">:</span>\n  <span class=\"na\">primary</span><span class=\"pi\">:</span>\n    <span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">primary</span>\n  <span class=\"na\">analytics</span><span class=\"pi\">:</span>\n    <span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">analytics</span>\n    <span class=\"na\">query_log_tags_format</span><span class=\"pi\">:</span> <span class=\"s\">sqlcommenter</span>\n</code></pre></div></div>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
     "message": "*   Fix `update_attribute`/`update_attribute!` to raise for a readonly attribute referenced by an alias.\n\n    *Kenta Ishizaki*",
     "project": "activerecord",
     "date_merged": 1780589327000,
@@ -1718,6 +1758,16 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Add `ActiveSupport::Notifications::NullInstrumenter`, a stateless no-op\n    instrumenter that executes blocks without publishing any notifications.\n\n    Available via `ActiveSupport::Notifications.null_instrumenter`, this is\n    useful for suppressing instrumentation on specific components, such as\n    database connections that don't need SQL notification overhead.\n\n    *Rosa Gutierrez*",
+    "project": "activesupport",
+    "date_merged": 1780623898000,
+    "author": "Rosa Gutierrez",
+    "sha": "c1c9a63ca7c82d63fe032987fc53af999d1ee3fd",
+    "pr": "56899",
+    "merge_sha": "060b4889de318d39e0d534afa516c36059a2bcb7",
+    "html": "<p>Add <code>ActiveSupport::Notifications::NullInstrumenter</code>, a stateless no-op<br />\ninstrumenter that executes blocks without publishing any notifications.</p>\n\n<p>Available via <code>ActiveSupport::Notifications.null_instrumenter</code>, this is<br />\nuseful for suppressing instrumentation on specific components, such as<br />\ndatabase connections that don’t need SQL notification overhead.</p>\n\n<p><em>Rosa Gutierrez</em></p>\n"
   },
   {
     "message": "*   `ActiveSupport::Cache::RedisCacheStore` entirely reimplemented.\n\n    Now depends on the much lighter `redis-client >= 0.28.0` instead of `redis >= 4.0.1`.\n\n    The change shouldn't be noticeable unless the cache is configured with the `:redis` argument.\n    In such case it will keep working for now, but will issue a deprecation warning.\n\n    Prefer configuring Redis Cache Store with an `:url` argument instead, but if you need advanced options\n    not supported by Redis Cache Store constructor, you can alternatively pass a custom `RedisClient::Config` instance\n    via the `:client` argument.\n\n    *Jean Boussier*",
