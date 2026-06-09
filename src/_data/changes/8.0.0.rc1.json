@@ -760,6 +760,26 @@
     "html": "<p>Add the latest standardized features to <code>permissions_policy</code></p>\n\n<p>Add the following features that have been standardized since the list was last updated:</p>\n\n<ul>\n  <li><code>attribution-reporting</code></li>\n  <li><code>battery</code></li>\n  <li><code>bluetooth</code></li>\n  <li><code>ch-ua</code></li>\n  <li><code>ch-ua-arch</code></li>\n  <li><code>ch-ua-bitness</code></li>\n  <li><code>ch-ua-full-version</code></li>\n  <li><code>ch-ua-full-version-list</code></li>\n  <li><code>ch-ua-high-entropy-values</code></li>\n  <li><code>ch-ua-mobile</code></li>\n  <li><code>ch-ua-model</code></li>\n  <li><code>ch-ua-platform</code></li>\n  <li><code>ch-ua-platform-version</code></li>\n  <li><code>ch-ua-wow64</code></li>\n  <li><code>compute-pressure</code></li>\n  <li><code>cross-origin-isolated</code></li>\n  <li><code>direct-sockets</code></li>\n  <li><code>execution-while-not-rendered</code></li>\n  <li><code>execution-while-out-of-viewport</code></li>\n  <li><code>identity-credentials-get</code></li>\n  <li><code>mediasession</code></li>\n  <li><code>navigation-override</code></li>\n  <li><code>otp-credentials</code></li>\n  <li><code>publickey-credentials-get</code></li>\n  <li><code>storage-access</code></li>\n  <li><code>window-management</code></li>\n  <li><code>xr-spatial-tracking</code></li>\n</ul>\n\n<p><em>Ruben Arakelyan</em></p>\n"
   },
   {
+    "message": "*   Fix `MirrorService#mirror` losing blob metadata when copying to mirrors.\n\n    Mirrored copies on S3, Azure, and GCS were served as `application/octet-stream`\n    because `content_type`, `filename`, `disposition`, and `custom_metadata` were\n    dropped. Forward the blob's `service_metadata` to each mirror's upload.\n\n    Fixes #57270.\n\n    *Maksim Romanov* + *Andrii Furmanets*",
+    "project": "activestorage",
+    "date_merged": 1780973901000,
+    "author": "Maksim Romanov",
+    "sha": "bdc8350a03f80f407947341222cdfaf598a340d7",
+    "pr": "57595",
+    "merge_sha": "a8a8afad2969cf8288e64095bef9668f81057429",
+    "html": "<p>Fix <code>MirrorService#mirror</code> losing blob metadata when copying to mirrors.</p>\n\n<p>Mirrored copies on S3, Azure, and GCS were served as <code>application/octet-stream</code><br />\nbecause <code>content_type</code>, <code>filename</code>, <code>disposition</code>, and <code>custom_metadata</code> were<br />\ndropped. Forward the blob’s <code>service_metadata</code> to each mirror’s upload.</p>\n\n<p>Fixes #57270.</p>\n\n<p><em>Maksim Romanov</em> + <em>Andrii Furmanets</em></p>\n"
+  },
+  {
+    "message": "*   Offload ActiveStorage::Blob#metadata sync to background\n\n    Problem:\n\n    A data race can occur when both a http server and a background worker (\n    `ActiveStorage::AnalyzeJob`) attempt to update a blob's metadata\n    simultaneously. This leads to a 409 conflict on GCS.\n\n    Solution:\n\n    Offload the metadata upload to a background job so the 409 no longer breaks\n    the request with a 500. Applications can add `retry_on` to\n    `ActiveStorage::SyncMetadataJob` to retry the conflict for their service.\n\n    `ActiveStorage::Service#update_metadata` now instruments the work and\n    delegates it to a new `update_metadata_for` method. Custom services that\n    overrode `update_metadata` should override `update_metadata_for` instead, so\n    the work runs inside the instrumentation.\n\n    *Shouichi Kamiya*",
+    "project": "activestorage",
+    "date_merged": 1780970786000,
+    "author": "Shouichi Kamiya",
+    "sha": "ee2ec98b848373014ea367f858fd3322359be3c1",
+    "pr": "57060",
+    "merge_sha": "06fa7fef9e6d2e1d6836e7b4a2bec2553846ab40",
+    "html": "<p>Offload ActiveStorage::Blob#metadata sync to background</p>\n\n<p>Problem:</p>\n\n<p>A data race can occur when both a http server and a background worker (<br />\n<code>ActiveStorage::AnalyzeJob</code>) attempt to update a blob’s metadata<br />\nsimultaneously. This leads to a 409 conflict on GCS.</p>\n\n<p>Solution:</p>\n\n<p>Offload the metadata upload to a background job so the 409 no longer breaks<br />\nthe request with a 500. Applications can add <code>retry_on</code> to<br />\n<code>ActiveStorage::SyncMetadataJob</code> to retry the conflict for their service.</p>\n\n<p><code>ActiveStorage::Service#update_metadata</code> now instruments the work and<br />\ndelegates it to a new <code>update_metadata_for</code> method. Custom services that<br />\noverrode <code>update_metadata</code> should override <code>update_metadata_for</code> instead, so<br />\nthe work runs inside the instrumentation.</p>\n\n<p><em>Shouichi Kamiya</em></p>\n"
+  },
+  {
     "message": "*   Update Active Storage for ImageProcessing 2.0.\n\n    ImageProcessing 2.0 now requires adding `ruby-vips` or `mini_magick` gems explicitly to the Gemfile.\n\n    *Janko Marohnić*",
     "project": "activestorage",
     "date_merged": 1780347395000,
@@ -1018,6 +1038,26 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Fix reading a `store_accessor` on a `NULL` structured column (`json`, `jsonb`,\n    or `hstore`) marking the record as changed and overwriting the `NULL` with an\n    empty hash on the next save.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780971975000,
+    "author": "Kenta Ishizaki",
+    "sha": "644b22a6eb4e154b67536dc355c35a028130b885",
+    "pr": "57600",
+    "merge_sha": "7e76e0d084670e4eae3c313926d7877ee51710a8",
+    "html": "<p>Fix reading a <code>store_accessor</code> on a <code>NULL</code> structured column (<code>json</code>, <code>jsonb</code>,<br />\nor <code>hstore</code>) marking the record as changed and overwriting the <code>NULL</code> with an<br />\nempty hash on the next save.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Fix `update_all` corrupting the optimistic locking column when it is set\n    through an `alias_attribute`.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1780967592000,
+    "author": "Kenta Ishizaki",
+    "sha": "66c6080d00138b7b969f149b199b979d364d415c",
+    "pr": "57606",
+    "merge_sha": "929d6de9221b3e4a0c847ee94ea0d116763be286",
+    "html": "<p>Fix <code>update_all</code> corrupting the optimistic locking column when it is set<br />\nthrough an <code>alias_attribute</code>.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
   },
   {
     "message": "*   Fix `serialize` with `coder: ActiveRecord::Coders::JSON` silently double-encoding\n    a native `json`/`jsonb` column.\n\n    *Kenta Ishizaki*",
@@ -1778,6 +1818,16 @@
     "pr": "55896",
     "merge_sha": "384420e95c537a8c7b28a0c301118bd0abd66d09",
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Add support for `config.action_mailer.raise_on_missing_callback_actions`\n    when using `_deliver` callbacks with `only:` and `except:` options.\n\n    *Iaroslav*",
+    "project": "actionmailer",
+    "date_merged": 1780976455000,
+    "author": "Rafael Mendonça França",
+    "sha": "415d226f0edeeff7ddfcd845e393bc8a403a1bca",
+    "pr": "57581",
+    "merge_sha": "1d5fcf07a63d20880929c473086187135b60d011",
+    "html": "<p>Add support for <code>config.action_mailer.raise_on_missing_callback_actions</code><br />\nwhen using <code>_deliver</code> callbacks with <code>only:</code> and <code>except:</code> options.</p>\n\n<p><em>Iaroslav</em></p>\n"
   },
   {
     "message": "*   Add `assert_part` and `assert_no_part` to `ActionMailer::TestCase`\n\n    ```ruby\n    test \"assert MyMailer.welcome HTML and text parts\" do\n      mail = MyMailer.welcome(\"Hello, world\")\n\n      assert_part :text, mail do |text|\n        assert_includes text, \"Hello, world\"\n      end\n      assert_part :html, mail do |html|\n        assert_dom html.root, \"p\", \"Hello, world\"\n      end\n    end\n    ```\n\n    *Sean Doyle*",
