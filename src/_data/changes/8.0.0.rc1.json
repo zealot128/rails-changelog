@@ -170,6 +170,16 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Fix `normalizes` re-applying normalizations on every validation of an\n    unpersisted record, and speed up validation of normalized attributes.\n\n    The in-place mutation check re-ran the normalizer on every `valid?` of an\n    unpersisted record: wasteful for idempotent normalizers and compounded the\n    result for non-idempotent ones. Normalizations are now re-applied only on a\n    genuine in-place mutation.\n\n    *Yaroslav Markin*",
+    "project": "activemodel",
+    "date_merged": 1781050006000,
+    "author": "Yaroslav Markin",
+    "sha": "1742210184d8afc7eadaee671590fc2ec0dc1b7d",
+    "pr": "57639",
+    "merge_sha": "71671aded0c2fff1c0c784f88c3b042ec0f212fa",
+    "html": "<p>Fix <code>normalizes</code> re-applying normalizations on every validation of an<br />\nunpersisted record, and speed up validation of normalized attributes.</p>\n\n<p>The in-place mutation check re-ran the normalizer on every <code>valid?</code> of an<br />\nunpersisted record: wasteful for idempotent normalizers and compounded the<br />\nresult for non-idempotent ones. Normalizations are now re-applied only on a<br />\ngenuine in-place mutation.</p>\n\n<p><em>Yaroslav Markin</em></p>\n"
+  },
+  {
     "message": "*   Limit the size of strings `ActiveModel::Type::Integer` will coerce with `to_i`.\n\n    Calling `to_i` on very long strings can take a long time and could be used as\n    a DoS vector. Integer casting now only considers the first `_limit * 4` bytes\n    of a string (16 bytes for a default 4-byte integer, 32 bytes for an 8-byte\n    bigint), which is enough to hold the maximum representable value plus a sign\n    or a short slug suffix.\n\n    *Aaron Patterson*, *Jean Boussier*",
     "project": "activemodel",
     "date_merged": 1779258847000,
