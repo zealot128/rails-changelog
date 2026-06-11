@@ -520,6 +520,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Fix bug with reloading models with all-queries default scopes. The previous\n    implementation allowed non-all-queries on the current scope to leak into\n    the scope used for reloading.\n\n    *Andrew Novoselac* and *Matthew Draper*",
+    "project": "activerecord",
+    "date_merged": 1781131921000,
+    "author": "Andrew Novoselac",
+    "sha": "6c104382b043c694c5eb5e8ea54ea70c5ae8282c",
+    "pr": "57594",
+    "merge_sha": "3e8a7824e2ec53db44f5a1a1e2d63f64086fbbf8",
+    "html": "<p>Fix bug with reloading models with all-queries default scopes. The previous<br />\nimplementation allowed non-all-queries on the current scope to leak into<br />\nthe scope used for reloading.</p>\n\n<p><em>Andrew Novoselac</em> and <em>Matthew Draper</em></p>\n"
+  },
+  {
     "message": "*   `insert!` now accepts the `:unique_by` option, consistent with `insert`.\n\n    *Kenta Ishizaki*",
     "project": "activerecord",
     "date_merged": 1780994620000,
