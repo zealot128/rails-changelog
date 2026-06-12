@@ -520,6 +520,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Fix `increment!` / `decrement!` on models with query constraints to include\n    every query constraint column in the counter update.\n\n    *Jean-Samuel Aubry-Guzzi*",
+    "project": "activerecord",
+    "date_merged": 1781226689000,
+    "author": "Jean-Samuel Aubry-Guzzi",
+    "sha": "43aac6e37598f42a34dc1c805a7ee03444203c4e",
+    "pr": "57679",
+    "merge_sha": "d5dfbcd8fe872c605e87738c658d7b8141a0701e",
+    "html": "<p>Fix <code>increment!</code> / <code>decrement!</code> on models with query constraints to include<br />\nevery query constraint column in the counter update.</p>\n\n<p><em>Jean-Samuel Aubry-Guzzi</em></p>\n"
+  },
+  {
     "message": "*   Fix bug with reloading models with all-queries default scopes. The previous\n    implementation allowed non-all-queries on the current scope to leak into\n    the scope used for reloading.\n\n    *Andrew Novoselac* and *Matthew Draper*",
     "project": "activerecord",
     "date_merged": 1781131921000,
