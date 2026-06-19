@@ -520,6 +520,26 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Make `ActiveRecord::Base.primary_key` inheritable.\n\n    Previously setting `primary_key` on a model wouldn't impact child\n    classes. Now the property is inherited by subclasses as well.\n\n    ``` ruby\n    class AbstractShardedModel < ApplicationRecord\n        self.abstract_class = true\n        self.primary_key = [\"tenant_id\", \"id\"]\n    end\n\n    class Invoice < AbstractShardedModel\n    end\n\n    Invoice.primary_key # => [\"tenant_id\", \"id\"]\n    ```\n\n    *Iliana Hadzhiatanasova*",
+    "project": "activerecord",
+    "date_merged": 1781871730000,
+    "author": "Iliana Hadzhiatanasova",
+    "sha": "e81deb5c2b6cc04f5799cd9342ce019223bea3c1",
+    "pr": "57775",
+    "merge_sha": "4a683c7eddb61331973101ec389122d9c08c39a8",
+    "html": "<p>Make <code>ActiveRecord::Base.primary_key</code> inheritable.</p>\n\n<p>Previously setting <code>primary_key</code> on a model wouldn’t impact child<br />\nclasses. Now the property is inherited by subclasses as well.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">AbstractShardedModel</span> <span class=\"o\">&lt;</span> <span class=\"no\">ApplicationRecord</span>\n    <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">abstract_class</span> <span class=\"o\">=</span> <span class=\"kp\">true</span>\n    <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">primary_key</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"tenant_id\"</span><span class=\"p\">,</span> <span class=\"s2\">\"id\"</span><span class=\"p\">]</span>\n<span class=\"k\">end</span>\n\n<span class=\"k\">class</span> <span class=\"nc\">Invoice</span> <span class=\"o\">&lt;</span> <span class=\"no\">AbstractShardedModel</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">Invoice</span><span class=\"p\">.</span><span class=\"nf\">primary_key</span> <span class=\"c1\"># =&gt; [\"tenant_id\", \"id\"]</span>\n</code></pre></div></div>\n\n<p><em>Iliana Hadzhiatanasova</em></p>\n"
+  },
+  {
+    "message": "*   Fix `has_many` and `has_one` associations on a new record returning an empty\n    result when the owner has a composite primary key, even when every primary\n    key column is populated.\n\n    *Jean-Samuel Aubry-Guzzi*",
+    "project": "activerecord",
+    "date_merged": 1781870859000,
+    "author": "Jean-Samuel Aubry-Guzzi",
+    "sha": "c8c97169ef70d9a413b14e5b72b32865e0944060",
+    "pr": "57651",
+    "merge_sha": "66fe15c43859b05de019e1758c18f9c12d4c35f4",
+    "html": "<p>Fix <code>has_many</code> and <code>has_one</code> associations on a new record returning an empty<br />\nresult when the owner has a composite primary key, even when every primary<br />\nkey column is populated.</p>\n\n<p><em>Jean-Samuel Aubry-Guzzi</em></p>\n"
+  },
+  {
     "message": "*   Fix `increment!` / `decrement!` on models with query constraints to include\n    every query constraint column in the counter update.\n\n    *Jean-Samuel Aubry-Guzzi*",
     "project": "activerecord",
     "date_merged": 1781226689000,
