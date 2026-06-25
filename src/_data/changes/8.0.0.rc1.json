@@ -1360,6 +1360,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Move `ActionCable::Server::Configuration` to `ActionCable::Configuration`.\n\n    The old constant remains available as an alias.\n\n    *Samuel Williams*",
+    "project": "actioncable",
+    "date_merged": 1782344089000,
+    "author": "Samuel Williams",
+    "sha": "8d19560d502915a786610a1d0513e4d15830f348",
+    "pr": "57847",
+    "merge_sha": "fe66563e16ca49b1789b3bfcdbeb3353e3899939",
+    "html": "<p>Move <code>ActionCable::Server::Configuration</code> to <code>ActionCable::Configuration</code>.</p>\n\n<p>The old constant remains available as an alias.</p>\n\n<p><em>Samuel Williams</em></p>\n"
+  },
+  {
     "message": "*   Respect calls to `#reject` in `before_subscribe` callbacks.\n\n    It doesn't call `#subscribed` if a `before_subscribe` callback calls `#reject`.\n\n    *Joshua Young*",
     "project": "actioncable",
     "date_merged": 1780005500000,
@@ -1398,6 +1408,16 @@
     "pr": "56672",
     "merge_sha": "038c3ededefb7242e444d886714d87fe4feeee71",
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
+  },
+  {
+    "message": "*   Calling `safe_join` in a view no longer fallbacks to the `$,` global variable.\n\n    Previously, calling `safe_join` would use `$,` by default to separate elements.\n    Ruby has deprecated the usage of setting `$,` for more than 10 years and its usage\n    in `safe_join` was never documented.\n\n    If your application relied on this behaviour, make sure to explictly pass the separator\n    to `safe_join` as the default is now `nil` (no separation).\n\n    *Edouard Chin*",
+    "project": "actionview",
+    "date_merged": 1782334217000,
+    "author": "Edouard CHIN",
+    "sha": "36bc3c9bb9ad0d9aca4420e15717d559c86545b6",
+    "pr": "57844",
+    "merge_sha": "90c76b37d6a5bb7b63be46a380c31573081d8768",
+    "html": "<p>Calling <code>safe_join</code> in a view no longer fallbacks to the <code>$,</code> global variable.</p>\n\n<p>Previously, calling <code>safe_join</code> would use <code>$,</code> by default to separate elements.<br />\nRuby has deprecated the usage of setting <code>$,</code> for more than 10 years and its usage<br />\nin <code>safe_join</code> was never documented.</p>\n\n<p>If your application relied on this behaviour, make sure to explictly pass the separator<br />\nto <code>safe_join</code> as the default is now <code>nil</code> (no separation).</p>\n\n<p><em>Edouard Chin</em></p>\n"
   },
   {
     "message": "*   Fix `ActionView::TestCase#render` to reset `rendered`.\n    The behavior was changed when memoization was added in #51093. Now it once again conforms to the documentation.\n\n    *Jeroen Versteeg*",
