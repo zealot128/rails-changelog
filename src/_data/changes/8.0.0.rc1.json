@@ -520,6 +520,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Fix inverse association matching for `has_many` and `has_one` associations\n    with association-specific composite primary keys.\n\n    *Hugo Vacher*",
+    "project": "activerecord",
+    "date_merged": 1782416619000,
+    "author": "Hugo Vacher",
+    "sha": "369d6bcef08aacdb191b5a5580ade5af4d0d7802",
+    "pr": "57784",
+    "merge_sha": "cb8c1544ab0baae4dbc9c2b9ca31ec1d2c0ef84f",
+    "html": "<p>Fix inverse association matching for <code>has_many</code> and <code>has_one</code> associations<br />\nwith association-specific composite primary keys.</p>\n\n<p><em>Hugo Vacher</em></p>\n"
+  },
+  {
     "message": "*   Support polymorphic associations with custom primary keys through `:inverse_of`.\n\n    When using polymorphic associations with `:inverse_of`, ActiveRecord now respects\n    custom `:primary_key` options defined on the inverse association. This allows\n    different associated models to use different primary key columns.\n\n    ```ruby\n    class Post < ActiveRecord::Base\n      has_many :comments, as: :commentable, primary_key: :uuid\n    end\n\n    class Article < ActiveRecord::Base\n      has_many :comments, as: :commentable, primary_key: :slug\n    end\n\n    class Comment < ActiveRecord::Base\n      belongs_to :commentable, polymorphic: true, inverse_of: :comments\n    end\n\n    post = Post.create!(uuid: \"post-uuid-123\")\n    comment = Comment.new(content: \"Great post!\")\n    comment.commentable = post  # This now correctly uses :uuid as the foreign key\n    comment.save!\n    comment.commentable_id # => \"post-uuid-123\" (not the post.id)\n\n    article = Article.create!(slug: \"article-slug-456\")\n    comment = Comment.new(content: \"Nice article!\")\n    comment.commentable = article  # This now correctly uses :slug as the foreign key\n    comment.save!\n    comment.commentable_id # => \"article-slug-456\" (not the article.id)\n    ```\n\n    *Ryuta Kamizono*",
     "project": "activerecord",
     "date_merged": 1782113394000,
