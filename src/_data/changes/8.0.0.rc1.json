@@ -520,6 +520,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Report PostgreSQL default timestamp and time precision as 6.\n\n    Bare PostgreSQL `timestamp` and `time` columns now use their effective\n    microsecond precision in Active Record type metadata, matching the\n    database's persisted precision.\n\n    *Adrianna Chang*",
+    "project": "activerecord",
+    "date_merged": 1782504321000,
+    "author": "Adrianna Chang",
+    "sha": "c162370c8f92ac081d2a9ab2265cfb282b9dca3f",
+    "pr": "57845",
+    "merge_sha": "01b67c4042c218c82181457a762ad59e5b12589c",
+    "html": "<p>Report PostgreSQL default timestamp and time precision as 6.</p>\n\n<p>Bare PostgreSQL <code>timestamp</code> and <code>time</code> columns now use their effective<br />\nmicrosecond precision in Active Record type metadata, matching the<br />\ndatabase’s persisted precision.</p>\n\n<p><em>Adrianna Chang</em></p>\n"
+  },
+  {
     "message": "*   Fix inverse association matching for `has_many` and `has_one` associations\n    with association-specific composite primary keys.\n\n    *Hugo Vacher*",
     "project": "activerecord",
     "date_merged": 1782416619000,
