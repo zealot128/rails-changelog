@@ -400,6 +400,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Allow `retry_on` to accept a Float for `:wait`.\n\n    Similar to `ActiveJob.set(wait: 1.5)`, allow a Float to be passed.\n    Also, passing an unsupported `:wait` type will now raise when loading the\n    job class.\n\n    *Kenta Ishizaki, Petrik de Heus*",
+    "project": "activejob",
+    "date_merged": 1782638895000,
+    "author": "Petrik",
+    "sha": "ee98d9c320777b377cd1dfd72dcbcded572c08a8",
+    "pr": "57817",
+    "merge_sha": "58495d3324683401109c5a07f4d10ab74ce3a26c",
+    "html": "<p>Allow <code>retry_on</code> to accept a Float for <code>:wait</code>.</p>\n\n<p>Similar to <code>ActiveJob.set(wait: 1.5)</code>, allow a Float to be passed.<br />\nAlso, passing an unsupported <code>:wait</code> type will now raise when loading the<br />\njob class.</p>\n\n<p><em>Kenta Ishizaki, Petrik de Heus</em></p>\n"
+  },
+  {
     "message": "*   Allow queue adapters to inspect a job when deciding whether to interrupt at\n    a checkpoint, and to optionally return a specific interruption reason.\n\n    Queue adapters that implement `stopping?` must accept the job as an\n    optional positional argument, i.e. `def stopping?(job = nil)`, in order to\n    work with this version and older versions of Rails. A `true` return value\n    will use 'stopping' as the interruption reason, any other truthy value will\n    be used as-is.\n\n    *Bart de Water*",
     "project": "activejob",
     "date_merged": 1779833625000,
@@ -1648,6 +1658,16 @@
     "pr": "56283",
     "merge_sha": "b6a07894d6920c5444e5a8dca2f4dc2d0b5a9fb2",
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Declare `assert_not_pattern` as an alias for `refute_pattern`\n\n    *Sean Doyle*",
+    "project": "activesupport",
+    "date_merged": 1782638608000,
+    "author": "Sean Doyle",
+    "sha": "23420be739d255f51b00f3c8eb54248e0d21d06d",
+    "pr": "57843",
+    "merge_sha": "0d0c7cf168c25d61b616b0b154b589d31e51cf07",
+    "html": "<p>Declare <code>assert_not_pattern</code> as an alias for <code>refute_pattern</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
     "message": "*   `assert_difference`, `assert_no_difference`, `assert_changes`, and\n    `assert_no_changes` now raise `ArgumentError` when given an expression that\n    is not a callable (like a Proc), String, or Symbol.\n\n    This helps catch issues where you accidentally pass a single static value\n    (like `assert_no_changes(a.size)`). The same value would seen before\n    and after the block, so no change would ever be found, silently passing\n    the assertion even if there *was* an unexpected change.\n\n    To be reevaluated correctly, the expression should wrapped in a lambda like\n    `assert_no_changes(-> { a.size })`, or quoted in a String that can be `eval`-ed.\n\n    *Alexander Momchilov*",
