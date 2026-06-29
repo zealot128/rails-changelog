@@ -1660,6 +1660,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Include call options in `Cache#exist?` instrumentation payload,\n    consistent with `read`, `write`, and `delete`.\n\n    *Kenta Ishizaki*",
+    "project": "activesupport",
+    "date_merged": 1782743384000,
+    "author": "Kenta Ishizaki",
+    "sha": "16099f864f46ec15b77bba2b741438c29383544f",
+    "pr": "57915",
+    "merge_sha": "b712383cac1c0dda6814b4705c1b9f13390eb0f2",
+    "html": "<p>Include call options in <code>Cache#exist?</code> instrumentation payload,<br />\nconsistent with <code>read</code>, <code>write</code>, and <code>delete</code>.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Declare `assert_not_pattern` as an alias for `refute_pattern`\n\n    *Sean Doyle*",
     "project": "activesupport",
     "date_merged": 1782638608000,
