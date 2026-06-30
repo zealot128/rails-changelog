@@ -1660,6 +1660,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Added `ActiveSupport::ProxyLogger`.\n\n    The proxy logger, is a logger that forwards all received logs to another\n    logger, but has its own independent severity level.\n\n    This is useful when you want some library you have no control over to use\n    the same logger as the rest of your application, but to have a different severity\n    level because it is logging too much:\n\n    ```ruby\n    SomeLibrary.logger = ActiveSupport::ProxyLogger.new(Rails.logger, :error)\n    ```\n\n    Almost all of the standard Logger interface is supported.\n\n    *Jean Boussier*",
+    "project": "activesupport",
+    "date_merged": 1782816080000,
+    "author": "Jean Boussier",
+    "sha": "54d7292d8cbaf8f0a9ff60f96276da7a7454a938",
+    "pr": "57931",
+    "merge_sha": "4a2168d861b45fde6cc0d0c3dd5424083a3b6ed1",
+    "html": "<p>Added <code>ActiveSupport::ProxyLogger</code>.</p>\n\n<p>The proxy logger, is a logger that forwards all received logs to another<br />\nlogger, but has its own independent severity level.</p>\n\n<p>This is useful when you want some library you have no control over to use<br />\nthe same logger as the rest of your application, but to have a different severity<br />\nlevel because it is logging too much:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">SomeLibrary</span><span class=\"p\">.</span><span class=\"nf\">logger</span> <span class=\"o\">=</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">ProxyLogger</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"no\">Rails</span><span class=\"p\">.</span><span class=\"nf\">logger</span><span class=\"p\">,</span> <span class=\"ss\">:error</span><span class=\"p\">)</span>\n</code></pre></div></div>\n\n<p>Almost all of the standard Logger interface is supported.</p>\n\n<p><em>Jean Boussier</em></p>\n"
+  },
+  {
     "message": "*   Include call options in `Cache#exist?` instrumentation payload,\n    consistent with `read`, `write`, and `delete`.\n\n    *Kenta Ishizaki*",
     "project": "activesupport",
     "date_merged": 1782743384000,
