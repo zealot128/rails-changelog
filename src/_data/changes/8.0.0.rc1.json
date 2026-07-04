@@ -1660,6 +1660,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Add `#this_quarter?` to Date/Time.\n\n    It returns true if the date/time falls within the current quarter.\n\n    ```ruby\n    Date.current #=> Tue, 15 Feb 2000\n    Date.new(2000, 3, 31).this_quarter?  # => true\n    Date.new(2000, 4, 1).this_quarter?   # => false\n    ```\n\n    *Kenta Ishizaki*",
+    "project": "activesupport",
+    "date_merged": 1783170443000,
+    "author": "Kenta Ishizaki",
+    "sha": "9d0baf9be20767ea231eaa150810bf681589739b",
+    "pr": "57963",
+    "merge_sha": "e828fd6f02fed814bcc4ce5794128333640f2e99",
+    "html": "<p>Add <code>#this_quarter?</code> to Date/Time.</p>\n\n<p>It returns true if the date/time falls within the current quarter.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">current</span> <span class=\"c1\">#=&gt; Tue, 15 Feb 2000</span>\n<span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"mi\">2000</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">31</span><span class=\"p\">).</span><span class=\"nf\">this_quarter?</span>  <span class=\"c1\"># =&gt; true</span>\n<span class=\"no\">Date</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">(</span><span class=\"mi\">2000</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">).</span><span class=\"nf\">this_quarter?</span>   <span class=\"c1\"># =&gt; false</span>\n</code></pre></div></div>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Added `ActiveSupport::ProxyLogger`.\n\n    The proxy logger, is a logger that forwards all received logs to another\n    logger, but has its own independent severity level.\n\n    This is useful when you want some library you have no control over to use\n    the same logger as the rest of your application, but to have a different severity\n    level because it is logging too much:\n\n    ```ruby\n    SomeLibrary.logger = ActiveSupport::ProxyLogger.new(Rails.logger, :error)\n    ```\n\n    Almost all of the standard Logger interface is supported.\n\n    *Jean Boussier*",
     "project": "activesupport",
     "date_merged": 1782816080000,
