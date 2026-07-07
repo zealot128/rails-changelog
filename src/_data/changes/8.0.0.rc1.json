@@ -1440,6 +1440,26 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Support endless and beginless ranges in `number_field_tag` and\n    `range_field_tag`.\n\n    Previously, passing an endless (`18..`) or beginless (`..10`) range as the\n    `:in`/`:within` option raised `RangeError`. Now an endless range renders\n    `min` without `max`, and a beginless range renders `max` without `min`,\n    matching `number_field` and `range_field`.\n\n    *Kenta Ishizaki*",
+    "project": "actionview",
+    "date_merged": 1783437328000,
+    "author": "Kenta Ishizaki",
+    "sha": "b19f008a23cabbf0492aeba62dcfea870e1ff21d",
+    "pr": "58039",
+    "merge_sha": "813301c1ca6a4a11ad2379ed50a57922bc76ae6d",
+    "html": "<p>Support endless and beginless ranges in <code>number_field_tag</code> and<br />\n<code>range_field_tag</code>.</p>\n\n<p>Previously, passing an endless (<code>18..</code>) or beginless (<code>..10</code>) range as the<br />\n<code>:in</code>/<code>:within</code> option raised <code>RangeError</code>. Now an endless range renders<br />\n<code>min</code> without <code>max</code>, and a beginless range renders <code>max</code> without <code>min</code>,<br />\nmatching <code>number_field</code> and <code>range_field</code>.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
+    "message": "*   Honor an explicit `value:` option in `color_field`, including `nil`.\n\n    Previously, passing `value: nil` was ignored and the field still pre-filled\n    from the model's stored color. Now an explicitly provided `value:` is\n    honored, and the stored color is only used when no `value:` option is given.\n\n    *Kenta Ishizaki*",
+    "project": "actionview",
+    "date_merged": 1783429770000,
+    "author": "Kenta Ishizaki",
+    "sha": "1f2ac3780956163e515aae96336782fb95b75f83",
+    "pr": "58023",
+    "merge_sha": "442aef87735d5fe43a9f59214705dc0c6b95e7ff",
+    "html": "<p>Honor an explicit <code>value:</code> option in <code>color_field</code>, including <code>nil</code>.</p>\n\n<p>Previously, passing <code>value: nil</code> was ignored and the field still pre-filled<br />\nfrom the model’s stored color. Now an explicitly provided <code>value:</code> is<br />\nhonored, and the stored color is only used when no <code>value:</code> option is given.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Calling `safe_join` in a view no longer fallbacks to the `$,` global variable.\n\n    Previously, calling `safe_join` would use `$,` by default to separate elements.\n    Ruby has deprecated the usage of setting `$,` for more than 10 years and its usage\n    in `safe_join` was never documented.\n\n    If your application relied on this behaviour, make sure to explicitly pass the separator\n    to `safe_join` as the default is now `nil` (no separation).\n\n    *Edouard Chin*",
     "project": "actionview",
     "date_merged": 1782334217000,
@@ -2418,6 +2438,16 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Fix `ActionController::Live` streams hanging on client disconnect.\n\n    `ActionController::Live::Buffer#abort` cleared the streaming queue but never\n    enqueued the terminator that `each_chunk` uses to exit, so a reader thread\n    blocked in `SizedQueue#pop` was never woken and the request thread hung\n    indefinitely. `#abort` now enqueues the terminator, mirroring `#close`.\n\n    *Winfield Peterson*",
+    "project": "actionpack",
+    "date_merged": 1783447624000,
+    "author": "Winfield Peterson",
+    "sha": "43bc0d9dc721ae0dc78dbb7fa85354a82428b69d",
+    "pr": "58048",
+    "merge_sha": "52d9587a5e5b0fbda40da7b2c52f2307ed2c12c0",
+    "html": "<p>Fix <code>ActionController::Live</code> streams hanging on client disconnect.</p>\n\n<p><code>ActionController::Live::Buffer#abort</code> cleared the streaming queue but never<br />\nenqueued the terminator that <code>each_chunk</code> uses to exit, so a reader thread<br />\nblocked in <code>SizedQueue#pop</code> was never woken and the request thread hung<br />\nindefinitely. <code>#abort</code> now enqueues the terminator, mirroring <code>#close</code>.</p>\n\n<p><em>Winfield Peterson</em></p>\n"
   },
   {
     "message": "*   Deprecated the ActionController::Renderers::RENDERERS constant.\n\n    This constant was for internal usage but had a documentation and wasn't set\n    as private or :nodoc:.\n    Applications that needs to add or remove renderers should be using the public API instead:\n\n    ```ruby\n    ActionController.add_renderer(:rtf) do\n    end\n\n    ActionController.remove_renderer(:rtf)\n    ```\n\n    Gems or applications that used the constant to see the list of renderers, can now use a frozen\n    reader:\n\n    ```ruby\n    ActionController::Renderers.all.include?(:csv)\n    ```\n\n    *Edouard Chin*",
