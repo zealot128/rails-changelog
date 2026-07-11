@@ -540,6 +540,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Fix MySQL `POINT` and `MULTIPOINT` columns being misreported as integer columns.\n\n    Both type names contain the substring \"int\", so they matched the generic\n    `%r(int)i` rule in the abstract adapter's type map and came back with\n    `type: :integer`, instead of being treated as an unknown type like the\n    other spatial types (`GEOMETRY`, `POLYGON`, `LINESTRING`, ...).\n\n    *Ryosuke Okazuka*",
+    "project": "activerecord",
+    "date_merged": 1783787117000,
+    "author": "kyuuri1791",
+    "sha": "82557c173849de48f0aabaea09560a1afae5b592",
+    "pr": "58087",
+    "merge_sha": "35ee78116909eb5685d253380fd50c2c7beb1efa",
+    "html": "<p>Fix MySQL <code>POINT</code> and <code>MULTIPOINT</code> columns being misreported as integer columns.</p>\n\n<p>Both type names contain the substring “int”, so they matched the generic<br />\n<code>%r(int)i</code> rule in the abstract adapter’s type map and came back with<br />\n<code>type: :integer</code>, instead of being treated as an unknown type like the<br />\nother spatial types (<code>GEOMETRY</code>, <code>POLYGON</code>, <code>LINESTRING</code>, …).</p>\n\n<p><em>Ryosuke Okazuka</em></p>\n"
+  },
+  {
     "message": "*   Report PostgreSQL default timestamp and time precision as 6.\n\n    Bare PostgreSQL `timestamp` and `time` columns now use their effective\n    microsecond precision in Active Record type metadata, matching the\n    database's persisted precision.\n\n    *Adrianna Chang*",
     "project": "activerecord",
     "date_merged": 1782504321000,
