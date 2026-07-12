@@ -540,6 +540,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Honor `if_not_exists:` in SQLite3 `add_check_constraint` and `add_foreign_key`.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1783857198000,
+    "author": "Kenta Ishizaki",
+    "sha": "b1a33e9d2a78f077e4af1069d3ab555a7a03e066",
+    "pr": "58091",
+    "merge_sha": "d30eb2413cc0f785a7be21775e495b7ab1f58c90",
+    "html": "<p>Honor <code>if_not_exists:</code> in SQLite3 <code>add_check_constraint</code> and <code>add_foreign_key</code>.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Fix MySQL `POINT` and `MULTIPOINT` columns being misreported as integer columns.\n\n    Both type names contain the substring \"int\", so they matched the generic\n    `%r(int)i` rule in the abstract adapter's type map and came back with\n    `type: :integer`, instead of being treated as an unknown type like the\n    other spatial types (`GEOMETRY`, `POLYGON`, `LINESTRING`, ...).\n\n    *Ryosuke Okazuka*",
     "project": "activerecord",
     "date_merged": 1783787117000,
@@ -1458,6 +1468,16 @@
     "pr": "56672",
     "merge_sha": "038c3ededefb7242e444d886714d87fe4feeee71",
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
+  },
+  {
+    "message": "*   Accept `Date` and `Numeric` inputs in `relative_time_in_words`.\n\n    Passing a `Date` or a `Numeric` raised `ArgumentError` instead of returning\n    a distance string, unlike `distance_of_time_in_words` which accepts them.\n\n    *Kenta Ishizaki*",
+    "project": "actionview",
+    "date_merged": 1783858239000,
+    "author": "Kenta Ishizaki",
+    "sha": "b0955ca345dc18315668a0647f254ccc8f95e976",
+    "pr": "58092",
+    "merge_sha": "109b3c4c58fb1514718e1190810e3971153596e7",
+    "html": "<p>Accept <code>Date</code> and <code>Numeric</code> inputs in <code>relative_time_in_words</code>.</p>\n\n<p>Passing a <code>Date</code> or a <code>Numeric</code> raised <code>ArgumentError</code> instead of returning<br />\na distance string, unlike <code>distance_of_time_in_words</code> which accepts them.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
   },
   {
     "message": "*   Support endless and beginless ranges in `number_field_tag` and\n    `range_field_tag`.\n\n    Previously, passing an endless (`18..`) or beginless (`..10`) range as the\n    `:in`/`:within` option raised `RangeError`. Now an endless range renders\n    `min` without `max`, and a beginless range renders `max` without `min`,\n    matching `number_field` and `range_field`.\n\n    *Kenta Ishizaki*",
