@@ -540,6 +540,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Honor foreign key names on SQLite3.\n\n    SQLite3 did not read foreign key names, so `remove_foreign_key(name:)`\n    removed an arbitrary foreign key rather than the named one, and custom\n    names were lost when a later schema change rebuilt the table or the\n    schema was dumped. Names are now honored, matching the other adapters.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1783885458000,
+    "author": "Kenta Ishizaki",
+    "sha": "3f1564b152862bb288a88c809c2cf309e8682a46",
+    "pr": "58096",
+    "merge_sha": "520e5c6e7461d2d8b81552601f794d7c79597bea",
+    "html": "<p>Honor foreign key names on SQLite3.</p>\n\n<p>SQLite3 did not read foreign key names, so <code>remove_foreign_key(name:)</code><br />\nremoved an arbitrary foreign key rather than the named one, and custom<br />\nnames were lost when a later schema change rebuilt the table or the<br />\nschema was dumped. Names are now honored, matching the other adapters.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Honor `if_not_exists:` in SQLite3 `add_check_constraint` and `add_foreign_key`.\n\n    *Kenta Ishizaki*",
     "project": "activerecord",
     "date_merged": 1783857198000,
