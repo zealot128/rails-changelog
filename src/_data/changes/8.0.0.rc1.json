@@ -1490,6 +1490,16 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Extract `current_page?`, `button_to`, and `link_to` methods to\n    `ActionView::Helpers::NavigationHelper`\n\n    *Sean Doyle*",
+    "project": "actionview",
+    "date_merged": 1784080200000,
+    "author": "Sean Doyle",
+    "sha": "07f4b45e294e016675ec500a800f359cde839aa4",
+    "pr": "55410",
+    "merge_sha": "c2dbb2104247e1ea5e9832d256c26c798156df20",
+    "html": "<p>Extract <code>current_page?</code>, <code>button_to</code>, and <code>link_to</code> methods to<br />\n<code>ActionView::Helpers::NavigationHelper</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
     "message": "*   Accept `Date` and `Numeric` inputs in `relative_time_in_words`.\n\n    Passing a `Date` or a `Numeric` raised `ArgumentError` instead of returning\n    a distance string, unlike `distance_of_time_in_words` which accepts them.\n\n    *Kenta Ishizaki*",
     "project": "actionview",
     "date_merged": 1783858239000,
