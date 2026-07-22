@@ -1190,6 +1190,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Deprecate `ActionDispatch::Cookies::HTTP_HEADER`.\n\n    Use `Rack::SET_COOKIE` instead.\n\n    *Nikita Vasilevsky*",
+    "project": "actionpack",
+    "date_merged": 1784675683000,
+    "author": "Nikita Vasilevsky",
+    "sha": "fed16404f45a932f171ee70b919019912d5d5486",
+    "pr": "58190",
+    "merge_sha": "7bdb1643a1aee389c17c4e7072d1c5843f0128e0",
+    "html": "<p>Deprecate <code>ActionDispatch::Cookies::HTTP_HEADER</code>.</p>\n\n<p>Use <code>Rack::SET_COOKIE</code> instead.</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
+  },
+  {
     "message": "*   Fix `ActionController::Live` streams hanging on client disconnect.\n\n    `ActionController::Live::Buffer#abort` cleared the streaming queue but never\n    enqueued the terminator that `each_chunk` uses to exit, so a reader thread\n    blocked in `SizedQueue#pop` was never woken and the request thread hung\n    indefinitely. `#abort` now enqueues the terminator, mirroring `#close`.\n\n    *Winfield Peterson*",
     "project": "actionpack",
     "date_merged": 1783447624000,
@@ -2398,6 +2408,16 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActiveSupport::Cache::RedisCacheStore::DEFAULT_REDIS_OPTIONS`.\n\n    The `redis-client` implementation no longer reads this constant. Pass\n    timeout options to `RedisCacheStore` or a configured `RedisClient` instead.\n\n    *Nikita Vasilevsky*",
+    "project": "activesupport",
+    "date_merged": 1784675646000,
+    "author": "Nikita Vasilevsky",
+    "sha": "6ad320f5cdeb7c3ecc4afbf8561ef02e9ab12aca",
+    "pr": "58191",
+    "merge_sha": "76998f5e68b248b0dfce019336d0039431c05881",
+    "html": "<p>Deprecate <code>ActiveSupport::Cache::RedisCacheStore::DEFAULT_REDIS_OPTIONS</code>.</p>\n\n<p>The <code>redis-client</code> implementation no longer reads this constant. Pass<br />\ntimeout options to <code>RedisCacheStore</code> or a configured <code>RedisClient</code> instead.</p>\n\n<p><em>Nikita Vasilevsky</em></p>\n"
   },
   {
     "message": "*   Add `#this_quarter?` to Date/Time.\n\n    It returns true if the date/time falls within the current quarter.\n\n    ```ruby\n    Date.current #=> Tue, 15 Feb 2000\n    Date.new(2000, 3, 31).this_quarter?  # => true\n    Date.new(2000, 4, 1).this_quarter?   # => false\n    ```\n\n    *Kenta Ishizaki*",
