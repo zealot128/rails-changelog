@@ -2630,6 +2630,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Add `ActiveSupport.raise_on_invalid_time_zone_parse`.\n\n    Raise `ArgumentError` on `ActiveSupport::TimeZone#parse` for any invalid\n    string. Historically, strings without recognizable date information\n    (e.g. `\"foobar\"`) returned `nil`, while strings with out-of-range date\n    components (e.g. `\"9000\"`) raised `ArgumentError`. When enabled, both\n    cases raise `ArgumentError`, matching the Ruby standard library's `Time.parse`.\n\n    *Said Kaldybaev*",
+    "project": "activesupport",
+    "date_merged": 1784966784000,
+    "author": "Said Kaldybaev",
+    "sha": "d3f2e1c34ed7faf98c085a65b0a759e2f9e8c3a0",
+    "pr": "57211",
+    "merge_sha": "0c0fb2ba0904801b28c11910f6b4cc081203edf8",
+    "html": "<p>Add <code>ActiveSupport.raise_on_invalid_time_zone_parse</code>.</p>\n\n<p>Raise <code>ArgumentError</code> on <code>ActiveSupport::TimeZone#parse</code> for any invalid<br />\nstring. Historically, strings without recognizable date information<br />\n(e.g. <code>\"foobar\"</code>) returned <code>nil</code>, while strings with out-of-range date<br />\ncomponents (e.g. <code>\"9000\"</code>) raised <code>ArgumentError</code>. When enabled, both<br />\ncases raise <code>ArgumentError</code>, matching the Ruby standard library’s <code>Time.parse</code>.</p>\n\n<p><em>Said Kaldybaev</em></p>\n"
+  },
+  {
     "message": "*   Raise `ActiveSupport::ConfigurationFile::FormatError` when parsing malformed YAML.\n\n    *Nikita Vasilevsky*",
     "project": "activesupport",
     "date_merged": 1784807532000,
