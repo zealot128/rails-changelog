@@ -810,6 +810,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Deprecate the `insert_returning` option in PostgreSQL database\n    configurations, and the `PostgreSQLAdapter#use_insert_returning?` method.\n\n    The option only affected single-row INSERT statements. Other paths such\n    as `insert_all`, `upsert_all`, and RETURNING for `update` already use\n    RETURNING when the database supports it, so the option cannot fully\n    disable RETURNING and has become vestigial.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1785124102000,
+    "author": "Ryuta Kamizono",
+    "sha": "2d508efaaaac440d279421d89351759beb151f95",
+    "pr": "58255",
+    "merge_sha": "5f8c3104de3b7ddf6a2371d1f9414282830ed278",
+    "html": "<p>Deprecate the <code>insert_returning</code> option in PostgreSQL database<br />\nconfigurations, and the <code>PostgreSQLAdapter#use_insert_returning?</code> method.</p>\n\n<p>The option only affected single-row INSERT statements. Other paths such<br />\nas <code>insert_all</code>, <code>upsert_all</code>, and RETURNING for <code>update</code> already use<br />\nRETURNING when the database supports it, so the option cannot fully<br />\ndisable RETURNING and has become vestigial.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Remove unused `rest` parameter from merge and merge!\n\n    *Aaron Patterson*",
     "project": "activerecord",
     "date_merged": 1784752919000,
