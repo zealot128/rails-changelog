@@ -820,6 +820,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Bump the minimum supported SQLite version to 3.35.0.\n\n    SQLite 3.35.0 introduced the `RETURNING` clause, which the SQLite3 adapter\n    has depended on since Rails 7.1 (#49290) for reading auto-populated columns\n    such as the primary key after `INSERT`. Older SQLite versions have been\n    silently broken since then; make the requirement explicit.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1785291548000,
+    "author": "Ryuta Kamizono",
+    "sha": "22641b445e5c20aa3d97be12882f2aaf62182133",
+    "pr": "58284",
+    "merge_sha": "f652cc1648b954d546cfafb8ec4436ff9ff513ca",
+    "html": "<p>Bump the minimum supported SQLite version to 3.35.0.</p>\n\n<p>SQLite 3.35.0 introduced the <code>RETURNING</code> clause, which the SQLite3 adapter<br />\nhas depended on since Rails 7.1 (#49290) for reading auto-populated columns<br />\nsuch as the primary key after <code>INSERT</code>. Older SQLite versions have been<br />\nsilently broken since then; make the requirement explicit.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Deprecate the `insert_returning` option in PostgreSQL database\n    configurations, and the `PostgreSQLAdapter#use_insert_returning?` method.\n\n    The option only affected single-row INSERT statements. Other paths such\n    as `insert_all`, `upsert_all`, and RETURNING for `update` already use\n    RETURNING when the database supports it, so the option cannot fully\n    disable RETURNING and has become vestigial.\n\n    *Ryuta Kamizono*",
     "project": "activerecord",
     "date_merged": 1785124102000,
@@ -2648,6 +2658,16 @@
     "pr": "56283",
     "merge_sha": "b6a07894d6920c5444e5a8dca2f4dc2d0b5a9fb2",
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Fix `Range#sum` with a falsey initial value.\n\n    Summing an integer range with a falsey starting value (such as nil or false)\n    treated that value as zero. It now keeps the starting value as given, matching\n    array and enumerable sum.\n\n    *Said Kaldybaev*",
+    "project": "activesupport",
+    "date_merged": 1785305024000,
+    "author": "Said Kaldybaev",
+    "sha": "2d39b8389de0b0cd56e6f5c1e78d1967a2780bb2",
+    "pr": "58287",
+    "merge_sha": "4164e1cfe148ad67eaa4e4506785b2e9f0c5d81e",
+    "html": "<p>Fix <code>Range#sum</code> with a falsey initial value.</p>\n\n<p>Summing an integer range with a falsey starting value (such as nil or false)<br />\ntreated that value as zero. It now keeps the starting value as given, matching<br />\narray and enumerable sum.</p>\n\n<p><em>Said Kaldybaev</em></p>\n"
   },
   {
     "message": "*   Add `ActiveSupport.raise_on_invalid_time_zone_parse`.\n\n    Raise `ArgumentError` on `ActiveSupport::TimeZone#parse` for any invalid\n    string. Historically, strings without recognizable date information\n    (e.g. `\"foobar\"`) returned `nil`, while strings with out-of-range date\n    components (e.g. `\"9000\"`) raised `ArgumentError`. When enabled, both\n    cases raise `ArgumentError`, matching the Ruby standard library's `Time.parse`.\n\n    *Said Kaldybaev*",
