@@ -830,6 +830,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Deprecate `ActiveRecord::ConnectionAdapters::TransactionState#fully_committed?`,\n    `#fully_rolledback?`, `#fully_completed?`, and `#nullify!`.\n\n    These methods are no longer used by the framework. Use `#committed?`,\n    `#rolledback?`, and `#completed?` to inspect the transaction state instead.\n\n    *Kenta Ishizaki*",
+    "project": "activerecord",
+    "date_merged": 1785363961000,
+    "author": "Kenta Ishizaki",
+    "sha": "ef5640bca1b3243f967c763bc2dfb47511d47a95",
+    "pr": "58226",
+    "merge_sha": "b61258e7d880e118a01da574373e4e1c36b295ea",
+    "html": "<p>Deprecate <code>ActiveRecord::ConnectionAdapters::TransactionState#fully_committed?</code>,<br />\n<code>#fully_rolledback?</code>, <code>#fully_completed?</code>, and <code>#nullify!</code>.</p>\n\n<p>These methods are no longer used by the framework. Use <code>#committed?</code>,<br />\n<code>#rolledback?</code>, and <code>#completed?</code> to inspect the transaction state instead.</p>\n\n<p><em>Kenta Ishizaki</em></p>\n"
+  },
+  {
     "message": "*   Bump the minimum supported SQLite version to 3.35.0.\n\n    SQLite 3.35.0 introduced the `RETURNING` clause, which the SQLite3 adapter\n    has depended on since Rails 7.1 (#49290) for reading auto-populated columns\n    such as the primary key after `INSERT`. Older SQLite versions have been\n    silently broken since then; make the requirement explicit.\n\n    *Ryuta Kamizono*",
     "project": "activerecord",
     "date_merged": 1785291548000,
