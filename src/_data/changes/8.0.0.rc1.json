@@ -830,6 +830,16 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Deprecate passing `binds` to\n    `ActiveRecord::ConnectionAdapters::DatabaseStatements#to_sql`.\n\n    The argument has been unused since bind parameters were moved into the\n    Arel AST in Rails 5.2 (rails/rails@213796fb49). `to_sql(arel)` returns\n    the same SQL regardless of what is passed as `binds`.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1785407532000,
+    "author": "Ryuta Kamizono",
+    "sha": "31e8e9e9da1e45549c54952a6778de2ca3287ad0",
+    "pr": "58310",
+    "merge_sha": "d82d391e5a2a88fe561bde3ea21249db14368d12",
+    "html": "<p>Deprecate passing <code>binds</code> to<br />\n<code>ActiveRecord::ConnectionAdapters::DatabaseStatements#to_sql</code>.</p>\n\n<p>The argument has been unused since bind parameters were moved into the<br />\nArel AST in Rails 5.2 (rails/rails@213796fb49). <code>to_sql(arel)</code> returns<br />\nthe same SQL regardless of what is passed as <code>binds</code>.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Deprecate `ActiveRecord::ConnectionAdapters::TransactionState#fully_committed?`,\n    `#fully_rolledback?`, `#fully_completed?`, and `#nullify!`.\n\n    These methods are no longer used by the framework. Use `#committed?`,\n    `#rolledback?`, and `#completed?` to inspect the transaction state instead.\n\n    *Kenta Ishizaki*",
     "project": "activerecord",
     "date_merged": 1785363961000,
