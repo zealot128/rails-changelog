@@ -830,6 +830,36 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Allow for prepared statements to remain enabled with query logs tags.\n\n    To keep prepared_statements enabled in conjunction with query log tags,\n    `config.active_record.disable_prepared_statements = false`.\n\n    *Brad Schrag*",
+    "project": "activerecord",
+    "date_merged": 1785482086000,
+    "author": "Brad Schrag",
+    "sha": "85072baba36042263312736e1045f58e8a8e924e",
+    "pr": "58274",
+    "merge_sha": "9cf4124d25a6431faf68e4bc0b079ab0ff03e63d",
+    "html": "<p>Allow for prepared statements to remain enabled with query logs tags.</p>\n\n<p>To keep prepared_statements enabled in conjunction with query log tags,<br />\n<code>config.active_record.disable_prepared_statements = false</code>.</p>\n\n<p><em>Brad Schrag</em></p>\n"
+  },
+  {
+    "message": "*   When `dump_schema_migrations` is enabled, the trailer gets now exactly the\n    versions present in the `schema_migrations` table, without filtering by\n    what's on disk.\n\n    *Xavier Noria*",
+    "project": "activerecord",
+    "date_merged": 1785480321000,
+    "author": "Xavier Noria",
+    "sha": "51665ffadb7ff2bfd434df6f67f39f44077e892d",
+    "pr": "58322",
+    "merge_sha": "1e9f15ebf256a198fcc5e233b643826e1b363980",
+    "html": "<p>When <code>dump_schema_migrations</code> is enabled, the trailer gets now exactly the<br />\nversions present in the <code>schema_migrations</code> table, without filtering by<br />\nwhat’s on disk.</p>\n\n<p><em>Xavier Noria</em></p>\n"
+  },
+  {
+    "message": "*   Improve bind parameter rendering for casted binds in SQL logs and EXPLAIN output.\n\n    Queries built with casted binds (an array of values instead of\n    `ActiveModel::Attribute`s) previously rendered the position as `nil`:\n\n    ```\n    SELECT * FROM topics WHERE title = $1  [[nil, \"abcd\"]]\n    ```\n\n    They now render the position as a numbered parameter marker:\n\n    ```\n    SELECT * FROM topics WHERE title = $1  [[\"$1\", \"abcd\"]]\n    ```\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1785462272000,
+    "author": "Ryuta Kamizono",
+    "sha": "37fa57ac5f2b2b3808e6567632fc8710def028be",
+    "pr": "58312",
+    "merge_sha": "689b3358ef9923d85f4a22d903ba15765c6b1bda",
+    "html": "<p>Improve bind parameter rendering for casted binds in SQL logs and EXPLAIN output.</p>\n\n<p>Queries built with casted binds (an array of values instead of<br />\n<code>ActiveModel::Attribute</code>s) previously rendered the position as <code>nil</code>:</p>\n\n<pre><code>SELECT * FROM topics WHERE title = $1  [[nil, \"abcd\"]]\n</code></pre>\n\n<p>They now render the position as a numbered parameter marker:</p>\n\n<pre><code>SELECT * FROM topics WHERE title = $1  [[\"$1\", \"abcd\"]]\n</code></pre>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Deprecate passing `binds` to\n    `ActiveRecord::ConnectionAdapters::DatabaseStatements#to_sql`.\n\n    The argument has been unused since bind parameters were moved into the\n    Arel AST in Rails 5.2 (rails/rails@213796fb49). `to_sql(arel)` returns\n    the same SQL regardless of what is passed as `binds`.\n\n    *Ryuta Kamizono*",
     "project": "activerecord",
     "date_merged": 1785407532000,
@@ -2378,6 +2408,16 @@
     "pr": "55913",
     "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
     "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate registering dependency trackers after application initialization.\n\n    Calling `ActionView::DependencyTracker.register_tracker` after application initialization will\n    raise a FrozenError in the next version of Rails.\n\n    Instead, register trackers during application initialization, wrapped in a call to\n    `ActiveSupport.on_load(:action_view)` to wait until Action View is available.\n\n    *Étienne Barrié*",
+    "project": "actionview",
+    "date_merged": 1785471594000,
+    "author": "Étienne Barrié",
+    "sha": "73bdeced4fca26bff321d989db6f5ab72dd870b1",
+    "pr": "57948",
+    "merge_sha": "af37420cdac15ef01538d37796d7231c7b856921",
+    "html": "<p>Deprecate registering dependency trackers after application initialization.</p>\n\n<p>Calling <code>ActionView::DependencyTracker.register_tracker</code> after application initialization will<br />\nraise a FrozenError in the next version of Rails.</p>\n\n<p>Instead, register trackers during application initialization, wrapped in a call to<br />\n<code>ActiveSupport.on_load(:action_view)</code> to wait until Action View is available.</p>\n\n<p><em>Étienne Barrié</em></p>\n"
   },
   {
     "message": "*   Extract `current_page?`, `button_to`, and `link_to` methods to\n    `ActionView::Helpers::NavigationHelper`\n\n    *Sean Doyle*",
