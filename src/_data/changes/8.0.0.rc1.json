@@ -830,6 +830,26 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Restore `alias_attribute` support in associations.\n\n    Since Rails 4.2, association reads have bypassed the public\n    `read_attribute` in favor of an internal fast path that skips\n    alias resolution. An `alias_attribute` on the owner's foreign key\n    or on the target's primary key was silently ignored; production\n    applications worked around this by overriding `_read_attribute`\n    itself.\n\n    The performance gap that justified the bypass has since closed\n    enough that association FK/PK reads and writes can go through the\n    public methods again — and `alias_attribute` declarations are now\n    honored.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1785736097000,
+    "author": "Ryuta Kamizono",
+    "sha": "47638820a71e909d1f254f54473ed2162a194bd5",
+    "pr": "58348",
+    "merge_sha": "469fb6e643f721d392cf254095a27af54e5515f6",
+    "html": "<p>Restore <code>alias_attribute</code> support in associations.</p>\n\n<p>Since Rails 4.2, association reads have bypassed the public<br />\n<code>read_attribute</code> in favor of an internal fast path that skips<br />\nalias resolution. An <code>alias_attribute</code> on the owner’s foreign key<br />\nor on the target’s primary key was silently ignored; production<br />\napplications worked around this by overriding <code>_read_attribute</code><br />\nitself.</p>\n\n<p>The performance gap that justified the bypass has since closed<br />\nenough that association FK/PK reads and writes can go through the<br />\npublic methods again — and <code>alias_attribute</code> declarations are now<br />\nhonored.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `write_attribute(:id, value)` writing to the primary key.\n\n    `read_attribute(:id)` was deprecated in Rails 7.1 and removed in\n    Rails 7.2 to make `:id` refer to the `id` column, not the primary\n    key. Apply the same deprecation to `write_attribute`; use `#id=` on\n    a model whose primary key is not named `id`.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1785720937000,
+    "author": "Ryuta Kamizono",
+    "sha": "1a90632bbe62dae2626de7a058bc18c29f77aea6",
+    "pr": "58347",
+    "merge_sha": "513e9a5cf6db3d10f1ffcf88bf1fd5128eb4000b",
+    "html": "<p>Deprecate <code>write_attribute(:id, value)</code> writing to the primary key.</p>\n\n<p><code>read_attribute(:id)</code> was deprecated in Rails 7.1 and removed in<br />\nRails 7.2 to make <code>:id</code> refer to the <code>id</code> column, not the primary<br />\nkey. Apply the same deprecation to <code>write_attribute</code>; use <code>#id=</code> on<br />\na model whose primary key is not named <code>id</code>.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Make `ActiveRecord::Migration::CommandRecorder#record` and\n    `#inverse_of` private.\n\n    These are internal APIs. Callers should use the public migration\n    methods (`create_table`, `add_column`, etc.) directly to record\n    commands, and combine them with `revert` to record inverted commands.\n\n    *Ryuta Kamizono*",
     "project": "activerecord",
     "date_merged": 1785690509000,
