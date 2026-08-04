@@ -120,6 +120,26 @@
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Deprecate registering and unregistering MIME types after application initialization.\n\n    `Mime::Type.register`, `Mime::Type.register_alias`, and `Mime::Type.unregister` will raise\n    a `FrozenError` when called after application initialization in the next version of Rails.\n    Instead, register or unregister MIME types during initialization (e.g. in\n    `config/initializers/mime_types.rb` or a Railtie `initializer` block).\n\n    *Étienne Barrié*",
+    "project": "actionpack",
+    "date_merged": 1785867494000,
+    "author": "Étienne Barrié",
+    "sha": "39034c8368e6b3bbdd60a686c3e9fc952da6e7fa",
+    "pr": "57994",
+    "merge_sha": "14f29e9f542739ae3d61497ffdd880b33c00592d",
+    "html": "<p>Deprecate registering and unregistering MIME types after application initialization.</p>\n\n<p><code>Mime::Type.register</code>, <code>Mime::Type.register_alias</code>, and <code>Mime::Type.unregister</code> will raise<br />\na <code>FrozenError</code> when called after application initialization in the next version of Rails.<br />\nInstead, register or unregister MIME types during initialization (e.g. in<br />\n<code>config/initializers/mime_types.rb</code> or a Railtie <code>initializer</code> block).</p>\n\n<p><em>Étienne Barrié</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `Mime::Type.register_callback`.\n\n    It was never intended as a public API and has no replacement.\n\n    *Étienne Barrié*",
+    "project": "actionpack",
+    "date_merged": 1785867494000,
+    "author": "Étienne Barrié",
+    "sha": "dc7d39745e6aefae8819b82a537b277ca1937bf0",
+    "pr": "57994",
+    "merge_sha": "14f29e9f542739ae3d61497ffdd880b33c00592d",
+    "html": "<p>Deprecate <code>Mime::Type.register_callback</code>.</p>\n\n<p>It was never intended as a public API and has no replacement.</p>\n\n<p><em>Étienne Barrié</em></p>\n"
+  },
+  {
     "message": "*   Allow HTTP token authentication to require specific authentication schemes.\n\n    Pass `scheme:` to `authenticate_or_request_with_http_token` (and the other\n    token authentication methods) with a scheme name, or an array of names, to\n    require one of those schemes and use them in the `WWW-Authenticate`\n    challenge:\n\n    ```ruby\n    authenticate_or_request_with_http_token(scheme: [\"Bearer\", \"DPoP\"]) do |token, options, scheme|\n      # ...\n    end\n    ```\n\n    Any scheme name can be required. Without `scheme:`, `Token`, `Bearer`, and\n    `DPoP` are accepted. The request's scheme is yielded to the authentication\n    block as a downcased symbol in an optional third argument.\n\n    *Chad Cole*",
     "project": "actionpack",
     "date_merged": 1785223794000,
