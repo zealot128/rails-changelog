@@ -542,11 +542,11 @@
   {
     "message": "*   Allow `config.active_storage.variant_processor` to be set to a transformer class.\n\n    `config.active_storage.variant_processor` now accepts a class, in addition to `:vips`,\n    `:mini_magick`, and `:disabled`. The class must implement the interface defined by\n    `ActiveStorage::Transformers::Transformer`. Active Storage then uses it for variant processing.\n\n    ```ruby\n    config.active_storage.variant_processor = CustomTransformer\n    ```\n\n    Note that the built-in image analyzers accept a blob only when `variant_processor` is `:vips` or\n    `:mini_magick`, so setting this configuration to a custom class requires adding a custom\n    analyzer to `config.active_storage.analyzers` as well.\n\n    An unrecognized value now raises `ArgumentError` while booting, instead of failing later with\n    `NoMethodError` when a variant is generated.\n\n    *Mike Dalessio*",
     "project": "activestorage",
-    "date_merged": 1786134800000,
+    "date_merged": 1786179275000,
     "author": "Mike Dalessio",
     "sha": "5ea765e5b00085a22f5cbe863c0d2ac765428242",
     "pr": "58384",
-    "merge_sha": null,
+    "merge_sha": "34562fa7cf7f66285dee0e70c1589eefecabae53",
     "html": "<p>Allow <code>config.active_storage.variant_processor</code> to be set to a transformer class.</p>\n\n<p><code>config.active_storage.variant_processor</code> now accepts a class, in addition to <code>:vips</code>,<br />\n<code>:mini_magick</code>, and <code>:disabled</code>. The class must implement the interface defined by<br />\n<code>ActiveStorage::Transformers::Transformer</code>. Active Storage then uses it for variant processing.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_storage</span><span class=\"p\">.</span><span class=\"nf\">variant_processor</span> <span class=\"o\">=</span> <span class=\"no\">CustomTransformer</span>\n</code></pre></div></div>\n\n<p>Note that the built-in image analyzers accept a blob only when <code>variant_processor</code> is <code>:vips</code> or<br />\n<code>:mini_magick</code>, so setting this configuration to a custom class requires adding a custom<br />\nanalyzer to <code>config.active_storage.analyzers</code> as well.</p>\n\n<p>An unrecognized value now raises <code>ArgumentError</code> while booting, instead of failing later with<br />\n<code>NoMethodError</code> when a variant is generated.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
