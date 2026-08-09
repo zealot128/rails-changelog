@@ -120,6 +120,16 @@
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Split keyword arguments off `#args` on `Rails.application.middleware` entries.\n\n    Middleware entries now expose keyword arguments through a new `#kwargs`\n    accessor. `#args` previously bundled kwargs as a trailing hash inside the\n    positional array (via `Hash.ruby2_keywords_hash`); it now returns\n    positional arguments only. Code that inspects `middleware.args` directly\n    needs to also read `middleware.kwargs`.\n\n    *Ryuta Kamizono*",
+    "project": "actionpack",
+    "date_merged": 1786263074000,
+    "author": "Ryuta Kamizono",
+    "sha": "26b88332672781769fec3279d9c504f5ee9fffde",
+    "pr": "58420",
+    "merge_sha": "653804d51322d3a0a9eb6a12812ccf413217e08d",
+    "html": "<p>Split keyword arguments off <code>#args</code> on <code>Rails.application.middleware</code> entries.</p>\n\n<p>Middleware entries now expose keyword arguments through a new <code>#kwargs</code><br />\naccessor. <code>#args</code> previously bundled kwargs as a trailing hash inside the<br />\npositional array (via <code>Hash.ruby2_keywords_hash</code>); it now returns<br />\npositional arguments only. Code that inspects <code>middleware.args</code> directly<br />\nneeds to also read <code>middleware.kwargs</code>.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Deprecate registering and unregistering MIME types after application initialization.\n\n    `Mime::Type.register`, `Mime::Type.register_alias`, and `Mime::Type.unregister` will raise\n    a `FrozenError` when called after application initialization in the next version of Rails.\n    Instead, register or unregister MIME types during initialization (e.g. in\n    `config/initializers/mime_types.rb` or a Railtie `initializer` block).\n\n    *Étienne Barrié*",
     "project": "actionpack",
     "date_merged": 1785867494000,
@@ -860,6 +870,26 @@
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Append `TRADITIONAL` instead of `STRICT_ALL_TABLES` to MySQL's `sql_mode`\n    by default.\n\n    On environments whose global `sql_mode` is empty — most notably Amazon\n    RDS and Aurora MySQL default parameter groups — appending only\n    `STRICT_ALL_TABLES` leaves out `NO_ZERO_IN_DATE`, `NO_ZERO_DATE`, and\n    `ERROR_FOR_DIVISION_BY_ZERO`, which MySQL 5.7+ has otherwise made part\n    of its own default. Appending `TRADITIONAL` closes the gap.\n\n    Reproducing the previous behavior is possible via\n    `variables: { sql_mode: \"STRICT_ALL_TABLES\" }` in `database.yml`.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1786275344000,
+    "author": "Ryuta Kamizono",
+    "sha": "64fb6b14419b2d4a2254889571554297fcba4c6f",
+    "pr": "58350",
+    "merge_sha": "a24a698c7cb036cfcc578c2435f8ff2939c92e40",
+    "html": "<p>Append <code>TRADITIONAL</code> instead of <code>STRICT_ALL_TABLES</code> to MySQL’s <code>sql_mode</code><br />\nby default.</p>\n\n<p>On environments whose global <code>sql_mode</code> is empty — most notably Amazon<br />\nRDS and Aurora MySQL default parameter groups — appending only<br />\n<code>STRICT_ALL_TABLES</code> leaves out <code>NO_ZERO_IN_DATE</code>, <code>NO_ZERO_DATE</code>, and<br />\n<code>ERROR_FOR_DIVISION_BY_ZERO</code>, which MySQL 5.7+ has otherwise made part<br />\nof its own default. Appending <code>TRADITIONAL</code> closes the gap.</p>\n\n<p>Reproducing the previous behavior is possible via<br />\n<code>variables: { sql_mode: \"STRICT_ALL_TABLES\" }</code> in <code>database.yml</code>.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
+    "message": "*   Change the shape of `ActiveRecord::Migration::CommandRecorder#commands`.\n\n    Each recorded migration command is now stored as\n    `[cmd, args, kwargs, block]` (4-element) instead of\n    `[cmd, args, block]` (3-element) with kwargs bundled into a trailing\n    hash inside `args`. Code that inspects `recorder.commands` directly\n    needs to adapt to the new tuple shape.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1786263010000,
+    "author": "Ryuta Kamizono",
+    "sha": "3efea4e0618e7316ac4da5c217c2fd92b64954be",
+    "pr": "58239",
+    "merge_sha": "342dafc5351d9c9e303ee3c1e378c4dcf2277ffd",
+    "html": "<p>Change the shape of <code>ActiveRecord::Migration::CommandRecorder#commands</code>.</p>\n\n<p>Each recorded migration command is now stored as<br />\n<code>[cmd, args, kwargs, block]</code> (4-element) instead of<br />\n<code>[cmd, args, block]</code> (3-element) with kwargs bundled into a trailing<br />\nhash inside <code>args</code>. Code that inspects <code>recorder.commands</code> directly<br />\nneeds to adapt to the new tuple shape.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Add query predicate hooks for Active Model types.\n\n    Types can override `transforms_query_predicates?`, `query_attribute`, and\n    `query_value` to customize how hash `where` predicates are built while\n    preserving normal casting and serialization behavior.\n\n    For example, a UUID type stored in MySQL `binary(16)` can accept UUID\n    strings while rendering predicates as `id = UUID_TO_BIN(?)`:\n\n    ```ruby\n    def transforms_query_predicates?\n      true\n    end\n\n    def query_value(attribute, value, predicate_builder:)\n      Arel::Nodes::NamedFunction.new(\n        \"UUID_TO_BIN\",\n        [predicate_builder.build_bind_attribute(attribute.name, value, self)]\n      )\n    end\n    ```\n\n    `query_attribute` transforms the left-hand side of the predicate, so a text\n    type can compare through a normalized expression such as\n    `lower(name) = lower(?)`:\n\n    ```ruby\n    def transforms_query_predicates?\n      true\n    end\n\n    def query_attribute(attribute)\n      Arel::Nodes::NamedFunction.new(\"lower\", [attribute])\n    end\n\n    def query_value(attribute, value, predicate_builder:)\n      Arel::Nodes::NamedFunction.new(\n        \"lower\",\n        [predicate_builder.build_bind_attribute(attribute.name, value, self)]\n      )\n    end\n    ```\n\n    *Kir Shatrov*, *Jean-Samuel Aubry-Guzzi*",
     "project": "activerecord",
     "date_merged": 1785987307000,
@@ -938,16 +968,6 @@
     "pr": "58274",
     "merge_sha": "9cf4124d25a6431faf68e4bc0b079ab0ff03e63d",
     "html": "<p>Allow for prepared statements to remain enabled with query logs tags.</p>\n\n<p>To keep prepared_statements enabled in conjunction with query log tags,<br />\n<code>config.active_record.disable_prepared_statements = false</code>.</p>\n\n<p><em>Brad Schrag</em></p>\n"
-  },
-  {
-    "message": "*   When `dump_schema_migrations` is enabled, the trailer gets now exactly the\n    versions present in the `schema_migrations` table, without filtering by\n    what's on disk.\n\n    *Xavier Noria*",
-    "project": "activerecord",
-    "date_merged": 1785480321000,
-    "author": "Xavier Noria",
-    "sha": "51665ffadb7ff2bfd434df6f67f39f44077e892d",
-    "pr": "58322",
-    "merge_sha": "1e9f15ebf256a198fcc5e233b643826e1b363980",
-    "html": "<p>When <code>dump_schema_migrations</code> is enabled, the trailer gets now exactly the<br />\nversions present in the <code>schema_migrations</code> table, without filtering by<br />\nwhat’s on disk.</p>\n\n<p><em>Xavier Noria</em></p>\n"
   },
   {
     "message": "*   Improve bind parameter rendering for casted binds in SQL logs and EXPLAIN output.\n\n    Queries built with casted binds (an array of values instead of\n    `ActiveModel::Attribute`s) previously rendered the position as `nil`:\n\n    ```\n    SELECT * FROM topics WHERE title = $1  [[nil, \"abcd\"]]\n    ```\n\n    They now render the position as a numbered parameter marker:\n\n    ```\n    SELECT * FROM topics WHERE title = $1  [[\"$1\", \"abcd\"]]\n    ```\n\n    *Ryuta Kamizono*",
