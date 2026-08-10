@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Fix `LengthValidator` raising `NoMethodError` when a `:minimum` (or `:is`)\n    constraint is given as a proc and the validated value is `nil`.\n\n    The proc was resolved only when the value was present, so for a `nil` value\n    it leaked unresolved into the error message and was invoked with the message\n    options hash instead of the record. It is now resolved before the error is\n    built, producing the expected `\"is too short\"` message.\n\n    ```ruby\n    validates_length_of :title, minimum: ->(record) { record.min_length }\n    # title = nil now yields \"is too short (minimum is N characters)\"\n    # instead of raising NoMethodError\n    ```\n\n    *Ben Younes*",
+    "project": "activemodel",
+    "date_merged": 1786351425000,
+    "author": "Ben Younes",
+    "sha": "9096675dffaa225b2a321658d17f12b494c191b3",
+    "pr": "58428",
+    "merge_sha": "e1375057e1a0765178e6ac9cf2820503c25d2f27",
+    "html": "<p>Fix <code>LengthValidator</code> raising <code>NoMethodError</code> when a <code>:minimum</code> (or <code>:is</code>)<br />\nconstraint is given as a proc and the validated value is <code>nil</code>.</p>\n\n<p>The proc was resolved only when the value was present, so for a <code>nil</code> value<br />\nit leaked unresolved into the error message and was invoked with the message<br />\noptions hash instead of the record. It is now resolved before the error is<br />\nbuilt, producing the expected <code>\"is too short\"</code> message.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">validates_length_of</span> <span class=\"ss\">:title</span><span class=\"p\">,</span> <span class=\"ss\">minimum: </span><span class=\"o\">-&gt;</span><span class=\"p\">(</span><span class=\"n\">record</span><span class=\"p\">)</span> <span class=\"p\">{</span> <span class=\"n\">record</span><span class=\"p\">.</span><span class=\"nf\">min_length</span> <span class=\"p\">}</span>\n<span class=\"c1\"># title = nil now yields \"is too short (minimum is N characters)\"</span>\n<span class=\"c1\"># instead of raising NoMethodError</span>\n</code></pre></div></div>\n\n<p><em>Ben Younes</em></p>\n"
+  },
+  {
     "message": "*   Fix `normalizes` re-applying normalizations on every validation of an\n    unpersisted record, and speed up validation of normalized attributes.\n\n    The in-place mutation check re-ran the normalizer on every `valid?` of an\n    unpersisted record: wasteful for idempotent normalizers and compounded the\n    result for non-idempotent ones. Normalizations are now re-applied only on a\n    genuine in-place mutation.\n\n    *Yaroslav Markin*",
     "project": "activemodel",
     "date_merged": 1781050006000,
@@ -868,6 +878,16 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActiveRecord::ConnectionAdapters::DatabaseStatements#create`\n    in favor of `#insert`.\n\n    `create` was an alias of `insert`, but it reads like a DDL statement\n    (compare `create_table`, `create_database`) rather than the SQL `INSERT`\n    it actually performs. Use `insert` directly instead.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1786360770000,
+    "author": "Ryuta Kamizono",
+    "sha": "b571a7f159bf817f196f4dbfcc7533e64c5f8772",
+    "pr": "58426",
+    "merge_sha": "cf6d592c55b443ea2aabf31052ac424a204cd9f2",
+    "html": "<p>Deprecate <code>ActiveRecord::ConnectionAdapters::DatabaseStatements#create</code><br />\nin favor of <code>#insert</code>.</p>\n\n<p><code>create</code> was an alias of <code>insert</code>, but it reads like a DDL statement<br />\n(compare <code>create_table</code>, <code>create_database</code>) rather than the SQL <code>INSERT</code><br />\nit actually performs. Use <code>insert</code> directly instead.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
   },
   {
     "message": "*   Use bind parameters for array-form arguments in `find_by_sql` and\n    `count_by_sql`, matching the `where` behavior the API doc already\n    claimed.\n\n    *Ryuta Kamizono*",
