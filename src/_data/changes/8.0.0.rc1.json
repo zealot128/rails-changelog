@@ -2210,6 +2210,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Return a UTC time from `Time.rfc3339` for strings with the \"Z\" UTC designator.\n\n    ```ruby\n    Time.rfc3339(\"2026-08-07T10:00:00Z\")\n    # Before: 2026-08-07 10:00:00 +0000 (utc? => false)\n    # After:  2026-08-07 10:00:00 UTC   (utc? => true)\n    ```\n\n    This matches Ruby's `Time.rfc3339`, which is expected to be included in\n    Ruby 4.1.\n    The resulting time value is unchanged, but serialized forms such as\n    `as_json` now end in \"Z\" instead of \"+00:00\". Call `getlocal(\"+00:00\")`\n    to keep the previous representation:\n\n    ```ruby\n    Time.rfc3339(\"2026-08-07T10:00:00Z\").getlocal(\"+00:00\")\n    # => 2026-08-07 10:00:00 +0000 (utc? => false)\n    ```\n\n    *Yasuo Honda*",
+    "project": "activesupport",
+    "date_merged": 1787069537000,
+    "author": "Yasuo Honda",
+    "sha": "3eaad306eaa0905a0671dbcdc133a1a072f1a8e3",
+    "pr": "58402",
+    "merge_sha": "3e46bf2f10645bd83770b4fadf327757064d2df2",
+    "html": "<p>Return a UTC time from <code>Time.rfc3339</code> for strings with the “Z” UTC designator.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">rfc3339</span><span class=\"p\">(</span><span class=\"s2\">\"2026-08-07T10:00:00Z\"</span><span class=\"p\">)</span>\n<span class=\"c1\"># Before: 2026-08-07 10:00:00 +0000 (utc? =&gt; false)</span>\n<span class=\"c1\"># After:  2026-08-07 10:00:00 UTC   (utc? =&gt; true)</span>\n</code></pre></div></div>\n\n<p>This matches Ruby’s <code>Time.rfc3339</code>, which is expected to be included in<br />\nRuby 4.1.<br />\nThe resulting time value is unchanged, but serialized forms such as<br />\n<code>as_json</code> now end in “Z” instead of “+00:00”. Call <code>getlocal(\"+00:00\")</code><br />\nto keep the previous representation:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Time</span><span class=\"p\">.</span><span class=\"nf\">rfc3339</span><span class=\"p\">(</span><span class=\"s2\">\"2026-08-07T10:00:00Z\"</span><span class=\"p\">).</span><span class=\"nf\">getlocal</span><span class=\"p\">(</span><span class=\"s2\">\"+00:00\"</span><span class=\"p\">)</span>\n<span class=\"c1\"># =&gt; 2026-08-07 10:00:00 +0000 (utc? =&gt; false)</span>\n</code></pre></div></div>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
     "message": "*   Add `Pacific Time (Canada)` and `Alberta` to `ActiveSupport::TimeZone::MAPPING`.\n\n    British Columbia and Alberta no longer share winter clocks with US Pacific\n    and Mountain time. The existing `Pacific Time (US & Canada)` and\n    `Mountain Time (US & Canada)` entries remain mapped to `America/Los_Angeles`\n    and `America/Denver` for compatibility. Prefer `Pacific Time (Canada)` /\n    `Alberta` (or the IANA identifiers `America/Vancouver` /\n    `America/Edmonton`) for users in those regions.\n\n    *Said Kaldybaev*",
     "project": "activesupport",
     "date_merged": 1786573040000,
