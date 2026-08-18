@@ -890,6 +890,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Fix clearing an association whose foreign key is a subset of the\n    referencing record's primary key. This affected `belongs_to` associations\n    with composite foreign keys, and `has_one` associations with either scalar\n    or composite foreign keys.\n\n    Previously, assigning `nil` preserved every foreign key column in these\n    cases. Shared columns are now preserved only when the foreign key has\n    another column that can be nulled instead.\n\n    *Matthew Draper*",
+    "project": "activerecord",
+    "date_merged": 1787024068000,
+    "author": "Matthew Draper",
+    "sha": "cda4a97fa80708ab49238012cccb7f72504fc4d4",
+    "pr": "58484",
+    "merge_sha": "a49b07d48a5dd7125cd6004a2fc7a3bbe0c6d1b9",
+    "html": "<p>Fix clearing an association whose foreign key is a subset of the<br />\nreferencing record’s primary key. This affected <code>belongs_to</code> associations<br />\nwith composite foreign keys, and <code>has_one</code> associations with either scalar<br />\nor composite foreign keys.</p>\n\n<p>Previously, assigning <code>nil</code> preserved every foreign key column in these<br />\ncases. Shared columns are now preserved only when the foreign key has<br />\nanother column that can be nulled instead.</p>\n\n<p><em>Matthew Draper</em></p>\n"
+  },
+  {
     "message": "*   `ActiveRecord::Relation#update` and `#update!` no longer escape the relation\n    when given ids.\n\n    Passing ids used to delegate to the model class, which looks the records up\n    with an unscoped `find`:\n\n    ```ruby\n    post.comments.update!(comment_id, body: \"...\") # could update any comment\n    Comment.where(id: 1).update!(2, body: \"...\")   # updated comment 2\n    ```\n\n    The records are now looked up through the relation, so an id outside of it\n    raises `ActiveRecord::RecordNotFound` before anything is written. This makes\n    `update`/`update!` consistent with `update_all`, `#delete` and `#destroy`,\n    which have always been scoped, and with `update(:all, ...)`, which was\n    already scoped.\n\n    *Jean Mendonça*",
     "project": "activerecord",
     "date_merged": 1786952242000,
