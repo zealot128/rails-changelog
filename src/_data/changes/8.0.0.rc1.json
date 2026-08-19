@@ -890,6 +890,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Apply `all_queries: true` default scopes consistently across counter caches,\n    uniqueness validations, fixture lookups, and record reloads, while those\n    operations continue to bypass ordinary default scopes.\n\n    *Andrew Novoselac* and *Matthew Draper*",
+    "project": "activerecord",
+    "date_merged": 1787147530000,
+    "author": "Adrianna Chang",
+    "sha": "0917e28e2a1f60f93c7267e3499f7fbd8ae6ee3d",
+    "pr": "58485",
+    "merge_sha": "6cacb8505d7c55c9421f63f047e05be1971c8fe5",
+    "html": "<p>Apply <code>all_queries: true</code> default scopes consistently across counter caches,<br />\nuniqueness validations, fixture lookups, and record reloads, while those<br />\noperations continue to bypass ordinary default scopes.</p>\n\n<p><em>Andrew Novoselac</em> and <em>Matthew Draper</em></p>\n"
+  },
+  {
     "message": "*   Fix clearing an association whose foreign key is a subset of the\n    referencing record's primary key. This affected `belongs_to` associations\n    with composite foreign keys, and `has_one` associations with either scalar\n    or composite foreign keys.\n\n    Previously, assigning `nil` preserved every foreign key column in these\n    cases. Shared columns are now preserved only when the foreign key has\n    another column that can be nulled instead.\n\n    *Matthew Draper*",
     "project": "activerecord",
     "date_merged": 1787024068000,
