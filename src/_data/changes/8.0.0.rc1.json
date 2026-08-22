@@ -2610,6 +2610,16 @@
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Make mounted route helpers (e.g. `main_app`, engine mount proxies) trigger\n    the lazy route load instead of raising `NoMethodError` when called before\n    routes are drawn.\n\n    Named url helpers already loaded routes on demand, but mounted helpers are\n    only defined when `mount` runs during the route draw, so calling one first\n    (in the console or a test) failed until something else drew the routes.\n\n    *Abdelkader Boudih*",
+    "project": "railties",
+    "date_merged": 1787380558000,
+    "author": "Abdelkader Boudih",
+    "sha": "70fab0c8174a6b70231c4740044d8ed1be7e9240",
+    "pr": "58519",
+    "merge_sha": "e802d754d3fd18b43bca195988414a8c3bb5b471",
+    "html": "<p>Make mounted route helpers (e.g. <code>main_app</code>, engine mount proxies) trigger<br />\nthe lazy route load instead of raising <code>NoMethodError</code> when called before<br />\nroutes are drawn.</p>\n\n<p>Named url helpers already loaded routes on demand, but mounted helpers are<br />\nonly defined when <code>mount</code> runs during the route draw, so calling one first<br />\n(in the console or a test) failed until something else drew the routes.</p>\n\n<p><em>Abdelkader Boudih</em></p>\n"
+  },
+  {
     "message": "*   Report zero tests instead of raising a `LoadError` when a `bin/rails test:*`\n    folder command names a folder the application does not have.\n\n    A generated application has no `test/system` folder, so the `system-test`\n    job in the generated `.github/workflows/ci.yml` failed on the first push\n    with `cannot load such file -- <app>/test/system (LoadError)`. The same\n    happened for `bin/rails test:channels`, `test:jobs`, `test:mailboxes`,\n    `test:units`, `test:functionals`, and `test:generators`, which all name\n    folders that an application does not necessarily have.\n\n    *Ariel Rzezak*",
     "project": "railties",
     "date_merged": 1786952826000,
