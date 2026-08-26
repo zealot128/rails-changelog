@@ -900,6 +900,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Add `config.active_record.schema_ignored_tables` to exclude tables from both the\n    schema cache and the schema file.\n\n    ```ruby\n    config.active_record.schema_ignored_tables = [/^_/]\n    ```\n\n    `config.active_record.schema_cache_ignored_tables` and\n    `ActiveRecord::SchemaDumper.ignore_tables` are deprecated in its favor.\n\n    Tables are matched against their real name in the database, including\n    `table_name_prefix` and `table_name_suffix`. This is a breaking change for\n    `ActiveRecord::SchemaDumper.ignore_tables`, which previously matched against\n    the name with the prefix and suffix removed:\n\n    ```ruby\n    # With `table_name_prefix = \"omg_\"`, to ignore the `omg_cats` table:\n    config.active_record.schema_ignored_tables = [\"omg_cats\"] # before: [\"cats\"]\n    ```\n\n    *Eduardo Carvalho*",
+    "project": "activerecord",
+    "date_merged": 1787733903000,
+    "author": "Eduardo Carvalho",
+    "sha": "53665f07aed74afbedb06a49c774177eea95d0ed",
+    "pr": "58554",
+    "merge_sha": "38b1f04ffd98eaa1d4594b2f3ef82e9a6cd3f135",
+    "html": "<p>Add <code>config.active_record.schema_ignored_tables</code> to exclude tables from both the<br />\nschema cache and the schema file.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">schema_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"sr\">/^_/</span><span class=\"p\">]</span>\n</code></pre></div></div>\n\n<p><code>config.active_record.schema_cache_ignored_tables</code> and<br />\n<code>ActiveRecord::SchemaDumper.ignore_tables</code> are deprecated in its favor.</p>\n\n<p>Tables are matched against their real name in the database, including<br />\n<code>table_name_prefix</code> and <code>table_name_suffix</code>. This is a breaking change for<br />\n<code>ActiveRecord::SchemaDumper.ignore_tables</code>, which previously matched against<br />\nthe name with the prefix and suffix removed:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># With `table_name_prefix = \"omg_\"`, to ignore the `omg_cats` table:</span>\n<span class=\"n\">config</span><span class=\"p\">.</span><span class=\"nf\">active_record</span><span class=\"p\">.</span><span class=\"nf\">schema_ignored_tables</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s2\">\"omg_cats\"</span><span class=\"p\">]</span> <span class=\"c1\"># before: [\"cats\"]</span>\n</code></pre></div></div>\n\n<p><em>Eduardo Carvalho</em></p>\n"
+  },
+  {
     "message": "*   Add query predicate expressions for Active Record types.\n\n    Types can include `ActiveRecord::Type::QueryPredicates` to define the SQL\n    expression through which query predicates compare stored attributes and\n    serialized query values. Ordering sorts through the same expression.\n\n    *Kir Shatrov*, *Jean-Samuel Aubry-Guzzi*, *Matthew Draper*",
     "project": "activerecord",
     "date_merged": 1787593774000,
