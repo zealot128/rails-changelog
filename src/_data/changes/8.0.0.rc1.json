@@ -2630,6 +2630,16 @@
     "html": "<p>Introduce <code>ActiveSupport::EventReporter::LogSubscriber</code> structured event logging.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">MyLogSubscriber</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">EventReporter</span><span class=\"o\">::</span><span class=\"no\">LogSubscriber</span>\n  <span class=\"nb\">self</span><span class=\"p\">.</span><span class=\"nf\">namespace</span> <span class=\"o\">=</span> <span class=\"s2\">\"test\"</span>\n\n  <span class=\"k\">def</span> <span class=\"nf\">something</span><span class=\"p\">(</span><span class=\"n\">event</span><span class=\"p\">)</span>\n    <span class=\"n\">info</span> <span class=\"p\">{</span> <span class=\"s2\">\"Event </span><span class=\"si\">#{</span><span class=\"n\">event</span><span class=\"p\">[</span><span class=\"ss\">:name</span><span class=\"p\">]</span><span class=\"si\">}</span><span class=\"s2\"> emitted.\"</span> <span class=\"p\">}</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   A generated application's ci.yml file now sets `timeout-minutes: 15` for\n    each job to prevent transisent network errors, etc. from hanging the\n    action until the default 360 minutes kicks in and potentially eat up an\n    org's allotted runner minutes.\n\n    *Tony Drake*",
+    "project": "railties",
+    "date_merged": 1787904681000,
+    "author": "Tony Drake",
+    "sha": "7233f65647e24dfd12c569eb43a6c9cb1e31a72c",
+    "pr": "58595",
+    "merge_sha": "0f6800185229bc15e6bdefd6eb717ea006b48809",
+    "html": "<p>A generated application’s ci.yml file now sets <code>timeout-minutes: 15</code> for<br />\neach job to prevent transisent network errors, etc. from hanging the<br />\naction until the default 360 minutes kicks in and potentially eat up an<br />\norg’s allotted runner minutes.</p>\n\n<p><em>Tony Drake</em></p>\n"
+  },
+  {
     "message": "*   Make mounted route helpers (e.g. `main_app`, engine mount proxies) trigger\n    the lazy route load instead of raising `NoMethodError` when called before\n    routes are drawn.\n\n    Named url helpers already loaded routes on demand, but mounted helpers are\n    only defined when `mount` runs during the route draw, so calling one first\n    (in the console or a test) failed until something else drew the routes.\n\n    *Abdelkader Boudih*",
     "project": "railties",
     "date_merged": 1787380558000,
