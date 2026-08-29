@@ -130,6 +130,16 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Marcel 2 for content type detection\n\n    Broader and more precise MIME type detection, security hardening, and uses canonical types\n    instead of aliases (`text/x-yaml` → `application/yaml`).\n\n    *Jeremy Daer*",
+    "project": "activestorage",
+    "date_merged": 1787984758000,
+    "author": "Jeremy Daer",
+    "sha": "60fe6c3a7a90c86d9e012aaba4f73967fab6ac89",
+    "pr": "58549",
+    "merge_sha": "a19f07f3502f427f690045b8ba5acbd80e0ba624",
+    "html": "<p>Marcel 2 for content type detection</p>\n\n<p>Broader and more precise MIME type detection, security hardening, and uses canonical types<br />\ninstead of aliases (<code>text/x-yaml</code> → <code>application/yaml</code>).</p>\n\n<p><em>Jeremy Daer</em></p>\n"
+  },
+  {
     "message": "*   Allow ffmpeg and ffprobe input arguments to be configured.\n\n    Two new configuration parameters are introduced.\n    `config.active_storage.video_preview_input_arguments` is passed to ffmpeg before `-i`, and\n    `config.active_storage.ffprobe_arguments` is passed to ffprobe before the file path. Both\n    default to `\"\"`.\n\n    ffmpeg's flags are position dependent, and these parameters carry the ones that apply to the\n    input, such as `-codec_whitelist`, `-f`, and `-protocol_whitelist`. For example, an\n    application that accepts only H.264 video with AAC audio:\n\n    ```ruby\n    config.active_storage.video_preview_input_arguments = \"-codec_whitelist h264,aac\"\n    config.active_storage.ffprobe_arguments = \"-codec_whitelist h264,aac\"\n    ```\n\n    `ffprobe_arguments` applies to both `ActiveStorage::Analyzer::VideoAnalyzer` and\n    `ActiveStorage::Analyzer::AudioAnalyzer`.\n\n    *Mike Dalessio*",
     "project": "activestorage",
     "date_merged": 1786573040000,
