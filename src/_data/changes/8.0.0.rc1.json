@@ -910,6 +910,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Avoid a redundant join when the scope of a `has_many :through` association\n    joins an association that the through chain already joins.\n\n    Given a scope such as `-> { joins(:post) }` on the through association, the\n    same table was joined twice: once by the chain and once by the scope. Only\n    `belongs_to` and `has_one` joins are dropped, since removing a collection\n    join would change the number of rows the query returns.\n\n    *David Paluy*",
+    "project": "activerecord",
+    "date_merged": 1788242952000,
+    "author": "David Paluy",
+    "sha": "70691a98ee712984fd900d27e53d02ac97982501",
+    "pr": "58625",
+    "merge_sha": "ff9890c8445ebba2586f0d06cde66c371fdca90e",
+    "html": "<p>Avoid a redundant join when the scope of a <code>has_many :through</code> association<br />\njoins an association that the through chain already joins.</p>\n\n<p>Given a scope such as <code>-&gt; { joins(:post) }</code> on the through association, the<br />\nsame table was joined twice: once by the chain and once by the scope. Only<br />\n<code>belongs_to</code> and <code>has_one</code> joins are dropped, since removing a collection<br />\njoin would change the number of rows the query returns.</p>\n\n<p><em>David Paluy</em></p>\n"
+  },
+  {
     "message": "*   Add `config.active_record.shuffle_unordered_selects`.\n\n    When enabled, Active Record shuffles the rows of every `SELECT` it generates\n    that has no `ORDER BY` clause. The order of such a query is not specified, so\n    this surfaces code and tests that accidentally depend on the order a given\n    database happens to return today. Queries written as raw SQL strings are left\n    untouched.\n\n    This is best effort: the shuffle applies where Active Record still has the\n    Arel to recognise the query by, which leaves out association loading, `find`\n    and `find_by`, since those are served from a precompiled SQL string by\n    `ActiveRecord::StatementCache`. Rows are shuffled after the database returns\n    them, so queries ending in `LIMIT 1` (`take`, `pick`, `has_one`) are\n    unaffected, and a query that has an `ORDER BY` is never shuffled even when\n    that ordering is not a total order.\n\n    Intended for the test or development environments. Disabled by default.\n\n        # config/environments/test.rb\n        config.active_record.shuffle_unordered_selects = true\n\n    *viralpraxis*",
     "project": "activerecord",
     "date_merged": 1788072587000,
