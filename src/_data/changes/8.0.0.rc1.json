@@ -910,6 +910,16 @@
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
   },
   {
+    "message": "*   Avoid unnecessary association preloader queries for nil foreign keys when\n    the foreign key and association primary key have different types.\n\n    *Thrwat Elmoselhi*",
+    "project": "activerecord",
+    "date_merged": 1788247518000,
+    "author": "Thrwat Elmoselhi",
+    "sha": "3388ff1cf652a03d3594b2d362e6215bb0efd249",
+    "pr": "58622",
+    "merge_sha": "4130768a1b0d95da640ac792920e54988cf2d12f",
+    "html": "<p>Avoid unnecessary association preloader queries for nil foreign keys when<br />\nthe foreign key and association primary key have different types.</p>\n\n<p><em>Thrwat Elmoselhi</em></p>\n"
+  },
+  {
     "message": "*   Avoid a redundant join when the scope of a `has_many :through` association\n    joins an association that the through chain already joins.\n\n    Given a scope such as `-> { joins(:post) }` on the through association, the\n    same table was joined twice: once by the chain and once by the scope. Only\n    `belongs_to` and `has_one` joins are dropped, since removing a collection\n    join would change the number of rows the query returns.\n\n    *David Paluy*",
     "project": "activerecord",
     "date_merged": 1788242952000,
