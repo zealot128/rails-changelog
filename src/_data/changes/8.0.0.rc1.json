@@ -2290,6 +2290,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Preserve the requested key order in `ActiveSupport::Cache::Store#fetch_multi`\n    when a local cache is active.\n\n    Previously, if some keys were served from the local cache and others from the\n    underlying store, `fetch_multi` returned the local cache hits first instead of\n    following the order of the requested keys.\n\n    *Mueez Afzal*",
+    "project": "activesupport",
+    "date_merged": 1788385679000,
+    "author": "Mueez Afzal",
+    "sha": "0f231b0f6e0333f7fb645aca16596b0d35640fd3",
+    "pr": "58639",
+    "merge_sha": "a3f09dc5380dd7623be5bc6b0419517f13f517b2",
+    "html": "<p>Preserve the requested key order in <code>ActiveSupport::Cache::Store#fetch_multi</code><br />\nwhen a local cache is active.</p>\n\n<p>Previously, if some keys were served from the local cache and others from the<br />\nunderlying store, <code>fetch_multi</code> returned the local cache hits first instead of<br />\nfollowing the order of the requested keys.</p>\n\n<p><em>Mueez Afzal</em></p>\n"
+  },
+  {
     "message": "*   Return a UTC time from `Time.rfc3339` for strings with the \"Z\" UTC designator.\n\n    ```ruby\n    Time.rfc3339(\"2026-08-07T10:00:00Z\")\n    # Before: 2026-08-07 10:00:00 +0000 (utc? => false)\n    # After:  2026-08-07 10:00:00 UTC   (utc? => true)\n    ```\n\n    This matches Ruby's `Time.rfc3339`, which is expected to be included in\n    Ruby 4.1.\n    The resulting time value is unchanged, but serialized forms such as\n    `as_json` now end in \"Z\" instead of \"+00:00\". Call `getlocal(\"+00:00\")`\n    to keep the previous representation:\n\n    ```ruby\n    Time.rfc3339(\"2026-08-07T10:00:00Z\").getlocal(\"+00:00\")\n    # => 2026-08-07 10:00:00 +0000 (utc? => false)\n    ```\n\n    *Yasuo Honda*",
     "project": "activesupport",
     "date_merged": 1787069537000,
