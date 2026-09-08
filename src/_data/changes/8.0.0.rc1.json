@@ -2630,6 +2630,16 @@
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
   },
   {
+    "message": "*   Mark the generated `public/*.html` error pages as `linguist-generated` in\n    the default `.gitattributes`.\n\n    The five error pages generated since Rails 8.0 total about 36 KB of HTML,\n    more than the Ruby in a freshly generated application, so GitHub reported\n    new Rails applications as HTML repositories. Marking the pages as generated\n    excludes them from language statistics, as is already done for\n    `db/schema.rb`.\n\n    *Irina Nazarova*",
+    "project": "railties",
+    "date_merged": 1788853661000,
+    "author": "Irina Nazarova",
+    "sha": "72b892585b5270b55302ebf0882f97d759b23170",
+    "pr": "58693",
+    "merge_sha": "97f7349bfe907a4cde3e7e4bdc10bceac8d79d27",
+    "html": "<p>Mark the generated <code>public/*.html</code> error pages as <code>linguist-generated</code> in<br />\nthe default <code>.gitattributes</code>.</p>\n\n<p>The five error pages generated since Rails 8.0 total about 36 KB of HTML,<br />\nmore than the Ruby in a freshly generated application, so GitHub reported<br />\nnew Rails applications as HTML repositories. Marking the pages as generated<br />\nexcludes them from language statistics, as is already done for<br />\n<code>db/schema.rb</code>.</p>\n\n<p><em>Irina Nazarova</em></p>\n"
+  },
+  {
     "message": "*   A generated application's ci.yml file now sets `timeout-minutes: 15` for\n    each job to prevent transisent network errors, etc. from hanging the\n    action until the default 360 minutes kicks in and potentially eat up an\n    org's allotted runner minutes.\n\n    *Tony Drake*",
     "project": "railties",
     "date_merged": 1787904681000,
