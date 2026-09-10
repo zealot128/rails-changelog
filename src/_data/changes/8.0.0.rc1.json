@@ -710,6 +710,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Add alternative text to Action Text attachments.\n\n    Attachments could only be described by their caption, which is always shown\n    alongside the attachment. An image could not be described for people using a\n    screen reader without that description also appearing on the page, and the\n    default blob partial rendered images with no `alt` attribute at all.\n\n    Attachments now accept an `alt` attribute, exposed as `ActionText::Attachment#alt`\n    and rendered as the image's alternative text. It is independent of the caption,\n    so an attachment may have either, both, or neither.\n\n        ActionText::Attachment.from_attachable(blob, alt: \"A racecar on a track\")\n\n    Images with no alternative text are unchanged and still render without an\n    `alt` attribute, since Action Text does not infer descriptions.\n\n    *Olly Headey*",
+    "project": "actiontext",
+    "date_merged": 1788996453000,
+    "author": "Olly Headey",
+    "sha": "91e00fd72fa28a7121aa78cb11d41f81b1aeb6e2",
+    "pr": "58337",
+    "merge_sha": "52fa23ce8e1d39ff281bf300867e9ba7c7d66111",
+    "html": "<p>Add alternative text to Action Text attachments.</p>\n\n<p>Attachments could only be described by their caption, which is always shown<br />\nalongside the attachment. An image could not be described for people using a<br />\nscreen reader without that description also appearing on the page, and the<br />\ndefault blob partial rendered images with no <code>alt</code> attribute at all.</p>\n\n<p>Attachments now accept an <code>alt</code> attribute, exposed as <code>ActionText::Attachment#alt</code><br />\nand rendered as the image’s alternative text. It is independent of the caption,<br />\nso an attachment may have either, both, or neither.</p>\n\n<pre><code>ActionText::Attachment.from_attachable(blob, alt: \"A racecar on a track\")\n</code></pre>\n\n<p>Images with no alternative text are unchanged and still render without an<br />\n<code>alt</code> attribute, since Action Text does not infer descriptions.</p>\n\n<p><em>Olly Headey</em></p>\n"
+  },
+  {
     "message": "*   Dispatch all Active Storage `direct-upload:`-prefixed events\n\n    Add support for `direct-upload:before-blob-request` and `direct-upload:before-storage-request`.\n\n    Add `id` and `file` properties for parity with Active Storage.\n\n    *Sean Doyle*",
     "project": "actiontext",
     "date_merged": 1778799229000,
