@@ -3070,6 +3070,16 @@
     "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
   },
   {
+    "message": "*   Include default headers in `ActionController::Live` responses.\n\n    Previously, responses from `ActionController::Live` controllers, including\n    the Active Storage proxy controllers, were served over HTTP/1.1 without\n    `config.action_dispatch.default_headers` such as `X-Content-Type-Options`\n    and `X-Frame-Options`.\n\n    Fixes #53402.\n\n    *Tony Novak*",
+    "project": "actionpack",
+    "date_merged": 1789168854000,
+    "author": "Tony Novak",
+    "sha": "6444abc2c3b2d9118841fea135408450c2d25335",
+    "pr": "53403",
+    "merge_sha": "5d0f2ef19ac387022c2ec6ad6efe442c2b9d79a2",
+    "html": "<p>Include default headers in <code>ActionController::Live</code> responses.</p>\n\n<p>Previously, responses from <code>ActionController::Live</code> controllers, including<br />\nthe Active Storage proxy controllers, were served over HTTP/1.1 without<br />\n<code>config.action_dispatch.default_headers</code> such as <code>X-Content-Type-Options</code><br />\nand <code>X-Frame-Options</code>.</p>\n\n<p>Fixes #53402.</p>\n\n<p><em>Tony Novak</em></p>\n"
+  },
+  {
     "message": "*   Check `PATCH` and `QUERY` in `assert_recognizes` and `assert_routing` with `method: :all`.\n\n    Both assertions only recognized the path for `GET`, `POST`, `PUT` and\n    `DELETE`, so a route that did not accept `PATCH` or `QUERY` still passed an\n    assertion meant to cover every verb.\n\n    An assertion that passes today on a route drawn without those verbs now\n    fails, which is what it was meant to do.\n\n    *Carlos Daniel Pohlod*",
     "project": "actionpack",
     "date_merged": 1788456005000,
