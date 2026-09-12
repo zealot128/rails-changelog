@@ -390,6 +390,26 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Boot when libvips is missing.\n\n    An application with the ruby-vips gem installed but no libvips could not start. Active Storage\n    now treats any `LoadError` from requiring ruby-vips as ruby-vips being unavailable, and stops\n    loading `image_processing/vips` once it is. The application boots and logs a warning that\n    generating variants needs libvips.\n\n    Fixes #58723.\n\n    *Mike Dalessio*, *Vandenbogaerde Nicolas*",
+    "project": "activestorage",
+    "date_merged": 1789234752000,
+    "author": "Mike Dalessio",
+    "sha": "b913382ee09e8feafd0193b6e90043010946993c",
+    "pr": "58743",
+    "merge_sha": null,
+    "html": "<p>Boot when libvips is missing.</p>\n\n<p>An application with the ruby-vips gem installed but no libvips could not start. Active Storage<br />\nnow treats any <code>LoadError</code> from requiring ruby-vips as ruby-vips being unavailable, and stops<br />\nloading <code>image_processing/vips</code> once it is. The application boots and logs a warning that<br />\ngenerating variants needs libvips.</p>\n\n<p>Fixes #58723.</p>\n\n<p><em>Mike Dalessio</em>, <em>Vandenbogaerde Nicolas</em></p>\n"
+  },
+  {
+    "message": "*   Boot with an unsupported libvips or ruby-vips unless the variant processor uses it.\n\n    An installed libvips or ruby-vips too old to block the unfuzzed loaders raised during application\n    boot for every variant processor. Active Storage now raises only when the `:vips` processor loads\n    or the Vips analyzer reads an image, so `:mini_magick` applications boot again.\n\n    Fixes #58394.\n\n    *Mike Dalessio*",
+    "project": "activestorage",
+    "date_merged": 1789228499000,
+    "author": "Mike Dalessio",
+    "sha": "fcca87cf97de7e6e3891cfdc70b14feef107bcc0",
+    "pr": "58734",
+    "merge_sha": null,
+    "html": "<p>Boot with an unsupported libvips or ruby-vips unless the variant processor uses it.</p>\n\n<p>An installed libvips or ruby-vips too old to block the unfuzzed loaders raised during application<br />\nboot for every variant processor. Active Storage now raises only when the <code>:vips</code> processor loads<br />\nor the Vips analyzer reads an image, so <code>:mini_magick</code> applications boot again.</p>\n\n<p>Fixes #58394.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Marcel 2 for content type detection\n\n    Broader and more precise MIME type detection, security hardening, and uses canonical types\n    instead of aliases (`text/x-yaml` → `application/yaml`).\n\n    *Jeremy Daer*",
     "project": "activestorage",
     "date_merged": 1787984758000,
