@@ -390,6 +390,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Introduce `config.active_storage.draw_direct_upload_route` to disable the direct upload route without affecting the other Active Storage routes.\n\n    When disabled, Action Text's `rich_textarea` omits `data-direct-upload-url` unless one is passed explicitly, and a Trix editor without that attribute hides its attach button and ignores dropped or pasted files.\n\n    *Niklas Häusele*",
+    "project": "activestorage",
+    "date_merged": 1789317552000,
+    "author": "Niklas Häusele",
+    "sha": "b24658a9b2c632e4b1954f42af6b89043936ee02",
+    "pr": "58377",
+    "merge_sha": null,
+    "html": "<p>Introduce <code>config.active_storage.draw_direct_upload_route</code> to disable the direct upload route without affecting the other Active Storage routes.</p>\n\n<p>When disabled, Action Text’s <code>rich_textarea</code> omits <code>data-direct-upload-url</code> unless one is passed explicitly, and a Trix editor without that attribute hides its attach button and ignores dropped or pasted files.</p>\n\n<p><em>Niklas Häusele</em></p>\n"
+  },
+  {
     "message": "*   Boot when libvips is missing.\n\n    An application with the ruby-vips gem installed but no libvips could not start. Active Storage\n    now treats any `LoadError` from requiring ruby-vips as ruby-vips being unavailable, and stops\n    loading `image_processing/vips` once it is. The application boots and logs a warning that\n    generating variants needs libvips.\n\n    Fixes #58723.\n\n    *Mike Dalessio*, *Vandenbogaerde Nicolas*",
     "project": "activestorage",
     "date_merged": 1789239899000,
@@ -818,6 +828,16 @@
     "pr": "56283",
     "merge_sha": "b6a07894d6920c5444e5a8dca2f4dc2d0b5a9fb2",
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Fix PostgreSQL primary key introspection for covering indexes.\n\n    `pg_index.indkey` includes non-key columns added with `INCLUDE`. Primary\n    keys are now read from `pg_constraint.conkey`, so those columns remain\n    writable during bulk upserts.\n\n    *Aleksandar Maksimovic*",
+    "project": "activerecord",
+    "date_merged": 1789289344000,
+    "author": "Aleksandar Maksimovic",
+    "sha": "5d764c3592b624ef5d376a710dc75cf90c9f211c",
+    "pr": "58555",
+    "merge_sha": "843b7847efadaf003bbf1beec8ded48392501572",
+    "html": "<p>Fix PostgreSQL primary key introspection for covering indexes.</p>\n\n<p><code>pg_index.indkey</code> includes non-key columns added with <code>INCLUDE</code>. Primary<br />\nkeys are now read from <code>pg_constraint.conkey</code>, so those columns remain<br />\nwritable during bulk upserts.</p>\n\n<p><em>Aleksandar Maksimovic</em></p>\n"
   },
   {
     "message": "*   Re-enable PostgreSQL triggers when the block given to `disable_referential_integrity` raises.\n\n    On PostgreSQL versions without `NOT ENFORCED` constraints (before 18.4), the\n    adapter ran `ENABLE TRIGGER ALL` only after the block returned. When the block\n    raised outside of a transaction, every foreign key in the database stayed\n    disabled for all later connections.\n\n    *Lucas Guedes*",
