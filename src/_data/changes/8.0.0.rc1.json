@@ -392,11 +392,11 @@
   {
     "message": "*   Introduce `config.active_storage.draw_direct_upload_route` to disable the direct upload route without affecting the other Active Storage routes.\n\n    When disabled, Action Text's `rich_textarea` omits `data-direct-upload-url` unless one is passed explicitly, and a Trix editor without that attribute hides its attach button and ignores dropped or pasted files.\n\n    *Niklas Häusele*",
     "project": "activestorage",
-    "date_merged": 1789317552000,
+    "date_merged": 1789336676000,
     "author": "Niklas Häusele",
     "sha": "b24658a9b2c632e4b1954f42af6b89043936ee02",
     "pr": "58377",
-    "merge_sha": null,
+    "merge_sha": "9fcdedd8e9d5030143f904ea71fc84139a7f1d8a",
     "html": "<p>Introduce <code>config.active_storage.draw_direct_upload_route</code> to disable the direct upload route without affecting the other Active Storage routes.</p>\n\n<p>When disabled, Action Text’s <code>rich_textarea</code> omits <code>data-direct-upload-url</code> unless one is passed explicitly, and a Trix editor without that attribute hides its attach button and ignores dropped or pasted files.</p>\n\n<p><em>Niklas Häusele</em></p>\n"
   },
   {
