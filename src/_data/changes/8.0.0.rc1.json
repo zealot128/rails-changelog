@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Add a `herb:check` rake task to verify that the application's HTML+ERB\n    templates compile through Herb.\n\n    The task lists every template Herb rejects with its path and error, and\n    exits with a non-zero status when there are any.\n\n    *Marco Roth*",
+    "project": "actionview",
+    "date_merged": 1789449930000,
+    "author": "Marco Roth",
+    "sha": "563d9a084ad8a335d802c1c9db94d021e9c6abba",
+    "pr": "58770",
+    "merge_sha": "5f1654d584d256a5f16eb364db29de2d60913b11",
+    "html": "<p>Add a <code>herb:check</code> rake task to verify that the application’s HTML+ERB<br />\ntemplates compile through Herb.</p>\n\n<p>The task lists every template Herb rejects with its path and error, and<br />\nexits with a non-zero status when there are any.</p>\n\n<p><em>Marco Roth</em></p>\n"
+  },
+  {
     "message": "*   Allow `translate`'s (and `t`'s) `scope:` option to be resolved relative to\n    the current template when it starts with a period, mirroring the existing\n    behavior for the key argument.\n\n    Calling `translate(\"bar\", scope: \".foo\")` from `posts/index.html.erb` is\n    now equivalent to calling `translate(\"posts.index.foo.bar\")`.\n\n    *Ben Sheldon*",
     "project": "actionview",
     "date_merged": 1787567207000,
@@ -2138,6 +2148,16 @@
     "pr": "55348",
     "merge_sha": "4ffa4290700ceefd03400a0411fb2f3229189d7b",
     "html": "<p>Add <code>assert_part</code> and <code>assert_no_part</code> to <code>ActionMailer::TestCase</code></p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"nb\">test</span> <span class=\"s2\">\"assert MyMailer.welcome HTML and text parts\"</span> <span class=\"k\">do</span>\n  <span class=\"n\">mail</span> <span class=\"o\">=</span> <span class=\"no\">MyMailer</span><span class=\"p\">.</span><span class=\"nf\">welcome</span><span class=\"p\">(</span><span class=\"s2\">\"Hello, world\"</span><span class=\"p\">)</span>\n\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:text</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">text</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_includes</span> <span class=\"n\">text</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n  <span class=\"n\">assert_part</span> <span class=\"ss\">:html</span><span class=\"p\">,</span> <span class=\"n\">mail</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">html</span><span class=\"o\">|</span>\n    <span class=\"n\">assert_dom</span> <span class=\"n\">html</span><span class=\"p\">.</span><span class=\"nf\">root</span><span class=\"p\">,</span> <span class=\"s2\">\"p\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Hello, world\"</span>\n  <span class=\"k\">end</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Preserve the requested key order in `ActiveSupport::Cache::Store#read_multi`\n    when a local cache is active.\n\n    `fetch_multi` was fixed for this, but `read_multi` still returned the local\n    cache hits first instead of following the order of the requested keys.\n\n    *Carlos Daniel Pohlod*",
+    "project": "activesupport",
+    "date_merged": 1789452931000,
+    "author": "carlosdanielpohlod",
+    "sha": "fc89fe5348d69bacd7ec827be6f3f808e6d8d67d",
+    "pr": "58720",
+    "merge_sha": "b85ca16aeef50bb00a34ef0daca9977b01762e65",
+    "html": "<p>Preserve the requested key order in <code>ActiveSupport::Cache::Store#read_multi</code><br />\nwhen a local cache is active.</p>\n\n<p><code>fetch_multi</code> was fixed for this, but <code>read_multi</code> still returned the local<br />\ncache hits first instead of following the order of the requested keys.</p>\n\n<p><em>Carlos Daniel Pohlod</em></p>\n"
   },
   {
     "message": "*   Preserve the requested key order in `ActiveSupport::Cache::Store#fetch_multi`\n    when a local cache is active.\n\n    Previously, if some keys were served from the local cache and others from the\n    underlying store, `fetch_multi` returned the local cache hits first instead of\n    following the order of the requested keys.\n\n    *Mueez Afzal*",
