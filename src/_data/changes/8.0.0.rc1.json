@@ -840,6 +840,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Active Record schema caches can now be dumped in JSON format.\n\n    Enabled by configuring `schema_cache_path` with a path ending in `.json`,\n    it is noticeably faster than the existing YAML and Marshal based dumpers.\n\n    *Iliana Hadzhiatanasova*",
+    "project": "activerecord",
+    "date_merged": 1789542322000,
+    "author": "Iliana Hadzhiatanasova",
+    "sha": "de1265a4d9836112eed1efac793afd159b2a6f2f",
+    "pr": "58769",
+    "merge_sha": "216b59017fd12fa3ffd3ecd632dc47203a58f353",
+    "html": "<p>Active Record schema caches can now be dumped in JSON format.</p>\n\n<p>Enabled by configuring <code>schema_cache_path</code> with a path ending in <code>.json</code>,<br />\nit is noticeably faster than the existing YAML and Marshal based dumpers.</p>\n\n<p><em>Iliana Hadzhiatanasova</em></p>\n"
+  },
+  {
     "message": "*   Fix PostgreSQL primary key introspection for covering indexes.\n\n    `pg_index.indkey` includes non-key columns added with `INCLUDE`. Primary\n    keys are now read from `pg_constraint.conkey`, so those columns remain\n    writable during bulk upserts.\n\n    *Aleksandar Maksimovic*",
     "project": "activerecord",
     "date_merged": 1789289344000,
