@@ -840,6 +840,26 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Read PostgreSQL indexes and constraints from the table an unqualified name resolves to.\n\n    `indexes`, `foreign_keys`, `check_constraints`, `unique_constraints` and\n    `exclusion_constraints` matched a name against every schema on the search\n    path, so a name carried by two schemas came back with both tables' indexes\n    and constraints. They now resolve the name the way `::regclass` does, as\n    `primary_keys` and `table_options` already did.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1789619338000,
+    "author": "Ryuta Kamizono",
+    "sha": "6ef2474bc5ea07597c6a731957a9e4f1e347772f",
+    "pr": "58795",
+    "merge_sha": "523b226cc96cad32856f24c21076700ff091cdcf",
+    "html": "<p>Read PostgreSQL indexes and constraints from the table an unqualified name resolves to.</p>\n\n<p><code>indexes</code>, <code>foreign_keys</code>, <code>check_constraints</code>, <code>unique_constraints</code> and<br />\n<code>exclusion_constraints</code> matched a name against every schema on the search<br />\npath, so a name carried by two schemas came back with both tables’ indexes<br />\nand constraints. They now resolve the name the way <code>::regclass</code> does, as<br />\n<code>primary_keys</code> and <code>table_options</code> already did.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
+    "message": "*   Replace the `mysql5` fallback in `ActiveRecord.database_cli` with `mariadb`.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1789602822000,
+    "author": "Ryuta Kamizono",
+    "sha": "4cfd9f5bf80afef81c631c421405501e17fa5ea1",
+    "pr": "58791",
+    "merge_sha": "d9d5561494e671862cedc6d9d674d2cadd414bbb",
+    "html": "<p>Replace the <code>mysql5</code> fallback in <code>ActiveRecord.database_cli</code> with <code>mariadb</code>.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Active Record schema caches can now be dumped in JSON format.\n\n    Enabled by configuring `schema_cache_path` with a path ending in `.json`,\n    it is noticeably faster than the existing YAML and Marshal based dumpers.\n\n    *Iliana Hadzhiatanasova*",
     "project": "activerecord",
     "date_merged": 1789542322000,
