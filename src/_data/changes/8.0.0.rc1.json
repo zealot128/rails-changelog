@@ -840,6 +840,26 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Deprecate `ActiveRecord::Callbacks::CALLBACKS`.\n\n    The constant has been outdated for a long time. It is missing several\n    transaction related callbacks that have been added over the years:\n\n    * `before_commit`\n    * `after_save_commit`\n    * `after_create_commit`\n    * `after_update_commit`\n    * `after_destroy_commit`\n\n    Anything driven off the constant silently skips those callbacks, so it is\n    deprecated with no replacement.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1789704016000,
+    "author": "Ryuta Kamizono",
+    "sha": "9d62cf33de4f7cb74a3e170e138dfad9c1dfb383",
+    "pr": "58794",
+    "merge_sha": "162fcf16a60e1642834b5c5beda3d918d2f9fc2c",
+    "html": "<p>Deprecate <code>ActiveRecord::Callbacks::CALLBACKS</code>.</p>\n\n<p>The constant has been outdated for a long time. It is missing several<br />\ntransaction related callbacks that have been added over the years:</p>\n\n<ul>\n  <li><code>before_commit</code></li>\n  <li><code>after_save_commit</code></li>\n  <li><code>after_create_commit</code></li>\n  <li><code>after_update_commit</code></li>\n  <li><code>after_destroy_commit</code></li>\n</ul>\n\n<p>Anything driven off the constant silently skips those callbacks, so it is<br />\ndeprecated with no replacement.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `supports_datetime_with_precision?`.\n\n    The check existed for MySQL 5.5 and older, which had no sub-second\n    precision on `DATETIME`, `TIME` and `TIMESTAMP` columns. Every database\n    Active Record supports now has it, so the method always returns true and\n    no longer guards anything.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1789690042000,
+    "author": "Ryuta Kamizono",
+    "sha": "aea7e54c511f5d58cdbc9ba0541cecf434dea4a8",
+    "pr": "58809",
+    "merge_sha": "55728a19315c177eefcce97665ff489487dc6755",
+    "html": "<p>Deprecate <code>supports_datetime_with_precision?</code>.</p>\n\n<p>The check existed for MySQL 5.5 and older, which had no sub-second<br />\nprecision on <code>DATETIME</code>, <code>TIME</code> and <code>TIMESTAMP</code> columns. Every database<br />\nActive Record supports now has it, so the method always returns true and<br />\nno longer guards anything.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Read PostgreSQL indexes and constraints from the table an unqualified name resolves to.\n\n    `indexes`, `foreign_keys`, `check_constraints`, `unique_constraints` and\n    `exclusion_constraints` matched a name against every schema on the search\n    path, so a name carried by two schemas came back with both tables' indexes\n    and constraints. They now resolve the name the way `::regclass` does, as\n    `primary_keys` and `table_options` already did.\n\n    *Ryuta Kamizono*",
     "project": "activerecord",
     "date_merged": 1789619338000,
@@ -2728,6 +2748,16 @@
     "pr": "51781",
     "merge_sha": "4b7bf2617d190b7769393e975a2449f8cde12145",
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Stop probing for a local MySQL socket when generating `config/database.yml`.\n\n    *Ryuta Kamizono*",
+    "project": "railties",
+    "date_merged": 1789702922000,
+    "author": "Ryuta Kamizono",
+    "sha": "263a1f2378c110c9d2b6bed9968466f6e15576ae",
+    "pr": "58793",
+    "merge_sha": "c5325c681c48bf25d7eccd8161142cc902b56ff1",
+    "html": "<p>Stop probing for a local MySQL socket when generating <code>config/database.yml</code>.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
   },
   {
     "message": "*   Mark the generated `public/*.html` error pages as `linguist-generated` in\n    the default `.gitattributes`.\n\n    The five error pages generated since Rails 8.0 total about 36 KB of HTML,\n    more than the Ruby in a freshly generated application, so GitHub reported\n    new Rails applications as HTML repositories. Marking the pages as generated\n    excludes them from language statistics, as is already done for\n    `db/schema.rb`.\n\n    *Irina Nazarova*",
