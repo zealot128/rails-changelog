@@ -840,6 +840,26 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Make `db:schema:load` work with MySQL client 9.4 and later.\n\n    From 9.4.0 on, the client by default passes the `SOURCE` command to the\n    server as SQL instead of handling it itself, and the server rejects it with a\n    syntax error. The SQL structure file is now read from standard input instead.\n\n    *Yasuo Honda*",
+    "project": "activerecord",
+    "date_merged": 1790123074000,
+    "author": "Yasuo Honda",
+    "sha": "3f949e33e8c248ea747e7df8e508056b5a6dbc19",
+    "pr": "58829",
+    "merge_sha": "2cc9c08699bc8062c0851dab772cbea64affabda",
+    "html": "<p>Make <code>db:schema:load</code> work with MySQL client 9.4 and later.</p>\n\n<p>From 9.4.0 on, the client by default passes the <code>SOURCE</code> command to the<br />\nserver as SQL instead of handling it itself, and the server rejects it with a<br />\nsyntax error. The SQL structure file is now read from standard input instead.</p>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
+    "message": "*   Drop the explicit `SET FOREIGN_KEY_CHECKS` statements from MySQL `db:schema:load`.\n\n    Dumps written by `mysqldump` since MySQL 4.1.1 and by `mariadb-dump` since\n    its first release set `FOREIGN_KEY_CHECKS = 0` themselves, so foreign key\n    checks stay disabled during the load without them.\n\n    If you pass `--compact` in `structure_dump_flags`, the dump leaves it out, so\n    add it back on load:\n\n        ActiveRecord::Tasks::DatabaseTasks.structure_load_flags = [\"--init-command=SET FOREIGN_KEY_CHECKS = 0\"]\n\n    *Yasuo Honda*",
+    "project": "activerecord",
+    "date_merged": 1790123074000,
+    "author": "Yasuo Honda",
+    "sha": "f998cdb432a0b488eb943d602ab1f6e645378ebf",
+    "pr": "58829",
+    "merge_sha": "2cc9c08699bc8062c0851dab772cbea64affabda",
+    "html": "<p>Drop the explicit <code>SET FOREIGN_KEY_CHECKS</code> statements from MySQL <code>db:schema:load</code>.</p>\n\n<p>Dumps written by <code>mysqldump</code> since MySQL 4.1.1 and by <code>mariadb-dump</code> since<br />\nits first release set <code>FOREIGN_KEY_CHECKS = 0</code> themselves, so foreign key<br />\nchecks stay disabled during the load without them.</p>\n\n<p>If you pass <code>--compact</code> in <code>structure_dump_flags</code>, the dump leaves it out, so<br />\nadd it back on load:</p>\n\n<pre><code>ActiveRecord::Tasks::DatabaseTasks.structure_load_flags = [\"--init-command=SET FOREIGN_KEY_CHECKS = 0\"]\n</code></pre>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
     "message": "*   Avoid deadlocks when concurrent `find_or_create_by` calls read back the same\n    record within MySQL transactions.\n\n    Use a shared lock for the read after a duplicate insert, preserving visibility\n    under REPEATABLE READ without upgrading competing shared locks to exclusive locks.\n    This also applies to `create_or_find_by` and the bang variants of both methods.\n\n    Fixes #54281.\n\n    *Kirsten Westeinde*",
     "project": "activerecord",
     "date_merged": 1789746867000,
@@ -3208,6 +3228,16 @@
     "pr": "55913",
     "merge_sha": "481b02ffcc995fbc0792d5d04871fefa953f12ba",
     "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
+  },
+  {
+    "message": "*   Fix `Server-Timing` durations for nested same-name notifications.\n\n    Nested events such as `render_partial.action_view` report inclusive\n    durations, so summing them double-counted child work and could exceed\n    wall-clock / total request time. Server Timing now aggregates exclusive\n    time per event name.\n\n    Fixes #48375.\n\n    *Edil Talantbek uulu*",
+    "project": "actionpack",
+    "date_merged": 1790107298000,
+    "author": "Edilbek",
+    "sha": "359e49ea19e6178e1c74f21e32c72219f3b4693a",
+    "pr": "48375",
+    "merge_sha": "632e721f52098076213b541b980678f54ace90ad",
+    "html": "<p>Fix <code>Server-Timing</code> durations for nested same-name notifications.</p>\n\n<p>Nested events such as <code>render_partial.action_view</code> report inclusive<br />\ndurations, so summing them double-counted child work and could exceed<br />\nwall-clock / total request time. Server Timing now aggregates exclusive<br />\ntime per event name.</p>\n\n<p>Fixes #48375.</p>\n\n<p><em>Edil Talantbek uulu</em></p>\n"
   },
   {
     "message": "*   Include default headers in `ActionController::Live` responses.\n\n    Previously, responses from `ActionController::Live` controllers, including\n    the Active Storage proxy controllers, were served over HTTP/1.1 without\n    `config.action_dispatch.default_headers` such as `X-Content-Type-Options`\n    and `X-Frame-Options`.\n\n    Fixes #53402.\n\n    *Tony Novak*",
