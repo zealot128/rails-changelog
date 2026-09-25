@@ -1970,6 +1970,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Do not schema-qualify PostgreSQL extensions whose control file fixes their\n    schema, nor tables and enum types in the current schema, when dumping\n    `db/schema.rb`.\n\n    Before:\n\n    ```ruby\n    enable_extension \"pg_catalog.plpgsql\"\n\n    create_table \"public.posts\", force: :cascade do |t|\n    ```\n\n    After:\n\n    ```ruby\n    enable_extension \"plpgsql\"\n\n    create_table \"posts\", force: :cascade do |t|\n    ```\n\n    *Yasuo Honda*",
+    "project": "activerecord",
+    "date_merged": 1790342101000,
+    "author": "Yasuo Honda",
+    "sha": "e13d16fa5b3bd93657aa069c8ba461b1a33fda86",
+    "pr": "58855",
+    "merge_sha": "2edba14596cf7faf86d7714de4a3036dec275335",
+    "html": "<p>Do not schema-qualify PostgreSQL extensions whose control file fixes their<br />\nschema, nor tables and enum types in the current schema, when dumping<br />\n<code>db/schema.rb</code>.</p>\n\n<p>Before:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">enable_extension</span> <span class=\"s2\">\"pg_catalog.plpgsql\"</span>\n\n<span class=\"n\">create_table</span> <span class=\"s2\">\"public.posts\"</span><span class=\"p\">,</span> <span class=\"ss\">force: :cascade</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n</code></pre></div></div>\n\n<p>After:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">enable_extension</span> <span class=\"s2\">\"plpgsql\"</span>\n\n<span class=\"n\">create_table</span> <span class=\"s2\">\"posts\"</span><span class=\"p\">,</span> <span class=\"ss\">force: :cascade</span> <span class=\"k\">do</span> <span class=\"o\">|</span><span class=\"n\">t</span><span class=\"o\">|</span>\n</code></pre></div></div>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
     "message": "*   Make `db:schema:load` work with MySQL client 9.4 and later.\n\n    From 9.4.0 on, the client by default passes the `SOURCE` command to the\n    server as SQL instead of handling it itself, and the server rejects it with a\n    syntax error. The SQL structure file is now read from standard input instead.\n\n    *Yasuo Honda*",
     "project": "activerecord",
     "date_merged": 1790123074000,
