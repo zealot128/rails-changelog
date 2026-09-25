@@ -1200,6 +1200,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   Add `Manitoba` to `ActiveSupport::TimeZone::MAPPING`.\n\n    Manitoba no longer shares winter clocks with US Central time. The existing\n    `Central Time (US & Canada)` entry remains mapped to `America/Chicago` for\n    compatibility. Prefer `Manitoba` (or the IANA identifier `America/Winnipeg`)\n    for users in that region.\n\n    *Dan Williams*",
+    "project": "activesupport",
+    "date_merged": 1790280959000,
+    "author": "Dan Williams",
+    "sha": "05bfe6e33c94f10e9e2289750433b3ebb92a43d2",
+    "pr": "58863",
+    "merge_sha": "358b62ca68bbcd134e10018645477e58d107c173",
+    "html": "<p>Add <code>Manitoba</code> to <code>ActiveSupport::TimeZone::MAPPING</code>.</p>\n\n<p>Manitoba no longer shares winter clocks with US Central time. The existing<br />\n<code>Central Time (US &amp; Canada)</code> entry remains mapped to <code>America/Chicago</code> for<br />\ncompatibility. Prefer <code>Manitoba</code> (or the IANA identifier <code>America/Winnipeg</code>)<br />\nfor users in that region.</p>\n\n<p><em>Dan Williams</em></p>\n"
+  },
+  {
     "message": "*   Fix `ActiveSupport::BroadcastLogger#tagged` when broadcasting to more than\n    one tagging logger..\n\n    ```ruby\n    broadcast = ActiveSupport::BroadcastLogger.new(logger1, logger2)\n    broadcast.tagged(\"BCX\").info(\"Hello\") # => both loggers log \"[BCX] Hello\"\n    ```\n\n    *Ben Younes*",
     "project": "activesupport",
     "date_merged": 1790011329000,
