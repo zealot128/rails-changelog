@@ -850,6 +850,16 @@
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Treat `:except_on` as a callback option in `ActiveModel::Error`.\n\n    Errors from validations using `:except_on` now match `errors.added?` queries\n    without that option, and no longer include it in `errors.details`.\n\n    *Andrii Furmanets*",
+    "project": "activemodel",
+    "date_merged": 1790531118000,
+    "author": "Andrii Furmanets",
+    "sha": "7fbb5dff72eb836ed8f635fa7d6e88264558744d",
+    "pr": "58876",
+    "merge_sha": "c9e85dbe297e248dd2f217d04f84a94881ac046a",
+    "html": "<p>Treat <code>:except_on</code> as a callback option in <code>ActiveModel::Error</code>.</p>\n\n<p>Errors from validations using <code>:except_on</code> now match <code>errors.added?</code> queries<br />\nwithout that option, and no longer include it in <code>errors.details</code>.</p>\n\n<p><em>Andrii Furmanets</em></p>\n"
+  },
+  {
     "message": "*   Implement `ActiveModel::Type::Binary::Data#as_json`\n\n    Delegates JSON conversion to the underlying binary data value (instead of\n    falling back to `Object#as_json` and exposing ivar name).\n\n    *Tiago Cardoso*",
     "project": "activemodel",
     "date_merged": 1786952626000,
@@ -1968,6 +1978,16 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Treat `false` as disabled for `idle_timeout`, `reaping_frequency` and `max_age`\n    in `database.yml`.\n\n    These options raised `NoMethodError` on boot when set to `false`, which YAML\n    also produces for `off` and `no`. `false` now disables them, like the\n    documented `0`. `idle_timeout` additionally accepts `true` for its default,\n    since unlike the other two it has one.\n\n    *Carlos Daniel Pohlod*",
+    "project": "activerecord",
+    "date_merged": 1790497465000,
+    "author": "carlosdanielpohlod",
+    "sha": "f8086068c17d7fed4ee9d2f5c5f90cc528a60db3",
+    "pr": "58807",
+    "merge_sha": "17a6cf55a3905f896e120ff778007f207d7d4863",
+    "html": "<p>Treat <code>false</code> as disabled for <code>idle_timeout</code>, <code>reaping_frequency</code> and <code>max_age</code><br />\nin <code>database.yml</code>.</p>\n\n<p>These options raised <code>NoMethodError</code> on boot when set to <code>false</code>, which YAML<br />\nalso produces for <code>off</code> and <code>no</code>. <code>false</code> now disables them, like the<br />\ndocumented <code>0</code>. <code>idle_timeout</code> additionally accepts <code>true</code> for its default,<br />\nsince unlike the other two it has one.</p>\n\n<p><em>Carlos Daniel Pohlod</em></p>\n"
   },
   {
     "message": "*   Do not dump PostgreSQL tables, enum types and schemas that belong to an\n    extension.\n\n    Tables, enum types and schemas created by `CREATE EXTENSION`, such as\n    `spatial_ref_sys` of PostGIS, `part_config` of pg_partman or the `citus`\n    schema of Citus, are recorded in `pg_depend` as members of the extension\n    (`deptype = 'e'`): `CREATE EXTENSION` creates them, `DROP EXTENSION` drops\n    them, and PostgreSQL refuses to drop or recreate them on their own.\n    Listing them in `db/schema.rb` therefore made the file impossible to load,\n    while `enable_extension` alone already brings them back, as\n    `CREATE EXTENSION` does in `structure.sql`. Objects an application attaches\n    to an extension itself with `ALTER EXTENSION ... ADD` are left out too, as\n    `pg_dump` leaves them out.\n\n    Before:\n\n    ```ruby\n    enable_extension \"postgis\"\n\n    create_table \"posts\", force: :cascade do |t|\n      ...\n    end\n\n    create_table \"spatial_ref_sys\", primary_key: \"srid\", id: :integer, default: nil, force: :cascade do |t|\n      ...\n    end\n    ```\n\n    After:\n\n    ```ruby\n    enable_extension \"postgis\"\n\n    create_table \"posts\", force: :cascade do |t|\n      ...\n    end\n    ```\n\n    *Yasuo Honda*",
