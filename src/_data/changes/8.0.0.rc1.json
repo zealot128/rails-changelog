@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Remove support for dynamic `:controller` and `:action` route segments.\n\n    A route may no longer read the controller or the action out of the URL:\n\n    ```ruby\n    get \":controller(/:action(/:id))\"\n    ```\n\n    Drawing such a route raises an `ArgumentError`. Deprecated since Rails 5.0,\n    so write out the routes the application serves instead:\n\n    ```ruby\n    get \"photos\", to: \"photos#index\"\n    get \"photos/:id\", to: \"photos#show\"\n    ```\n\n    Passing a controller class without an action relied on the same mechanism,\n    so `get \"show\", to: PhotosController` now needs `action: \"show\"`, and a\n    `Regexp` for `:controller` or `:action` raises rather than drawing a route\n    that can never match.\n\n    `Request#controller_class` now raises `ActionDispatch::MissingController`\n    when the request has no `:controller` path parameter (for example, before\n    routing, or for a request routed to a Rack endpoint), instead of returning\n    a placeholder controller that responded with a 404.\n\n    *Aaron Patterson*",
+    "project": "actionpack",
+    "date_merged": 1790790450000,
+    "author": "Aaron Patterson",
+    "sha": "92d809905ba0545efbdf76f430dbc9f39438e729",
+    "pr": "58893",
+    "merge_sha": "14d6d42b21be8527dda803ad3e8c790471c2521e",
+    "html": "<p>Remove support for dynamic <code>:controller</code> and <code>:action</code> route segments.</p>\n\n<p>A route may no longer read the controller or the action out of the URL:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">get</span> <span class=\"s2\">\":controller(/:action(/:id))\"</span>\n</code></pre></div></div>\n\n<p>Drawing such a route raises an <code>ArgumentError</code>. Deprecated since Rails 5.0,<br />\nso write out the routes the application serves instead:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">get</span> <span class=\"s2\">\"photos\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"photos#index\"</span>\n<span class=\"n\">get</span> <span class=\"s2\">\"photos/:id\"</span><span class=\"p\">,</span> <span class=\"ss\">to: </span><span class=\"s2\">\"photos#show\"</span>\n</code></pre></div></div>\n\n<p>Passing a controller class without an action relied on the same mechanism,<br />\nso <code>get \"show\", to: PhotosController</code> now needs <code>action: \"show\"</code>, and a<br />\n<code>Regexp</code> for <code>:controller</code> or <code>:action</code> raises rather than drawing a route<br />\nthat can never match.</p>\n\n<p><code>Request#controller_class</code> now raises <code>ActionDispatch::MissingController</code><br />\nwhen the request has no <code>:controller</code> path parameter (for example, before<br />\nrouting, or for a request routed to a Rack endpoint), instead of returning<br />\na placeholder controller that responded with a 404.</p>\n\n<p><em>Aaron Patterson</em></p>\n"
+  },
+  {
     "message": "*   Fix `Server-Timing` durations for nested same-name notifications.\n\n    Nested events such as `render_partial.action_view` report inclusive\n    durations, so summing them double-counted child work and could exceed\n    wall-clock / total request time. Server Timing now aggregates exclusive\n    time per event name.\n\n    Fixes #48375.\n\n    *Edil Talantbek uulu*",
     "project": "actionpack",
     "date_merged": 1790107298000,
@@ -1208,6 +1218,16 @@
     "pr": "56093",
     "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Speed up JSON escaping with `String#tr!` on Ruby 4.1+.\n\n    `ActiveSupport::JSON.encode` escaped `<`, `>`, `&`, U+2028 and U+2029 by\n    forcing the generated JSON to BINARY and running `gsub!` over it. Ruby 4.1\n    accepts a Hash of pairs in `String#tr!`, which does the same substitution in\n    a single pass, with no Regexp and no encoding round-trip.\n\n    Escaping is 2x to 10x faster on documents that are large or contain many\n    escapable characters, and allocates fewer intermediate strings. Documents\n    smaller than roughly 128 bytes with nothing to escape are marginally\n    slower, since `tr!` builds a translation table where a pre-compiled Regexp\n    just fails to match. Raises `ArgumentError` when the passed\n    JSON isn't valid UTF-8.\n\n    *Jean Boussier*, *Federico Carrocera*",
+    "project": "activesupport",
+    "date_merged": 1790758205000,
+    "author": "federico-carrocera",
+    "sha": "22400d8822a3d10fa3acb10cc418319fd0358cae",
+    "pr": "58746",
+    "merge_sha": "3449d74a95c71519f93e981f7f1a68173c1acec8",
+    "html": "<p>Speed up JSON escaping with <code>String#tr!</code> on Ruby 4.1+.</p>\n\n<p><code>ActiveSupport::JSON.encode</code> escaped <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, U+2028 and U+2029 by<br />\nforcing the generated JSON to BINARY and running <code>gsub!</code> over it. Ruby 4.1<br />\naccepts a Hash of pairs in <code>String#tr!</code>, which does the same substitution in<br />\na single pass, with no Regexp and no encoding round-trip.</p>\n\n<p>Escaping is 2x to 10x faster on documents that are large or contain many<br />\nescapable characters, and allocates fewer intermediate strings. Documents<br />\nsmaller than roughly 128 bytes with nothing to escape are marginally<br />\nslower, since <code>tr!</code> builds a translation table where a pre-compiled Regexp<br />\njust fails to match. Raises <code>ArgumentError</code> when the passed<br />\nJSON isn’t valid UTF-8.</p>\n\n<p><em>Jean Boussier</em>, <em>Federico Carrocera</em></p>\n"
   },
   {
     "message": "*   Add `Manitoba` to `ActiveSupport::TimeZone::MAPPING`.\n\n    Manitoba no longer shares winter clocks with US Central time. The existing\n    `Central Time (US & Canada)` entry remains mapped to `America/Chicago` for\n    compatibility. Prefer `Manitoba` (or the IANA identifier `America/Winnipeg`)\n    for users in that region.\n\n    *Dan Williams*",
@@ -3328,6 +3348,16 @@
     "pr": "55896",
     "merge_sha": "384420e95c537a8c7b28a0c301118bd0abd66d09",
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Log a warning on boot for each route that references a missing controller\n    when eager loading is enabled.\n\n    With `config.eager_load` on, every route that dispatches to a controller\n    now resolves it once the routes are loaded, so a typo or a deleted\n    controller is reported at boot rather than discovered on the first\n    request to that route:\n\n    ```\n    GET /photos(.:format) references a missing controller: uninitialized constant PhotosController\n    ```\n\n    *Aaron Patterson*",
+    "project": "railties",
+    "date_merged": 1790790450000,
+    "author": "Aaron Patterson",
+    "sha": "bf952e133ecc434a6a6f247911838686f5f7f6ac",
+    "pr": "58893",
+    "merge_sha": "14d6d42b21be8527dda803ad3e8c790471c2521e",
+    "html": "<p>Log a warning on boot for each route that references a missing controller<br />\nwhen eager loading is enabled.</p>\n\n<p>With <code>config.eager_load</code> on, every route that dispatches to a controller<br />\nnow resolves it once the routes are loaded, so a typo or a deleted<br />\ncontroller is reported at boot rather than discovered on the first<br />\nrequest to that route:</p>\n\n<pre><code>GET /photos(.:format) references a missing controller: uninitialized constant PhotosController\n</code></pre>\n\n<p><em>Aaron Patterson</em></p>\n"
   },
   {
     "message": "*   Stop probing for a local MySQL socket when generating `config/database.yml`.\n\n    *Ryuta Kamizono*",
