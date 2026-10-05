@@ -2010,6 +2010,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Add `maintenance_database` option to the PostgreSQL adapter.\n\n    `bin/rails db:create`, `db:drop` and `db:purge` connect to the `postgres`\n    database by default. Some managed PostgreSQL services, such as\n    DigitalOcean, do not provide a `postgres` database, so these tasks fail\n    there. `maintenance_database` sets the database to connect to instead,\n    like the `--maintenance-db` option of `createdb`.\n\n    ```yaml\n    production:\n      adapter: postgresql\n      database: blog_production\n      maintenance_database: defaultdb\n    ```\n\n    *Yasuo Honda*",
+    "project": "activerecord",
+    "date_merged": 1791179997000,
+    "author": "Yasuo Honda",
+    "sha": "0b66a5d0024b2cf18da8b9eed10dfabc84a29d30",
+    "pr": "58923",
+    "merge_sha": "a19a8ef55ecd8e0848370b6da19bbc971e032274",
+    "html": "<p>Add <code>maintenance_database</code> option to the PostgreSQL adapter.</p>\n\n<p><code>bin/rails db:create</code>, <code>db:drop</code> and <code>db:purge</code> connect to the <code>postgres</code><br />\ndatabase by default. Some managed PostgreSQL services, such as<br />\nDigitalOcean, do not provide a <code>postgres</code> database, so these tasks fail<br />\nthere. <code>maintenance_database</code> sets the database to connect to instead,<br />\nlike the <code>--maintenance-db</code> option of <code>createdb</code>.</p>\n\n<div class=\"language-yaml highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"na\">production</span><span class=\"pi\">:</span>\n  <span class=\"na\">adapter</span><span class=\"pi\">:</span> <span class=\"s\">postgresql</span>\n  <span class=\"na\">database</span><span class=\"pi\">:</span> <span class=\"s\">blog_production</span>\n  <span class=\"na\">maintenance_database</span><span class=\"pi\">:</span> <span class=\"s\">defaultdb</span>\n</code></pre></div></div>\n\n<p><em>Yasuo Honda</em></p>\n"
+  },
+  {
     "message": "*   Treat `false` as disabled for `idle_timeout`, `reaping_frequency` and `max_age`\n    in `database.yml`.\n\n    These options raised `NoMethodError` on boot when set to `false`, which YAML\n    also produces for `off` and `no`. `false` now disables them, like the\n    documented `0`. `idle_timeout` additionally accepts `true` for its default,\n    since unlike the other two it has one.\n\n    *Carlos Daniel Pohlod*",
     "project": "activerecord",
     "date_merged": 1790497465000,
