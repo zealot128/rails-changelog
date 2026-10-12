@@ -2040,6 +2040,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Fix `has_many`/`has_one :through` associations with `disable_joins: true`\n    raising when the owner's foreign key is composite.\n\n    *Federico Carrocera*",
+    "project": "activerecord",
+    "date_merged": 1791812033000,
+    "author": "Federico Carrocera",
+    "sha": "0ffb454e080df2972bab80687b8ed9618b71c245",
+    "pr": "59040",
+    "merge_sha": "6ed67f823c72f59948ca47c8ccbed53085a49f27",
+    "html": "<p>Fix <code>has_many</code>/<code>has_one :through</code> associations with <code>disable_joins: true</code><br />\nraising when the owner’s foreign key is composite.</p>\n\n<p><em>Federico Carrocera</em></p>\n"
+  },
+  {
     "message": "*   Fix `where` with a `Range` of value objects on a single-mapping `composed_of`\n    attribute.\n\n    Range endpoints now go through the mapping, like single values and arrays do.\n    Before, they were used as-is, so both ends became `NULL`:\n\n    ```ruby\n    Customer.where(balance: Money.new(150)..Money.new(250))\n    # before: ... WHERE \"customers\".\"balance\" BETWEEN NULL AND NULL\n    # after:  ... WHERE \"customers\".\"balance\" BETWEEN 150 AND 250\n    ```\n\n    *Kushagra Singh*",
     "project": "activerecord",
     "date_merged": 1791549061000,
