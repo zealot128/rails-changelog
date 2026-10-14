@@ -1080,6 +1080,16 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Don't modify the job data a job was deserialized from when it's retried.\n\n    ```ruby\n    job_data = RemoteServiceJob.new.serialize # retry_on Net::OpenTimeout\n    ActiveJob::Base.execute(job_data)         # fails with Net::OpenTimeout, is retried\n    job_data[\"exception_executions\"]          # => {\"[Net::OpenTimeout]\" => 1}, now {}\n    ```\n\n    Retries no longer mutate `exception_executions` on the job returned by\n    `perform_later`, or on the job data in `performed_jobs`.\n\n    *Yaroslav Markin*",
+    "project": "activejob",
+    "date_merged": 1792002691000,
+    "author": "Yaroslav Markin",
+    "sha": "f5097cf946fe257297654e8e29178a4c1852a1a6",
+    "pr": "58975",
+    "merge_sha": "6781dcfe43c1156738dcd28863cfbbd31e4a3ea7",
+    "html": "<p>Don’t modify the job data a job was deserialized from when it’s retried.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"n\">job_data</span> <span class=\"o\">=</span> <span class=\"no\">RemoteServiceJob</span><span class=\"p\">.</span><span class=\"nf\">new</span><span class=\"p\">.</span><span class=\"nf\">serialize</span> <span class=\"c1\"># retry_on Net::OpenTimeout</span>\n<span class=\"no\">ActiveJob</span><span class=\"o\">::</span><span class=\"no\">Base</span><span class=\"p\">.</span><span class=\"nf\">execute</span><span class=\"p\">(</span><span class=\"n\">job_data</span><span class=\"p\">)</span>         <span class=\"c1\"># fails with Net::OpenTimeout, is retried</span>\n<span class=\"n\">job_data</span><span class=\"p\">[</span><span class=\"s2\">\"exception_executions\"</span><span class=\"p\">]</span>          <span class=\"c1\"># =&gt; {\"[Net::OpenTimeout]\" =&gt; 1}, now {}</span>\n</code></pre></div></div>\n\n<p>Retries no longer mutate <code>exception_executions</code> on the job returned by<br />\n<code>perform_later</code>, or on the job data in <code>performed_jobs</code>.</p>\n\n<p><em>Yaroslav Markin</em></p>\n"
+  },
+  {
     "message": "*   Fix continuation step cursors losing their type when a job is interrupted\n    and resumed.\n\n    Cursors are now serialized like job arguments, so a resumed step sees the\n    same object it set before the interruption — for example a `Date`, `Time`,\n    or an Active Record object — instead of a raw JSON string.\n\n    *Kenta Ishizaki*",
     "project": "activejob",
     "date_merged": 1785927096000,
@@ -2038,6 +2048,36 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Fix `remove_index` and `index_exists?` in migrations declaring version 4.2\n    to honor `table_name_prefix` and `table_name_suffix`.\n\n    With a prefix set, `remove_index` raised `ArgumentError: Index name '...'\n    on table '...' does not exist`, and `index_exists?` returned `false` for an\n    index that exists.\n\n    *Carlos Daniel Pohlod*",
+    "project": "activerecord",
+    "date_merged": 1791988830000,
+    "author": "carlosdanielpohlod",
+    "sha": "f5bff0427f17b1696a13c4a49b3bc62b334a5ec4",
+    "pr": "58948",
+    "merge_sha": "ddacc84f672327d82d7d46b9d94d35904a6532e8",
+    "html": "<p>Fix <code>remove_index</code> and <code>index_exists?</code> in migrations declaring version 4.2<br />\nto honor <code>table_name_prefix</code> and <code>table_name_suffix</code>.</p>\n\n<p>With a prefix set, <code>remove_index</code> raised <code>ArgumentError: Index name '...'\non table '...' does not exist</code>, and <code>index_exists?</code> returned <code>false</code> for an<br />\nindex that exists.</p>\n\n<p><em>Carlos Daniel Pohlod</em></p>\n"
+  },
+  {
+    "message": "*   Raise the original error when SQLite rolls back a transaction on its own.\n\n    When a statement or `COMMIT` fails with errors such as `SQLITE_FULL`, the\n    original error is raised instead of \"cannot rollback - no transaction is\n    active\", records saved in the transaction are no longer `persisted?`, and\n    `after_rollback` callbacks run.\n\n    *Cole Robertson*",
+    "project": "activerecord",
+    "date_merged": 1791987368000,
+    "author": "Cole Robertson",
+    "sha": "9ffd1c28e73b0864b2428479a609926b44b78972",
+    "pr": "59033",
+    "merge_sha": "f705a7506cc49ee517a390edb8f1bbf1fc3e340c",
+    "html": "<p>Raise the original error when SQLite rolls back a transaction on its own.</p>\n\n<p>When a statement or <code>COMMIT</code> fails with errors such as <code>SQLITE_FULL</code>, the<br />\noriginal error is raised instead of “cannot rollback - no transaction is<br />\nactive”, records saved in the transaction are no longer <code>persisted?</code>, and<br />\n<code>after_rollback</code> callbacks run.</p>\n\n<p><em>Cole Robertson</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `supports_native_partitioning?` on the PostgreSQL adapter.\n\n    It always returns `true` since the minimum PostgreSQL version became 10.0,\n    which supports native partitioning.\n\n    *Yasuo Honda*",
+    "project": "activerecord",
+    "date_merged": 1791982086000,
+    "author": "Yasuo Honda",
+    "sha": "986ff6211d20bb656776873c969756873f5549dd",
+    "pr": "59072",
+    "merge_sha": "818263fab892c55b9cd321e035436be9c3f9220e",
+    "html": "<p>Deprecate <code>supports_native_partitioning?</code> on the PostgreSQL adapter.</p>\n\n<p>It always returns <code>true</code> since the minimum PostgreSQL version became 10.0,<br />\nwhich supports native partitioning.</p>\n\n<p><em>Yasuo Honda</em></p>\n"
   },
   {
     "message": "*   Dump `create_schema` with `if_not_exists: true` for every schema that holds\n    a dumped extension.\n\n    A relocatable extension, such as `btree_gin` or `pg_trgm`, can live in a schema\n    that `dump_schemas` does not cover. The Ruby schema dump wrote\n    `enable_extension \"extensions.btree_gin\"` without `create_schema` for it, and\n    `db:schema:load` failed with `PG::InvalidSchemaName`. When the schema was in\n    `dump_schemas`, the dump wrote `create_schema \"extensions\"`, and the load\n    failed with `PG::DuplicateSchema` where the schema exists already, as on Supabase.\n    The dump now writes `create_schema \"extensions\", if_not_exists: true` in both cases.\n\n    *Tusshar Laddha*",
