@@ -3560,6 +3560,16 @@
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
   },
   {
+    "message": "*   Automatically detect Aube as a javaScript package manager.\n\n    Rails generators now detect Aube as the javaScript package manager\n    when `aube-lock.yaml` is present.\n\n    *Florent Beaurain*",
+    "project": "railties",
+    "date_merged": 1792134904000,
+    "author": "Florent Beaurain",
+    "sha": "f630e993a2d9cf8bd59c26efd5217129c816c74b",
+    "pr": "59092",
+    "merge_sha": "5551b9cd962ac93ad426cdeb21d513a883be882c",
+    "html": "<p>Automatically detect Aube as a javaScript package manager.</p>\n\n<p>Rails generators now detect Aube as the javaScript package manager<br />\nwhen <code>aube-lock.yaml</code> is present.</p>\n\n<p><em>Florent Beaurain</em></p>\n"
+  },
+  {
     "message": "*   Fix `rails.deprecation` structured events not being emitted.\n\n    *Azmi Muwahid*",
     "project": "railties",
     "date_merged": 1791475126000,
