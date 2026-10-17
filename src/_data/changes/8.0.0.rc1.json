@@ -2070,6 +2070,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Truncate tables shadowed by a same-named table earlier on the PostgreSQL\n    `search_path`.\n\n    `db:truncate_all` and the reset of parallel test databases truncated the\n    table a bare name resolves to twice and left the shadowed one untouched.\n    They also failed on a table whose name contains a dot.\n\n    *Sergei Malykh*",
+    "project": "activerecord",
+    "date_merged": 1792221141000,
+    "author": "Sergei Malykh",
+    "sha": "8c77eb434b987e923d15b5b82590b9c736aa2ed0",
+    "pr": "59101",
+    "merge_sha": "560b921a93aa1d4a19c8ee1bee6af6dfce1f374a",
+    "html": "<p>Truncate tables shadowed by a same-named table earlier on the PostgreSQL<br />\n<code>search_path</code>.</p>\n\n<p><code>db:truncate_all</code> and the reset of parallel test databases truncated the<br />\ntable a bare name resolves to twice and left the shadowed one untouched.<br />\nThey also failed on a table whose name contains a dot.</p>\n\n<p><em>Sergei Malykh</em></p>\n"
+  },
+  {
     "message": "*   Fix `remove_index` and `index_exists?` in migrations declaring version 4.2\n    to honor `table_name_prefix` and `table_name_suffix`.\n\n    With a prefix set, `remove_index` raised `ArgumentError: Index name '...'\n    on table '...' does not exist`, and `index_exists?` returned `false` for an\n    index that exists.\n\n    *Carlos Daniel Pohlod*",
     "project": "activerecord",
     "date_merged": 1791988830000,
@@ -3558,6 +3568,16 @@
     "pr": "55896",
     "merge_sha": "384420e95c537a8c7b28a0c301118bd0abd66d09",
     "html": "<p>Improve support for SQLite database URIs.</p>\n\n<p>The <code>db:create</code> and <code>db:drop</code> tasks now correctly handle SQLite database URIs, and the<br />\nSQLite3Adapter will create the parent directory if it does not exist.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Add a `before_ractorize` load hook that runs in `Rails::Application#ractorize!`\n    so frameworks, engines, and gems can prepare their own state to be shared\n    with Ractors.\n\n    Frameworks now use this hook instead of `ractorize!` reaching into them,\n    and gems can use it too:\n\n    ```ruby\n    ActiveSupport.on_load(:before_ractorize) do\n      MyGem.make_shareable!\n    end\n    ```\n\n    *Ben Sheldon*",
+    "project": "railties",
+    "date_merged": 1792181761000,
+    "author": "Ben Sheldon [he/him]",
+    "sha": "4c5e9070affa248e1c0ca76097acc7391a41cd99",
+    "pr": "59026",
+    "merge_sha": "ccaef690ee7a1f1d02642edd5f710daf031e7e04",
+    "html": "<p>Add a <code>before_ractorize</code> load hook that runs in <code>Rails::Application#ractorize!</code><br />\nso frameworks, engines, and gems can prepare their own state to be shared<br />\nwith Ractors.</p>\n\n<p>Frameworks now use this hook instead of <code>ractorize!</code> reaching into them,<br />\nand gems can use it too:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">ActiveSupport</span><span class=\"p\">.</span><span class=\"nf\">on_load</span><span class=\"p\">(</span><span class=\"ss\">:before_ractorize</span><span class=\"p\">)</span> <span class=\"k\">do</span>\n  <span class=\"no\">MyGem</span><span class=\"p\">.</span><span class=\"nf\">make_shareable!</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Ben Sheldon</em></p>\n"
   },
   {
     "message": "*   Automatically detect Aube as a javaScript package manager.\n\n    Rails generators now detect Aube as the javaScript package manager\n    when `aube-lock.yaml` is present.\n\n    *Florent Beaurain*",
