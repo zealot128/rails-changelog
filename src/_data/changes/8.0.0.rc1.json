@@ -2070,6 +2070,16 @@
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
   },
   {
+    "message": "*   Bump the minimum supported MySQL version to 5.7.9.\n\n    This drops the workarounds for indexing `utf8mb4` `varchar(255)` columns.\n    On MySQL 5.6, InnoDB created tables as `ROW_FORMAT=COMPACT`, whose 767 byte\n    index prefix is too small for `varchar(255)` at four bytes per character,\n    so such an index required `innodb_file_per_table`,\n    `innodb_file_format = 'Barracuda'` and `innodb_large_prefix` to be enabled\n    on the server. Active Record worked around that by emitting\n    `ROW_FORMAT=DYNAMIC` on every `CREATE TABLE`, and by refusing to create a\n    `utf8mb4` database when the server was not configured that way. 5.7.9 is\n    the version where `innodb_default_row_format` defaults to `DYNAMIC`\n    (MariaDB 10.2.2), so neither is needed any more and tables are created\n    without an explicit `ROW_FORMAT`.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1792385329000,
+    "author": "Ryuta Kamizono",
+    "sha": "b72897f71ca6c30da8fad5f8ced3b2d707eec5a2",
+    "pr": "59175",
+    "merge_sha": "dcae50f7f65b2871464e4de2c9cae09824084652",
+    "html": "<p>Bump the minimum supported MySQL version to 5.7.9.</p>\n\n<p>This drops the workarounds for indexing <code>utf8mb4</code> <code>varchar(255)</code> columns.<br />\nOn MySQL 5.6, InnoDB created tables as <code>ROW_FORMAT=COMPACT</code>, whose 767 byte<br />\nindex prefix is too small for <code>varchar(255)</code> at four bytes per character,<br />\nso such an index required <code>innodb_file_per_table</code>,<br />\n<code>innodb_file_format = 'Barracuda'</code> and <code>innodb_large_prefix</code> to be enabled<br />\non the server. Active Record worked around that by emitting<br />\n<code>ROW_FORMAT=DYNAMIC</code> on every <code>CREATE TABLE</code>, and by refusing to create a<br />\n<code>utf8mb4</code> database when the server was not configured that way. 5.7.9 is<br />\nthe version where <code>innodb_default_row_format</code> defaults to <code>DYNAMIC</code><br />\n(MariaDB 10.2.2), so neither is needed any more and tables are created<br />\nwithout an explicit <code>ROW_FORMAT</code>.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Truncate tables shadowed by a same-named table earlier on the PostgreSQL\n    `search_path`.\n\n    `db:truncate_all` and the reset of parallel test databases truncated the\n    table a bare name resolves to twice and left the shadowed one untouched.\n    They also failed on a table whose name contains a dot.\n\n    *Sergei Malykh*",
     "project": "activerecord",
     "date_merged": 1792221141000,
