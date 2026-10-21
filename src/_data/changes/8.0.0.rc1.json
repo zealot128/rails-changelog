@@ -860,6 +860,16 @@
     "html": "<p>Add <code>--update</code> option to the <code>bin/bundler-audit</code> script.</p>\n\n<p><em>Julien ANNE</em></p>\n"
   },
   {
+    "message": "*   Keep route redirects from a string template on the request host.\n\n    For `redirect(\"/%{path}\")`, the request `GET /old/%2Finjected.example` made\n    the target `//injected.example`, which browsers follow to another host. So did\n    a scheme in a param at the start of the template, as in `redirect(\"%{path}\")`.\n    When interpolation would give the target a scheme or host that the template\n    lacks, the delimiter is now percent-encoded. Templates that name a scheme or\n    host, such as `redirect(\"//cdn.example.com/%{path}\")`, are unchanged.\n\n    *Mike Dalessio*",
+    "project": "actionpack",
+    "date_merged": 1792601630000,
+    "author": "Mike Dalessio",
+    "sha": "36e0f96b9d7a022755a53a2a9fb7a67ad4e3669e",
+    "pr": "59218",
+    "merge_sha": null,
+    "html": "<p>Keep route redirects from a string template on the request host.</p>\n\n<p>For <code>redirect(\"/%{path}\")</code>, the request <code>GET /old/%2Finjected.example</code> made<br />\nthe target <code>//injected.example</code>, which browsers follow to another host. So did<br />\na scheme in a param at the start of the template, as in <code>redirect(\"%{path}\")</code>.<br />\nWhen interpolation would give the target a scheme or host that the template<br />\nlacks, the delimiter is now percent-encoded. Templates that name a scheme or<br />\nhost, such as <code>redirect(\"//cdn.example.com/%{path}\")</code>, are unchanged.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
     "message": "*   Deprecate the `ssl_default_redirect_status:` argument of `ActionDispatch::SSL`.\n\n    As of Rails 6.1, the default status is 308. This deprecates overriding it.\n    `ActionDispatch::SSL` used directly without the argument now also uses 308\n    instead of 307.\n\n    *Ben Sheldon*",
     "project": "actionpack",
     "date_merged": 1792395564000,
@@ -2648,16 +2658,6 @@
     "pr": "59033",
     "merge_sha": "f705a7506cc49ee517a390edb8f1bbf1fc3e340c",
     "html": "<p>Raise the original error when SQLite rolls back a transaction on its own.</p>\n\n<p>When a statement or <code>COMMIT</code> fails with errors such as <code>SQLITE_FULL</code>, the<br />\noriginal error is raised instead of “cannot rollback - no transaction is<br />\nactive”, records saved in the transaction are no longer <code>persisted?</code>, and<br />\n<code>after_rollback</code> callbacks run.</p>\n\n<p><em>Cole Robertson</em></p>\n"
-  },
-  {
-    "message": "*   Deprecate `supports_native_partitioning?` on the PostgreSQL adapter.\n\n    It always returns `true` since the minimum PostgreSQL version became 10.0,\n    which supports native partitioning.\n\n    *Yasuo Honda*",
-    "project": "activerecord",
-    "date_merged": 1791982086000,
-    "author": "Yasuo Honda",
-    "sha": "986ff6211d20bb656776873c969756873f5549dd",
-    "pr": "59072",
-    "merge_sha": "818263fab892c55b9cd321e035436be9c3f9220e",
-    "html": "<p>Deprecate <code>supports_native_partitioning?</code> on the PostgreSQL adapter.</p>\n\n<p>It always returns <code>true</code> since the minimum PostgreSQL version became 10.0,<br />\nwhich supports native partitioning.</p>\n\n<p><em>Yasuo Honda</em></p>\n"
   },
   {
     "message": "*   Dump `create_schema` with `if_not_exists: true` for every schema that holds\n    a dumped extension.\n\n    A relocatable extension, such as `btree_gin` or `pg_trgm`, can live in a schema\n    that `dump_schemas` does not cover. The Ruby schema dump wrote\n    `enable_extension \"extensions.btree_gin\"` without `create_schema` for it, and\n    `db:schema:load` failed with `PG::InvalidSchemaName`. When the schema was in\n    `dump_schemas`, the dump wrote `create_schema \"extensions\"`, and the load\n    failed with `PG::DuplicateSchema` where the schema exists already, as on Supabase.\n    The dump now writes `create_schema \"extensions\", if_not_exists: true` in both cases.\n\n    *Tusshar Laddha*",
