@@ -1300,6 +1300,16 @@
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
   },
   {
+    "message": "*   `ActiveSupport::Deprecation::DeprecatedObjectProxy` and\n    `DeprecatedInstanceVariableProxy` now inherit from `BasicObject`, so methods\n    added to `Object` after Active Support loads (such as `to_json`, `to_param`,\n    `blank?` or `in?`) are forwarded to the deprecated object with a warning\n    instead of running against the proxy itself.\n\n    *Akira Matsuda*",
+    "project": "activesupport",
+    "date_merged": 1792783084000,
+    "author": "Akira Matsuda",
+    "sha": "b9289e1c76c5aaa26fde4f4b62c29697d5a673b4",
+    "pr": "59325",
+    "merge_sha": "373c7293a6b6d03c0e9c19e4a9f71917e836d819",
+    "html": "<p><code>ActiveSupport::Deprecation::DeprecatedObjectProxy</code> and<br />\n<code>DeprecatedInstanceVariableProxy</code> now inherit from <code>BasicObject</code>, so methods<br />\nadded to <code>Object</code> after Active Support loads (such as <code>to_json</code>, <code>to_param</code>,<br />\n<code>blank?</code> or <code>in?</code>) are forwarded to the deprecated object with a warning<br />\ninstead of running against the proxy itself.</p>\n\n<p><em>Akira Matsuda</em></p>\n"
+  },
+  {
     "message": "*   Default `config.active_support.message_serializer` to `:json` for new apps.\n\n    With `config.load_defaults 8.2`, messages from `MessageVerifier` and\n    `MessageEncryptor` (signed IDs, signed GlobalIDs, Active Storage keys, etc.)\n    no longer fall back to deserializing `Marshal` payloads.\n\n    *Ben Sheldon*",
     "project": "activesupport",
     "date_merged": 1792651332000,
