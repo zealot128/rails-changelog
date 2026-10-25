@@ -520,6 +520,16 @@
     "html": "<p>Add the latest standardized features to <code>permissions_policy</code></p>\n\n<p>Add the following features that have been standardized since the list was last updated:</p>\n\n<ul>\n  <li><code>attribution-reporting</code></li>\n  <li><code>battery</code></li>\n  <li><code>bluetooth</code></li>\n  <li><code>ch-ua</code></li>\n  <li><code>ch-ua-arch</code></li>\n  <li><code>ch-ua-bitness</code></li>\n  <li><code>ch-ua-full-version</code></li>\n  <li><code>ch-ua-full-version-list</code></li>\n  <li><code>ch-ua-high-entropy-values</code></li>\n  <li><code>ch-ua-mobile</code></li>\n  <li><code>ch-ua-model</code></li>\n  <li><code>ch-ua-platform</code></li>\n  <li><code>ch-ua-platform-version</code></li>\n  <li><code>ch-ua-wow64</code></li>\n  <li><code>compute-pressure</code></li>\n  <li><code>cross-origin-isolated</code></li>\n  <li><code>direct-sockets</code></li>\n  <li><code>execution-while-not-rendered</code></li>\n  <li><code>execution-while-out-of-viewport</code></li>\n  <li><code>identity-credentials-get</code></li>\n  <li><code>mediasession</code></li>\n  <li><code>navigation-override</code></li>\n  <li><code>otp-credentials</code></li>\n  <li><code>publickey-credentials-get</code></li>\n  <li><code>storage-access</code></li>\n  <li><code>window-management</code></li>\n  <li><code>xr-spatial-tracking</code></li>\n</ul>\n\n<p><em>Ruben Arakelyan</em></p>\n"
   },
   {
+    "message": "*   Treat `alpha`, `headingreset`, `shadowrootclonable`,\n    `shadowrootcustomelementregistry`, `shadowrootdelegatesfocus` and\n    `shadowrootserializable` as boolean attributes in the tag helpers.\n\n    `tag.template(shadowrootmode: \"open\", shadowrootdelegatesfocus: false)` used\n    to render `shadowrootdelegatesfocus=\"false\"`, which turns the attribute on.\n    `false` and `nil` now omit these attributes, like the other boolean\n    attributes.\n\n    *Wleeaf*",
+    "project": "actionview",
+    "date_merged": 1792931865000,
+    "author": "Wleeaf",
+    "sha": "a4de7e6fc79cfda4493e3b988e1b1fcb237c5f57",
+    "pr": "59352",
+    "merge_sha": "7290714b76716d575d8e1c0499e7eb11b98e1f2a",
+    "html": "<p>Treat <code>alpha</code>, <code>headingreset</code>, <code>shadowrootclonable</code>,<br />\n<code>shadowrootcustomelementregistry</code>, <code>shadowrootdelegatesfocus</code> and<br />\n<code>shadowrootserializable</code> as boolean attributes in the tag helpers.</p>\n\n<p><code>tag.template(shadowrootmode: \"open\", shadowrootdelegatesfocus: false)</code> used<br />\nto render <code>shadowrootdelegatesfocus=\"false\"</code>, which turns the attribute on.<br />\n<code>false</code> and <code>nil</code> now omit these attributes, like the other boolean<br />\nattributes.</p>\n\n<p><em>Wleeaf</em></p>\n"
+  },
+  {
     "message": "*   Render a string or symbol value of the `hidden` attribute as is, so\n    `tag.div(hidden: \"until-found\")` produces `hidden=\"until-found\"` instead of\n    `hidden=\"hidden\"`. `true` and `false` still render `hidden=\"hidden\"` and no\n    attribute.\n\n    *Wleeaf*",
     "project": "actionview",
     "date_merged": 1792895798000,
@@ -1308,6 +1318,16 @@
     "pr": "56093",
     "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   `Symbol#to_param` now returns `Symbol#name`, the symbol's interned frozen\n    String, instead of allocating a new one on every call before Ruby 4.1.\n\n    *Akira Matsuda*",
+    "project": "activesupport",
+    "date_merged": 1792934900000,
+    "author": "Akira Matsuda",
+    "sha": "ed3f4eafe63d35b04d865087cb330e147065664b",
+    "pr": "59356",
+    "merge_sha": "85e25315998cc1e93fe83a9e754e7c57e51ac134",
+    "html": "<p><code>Symbol#to_param</code> now returns <code>Symbol#name</code>, the symbol’s interned frozen<br />\nString, instead of allocating a new one on every call before Ruby 4.1.</p>\n\n<p><em>Akira Matsuda</em></p>\n"
   },
   {
     "message": "*   Fix `CurrentAttributes` defaults for attribute names given as strings.\n\n    ```ruby\n    class Current < ActiveSupport::CurrentAttributes\n      attribute \"currency\", default: \"USD\"\n    end\n\n    Current.currency # => \"USD\" (was nil)\n    ```\n\n    *Ryuta Kamizono*",
@@ -2168,6 +2188,36 @@
     "pr": "49990",
     "merge_sha": "5ce53dbbd9aa7f08e25e96b8911d05e9f282c28d",
     "html": "<p><code>ActiveStorage::Blob#open</code> can now be used without passing a block, like <code>Tempfile.open</code>. When using this form the<br />\nreturned temporary file must be unlinked manually.</p>\n\n<p><em>Bart de Water</em></p>\n"
+  },
+  {
+    "message": "*   Fix `left_joins` and `eager_load` dropping an intermediate join when the\n    same through association is joined from different parent paths.\n\n    The second path reused the intermediate join of the first path, so it\n    silently returned values from the wrong records instead of raising an error:\n\n    ```ruby\n    # `current_location` and `storing_location` are both `Location`s, which\n    # `has_one :setting, through: :setting_association`.\n    Book.left_joins(current_location: :setting, library: { storing_location: :setting })\n    ```\n\n    *Masaki Ozawa*",
+    "project": "activerecord",
+    "date_merged": 1792951437000,
+    "author": "Masaki Ozawa",
+    "sha": "b0ded066af734910d910d1da98a764512873ba21",
+    "pr": "59318",
+    "merge_sha": "d5c10191684c845d4ddb53587d3a2965270369fc",
+    "html": "<p>Fix <code>left_joins</code> and <code>eager_load</code> dropping an intermediate join when the<br />\nsame through association is joined from different parent paths.</p>\n\n<p>The second path reused the intermediate join of the first path, so it<br />\nsilently returned values from the wrong records instead of raising an error:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c1\"># `current_location` and `storing_location` are both `Location`s, which</span>\n<span class=\"c1\"># `has_one :setting, through: :setting_association`.</span>\n<span class=\"no\">Book</span><span class=\"p\">.</span><span class=\"nf\">left_joins</span><span class=\"p\">(</span><span class=\"ss\">current_location: :setting</span><span class=\"p\">,</span> <span class=\"ss\">library: </span><span class=\"p\">{</span> <span class=\"ss\">storing_location: :setting</span> <span class=\"p\">})</span>\n</code></pre></div></div>\n\n<p><em>Masaki Ozawa</em></p>\n"
+  },
+  {
+    "message": "*   Deprecate `ActiveRecord::Validations::NumericalityValidator`.\n\n    Active Record now uses `ActiveModel::Validations::NumericalityValidator`\n    directly. The old constant still works, with a deprecation warning, so code\n    that checks the validators of a model keeps working:\n\n    ```ruby\n    case validator\n    when ActiveRecord::Validations::NumericalityValidator # Deprecated.\n    when ActiveModel::Validations::NumericalityValidator  # Use this instead.\n    end\n    ```\n\n    *Bruno Costanzo*",
+    "project": "activerecord",
+    "date_merged": 1792949108000,
+    "author": "Bruno Costanzo",
+    "sha": "dabd3a7db71f3ebbb86a34eff4e341c4bae9e26c",
+    "pr": "59305",
+    "merge_sha": "44b5ab39d3cf689e14c9d1554a3c8a749eb23a07",
+    "html": "<p>Deprecate <code>ActiveRecord::Validations::NumericalityValidator</code>.</p>\n\n<p>Active Record now uses <code>ActiveModel::Validations::NumericalityValidator</code><br />\ndirectly. The old constant still works, with a deprecation warning, so code<br />\nthat checks the validators of a model keeps working:</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">case</span> <span class=\"n\">validator</span>\n<span class=\"k\">when</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Validations</span><span class=\"o\">::</span><span class=\"no\">NumericalityValidator</span> <span class=\"c1\"># Deprecated.</span>\n<span class=\"k\">when</span> <span class=\"no\">ActiveModel</span><span class=\"o\">::</span><span class=\"no\">Validations</span><span class=\"o\">::</span><span class=\"no\">NumericalityValidator</span>  <span class=\"c1\"># Use this instead.</span>\n<span class=\"k\">end</span>\n</code></pre></div></div>\n\n<p><em>Bruno Costanzo</em></p>\n"
+  },
+  {
+    "message": "*   Scope `immutable_strings_by_default` to string columns.\n\n    The setting applied to every column whose type happened to subclass\n    `ActiveModel::Type::String`, which was never the intent. `text` columns and\n    PostgreSQL's `xml`, `citext`, `ltree`, `tsvector` and `macaddr` columns were\n    therefore inferred as `:string`, losing their type, and in some cases their\n    own serialization and comparison behavior with it.\n\n    Only `:string` columns are inferred as `:immutable_string` now. Note that\n    `text` columns are no longer affected by the setting.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1792937229000,
+    "author": "Ryuta Kamizono",
+    "sha": "b2733c3dea53f4ca0e769a90d3b00099c5b21f89",
+    "pr": "59351",
+    "merge_sha": "2d6d34df322e317d1eb97fcad143a5f587acb657",
+    "html": "<p>Scope <code>immutable_strings_by_default</code> to string columns.</p>\n\n<p>The setting applied to every column whose type happened to subclass<br />\n<code>ActiveModel::Type::String</code>, which was never the intent. <code>text</code> columns and<br />\nPostgreSQL’s <code>xml</code>, <code>citext</code>, <code>ltree</code>, <code>tsvector</code> and <code>macaddr</code> columns were<br />\ntherefore inferred as <code>:string</code>, losing their type, and in some cases their<br />\nown serialization and comparison behavior with it.</p>\n\n<p>Only <code>:string</code> columns are inferred as <code>:immutable_string</code> now. Note that<br />\n<code>text</code> columns are no longer affected by the setting.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
   },
   {
     "message": "*   Fix `where` with an array of objects that delegate `#id`.\n\n    Such objects were expanded to their ids only when passed alone or in a one\n    element array, so a longer array was compared against `NULL`:\n\n    ```ruby\n    Author.where(id: [decorator.new(author_one), decorator.new(author_two)])\n    # WHERE \"authors\".\"id\" IN (NULL)\n    ```\n\n    *Ryuta Kamizono*",
