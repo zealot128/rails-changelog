@@ -520,6 +520,16 @@
     "html": "<p>Add the latest standardized features to <code>permissions_policy</code></p>\n\n<p>Add the following features that have been standardized since the list was last updated:</p>\n\n<ul>\n  <li><code>attribution-reporting</code></li>\n  <li><code>battery</code></li>\n  <li><code>bluetooth</code></li>\n  <li><code>ch-ua</code></li>\n  <li><code>ch-ua-arch</code></li>\n  <li><code>ch-ua-bitness</code></li>\n  <li><code>ch-ua-full-version</code></li>\n  <li><code>ch-ua-full-version-list</code></li>\n  <li><code>ch-ua-high-entropy-values</code></li>\n  <li><code>ch-ua-mobile</code></li>\n  <li><code>ch-ua-model</code></li>\n  <li><code>ch-ua-platform</code></li>\n  <li><code>ch-ua-platform-version</code></li>\n  <li><code>ch-ua-wow64</code></li>\n  <li><code>compute-pressure</code></li>\n  <li><code>cross-origin-isolated</code></li>\n  <li><code>direct-sockets</code></li>\n  <li><code>execution-while-not-rendered</code></li>\n  <li><code>execution-while-out-of-viewport</code></li>\n  <li><code>identity-credentials-get</code></li>\n  <li><code>mediasession</code></li>\n  <li><code>navigation-override</code></li>\n  <li><code>otp-credentials</code></li>\n  <li><code>publickey-credentials-get</code></li>\n  <li><code>storage-access</code></li>\n  <li><code>window-management</code></li>\n  <li><code>xr-spatial-tracking</code></li>\n</ul>\n\n<p><em>Ruben Arakelyan</em></p>\n"
   },
   {
+    "message": "*   Render a string or symbol value of the `hidden` attribute as is, so\n    `tag.div(hidden: \"until-found\")` produces `hidden=\"until-found\"` instead of\n    `hidden=\"hidden\"`. `true` and `false` still render `hidden=\"hidden\"` and no\n    attribute.\n\n    *Wleeaf*",
+    "project": "actionview",
+    "date_merged": 1792895798000,
+    "author": "Wleeaf",
+    "sha": "242f0c8248987a21f4d513448136c6a4c9df89c9",
+    "pr": "59340",
+    "merge_sha": "c4f04bd5715c64f58655c22c2db6d505858afdeb",
+    "html": "<p>Render a string or symbol value of the <code>hidden</code> attribute as is, so<br />\n<code>tag.div(hidden: \"until-found\")</code> produces <code>hidden=\"until-found\"</code> instead of<br />\n<code>hidden=\"hidden\"</code>. <code>true</code> and <code>false</code> still render <code>hidden=\"hidden\"</code> and no<br />\nattribute.</p>\n\n<p><em>Wleeaf</em></p>\n"
+  },
+  {
     "message": "*   Fix the debug page for errors raised in view templates on Ruby 4.1.\n\n    Ruby 4.1 builds prism into the interpreter as `Ruby::Prism`, and\n    error_highlight accepts only its nodes. `ActionView::Template#spot` now\n    uses `Ruby::Prism` when it is available instead of the prism gem.\n\n    *Yasuo Honda*",
     "project": "actionview",
     "date_merged": 1791775692000,
@@ -1298,6 +1308,16 @@
     "pr": "56093",
     "merge_sha": "0e62756c5c65cb8312713e5a58acc7c81fa8210c",
     "html": "<p>Fix using custom serializers with <code>ActiveJob::Arguments.serialize</code> when<br />\n<code>ActiveJob::Base</code> hasn’t been loaded.</p>\n\n<p><em>Hartley McGuire</em></p>\n"
+  },
+  {
+    "message": "*   Fix `CurrentAttributes` defaults for attribute names given as strings.\n\n    ```ruby\n    class Current < ActiveSupport::CurrentAttributes\n      attribute \"currency\", default: \"USD\"\n    end\n\n    Current.currency # => \"USD\" (was nil)\n    ```\n\n    *Ryuta Kamizono*",
+    "project": "activesupport",
+    "date_merged": 1792875231000,
+    "author": "Ryuta Kamizono",
+    "sha": "84048ad477a50d62bc97e46b6999bac6a843d3ed",
+    "pr": "59347",
+    "merge_sha": "68d64702bbc7c1395b389069504bada8236aff60",
+    "html": "<p>Fix <code>CurrentAttributes</code> defaults for attribute names given as strings.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Current</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveSupport</span><span class=\"o\">::</span><span class=\"no\">CurrentAttributes</span>\n  <span class=\"n\">attribute</span> <span class=\"s2\">\"currency\"</span><span class=\"p\">,</span> <span class=\"ss\">default: </span><span class=\"s2\">\"USD\"</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">Current</span><span class=\"p\">.</span><span class=\"nf\">currency</span> <span class=\"c1\"># =&gt; \"USD\" (was nil)</span>\n</code></pre></div></div>\n\n<p><em>Ryuta Kamizono</em></p>\n"
   },
   {
     "message": "*   `ActiveSupport::Deprecation::DeprecatedObjectProxy` and\n    `DeprecatedInstanceVariableProxy` now inherit from `BasicObject`, so methods\n    added to `Object` after Active Support loads (such as `to_json`, `to_param`,\n    `blank?` or `in?`) are forwarded to the deprecated object with a warning\n    instead of running against the proxy itself.\n\n    *Akira Matsuda*",
