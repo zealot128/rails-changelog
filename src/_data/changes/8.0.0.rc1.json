@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Match URL-decoded query parameter names when filtering request and redirect logs.\n\n    A parameter such as `%70assword` is now matched by a `:password` filter.\n    Preserve the original URL encoding, parameter order, and duplicate keys in\n    the filtered URL. Actual redirect locations are unchanged.\n\n    *Basti*",
+    "project": "actionpack",
+    "date_merged": 1793117027000,
+    "author": "Basti",
+    "sha": "1b9cedc8e00598018ce586d70d43bc5ce9f5295b",
+    "pr": "59314",
+    "merge_sha": "6c52f3a8699aa150b210a704848e1420653b7070",
+    "html": "<p>Match URL-decoded query parameter names when filtering request and redirect logs.</p>\n\n<p>A parameter such as <code>%70assword</code> is now matched by a <code>:password</code> filter.<br />\nPreserve the original URL encoding, parameter order, and duplicate keys in<br />\nthe filtered URL. Actual redirect locations are unchanged.</p>\n\n<p><em>Basti</em></p>\n"
+  },
+  {
     "message": "*   Keep route redirects from a string template on the request host.\n\n    For `redirect(\"/%{path}\")`, the request `GET /old/%2Finjected.example` made\n    the target `//injected.example`, which browsers follow to another host. So did\n    a scheme in a param at the start of the template, as in `redirect(\"%{path}\")`.\n    When interpolation would give the target a scheme or host that the template\n    lacks, the delimiter is now percent-encoded. Templates that name a scheme or\n    host, such as `redirect(\"//cdn.example.com/%{path}\")`, are unchanged.\n\n    *Mike Dalessio*",
     "project": "actionpack",
     "date_merged": 1792611940000,
