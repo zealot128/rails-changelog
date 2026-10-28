@@ -1,5 +1,15 @@
 [
   {
+    "message": "*   Don't render authenticity tokens under the `:header_only` CSRF strategy.\n\n    `:header_only` verifies requests by their `Sec-Fetch-Site` header and never\n    reads a token, yet forms, `button_to` and `csrf_meta_tags` still minted a\n    masked one on every render, and the session stored the token behind it.\n    Under `:header_only` they now render none, so a page's bytes no longer\n    change from one request to the next. A form that posts to a controller still\n    checking tokens can ask for one with `authenticity_token: true`.\n\n    *Sam Ruby*",
+    "project": "actionpack",
+    "date_merged": 1793128799000,
+    "author": "Sam Ruby",
+    "sha": "c82ad5f78510b76dd9700fcbb0621622c96c23c3",
+    "pr": "59370",
+    "merge_sha": "3fae946e765911d05755496f68c4578c7bc15476",
+    "html": "<p>Don’t render authenticity tokens under the <code>:header_only</code> CSRF strategy.</p>\n\n<p><code>:header_only</code> verifies requests by their <code>Sec-Fetch-Site</code> header and never<br />\nreads a token, yet forms, <code>button_to</code> and <code>csrf_meta_tags</code> still minted a<br />\nmasked one on every render, and the session stored the token behind it.<br />\nUnder <code>:header_only</code> they now render none, so a page’s bytes no longer<br />\nchange from one request to the next. A form that posts to a controller still<br />\nchecking tokens can ask for one with <code>authenticity_token: true</code>.</p>\n\n<p><em>Sam Ruby</em></p>\n"
+  },
+  {
     "message": "*   Match URL-decoded query parameter names when filtering request and redirect logs.\n\n    A parameter such as `%70assword` is now matched by a `:password` filter.\n    Preserve the original URL encoding, parameter order, and duplicate keys in\n    the filtered URL. Actual redirect locations are unchanged.\n\n    *Basti*",
     "project": "actionpack",
     "date_merged": 1793117027000,
@@ -1118,6 +1128,16 @@
     "pr": "51781",
     "merge_sha": "4b7bf2617d190b7769393e975a2449f8cde12145",
     "html": "<p>Make <code>ActiveModel::Serializers::JSON#from_json</code> compatible with <code>#assign_attributes</code></p>\n\n<p><em>Sean Doyle</em></p>\n"
+  },
+  {
+    "message": "*   Process each connection's commands in the order the client sent them.\n\n    Commands were handed to the worker pool independently, so two commands from\n    one connection could run at the same time or out of order. When a client\n    unsubscribed from a channel and subscribed to it again, as page navigations\n    do, the subscribe could run first and be rejected as a duplicate, leaving the\n    client without a subscription until it re-sent the command. A connection's\n    work (opening, commands, stream callbacks, periodic timers and closing) now\n    runs one at a time, in order, still on the worker pool's threads.\n\n    *Sam Ruby*",
+    "project": "actioncable",
+    "date_merged": 1793134551000,
+    "author": "Sam Ruby",
+    "sha": "d0a6b575ebd4cd99fdfa7f936cbd306d2411a0d8",
+    "pr": "59371",
+    "merge_sha": "01ff4fada38a54ae9b8923495225c0125d489377",
+    "html": "<p>Process each connection’s commands in the order the client sent them.</p>\n\n<p>Commands were handed to the worker pool independently, so two commands from<br />\none connection could run at the same time or out of order. When a client<br />\nunsubscribed from a channel and subscribed to it again, as page navigations<br />\ndo, the subscribe could run first and be rejected as a duplicate, leaving the<br />\nclient without a subscription until it re-sent the command. A connection’s<br />\nwork (opening, commands, stream callbacks, periodic timers and closing) now<br />\nruns one at a time, in order, still on the worker pool’s threads.</p>\n\n<p><em>Sam Ruby</em></p>\n"
   },
   {
     "message": "*   Move `ActionCable::Server::Configuration` to `ActionCable::Configuration`.\n\n    The old constant remains available as an alias.\n\n    *Samuel Williams*",
