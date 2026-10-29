@@ -290,6 +290,16 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Exclude `default_order` in `Relation#exists?`.\n\n    Previously, `exists?` only excluded explicit `order` values, causing\n    `default_order` to be retained in the query.\n\n    *Kengo Johira*",
+    "project": "activerecord",
+    "date_merged": 1793275532000,
+    "author": "kehra",
+    "sha": "396fe3ab1532696b9fbedf8a12eddf55e76cd61b",
+    "pr": "59415",
+    "merge_sha": "f39c8aad8ba71f92dd018f339fa4d1696ccb0cd8",
+    "html": "<p>Exclude <code>default_order</code> in <code>Relation#exists?</code>.</p>\n\n<p>Previously, <code>exists?</code> only excluded explicit <code>order</code> values, causing<br />\n<code>default_order</code> to be retained in the query.</p>\n\n<p><em>Kengo Johira</em></p>\n"
+  },
+  {
     "message": "*   Decode and encode PostgreSQL `integer[]` and `bigint[]` columns in C.\n\n    `OID::Array` now gives pg `PG::TextDecoder::Integer` and\n    `PG::TextEncoder::Integer` as element coders, so reading or writing an\n    integer array no longer allocates one String per element.\n\n    An empty or whitespace-only element now deserializes to `0` instead of\n    `nil`. PostgreSQL never returns one for an integer array column, so this\n    only affects an integer array attribute declared over a text array column\n    holding such elements.\n\n    *Clément Joubert*",
     "project": "activerecord",
     "date_merged": 1793252971000,
