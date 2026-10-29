@@ -290,6 +290,16 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Decode and encode PostgreSQL `integer[]` and `bigint[]` columns in C.\n\n    `OID::Array` now gives pg `PG::TextDecoder::Integer` and\n    `PG::TextEncoder::Integer` as element coders, so reading or writing an\n    integer array no longer allocates one String per element.\n\n    An empty or whitespace-only element now deserializes to `0` instead of\n    `nil`. PostgreSQL never returns one for an integer array column, so this\n    only affects an integer array attribute declared over a text array column\n    holding such elements.\n\n    *Clément Joubert*",
+    "project": "activerecord",
+    "date_merged": 1793252971000,
+    "author": "Clément Joubert",
+    "sha": "ce948ef38fb4cd2338e5f0fa7106aadcd0636bfc",
+    "pr": "59399",
+    "merge_sha": "66bacf674c9f651a88fbda7120ce2796beeaa51a",
+    "html": "<p>Decode and encode PostgreSQL <code>integer[]</code> and <code>bigint[]</code> columns in C.</p>\n\n<p><code>OID::Array</code> now gives pg <code>PG::TextDecoder::Integer</code> and<br />\n<code>PG::TextEncoder::Integer</code> as element coders, so reading or writing an<br />\ninteger array no longer allocates one String per element.</p>\n\n<p>An empty or whitespace-only element now deserializes to <code>0</code> instead of<br />\n<code>nil</code>. PostgreSQL never returns one for an integer array column, so this<br />\nonly affects an integer array attribute declared over a text array column<br />\nholding such elements.</p>\n\n<p><em>Clément Joubert</em></p>\n"
+  },
+  {
     "message": "*   Deprecate the option accessors on `ColumnDefinition`.\n\n    Use `options` instead, for example `column.options[:limit]` instead of\n    `column.limit`.\n\n    *Sampo Kuokkanen*",
     "project": "activerecord",
     "date_merged": 1793191717000,
@@ -3668,6 +3678,16 @@
     "pr": "56778",
     "merge_sha": "752e4fdf014efa7c0f1d0595486c31403405f097",
     "html": "<p>Deprecate <code>Mail::Address.wrap</code> because it isn’t used.</p>\n\n<p><em>Gannon McGibbon</em></p>\n"
+  },
+  {
+    "message": "*   Reset the parsed HTML document after `options` in integration tests.\n\n    `options` was the only request helper that the integration test runner\n    did not define, so it reached the session through `method_missing` and left\n    `html_document` (and so `assert_select`) reading the previous response.\n\n    *Tagami Daiki*",
+    "project": "actionpack",
+    "date_merged": 1793219640000,
+    "author": "Tagami Daiki",
+    "sha": "60709e09f5353c35df0acd67175c3c44d2120a99",
+    "pr": "59394",
+    "merge_sha": "10ac5445d43fcd6c4cc46b0dcdc46320ca3d3a90",
+    "html": "<p>Reset the parsed HTML document after <code>options</code> in integration tests.</p>\n\n<p><code>options</code> was the only request helper that the integration test runner<br />\ndid not define, so it reached the session through <code>method_missing</code> and left<br />\n<code>html_document</code> (and so <code>assert_select</code>) reading the previous response.</p>\n\n<p><em>Tagami Daiki</em></p>\n"
   },
   {
     "message": "*   Don't render authenticity tokens under the `:header_only` CSRF strategy.\n\n    `:header_only` verifies requests by their `Sec-Fetch-Site` header and never\n    reads a token, yet forms, `button_to` and `csrf_meta_tags` still minted a\n    masked one on every render, and the session stored the token behind it.\n    Under `:header_only` they now render none, so a page's bytes no longer\n    change from one request to the next. A form that posts to a controller still\n    checking tokens can ask for one with `authenticity_token: true`.\n\n    *Sam Ruby*",
