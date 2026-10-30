@@ -290,6 +290,36 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Fix preloading a `has_many :through` association with `source_type` and\n    conditions on the through table.\n\n    Loading such an association normally or with `eager_load` worked, but\n    preloading it raised, since the source query didn't join the through table.\n\n    ```ruby\n    class Tag < ActiveRecord::Base\n      has_many :taggings\n      has_many :second_tagged_posts, -> { where(taggings: { comment: \"second\" }) },\n        through: :taggings, source: :taggable, source_type: \"Post\"\n    end\n\n    Tag.preload(:second_tagged_posts).to_a\n    # => no longer raises `ActiveRecord::StatementInvalid`\n    ```\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1793363645000,
+    "author": "Ryuta Kamizono",
+    "sha": "ccb2de9fc5e512b88c5a3c2d5f02364c17110a6e",
+    "pr": "59448",
+    "merge_sha": "dcb4f3121bba525e3bb64596ef08dd1e32a3a947",
+    "html": "<p>Fix preloading a <code>has_many :through</code> association with <code>source_type</code> and<br />\nconditions on the through table.</p>\n\n<p>Loading such an association normally or with <code>eager_load</code> worked, but<br />\npreloading it raised, since the source query didn’t join the through table.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Tag</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">has_many</span> <span class=\"ss\">:taggings</span>\n  <span class=\"n\">has_many</span> <span class=\"ss\">:second_tagged_posts</span><span class=\"p\">,</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">where</span><span class=\"p\">(</span><span class=\"ss\">taggings: </span><span class=\"p\">{</span> <span class=\"ss\">comment: </span><span class=\"s2\">\"second\"</span> <span class=\"p\">})</span> <span class=\"p\">},</span>\n    <span class=\"ss\">through: :taggings</span><span class=\"p\">,</span> <span class=\"ss\">source: :taggable</span><span class=\"p\">,</span> <span class=\"ss\">source_type: </span><span class=\"s2\">\"Post\"</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">Tag</span><span class=\"p\">.</span><span class=\"nf\">preload</span><span class=\"p\">(</span><span class=\"ss\">:second_tagged_posts</span><span class=\"p\">).</span><span class=\"nf\">to_a</span>\n<span class=\"c1\"># =&gt; no longer raises `ActiveRecord::StatementInvalid`</span>\n</code></pre></div></div>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
+    "message": "*   Fix preloading a `has_many :through` association with `source_type` or\n    `disable_joins` and conditions reusing already loaded source records\n    without the conditions.\n\n    ```ruby\n    class Tag < ActiveRecord::Base\n      has_many :taggings\n      has_many :tagged_posts_by_bob, -> { joins(:author).where(authors: { name: \"Bob\" }) },\n        through: :taggings, source: :taggable, source_type: \"Post\"\n    end\n\n    Tag.preload(taggings: :taggable).preload(:tagged_posts_by_bob).first.tagged_posts_by_bob\n    # => no longer includes posts by other authors\n    ```\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1793363645000,
+    "author": "Ryuta Kamizono",
+    "sha": "ccb2de9fc5e512b88c5a3c2d5f02364c17110a6e",
+    "pr": "59448",
+    "merge_sha": "dcb4f3121bba525e3bb64596ef08dd1e32a3a947",
+    "html": "<p>Fix preloading a <code>has_many :through</code> association with <code>source_type</code> or<br />\n<code>disable_joins</code> and conditions reusing already loaded source records<br />\nwithout the conditions.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Tag</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">has_many</span> <span class=\"ss\">:taggings</span>\n  <span class=\"n\">has_many</span> <span class=\"ss\">:tagged_posts_by_bob</span><span class=\"p\">,</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">joins</span><span class=\"p\">(</span><span class=\"ss\">:author</span><span class=\"p\">).</span><span class=\"nf\">where</span><span class=\"p\">(</span><span class=\"ss\">authors: </span><span class=\"p\">{</span> <span class=\"ss\">name: </span><span class=\"s2\">\"Bob\"</span> <span class=\"p\">})</span> <span class=\"p\">},</span>\n    <span class=\"ss\">through: :taggings</span><span class=\"p\">,</span> <span class=\"ss\">source: :taggable</span><span class=\"p\">,</span> <span class=\"ss\">source_type: </span><span class=\"s2\">\"Post\"</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">Tag</span><span class=\"p\">.</span><span class=\"nf\">preload</span><span class=\"p\">(</span><span class=\"ss\">taggings: :taggable</span><span class=\"p\">).</span><span class=\"nf\">preload</span><span class=\"p\">(</span><span class=\"ss\">:tagged_posts_by_bob</span><span class=\"p\">).</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">tagged_posts_by_bob</span>\n<span class=\"c1\"># =&gt; no longer includes posts by other authors</span>\n</code></pre></div></div>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
+    "message": "*   Fix preloading a scoped `has_many :through` association reusing the\n    through records already loaded by an unscoped one.\n\n    ```ruby\n    class Post < ActiveRecord::Base\n      has_many :taggings\n      has_many :tags, through: :taggings\n      has_many :inactive_tags, -> { where(active: false) }, through: :taggings, source: :tag\n    end\n\n    Post.preload(:tags, :inactive_tags).first.inactive_tags # => no longer includes active tags\n    ```\n\n    Fixes #57861.\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1793346098000,
+    "author": "Ryuta Kamizono",
+    "sha": "2ab7290a085971f75ce0216ed1109f5551307d9e",
+    "pr": "59444",
+    "merge_sha": "857ba57071169d04680a9a3825ca8d6f823afa54",
+    "html": "<p>Fix preloading a scoped <code>has_many :through</code> association reusing the<br />\nthrough records already loaded by an unscoped one.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"k\">class</span> <span class=\"nc\">Post</span> <span class=\"o\">&lt;</span> <span class=\"no\">ActiveRecord</span><span class=\"o\">::</span><span class=\"no\">Base</span>\n  <span class=\"n\">has_many</span> <span class=\"ss\">:taggings</span>\n  <span class=\"n\">has_many</span> <span class=\"ss\">:tags</span><span class=\"p\">,</span> <span class=\"ss\">through: :taggings</span>\n  <span class=\"n\">has_many</span> <span class=\"ss\">:inactive_tags</span><span class=\"p\">,</span> <span class=\"o\">-&gt;</span> <span class=\"p\">{</span> <span class=\"n\">where</span><span class=\"p\">(</span><span class=\"ss\">active: </span><span class=\"kp\">false</span><span class=\"p\">)</span> <span class=\"p\">},</span> <span class=\"ss\">through: :taggings</span><span class=\"p\">,</span> <span class=\"ss\">source: :tag</span>\n<span class=\"k\">end</span>\n\n<span class=\"no\">Post</span><span class=\"p\">.</span><span class=\"nf\">preload</span><span class=\"p\">(</span><span class=\"ss\">:tags</span><span class=\"p\">,</span> <span class=\"ss\">:inactive_tags</span><span class=\"p\">).</span><span class=\"nf\">first</span><span class=\"p\">.</span><span class=\"nf\">inactive_tags</span> <span class=\"c1\"># =&gt; no longer includes active tags</span>\n</code></pre></div></div>\n\n<p>Fixes #57861.</p>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
     "message": "*   Fix preloading a `has_many :through` / `has_one :through` association with\n    `source_type` when the through association is already loaded.\n\n    The source records were preloaded for all already loaded through records,\n    including ones whose polymorphic type doesn't match `source_type`, which\n    could raise `NameError` for an unknown type. And a Symbol `source_type`\n    never matched the stored type, so the association was preloaded as empty.\n\n    ```ruby\n    Tag.preload(:taggings, :tagged_posts)        # no longer preloads non-Post taggables\n    Club.preload(:sponsor, :sponsored_member)    # source_type: :Member works\n    ```\n\n    *Ryuta Kamizono*",
     "project": "activerecord",
     "date_merged": 1793334166000,
@@ -1990,6 +2020,16 @@
     "html": "<p>Channel generator now detects which JS package manager to use when<br />\ninstalling javascript dependencies.</p>\n\n<p><em>David Lowenfels</em></p>\n"
   },
   {
+    "message": "*   Add `Northwest Territories` to `ActiveSupport::TimeZone::MAPPING`.\n\n    The Northwest Territories no longer shares winter clocks with US Mountain\n    time. The existing `Mountain Time (US & Canada)` entry remains mapped to\n    `America/Denver` for compatibility. Prefer `Northwest Territories` (or the\n    IANA identifier `America/Inuvik`) for users in that region.\n\n    *Andrew Quinn*",
+    "project": "activesupport",
+    "date_merged": 1793375211000,
+    "author": "Andrew Quinn",
+    "sha": "4755ce99eab33db774936ec121b1bf20d1ab8615",
+    "pr": "59221",
+    "merge_sha": "e65508eaa56988026c7d663aa76d6933d6d50731",
+    "html": "<p>Add <code>Northwest Territories</code> to <code>ActiveSupport::TimeZone::MAPPING</code>.</p>\n\n<p>The Northwest Territories no longer shares winter clocks with US Mountain<br />\ntime. The existing <code>Mountain Time (US &amp; Canada)</code> entry remains mapped to<br />\n<code>America/Denver</code> for compatibility. Prefer <code>Northwest Territories</code> (or the<br />\nIANA identifier <code>America/Inuvik</code>) for users in that region.</p>\n\n<p><em>Andrew Quinn</em></p>\n"
+  },
+  {
     "message": "*   `Symbol#to_param` now returns `Symbol#name`, the symbol's interned frozen\n    String, instead of allocating a new one on every call before Ruby 4.1.\n\n    *Akira Matsuda*",
     "project": "activesupport",
     "date_merged": 1792934900000,
@@ -3138,6 +3178,16 @@
     "pr": "56283",
     "merge_sha": "b6a07894d6920c5444e5a8dca2f4dc2d0b5a9fb2",
     "html": "<p>Validate <code>RemoteImage</code> URLs at creation time.</p>\n\n<p><code>RemoteImage.from_node</code> now validates the URL before creating a <code>RemoteImage</code> object, using the<br />\nsame regex that <code>AssetUrlHelper</code> uses during rendering. URLs like “image.png” that would<br />\npreviously have been passed to the asset pipeline and raised a <code>ActionView::Template::Error</code> are<br />\nrejected early, and gracefully fail by resulting in a <code>MissingAttachable</code>.</p>\n\n<p><em>Mike Dalessio</em></p>\n"
+  },
+  {
+    "message": "*   Don't load Capybara and Selenium on boot in new applications.\n\n    The generated `Gemfile` now declares `capybara` and `selenium-webdriver`\n    with `require: false`. `ActionDispatch::SystemTestCase` already requires\n    both when a system test is loaded, so `Bundler.require` no longer loads\n    them into test processes that don't run system tests. Code that uses\n    Capybara outside of system tests, such as `Capybara.string` in a view\n    test, needs to `require \"capybara\"` itself.\n\n    *Mick Zijdel*",
+    "project": "railties",
+    "date_merged": 1793375328000,
+    "author": "Mick Zijdel",
+    "sha": "e72ae848a20238c2f6160044c503a816da05966c",
+    "pr": "59408",
+    "merge_sha": "2d8fbfaca37d5dbbac95a44ea4c300ef54a767de",
+    "html": "<p>Don’t load Capybara and Selenium on boot in new applications.</p>\n\n<p>The generated <code>Gemfile</code> now declares <code>capybara</code> and <code>selenium-webdriver</code><br />\nwith <code>require: false</code>. <code>ActionDispatch::SystemTestCase</code> already requires<br />\nboth when a system test is loaded, so <code>Bundler.require</code> no longer loads<br />\nthem into test processes that don’t run system tests. Code that uses<br />\nCapybara outside of system tests, such as <code>Capybara.string</code> in a view<br />\ntest, needs to <code>require \"capybara\"</code> itself.</p>\n\n<p><em>Mick Zijdel</em></p>\n"
   },
   {
     "message": "*   Create the local development/test secret file (`tmp/local_secret.txt`) with\n    owner-only permissions (`0600`) instead of inheriting the process umask,\n    and tighten the permissions of an existing file on read on non-Windows\n    platforms.\n\n    The file holds the `secret_key_base` used in development and test to derive\n    keys for signing and encrypting cookies. With a common umask of `022` it was\n    created world-readable, so other local users able to access the application's\n    directory could read it and forge signed or encrypted cookies.\n    This brings it in line with how `config/master.key` and the other\n    credentials key files are created.\n\n    *Sebastian Stange*",
