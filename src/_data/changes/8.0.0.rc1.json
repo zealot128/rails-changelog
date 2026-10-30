@@ -290,6 +290,26 @@
     "html": "<p>Add <code>key:</code> and <code>expires_in:</code> options under <code>cached:</code> to <code>render</code> when used with <code>collection:</code></p>\n\n<p><em>Jarrett Lusso</em></p>\n"
   },
   {
+    "message": "*   Fix preloading a `has_many :through` / `has_one :through` association with\n    `source_type` when the through association is already loaded.\n\n    The source records were preloaded for all already loaded through records,\n    including ones whose polymorphic type doesn't match `source_type`, which\n    could raise `NameError` for an unknown type. And a Symbol `source_type`\n    never matched the stored type, so the association was preloaded as empty.\n\n    ```ruby\n    Tag.preload(:taggings, :tagged_posts)        # no longer preloads non-Post taggables\n    Club.preload(:sponsor, :sponsored_member)    # source_type: :Member works\n    ```\n\n    *Ryuta Kamizono*",
+    "project": "activerecord",
+    "date_merged": 1793334166000,
+    "author": "Ryuta Kamizono",
+    "sha": "9ae08c3ee056192d2f77f9f6bdb9ecfa7f17d348",
+    "pr": "59443",
+    "merge_sha": "8cb4f644b76d9e57a31bbd5b229e90819f27ccc4",
+    "html": "<p>Fix preloading a <code>has_many :through</code> / <code>has_one :through</code> association with<br />\n<code>source_type</code> when the through association is already loaded.</p>\n\n<p>The source records were preloaded for all already loaded through records,<br />\nincluding ones whose polymorphic type doesn’t match <code>source_type</code>, which<br />\ncould raise <code>NameError</code> for an unknown type. And a Symbol <code>source_type</code><br />\nnever matched the stored type, so the association was preloaded as empty.</p>\n\n<div class=\"language-ruby highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"no\">Tag</span><span class=\"p\">.</span><span class=\"nf\">preload</span><span class=\"p\">(</span><span class=\"ss\">:taggings</span><span class=\"p\">,</span> <span class=\"ss\">:tagged_posts</span><span class=\"p\">)</span>        <span class=\"c1\"># no longer preloads non-Post taggables</span>\n<span class=\"no\">Club</span><span class=\"p\">.</span><span class=\"nf\">preload</span><span class=\"p\">(</span><span class=\"ss\">:sponsor</span><span class=\"p\">,</span> <span class=\"ss\">:sponsored_member</span><span class=\"p\">)</span>    <span class=\"c1\"># source_type: :Member works</span>\n</code></pre></div></div>\n\n<p><em>Ryuta Kamizono</em></p>\n"
+  },
+  {
+    "message": "*   Exclude `default_order` from aggregate calculations.\n\n    Calculations such as `count` and `sum` now remove default ordering where they\n    already remove explicit ordering. This avoids invalid SQL on PostgreSQL,\n    including `distinct.count` with a custom select.\n\n    *Kengo Johira*",
+    "project": "activerecord",
+    "date_merged": 1793321584000,
+    "author": "kehra",
+    "sha": "d1a7e1a69b8e3b185090be460ffb7375588f51ca",
+    "pr": "59436",
+    "merge_sha": "63ac47e22ed809b623f0eaf4eda839ae43febea7",
+    "html": "<p>Exclude <code>default_order</code> from aggregate calculations.</p>\n\n<p>Calculations such as <code>count</code> and <code>sum</code> now remove default ordering where they<br />\nalready remove explicit ordering. This avoids invalid SQL on PostgreSQL,<br />\nincluding <code>distinct.count</code> with a custom select.</p>\n\n<p><em>Kengo Johira</em></p>\n"
+  },
+  {
     "message": "*   Exclude `default_order` in `Relation#exists?`.\n\n    Previously, `exists?` only excluded explicit `order` values, causing\n    `default_order` to be retained in the query.\n\n    *Kengo Johira*",
     "project": "activerecord",
     "date_merged": 1793275532000,
